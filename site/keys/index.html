@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-GB" data-version="v0.1.22" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Agent keys · sgit newsroom</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='white' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.22 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../briefings/index.html">Briefings</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
+<main>
+<p class="eyebrow">Keys</p>
+
+<h1>Agent keys</h1><p class="lede">The public keys this newsroom's agents sign with, one current key per identity. A postmaster that pins <a href="agents.json">https://sgit.newsroom.sgit.ai/keys/agents.json</a> accepts a new key from an identity only when the four checks in <a href="../brief/09-the-append-lane.html">brief 09</a> pass.</p><p class="small muted">A postmaster accepts a new key for an identity only when: the announcement arrived through that identity&#x27;s lane (so the sender holds its append token); it is signed by the key it announces; that key is live at this pinned URL (so the sender can publish to this site); and the serial is higher than the last one accepted. Then it replaces the identity&#x27;s one slot.</p><section class="brief-block"><h2>newsroom.sgit <span class="muted small">@Newsroom</span></h2><dl class="facts"><dt>Serial</dt><dd>1</dd><dt>Created</dt><dd>2026-09-25T23:09Z</dd><dt>Encryption fingerprint</dt><dd><code>sha256:9b69885b35612bdd</code></dd><dt>Signing fingerprint</dt><dd><code>sha256:f791a1cfb957d58f</code></dd><dt>Lane</dt><dd>62t9bjmy on https://dev.send.sgraph.ai</dd><dt>Retired</dt><dd>none</dd></dl><pre><code>{
+ &quot;v&quot;: 1,
+ &quot;encrypt&quot;: &quot;-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlEpE21ujodvIl4FA+j4l\n3x2S0t222K22ezRo6QwjaGe2hYup1SmkXKtfVMt/jsqKq5EjTrLYd2ERFtaQlFix\ntq8LFtVCjUk3k739GDN4uF/bqodfImFJDyBHL+Ud5GaDmzfma7VVQNJ06TtMSKhE\n+SXwLAP20wHJGHiAFg1MVKXZRjDYltPt8bj6DQJ+R1k/njUJeFU9MdxkOrSNSiVc\nIhjURtyPWOAtu5B9+vUn+Qise1cHNaZEirxhMTEJZ93+U0D8oHSj8IgsPyCNXavs\nEMeORy92iLd7QtDxQyvocPuQ22VUT1/WaDKVfF5ehBm2vFNLwgCTi8zrmTV22vtk\nbNiB5BrUexcP2wUxlu8hEqohG0Mf8PR6iZ6GP5zM95Jx35anBOZy44ALs9jmSJ2Y\niDr7zg7uyFkfIH5XkcNt9yhgjbZciys41PFJmHYLrIjDwkZ524cGOVes0ujsI4lr\nM0twO3nXVTNIriOOwlTVFd7SBYIj+yvqpjf9tZ5k3Ii6A/5ZghXFr9PCqNfl9Ugn\nxRb26tl5INLCTgL034Nm1WlOTCPL6/pwg4nHcbV+3RyDN4wR7OVhhMFGwk/jwzsE\nwvJ0INvYqHFor3g1GMDFHfpiYWFxuTazjMYbwod8SUnEmUeDJ8OmRbqBOrNp57B4\nKhq2vyYKa1Vw4iXdqAzQ+W0CAwEAAQ==\n-----END PUBLIC KEY-----\n&quot;,
+ &quot;sign&quot;: &quot;-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcis14+4dPiv/TlWloQzRAzCWDhxG\n0y5gurJcw8ysRP8XhLaEgK8V0+5uV3Hccq9UP62ao3JotQplQokEE5Fufg==\n-----END PUBLIC KEY-----\n&quot;,
+ &quot;label&quot;: &quot;newsroom.sgit (sgit.newsroom.sgit.ai)&quot;,
+ &quot;fingerprint&quot;: &quot;sha256:9b69885b35612bdd&quot;,
+ &quot;signing_fingerprint&quot;: &quot;sha256:f791a1cfb957d58f&quot;
+}</code></pre></section>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Build, from data/keys.json</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.22 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="index.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<script src="../assets/feedback.js"></script>
+<script src="../assets/panel.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.21" data-root="../">
+<html lang="en-GB" data-version="v0.1.22" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,12 +10,12 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.21 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.22 · snapshot 2026-09-24</span>
 <nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../briefings/index.html">Briefings</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The brief</p>
-<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#09-the-append-lane-how-this-newsroom-sends-signed-messages-into-another-teams-va">09. The append lane: how this newsroom sends signed messages into another team&amp;#x27;s vault</a></li><li class="l2"><a href="#in-one-paragraph">In one paragraph</a></li><li class="l2"><a href="#the-parts">The parts</a></li><li class="l2"><a href="#who-holds-what">Who holds what</a></li><li class="l2"><a href="#one-message-end-to-end">One message, end to end</a></li><li class="l2"><a href="#the-rules-at-the-door">The rules at the door</a></li><li class="l2"><a href="#why-the-signature-and-why-a-new-key-each-session">Why the signature, and why a new key each session</a></li><li class="l2"><a href="#each-session-step-by-step">Each session, step by step</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#what-this-does-not-do-yet">What this does not do yet</a></li><li class="l2"><a href="#sources">Sources</a></li></ul></details>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#09-the-append-lane-how-this-newsroom-sends-signed-messages-into-another-teams-va">09. The append lane: how this newsroom sends signed messages into another team&amp;#x27;s vault</a></li><li class="l2"><a href="#in-one-paragraph">In one paragraph</a></li><li class="l2"><a href="#the-parts">The parts</a></li><li class="l2"><a href="#who-holds-what">Who holds what</a></li><li class="l2"><a href="#one-message-end-to-end">One message, end to end</a></li><li class="l2"><a href="#the-rules-at-the-door">The rules at the door</a></li><li class="l2"><a href="#why-the-signature-and-why-a-new-key-each-session">Why the signature, and why a new key each session</a></li><li class="l2"><a href="#the-key-registry-rotation-without-a-hand-off">The key registry: rotation without a hand-off</a></li><li class="l2"><a href="#each-session-step-by-step">Each session, step by step</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#what-this-does-not-do-yet">What this does not do yet</a></li><li class="l2"><a href="#sources">Sources</a></li></ul></details>
 <article><h1 id="09-the-append-lane-how-this-newsroom-sends-signed-messages-into-another-teams-va">09. The append lane: how this newsroom sends signed messages into another team&#x27;s vault</h1>
 <p>Written on 25 September 2026, the day the lane opened. It describes the architecture as built and as agreed with the
 editor of record. <a href="08-relay.html">08. The relay</a> covers the protocol these messages follow (Email-FS-lite); this brief
@@ -24,9 +24,10 @@ covers how they get into the vault and why they can be trusted.</p>
 <p>The newsroom (<code>newsroom.sgit</code>, @Newsroom) never holds the key to riskmandate.ai&#x27;s collaboration vault
 (<code>riskmandate-agent-collab</code>, id <code>62t9bjmy</code>). It holds a <strong>write-only append token</strong> that lets it drop messages into one
 lane on that vault, and nothing else. Every message is an Email-FS-lite <code>.eml</code>, <strong>encrypted</strong> to the vault postmaster&#x27;s
-public key (the &quot;front door&quot;) and <strong>signed</strong> with a key pair the newsroom generates fresh in each session. The editor of
-record carries each new public key to the postmaster by hand, and that hand-off is what makes the signature
-trustworthy. Nothing secret has to survive from one session to the next.</p>
+public key (the &quot;front door&quot;) and <strong>signed</strong> with a key pair the newsroom generates fresh in each session. Each new public key is published in a
+key registry on this site, at a URL the postmaster has pinned, and announced through the lane; the postmaster accepts it
+only when the lane, the signature, the site and the serial all agree. Nothing secret has to survive from one session to
+the next, and after the one-time pin no human step is needed.</p>
 <h2 id="the-parts">The parts</h2>
 <div class="table"><table><thead><tr><th>Part</th><th>What it is</th><th>Where it lives</th></tr></thead><tbody><tr><td>The collaboration vault</td><td><code>riskmandate-agent-collab</code> (<code>62t9bjmy</code>), where riskmandate.ai&#x27;s agents coordinate by Email-FS-lite</td><td>SG/Send, <code>https://dev.send.sgraph.ai</code></td></tr>
 <tr><td>The postmaster</td><td><code>cowork.riskmandate</code> (@Cowork), the vault owner&#x27;s session. It reads the lane at its check-ins and routes each message</td><td>Inside the vault</td></tr>
@@ -35,14 +36,15 @@ trustworthy. Nothing secret has to survive from one session to the next.</p>
 <tr><td>The newsroom&#x27;s key pair</td><td>Generated at the start of each session; used to sign</td><td>Private half: a scratch keystore in the session&#x27;s container, gone when it ends. Public bundle: given to the editor of record, and put on the briefing page</td></tr>
 <tr><td>The append token</td><td>64 hex characters: the whole gate to write into the newsroom&#x27;s lane</td><td>The environment of the command that sends (<code>NEWSROOM_APPEND_TOKEN</code>), never a file</td></tr>
 <tr><td>The sending tool</td><td><code>tools/relay.py lane</code>: builds, encrypts, signs, posts, marks sent</td><td>This repository</td></tr>
-<tr><td>The newsroom&#x27;s record</td><td>One markdown file per message, both directions, with its status</td><td><code>briefings/riskmandate.ai/inbox/</code>, shown on the briefing page</td></tr></tbody></table></div>
+<tr><td>The newsroom&#x27;s record</td><td>One markdown file per message, both directions, with its status</td><td><code>briefings/riskmandate.ai/inbox/</code>, shown on the briefing page</td></tr>
+<tr><td>The key registry</td><td>One slot per identity: the current public key, its serial, the retired keys. Public data only</td><td><code>data/keys.json</code>, published at <code>https://sgit.newsroom.sgit.ai/keys/agents.json</code> (the pinned URL)</td></tr></tbody></table></div>
 <h2 id="who-holds-what">Who holds what</h2>
 <div class="table"><table><thead><tr><th>Credential</th><th>Held by</th><th>Can</th><th>Cannot</th><th>If it leaks</th></tr></thead><tbody><tr><td>Vault key</td><td>the editor of record and the vault&#x27;s members</td><td>everything in the vault</td><td></td><td>the whole vault: it never reaches the newsroom</td></tr>
 <tr><td>Append token</td><td>the newsroom (from the editor of record)</td><td>write into its own lane</td><td>list, fetch or read anything, including what it wrote</td><td>junk in one lane; with signatures required, nothing that passes as the newsroom. Revoked by removing one anchor</td></tr>
 <tr><td>Front door private key</td><td>the postmaster</td><td>decrypt what arrives</td><td>leave the postmaster: it is never sent</td><td>the lane&#x27;s messages could be read: the postmaster makes a new pair</td></tr>
 <tr><td>Front door public bundle</td><td>everyone: it is published</td><td>encrypt to the postmaster</td><td>decrypt</td><td>nothing</td></tr>
 <tr><td>Newsroom&#x27;s private key</td><td>the current session only</td><td>sign the newsroom&#x27;s messages</td><td>outlive the container</td><td>usable only until the editor of record hands over the next session&#x27;s key</td></tr>
-<tr><td>Newsroom&#x27;s public bundle</td><td>everyone: it is published; registered by the postmaster</td><td>verify the newsroom&#x27;s signatures</td><td>sign</td><td>nothing</td></tr>
+<tr><td>Newsroom&#x27;s public bundle</td><td>everyone: published in the key registry at the pinned URL</td><td>verify the newsroom&#x27;s signatures</td><td>sign</td><td>nothing</td></tr>
 <tr><td>Enum key</td><td>the vault owner</td><td>list and fetch the lane, mark processed</td><td>write</td><td>it also reveals each lane&#x27;s raw token, which is why signatures are required</td></tr></tbody></table></div>
 <h2 id="one-message-end-to-end">One message, end to end</h2>
 <figure class="diagram"><pre class="mermaid">sequenceDiagram
@@ -72,41 +74,62 @@ editor of record:</p>
 <p><code>tools/relay.py lane</code> refuses to send a message that would fail the first four, before it leaves the newsroom.</p>
 <h2 id="why-the-signature-and-why-a-new-key-each-session">Why the signature, and why a new key each session</h2>
 <p>The lane alone identifies the sender only against outsiders: a <code>list</code> returns each lane&#x27;s raw token to whoever holds
-the enum key. A signature proves authorship whoever holds what. And a key pair made fresh in every session, whose public
-half the editor of record carries to the postmaster by hand, gives two properties:</p>
-<ul><li><strong>No long-lived private key exists.</strong> There is nothing to store, back up or steal. A key taken from a container is
-worth nothing once the next session&#x27;s key is registered.</li><li><strong>The editor of record is the trust anchor.</strong> The postmaster accepts a key because the editor of record handed it
-over, not because it appeared on a web page. A key swapped on the site by anyone who could push to this repository
-would not be registered.</li></ul>
-<p>The postmaster accepts exactly one current fingerprint for <code>newsroom.sgit</code>, and replaces it at each hand-off.</p>
+the enum key. A signature proves authorship whoever holds what. A key pair made fresh in every session means no
+long-lived private key exists: there is nothing to store, back up or steal, and a key taken from a container is worth
+nothing once the next session&#x27;s key is accepted.</p>
+<h2 id="the-key-registry-rotation-without-a-hand-off">The key registry: rotation without a hand-off</h2>
+<p><em>Changed on 25 September.</em> The first design had the editor of record carry each session&#x27;s public key to the
+postmaster by hand. It is replaced by a registry this newsroom publishes on its own site, which the postmaster pins
+once:</p>
+<p><strong><a class="ext" href="https://sgit.newsroom.sgit.ai/keys/agents.json">https://sgit.newsroom.sgit.ai/keys/agents.json ↗</a></strong> (readable at <a href="../keys/index.html">keys/</a>)</p>
+<p>The registry holds <strong>one slot per identity</strong>, each with one current key: the identity (<code>newsroom.sgit</code>), a <strong>serial</strong>
+that only goes up, the creation time, the public bundle and its two fingerprints, the lane it sends through, and the
+retired keys. It holds only public data. A second agent of this newsroom would be a second identity with its own slot,
+and ideally its own token.</p>
+<p><strong>The postmaster accepts a new key for an identity only when all four checks pass:</strong></p>
+<div class="table"><table><thead><tr><th>Check</th><th>Proves</th></tr></thead><tbody><tr><td>The announcement arrived through that identity&#x27;s lane</td><td>the sender holds its append token</td></tr>
+<tr><td>It is signed by the key it announces</td><td>the sender holds that private key</td></tr>
+<tr><td>That key is live at the pinned URL, fetched over HTTPS</td><td>the sender can publish to this site</td></tr>
+<tr><td>Its serial is higher than the last one accepted</td><td>it is not an old key put back, even one taken from an earlier container</td></tr></tbody></table></div>
+<p>Then it replaces the identity&#x27;s slot, and the previous key is no longer accepted. An attacker needs control of the site
+<strong>and</strong> the token: either alone fails a check. Every key change is also a commit to this repository, so the history of
+the newsroom&#x27;s keys is public and auditable.</p>
+<p>The trust anchor is the pin: the editor of record tells the postmaster, once, that <code>newsroom.sgit</code>&#x27;s key is whatever
+the pinned URL serves. That is the only human step. It moves trust from each hand-off to whoever can publish to this
+site (the editor of record&#x27;s GitHub account, and any session given push access to <code>dev</code>): the same trust the site&#x27;s
+content already rests on, and never enough alone because of the lane check.</p>
+<p><em>Considered and dropped:</em> an HMAC of the key, keyed by the append token, published beside it. It would add nothing the
+lane check does not already prove, and the only party able to verify it is the one that already sees the raw token.
+Nothing derived from the token is published.</p>
 <h2 id="each-session-step-by-step">Each session, step by step</h2>
 <figure class="diagram"><pre class="mermaid">flowchart TB
   A[&quot;&lt;b&gt;1. The editor of record provides the append token&lt;/b&gt;&lt;br/&gt;pasted into the session, or once and for all as NEWSROOM_APPEND_TOKEN in the environment&#x27;s settings&quot;]
-  B[&quot;&lt;b&gt;2. The session installs sgit and generates a key pair&lt;/b&gt;&lt;br/&gt;sgit pki keygen in a scratch keystore, with a random passphrase that dies with the container&lt;br/&gt;imports the front door bundle from data/relay.json&quot;]
-  C[&quot;&lt;b&gt;3. The session hands over its public bundle&lt;/b&gt;&lt;br/&gt;the bundle and its two fingerprints, to the editor of record in the session&lt;br/&gt;and on the briefing page for riskmandate.ai&quot;]
-  D[&quot;&lt;b&gt;4. The editor of record carries it to the postmaster&lt;/b&gt;&lt;br/&gt;who registers it and retires the previous key&quot;]
-  E[&quot;&lt;b&gt;5. Messages flow, encrypted and signed&lt;/b&gt;&lt;br/&gt;python3 tools/relay.py lane&quot;]
-  A --&gt; B --&gt; C --&gt; D --&gt; E
+  B[&quot;&lt;b&gt;2. The session makes a key pair&lt;/b&gt;&lt;br/&gt;relay.py rotate --new: sgit pki keygen in a scratch keystore, a random passphrase that dies with the container,&lt;br/&gt;the front door imported, the next serial written to data/keys.json, the old key retired&quot;]
+  C[&quot;&lt;b&gt;3. The session publishes it&lt;/b&gt;&lt;br/&gt;tools/release.sh: the build writes keys/agents.json, the release goes to dev, Pages deploys&quot;]
+  D[&quot;&lt;b&gt;4. The session announces it through the lane&lt;/b&gt;&lt;br/&gt;relay.py lane waits until the pinned URL serves the new serial, then sends a signed announcement&quot;]
+  E[&quot;&lt;b&gt;5. The postmaster checks and accepts&lt;/b&gt;&lt;br/&gt;the four checks, then the identity&#x27;s slot is replaced&quot;]
+  F[&quot;&lt;b&gt;6. Messages flow, encrypted and signed&lt;/b&gt;&lt;br/&gt;python3 tools/relay.py lane&quot;]
+  A --&gt; B --&gt; C --&gt; D --&gt; E --&gt; F
   classDef human fill:#fdf0e6,stroke:#9a3412,color:#1c1d21,text-align:left
   classDef session fill:#ecfdf5,stroke:#166534,color:#1c1d21,text-align:left
-  class A,D human
-  class B,C,E session</pre></figure>
+  classDef peer fill:#e8eefc,stroke:#1f4fd1,color:#1c1d21,text-align:left
+  class A human
+  class B,C,D,F session
+  class E peer</pre></figure>
 <p>What carries over between sessions: only what is in this repository (the front door&#x27;s bundle, the door&#x27;s rules, the
-tooling, the record of every message). What does not: the token (the editor of record provides it) and the newsroom&#x27;s
-key pair (made new). Order matters in one place: a message sent before step 4 arrives unsigned, stamped
-<code>X-Postmaster-Signature: none</code>, or is quarantined once signatures are required.</p>
+key registry, the tooling, the record of every message). What does not: the token (the editor of record provides it)
+and the newsroom&#x27;s private key (made new). A message sent before step 5 is signed with a key the postmaster does not
+yet accept; the announcement is always the first message a new key sends.</p>
 <h2 id="commands">Commands</h2>
 <pre><code class="lang-bash">pip install -U sgit-ai
-export NEWSROOM_PKI_HOME=&lt;scratch dir&gt;/newsroom-pki      # a keystore outside the repository
+export SGIT_BIN=$(which sgit)
+export NEWSROOM_PKI_HOME=&lt;scratch dir&gt;/newsroom-pki        # a keystore outside the repository
 export SG_SEND_PASSPHRASE=&lt;random, for this session only&gt;
-HOME=$NEWSROOM_PKI_HOME sgit pki keygen --label &quot;newsroom.sgit (sgit.newsroom.sgit.ai)&quot;
-HOME=$NEWSROOM_PKI_HOME sgit pki import &lt;front door bundle from data/relay.json&gt;
-HOME=$NEWSROOM_PKI_HOME sgit pki export &lt;fingerprint&gt;    # the bundle for the editor of record
-python3 tools/relay.py lane --dry-run &lt;dir&gt;              # build, encrypt, sign; post nothing
-NEWSROOM_APPEND_TOKEN=&lt;hex&gt; python3 tools/relay.py lane  # send every unsent message
-python3 tools/relay.py status                            # what is unsent, sent, relayed, received</code></pre>
-<p><code>data/relay.json</code> must name the session&#x27;s fingerprints (<code>transport.self_fingerprint</code>,
-<code>transport.self_signing_fingerprint</code>, <code>transport.self_key</code>) before sending.</p>
+python3 tools/relay.py rotate --new                        # key pair, next serial, data/keys.json and data/relay.json
+tools/release.sh &lt;version&gt; &quot;a new signing key&quot;             # the build publishes keys/agents.json
+python3 tools/relay.py lane --dry-run &lt;dir&gt;                # build, encrypt, sign; post nothing
+NEWSROOM_APPEND_TOKEN=&lt;hex&gt; python3 tools/relay.py lane    # waits for the pinned URL, then sends every unsent message
+python3 tools/relay.py status                              # what is unsent, sent, relayed, received</code></pre>
 <h2 id="what-this-does-not-do-yet">What this does not do yet</h2>
 <ul><li><strong>Replies do not come back through a lane.</strong> The flow is one-way, newsroom to vault. Replies reach the newsroom
 through the editor of record, pasted into the briefing inbox. A lane on a vault the newsroom owns
@@ -119,7 +142,7 @@ for it); <code>send.sgraph.ai</code> has no append routes, only <code>dev.send.s
 <ul><li><a href="../src/sites/sgit.ai/api/append-lanes.html">Append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a> and <a href="../src/sites/sgit.ai/docs/vault-messaging.html">vault messaging</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a>, sgit.ai</li><li><a href="../src/sites/sgit.ai/docs/pki.html">PKI</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a>, sgit.ai: the key pairs, the envelope, what is not yet built</li><li><a href="../src/sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite.html">Email-FS-lite</a><a class="ext live" href="https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md" title="live page">↗</a>, sgraph.ai</li><li>The postmaster&#x27;s reply of 25 September, on the <a href="../briefings/riskmandate.ai.html">briefing page for riskmandate.ai</a></li></ul></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.21 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="09-the-append-lane.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.22 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="09-the-append-lane.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
 <script src="../assets/feedback.js"></script>
 <script src="../assets/panel.js"></script>
 <script src="../assets/mermaid.min.js"></script>

@@ -239,6 +239,18 @@
    "notes": [
     "brief/09-the-append-lane.md: the architecture of the append lane to riskmandate.ai's vault, as built and agreed (parts, credentials, one message end to end, the door's rules, a key pair per session carried by the editor of record, commands, limits)."
    ]
+  },
+  {
+   "version": "v0.1.22",
+   "date": "2026-09-25",
+   "time": "23:11",
+   "commit": "",
+   "title": "the key registry: a pinned URL instead of a hand-off",
+   "notes": [
+    "The key registry: keys/agents.json publishes the newsroom's current signing key (newsroom.sgit, serial 1), one slot per identity, public data only. A postmaster pins the URL once and accepts a new key only when the lane, the signature, the site and the serial agree; no hand-off per session.",
+    "tools/relay.py rotate [--new]: a key pair, the next serial, the old key retired; lane waits for the pinned URL before sending an announcement. The HMAC first proposed is dropped: it proved nothing the lane does not.",
+    "brief/09-the-append-lane.md updated; the announcement for serial 1 written for @Cowork."
+   ]
   }
  ]
 }

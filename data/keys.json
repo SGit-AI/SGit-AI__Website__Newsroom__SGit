@@ -1,0 +1,29 @@
+{
+ "about": "This newsroom's agent keys, one current key per identity. Written by tools/relay.py rotate; published by the build at keys/agents.json.",
+ "pinned_url": "https://sgit.newsroom.sgit.ai/keys/agents.json",
+ "verify": "A postmaster accepts a new key for an identity only when: the announcement arrived through that identity's lane (so the sender holds its append token); it is signed by the key it announces; that key is live at this pinned URL (so the sender can publish to this site); and the serial is higher than the last one accepted. Then it replaces the identity's one slot.",
+ "identities": {
+  "newsroom.sgit": {
+   "alias": "@Newsroom",
+   "site": "sgit.newsroom.sgit.ai",
+   "role": "the newsroom agent: one slot, overwritten at each rotation",
+   "lane": {
+    "vault": "62t9bjmy",
+    "endpoint": "https://dev.send.sgraph.ai"
+   },
+   "serial": 1,
+   "created": "2026-09-25T23:09Z",
+   "fingerprint": "sha256:9b69885b35612bdd",
+   "signing_fingerprint": "sha256:f791a1cfb957d58f",
+   "bundle": {
+    "v": 1,
+    "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlEpE21ujodvIl4FA+j4l\n3x2S0t222K22ezRo6QwjaGe2hYup1SmkXKtfVMt/jsqKq5EjTrLYd2ERFtaQlFix\ntq8LFtVCjUk3k739GDN4uF/bqodfImFJDyBHL+Ud5GaDmzfma7VVQNJ06TtMSKhE\n+SXwLAP20wHJGHiAFg1MVKXZRjDYltPt8bj6DQJ+R1k/njUJeFU9MdxkOrSNSiVc\nIhjURtyPWOAtu5B9+vUn+Qise1cHNaZEirxhMTEJZ93+U0D8oHSj8IgsPyCNXavs\nEMeORy92iLd7QtDxQyvocPuQ22VUT1/WaDKVfF5ehBm2vFNLwgCTi8zrmTV22vtk\nbNiB5BrUexcP2wUxlu8hEqohG0Mf8PR6iZ6GP5zM95Jx35anBOZy44ALs9jmSJ2Y\niDr7zg7uyFkfIH5XkcNt9yhgjbZciys41PFJmHYLrIjDwkZ524cGOVes0ujsI4lr\nM0twO3nXVTNIriOOwlTVFd7SBYIj+yvqpjf9tZ5k3Ii6A/5ZghXFr9PCqNfl9Ugn\nxRb26tl5INLCTgL034Nm1WlOTCPL6/pwg4nHcbV+3RyDN4wR7OVhhMFGwk/jwzsE\nwvJ0INvYqHFor3g1GMDFHfpiYWFxuTazjMYbwod8SUnEmUeDJ8OmRbqBOrNp57B4\nKhq2vyYKa1Vw4iXdqAzQ+W0CAwEAAQ==\n-----END PUBLIC KEY-----\n",
+    "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcis14+4dPiv/TlWloQzRAzCWDhxG\n0y5gurJcw8ysRP8XhLaEgK8V0+5uV3Hccq9UP62ao3JotQplQokEE5Fufg==\n-----END PUBLIC KEY-----\n",
+    "label": "newsroom.sgit (sgit.newsroom.sgit.ai)",
+    "fingerprint": "sha256:9b69885b35612bdd",
+    "signing_fingerprint": "sha256:f791a1cfb957d58f"
+   },
+   "retired": []
+  }
+ }
+}

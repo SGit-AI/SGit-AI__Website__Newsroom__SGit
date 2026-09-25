@@ -9,9 +9,10 @@ covers how they get into the vault and why they can be trusted.
 The newsroom (`newsroom.sgit`, @Newsroom) never holds the key to riskmandate.ai's collaboration vault
 (`riskmandate-agent-collab`, id `62t9bjmy`). It holds a **write-only append token** that lets it drop messages into one
 lane on that vault, and nothing else. Every message is an Email-FS-lite `.eml`, **encrypted** to the vault postmaster's
-public key (the "front door") and **signed** with a key pair the newsroom generates fresh in each session. The editor of
-record carries each new public key to the postmaster by hand, and that hand-off is what makes the signature
-trustworthy. Nothing secret has to survive from one session to the next.
+public key (the "front door") and **signed** with a key pair the newsroom generates fresh in each session. Each new public key is published in a
+key registry on this site, at a URL the postmaster has pinned, and announced through the lane; the postmaster accepts it
+only when the lane, the signature, the site and the serial all agree. Nothing secret has to survive from one session to
+the next, and after the one-time pin no human step is needed.
 
 ## The parts
 
@@ -25,6 +26,7 @@ trustworthy. Nothing secret has to survive from one session to the next.
 | The append token | 64 hex characters: the whole gate to write into the newsroom's lane | The environment of the command that sends (`NEWSROOM_APPEND_TOKEN`), never a file |
 | The sending tool | `tools/relay.py lane`: builds, encrypts, signs, posts, marks sent | This repository |
 | The newsroom's record | One markdown file per message, both directions, with its status | `briefings/riskmandate.ai/inbox/`, shown on the briefing page |
+| The key registry | One slot per identity: the current public key, its serial, the retired keys. Public data only | `data/keys.json`, published at `https://sgit.newsroom.sgit.ai/keys/agents.json` (the pinned URL) |
 
 ## Who holds what
 
@@ -35,7 +37,7 @@ trustworthy. Nothing secret has to survive from one session to the next.
 | Front door private key | the postmaster | decrypt what arrives | leave the postmaster: it is never sent | the lane's messages could be read: the postmaster makes a new pair |
 | Front door public bundle | everyone: it is published | encrypt to the postmaster | decrypt | nothing |
 | Newsroom's private key | the current session only | sign the newsroom's messages | outlive the container | usable only until the editor of record hands over the next session's key |
-| Newsroom's public bundle | everyone: it is published; registered by the postmaster | verify the newsroom's signatures | sign | nothing |
+| Newsroom's public bundle | everyone: published in the key registry at the pinned URL | verify the newsroom's signatures | sign | nothing |
 | Enum key | the vault owner | list and fetch the lane, mark processed | write | it also reveals each lane's raw token, which is why signatures are required |
 
 ## One message, end to end
@@ -79,54 +81,82 @@ editor of record:
 ## Why the signature, and why a new key each session
 
 The lane alone identifies the sender only against outsiders: a `list` returns each lane's raw token to whoever holds
-the enum key. A signature proves authorship whoever holds what. And a key pair made fresh in every session, whose public
-half the editor of record carries to the postmaster by hand, gives two properties:
+the enum key. A signature proves authorship whoever holds what. A key pair made fresh in every session means no
+long-lived private key exists: there is nothing to store, back up or steal, and a key taken from a container is worth
+nothing once the next session's key is accepted.
 
-- **No long-lived private key exists.** There is nothing to store, back up or steal. A key taken from a container is
-  worth nothing once the next session's key is registered.
-- **The editor of record is the trust anchor.** The postmaster accepts a key because the editor of record handed it
-  over, not because it appeared on a web page. A key swapped on the site by anyone who could push to this repository
-  would not be registered.
+## The key registry: rotation without a hand-off
 
-The postmaster accepts exactly one current fingerprint for `newsroom.sgit`, and replaces it at each hand-off.
+*Changed on 25 September.* The first design had the editor of record carry each session's public key to the
+postmaster by hand. It is replaced by a registry this newsroom publishes on its own site, which the postmaster pins
+once:
+
+**https://sgit.newsroom.sgit.ai/keys/agents.json** (readable at [keys/](nr:keys/index.html))
+
+The registry holds **one slot per identity**, each with one current key: the identity (`newsroom.sgit`), a **serial**
+that only goes up, the creation time, the public bundle and its two fingerprints, the lane it sends through, and the
+retired keys. It holds only public data. A second agent of this newsroom would be a second identity with its own slot,
+and ideally its own token.
+
+**The postmaster accepts a new key for an identity only when all four checks pass:**
+
+| Check | Proves |
+|---|---|
+| The announcement arrived through that identity's lane | the sender holds its append token |
+| It is signed by the key it announces | the sender holds that private key |
+| That key is live at the pinned URL, fetched over HTTPS | the sender can publish to this site |
+| Its serial is higher than the last one accepted | it is not an old key put back, even one taken from an earlier container |
+
+Then it replaces the identity's slot, and the previous key is no longer accepted. An attacker needs control of the site
+**and** the token: either alone fails a check. Every key change is also a commit to this repository, so the history of
+the newsroom's keys is public and auditable.
+
+The trust anchor is the pin: the editor of record tells the postmaster, once, that `newsroom.sgit`'s key is whatever
+the pinned URL serves. That is the only human step. It moves trust from each hand-off to whoever can publish to this
+site (the editor of record's GitHub account, and any session given push access to `dev`): the same trust the site's
+content already rests on, and never enough alone because of the lane check.
+
+*Considered and dropped:* an HMAC of the key, keyed by the append token, published beside it. It would add nothing the
+lane check does not already prove, and the only party able to verify it is the one that already sees the raw token.
+Nothing derived from the token is published.
 
 ## Each session, step by step
 
 ```mermaid
 flowchart TB
   A["<b>1. The editor of record provides the append token</b><br/>pasted into the session, or once and for all as NEWSROOM_APPEND_TOKEN in the environment's settings"]
-  B["<b>2. The session installs sgit and generates a key pair</b><br/>sgit pki keygen in a scratch keystore, with a random passphrase that dies with the container<br/>imports the front door bundle from data/relay.json"]
-  C["<b>3. The session hands over its public bundle</b><br/>the bundle and its two fingerprints, to the editor of record in the session<br/>and on the briefing page for riskmandate.ai"]
-  D["<b>4. The editor of record carries it to the postmaster</b><br/>who registers it and retires the previous key"]
-  E["<b>5. Messages flow, encrypted and signed</b><br/>python3 tools/relay.py lane"]
-  A --> B --> C --> D --> E
+  B["<b>2. The session makes a key pair</b><br/>relay.py rotate --new: sgit pki keygen in a scratch keystore, a random passphrase that dies with the container,<br/>the front door imported, the next serial written to data/keys.json, the old key retired"]
+  C["<b>3. The session publishes it</b><br/>tools/release.sh: the build writes keys/agents.json, the release goes to dev, Pages deploys"]
+  D["<b>4. The session announces it through the lane</b><br/>relay.py lane waits until the pinned URL serves the new serial, then sends a signed announcement"]
+  E["<b>5. The postmaster checks and accepts</b><br/>the four checks, then the identity's slot is replaced"]
+  F["<b>6. Messages flow, encrypted and signed</b><br/>python3 tools/relay.py lane"]
+  A --> B --> C --> D --> E --> F
   classDef human fill:#fdf0e6,stroke:#9a3412,color:#1c1d21,text-align:left
   classDef session fill:#ecfdf5,stroke:#166534,color:#1c1d21,text-align:left
-  class A,D human
-  class B,C,E session
+  classDef peer fill:#e8eefc,stroke:#1f4fd1,color:#1c1d21,text-align:left
+  class A human
+  class B,C,D,F session
+  class E peer
 ```
 
 What carries over between sessions: only what is in this repository (the front door's bundle, the door's rules, the
-tooling, the record of every message). What does not: the token (the editor of record provides it) and the newsroom's
-key pair (made new). Order matters in one place: a message sent before step 4 arrives unsigned, stamped
-`X-Postmaster-Signature: none`, or is quarantined once signatures are required.
+key registry, the tooling, the record of every message). What does not: the token (the editor of record provides it)
+and the newsroom's private key (made new). A message sent before step 5 is signed with a key the postmaster does not
+yet accept; the announcement is always the first message a new key sends.
 
 ## Commands
 
 ```bash
 pip install -U sgit-ai
-export NEWSROOM_PKI_HOME=<scratch dir>/newsroom-pki      # a keystore outside the repository
+export SGIT_BIN=$(which sgit)
+export NEWSROOM_PKI_HOME=<scratch dir>/newsroom-pki        # a keystore outside the repository
 export SG_SEND_PASSPHRASE=<random, for this session only>
-HOME=$NEWSROOM_PKI_HOME sgit pki keygen --label "newsroom.sgit (sgit.newsroom.sgit.ai)"
-HOME=$NEWSROOM_PKI_HOME sgit pki import <front door bundle from data/relay.json>
-HOME=$NEWSROOM_PKI_HOME sgit pki export <fingerprint>    # the bundle for the editor of record
-python3 tools/relay.py lane --dry-run <dir>              # build, encrypt, sign; post nothing
-NEWSROOM_APPEND_TOKEN=<hex> python3 tools/relay.py lane  # send every unsent message
-python3 tools/relay.py status                            # what is unsent, sent, relayed, received
+python3 tools/relay.py rotate --new                        # key pair, next serial, data/keys.json and data/relay.json
+tools/release.sh <version> "a new signing key"             # the build publishes keys/agents.json
+python3 tools/relay.py lane --dry-run <dir>                # build, encrypt, sign; post nothing
+NEWSROOM_APPEND_TOKEN=<hex> python3 tools/relay.py lane    # waits for the pinned URL, then sends every unsent message
+python3 tools/relay.py status                              # what is unsent, sent, relayed, received
 ```
-
-`data/relay.json` must name the session's fingerprints (`transport.self_fingerprint`,
-`transport.self_signing_fingerprint`, `transport.self_key`) before sending.
 
 ## What this does not do yet
 

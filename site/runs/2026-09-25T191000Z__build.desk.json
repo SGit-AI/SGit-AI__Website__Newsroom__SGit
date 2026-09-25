@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T19:10:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Drop the HMAC from the key registry, as the editor of record decided, and publish the current signing key as serial 1.",
+  "folders_changed": [
+    "tools/",
+    "data/keys.json"
+  ],
+  "did": [
+    "tools/relay.py rotate: no token needed and nothing derived from one; the registry states the four checks. tools/build.py: the keys page without a binding row.",
+    "Retested on a throwaway keystore (serial 1, no binding field), then data/keys.json written for the real key: newsroom.sgit serial 1, sha256:9b69885b35612bdd, signing sha256:f791a1cfb957d58f.",
+    "The build publishes keys/agents.json (the URL to pin) and keys/index.html."
+  ],
+  "gates": true
+}

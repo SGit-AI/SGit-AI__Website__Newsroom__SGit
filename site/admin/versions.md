@@ -22,3 +22,4 @@
 - v0.1.19 (2026-09-25): the feedback-over-an-append-lane design, drawn
 - v0.1.20 (2026-09-25): the append lane is open: the first signed message sent
 - v0.1.21 (2026-09-25): the append lane's architecture, written down
+- v0.1.22 (2026-09-25): the key registry: a pinned URL instead of a hand-off

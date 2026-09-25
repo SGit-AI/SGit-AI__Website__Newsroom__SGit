@@ -1,5 +1,8 @@
 # Runs
 
+- 2026-09-25T19:15:00Z editor.desk: Document the key registry and announce serial 1 to the postmaster through the lane.
+- 2026-09-25T19:10:00Z build.desk: Drop the HMAC from the key registry, as the editor of record decided, and publish the current signing key as serial 1.
+- 2026-09-25T18:45:00Z build.desk: Key rotation without a hand-off: a published registry of the newsroom's agent keys, and a rotate command.
 - 2026-09-25T18:20:00Z editor.desk: Describe the append-lane architecture as built and agreed: signed messages into riskmandate.ai's vault, with a key pair made fresh each session.
 - 2026-09-25T18:05:00Z editor.human: The lane opened by the postmaster, and the token handed over by the editor of record.
 - 2026-09-25T18:00:00Z build.desk: Send through the append lane: encrypted to the front door, signed with this newsroom's key.

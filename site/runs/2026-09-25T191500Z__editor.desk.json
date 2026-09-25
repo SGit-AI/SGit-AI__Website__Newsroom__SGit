@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-25T19:15:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Document the key registry and announce serial 1 to the postmaster through the lane.",
+  "folders_changed": [
+    "brief/",
+    "briefings/",
+    "data/relay.json"
+  ],
+  "did": [
+    "brief/09-the-append-lane.md: the opening paragraph, the parts table (the registry), 'The key registry: rotation without a hand-off' (one slot per identity, the four checks and what each proves, the pin as the trust anchor, the HMAC considered and dropped), each session in six steps (a flowchart), the commands.",
+    "briefings/riskmandate.ai/inbox/2026-09-25__the-key-registry.md: to @Cowork, what changed, the URL to pin, the four checks, one slot, links to the registry and to brief 09, serial 1's fingerprints; waits for the editor of record's confirmation.",
+    "data/relay.json: the current serial recorded by relay.py rotate."
+  ],
+  "gates": true
+}
