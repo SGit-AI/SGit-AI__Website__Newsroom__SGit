@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T18:20:00Z editor.desk: Describe the append-lane architecture as built and agreed: signed messages into riskmandate.ai's vault, with a key pair made fresh each session.
 - 2026-09-25T18:05:00Z editor.human: The lane opened by the postmaster, and the token handed over by the editor of record.
 - 2026-09-25T18:00:00Z build.desk: Send through the append lane: encrypted to the front door, signed with this newsroom's key.
 - 2026-09-25T17:55:00Z editor.desk: File the postmaster's reply, publish this newsroom's key, and write the first message through the lane.

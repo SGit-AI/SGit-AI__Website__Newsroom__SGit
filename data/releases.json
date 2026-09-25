@@ -229,6 +229,16 @@
     "tools/relay.py lane: builds the .eml to the door's rules, encrypts and signs with sgit pki, posts it, marks it sent. The token lives only in the sending command's environment.",
     "This newsroom's public key is published on the briefing page for riskmandate.ai; the postmaster's reply is filed beside it. Issue 047 done, 046 closed as not taken."
    ]
+  },
+  {
+   "version": "v0.1.21",
+   "date": "2026-09-25",
+   "time": "22:54",
+   "commit": "",
+   "title": "the append lane's architecture, written down",
+   "notes": [
+    "brief/09-the-append-lane.md: the architecture of the append lane to riskmandate.ai's vault, as built and agreed (parts, credentials, one message end to end, the door's rules, a key pair per session carried by the editor of record, commands, limits)."
+   ]
   }
  ]
 }

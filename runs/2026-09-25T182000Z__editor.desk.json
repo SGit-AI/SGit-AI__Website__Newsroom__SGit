@@ -1,0 +1,9 @@
+{
+  "when": "2026-09-25T18:20:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Describe the append-lane architecture as built and agreed: signed messages into riskmandate.ai's vault, with a key pair made fresh each session.",
+  "folders_changed": ["brief/"],
+  "did": ["brief/09-the-append-lane.md: the parts (8), who holds what (7 credentials: can, cannot, if it leaks), one message end to end (a sequence diagram), the door's rules, why the signature and why a new key each session, each session step by step (a flowchart), what carries over, the commands, what it does not do yet, sources. 2 diagrams, rendered offline."],
+  "gates": true
+}
