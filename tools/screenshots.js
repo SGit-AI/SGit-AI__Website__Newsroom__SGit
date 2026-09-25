@@ -7,16 +7,16 @@
 const fs = require('fs'), path = require('path');
 let pw; try { pw = require('playwright'); } catch (e) { pw = require(require('child_process').execSync('npm root -g').toString().trim() + '/playwright'); }
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'assets', 'shots'), MAN = path.join(OUT, 'manifest.json');
-const urls = new Set();
+const urls = new Map();   // page to capture (.html) -> the URL as cited (.md where the site serves only that)
 for (const d of ['stories', 'editions', 'signals', 'history', 'maps', 'briefings']) {
   const base = path.join(ROOT, d); if (!fs.existsSync(base)) continue;
   for (const n of fs.readdirSync(base)) {
     if (!n.endsWith('.md')) continue;
     const t = fs.readFileSync(path.join(base, n), 'utf8'), fm = t.startsWith('---\n') ? t.split('\n---')[0] : '';
-    for (const m of fm.matchAll(/^\s+-\s+(https?:\/\/\S+)/gm)) urls.add(m[1].replace(/\.md$/, '.html'));
+    for (const m of fm.matchAll(/^\s+-\s+(https?:\/\/\S+)/gm)) urls.set(m[1].replace(/\.md$/, '.html'), m[1]);
   }
 }
-if (process.argv.includes('--all')) for (const e of JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'index.json'), 'utf8'))) urls.add(e.live);
+if (process.argv.includes('--all')) for (const e of JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'index.json'), 'utf8'))) urls.set(e.live, e.live);
 const manifest = fs.existsSync(MAN) ? JSON.parse(fs.readFileSync(MAN, 'utf8')) : {};
 const fileFor = (u) => { const x = new URL(u); let p = x.pathname.replace(/\/$/, '/index.html').replace(/^\//, '') || 'index.html'; return path.join(x.host, p.replace(/\.(html|md)$/, '') + '.jpg'); };
 (async () => {
@@ -33,7 +33,8 @@ const fileFor = (u) => { const x = new URL(u); let p = x.pathname.replace(/\/$/,
     p = await ctx.newPage();
   };
   const shoot = async (u, file) => {
-    const r = await p.goto(u, { waitUntil: 'commit', timeout: 15000 });
+    let r = await p.goto(u, { waitUntil: 'commit', timeout: 15000 });
+    if (r && r.status() === 404 && urls.get(u) !== u) r = await p.goto(urls.get(u), { waitUntil: 'commit', timeout: 15000 });   // the site serves only the .md
     if (!r || r.status() >= 400) throw new Error('HTTP ' + (r && r.status()));
     await p.waitForLoadState('domcontentloaded', { timeout: 8000 }).catch(() => {});
     await p.waitForTimeout(500);
@@ -41,7 +42,7 @@ const fileFor = (u) => { const x = new URL(u); let p = x.pathname.replace(/\/$/,
     await p.screenshot({ path: file, type: 'jpeg', quality: 60, clip: { x: 0, y: 0, width: 1200, height: 750 } });
   };
   await fresh();
-  for (const u of [...urls].sort()) {
+  for (const u of [...urls.keys()].sort()) {
     const rel = fileFor(u), file = path.join(OUT, rel);
     if (manifest[u] && manifest[u].ok && fs.existsSync(file) && !process.argv.includes('--refresh')) continue;
     if (++n % 10 === 0) await fresh();
