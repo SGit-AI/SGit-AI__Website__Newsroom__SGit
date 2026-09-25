@@ -2057,7 +2057,7 @@ class Site:
         if os.path.isdir(shots):
             for dirpath, _, files in os.walk(shots):
                 for name in sorted(files):
-                    if name.endswith('.webp'):
+                    if name.endswith(('.webp', '.jpg')):
                         full = os.path.join(dirpath, name)
                         self.write(os.path.relpath(full, ROOT).replace(os.sep, '/'), open(full, 'rb').read(), binary=True)
         self.write('assets/mermaid.min.js', open(os.path.join(ROOT, 'tools', 'vendor', 'mermaid.min.js'), 'rb').read(), binary=True)
