@@ -165,7 +165,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+# /site  (mkdocs default) removed: site/ is the built newsroom, committed so it can be read offline
 
 # mypy
 .mypy_cache/

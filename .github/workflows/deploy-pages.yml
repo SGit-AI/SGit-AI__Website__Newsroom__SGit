@@ -1,0 +1,127 @@
+# Deploys sgit.newsroom.sgit.ai (the committed site/ folder) to GitHub Pages, with the same pipeline
+# order as SGit-AI/SGit-AI__Website__Newsroom__PT and the other sgit sites: validate -> tag -> publish.
+#
+#   1. validate     - rebuilds site/ from the sources and the desks' files, fails if the committed
+#                     site/ differs from the build (site/ is generated: never edited by hand), then
+#                     runs tools/validate.py (links, no external resources, no fetch(), credential
+#                     tripwire, provenance on every page). A failure stops the release. Also runs
+#                     on pull requests.
+#   2. tag-release  - every push to dev is a release, tagged vR.M.N. The version is owned by
+#                     version.txt and must also appear in the release commit's subject
+#                     ("site vX.Y.Z: ..."). CI checks the two agree, then tags the release commit.
+#                     Tags missing from earlier release commits are backfilled.
+#   3. deploy       - publishes site/. Runs on manual dispatch even without a tag, never when
+#                     validation failed.
+name: deploy-pages
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild the site, and check the committed site/ is the build
+        run: |
+          python3 tools/librarian.py
+          python3 tools/build.py
+          git status --porcelain -- site data
+          if [ -n "$(git status --porcelain -- site data)" ]; then
+            echo "::error::site/ or data/ differs from a fresh build: run python3 tools/librarian.py && python3 tools/build.py and commit"
+            git diff --stat -- site data | tail -20
+            exit 1
+          fi
+      - name: Validate (links, external resources, fetch, credentials, provenance)
+        run: python3 tools/validate.py
+
+  tag-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [validate]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Tag this release (and backfill any missing historical tags)
+        run: |
+          set -euo pipefail
+          git fetch --tags --quiet
+          git config user.name  'GitHub Actions'
+          git config user.email 'actions@github.com'
+
+          # Read the history once, into a variable: piping git log into an early-exiting reader
+          # kills it with SIGPIPE under pipefail.
+          LOG=$(git log --format='%H;%s')
+
+          while IFS=';' read -r h s; do
+            v=$(printf '%s' "$s" | grep -oP '^site v\K[0-9]+\.[0-9]+\.[0-9]+(?=:)' || true)
+            if [ -n "$v" ] && ! git rev-parse -q --verify "refs/tags/v$v" >/dev/null; then
+              git tag "v$v" "$h"
+              echo "backfilled v$v -> ${h:0:9}"
+            fi
+          done <<< "$LOG"
+
+          VER=$(grep -oP '^v\K[0-9]+\.[0-9]+\.[0-9]+' version.txt)
+          TAG="v$VER"
+          echo "version.txt says $TAG"
+
+          NEWEST=$(grep -oP '^[0-9a-f]+;site v\K[0-9]+\.[0-9]+\.[0-9]+(?=:)' <<< "$LOG" | head -1 || true)
+          if [ -z "$NEWEST" ]; then
+            echo "::error::no commit carries a version in its subject (\"site vX.Y.Z: ...\")"
+            exit 1
+          fi
+          if [ "$NEWEST" != "$VER" ]; then
+            echo "::error::version.txt says $TAG but the newest release commit is v$NEWEST"
+            exit 1
+          fi
+          REL=$(grep -m1 -F ";site v$VER:" <<< "$LOG" | cut -d';' -f1 || true)
+          if [ "$(git rev-parse "refs/tags/$TAG^{commit}")" != "$REL" ]; then
+            echo "::error::$TAG already exists on an earlier commit: version.txt was not bumped"
+            exit 1
+          fi
+
+          git push origin "refs/tags/$TAG"
+          echo "tagged ${REL:0:9} as $TAG"
+          for t in $(git tag --list 'v*'); do
+            [ "$t" = "$TAG" ] && continue
+            git push origin "refs/tags/$t" >/dev/null 2>&1 && echo "backfill ok: $t" || echo "::warning::could not push $t"
+          done
+          true
+
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [validate, tag-release]
+    if: always() && github.event_name != 'pull_request' && needs.validate.result == 'success' && (needs.tag-release.result == 'success' || needs.tag-release.result == 'skipped')
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
