@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-25T08:20:29Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Build the reading-list design: filters and feedback kept on the device.",
+  "folders_changed": [
+    "tools/",
+    "run-local.sh",
+    "README.md"
+  ],
+  "did": [
+    "tools/feedback.js; reading list on the reading room and the new-pages page; feedback bar on every source page; documents on a white sheet."
+  ],
+  "commit": "742cf50",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised."
+}

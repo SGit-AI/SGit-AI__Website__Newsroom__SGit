@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T08:02:03Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Add run-local.sh and bring home the .md twins of linked network pages.",
+  "folders_changed": [
+    "tools/",
+    "run-local.sh",
+    "README.md",
+    "CLAUDE.md"
+  ],
+  "did": [
+    "run-local.sh and tools/fetch_missing.py; the build keeps a heading's own anchor, resolves riskmandate.ai release-note links from the site root, ASCII section file names."
+  ],
+  "commit": "d52f7dc",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised. Split when the register was created: one session did this work across desks; the validator refused the single record, so each desk's part is recorded under that desk."
+}

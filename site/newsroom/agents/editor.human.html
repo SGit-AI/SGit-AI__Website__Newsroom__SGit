@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB" data-version="v0.1.3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Editor of record: role and mandate · sgit newsroom</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='white' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.3 · snapshot 2026-09-24</span>
+<nav><a href="../../index.html">Front page</a><a href="../../editions/index.html">Editions</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../concepts/index.html">Concepts</a><a href="../../vaults/index.html">Vaults</a><a href="../../history/index.html">History</a><a href="../../signals/index.html">Signals</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../index.html">The newsroom</a><a href="../../about/index.html">About</a><a href="../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">The newsroom · @Editor</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#editor-of-record-editor">Editor of record: @Editor</a></li><li class="l2"><a href="#mission">Mission</a></li><li class="l2"><a href="#the-central-claim-written-as-a-failure-condition">The central claim, written as a failure condition</a></li><li class="l2"><a href="#gravity">Gravity</a></li><li class="l2"><a href="#reads">Reads</a></li><li class="l2"><a href="#writes-its-mandate-the-validator-holds-a-run-record-to-these">Writes (its mandate: the validator holds a run record to these)</a></li><li class="l2"><a href="#produces">Produces</a></li><li class="l2"><a href="#how-a-run-goes">How a run goes</a></li><li class="l2"><a href="#works-with">Works with</a></li></ul></details>
+<p class="crumbs"><a href="../index.html">The newsroom</a> / agents / Editor of record</p><article class="source"><h1 id="editor-of-record-editor">Editor of record: @Editor</h1>
+<p><strong>Register id</strong> <code>editor.human</code> · <strong>kind</strong> human · <strong>cadence</strong> before anything is called published</p>
+<h2 id="mission">Mission</h2>
+<blockquote><p>Read before anything is called published. The founder, Dinis Cruz, for now.</p></blockquote>
+<h2 id="the-central-claim-written-as-a-failure-condition">The central claim, written as a failure condition</h2>
+<p>A role that says what it does can only be admired; a role that says when it is failing can be contradicted.</p>
+<blockquote><p>This role is failing when: A page shows as reviewed that nobody read.</p></blockquote>
+<h2 id="gravity">Gravity</h2>
+<blockquote><p>Reviewed means read.</p></blockquote>
+<h2 id="reads">Reads</h2>
+<ul><li>every edition, story, history piece and signal</li><li>the reading room&#x27;s feedback, copied from the reader&#x27;s device</li></ul>
+<h2 id="writes-its-mandate-the-validator-holds-a-run-record-to-these">Writes (its mandate: the validator holds a run record to these)</h2>
+<ul><li>editions/</li><li>stories/</li><li>history/</li><li>signals/</li><li>data/agents.json</li></ul>
+<p>Plus what every run shares: <code>runs/</code>, <code>site/</code>, <code>version.txt</code>, <code>data/loose-ends.json</code>. Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), and rebuilds and releases the site.</p>
+<h2 id="produces">Produces</h2>
+<ul><li>reviewed_by and reviewed_on on each page</li><li>the register of agents</li></ul>
+<h2 id="how-a-run-goes">How a run goes</h2>
+<ol><li>Read the page and its sources.</li><li>Fill reviewed_by and reviewed_on, or send it back to its desk with a note.</li></ol>
+<h2 id="works-with">Works with</h2>
+<ul><li>every desk</li></ul>
+<p>The mandate, what this role refuses and whose work it is not: <a href="editor.human.html">MANDATE.md</a>.</p></article><article class="source"><h1 id="editor-of-record-mandate">Editor of record: mandate</h1>
+<p><strong>Register id</strong> <code>editor.human</code>. A run record for this role names <code>&quot;agent&quot;: &quot;editor.human&quot;</code>.</p>
+<h2 id="not-responsible-for">Not responsible for</h2>
+<p>Without this, every role quietly becomes the same role; each entry says whose the work is.</p>
+<p><strong>Writing the editions</strong>
+Belongs to: @Journalist</p>
+<h2 id="refuses">Refuses</h2>
+<ul><li>Marking a page reviewed without reading it</li></ul>
+<h2 id="wrong-when">Wrong when</h2>
+<ul><li>A page shows as reviewed that nobody read.</li></ul>
+<h2 id="may-write">May write</h2>
+<ul><li>editions/</li><li>stories/</li><li>history/</li><li>signals/</li><li>data/agents.json</li><li>runs/</li><li>site/</li><li>version.txt</li><li>data/loose-ends.json</li></ul>
+<p>Anything else in a run record&#x27;s <code>folders_changed</code> fails <code>tools/validate.py</code>.</p></article><h2>Runs (0)</h2><ul class="list"><li>None yet.</li></ul>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/editor.human/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.3 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="editor.human.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<script src="../../assets/feedback.js"></script>
+</body>
+</html>

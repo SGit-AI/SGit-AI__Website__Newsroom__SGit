@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T08:02:03Z",
+  "agent": "journalist.desk",
+  "kind": "desk",
+  "task": "Correct links in the editions and a story that pointed at sgit.ai repo content paths, not live pages.",
+  "folders_changed": [
+    "editions/",
+    "stories/"
+  ],
+  "did": [
+    "editions/2026-09-20.md, 2026-09-21.md and stories/2026-09-21__the-performance-page-that-corrected-itself.md: links to update notes now point at the anchors on sgit.ai/updates/, which are in the snapshot."
+  ],
+  "commit": "d52f7dc",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised. Split when the register was created: one session did this work across desks; the validator refused the single record, so each desk's part is recorded under that desk."
+}

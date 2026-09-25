@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T00:20:23Z",
+  "agent": "journalist.desk",
+  "kind": "desk",
+  "task": "Journalist for 20 to 24 September: one edition per day, and a story where one deserved the room.",
+  "folders_changed": [
+    "editions/",
+    "stories/"
+  ],
+  "did": [
+    "editions/2026-09-20.md to 2026-09-24.md, all reviewed_by empty.",
+    "stories/2026-09-21__the-performance-page-that-corrected-itself.md, 2026-09-23__a-proposal-to-uk-sovereign-ai.md, 2026-09-24__brief-to-build-in-a-day.md.",
+    "Verified the 24 September lead against the sources: the interview page was briefed and built the same day; sgit.ai's briefs index still lists it as open."
+  ],
+  "commit": "232e431",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised."
+}

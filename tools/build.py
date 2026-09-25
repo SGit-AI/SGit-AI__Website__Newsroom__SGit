@@ -1127,6 +1127,52 @@ class Site:
         self.write('data/loose-ends.json', json.dumps(self.loose, indent=1, ensure_ascii=False))
 
     # ------------------------------------------------------------------ the newsroom, about, search
+    def build_agents(self):
+        """One page per agent (its ROLE.md and MANDATE.md as rendered from the register), and the run records."""
+        reg = load_json('data/agents.json', {'agents': []})
+        self.agents = reg['agents']
+        self.runs = []
+        if os.path.isdir(rp('runs')):
+            for name in sorted(os.listdir(rp('runs'))):
+                if name.endswith('.json'):
+                    self.runs.append(json.load(open(rp('runs/' + name), encoding='utf-8')) | {'_file': name})
+        self.runs.sort(key=lambda r: (r.get('when', ''), r.get('agent', '')), reverse=True)
+        for a in self.agents:
+            P = f'newsroom/agents/{a["id"]}.html'
+            role = read(rp(f'agents/{a["id"]}/ROLE.md')) if os.path.exists(rp(f'agents/{a["id"]}/ROLE.md')) else ''
+            mandate = read(rp(f'agents/{a["id"]}/MANDATE.md')) if os.path.exists(rp(f'agents/{a["id"]}/MANDATE.md')) else ''
+            self_link = lambda t: re.sub(r'\]\((?:ROLE|MANDATE)\.md\)', f'](nr:newsroom/agents/{a["id"]})', t)
+            r_html, heads = self.md(self_link(role), P)
+            m_html, _ = self.md(self_link(mandate), P)
+            mine = [r for r in self.runs if r.get('agent') == a['id']]
+            runs = ''.join(f'<li><strong>{esc(r.get("when", ""))}</strong> · {esc(r.get("kind", ""))} · {esc(r.get("task", ""))}'
+                           f'<ul>{"".join(f"<li>{esc(d)}</li>" for d in r.get("did", []))}</ul></li>' for r in mine)
+            body = (f'<p class="crumbs"><a href="{rel(P, "newsroom/index.html")}">The newsroom</a> / agents / {esc(a["name"])}</p>'
+                    f'<article class="source">{r_html}</article><article class="source">{m_html}</article>'
+                    f'<h2>Runs ({len(mine)})</h2><ul class="list">{runs or "<li>None yet.</li>"}</ul>')
+            self.page(P, f'{a["name"]}: role and mandate', body,
+                      self.prov_desk(P, 'Editor (the register of agents)', sources=None,
+                                     extra=[('Register', f'<a href="{rel(P, "data/agents.json")}">data/agents.json</a>'),
+                                            ('Files', f'agents/{esc(a["id"])}/ROLE.md, MANDATE.md (rendered by tools/agents.py)')]),
+                      md=role + '\n' + mandate, eyebrow=f'The newsroom · {esc(a["alias"])}', toc=heads)
+        self.write('data/agents.json', json.dumps(reg, indent=1, ensure_ascii=False))
+        P = 'newsroom/runs.html'
+        names = {a['id']: a['name'] for a in self.agents}
+        rows = ''.join(f'<tr><td class="nowrap">{esc(r.get("when", ""))}</td>'
+                       f'<td><a href="{rel(P, "newsroom/agents/" + r.get("agent", "") + ".html")}">{esc(names.get(r.get("agent"), r.get("agent", "")))}</a>'
+                       f'<br><span class="small muted">{esc(r.get("kind", ""))}</span></td>'
+                       f'<td>{esc(r.get("task", ""))}<ul class="small">{"".join(f"<li>{esc(d)}</li>" for d in r.get("did", []))}</ul>'
+                       f'{f"<p class=small muted>{esc(r.get(chr(110) + chr(111) + chr(116) + chr(101)))}</p>" if r.get("note") else ""}</td>'
+                       f'<td class="small">{"<br>".join(esc(f) for f in r.get("folders_changed", []))}</td></tr>' for r in self.runs)
+        body = (f'<h1>Runs</h1><p class="lede">Every run of every desk, newest first: {len(self.runs)} records from <code>runs/</code>. '
+                f'The validator fails a record whose agent is not in the register or that changed a folder outside its mandate.</p>'
+                f'<div class="table"><table><thead><tr><th>When</th><th>Agent</th><th>Task and what it did</th><th>Folders changed</th></tr></thead>'
+                f'<tbody>{rows}</tbody></table></div>')
+        self.page(P, 'Runs', body, self.prov_desk(P, 'Build, from runs/', sources=None), eyebrow='The newsroom',
+                  md='# Runs\n\n' + '\n'.join(f'- {r.get("when")} {r.get("agent")}: {r.get("task")}' for r in self.runs) + '\n')
+        for r in self.runs:
+            self.write('runs/' + r['_file'], json.dumps({k: v for k, v in r.items() if k != '_file'}, indent=2, ensure_ascii=False))
+
     def build_newsroom(self):
         P = 'newsroom/index.html'
         latest = max(self.changes) if self.changes else None
@@ -1180,6 +1226,20 @@ class Site:
         svg.append('</svg>')
         table = ''.join(f'<tr><td><a href="{rel(P, href)}"><strong>{esc(name)}</strong></a></td><td>{esc(what)}</td></tr>'
                         for _, name, what, href in desks)
+        kinds = {'desk': 'Desks', 'guest desk': 'Guest desks', 'construction': 'Construction', 'human': 'People'}
+        last = {}
+        for r in self.runs:
+            last.setdefault(r.get('agent'), r.get('when', ''))
+        agent_rows = ''.join(f'<tr><td><a href="{rel(P, "newsroom/agents/" + a["id"] + ".html")}"><strong>{esc(a["name"])}</strong></a>'
+                             f'<br><code class="small">{esc(a["id"])}</code></td><td>{esc(kinds.get(a["kind"], a["kind"]))}</td>'
+                             f'<td>{esc(a["mission"])}</td><td class="small">{esc(", ".join(a["writes"]))}</td>'
+                             f'<td class="nowrap small">{esc(last.get(a["id"], "no run yet"))}</td></tr>' for a in self.agents)
+        agents_html = (f'<h2 id="agents">The agents</h2><p>Each desk is a role with a mandate: what it does, when it is failing, what it '
+                       f'refuses, and the folders it may write in. A session works as a desk by reading its role first (the '
+                       f'<code>/desk</code> and <code>/newsroom-run</code> skills do this) and leaves a run record. '
+                       f'<a href="{rel(P, "newsroom/runs.html")}">All {len(self.runs)} runs</a>.</p>'
+                       f'<div class="table"><table><thead><tr><th>Agent</th><th>Kind</th><th>Mission</th><th>Writes</th><th>Last run</th></tr></thead>'
+                       f'<tbody>{agent_rows}</tbody></table></div>')
         body = (f'<h1>The newsroom</h1><p class="lede">The desks, and the flow between them, filled from the data of '
                 f'{esc(latest or SNAPSHOT_TAKEN)}. Every box links to what that desk wrote.</p>'
                 f'<div class="flowwrap">{"".join(svg)}</div>'
@@ -1188,7 +1248,7 @@ class Site:
                 f'                                                  ->  Historian (moment, lessons, decisions)\n'
                 f'                                                  ->  guest desks (signals), all desks (loose ends)\n'
                 f'                                                  ->  Editor of record (review)  ->  build  ->  publish</pre>'
-                f'<p>The desks are defined in <a href="{rel(P, "about/index.html")}">About and method</a>.</p>')
+                + agents_html)
         md = '# The newsroom\n\n' + '\n'.join(f'- **{n}**: {w}' for _, n, w, _ in desks) + '\n'
         self.page(P, 'The newsroom', body, self.prov_desk(P, 'Build, from the data', latest, sources=None), md=md, eyebrow='The newsroom')
 
@@ -1290,6 +1350,7 @@ class Site:
         self.build_history()
         self.build_signals()
         self.build_loose_ends()
+        self.build_agents()
         self.build_newsroom()
         self.build_about()
         self.build_front()
