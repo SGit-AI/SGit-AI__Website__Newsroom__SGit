@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.7">
+<html lang="en-GB" data-version="v0.1.8" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.7 · snapshot 2026-09-24</span>
-<nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav></header>
+<span class="ver">v0.1.8 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">Reading room · sgit.ai · llms-full</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#git-repos-inside-vaults">Git repos inside vaults</a></li><li class="l2"><a href="#a-pure-python-git-reader">A pure-Python git reader</a></li><li class="l2"><a href="#why-this-matters-for-vaults">Why this matters for vaults</a></li><li class="l2"><a href="#run-git-and-sgit-side-by-side">Run git and sgit side by side</a></li><li class="l3"><a href="#the-round-trip-edit-on-github-pull-back-into-the-vault">The round trip: edit on GitHub, pull back into the vault</a></li><li class="l3"><a href="#before-first-publication-audit-then-keep-the-discipline">Before first publication: audit, then keep the discipline</a></li><li class="l3"><a href="#what-a-key-rotation-does-to-the-mirror">What a key rotation does to the mirror</a></li><li class="l2"><a href="#status-honestly">Status, honestly</a></li></ul></details>
@@ -52,9 +53,9 @@ HEAD 2e2dd4c · 1 file changed · author + message parsed
 <ul><li>The reader is <strong>in review, not shipped</strong>. It is read-only, follows first parents (no merge traversal), and skips submodules and shallow clones by design.</li><li>Review has already produced fixes: two schemas needed the project&#x27;s own default-value convention applied, and the string-sanitization rules need loosening so file paths and commit messages round-trip byte-faithfully before this ships.</li><li>When it lands, it lands the way everything here does: typed, tested against real repositories, and documented on this page.</li></ul>
 <p><a class="ext" href="https://sgit.ai/sub-vaults.md">← Sub-vaults ↗</a><a class="ext" href="https://sgit.ai/static-hosting.md">Static hosting → ↗</a></p>
 <hr></article><nav class="pager"><span><a href="205-git-repos-inside-vaults-sgvault.html">← Git repos inside vaults, SG/Vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="207-reading-one-file-out-of-a-vault-sgvault.html">Reading one file out of a vault, SG/Vault →</a></span></nav>
-<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>206 of 358: Git repos inside vaults</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>206 of 358: Git repos inside vaults</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.7 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.8 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 </body>
 </html>

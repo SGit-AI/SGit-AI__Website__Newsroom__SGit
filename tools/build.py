@@ -217,6 +217,8 @@ class Site:
         secs = load_json('data/sections.json', None)
         self.nav = [(x['href'], x['title']) for x in secs['sections']] if secs else DEFAULT_SECTIONS
         self.network = load_json('data/network.json', {'sites': [], 'links': []})
+        self.agents = load_json('data/agents.json', {'agents': []})['agents']
+        self.runs = []
         self.concepts = load_json('data/concepts.json', [])
         self.loose = load_json('data/loose-ends.json', [])
         self.index = load_json('data/index.json', [])
@@ -249,7 +251,7 @@ class Site:
         diagram_js = (f'<script src="{rel(path, "assets/mermaid.min.js")}"></script>\n<script src="{rel(path, "assets/diagrams.js")}"></script>\n'
                       if 'class="mermaid"' in body else '')
         doc = f'''<!doctype html>
-<html lang="en-GB" data-version="{esc(VERSION)}">
+<html lang="en-GB" data-version="{esc(VERSION)}" data-root="{rel(path, 'index.html')[:-10] or './'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -261,7 +263,8 @@ class Site:
 <body>
 <header class="top"><a class="brand" href="{rel(path, 'index.html')}">sgit <em>newsroom</em></a>
 <span class="ver">{esc(VERSION)} · snapshot {SNAPSHOT_TAKEN}</span>
-<nav>{nav}</nav></header>
+<nav>{nav}</nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="{rel(path, 'feedback/read.html')}" data-read-count></a></div></header>
 <main{' class="wide"' if wide else ''}>
 {f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ''}
 {toc_html}
@@ -378,7 +381,7 @@ class Site:
             if v is None:
                 continue
             out.append(f'<dt>{k}</dt><dd>{v}</dd>')
-        return f'<aside class="provenance"><h2>Provenance</h2><dl>{"".join(out)}</dl></aside>'
+        return f'<aside class="provenance" id="provenance"><h2>Provenance</h2><dl>{"".join(out)}</dl></aside>'
 
     def prov_desk(self, page_path, desk, date=None, sources=(), reviewed=None, extra=()):
         rows = [('Desk', esc(desk))]
@@ -566,12 +569,15 @@ class Site:
         return sub[0] if sub else 'home'
 
     def fb_bar(self, s):
-        """The feedback bar on a source page: hidden until feedback.js runs, so nothing is dead without it."""
-        return (f'<div class="fb-bar" data-fb hidden data-id="{esc(s.path)}" data-sha="{s.sha[:12]}" data-title="{esc(s.title)}" '
-                f'data-site="{esc(s.site or s.group)}" data-section="{esc(self.section_of(s))}" data-date="{esc(self.date_of(s.path))}" '
-                f'data-page="{esc(s.link)}">'
+        return self.fb_bar_piece(s.path, s.sha[:12], s.title, s.site or s.group, self.section_of(s), self.date_of(s.path), s.link)
+
+    def fb_bar_piece(self, id_, sha, title, site, section, date, page):
+        """The feedback bar on a piece or a source page: hidden until feedback.js runs, so nothing is dead without it."""
+        return (f'<div class="fb-bar" data-fb hidden data-id="{esc(id_)}" data-sha="{esc(sha)}" data-title="{esc(title)}" '
+                f'data-site="{esc(site)}" data-section="{esc(section)}" data-date="{esc(date)}" '
+                f'data-page="{esc(page)}">'
                 f'<span class="lbl">Your feedback</span>'
-                f'<button type="button" class="btn-s" data-a="read" aria-pressed="false">{ICON["check"]}<span> Mark read</span></button>'
+                f'<button type="button" class="btn-s" data-a="read" aria-pressed="false">{ICON["check"]}<span> Mark as read</span></button>'
                 f'<button type="button" class="ib" data-a="star" aria-label="Star" aria-pressed="false">{ICON["star"]}</button>'
                 f'<button type="button" class="ib" data-a="up" aria-label="Useful" aria-pressed="false">{ICON["up"]}</button>'
                 f'<button type="button" class="ib" data-a="down" aria-label="Not useful" aria-pressed="false">{ICON["down"]}</button>'
@@ -819,17 +825,32 @@ class Site:
     def build_desk_page(self, path, meta, body, raw, eyebrow, extra_top='', extra_prov=()):
         html_body, heads = self.md(body, path)
         rb, ro = meta.get('reviewed_by', ''), meta.get('reviewed_on', '')
-        banner = '' if rb else '<p class="unreviewed-banner">Not yet reviewed by the editor of record.</p>'
-        head = ''
-        if not re.match(r'^\s*#\s', body):
-            head = f'<h1>{esc(meta.get("title", ""))}</h1>'
         srcs = meta.get('sources') or []
         if isinstance(srcs, str):
             srcs = [srcs] if srcs else []
-        self.page(path, meta.get('title', path), extra_top + banner + head + '<article>' + html_body + '</article>',
+        folder = path.split('/')[0]
+        section = meta.get('section') or self.SECTION_OF.get(folder, folder)
+        desk = meta.get('desk', '')
+        agent = next((a for a in self.agents if a['name'].lower() == desk.lower().split(' (')[0]), None)
+        desk_link = f'<a href="{rel(path, "newsroom/agents/" + agent["id"] + ".html")}">{esc(desk)}</a>' if agent else esc(desk)
+        mission = f'<p class="byline-mission">{esc(agent["gravity"])}</p>' if agent else ''
+        sha = hashlib.sha256(raw.encode('utf-8')).hexdigest()[:12]
+        words = len(body.split())
+        review = f'reviewed by {esc(rb)} on {esc(ro)}' if rb else '<span class="unrev">not yet reviewed by the editor of record</span>'
+        standfirst = meta.get('standfirst') or ''
+        byline = (f'<header class="byline"><p class="kicker">{esc(section)} · {esc(meta.get("date", ""))}</p>'
+                  f'<h1>{esc(meta.get("title", ""))}</h1>' + (f'<p class="dek">{esc(standfirst)}</p>' if standfirst else '') +
+                  f'<div class="byline-who"><div><span class="lbl">Written by</span> {desk_link}, a desk of this newsroom{mission}</div>'
+                  f'<div><span class="lbl">On</span> {len(srcs)} sources · {max(1, round(words / 220))} min read · <a href="#provenance">provenance</a></div>'
+                  f'<div><span class="lbl">State</span> {review}</div></div></header>')
+        fb = self.fb_bar_piece(f'{folder}/{path.split("/", 1)[1][:-5]}.md', sha, meta.get('title', ''), desk, section,
+                               meta.get('date', ''), path)
+        if re.match(r'^\s*#\s', body):
+            html_body = re.sub(r'^<h1[^>]*>.*?</h1>\n?', '', html_body, count=1, flags=re.S)
+        self.page(path, meta.get('title', path), byline + extra_top + fb + '<article class="piece">' + html_body + '</article>',
                   self.prov_desk(path, meta.get('desk', ''), meta.get('date', ''), sources=srcs, reviewed=(rb, ro),
                                  extra=extra_prov),
-                  md=raw, eyebrow=eyebrow, kind='newsroom', toc=heads)
+                  md=raw, eyebrow='', kind='newsroom', toc=heads)
 
     def load_desks(self):
         for folder, bucket in (('editions', self.editions), ('stories', self.stories), ('signals', self.signals),
@@ -908,12 +929,14 @@ class Site:
 
     def card_data(self, folder, slug, meta, body):
         return dict(ref=f'{folder}/{slug}', path=f'{folder}/{slug}.html', title=meta.get('title', slug),
+                    id=f'{folder}/{slug}.md', sha=self.desk_sha(folder, slug), covers=meta.get('covers', ''),
                     standfirst=meta.get('standfirst') or self.first_paragraph(body), date=meta.get('date', ''),
                     desk=meta.get('desk', ''), section=meta.get('section') or self.SECTION_OF[folder],
                     reviewed=bool(meta.get('reviewed_by')))
 
     def network_card(self):
-        return dict(ref='maps/network', path='maps/network.html', title='The network, as its own links draw it',
+        return dict(ref='maps/network', path='maps/network.html', title='The network, as its own links draw it', id='maps/network',
+                    sha=hashlib.sha256(json.dumps(self.network, sort_keys=True).encode()).hexdigest()[:12], covers='',
                     standfirst=f'{len(self.network["sites"])} sites and {len(self.network["links"])} site-to-site links, counted from '
                                f'every file in the snapshot and drawn fresh on every build.',
                     date=SNAPSHOT_TAKEN, desk='Cartographer (computed)', section='maps', reviewed=False)
@@ -946,11 +969,15 @@ class Site:
             return ''
         review = '' if c['reviewed'] else ' · <span class="unrev">not yet reviewed</span>'
         dek = f'<p class="dek">{esc(c["standfirst"])}</p>' if c['standfirst'] and size != 's' else ''
-        return (f'<article class="card card-{size}"><p class="kicker">{esc(c["section"])} · {esc(c["date"])}</p>'
+        return (f'<article class="card card-{size} rd" {self.card_attrs(c)}><p class="kicker">{esc(c["section"])} · {esc(c["date"])}</p>'
                 f'<h3><a href="{esc(rel(P, c["path"]))}">{esc(c["title"])}</a></h3>{dek}'
                 f'<p class="by">{esc(c["desk"])}{review}</p></article>')
 
     def build_front(self):
+        """The front page as the editor composes it (data/frontpage.json), in the layout approved on 25 September:
+        nameplate, dateline, section band, one review line, the lead with its map and "also in this edition",
+        the Historian beside it, signals as a list, the week in editions, card sections, a rail."""
+        import datetime
         P = 'index.html'
         fp = load_json('data/frontpage.json', {})
         cards = self.all_cards()
@@ -964,13 +991,76 @@ class Site:
         lead = pick(fp['lead']) if fp.get('lead') else next((c for c in cards if c['ref'].startswith(('stories/', 'editions/'))), None)
         if lead:
             used.add(lead['ref'])
-        top = [pick(r) for r in fp.get('top', [])] or [c for c in cards if c['ref'] not in used][:4]
-        used.update(c['ref'] for c in top if c)
+        edition_date = fp.get('date') or (max(self.changes) if self.changes else SNAPSHOT_TAKEN)
+        long_date = datetime.date.fromisoformat(edition_date).strftime('%A %d %B %Y').replace(' 0', ' ')
+        eds = sorted(self.editions, key=lambda e: e[0], reverse=True)
+        n_changes = len(self.changes.get(edition_date, {}).get('changes', []))
+        ed_today = next((e for e in eds if e[0] == edition_date), None)
+
+        # the lead's map: the editor's choice, else none
+        lead_map = ''
+        if fp.get('lead_map'):
+            m = next((x for x in self.maps if 'maps/' + x[0] == fp['lead_map']), None)
+            if m:
+                fence = re.search(r'```mermaid\n.*?```', m[2], re.S)
+                if fence:
+                    html_map, _ = self.md(fence.group(0), P)
+                    lead_map = (f'<figure class="lead-map">{html_map}<figcaption>Map · <a href="{rel(P, f"maps/{m[0]}.html")}">'
+                                f'{esc(m[1].get("title", ""))}</a>, by the Cartographer</figcaption></figure>')
+        # also in this edition: the editor's refs, else the edition's "Also today" headings
+        also = []
+        for r in fp.get('also', []):
+            c = pick(r)
+            if c:
+                also.append((c['title'], rel(P, c['path']), c['standfirst'], c['id'], c['sha']))
+        if not also and ed_today:
+            body = ed_today[2]
+            block = re.search(r'^## Also today\s*\n(.*?)(?=^## |\Z)', body, re.S | re.M)
+            if block:
+                for h in re.findall(r'^### (.+)$', block.group(1), re.M):
+                    also.append((h.strip(), rel(P, f'editions/{edition_date}.html') + '#' + mdlite.slugify(h.strip()), '', '', ''))
+        also_html = ''.join(f'<div class="also-item"><a href="{esc(href)}">{esc(t)}</a>'
+                            + (f'<span>{esc(d)}</span>' if d else '') + '</div>' for t, href, d, _, _ in also[:3])
+
+        # the top of the right column: the Historian, then signals
+        top = [pick(r) for r in fp.get('top', [])]
+        persp = next((c for c in top if c and c['ref'].startswith('history/')), None) or \
+            next((c for c in self.all_cards('history') if c['ref'] not in used), None)
+        if persp:
+            used.add(persp['ref'])
+        sigs = [pick(r) for r in fp.get('signals', [])] or [c for c in self.all_cards('signals') if c['ref'] not in used][:4]
+        sigs = [c for c in sigs if c]
+        used.update(c['ref'] for c in sigs)
+        sig_meta = {f'signals/{s}': m for s, m, _, _ in self.signals}
+        sig_html = ''.join(
+            f'<div class="sig rd" {self.card_attrs(c)}><span class="route">{esc(sig_meta.get(c["ref"], {}).get("from_site", ""))} → '
+            f'{esc(sig_meta.get(c["ref"], {}).get("to_site", ""))}</span><a href="{esc(rel(P, c["path"]))}">{esc(c["title"])}</a></div>' for c in sigs)
+        persp_html = ''
+        if persp:
+            more = next((c for c in top if c and c is not persp and c['ref'].startswith('history/')), None)
+            persp_html = (f'<section class="persp rd" {self.card_attrs(persp)}><p class="kicker">Perspective · the Historian</p>'
+                          f'<h2><a href="{esc(rel(P, persp["path"]))}">{esc(persp["title"])}</a></h2><p class="dek">{esc(persp["standfirst"])}</p>'
+                          f'<p class="by">{esc(persp.get("covers") or persp["date"])}{"" if persp["reviewed"] else " · <span class=unrev>unreviewed</span>"}</p>'
+                          + (f'<a class="more-link" href="{esc(rel(P, more["path"]))}">{esc(more["title"])} →</a>' if more else '') + '</section>')
+
+        # the week in editions
+        week = ''
+        for slug, meta, _, _ in eds[:5][::-1]:
+            n = len(self.changes.get(slug, {}).get('changes', []))
+            mx = max((len(self.changes.get(s, {}).get('changes', [])) for s, _, _, _ in eds[:5]), default=1) or 1
+            d = datetime.date.fromisoformat(slug).strftime('%a %d %b').upper().replace(' 0', ' ')
+            today = ' today' if slug == edition_date else ''
+            week += (f'<a class="ed rd{today}" href="{rel(P, f"editions/{slug}.html")}" data-id="editions/{slug}.md" '
+                     f'data-sha="{self.desk_sha("editions", slug)}" data-title="{esc(meta.get("title", ""))}" data-site="Journalist" '
+                     f'data-section="edition" data-date="{slug}" data-page="editions/{slug}.html">'
+                     f'<span class="ed-d">{d} · {n} changes{" · today" if today else ""}</span><span class="ed-bar"><span style="width:{int(100 * n / mx)}%"></span></span>'
+                     f'<span class="ed-t">{esc(meta.get("title", ""))}</span></a>')
+
+        # sections
         sections_cfg = fp.get('sections') or [
             {'title': 'News', 'from': 'stories', 'limit': 6, 'more': 'news/index.html'},
             {'title': 'Perspective', 'from': 'history', 'limit': 4, 'more': 'history/index.html'},
-            {'title': 'Maps', 'from': 'maps', 'limit': 4, 'more': 'maps/index.html'},
-            {'title': 'Editions', 'from': 'editions', 'limit': 5, 'more': 'editions/index.html'},
+            {'title': 'Maps', 'from': 'maps', 'limit': 3, 'more': 'maps/index.html'},
             {'title': 'Signals', 'from': 'signals', 'limit': 4, 'more': 'signals/index.html'}]
         sec_html = []
         for sc in sections_cfg:
@@ -980,8 +1070,10 @@ class Site:
             if not items:
                 continue
             more = f' <a class="more" href="{rel(P, sc["more"])}">all →</a>' if sc.get('more') else ''
-            sec_html.append(f'<section class="fp-sec"><h2>{esc(sc["title"])}{more}</h2>'
+            sec_html.append(f'<section class="fp-sec" data-hide-empty><h2>{esc(sc["title"])}{more}</h2>'
                             f'<div class="cards">{"".join(self.card(P, c) for c in items)}</div></section>')
+
+        # the rail
         _, _, target = self.resolver(P)
         briefs = []
         for br in fp.get('briefs', []):
@@ -990,40 +1082,49 @@ class Site:
                 kind, where, _ = target(br['link'] if br['link'].startswith(('http', 'src:', 'nr:')) else 'nr:' + br['link'])
                 link = f' <a href="{esc(rel(P, where) if kind == "local" else where)}">→</a>'
             briefs.append(f'<li>{esc(br["text"])}{link}</li>')
+        recent = self.reading_list()[:5]
+        reading = ''.join(f'<div class="rr-item rd" data-id="{esc(it["s"].path)}" data-sha="{it["s"].sha[:12]}" data-title="{esc(it["title"])}" '
+                          f'data-site="{esc(it["site"])}" data-section="{esc(it["section"])}" data-date="{it["date"]}" data-page="{esc(it["s"].link)}">'
+                          f'<span class="t">{it["time"]}</span><div><a href="{rel(P, it["s"].link)}">{esc(it["title"])}</a>'
+                          f'<span class="m {"s-sgit" if it["site"] == "sgit.ai" else "s-rm" if it["site"] == "riskmandate.ai" else ""}">{esc(it["site"])} · {esc(it["section"])}</span></div></div>'
+                          for it in recent)
+        open_le = sum(1 for x in self.loose if x.get('status') == 'open')
+        new_sig = sum(1 for s in self.signals if s[1].get('status', 'new') == 'new')
+        to_review = sum(1 for c in cards if not c['reviewed'] and c['ref'] != 'maps/network')
         last = {}
         for r in self.runs:
             last.setdefault(r.get('agent'), r)
         names = {a['id']: a['name'] for a in self.agents}
-        desks = ''.join(f'<li><a href="{rel(P, "newsroom/agents/" + a + ".html")}">{esc(names.get(a, a))}</a> '
-                        f'<span class="muted small">{esc(r.get("when", "")[:16].replace("T", " "))}</span></li>'
-                        for a, r in sorted(last.items(), key=lambda kv: kv[1].get('when', ''), reverse=True)[:6])
-        recent = self.reading_list()[:6]
-        reading = ''.join(f'<li><a href="{rel(P, it["s"].link)}">{esc(it["title"])}</a> <span class="muted small">{esc(it["site"])}</span></li>'
-                          for it in recent)
-        open_le = sum(1 for x in self.loose if x.get('status') == 'open')
-        new_sig = sum(1 for s in self.signals if s[1].get('status', 'new') == 'new')
-        edition_date = fp.get('date') or (max(self.changes) if self.changes else SNAPSHOT_TAKEN)
-        import datetime
-        long_date = datetime.date.fromisoformat(edition_date).strftime('%A %d %B %Y').replace(' 0', ' ')
-        lead_html = ''
-        if lead:
-            review = '' if lead['reviewed'] else '<span class="unrev">not yet reviewed</span>'
-            lead_html = (f'<article class="lead-story"><p class="kicker">{esc(lead["section"])} · {esc(lead["date"])}</p>'
-                         f'<h2><a href="{esc(rel(P, lead["path"]))}">{esc(lead["title"])}</a></h2>'
-                         f'<p class="dek">{esc(lead["standfirst"])}</p><p class="by">{esc(lead["desk"])} {review}</p></article>')
-        top_html = ''.join(self.card(P, c, 's' if i else 'm') for i, c in enumerate(t for t in top if t))
+        desks = ''.join(f'<div class="desk-row"><a href="{rel(P, "newsroom/agents/" + a + ".html")}">{esc(names.get(a, a))}</a>'
+                        f'<span>{esc(r.get("task", ""))[:60]}</span></div>'
+                        for a, r in sorted(last.items(), key=lambda kv: kv[1].get('when', ''), reverse=True)[:5])
         rail = (f'<aside class="fp-rail">'
                 + (f'<section><h3>In brief</h3><ul class="briefs">{"".join(briefs)}</ul></section>' if briefs else '')
-                + f'<section><h3>New in the reading room</h3><ul class="plain">{reading}</ul>'
-                f'<a class="more" href="{rel(P, "reading-room/index.html")}">all {len(self.reading_list())} since 18 September →</a></section>'
-                f'<section><h3>Open</h3><ul class="plain"><li><a href="{rel(P, "loose-ends/index.html")}">{open_le} loose ends</a> waiting on someone</li>'
-                f'<li><a href="{rel(P, "signals/index.html")}">{new_sig} new signals</a> between projects</li>'
-                f'<li><a href="{rel(P, "admin/index.html")}">{sum(1 for c in cards if not c["reviewed"] and c["ref"] != "maps/network")} pieces</a> waiting for the editor of record</li></ul></section>'
-                f'<section><h3>The desks, latest runs</h3><ul class="plain">{desks}</ul>'
-                f'<a class="more" href="{rel(P, "newsroom/index.html")}">the newsroom →</a></section></aside>')
-        body = (f'<header class="masthead"><h1>The sgit newsroom</h1><p class="dateline">{esc(long_date)} · '
-                f'the network, read every day · snapshot {SNAPSHOT_TAKEN}</p></header>'
-                f'<div class="fp-top">{lead_html}<div class="fp-tops">{top_html}</div></div>'
+                + f'<section><h3>New in the reading room <a class="more" href="{rel(P, "reading-room/index.html")}">{len(self.reading_list())} →</a></h3>{reading}</section>'
+                f'<section><h3>Open</h3><div class="open-tiles"><a href="{rel(P, "loose-ends/index.html")}"><b>{open_le}</b><span>loose ends</span></a>'
+                f'<a href="{rel(P, "signals/index.html")}"><b>{new_sig}</b><span>new signals</span></a>'
+                f'<a class="warm" href="{rel(P, "admin/index.html")}#queue"><b>{to_review}</b><span>to review</span></a></div></section>'
+                f'<section><h3>The desks today <a class="more" href="{rel(P, "newsroom/runs.html")}">runs →</a></h3>{desks}</section></aside>')
+
+        lead_html = ''
+        if lead:
+            review = '' if lead['reviewed'] else '<span class="unrev">unreviewed</span>'
+            lead_html = (f'<article class="lead-story rd" {self.card_attrs(lead)}><p class="kicker">Lead · {esc(lead["section"])} · {esc(lead["date"])}</p>'
+                         f'<h2><a href="{esc(rel(P, lead["path"]))}">{esc(lead["title"])}</a></h2>'
+                         f'<p class="dek">{esc(lead["standfirst"])}</p><p class="by">{esc(lead["desk"])} · {self.read_time(lead)} {review}</p>{lead_map}'
+                         + (f'<div class="also"><p class="kicker">Also in this edition</p><div class="also-grid">{also_html}</div></div>' if also_html else '')
+                         + '</article>')
+        nav_band = ''.join(f'<a href="{rel(P, p)}">{esc(t)}</a>' for p, t in self.nav if p not in ('index.html', 'search/index.html', 'admin/index.html', 'newsroom/index.html'))
+        body = (f'<header class="masthead"><h1>The sgit newsroom</h1>'
+                f'<div class="dateline"><span>{esc(long_date)}</span><span>The sgit network, read every day</span>'
+                f'<span>Edition {len(eds)} · {n_changes} changes</span></div>'
+                f'<nav class="band" aria-label="Sections">{nav_band}</nav></header>'
+                f'<p class="review-line"><strong>Written by the desks, not yet signed.</strong> The editor of record has reviewed '
+                f'{sum(1 for c in cards if c["reviewed"])} of {to_review + sum(1 for c in cards if c["reviewed"])} pieces; every page says so. '
+                f'<a href="{rel(P, "admin/index.html")}#queue">Review queue →</a></p>'
+                f'<div class="fp-top">{lead_html}<aside class="fp-side">{persp_html}'
+                f'<section class="sigs" data-hide-empty><h3>Signals between projects <a class="more" href="{rel(P, "signals/index.html")}">{len(self.signals)} →</a></h3>{sig_html}</section></aside></div>'
+                f'<section class="week"><h2>The week in editions <a class="more" href="{rel(P, "editions/index.html")}">all editions →</a></h2><div class="eds">{week}</div></section>'
                 f'<div class="fp-body"><div class="fp-main">{"".join(sec_html)}</div>{rail}</div>')
         md = f'# The sgit newsroom\n\n{long_date}\n\n' + (f'## {lead["title"]}\n\n{lead["standfirst"]}\n\n' if lead else '') + '\n'.join(
             f'- [{c["title"]}]({c["path"][:-5]}.md)' for c in top if c) + '\n'
@@ -1033,6 +1134,28 @@ class Site:
                                                           f'(the Editor\'s choices; the rest is filled from the newest pieces)')]),
                   md=md, eyebrow='', kind='newsroom', wide=True)
         self.write('data/frontpage.json', json.dumps(fp, indent=1, ensure_ascii=False))
+
+    def read_time(self, c):
+        words = len(self.piece_body(c['ref']).split())
+        return f'{max(1, round(words / 220))} min read'
+
+    def piece_body(self, ref):
+        folder, _, slug = ref.partition('/')
+        for s, m, b, _ in self.buckets().get(folder, []):
+            if s == slug:
+                return b
+        return ''
+
+    def desk_sha(self, folder, slug):
+        for s, m, b, raw in self.buckets().get(folder, []):
+            if s == slug:
+                return hashlib.sha256(raw.encode('utf-8')).hexdigest()[:12]
+        return ''
+
+    def card_attrs(self, c):
+        """The attributes feedback.js reads to mark a card read, hide it in the reader's view, or list it."""
+        return (f'data-id="{esc(c["id"])}" data-sha="{esc(c["sha"])}" data-title="{esc(c["title"])}" data-site="{esc(c["desk"])}" '
+                f'data-section="{esc(c["section"])}" data-date="{esc(c["date"])}" data-page="{esc(c["path"])}"')
 
     def build_news(self):
         P = 'news/index.html'
@@ -1633,6 +1756,23 @@ class Site:
                       self.prov_desk(P, 'Editor (the seed brief)', SNAPSHOT_TAKEN, sources=None), md=text, eyebrow='The brief',
                       toc=heads)
 
+    def build_feedback_pages(self):
+        P = 'feedback/read.html'
+        body = ('<h1>What you have read</h1><p class="lede">Every piece and page you marked read, on this device, newest first. '
+                'In your view these are hidden from the front page and the sections; here you can find them, and unmark them.</p>'
+                '<div class="filters"><button type="button" class="btn-s" data-view-go="mine">Switch to my view</button></div>'
+                '<ol class="list big" data-read-list><li class="muted">Nothing marked read yet, or feedback.js has not run.</li></ol>')
+        self.page(P, 'What you have read', body, self.prov_desk(P, 'The reader (this device)', sources=None), eyebrow='Your feedback',
+                  md='# What you have read\n\nA page filled from this browser\'s local storage.\n', search_text='')
+        P = 'feedback/history.html'
+        body = ('<h1>Your history</h1><p class="lede">Every action you took on this device, newest first: read, unread, star, vote, note, memo. '
+                'Undo appends the opposite action, so the history stays complete; redo puts it back.</p>'
+                '<div class="filters"><button type="button" class="btn-s" data-undo>Undo last</button><button type="button" class="btn-s" data-redo>Redo</button>'
+                '<span class="muted" data-hist-count></span></div>'
+                '<div class="table"><table class="hist"><thead><tr><th>When</th><th>Action</th><th>Piece</th><th></th></tr></thead><tbody data-history></tbody></table></div>')
+        self.page(P, 'Your history', body, self.prov_desk(P, 'The reader (this device)', sources=None), eyebrow='Your feedback',
+                  md='# Your history\n\nA page filled from this browser\'s local storage.\n', search_text='')
+
     def build_search(self):
         P = 'search/index.html'
         data = [[t, p, s, k, x] for t, p, s, k, x in sorted(self.search, key=lambda r: (r[3] != 'newsroom', r[1]))]
@@ -1697,6 +1837,7 @@ class Site:
         self.build_about()
         self.build_front()
         self.build_llms()
+        self.build_feedback_pages()
         self.build_search()
         pages = sum(1 for p in self.written if p.endswith('.html'))
         print(f'built site/ {VERSION}: {len(self.written)} files, {pages} html pages, {len(self.cat.sources)} sources, '

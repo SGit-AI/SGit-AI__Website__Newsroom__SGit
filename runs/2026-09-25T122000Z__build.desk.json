@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T12:20:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Implement the first batch of the flight notes: the approved front page, a sheet and byline on every piece, feedback on every piece, read hides in the reader's view, two views, a history with undo and redo.",
+  "folders_changed": [
+    "tools/",
+    "issues/"
+  ],
+  "did": [
+    "Front page in the approved layout (nameplate, dateline, section band, review line, lead with its map and 'also in this edition', the Historian beside it, signals as a list, the week in editions with change bars, card sections, a rail).",
+    "Every desk page: a byline block (desk with a link to its role, date, section, standfirst, sources, read time, review state) and the article on a white sheet; the feedback bar on stories, editions, history, maps and signals; the read control reads 'Mark as read' / 'Read, mark unread'.",
+    "feedback.js: a view switch in the header (Editor's / Mine); in Mine, pieces marked read are hidden from the front page and every card section, with a clue and a link to feedback/read.html; feedback/history.html lists every action with undo (appends the inverse, keeps the log) and redo.",
+    "Issues 041, 009, 010, 011, 017, 018, 019 moved to done."
+  ],
+  "gates": true,
+  "note": "Tested offline from file:// at 1280 and 390 wide: mark read, switch view, hidden with clue, read list, undo, redo, no horizontal scroll. data/frontpage.json gained lead_map (the Editor's file; set by the Build desk to show the feature, the Editor may change it)."
+}

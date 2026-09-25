@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.7">
+<html lang="en-GB" data-version="v0.1.8" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.7 · snapshot 2026-09-24</span>
-<nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav></header>
+<span class="ver">v0.1.8 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The brief</p>
 
@@ -20,9 +21,9 @@
 <ol><li><strong>Fetch.</strong> <code>python3 tools/fetch_sources.py</code>. It overwrites <code>sources/sites/</code> and updates <code>manifest.json</code>. Commit the snapshot on its own: the git diff of that commit <em>is</em> the day&#x27;s change set.</li><li><strong>Diff.</strong> Compare today&#x27;s manifest with the last committed one: new, changed and removed files per site. If nothing changed anywhere, stop: no edition today. Commit nothing else.</li><li><strong>Librarian.</strong> Read every changed file. Write <code>data/changes/YYYY-MM-DD.json</code>; update the index, concepts and vaults.</li><li><strong>Journalist.</strong> Write the edition, and a story for anything that deserves one.</li><li><strong>Historian.</strong> On a day with a real moment, a short perspective piece. Every day, add any correction or rule from the sites&#x27; version logs to <code>history/lessons.md</code>, and any decision to <code>history/decisions.md</code>.</li><li><strong>Guest desks.</strong> Scan the day&#x27;s changes against the whole index for cross-pollination. Write a signal only when both sides are cited.</li><li><strong>Loose ends.</strong> Add new ones; close ones the day&#x27;s changes resolved, citing the change.</li><li><strong>Build and validate.</strong> <code>python3 tools/build.py &amp;&amp; python3 tools/validate.py</code>.</li><li><strong>Commit and push</strong> with a message naming the day and the counts.</li></ol>
 <h2 id="later-when-v01-has-proved-itself">Later, when v0.1 has proved itself</h2>
 <ul><li><strong>Read git, not only pages.</strong> Most sites have public repos with version logs; commit messages and diffs are richer than page snapshots.</li><li><strong>Run on a schedule</strong>, once a day, as a Routine.</li><li><strong>Send signals where they belong</strong>: as a brief in the receiving project&#x27;s repo, or into a vault through an append lane.</li><li><strong>The newsroom&#x27;s own memory in a vault</strong>, so its desks can hand work to each other across sessions.</li><li><strong>More desks</strong>: Architect and Developer as regular desks once the signals prove useful.</li></ul></article>
-<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.7 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="05-daily-run.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.8 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="05-daily-run.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
 <script src="../assets/feedback.js"></script>
 </body>
 </html>

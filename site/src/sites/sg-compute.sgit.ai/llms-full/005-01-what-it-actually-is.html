@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.7">
+<html lang="en-GB" data-version="v0.1.8" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.7 · snapshot 2026-09-24</span>
-<nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav></header>
+<span class="ver">v0.1.8 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#01-what-it-actually-is">01 — What it actually is</a></li><li class="l2"><a href="#1-two-ephemeral-layers-and-the-site-must-not-conflate-them">1. Two ephemeral layers — and the site must not conflate them</a></li><li class="l3"><a href="#layer-1-an-ephemeral-browser-per-http-request">Layer 1 — an ephemeral browser, per HTTP request</a></li><li class="l3"><a href="#layer-2-an-ephemeral-ec2-node">Layer 2 — an ephemeral EC2 node</a></li><li class="l2"><a href="#2-sessions-the-exception-to-statelessness-and-why">2. Sessions — the exception to statelessness, and why</a></li><li class="l2"><a href="#3-the-watchdog-publish-this-it-is-the-best-engineering-story-in-the-repo">3. The watchdog — publish this, it is the best engineering story in the repo</a></li><li class="l2"><a href="#4-the-api-surface-two-apps-and-one-correction-to-the-received-wisdom">4. The API surface — two apps, and one correction to the received wisdom</a></li><li class="l3"><a href="#app-1-the-playwright-data-plane">App 1 — the Playwright data plane</a></li><li class="l3"><a href="#app-2-the-sgcompute-control-plane">App 2 — the SG/Compute control plane</a></li><li class="l3"><a href="#the-auth-model-the-guidance-is-right-the-mechanism-is-not-what-people-think">⚠️ The auth model — the guidance is right, the mechanism is not what people think</a></li><li class="l2"><a href="#5-isolation-boundaries">5. Isolation boundaries</a></li><li class="l2"><a href="#6-how-artefacts-come-back-correct-the-likely-assumption">6. How artefacts come back — correct the likely assumption</a></li></ul></details>
@@ -89,9 +90,9 @@ headers[UPSTREAM_API_KEY] = token                        # vault auth → upstre
 <hr>
 <p>source: /briefs/02__the-rename.md</p>
 <hr></article><nav class="pager"><span><a href="004-00-the-brief-sg-computesgitai.html">← 00 — The Brief: sg-compute.sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="006-02-the-rename-what-is-done-what-is-not-a.html">02 — The rename: what is done, what is not, and what breaks →</a></span></nav>
-<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>5 of 14: 01 — What it actually is</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>5 of 14: 01 — What it actually is</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.7 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.8 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 </body>
 </html>

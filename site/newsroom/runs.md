@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-25T12:20:00Z build.desk: Implement the first batch of the flight notes: the approved front page, a sheet and byline on every piece, feedback on every piece, read hides in the reader's view, two views, a history with undo and redo.
+- 2026-09-25T12:19:00Z editor.desk: Give the lead its map: lead_map in data/frontpage.json.
 - 2026-09-25T12:10:00Z build.desk: Capture the editor of record's notes of 25 September (read offline on a plane) as issues, and give the back office an issues board.
 - 2026-09-25T12:09:00Z editor.desk: File the editor of record's notes of 25 September in the inbox, verbatim, as the source the issues cite.
 - 2026-09-25T09:33:00Z editor.human: Change the register of agents: the Editor becomes a desk that owns the front page, the sections and the admin back office; the Cartographer becomes a full desk that owns maps/; the Journalist and Historian get the centres of gravity the editor of record set.

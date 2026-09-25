@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.7">
+<html lang="en-GB" data-version="v0.1.8" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.7 · snapshot 2026-09-24</span>
-<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav></header>
+<span class="ver">v0.1.8 · snapshot 2026-09-24</span>
+<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The newsroom · @Librarian</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#librarian-librarian">Librarian: @Librarian</a></li><li class="l2"><a href="#mission">Mission</a></li><li class="l2"><a href="#the-central-claim-written-as-a-failure-condition">The central claim, written as a failure condition</a></li><li class="l2"><a href="#gravity">Gravity</a></li><li class="l2"><a href="#reads">Reads</a></li><li class="l2"><a href="#writes-its-mandate-the-validator-holds-a-run-record-to-these">Writes (its mandate: the validator holds a run record to these)</a></li><li class="l2"><a href="#produces">Produces</a></li><li class="l2"><a href="#how-a-run-goes">How a run goes</a></li><li class="l2"><a href="#works-with">Works with</a></li></ul></details>
@@ -52,9 +53,9 @@ Belongs to: the guest desks</p>
 <h2 id="may-write">May write</h2>
 <ul><li>sources/</li><li>data/changes/</li><li>data/index.json</li><li>data/concepts.json</li><li>data/vaults.json</li><li>data/network.json</li><li>runs/</li><li>site/</li><li>version.txt</li><li>data/loose-ends.json</li><li>issues/</li></ul>
 <p>Anything else in a run record&#x27;s <code>folders_changed</code> fails <code>tools/validate.py</code>.</p></article><h2>Runs (4)</h2><ul class="list"><li><strong>2026-09-25T09:31:00Z</strong> · desk · Compute the network: which site links to which.<ul><li>tools/librarian.py writes data/network.json: 32 sites, 152 site-to-site links counted from every snapshotted file.</li></ul></li><li><strong>2026-09-25T08:02:03Z</strong> · desk · Bring home the .md twin of every linked network page not in the snapshot; fix links to sgit.ai update notes in the changes files.<ul><li>tools/fetch_missing.py: 643 pages brought home, 5 refused for credential-shaped strings; the index grows from 675 to 1318 pages.</li><li>data/changes/2026-09-20.json and 2026-09-21.json: links to sgit.ai repo content paths now point at the anchors on sgit.ai/updates/.</li></ul></li><li><strong>2026-09-25T00:25:01Z</strong> · desk · Concepts for the index: the ideas that recur across sites.<ul><li>data/concepts.json: 35 concepts, each with terms the build searches the snapshot for.</li></ul></li><li><strong>2026-09-25T00:20:23Z</strong> · desk · Librarian for 20 to 24 September: changes files from the sgit.ai version log, the new-pages list, riskmandate.ai&#x27;s version record and the CLI briefs (no earlier snapshot to diff).<ul><li>data/changes/2026-09-20.json to 2026-09-24.json: 18, 31, 8, 17 and 49 changes, each summarised after reading the page or release note.</li></ul></li></ul>
-<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/librarian.desk/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/librarian.desk/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.7 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="librarian.desk.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.8 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="librarian.desk.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
 </body>
 </html>

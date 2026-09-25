@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.7">
+<html lang="en-GB" data-version="v0.1.8" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.7 · snapshot 2026-09-24</span>
-<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav></header>
+<span class="ver">v0.1.8 · snapshot 2026-09-24</span>
+<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The newsroom · @Architect</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#architect-architect">Architect: @Architect</a></li><li class="l2"><a href="#mission">Mission</a></li><li class="l2"><a href="#the-central-claim-written-as-a-failure-condition">The central claim, written as a failure condition</a></li><li class="l2"><a href="#gravity">Gravity</a></li><li class="l2"><a href="#reads">Reads</a></li><li class="l2"><a href="#writes-its-mandate-the-validator-holds-a-run-record-to-these">Writes (its mandate: the validator holds a run record to these)</a></li><li class="l2"><a href="#produces">Produces</a></li><li class="l2"><a href="#how-a-run-goes">How a run goes</a></li><li class="l2"><a href="#works-with">Works with</a></li></ul></details>
@@ -48,9 +49,9 @@ Belongs to: @Editor, until signals are delivered as briefs</p>
 <h2 id="may-write">May write</h2>
 <ul><li>signals/</li><li>runs/</li><li>site/</li><li>version.txt</li><li>data/loose-ends.json</li><li>issues/</li></ul>
 <p>Anything else in a run record&#x27;s <code>folders_changed</code> fails <code>tools/validate.py</code>.</p></article><h2>Runs (2)</h2><ul class="list"><li><strong>2026-09-25T08:49:09Z</strong> · desk · Find why pt.newsroom.sgit.ai&#x27;s rendered agent files (agents/*/ROLE.md, MANDATE.md) show some fields one character per bullet, and write a signal for that newsroom: what is wrong, the cause, the fix, and that this newsroom&#x27;s tools/agents.py already renders a string field as one item.<ul><li>Read agents/redacao.pt/ROLE.md and MANDATE.md, dados/agentes.json, build/mandatos.py and gate 35 in build/gates_artigos.py in a read-only clone of the pt repository (commit b3e9530), and this repo&#x27;s tools/agents.py.</li><li>Cause: build/mandatos.py line 39, lista(), iterates a string character by character; trabalha_com and errado_quando are strings in dados/agentes.json for all 5 agents, so 10 files are affected (5 ROLE.md &#x27;Works with&#x27;, 5 MANDATE.md &#x27;Wrong when&#x27;).</li><li>1 signal written: signals/2026-09-25__pt-agent-files-one-character-per-bullet.md (sgit.newsroom.sgit.ai -&gt; pt.newsroom.sgit.ai, status new).</li></ul></li><li><strong>2026-09-25T00:25:01Z</strong> · desk · Guest desks for 24 September: check the seven cross-pollination seeds in brief/04 and the loose-end seeds; keep what holds.<ul><li>9 signals (6 of 7 seeds held; append lanes dropped), 20 loose ends (16 open, 2 closed, 2 unclear).</li><li>The three guest desks&#x27; work was done in one pass and is recorded under the Architect.</li></ul></li></ul>
-<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/architect.guest/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/architect.guest/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.7 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="architect.guest.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.8 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="architect.guest.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
 </body>
 </html>

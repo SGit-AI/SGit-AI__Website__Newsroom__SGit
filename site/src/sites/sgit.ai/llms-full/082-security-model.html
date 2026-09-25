@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.7">
+<html lang="en-GB" data-version="v0.1.8" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,9 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.7 · snapshot 2026-09-24</span>
-<nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav></header>
+<span class="ver">v0.1.8 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">Reading room · sgit.ai · llms-full</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#security-model">Security model</a></li><li class="l2"><a href="#what-the-server-sees-and-never-sees">What the server sees, and never sees</a></li><li class="l2"><a href="#the-crypto-stack">The crypto stack</a></li><li class="l2"><a href="#two-key-systems-and-where-each-applies">Two key systems, and where each applies</a></li><li class="l2"><a href="#key-strength">Key strength</a></li><li class="l2"><a href="#two-implementations-one-wire-format">Two implementations, one wire format</a></li><li class="l2"><a href="#secrets-safety-by-default">Secrets safety by default</a></li><li class="l2"><a href="#open-security-process">Open security process</a></li></ul></details>
@@ -51,9 +52,9 @@
 <ul><li>Open source under Apache-2.0, with a deliberately tiny dependency surface: two runtime dependencies.</li><li>~4,000 tests including mutation testing in CI and integration tests against a real server, no mocks.</li><li>An internal security review series (twelve findings, each individually worked through and debriefed, covering key residency, IV determinism trade-offs, logging hygiene, and more) is being prepared for publication on this page.</li><li>Found something? Report it via <a class="ext" href="https://github.com/SGit-AI/SGit-AI__CLI/issues">GitHub ↗</a>, security reports get priority.</li><li><strong>Key exposed?</strong> <a href="../case-studies/exposed-vault-key.html">The rotation runbook</a><a class="ext live" href="https://sgit.ai/case-studies/exposed-vault-key.html" title="live page">↗</a>, including a worked case study of the day this site&#x27;s own vault key leaked, and what it cost to fix.</li></ul>
 <p><strong>Honesty note:</strong> sgit is in beta (it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF) nothing exotic). Still: read <a href="../docs/limitations.html">when NOT to use sgit</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> before trusting it with anything critical.</p>
 <hr></article><nav class="pager"><span><a href="081-security-model-sgit.html">← Security model, sgit</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="083-why-does-this-exist-sgitai.html">Why does this exist?, sgit.ai →</a></span></nav>
-<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>82 of 358: Security model</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>82 of 358: Security model</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.7 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.8 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 </body>
 </html>

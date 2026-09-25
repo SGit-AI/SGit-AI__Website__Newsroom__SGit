@@ -8,17 +8,11 @@
 - [open] 006 Epic: the back office runs on issues, with provenance
 - [open] 007 Epic: an industry news feed in, slide decks and PDFs out
 - [open] 008 Epic: briefs for agent@riskmandate.ai
-- [open] 009 Put every piece on its own sheet, with a byline block that says who wrote it
-- [open] 010 Feedback bar on every piece, not only on source pages
-- [open] 011 Replace "Read" / "Mark read" with a state that is unambiguous
 - [open] 012 Side panels: peek a link, feedback, chat, maps, resizable
 - [open] 013 Use the width: content column plus panes
 - [open] 014 Source pages: what is the newsroom, what is the target site
 - [open] 015 Screenshots of the pages a piece is about
 - [open] 016 Standing briefing cards in the same place on every piece
-- [open] 017 Marking a piece read hides it from the front page and the sections
-- [open] 018 Two views: the editor's and the reader's
-- [open] 019 A history of every action, with undo and redo
 - [open] 020 A wallet drained by actions (as pt.newsroom.sgit.ai)
 - [open] 021 Render pages from a graph of pieces, merged with the reader's state
 - [open] 023 A chat panel with tools over the site, on the reader's OpenRouter key
@@ -36,12 +30,18 @@
 - [open] 038 Run the newsroom daily on a schedule
 - [open] 039 A daily industry news feed on the vaults' topics, as JSON the newsroom consumes
 - [open] 040 Daily or thematic slide decks, rendered to HTML and PDF
-- [open] 041 Build the approved front-page layout
 - [open] 042 Brief: email the contact who received the voice questionnaire link
 - [open] 043 Brief: map the integrations and who to contact, in the vault CRM
 - [open] 044 Brief: connectors and digital twins for Slack, Discord, WhatsApp and others
 - [open] 045 Brief: find an AWS partner for sgit.ai and one for RiskMandate.ai
 - [blocked] 022 Store the reader's state in a vault, for the daily agent and other devices
 - [blocked] 035 The network map per day: which links appeared when
+- [done] 009 Put every piece on its own sheet, with a byline block that says who wrote it
+- [done] 010 Feedback bar on every piece, not only on source pages
+- [done] 011 Replace "Read" / "Mark read" with a state that is unambiguous
+- [done] 017 Marking a piece read hides it from the front page and the sections
+- [done] 018 Two views: the editor's and the reader's
+- [done] 019 A history of every action, with undo and redo
 - [done] 036 issues-fs-lite in issues/, rendered as a kanban and pages in admin
 - [done] 037 Capture the notes of 25 September as issues, with provenance
+- [done] 041 Build the approved front-page layout

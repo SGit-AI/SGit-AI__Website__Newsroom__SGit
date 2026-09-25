@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-25T12:19:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Give the lead its map: lead_map in data/frontpage.json.",
+  "folders_changed": [
+    "data/frontpage.json"
+  ],
+  "did": [
+    "data/frontpage.json: lead_map = maps/brief-to-build, the Cartographer's drawing of the lead story."
+  ],
+  "gates": true
+}

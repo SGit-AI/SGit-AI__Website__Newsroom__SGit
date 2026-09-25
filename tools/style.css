@@ -291,3 +291,82 @@ figure.diagram svg { max-width: 100%; height: auto; }
 .ik-epic { display: inline-block; margin-top: 4px; font: 11px var(--mono); color: var(--accent); }
 dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: .9rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 14px; }
 dl.facts dt { color: var(--muted); } dl.facts dd { margin: 0; }
+
+/* ---- pieces: the byline block and the sheet -------------------------------------------------------- */
+.byline { margin: 4px 0 10px; }
+.byline h1 { margin: 4px 0 8px; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; letter-spacing: -.01em; }
+.byline .dek { font-size: 1.15rem; margin: 0 0 12px; max-width: 46em; }
+.byline-who { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px 20px; font-size: .9rem; color: var(--ink);
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 10px 0; }
+.byline-who .lbl { font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.byline-mission { margin: 2px 0 0; font-size: .85rem; color: var(--muted); font-style: italic; }
+article.piece { background: #fff; border: 1px solid var(--rule); border-radius: 10px; padding: 28px 36px 32px; margin: 12px 0 8px;
+  box-shadow: 0 1px 2px rgba(27,26,23,.06), 0 8px 24px rgba(27,26,23,.06); max-width: 52em; }
+article.piece > :first-child { margin-top: 0; }
+@media (max-width: 600px) { article.piece { padding: 18px 16px 20px; margin: 10px -8px; border-radius: 8px; } }
+@media (prefers-color-scheme: dark) { article.piece { background: #211f19; box-shadow: none; } }
+
+/* ---- the view switch, and what the reader's view hides --------------------------------------------- */
+.views { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; }
+.views .lbl { font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
+.views button { font: inherit; font-size: 12px; height: 26px; padding: 0 10px; border-radius: 13px; border: 1px solid #d8cfbf; background: var(--paper); color: var(--ink); cursor: pointer; }
+.views button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.views-read { margin-left: 8px; color: var(--muted); text-decoration: none; }
+html.view-mine .rd.is-read { display: none !important; }
+.hidden-clue { font: 12px var(--mono); color: var(--muted); padding: 6px 0; }
+.hidden-clue a { color: var(--accent); }
+html.view-mine .rd.is-read + .hidden-clue, .hidden-clue[hidden] { display: none; }
+.rd.is-read .kicker::after { content: " · read"; color: var(--muted); }
+
+/* ---- the front page, the approved layout -------------------------------------------------------- */
+.masthead { text-align: center; padding: 8px 0 0; margin-bottom: 14px; border-bottom: 0; }
+.masthead h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); margin: 0; letter-spacing: -.015em; line-height: 1; }
+.dateline { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 12px 0 0; padding: 8px 0; border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink);
+  font: 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #3b3832; }
+.band { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; padding: 8px 0 4px; font-size: 14px; font-weight: 600; }
+.band a { text-decoration: none; color: var(--ink); } .band a:hover { color: var(--accent); }
+.review-line { margin: 0 0 18px; padding: 8px 14px; border-radius: 8px; background: #f1ece2; font-size: 13px; color: #3b3832; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.review-line a { font-weight: 600; }
+.fp-top { display: grid; grid-template-columns: 1fr; gap: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+@media (min-width: 900px) { .fp-top { grid-template-columns: 2fr 1fr; gap: 32px; } .fp-side { border-left: 1px solid var(--rule); padding-left: 24px; } }
+.lead-story h2 { font-size: clamp(1.8rem, 4vw, 2.9rem); line-height: 1.08; margin: 4px 0 8px; letter-spacing: -.01em; }
+.lead-story h2 a, .card h3 a, .persp h2 a, .sig a, .ed { color: var(--ink); text-decoration: none; }
+.lead-story h2 a:hover, .card h3 a:hover, .persp h2 a:hover, .sig a:hover { color: var(--accent); text-decoration: underline; }
+.lead-story .dek { font-size: 1.15rem; }
+.lead-map { margin: 14px 0 0; }
+.lead-map figure.diagram { margin: 0; }
+.lead-map figcaption { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.also { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.also-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px; }
+.also-item a { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; line-height: 1.25; color: var(--ink); text-decoration: none; }
+.also-item a:hover { color: var(--accent); } .also-item span { display: block; font-size: 13px; color: var(--muted); }
+.fp-side { display: flex; flex-direction: column; gap: 20px; }
+.persp h2 { font-size: 1.55rem; line-height: 1.15; margin: 2px 0 6px; }
+.persp .dek { font-size: .95rem; } .more-link { font-size: 14px; font-weight: 600; text-decoration: none; }
+.sigs { border-top: 2px solid var(--ink); padding-top: 8px; }
+.sigs h3, .fp-rail h3, .week h2 { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 1.15rem; margin: 4px 0 8px; }
+.sig { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #efe9de; }
+.sig:last-child { border-bottom: 0; }
+.sig .route { font: 11px var(--mono); color: var(--muted); } .sig a { font-weight: 600; line-height: 1.35; font-size: .95rem; }
+.week { margin: 24px 0 0; border-top: 2px solid var(--ink); padding-top: 8px; }
+.week h2 { font-size: 1.35rem; }
+.eds { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 12px; }
+.ed { display: flex; flex-direction: column; gap: 6px; padding: 12px; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; }
+.ed.today { background: var(--accent-soft); border: 1.5px solid var(--accent); }
+.ed-d { font: 11px var(--mono); color: var(--muted); } .ed.today .ed-d { color: var(--accent); }
+.ed-bar { display: block; height: 6px; border-radius: 3px; background: #ece7dd; overflow: hidden; } .ed-bar span { display: block; height: 100%; background: var(--accent); }
+.ed-t { font-family: var(--serif); font-weight: 600; line-height: 1.3; font-size: .95rem; }
+.fp-body { margin-top: 8px; }
+.fp-sec h2 { font-size: 1.35rem; }
+.fp-rail section { border-top: 2px solid var(--ink); padding-top: 6px; }
+.rr-item { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid #efe9de; font-size: .92rem; }
+.rr-item .t { width: 40px; flex-shrink: 0; font: 12px var(--mono); color: var(--muted); }
+.rr-item a { font-weight: 500; line-height: 1.35; color: var(--ink); text-decoration: none; } .rr-item a:hover { color: var(--accent); }
+.rr-item .m { display: block; font: 11px var(--mono); color: var(--muted); } .rr-item .m.s-sgit { color: #1f3fa8; } .rr-item .m.s-rm { color: #8a3210; }
+.open-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.open-tiles a { display: flex; flex-direction: column; padding: 10px; border-radius: 8px; background: var(--paper); border: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+.open-tiles a b { font-family: var(--serif); font-size: 1.7rem; line-height: 1.1; } .open-tiles a span { font-size: 12px; color: var(--muted); }
+.open-tiles a.warm { background: var(--warn-soft); border-color: #f0cdb3; color: var(--warn); } .open-tiles a.warm span { color: var(--warn); }
+.desk-row { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; padding: 4px 0; border-bottom: 1px solid #efe9de; }
+.desk-row span { font: 12px var(--mono); color: var(--muted); text-align: right; }
+@media (prefers-color-scheme: dark) { .review-line { background: #26241d; color: var(--ink); } .dateline { color: var(--muted); } .rr-item .m.s-sgit { color: #b9c9ff; } .rr-item .m.s-rm { color: #fdba74; } }

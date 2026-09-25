@@ -234,6 +234,8 @@
     Object.keys(st).forEach(function (k) { var s = st[k]; if (s.read) n.read++; if (s.star) n.starred++; if (s.vote) n.votes++; if (s.note) n.notes++; });
     Object.keys(n).forEach(function (k) { [].slice.call(document.querySelectorAll('[data-stat=' + k + ']')).forEach(function (el) { el.textContent = n[k]; }); });
     var pending = d.events.filter(function (e) { return e.t > (d.cursor || ''); }).length;
+    var lastE = d.events[d.events.length - 1], ls = box.querySelector('[data-f=dev-status]');
+    if (lastE && ls && !ls.textContent) ls.innerHTML = 'Last: ' + esc(lastE.op) + ' \u00b7 <a href="#" data-undo>undo</a>';
     [].slice.call(document.querySelectorAll('[data-stat=pending]')).forEach(function (el) { el.textContent = pending; });
     [].slice.call(document.querySelectorAll('[data-stat=device]')).forEach(function (el) { el.textContent = DEV; });
     var pre = box.querySelector('[data-preview]');
@@ -276,7 +278,7 @@
     bars.forEach(function (b) {
       var s = st[b.getAttribute('data-id')] || {};
       var rd = b.querySelector('[data-a=read]');
-      if (rd) { rd.lastChild.textContent = s.read ? ' Read' : ' Mark read'; setPressed(rd, s.read); }
+      if (rd) { rd.lastChild.textContent = s.read ? ' Read \u2713 \u00b7 mark unread' : ' Mark as read'; setPressed(rd, s.read); }
       setPressed(b.querySelector('[data-a=star]'), s.star);
       setPressed(b.querySelector('[data-a=up]'), s.vote === 'up');
       setPressed(b.querySelector('[data-a=down]'), s.vote === 'down');
@@ -293,7 +295,146 @@
     var st = fold();
     rows().forEach(function (r) { paintRow(r, st[r.getAttribute('data-id')] || {}); });
     paintCounts(st); applyFilters(); paintDevice(st); paintSel(st); paintBars(st);
+    paintView(st); paintCards(st); paintReadList(st); paintHistory(st);
   }
+
+  // ------------------------------------------------------------------ the reader's view: read pieces hidden
+  var VIEWKEY = 'sgit-newsroom.view';
+  function view() { try { return localStorage.getItem(VIEWKEY) === 'mine' ? 'mine' : 'editor'; } catch (e) { return 'editor'; } }
+  function setView(v) { try { localStorage.setItem(VIEWKEY, v); } catch (e) { /* ignore */ } refresh(); }
+  function paintView(st) {
+    var v = view();
+    document.documentElement.classList.toggle('view-mine', v === 'mine');
+    var box = document.querySelector('[data-views]');
+    if (!box) return;
+    box.hidden = false;
+    [].slice.call(box.querySelectorAll('[data-view]')).forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-view') === v); });
+    var n = Object.keys(st).filter(function (k) { return st[k].read; }).length;
+    var a = box.querySelector('[data-read-count]');
+    if (a) a.textContent = n ? n + ' read' : '';
+  }
+  function paintCards(st) {
+    var cards = [].slice.call(document.querySelectorAll('.rd[data-id]'));
+    if (!cards.length) return;
+    var mine = view() === 'mine', boxes = {};
+    cards.forEach(function (c) {
+      var s = st[c.getAttribute('data-id')] || {};
+      c.classList.toggle('is-read', !!s.read);
+      var box = c.parentElement;
+      if (!boxes[box.__k]) { box.__k = box.__k || ('b' + Math.random().toString(16).slice(2, 7)); boxes[box.__k] = { el: box, hidden: 0, all: 0 }; }
+      boxes[box.__k].all++;
+      if (s.read) boxes[box.__k].hidden++;
+    });
+    var readHref = (document.querySelector('[data-views] [data-read-count]') || {}).getAttribute ? document.querySelector('[data-views] [data-read-count]').getAttribute('href') : 'feedback/read.html';
+    Object.keys(boxes).forEach(function (k) {
+      var b = boxes[k], clue = b.el.nextElementSibling && b.el.nextElementSibling.classList.contains('hidden-clue') ? b.el.nextElementSibling : null;
+      if (!clue) { clue = document.createElement('p'); clue.className = 'hidden-clue'; b.el.insertAdjacentElement('afterend', clue); }
+      if (mine && b.hidden) {
+        clue.hidden = false;
+        clue.innerHTML = b.hidden + (b.hidden === 1 ? ' read piece hidden' : ' read pieces hidden') + (b.hidden === b.all ? ' (all of them)' : '') +
+          ' \u00b7 <a href="' + readHref + '">what you have read</a> \u00b7 <a href="#" data-view-go="editor">show</a>';
+      } else { clue.hidden = true; }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-view], [data-view-go]');
+    if (!b) return;
+    if (b.hasAttribute('data-view-go')) e.preventDefault();
+    setView(b.getAttribute('data-view') || b.getAttribute('data-view-go'));
+  });
+
+  // ------------------------------------------------------------------ what you have read, and the history
+  function pieceLink(src, m) {
+    var page = (m && m.page) || '';
+    var root = document.documentElement.getAttribute('data-root') || '../';
+    return page ? root + page : '';
+  }
+  function paintReadList(st) {
+    var ol = document.querySelector('[data-read-list]');
+    if (!ol) return;
+    var d = load(), items = Object.keys(st).filter(function (k) { return st[k].read; })
+      .sort(function (a, b) { return (st[b].last || '') < (st[a].last || '') ? -1 : 1; });
+    ol.innerHTML = '';
+    if (!items.length) { ol.innerHTML = '<li class="muted">Nothing marked read yet.</li>'; return; }
+    items.forEach(function (src) {
+      var m = d.items[src] || {}, s = st[src], li = document.createElement('li'), a = document.createElement('a');
+      a.textContent = m.title || src; var href = pieceLink(src, m); if (href) a.setAttribute('href', href);
+      li.appendChild(a);
+      li.insertAdjacentHTML('beforeend', ' <span class="muted small">' + esc([m.site, m.section, m.date].filter(Boolean).join(' \u00b7 ')) +
+        ' \u00b7 read ' + esc((s.last || '').slice(0, 16).replace('T', ' ')) + '</span> <button type="button" class="linkbtn" data-unread="' + esc(src) + '">mark unread</button>');
+      ol.appendChild(li);
+    });
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-unread]');
+    if (!b) return;
+    var src = b.getAttribute('data-unread'), d = load(), m = d.items[src] || {};
+    d.events.push({ t: now(), dev: DEV, src: src, sha: '', op: 'unread', val: null }); save(); refresh();
+  });
+  function stateBefore(idx) {
+    var d = load(), st = {};
+    d.events.slice(0, idx).forEach(function (e) {
+      var s = st[e.src] || (st[e.src] = {});
+      if (e.op === 'read') s.read = true; else if (e.op === 'unread') s.read = false;
+      else if (e.op === 'star') s.star = !!e.val; else if (e.op === 'vote') s.vote = e.val || null;
+      else if (e.op === 'note') s.note = e.val || '';
+    });
+    return st;
+  }
+  function inverse(e, idx) {
+    var before = stateBefore(idx)[e.src] || {};
+    if (e.op === 'read') return { op: 'unread', val: null };
+    if (e.op === 'unread') return { op: 'read', val: null };
+    if (e.op === 'star') return { op: 'star', val: !!before.star };
+    if (e.op === 'vote') return { op: 'vote', val: before.vote || null };
+    if (e.op === 'note') return { op: 'note', val: before.note || '' };
+    return null;                                                    // a memo stays: undo does not delete audio
+  }
+  function undo() {
+    var d = load();
+    for (var i = d.events.length - 1; i >= 0; i--) {
+      var e = d.events[i];
+      if (e.undone || e.undo_of !== undefined) continue;
+      var inv = inverse(e, i);
+      if (!inv) continue;
+      e.undone = true;
+      d.events.push({ t: now(), dev: DEV, src: e.src, sha: e.sha, op: inv.op, val: inv.val, undo_of: i });
+      d.redo = d.redo || []; d.redo.push(i);
+      save(); refresh(); return;
+    }
+  }
+  function redo() {
+    var d = load();
+    if (!d.redo || !d.redo.length) return;
+    var i = d.redo.pop(), e = d.events[i];
+    if (!e) return;
+    delete e.undone;
+    d.events.push({ t: now(), dev: DEV, src: e.src, sha: e.sha, op: e.op, val: e.val, redo_of: i });
+    save(); refresh();
+  }
+  function paintHistory(st) {
+    var tb = document.querySelector('[data-history]');
+    if (!tb) return;
+    var d = load(), rows = d.events.map(function (e, i) { return [i, e]; }).reverse();
+    tb.innerHTML = '';
+    rows.forEach(function (pair) {
+      var i = pair[0], e = pair[1], m = d.items[e.src] || {}, tr = document.createElement('tr');
+      var what = e.op + (e.val === null || e.val === undefined || e.val === true ? '' : ': ' + String(e.val).slice(0, 80));
+      var flag = e.undone ? ' <span class="tag">undone</span>' : e.undo_of !== undefined ? ' <span class="tag">undo</span>' : e.redo_of !== undefined ? ' <span class="tag">redo</span>' : '';
+      var href = pieceLink(e.src, m);
+      tr.innerHTML = '<td class="nowrap small">' + esc(e.t.slice(0, 16).replace('T', ' ')) + '<br><span class="muted">' + esc(e.dev) + '</span></td>' +
+        '<td>' + esc(what) + flag + '</td><td>' + (href ? '<a href="' + esc(href) + '">' : '') + esc(m.title || e.src) + (href ? '</a>' : '') +
+        '<br><span class="muted small">' + esc([m.site, m.section].filter(Boolean).join(' \u00b7 ')) + '</span></td><td class="small"></td>';
+      tb.appendChild(tr);
+    });
+    var c = document.querySelector('[data-hist-count]');
+    if (c) c.textContent = d.events.length + ' actions \u00b7 ' + ((d.redo || []).length) + ' to redo';
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-undo]')) undo();
+    if (e.target.closest('[data-redo]')) redo();
+  });
 
   function select(r) { selected = r; refresh(); }
 
