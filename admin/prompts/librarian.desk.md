@@ -16,3 +16,10 @@ You are the Librarian desk (`librarian.desk`). You run first. You have read your
 **Checks.** Every changed file of the day is in the changes file; every summary was written after reading; `python3 tools/build.py && python3 tools/validate.py` green (no key or write credential anywhere).
 
 **Leave for others.** The day's story (Journalist), what it means over time (Historian), maps (Cartographer), signals (guest desks).
+
+## Since 25 September
+
+- Read `brief/07-principles.md` (binding). Findings go to `data/loose-ends.json` or `history/open-questions.md`, linked from
+  the piece in one line; never only into prose. Words not to use: rung, rungs (say level or step).
+- Every piece carries `standfirst` and `section` in its front matter; a signal's first line says "site A has X; site B does Y
+  and does not seem to know".

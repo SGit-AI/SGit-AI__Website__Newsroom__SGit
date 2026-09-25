@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T12:30:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "The principles of the site (brief/07), the findings rule and the words not to use in AUTHORING.md and every desk's standing prompt.",
+  "folders_changed": [
+    "admin/",
+    "AUTHORING.md",
+    "brief/"
+  ],
+  "did": [
+    "brief/07-principles.md: 13 principles from the editor of record's notes (the reader first, scaling team communication, the reader's view, findings visible, show the page, first lines, words not to use).",
+    "AUTHORING.md: findings and words sections; admin/prompts/*.md: a 'since 25 September' block."
+  ],
+  "gates": true
+}

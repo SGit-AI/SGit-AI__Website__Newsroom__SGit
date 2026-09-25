@@ -24,9 +24,9 @@ reviewed_on:
 
 > "Six rungs: 1h, 4h, 1d, 1w, 1m, 6m, default one month."
 
-The same entry also describes the rungs in bands ("Under 24 hours means pull the plug; a day to a week is a lower-grade incident"), so risks.sgit.ai itself carries both framings side by side.
+The same entry also describes the steps in bands ("Under 24 hours means pull the plug; a day to a week is a lower-grade incident"), so risks.sgit.ai itself carries both framings side by side.
 
-The [Risk Acceptance Office plan](https://sgit.ai/demos/vaults/risk-acceptance/index.md), published on sgit.ai on 24 September 2026, says its research found that "The published method disagrees with itself in four places: two different interval ladders, ..." Its method file, [02-the-method.md](src:vaults/risk-acceptance/plan/02-the-method.md), tabulates the six rungs "As published on risks.sgit.ai" and then says:
+The [Risk Acceptance Office plan](https://sgit.ai/demos/vaults/risk-acceptance/index.md), published on sgit.ai on 24 September 2026, says its research found that "The published method disagrees with itself in four places: two different interval ladders, ..." Its method file, [02-the-method.md](src:vaults/risk-acceptance/plan/02-the-method.md), tabulates the six steps "As published on risks.sgit.ai" and then says:
 
 > "RiskMandate.ai's "Accepted is not acceptable" page publishes different bands (1 to 24 hours, 1 day to 1 week, 1 week to 1 month as the default, 1 to 3 months, over 3 months). The plan uses the risks.sgit.ai ladder and lists the reconciliation as an open question."
 

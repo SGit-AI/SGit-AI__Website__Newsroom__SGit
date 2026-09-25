@@ -370,3 +370,19 @@ html.view-mine .rd.is-read + .hidden-clue, .hidden-clue[hidden] { display: none;
 .desk-row { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; padding: 4px 0; border-bottom: 1px solid #efe9de; }
 .desk-row span { font: 12px var(--mono); color: var(--muted); text-align: right; }
 @media (prefers-color-scheme: dark) { .review-line { background: #26241d; color: var(--ink); } .dateline { color: var(--muted); } .rr-item .m.s-sgit { color: #b9c9ff; } .rr-item .m.s-rm { color: #fdba74; } }
+
+/* ---- markable sections, the source badge, sortable tables ---------------------------------------- */
+section.sec { position: relative; padding: 4px 0 8px; border-bottom: 1px solid var(--rule); }
+section.sec .rd-read { float: right; margin: 6px 0 6px 12px; font: inherit; font-size: 12px; min-height: 30px; padding: 0 10px; border-radius: 6px; border: 1px solid #d8cfbf; background: var(--paper); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+section.sec .rd-read.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+section.sec.is-read h3 { color: var(--muted); }
+.open-tiles.wide4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); margin: 12px 0 8px; }
+.src-badge { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: -12px -20px 18px; padding: 8px 14px; background: #fbeadc; border-bottom: 1px solid #f0cdb3; border-radius: 10px 10px 0 0; font-size: 13px; color: #7c2d12; }
+.src-badge .src-dot { width: 10px; height: 10px; border-radius: 5px; background: #c2410c; flex-shrink: 0; }
+.src-badge .src-what { flex-basis: 100%; font-size: 12px; color: #9a3412; }
+.src-badge a { color: #7c2d12; }
+@media (max-width: 600px) { .src-badge { margin: -6px -6px 14px; } }
+@media (prefers-color-scheme: dark) { .src-badge { background: #3a2616; color: #fdba74; border-color: #5a3a24; } .src-badge .src-what, .src-badge a { color: #fdba74; } }
+.img-missing { display: inline-block; padding: 2px 8px; border: 1px dashed #b9ae9a; border-radius: 6px; font-size: .9em; }
+table.sortable th { cursor: pointer; user-select: none; } table.sortable th.sorted::after { content: " \25BE"; color: var(--accent); }
+table.sortable th[data-asc="1"].sorted::after { content: " \25B4"; }

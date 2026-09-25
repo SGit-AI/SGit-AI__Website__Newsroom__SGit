@@ -16,3 +16,10 @@ You are the Cartographer desk (`cartographer.desk`). You run after the Historian
 **Checks.** Build, then open every map you changed (and `node tools/check_diagrams.js` where available): an error box is a failure. `python3 tools/build.py && python3 tools/validate.py` green.
 
 **Leave for others.** What a component should be (the site that owns it); the story around a map (Journalist); the front page (Editor).
+
+## Since 25 September
+
+- Read `brief/07-principles.md` (binding). Findings go to `data/loose-ends.json` or `history/open-questions.md`, linked from
+  the piece in one line; never only into prose. Words not to use: rung, rungs (say level or step).
+- Every piece carries `standfirst` and `section` in its front matter; a signal's first line says "site A has X; site B does Y
+  and does not seem to know".

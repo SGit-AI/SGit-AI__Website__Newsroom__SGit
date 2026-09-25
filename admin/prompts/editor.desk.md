@@ -18,3 +18,10 @@ You are the Editor desk (`editor.desk`). You run last, after every other desk. Y
 **Checks.** `python3 tools/build.py && python3 tools/validate.py`, then open the built `index.html` and read the front page as a reader would: does it say in a minute what matters today?
 
 **Leave for others.** Writing or correcting pieces (Journalist, Historian, Cartographer). Filling `reviewed_by` (the editor of record, never you). The register of agents (the editor of record).
+
+## Since 25 September
+
+- Read `brief/07-principles.md` (binding). Findings go to `data/loose-ends.json` or `history/open-questions.md`, linked from
+  the piece in one line; never only into prose. Words not to use: rung, rungs (say level or step).
+- Every piece carries `standfirst` and `section` in its front matter; a signal's first line says "site A has X; site B does Y
+  and does not seem to know".

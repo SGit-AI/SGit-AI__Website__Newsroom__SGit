@@ -213,7 +213,7 @@ sgit.ai keeps its own index of rules and their origins at [Lessons learned](http
 
 *sgit.ai v0.4.1, in [the version record](https://sgit.ai/admin/versions.html)*
 
-**What happened.** The fractal ladder has nine vaults, but the vaults page said eight and the fractal page's lead implied eight. Both drifted when the DSIT vault became a rung in v0.3.1 and the surrounding prose was not updated.
+**What happened.** The fractal ladder has nine vaults, but the vaults page said eight and the fractal page's lead implied eight. Both drifted when the DSIT vault became a step in v0.3.1 and the surrounding prose was not updated.
 **How it was caught.** While checking the work on the vaults page.
 **The rule.** Counted from the table rather than recalled.
 

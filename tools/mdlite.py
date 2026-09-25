@@ -68,7 +68,8 @@ class Renderer:
         if got:
             return got
         # remote images are never loaded: the site makes no request anywhere
-        return self.link(src, f'[image: {html.escape(alt or src)}]')
+        return ('<span class="img-missing">' + self.link(src, html.escape(alt or 'image')) +
+                ' <span class="muted">(image on the live page; not in the snapshot)</span></span>')
 
     # ---------------------------------------------------------------- blocks
     def render(self, text):

@@ -460,7 +460,11 @@ class Site:
                                         for k, v in self.prov_source(s)])
         crumbs = self.crumbs(s) + self.fb_bar(s)
         eyebrow = f'Reading room · {esc(s.site or s.group)}'
-        self.page(s.page, s.title, crumbs + '<article class="source">' + body + '</article>', prov,
+        badge = (f'<div class="src-badge"><span class="src-dot"></span><span><strong>From {esc(s.site or s.group)}</strong>'
+                 + (f', the page as fetched on {esc(s.fetched[:10])}' if s.fetched else ', a file in the seed pack') +
+                 (f' · <a class="ext" href="{esc(live_url(s.url))}">open the live page ↗</a>' if s.url else '') +
+                 '</span><span class="src-what">Everything on this sheet is the source site\'s own text; the newsroom\'s chrome is outside it.</span></div>')
+        self.page(s.page, s.title, crumbs + '<article class="source">' + badge + body + '</article>', prov,
                   eyebrow=eyebrow, kind='source', site=s.site or s.group, toc=heads,
                   search_text=s.title + ' ' + ' '.join(h[1] for h in heads[:12]) + ' ' +
                   re.sub(r'\s+', ' ', re.sub(r'[#*`>|\[\]()_-]', ' ', s.text[:1200])))
@@ -822,6 +826,27 @@ class Site:
         meta, body = mdlite.front_matter(text)
         return meta, body, text
 
+    def markable_sections(self, html_body, id_prefix, page):
+        """Each <h3> and what follows it becomes an item the reader can mark read on its own (a lesson, a decision,
+        a question), keyed by the page and the heading's anchor, with the sha of its text."""
+        parts = re.split(r'(?=<h3 id=")', html_body)
+        out = [parts[0]]
+        for part in parts[1:]:
+            m = re.match(r'<h3 id="([^"]+)">(.*?)</h3>', part, re.S)
+            if not m:
+                out.append(part); continue
+            hid, title = m.group(1), re.sub(r'<[^>]+>', '', m.group(2))
+            sha = hashlib.sha256(re.sub(r'<[^>]+>', '', part).encode('utf-8')).hexdigest()[:12]
+            tail = ''
+            if '<h2 ' in part:                      # the section ends where the next h2 starts
+                part, tail = part.split('<h2 ', 1)
+                tail = '<h2 ' + tail
+            out.append(f'<section class="rd sec" data-id="{esc(id_prefix)}#{esc(hid)}" data-sha="{sha}" data-title="{esc(title)}" '
+                       f'data-site="Historian" data-section="{esc(id_prefix.split("/")[-1][:-3])}" data-date="" data-page="{esc(page)}#{esc(hid)}">'
+                       f'<button type="button" class="rd-read" data-a="read" aria-label="Mark this item read">{ICON["check"]}<span> Mark as read</span></button>'
+                       + part + '</section>' + tail)
+        return ''.join(out)
+
     def build_desk_page(self, path, meta, body, raw, eyebrow, extra_top='', extra_prov=()):
         html_body, heads = self.md(body, path)
         rb, ro = meta.get('reviewed_by', ''), meta.get('reviewed_on', '')
@@ -847,6 +872,8 @@ class Site:
                                meta.get('date', ''), path)
         if re.match(r'^\s*#\s', body):
             html_body = re.sub(r'^<h1[^>]*>.*?</h1>\n?', '', html_body, count=1, flags=re.S)
+        if meta.get('markable') == 'sections' or path in ('history/lessons.html', 'history/open-questions.html', 'history/decisions.html'):
+            html_body = self.markable_sections(html_body, f'{folder}/{path.split("/", 1)[1][:-5]}.md', path)
         self.page(path, meta.get('title', path), byline + extra_top + fb + '<article class="piece">' + html_body + '</article>',
                   self.prov_desk(path, meta.get('desk', ''), meta.get('date', ''), sources=srcs, reviewed=(rb, ro),
                                  extra=extra_prov),
@@ -1183,6 +1210,8 @@ class Site:
         nid = lambda site: 'n_' + re.sub(r'[^a-z0-9]', '_', site)
         nodes = sorted({l['from'] for l in strong} | {l['to'] for l in strong})
         lines = ['flowchart LR'] + [f'  {nid(n)}["{n}"]' for n in nodes] + [f'  {nid(l["from"])} -->|{l["files"]}| {nid(l["to"])}' for l in strong]
+        lines += [f'  click {nid(n)} "../reading-room/{n}.html" "{n}: every file in the snapshot"' for n in nodes
+                  if os.path.exists(os.path.join(OUT, 'reading-room', n + '.html')) or n in self.cat.sites()]
         lines += ['  classDef hub fill:#e8eefc,stroke:#1f4fd1,color:#1b1a17',
                   '  class ' + ','.join(nid(n) for n in nodes if n in ('sgit.ai', 'riskmandate.ai', 'abp.sgit.ai')) + ' hub']
         inbound = {}
@@ -1191,8 +1220,16 @@ class Site:
         outbound = {}
         for l in links:
             outbound[l['from']] = outbound.get(l['from'], 0) + l['files']
-        rows = ''.join(f'<tr><td>{esc(x["site"])}</td><td class="num">{x["files"]}</td><td class="num">{outbound.get(x["site"], 0)}</td>'
-                       f'<td class="num">{inbound.get(x["site"], 0)}</td></tr>'
+        def site_cell(site):
+            ins = sorted((l for l in links if l['to'] == site), key=lambda l: -l['files'])[:6]
+            outs = sorted((l for l in links if l['from'] == site), key=lambda l: -l['files'])[:6]
+            detail = ('<div class="small muted">in: ' + (', '.join(f'{esc(l["from"])} ({l["files"]})' for l in ins) or 'none') +
+                      '<br>out: ' + (', '.join(f'{esc(l["to"])} ({l["files"]})' for l in outs) or 'none') + '</div>')
+            link = f'<a href="{rel(P, "reading-room/" + site + ".html")}">{esc(site)}</a>' if site in self.cat.sites() else esc(site)
+            return f'<details><summary>{link}</summary>{detail}</details>'
+        rows = ''.join(f'<tr><td data-v="{esc(x["site"])}">{site_cell(x["site"])}</td><td class="num" data-v="{x["files"]}">{x["files"]}</td>'
+                       f'<td class="num" data-v="{outbound.get(x["site"], 0)}">{outbound.get(x["site"], 0)}</td>'
+                       f'<td class="num" data-v="{inbound.get(x["site"], 0)}">{inbound.get(x["site"], 0)}</td></tr>'
                        for x in sorted(self.network['sites'], key=lambda x: -(inbound.get(x['site'], 0) + outbound.get(x['site'], 0))))
         md_src = '```mermaid\n' + '\n'.join(lines) + '\n```\n'
         html_body, _ = self.md(md_src, P)
@@ -1201,7 +1238,9 @@ class Site:
                 f'another, in the snapshot of {SNAPSHOT_TAKEN}. The {len(strong)} strongest of {len(links)} links are drawn (each from '
                 f'{strong[-1]["files"] if strong else 0} files or more); the table has every site. Computed by <code>tools/librarian.py</code> into '
                 f'<a href="{rel(P, "data/network.json")}">data/network.json</a>; redrawn on every build.</p>{html_body}'
-                f'<div class="table"><table><thead><tr><th>Site</th><th>Files</th><th>Links out (files)</th><th>Links in (files)</th></tr></thead>'
+                f'<p class="small muted">Click a site on the map or in the table for its page; open a row for its strongest links in and out; '
+                f'click a column heading to sort.</p>'
+                f'<div class="table"><table class="sortable"><thead><tr><th>Site</th><th>Files</th><th>Links out (files)</th><th>Links in (files)</th></tr></thead>'
                 f'<tbody>{rows}</tbody></table></div>')
         self.page(P, 'The network, as its own links draw it', body,
                   self.prov_desk(P, 'Cartographer (computed by the build)', SNAPSHOT_TAKEN, sources=['src:sites/manifest.json']),
@@ -1525,12 +1564,22 @@ class Site:
         for slug, meta, body, raw in self.history:
             self.build_desk_page(f'history/{slug}.html', meta, body, raw, 'Historian')
         P = 'history/index.html'
-        items = ''.join(f'<li><a href="{rel(P, f"history/{s}.html")}">{esc(m.get("title", s))}</a> '
-                        f'<span class="muted">{esc(m.get("covers") or m.get("date", ""))}</span></li>'
-                        for s, m, _, _ in sorted(self.history, key=lambda h: (not h[0].startswith('week'), h[0])))
-        body = (f'<h1>History</h1><p class="lede">The Historian\'s perspective: the week\'s moment, the lessons, the decisions and '
-                f'the contradictions. Neutral: the Historian records, and does not editorialise.</p>'
-                f'<ul class="list big">{items or "<li>Nothing yet.</li>"}</ul>')
+        bodies = {s: b for s, _, b, _ in self.history}
+        n_dec = len(re.findall(r'^### D-\d+', bodies.get('decisions', ''), re.M))
+        n_q = len(re.findall(r'^### Q-\d+', bodies.get('open-questions', ''), re.M))
+        n_les = len(re.findall(r'^### ', bodies.get('lessons', ''), re.M))
+        n_contra = len(re.findall(r'^### ', bodies.get('decisions', '').split('## Contradictions')[-1], re.M)) if '## Contradictions' in bodies.get('decisions', '') else 0
+        tiles = (f'<div class="open-tiles wide4"><a href="{rel(P, "history/decisions.html")}"><b>{n_dec}</b><span>decisions, D-001 on</span></a>'
+                 f'<a href="{rel(P, "history/open-questions.html")}"><b>{n_q}</b><span>open questions</span></a>'
+                 f'<a href="{rel(P, "history/lessons.html")}"><b>{n_les}</b><span>lessons</span></a>'
+                 f'<a href="{rel(P, "history/decisions.html")}#contradictions"><b>{n_contra}</b><span>contradictions</span></a></div>')
+        pieces = [c for c in self.all_cards('history') if c['ref'] not in ('history/decisions', 'history/open-questions', 'history/lessons')]
+        ledgers = [c for c in self.all_cards('history') if c['ref'] in ('history/decisions', 'history/open-questions', 'history/lessons')]
+        body = (f'<h1>Perspective</h1><p class="lede">The Historian\'s desk: what the network\'s changes mean over time. The moments, the '
+                f'connection lines, the lessons every correction taught, the decisions with their why, and the questions nobody has answered. '
+                f'The Historian records; it does not editorialise.</p>{tiles}'
+                f'<section class="fp-sec"><h2>Pieces</h2><div class="cards">{"".join(self.card(P, c) for c in pieces)}</div></section>'
+                f'<section class="fp-sec"><h2>Ledgers, kept every day</h2><div class="cards">{"".join(self.card(P, c) for c in ledgers)}</div></section>')
         self.page(P, 'History', body, self.prov_desk(P, 'Historian', sources=None),
                   md='# History\n\n' + '\n'.join(f'- {m.get("title", s)}' for s, m, _, _ in self.history) + '\n', eyebrow='Historian')
 
@@ -1863,7 +1912,7 @@ DIAGRAMS_JS = '''/* Renders the Cartographer's maps with the bundled Mermaid: no
 (function () {
   if (!window.mermaid) return;
   var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
-  mermaid.initialize({ startOnLoad: true, securityLevel: 'strict', theme: dark ? 'dark' : 'neutral',
+  mermaid.initialize({ startOnLoad: true, securityLevel: 'antiscript', theme: dark ? 'dark' : 'neutral',
                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' });
 })();
 '''

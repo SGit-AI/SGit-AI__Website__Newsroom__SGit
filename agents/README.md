@@ -6,7 +6,7 @@ The newsroom's work is done by desks, each with a role, a mandate and the folder
 
 | Agent | Alias | Kind | Cadence | Writes | Role |
 |---|---|---|---|---|---|
-| [**Editor**](editor.desk/ROLE.md) | `@Editor` | desk | last, every run | `data/frontpage.json`, `data/sections.json`, `admin/` | [ROLE](editor.desk/ROLE.md) · [MANDATE](editor.desk/MANDATE.md) |
+| [**Editor**](editor.desk/ROLE.md) | `@Editor` | desk | last, every run | `data/frontpage.json`, `data/sections.json`, `admin/`, `AUTHORING.md`, `brief/` | [ROLE](editor.desk/ROLE.md) · [MANDATE](editor.desk/MANDATE.md) |
 | [**Librarian**](librarian.desk/ROLE.md) | `@Librarian` | desk | first, every day | `sources/`, `data/changes/`, `data/index.json`, `data/concepts.json`, `data/vaults.json`, `data/network.json` | [ROLE](librarian.desk/ROLE.md) · [MANDATE](librarian.desk/MANDATE.md) |
 | [**Journalist**](journalist.desk/ROLE.md) | `@Journalist` | desk | every day that had changes | `editions/`, `stories/` | [ROLE](journalist.desk/ROLE.md) · [MANDATE](journalist.desk/MANDATE.md) |
 | [**Historian**](historian.desk/ROLE.md) | `@Historian` | desk | every day for lessons and decisions; a piece when there is a moment | `history/` | [ROLE](historian.desk/ROLE.md) · [MANDATE](historian.desk/MANDATE.md) |

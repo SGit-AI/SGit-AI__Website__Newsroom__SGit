@@ -51,6 +51,10 @@ FETCH_EXCEPTIONS = {
 
 DESK_DIRS = ('editions', 'stories', 'history', 'signals', 'maps', 'data', 'runs', 'agents', 'issues', 'briefings')
 COMPUTED = ('data/index.json', 'data/vaults.json')      # titles as the sources wrote them: not desk prose
+# words the principles ban in a desk's own prose (brief/07-principles.md); a quotation is allowed
+BANNED_WORDS = re.compile(r'\b(rungs?)\b', re.I)
+QUOTED = re.compile(r'"[^"\n]*"|\u201c[^\u201d\n]*\u201d|\*\*[^*\n]+\*\*|\*[^*\n]+\*|`[^`\n]+`')
+PROSE_DIRS = ('editions', 'stories', 'history', 'signals', 'maps', 'briefings')
 MODEL_ID = re.compile(r'\b(?:claude|gpt|gemini|llama|mistral)-[a-z0-9.]*\d[a-z0-9.-]*\b|\b(?:opus|sonnet|haiku) \d', re.I)
 
 errors = []
@@ -148,6 +152,8 @@ def check_repo():
                     fail(f'{rel}:{n}', 'em-dash in a desk file (house style)')
                 if MODEL_ID.search(line):
                     fail(f'{rel}:{n}', f'model identifier in a desk file: {MODEL_ID.search(line).group(0)}')
+                if rel.split(os.sep)[0] in PROSE_DIRS and BANNED_WORDS.search(QUOTED.sub('', line)) and not line.lstrip().startswith(('title:', '#')):
+                    fail(f'{rel}:{n}', f'a word the principles ban, outside a quotation: "{BANNED_WORDS.search(QUOTED.sub("", line)).group(0)}" (brief/07-principles.md: say level or step)')
     return len(seen)
 
 

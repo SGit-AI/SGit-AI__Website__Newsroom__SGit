@@ -295,7 +295,7 @@
     var st = fold();
     rows().forEach(function (r) { paintRow(r, st[r.getAttribute('data-id')] || {}); });
     paintCounts(st); applyFilters(); paintDevice(st); paintSel(st); paintBars(st);
-    paintView(st); paintCards(st); paintReadList(st); paintHistory(st);
+    paintView(st); paintCards(st); paintMini(st); paintReadList(st); paintHistory(st);
   }
 
   // ------------------------------------------------------------------ the reader's view: read pieces hidden
@@ -336,6 +336,31 @@
       } else { clue.hidden = true; }
     });
   }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.rd-read');
+    if (!b) return;
+    var item = b.closest('.rd'); if (!item) return;
+    e.preventDefault(); act(item, 'read');
+  });
+  function paintMini(st) {
+    [].slice.call(document.querySelectorAll('.rd .rd-read')).forEach(function (b) {
+      var s = st[b.closest('.rd').getAttribute('data-id')] || {};
+      b.lastChild.textContent = s.read ? ' Read \u2713 \u00b7 mark unread' : ' Mark as read'; setPressed(b, s.read);
+    });
+  }
+  [].slice.call(document.querySelectorAll('table.sortable th')).forEach(function (th, i) {
+    th.addEventListener('click', function () {
+      var tb = th.closest('table').tBodies[0], rows = [].slice.call(tb.rows), asc = th.getAttribute('data-asc') !== '1';
+      rows.sort(function (a, b) {
+        var x = a.cells[i].getAttribute('data-v') || a.cells[i].textContent, y = b.cells[i].getAttribute('data-v') || b.cells[i].textContent;
+        var nx = parseFloat(x), ny = parseFloat(y), r = (!isNaN(nx) && !isNaN(ny)) ? nx - ny : x.localeCompare(y);
+        return asc ? r : -r;
+      });
+      rows.forEach(function (r) { tb.appendChild(r); });
+      [].slice.call(th.parentElement.children).forEach(function (h) { h.removeAttribute('data-asc'); h.classList.remove('sorted'); });
+      th.setAttribute('data-asc', asc ? '1' : '0'); th.classList.add('sorted');
+    });
+  });
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-view], [data-view-go]');
     if (!b) return;

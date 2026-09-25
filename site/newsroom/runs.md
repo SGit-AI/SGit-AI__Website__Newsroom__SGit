@@ -1,5 +1,8 @@
 # Runs
 
+- 2026-09-25T12:35:00Z build.desk: Second batch of the flight notes: the word ban in the validator, the history index as cards with lessons markable one by one, the network map clickable and its table sortable, a badge on every source page naming the target site, images not in the snapshot said so.
+- 2026-09-25T12:31:00Z editor.human: Apply the word ban from brief/07-principles.md to the desks' prose: rung, rungs become step or level outside quotations.
+- 2026-09-25T12:30:00Z editor.desk: The principles of the site (brief/07), the findings rule and the words not to use in AUTHORING.md and every desk's standing prompt.
 - 2026-09-25T12:20:00Z build.desk: Implement the first batch of the flight notes: the approved front page, a sheet and byline on every piece, feedback on every piece, read hides in the reader's view, two views, a history with undo and redo.
 - 2026-09-25T12:19:00Z editor.desk: Give the lead its map: lead_map in data/frontpage.json.
 - 2026-09-25T12:10:00Z build.desk: Capture the editor of record's notes of 25 September (read offline on a plane) as issues, and give the back office an issues board.

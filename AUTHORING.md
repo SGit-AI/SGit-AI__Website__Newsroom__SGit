@@ -133,3 +133,16 @@ syntax error. Build, open the page, and look: a broken diagram shows an error bo
 Refs are `<folder>/<slug>` of a desk file (`stories`, `editions`, `history`, `maps`, `signals`) or `maps/network`. A
 section either lists `items` or takes the newest `limit` from a folder (`from`), skipping what already leads. A brief's
 `link` is a ref, an `nr:` path, a live URL or a `src:` path. `data/sections.json` is the navigation, in order.
+
+## Findings go somewhere visible (principle 8)
+
+A desk that finds a problem while writing (a page it could not find, two sites that disagree, an ask with no answer,
+a count that does not add up) does not leave it in the middle of the prose. It records it as a loose end
+(`data/loose-ends.json`, with `said_at`) or an open question (`history/open-questions.md`, `Q-nnn`), and the piece
+links it in one line ("Finding: ... (le-024)"). The reader learns that something is wrong from the byline or the
+first lines, never from page three.
+
+## Words not to use (principle 12)
+
+`rung`, `rungs`: say *level* or *step*. The validator fails a desk file that uses a banned word in its own prose;
+a quotation of a source that uses it is allowed inside quotation marks. The list is in `brief/07-principles.md`.

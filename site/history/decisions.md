@@ -520,7 +520,7 @@ A decision here is a choice the sources record: a price set, a name chosen, an a
 
 ### D-059: The home page leads with the policy and says which step is sold
 - **Date.** 15 September 2026 · riskmandate.ai
-- **Decision.** The policy leads, insurability is the destination, the first rung is marked *what we sell* and the others *design*; three claims of connector-based discovery are rewritten; no price on the home page.
+- **Decision.** The policy leads, insurability is the destination, the first step is marked *what we sell* and the others *design*; three claims of connector-based discovery are rewritten; no price on the home page.
 - **Context.** The home page claimed a discovery capability the Questions page disclaims.
 - **Rationale.** "you cannot insure what nobody can describe."
 - **Supersedes.** D-033's insurability-led home page.
@@ -839,7 +839,7 @@ A decision here is a choice the sources record: a price set, a name chosen, an a
 
 ### D-097: A free first step, and the phase is users
 - **Date.** 21 September 2026 · riskmandate.ai
-- **Decision.** A new top-level Try it section, the rung below the store's lowest level at no price. The lead's memo sets the measure as people who run the prompts and people who end up with a policy, "not visits, not downloads".
+- **Decision.** A new top-level Try it section, the step below the store's lowest level at no price. The lead's memo sets the measure as people who run the prompts and people who end up with a policy, "not visits, not downloads".
 - **Context.** The offering is built, and what is missing is people who have used it.
 - **Rationale.** "*Nobody buys a full policy until they have made a smaller one.*"
 - **Supersedes.** Nothing stated. The note records that nothing on the site counts the measure yet, and that this is the lead's decision.
@@ -1112,7 +1112,7 @@ sgit.ai v0.2.98 says "99 published keys across 27 pages still carry the legacy r
 
 ### Two risk acceptance interval ladders
 
-risks.sgit.ai's ladder runs 1 hour, 4 hours, 1 to 2 days, 1 to 2 weeks and 1 month, the default rung, with 6 months on its button list ([risks.sgit.ai](https://risks.sgit.ai/llms-full.txt)); sgit.ai's v0.6.5 cites it as "the risks.sgit.ai ladder, 1 hour to 6 months". riskmandate.ai's [Acceptable page](https://riskmandate.ai/acceptable.md) frames the clock differently: "Anything under a week is an incident", and by distance to the line, "roughly a month far above, three months mid, six months at or near the line". Neither page, as read, says whether the two are meant to agree.
+risks.sgit.ai's ladder runs 1 hour, 4 hours, 1 to 2 days, 1 to 2 weeks and 1 month, the default step, with 6 months on its button list ([risks.sgit.ai](https://risks.sgit.ai/llms-full.txt)); sgit.ai's v0.6.5 cites it as "the risks.sgit.ai ladder, 1 hour to 6 months". riskmandate.ai's [Acceptable page](https://riskmandate.ai/acceptable.md) frames the clock differently: "Anything under a week is an incident", and by distance to the line, "roughly a month far above, three months mid, six months at or near the line". Neither page, as read, says whether the two are meant to agree.
 
 ### A GDPR graph that one site lists and another says does not exist
 

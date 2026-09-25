@@ -27,7 +27,9 @@
       "writes": [
         "data/frontpage.json",
         "data/sections.json",
-        "admin/"
+        "admin/",
+        "AUTHORING.md",
+        "brief/"
       ],
       "outputs": [
         "data/frontpage.json: the lead, the top stories, the home page's sections in order, the briefs",

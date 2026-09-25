@@ -32,6 +32,8 @@ Belongs to: the editor of record
 - data/frontpage.json
 - data/sections.json
 - admin/
+- AUTHORING.md
+- brief/
 - runs/
 - site/
 - version.txt

@@ -3,6 +3,6 @@
 (function () {
   if (!window.mermaid) return;
   var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
-  mermaid.initialize({ startOnLoad: true, securityLevel: 'strict', theme: dark ? 'dark' : 'neutral',
+  mermaid.initialize({ startOnLoad: true, securityLevel: 'antiscript', theme: dark ? 'dark' : 'neutral',
                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' });
 })();
