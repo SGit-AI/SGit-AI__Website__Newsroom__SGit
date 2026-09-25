@@ -1,0 +1,125 @@
+{
+ "about": "Every release of sgit.newsroom.sgit.ai: appended by tools/release.sh, read by the build (which never runs git).",
+ "releases": [
+  {
+   "version": "v0.1.0",
+   "date": "2026-09-25",
+   "time": "00:25",
+   "commit": "1d4e87cc9",
+   "title": "the first sgit newsroom, readable offline",
+   "notes": [
+    "signals/: 9 cross-pollination signals (6 of 7 seeds held; append lanes dropped: all four",
+    "data/loose-ends.json: 20 loose ends (16 open, 2 closed, 2 unclear). The interview-page",
+    "data/concepts.json: 35 concepts; pages per concept computed from the snapshot.",
+    "data/index.json (675 pages), data/vaults.json (36 vaults, read keys as published).",
+    "site/: 2082 pages built from the above, validated: no external resources, no fetch(),"
+   ]
+  },
+  {
+   "version": "v0.1.1",
+   "date": "2026-09-25",
+   "time": "08:02",
+   "commit": "d52f7dc2e",
+   "title": "run-local.sh, and the .md twins of linked network pages brought home",
+   "notes": [
+    "run-local.sh: online, fetches the .md twin of every linked network page not yet on disk",
+    "offline rebuilds and serves; --serve only serves; --refresh re-takes the snapshot first.",
+    "tools/fetch_missing.py: reads the external links in site/, fetches their text twins into",
+    "641 source files added: the index grows from 675 to 1318 pages, 29 to 32 sites.",
+    "Desk files: 55 links to sgit.ai update notes pointed at repo content paths that are not",
+    "Build: headings that link to their own anchor keep it; riskmandate.ai release notes resolve",
+    "Validator: scans all of sources/ (tracked or not); sk- API key pattern anchored."
+   ]
+  },
+  {
+   "version": "v0.1.2",
+   "date": "2026-09-25",
+   "time": "08:20",
+   "commit": "742cf5082",
+   "title": "the reading list with local feedback, and source pages on paper",
+   "notes": [
+    "Reading room and the new-pages page: one filterable list of 96 changes since 18 September",
+    "tools/feedback.js (site/assets/feedback.js): feedback as an append-only event log in",
+    "Every source page: a feedback bar (opening the page marks it read), and the document",
+    "Phone: bottom sheet for one item (read, star, vote, note, memo, next unread) and a fixed",
+    "run-local.sh: online check tries curl first; fetch_sources.py falls back to the system CA"
+   ]
+  },
+  {
+   "version": "v0.1.3",
+   "date": "2026-09-25",
+   "time": "08:24",
+   "commit": "83c7223f6",
+   "title": "vault apps framed inside the newsroom; vaults as cards",
+   "notes": [
+    "vaults/app/<slug>.html for the five seed vaults: the newsroom navigation stays, a dark",
+    "Vaults page: 36 cards instead of a six-column table (category, date, id and size on one"
+   ]
+  },
+  {
+   "version": "v0.1.4",
+   "date": "2026-09-25",
+   "time": "09:08",
+   "commit": "c83b327a9",
+   "title": "Editor and Cartographer desks, maps with bundled Mermaid, the magazine front page, admin back office",
+   "notes": []
+  },
+  {
+   "version": "v0.1.5",
+   "date": "2026-09-25",
+   "time": "09:25",
+   "commit": "08c1295cb",
+   "title": "the first full newsroom run (Journalist x2, Historian, Cartographer, Editor)",
+   "notes": [
+    "8 new pieces: sgit.ai v0.1.1 to v0.6.8, RiskMandate to v1.34.8, the five business plans, the 36",
+    "History: the story so far (29 June to 24 September), 124 decisions D-001 to D-124, 29 open questions.",
+    "Maps: the network and RiskMandate as Wardley maps, a timeline, concept mindmaps, the newsroom's",
+    "Editor: the front page composed (lead: brief to build in a day), 5 standing prompts in admin/prompts,"
+   ]
+  },
+  {
+   "version": "v0.1.6",
+   "date": "2026-09-25",
+   "time": "12:09",
+   "commit": "18b68b419",
+   "title": "the flight notes captured as 45 issues (issues-fs-lite), with a kanban and a page per issue in admin",
+   "notes": [
+    "admin/inbox/2026-09-25__notes-from-the-flight.md: the editor of record's notes verbatim, the source every issue cites.",
+    "issues/: 8 epics (reading experience, personalised site, chat and relay, content and editorial, maps and data,",
+    "tools/build.py renders admin/issues/ (kanban, filters by epic, owner, priority) and one page per issue;"
+   ]
+  },
+  {
+   "version": "v0.1.7",
+   "date": "2026-09-25",
+   "time": "12:10",
+   "commit": "026dd52ba",
+   "title": "issues/ is a shared folder every desk may write; the inbox filing recorded under the Editor desk; tools/release.sh gates a release on every check",
+   "notes": []
+  },
+  {
+   "version": "v0.1.8",
+   "date": "2026-09-25",
+   "time": "12:18",
+   "commit": "afd08468f",
+   "title": "the approved front page, a sheet and byline on every piece, feedback everywhere, the reader's view that hides what is read, history with undo and redo",
+   "notes": []
+  },
+  {
+   "version": "v0.1.9",
+   "date": "2026-09-25",
+   "time": "12:24",
+   "commit": "c5e97dc65",
+   "title": "the principles (no rungs, findings visible), lessons markable one by one, a clickable and sortable network, a badge on every source page",
+   "notes": []
+  },
+  {
+   "version": "v0.1.10",
+   "date": "2026-09-25",
+   "time": "12:33",
+   "commit": "b927dad1d",
+   "title": "a side pane on every page (peek a link beside the page, notes, a chat with tools over the site), briefing pages per target site, the first relayed message",
+   "notes": []
+  }
+ ]
+}

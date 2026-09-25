@@ -219,6 +219,8 @@ class Site:
         self.network = load_json('data/network.json', {'sites': [], 'links': []})
         self.agents = load_json('data/agents.json', {'agents': []})['agents']
         self.runs = []
+        self.releases = load_json('data/releases.json', {'releases': []})['releases']
+        self.shots = load_json('assets/shots/manifest.json', {})
         self.concepts = load_json('data/concepts.json', [])
         self.loose = load_json('data/loose-ends.json', [])
         self.index = load_json('data/index.json', [])
@@ -614,6 +616,11 @@ class Site:
             if s and m.group(2) >= READING_SINCE:
                 items.append(dict(s=s, date=m.group(2), time='', site='riskmandate.ai', section='versions',
                                   title=f'v{m.group(1)}: {m.group(3).strip()}', live=live_url(s.url)))
+        for r in self.releases:
+            if r['date'] >= READING_SINCE:
+                items.append(dict(s=None, date=r['date'], time=r.get('time', ''), site='sgit.newsroom.sgit.ai', section='releases',
+                                  title=f'{r["version"]}: {r["title"]}', live='', page=f'admin/versions.html#{r["version"]}', sha=r.get('commit', '')[:12],
+                                  id_=f'releases/{r["version"]}'))
         for p, s in sorted(self.cat.sources.items()):
             m = re.match(r'cli-briefs/(\d{2})/(\d{2})/', p)
             if m and s.page and f'2026-{m.group(1)}-{m.group(2)}' >= READING_SINCE:
@@ -654,6 +661,20 @@ class Site:
             out.append(f'<section class="rl-day"><h3>{label} <span class="rl-n">{len(days[date])} items</span></h3><ol class="rl-rows">')
             for it in days[date]:
                 s = it['s']
+                if s is None:                      # one of this newsroom's own releases
+                    out.append(
+                        f'<li class="rl-row" data-id="{esc(it["id_"])}" data-sha="{esc(it["sha"])}" data-title="{esc(it["title"])}" '
+                        f'data-site="{esc(it["site"])}" data-section="{esc(it["section"])}" data-date="{date}" data-time="{it["time"]}" '
+                        f'data-live="" data-page="{esc(it["page"])}">'
+                        f'<span class="rl-dot" aria-hidden="true"></span><span class="rl-time">{it["time"]}</span>'
+                        f'<div class="rl-main"><a class="rl-title" href="{esc(rel(P, it["page"]))}">{esc(it["title"])}</a>'
+                        f'<div class="rl-meta"><span class="rl-site s-nr">{esc(it["site"])}</span>'
+                        f'<span>{esc(it["section"])}</span><span class="only-narrow">{it["time"]}</span><span class="rl-flags"></span></div></div>'
+                        f'<div class="rl-acts"><button type="button" class="ib" data-act="star" aria-label="Star" aria-pressed="false">{ICON["star"]}</button>'
+                        f'<button type="button" class="ib" data-act="up" aria-label="Useful" aria-pressed="false">{ICON["up"]}</button>'
+                        f'<button type="button" class="ib" data-act="down" aria-label="Not useful" aria-pressed="false">{ICON["down"]}</button>'
+                        f'<button type="button" class="ib" data-act="open" aria-label="Notes and details">{ICON["note"]}</button></div></li>')
+                    continue
                 out.append(
                     f'<li class="rl-row" data-id="{esc(s.path)}" data-sha="{s.sha[:12]}" data-title="{esc(it["title"])}" '
                     f'data-site="{esc(it["site"])}" data-section="{esc(it["section"])}" data-date="{date}" data-time="{it["time"]}" '
@@ -700,7 +721,7 @@ class Site:
     def build_new_pages_page(self, s):
         """The new-pages list as a reading list (sgit.ai only), with the table as published below it."""
         P = s.page
-        items = [it for it in self.reading_list() if it['site'] == 'sgit.ai']
+        items = [it for it in self.reading_list() if it['site'] == 'sgit.ai' and it['s'] is not None]
         body, _ = self.source_body(s)
         html_ = (self.crumbs(s) + f'<h1>What was published on sgit.ai since 18 September</h1>'
                  f'<p class="lede">{len(items)} new pages, newest first, with the time of the commit that published each. Filter, mark and note '
@@ -827,6 +848,35 @@ class Site:
         meta, body = mdlite.front_matter(text)
         return meta, body, text
 
+    def semantic_twin(self, folder, page):
+        """<piece>.json beside <piece>.md: the graph the prose came from, rendered as a diagram and a list by type."""
+        jp = rp(f'{folder}/{page.split("/", 1)[1][:-5]}.json')
+        if not os.path.exists(jp):
+            return ''
+        g = json.load(open(jp, encoding='utf-8'))
+        colours = {'Evidence': '#e8eefc', 'Fact': '#e8eefc', 'Statement': '#f1ece2', 'Observation': '#f1ece2', 'Idea': '#fdf3e3',
+                   'Hypothesis': '#fdf0e6', 'Question': '#fbeadc', 'Comment': '#ece7dd'}
+        nid = lambda i: 'n_' + re.sub(r'[^a-zA-Z0-9]', '_', i)
+        lines = ['flowchart TD']
+        for n in g.get('nodes', []):
+            text = re.sub(r'["\[\]{}()|]', '', n.get('text', ''))[:70]
+            lines.append(f'  {nid(n["id"])}["{n.get("type", "")}: {text}"]')
+            lines.append(f'  style {nid(n["id"])} fill:{colours.get(n.get("type"), "#fff")},stroke:#6b665c,color:#1b1a17')
+        for e in g.get('edges', []):
+            lines.append(f'  {nid(e["from"])} -->|{e.get("rel", "")}| {nid(e["to"])}')
+        diagram, _ = self.md('```mermaid\n' + '\n'.join(lines) + '\n```', page)
+        link, _, _ = self.resolver(page)
+        by_type = {}
+        for n in g.get('nodes', []):
+            by_type.setdefault(n.get('type', 'Other'), []).append(n)
+        lists = ''.join(f'<h3>{esc(t)} ({len(ns)})</h3><ul>' + ''.join(
+            f'<li id="{esc(nid(n["id"]))}">{esc(n.get("text", ""))}' + (f' <span class="small">({link(n["source"], "source")})</span>' if n.get('source') else '') + '</li>'
+            for n in ns) + '</ul>' for t, ns in by_type.items())
+        self.write(f'{folder}/{page.split("/", 1)[1][:-5]}.json', json.dumps(g, indent=1, ensure_ascii=False))
+        return (f'<section class="twin"><h2>The semantic graph behind this piece</h2><p class="muted small">An experiment (issue 029): the desk wrote '
+                f'the graph first, {len(g.get("nodes", []))} nodes and {len(g.get("edges", []))} edges, and the prose from it. '
+                f'<a href="{rel(page, folder + "/" + page.split("/", 1)[1][:-5] + ".json")}">The JSON twin</a>.</p>{diagram}{lists}</section>')
+
     def markable_sections(self, html_body, id_prefix, page):
         """Each <h3> and what follows it becomes an item the reader can mark read on its own (a lesson, a decision,
         a question), keyed by the page and the heading's anchor, with the sha of its text."""
@@ -871,11 +921,41 @@ class Site:
                   f'<div><span class="lbl">State</span> {review}</div></div></header>')
         fb = self.fb_bar_piece(f'{folder}/{path.split("/", 1)[1][:-5]}.md', sha, meta.get('title', ''), desk, section,
                                meta.get('date', ''), path)
+        cards = meta.get('cards') or []
+        if isinstance(cards, str):
+            cards = [cards]
+        if cards:
+            link, _, target = self.resolver(path)
+            tiles = ''
+            for c in cards:
+                label, _, val = c.partition(':')
+                val = val.strip()
+                val_html = esc(val)
+                if re.match(r'^(https?://|src:)\S+$', val):
+                    val_html = link(val, esc(val.replace('https://', '')[:60]))
+                m = re.search(r'\((le-\d+|Q-\d+)\)\s*$', val)
+                if m:
+                    ref = m.group(1)
+                    href = rel(path, 'loose-ends/index.html') + '#' + ref if ref.startswith('le-') else rel(path, 'history/open-questions.html') + '#' + mdlite.slugify(ref)
+                    val_html = esc(val[:m.start()].strip()) + f' <a href="{href}">{ref}</a>'
+                tiles += f'<div class="bcard"><span class="lbl">{esc(label.strip())}</span><span>{val_html}</span></div>'
+            fb = f'<div class="bcards">{tiles}</div>' + fb
+        twin_html = self.semantic_twin(folder, path)
+        shots = ''
+        for u in srcs:
+            sh = self.shots.get(u.replace('.md', '.html') if u.startswith('http') else u)
+            if sh and sh.get('ok') and os.path.exists(rp(sh['file'])):
+                src_page = self.cat.find_url(u) if u.startswith('http') else None
+                href = rel(path, src_page.link) if src_page else u
+                shots += (f'<a class="shot" href="{esc(href)}" title="{esc(u)}"><img src="{esc(rel(path, sh["file"]))}" alt="{esc(u)}" loading="lazy">'
+                          f'<span>{esc(urlparse(u).netloc)}{esc(urlparse(u).path[:40])}</span></a>')
+        if shots:
+            fb = f'<div class="shots"><span class="lbl">The pages this piece is about</span><div class="shot-strip">{shots}</div></div>' + fb
         if re.match(r'^\s*#\s', body):
             html_body = re.sub(r'^<h1[^>]*>.*?</h1>\n?', '', html_body, count=1, flags=re.S)
         if meta.get('markable') == 'sections' or path in ('history/lessons.html', 'history/open-questions.html', 'history/decisions.html'):
             html_body = self.markable_sections(html_body, f'{folder}/{path.split("/", 1)[1][:-5]}.md', path)
-        self.page(path, meta.get('title', path), byline + extra_top + fb + '<article class="piece">' + html_body + '</article>',
+        self.page(path, meta.get('title', path), byline + extra_top + fb + '<article class="piece">' + html_body + '</article>' + twin_html,
                   self.prov_desk(path, meta.get('desk', ''), meta.get('date', ''), sources=srcs, reviewed=(rb, ro),
                                  extra=extra_prov),
                   md=raw, eyebrow='', kind='newsroom', toc=heads)
@@ -1110,7 +1190,7 @@ class Site:
                 kind, where, _ = target(br['link'] if br['link'].startswith(('http', 'src:', 'nr:')) else 'nr:' + br['link'])
                 link = f' <a href="{esc(rel(P, where) if kind == "local" else where)}">→</a>'
             briefs.append(f'<li>{esc(br["text"])}{link}</li>')
-        recent = self.reading_list()[:5]
+        recent = [it for it in self.reading_list() if it['s'] is not None][:5]
         reading = ''.join(f'<div class="rr-item rd" data-id="{esc(it["s"].path)}" data-sha="{it["s"].sha[:12]}" data-title="{esc(it["title"])}" '
                           f'data-site="{esc(it["site"])}" data-section="{esc(it["section"])}" data-date="{it["date"]}" data-page="{esc(it["s"].link)}">'
                           f'<span class="t">{it["time"]}</span><div><a href="{rel(P, it["s"].link)}">{esc(it["title"])}</a>'
@@ -1421,6 +1501,26 @@ class Site:
         self.page(P, 'Briefings', body, self.prov_desk(P, 'Editor', sources=None), eyebrow='Briefings',
                   md='# Briefings\n\n' + '\n'.join(f'- [{s_}]({s_}.md): {n} items' for s_, n, *_ in index_rows) + '\n')
 
+    def build_versions(self):
+        P = 'admin/versions.html'
+        rows = ''
+        for r in sorted(self.releases, key=lambda r: [int(x) for x in r['version'][1:].split('.')], reverse=True):
+            notes = ''.join(f'<li>{esc(n)}</li>' for n in r.get('notes', []))
+            commit = (f' · <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/{esc(r["commit"])}">{esc(r["commit"][:9])} ↗</a>'
+                      if r.get('commit') else '')
+            rows += (f'<section class="rd sec" id="{esc(r["version"])}" data-id="releases/{esc(r["version"])}" data-sha="{esc(r.get("commit", "")[:12])}" '
+                     f'data-title="{esc(r["version"] + ": " + r["title"])}" data-site="sgit.newsroom.sgit.ai" data-section="releases" data-date="{esc(r["date"])}" '
+                     f'data-page="admin/versions.html#{esc(r["version"])}">'
+                     f'<button type="button" class="rd-read" data-a="read">{ICON["check"]}<span> Mark as read</span></button>'
+                     f'<h3>{esc(r["version"])} · {esc(r["date"])} {esc(r.get("time", ""))}{commit}</h3><p>{esc(r["title"])}</p>'
+                     + (f'<ul>{notes}</ul>' if notes else '') + '</section>')
+        body = (f'<p class="crumbs"><a href="{rel(P, "admin/index.html")}">Admin</a> / versions</p><h1>Releases of this newsroom</h1>'
+                f'<p class="lede">Every release of sgit.newsroom.sgit.ai, newest first: {len(self.releases)} so far. This newsroom is part of the '
+                f'universe it reports on (principle 5): its releases appear in the reading room like any other site\'s, and the Journalist covers them.</p>'
+                f'<article class="piece">{rows}</article>')
+        self.page(P, 'Releases', body, self.prov_desk(P, 'Build (from data/releases.json)', sources=None), eyebrow='Back office',
+                  md='# Releases\n\n' + '\n'.join(f'- {r["version"]} ({r["date"]}): {r["title"]}' for r in self.releases) + '\n')
+
     def build_admin(self):
         """The back office: what each desk did, what waits for review, the front page's configuration, the editor's notes and
         the desks' standing prompts. Public like the rest of the site: nothing secret belongs here."""
@@ -1456,7 +1556,7 @@ class Site:
                 f'rest of the site: nothing secret belongs here.</p>'
                 f'<p class="jump"><a href="#desks">Desks</a> · <a href="#queue">Review queue ({len(queue)})</a> · <a href="#front">Front page</a> · '
                 f'<a href="#notes">Editor\'s notes</a> · <a href="{rel(P, "admin/prompts.html")}">Prompts ({len(prompts)})</a> · '
-                f'<a href="#inbox">Inbox ({len(inbox)})</a> · <a href="{rel(P, "admin/issues/index.html")}">Issues ({n_open} open)</a> · <a href="#run">How to run</a> · <a href="{rel(P, "newsroom/runs.html")}">All runs ({len(self.runs)})</a></p>'
+                f'<a href="#inbox">Inbox ({len(inbox)})</a> · <a href="{rel(P, "admin/issues/index.html")}">Issues ({n_open} open)</a> · <a href="{rel(P, "admin/versions.html")}">Releases ({len(self.releases)})</a> · <a href="#run">How to run</a> · <a href="{rel(P, "newsroom/runs.html")}">All runs ({len(self.runs)})</a></p>'
                 f'<h2 id="desks">Desks</h2><div class="table"><table><thead><tr><th>Desk</th><th>Cadence</th><th>Last run</th><th>Last task</th>'
                 f'<th>Prompt</th></tr></thead><tbody>{desk_rows}</tbody></table></div>'
                 f'<h2 id="queue">Waiting for the editor of record ({len(queue)})</h2><p>Every piece whose <code>reviewed_by</code> is empty. '
@@ -1952,6 +2052,13 @@ class Site:
         self.write('assets/style.css', read(os.path.join(ROOT, 'tools', 'style.css')))
         self.write('assets/feedback.js', read(os.path.join(ROOT, 'tools', 'feedback.js')))
         self.write('assets/panel.js', read(os.path.join(ROOT, 'tools', 'panel.js')))
+        shots = rp('assets/shots')
+        if os.path.isdir(shots):
+            for dirpath, _, files in os.walk(shots):
+                for name in sorted(files):
+                    if name.endswith('.webp'):
+                        full = os.path.join(dirpath, name)
+                        self.write(os.path.relpath(full, ROOT).replace(os.sep, '/'), open(full, 'rb').read(), binary=True)
         self.write('assets/mermaid.min.js', open(os.path.join(ROOT, 'tools', 'vendor', 'mermaid.min.js'), 'rb').read(), binary=True)
         self.write('assets/diagrams.js', DIAGRAMS_JS)
         self.write('CNAME', DOMAIN + '\n')
@@ -1973,6 +2080,7 @@ class Site:
         self.build_loose_ends()
         self.build_agents()
         self.build_issues()
+        self.build_versions()
         self.build_briefings()
         self.build_maps()
         self.build_news()

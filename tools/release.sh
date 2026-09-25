@@ -7,6 +7,16 @@ cd "$(dirname "$0")/.."
 VER="${1:?version, e.g. 0.1.8}"; MSG="${2:?one sentence}"
 [[ "$VER" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "version must be X.Y.Z" >&2; exit 2; }
 echo "v$VER" > version.txt
+python3 - "$VER" "$MSG" "${RELEASE_BODY:-}" <<'PY'
+import json, sys, datetime, os
+ver, msg, body = sys.argv[1], sys.argv[2], sys.argv[3]
+p = 'data/releases.json'; d = json.load(open(p)) if os.path.exists(p) else {'about': '', 'releases': []}
+d['releases'] = [r for r in d['releases'] if r['version'] != 'v' + ver]
+notes = [l.strip('- ').strip() for l in (open(body).read() if body and os.path.exists(body) else '').split('\n') if l.strip().startswith('-')]
+now = datetime.datetime.now(datetime.timezone.utc)
+d['releases'].append({'version': 'v' + ver, 'date': now.strftime('%Y-%m-%d'), 'time': now.strftime('%H:%M'), 'commit': '', 'title': msg, 'notes': notes})
+json.dump(d, open(p, 'w'), indent=1, ensure_ascii=False)
+PY
 python3 tools/librarian.py >/dev/null
 python3 tools/build.py | tail -1
 python3 tools/validate.py | tail -1

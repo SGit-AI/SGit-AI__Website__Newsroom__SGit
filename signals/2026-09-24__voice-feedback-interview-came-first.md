@@ -2,6 +2,7 @@
 title: riskmandate.ai had a voice feedback interview two weeks before sgit.ai briefed the pattern
 date: 2026-09-24
 desk: Developer
+standfirst: riskmandate.ai has had a voice feedback interview page since 9 September, a prompt the reader pastes into a chat assistant that interviews them by voice and writes a debrief they send back; sgit.ai's brief of 24 September describes the same shape as a new, reusable pattern and does not mention it.
 from_site: riskmandate.ai
 to_site: sgit.ai
 status: new
@@ -17,7 +18,9 @@ reviewed_by:
 reviewed_on:
 ---
 
-**riskmandate.ai has run a voice interview page since early September: a prompt the reader pastes into a chat assistant, which interviews them by voice and writes a debrief they send back. sgit.ai's brief of 24 September describes the same shape as a new, reusable pattern and does not mention it.**
+**riskmandate.ai has had a voice feedback interview page since 9 September, a prompt the reader pastes into a chat assistant that interviews them by voice and writes a debrief they send back; sgit.ai's brief of 24 September describes the same shape as a new, reusable pattern and does not mention it.**
+
+Finding: sgit.ai's brief does not cite the earlier page, and riskmandate.ai's new interview page does not link its own feedback page ([le-024](nr:loose-ends)).
 
 ## Side A: riskmandate.ai's feedback page
 

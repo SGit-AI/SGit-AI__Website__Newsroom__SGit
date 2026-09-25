@@ -2,6 +2,7 @@
 title: The key management call names one business plan; two more depend on it
 date: 2026-09-24
 desk: Architect
+standfirst: sgit.ai's key management call cites one business plan, Agent as Webmaster, as its case that keys are multiplying; two more plans published on sgit.ai the same day, Lesson Loop and Company X-Ray, depend on easy key handover, and the call does not mention either.
 from_site: sgit.ai
 to_site: sgit.ai
 status: new
@@ -17,7 +18,9 @@ reviewed_by:
 reviewed_on:
 ---
 
-**sgit.ai's call for collaboration on vault key management argues that keys are multiplying, and cites one business plan, Agent as Webmaster, as its case. Two plans published on sgit.ai later the same day depend on easy key handover: Lesson Loop says so and links the call; Company X-Ray relies on it without linking it. The call does not mention either.**
+**sgit.ai's key management call cites one business plan, Agent as Webmaster, as its case that keys are multiplying; two more plans published on sgit.ai the same day, Lesson Loop and Company X-Ray, depend on easy key handover, and the call does not mention either.**
+
+Lesson Loop says so and links the call; Company X-Ray relies on it without linking it.
 
 ## Side A: the call
 

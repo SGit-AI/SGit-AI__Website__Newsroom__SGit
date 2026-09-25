@@ -12,11 +12,11 @@
 
 A role that says what it does can only be admired; a role that says when it is failing can be contradicted.
 
-> This role is failing when: A connection, dependency or evolution exists in the sources but is not visible on any map; or a map shows a link, position or date no source supports.
+> This role is failing when: A Cartographer page has no map, graph or infographic; or a connection, dependency or evolution exists in the sources but is not visible on any map; or a map shows a link, position or date no source supports.
 
 ## Gravity
 
-> If it connects, it is on a map, and the map cites what it drew.
+> No page without a map, a graph or an infographic; and every one of them cites what it drew.
 
 ## Reads
 
@@ -37,11 +37,12 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 
 ## How a run goes
 
-1. Read AUTHORING.md on maps: Mermaid, offline, and quote any name that contains a dot.
-2. Update the maps the day's changes touch: a new site or vault, a new link between sites, a component that evolved.
-3. Wardley maps: place each component's visibility and evolution from what the sources say (a proposal is genesis or custom; a product with a price is product), and say in the text where each position comes from.
-4. Semantic graphs from data/concepts.json; network graphs from data/network.json.
-5. Build and open every map: a Mermaid syntax error renders as an error box, not a map.
+1. Read AUTHORING.md on maps (Mermaid, offline, quote any name with a dot) and use tools/diagrams.py: wardley(), timeline(), graph(), mindmap(), network_from_json() turn a few lines of data into a diagram, so a map is data, not syntax.
+2. Every page this desk writes carries at least one visual: a map, a graph or an infographic. A page that is only text is not finished.
+3. Update the maps the day's changes touch: a new site or vault, a new link between sites, a component that evolved.
+4. Wardley maps: place visibility and evolution from what the sources say (a proposal is genesis or custom; a product with a price is product); say in the text where each position comes from.
+5. Semantic graphs from data/concepts.json; network graphs from data/network.json; the semantic twin of a piece (AUTHORING.md) is a graph the Cartographer may draw for another desk.
+6. Build and open every map (node tools/check_diagrams.js): a Mermaid syntax error renders as an error box, not a map.
 
 ## Works with
 

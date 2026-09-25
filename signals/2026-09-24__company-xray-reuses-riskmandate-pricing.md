@@ -2,6 +2,7 @@
 title: Company X-Ray reuses RiskMandate's pricing ladder, and RiskMandate has no sign of knowing
 date: 2026-09-24
 desk: Architect
+standfirst: sgit.ai has a business plan, Company X-Ray, that takes RiskMandate.ai's four-level pricing ladder and its delivery pattern as they stand; riskmandate.ai owns that ladder, and nothing on it mentions the X-Ray plan.
 from_site: sgit.ai
 to_site: riskmandate.ai
 status: new
@@ -15,7 +16,7 @@ reviewed_by:
 reviewed_on:
 ---
 
-**sgit.ai has a business plan, Company X-Ray, that takes RiskMandate.ai's four-level pricing ladder and its delivery pattern as they stand. riskmandate.ai is the site that owns that ladder, and nothing on it mentions the X-Ray plan.**
+**sgit.ai has a business plan, Company X-Ray, that takes RiskMandate.ai's four-level pricing ladder and its delivery pattern as they stand; riskmandate.ai owns that ladder, and nothing on it mentions the X-Ray plan.**
 
 ## Side A: sgit.ai's Company X-Ray plan
 

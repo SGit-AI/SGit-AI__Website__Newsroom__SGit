@@ -2,6 +2,7 @@
 title: riskmandate.ai built the interview page; sgit.ai's briefs index still lists the ask as open
 date: 2026-09-24
 desk: Cartographer
+standfirst: riskmandate.ai has built the interview page sgit.ai asked for, the same day it was asked; sgit.ai's briefs index, in the snapshot taken late that night, still carries the ask as open.
 from_site: riskmandate.ai
 to_site: sgit.ai
 status: new
@@ -17,7 +18,7 @@ reviewed_by:
 reviewed_on:
 ---
 
-**riskmandate.ai has built the interview page sgit.ai asked for, the same day it was asked. sgit.ai's briefs index, in the snapshot taken late that night, still carries the ask as open.**
+**riskmandate.ai has built the interview page sgit.ai asked for, the same day it was asked; sgit.ai's briefs index, in the snapshot taken late that night, still carries the ask as open.**
 
 ## Side A: riskmandate.ai built it
 

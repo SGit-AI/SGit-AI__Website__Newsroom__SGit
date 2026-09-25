@@ -194,8 +194,47 @@ def check_issues():
     return len(items)
 
 
+TWIN_TYPES = {'Evidence', 'Fact', 'Statement', 'Observation', 'Idea', 'Hypothesis', 'Question', 'Comment'}
+TWIN_RELS = {'supports', 'contradicts', 'cites', 'asks_about', 'answers', 'follows', 'leads_to'}
+
+
+def check_twins():
+    """<piece>.json beside a desk file: types, relations, edges that name real nodes, sources on Evidence and Fact."""
+    import json
+    n = 0
+    for d in ('stories', 'editions', 'history', 'signals', 'maps'):
+        base = os.path.join(ROOT, d)
+        if not os.path.isdir(base):
+            continue
+        for name in sorted(os.listdir(base)):
+            if not name.endswith('.json'):
+                continue
+            n += 1
+            where = f'{d}/{name}'
+            try:
+                g = json.load(open(os.path.join(base, name), encoding='utf-8'))
+            except ValueError as e:
+                fail(where, f'not JSON: {e}'); continue
+            if not os.path.exists(os.path.join(base, name[:-5] + '.md')):
+                fail(where, 'no piece beside it (a twin needs its .md)')
+            ids = set()
+            for node in g.get('nodes', []):
+                ids.add(node.get('id'))
+                if node.get('type') not in TWIN_TYPES:
+                    fail(where, f'node {node.get("id")}: type {node.get("type")!r} is not one of {sorted(TWIN_TYPES)}')
+                if node.get('type') in ('Evidence', 'Fact') and not node.get('source'):
+                    fail(where, f'node {node.get("id")}: an {node.get("type")} names its source')
+            for e in g.get('edges', []):
+                if e.get('rel') not in TWIN_RELS:
+                    fail(where, f'edge {e.get("from")}->{e.get("to")}: rel {e.get("rel")!r} is not one of {sorted(TWIN_RELS)}')
+                if e.get('from') not in ids or e.get('to') not in ids:
+                    fail(where, f'edge {e.get("from")}->{e.get("to")} names a node that does not exist')
+    return n
+
+
 def main():
     pages = check_site()
+    twins = check_twins()
     issues = check_issues()
     files = check_repo()
     runs = check_agents()
@@ -205,7 +244,7 @@ def main():
         print(f'validate: {len(errors)} failures')
         sys.exit(1)
     print(f'validate: ok ({pages} rendered pages checked for links, provenance and twins; '
-          f'{files} repository files and all of site/ scanned for credentials; {runs} run records within their mandates; {issues} issues well formed)')
+          f'{files} repository files and all of site/ scanned for credentials; {runs} run records within their mandates; {issues} issues well formed; {twins} semantic twins checked)')
 
 
 if __name__ == '__main__':

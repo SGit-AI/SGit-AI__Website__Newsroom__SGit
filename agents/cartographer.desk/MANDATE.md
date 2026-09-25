@@ -19,10 +19,11 @@ Belongs to: @Journalist
 - A position on a map with no source
 - A map that needs the network to render
 - A connection it did not see in a link or a source
+- A page of its own with no visual on it
 
 ## Wrong when
 
-- A connection, dependency or evolution exists in the sources but is not visible on any map; or a map shows a link, position or date no source supports.
+- A Cartographer page has no map, graph or infographic; or a connection, dependency or evolution exists in the sources but is not visible on any map; or a map shows a link, position or date no source supports.
 
 ## May write
 

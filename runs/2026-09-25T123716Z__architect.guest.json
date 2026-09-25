@@ -1,0 +1,20 @@
+{
+  "when": "2026-09-25T12:37:16Z",
+  "agent": "architect.guest",
+  "kind": "desk",
+  "task": "Issue 033: review the ten signals against principle 10 (first line says site A has X, site B does Y and does not seem to know; title says what is reported), add a standfirst to each, shorten the pt.newsroom.sgit.ai agent-files signal to the two sides and the action with the detail on its briefing page, and check the voice-feedback signal against riskmandate.ai's feedback page.",
+  "folders_changed": [
+    "signals/",
+    "data/loose-ends.json",
+    "issues/",
+    "runs/"
+  ],
+  "did": [
+    "signals/: 10 signals edited. 9 first paragraphs rewritten as one-line statements (every fact and link kept; a second short paragraph holds facts that did not fit the line in 4 of them); standfirst added to all 10; one banned word in the Architect's own prose (two-risk-acceptance-ladders) replaced by step; the pt-agent-files signal cut to the one line, the two sides and the action, pointing to briefings/pt.newsroom.sgit.ai.md, and retitled so the title says what is reported.",
+    "signals/2026-09-24__voice-feedback-interview-came-first.md: checked against sources/sites/riskmandate.ai/feedback.md; the signal already finds the page on riskmandate.ai and quotes it exactly, so nothing to correct; its finding (the brief does not cite the page, the new interview page does not link it) is now a loose end linked in one line.",
+    "data/loose-ends.json: 1 added (le-024, waiting on sgit.ai and riskmandate.ai); 24 in total.",
+    "issues/: 033-signal-quality.md moved from open to done."
+  ],
+  "gates": true,
+  "note": "For the Editor: briefings/pt.newsroom.sgit.ai.md says the full analysis with line numbers is in the signal of 25 September; the signal is now short and keeps only the line references (39, 90, 129), so that sentence could point at itself instead. No version bump, commit or push, as instructed; dates, from_site, to_site and status of every signal unchanged."
+}

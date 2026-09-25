@@ -146,3 +146,45 @@ first lines, never from page three.
 
 `rung`, `rungs`: say *level* or *step*. The validator fails a desk file that uses a banned word in its own prose;
 a quotation of a source that uses it is allowed inside quotation marks. The list is in `brief/07-principles.md`.
+
+## Briefing cards (principle 9)
+
+A piece may carry `cards:` in its front matter: short facts in the same place on every piece, rendered as tiles under
+the byline. Each card is `label: value` with an optional link:
+
+```
+cards:
+  - What happened: A brief written on sgit.ai was built on riskmandate.ai the same day
+  - Where: https://riskmandate.ai/versions/1.34.2.md
+  - Waiting on: sgit.ai, to close the ask on its briefs index
+  - Next: the lead's own run of the interview (le-009)
+```
+
+The value after the first colon is the text; a bare URL or `src:` path becomes a link; `(le-nnn)` or `(Q-nnn)` at the end
+links the loose end or question.
+
+## The semantic twin (an experiment, issue 029)
+
+For new pieces only, the desk may write `<piece>.json` beside `<piece>.md`: the graph the prose was written from,
+in the shape fractal semantic graphs use. The build renders it under the piece as a graph and a list by type, and
+validates it. Two rounds, then the editor of record decides whether it stays.
+
+```json
+{
+  "of": "stories/2026-09-25__slug.md",
+  "depends_on": ["https://sgit.ai/...", "src:history/sgit.ai-version-log.json"],
+  "nodes": [
+    {"id": "f1", "type": "Fact", "text": "riskmandate.ai v1.34.2 built the interview page on 24 September", "source": "https://riskmandate.ai/versions/1.34.2.md"},
+    {"id": "q1", "type": "Question", "text": "Will the lead run the interview themselves?"},
+    {"id": "h1", "type": "Hypothesis", "text": "A brief built the same day means the two sites share a working loop"}
+  ],
+  "edges": [
+    {"from": "f1", "to": "h1", "rel": "supports"},
+    {"from": "q1", "to": "f1", "rel": "asks_about"}
+  ]
+}
+```
+
+Node types: Evidence, Fact, Statement, Observation, Idea, Hypothesis, Question, Comment. Edge relations: supports,
+contradicts, cites, asks_about, answers, follows, leads_to. Every Evidence and Fact node names its `source` (a live
+URL or a `src:` path). The validator checks types, relations, that edges name existing nodes, and that sources exist.

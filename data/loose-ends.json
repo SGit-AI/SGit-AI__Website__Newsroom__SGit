@@ -343,5 +343,21 @@
     "status_note": "The pricing page says its states were copied from the store's ledger on 15 September 2026; the store changed its wording on 16 September (its memo The homepage sells), separating work done from a sale through the store. The two pages now disagree on what the state means. Found by the Cartographer (maps/riskmandate-wardley), checked against the snapshot by the Editor.",
     "closed_by": [],
     "desk": "Editor"
+  },
+  {
+    "id": "le-024",
+    "what": "sgit.ai's interview-page brief of 24 September describes a voice interview prompt as a new, reusable pattern and does not cite riskmandate.ai's feedback page (v0.13.0, 9 September), which has run the same shape since; riskmandate.ai's new interview page (v1.34.2) does not link its own feedback page either.",
+    "said_at": [
+      "https://riskmandate.ai/feedback.md",
+      "https://riskmandate.ai/versions/0.12.2.md",
+      "https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.md",
+      "https://riskmandate.ai/versions/1.34.2.md"
+    ],
+    "said_on": "2026-09-24",
+    "waiting_on": "sgit.ai and riskmandate.ai",
+    "status": "open",
+    "status_note": "The feedback page is on riskmandate.ai (in the snapshot at sources/sites/riskmandate.ai/feedback.md) and the signal quotes it; what is missing is a link from sgit.ai's brief to it, and from riskmandate.ai's interview page to it. Recorded by the Architect from the voice-feedback signal (issue 033).",
+    "closed_by": [],
+    "desk": "Architect"
   }
 ]

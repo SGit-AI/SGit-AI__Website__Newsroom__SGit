@@ -49,6 +49,16 @@ python3 tools/fetch_missing.py  # bring home the .md twin of every linked networ
 
 Python standard library only. The build is deterministic: CI rebuilds and fails if the committed `site/` differs.
 
+## The desks, the back office, and the tools around the build
+
+- `agents/` holds each desk's role and mandate (rendered from `data/agents.json` by `python3 tools/agents.py`); `/desk <desk> <task>`
+  and `/newsroom-run` are the skills a session uses; every run leaves a record in `runs/`.
+- `issues/` is the task tracker (issues-fs-lite), rendered at `/admin/issues/`; `briefings/` holds what this newsroom has for
+  another site's agent, one page per site with a JSON twin.
+- `tools/diagrams.py` turns data into Mermaid text for the Cartographer; `node tools/check_diagrams.js` opens every diagram offline;
+  `node tools/screenshots.js` captures the live pages the desks cite (needs Playwright and the network).
+- `tools/release.sh 0.1.x "one sentence"` bumps, rebuilds, gates, records the release in `data/releases.json`, commits and pushes.
+
 ## Release
 
 Every push to `dev` runs `.github/workflows/deploy-pages.yml`: validate, tag (`vX.Y.Z` from `version.txt`, which
