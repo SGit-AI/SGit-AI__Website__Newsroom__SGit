@@ -31,6 +31,21 @@ DOMAIN = 'sgit.newsroom.sgit.ai'
 GENERATOR = '<meta name="generator" content="sgit-newsroom build">'
 RENDER_LIMIT = 400_000          # json/csv/code bigger than this are linked raw, not rendered
 SNAPSHOT_TAKEN = '2026-09-24'
+READING_SINCE = '2026-09-18'
+# an inline icon: the browser asks for /favicon.ico otherwise, and gets a 404 from a plain server
+FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' "
+           "rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' "
+           "fill='white' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E")
+ICON = {
+    'star': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg>',
+    'up': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>',
+    'down': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+    'note': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></svg>',
+    'mic': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
+    'search': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
+    'copy': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
+    'check': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>',
+}
 
 esc = html.escape
 
@@ -208,7 +223,7 @@ class Site:
             f.write(content if binary else content.encode('utf-8'))
 
     def page(self, path, title, body, provenance, md=None, eyebrow='', search_text=None, kind='page', site=None,
-             toc=None):
+             toc=None, wide=False):
         nav = ''.join(f'<a href="{rel(path, p)}"{" class=on" if p == path else ""}>{esc(t)}</a>' for p, t in NAV)
         css = rel(path, 'assets/style.css')
         twin = None
@@ -221,25 +236,27 @@ class Site:
             toc_html = f'<details class="toc"><summary>On this page</summary><ul>{items}</ul></details>'
         twin_link = f' · <a href="{rel(path, twin)}">.md twin</a>' if twin else ''
         doc = f'''<!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" data-version="{esc(VERSION)}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {GENERATOR}
 <title>{esc(title)} · sgit newsroom</title>
 <link rel="stylesheet" href="{css}">
+<link rel="icon" href="{FAVICON}">
 </head>
 <body>
 <header class="top"><a class="brand" href="{rel(path, 'index.html')}">sgit <em>newsroom</em></a>
 <span class="ver">{esc(VERSION)} · snapshot {SNAPSHOT_TAKEN}</span>
 <nav>{nav}</nav></header>
-<main>
+<main{' class="wide"' if wide else ''}>
 {f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ''}
 {toc_html}
 {body}
 {provenance}
 </main>
 <footer><p>sgit newsroom {esc(VERSION)} · a static site built from a frozen, hashed snapshot of the sgit network · works offline{twin_link} · <a href="{rel(path, 'llms.txt')}">llms.txt</a></p></footer>
+<script src="{rel(path, 'assets/feedback.js')}"></script>
 </body>
 </html>
 '''
@@ -391,6 +408,8 @@ class Site:
                 self.build_llms_full(s)
             elif s.path == 'history/sgit.ai-version-log.json':
                 self.build_version_log(s)
+            elif s.path == 'history/sgit.ai-new-pages-since-2026-09-18.md':
+                self.build_new_pages_page(s)
             else:
                 self.build_source_page(s)
 
@@ -423,7 +442,7 @@ class Site:
         body, heads = self.source_body(s)
         prov = self.prov_block(s.page, [(k, v.replace('{raw}', esc(rel(s.page, s.raw))) if v else v)
                                         for k, v in self.prov_source(s)])
-        crumbs = self.crumbs(s)
+        crumbs = self.crumbs(s) + self.fb_bar(s)
         eyebrow = f'Reading room · {esc(s.site or s.group)}'
         self.page(s.page, s.title, crumbs + '<article class="source">' + body + '</article>', prov,
                   eyebrow=eyebrow, kind='source', site=s.site or s.group, toc=heads,
@@ -515,6 +534,158 @@ class Site:
         self.page(s.page, 'sgit.ai version log', body, prov, eyebrow='Reading room · history', kind='source',
                   site='history', search_text='sgit.ai version log releases ' + ' '.join(e['version'] for e in entries))
 
+    # ------------------------------------------------------------------ the reading list (with local feedback)
+    def date_of(self, path):
+        if not hasattr(self, '_dates'):
+            self._dates = {e['local']: e.get('date') for e in self.index}
+        return self._dates.get(path) or ''
+
+    @staticmethod
+    def section_of(s):
+        parts = s.path.split('/')
+        if s.group != 'sites':
+            return s.group
+        sub = parts[2:-1]
+        if sub[:2] == ['docs', 'briefs']:
+            return 'briefs'
+        if sub[:2] == ['demos', 'vaults']:
+            return 'vaults'
+        return sub[0] if sub else 'home'
+
+    def fb_bar(self, s):
+        """The feedback bar on a source page: hidden until feedback.js runs, so nothing is dead without it."""
+        return (f'<div class="fb-bar" data-fb hidden data-id="{esc(s.path)}" data-sha="{s.sha[:12]}" data-title="{esc(s.title)}" '
+                f'data-site="{esc(s.site or s.group)}" data-section="{esc(self.section_of(s))}" data-date="{esc(self.date_of(s.path))}" '
+                f'data-page="{esc(s.link)}">'
+                f'<span class="lbl">Your feedback</span>'
+                f'<button type="button" class="btn-s" data-a="read" aria-pressed="false">{ICON["check"]}<span> Mark read</span></button>'
+                f'<button type="button" class="ib" data-a="star" aria-label="Star" aria-pressed="false">{ICON["star"]}</button>'
+                f'<button type="button" class="ib" data-a="up" aria-label="Useful" aria-pressed="false">{ICON["up"]}</button>'
+                f'<button type="button" class="ib" data-a="down" aria-label="Not useful" aria-pressed="false">{ICON["down"]}</button>'
+                f'<button type="button" class="btn-s" data-a="note" aria-pressed="false">{ICON["note"]} Note</button>'
+                f'<button type="button" class="btn-s memo" data-a="memo">{ICON["mic"]}<span> Voice memo</span></button>'
+                f'<span class="changed" data-f="changed" hidden>the page changed since your note</span>'
+                f'<span class="sp"></span><span class="muted small" data-f="memo-status"></span>'
+                f'<div class="fb-note" hidden><label>Your note, kept on this device only'
+                f'<textarea rows="3" placeholder="A question, a follow-up, who should see this..."></textarea></label></div></div>')
+
+    def reading_list(self):
+        """Every change since READING_SINCE that a reader should see: sgit.ai's new pages (with the commit
+        time), riskmandate.ai's releases, and the CLI briefs. Newest first."""
+        times = {}
+        for ln in read(os.path.join(SRC, 'history', 'sgit.ai-git-log.txt')).split('\n'):
+            m = re.match(r'^(\w{7,})\s+(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})', ln)
+            if m:
+                times[m.group(1)[:8]] = m.group(3)
+        items = []
+        for n in self.new_pages():
+            s = self.cat.sources.get(n['local'])
+            if not s or n['date'] < READING_SINCE:
+                continue
+            items.append(dict(s=s, date=n['date'], time=times.get(n['commit'][:8], ''), site='sgit.ai',
+                              section=self.section_of(s), title=re.sub(r',\s*sgit\.ai$', '', n['title']), live=n['live']))
+        for ln in self.cat.sources['sites/riskmandate.ai/versions.md'].text.split('\n'):
+            m = re.match(r'^- \*\*v([\d.]+)\*\* · (\d{4}-\d{2}-\d{2}) \S (.+)$', ln)
+            s = m and self.cat.sources.get(f'sites/riskmandate.ai/versions/{m.group(1)}.md')
+            if s and m.group(2) >= READING_SINCE:
+                items.append(dict(s=s, date=m.group(2), time='', site='riskmandate.ai', section='versions',
+                                  title=f'v{m.group(1)}: {m.group(3).strip()}', live=live_url(s.url)))
+        for p, s in sorted(self.cat.sources.items()):
+            m = re.match(r'cli-briefs/(\d{2})/(\d{2})/', p)
+            if m and s.page and f'2026-{m.group(1)}-{m.group(2)}' >= READING_SINCE:
+                items.append(dict(s=s, date=f'2026-{m.group(1)}-{m.group(2)}', time='', site='CLI briefs', section='briefs',
+                                  title=s.title, live=''))
+        items.sort(key=lambda x: (x['date'], x['time'] or '00:00', x['title']), reverse=True)
+        return items
+
+    def reading_list_html(self, P, items):
+        import datetime
+        cls = {'sgit.ai': 's-sgit', 'riskmandate.ai': 's-rm'}
+        days = {}
+        for it in items:
+            days.setdefault(it['date'], []).append(it)
+        sites = sorted({it['site'] for it in items}, key=lambda x: (x != 'sgit.ai', x))
+        sections = {}
+        for it in items:
+            sections[it['section']] = sections.get(it['section'], 0) + 1
+        chip = lambda attr, k, label, n='': (f'<button type="button" {attr}="{esc(k)}" aria-pressed="{"true" if k == "all" else "false"}"'
+                                             f'{" class=on" if k == "all" else ""}>{esc(label)}{f"<span class=c>{n}</span>" if n != "" else ""}</button>')
+        tabs = ''.join(f'<button type="button" data-status="{k}" aria-pressed="{"true" if k == "all" else "false"}"{" class=on" if k == "all" else ""}>'
+                       f'{label}<span class="c" data-count="{k}">{len(items) if k in ("all", "unread") else 0}</span></button>'
+                       for k, label in (('all', 'All'), ('unread', 'Unread'), ('starred', 'Starred'), ('noted', 'Noted'), ('voted', 'Voted')))
+        site_chips = (chip('data-site-f', 'all', 'All') if len(sites) > 1 else '') + ''.join(
+            chip('data-site-f', x, x, sum(1 for it in items if it['site'] == x)) for x in sites) if len(sites) > 1 else ''
+        sec_chips = chip('data-section-f', 'all', 'All') + ''.join(
+            chip('data-section-f', k, k, n) for k, n in sorted(sections.items(), key=lambda kv: (-kv[1], kv[0])))
+        out = [f'<section class="rl" data-rl><div class="rl-filters"><div class="rl-top">'
+               f'<label class="rl-search">{ICON["search"]}<input type="search" data-q placeholder="Filter titles: vault, brief, partnership..." '
+               f'aria-label="Filter titles"></label><div class="rl-tabs" role="group" aria-label="Status">{tabs}</div></div>'
+               f'<div class="rl-chiprow">'
+               + (f'<div class="rl-chips" role="group" aria-label="Site"><span class="lbl">Site</span>{site_chips}</div>' if site_chips else '')
+               + f'<div class="rl-chips" role="group" aria-label="Section"><span class="lbl">Section</span>{sec_chips}</div></div></div>'
+               f'<div class="rl-body"><div class="rl-list"><p class="rl-shown">Showing <b data-shown>{len(items)}</b> of {len(items)} · '
+               f'grouped by day, newest first</p>']
+        for date in sorted(days, reverse=True):
+            label = datetime.date.fromisoformat(date).strftime('%A %d %B').replace(' 0', ' ')
+            out.append(f'<section class="rl-day"><h3>{label} <span class="rl-n">{len(days[date])} items</span></h3><ol class="rl-rows">')
+            for it in days[date]:
+                s = it['s']
+                out.append(
+                    f'<li class="rl-row" data-id="{esc(s.path)}" data-sha="{s.sha[:12]}" data-title="{esc(it["title"])}" '
+                    f'data-site="{esc(it["site"])}" data-section="{esc(it["section"])}" data-date="{date}" data-time="{it["time"]}" '
+                    f'data-live="{esc(it["live"])}" data-page="{esc(s.link)}">'
+                    f'<span class="rl-dot" aria-hidden="true"></span><span class="rl-time">{it["time"]}</span>'
+                    f'<div class="rl-main"><a class="rl-title" href="{esc(rel(P, s.link))}">{esc(it["title"])}</a>'
+                    f'<div class="rl-meta"><span class="rl-site {cls.get(it["site"], "")}">{esc(it["site"])}</span>'
+                    f'<span>{esc(it["section"])}</span><span class="only-narrow">{it["time"]}</span><span class="rl-flags"></span></div></div>'
+                    f'<div class="rl-acts"><button type="button" class="ib" data-act="star" aria-label="Star" aria-pressed="false">{ICON["star"]}</button>'
+                    f'<button type="button" class="ib" data-act="up" aria-label="Useful" aria-pressed="false">{ICON["up"]}</button>'
+                    f'<button type="button" class="ib" data-act="down" aria-label="Not useful" aria-pressed="false">{ICON["down"]}</button>'
+                    f'<button type="button" class="ib" data-act="open" aria-label="Notes and details">{ICON["note"]}</button></div></li>')
+            out.append('</ol></section>')
+        out.append('<p class="rl-empty" hidden>Nothing matches these filters. <button type="button" class="linkbtn" data-reset>Clear filters</button></p></div>')
+        out.append(
+            '<aside class="rl-side"><section class="rl-sel empty" data-sel aria-label="Selected item">'
+            '<p class="rl-hint">Select an item to mark it, vote, write a note or record a voice memo. Everything stays in this browser.</p>'
+            '<div class="ttl" data-f="title"></div><div class="mt" data-f="meta"></div>'
+            '<div class="row2"><a class="btn-p" data-f="local" href="#">Read the local copy</a><a class="btn-s ext" data-f="live" href="#">Live ↗</a></div>'
+            f'<div class="row2"><button type="button" class="btn-s grow" data-a="read">Mark read</button>'
+            f'<button type="button" class="btn-s" data-a="star" aria-label="Star">{ICON["star"]}</button>'
+            '<button type="button" class="btn-s" data-a="up">Useful</button><button type="button" class="btn-s" data-a="down">Not</button></div>'
+            '<label>Your note (this device only)<textarea rows="4" placeholder="What should happen with this? A question, a follow-up, who should see it..."></textarea></label>'
+            f'<button type="button" class="btn-s memo" data-a="memo">{ICON["mic"]}<span> Record a voice memo</span></button>'
+            '<span class="muted small" data-f="memo-status"></span><ul class="memos" data-memos></ul>'
+            '<div class="row2 only-narrow"><button type="button" class="btn-s grow" data-a="close">Close</button>'
+            '<button type="button" class="btn-p" data-a="next">Next unread</button></div></section>'
+            '<section class="rl-dev" data-dev aria-label="Feedback on this device">'
+            f'<div class="mini"><div><b><span data-stat="pending">0</span> changes on this device</b>local only, never sent</div>'
+            f'<button type="button" class="copy" data-d="copy">Copy for Claude</button><button type="button" class="ghost" data-d="more" aria-label="More">More</button></div>'
+            '<div class="eb"><span>On this device</span><span data-stat="device"></span></div>'
+            '<div class="stats"><div><b data-stat="read">0</b><span>read</span></div><div><b data-stat="starred">0</b><span>starred</span></div>'
+            '<div><b data-stat="votes">0</b><span>votes</span></div><div><b data-stat="notes">0</b><span>notes</span></div></div>'
+            '<p class="note"><span data-stat="pending">0</span> changes since your last copy · kept in this browser\'s local storage, never sent anywhere</p>'
+            f'<button type="button" class="copy" data-d="copy">{ICON["copy"]} Copy for Claude</button>'
+            '<div class="row2"><button type="button" class="ghost" data-d="download">Download .md</button>'
+            '<button type="button" class="ghost" data-d="copy-all">Copy all</button><button type="button" class="ghost" data-d="paste">Paste to merge</button></div>'
+            '<div class="rl-merge" hidden><textarea rows="4" placeholder="Paste feedback copied on another device"></textarea>'
+            '<button type="button" class="ghost" data-d="merge">Merge</button></div>'
+            '<p class="status" data-f="dev-status" aria-live="polite"></p><pre data-preview></pre>'
+            '<button type="button" class="ghost only-narrow" data-d="more">Close</button></section></aside></div></section>')
+        return ''.join(out)
+
+    def build_new_pages_page(self, s):
+        """The new-pages list as a reading list (sgit.ai only), with the table as published below it."""
+        P = s.page
+        items = [it for it in self.reading_list() if it['site'] == 'sgit.ai']
+        body, _ = self.source_body(s)
+        html_ = (self.crumbs(s) + f'<h1>What was published on sgit.ai since 18 September</h1>'
+                 f'<p class="lede">{len(items)} new pages, newest first, with the time of the commit that published each. Filter, mark and note '
+                 f'them here; the table exactly as published is at the bottom.</p>' + self.reading_list_html(P, items)
+                 + '<details><summary>The table as published</summary><article class="source">' + body + '</article></details>')
+        prov = self.prov_block(P, [(k, v.replace('{raw}', esc(rel(P, s.raw))) if v else v) for k, v in self.prov_source(s)])
+        self.page(P, s.title, html_, prov, eyebrow='Reading room · history', kind='source', site='history', wide=True,
+                  search_text=s.title + ' ' + ' '.join(it['title'] for it in items))
+
     # ------------------------------------------------------------------ reading-room index
     def new_pages(self):
         s = self.cat.sources['history/sgit.ai-new-pages-since-2026-09-18.md']
@@ -528,17 +699,11 @@ class Site:
     def build_reading_room(self):
         P = 'reading-room/index.html'
         new = self.new_pages()
-        rows = []
-        for n in new:
-            s = self.cat.sources.get(n['local'])
-            loc = f'<a href="{rel(P, s.link)}">{esc(n["title"])}</a>' if s else esc(n['title'])
-            rows.append(f'<tr><td class="nowrap">{n["date"]}</td><td>{loc}<a class="ext live" href="{esc(n["live"])}">↗</a></td>'
-                        f'<td><code>{n["commit"]}</code></td></tr>')
-        new_html = (f'<h2 id="new">1. New on sgit.ai since 18 September ({len(new)} pages)</h2>'
-                    f'<p>From <a href="{rel(P, self.cat.sources["history/sgit.ai-new-pages-since-2026-09-18.md"].page)}">'
-                    f'the new-pages list</a>, newest first. Start here.</p>'
-                    f'<div class="table"><table><thead><tr><th>Date</th><th>Page</th><th>Commit</th></tr></thead>'
-                    f'<tbody>{"".join(rows)}</tbody></table></div>')
+        items = self.reading_list()
+        new_html = (f'<h2 id="new">1. What changed since 18 September ({len(items)} items)</h2>'
+                    f'<p>New pages on sgit.ai (from <a href="{rel(P, self.cat.sources["history/sgit.ai-new-pages-since-2026-09-18.md"].page)}">'
+                    f'the new-pages list</a>), riskmandate.ai releases and the CLI briefs, newest first. Mark what you have read, vote, star and '
+                    f'add notes: it stays in this browser until you copy it out.</p>' + self.reading_list_html(P, items))
 
         # 2. the business plans
         plans = []
@@ -608,7 +773,7 @@ class Site:
               '\n\n## Sites\n\n' + '\n'.join(f'- {k}: {len(v)} files' for k, v in sites.items()) + '\n')
         self.page(P, 'The reading room', intro + new_html + plans_html + briefs_html + hist_html + sites_html,
                   self.prov_desk(P, 'Librarian', SNAPSHOT_TAKEN, sources=['src:history/sgit.ai-new-pages-since-2026-09-18.md']),
-                  md=md, eyebrow='Librarian')
+                  md=md, eyebrow='Librarian', wide=True)
         for site, files in sites.items():
             self.build_site_listing(site, files)
 
@@ -1070,6 +1235,7 @@ class Site:
 
     def build_assets(self):
         self.write('assets/style.css', read(os.path.join(ROOT, 'tools', 'style.css')))
+        self.write('assets/feedback.js', read(os.path.join(ROOT, 'tools', 'feedback.js')))
         self.write('CNAME', DOMAIN + '\n')
         self.write('.nojekyll', '')
 

@@ -29,6 +29,14 @@ Before you fly, run it once online and commit what it fetched: downloads are cac
 
 Everything in `sources/` is plain markdown and text too: any editor reads it.
 
+## Your feedback, on this device
+
+The reading room (and every source page) lets you mark what you have read, star, vote, write notes and record voice
+memos. It is an append-only event log in the browser's local storage, keyed by each source's path and sha256; nothing
+is sent anywhere. **Copy for Claude** puts what changed since your last copy on the clipboard (markdown, plus a JSON
+block); **Paste to merge** reads that JSON back in on another device. Voice memos stay in the browser (IndexedDB):
+the copy only says one exists. The code is `tools/feedback.js`, served as `site/assets/feedback.js`.
+
 ## Build
 
 ```bash

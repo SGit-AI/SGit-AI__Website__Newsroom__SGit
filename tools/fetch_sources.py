@@ -13,6 +13,16 @@ import hashlib, json, os, re, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
+import ssl
+
+# python.org's macOS Python ships without CA certificates until "Install Certificates.command" is run,
+# so every HTTPS request fails. When its own bundle is missing, use the system's (macOS: /etc/ssl/cert.pem).
+_paths = ssl.get_default_verify_paths()
+if not any(p and os.path.exists(p) for p in (_paths.cafile, _paths.openssl_cafile, _paths.capath)):
+    for _ca in ('/etc/ssl/cert.pem', '/etc/ssl/certs/ca-certificates.crt'):
+        if os.path.exists(_ca):
+            ssl._create_default_https_context = lambda _ca=_ca: ssl.create_default_context(cafile=_ca)
+            break
 
 SITES = ['sgit.ai', 'riskmandate.ai', 'graphs.sgit.ai', 'risks.sgit.ai', 'standards.sgit.ai', 'twins.sgit.ai',
          'newsroom.sgit.ai', 'pt.newsroom.sgit.ai', 'abp.sgit.ai', 'store.sgit.ai', 'llms.sgit.ai', 'open-source.sgit.ai',

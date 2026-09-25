@@ -31,13 +31,17 @@ done
 command -v python3 >/dev/null || { echo "python3 is needed" >&2; exit 1; }
 
 online() {
-  python3 - <<'EOF' 2>/dev/null
+  # curl first: python.org's macOS Python cannot verify HTTPS until "Install Certificates.command" is run
+  if command -v curl >/dev/null; then
+    curl -sfI --max-time 6 https://sgit.ai/llms.txt >/dev/null 2>&1 && return 0
+  fi
+  python3 - <<'PY' 2>/dev/null
 import urllib.request, sys
 try:
     urllib.request.urlopen('https://sgit.ai/llms.txt', timeout=5)
 except Exception:
     sys.exit(1)
-EOF
+PY
 }
 
 if [ "$MODE" = online ]; then
@@ -50,7 +54,9 @@ if [ "$MODE" = online ]; then
     # linked pages bring more links: repeat until a pass finds nothing new (at most five passes)
     for pass in 1 2 3 4 5; do
       echo "== pass $pass: fetching the .md twins of linked network pages not yet on disk"
-      out=$(python3 tools/fetch_missing.py)
+      if ! out=$(python3 tools/fetch_missing.py); then
+        echo "   downloads skipped: building from what is on disk"; break
+      fi
       echo "$out" | sed 's/^/   /'
       echo "$out" | grep -q '^fetched 0 pages' && break
       python3 tools/librarian.py >/dev/null

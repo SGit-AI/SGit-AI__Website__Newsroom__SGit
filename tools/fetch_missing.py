@@ -79,6 +79,10 @@ def linked_urls():
 def main():
     retry = '--retry' in sys.argv
     f = Fetcher()
+    if not f.get('https://sgit.ai/llms.txt'):
+        # without this, every miss would be cached as "no text twin" and never asked for again
+        sys.exit('fetch_missing: cannot fetch https://sgit.ai/llms.txt from Python (no network, or HTTPS certificates: on '
+                 'macOS run "Install Certificates.command" from the Python folder). Nothing fetched, cache untouched.')
     have = {norm(u) for u in f.manifest}
     missing = json.load(open(MISSING)) if os.path.exists(MISSING) else {}
     todo = []
