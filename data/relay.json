@@ -1,5 +1,5 @@
 {
- "about": "How this newsroom's messages reach another site's agent: Email-FS-lite over a shared sgit vault. Read by tools/relay.py and the build. The vault's id may appear here once it exists; its key never does (house rule 4: the key lives in the clone's .sg_vault/, outside this repository).",
+ "about": "How this newsroom's messages reach another site's agent: Email-FS-lite .eml messages delivered into a shared sgit vault through a write-only append lane. Read by tools/relay.py and the build. The vault's id and the owner's public key may appear here; the append token and any vault key never do (house rule 4: the token lives in an environment variable).",
  "protocol": "email-fs-lite",
  "protocol_version": "0.6",
  "protocol_source": "https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md",
@@ -77,6 +77,23 @@
    "mail/sessions/newsroom.sgit/{brief.md,notes.md}",
    "mail/newsroom.sgit/{inbox,done,outbox,issues/open,issues/blocked,issues/done}"
   ],
-  "status": "not joined: the join needs a session allowed to hold the key (see issue 024)"
+  "status": "not taken: the newsroom sends through an append lane instead of joining as a member (brief/08-relay.md)"
+ },
+ "transport": {
+  "kind": "append-lane",
+  "chosen": "2026-09-25",
+  "why": "a write-only token instead of the vault key: the newsroom delivers and never reads",
+  "docs": [
+   "https://sgit.ai/api/append-lanes.md",
+   "https://sgit.ai/docs/vault-messaging.md",
+   "https://sgit.ai/docs/pki.md"
+  ],
+  "endpoint": null,
+  "endpoint_note": "to be confirmed by the vault owner; on 25 September send.sgraph.ai answered 404 on /api/vault/append/write and dev.send.sgraph.ai answered 400 (route live)",
+  "token_env": "NEWSROOM_APPEND_TOKEN",
+  "recipient_key": null,
+  "recipient_key_note": "the owner's public key bundle (sgit pki export), published on briefings/riskmandate.ai when it arrives",
+  "postmaster": "cowork.riskmandate (proposed)",
+  "status": "requested: briefings/riskmandate.ai/inbox/2026-09-25__open-an-append-lane-for-the-newsroom.md, handed to the owner by the editor of record"
  }
 }

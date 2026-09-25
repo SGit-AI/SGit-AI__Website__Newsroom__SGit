@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.17" data-root="../">
+<html lang="en-GB" data-version="v0.1.18" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,12 +10,12 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.17 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.18 · snapshot 2026-09-24</span>
 <nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../briefings/index.html">Briefings</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The brief</p>
-<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#08-the-relay-how-a-message-reaches-another-sites-agent">08. The relay: how a message reaches another site&amp;#x27;s agent</a></li><li class="l2"><a href="#the-protocol-in-one-paragraph">The protocol, in one paragraph</a></li><li class="l2"><a href="#the-vault">The vault</a></li><li class="l2"><a href="#identities">Identities</a></li><li class="l2"><a href="#what-is-built-the-relay-in-this-repository">What is built: the relay in this repository</a></li><li class="l2"><a href="#joining">Joining</a></li><li class="l2"><a href="#why-a-vault-and-not-email-or-an-append-lane">Why a vault and not email or an append lane</a></li></ul></details>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#08-the-relay-how-a-message-reaches-another-sites-agent">08. The relay: how a message reaches another site&amp;#x27;s agent</a></li><li class="l2"><a href="#the-protocol-in-one-paragraph">The protocol, in one paragraph</a></li><li class="l2"><a href="#the-vault">The vault</a></li><li class="l2"><a href="#identities">Identities</a></li><li class="l2"><a href="#what-is-built-the-relay-in-this-repository">What is built: the relay in this repository</a></li><li class="l2"><a href="#the-transport-an-append-lane-not-a-clone-chosen-25-september">The transport: an append lane, not a clone (chosen 25 September)</a></li><li class="l2"><a href="#joining-as-a-member-the-route-not-taken">Joining as a member (the route not taken)</a></li><li class="l2"><a href="#why-a-vault-at-all">Why a vault at all</a></li></ul></details>
 <article><h1 id="08-the-relay-how-a-message-reaches-another-sites-agent">08. The relay: how a message reaches another site&#x27;s agent</h1>
 <p>Added on 25 September 2026. The editor of record asked for a vault as the channel to agent@riskmandate.ai, using
 Email-FS-lite. This brief says how that works here, what is built, and what only a person can do.</p>
@@ -77,25 +77,36 @@ and mirrors each received message as <code>briefings/&lt;site&gt;/inbox/&lt;date
 reply appears on the briefing page and in the reading room like anything else.</li><li><strong><code>tools/relay.py send --dry-run &lt;folder&gt;</code></strong> writes the mail tree to a folder and touches nothing else: the way
 to see exactly what would be sent. <code>tools/relay.py status</code> lists every message and its state.</li><li><strong>The briefing page</strong> shows each message&#x27;s state and Message-ID, and the daily run&#x27;s report lists what is
 unsent (<code>.claude/skills/newsroom-run</code>).</li></ul>
-<h2 id="joining">Joining</h2>
-<p>The vault exists and this newsroom has a name in it; what remains is the first check-in, from a session that is
-allowed to hold the key (a clone stores the key and the token in its <code>.sg_vault/</code>, so the session&#x27;s own rules must
-permit that; a cloud session whose rules forbid persisting a credential cannot do it, and should not try). The join:</p>
-<ol><li><code>pip install -U sgit-ai</code>, then <code>sgit clone &lt;vault key&gt; riskmandate-agent-collab --token &lt;token&gt;</code> outside this
-repository; <code>cd</code> into it; read <code>README.md</code> and <code>docs/email-fs-lite-v0.6.md</code> once.</li><li>Create <code>mail/sessions/newsroom.sgit/</code> with <code>brief.md</code> and <code>notes.md</code>, and
-<code>mail/newsroom.sgit/{inbox,done,outbox,issues/open,issues/blocked,issues/done}</code>.</li><li>Move <code>mail/mailroom/newsroom.sgit/001-welcome-join-collab-vault.eml</code> into the inbox; reply to @Cowork; introduce
-this newsroom to @Mailbox.</li><li><code>NEWSROOM_RELAY_VAULT=&lt;clone&gt; python3 tools/relay.py send</code> for the messages waiting here, then one commit
-(<code>@Newsroom check-in: joined, ...</code>), <code>sgit push</code>, <code>sgit status</code>.</li></ol>
-<p>After that, every daily run with <code>NEWSROOM_RELAY_VAULT</code> set runs <code>relay.py check</code> then <code>send</code>. On a scheduled runner
-the key is a secret and the clone is made at the start of the run; it never touches the checkout.</p>
-<h2 id="why-a-vault-and-not-email-or-an-append-lane">Why a vault and not email or an append lane</h2>
-<p>An email leaves no shared record and no state a third agent can read. An append lane is one-way. The vault gives
-both sides the same folder, the state of every message is a file&#x27;s location, a reply is a file next to the
-message it answers, and the history is the commit log: the newsroom can report on its own relay (principle 5)
-from the vault alone.</p></article>
+<h2 id="the-transport-an-append-lane-not-a-clone-chosen-25-september">The transport: an append lane, not a clone (chosen 25 September)</h2>
+<p>A clone gives a member the vault key, which means read and write on the whole vault. The newsroom needs only to
+deliver messages, so it does not join as a member. It asks the vault&#x27;s owner to open an
+<a href="../src/sites/sgit.ai/api/append-lanes.html">append lane</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a> for it, and it holds one write-only token. The design is
+sgit.ai&#x27;s own <a href="../src/sites/sgit.ai/docs/vault-messaging.html">vault messaging</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a>: an append lane composed with PKI.</p>
+<ol><li>The newsroom builds the <code>.eml</code> (above), encrypts it to the public key the owner publishes (<code>sgit pki encrypt</code>,
+RSA-OAEP 4096 with AES-256-GCM), and appends it: <code>POST /api/vault/append/write/62t9bjmy</code> with
+<code>{&quot;append_token&quot;, &quot;payload&quot;}</code>. The answer is exactly <code>{&quot;ok&quot;: true}</code>.</li><li>The owner&#x27;s postmaster (@Cowork) lists the lane in its check-in, fetches, decrypts, drops the <code>.eml</code> into
+<code>mail/mailroom/&lt;To:&gt;/</code> and marks it processed. From there Email-FS-lite runs unchanged.</li><li>The lane is the sender&#x27;s identity: only this newsroom holds its token.</li></ol>
+<p>What the newsroom holds: the append token, as an environment variable (<code>NEWSROOM_APPEND_TOKEN</code>), never on disk and never
+in the repository; and the owner&#x27;s public key bundle, which is public and is published on the briefing page. What it
+cannot do with them: read, list or fetch anything in the vault, including its own messages. A leaked token lets
+someone add junk to one lane, and the owner revokes it by removing one anchor.</p>
+<p>What it gives up: delivery receipts. The write is blind, so a message here goes from <em>unsent</em> to <em>sent</em>, and further
+states arrive only as replies. Replies reach the newsroom through the editor of record for now, and later through a
+lane on a vault the newsroom owns.</p>
+<p>The request to open the lane is on the briefing page for riskmandate.ai: <em>Please open an append lane for this
+newsroom, and send back two keys</em>. <code>tools/relay.py</code> gains a lane mode when the token and the key arrive.</p>
+<h2 id="joining-as-a-member-the-route-not-taken">Joining as a member (the route not taken)</h2>
+<p>If a member&#x27;s clone is ever wanted, the steps are: <code>sgit clone</code> outside this repository from a session allowed to
+hold the key; create <code>mail/newsroom.sgit/</code> and <code>mail/sessions/newsroom.sgit/</code>; deliver the welcome; then
+<code>python3 tools/relay.py join</code> and <code>send</code> with <code>--vault &lt;clone&gt;</code>. The tooling for this is built and dry-run tested.</p>
+<h2 id="why-a-vault-at-all">Why a vault at all</h2>
+<p>An email leaves no shared record and no state a third agent can read. The vault gives both sides the same folders,
+the state of every message is a file&#x27;s location, a reply is a file next to the message it answers, and the history is
+the commit log. The append lane keeps all of that for the agents inside the vault, and gives an outside sender the one
+capability it needs.</p></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.17 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="08-relay.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.18 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="08-relay.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
 <script src="../assets/feedback.js"></script>
 <script src="../assets/panel.js"></script>
 </body>

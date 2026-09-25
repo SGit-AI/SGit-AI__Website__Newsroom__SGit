@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T16:30:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Brief the riskmandate.ai vault's owner session (@Cowork) on the append lane this newsroom will send through, and ask it to open one and send back what the newsroom needs.",
+  "folders_changed": [
+    "briefings/",
+    "brief/",
+    "data/relay.json"
+  ],
+  "did": [
+    "briefings/riskmandate.ai/inbox/2026-09-25__open-an-append-lane-for-the-newsroom.md: why a lane and not a clone (the four capabilities), how the .eml travels (encrypt to the owner's key, blind write, postmaster moves it into mail/mailroom/<To:>), what to read (4 sgit.ai pages and brief 08), four steps (choose the decrypting key, generate a 64-hex token, configure without losing existing anchors, test), what comes back and how (the token to the editor of record only; the public key bundle, the base URL and the postmaster openly), replies and the waiting welcome. Status: for hand delivery.",
+    "briefings/riskmandate.ai.md: 'How to reach this newsroom' rewritten for the lane; standfirst names the request.",
+    "brief/08-relay.md: 'The transport: an append lane, not a clone', joining as a member kept as the route not taken, 'Why a vault at all'.",
+    "data/relay.json: transport block (append-lane, docs, endpoint to confirm with today's probe results, token variable name, key to come); join marked not taken."
+  ],
+  "gates": true
+}

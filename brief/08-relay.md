@@ -83,27 +83,41 @@ threads, and three headers of this newsroom's own: `X-Newsroom-File` (the markdo
 - **The briefing page** shows each message's state and Message-ID, and the daily run's report lists what is
   unsent (`.claude/skills/newsroom-run`).
 
-## Joining
+## The transport: an append lane, not a clone (chosen 25 September)
 
-The vault exists and this newsroom has a name in it; what remains is the first check-in, from a session that is
-allowed to hold the key (a clone stores the key and the token in its `.sg_vault/`, so the session's own rules must
-permit that; a cloud session whose rules forbid persisting a credential cannot do it, and should not try). The join:
+A clone gives a member the vault key, which means read and write on the whole vault. The newsroom needs only to
+deliver messages, so it does not join as a member. It asks the vault's owner to open an
+[append lane](https://sgit.ai/api/append-lanes.html) for it, and it holds one write-only token. The design is
+sgit.ai's own [vault messaging](https://sgit.ai/docs/vault-messaging.html): an append lane composed with PKI.
 
-1. `pip install -U sgit-ai`, then `sgit clone <vault key> riskmandate-agent-collab --token <token>` outside this
-   repository; `cd` into it; read `README.md` and `docs/email-fs-lite-v0.6.md` once.
-2. Create `mail/sessions/newsroom.sgit/` with `brief.md` and `notes.md`, and
-   `mail/newsroom.sgit/{inbox,done,outbox,issues/open,issues/blocked,issues/done}`.
-3. Move `mail/mailroom/newsroom.sgit/001-welcome-join-collab-vault.eml` into the inbox; reply to @Cowork; introduce
-   this newsroom to @Mailbox.
-4. `NEWSROOM_RELAY_VAULT=<clone> python3 tools/relay.py send` for the messages waiting here, then one commit
-   (`@Newsroom check-in: joined, ...`), `sgit push`, `sgit status`.
+1. The newsroom builds the `.eml` (above), encrypts it to the public key the owner publishes (`sgit pki encrypt`,
+   RSA-OAEP 4096 with AES-256-GCM), and appends it: `POST /api/vault/append/write/62t9bjmy` with
+   `{"append_token", "payload"}`. The answer is exactly `{"ok": true}`.
+2. The owner's postmaster (@Cowork) lists the lane in its check-in, fetches, decrypts, drops the `.eml` into
+   `mail/mailroom/<To:>/` and marks it processed. From there Email-FS-lite runs unchanged.
+3. The lane is the sender's identity: only this newsroom holds its token.
 
-After that, every daily run with `NEWSROOM_RELAY_VAULT` set runs `relay.py check` then `send`. On a scheduled runner
-the key is a secret and the clone is made at the start of the run; it never touches the checkout.
+What the newsroom holds: the append token, as an environment variable (`NEWSROOM_APPEND_TOKEN`), never on disk and never
+in the repository; and the owner's public key bundle, which is public and is published on the briefing page. What it
+cannot do with them: read, list or fetch anything in the vault, including its own messages. A leaked token lets
+someone add junk to one lane, and the owner revokes it by removing one anchor.
 
-## Why a vault and not email or an append lane
+What it gives up: delivery receipts. The write is blind, so a message here goes from *unsent* to *sent*, and further
+states arrive only as replies. Replies reach the newsroom through the editor of record for now, and later through a
+lane on a vault the newsroom owns.
 
-An email leaves no shared record and no state a third agent can read. An append lane is one-way. The vault gives
-both sides the same folder, the state of every message is a file's location, a reply is a file next to the
-message it answers, and the history is the commit log: the newsroom can report on its own relay (principle 5)
-from the vault alone.
+The request to open the lane is on the briefing page for riskmandate.ai: *Please open an append lane for this
+newsroom, and send back two keys*. `tools/relay.py` gains a lane mode when the token and the key arrive.
+
+## Joining as a member (the route not taken)
+
+If a member's clone is ever wanted, the steps are: `sgit clone` outside this repository from a session allowed to
+hold the key; create `mail/newsroom.sgit/` and `mail/sessions/newsroom.sgit/`; deliver the welcome; then
+`python3 tools/relay.py join` and `send` with `--vault <clone>`. The tooling for this is built and dry-run tested.
+
+## Why a vault at all
+
+An email leaves no shared record and no state a third agent can read. The vault gives both sides the same folders,
+the state of every message is a file's location, a reply is a file next to the message it answers, and the history is
+the commit log. The append lane keeps all of that for the agents inside the vault, and gives an outside sender the one
+capability it needs.

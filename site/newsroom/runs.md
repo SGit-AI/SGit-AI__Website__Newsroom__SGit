@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-25T16:35:00Z editor.human: The editor of record's choice of 25 September: an append lane on the collaboration vault instead of a member's clone.
+- 2026-09-25T16:30:00Z editor.desk: Brief the riskmandate.ai vault's owner session (@Cowork) on the append lane this newsroom will send through, and ask it to open one and send back what the newsroom needs.
 - 2026-09-25T16:00:00Z editor.desk: Brief the editor of record on why the session could not clone the collaboration vault, and what would allow it.
 - 2026-09-25T15:25:00Z editor.human: The editor of record's message of 25 September: the vault exists and this newsroom is in it as newsroom.sgit.
 - 2026-09-25T15:20:00Z build.desk: The first check-in as one command, so the join can run on a machine allowed to hold the key.
