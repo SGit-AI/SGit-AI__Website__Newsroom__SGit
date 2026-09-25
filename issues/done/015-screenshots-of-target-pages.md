@@ -7,6 +7,7 @@ owner: build.desk
 source: admin/inbox/2026-09-25__notes-from-the-flight.md
 parent: 001-reading-experience
 estimated_effort: medium
+done: 2026-09-25
 ---
 
 # Screenshots of the pages a piece is about
@@ -18,3 +19,11 @@ piece cites, and the piece shows a thumbnail with the target site's branding, li
 Plan: `tools/screenshots.js` reads data/index.json for the pages cited by desk files, captures at 1280 wide,
 writes `assets/shots/<site>/<path>.webp` plus a manifest with the capture time; the build shows them where the
 `[shot: <url>]` marker appears, or automatically in the byline block for the first two sources.
+
+## Done
+
+Shipped in v0.1.12. `tools/screenshots.js` reads the `sources:` front matter of stories, editions, signals, history,
+maps and briefings (or `data/index.json` with `--all`), captures at 1200x750 as jpeg (webp is not a Playwright
+screenshot type) into `assets/shots/<host>/<path>.jpg`, and saves `manifest.json` after every page. The build shows
+the strip under a piece's byline for every source that has a capture, linking to the local copy. No `[shot:]` marker
+was needed.
