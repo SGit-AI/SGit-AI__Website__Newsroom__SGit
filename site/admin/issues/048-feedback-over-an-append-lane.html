@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB" data-version="v0.1.18" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>048: Send the reader&#x27;s feedback from the browser to the newsroom over an append lane · sgit newsroom</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='white' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.18 · snapshot 2026-09-24</span>
+<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../briefings/index.html">Briefings</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../../newsroom/index.html">The newsroom</a><a href="../index.html" class=on>Admin</a><a href="../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
+<main>
+<p class="eyebrow">Issue 048 · open</p>
+
+<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 048</p><dl class="facts"><dt>Status</dt><dd><span class="tag">open</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Build desk</dd><dt>Created</dt><dd>2026-09-25T17:00:00Z</dd><dt>Effort</dt><dd>medium</dd><dt>Source</dt><dd><a href="../inbox/2026-09-25__feedback-over-an-append-lane.html">admin/inbox/2026-09-25__feedback-over-an-append-lane.md</a></dd><dt>Epic</dt><dd><a href="002-personalised-site.html">Epic: the site shaped by what the reader has done</a></dd></dl><article class="source"><h1 id="send-the-readers-feedback-from-the-browser-to-the-newsroom-over-an-append-lane">Send the reader&#x27;s feedback from the browser to the newsroom over an append lane</h1>
+<p>The reader&#x27;s feedback log (local storage) gains a second way out beside &quot;Copy for Claude&quot;: a Send button that encrypts
+the unsent events to the newsroom&#x27;s published public key and appends them to a lane on a vault the newsroom owns. The
+append token is given to the browser by the editor of record (a link with the token in the fragment, or pasted into
+settings) and kept in local storage; without it, nothing can be sent.</p>
+<p>Checked on 25 September, before any build:</p>
+<ul><li>CORS: both send.sgraph.ai and dev.send.sgraph.ai answer the preflight with <code>access-control-allow-origin: *</code> and allow
+<code>Content-Type</code>; a page on this site can POST and read <code>{&quot;ok&quot;: true}</code>. The route is live on dev; send.sgraph.ai
+answered 404 on /api/vault/append/*.</li><li>Envelope: a batch encrypted with Web Crypto (RSA-OAEP SHA-256 wrapping AES-256-GCM, sgit&#x27;s v2 envelope) and signed
+with a non-extractable ECDSA P-256 device key decrypted with <code>sgit pki decrypt</code>, which reported &quot;Signature verified&quot;.</li><li>Vault apps framed on this site run in sandboxed iframes without allow-same-origin, so they cannot read local storage.</li></ul>
+<p>Design (to confirm with the editor of record): one token per device; a device signing key so a copied token alone
+cannot forge feedback; sent/unsent cursors and an outbox that waits for the network; manual send by default, optional
+auto-send in batches; the batch is the &quot;Copy for Claude&quot; content; a receiver in the daily run (list, fetch, decrypt,
+verify, mark processed) that files each batch in admin/inbox/ as a paste would be.</p>
+<p>Done when: a batch sent from a browser on the live site lands, verified, in admin/inbox/ on the next run.</p></article>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/open/048-feedback-over-an-append-lane.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.18 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="048-feedback-over-an-append-lane.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<script src="../../assets/feedback.js"></script>
+<script src="../../assets/panel.js"></script>
+</body>
+</html>
