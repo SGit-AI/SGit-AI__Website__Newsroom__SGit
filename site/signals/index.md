@@ -9,3 +9,4 @@
 - Two sites describe the same Sovereign AI procurement challenge, with different numbers and no link between them (riskmandate.ai -> sgit.ai, new)
 - Two risk acceptance ladders, and a plan that has already chosen between them (risks.sgit.ai -> riskmandate.ai, new)
 - riskmandate.ai had a voice feedback interview two weeks before sgit.ai briefed the pattern (riskmandate.ai -> sgit.ai, new)
+- pt.newsroom.sgit.ai's agent files print two fields one character per bullet (sgit.newsroom.sgit.ai -> pt.newsroom.sgit.ai, new)

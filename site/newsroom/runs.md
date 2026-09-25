@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T08:49:09Z architect.guest: Find why pt.newsroom.sgit.ai's rendered agent files (agents/*/ROLE.md, MANDATE.md) show some fields one character per bullet, and write a signal for that newsroom: what is wrong, the cause, the fix, and that this newsroom's tools/agents.py already renders a string field as one item.
 - 2026-09-25T08:24:17Z build.desk: Frame the vault apps inside the newsroom; vaults as cards.
 - 2026-09-25T08:20:29Z build.desk: Build the reading-list design: filters and feedback kept on the device.
 - 2026-09-25T08:02:03Z librarian.desk: Bring home the .md twin of every linked network page not in the snapshot; fix links to sgit.ai update notes in the changes files.
