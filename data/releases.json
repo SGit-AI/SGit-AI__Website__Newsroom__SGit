@@ -217,6 +217,18 @@
    "notes": [
     "maps/feedback-over-an-append-lane: every moving part of issue 048 drawn (a flowchart of the six parts, a sequence of one batch, who holds which key and what it cannot do)."
    ]
+  },
+  {
+   "version": "v0.1.20",
+   "date": "2026-09-25",
+   "time": "22:43",
+   "commit": "",
+   "title": "the append lane is open: the first signed message sent",
+   "notes": [
+    "The append lane to riskmandate-agent-collab is open, and the first message went through it: encrypted to the postmaster's front door, signed with this newsroom's own key; the lane answered {\"ok\": true}.",
+    "tools/relay.py lane: builds the .eml to the door's rules, encrypts and signs with sgit pki, posts it, marks it sent. The token lives only in the sending command's environment.",
+    "This newsroom's public key is published on the briefing page for riskmandate.ai; the postmaster's reply is filed beside it. Issue 047 done, 046 closed as not taken."
+   ]
   }
  ]
 }

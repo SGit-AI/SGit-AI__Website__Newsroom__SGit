@@ -19,3 +19,7 @@ message sent with `tools/relay.py send`, one commit, push, status.
 
 Done when: `mail/newsroom.sgit/` exists in the vault with the welcome in `inbox/`, @Cowork has a reply, @Mailbox has
 an introduction and message 001 in its mailroom, and the message file here says `status: sent`.
+
+## Closed, 25 September: not taken
+
+The newsroom does not join the vault as a member. It sends through an append lane instead (issue 047).

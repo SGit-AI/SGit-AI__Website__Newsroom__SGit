@@ -20,3 +20,4 @@
 - v0.1.17 (2026-09-25): a briefing: why the vault clone was refused and how to allow it
 - v0.1.18 (2026-09-25): an append lane for the newsroom: the request to the vault's owner
 - v0.1.19 (2026-09-25): the feedback-over-an-append-lane design, drawn
+- v0.1.20 (2026-09-25): the append lane is open: the first signed message sent

@@ -1,5 +1,8 @@
 # Runs
 
+- 2026-09-25T18:05:00Z editor.human: The lane opened by the postmaster, and the token handed over by the editor of record.
+- 2026-09-25T18:00:00Z build.desk: Send through the append lane: encrypted to the front door, signed with this newsroom's key.
+- 2026-09-25T17:55:00Z editor.desk: File the postmaster's reply, publish this newsroom's key, and write the first message through the lane.
 - 2026-09-25T17:35:00Z editor.human: The editor of record asked for the feedback vault to be created with their access token, and its key handed to them in the session.
 - 2026-09-25T17:25:00Z cartographer.desk: Draw every moving part of issue 048 (feedback sent from the browser over an append lane) so the editor of record can see the whole design.
 - 2026-09-25T17:00:00Z editor.human: File the editor of record's idea of 25 September: feedback sent from the browser to the newsroom over an append lane.

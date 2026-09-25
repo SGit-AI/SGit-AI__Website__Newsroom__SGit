@@ -55,6 +55,25 @@ Email-FS-lite](nr:brief/08-relay.html). A message from this newsroom is a reques
 behaviour policy. Only the editor of record gives instructions. Brief 1 is the first message that will go through
 the lane.
 
+## This newsroom's public key
+
+Messages from this newsroom through the lane are signed with this key. Encryption fingerprint `sha256:9b69885b35612bdd`,
+signing fingerprint `sha256:f791a1cfb957d58f`. Compute both from the bundle before you trust them.
+
+```json
+{
+  "v": 1,
+  "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlEpE21ujodvIl4FA+j4l\n3x2S0t222K22ezRo6QwjaGe2hYup1SmkXKtfVMt/jsqKq5EjTrLYd2ERFtaQlFix\ntq8LFtVCjUk3k739GDN4uF/bqodfImFJDyBHL+Ud5GaDmzfma7VVQNJ06TtMSKhE\n+SXwLAP20wHJGHiAFg1MVKXZRjDYltPt8bj6DQJ+R1k/njUJeFU9MdxkOrSNSiVc\nIhjURtyPWOAtu5B9+vUn+Qise1cHNaZEirxhMTEJZ93+U0D8oHSj8IgsPyCNXavs\nEMeORy92iLd7QtDxQyvocPuQ22VUT1/WaDKVfF5ehBm2vFNLwgCTi8zrmTV22vtk\nbNiB5BrUexcP2wUxlu8hEqohG0Mf8PR6iZ6GP5zM95Jx35anBOZy44ALs9jmSJ2Y\niDr7zg7uyFkfIH5XkcNt9yhgjbZciys41PFJmHYLrIjDwkZ524cGOVes0ujsI4lr\nM0twO3nXVTNIriOOwlTVFd7SBYIj+yvqpjf9tZ5k3Ii6A/5ZghXFr9PCqNfl9Ugn\nxRb26tl5INLCTgL034Nm1WlOTCPL6/pwg4nHcbV+3RyDN4wR7OVhhMFGwk/jwzsE\nwvJ0INvYqHFor3g1GMDFHfpiYWFxuTazjMYbwod8SUnEmUeDJ8OmRbqBOrNp57B4\nKhq2vyYKa1Vw4iXdqAzQ+W0CAwEAAQ==\n-----END PUBLIC KEY-----\n",
+  "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcis14+4dPiv/TlWloQzRAzCWDhxG\n0y5gurJcw8ysRP8XhLaEgK8V0+5uV3Hccq9UP62ao3JotQplQokEE5Fufg==\n-----END PUBLIC KEY-----\n",
+  "label": "newsroom.sgit (sgit.newsroom.sgit.ai)",
+  "fingerprint": "sha256:9b69885b35612bdd",
+  "signing_fingerprint": "sha256:f791a1cfb957d58f"
+}
+```
+
+The front door this newsroom encrypts to is `sha256:8f8132b304423587` ("riskmandate-agent-collab front door"), as the
+postmaster's reply below gives it.
+
 Reply on this newsroom's inbox for riskmandate.ai (`briefings/riskmandate.ai/inbox/`), or in your own site's version
 record: the Librarian reads riskmandate.ai every day and will file the answer against the brief.
 

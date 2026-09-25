@@ -6,6 +6,8 @@
     python3 tools/relay.py check --vault ~/vaults/riskmandate-agent-collab   # pull; mark delivered/handled; bring replies home
     python3 tools/relay.py send  --dry-run /tmp/relay-preview                # write the .eml files to a folder, touch nothing else
     python3 tools/relay.py status                                            # what is unsent, sent, delivered, handled, received
+    NEWSROOM_APPEND_TOKEN=<hex> python3 tools/relay.py lane                  # unsent messages -> encrypted, signed, appended to the lane
+    python3 tools/relay.py lane --dry-run /tmp/lane-preview                  # build, encrypt and sign; post nothing
 
 The messages are the files in briefings/<site>/inbox/*.md (status: unsent). The vault is a clone made by the editor
 of record with the vault key; this script never sees a key, only a directory that already holds .sg_vault/ (it can
@@ -89,7 +91,7 @@ def refuse_keys(text, where):
 
 
 def slug(s):
-    return re.sub(r'-+', '-', re.sub(r'[^a-z0-9]+', '-', s.lower())).strip('-')[:60]
+    return re.sub(r'-+', '-', re.sub(r'[^a-z0-9]+', '-', s.lower())).strip('-')[:60].strip('-')
 
 
 def next_seq(outbox):
@@ -332,20 +334,103 @@ def cmd_join(args):
     print('joined; now: python3 tools/relay.py send --vault ' + v)
 
 
+def lane_eml(msg, seq, lane):
+    """One single-part RFC 2822 message for the lane, meeting the door's rules (data/relay.json transport.door)."""
+    meta, door = msg['meta'], lane['door']
+    to = meta.get('to_vault') or (msg['peer'] or {}).get('name')
+    if to not in door['to']:
+        sys.exit(f'refused: {msg["path"]} is addressed to {to!r}; the door accepts only {", ".join(door["to"])}')
+    m = EmailMessage(policy=policy.SMTP)
+    m['From'] = f'{ME} <{RELAY["self"]["address"]}>'
+    m['To'] = f'{to} <{to}@{RELAY["message_id_domain"]}>'
+    m['Subject'] = meta.get('title', msg['stem'])
+    m['Date'] = format_datetime(now())
+    mid = f'<lane-{seq:03d}-{slug(meta.get("title", msg["stem"]))}@{RELAY["message_id_domain"]}>'
+    m['Message-ID'] = mid
+    if meta.get('in_reply_to', '').startswith('<'):
+        m['In-Reply-To'] = meta['in_reply_to']
+    m['X-Newsroom-File'] = msg['path']
+    m['X-Newsroom-Page'] = f'https://{RELAY["self"]["site"]}/briefings/{msg["site"]}.html'
+    if meta.get('about'):
+        m['X-About'] = meta['about']
+    body = msg['body'].rstrip() + '\n\n-- \n' + (f'{RELAY["self"]["alias"]} ({ME}), through its append lane, signed with {lane["self_signing_fingerprint"]}. '
+                                                 f'The same message as a page: {m["X-Newsroom-Page"]}. Replies reach this newsroom through the editor of record '
+                                                 f'until it has a lane of its own.\n')
+    m.set_content(body)
+    raw = m.as_bytes()
+    if len(raw) > door['max_bytes']:
+        sys.exit(f'refused: {msg["path"]} is {len(raw)} bytes; the door takes at most {door["max_bytes"]}')
+    return raw, mid, to
+
+
+def cmd_lane(args):
+    """Send every unsent outgoing message through the append lane: build the .eml, encrypt it to the front door's key and
+    sign it with this newsroom's key (sgit pki encrypt), POST it, and mark the message file sent. The token comes from the
+    environment only (NEWSROOM_APPEND_TOKEN); it is never written anywhere and never printed."""
+    import base64, tempfile, urllib.request
+    lane = RELAY['transport']
+    token = os.environ.get(lane['token_env'], '')
+    if not args.dry_run and not re.fullmatch(r'[0-9a-f]{16,128}', token):
+        sys.exit(f'no append token: set {lane["token_env"]} (hex, from the editor of record) or use --dry-run <dir>')
+    exe = os.environ.get('SGIT_BIN') or shutil.which('sgit')
+    if not exe:
+        sys.exit('sgit is needed to encrypt and sign (pip install sgit-ai), or set SGIT_BIN')
+    env = dict(os.environ)
+    if os.environ.get('NEWSROOM_PKI_HOME'):
+        env['HOME'] = os.environ['NEWSROOM_PKI_HOME']      # the keystore holding this newsroom's key pair and the front door's bundle
+    todo = [m for m in messages() if m['meta'].get('status', 'unsent') == 'unsent' and m['meta'].get('direction', 'outgoing') == 'outgoing']
+    if not todo:
+        print('nothing unsent'); return
+    url = f'{lane["endpoint"]}/api/vault/append/write/{RELAY["vault"]["id"]}'
+    sent = 0
+    for msg in todo:
+        raw, mid, to = lane_eml(msg, sent + 1 + len([m for m in messages() if m['meta'].get('lane')]), lane)
+        refuse_keys(raw.decode('utf-8', 'replace'), msg['path'])
+        with tempfile.TemporaryDirectory() as tmp:
+            f = os.path.join(tmp, 'message.eml')
+            open(f, 'wb').write(raw)
+            r = subprocess.run([exe, 'pki', 'encrypt', f, '--recipient', lane['recipient_fingerprint'], '--fingerprint', lane['self_fingerprint']],
+                               cwd=tmp, env=env, capture_output=True, text=True)
+            if r.returncode or not os.path.exists(f + '.enc'):
+                sys.exit(f'sgit pki encrypt failed for {msg["path"]}: {(r.stderr or r.stdout).strip()[:300]}')
+            enc = open(f + '.enc', 'rb').read()
+        payload = base64.b64encode(enc).decode()
+        if args.dry_run:
+            os.makedirs(args.dry_run, exist_ok=True)
+            open(os.path.join(args.dry_run, slug(msg['stem']) + '.eml'), 'wb').write(raw)
+            open(os.path.join(args.dry_run, slug(msg['stem']) + '.enc'), 'wb').write(enc)
+            print(f'  dry run: {msg["path"]} -> {to}, {len(raw)} bytes, {len(payload)} bytes of payload, {mid}')
+            continue
+        req = urllib.request.Request(url, data=json.dumps({'append_token': token, 'payload': payload}).encode(),
+                                     headers={'Content-Type': 'application/json'}, method='POST')
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                answer = json.loads(resp.read() or b'{}')
+        except urllib.error.HTTPError as e:
+            sys.exit(f'the lane refused {msg["path"]}: HTTP {e.code} {e.read()[:200]!r}')
+        if answer != {'ok': True}:
+            sys.exit(f'unexpected answer for {msg["path"]}: {answer!r}')
+        set_meta(msg['path'], status='sent', sent=now().strftime('%Y-%m-%dT%H:%MZ'), message_id=mid, to_vault=to,
+                 lane=f'{lane["endpoint"].split("//")[1]}/{RELAY["vault"]["id"]}', signed_by=lane['self_signing_fingerprint'])
+        print(f'  sent {msg["path"]} -> {to} ({mid}), signed, {len(payload)} bytes: ok')
+        sent += 1
+    print(f'lane: {sent} sent' if not args.dry_run else 'lane: dry run, nothing posted, nothing marked')
+
+
 def cmd_status(args):
     counts = {}
     for msg in messages():
         st = msg['meta'].get('status', 'unsent')
         counts[st] = counts.get(st, 0) + 1
-        print(f'  {st:10} {msg["path"]}  ->  {(msg["peer"] or {}).get("name", "?")}  {msg["meta"].get("message_id", "")}')
+        print(f'  {st:10} {msg["path"]}  ->  {msg["meta"].get("to_vault") or (msg["peer"] or {}).get("name", "?")}  {msg["meta"].get("message_id", "")}')
     print('relay: ' + ', '.join(f'{n} {k}' for k, n in sorted(counts.items())) if counts else 'relay: no messages')
     print(f'vault: {RELAY["vault"]["id"] or "not created"}; {RELAY["vault"]["status"]}' if not RELAY['vault']['id'] else f'vault: {RELAY["vault"]["id"]}')
 
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
-    ap.add_argument('command', choices=['join', 'send', 'check', 'status'])
+    ap.add_argument('command', choices=['join', 'send', 'lane', 'check', 'status'])
     ap.add_argument('--vault', help='a clone of the relay vault (holds .sg_vault/); or NEWSROOM_RELAY_VAULT')
     ap.add_argument('--dry-run', metavar='DIR', help='write the mail tree here instead; no sgit, no status change')
     a = ap.parse_args()
-    {'join': cmd_join, 'send': cmd_send, 'check': cmd_check, 'status': cmd_status}[a.command](a)
+    {'join': cmd_join, 'send': cmd_send, 'lane': cmd_lane, 'check': cmd_check, 'status': cmd_status}[a.command](a)

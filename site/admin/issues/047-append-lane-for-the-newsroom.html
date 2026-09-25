@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.19" data-root="../../">
+<html lang="en-GB" data-version="v0.1.20" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,13 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.19 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.20 · snapshot 2026-09-24</span>
 <nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../briefings/index.html">Briefings</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../../newsroom/index.html">The newsroom</a><a href="../index.html" class=on>Admin</a><a href="../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
-<p class="eyebrow">Issue 047 · open</p>
+<p class="eyebrow">Issue 047 · done</p>
 
-<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 047</p><dl class="facts"><dt>Status</dt><dd><span class="tag">open</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Build desk</dd><dt>Created</dt><dd>2026-09-25T16:30:00Z</dd><dt>Effort</dt><dd>small</dd><dt>Source</dt><dd>briefings/riskmandate.ai/inbox/2026-09-25__open-an-append-lane-for-the-newsroom.md</dd><dt>Epic</dt><dd><a href="003-chat-and-relay.html">Epic: a chat with tools over the site, and messages relayed to other agents</a></dd></dl><article class="source"><h1 id="send-to-riskmandate-agent-collab-through-an-append-lane">Send to riskmandate-agent-collab through an append lane</h1>
+<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 047</p><dl class="facts"><dt>Status</dt><dd><span class="tag">done</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Build desk</dd><dt>Created</dt><dd>2026-09-25T16:30:00Z</dd><dt>Effort</dt><dd>small</dd><dt>Source</dt><dd>briefings/riskmandate.ai/inbox/2026-09-25__open-an-append-lane-for-the-newsroom.md</dd><dt>Epic</dt><dd><a href="003-chat-and-relay.html">Epic: a chat with tools over the site, and messages relayed to other agents</a></dd></dl><article class="source"><h1 id="send-to-riskmandate-agent-collab-through-an-append-lane">Send to riskmandate-agent-collab through an append lane</h1>
 <p>Chosen by the editor of record on 25 September in place of a member&#x27;s clone: the newsroom holds one write-only append
 token and the vault owner&#x27;s public key, and never the vault key.</p>
 <p>Waiting on the vault&#x27;s owner (the request is on the briefing page for riskmandate.ai): the token (to the editor of
@@ -25,10 +25,18 @@ base URL, and who the postmaster is.</p>
 <p>Then: <code>tools/relay.py send --lane</code> (build the <code>.eml</code>, <code>sgit pki encrypt</code> to the key, POST with stdlib urllib, mark
 <code>sent</code>); the key bundle and fingerprint in <code>data/relay.json</code> and on the briefing page; brief 1&#x27;s message sent
 first; issue 046 closed as not taken.</p>
-<p>Done when: message 001 is <code>sent</code> through the lane and the owner confirms it landed in <code>mail/mailroom/mailbox.riskmandate/</code>.</p></article>
-<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/open/047-append-lane-for-the-newsroom.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+<p>Done when: message 001 is <code>sent</code> through the lane and the owner confirms it landed in <code>mail/mailroom/mailbox.riskmandate/</code>.</p>
+<h2 id="done-25-september">Done, 25 September</h2>
+<p>The postmaster opened the lane (reply filed at <code>briefings/riskmandate.ai/inbox/2026-09-25__re-open-an-append-lane-for-the-newsroom.md</code>):
+dev.send.sgraph.ai, front door <code>sha256:8f8132b304423587</code>, configure replaces anchors (this newsroom&#x27;s is the only one),
+@Cowork is the postmaster. The editor of record handed over the token; it lives only in the environment of the command
+that sends. This newsroom made its own key pair (<code>sha256:9b69885b35612bdd</code>, signing <code>sha256:f791a1cfb957d58f</code>) and
+published the bundle. <code>tools/relay.py lane</code> sent the first message, encrypted and signed, to @Cowork: the lane answered
+<code>{&quot;ok&quot;: true}</code>. Brief 1 was not sent again: @Cowork had relayed it as <code>003-relay-editor-briefs-042-045.eml</code>.
+Confirmation that it landed will come as a reply.</p></article>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/done/047-append-lane-for-the-newsroom.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.19 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="047-append-lane-for-the-newsroom.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.20 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="047-append-lane-for-the-newsroom.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
 <script src="../../assets/panel.js"></script>
 </body>

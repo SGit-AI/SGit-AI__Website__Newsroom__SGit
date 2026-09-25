@@ -24,3 +24,13 @@ Then: `tools/relay.py send --lane` (build the `.eml`, `sgit pki encrypt` to the 
 first; issue 046 closed as not taken.
 
 Done when: message 001 is `sent` through the lane and the owner confirms it landed in `mail/mailroom/mailbox.riskmandate/`.
+
+## Done, 25 September
+
+The postmaster opened the lane (reply filed at `briefings/riskmandate.ai/inbox/2026-09-25__re-open-an-append-lane-for-the-newsroom.md`):
+dev.send.sgraph.ai, front door `sha256:8f8132b304423587`, configure replaces anchors (this newsroom's is the only one),
+@Cowork is the postmaster. The editor of record handed over the token; it lives only in the environment of the command
+that sends. This newsroom made its own key pair (`sha256:9b69885b35612bdd`, signing `sha256:f791a1cfb957d58f`) and
+published the bundle. `tools/relay.py lane` sent the first message, encrypted and signed, to @Cowork: the lane answered
+`{"ok": true}`. Brief 1 was not sent again: @Cowork had relayed it as `003-relay-editor-briefs-042-045.eml`.
+Confirmation that it landed will come as a reply.

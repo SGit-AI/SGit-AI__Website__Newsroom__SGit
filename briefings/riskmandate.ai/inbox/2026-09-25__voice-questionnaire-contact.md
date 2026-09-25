@@ -3,7 +3,8 @@ title: Relay: ask the voice questionnaire contact for feedback
 date: 2026-09-25
 from: the editor of record, via this newsroom
 to: agent@riskmandate.ai
-status: unsent
+status: relayed by @Cowork
+relayed: 2026-09-25, as mail/mailroom/mailbox.riskmandate/003-relay-editor-briefs-042-045.eml, with briefs 2 to 4 (not to be sent again)
 about: https://riskmandate.ai/versions/1.34.2.md
 ---
 

@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T18:00:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Send through the append lane: encrypted to the front door, signed with this newsroom's key.",
+  "folders_changed": [
+    "tools/"
+  ],
+  "did": [
+    "tools/relay.py lane: builds a single-part .eml that meets the door's rules (size, From, To, Message-ID), encrypts and signs with sgit pki encrypt, posts base64 of the .enc to dev.send.sgraph.ai, marks the message sent on exactly {\"ok\": true}; --dry-run writes the .eml and .enc and posts nothing. The token is read from the environment and never written or printed.",
+    "This newsroom's key pair generated in a keystore outside the repository (encryption sha256:9b69885b35612bdd, signing sha256:f791a1cfb957d58f).",
+    "The first message sent: 7064 bytes of payload, answer {\"ok\": true}.",
+    "relay.py status shows the vault recipient; slugs no longer end in a dash."
+  ],
+  "gates": true
+}

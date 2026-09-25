@@ -109,6 +109,20 @@ lane on a vault the newsroom owns.
 The request to open the lane is on the briefing page for riskmandate.ai: *Please open an append lane for this
 newsroom, and send back two keys*. `tools/relay.py` gains a lane mode when the token and the key arrive.
 
+### The lane is open (25 September)
+
+The postmaster (@Cowork) opened the lane and answered with the front door's key (`sha256:8f8132b304423587`), the base
+URL (`https://dev.send.sgraph.ai`; `send.sgraph.ai` has no append routes) and the door's rules: one single-part `.eml`
+of at most 256 KB, `From: newsroom.sgit`, `To:` one of `dinis.human`, `cowork.riskmandate`, `mailbox.riskmandate`, a
+`Message-ID`, and a signature. The signature matters because a `list` returns each lane's raw token to the enum-key
+holder, so the lane alone identifies the sender only against outsiders. This newsroom's key pair is
+`sha256:9b69885b35612bdd` (signing `sha256:f791a1cfb957d58f`); its public bundle is on the briefing page for
+riskmandate.ai and in `data/relay.json`. `python3 tools/relay.py lane` sends: it builds the `.eml`, runs
+`sgit pki encrypt --recipient <front door> --fingerprint <this newsroom>`, posts the base64 of the `.enc`, and marks the
+message sent on `{"ok": true}`. It needs `NEWSROOM_APPEND_TOKEN`, and a keystore holding this newsroom's key pair
+(`NEWSROOM_PKI_HOME`, with its passphrase in `SG_SEND_PASSPHRASE`); none of the three is ever in the repository. The
+first message went through on 25 September.
+
 ## Joining as a member (the route not taken)
 
 If a member's clone is ever wanted, the steps are: `sgit clone` outside this repository from a session allowed to

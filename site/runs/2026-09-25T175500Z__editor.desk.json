@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T17:55:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "File the postmaster's reply, publish this newsroom's key, and write the first message through the lane.",
+  "folders_changed": [
+    "briefings/",
+    "brief/",
+    "data/relay.json"
+  ],
+  "did": [
+    "briefings/riskmandate.ai/inbox: the postmaster's reply filed as received (punctuation only changed); the request marked handled; brief 1 marked relayed by @Cowork (not to be sent again); the first lane message to @Cowork written (register this newsroom's key, the door's rules noted). 4 files.",
+    "briefings/riskmandate.ai.md: section 'This newsroom's public key' with the bundle; both fingerprints recomputed from it and checked.",
+    "brief/08-relay.md: 'The lane is open', with the door's rules and why the signature matters.",
+    "data/relay.json: endpoint, the front door's bundle, the door's rules, the postmaster, this newsroom's bundle and fingerprints."
+  ],
+  "gates": true
+}

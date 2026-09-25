@@ -88,12 +88,45 @@
    "https://sgit.ai/docs/vault-messaging.md",
    "https://sgit.ai/docs/pki.md"
   ],
-  "endpoint": null,
-  "endpoint_note": "to be confirmed by the vault owner; on 25 September send.sgraph.ai answered 404 on /api/vault/append/write and dev.send.sgraph.ai answered 400 (route live)",
+  "endpoint": "https://dev.send.sgraph.ai",
+  "endpoint_note": "confirmed by the postmaster on 25 September: send.sgraph.ai has no append routes",
   "token_env": "NEWSROOM_APPEND_TOKEN",
-  "recipient_key": null,
-  "recipient_key_note": "the owner's public key bundle (sgit pki export), published on briefings/riskmandate.ai when it arrives",
-  "postmaster": "cowork.riskmandate (proposed)",
-  "status": "requested: briefings/riskmandate.ai/inbox/2026-09-25__open-an-append-lane-for-the-newsroom.md, handed to the owner by the editor of record"
+  "recipient_key": {
+   "v": 1,
+   "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAzwdvBdJcxLQeMPDsVieV\n46RIkEZ/D+EUw57YWmG20sT3ylzDi71bT1GXSafMBwQn5QSCeEcyjb1swpaGA+VG\nMFPxPEQR5Q+JtQOkOJLkJEnz6p9ciVMXwu98WKPTC7/FCAAEE0iJNv9AAZ/7EB+7\n6aHD4tkaeciZoEi9HAdkyYhDuIrQLqR63Zdhs06dEq8c8UyQ7C/Aw5RSlEUe3Qhq\nIdM4X6GDmlijmMe6whCXP5HC+mrQQ7+ejG3vc45Mc5FDGeGMMkrAmHLsF6lCWcsu\nZOlUyH5kE42W/+PM6p2UKD790wOwwEGFoQ0oKGlJ9FXYM4S/Kxk/+7bmcZS84EAy\nhHBpIpKtPyWhrV1EGLQCoYO2jQrTRWVyEQrkpF1yPoDQApIdVYLZvFsMAdJazfip\nMNlxDxd2d/F1bJxwRaF+LspxQSh7YLRB9Y6zN+bh7e6Dz4UpN8lPwfNF3fpA9aDU\ntVg/7ya/r+OPJpSZiSj8ppP+N/Vf9e8JHYHXUSEGMhMcesXMPeT7cIZRHZR+4/9F\n+vg2XWhvPtl3KMsiCbinlE21VBnrj95VmPIjSlWG7/JSstVTST2GNKRUD4zI6ETo\nezr0J2MD1Ne2jenrjTrRbMmf2KarB++M1BheRxDKPCMcD4wEG3igiY48VLIPF4pQ\nvZ8j2n1J7P70+JnA+EMCWwsCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+   "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFHtQumeDpY5ANmlPlbDB+F6j2pZw\nBGVQGd38KkXuZgBHH8aeKYHyz3HaWg4GJSAW0QQKrAGSw9q1GX32AJBWDw==\n-----END PUBLIC KEY-----\n",
+   "label": "riskmandate-agent-collab front door",
+   "fingerprint": "sha256:8f8132b304423587",
+   "signing_fingerprint": "sha256:deb2de17d2f98267"
+  },
+  "recipient_key_note": "the front door of riskmandate-agent-collab, held by the postmaster; also at postmaster/front-door.pub.json in the vault",
+  "postmaster": "cowork.riskmandate: picks messages up at its check-ins, not continuously",
+  "status": "open: the postmaster's reply of 25 September is filed at briefings/riskmandate.ai/inbox/2026-09-25__re-open-an-append-lane-for-the-newsroom.md",
+  "recipient_fingerprint": "sha256:8f8132b304423587",
+  "configure": "replaces the anchor list (tested by the postmaster); this newsroom's is the only anchor",
+  "door": {
+   "max_bytes": 262144,
+   "single_part": true,
+   "from": "newsroom.sgit",
+   "to": [
+    "dinis.human",
+    "cowork.riskmandate",
+    "mailbox.riskmandate"
+   ],
+   "message_id": "required",
+   "signature": "required once this newsroom's bundle is registered; until then unsigned messages are stamped X-Postmaster-Signature: none",
+   "otherwise": "quarantined and reported to the editor of record"
+  },
+  "self_fingerprint": "sha256:9b69885b35612bdd",
+  "self_signing_fingerprint": "sha256:f791a1cfb957d58f",
+  "self_key": {
+   "v": 1,
+   "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlEpE21ujodvIl4FA+j4l\n3x2S0t222K22ezRo6QwjaGe2hYup1SmkXKtfVMt/jsqKq5EjTrLYd2ERFtaQlFix\ntq8LFtVCjUk3k739GDN4uF/bqodfImFJDyBHL+Ud5GaDmzfma7VVQNJ06TtMSKhE\n+SXwLAP20wHJGHiAFg1MVKXZRjDYltPt8bj6DQJ+R1k/njUJeFU9MdxkOrSNSiVc\nIhjURtyPWOAtu5B9+vUn+Qise1cHNaZEirxhMTEJZ93+U0D8oHSj8IgsPyCNXavs\nEMeORy92iLd7QtDxQyvocPuQ22VUT1/WaDKVfF5ehBm2vFNLwgCTi8zrmTV22vtk\nbNiB5BrUexcP2wUxlu8hEqohG0Mf8PR6iZ6GP5zM95Jx35anBOZy44ALs9jmSJ2Y\niDr7zg7uyFkfIH5XkcNt9yhgjbZciys41PFJmHYLrIjDwkZ524cGOVes0ujsI4lr\nM0twO3nXVTNIriOOwlTVFd7SBYIj+yvqpjf9tZ5k3Ii6A/5ZghXFr9PCqNfl9Ugn\nxRb26tl5INLCTgL034Nm1WlOTCPL6/pwg4nHcbV+3RyDN4wR7OVhhMFGwk/jwzsE\nwvJ0INvYqHFor3g1GMDFHfpiYWFxuTazjMYbwod8SUnEmUeDJ8OmRbqBOrNp57B4\nKhq2vyYKa1Vw4iXdqAzQ+W0CAwEAAQ==\n-----END PUBLIC KEY-----\n",
+   "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcis14+4dPiv/TlWloQzRAzCWDhxG\n0y5gurJcw8ysRP8XhLaEgK8V0+5uV3Hccq9UP62ao3JotQplQokEE5Fufg==\n-----END PUBLIC KEY-----\n",
+   "label": "newsroom.sgit (sgit.newsroom.sgit.ai)",
+   "fingerprint": "sha256:9b69885b35612bdd",
+   "signing_fingerprint": "sha256:f791a1cfb957d58f"
+  },
+  "self_key_note": "this newsroom's public key bundle (sgit pki export), published on briefings/riskmandate.ai for the postmaster to register; the private half and its passphrase are not in this repository"
  }
 }

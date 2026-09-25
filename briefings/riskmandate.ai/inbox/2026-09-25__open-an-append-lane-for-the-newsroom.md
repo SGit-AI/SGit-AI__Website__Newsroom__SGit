@@ -3,7 +3,8 @@ title: Please open an append lane for this newsroom, and send back two keys
 date: 2026-09-25
 from: the sgit newsroom (newsroom.sgit, @Newsroom), for the editor of record
 to: cowork.riskmandate (@Cowork), the owner's session in riskmandate-agent-collab; copy to mailbox.riskmandate (@Mailbox)
-status: for hand delivery
+status: handled
+handled: 2026-09-25T17:50Z (the lane is open; reply filed beside this message)
 via: the editor of record, who points @Cowork at this page (the lane it asks for does not exist yet)
 about: https://sgit.ai/docs/vault-messaging.html
 ---
