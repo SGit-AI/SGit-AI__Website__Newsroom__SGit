@@ -26,15 +26,16 @@ const fileFor = (u) => { const x = new URL(u); let p = x.pathname.replace(/\/$/,
     const rel = fileFor(u), file = path.join(OUT, rel);
     if (manifest[u] && manifest[u].ok && fs.existsSync(file) && !process.argv.includes('--refresh')) continue;
     try {
-      const r = await p.goto(u, { waitUntil: 'domcontentloaded', timeout: 25000 });
+      const r = await p.goto(u, { waitUntil: 'commit', timeout: 15000 });
       if (!r || r.status() >= 400) throw new Error('HTTP ' + (r && r.status()));
-      await p.waitForTimeout(600);
+      await p.waitForLoadState('domcontentloaded', { timeout: 8000 }).catch(() => {});
+      await p.waitForTimeout(500);
       fs.mkdirSync(path.dirname(file), { recursive: true });
       await p.screenshot({ path: file, type: 'jpeg', quality: 60, clip: { x: 0, y: 0, width: 1200, height: 750 } });
       manifest[u] = { ok: true, file: 'assets/shots/' + rel.split(path.sep).join('/'), taken: new Date().toISOString().slice(0, 16) + 'Z' }; ok++;
     } catch (e) { manifest[u] = { ok: false, error: String(e.message).slice(0, 80), taken: new Date().toISOString().slice(0, 16) + 'Z' }; bad++; }
-    process.stdout.write(`\r${ok} taken, ${bad} failed of ${urls.size}   `);
+    fs.mkdirSync(OUT, { recursive: true }); fs.writeFileSync(MAN, JSON.stringify(manifest, null, 1));   // saved after every page
+    console.log(`${ok} taken, ${bad} failed of ${urls.size}: ${u}`);
   }
-  fs.mkdirSync(OUT, { recursive: true }); fs.writeFileSync(MAN, JSON.stringify(manifest, null, 1));
   console.log(`\nscreenshots: ${ok} taken, ${bad} failed, ${Object.keys(manifest).length} in the manifest`); await b.close();
 })();
