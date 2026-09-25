@@ -4,9 +4,10 @@
   "runs/",
   "site/",
   "version.txt",
-  "data/loose-ends.json"
+  "data/loose-ends.json",
+  "issues/"
  ],
- "shared_writes_why": "Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), and rebuilds and releases the site.",
+ "shared_writes_why": "Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), files or moves issues (issues-fs-lite: the folder is the status), and rebuilds and releases the site.",
  "agents": [
   {
    "id": "editor.desk",

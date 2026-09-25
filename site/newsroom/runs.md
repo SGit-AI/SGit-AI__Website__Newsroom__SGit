@@ -1,6 +1,7 @@
 # Runs
 
 - 2026-09-25T12:10:00Z build.desk: Capture the editor of record's notes of 25 September (read offline on a plane) as issues, and give the back office an issues board.
+- 2026-09-25T12:09:00Z editor.desk: File the editor of record's notes of 25 September in the inbox, verbatim, as the source the issues cite.
 - 2026-09-25T09:33:00Z editor.human: Change the register of agents: the Editor becomes a desk that owns the front page, the sections and the admin back office; the Cartographer becomes a full desk that owns maps/; the Journalist and Historian get the centres of gravity the editor of record set.
 - 2026-09-25T09:32:00Z editor.desk: Set up the back office and the site's sections.
 - 2026-09-25T09:31:00Z librarian.desk: Compute the network: which site links to which.

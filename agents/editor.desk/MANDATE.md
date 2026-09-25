@@ -36,5 +36,6 @@ Belongs to: the editor of record
 - site/
 - version.txt
 - data/loose-ends.json
+- issues/
 
 Anything else in a run record's `folders_changed` fails `tools/validate.py`.

@@ -19,7 +19,7 @@ The newsroom's work is done by desks, each with a role, a mandate and the folder
 ## How to work as one
 
 1. Read the desk's `ROLE.md` and `MANDATE.md`, then `CLAUDE.md` and `brief/06-house-rules.md`.
-2. Do only that desk's work, in its folders (plus the shared ones: `runs/`, `site/`, `version.txt`, `data/loose-ends.json`).
+2. Do only that desk's work, in its folders (plus the shared ones: `runs/`, `site/`, `version.txt`, `data/loose-ends.json`, `issues/`).
 3. Write `runs/<YYYY-MM-DDTHHMMSSZ>__<agent id>.json` (fields in `runs/README.md`).
 4. `python3 tools/build.py && python3 tools/validate.py`; commit and push only when both pass.
 
