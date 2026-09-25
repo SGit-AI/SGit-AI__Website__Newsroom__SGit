@@ -7,4 +7,4 @@
 - **Guest desks**: wrote 9 signals
 - **All desks**: 20 loose ends, 16 open
 - **Editor of record**: reviewed 0 of 5 editions
-- **Build and validate**: v0.1.2: this site, offline
+- **Build and validate**: v0.1.3: this site, offline

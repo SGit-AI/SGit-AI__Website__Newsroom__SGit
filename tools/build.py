@@ -728,7 +728,7 @@ class Site:
                     f'<a href="{rel(P, x.link)}">{esc(os.path.basename(x.path))}</a>' for x in xs) + '</li>')
             start = self.cat.sources.get(f'vaults/{v}/plan/00-START-HERE.md')
             plans.append(f'<section class="card"><h3>{esc(name)}</h3><p>'
-                         f'<a class="btn" href="{rel(P, "src/" + app)}">Open the plan\'s app</a> '
+                         f'<a class="btn" href="{rel(P, "vaults/app/" + v + ".html")}">Open the plan\'s app</a> '
                          + (f'<a class="btn" href="{rel(P, start.page)}">Read plan/00-START-HERE</a>' if start else '')
                          + f'</p><ul class="files">{"".join(parts)}</ul></section>')
         pv = self.cat.sources['vaults/published-vaults.json']
@@ -982,23 +982,28 @@ class Site:
                   md=md, eyebrow='Librarian')
         self.write('data/concepts.json', json.dumps([dict(c, pages=cp[c['id']]) for c in self.concepts], indent=1, ensure_ascii=False))
 
-        # vaults
+        # vaults: cards, not a six-column table; the five seed apps get a framed page each
         P = 'vaults/index.html'
-        rows = []
+        cards = []
         for v in self.vaults:
             s = self.cat.sources.get(v.get('local') or '')
             name = f'<a href="{rel(P, s.link)}">{esc(v["name"])}</a>' if s else esc(v['name'])
-            live = f'<a class="ext live" href="{esc(v["live"])}">↗</a>' if v.get('live') else ''
-            key = f'<code class="key">{esc(v["read_key"])}</code>' if v.get('read_key') else '<span class="muted">not published on its page</span>'
-            seed = f' · <a href="{rel(P, "src/vaults/" + v["seed"] + "/index.html")}">app, offline</a>' if v.get('seed') else ''
-            rows.append(f'<tr><td>{name}{live}{seed}<br><span class="muted small">{esc(v.get("what", ""))}</span></td>'
-                        f'<td>{esc(v.get("category", ""))}</td><td class="nowrap">{esc(v.get("published", ""))}</td>'
-                        f'<td><code>{esc(v.get("vault_id", ""))}</code></td><td>{esc(v.get("size", ""))}</td><td class="small">{key}</td></tr>')
+            live = f'<a class="ext live" href="{esc(v["live"])}" title="live page">↗</a>' if v.get('live') else ''
+            app = (f'<a class="btn-s vault-app" href="{rel(P, "vaults/app/" + v["seed"] + ".html")}">{ICON["check"]} Open the app, offline</a>'
+                   if v.get('seed') else '')
+            key = (f'<details class="vkey"><summary>Read key, published by the site</summary><code class="key">{esc(v["read_key"])}</code></details>'
+                   if v.get('read_key') else '<span class="muted small">no read key on its page</span>')
+            meta = ' · '.join(x for x in (esc(v.get('category') or ''), esc(v.get('published') or ''),
+                                          f'<code>{esc(v.get("vault_id", ""))}</code>', esc(v.get('size') or '')) if x)
+            cards.append(f'<li class="vcard"><div class="vhead"><div class="vname">{name}{live}</div>{app}</div>'
+                         f'<p class="vwhat">{esc(v.get("what", ""))}</p><div class="vmeta">{meta}</div>{key}</li>')
+            if v.get('seed'):
+                self.build_vault_frame(v, s)
         body = (f'<h1>Vaults</h1><p class="lede">Every vault sgit.ai publishes: {len(self.vaults)}, from '
-                f'<a href="{rel(P, "src/vaults/published-vaults.json.html")}">published-vaults.json</a>. A read key is shown only where '
-                f'the vault\'s own page publishes it on purpose. No vault key or write credential appears anywhere on this site.</p>'
-                f'<div class="table"><table><thead><tr><th>Vault</th><th>Category</th><th>Published</th><th>Vault id</th><th>Size</th>'
-                f'<th>Read key (published by the site)</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
+                f'<a href="{rel(P, "src/vaults/published-vaults.json.html")}">published-vaults.json</a>, newest first. '
+                f'{sum(1 for v in self.vaults if v.get("seed"))} of them are in the seed pack and open here as apps, offline. A read key is shown only '
+                f'where the vault\'s own page publishes it on purpose. No vault key or write credential appears anywhere on this site.</p>'
+                f'<ul class="vcards">{"".join(cards)}</ul>')
         md = '# Vaults\n\n' + '\n'.join(f'- {v["name"]} ({v.get("vault_id", "")}): {v.get("what", "")}' for v in self.vaults) + '\n'
         self.page(P, 'Vaults', body, self.prov_desk(P, 'Librarian', SNAPSHOT_TAKEN, sources=['src:vaults/published-vaults.json']),
                   md=md, eyebrow='Librarian')
@@ -1023,6 +1028,38 @@ class Site:
                                      extra=[('Data', f'<a href="{rel(P, f"data/changes/{date}.json")}">data/changes/{date}.json</a>')]),
                       md=md, eyebrow='Librarian')
             self.write(f'data/changes/{date}.json', json.dumps(ch, indent=1, ensure_ascii=False))
+
+    def build_vault_frame(self, v, page_src):
+        """A vault's own app, framed inside the newsroom: our navigation stays, a banner says plainly that
+        what is below is the vault, and the frame is sandboxed (scripts run; the app cannot reach this
+        site's storage, where the reader's feedback lives)."""
+        P = f'vaults/app/{v["seed"]}.html'
+        app = self.cat.sources[f'vaults/{v["seed"]}/index.html']
+        readme = self.cat.sources.get(f'vaults/{v["seed"]}/README.md')
+        start = self.cat.sources.get(f'vaults/{v["seed"]}/plan/00-START-HERE.md')
+        links = ' · '.join(x for x in (
+            f'<a href="{rel(P, page_src.link)}">its page on sgit.ai (local copy)</a>' if page_src else '',
+            f'<a href="{rel(P, readme.link)}">README</a>' if readme else '',
+            f'<a href="{rel(P, start.link)}">the plan, as documents</a>' if start else '',
+            f'<a href="{rel(P, "reading-room/index.html")}#plans">every file</a>',
+            f'<a href="{rel(P, app.raw)}">open full window</a>',
+            f'<a class="ext" href="{esc(v["live"])}">live ↗</a>') if x)
+        key = (f'<details class="vkey"><summary>Read key, published by the site</summary><code class="key">{esc(v["read_key"])}</code></details>'
+               if v.get('read_key') else '')
+        bar = self.fb_bar(app).replace(f'data-title="{esc(app.title)}"', f'data-title="{esc(v["name"])} (vault app)"')
+        body = (f'<div class="vault-banner"><div class="vb-tag">{ICON["check"]} Vault · {esc(v.get("category") or "")}</div>'
+                f'<h1>{esc(v["name"])}</h1><p>{esc(v.get("what", ""))}</p>'
+                f'<div class="vmeta">vault <code>{esc(v.get("vault_id", ""))}</code> · published {esc(v.get("published") or "")} · '
+                f'{esc(v.get("size") or "")} · {v.get("files") or "?"} files</div>{key}'
+                f'<p class="vb-note">Below is the vault\'s own app, exactly as published, running from the seed copy on this device. '
+                f'It is the vault\'s content, not the newsroom\'s.</p><p class="small">{links}</p></div>' + bar +
+                f'<div class="vault-frame"><div class="vf-top"><span class="vf-dot"></span><span class="vf-dot"></span>'
+                f'<span class="vf-dot"></span><span class="vf-addr">vault {esc(v.get("vault_id", ""))} · {esc(v["seed"])}/index.html</span></div>'
+                f'<iframe src="{rel(P, app.raw)}" title="{esc(v["name"])}: the vault\'s app" loading="lazy" '
+                f'sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-downloads allow-modals"></iframe></div>')
+        prov = self.prov_block(P, [(k, val.replace('{raw}', esc(rel(P, app.raw))) if val else val) for k, val in self.prov_source(app)])
+        self.page(P, f'{v["name"]} (vault)', body, prov, md=f'# {v["name"]} (vault)\n\n{v.get("what", "")}\n\nApp: {app.raw}\n',
+                  eyebrow=f'Vaults · {esc(v["name"])}', kind='source', site='vaults', wide=True)
 
     # ------------------------------------------------------------------ history, signals, loose ends
     def build_history(self):
