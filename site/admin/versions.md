@@ -19,3 +19,4 @@
 - v0.1.16 (2026-09-25): the relay points at the real collaboration vault; relay.py join
 - v0.1.17 (2026-09-25): a briefing: why the vault clone was refused and how to allow it
 - v0.1.18 (2026-09-25): an append lane for the newsroom: the request to the vault's owner
+- v0.1.19 (2026-09-25): the feedback-over-an-append-lane design, drawn

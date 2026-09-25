@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T17:25:00Z cartographer.desk: Draw every moving part of issue 048 (feedback sent from the browser over an append lane) so the editor of record can see the whole design.
 - 2026-09-25T17:00:00Z editor.human: File the editor of record's idea of 25 September: feedback sent from the browser to the newsroom over an append lane.
 - 2026-09-25T16:35:00Z editor.human: The editor of record's choice of 25 September: an append lane on the collaboration vault instead of a member's clone.
 - 2026-09-25T16:30:00Z editor.desk: Brief the riskmandate.ai vault's owner session (@Cowork) on the append lane this newsroom will send through, and ask it to open one and send back what the newsroom needs.

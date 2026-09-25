@@ -207,6 +207,16 @@
     "A request to the riskmandate.ai vault's owner session: open an append lane on riskmandate-agent-collab for this newsroom and send back the token (to the editor of record only) and the public key; how the .eml messages travel and what to read.",
     "brief/08-relay.md: the transport is an append lane, not a clone; the newsroom holds a write-only token and never the vault key. data/relay.json records it; issue 047 tracks it."
    ]
+  },
+  {
+   "version": "v0.1.19",
+   "date": "2026-09-25",
+   "time": "22:29",
+   "commit": "",
+   "title": "the feedback-over-an-append-lane design, drawn",
+   "notes": [
+    "maps/feedback-over-an-append-lane: every moving part of issue 048 drawn (a flowchart of the six parts, a sequence of one batch, who holds which key and what it cannot do)."
+   ]
   }
  ]
 }

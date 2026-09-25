@@ -1,0 +1,9 @@
+{
+  "when": "2026-09-25T17:25:00Z",
+  "agent": "cartographer.desk",
+  "kind": "desk",
+  "task": "Draw every moving part of issue 048 (feedback sent from the browser over an append lane) so the editor of record can see the whole design.",
+  "folders_changed": ["maps/"],
+  "did": ["maps/feedback-over-an-append-lane.md: a flowchart of six parts (setup, browser, SG/Send, vault, daily run, repository) with the batch's four steps and the setup links; a sequence diagram of one batch in 14 steps; a table of the six credentials (holder, can, cannot, if it leaks); what the server still sees. 2 diagrams, both rendered offline by tools/check_diagrams.js."],
+  "gates": true
+}

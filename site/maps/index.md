@@ -1,5 +1,6 @@
 # Maps
 
+- [Feedback over an append lane, drawn](maps/feedback-over-an-append-lane.md)
 - [How this newsroom runs, drawn](maps/the-newsroom-flow.md)
 - [The sgit network as a value chain](maps/sgit-network-wardley.md)
 - [RiskMandate.ai's offer as a value chain](maps/riskmandate-wardley.md)
