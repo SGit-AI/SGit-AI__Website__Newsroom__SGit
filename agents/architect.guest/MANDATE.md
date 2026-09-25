@@ -23,6 +23,7 @@ Belongs to: @Editor, until signals are delivered as briefs
 ## May write
 
 - signals/
+- briefings/
 - runs/
 - site/
 - version.txt

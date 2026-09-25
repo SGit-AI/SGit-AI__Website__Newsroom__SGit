@@ -273,6 +273,7 @@ class Site:
 </main>
 <footer><p>sgit newsroom {esc(VERSION)} · a static site built from a frozen, hashed snapshot of the sgit network · works offline{twin_link} · <a href="{rel(path, 'llms.txt')}">llms.txt</a></p></footer>
 <script src="{rel(path, 'assets/feedback.js')}"></script>
+<script src="{rel(path, 'assets/panel.js')}"></script>
 {diagram_js}</body>
 </html>
 '''
@@ -1328,6 +1329,98 @@ class Site:
                                                                              extra=[('File', f'issues/{i["status"]}/{i["stem"]}.md')]),
                       eyebrow=f'Issue {esc(i["num"])} · {esc(i["status"])}', md=read(rp(f'issues/{i["status"]}/{i["stem"]}.md')))
 
+    def build_briefings(self):
+        """A page per target site: what this newsroom has for that site's agent. Explicit briefs (briefings/<site>.md),
+        relayed messages (briefings/<site>/inbox/*.md), the signals addressed to it and the loose ends waiting on it.
+        A JSON twin beside each page, so an agent can read the same thing as data."""
+        sites = {}
+        def site_of(name):
+            # a domain stays a domain; a team name becomes a slug (sg-api-team), never a path
+            return re.sub(r'-+', '-', re.sub(r'[^a-z0-9.]+', '-', name.strip().lower())).strip('-.')
+        d = rp('briefings')
+        briefs, inbox = {}, {}
+        if os.path.isdir(d):
+            for name in sorted(os.listdir(d)):
+                if name.endswith('.md') and name != 'README.md':
+                    meta, body, raw = self.desk_file('briefings', name)
+                    briefs[site_of(meta.get('site') or name[:-3])] = (meta, body, raw, name[:-3])
+                elif os.path.isdir(os.path.join(d, name, 'inbox')):
+                    msgs = []
+                    for m in sorted(os.listdir(os.path.join(d, name, 'inbox'))):
+                        if m.endswith('.md'):
+                            meta, body, raw = self.desk_file(f'briefings/{name}/inbox', m)
+                            msgs.append((meta, body, raw, m[:-3]))
+                    inbox[site_of(name)] = msgs
+        for k in list(briefs) + list(inbox):
+            sites.setdefault(k, {})
+        sig_meta = [(s, m) for s, m, _, _ in self.signals]
+        for s_, m in sig_meta:
+            for t in re.split(r'\s+and\s+|,\s*', m.get('to_site', '')):
+                if t.strip():
+                    sites.setdefault(site_of(t), {})
+        for x in self.loose:
+            for t in re.split(r'\s+and\s+|,\s*', x.get('waiting_on', '') or ''):
+                if t.strip():
+                    sites.setdefault(site_of(t), {})
+        self.briefing_sites = sorted(sites)
+        index_rows = []
+        for site in self.briefing_sites:
+            P = f'briefings/{site}.html'
+            link, _, _ = self.resolver(P)
+            my_sigs = [(s_, m) for s_, m in sig_meta if site in [site_of(t) for t in re.split(r'\s+and\s+|,\s*', m.get('to_site', ''))]]
+            my_le = [x for x in self.loose if site in [site_of(t) for t in re.split(r'\s+and\s+|,\s*', x.get('waiting_on', '') or '')]]
+            parts = []
+            data = {'site': site, 'generated_from': f'sgit.newsroom.sgit.ai {VERSION}', 'briefs': [], 'messages': [], 'signals': [], 'loose_ends': []}
+            if site in briefs:
+                meta, body, raw, stem = briefs[site]
+                html_body, _ = self.md(body, P)
+                parts.append(f'<section class="brief-block"><h2>{esc(meta.get("title", "Briefs"))}</h2>'
+                             + (f'<p class="dek">{esc(meta["standfirst"])}</p>' if meta.get('standfirst') else '')
+                             + f'<article class="piece">{html_body}</article></section>')
+                data['briefs'].append({'title': meta.get('title'), 'date': meta.get('date'), 'markdown': raw, 'file': f'briefings/{stem}.md'})
+            if inbox.get(site):
+                items = ''
+                for meta, body, raw, stem in inbox[site]:
+                    h, _ = self.md(body, P)
+                    items += (f'<article class="msg"><p class="kicker">{esc(meta.get("date", ""))} · from {esc(meta.get("from", ""))} · '
+                              f'<span class="tag">{esc(meta.get("status", ""))}</span></p><h3>{esc(meta.get("title", stem))}</h3>{h}</article>')
+                    data['messages'].append({'title': meta.get('title'), 'date': meta.get('date'), 'status': meta.get('status'), 'markdown': raw,
+                                             'file': f'briefings/{site}/inbox/{stem}.md'})
+                parts.append(f'<section><h2>Messages relayed to this site\'s agent ({len(inbox[site])})</h2>{items}</section>')
+            if my_sigs:
+                items = ''.join(f'<li><a href="{rel(P, f"signals/{s_}.html")}">{esc(m.get("title", s_))}</a> <span class="muted small">from {esc(m.get("from_site", ""))} · '
+                                f'{esc(m.get("status", ""))}</span><br><span class="small">{esc(m.get("action", ""))}</span></li>' for s_, m in my_sigs)
+                parts.append(f'<section><h2>Signals for this site ({len(my_sigs)})</h2><ul class="list">{items}</ul></section>')
+                data['signals'] = [{'title': m.get('title'), 'from': m.get('from_site'), 'status': m.get('status'), 'action': m.get('action'),
+                                    'page': f'https://{DOMAIN}/signals/{s_}.md'} for s_, m in my_sigs]
+            if my_le:
+                items = ''.join(f'<li id="{esc(x.get("id", ""))}"><strong>{esc(x.get("what", ""))}</strong> <span class="tag">{esc(x.get("status", ""))}</span>'
+                                f'<br><span class="small">{esc(x.get("status_note", ""))} · said on {esc(x.get("said_on", ""))} · '
+                                + ', '.join(link(u, 'source') for u in x.get('said_at', [])) + '</span></li>' for x in my_le)
+                parts.append(f'<section><h2>Loose ends waiting on this site ({len(my_le)})</h2><ul class="list">{items}</ul></section>')
+                data['loose_ends'] = [{k: x.get(k) for k in ('id', 'what', 'status', 'status_note', 'said_on', 'said_at', 'waiting_on')} for x in my_le]
+            n = len(data['briefs']) + len(data['messages']) + len(my_sigs) + len(my_le)
+            body = (f'<p class="crumbs"><a href="{rel(P, "briefings/index.html")}">Briefings</a> / {esc(site)}</p>'
+                    f'<h1>Briefing for {esc(site)}</h1><p class="lede">What this newsroom has for {esc(site)}\'s team or agent: '
+                    f'{len(data["briefs"])} brief{"s" if len(data["briefs"]) != 1 else ""}, {len(data["messages"])} relayed message{"s" if len(data["messages"]) != 1 else ""}, '
+                    f'{len(my_sigs)} signal{"s" if len(my_sigs) != 1 else ""}, {len(my_le)} loose end{"s" if len(my_le) != 1 else ""}. '
+                    f'The same as data: <a href="{rel(P, f"briefings/{site}.json")}">{esc(site)}.json</a>.</p>' + ''.join(parts))
+            self.page(P, f'Briefing for {site}', body, self.prov_desk(P, 'Editor (compiled by the build from the desks\' files)', sources=None),
+                      eyebrow='Briefings', wide=True, md=f'# Briefing for {site}\n\n' + (briefs[site][2] if site in briefs else '') +
+                      '\n\n## Signals\n' + '\n'.join(f'- {m.get("title")}' for _, m in my_sigs) + '\n\n## Loose ends\n' + '\n'.join(f'- {x.get("what")}' for x in my_le) + '\n')
+            self.write(f'briefings/{site}.json', json.dumps(data, indent=1, ensure_ascii=False))
+            index_rows.append((site, n, len(data['briefs']), len(data['messages']), len(my_sigs), len(my_le)))
+        P = 'briefings/index.html'
+        rows = ''.join(f'<tr><td><a href="{rel(P, f"briefings/{s_}.html")}">{esc(s_)}</a></td><td class="num">{b}</td><td class="num">{m}</td>'
+                       f'<td class="num">{sg}</td><td class="num">{le}</td></tr>' for s_, n, b, m, sg, le in sorted(index_rows, key=lambda r: -r[1]))
+        body = (f'<h1>Briefings</h1><p class="lede">One page per site or team, holding everything this newsroom has for its agent: briefs from the '
+                f'editor of record, messages relayed to it, the signals addressed to it and the loose ends waiting on it. Point an agent at its '
+                f'page, or at the JSON beside it. {len(index_rows)} sites and teams.</p>'
+                f'<div class="table"><table class="sortable"><thead><tr><th>Site or team</th><th>Briefs</th><th>Messages</th><th>Signals</th><th>Loose ends</th></tr></thead>'
+                f'<tbody>{rows}</tbody></table></div>')
+        self.page(P, 'Briefings', body, self.prov_desk(P, 'Editor', sources=None), eyebrow='Briefings',
+                  md='# Briefings\n\n' + '\n'.join(f'- [{s_}]({s_}.md): {n} items' for s_, n, *_ in index_rows) + '\n')
+
     def build_admin(self):
         """The back office: what each desk did, what waits for review, the front page's configuration, the editor's notes and
         the desks' standing prompts. Public like the rest of the site: nothing secret belongs here."""
@@ -1858,6 +1951,7 @@ class Site:
     def build_assets(self):
         self.write('assets/style.css', read(os.path.join(ROOT, 'tools', 'style.css')))
         self.write('assets/feedback.js', read(os.path.join(ROOT, 'tools', 'feedback.js')))
+        self.write('assets/panel.js', read(os.path.join(ROOT, 'tools', 'panel.js')))
         self.write('assets/mermaid.min.js', open(os.path.join(ROOT, 'tools', 'vendor', 'mermaid.min.js'), 'rb').read(), binary=True)
         self.write('assets/diagrams.js', DIAGRAMS_JS)
         self.write('CNAME', DOMAIN + '\n')
@@ -1879,6 +1973,7 @@ class Site:
         self.build_loose_ends()
         self.build_agents()
         self.build_issues()
+        self.build_briefings()
         self.build_maps()
         self.build_news()
         self.build_admin()

@@ -1,0 +1,21 @@
+{
+ "site": "sg-send-api-team",
+ "generated_from": "sgit.newsroom.sgit.ai v0.1.10",
+ "briefs": [],
+ "messages": [],
+ "signals": [],
+ "loose_ends": [
+  {
+   "id": "le-020",
+   "what": "Four older cross-team asks from sgit.ai have no recorded answer: serial transfer mode for sgit under WebAssembly, a history-preserving vault rekey, first-class serialised diffs with ignore support, and the SG/Send API's CORS allow-list missing x-api-key.",
+   "status": "open",
+   "status_note": "The first three are marked \"Status: open\" on the briefs index; the CORS finding has no status line and the site works around it by dropping the header client-side (sgit.ai v0.1.11, 11 August). Given that the read-key ask was closed without the index noticing, some of these may also be answered; the snapshot does not show it.",
+   "said_on": "2026-08-11",
+   "said_at": [
+    "https://sgit.ai/docs/briefs/index.md",
+    "https://sgit.ai/docs/briefs/brief-serialised-diff-and-ignore.md"
+   ],
+   "waiting_on": "sgit CLI team and SG/Send API team"
+  }
+ ]
+}

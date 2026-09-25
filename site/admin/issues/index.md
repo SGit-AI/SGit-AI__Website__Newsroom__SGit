@@ -8,16 +8,11 @@
 - [open] 006 Epic: the back office runs on issues, with provenance
 - [open] 007 Epic: an industry news feed in, slide decks and PDFs out
 - [open] 008 Epic: briefs for agent@riskmandate.ai
-- [open] 012 Side panels: peek a link, feedback, chat, maps, resizable
-- [open] 013 Use the width: content column plus panes
 - [open] 015 Screenshots of the pages a piece is about
 - [open] 016 Standing briefing cards in the same place on every piece
 - [open] 020 A wallet drained by actions (as pt.newsroom.sgit.ai)
 - [open] 021 Render pages from a graph of pieces, merged with the reader's state
-- [open] 023 A chat panel with tools over the site, on the reader's OpenRouter key
 - [open] 024 Relay feedback addressed to another site's agent
-- [open] 025 A briefing page per target site
-- [open] 026 Propose the chat and feedback pattern to sgit.ai for other agents
 - [open] 029 Experiment: a JSON twin with a semantic graph for each new piece
 - [open] 030 Every Cartographer page carries a map, graph or infographic; tooling to make that cheap
 - [open] 032 The newsroom is part of the universe it reports on
@@ -34,10 +29,15 @@
 - [done] 009 Put every piece on its own sheet, with a byline block that says who wrote it
 - [done] 010 Feedback bar on every piece, not only on source pages
 - [done] 011 Replace "Read" / "Mark read" with a state that is unambiguous
+- [done] 012 Side panels: peek a link, feedback, chat, maps, resizable
+- [done] 013 Use the width: content column plus panes
 - [done] 014 Source pages: what is the newsroom, what is the target site
 - [done] 017 Marking a piece read hides it from the front page and the sections
 - [done] 018 Two views: the editor's and the reader's
 - [done] 019 A history of every action, with undo and redo
+- [done] 023 A chat panel with tools over the site, on the reader's OpenRouter key
+- [done] 025 A briefing page per target site
+- [done] 026 Propose the chat and feedback pattern to sgit.ai for other agents
 - [done] 027 The site's principles and content rules (including: no "rungs")
 - [done] 028 Issues and questions a desk finds go to a visible place, not into prose
 - [done] 031 History index that reads, and lessons the reader can mark read one by one

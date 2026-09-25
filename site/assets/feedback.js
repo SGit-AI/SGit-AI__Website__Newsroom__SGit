@@ -9,6 +9,7 @@
  */
 (function () {
   'use strict';
+  if (window.self !== window.top) document.documentElement.classList.add('embedded');   // shown inside the pane: no chrome
   var KEY = 'sgit-newsroom.feedback.v1';
   var DEVKEY = 'sgit-newsroom.device';
   var ICON = {
@@ -65,6 +66,7 @@
       else if (e.op === 'vote') s.vote = e.val || null;
       else if (e.op === 'note') { s.note = e.val || ''; s.noteSha = e.sha; }
       else if (e.op === 'memo') s.memos += 1;
+      else if (e.op === 'relay') s.relays = (s.relays || 0) + 1;
       s.last = e.t;
     });
     return st;
@@ -93,6 +95,7 @@
       out.push('- ' + describe(s));
       if (s.note) out.push('- note: ' + s.note.replace(/\n/g, '\n  '));
       if (s.memos) out.push('- voice memos: ' + s.memos + ', kept on ' + DEV + ' (not included)');
+      d.events.forEach(function (e) { if (e.src === src && e.op === 'relay') out.push('- relay to ' + (e.to || '?') + ' agent: ' + String(e.val || '').replace(/\n/g, ' ')); });
       out.push('- source: ' + src);
       var cur = currentSha(src);
       if (s.note && s.noteSha && cur && s.noteSha !== cur) out.push('- the source changed after this note (sha ' + s.noteSha.slice(0, 6) + ' > ' + cur.slice(0, 6) + ')');

@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-25T12:48:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Briefings for riskmandate.ai, pt.newsroom.sgit.ai and sgit.ai; the first relayed message; Briefings in the navigation; the daily run files relays and reports unsent ones.",
+  "folders_changed": [
+    "briefings/",
+    "data/sections.json"
+  ],
+  "did": [
+    "briefings/riskmandate.ai.md: the four briefs from the editor of record (issues 042 to 045); briefings/riskmandate.ai/inbox/2026-09-25__voice-questionnaire-contact.md: the relayed message, status unsent.",
+    "briefings/pt.newsroom.sgit.ai.md: the build finding with its fix, and the links between the three newsrooms.",
+    "briefings/sgit.ai.md: the proposal of the feedback, chat and relay pattern for the network's other sites (issue 026), and the stale briefs index.",
+    "data/sections.json: Briefings after Signals."
+  ],
+  "gates": true
+}

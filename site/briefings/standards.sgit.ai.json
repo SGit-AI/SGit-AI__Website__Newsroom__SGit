@@ -1,0 +1,23 @@
+{
+ "site": "standards.sgit.ai",
+ "generated_from": "sgit.newsroom.sgit.ai v0.1.10",
+ "briefs": [],
+ "messages": [],
+ "signals": [],
+ "loose_ends": [
+  {
+   "id": "le-011",
+   "what": "standards.sgit.ai says there is no GDPR graph, while sgit.ai publishes a Standards Atlas GDPR vault that models GDPR as a navigable graph.",
+   "status": "open",
+   "status_note": "standards.sgit.ai (v0.1.4, 24 August 2026) says \"There is no GDPR graph\" and \"THERE IS NO GDPR VAULT AND NO GDPR GRAPH\". sgit.ai's published-vaults list dates the GDPR vault 25 August 2026, a day later. sgit.ai's partnership-risk brief flagged it on 24 September: \"One of them needs updating\".",
+   "said_on": "2026-09-24",
+   "said_at": [
+    "https://standards.sgit.ai/llms.txt",
+    "https://standards.sgit.ai/llms-full.txt",
+    "https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.md",
+    "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.md"
+   ],
+   "waiting_on": "standards.sgit.ai"
+  }
+ ]
+}

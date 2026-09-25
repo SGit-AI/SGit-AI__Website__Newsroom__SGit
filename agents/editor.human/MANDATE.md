@@ -31,6 +31,7 @@ Belongs to: @Editor
 - maps/
 - data/agents.json
 - admin/
+- briefings/
 - runs/
 - site/
 - version.txt

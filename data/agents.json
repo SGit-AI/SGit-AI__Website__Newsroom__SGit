@@ -29,7 +29,8 @@
         "data/sections.json",
         "admin/",
         "AUTHORING.md",
-        "brief/"
+        "brief/",
+        "briefings/"
       ],
       "outputs": [
         "data/frontpage.json: the lead, the top stories, the home page's sections in order, the briefs",
@@ -301,7 +302,8 @@
         "data/index.json and data/concepts.json"
       ],
       "writes": [
-        "signals/"
+        "signals/",
+        "briefings/"
       ],
       "outputs": [
         "signals/YYYY-MM-DD__slug.md"
@@ -339,7 +341,8 @@
         "the sites' published tools and scripts"
       ],
       "writes": [
-        "signals/"
+        "signals/",
+        "briefings/"
       ],
       "outputs": [
         "signals/YYYY-MM-DD__slug.md"
@@ -435,7 +438,8 @@
         "signals/",
         "maps/",
         "data/agents.json",
-        "admin/"
+        "admin/",
+        "briefings/"
       ],
       "outputs": [
         "reviewed_by and reviewed_on on each page",

@@ -1,0 +1,21 @@
+{
+ "site": "sg-api-team",
+ "generated_from": "sgit.newsroom.sgit.ai v0.1.10",
+ "briefs": [],
+ "messages": [],
+ "signals": [],
+ "loose_ends": [
+  {
+   "id": "le-015",
+   "what": "Seven follow-up questions on append lanes went to the SG/API team, including whether the append endpoints are live on the dev server (every probe returned 404) and whether an append token can be told apart from a read key without harm.",
+   "status": "open",
+   "status_note": "sgit.ai's updates page says \"Seven questions went back\". No later source in the snapshot records an answer; sgit.ai's version log after 7 September does not return to them.",
+   "said_on": "2026-09-07",
+   "said_at": [
+    "src:cli-briefs/09/07/append-lanes-followup-questions__for-the-sg-api-team.md",
+    "https://sgit.ai/updates/index.md"
+   ],
+   "waiting_on": "SG/API team"
+  }
+ ]
+}

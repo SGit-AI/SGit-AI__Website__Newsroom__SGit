@@ -22,6 +22,7 @@ Belongs to: the receiving project
 ## May write
 
 - signals/
+- briefings/
 - runs/
 - site/
 - version.txt

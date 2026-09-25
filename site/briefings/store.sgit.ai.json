@@ -1,0 +1,44 @@
+{
+ "site": "store.sgit.ai",
+ "generated_from": "sgit.newsroom.sgit.ai v0.1.10",
+ "briefs": [],
+ "messages": [],
+ "signals": [
+  {
+   "title": "Level 1 costs £10 on riskmandate.ai and £5 on two store.sgit.ai pages",
+   "from": "riskmandate.ai",
+   "status": "new",
+   "action": "give store.sgit.ai's team riskmandate.ai's v1.22.0 correction and sgit.ai's partnership-risk brief, which both name the £5",
+   "page": "https://sgit.newsroom.sgit.ai/signals/2026-09-24__level-one-price-five-or-ten.md"
+  }
+ ],
+ "loose_ends": [
+  {
+   "id": "le-010",
+   "what": "The price of level 1 disagrees across sites: £10 on riskmandate.ai and on store.sgit.ai's /v1/ page, £5 on store.sgit.ai's /v1/policies/ and /paying/ pages.",
+   "status": "open",
+   "status_note": "riskmandate.ai corrected its own £5s to £10 in v1.22.0 and keeps one on purpose as a dated record. sgit.ai's partnership-risk brief noticed the disagreement but addressed it to riskmandate.ai; the pages that still say £5 are store.sgit.ai's.",
+   "said_on": "2026-09-24",
+   "said_at": [
+    "https://store.sgit.ai/llms-full.txt",
+    "https://store.sgit.ai/llms.txt",
+    "https://riskmandate.ai/pricing.md",
+    "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.md"
+   ],
+   "waiting_on": "store.sgit.ai"
+  },
+  {
+   "id": "le-023",
+   "what": "riskmandate.ai's pricing page marks level 3 (£500, corrected for your situation) \"specified, never run\", while store.sgit.ai's ledger says of the same level that \"that work has been done many times\", with six such vaults published.",
+   "status": "open",
+   "status_note": "The pricing page says its states were copied from the store's ledger on 15 September 2026; the store changed its wording on 16 September (its memo The homepage sells), separating work done from a sale through the store. The two pages now disagree on what the state means. Found by the Cartographer (maps/riskmandate-wardley), checked against the snapshot by the Editor.",
+   "said_on": "2026-09-24",
+   "said_at": [
+    "https://riskmandate.ai/pricing.md",
+    "https://store.sgit.ai/ledger/index.md",
+    "https://store.sgit.ai/admin/memos/2026-09-16-the-homepage-sells/index.md"
+   ],
+   "waiting_on": "riskmandate.ai and store.sgit.ai"
+  }
+ ]
+}

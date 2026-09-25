@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.9" data-root="../../">
+<html lang="en-GB" data-version="v0.1.10" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,8 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.9 · snapshot 2026-09-24</span>
-<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav>
+<span class="ver">v0.1.10 · snapshot 2026-09-24</span>
+<nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../briefings/index.html">Briefings</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The newsroom · @EditorOfRecord</p>
@@ -28,7 +28,7 @@
 <h2 id="reads">Reads</h2>
 <ul><li>every edition, story, history piece and signal</li><li>the reading room&#x27;s feedback, copied from the reader&#x27;s device</li></ul>
 <h2 id="writes-its-mandate-the-validator-holds-a-run-record-to-these">Writes (its mandate: the validator holds a run record to these)</h2>
-<ul><li>editions/</li><li>stories/</li><li>history/</li><li>signals/</li><li>maps/</li><li>data/agents.json</li><li>admin/</li></ul>
+<ul><li>editions/</li><li>stories/</li><li>history/</li><li>signals/</li><li>maps/</li><li>data/agents.json</li><li>admin/</li><li>briefings/</li></ul>
 <p>Plus what every run shares: <code>runs/</code>, <code>site/</code>, <code>version.txt</code>, <code>data/loose-ends.json</code>, <code>issues/</code>. Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), files or moves issues (issues-fs-lite: the folder is the status), and rebuilds and releases the site.</p>
 <h2 id="produces">Produces</h2>
 <ul><li>reviewed_by and reviewed_on on each page</li><li>the register of agents</li><li>priorities in admin/notes.md</li></ul>
@@ -49,11 +49,12 @@ Belongs to: @Editor</p>
 <h2 id="wrong-when">Wrong when</h2>
 <ul><li>A page shows as reviewed that nobody read.</li></ul>
 <h2 id="may-write">May write</h2>
-<ul><li>editions/</li><li>stories/</li><li>history/</li><li>signals/</li><li>maps/</li><li>data/agents.json</li><li>admin/</li><li>runs/</li><li>site/</li><li>version.txt</li><li>data/loose-ends.json</li><li>issues/</li></ul>
+<ul><li>editions/</li><li>stories/</li><li>history/</li><li>signals/</li><li>maps/</li><li>data/agents.json</li><li>admin/</li><li>briefings/</li><li>runs/</li><li>site/</li><li>version.txt</li><li>data/loose-ends.json</li><li>issues/</li></ul>
 <p>Anything else in a run record&#x27;s <code>folders_changed</code> fails <code>tools/validate.py</code>.</p></article><h2>Runs (2)</h2><ul class="list"><li><strong>2026-09-25T12:31:00Z</strong> · desk · Apply the word ban from brief/07-principles.md to the desks&#x27; prose: rung, rungs become step or level outside quotations.<ul><li>8 plain uses of rung or rungs replaced (editions 1, history 4, signals 2, stories 1); quotations and D-113 (&#x27;Step, not rung&#x27;) kept as written.</li></ul></li><li><strong>2026-09-25T09:33:00Z</strong> · desk · Change the register of agents: the Editor becomes a desk that owns the front page, the sections and the admin back office; the Cartographer becomes a full desk that owns maps/; the Journalist and Historian get the centres of gravity the editor of record set.<ul><li>9 agents: editor.desk (new), librarian.desk, journalist.desk, historian.desk, cartographer.desk (was a guest desk), architect.guest, developer.guest, build.desk, editor.human.</li></ul></li></ul>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/editor.human/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.9 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="editor.human.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.10 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="editor.human.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
+<script src="../../assets/panel.js"></script>
 </body>
 </html>

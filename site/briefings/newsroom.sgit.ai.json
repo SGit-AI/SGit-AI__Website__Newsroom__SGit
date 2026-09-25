@@ -1,0 +1,29 @@
+{
+ "site": "newsroom.sgit.ai",
+ "generated_from": "sgit.newsroom.sgit.ai v0.1.10",
+ "briefs": [],
+ "messages": [],
+ "signals": [
+  {
+   "title": "pt.newsroom.sgit.ai is live and freezing its sources; newsroom.sgit.ai still calls it a design",
+   "from": "pt.newsroom.sgit.ai",
+   "status": "new",
+   "action": "give newsroom.sgit.ai's team pt.newsroom.sgit.ai's llms.txt, so its front page and index describe a running site rather than a brief",
+   "page": "https://sgit.newsroom.sgit.ai/signals/2026-09-24__frozen-hashed-sources-three-newsrooms.md"
+  }
+ ],
+ "loose_ends": [
+  {
+   "id": "le-018",
+   "what": "newsroom.sgit.ai still presents pt.newsroom.sgit.ai as a brief and a design (\"the site does not exist yet\"), while pt.newsroom.sgit.ai is live at v0.23.13.",
+   "status": "open",
+   "status_note": "newsroom.sgit.ai's front page lists \"pt.newsroom.sgit.ai (a brief for the next agent)\". Its memo 14, in the same file, was written after reading pt.newsroom.sgit.ai's repository and live site on 14 September. See the signal on frozen, hashed sources.",
+   "said_on": "2026-09-13",
+   "said_at": [
+    "https://newsroom.sgit.ai/llms-full.txt",
+    "https://pt.newsroom.sgit.ai/llms.txt"
+   ],
+   "waiting_on": "newsroom.sgit.ai"
+  }
+ ]
+}

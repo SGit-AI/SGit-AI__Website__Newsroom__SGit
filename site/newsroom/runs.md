@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-25T12:50:00Z build.desk: Third batch of the flight notes: the side pane (peek a link beside the page, notes, chat), the tier 0 and tier 1 chat with tools over the site, briefing pages per target site with JSON twins.
+- 2026-09-25T12:48:00Z editor.desk: Briefings for riskmandate.ai, pt.newsroom.sgit.ai and sgit.ai; the first relayed message; Briefings in the navigation; the daily run files relays and reports unsent ones.
 - 2026-09-25T12:35:00Z build.desk: Second batch of the flight notes: the word ban in the validator, the history index as cards with lessons markable one by one, the network map clickable and its table sortable, a badge on every source page naming the target site, images not in the snapshot said so.
 - 2026-09-25T12:31:00Z editor.human: Apply the word ban from brief/07-principles.md to the desks' prose: rung, rungs become step or level outside quotations.
 - 2026-09-25T12:30:00Z editor.desk: The principles of the site (brief/07), the findings rule and the words not to use in AUTHORING.md and every desk's standing prompt.

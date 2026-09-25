@@ -34,6 +34,7 @@ Belongs to: the editor of record
 - admin/
 - AUTHORING.md
 - brief/
+- briefings/
 - runs/
 - site/
 - version.txt

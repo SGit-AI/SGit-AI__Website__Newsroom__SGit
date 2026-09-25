@@ -32,6 +32,7 @@ A role that says what it does can only be admired; a role that says when it is f
 - maps/
 - data/agents.json
 - admin/
+- briefings/
 
 Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.json`, `issues/`. Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), files or moves issues (issues-fs-lite: the folder is the status), and rebuilds and releases the site.
 
@@ -86,6 +87,7 @@ Belongs to: @Editor
 - maps/
 - data/agents.json
 - admin/
+- briefings/
 - runs/
 - site/
 - version.txt
