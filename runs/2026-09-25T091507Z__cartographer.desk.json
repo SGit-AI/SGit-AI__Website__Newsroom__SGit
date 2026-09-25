@@ -1,0 +1,21 @@
+{
+  "when": "2026-09-25T09:15:07Z",
+  "agent": "cartographer.desk",
+  "kind": "desk",
+  "task": "Draw the newsroom's first maps: a Wardley map of the sgit network and one of riskmandate.ai's offer, a timeline of the network, a mindmap of the recurring concepts, a flowchart of the newsroom's own run, and a flowchart of the brief-to-build story.",
+  "folders_changed": [
+    "maps/",
+    "runs/"
+  ],
+  "did": [
+    "maps/sgit-network-wardley.md: one wardley-beta map, 3 anchors and 13 components, 22 links, 1 evolve (encrypted vaults, from sgit.ai's own map 6); a table giving the source for every position and every link.",
+    "maps/riskmandate-wardley.md: one wardley-beta map, 3 anchors and 16 components, 21 links, 1 evolve (connectors, 'productised as they mature'); records that riskmandate.ai's pricing page and the store's ledger disagree on how far level 3 has run.",
+    "maps/network-timeline.md: four timelines, 21 dated periods from 29 June to 24 September 2026, every date from a version log, a version record, a site's own v0.1.0 line or the store's ledger.",
+    "maps/concepts-mindmap.md: eight mindmaps, one overview (7 themes, 35 concepts) and one per theme with the sites the build found for each concept, generated from the built concepts page rather than typed.",
+    "maps/the-newsroom-flow.md: two flowcharts, the daily run with its four stops (19 nodes) and who reads and writes what (18 nodes).",
+    "maps/brief-to-build.md: one flowchart of the interview-page loop, 17 nodes, with a table citing each step.",
+    "Built into a private folder; node tools/check_diagrams.js: 7 pages checked, 0 failures."
+  ],
+  "gates": false,
+  "note": "Not released: no version bump, commit or push, as instructed. The validator's one remaining failure is not this desk's: history/the-story-so-far links to open-questions.html, which does not exist yet (the Historian's). The seven themes in the concepts mindmap are the Cartographer's grouping, not a source's. For the Editor: maps/sgit-network-wardley is the natural lead of the Maps section. For the Journalist: the level-3 status disagreement between riskmandate.ai/pricing and store.sgit.ai's ledger may be worth a line."
+}
