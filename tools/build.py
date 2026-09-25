@@ -1092,6 +1092,80 @@ class Site:
         self.page(P, 'Maps', body, self.prov_desk(P, 'Cartographer', sources=None), eyebrow='Cartographer', wide=True,
                   md='# Maps\n\n' + '\n'.join(f'- [{c["title"]}]({c["path"][:-5]}.md)' for c in cards) + '\n')
 
+    def load_issues(self):
+        """issues-fs-lite: issues/{open,blocked,done}/NNN-slug.md, YAML front matter, the folder is the status."""
+        out = []
+        for status in ('open', 'blocked', 'done'):
+            d = rp(f'issues/{status}')
+            if not os.path.isdir(d):
+                continue
+            for name in sorted(os.listdir(d)):
+                if name.endswith('.md'):
+                    meta, body = mdlite.front_matter(read(os.path.join(d, name)))
+                    out.append(dict(meta, stem=name[:-3], status=status, body=body,
+                                    num=name[:3], title=meta.get('title') or name[:-3]))
+        return out
+
+    def build_issues(self):
+        self.issues = self.load_issues()
+        by_stem = {i['stem']: i for i in self.issues}
+        epics = [i for i in self.issues if i.get('type') == 'epic']
+        names = {a['id']: a['name'] for a in self.agents}
+        P = 'admin/issues/index.html'
+        pri = {'high': 0, 'medium': 1, 'low': 2}
+
+        def card(i):
+            parent = by_stem.get(i.get('parent', ''))
+            ep = f'<span class="ik-epic">{esc(parent["title"].replace("Epic: ", ""))}</span>' if parent else ''
+            return (f'<li class="ik-card pri-{esc(i.get("priority", ""))} type-{esc(i.get("type", ""))}" data-epic="{esc(i.get("parent", ""))}" '
+                    f'data-owner="{esc(i.get("owner", ""))}" data-pri="{esc(i.get("priority", ""))}">'
+                    f'<span class="ik-num">{esc(i["num"])}</span> <a href="{rel(P, "admin/issues/" + i["stem"] + ".html")}">{esc(i["title"])}</a>'
+                    f'<div class="ik-meta">{esc(i.get("type", ""))} · {esc(i.get("priority", ""))} · {esc(names.get(i.get("owner"), i.get("owner", "")))}'
+                    f'{" · " + esc(i.get("estimated_effort")) if i.get("estimated_effort") else ""}</div>{ep}</li>')
+        cols = ''
+        for status, label in (('open', 'Open'), ('blocked', 'Blocked'), ('done', 'Done')):
+            items = sorted((i for i in self.issues if i['status'] == status), key=lambda i: (pri.get(i.get('priority'), 9), i['num']))
+            cols += (f'<section class="ik-col"><h2>{label} <span class="ik-n">{len(items)}</span></h2>'
+                     f'<ul class="ik-list">{"".join(card(i) for i in items)}</ul></section>')
+        opt = lambda pairs: ''.join(f'<option value="{esc(v)}">{esc(t)}</option>' for v, t in pairs)
+        filters = (f'<form class="filters" onsubmit="return false"><select id="fe"><option value="">All epics</option>'
+                   f'{opt((e["stem"], e["title"].replace("Epic: ", "")) for e in epics)}</select>'
+                   f'<select id="fo"><option value="">All owners</option>{opt((a["id"], a["name"]) for a in self.agents)}</select>'
+                   f'<select id="fp"><option value="">Any priority</option>{opt((k, k) for k in ("high", "medium", "low"))}</select>'
+                   f'<span id="fn" class="muted"></span></form>')
+        body = (f'<p class="crumbs"><a href="{rel(P, "admin/index.html")}">Admin</a> / issues</p><h1>Issues</h1>'
+                f'<p class="lede">{len(self.issues)} issues in <code>issues/</code> (issues-fs-lite: the folder is the status, the file is the '
+                f'issue, the front matter is the data). {len(epics)} epics. Every issue cites where it came from. Moving an issue is a '
+                f'<code>git mv</code> between folders, committed with the work that caused it.</p>' + filters +
+                f'<div class="kanban">{cols}</div>' + ISSUES_JS)
+        self.page(P, 'Issues', body, self.prov_desk(P, 'Editor (the back office)', sources=None,
+                                                    extra=[('Files', 'issues/open, issues/blocked, issues/done')]),
+                  eyebrow='Back office', wide=True,
+                  md='# Issues\n\n' + '\n'.join(f'- [{i["status"]}] {i["num"]} {i["title"]}' for i in self.issues) + '\n')
+        for i in self.issues:
+            Q = f'admin/issues/{i["stem"]}.html'
+            html_body, _ = self.md(i['body'], Q)
+            parent = by_stem.get(i.get('parent', ''))
+            children = [c for c in self.issues if c.get('parent') == i['stem']]
+            kids = ''.join(f'<li><span class="tag">{esc(c["status"])}</span> <a href="{rel(Q, "admin/issues/" + c["stem"] + ".html")}">{esc(c["num"])} {esc(c["title"])}</a></li>'
+                           for c in children)
+            src = i.get('source', '')
+            src_html = (f'<a href="{rel(Q, "admin/inbox/" + os.path.basename(src)[:-3] + ".html")}">{esc(src)}</a>'
+                        if src.startswith('admin/inbox/') and src.endswith('.md') else esc(src))
+            facts = [('Status', f'<span class="tag">{esc(i["status"])}</span>'), ('Type', esc(i.get('type', ''))),
+                     ('Priority', esc(i.get('priority', ''))), ('Owner', esc(names.get(i.get('owner'), i.get('owner', '')))),
+                     ('Created', esc(i.get('created', ''))), ('Effort', esc(i.get('estimated_effort', '') or '')),
+                     ('Blocked on', esc(i.get('blocked_on', '') or '')), ('Source', src_html),
+                     ('Epic', f'<a href="{rel(Q, "admin/issues/" + parent["stem"] + ".html")}">{esc(parent["title"])}</a>' if parent else ''),
+                     ('Tags', esc(', '.join(i['tags']) if isinstance(i.get('tags'), list) else (i.get('tags') or '').strip('[]')))]
+            facts_html = ''.join(f'<dt>{k}</dt><dd>{v}</dd>' for k, v in facts if v)
+            body = (f'<p class="crumbs"><a href="{rel(Q, "admin/index.html")}">Admin</a> / <a href="{rel(Q, P)}">issues</a> / {esc(i["num"])}</p>'
+                    f'<dl class="facts">{facts_html}</dl><article class="source">{html_body}</article>'
+                    + (f'<h2>In this epic ({len(children)})</h2><ul class="list">{kids}</ul>' if children else ''))
+            self.page(Q, f'{i["num"]}: {i["title"]}', body, self.prov_desk(Q, 'Editor (the back office)', i.get('created', '')[:10], sources=None,
+                                                                             extra=[('File', f'issues/{i["status"]}/{i["stem"]}.md')]),
+                      eyebrow=f'Issue {esc(i["num"])} · {esc(i["status"])}', md=read(rp(f'issues/{i["status"]}/{i["stem"]}.md')))
+
     def build_admin(self):
         """The back office: what each desk did, what waits for review, the front page's configuration, the editor's notes and
         the desks' standing prompts. Public like the rest of the site: nothing secret belongs here."""
@@ -1112,6 +1186,7 @@ class Site:
             f'<td>{"<a href=" + chr(34) + rel(P, "admin/prompts.html") + "#" + a["id"].replace(".", "") + chr(34) + ">prompt</a>" if a["id"] + ".md" in prompts else ""}</td></tr>'
             for a in self.agents)
         queue = [c for c in self.all_cards() if not c['reviewed'] and c['ref'] != 'maps/network']
+        n_open = sum(1 for i in self.issues if i['status'] == 'open')
         queue_html = ''.join(f'<li><a href="{rel(P, c["path"])}">{esc(c["title"])}</a> <span class="muted small">{esc(c["section"])} · '
                              f'{esc(c["date"])} · {esc(c["desk"])}</span></li>' for c in queue)
         fp = load_json('data/frontpage.json', {})
@@ -1126,7 +1201,7 @@ class Site:
                 f'rest of the site: nothing secret belongs here.</p>'
                 f'<p class="jump"><a href="#desks">Desks</a> · <a href="#queue">Review queue ({len(queue)})</a> · <a href="#front">Front page</a> · '
                 f'<a href="#notes">Editor\'s notes</a> · <a href="{rel(P, "admin/prompts.html")}">Prompts ({len(prompts)})</a> · '
-                f'<a href="#inbox">Inbox ({len(inbox)})</a> · <a href="#run">How to run</a> · <a href="{rel(P, "newsroom/runs.html")}">All runs ({len(self.runs)})</a></p>'
+                f'<a href="#inbox">Inbox ({len(inbox)})</a> · <a href="{rel(P, "admin/issues/index.html")}">Issues ({n_open} open)</a> · <a href="#run">How to run</a> · <a href="{rel(P, "newsroom/runs.html")}">All runs ({len(self.runs)})</a></p>'
                 f'<h2 id="desks">Desks</h2><div class="table"><table><thead><tr><th>Desk</th><th>Cadence</th><th>Last run</th><th>Last task</th>'
                 f'<th>Prompt</th></tr></thead><tbody>{desk_rows}</tbody></table></div>'
                 f'<h2 id="queue">Waiting for the editor of record ({len(queue)})</h2><p>Every piece whose <code>reviewed_by</code> is empty. '
@@ -1614,6 +1689,7 @@ class Site:
         self.build_signals()
         self.build_loose_ends()
         self.build_agents()
+        self.build_issues()
         self.build_maps()
         self.build_news()
         self.build_admin()
@@ -1632,6 +1708,14 @@ class Site:
                 print(f'  {page}: {href}')
             sys.exit(1)
 
+
+ISSUES_JS = '''<script>
+(function(){var fe=document.getElementById('fe'),fo=document.getElementById('fo'),fp=document.getElementById('fp'),n=document.getElementById('fn'),
+cards=[].slice.call(document.querySelectorAll('.ik-card'));
+function go(){var c=0;cards.forEach(function(r){var d=r.dataset,ok=(!fe.value||d.epic===fe.value||r.querySelector('a').getAttribute('href').indexOf(fe.value)>=0)
+&&(!fo.value||d.owner===fo.value)&&(!fp.value||d.pri===fp.value);r.hidden=!ok;if(ok)c++;});n.textContent=c+' of '+cards.length;}
+[fe,fo,fp].forEach(function(e){e.addEventListener('input',go);});go();})();
+</script>'''
 
 DIAGRAMS_JS = '''/* Renders the Cartographer's maps with the bundled Mermaid: no network, strict security (no HTML or
    scripts from diagram text), and a theme that follows the reader's light or dark setting. */

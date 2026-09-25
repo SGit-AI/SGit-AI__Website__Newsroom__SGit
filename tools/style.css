@@ -277,3 +277,17 @@ figure.diagram { margin: 18px 0; padding: 12px; background: #fff; border: 1px so
 figure.diagram pre.mermaid { background: none; border: 0; margin: 0; padding: 0; text-align: center; white-space: pre; }
 figure.diagram svg { max-width: 100%; height: auto; }
 @media (prefers-color-scheme: dark) { figure.diagram { background: #1d1c16; } .dek { color: var(--ink); } }
+
+/* ---- the back office: issues kanban ------------------------------------------------------------- */
+.kanban { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; margin-top: 12px; }
+.ik-col h2 { font-size: 1.1rem; border-top: 2px solid var(--ink); padding-top: 8px; margin: 0 0 8px; display: flex; gap: 8px; align-items: baseline; }
+.ik-n { font: 12px var(--mono); color: var(--muted); }
+.ik-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.ik-card { background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid #cfc6b6; border-radius: 8px; padding: 8px 10px; font-size: .93rem; }
+.ik-card.pri-high { border-left-color: var(--warn); } .ik-card.pri-medium { border-left-color: var(--accent); }
+.ik-card.type-epic { background: var(--accent-soft); }
+.ik-num { font: 12px var(--mono); color: var(--muted); }
+.ik-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.ik-epic { display: inline-block; margin-top: 4px; font: 11px var(--mono); color: var(--accent); }
+dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: .9rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 14px; }
+dl.facts dt { color: var(--muted); } dl.facts dd { margin: 0; }

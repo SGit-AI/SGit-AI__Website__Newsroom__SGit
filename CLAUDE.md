@@ -18,6 +18,9 @@ signals/        cross-pollination between projects
 tools/          fetch_sources.py, build.py, validate.py, agents.py (standard library only)
 agents/         the desks' ROLE.md and MANDATE.md, rendered from data/agents.json
 runs/           one run record per desk run
+issues/         issues-fs-lite: open/, blocked/, done/; one NNN-slug.md per task, epic, idea or brief
+briefings/      what this newsroom has for another site's agent (a page per target site)
+admin/          the back office: notes, prompts, inbox, issues (rendered at /admin/)
 site/           the built site. Generated: never edit by hand.
 ```
 
@@ -38,6 +41,13 @@ The work is done by desks with roles and mandates, registered in `data/agents.js
 Before doing a desk's work, read its ROLE and MANDATE; write only in its folders; leave a run record in
 `runs/` (see `runs/README.md`). `tools/validate.py` fails a run record outside its mandate.
 Skills: `/desk <agent> <task>` for one task as one desk; `/newsroom-run` for the whole daily run.
+
+## Issues
+
+Tasks, epics, ideas and briefs are files in `issues/` (issues-fs-lite): front matter with `created`, `priority`,
+`type`, `owner`, `source`, `parent`; the folder is the status; move with `git mv`; commit the issue change with
+the work that caused it. The build renders them at `/admin/issues/`. An idea from the editor of record goes into
+`admin/inbox/` verbatim first, and the issues cite it.
 
 ## Rules
 

@@ -1,0 +1,19 @@
+{
+  "when": "2026-09-25T12:10:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Capture the editor of record's notes of 25 September (read offline on a plane) as issues, and give the back office an issues board.",
+  "folders_changed": [
+    "issues/",
+    "admin/",
+    "tools/",
+    "CLAUDE.md"
+  ],
+  "did": [
+    "admin/inbox/2026-09-25__notes-from-the-flight.md: the notes verbatim, the source every issue cites.",
+    "issues/: 45 issues in issues-fs-lite form (8 epics, 33 tasks, 4 briefs for agent@riskmandate.ai); 41 open, 2 blocked, 2 done.",
+    "tools/build.py renders admin/issues/ (kanban by status with epic, owner and priority filters) and a page per issue; tools/validate.py checks every issue has created and priority and a real parent."
+  ],
+  "gates": true,
+  "note": "The notes name the editor of record as a target audience; kept as written in the inbox (their own words). Implementation of the issues starts with the reading experience and the personalised site."
+}

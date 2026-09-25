@@ -49,7 +49,7 @@ FETCH_EXCEPTIONS = {
     'src/vaults/agent-webmaster/index.html': 'falls back to its inlined content when fetch fails',
 }
 
-DESK_DIRS = ('editions', 'stories', 'history', 'signals', 'data', 'runs', 'agents')
+DESK_DIRS = ('editions', 'stories', 'history', 'signals', 'maps', 'data', 'runs', 'agents', 'issues', 'briefings')
 COMPUTED = ('data/index.json', 'data/vaults.json')      # titles as the sources wrote them: not desk prose
 MODEL_ID = re.compile(r'\b(?:claude|gpt|gemini|llama|mistral)-[a-z0-9.]*\d[a-z0-9.-]*\b|\b(?:opus|sonnet|haiku) \d', re.I)
 
@@ -163,8 +163,34 @@ def check_agents():
     return n
 
 
+def check_issues():
+    """issues-fs-lite: every issue has created and priority; a parent names an issue that exists."""
+    stems, items = set(), []
+    for status in ('open', 'blocked', 'done'):
+        d = os.path.join(ROOT, 'issues', status)
+        if not os.path.isdir(d):
+            continue
+        for name in sorted(os.listdir(d)):
+            if name.endswith('.md'):
+                if not re.match(r'^\d{3}-[a-z0-9-]+\.md$', name):
+                    fail(f'issues/{status}/{name}', 'name must be NNN-kebab-slug.md')
+                stems.add(name[:-3])
+                text = open(os.path.join(d, name), encoding='utf-8').read()
+                fm = text.split('\n---', 1)[0] if text.startswith('---\n') else ''
+                items.append((f'issues/{status}/{name}', fm))
+    for where, fm in items:
+        for field in ('created', 'priority'):
+            if not re.search(rf'^{field}:\s*\S', fm, re.M):
+                fail(where, f'no "{field}" in the front matter (issues-fs-lite requires it)')
+        m = re.search(r'^parent:\s*(\S+)', fm, re.M)
+        if m and m.group(1) not in stems:
+            fail(where, f'parent {m.group(1)} is not an issue')
+    return len(items)
+
+
 def main():
     pages = check_site()
+    issues = check_issues()
     files = check_repo()
     runs = check_agents()
     if errors:
@@ -173,7 +199,7 @@ def main():
         print(f'validate: {len(errors)} failures')
         sys.exit(1)
     print(f'validate: ok ({pages} rendered pages checked for links, provenance and twins; '
-          f'{files} repository files and all of site/ scanned for credentials; {runs} run records within their mandates)')
+          f'{files} repository files and all of site/ scanned for credentials; {runs} run records within their mandates; {issues} issues well formed)')
 
 
 if __name__ == '__main__':
