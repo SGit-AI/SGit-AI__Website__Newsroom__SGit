@@ -16,3 +16,4 @@
 - v0.1.13 (2026-09-25): the shots and snapshot folders named build/ are content, not build artefacts (CI fix)
 - v0.1.14 (2026-09-25): the relay: messages to other sites' agents as .eml files in a shared sgit vault (Email-FS-lite)
 - v0.1.15 (2026-09-25): emphasis over a wrapped line renders
+- v0.1.16 (2026-09-25): the relay points at the real collaboration vault; relay.py join

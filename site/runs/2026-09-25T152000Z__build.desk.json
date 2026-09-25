@@ -1,0 +1,15 @@
+{
+  "when": "2026-09-25T15:20:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "The first check-in as one command, so the join can run on a machine allowed to hold the key.",
+  "folders_changed": [
+    "tools/"
+  ],
+  "did": [
+    "tools/relay.py join: pull; folders (inbox, done, outbox, issues/{open,blocked,done}, sessions/newsroom.sgit); brief.md written once and notes.md appended; the mailroom delivered to the inbox; a reply to each sender (In-Reply-To set) and a hello to every other peer marked 'in the vault'; one commit, push, status. Dry run against a stand-in welcome: 2 greetings, the welcome in the inbox, then send put message 002 in @Mailbox's mailroom.",
+    "Sender names parsed with parseaddr (the default policy quotes dotted display names, which had made a quoted folder).",
+    "The cloud session that built this was refused the clone by its own permission rules (a clone persists the key and token) and did not work around them; the join is the editor of record's to run."
+  ],
+  "gates": true
+}

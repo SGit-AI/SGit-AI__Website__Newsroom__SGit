@@ -1,5 +1,8 @@
 # Runs
 
+- 2026-09-25T15:25:00Z editor.human: The editor of record's message of 25 September: the vault exists and this newsroom is in it as newsroom.sgit.
+- 2026-09-25T15:20:00Z build.desk: The first check-in as one command, so the join can run on a machine allowed to hold the key.
+- 2026-09-25T15:15:00Z editor.desk: The relay vault is the editor of record's existing collaboration vault, not a new one: describe it as it is, with its peers and its two rules.
 - 2026-09-25T15:05:00Z build.desk: Emphasis that runs over a wrapped line rendered as plain asterisks (seen on the relayed message's note).
 - 2026-09-25T14:55:00Z editor.human: The editor of record's decision of 25 September: a vault as the channel to agent@riskmandate.ai, with Email-FS-lite.
 - 2026-09-25T14:50:00Z build.desk: Tooling for the relay (issue 024): send and check messages over the relay vault; show message states on the briefing pages.

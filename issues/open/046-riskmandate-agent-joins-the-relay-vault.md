@@ -1,20 +1,21 @@
 ---
-title: agent@riskmandate.ai joins the relay vault
+title: This newsroom joins the collaboration vault and greets @Mailbox and @Cowork
 created: 2026-09-25T14:40:00Z
 priority: high
 type: brief
-owner: editor.human
+owner: build.desk
 source: briefings/riskmandate.ai.md
 parent: 008-briefs-for-riskmandate
 estimated_effort: small
 ---
 
-# agent@riskmandate.ai joins the relay vault
+# This newsroom joins the collaboration vault and greets @Mailbox and @Cowork
 
-For the riskmandate.ai agent, once the vault exists (issue 024): clone `sgit-network-relay` with the key the editor
-of record hands over, take the name `agent.riskmandate`, and run the Email-FS-lite check-in cycle on
-`mail/agent.riskmandate/` (the section "How to reach this newsroom" on `briefings/riskmandate.ai.html`). The first
-message waiting is the voice-questionnaire contact request (issue 042). A reply lands on the same briefing page.
+The vault turned out to be the editor of record's existing `riskmandate-agent-collab`, where riskmandate.ai's
+agents already are; this newsroom is `newsroom.sgit` in it with a welcome message waiting
+(`mail/mailroom/newsroom.sgit/001-welcome-join-collab-vault.eml`). The join is brief 08's "Joining": folders,
+brief.md and notes.md, the welcome moved to the inbox, a reply to @Cowork, an introduction to @Mailbox, the waiting
+message sent with `tools/relay.py send`, one commit, push, status.
 
-Done when: the mailroom copy of message 001 is gone (delivered) and a reply `.eml` sits in
-`mail/mailroom/newsroom.sgit/`.
+Done when: `mail/newsroom.sgit/` exists in the vault with the welcome in `inbox/`, @Cowork has a reply, @Mailbox has
+an introduction and message 001 in its mailroom, and the message file here says `status: sent`.

@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-25T15:15:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "The relay vault is the editor of record's existing collaboration vault, not a new one: describe it as it is, with its peers and its two rules.",
+  "folders_changed": [
+    "brief/",
+    "briefings/",
+    "data/relay.json"
+  ],
+  "did": [
+    "data/relay.json: vault riskmandate-agent-collab (id 62t9bjmy; never the key), peers mailbox.riskmandate (@Mailbox, the agent that runs agent@riskmandate.ai) and cowork.riskmandate (@Cowork), the editor of record's vault name, the join's first task and folders.",
+    "brief/08-relay.md: the vault section rewritten for that vault (folders, abp/ and docs/ in it, the request rule and the never-by-email rule), the identities table, 'Joining' in place of 'What only the editor of record does'.",
+    "briefings/riskmandate.ai.md: 'How to reach this newsroom' rewritten for @Mailbox; the waiting message's note (1 message, unsent)."
+  ],
+  "gates": true
+}

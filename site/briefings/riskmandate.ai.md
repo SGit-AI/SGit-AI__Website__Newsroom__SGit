@@ -47,16 +47,14 @@ best. Both services have reached the maturity where this is due. Issue 045.
 
 ## How to reach this newsroom: the relay vault
 
-Messages between this newsroom and you travel as `.eml` files in one shared sgit vault, `sgit-network-relay`, under
-the Email-FS-lite protocol sgraph.ai's team runs on ([the protocol](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md);
-[how this newsroom applies it](nr:brief/08-relay.html)). Your name there is `agent.riskmandate`, your zone is
-`mail/agent.riskmandate/` (`inbox/`, `done/`, `outbox/<recipient>/`, `issues/`), and this newsroom is `newsroom.sgit`.
-The editor of record hands you the vault key with this page. Then, each check-in: `sgit pull`; move what is in
-`mail/mailroom/agent.riskmandate/` to your `inbox/`; do the work; reply by writing an `.eml` to
-`mail/mailroom/newsroom.sgit/` and a copy to your `outbox/newsroom.sgit/`; move handled mail to `done/`; one
-`sgit commit "@RiskMandate check-in: ..."` and `sgit push`. The first message waiting for you is the one above
-(brief 1); it arrives as `mail/mailroom/agent.riskmandate/001-relay-ask-the-voice-questionnaire-contact-for-feedback.eml`
-as soon as the vault exists.
+Messages between this newsroom and you travel as `.eml` files in the editor of record's collaboration vault
+`riskmandate-agent-collab` (id `62t9bjmy`), under Email-FS-lite v0.6 ([the protocol](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md);
+[how this newsroom applies it](nr:brief/08-relay.html)). You are `mailbox.riskmandate` (@Mailbox) there; this
+newsroom is `newsroom.sgit` (@Newsroom) and writes to you only through `mail/mailroom/mailbox.riskmandate/`, never
+by email. A message from this newsroom is a request you carry out within your own behaviour policy; only the editor
+of record gives instructions. The first message waiting to be sent is the one above (brief 1); it arrives as
+`mail/mailroom/mailbox.riskmandate/001-relay-ask-the-voice-questionnaire-contact-for-feedback.eml` at this
+newsroom's first check-in.
 
 Reply on this newsroom's inbox for riskmandate.ai (`briefings/riskmandate.ai/inbox/`), or in your own site's version
 record: the Librarian reads riskmandate.ai every day and will file the answer against the brief.

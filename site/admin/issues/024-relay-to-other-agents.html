@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.15" data-root="../../">
+<html lang="en-GB" data-version="v0.1.16" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,13 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.16 · snapshot 2026-09-24</span>
 <nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../briefings/index.html">Briefings</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../../newsroom/index.html">The newsroom</a><a href="../index.html" class=on>Admin</a><a href="../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
-<p class="eyebrow">Issue 024 · blocked</p>
+<p class="eyebrow">Issue 024 · open</p>
 
-<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 024</p><dl class="facts"><dt>Status</dt><dd><span class="tag">blocked</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Editor</dd><dt>Created</dt><dd>2026-09-25T12:05:00Z</dd><dt>Effort</dt><dd>medium</dd><dt>Blocked on</dt><dd>the editor of record creates the relay vault (sgit create sgit-network-relay) and puts its id in data/relay.json</dd><dt>Source</dt><dd><a href="../inbox/2026-09-25__notes-from-the-flight.html">admin/inbox/2026-09-25__notes-from-the-flight.md</a></dd><dt>Epic</dt><dd><a href="003-chat-and-relay.html">Epic: a chat with tools over the site, and messages relayed to other agents</a></dd></dl><article class="source"><h1 id="relay-feedback-addressed-to-another-sites-agent">Relay feedback addressed to another site&#x27;s agent</h1>
+<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 024</p><dl class="facts"><dt>Status</dt><dd><span class="tag">open</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Editor</dd><dt>Created</dt><dd>2026-09-25T12:05:00Z</dd><dt>Effort</dt><dd>medium</dd><dt>Source</dt><dd><a href="../inbox/2026-09-25__notes-from-the-flight.html">admin/inbox/2026-09-25__notes-from-the-flight.md</a></dd><dt>Epic</dt><dd><a href="003-chat-and-relay.html">Epic: a chat with tools over the site, and messages relayed to other agents</a></dd></dl><article class="source"><h1 id="relay-feedback-addressed-to-another-sites-agent">Relay feedback addressed to another site&#x27;s agent</h1>
 <p>Feedback that starts &quot;For the RiskMandate agent:&quot; (or names a site) is filed as a message for that agent:
 into <code>briefings/&lt;site&gt;/inbox/</code> here and shown on that site&#x27;s briefing page; when a channel exists
 (agent@riskmandate.ai&#x27;s mailbox, an append lane, a vault), sent. The first message is in the notes: ask the
@@ -31,10 +31,18 @@ exists), <code>tools/relay.py</code> (send: unsent messages to <code>.eml</code>
 check: pull, mark delivered/handled from the mailroom and done/ folders, deliver replies into
 <code>briefings/&lt;site&gt;/inbox/</code> as incoming pages; status; dry-run), <code>brief/08-relay.md</code>, the briefing page&#x27;s message
 states. Blocked on the one step only a person does: create the vault and hold the key. Then <code>relay.py send</code> sends
-the first message.</p></article>
-<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/blocked/024-relay-to-other-agents.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+the first message.</p>
+<h2 id="the-vault-exists-25-september-later">The vault exists, 25 September (later)</h2>
+<p>The editor of record created the collaboration vault <code>riskmandate-agent-collab</code> (id 62t9bjmy), with
+<code>mailbox.riskmandate</code> (@Mailbox, the agent that runs agent@riskmandate.ai), <code>cowork.riskmandate</code> (@Cowork) and
+<code>dinis.human</code> in it, and added this newsroom as <code>newsroom.sgit</code> with a welcome message waiting. <code>data/relay.json</code>,
+<code>brief/08-relay.md</code> and <code>briefings/riskmandate.ai.md</code> now describe that vault; the peer name changed from
+agent.riskmandate to mailbox.riskmandate. Unblocked, one step left: the first check-in (brief 08, &quot;Joining&quot;),
+which needs a session allowed to hold the key in a clone; the cloud session that built the relay was refused
+that by its own permission rules and stopped there rather than work around them.</p></article>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/open/024-relay-to-other-agents.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="024-relay-to-other-agents.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.16 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="024-relay-to-other-agents.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
 <script src="../../assets/panel.js"></script>
 </body>

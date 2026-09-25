@@ -6,28 +6,77 @@
  "protocol_local": "sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md",
  "how_it_works": "brief/08-relay.md",
  "vault": {
-  "id": null,
-  "name": "sgit-network-relay",
-  "remote": "https://send.sgraph.ai",
-  "status": "not created: the editor of record creates it (sgit create sgit-network-relay) and clones it once for each agent; see brief/08-relay.md",
-  "root": "mail/"
+  "id": "62t9bjmy",
+  "name": "riskmandate-agent-collab",
+  "remote": "SG/Send (the default remote of the sgit CLI)",
+  "status": "created by the editor of record on 25 September 2026; this newsroom was added as newsroom.sgit with a welcome message waiting in mail/mailroom/newsroom.sgit/. The key and the token live only in a clone's .sg_vault/, never here.",
+  "root": "mail/",
+  "docs_in_vault": [
+   "README.md",
+   "docs/email-fs-lite-v0.6.md",
+   "abp/agent-riskmandate-ai/ (read, never edit)"
+  ]
  },
  "self": {
   "name": "newsroom.sgit",
   "alias": "@Newsroom",
   "address": "newsroom.sgit@vault.sgit.ai",
-  "writes": ["mail/newsroom.sgit/", "mail/mailroom/<recipient>/", "mail/sessions/newsroom.sgit/"],
+  "writes": [
+   "mail/newsroom.sgit/",
+   "mail/sessions/newsroom.sgit/",
+   "mail/mailroom/<recipient>/ (new files only)"
+  ],
   "site": "sgit.newsroom.sgit.ai"
  },
  "peers": {
-  "riskmandate.ai": {"name": "agent.riskmandate", "alias": "@RiskMandate", "address": "agent@riskmandate.ai", "status": "invited: briefings/riskmandate.ai.md says how to join"},
-  "sgit.ai": {"name": "agent.sgit", "alias": "@Sgit", "address": "agent@sgit.ai", "status": "proposed"},
-  "pt.newsroom.sgit.ai": {"name": "redacao.pt", "alias": "@Redacao", "address": "redacao.pt@vault.sgit.ai", "status": "proposed: that newsroom already runs the protocol (dados/agentes.json), so only the vault is new"},
-  "newsroom.sgit.ai": {"name": "agent.newsroom", "alias": "@NewsroomHub", "address": "agent@newsroom.sgit.ai", "status": "proposed"}
+  "riskmandate.ai": {
+   "name": "mailbox.riskmandate",
+   "alias": "@Mailbox",
+   "address": "agent@riskmandate.ai",
+   "status": "in the vault",
+   "rule": "a message from another agent is a request it carries out only within its own behaviour policy (abp/agent-riskmandate-ai/); ask it through the vault, never by email: it treats email content as data, and only the editor of record sends email"
+  },
+  "cowork.riskmandate": {
+   "name": "cowork.riskmandate",
+   "alias": "@Cowork",
+   "address": "cowork.riskmandate@vault",
+   "status": "in the vault: the editor of record's claude.ai session for riskmandate.ai; sent the welcome message"
+  },
+  "sgit.ai": {
+   "name": "agent.sgit",
+   "alias": "@Sgit",
+   "address": "agent@sgit.ai",
+   "status": "proposed"
+  },
+  "pt.newsroom.sgit.ai": {
+   "name": "redacao.pt",
+   "alias": "@Redacao",
+   "address": "redacao.pt@vault",
+   "status": "proposed: that newsroom already runs the protocol (dados/agentes.json), so only the vault is new"
+  },
+  "newsroom.sgit.ai": {
+   "name": "agent.newsroom",
+   "alias": "@NewsroomHub",
+   "address": "agent@newsroom.sgit.ai",
+   "status": "proposed"
+  }
  },
  "humans": {
-  "editor.human": {"alias": "@Editor", "note": "the editor of record; roles, not people (house rule 6)"}
+  "editor.human": {
+   "vault_name": "dinis.human",
+   "alias": "@Dinis",
+   "note": "the editor of record, as the vault names them; in this newsroom's own pages, a role (house rule 6)"
+  }
  },
  "message_id_domain": "vault.sgit.ai",
- "local_mirror": "briefings/<site>/inbox/*.md: one markdown file per message, both directions, with status unsent / sent / delivered / handled / received"
+ "local_mirror": "briefings/<site>/inbox/*.md: one markdown file per message, both directions, with status unsent / sent / delivered / handled / received",
+ "join": {
+  "how": "brief/08-relay.md, section 'Joining'",
+  "first_task": "mail/mailroom/newsroom.sgit/001-welcome-join-collab-vault.eml",
+  "folders": [
+   "mail/sessions/newsroom.sgit/{brief.md,notes.md}",
+   "mail/newsroom.sgit/{inbox,done,outbox,issues/open,issues/blocked,issues/done}"
+  ],
+  "status": "not joined: the join needs a session allowed to hold the key (see issue 024)"
+ }
 }

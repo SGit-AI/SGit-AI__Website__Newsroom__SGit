@@ -11,4 +11,4 @@ For the RiskMandate agent: we need to send an email to my contact that I sent th
 introduction and asking for feedback, which could be "this is too much, I don't have this much time, can this be simpler".
 
 *Relayed by the newsroom from the editor of record's notes of 25 September 2026 (admin/inbox). The channel is the
-relay vault (brief 08): this message waits here as unsent until the vault exists, and the daily run's report lists it.*
+relay vault (brief 08); this message goes out at this newsroom's first check-in there, and until then the daily run's report lists it as unsent.*

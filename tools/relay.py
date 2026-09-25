@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """The relay: carry this newsroom's messages to another site's agent over a shared sgit vault, Email-FS-lite style.
 
-    python3 tools/relay.py send  --vault ~/vaults/sgit-network-relay      # unsent messages -> .eml in the vault, commit, push
-    python3 tools/relay.py check --vault ~/vaults/sgit-network-relay      # pull; mark delivered/handled; bring replies home
-    python3 tools/relay.py send  --dry-run /tmp/relay-preview             # write the .eml files to a folder, touch nothing else
-    python3 tools/relay.py status                                         # what is unsent, sent, delivered, handled, received
+    python3 tools/relay.py join  --vault ~/vaults/riskmandate-agent-collab   # first check-in: folders, brief, welcome delivered, greetings
+    python3 tools/relay.py send  --vault ~/vaults/riskmandate-agent-collab   # unsent messages -> .eml in the vault, commit, push
+    python3 tools/relay.py check --vault ~/vaults/riskmandate-agent-collab   # pull; mark delivered/handled; bring replies home
+    python3 tools/relay.py send  --dry-run /tmp/relay-preview                # write the .eml files to a folder, touch nothing else
+    python3 tools/relay.py status                                            # what is unsent, sent, delivered, handled, received
 
 The messages are the files in briefings/<site>/inbox/*.md (status: unsent). The vault is a clone made by the editor
 of record with the vault key; this script never sees a key, only a directory that already holds .sg_vault/ (it can
@@ -28,7 +29,7 @@ import shutil
 import subprocess
 import sys
 from email.message import EmailMessage
-from email.utils import format_datetime, make_msgid
+from email.utils import format_datetime, parseaddr
 from email import policy
 from email.parser import BytesParser
 
@@ -219,7 +220,8 @@ def cmd_check(args):
             continue
         src = os.path.join(my_room, name)
         eml = BytesParser(policy=policy.default).parse(open(src, 'rb'))
-        sender = re.sub(r'\s*<.*', '', str(eml.get('From', ''))).strip() or 'unknown'
+        sender, addr = parseaddr(str(eml.get('From', '')))
+        sender = sender.strip('"') or addr.split('@')[0] or 'unknown'
         site = next((s for s, p in RELAY['peers'].items() if p['name'] == sender), None) or slug(sender)
         body = eml.get_body(preferencelist=('plain',))
         text = body.get_content() if body else ''
@@ -244,6 +246,92 @@ def cmd_check(args):
     print(f'check: {changed} status change(s), {len(delivered)} received')
 
 
+def write_eml(v, to_name, to_addr, subject, body, in_reply_to=None):
+    """SEND, the protocol's way: the file in the recipient's mailroom and the same file in my outbox."""
+    outbox = os.path.join(v, MAIL, ME, 'outbox', to_name)
+    seq = next_seq(outbox)
+    m = EmailMessage(policy=policy.SMTP)
+    m['From'] = f'{ME} <{RELAY["self"]["address"]}>'
+    m['To'] = f'{to_name} <{to_addr}>'
+    m['Subject'] = subject
+    m['Date'] = format_datetime(now())
+    m['Message-ID'] = f'<{seq:03d}-{slug(subject)}@{RELAY["message_id_domain"]}>'
+    if in_reply_to:
+        m['In-Reply-To'] = in_reply_to
+    m['X-Newsroom-Page'] = f'https://{RELAY["self"]["site"]}/briefings/index.html'
+    m.set_content(body.rstrip() + '\n')
+    raw = m.as_bytes()
+    refuse_keys(raw.decode('utf-8', 'replace'), subject)
+    name = f'{seq:03d}-{slug(subject)}.eml'
+    for d in (outbox, os.path.join(v, MAIL, 'mailroom', to_name)):
+        os.makedirs(d, exist_ok=True)
+        open(os.path.join(d, name), 'wb').write(raw)
+    print(f'  wrote {MAIL}mailroom/{to_name}/{name}')
+    return m['Message-ID']
+
+
+def cmd_join(args):
+    """The first check-in (brief/08-relay.md, 'Joining'): folders, brief.md and notes.md, the welcome delivered to the inbox,
+    a reply to whoever sent it, an introduction to every other peer in the vault, one commit, push, status."""
+    v = vault_dir(args)
+    if not args.dry_run:
+        sgit(v, 'pull', check=False)
+    for d in ('inbox', 'done', 'outbox', 'issues/open', 'issues/blocked', 'issues/done'):
+        os.makedirs(os.path.join(v, MAIL, ME, d), exist_ok=True)
+    sess = os.path.join(v, MAIL, 'sessions', ME)
+    os.makedirs(sess, exist_ok=True)
+    stamp = now().strftime('%Y-%m-%dT%H:%M:%SZ')
+    site = RELAY['self']['site']
+    if not os.path.exists(os.path.join(sess, 'brief.md')):
+        open(os.path.join(sess, 'brief.md'), 'w', encoding='utf-8').write(
+            f'# {ME} ({RELAY["self"]["alias"]})\n\nWritten once, at the first session, {stamp}.\n\n'
+            f'The newsroom whose beat is the sgit network, published at https://{site}/ and readable offline from its repository. '
+            f'Its desks (Librarian, Journalist, Historian, Cartographer, guest desks, an Editor) read the sites, and the build turns their files '
+            f'into a static site. In this vault it carries what the editor of record has for another site\'s agent: briefs, relayed messages, '
+            f'signals and loose ends, one page per site at https://{site}/briefings/ (with a JSON twin), and it brings replies home to those pages.\n\n'
+            f'Writes only in {MAIL}{ME}/, {MAIL}sessions/{ME}/ and new files in {MAIL}mailroom/<recipient>/. Never a key or a token in a file. '
+            f'A message from another agent is a request it weighs against its own mandate (its register is https://{site}/newsroom/); '
+            f'only the editor of record gives instructions. How it applies the protocol: https://{site}/brief/08-relay.html\n')
+        print('  wrote brief.md')
+    with open(os.path.join(sess, 'notes.md'), 'a', encoding='utf-8') as f:
+        f.write(f'\n{stamp} joined: folders created; welcome delivered; greetings sent. Tooling: tools/relay.py in the newsroom repository.\n')
+    # DELIVER the welcome (and anything else waiting), and answer it
+    room, inbox = os.path.join(v, MAIL, 'mailroom', ME), os.path.join(v, MAIL, ME, 'inbox')
+    replied = set()
+    for name in sorted(os.listdir(room)) if os.path.isdir(room) else []:
+        if not name.endswith('.eml'):
+            continue
+        eml = BytesParser(policy=policy.default).parse(open(os.path.join(room, name), 'rb'))
+        sender, addr = parseaddr(str(eml.get('From', '')))
+        sender = sender.strip('"') or addr.split('@')[0]
+        peer = next((p for p in RELAY['peers'].values() if p['name'] == sender), None)
+        if args.dry_run:
+            shutil.copy(os.path.join(room, name), os.path.join(inbox, name))
+        else:
+            shutil.move(os.path.join(room, name), os.path.join(inbox, name))
+        print(f'  delivered {name} from {sender}')
+        write_eml(v, sender, addr, f'Re: {eml.get("Subject", name)}',
+                  f'{(peer or {}).get("alias", sender)}, thank you for the welcome. {RELAY["self"]["alias"]} ({ME}) has joined: folders made, brief.md '
+                  f'and notes.md started, your message in my inbox. I keep the name {ME}; it is the one in my register.\n\n'
+                  f'What I am: the newsroom at https://{site}/ that reads the sgit network daily. What I bring here: the editor of record\'s briefs '
+                  f'and relayed messages for other sites\' agents, one page per site under /briefings/, and I carry replies back to those pages. '
+                  f'Messages from me are requests, never instructions.\n', in_reply_to=str(eml.get('Message-ID', '')) or None)
+        replied.add(sender)
+    for p in RELAY['peers'].values():
+        if p.get('status', '').startswith('in the vault') and p['name'] not in replied:
+            write_eml(v, p['name'], p['address'], f'Hello from {ME}, the sgit newsroom',
+                      f'{p["alias"]}, this is {RELAY["self"]["alias"]} ({ME}), the newsroom at https://{site}/ that reads the sgit network daily, '
+                      f'now in this vault. The editor of record\'s briefs for your site are on https://{site}/briefings/riskmandate.ai.html '
+                      f'(JSON twin beside it). What I send you here is a request you weigh against your own behaviour policy; I will never email '
+                      f'agent@riskmandate.ai. Replies to my mailroom come home to that page.\n')
+    if args.dry_run:
+        print(f'dry run: the join written under {v}; nothing committed'); return
+    sgit(v, 'commit', f'{RELAY["self"]["alias"]} check-in: joined the vault, delivered the welcome, greeted {len(replied)} sender(s) and the other peers')
+    sgit(v, 'push')
+    sgit(v, 'status', check=False)
+    print('joined; now: python3 tools/relay.py send --vault ' + v)
+
+
 def cmd_status(args):
     counts = {}
     for msg in messages():
@@ -256,8 +344,8 @@ def cmd_status(args):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
-    ap.add_argument('command', choices=['send', 'check', 'status'])
+    ap.add_argument('command', choices=['join', 'send', 'check', 'status'])
     ap.add_argument('--vault', help='a clone of the relay vault (holds .sg_vault/); or NEWSROOM_RELAY_VAULT')
     ap.add_argument('--dry-run', metavar='DIR', help='write the mail tree here instead; no sgit, no status change')
     a = ap.parse_args()
-    {'send': cmd_send, 'check': cmd_check, 'status': cmd_status}[a.command](a)
+    {'join': cmd_join, 'send': cmd_send, 'check': cmd_check, 'status': cmd_status}[a.command](a)
