@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-25T13:05:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "After the Architect's signal review: the pt.newsroom briefing carries the fix's line numbers itself instead of pointing at the shortened signal.",
+  "folders_changed": [
+    "briefings/"
+  ],
+  "did": [
+    "briefings/pt.newsroom.sgit.ai.md: line numbers 39, 90, 129 in the brief."
+  ],
+  "gates": true
+}

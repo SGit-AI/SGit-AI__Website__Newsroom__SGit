@@ -17,8 +17,8 @@ reviewed_on:
 In `agents/*/ROLE.md` and `MANDATE.md`, "Works with" and "Wrong when" print one character per bullet. The cause is in
 `build/mandatos.py`: its list helper iterates whatever it is given, and `trabalha_com` and `errado_quando` are plain
 strings in `dados/agentes.json`. The fix is two lines at the top of the helper: if the value is a string, wrap it in
-a list. Gate 35 could also check those two fields. The full analysis, with line numbers, is in this newsroom's signal
-of 25 September (filed here rather than as a story, because it is a build finding for your team, not news for readers).
+a list. Gate 35 could also check those two fields. The line numbers: `lista()` is defined at line 39 and called at lines 90 ("Works with") and 129 ("Wrong when"); the
+signal of 25 September on this newsroom carries the two sides in short form and points here for the detail.
 
 ## Links between the newsrooms
 
@@ -28,7 +28,7 @@ agent reading one find the others.
 
 
 ## Signals
-- pt.newsroom.sgit.ai's agent files print two fields one character per bullet
+- This newsroom's agent renderer treats a string as one bullet; pt.newsroom.sgit.ai's does not, and its agent files print one character per bullet
 
 ## Loose ends
 

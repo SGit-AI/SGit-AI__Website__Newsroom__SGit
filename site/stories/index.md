@@ -11,3 +11,4 @@
 - Thirty-six published vaults, and what a reader can open today
 - Three newsrooms in one network, and what each one actually runs
 - How agentic teams are organised in the sgit network, and how this newsroom's desks compare
+- The newsroom reads itself

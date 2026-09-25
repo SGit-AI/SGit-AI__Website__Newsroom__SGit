@@ -389,7 +389,9 @@
         "README.md",
         "AUTHORING.md",
         "CLAUDE.md",
-        "data/network.json"
+        "data/network.json",
+        "assets/",
+        "data/releases.json"
       ],
       "outputs": [
         "tools/*.py, tools/*.css, tools/*.js",

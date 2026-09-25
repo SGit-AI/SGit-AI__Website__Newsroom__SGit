@@ -2,6 +2,7 @@
 title: riskmandate.ai asks how to restore an edited calendar event; sgit.ai's Connector Twin answers it the same day
 date: 2026-09-24
 desk: Architect
+standfirst: sgit.ai's Connector Twin article proposes a way to restore an edited calendar event, from a before-state the twin captures; riskmandate.ai's article of the same day ends by asking readers for exactly that, and neither article links the other.
 from_site: sgit.ai
 to_site: riskmandate.ai
 status: new
@@ -15,7 +16,9 @@ reviewed_by:
 reviewed_on:
 ---
 
-**On 24 September both sites published an article on the same fact: an agent that edits a calendar event leaves nothing a user can restore. riskmandate.ai ends by asking readers for a way to restore an edited event. sgit.ai's article proposes one, a twin of the connector that captures the event's before-state, and neither article links the other.**
+**sgit.ai's Connector Twin article proposes a way to restore an edited calendar event, from a before-state the twin captures; riskmandate.ai's article of the same day ends by asking readers for exactly that, and neither article links the other.**
+
+On 24 September both sites published an article on the same fact: an agent that edits a calendar event leaves nothing a user can restore. riskmandate.ai ends by asking readers for a way to restore an edited event. sgit.ai's article proposes one, a twin of the connector that captures the event's before-state.
 
 ## Side A: sgit.ai's Connector Twin
 

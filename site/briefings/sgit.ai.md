@@ -64,3 +64,4 @@ v1.34.3. Loose end le-007.
 - sgit.ai's business plans page describes itself as holding two plans, Connector Twin and Agent as Webmaster, while its table lists five.
 - sgit.ai's published vaults page opens with "Thirty-one vaults you can open in your browser right now", and its llms.txt entry for the page says the same, while the page's table lists 36 vaults, numbered 1 to 36.
 - The Risk Acceptance Office vault's README says its opening page "replays one invented risk over eight weeks", while sgit.ai's page for the vault says it "replays one invented risk over six weeks", and the replay on that page ends on day 42.
+- sgit.ai's interview-page brief of 24 September describes a voice interview prompt as a new, reusable pattern and does not cite riskmandate.ai's feedback page (v0.13.0, 9 September), which has run the same shape since; riskmandate.ai's new interview page (v1.34.2) does not link its own feedback page either.

@@ -932,7 +932,8 @@ class Site:
                 val = val.strip()
                 val_html = esc(val)
                 if re.match(r'^(https?://|src:)\S+$', val):
-                    val_html = link(val, esc(val.replace('https://', '')[:60]))
+                    short = val.replace('https://', '')
+                    val_html = link(val, esc(short if len(short) <= 70 else short[:34] + '\u2026' + short[-30:]))
                 m = re.search(r'\((le-\d+|Q-\d+)\)\s*$', val)
                 if m:
                     ref = m.group(1)

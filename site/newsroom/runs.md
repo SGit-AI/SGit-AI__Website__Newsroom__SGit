@@ -1,7 +1,12 @@
 # Runs
 
+- 2026-09-25T13:20:00Z editor.human: Register: the Build desk owns assets/ (screenshots the build copies) and data/releases.json (appended by tools/release.sh).
+- 2026-09-25T13:10:00Z build.desk: Fourth batch of the flight notes: briefing cards and the semantic twin (renderer and validator), the Cartographer's helpers, screenshots of cited pages, this newsroom's releases as part of what it reports.
+- 2026-09-25T13:05:00Z editor.desk: After the Architect's signal review: the pt.newsroom briefing carries the fix's line numbers itself instead of pointing at the shortened signal.
 - 2026-09-25T12:50:00Z build.desk: Third batch of the flight notes: the side pane (peek a link beside the page, notes, chat), the tier 0 and tier 1 chat with tools over the site, briefing pages per target site with JSON twins.
 - 2026-09-25T12:48:00Z editor.desk: Briefings for riskmandate.ai, pt.newsroom.sgit.ai and sgit.ai; the first relayed message; Briefings in the navigation; the daily run files relays and reports unsent ones.
+- 2026-09-25T12:43:06Z journalist.desk: Issues 032 and 029: a news piece about this newsroom's own changes on 25 September 2026 (releases v0.1.5 to v0.1.10, the desks' runs, the 45 issues from the editor of record's notes, the first full run), with the two experiments on this piece only: briefing cards in the front matter and a semantic twin written before the prose.
+- 2026-09-25T12:37:16Z architect.guest: Issue 033: review the ten signals against principle 10 (first line says site A has X, site B does Y and does not seem to know; title says what is reported), add a standfirst to each, shorten the pt.newsroom.sgit.ai agent-files signal to the two sides and the action with the detail on its briefing page, and check the voice-feedback signal against riskmandate.ai's feedback page.
 - 2026-09-25T12:35:00Z build.desk: Second batch of the flight notes: the word ban in the validator, the history index as cards with lessons markable one by one, the network map clickable and its table sortable, a badge on every source page naming the target site, images not in the snapshot said so.
 - 2026-09-25T12:31:00Z editor.human: Apply the word ban from brief/07-principles.md to the desks' prose: rung, rungs become step or level outside quotations.
 - 2026-09-25T12:30:00Z editor.desk: The principles of the site (brief/07), the findings rule and the words not to use in AUTHORING.md and every desk's standing prompt.

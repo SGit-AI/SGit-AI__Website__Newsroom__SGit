@@ -433,3 +433,15 @@ iframe.peek { flex: 1; min-height: 60vh; border: 1px solid var(--rule); border-r
 
 html.embedded header.top, html.embedded footer, html.embedded .pane-rail, html.embedded .pane, html.embedded details.toc { display: none !important; }
 html.embedded main { padding-top: 8px; }
+.bcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 8px; margin: 10px 0; }
+.bcard { display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; font-size: .92rem; }
+.bcard .lbl { font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.twin { margin-top: 24px; border-top: 2px solid var(--ink); padding-top: 8px; }
+.twin h3 { font-size: 1rem; margin: 12px 0 4px; } .twin ul { margin: 0; padding-left: 1.1em; font-size: .92rem; }
+.rl-site.s-nr { background: #e6f2ea; color: #166534; }
+.shots { margin: 8px 0 10px; }
+.shots .lbl { font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.shot-strip { display: flex; gap: 10px; overflow-x: auto; padding: 6px 0 4px; }
+.shot { flex: 0 0 200px; display: flex; flex-direction: column; gap: 3px; text-decoration: none; color: var(--muted); font: 11px var(--mono); }
+.shot img { width: 200px; height: 125px; object-fit: cover; object-position: top; border: 1px solid var(--rule); border-radius: 6px; background: #fff; }
+.shot span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

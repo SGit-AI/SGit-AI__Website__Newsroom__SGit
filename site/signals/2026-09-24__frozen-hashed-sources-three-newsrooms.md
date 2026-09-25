@@ -2,6 +2,7 @@
 title: pt.newsroom.sgit.ai is live and freezing its sources; newsroom.sgit.ai still calls it a design
 date: 2026-09-24
 desk: Cartographer
+standfirst: pt.newsroom.sgit.ai runs the fetch, freeze and hash method that newsroom.sgit.ai argues for, and has since mid-September; newsroom.sgit.ai, which commissioned it, still describes it on its front page as "a brief for the next agent", and pt.newsroom.sgit.ai's own index does not link back.
 from_site: pt.newsroom.sgit.ai
 to_site: newsroom.sgit.ai
 status: new
@@ -14,7 +15,9 @@ reviewed_by:
 reviewed_on:
 ---
 
-**pt.newsroom.sgit.ai runs the fetch, freeze and hash method that newsroom.sgit.ai argues for, and has done since mid-September. newsroom.sgit.ai, which commissioned it, still describes it on its front page as "a brief for the next agent", and pt.newsroom.sgit.ai's own index does not link back. This newsroom does the same thing for the sgit network, so it is the third party that should point at both.**
+**pt.newsroom.sgit.ai runs the fetch, freeze and hash method that newsroom.sgit.ai argues for, and has since mid-September; newsroom.sgit.ai, which commissioned it, still describes it on its front page as "a brief for the next agent", and pt.newsroom.sgit.ai's own index does not link back.**
+
+This newsroom does the same thing for the sgit network, so it is the third party that should point at both.
 
 ## Side A: pt.newsroom.sgit.ai runs it
 

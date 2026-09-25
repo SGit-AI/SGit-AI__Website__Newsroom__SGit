@@ -13,10 +13,6 @@
 - [open] 020 A wallet drained by actions (as pt.newsroom.sgit.ai)
 - [open] 021 Render pages from a graph of pieces, merged with the reader's state
 - [open] 024 Relay feedback addressed to another site's agent
-- [open] 029 Experiment: a JSON twin with a semantic graph for each new piece
-- [open] 030 Every Cartographer page carries a map, graph or infographic; tooling to make that cheap
-- [open] 032 The newsroom is part of the universe it reports on
-- [open] 033 Signals answer "what are we reporting?" in the first line
 - [open] 038 Run the newsroom daily on a schedule
 - [open] 039 A daily industry news feed on the vaults' topics, as JSON the newsroom consumes
 - [open] 040 Daily or thematic slide decks, rendered to HTML and PDF
@@ -40,7 +36,11 @@
 - [done] 026 Propose the chat and feedback pattern to sgit.ai for other agents
 - [done] 027 The site's principles and content rules (including: no "rungs")
 - [done] 028 Issues and questions a desk finds go to a visible place, not into prose
+- [done] 029 Experiment: a JSON twin with a semantic graph for each new piece
+- [done] 030 Every Cartographer page carries a map, graph or infographic; tooling to make that cheap
 - [done] 031 History index that reads, and lessons the reader can mark read one by one
+- [done] 032 The newsroom is part of the universe it reports on
+- [done] 033 Signals answer "what are we reporting?" in the first line
 - [done] 034 Network map: click a site for its details and relationships; sortable table
 - [done] 036 issues-fs-lite in issues/, rendered as a kanban and pages in admin
 - [done] 037 Capture the notes of 25 September as issues, with provenance

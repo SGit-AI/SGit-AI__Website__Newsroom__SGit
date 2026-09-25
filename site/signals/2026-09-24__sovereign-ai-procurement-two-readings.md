@@ -2,6 +2,7 @@
 title: Two sites describe the same Sovereign AI procurement challenge, with different numbers and no link between them
 date: 2026-09-24
 desk: Cartographer
+standfirst: riskmandate.ai's UK support page and sgit.ai's proposed Sovereign AI partnership both describe the same government procurement challenge for safe AI agent adoption as RiskMandate's work; they give different contract sizes and a different challenge number, and neither page links the other.
 from_site: riskmandate.ai
 to_site: sgit.ai
 status: new
@@ -14,7 +15,7 @@ reviewed_by:
 reviewed_on:
 ---
 
-**riskmandate.ai's UK support page and sgit.ai's proposed partnership with UK Sovereign AI both point at the same government procurement challenge for safe AI agent adoption, and both say it describes RiskMandate's work. They give different contract sizes and a different challenge number, and neither page links the other.**
+**riskmandate.ai's UK support page and sgit.ai's proposed Sovereign AI partnership both describe the same government procurement challenge for safe AI agent adoption as RiskMandate's work; they give different contract sizes and a different challenge number, and neither page links the other.**
 
 ## Side A: riskmandate.ai, from the competition guidance
 

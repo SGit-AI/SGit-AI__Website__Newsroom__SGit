@@ -2,6 +2,7 @@
 title: Level 1 costs £10 on riskmandate.ai and £5 on two store.sgit.ai pages
 date: 2026-09-24
 desk: Cartographer
+standfirst: riskmandate.ai settled the entry level at £10 and corrected every £5 it had published; store.sgit.ai, which owns the prices, still says £5 on two of its own pages while saying £10 on others.
 from_site: riskmandate.ai
 to_site: store.sgit.ai
 status: new
@@ -16,7 +17,7 @@ reviewed_by:
 reviewed_on:
 ---
 
-**riskmandate.ai settled the entry level at £10 and corrected every £5 it had published. store.sgit.ai, which owns the prices, still says £5 on two of its own pages while saying £10 on others.**
+**riskmandate.ai settled the entry level at £10 and corrected every £5 it had published; store.sgit.ai, which owns the prices, still says £5 on two of its own pages while saying £10 on others.**
 
 ## Side A: riskmandate.ai, corrected at source
 

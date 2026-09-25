@@ -1,5 +1,6 @@
 # News
 
+- [The newsroom reads itself](stories/2026-09-25__the-newsroom-reads-itself.md)
 - [How agentic teams are organised in the sgit network, and how this newsroom's desks compare](stories/2026-09-25__how-agentic-teams-are-organised.md)
 - [Three newsrooms in one network, and what each one actually runs](stories/2026-09-24__three-newsrooms.md)
 - [Thirty-six published vaults, and what a reader can open today](stories/2026-09-24__thirty-six-published-vaults.md)

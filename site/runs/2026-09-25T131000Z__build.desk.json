@@ -1,0 +1,23 @@
+{
+  "when": "2026-09-25T13:10:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Fourth batch of the flight notes: briefing cards and the semantic twin (renderer and validator), the Cartographer's helpers, screenshots of cited pages, this newsroom's releases as part of what it reports.",
+  "folders_changed": [
+    "tools/",
+    "AUTHORING.md",
+    "agents/",
+    "issues/",
+    "README.md",
+    "assets/",
+    "data/releases.json"
+  ],
+  "did": [
+    "AUTHORING.md: 'cards:' front matter (tiles under the byline) and the semantic twin (<piece>.json: typed nodes and edges); tools/build.py renders both, tools/validate.py checks the twin's schema.",
+    "tools/diagrams.py: wardley(), timeline(), graph(), mindmap(), network_from_json() turn data into Mermaid text (tested: all four render offline). The Cartographer's mandate: no page without a visual.",
+    "tools/screenshots.js: captures the live pages the desks cite into assets/shots/ with a manifest; the build shows a strip of them under a piece's byline.",
+    "data/releases.json (appended by tools/release.sh; the build never runs git): admin/versions.html, and this newsroom's releases in the reading list as a site of its own (principle 5).",
+    "Issue 030 moved to done; 015 when the screenshots land."
+  ],
+  "gates": true
+}

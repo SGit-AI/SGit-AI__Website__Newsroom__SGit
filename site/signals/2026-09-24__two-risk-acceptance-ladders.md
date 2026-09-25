@@ -2,6 +2,7 @@
 title: Two risk acceptance ladders, and a plan that has already chosen between them
 date: 2026-09-24
 desk: Architect
+standfirst: risks.sgit.ai publishes a six-step acceptance interval ladder, which sgit.ai's Risk Acceptance Office plan has adopted; riskmandate.ai's "Accepted is not acceptable" page frames the intervals differently, and nothing on riskmandate.ai shows that the plan has named the difference as an open question.
 from_site: risks.sgit.ai
 to_site: riskmandate.ai
 status: new
@@ -16,7 +17,7 @@ reviewed_by:
 reviewed_on:
 ---
 
-**risks.sgit.ai publishes a six-rung acceptance interval ladder, and sgit.ai's Risk Acceptance Office plan has adopted it. riskmandate.ai's "Accepted is not acceptable" page frames the intervals differently, and nothing on riskmandate.ai shows that the plan has named the difference as an open question.**
+**risks.sgit.ai publishes a six-step acceptance interval ladder, which sgit.ai's Risk Acceptance Office plan has adopted; riskmandate.ai's "Accepted is not acceptable" page frames the intervals differently, and nothing on riskmandate.ai shows that the plan has named the difference as an open question.**
 
 ## Side A: risks.sgit.ai, and the plan that follows it
 

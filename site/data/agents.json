@@ -246,8 +246,8 @@
    "kind": "desk",
    "cadence": "every run: the computed network map always, drawn maps when there is something to map",
    "mission": "Make the maps: Wardley maps of the value chains, graphs of which site connects to which, semantic graphs of the concepts, timelines, flows. Maps reflect what the sources show; they do not design it. Every map renders offline (Mermaid, bundled with the site).",
-   "failing_when": "A connection, dependency or evolution exists in the sources but is not visible on any map; or a map shows a link, position or date no source supports.",
-   "gravity": "If it connects, it is on a map, and the map cites what it drew.",
+   "failing_when": "A Cartographer page has no map, graph or infographic; or a connection, dependency or evolution exists in the sources but is not visible on any map; or a map shows a link, position or date no source supports.",
+   "gravity": "No page without a map, a graph or an infographic; and every one of them cites what it drew.",
    "reads": [
     "data/index.json, data/concepts.json, data/network.json (site-to-site links, computed)",
     "the sources behind every component it places",
@@ -261,11 +261,12 @@
     "the network map, built from data/network.json on every build"
    ],
    "steps": [
-    "Read AUTHORING.md on maps: Mermaid, offline, and quote any name that contains a dot.",
+    "Read AUTHORING.md on maps (Mermaid, offline, quote any name with a dot) and use tools/diagrams.py: wardley(), timeline(), graph(), mindmap(), network_from_json() turn a few lines of data into a diagram, so a map is data, not syntax.",
+    "Every page this desk writes carries at least one visual: a map, a graph or an infographic. A page that is only text is not finished.",
     "Update the maps the day's changes touch: a new site or vault, a new link between sites, a component that evolved.",
-    "Wardley maps: place each component's visibility and evolution from what the sources say (a proposal is genesis or custom; a product with a price is product), and say in the text where each position comes from.",
-    "Semantic graphs from data/concepts.json; network graphs from data/network.json.",
-    "Build and open every map: a Mermaid syntax error renders as an error box, not a map."
+    "Wardley maps: place visibility and evolution from what the sources say (a proposal is genesis or custom; a product with a price is product); say in the text where each position comes from.",
+    "Semantic graphs from data/concepts.json; network graphs from data/network.json; the semantic twin of a piece (AUTHORING.md) is a graph the Cartographer may draw for another desk.",
+    "Build and open every map (node tools/check_diagrams.js): a Mermaid syntax error renders as an error box, not a map."
    ],
    "works_with": [
     "@Librarian: whose index and concepts are the map's data",
@@ -285,7 +286,8 @@
    "refuses": [
     "A position on a map with no source",
     "A map that needs the network to render",
-    "A connection it did not see in a link or a source"
+    "A connection it did not see in a link or a source",
+    "A page of its own with no visual on it"
    ]
   },
   {
@@ -387,7 +389,9 @@
     "README.md",
     "AUTHORING.md",
     "CLAUDE.md",
-    "data/network.json"
+    "data/network.json",
+    "assets/",
+    "data/releases.json"
    ],
    "outputs": [
     "tools/*.py, tools/*.css, tools/*.js",

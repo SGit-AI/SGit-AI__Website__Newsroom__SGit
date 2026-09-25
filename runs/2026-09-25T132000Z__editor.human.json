@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-25T13:20:00Z",
+  "agent": "editor.human",
+  "kind": "desk",
+  "task": "Register: the Build desk owns assets/ (screenshots the build copies) and data/releases.json (appended by tools/release.sh).",
+  "folders_changed": [
+    "data/agents.json"
+  ],
+  "did": [
+    "build.desk writes gains assets/ and data/releases.json."
+  ],
+  "gates": true
+}

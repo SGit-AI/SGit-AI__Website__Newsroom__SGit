@@ -1,6 +1,6 @@
 {
  "site": "sgit.ai",
- "generated_from": "sgit.newsroom.sgit.ai v0.1.10",
+ "generated_from": "sgit.newsroom.sgit.ai v0.1.11",
  "briefs": [
   {
    "title": "For sgit.ai",
@@ -126,6 +126,20 @@
     "https://sgit.ai/admin/versions.md"
    ],
    "waiting_on": "sgit.ai"
+  },
+  {
+   "id": "le-024",
+   "what": "sgit.ai's interview-page brief of 24 September describes a voice interview prompt as a new, reusable pattern and does not cite riskmandate.ai's feedback page (v0.13.0, 9 September), which has run the same shape since; riskmandate.ai's new interview page (v1.34.2) does not link its own feedback page either.",
+   "status": "open",
+   "status_note": "The feedback page is on riskmandate.ai (in the snapshot at sources/sites/riskmandate.ai/feedback.md) and the signal quotes it; what is missing is a link from sgit.ai's brief to it, and from riskmandate.ai's interview page to it. Recorded by the Architect from the voice-feedback signal (issue 033).",
+   "said_on": "2026-09-24",
+   "said_at": [
+    "https://riskmandate.ai/feedback.md",
+    "https://riskmandate.ai/versions/0.12.2.md",
+    "https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.md",
+    "https://riskmandate.ai/versions/1.34.2.md"
+   ],
+   "waiting_on": "sgit.ai and riskmandate.ai"
   }
  ]
 }

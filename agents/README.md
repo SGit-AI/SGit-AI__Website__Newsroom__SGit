@@ -13,7 +13,7 @@ The newsroom's work is done by desks, each with a role, a mandate and the folder
 | [**Cartographer**](cartographer.desk/ROLE.md) | `@Cartographer` | desk | every run: the computed network map always, drawn maps when there is something to map | `maps/` | [ROLE](cartographer.desk/ROLE.md) · [MANDATE](cartographer.desk/MANDATE.md) |
 | [**Architect**](architect.guest/ROLE.md) | `@Architect` | guest desk | when the day's changes give it something to say | `signals/`, `briefings/` | [ROLE](architect.guest/ROLE.md) · [MANDATE](architect.guest/MANDATE.md) |
 | [**Developer**](developer.guest/ROLE.md) | `@Developer` | guest desk | when the day's changes give it something to say | `signals/`, `briefings/` | [ROLE](developer.guest/ROLE.md) · [MANDATE](developer.guest/MANDATE.md) |
-| [**Build desk**](build.desk/ROLE.md) | `@Build` | construction | when the site, the tools or the pipeline change | `tools/`, `.github/`, `.claude/`, `agents/`, `run-local.sh`, `README.md`, `AUTHORING.md`, `CLAUDE.md`, `data/network.json` | [ROLE](build.desk/ROLE.md) · [MANDATE](build.desk/MANDATE.md) |
+| [**Build desk**](build.desk/ROLE.md) | `@Build` | construction | when the site, the tools or the pipeline change | `tools/`, `.github/`, `.claude/`, `agents/`, `run-local.sh`, `README.md`, `AUTHORING.md`, `CLAUDE.md`, `data/network.json`, `assets/`, `data/releases.json` | [ROLE](build.desk/ROLE.md) · [MANDATE](build.desk/MANDATE.md) |
 | [**Editor of record**](editor.human/ROLE.md) | `@EditorOfRecord` | human | before anything is called published | `editions/`, `stories/`, `history/`, `signals/`, `maps/`, `data/agents.json`, `admin/`, `briefings/` | [ROLE](editor.human/ROLE.md) · [MANDATE](editor.human/MANDATE.md) |
 
 ## How to work as one

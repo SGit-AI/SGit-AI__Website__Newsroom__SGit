@@ -1,0 +1,21 @@
+{
+ "when": "2026-09-25T12:43:06Z",
+ "agent": "journalist.desk",
+ "kind": "desk",
+ "task": "Issues 032 and 029: a news piece about this newsroom's own changes on 25 September 2026 (releases v0.1.5 to v0.1.10, the desks' runs, the 45 issues from the editor of record's notes, the first full run), with the two experiments on this piece only: briefing cards in the front matter and a semantic twin written before the prose.",
+ "folders_changed": [
+  "stories/",
+  "runs/",
+  "issues/"
+ ],
+ "did": [
+  "stories/2026-09-25__the-newsroom-reads-itself.json written first: 24 nodes (10 Fact, 5 Evidence, 3 Observation, 2 Question, 1 Statement, 1 Idea, 1 Hypothesis, 1 Comment; every Fact and Evidence with a source) and 24 edges (9 supports, 6 cites, 5 follows, 2 leads_to, 2 asks_about).",
+  "stories/2026-09-25__the-newsroom-reads-itself.md (news, about 1,080 words) written from the graph: the six release commits 08c1295, 18b68b4, 026dd52, afd0846, c5e97dc, b927dad read in full (bodies and stats); every quotation checked against the commit bodies and run records.",
+  "Counts computed from the files: 11 tags v0.1.0 to v0.1.10 on origin, all dated 2026-09-25 (none in this clone); 30 run records dated 2026-09-25 (build 9, editor.desk 6, librarian 4, journalist 4, historian 2, architect.guest 2, editor.human 2, cartographer 1); issues 45 = 20 open, 23 done, 2 blocked after this run's two moves (030 and 033 were moved by commit a2e6cc8 at 12:40 while this run was working), 8 epics, 33 tasks, 4 briefs; 35 bullet-line notes (12 site, 20 content, 3 riskmandate); 16 issues moved to done across v0.1.8 to v0.1.10 (7, 5, 4).",
+  "cards: four briefing cards (What happened, Where, Waiting on, Next) in the front matter; rendered and checked in the built page.",
+  "issues/open -> issues/done: 032-newsroom-reports-on-itself.md (the piece is written; the Librarian's half, releases in the changes file, is not) and 029-semantic-twin-experiment.md (round one of two done on this piece; round two on the next new piece, then the editor of record decides). issues/open now 20, issues/done 23.",
+  "Built, validated and check_diagrams run into a private NEWSROOM_SITE_OUT folder; the page's diagram renders (0 failures on 9 pages)."
+ ],
+ "gates": false,
+ "note": "No version bump, commit or push, as instructed. The validator is red for a reason outside this run's files: runs/2026-09-25T131000Z__build.desk.json (commit a2e6cc8, another session) lists assets/ and data/releases.json, which are outside build.desk's mandate; my own failure (the banned word named in prose) was fixed. For the Build desk: a bare URL in a briefing card is truncated to 60 characters as a label, which cut a GitHub commit URL to '.../commit/b'; the Where card was changed to text. For the Librarian (issue 032): data/changes/ ends at 2026-09-24, so this newsroom's own releases are not yet in a changes file; this piece was written from git and runs/. For the Editor: the run record of 12:09 says 40 notes; a count of bullet lines in admin/inbox/2026-09-25__notes-from-the-flight.md gives 35. Twin nodes were written without quotes, brackets, parentheses or pipes because the diagram renderer strips them."
+}

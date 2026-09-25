@@ -1,0 +1,274 @@
+{
+ "of": "stories/2026-09-25__the-newsroom-reads-itself.md",
+ "depends_on": [
+  "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/08c1295",
+  "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/18b68b4",
+  "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/026dd52",
+  "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/afd0846",
+  "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/c5e97dc",
+  "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/b927dad",
+  "nr:newsroom/runs",
+  "nr:admin/issues/index.html",
+  "nr:admin/inbox/2026-09-25__notes-from-the-flight",
+  "nr:briefings/riskmandate.ai"
+ ],
+ "nodes": [
+  {
+   "id": "f1",
+   "type": "Fact",
+   "text": "Six releases of this newsroom, v0.1.5 to v0.1.10, landed on 25 September 2026 between 09:25 and 12:33 UTC",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/b927dad"
+  },
+  {
+   "id": "f2",
+   "type": "Fact",
+   "text": "v0.1.5 was the first full newsroom run: the Journalist twice, the Historian, the Cartographer and the Editor",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/08c1295"
+  },
+  {
+   "id": "f3",
+   "type": "Fact",
+   "text": "v0.1.6 captured the editor of record's flight notes as 45 issues: 8 epics, 33 tasks and 4 briefs, with a kanban in admin",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/18b68b4"
+  },
+  {
+   "id": "f4",
+   "type": "Fact",
+   "text": "v0.1.7 made issues a folder every desk may write and added tools/release.sh, which gates a release on every check",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/026dd52"
+  },
+  {
+   "id": "f5",
+   "type": "Fact",
+   "text": "v0.1.8 shipped the approved front page, a sheet and byline on every piece, feedback everywhere, the reader's view and undo and redo",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/afd0846"
+  },
+  {
+   "id": "f6",
+   "type": "Fact",
+   "text": "v0.1.9 shipped the principles, lessons markable one by one, a clickable and sortable network and a badge on every source page",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/c5e97dc"
+  },
+  {
+   "id": "f7",
+   "type": "Fact",
+   "text": "v0.1.10 shipped a side pane on every page, briefing pages per target site and the first relayed message",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/b927dad"
+  },
+  {
+   "id": "f8",
+   "type": "Fact",
+   "text": "30 run records carry the date 25 September: Build 9, Editor 6, Librarian 4, Journalist 4, Historian 2, Architect 2, editor of record 2, Cartographer 1",
+   "source": "nr:newsroom/runs"
+  },
+  {
+   "id": "f9",
+   "type": "Fact",
+   "text": "At the time of writing the issues folder holds 45 issues: 20 open, 23 done and 2 blocked, after this run's two moves",
+   "source": "nr:admin/issues/index.html"
+  },
+  {
+   "id": "f10",
+   "type": "Fact",
+   "text": "The notes file holds 35 notes in three groups: 12 on the site, 20 on content and 3 for agent@riskmandate.ai",
+   "source": "nr:admin/inbox/2026-09-25__notes-from-the-flight"
+  },
+  {
+   "id": "e1",
+   "type": "Evidence",
+   "text": "The v0.1.5 commit body counts 8 new pieces, 124 decisions, 29 open questions, 6 map pages and 21 run records",
+   "source": "https://github.com/SGit-AI/SGit-AI__Website__Newsroom__SGit/commit/08c1295"
+  },
+  {
+   "id": "e2",
+   "type": "Evidence",
+   "text": "The Build desk's run of 12:50 says the tier 1 chat is built and not run, because the session held no key",
+   "source": "nr:newsroom/runs"
+  },
+  {
+   "id": "e3",
+   "type": "Evidence",
+   "text": "The Editor desk's run of 12:48 filed the relayed message under the riskmandate.ai briefing with status unsent",
+   "source": "nr:briefings/riskmandate.ai"
+  },
+  {
+   "id": "e4",
+   "type": "Evidence",
+   "text": "Sixteen issues moved to done across v0.1.8, v0.1.9 and v0.1.10: seven, five and four, by the Build desk's run records",
+   "source": "nr:newsroom/runs"
+  },
+  {
+   "id": "e5",
+   "type": "Evidence",
+   "text": "The Editor desk's run of 12:09 counts 40 notes; a count of the bullet lines in the file gives 35",
+   "source": "nr:newsroom/runs"
+  },
+  {
+   "id": "s1",
+   "type": "Statement",
+   "text": "Principle 5 says the newsroom's releases, runs and issues are changes in the network, reported like any other site's"
+  },
+  {
+   "id": "o1",
+   "type": "Observation",
+   "text": "All eleven tags, v0.1.0 to v0.1.10, carry the same date in the git log: 25 September 2026"
+  },
+  {
+   "id": "o2",
+   "type": "Observation",
+   "text": "The Librarian has no changes file for 25 September, so the newsroom's own releases are not yet in the day's changes"
+  },
+  {
+   "id": "o3",
+   "type": "Observation",
+   "text": "Two of the six release commits carry a body with counts; four carry only their subject line"
+  },
+  {
+   "id": "q1",
+   "type": "Question",
+   "text": "Which desk records the newsroom's own releases as changes, and from which file?"
+  },
+  {
+   "id": "q2",
+   "type": "Question",
+   "text": "Does the notes file hold 35 notes or 40?"
+  },
+  {
+   "id": "i1",
+   "type": "Idea",
+   "text": "This piece is the first to carry briefing cards and a semantic twin, the two experiments its own subject filed"
+  },
+  {
+   "id": "h1",
+   "type": "Hypothesis",
+   "text": "The newsroom can report on itself from its own files under the same rule as for any site: every claim linked"
+  },
+  {
+   "id": "c1",
+   "type": "Comment",
+   "text": "Round one of the twin experiment: this graph was written before the prose, and the prose from it"
+  }
+ ],
+ "edges": [
+  {
+   "from": "f3",
+   "to": "f2",
+   "rel": "follows"
+  },
+  {
+   "from": "f4",
+   "to": "f3",
+   "rel": "follows"
+  },
+  {
+   "from": "f5",
+   "to": "f4",
+   "rel": "follows"
+  },
+  {
+   "from": "f6",
+   "to": "f5",
+   "rel": "follows"
+  },
+  {
+   "from": "f7",
+   "to": "f6",
+   "rel": "follows"
+  },
+  {
+   "from": "e1",
+   "to": "f2",
+   "rel": "supports"
+  },
+  {
+   "from": "f3",
+   "to": "f10",
+   "rel": "cites"
+  },
+  {
+   "from": "f5",
+   "to": "f10",
+   "rel": "cites"
+  },
+  {
+   "from": "f6",
+   "to": "f10",
+   "rel": "cites"
+  },
+  {
+   "from": "f9",
+   "to": "f3",
+   "rel": "cites"
+  },
+  {
+   "from": "e4",
+   "to": "f9",
+   "rel": "supports"
+  },
+  {
+   "from": "e5",
+   "to": "q2",
+   "rel": "leads_to"
+  },
+  {
+   "from": "q2",
+   "to": "f10",
+   "rel": "asks_about"
+  },
+  {
+   "from": "e2",
+   "to": "f7",
+   "rel": "supports"
+  },
+  {
+   "from": "e3",
+   "to": "f7",
+   "rel": "supports"
+  },
+  {
+   "from": "o1",
+   "to": "f1",
+   "rel": "supports"
+  },
+  {
+   "from": "o3",
+   "to": "f1",
+   "rel": "cites"
+  },
+  {
+   "from": "f1",
+   "to": "h1",
+   "rel": "supports"
+  },
+  {
+   "from": "f8",
+   "to": "h1",
+   "rel": "supports"
+  },
+  {
+   "from": "s1",
+   "to": "h1",
+   "rel": "supports"
+  },
+  {
+   "from": "o2",
+   "to": "q1",
+   "rel": "leads_to"
+  },
+  {
+   "from": "q1",
+   "to": "s1",
+   "rel": "asks_about"
+  },
+  {
+   "from": "i1",
+   "to": "f3",
+   "rel": "cites"
+  },
+  {
+   "from": "c1",
+   "to": "i1",
+   "rel": "supports"
+  }
+ ]
+}
