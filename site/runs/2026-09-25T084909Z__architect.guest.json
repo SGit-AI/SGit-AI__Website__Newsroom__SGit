@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T08:49:09Z",
+  "agent": "architect.guest",
+  "kind": "desk",
+  "task": "Find why pt.newsroom.sgit.ai's rendered agent files (agents/*/ROLE.md, MANDATE.md) show some fields one character per bullet, and write a signal for that newsroom: what is wrong, the cause, the fix, and that this newsroom's tools/agents.py already renders a string field as one item.",
+  "folders_changed": [
+    "signals/",
+    "runs/",
+    "site/"
+  ],
+  "did": [
+    "Read agents/redacao.pt/ROLE.md and MANDATE.md, dados/agentes.json, build/mandatos.py and gate 35 in build/gates_artigos.py in a read-only clone of the pt repository (commit b3e9530), and this repo's tools/agents.py.",
+    "Cause: build/mandatos.py line 39, lista(), iterates a string character by character; trabalha_com and errado_quando are strings in dados/agentes.json for all 5 agents, so 10 files are affected (5 ROLE.md 'Works with', 5 MANDATE.md 'Wrong when').",
+    "1 signal written: signals/2026-09-25__pt-agent-files-one-character-per-bullet.md (sgit.newsroom.sgit.ai -> pt.newsroom.sgit.ai, status new)."
+  ],
+  "gates": true,
+  "note": "Not released: version.txt not bumped, nothing committed or pushed, as asked. Sending the signal to the pt newsroom belongs to the Editor."
+}

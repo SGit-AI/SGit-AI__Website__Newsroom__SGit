@@ -19,7 +19,7 @@ import sys
 from urllib.parse import unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = os.path.join(ROOT, 'site')
+SITE = os.environ.get('NEWSROOM_SITE_OUT') or os.path.join(ROOT, 'site')
 GENERATOR = 'content="sgit-newsroom build"'
 
 # --- secrets --------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ FETCH_EXCEPTIONS = {
     'src/vaults/agent-webmaster/index.html': 'falls back to its inlined content when fetch fails',
 }
 
-DESK_DIRS = ('editions', 'stories', 'history', 'signals', 'data')
+DESK_DIRS = ('editions', 'stories', 'history', 'signals', 'data', 'runs', 'agents')
 COMPUTED = ('data/index.json', 'data/vaults.json')      # titles as the sources wrote them: not desk prose
 MODEL_ID = re.compile(r'\b(?:claude|gpt|gemini|llama|mistral)-[a-z0-9.]*\d[a-z0-9.-]*\b|\b(?:opus|sonnet|haiku) \d', re.I)
 
@@ -151,16 +151,29 @@ def check_repo():
     return len(seen)
 
 
+def check_agents():
+    """agents/ is rendered from data/agents.json, and every run record stays inside its agent's mandate."""
+    sys.path.insert(0, os.path.join(ROOT, 'tools'))
+    import agents
+    for p in agents.check():
+        fail('agents', p)
+    problems, n = agents.check_runs()
+    for p in problems:
+        fail('runs', p)
+    return n
+
+
 def main():
     pages = check_site()
     files = check_repo()
+    runs = check_agents()
     if errors:
         for e in errors:
             print('FAIL', e)
         print(f'validate: {len(errors)} failures')
         sys.exit(1)
     print(f'validate: ok ({pages} rendered pages checked for links, provenance and twins; '
-          f'{files} repository files and all of site/ scanned for credentials)')
+          f'{files} repository files and all of site/ scanned for credentials; {runs} run records within their mandates)')
 
 
 if __name__ == '__main__':

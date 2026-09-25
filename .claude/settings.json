@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Read", "Edit", "Write", "Glob", "Grep",
+      "Bash(python3 tools/*)", "Bash(./run-local.sh*)",
+      "Bash(git status*)", "Bash(git diff*)", "Bash(git log*)", "Bash(git show*)", "Bash(git add *)", "Bash(git commit *)",
+      "Bash(git pull*)", "Bash(git fetch*)", "Bash(git push origin dev)",
+      "Bash(ls *)", "Bash(cat *)", "Bash(sha256sum *)", "Bash(mkdir *)", "Bash(curl *)"
+    ],
+    "deny": [
+      "Bash(git push --force*)", "Bash(git push -f*)", "Bash(git reset --hard*)", "Bash(git rebase*)", "Bash(rm -rf *)",
+      "Edit(site/**)", "Write(site/**)", "Edit(agents/**)", "Write(agents/**)"
+    ]
+  }
+}

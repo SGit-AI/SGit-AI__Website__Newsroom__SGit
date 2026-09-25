@@ -1,0 +1,15 @@
+{
+  "when": "2026-09-25T00:20:23Z",
+  "agent": "librarian.desk",
+  "kind": "desk",
+  "task": "Librarian for 20 to 24 September: changes files from the sgit.ai version log, the new-pages list, riskmandate.ai's version record and the CLI briefs (no earlier snapshot to diff).",
+  "folders_changed": [
+    "data/changes/"
+  ],
+  "did": [
+    "data/changes/2026-09-20.json to 2026-09-24.json: 18, 31, 8, 17 and 49 changes, each summarised after reading the page or release note."
+  ],
+  "commit": "232e431",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised."
+}

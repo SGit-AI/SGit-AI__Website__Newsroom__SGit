@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-25T00:25:01Z",
+  "agent": "architect.guest",
+  "kind": "desk",
+  "task": "Guest desks for 24 September: check the seven cross-pollination seeds in brief/04 and the loose-end seeds; keep what holds.",
+  "folders_changed": [
+    "signals/",
+    "data/loose-ends.json"
+  ],
+  "did": [
+    "9 signals (6 of 7 seeds held; append lanes dropped), 20 loose ends (16 open, 2 closed, 2 unclear).",
+    "The three guest desks' work was done in one pass and is recorded under the Architect."
+  ],
+  "commit": "1d4e87c",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised. Split when the register was created: one session did this work across desks; the validator refused the single record, so each desk's part is recorded under that desk."
+}

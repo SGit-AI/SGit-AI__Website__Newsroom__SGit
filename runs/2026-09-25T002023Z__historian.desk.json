@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T00:20:23Z",
+  "agent": "historian.desk",
+  "kind": "desk",
+  "task": "Historian for the week of 18 to 24 September: the moment, lessons and decisions.",
+  "folders_changed": [
+    "history/"
+  ],
+  "did": [
+    "history/week-2026-39.md: the moment is a mislabelled read key refused on 20 September.",
+    "history/lessons.md: 47 lessons. history/decisions.md: 52 decisions and 9 contradictions."
+  ],
+  "commit": "232e431",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised."
+}

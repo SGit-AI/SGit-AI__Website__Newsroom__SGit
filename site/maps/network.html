@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB" data-version="v0.1.3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The network, as its own links draw it · sgit newsroom</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='white' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.3 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="index.html" class=on>Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav></header>
+<main class="wide">
+<p class="eyebrow">Maps</p>
+
+<p class="crumbs"><a href="index.html">Maps</a> / the network</p><h1>The network, as its own links draw it</h1><p class="lede">Every arrow is a count: how many files on one site link to another, in the snapshot of 2026-09-24. The 30 strongest of 152 links are drawn (each from 4 files or more); the table has every site. Computed by <code>tools/librarian.py</code> into <a href="../data/network.json">data/network.json</a>; redrawn on every build.</p><figure class="diagram"><pre class="mermaid">flowchart LR
+  n_abp_sgit_ai[&quot;abp.sgit.ai&quot;]
+  n_coding_sgit_ai[&quot;coding.sgit.ai&quot;]
+  n_games_sgit_ai[&quot;games.sgit.ai&quot;]
+  n_graphs_sgit_ai[&quot;graphs.sgit.ai&quot;]
+  n_influences_sgit_ai[&quot;influences.sgit.ai&quot;]
+  n_llms_sgit_ai[&quot;llms.sgit.ai&quot;]
+  n_nhi_sgit_ai[&quot;nhi.sgit.ai&quot;]
+  n_open_source_sgit_ai[&quot;open-source.sgit.ai&quot;]
+  n_pki_sgit_ai[&quot;pki.sgit.ai&quot;]
+  n_riskmandate_ai[&quot;riskmandate.ai&quot;]
+  n_risks_sgit_ai[&quot;risks.sgit.ai&quot;]
+  n_sg_compute_sgit_ai[&quot;sg-compute.sgit.ai&quot;]
+  n_sgit_ai[&quot;sgit.ai&quot;]
+  n_standards_sgit_ai[&quot;standards.sgit.ai&quot;]
+  n_store_sgit_ai[&quot;store.sgit.ai&quot;]
+  n_subscriptions_sgit_ai[&quot;subscriptions.sgit.ai&quot;]
+  n_twins_sgit_ai[&quot;twins.sgit.ai&quot;]
+  n_what_can_it_do_games_sgit_ai[&quot;what-can-it-do.games.sgit.ai&quot;]
+  n_abp_sgit_ai --&gt;|101| n_what_can_it_do_games_sgit_ai
+  n_abp_sgit_ai --&gt;|51| n_graphs_sgit_ai
+  n_abp_sgit_ai --&gt;|16| n_sgit_ai
+  n_sgit_ai --&gt;|16| n_riskmandate_ai
+  n_riskmandate_ai --&gt;|15| n_abp_sgit_ai
+  n_riskmandate_ai --&gt;|15| n_store_sgit_ai
+  n_abp_sgit_ai --&gt;|14| n_riskmandate_ai
+  n_sgit_ai --&gt;|14| n_graphs_sgit_ai
+  n_sgit_ai --&gt;|9| n_open_source_sgit_ai
+  n_store_sgit_ai --&gt;|9| n_riskmandate_ai
+  n_abp_sgit_ai --&gt;|8| n_risks_sgit_ai
+  n_influences_sgit_ai --&gt;|8| n_open_source_sgit_ai
+  n_riskmandate_ai --&gt;|8| n_what_can_it_do_games_sgit_ai
+  n_store_sgit_ai --&gt;|7| n_sgit_ai
+  n_games_sgit_ai --&gt;|6| n_sgit_ai
+  n_games_sgit_ai --&gt;|6| n_what_can_it_do_games_sgit_ai
+  n_llms_sgit_ai --&gt;|5| n_pki_sgit_ai
+  n_open_source_sgit_ai --&gt;|5| n_standards_sgit_ai
+  n_riskmandate_ai --&gt;|5| n_nhi_sgit_ai
+  n_sgit_ai --&gt;|5| n_standards_sgit_ai
+  n_sgit_ai --&gt;|5| n_subscriptions_sgit_ai
+  n_abp_sgit_ai --&gt;|4| n_coding_sgit_ai
+  n_abp_sgit_ai --&gt;|4| n_twins_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_coding_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_graphs_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_open_source_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_risks_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_sg_compute_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_sgit_ai
+  n_llms_sgit_ai --&gt;|4| n_standards_sgit_ai
+  classDef hub fill:#e8eefc,stroke:#1f4fd1,color:#1b1a17
+  class n_abp_sgit_ai,n_riskmandate_ai,n_sgit_ai hub</pre></figure><div class="table"><table><thead><tr><th>Site</th><th>Files</th><th>Links out (files)</th><th>Links in (files)</th></tr></thead><tbody><tr><td>abp.sgit.ai</td><td class="num">315</td><td class="num">204</td><td class="num">19</td></tr><tr><td>sgit.ai</td><td class="num">194</td><td class="num">129</td><td class="num">76</td></tr><tr><td>what-can-it-do.games.sgit.ai</td><td class="num">61</td><td class="num">11</td><td class="num">117</td></tr><tr><td>riskmandate.ai</td><td class="num">324</td><td class="num">52</td><td class="num">53</td></tr><tr><td>graphs.sgit.ai</td><td class="num">6</td><td class="num">3</td><td class="num">93</td></tr><tr><td>open-source.sgit.ai</td><td class="num">40</td><td class="num">23</td><td class="num">34</td></tr><tr><td>llms.sgit.ai</td><td class="num">45</td><td class="num">37</td><td class="num">11</td></tr><tr><td>coding.sgit.ai</td><td class="num">3</td><td class="num">23</td><td class="num">17</td></tr><tr><td>store.sgit.ai</td><td class="num">95</td><td class="num">18</td><td class="num">19</td></tr><tr><td>nfrs.sgit.ai</td><td class="num">3</td><td class="num">29</td><td class="num">7</td></tr><tr><td>risks.sgit.ai</td><td class="num">5</td><td class="num">5</td><td class="num">29</td></tr><tr><td>influences.sgit.ai</td><td class="num">29</td><td class="num">30</td><td class="num">2</td></tr><tr><td>games.sgit.ai</td><td class="num">17</td><td class="num">21</td><td class="num">10</td></tr><tr><td>pki.sgit.ai</td><td class="num">7</td><td class="num">2</td><td class="num">28</td></tr><tr><td>standards.sgit.ai</td><td class="num">3</td><td class="num">0</td><td class="num">29</td></tr><tr><td>wardley-maps.sgit.ai</td><td class="num">18</td><td class="num">11</td><td class="num">18</td></tr><tr><td>nhi.sgit.ai</td><td class="num">4</td><td class="num">2</td><td class="num">21</td></tr><tr><td>subscriptions.sgit.ai</td><td class="num">3</td><td class="num">15</td><td class="num">5</td></tr><tr><td>threat-modeling.sgit.ai</td><td class="num">3</td><td class="num">18</td><td class="num">2</td></tr><tr><td>sg-compute.sgit.ai</td><td class="num">4</td><td class="num">0</td><td class="num">12</td></tr><tr><td>ungovr.providers.sgit.ai</td><td class="num">27</td><td class="num">10</td><td class="num">2</td></tr><tr><td>sg-sentinel.sgit.ai</td><td class="num">2</td><td class="num">4</td><td class="num">6</td></tr><tr><td>twins.sgit.ai</td><td class="num">3</td><td class="num">0</td><td class="num">10</td></tr><tr><td>issues-fs.sgit.ai</td><td class="num">2</td><td class="num">3</td><td class="num">5</td></tr><tr><td>newsroom.sgit.ai</td><td class="num">8</td><td class="num">2</td><td class="num">6</td></tr><tr><td>providers.sgit.ai</td><td class="num">11</td><td class="num">0</td><td class="num">6</td></tr><tr><td>elevenlabs.providers.sgit.ai</td><td class="num">30</td><td class="num">0</td><td class="num">5</td></tr><tr><td>skills.sgit.ai</td><td class="num">3</td><td class="num">0</td><td class="num">5</td></tr><tr><td>teams.sgit.ai</td><td class="num">24</td><td class="num">2</td><td class="num">3</td></tr><tr><td>pt.newsroom.sgit.ai</td><td class="num">23</td><td class="num">1</td><td class="num">3</td></tr><tr><td>chrome-extensions.sgit.ai</td><td class="num">3</td><td class="num">1</td><td class="num">2</td></tr><tr><td>infographics.sgit.ai</td><td class="num">3</td><td class="num">1</td><td class="num">2</td></tr></tbody></table></div>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Cartographer (computed by the build)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Sources</dt><dd><ul><li><a href="../src/sites/manifest.json.html">manifest.json</a> <code>a7b196e715ff</code> sites</li></ul></dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.3 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="network.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<script src="../assets/feedback.js"></script>
+<script src="../assets/mermaid.min.js"></script>
+<script src="../assets/diagrams.js"></script>
+</body>
+</html>

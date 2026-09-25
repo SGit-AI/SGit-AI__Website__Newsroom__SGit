@@ -15,7 +15,9 @@ editions/       one markdown file per day that had changes
 stories/        longer pieces
 history/        the Historian: weekly moments, lessons.md, decisions.md
 signals/        cross-pollination between projects
-tools/          fetch_sources.py, build.py, validate.py (standard library only)
+tools/          fetch_sources.py, build.py, validate.py, agents.py (standard library only)
+agents/         the desks' ROLE.md and MANDATE.md, rendered from data/agents.json
+runs/           one run record per desk run
 site/           the built site. Generated: never edit by hand.
 ```
 
@@ -28,6 +30,14 @@ python3 tools/fetch_missing.py          # fetch .md twins of linked network page
 python3 tools/build.py                  # build site/ from everything else
 python3 tools/validate.py               # must pass before every commit
 ```
+
+## Agents: work as a desk
+
+The work is done by desks with roles and mandates, registered in `data/agents.json` and rendered into
+`agents/<id>/ROLE.md` and `MANDATE.md` by `python3 tools/agents.py` (never edit `agents/` by hand).
+Before doing a desk's work, read its ROLE and MANDATE; write only in its folders; leave a run record in
+`runs/` (see `runs/README.md`). `tools/validate.py` fails a run record outside its mandate.
+Skills: `/desk <agent> <task>` for one task as one desk; `/newsroom-run` for the whole daily run.
 
 ## Rules
 

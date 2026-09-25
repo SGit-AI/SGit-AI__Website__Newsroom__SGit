@@ -31,6 +31,7 @@ class Renderer:
         self.ids = {}
         self.headings = []
         self._stash = []
+        self.diagrams = 0
 
     # ---------------------------------------------------------------- inline
     def inline(self, text):
@@ -101,6 +102,11 @@ class Renderer:
                 while i < len(lines) and not lines[i].strip().startswith(fence):
                     body.append(lines[i]); i += 1
                 i += 1
+                if lang == 'mermaid':
+                    # rendered in the browser by the bundled Mermaid; without it, the source stays readable
+                    self.diagrams += 1
+                    out.append('<figure class="diagram"><pre class="mermaid">' + html.escape('\n'.join(body)) + '</pre></figure>')
+                    continue
                 cls = f' class="lang-{html.escape(lang)}"' if lang else ''
                 out.append(f'<pre><code{cls}>' + html.escape('\n'.join(body)) + '</code></pre>')
                 continue

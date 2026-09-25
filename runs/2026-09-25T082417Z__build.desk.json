@@ -1,0 +1,15 @@
+{
+  "when": "2026-09-25T08:24:17Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Frame the vault apps inside the newsroom; vaults as cards.",
+  "folders_changed": [
+    "tools/"
+  ],
+  "did": [
+    "vaults/app/<slug>.html for the five seed vaults, sandboxed frame; the vaults page as 36 cards."
+  ],
+  "commit": "83c7223",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised."
+}

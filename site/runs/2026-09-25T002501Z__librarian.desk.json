@@ -1,0 +1,15 @@
+{
+  "when": "2026-09-25T00:25:01Z",
+  "agent": "librarian.desk",
+  "kind": "desk",
+  "task": "Concepts for the index: the ideas that recur across sites.",
+  "folders_changed": [
+    "data/concepts.json"
+  ],
+  "did": [
+    "data/concepts.json: 35 concepts, each with terms the build searches the snapshot for."
+  ],
+  "commit": "1d4e87c",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised. Split when the register was created: one session did this work across desks; the validator refused the single record, so each desk's part is recorded under that desk."
+}

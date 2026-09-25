@@ -79,3 +79,57 @@ The build finds every page that uses a concept by searching the snapshot for its
 British English, plain words, short sentences, no em-dashes. Quotes are exact or they are not
 quotes. Shipped and proposed keep the source's own words. Roles and sites, not people (the founder
 may be named as editor of record). No model names or identifiers anywhere.
+
+## Pieces: standfirst and section
+
+Stories, history pieces and maps carry two more front-matter fields, used by the front page and the section pages:
+
+```
+standfirst: One or two sentences that tell the reader what the piece is and why it matters.
+section: news            # stories: news, feature, explainer or back-catalogue
+```
+
+Without a `standfirst`, the build uses the first paragraph, which is rarely as good.
+
+## Maps (the Cartographer)
+
+`maps/<slug>.md`: front matter like any desk file (with `standfirst`), a short text saying what the map shows and where
+each position comes from, and one or more fenced `mermaid` blocks. Mermaid 12 is bundled with the site
+(`tools/vendor/`), so every map renders offline. Supported and tested: `wardley-beta`, `flowchart`, `timeline`, `mindmap`.
+
+```mermaid
+wardley-beta
+title The value chain
+anchor Founder [0.95, 0.60]
+component "sgit.ai site" [0.70, 0.55]
+component Encrypted vaults [0.45, 0.50]
+Founder -> "sgit.ai site"
+"sgit.ai site" -> Encrypted vaults
+evolve Encrypted vaults 0.70
+```
+
+Wardley coordinates are `[visibility, evolution]`, both 0 to 1 (evolution: genesis under 0.25, custom to 0.5, product
+to 0.75, commodity above). **A name that contains a dot must be quoted** (`"sgit.ai site"`), or the map renders as a
+syntax error. Build, open the page, and look: a broken diagram shows an error box, not a map. The network map at
+`maps/network.html` is computed on every build from `data/network.json`; do not draw it by hand.
+
+## The front page and the sections (the Editor)
+
+`data/frontpage.json`:
+
+```json
+{
+  "date": "2026-09-24",
+  "lead": "stories/2026-09-24__brief-to-build-in-a-day",
+  "top": ["history/week-2026-39", "maps/sgit-network-wardley", "editions/2026-09-24"],
+  "sections": [
+    {"title": "News", "from": "stories", "limit": 6, "more": "news/index.html"},
+    {"title": "Perspective", "items": ["history/the-story-so-far"], "more": "history/index.html"}
+  ],
+  "briefs": [{"text": "Sixteen loose ends are open.", "link": "loose-ends"}]
+}
+```
+
+Refs are `<folder>/<slug>` of a desk file (`stories`, `editions`, `history`, `maps`, `signals`) or `maps/network`. A
+section either lists `items` or takes the newest `limit` from a folder (`from`), skipping what already leads. A brief's
+`link` is a ref, an `nr:` path, a live URL or a `src:` path. `data/sections.json` is the navigation, in order.

@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T08:02:03Z",
+  "agent": "librarian.desk",
+  "kind": "desk",
+  "task": "Bring home the .md twin of every linked network page not in the snapshot; fix links to sgit.ai update notes in the changes files.",
+  "folders_changed": [
+    "sources/",
+    "data/index.json",
+    "data/changes/"
+  ],
+  "did": [
+    "tools/fetch_missing.py: 643 pages brought home, 5 refused for credential-shaped strings; the index grows from 675 to 1318 pages.",
+    "data/changes/2026-09-20.json and 2026-09-21.json: links to sgit.ai repo content paths now point at the anchors on sgit.ai/updates/."
+  ],
+  "commit": "d52f7dc",
+  "gates": true,
+  "note": "Backfilled on 2026-09-25 when the register of agents was created: this run happened before runs/ existed. 'when' is the time of the commit that landed its work; the task is the prompt the desk was given, summarised. Split when the register was created: one session did this work across desks; the validator refused the single record, so each desk's part is recorded under that desk."
+}
