@@ -1521,6 +1521,35 @@ class Site:
         self.page(P, 'Briefings', body, self.prov_desk(P, 'Editor', sources=None), eyebrow='Briefings',
                   md='# Briefings\n\n' + '\n'.join(f'- [{s_}]({s_}.md): {n} items' for s_, n, *_ in index_rows) + '\n')
 
+    def build_keys(self):
+        """The newsroom's agent keys, published for other vaults' postmasters: keys/agents.json (the pinned URL) and a page.
+        One slot per identity, one current key each, a serial that only goes up, and an HMAC that binds the key to the
+        append token without revealing it (brief/09-the-append-lane.md)."""
+        reg = load_json('data/keys.json', None)
+        if not reg:
+            return
+        self.write('keys/agents.json', json.dumps(reg, indent=1, ensure_ascii=False) + '\n')
+        P = 'keys/index.html'
+        rows, md = '', ['# Agent keys', '', f'The pinned URL: {reg["pinned_url"]}', '']
+        for ident, e in reg['identities'].items():
+            b = e['token_binding']
+            retired = ', '.join(f'{r["serial"]}: {r["signing_fingerprint"]}' for r in e.get('retired', [])) or 'none'
+            rows += (f'<section class="brief-block"><h2>{esc(ident)} <span class="muted small">{esc(e.get("alias", ""))}</span></h2>'
+                     f'<dl class="facts"><dt>Serial</dt><dd>{esc(str(e["serial"]))}</dd><dt>Created</dt><dd>{esc(e["created"])}</dd>'
+                     f'<dt>Encryption fingerprint</dt><dd><code>{esc(e["fingerprint"])}</code></dd>'
+                     f'<dt>Signing fingerprint</dt><dd><code>{esc(e["signing_fingerprint"])}</code></dd>'
+                     f'<dt>Lane</dt><dd>{esc(e["lane"]["vault"])} on {esc(e["lane"]["endpoint"])}</dd>'
+                     f'<dt>Token binding</dt><dd>{esc(b["alg"])} over <code>{esc(b["message"])}</code> = <code>{esc(b["mac"])}</code></dd>'
+                     f'<dt>Retired</dt><dd>{esc(retired)}</dd></dl>'
+                     f'<pre><code>{esc(json.dumps(e["bundle"], indent=1))}</code></pre></section>')
+            md += [f'## {ident}', '', f'- serial {e["serial"]}, created {e["created"]}', f'- encryption `{e["fingerprint"]}`, signing `{e["signing_fingerprint"]}`',
+                   f'- token binding: {b["alg"]}(token, `{b["message"]}`) = `{b["mac"]}`', '']
+        body = (f'<h1>Agent keys</h1><p class="lede">The public keys this newsroom\'s agents sign with, one current key per identity. '
+                f'A postmaster that pins <a href="{rel(P, "keys/agents.json")}">{esc(reg["pinned_url"])}</a> accepts a new key from an identity only '
+                f'when the five checks in <a href="{rel(P, "brief/09-the-append-lane.html")}">brief 09</a> pass.</p>'
+                f'<p class="small muted">{esc(reg["verify"])}</p>' + rows)
+        self.page(P, 'Agent keys', body, self.prov_desk(P, 'Build, from data/keys.json', sources=None), eyebrow='Keys', md='\n'.join(md) + '\n')
+
     def build_versions(self):
         P = 'admin/versions.html'
         rows = ''
@@ -2102,6 +2131,7 @@ class Site:
         self.build_issues()
         self.build_versions()
         self.build_briefings()
+        self.build_keys()
         self.build_maps()
         self.build_news()
         self.build_admin()

@@ -37,6 +37,7 @@ Belongs to: @Editor: a new agent is an editorial decision
 - data/network.json
 - assets/
 - data/releases.json
+- data/keys.json
 - runs/
 - site/
 - version.txt

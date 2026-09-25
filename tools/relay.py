@@ -8,6 +8,7 @@
     python3 tools/relay.py status                                            # what is unsent, sent, delivered, handled, received
     NEWSROOM_APPEND_TOKEN=<hex> python3 tools/relay.py lane                  # unsent messages -> encrypted, signed, appended to the lane
     python3 tools/relay.py lane --dry-run /tmp/lane-preview                  # build, encrypt and sign; post nothing
+    NEWSROOM_APPEND_TOKEN=<hex> python3 tools/relay.py rotate [--new]        # publish the signing key: next serial, HMAC; then release, then lane
 
 The messages are the files in briefings/<site>/inbox/*.md (status: unsent). The vault is a clone made by the editor
 of record with the vault key; this script never sees a key, only a directory that already holds .sg_vault/ (it can
@@ -384,6 +385,8 @@ def cmd_lane(args):
     url = f'{lane["endpoint"]}/api/vault/append/write/{RELAY["vault"]["id"]}'
     sent = 0
     for msg in todo:
+        if msg['meta'].get('announces_serial') and not args.dry_run:
+            wait_live(int(msg['meta']['announces_serial']), lane['self_fingerprint'])
         raw, mid, to = lane_eml(msg, sent + 1 + len([m for m in messages() if m['meta'].get('lane')]), lane)
         refuse_keys(raw.decode('utf-8', 'replace'), msg['path'])
         with tempfile.TemporaryDirectory() as tmp:
@@ -417,6 +420,99 @@ def cmd_lane(args):
     print(f'lane: {sent} sent' if not args.dry_run else 'lane: dry run, nothing posted, nothing marked')
 
 
+KEYS_FILE = 'data/keys.json'
+PINNED_URL = f'https://{RELAY["self"]["site"]}/keys/agents.json'
+
+
+def binding_message(ident, serial, fingerprint, signing_fingerprint):
+    """What the HMAC covers: the identity, the serial and both fingerprints, so a MAC can bind only this key to the token."""
+    return f'{ident}|{serial}|{fingerprint}|{signing_fingerprint}'
+
+
+def cmd_rotate(args):
+    """Publish this newsroom's signing key in the registry the postmaster pins (keys/agents.json on the site), with the
+    next serial and an HMAC-SHA256 keyed by the append token, and write the signed announcement for the lane.
+    --new makes a fresh key pair first (a new session); without it, the keystore's current key is published."""
+    import hmac, hashlib
+    lane = RELAY['transport']
+    token = os.environ.get(lane['token_env'], '')
+    if not re.fullmatch(r'[0-9a-f]{16,128}', token):
+        sys.exit(f'no append token: set {lane["token_env"]} (hex, from the editor of record); the HMAC needs it')
+    exe = os.environ.get('SGIT_BIN') or shutil.which('sgit')
+    if not exe or not os.environ.get('NEWSROOM_PKI_HOME') or not os.environ.get('SG_SEND_PASSPHRASE'):
+        sys.exit('needs sgit (SGIT_BIN), a keystore outside the repository (NEWSROOM_PKI_HOME) and its passphrase (SG_SEND_PASSPHRASE)')
+    env = dict(os.environ, HOME=os.environ['NEWSROOM_PKI_HOME'])
+    run = lambda *a: subprocess.run([exe, 'pki', *a], env=env, capture_output=True, text=True)
+    if args.new:
+        r = run('keygen', '--label', f'{ME} ({RELAY["self"]["site"]}) {now().strftime("%Y-%m-%dT%H:%MZ")}')
+        fp = re.search(r'Fingerprint:\s+(sha256:[0-9a-f]{16})', r.stdout)
+        if r.returncode or not fp:
+            sys.exit(f'keygen failed: {(r.stderr or r.stdout).strip()[:300]}')
+        fp = fp.group(1)
+        if lane['recipient_fingerprint'] not in run('contacts').stdout:  # a new keystore also needs the front door, to encrypt to
+            subprocess.run([exe, 'pki', 'import', '-'], input=json.dumps(lane['recipient_key']), env=env, capture_output=True, text=True)
+    else:
+        fp = lane['self_fingerprint']
+    r = run('export', fp)
+    if r.returncode:
+        sys.exit(f'export failed for {fp}: {(r.stderr or r.stdout).strip()[:300]}')
+    bundle = json.loads(r.stdout)
+    reg = json.load(open(KEYS_FILE)) if os.path.exists(KEYS_FILE) else {
+        'about': "This newsroom's agent keys, one current key per identity. Written by tools/relay.py rotate; published by the build at keys/agents.json.",
+        'pinned_url': PINNED_URL,
+        'verify': 'A postmaster accepts a new key for an identity only when: it arrived through that identity\'s lane; it is signed by the key it '
+                  'announces; that key is live at the pinned URL; the token binding verifies (HMAC-SHA256, key = the append token as ASCII, '
+                  'message = identity|serial|fingerprint|signing_fingerprint); and the serial is higher than the last one accepted.',
+        'identities': {}}
+    cur = reg['identities'].get(ME)
+    if cur and cur['fingerprint'] == bundle['fingerprint']:
+        serial, retired = cur['serial'], cur.get('retired', [])
+    else:
+        serial = (cur['serial'] + 1) if cur else 1
+        retired = (cur.get('retired', []) + [{'serial': cur['serial'], 'fingerprint': cur['fingerprint'], 'signing_fingerprint': cur['signing_fingerprint'],
+                                               'retired': now().strftime('%Y-%m-%dT%H:%MZ')}]) if cur else []
+    msg = binding_message(ME, serial, bundle['fingerprint'], bundle['signing_fingerprint'])
+    mac = hmac.new(token.encode(), msg.encode(), hashlib.sha256).hexdigest()
+    reg['identities'][ME] = {
+        'alias': RELAY['self']['alias'], 'site': RELAY['self']['site'], 'role': 'the newsroom agent: one slot, overwritten at each rotation',
+        'lane': {'vault': RELAY['vault']['id'], 'endpoint': lane['endpoint']},
+        'serial': serial, 'created': (cur or {}).get('created') if cur and cur['fingerprint'] == bundle['fingerprint'] else now().strftime('%Y-%m-%dT%H:%MZ'),
+        'fingerprint': bundle['fingerprint'], 'signing_fingerprint': bundle['signing_fingerprint'], 'bundle': bundle,
+        'token_binding': {'alg': 'HMAC-SHA256', 'key': 'the append token of this identity\'s lane, as ASCII', 'message': msg, 'mac': mac},
+        'retired': retired}
+    if not reg['identities'][ME]['created']:
+        reg['identities'][ME]['created'] = now().strftime('%Y-%m-%dT%H:%MZ')
+    refuse_keys(json.dumps(reg), KEYS_FILE)
+    if token in json.dumps(reg):
+        sys.exit('refused: the token itself would be written')
+    json.dump(reg, open(KEYS_FILE, 'w'), indent=1, ensure_ascii=False)
+    open(KEYS_FILE, 'a').write('\n')
+    lane.update({'self_fingerprint': bundle['fingerprint'], 'self_signing_fingerprint': bundle['signing_fingerprint'], 'self_key': bundle, 'self_serial': serial})
+    json.dump(RELAY, open('data/relay.json', 'w'), indent=1, ensure_ascii=False)
+    open('data/relay.json', 'a').write('\n')
+    print(f'published {ME} serial {serial}: {bundle["fingerprint"]}, signing {bundle["signing_fingerprint"]}, binding {mac[:16]}...')
+    print('next: release (tools/release.sh), then python3 tools/relay.py lane: an announcement waits until the pinned URL shows its serial')
+
+
+def wait_live(serial, fingerprint, minutes=15):
+    """Poll the pinned URL until it serves this identity at this serial and fingerprint (GitHub Pages deploys, then caches)."""
+    import time, urllib.request
+    deadline = time.time() + minutes * 60
+    while True:
+        try:
+            with urllib.request.urlopen(urllib.request.Request(PINNED_URL + f'?t={int(time.time())}', headers={'Cache-Control': 'no-cache'}), timeout=20) as r:
+                e = json.loads(r.read())['identities'].get(ME, {})
+            if e.get('serial') == serial and e.get('fingerprint') == fingerprint:
+                print(f'  live: {PINNED_URL} serves {ME} serial {serial}')
+                return
+            print(f'  not yet: the pinned URL serves serial {e.get("serial")}')
+        except Exception as ex:
+            print(f'  not yet: {str(ex)[:80]}')
+        if time.time() > deadline:
+            sys.exit(f'the pinned URL did not show serial {serial} within {minutes} minutes; the announcement was not sent')
+        time.sleep(30)
+
+
 def cmd_status(args):
     counts = {}
     for msg in messages():
@@ -429,8 +525,9 @@ def cmd_status(args):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
-    ap.add_argument('command', choices=['join', 'send', 'lane', 'check', 'status'])
+    ap.add_argument('command', choices=['join', 'send', 'lane', 'rotate', 'check', 'status'])
     ap.add_argument('--vault', help='a clone of the relay vault (holds .sg_vault/); or NEWSROOM_RELAY_VAULT')
+    ap.add_argument('--new', action='store_true', help='rotate: make a fresh key pair first (a new session)')
     ap.add_argument('--dry-run', metavar='DIR', help='write the mail tree here instead; no sgit, no status change')
     a = ap.parse_args()
-    {'join': cmd_join, 'send': cmd_send, 'lane': cmd_lane, 'check': cmd_check, 'status': cmd_status}[a.command](a)
+    {'join': cmd_join, 'send': cmd_send, 'lane': cmd_lane, 'rotate': cmd_rotate, 'check': cmd_check, 'status': cmd_status}[a.command](a)

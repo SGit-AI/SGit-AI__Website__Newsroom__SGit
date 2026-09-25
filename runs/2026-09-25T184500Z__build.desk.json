@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-25T18:45:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Key rotation without a hand-off: a published registry of the newsroom's agent keys, and a rotate command.",
+  "folders_changed": ["tools/", "agents/"],
+  "did": ["tools/build.py build_keys: data/keys.json becomes keys/agents.json (the URL a postmaster pins) and keys/index.html; no file, no output.",
+          "tools/relay.py rotate [--new]: optional fresh key pair (the front door imported into a new keystore), the next serial with the old key retired, an HMAC-SHA256 token binding, data/keys.json and data/relay.json updated; lane waits for the pinned URL to show an announced serial before sending.",
+          "Tested twice with a throwaway keystore and a fake token: serial 1 then 2, key 1 retired, HMAC recomputed and matching, the front door among the keystore's contacts; the data files restored.",
+          "Not run with the real token: the session's permission layer refused publishing a value derived from it. No data/keys.json exists yet.",
+          "agents/ re-rendered (the Build desk may write data/keys.json)."],
+  "gates": true
+}
