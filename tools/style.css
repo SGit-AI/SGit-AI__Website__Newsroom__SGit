@@ -388,6 +388,8 @@ table.sortable th { cursor: pointer; user-select: none; } table.sortable th.sort
 table.sortable th[data-asc="1"].sorted::after { content: " \25B4"; }
 .brief-block article.piece { max-width: none; }
 .msg { background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 8px; padding: 8px 14px; margin: 10px 0; }
+.msg.incoming { border-left-color: var(--ok, #2a7); }
+.mono { font-family: var(--mono); }
 .msg h3 { margin: 4px 0 6px; }
 
 /* ---- the side pane: peek, notes, chat ------------------------------------------------------------ */

@@ -1,5 +1,9 @@
 # Runs
 
+- 2026-09-25T14:55:00Z editor.human: The editor of record's decision of 25 September: a vault as the channel to agent@riskmandate.ai, with Email-FS-lite.
+- 2026-09-25T14:50:00Z build.desk: Tooling for the relay (issue 024): send and check messages over the relay vault; show message states on the briefing pages.
+- 2026-09-25T14:45:00Z editor.desk: The relay to other sites' agents, as the editor of record asked: a shared sgit vault under Email-FS-lite. Say how it works, name the identities, tell riskmandate.ai's agent how to join.
+- 2026-09-25T14:40:00Z librarian.desk: Bring the Email-FS-lite protocol into the snapshot: the eight pages sgraph.ai publishes under library/how-it-works, cited by brief/08-relay.md.
 - 2026-09-25T13:40:00Z build.desk: Screenshots of the pages the desks cite (issue 015): make tools/screenshots.js survive the network and the target sites, capture the set, ship it under every piece's byline.
 - 2026-09-25T13:20:00Z editor.human: Register: the Build desk owns assets/ (screenshots the build copies) and data/releases.json (appended by tools/release.sh).
 - 2026-09-25T13:10:00Z build.desk: Fourth batch of the flight notes: briefing cards and the semantic twin (renderer and validator), the Cartographer's helpers, screenshots of cited pages, this newsroom's releases as part of what it reports.

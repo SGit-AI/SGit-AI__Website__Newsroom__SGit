@@ -221,6 +221,7 @@ class Site:
         self.runs = []
         self.releases = load_json('data/releases.json', {'releases': []})['releases']
         self.shots = load_json('assets/shots/manifest.json', {})
+        self.relay = load_json('data/relay.json', {'protocol': '', 'vault': {}, 'self': {'name': ''}, 'peers': {}})
         self.concepts = load_json('data/concepts.json', [])
         self.loose = load_json('data/loose-ends.json', [])
         self.index = load_json('data/index.json', [])
@@ -1461,13 +1462,30 @@ class Site:
                 data['briefs'].append({'title': meta.get('title'), 'date': meta.get('date'), 'markdown': raw, 'file': f'briefings/{stem}.md'})
             if inbox.get(site):
                 items = ''
+                peer = self.relay.get('peers', {}).get(site, {})
                 for meta, body, raw, stem in inbox[site]:
                     h, _ = self.md(body, P)
-                    items += (f'<article class="msg"><p class="kicker">{esc(meta.get("date", ""))} · from {esc(meta.get("from", ""))} · '
-                              f'<span class="tag">{esc(meta.get("status", ""))}</span></p><h3>{esc(meta.get("title", stem))}</h3>{h}</article>')
-                    data['messages'].append({'title': meta.get('title'), 'date': meta.get('date'), 'status': meta.get('status'), 'markdown': raw,
+                    incoming = meta.get('direction') == 'incoming'
+                    who = (f'from {esc(meta.get("from", ""))} to this newsroom' if incoming
+                           else f'from {esc(meta.get("from", ""))} · to {esc(peer.get("name") or meta.get("to", ""))}')
+                    trail = ' · '.join(f'{k} {esc(meta[k])}' for k in ('sent', 'delivered', 'handled', 'received') if meta.get(k))
+                    mid = f'<br><span class="small mono">{esc(meta["message_id"])}' + (f' · {esc(meta["eml"])}' if meta.get('eml') else '') + '</span>' if meta.get('message_id') else ''
+                    items += (f'<article class="msg{" incoming" if incoming else ""}"><p class="kicker">{esc(meta.get("date", ""))} · {who} · '
+                              f'<span class="tag">{esc(meta.get("status", ""))}</span>{(" · " + trail) if trail else ""}{mid}</p>'
+                              f'<h3>{esc(meta.get("title", stem))}</h3>{h}</article>')
+                    data['messages'].append({'title': meta.get('title'), 'date': meta.get('date'), 'direction': meta.get('direction', 'outgoing'),
+                                             'status': meta.get('status'), 'message_id': meta.get('message_id'), 'eml': meta.get('eml'), 'markdown': raw,
                                              'file': f'briefings/{site}/inbox/{stem}.md'})
-                parts.append(f'<section><h2>Messages relayed to this site\'s agent ({len(inbox[site])})</h2>{items}</section>')
+                n_out = sum(1 for m, *_ in inbox[site] if m.get('direction') != 'incoming')
+                unsent = sum(1 for m, *_ in inbox[site] if m.get('status', 'unsent') == 'unsent')
+                relay_note = (f'<p class="small muted">Messages travel as <code>.eml</code> files in the shared relay vault '
+                              f'(<a href="{rel(P, "brief/08-relay.html")}">how the relay works</a>); this site\'s agent is '
+                              f'<code>{esc(peer.get("name", "?"))}</code> there, this newsroom is <code>{esc(self.relay["self"]["name"])}</code>. '
+                              + (f'The vault is not created yet: {unsent} message{"s" if unsent != 1 else ""} wait{"" if unsent != 1 else "s"} here as unsent.' if not self.relay['vault'].get('id') and unsent
+                                 else f'Vault {esc(self.relay["vault"]["id"])}.' if self.relay['vault'].get('id') else '') + '</p>')
+                parts.append(f'<section><h2>Messages relayed to this site\'s agent ({n_out}) and received ({len(inbox[site]) - n_out})</h2>{relay_note}{items}</section>')
+                data['relay'] = {'protocol': self.relay['protocol'], 'how': f'https://{DOMAIN}/brief/08-relay.md', 'vault_id': self.relay['vault'].get('id'),
+                                 'this_newsroom': self.relay['self'], 'this_site': peer}
             if my_sigs:
                 items = ''.join(f'<li><a href="{rel(P, f"signals/{s_}.html")}">{esc(m.get("title", s_))}</a> <span class="muted small">from {esc(m.get("from_site", ""))} · '
                                 f'{esc(m.get("status", ""))}</span><br><span class="small">{esc(m.get("action", ""))}</span></li>' for s_, m in my_sigs)
@@ -1496,7 +1514,8 @@ class Site:
                        f'<td class="num">{sg}</td><td class="num">{le}</td></tr>' for s_, n, b, m, sg, le in sorted(index_rows, key=lambda r: -r[1]))
         body = (f'<h1>Briefings</h1><p class="lede">One page per site or team, holding everything this newsroom has for its agent: briefs from the '
                 f'editor of record, messages relayed to it, the signals addressed to it and the loose ends waiting on it. Point an agent at its '
-                f'page, or at the JSON beside it. {len(index_rows)} sites and teams.</p>'
+                f'page, or at the JSON beside it. {len(index_rows)} sites and teams. Messages for an agent travel as <code>.eml</code> files in a '
+                f'shared sgit vault, Email-FS-lite style: <a href="{rel(P, "brief/08-relay.html")}">how the relay works</a>.</p>'
                 f'<div class="table"><table class="sortable"><thead><tr><th>Site or team</th><th>Briefs</th><th>Messages</th><th>Signals</th><th>Loose ends</th></tr></thead>'
                 f'<tbody>{rows}</tbody></table></div>')
         self.page(P, 'Briefings', body, self.prov_desk(P, 'Editor', sources=None), eyebrow='Briefings',

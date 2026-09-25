@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T14:50:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Tooling for the relay (issue 024): send and check messages over the relay vault; show message states on the briefing pages.",
+  "folders_changed": [
+    "tools/",
+    ".claude/",
+    "agents/"
+  ],
+  "did": [
+    "tools/relay.py (standard library): send (unsent briefings/<site>/inbox/*.md to .eml in mail/mailroom/<peer>/ and mail/newsroom.sgit/outbox/<peer>/, notes.md line, sgit commit and push, mark sent with Message-ID and vault path), check (sgit pull; delivered when the mailroom copy is gone, handled when in the peer's done/; deliver own mailroom to inbox and mirror each received .eml as an incoming page), status, --dry-run; refuses a folder without .sg_vault/ and any credential-shaped string. Dry run produced message 001 as an RFC 2822 file.",
+    "tools/build.py: briefing pages show each message's direction, state, timestamps and Message-ID, a note on the channel linking brief/08, and the relay block in the JSON twin; tools/style.css: incoming messages.",
+    ".claude/skills/newsroom-run: relay check and send when NEWSROOM_RELAY_VAULT is set, else report unsent.",
+    "agents/ re-rendered (editor.desk may write data/relay.json)."
+  ],
+  "gates": true
+}

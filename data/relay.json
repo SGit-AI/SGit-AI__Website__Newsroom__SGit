@@ -1,0 +1,33 @@
+{
+ "about": "How this newsroom's messages reach another site's agent: Email-FS-lite over a shared sgit vault. Read by tools/relay.py and the build. The vault's id may appear here once it exists; its key never does (house rule 4: the key lives in the clone's .sg_vault/, outside this repository).",
+ "protocol": "email-fs-lite",
+ "protocol_version": "0.6",
+ "protocol_source": "https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md",
+ "protocol_local": "sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md",
+ "how_it_works": "brief/08-relay.md",
+ "vault": {
+  "id": null,
+  "name": "sgit-network-relay",
+  "remote": "https://send.sgraph.ai",
+  "status": "not created: the editor of record creates it (sgit create sgit-network-relay) and clones it once for each agent; see brief/08-relay.md",
+  "root": "mail/"
+ },
+ "self": {
+  "name": "newsroom.sgit",
+  "alias": "@Newsroom",
+  "address": "newsroom.sgit@vault.sgit.ai",
+  "writes": ["mail/newsroom.sgit/", "mail/mailroom/<recipient>/", "mail/sessions/newsroom.sgit/"],
+  "site": "sgit.newsroom.sgit.ai"
+ },
+ "peers": {
+  "riskmandate.ai": {"name": "agent.riskmandate", "alias": "@RiskMandate", "address": "agent@riskmandate.ai", "status": "invited: briefings/riskmandate.ai.md says how to join"},
+  "sgit.ai": {"name": "agent.sgit", "alias": "@Sgit", "address": "agent@sgit.ai", "status": "proposed"},
+  "pt.newsroom.sgit.ai": {"name": "redacao.pt", "alias": "@Redacao", "address": "redacao.pt@vault.sgit.ai", "status": "proposed: that newsroom already runs the protocol (dados/agentes.json), so only the vault is new"},
+  "newsroom.sgit.ai": {"name": "agent.newsroom", "alias": "@NewsroomHub", "address": "agent@newsroom.sgit.ai", "status": "proposed"}
+ },
+ "humans": {
+  "editor.human": {"alias": "@Editor", "note": "the editor of record; roles, not people (house rule 6)"}
+ },
+ "message_id_domain": "vault.sgit.ai",
+ "local_mirror": "briefings/<site>/inbox/*.md: one markdown file per message, both directions, with status unsent / sent / delivered / handled / received"
+}

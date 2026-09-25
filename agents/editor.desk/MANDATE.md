@@ -35,6 +35,7 @@ Belongs to: the editor of record
 - AUTHORING.md
 - brief/
 - briefings/
+- data/relay.json
 - runs/
 - site/
 - version.txt

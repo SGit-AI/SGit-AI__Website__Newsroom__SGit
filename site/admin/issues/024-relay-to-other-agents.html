@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.13" data-root="../../">
+<html lang="en-GB" data-version="v0.1.14" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,23 +10,31 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.13 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
 <nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../briefings/index.html">Briefings</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../../newsroom/index.html">The newsroom</a><a href="../index.html" class=on>Admin</a><a href="../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
-<p class="eyebrow">Issue 024 · open</p>
+<p class="eyebrow">Issue 024 · blocked</p>
 
-<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 024</p><dl class="facts"><dt>Status</dt><dd><span class="tag">open</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Editor</dd><dt>Created</dt><dd>2026-09-25T12:05:00Z</dd><dt>Effort</dt><dd>medium</dd><dt>Source</dt><dd><a href="../inbox/2026-09-25__notes-from-the-flight.html">admin/inbox/2026-09-25__notes-from-the-flight.md</a></dd><dt>Epic</dt><dd><a href="003-chat-and-relay.html">Epic: a chat with tools over the site, and messages relayed to other agents</a></dd></dl><article class="source"><h1 id="relay-feedback-addressed-to-another-sites-agent">Relay feedback addressed to another site&#x27;s agent</h1>
+<p class="crumbs"><a href="../index.html">Admin</a> / <a href="index.html">issues</a> / 024</p><dl class="facts"><dt>Status</dt><dd><span class="tag">blocked</span></dd><dt>Type</dt><dd>task</dd><dt>Priority</dt><dd>high</dd><dt>Owner</dt><dd>Editor</dd><dt>Created</dt><dd>2026-09-25T12:05:00Z</dd><dt>Effort</dt><dd>medium</dd><dt>Blocked on</dt><dd>the editor of record creates the relay vault (sgit create sgit-network-relay) and puts its id in data/relay.json</dd><dt>Source</dt><dd><a href="../inbox/2026-09-25__notes-from-the-flight.html">admin/inbox/2026-09-25__notes-from-the-flight.md</a></dd><dt>Epic</dt><dd><a href="003-chat-and-relay.html">Epic: a chat with tools over the site, and messages relayed to other agents</a></dd></dl><article class="source"><h1 id="relay-feedback-addressed-to-another-sites-agent">Relay feedback addressed to another site&#x27;s agent</h1>
 <p>Feedback that starts &quot;For the RiskMandate agent:&quot; (or names a site) is filed as a message for that agent:
 into <code>briefings/&lt;site&gt;/inbox/</code> here and shown on that site&#x27;s briefing page; when a channel exists
 (agent@riskmandate.ai&#x27;s mailbox, an append lane, a vault), sent. The first message is in the notes: ask the
 contact who received the voice questionnaire link for feedback, with an introduction, expecting &quot;this is
 too much, can this be simpler&quot;.</p>
 <p>Done when: the chat and the note field recognise the address; the message lands on the briefing page; the
-daily run&#x27;s report lists unsent messages.</p></article>
-<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/open/024-relay-to-other-agents.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+daily run&#x27;s report lists unsent messages.</p>
+<h2 id="design-and-build-25-september">Design and build, 25 September</h2>
+<p>Channel chosen by the editor of record: a shared sgit vault, Email-FS-lite (sgraph.ai&#x27;s protocol; the eight pages
+are in the snapshot under sources/sites/sgraph.ai/). Built: <code>data/relay.json</code> (identities, peers, vault id when it
+exists), <code>tools/relay.py</code> (send: unsent messages to <code>.eml</code> in the mailroom and outbox, commit, push, mark sent;
+check: pull, mark delivered/handled from the mailroom and done/ folders, deliver replies into
+<code>briefings/&lt;site&gt;/inbox/</code> as incoming pages; status; dry-run), <code>brief/08-relay.md</code>, the briefing page&#x27;s message
+states. Blocked on the one step only a person does: create the vault and hold the key. Then <code>relay.py send</code> sends
+the first message.</p></article>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the back office)</dd><dt>Date</dt><dd>2026-09-25</dd><dt>File</dt><dd>issues/blocked/024-relay-to-other-agents.md</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.13 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="024-relay-to-other-agents.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="024-relay-to-other-agents.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
 <script src="../../assets/panel.js"></script>
 </body>

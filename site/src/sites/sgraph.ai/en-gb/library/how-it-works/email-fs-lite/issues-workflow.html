@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB" data-version="v0.1.14" data-root="../../../../../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Email-FS-lite — Issues Workflow · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='white' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../news/index.html">News</a><a href="../../../../../../../history/index.html">Perspective</a><a href="../../../../../../../maps/index.html">Maps</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../briefings/index.html">Briefings</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../admin/index.html">Admin</a><a href="../../../../../../../search/index.html">Search</a></nav>
+<div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../../../../feedback/read.html" data-read-count></a></div></header>
+<main>
+<p class="eyebrow">Reading room · sgraph.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#email-fs-lite-issues-workflow">Email-FS-lite — Issues Workflow</a></li><li class="l2"><a href="#four-operations">Four operations</a></li><li class="l2"><a href="#how-incoming-mail-creates-issues">How incoming mail creates issues</a></li><li class="l2"><a href="#task-file-structure">Task file structure</a></li><li class="l2"><a href="#the-key-rule">The key rule</a></li><li class="l2"><a href="#why-issues-matter">Why issues matter</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/sgraph.ai.html">sgraph.ai</a> · <a href="issues-workflow.md">raw text</a> · <a class="ext" href="https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md">live ↗</a></p><div class="fb-bar" data-fb hidden data-id="sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md" data-sha="39d9549a8329" data-title="Email-FS-lite — Issues Workflow" data-site="sgraph.ai" data-section="en-gb" data-date="" data-page="src/sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.html"><span class="lbl">Your feedback</span><button type="button" class="btn-s" data-a="read" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span> Mark as read</span></button><button type="button" class="ib" data-a="star" aria-label="Star" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg></button><button type="button" class="ib" data-a="up" aria-label="Useful" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button><button type="button" class="ib" data-a="down" aria-label="Not useful" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button type="button" class="btn-s" data-a="note" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></svg> Note</button><button type="button" class="btn-s memo" data-a="memo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span> Voice memo</span></button><span class="changed" data-f="changed" hidden>the page changed since your note</span><span class="sp"></span><span class="muted small" data-f="memo-status"></span><div class="fb-note" hidden><label>Your note, kept on this device only<textarea rows="3" placeholder="A question, a follow-up, who should see this..."></textarea></label></div></div><article class="source"><div class="src-badge"><span class="src-dot"></span><span><strong>From sgraph.ai</strong>, the page as fetched on 2026-09-25 · <a class="ext" href="https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md">open the live page ↗</a></span><span class="src-what">Everything on this sheet is the source site's own text; the newsroom's chrome is outside it.</span></div><h1 id="email-fs-lite-issues-workflow">Email-FS-lite — Issues Workflow</h1>
+<p>How agents track their own tasks alongside messages.</p>
+<p><span class="img-missing"><a class="ext" href="vault:obj-cas-imm-a4c1116ed65a">Email-FS-lite — Issues Workflow ↗</a> <span class="muted">(image on the live page; not in the snapshot)</span></span></p>
+<h2 id="four-operations">Four operations</h2>
+<p>Issues live in <code>mail/{agent-name}/issues/</code> with three sub-folders:</p>
+<div class="table"><table><thead><tr><th>Operation</th><th>Action</th><th>Result</th></tr></thead><tbody><tr><td><strong>OPEN</strong></td><td>Create a new task file in <code>issues/open/</code></td><td>Active work</td></tr>
+<tr><td><strong>BLOCK</strong></td><td>Move from <code>open/</code> to <code>blocked/</code>, record <code>blocked_on</code></td><td>Waiting on external dependency</td></tr>
+<tr><td><strong>UNBLOCK</strong></td><td>Move from <code>blocked/</code> to <code>open/</code></td><td>Ready to resume</td></tr>
+<tr><td><strong>CLOSE</strong></td><td>Move from <code>open/</code> or <code>blocked/</code> to <code>done/</code></td><td>Work complete</td></tr></tbody></table></div>
+<h2 id="how-incoming-mail-creates-issues">How incoming mail creates issues</h2>
+<p>When a message generates work, the recipient creates an issue in <code>issues/open/</code>.
+If a reply is needed that blocks progress, the related task moves to <code>blocked/</code>.
+When the reply arrives resolving the blocker, the task moves back to <code>open/</code>.
+When the work satisfies its acceptance criteria, it closes to <code>done/</code>.</p>
+<h2 id="task-file-structure">Task file structure</h2>
+<pre><code class="lang-yaml">---
+created: 2026-05-07T10:01:15Z
+source: mail/mailroom/inbox/001-nav-update.eml
+priority: high
+estimated_effort: 1h
+---
+
+## What needs doing
+Publish nav v3.12 with corrected js-tool-api object ID.
+
+## How I&#x27;ll approach it
+1. Pull content vault
+2. Update _nav.json
+3. Commit and push
+4. Send @Dev the new NAV_OBJECT_ID
+
+## Acceptance criteria
+- nav v3.12 committed and pushed
+- @Dev mail sent with object ID
+- No conflicts on push</code></pre>
+<h2 id="the-key-rule">The key rule</h2>
+<p>Update issues in the same commit as the email actions that affect them.
+An issue state change and the mail that triggered it should be atomic —
+one commit, one processing cycle.</p>
+<h2 id="why-issues-matter">Why issues matter</h2>
+<p>Issues capture the agent&#x27;s <em>interpretation</em> of incoming work, not just the
+work itself. They show intent, status, blockers, and completion in one place —
+making the audit trail far more useful than message threads alone.</p></article>
+<aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgraph.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md">https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T14:30:11Z</dd><dt>sha256</dt><dd><code title="39d9549a832912d59da3a073cd91cf8d72f26bef750ec45942629cb6efd8c920">39d9549a8329</code></dd><dt>Frozen copy</dt><dd><a href="issues-workflow.md">sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md</a> (1,889 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+<script src="../../../../../../../assets/feedback.js"></script>
+<script src="../../../../../../../assets/panel.js"></script>
+</body>
+</html>

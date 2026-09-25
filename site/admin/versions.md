@@ -14,3 +14,4 @@
 - v0.1.11 (2026-09-25): signals that say what they report, the newsroom reads itself (with the first semantic twin), briefing cards, the Cartographer's helpers, this newsroom's releases in the reading room
 - v0.1.12 (2026-09-25): screenshots of the pages the desks cite, under every piece's byline
 - v0.1.13 (2026-09-25): the shots and snapshot folders named build/ are content, not build artefacts (CI fix)
+- v0.1.14 (2026-09-25): the relay: messages to other sites' agents as .eml files in a shared sgit vault (Email-FS-lite)

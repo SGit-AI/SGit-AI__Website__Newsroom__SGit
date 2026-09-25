@@ -11,7 +11,6 @@
 - [open] 016 Standing briefing cards in the same place on every piece
 - [open] 020 A wallet drained by actions (as pt.newsroom.sgit.ai)
 - [open] 021 Render pages from a graph of pieces, merged with the reader's state
-- [open] 024 Relay feedback addressed to another site's agent
 - [open] 038 Run the newsroom daily on a schedule
 - [open] 039 A daily industry news feed on the vaults' topics, as JSON the newsroom consumes
 - [open] 040 Daily or thematic slide decks, rendered to HTML and PDF
@@ -19,7 +18,9 @@
 - [open] 043 Brief: map the integrations and who to contact, in the vault CRM
 - [open] 044 Brief: connectors and digital twins for Slack, Discord, WhatsApp and others
 - [open] 045 Brief: find an AWS partner for sgit.ai and one for RiskMandate.ai
+- [open] 046 agent@riskmandate.ai joins the relay vault
 - [blocked] 022 Store the reader's state in a vault, for the daily agent and other devices
+- [blocked] 024 Relay feedback addressed to another site's agent
 - [blocked] 035 The network map per day: which links appeared when
 - [done] 009 Put every piece on its own sheet, with a byline block that says who wrote it
 - [done] 010 Feedback bar on every piece, not only on source pages

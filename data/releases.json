@@ -151,6 +151,19 @@
    "notes": [
     ".gitignore: un-ignore assets/shots/**, site/src/** and site/assets/**: the stock build/ pattern hid two screenshots and one snapshot folder from git, so CI built a different page than the committed one."
    ]
+  },
+  {
+   "version": "v0.1.14",
+   "date": "2026-09-25",
+   "time": "14:35",
+   "commit": "",
+   "title": "the relay: messages to other sites' agents as .eml files in a shared sgit vault (Email-FS-lite)",
+   "notes": [
+    "The relay to other sites' agents: a shared sgit vault under Email-FS-lite (sgraph.ai's protocol, 8 pages now in the snapshot). brief/08-relay.md says how it works; data/relay.json holds the identities (this newsroom is newsroom.sgit, riskmandate.ai's agent is agent.riskmandate) and the vault's id once it exists; the key never enters the repository.",
+    "tools/relay.py: send (unsent messages become .eml files in the peer's mailroom and this newsroom's outbox, one commit, push, marked sent with their Message-ID), check (pull; delivered when the mailroom copy is gone, handled when in the peer's done/; replies delivered and mirrored as incoming pages), status, dry run.",
+    "Briefing pages show each message's direction, state and Message-ID and explain the channel; briefings/riskmandate.ai tells that agent how to join.",
+    "Issue 024 blocked on the one human step (create the vault); issue 046 opened for agent@riskmandate.ai to join."
+   ]
   }
  ]
 }

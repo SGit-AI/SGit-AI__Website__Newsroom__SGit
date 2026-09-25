@@ -112,6 +112,11 @@
    "bytes": 4052310
   },
   {
+   "site": "sgraph.ai",
+   "files": 8,
+   "bytes": 16120
+  },
+  {
    "site": "skills.sgit.ai",
    "files": 3,
    "bytes": 33945
@@ -229,6 +234,11 @@
    "files": 8
   },
   {
+   "from": "sgit.ai",
+   "to": "sgraph.ai",
+   "files": 8
+  },
+  {
    "from": "store.sgit.ai",
    "to": "sgit.ai",
    "files": 7
@@ -321,6 +331,11 @@
   {
    "from": "open-source.sgit.ai",
    "to": "sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "sgraph.ai",
    "files": 4
   },
   {
@@ -890,12 +905,22 @@
   },
   {
    "from": "pt.newsroom.sgit.ai",
+   "to": "sgraph.ai",
+   "files": 1
+  },
+  {
+   "from": "pt.newsroom.sgit.ai",
    "to": "teams.sgit.ai",
    "files": 1
   },
   {
    "from": "riskmandate.ai",
    "to": "risks.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "sgraph.ai",
    "files": 1
   },
   {

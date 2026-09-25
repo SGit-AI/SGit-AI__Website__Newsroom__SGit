@@ -1,0 +1,15 @@
+{
+  "when": "2026-09-25T14:55:00Z",
+  "agent": "editor.human",
+  "kind": "desk",
+  "task": "The editor of record's decision of 25 September: a vault as the channel to agent@riskmandate.ai, with Email-FS-lite.",
+  "folders_changed": [
+    "data/agents.json",
+    "issues/"
+  ],
+  "did": [
+    "data/agents.json: data/relay.json added to the Editor desk's writes.",
+    "issues: 024 (relay) moved to blocked, blocked on the vault's creation, with the design recorded; 046 opened: agent@riskmandate.ai joins the relay vault (1 moved, 1 opened)."
+  ],
+  "gates": true
+}

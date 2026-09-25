@@ -15,6 +15,7 @@ flowchart LR
   n_risks_sgit_ai["risks.sgit.ai"]
   n_sg_compute_sgit_ai["sg-compute.sgit.ai"]
   n_sgit_ai["sgit.ai"]
+  n_sgraph_ai["sgraph.ai"]
   n_standards_sgit_ai["standards.sgit.ai"]
   n_store_sgit_ai["store.sgit.ai"]
   n_subscriptions_sgit_ai["subscriptions.sgit.ai"]
@@ -33,6 +34,7 @@ flowchart LR
   n_abp_sgit_ai -->|8| n_risks_sgit_ai
   n_influences_sgit_ai -->|8| n_open_source_sgit_ai
   n_riskmandate_ai -->|8| n_what_can_it_do_games_sgit_ai
+  n_sgit_ai -->|8| n_sgraph_ai
   n_store_sgit_ai -->|7| n_sgit_ai
   n_games_sgit_ai -->|6| n_sgit_ai
   n_games_sgit_ai -->|6| n_what_can_it_do_games_sgit_ai
@@ -49,7 +51,6 @@ flowchart LR
   n_llms_sgit_ai -->|4| n_risks_sgit_ai
   n_llms_sgit_ai -->|4| n_sg_compute_sgit_ai
   n_llms_sgit_ai -->|4| n_sgit_ai
-  n_llms_sgit_ai -->|4| n_standards_sgit_ai
   click n_abp_sgit_ai "../reading-room/abp.sgit.ai.html" "abp.sgit.ai: every file in the snapshot"
   click n_coding_sgit_ai "../reading-room/coding.sgit.ai.html" "coding.sgit.ai: every file in the snapshot"
   click n_games_sgit_ai "../reading-room/games.sgit.ai.html" "games.sgit.ai: every file in the snapshot"
@@ -63,6 +64,7 @@ flowchart LR
   click n_risks_sgit_ai "../reading-room/risks.sgit.ai.html" "risks.sgit.ai: every file in the snapshot"
   click n_sg_compute_sgit_ai "../reading-room/sg-compute.sgit.ai.html" "sg-compute.sgit.ai: every file in the snapshot"
   click n_sgit_ai "../reading-room/sgit.ai.html" "sgit.ai: every file in the snapshot"
+  click n_sgraph_ai "../reading-room/sgraph.ai.html" "sgraph.ai: every file in the snapshot"
   click n_standards_sgit_ai "../reading-room/standards.sgit.ai.html" "standards.sgit.ai: every file in the snapshot"
   click n_store_sgit_ai "../reading-room/store.sgit.ai.html" "store.sgit.ai: every file in the snapshot"
   click n_subscriptions_sgit_ai "../reading-room/subscriptions.sgit.ai.html" "subscriptions.sgit.ai: every file in the snapshot"

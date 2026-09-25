@@ -1080,6 +1080,14 @@
 | [sg-compute.sgit.ai — SG/Compute, ephemeral environments in AWS](https://sg-compute.sgit.ai/llms.txt) | sg-compute.sgit.ai | other |  |
 | [sg-sentinel.sgit.ai — Layer 1 decides and signals; Layer 2 acts and writes](https://sg-sentinel.sgit.ai/index.md) | sg-sentinel.sgit.ai | other |  |
 | [sg-sentinel.sgit.ai — SG/Sentinel: an app-coupled edge security and logging layer (a design — NOT BUILT)](https://sg-sentinel.sgit.ai/llms.txt) | sg-sentinel.sgit.ai | other |  |
+| [Email-FS-lite](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Audit, Verification & Recovery](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/audit-verification-recovery.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Big Picture Architecture](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/big-picture.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Check-in Cycle](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/check-in-cycle.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Identity & Addressing](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/identity-addressing.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Issues Workflow](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/issues-workflow.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Message Lifecycle](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/message-lifecycle.md) | sgraph.ai | other |  |
+| [Email-FS-lite — Vault Ownership & Write Boundaries](https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite/vault-ownership.md) | sgraph.ai | other |  |
 | [skills.sgit.ai — skills are software packages, and here is the proof](https://skills.sgit.ai/index.md) | skills.sgit.ai | other |  |
 | [skills.sgit.ai — the long form](https://skills.sgit.ai/llms-full.txt) | skills.sgit.ai | other |  |
 | [skills.sgit.ai — skills are software packages, and here is the proof](https://skills.sgit.ai/llms.txt) | skills.sgit.ai | other |  |

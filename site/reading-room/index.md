@@ -88,6 +88,7 @@
 - sg-compute.sgit.ai: 4 files
 - sg-sentinel.sgit.ai: 2 files
 - sgit.ai: 194 files
+- sgraph.ai: 8 files
 - skills.sgit.ai: 3 files
 - standards.sgit.ai: 3 files
 - store.sgit.ai: 95 files

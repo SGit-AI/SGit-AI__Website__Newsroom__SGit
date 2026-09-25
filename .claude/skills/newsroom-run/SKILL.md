@@ -24,7 +24,7 @@ One pass of the daily run in `brief/05-daily-run.md`. Each step is done AS a des
 7. **Loose ends** (whichever desk found them). Add new ones; close ones today's changes resolved, citing the change.
 8. **Editor** (`editor.desk`), last. Compose `data/frontpage.json` (lead, top, sections, briefs) from what the desks
    wrote; file any feedback in `admin/inbox/` to the desk it concerns (a "Copy for Claude" paste holds `relay to <site>
-   agent:` lines: each becomes `briefings/<site>/inbox/<date>__<slug>.md`, status unsent); update `admin/notes.md`;
+   agent:` lines: each becomes `briefings/<site>/inbox/<date>__<slug>.md`, status unsent); if `NEWSROOM_RELAY_VAULT` names a clone of the relay vault, run `python3 tools/relay.py check` then `python3 tools/relay.py send` (brief/08), else report what `python3 tools/relay.py status` lists as unsent; update `admin/notes.md`;
    move issues in `issues/` that this run closed or opened.
 9. **Build, gate, release.** `python3 tools/build.py && python3 tools/validate.py`. Green: bump `version.txt` to the
    next patch above `origin/dev`, rebuild, commit `site vX.Y.Z: <today>, N changes, M stories`, push to `dev`.

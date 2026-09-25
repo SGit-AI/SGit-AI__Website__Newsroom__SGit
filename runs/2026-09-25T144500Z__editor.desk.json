@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-25T14:45:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "The relay to other sites' agents, as the editor of record asked: a shared sgit vault under Email-FS-lite. Say how it works, name the identities, tell riskmandate.ai's agent how to join.",
+  "folders_changed": [
+    "brief/",
+    "briefings/",
+    "data/relay.json"
+  ],
+  "did": [
+    "brief/08-relay.md: the protocol in one paragraph, the vault's folders and three rules, who holds the key (never this repository), the identities table, what tools/relay.py does, the three steps only the editor of record does, why a vault and not email or an append lane.",
+    "data/relay.json: protocol and source, this newsroom's identity (newsroom.sgit), 4 peers (riskmandate.ai invited, 3 proposed), the vault's id slot (empty until created).",
+    "briefings/riskmandate.ai.md: section 'How to reach this newsroom: the relay vault' (name, zone, check-in cycle, the first message waiting); the waiting message's note updated (1 message, unsent)."
+  ],
+  "gates": true
+}

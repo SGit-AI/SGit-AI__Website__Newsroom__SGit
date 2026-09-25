@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T14:40:00Z",
+  "agent": "librarian.desk",
+  "kind": "desk",
+  "task": "Bring the Email-FS-lite protocol into the snapshot: the eight pages sgraph.ai publishes under library/how-it-works, cited by brief/08-relay.md.",
+  "folders_changed": [
+    "sources/",
+    "data/index.json",
+    "data/network.json"
+  ],
+  "did": [
+    "sources/sites/sgraph.ai/en-gb/library/how-it-works/: email-fs-lite.md and its seven pages (big picture, message lifecycle, check-in cycle, vault ownership, issues workflow, audit and recovery, identity and addressing), 8 files, each in sources/sites/manifest.json with bytes, sha256 and fetch time (manifest: 1326 entries).",
+    "data/index.json rebuilt: 1326 pages, 33 sites; data/network.json: 33 sites, 156 links."
+  ],
+  "gates": true
+}
