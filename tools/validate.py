@@ -19,7 +19,7 @@ import sys
 from urllib.parse import unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = os.path.join(ROOT, 'site')
+SITE = os.environ.get('NEWSROOM_SITE_OUT') or os.path.join(ROOT, 'site')
 GENERATOR = 'content="sgit-newsroom build"'
 
 # --- secrets --------------------------------------------------------------------------------------

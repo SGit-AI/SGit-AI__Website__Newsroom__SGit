@@ -25,7 +25,8 @@ import mdlite  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'sources')
-OUT = os.path.join(ROOT, 'site')
+# NEWSROOM_SITE_OUT: build somewhere else (desks running in parallel each build their own copy to check it)
+OUT = os.environ.get('NEWSROOM_SITE_OUT') or os.path.join(ROOT, 'site')
 VERSION = open(os.path.join(ROOT, 'version.txt')).read().strip()
 DOMAIN = 'sgit.newsroom.sgit.ai'
 GENERATOR = '<meta name="generator" content="sgit-newsroom build">'
