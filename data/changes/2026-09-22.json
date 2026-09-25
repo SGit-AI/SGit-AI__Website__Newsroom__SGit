@@ -1,0 +1,85 @@
+{
+  "date": "2026-09-22",
+  "desk": "Librarian",
+  "basis": "sgit.ai version log, git log, content changes and new-pages list; riskmandate.ai version record and release notes (no earlier snapshot to diff)",
+  "changes": [
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.2",
+      "url": "https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html",
+      "title": "New article: the future of news is the story vault, not the paywall",
+      "type": "article",
+      "summary": "A new article, written from a voice memo and earlier future-of-news pieces, argues that the story is a graph and the article a projection, lists five things to sell from one graph and says no sgit.ai site is wired to any payment rail.",
+      "concepts": ["provenance", "fractal-graphs", "pricing"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.3",
+      "url": "https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html",
+      "title": "The news article, second pass, on the author's notes",
+      "type": "article",
+      "summary": "Second pass on the news article: an executive summary up front, a section on why advertising and subscriptions are both bad for the reader, the objective stated once, and the mechanics of each of the five things to sell.",
+      "concepts": ["provenance", "pricing", "read-keys"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.4",
+      "url": "https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html",
+      "title": "The news article, third pass: the fractal semantic graph was missing",
+      "type": "article",
+      "summary": "Third pass adds two sections, on the graph being fractal with meaning from connectivity, and on the ladder of trust through provenance and provenance via evidence, plus a fourth diagram.",
+      "concepts": ["fractal-graphs", "provenance"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.5",
+      "url": "https://sgit.ai/articles/index.html",
+      "title": "Articles get a byline",
+      "type": "update",
+      "summary": "Optional author and author_url front matter, rendered as a byline and a schema.org Person, applied to the four first-person articles; the build refuses an author without a URL.",
+      "concepts": ["provenance"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.6",
+      "url": "https://sgit.ai/about/index.html",
+      "title": "The byline now links to a profile page on this site",
+      "type": "update",
+      "summary": "A new About the author page (the founder's record, signed articles, writing elsewhere, interests declared, how to correct the author) becomes the target of the four signed articles' bylines instead of LinkedIn.",
+      "concepts": ["provenance"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html",
+      "title": "The future of news is the story vault, not the paywall",
+      "type": "article",
+      "summary": "First-person article: keep the story as a fractal semantic graph in a vault and sell five projections of it (public article, licensed article, evidence vault, customised projection, verification API), with a proposed 60/25/10/5 split and billing stated as not running anywhere.",
+      "concepts": ["provenance", "fractal-graphs", "pricing", "read-keys"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/about/index.html",
+      "title": "About the author, sgit.ai",
+      "type": "doc",
+      "summary": "The founder's profile page as provenance for the first-person byline: the companies and open-source record, the signed articles, writing on other network sites, interests declared and a route for corrections.",
+      "concepts": ["provenance", "open-source"]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.29.0",
+      "url": "https://riskmandate.ai/versions/1.29.0.md",
+      "title": "The reviewed level, and the people who run it",
+      "type": "update",
+      "summary": "From brief D11: a page describing the reviewed level as eight steps, stating nobody has bought one yet, and a reviewers list with one named reviewer built from published author pages and one labelled placeholder, generated from one file per reviewer with a JSON manifest for the store.",
+      "concepts": ["pricing", "agent-behaviour-policy", "provenance", "briefs"]
+    }
+  ]
+}

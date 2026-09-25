@@ -1,0 +1,174 @@
+{
+  "date": "2026-09-23",
+  "desk": "Librarian",
+  "basis": "sgit.ai version log, git log, content changes and new-pages list; riskmandate.ai version record and release notes (no earlier snapshot to diff)",
+  "changes": [
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.7",
+      "url": "https://sgit.ai/partnerships/index.html",
+      "title": "New section: partnerships, the business case made in public",
+      "type": "partnership",
+      "summary": "A new partnerships section states its method (public material only, evidence not pitch, the fit stated precisely, what is not public marked) and carries a first case, a proposed partnership with UK Sovereign AI.",
+      "concepts": ["partnerships", "grants-and-mandates"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.8",
+      "url": "https://sgit.ai/partnerships/sovereign-ai.html",
+      "title": "The Sovereign AI case gets its anchoring, from the founder's own memo",
+      "type": "partnership",
+      "summary": "Adds a first-person UK anchoring section (thirty years in the UK, one UK exit, a UK-registered trading company) and the argument that there is no sovereign AI without open source; the About page gets the same facts in one row.",
+      "concepts": ["partnerships", "open-source", "grants-and-mandates"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.5.9",
+      "url": "https://sgit.ai/partnerships/sovereign-ai.html",
+      "title": "The Sovereign AI page says what it is in its title",
+      "type": "partnership",
+      "summary": "Retitled 'A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI' so a reader arriving from a forwarded link knows it is a proposal from sgit.ai's side.",
+      "concepts": ["partnerships"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.6.0",
+      "url": "https://sgit.ai/demos/vaults/agent-webmaster/index.html",
+      "title": "The thirty-second vault, and the first business plan published for somebody else to run",
+      "type": "business plan",
+      "summary": "Publishes Agent as Webmaster as a vault with its read key and adds 'Business plans to build on' to the startups section; the publish found two CLI transport bugs, which the log says were fixed in the CLI repository with a pinning test.",
+      "concepts": ["business-plans", "vault-apps", "read-keys", "lessons-learned"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.6.1",
+      "url": "https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html",
+      "title": "The DSIT AI Risk Toolkit page starts with the reader's decision, and plays the deck",
+      "type": "vault",
+      "summary": "Rebuilt from a brief: the page now opens on the use-case journey with an eight-slide deck read live from the vault, keeps the journey, reference edition and two graphs' figures apart, states the licences, and improves the deck viewer's accessibility.",
+      "concepts": ["vault-apps", "provenance", "read-keys"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/demos/vaults/agent-webmaster/index.html",
+      "title": "Agent as Webmaster, a business plan published as a vault",
+      "type": "business plan",
+      "summary": "A business plan for giving small businesses a website they change by asking an AI agent, with prices marked as starting hypotheses, a unit-economics calculator, four mock-up sites, an app declaring no permissions, and an audit that found nothing.",
+      "concepts": ["business-plans", "vault-apps", "read-keys", "pricing"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/partnerships/index.html",
+      "title": "Partnerships, argued in the open, sgit.ai",
+      "type": "partnership",
+      "summary": "Index of partnership cases between sgit.ai, RiskMandate.ai and organisations they would like to work with, each built from public material and written to be forwarded.",
+      "concepts": ["partnerships"]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/partnerships/sovereign-ai.html",
+      "title": "A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI",
+      "type": "partnership",
+      "summary": "A proposal from sgit.ai's side, with no conversation held with the fund: maps the fund's trust, safety and assurance frontier and its safe-agent-adoption challenge area to published vaults and proposes three partnership shapes.",
+      "concepts": ["partnerships", "grants-and-mandates", "agent-behaviour-policy", "open-source"]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.29.1",
+      "url": "https://riskmandate.ai/versions/1.29.1.md",
+      "title": "The logo as EPS, for a printer who asks for one",
+      "type": "update",
+      "summary": "Four vector EPS logo files with outlined lettering, written by a script and proofed by rasterising them back, added to the brand page after a Web Summit exhibition-board form asked for EPS.",
+      "concepts": ["brand-assets"]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.29.2",
+      "url": "https://riskmandate.ai/versions/1.29.2.md",
+      "title": "Two shorter descriptions, because a form refused the shortest one",
+      "type": "update",
+      "summary": "Adds 110- and 80-character descriptions to the boilerplate after Web Summit's exhibitor field rejected the 180-character version the site had said was the shortest allowed.",
+      "concepts": ["brand-assets", "agent-behaviour-policy", "lessons-learned"]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.29.3",
+      "url": "https://riskmandate.ai/versions/1.29.3.md",
+      "title": "The lead's own line, and the verb pair it turns on",
+      "type": "update",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder.",
+      "concepts": []
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.29.4",
+      "url": "https://riskmandate.ai/versions/1.29.4.md",
+      "title": "A 396-character version, because the profile field caps at 400",
+      "type": "update",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder.",
+      "concepts": ["brand-assets"]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.29.5",
+      "url": "https://riskmandate.ai/versions/1.29.5.md",
+      "title": "The ladder in order",
+      "type": "update",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder.",
+      "concepts": []
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.30.0",
+      "url": "https://riskmandate.ai/versions/1.30.0.md",
+      "title": "A privacy page, and a test that keeps it honest",
+      "type": "policy",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder; the privacy page itself, as snapshotted on 24 September, says the site runs no analytics and sets no cookies.",
+      "concepts": ["telemetry"]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.30.1",
+      "url": "https://riskmandate.ai/versions/1.30.1.md",
+      "title": "A deck, built from the site rather than written beside it",
+      "type": "update",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder.",
+      "concepts": []
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.31.0",
+      "url": "https://riskmandate.ai/versions/1.31.0.md",
+      "title": "The words that start a conversation, and the page that has to back them",
+      "type": "update",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder.",
+      "concepts": []
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.31.1",
+      "url": "https://riskmandate.ai/versions/1.31.1.md",
+      "title": "The deck carries the direction, not just the day",
+      "type": "update",
+      "summary": "Release note not yet written: the published note carries only its title and a TODO placeholder.",
+      "concepts": []
+    }
+  ]
+}

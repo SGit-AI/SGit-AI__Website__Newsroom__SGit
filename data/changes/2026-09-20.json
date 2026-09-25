@@ -1,0 +1,236 @@
+{
+  "date": "2026-09-20",
+  "desk": "Librarian",
+  "basis": "sgit.ai version log and new-pages list; riskmandate.ai version record (no earlier snapshot to diff)",
+  "changes": [
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.2.96",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.96__update__the-vault-named-after-the-concept.html",
+      "title": "The vault named after the concept was not on the concept's page",
+      "type": "update",
+      "summary": "The Fractal Semantic Graphs page gains a section citing the VoiceDebrief vault where the idea was first worked, and that vault's page records its plaintext GitHub mirror, checked file for file on 20 September.",
+      "concepts": [
+        "fractal-graphs",
+        "provenance"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.2.97",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.97__update__introducing-fsg-article.html",
+      "title": "The article that introduces Fractal Semantic Graphs, published here with its pictures",
+      "type": "update",
+      "summary": "The article introducing Fractal Semantic Graphs, written for LinkedIn, is published under /articles/ as the canonical copy with nine figures LinkedIn cannot carry.",
+      "concepts": [
+        "fractal-graphs"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.2.98",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.98__update__the-prefix-said-private.html",
+      "title": "We published read keys under a prefix that declares them secret, and an agent refused to open them",
+      "type": "update",
+      "summary": "After an agent refused to open two AIUC-1 vaults because their published read keys carried the private read prefix, seven keys were relabelled to the public form, the validator now bans private prefixes, and a credentials page explains the five prefixes.",
+      "concepts": [
+        "read-keys",
+        "vault-key-management",
+        "lessons-learned"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.2.99",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.99__update__vault-table-order.html",
+      "title": "The newest vaults were at the bottom of the table, and at the top of the machine list",
+      "type": "update",
+      "summary": "One newest-first order for the vaults table, llms.txt and everything else, with build assertions on ordinals and dates; the read-key extractor also learns the public prefix it had been stripping.",
+      "concepts": [
+        "read-keys",
+        "lessons-learned"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.3.0",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.3.0__update__no-more-em-dashes.html",
+      "title": "The em-dash is gone from the prose, and so is the legacy key prefix",
+      "type": "update",
+      "summary": "About 3,200 em-dashes are rewritten by context across the site with a validator guard to keep them out, and 102 legacy-prefixed and 24 bare published read keys move to the public read prefix.",
+      "concepts": [
+        "em-dashes-and-style",
+        "read-keys"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "release",
+      "version": "v0.3.1",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.3.1__update__dsit-ai-risk-toolkit.html",
+      "title": "Vault #31 reaches the same conclusion about fractality, in its own words",
+      "type": "update",
+      "summary": "Vault #31, an independent reference edition of the UK DSIT AI Risk Management Toolkit, is published: four worlds with named bridges, curated and lexical edges labelled, hashed source snapshots, and six gaps it publishes about itself.",
+      "concepts": [
+        "fractal-graphs",
+        "provenance",
+        "read-keys",
+        "security-audits"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html",
+      "title": "Start with an AI decision, then trace it back to the guidance: the DSIT AI Risk Toolkit vault",
+      "type": "vault",
+      "summary": "The vault page for the DSIT AI Risk Toolkit: a use-case journey over the official guidance, the worlds and bridges underneath, the pre-publication audit, and a dated snapshot of the 20 September edition (617 nodes, 694 edges).",
+      "concepts": [
+        "fractal-graphs",
+        "provenance",
+        "security-audits",
+        "read-keys",
+        "vault-apps"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.3.1__update__dsit-ai-risk-toolkit.html",
+      "title": "Vault #31 reaches the same conclusion about fractality, in its own words",
+      "type": "update",
+      "summary": "Update announcing vault #31, the first submission under the public read prefix, which states that containment alone is not fractality.",
+      "concepts": [
+        "fractal-graphs",
+        "read-keys"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.3.0__update__no-more-em-dashes.html",
+      "title": "The em-dash is gone from the prose, and so is the legacy key prefix",
+      "type": "update",
+      "summary": "Update describing the two site-wide normalisations: em-dashes rewritten rather than deleted, and every published read key moved to the public prefix.",
+      "concepts": [
+        "em-dashes-and-style",
+        "read-keys"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.99__update__vault-table-order.html",
+      "title": "The newest vaults were at the bottom of the table, and at the top of the machine list",
+      "type": "update",
+      "summary": "Update explaining the three bugs behind the vaults table showing #26 first and #30 last, and the single asserted order that replaced them.",
+      "concepts": [
+        "lessons-learned"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/docs/credentials.html",
+      "title": "Vault credentials: what each one can do, and what its prefix declares",
+      "type": "doc",
+      "summary": "New reference page: two capabilities (vault key and read key, derived one way), five prefixes with publish-or-not per row, classification by declaration rather than shape, and revocation that is never retroactive.",
+      "concepts": [
+        "read-keys",
+        "vault-key-management"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.98__update__the-prefix-said-private.html",
+      "title": "We published read keys under a prefix that declares them secret, and an agent refused to open them",
+      "type": "update",
+      "summary": "Update on the agent's refusal, the relabelling of the AIUC-1 keys, and the build guard added so a private-prefixed credential fails the build.",
+      "concepts": [
+        "read-keys",
+        "lessons-learned"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/articles/introducing-fractal-semantic-graphs.html",
+      "title": "Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema",
+      "type": "article",
+      "summary": "The founder's introduction to the term: the jump test at a link, every file format as a graph, the five-rule grammar, eleven altitudes across seven live vaults, and what is still modelled rather than imported.",
+      "concepts": [
+        "fractal-graphs",
+        "eu-ai-act",
+        "provenance"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.97__update__introducing-fsg-article.html",
+      "title": "The article that introduces Fractal Semantic Graphs, published here with its pictures",
+      "type": "update",
+      "summary": "Update announcing the canonical copy of the Fractal Semantic Graphs article, with its diagrams and screenshots.",
+      "concepts": [
+        "fractal-graphs"
+      ]
+    },
+    {
+      "site": "sgit.ai",
+      "kind": "new-page",
+      "url": "https://sgit.ai/updates/2026/09/20/v0.2.96__update__the-vault-named-after-the-concept.html",
+      "title": "The vault named after the concept was not on the concept's page",
+      "type": "update",
+      "summary": "Update on adding the reverse link from the Fractal Semantic Graphs page to the VoiceDebrief vault and its fifteen-principle register.",
+      "concepts": [
+        "fractal-graphs",
+        "provenance"
+      ]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.27.0",
+      "url": "https://riskmandate.ai/versions/1.27.0.md",
+      "title": "Writing, and a barrier gains a holder",
+      "type": "update",
+      "summary": "A Writing section opens with the article 'An approval prompt is not a human in the loop', and every vault's barriers now record who holds them: not_reachable is replaced by a blocked list that must name its blocker.",
+      "concepts": [
+        "agent-behaviour-policy",
+        "grants-and-mandates"
+      ]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.27.1",
+      "url": "https://riskmandate.ai/versions/1.27.1.md",
+      "title": "An introduction to the Agent Behaviour Policy",
+      "type": "update",
+      "summary": "A second article introduces the Agent Behaviour Policy (mandate, grant, delta, barrier) with one Gmail-connector deployment worked through; the local check now runs all of CI's checkers after a stale hash turned CI red.",
+      "concepts": [
+        "agent-behaviour-policy",
+        "grants-and-mandates"
+      ]
+    },
+    {
+      "site": "riskmandate.ai",
+      "kind": "release",
+      "version": "v1.27.2",
+      "url": "https://riskmandate.ai/versions/1.27.2.md",
+      "title": "The section is called Articles, and a session carries every approval you ever gave",
+      "type": "update",
+      "summary": "Writing is renamed Articles, and a third article argues that a session holds the union of every scope and approval ever granted, with a table of four questions the vendor's help page leaves silent.",
+      "concepts": [
+        "agent-behaviour-policy",
+        "grants-and-mandates"
+      ]
+    }
+  ]
+}
