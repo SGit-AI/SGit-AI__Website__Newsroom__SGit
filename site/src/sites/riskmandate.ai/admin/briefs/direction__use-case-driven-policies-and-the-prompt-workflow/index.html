@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../news/index.html">News</a><a href="../../../../../../history/index.html">Perspective</a><a href="../../../../../../maps/index.html">Maps</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../briefings/index.html">Briefings</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../admin/index.html">Admin</a><a href="../../../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -25,25 +25,25 @@ Source: <a href="index.html">https://riskmandate.ai/admin/briefs/direction__use-
 <hr>
 <h2 id="1-what-the-memo-says-in-its-own-order">1. What the memo says, in its own order</h2>
 <ol><li><strong>Another primitive: the use case.</strong> Alongside a policy per target application and a policy
-per business function, a policy per <em>workflow</em>: *&quot;use case driven … we can then start
-combining several policies.&quot;* The combination is the customer&#x27;s; the examples are ours.</li><li><strong>Voice Debrief as the worked case study</strong>, because its workflows are specific and already
+per business function, a policy per <em>workflow</em>: <em>&quot;use case driven … we can then start
+combining several policies.&quot;</em> The combination is the customer&#x27;s; the examples are ours.</li><li><strong>Voice Debrief as the worked case study</strong>, because its workflows are specific and already
 built, and because describing them advertises the product. Two are named:
 <ul><li><strong>The web flow.</strong> Upload audio on the website; transcribe; generate an infographic; the
 audio and the text go to <em>&quot;open router, multiple models&quot;</em>, and the results come back.
-The lead&#x27;s own reading of it: *&quot;the grant is that the data can go up anywhere. The mandate
+The lead&#x27;s own reading of it: <em>&quot;the grant is that the data can go up anywhere. The mandate
 would be: I don&#x27;t want anybody else apart from this transaction to see the data. But we
-don&#x27;t know where the data is stored … we have no governance at this stage.&quot;* A good
-example of governance precisely because the grant is unbounded and the mandate is narrow.</li><li><strong>The WhatsApp flow through n8n</strong>, *&quot;the one that has all those examples from the thing we
-created&quot;*: the shape the n8n vault already measured, now as a use case.</li></ul></li><li><strong>Let the agent that knows the system write the policy.</strong> *&quot;Let&#x27;s create the prompt for the
+don&#x27;t know where the data is stored … we have no governance at this stage.&quot;</em> A good
+example of governance precisely because the grant is unbounded and the mandate is narrow.</li><li><strong>The WhatsApp flow through n8n</strong>, <em>&quot;the one that has all those examples from the thing we
+created&quot;</em>: the shape the n8n vault already measured, now as a use case.</li></ul></li><li><strong>Let the agent that knows the system write the policy.</strong> <em>&quot;Let&#x27;s create the prompt for the
 agent that I have that knows how voice debrief works and knows how the n8n workflow works to
 actually be the one that creates the policy, the grant, and the mandate that can then send
-to us and we can package it up.&quot;*</li><li><strong>That is the third level of the store.</strong> *&quot;We give the user a prompt for them to calculate
+to us and we can package it up.&quot;</em></li><li><strong>That is the third level of the store.</strong> <em>&quot;We give the user a prompt for them to calculate
 what&#x27;s happening in that environment, and then we&#x27;ll take that prompt and we&#x27;ll create the
-policy for you.&quot;* Four price points: the pack (£5), the vault (£50), the custom policy
-(£500, *&quot;the workflow is we give them a prompt, they run the prompt in the environment, they
-send us the result, and then we send them back the [policy]&quot;*), and two live sessions
-(£1,500).</li><li><strong>Show what the £500 buys, in practice</strong>, and *&quot;we need a page, and we need to map this
-app, and we need to map the server.&quot;* The store.sgit.ai agent is working on the store side;
+policy for you.&quot;</em> Four price points: the pack (£5), the vault (£50), the custom policy
+(£500, <em>&quot;the workflow is we give them a prompt, they run the prompt in the environment, they
+send us the result, and then we send them back the [policy]&quot;</em>), and two live sessions
+(£1,500).</li><li><strong>Show what the £500 buys, in practice</strong>, and <em>&quot;we need a page, and we need to map this
+app, and we need to map the server.&quot;</em> The store.sgit.ai agent is working on the store side;
 synchronise once it finishes.</li></ol>
 <h2 id="2-where-we-already-are">2. Where we already are</h2>
 <ul><li><strong>The prompt exists.</strong> <code>MAP-A-GRANT.md</code> travels in every vault since v1.15.0: it is the
@@ -57,9 +57,9 @@ changing). A use case is a scenario promoted to its own vault, with its own work
 description and, where the workflow spans several applications, the union of their grants.</li><li><strong>The store has the four levels live</strong> (v0.1.7, 15 September): £5 the pack by email, £50 a
 working vault, £500 corrected for your situation (<em>agents with review</em>), £1,500 two sessions
 and a professional signs. Its own ledger says levels 1 and 2 exist and run and levels 3 and
-4 are <em>specified, never run</em>; its level-3 page says *&quot;you tell us the industry, the use case
-and the details&quot;* and *&quot;nobody interviews you at this level: you send the details and the
-work is done from them&quot;*. The memo makes that concrete: the details you send are the output
+4 are <em>specified, never run</em>; its level-3 page says <em>&quot;you tell us the industry, the use case
+and the details&quot;</em> and <em>&quot;nobody interviews you at this level: you send the details and the
+work is done from them&quot;</em>. The memo makes that concrete: the details you send are the output
 of a prompt you ran.</li><li><strong>The site now links to the store</strong> (v1.19.0): the homepage&#x27;s <em>view a policy / buy a policy</em>,
 the pricing page rebuilt around the four levels, and a <em>buy this policy</em> link on every vault
 page to the store&#x27;s page for the same slug (the store uses our slugs).</li></ul>
@@ -105,7 +105,7 @@ allowed; the model calls through a routing service reach providers whose retenti
 read, which is a <code>research_needed</code> row, not a guess.</li></ul></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/briefs/direction__use-case-driven-policies-and-the-prompt-workflow/index.html">https://riskmandate.ai/admin/briefs/direction__use-case-driven-policies-and-the-prompt-workflow/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/briefs/direction__use-case-driven-policies-and-the-prompt-workflow/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="56fa9e13ba1ae4a2fe2ce169d7b5bd0811c52e2c866a578474031c549c8f84ab">56fa9e13ba1a</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/briefs/direction__use-case-driven-policies-and-the-prompt-workflow/index.md</a> (10,078 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../../../assets/feedback.js"></script>
 <script src="../../../../../../assets/panel.js"></script>
 </body>

@@ -164,6 +164,16 @@
     "Briefing pages show each message's direction, state and Message-ID and explain the channel; briefings/riskmandate.ai tells that agent how to join.",
     "Issue 024 blocked on the one human step (create the vault); issue 046 opened for agent@riskmandate.ai to join."
    ]
+  },
+  {
+   "version": "v0.1.15",
+   "date": "2026-09-25",
+   "time": "14:37",
+   "commit": "",
+   "title": "emphasis over a wrapped line renders",
+   "notes": [
+    "tools/mdlite.py: emphasis that runs over a wrapped line now renders (651 runs across 611 pages, mostly the source sites' \"Source:\" lines)."
+   ]
   }
  ]
 }

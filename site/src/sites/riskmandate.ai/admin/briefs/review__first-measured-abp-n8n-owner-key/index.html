@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../news/index.html">News</a><a href="../../../../../../history/index.html">Perspective</a><a href="../../../../../../maps/index.html">Maps</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../briefings/index.html">Briefings</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../admin/index.html">Admin</a><a href="../../../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -30,8 +30,8 @@ did it the right way: built and ran one real AI-agent workflow against a real mo
 created and deleted one obviously named test workflow to measure create-change-delete and
 activation, probed the rest, moved no secret, and wrote down what it did not test. Five pages,
 dated, with a mandate elicited from the deployer in the deployer&#x27;s words.</p>
-<p>**It is the first grant this site holds that was measured on a live instance rather than read
-from a page.<em>* Every connector vault published today stands at *documented</em>; this one stands at
+<p><strong>It is the first grant this site holds that was measured on a live instance rather than read
+from a page.</strong> Every connector vault published today stands at <em>documented</em>; this one stands at
 <em>measured</em> on seven of eight rows. It is now the vault <code>n8n-owner-api-key</code>, translated row for
 row into the v0.3.0 vocabulary, published as the template for that shape rather than as that
 deployment, and without the write-up itself or its author&#x27;s name — both are the project lead&#x27;s
@@ -47,22 +47,22 @@ to publish, not this site&#x27;s.</p>
 <tr><td>a Code node would run on the platform&#x27;s server — not tested</td><td><code>execute.process.host</code></td><td>none, <em>derived</em></td></tr>
 <tr><td>every account on the instance visible; instance health</td><td><em>not in the grammar</em></td><td>—</td></tr></tbody></table></div>
 <p>Mandate: a sandbox, one AI-agent workflow, nothing else. Delta: four excess rows, all four
-unbounded. The write-up&#x27;s own summary — *&quot;almost the whole grant is currently unused, authorised
-capability&quot;* — survives translation exactly.</p>
+unbounded. The write-up&#x27;s own summary — <em>&quot;almost the whole grant is currently unused, authorised
+capability&quot;</em> — survives translation exactly.</p>
 <h2 id="3-where-the-write-up-and-the-model-disagree-and-who-is-right">3. Where the write-up and the model disagree, and who is right</h2>
-<p><strong>The API key as a barrier.</strong> The write-up classes the key as a <em>setting</em> barrier: *&quot;the API key
-itself is the technical gate: broad, but a real gate, not a prose rule.&quot;* The vocabulary&#x27;s
+<p><strong>The API key as a barrier.</strong> The write-up classes the key as a <em>setting</em> barrier: <em>&quot;the API key
+itself is the technical gate: broad, but a real gate, not a prose rule.&quot;</em> The vocabulary&#x27;s
 enforcer test says a control bounds a grant only if it is enforced by something the grant does
 not include. The key <em>is</em> the grant. So in the vault every row the key permits stands at <em>none</em>,
 and the disagreement is recorded in the vault&#x27;s contradictions table, unresolved, because the
 write-up is making a real point: a gate that is broad but real is different from a rule in prose,
 and the four barriers do not have a word for that difference. That is feedback for the model
 site, not something to paper over.</p>
-<p><strong>Barrier class is not a property of a capability.</strong> The write-up&#x27;s sharpest finding: *&quot;the same
+<p><strong>Barrier class is not a property of a capability.</strong> The write-up&#x27;s sharpest finding: <em>&quot;the same
 operation (read credential metadata) was setting-barred through one access path and unbarred
-through another, on the same account, in the same session.&quot;* The vault records it as one row with
-two <code>via</code> entries and two outcomes, and <code>MAP-A-GRANT.md</code> now carries it as rule 4: *note the
-door*. The model&#x27;s grammar assumes one barrier per row. It should probably be one per path.</p>
+through another, on the same account, in the same session.&quot;</em> The vault records it as one row with
+two <code>via</code> entries and two outcomes, and <code>MAP-A-GRANT.md</code> now carries it as rule 4: <em>note the
+door</em>. The model&#x27;s grammar assumes one barrier per row. It should probably be one per path.</p>
 <p><strong>&quot;Access denied&quot; is a symptom.</strong> Several exchanges chased a permissions hypothesis for what was
 an ambiguous-name bug — two credentials of the same type, the platform resolving the name to the
 wrong one silently. Rule 5 in the prompt.</p>
@@ -88,7 +88,7 @@ naming <em>credentials</em> should be extended to MCP-tunnelled requests, now th
 confirmed.</p></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.html">https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="077087dbe2a3cd4330ba94d47b333d2544618e0875dcaf7969e15cf9c8262604">077087dbe2a3</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.md</a> (6,334 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../../../assets/feedback.js"></script>
 <script src="../../../../../../assets/panel.js"></script>
 </body>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../../index.html">Front page</a><a href="../../../../../news/index.html">News</a><a href="../../../../../history/index.html">Perspective</a><a href="../../../../../maps/index.html">Maps</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../briefings/index.html">Briefings</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../admin/index.html">Admin</a><a href="../../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -34,8 +34,8 @@ ledger to prevent.</p>
 <tr><td><strong>EU AI Act</strong> — as current text</td><td><a class="ext" href="https://eu-ai-act.standards.riskmandate.ai/articles.md">eu-ai-act.standards.riskmandate.ai ↗</a></td><td>The composed current text with the Digital Omnibus applied by a gated parser. <strong>Per-provision ids, statuses and sha256</strong>, rolling to a root hash; <code>.md</code> and <code>.llm.json</code> on every slug; JSON-LD and Turtle exports</td><td><strong>the instrument layer, solved</strong></td></tr>
 <tr><td><strong>GDPR</strong></td><td><a href="../../../sgit.ai/demos/vaults/standards-atlas-gdpr/index.html">standards-atlas-gdpr</a><a class="ext live" href="https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.html" title="live page">↗</a> <code>4zv4bvmu</code></td><td>GDPR as a navigable semantic graph, with <strong>CJEU rulings, regulator guidance and per-country variation as first-class nodes</strong> layered over the articles they bend</td><td><strong>the model for jurisdictional variation</strong></td></tr></tbody></table></div>
 <p><strong>Read that table as the answer to &quot;can this be done&quot;.</strong> Two regulations and one standard are
-already graphs with byte-level provenance. **The method is proven; what is missing is breadth and
-an anchor.**</p>
+already graphs with byte-level provenance. <strong>The method is proven; what is missing is breadth and
+an anchor.</strong></p>
 <h2 id="aiuc-1s-thirteen-read-from-its-own-graph">AIUC-1&#x27;s thirteen, read from its own graph</h2>
 <p><strong>Blocker S1 is closed.</strong> The pack said this was the cheapest thing to check and it was: the
 crosswalk targets are in <code>graph/edges.json</code> of vault <code>2wzct4k7</code>, opened with its published read
@@ -57,16 +57,16 @@ key. <strong>1,126 crosswalks across exactly thirteen frameworks</strong>, count
 which reads as the web application list. Its members are not: they are <code>LLM01:25 - Prompt Injection</code>
 through <code>LLM10:25 - Unbounded Consumption</code> — the <strong>OWASP Top 10 for LLM Applications (2025)</strong>.
 Checked by listing the ten <code>in_framework</code> members rather than trusting the label, which is the
-only reason the AI-specific finding below survives. **A shorthand label that collides with a
-different, better-known standard is the kind of thing an anchor node exists to disambiguate**, and
+only reason the AI-specific finding below survives. <strong>A shorthand label that collides with a
+different, better-known standard is the kind of thing an anchor node exists to disambiguate</strong>, and
 it is worth reporting upstream rather than silently working around.</p>
 <p><strong>Two findings, and the second is the important one.</strong></p>
 <h3 id="one-the-coverage-is-ai-specific-not-general-security">One: the coverage is AI-specific, not general security</h3>
 <p><strong>Not one general security control set is in that list.</strong> No NIST CSF, no NIST SP 800-53, no
 ISO/IEC 27001 or 27002, no SOC 2, no CIS Controls, no PCI DSS, no HIPAA, no FedRAMP.</p>
 <p>That is not a gap in AIUC-1 — it is an agent standard and it crosswalks to the AI corpus, which is
-the right scope for it. **But it means the general-security half of the map is genuinely absent
-from this estate**, and anyone assuming &quot;AIUC-1 covers the crosswalks&quot; would be wrong about
+the right scope for it. <strong>But it means the general-security half of the map is genuinely absent
+from this estate</strong>, and anyone assuming &quot;AIUC-1 covers the crosswalks&quot; would be wrong about
 exactly the frameworks most enterprises are actually assessed against.</p>
 <h3 id="two-four-of-the-thirteen-are-laws-and-three-are-sub-national-us-laws">Two: four of the thirteen are laws, and three are sub-national US laws</h3>
 <p><code>eu-ai-act</code>, <code>co-ai-act</code>, <code>ca-sb-53</code>, <code>nyc-ll-144</code>.</p>
@@ -111,8 +111,8 @@ and its 96.6% / 20.5% measured. <em>This vault has already done this for one jur
 exist, so this is a join and not a parse. <strong>Do not re-parse what RiskMandate has parsed.</strong></li><li><strong>One standard, already graphed.</strong> AIUC-1. Do not re-transcribe it; fork it the way the
 conformance layer forked it, byte for byte.</li><li><strong>One crosswalk edge</strong>, <code>std:control --addresses--&gt; sg:obligation</code>, drawn once, by hand,
 for one control, and <strong>marked inferred</strong>.</li><li><strong>Only then</strong> widen — and widening means another anchor, not another standard.</li></ol>
-<p>**A crosswalk built before step 1 is a mapping between two vocabularies with nothing underneath
-it.** That is the failure mode thesis sentence 5 names, and it is why this order is strict.</p>
+<p><strong>A crosswalk built before step 1 is a mapping between two vocabularies with nothing underneath
+it.</strong> That is the failure mode thesis sentence 5 names, and it is why this order is strict.</p>
 <h2 id="what-would-make-this-file-wrong">What would make this file wrong</h2>
 <div class="table"><table><thead><tr><th>If this turns out to be true</th><th>Then</th></tr></thead><tbody><tr><td><del>AIUC-1&#x27;s thirteen already include most of the candidate list</del></td><td><strong>Checked, and no.</strong> They are AI-specific; the general-security half is genuinely missing. Four of the thirteen are laws, three of them sub-national US, which is where the anchor pays off first</td></tr>
 <tr><td>A standards body publishes machine-readable jurisdiction scope</td><td>Their binding beats our inference. Cite it and delete our edge</td></tr>
@@ -122,7 +122,7 @@ it.** That is the failure mode thesis sentence 5 names, and it is why this order
 <p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/packs/security-graph/03__the-standards-map.md">https://ungovr.providers.sgit.ai/packs/security-graph/03__the-standards-map.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="864398394df6f37cd1ae996f90c01fa1de0338c1a58905e76891d2919839dc15">864398394df6</code></dd><dt>Frozen copy</dt><dd><a href="03__the-standards-map.md">sites/ungovr.providers.sgit.ai/packs/security-graph/03__the-standards-map.md</a> (10,500 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../../assets/feedback.js"></script>
 <script src="../../../../../assets/panel.js"></script>
 </body>

@@ -15,3 +15,4 @@
 - v0.1.12 (2026-09-25): screenshots of the pages the desks cite, under every piece's byline
 - v0.1.13 (2026-09-25): the shots and snapshot folders named build/ are content, not build artefacts (CI fix)
 - v0.1.14 (2026-09-25): the relay: messages to other sites' agents as .eml files in a shared sgit vault (Email-FS-lite)
+- v0.1.15 (2026-09-25): emphasis over a wrapped line renders

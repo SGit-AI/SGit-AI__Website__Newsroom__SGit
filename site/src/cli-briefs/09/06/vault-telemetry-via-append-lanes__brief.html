@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../briefings/index.html">Briefings</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -76,8 +76,8 @@ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_
   -H &quot;x-sgraph-vault-enum-key: $ENUM_KEY&quot; -d &#x27;{&quot;include_content&quot;: false}&#x27;</code></pre>
 <hr>
 <h2 id="4-why-publishing-the-append-token-is-acceptable-and-where-it-stops-being">4. Why publishing the append_token is acceptable — and where it stops being</h2>
-<p>Every visitor holds the game vault&#x27;s read key, so **every visitor can read the <code>append_token</code> out of
-the vault.** That is not avoidable and it is not the mistake it looks like: an append token grants
+<p>Every visitor holds the game vault&#x27;s read key, so <strong>every visitor can read the <code>append_token</code> out of
+the vault.</strong> That is not avoidable and it is not the mistake it looks like: an append token grants
 <em>write only</em>. A visitor who extracts it cannot list the lane, cannot fetch anything, cannot read
 another player&#x27;s events, and — because the write response is blind — cannot even tell whether the
 lane has anything in it.</p>
@@ -110,8 +110,8 @@ fingerprint in as a token; that is the most likely way to hit it.</li></ol>
 Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.</p>
 <hr>
 <h2 id="6-real-time-precisely">6. &quot;Real time&quot;, precisely</h2>
-<ul><li><strong>On the receiving side</strong> the kernel pushes <code>sg.on(&#x27;append.new-messages&#x27;, …)</code> on **tab focus and
-app open** — your dashboard app does not poll. Declare `&quot;host_events&quot;: [&quot;append.new-messages&quot;,
+<ul><li><strong>On the receiving side</strong> the kernel pushes <code>sg.on(&#x27;append.new-messages&#x27;, …)</code> on <strong>tab focus and
+app open</strong> — your dashboard app does not poll. Declare `&quot;host_events&quot;: [&quot;append.new-messages&quot;,
 &quot;append.error&quot;]<code>in</code>app.json`.</li><li>That means &quot;real time <em>while you are looking at it</em>&quot;, not a live stream. For anything closer, poll
 <code>list</code> with <code>include_content: false</code>; it is free and paginates with <code>after_file_id</code>, and filenames
 are <code>{epoch_ms}_{24-hex}.enc</code> so they sort chronologically.</li></ul>
@@ -130,8 +130,8 @@ every published vault page: publish the work, then say exactly what it is worth 
 requesting IP. &quot;The server cannot read the content&quot; is true; &quot;the traffic is invisible&quot; is not.</li></ul>
 <hr>
 <h2 id="8-the-prompt-to-hand-the-builder-agent">8. The prompt to hand the builder agent</h2>
-<blockquote><p>Build a vault app for the grants/permissions/mandates game. It will be published with a **read
-key**, so assume every visitor can read every file in it, including any credential it carries.</p>
+<blockquote><p>Build a vault app for the grants/permissions/mandates game. It will be published with a <strong>read
+key</strong>, so assume every visitor can read every file in it, including any credential it carries.</p>
 <p>Emit anonymous usage events to a separate telemetry vault over an <strong>append lane</strong>. Read
 <code>https://sgit.ai/docs/vault-messaging.html</code> and <code>https://sgit.ai/api/append-lanes.html</code> first.</p>
 <p>Constraints:</p>
@@ -148,14 +148,14 @@ the lane; the data is directional, not evidential.</li></ul>
 dashboard app in the telemetry vault that subscribes to <code>sg.on(&#x27;append.new-messages&#x27;)</code> and renders
 the funnel.</p></blockquote>
 <hr>
-<p>*Sources: sgit.ai <code>/docs/vault-messaging.html</code>, <code>/api/append-lanes.html</code>, <code>/vault/sg-bridge.html</code>,
+<p><em>Sources: sgit.ai <code>/docs/vault-messaging.html</code>, <code>/api/append-lanes.html</code>, <code>/vault/sg-bridge.html</code>,
 <code>/vault/sub-vaults.html</code>, <code>/demos/vaults/health-score/</code>; docs bundle
 <code>01-vault-html-app-authoring/AUTHORING.md</code> and <code>02-hosting-and-git/HOSTING-ON-STATIC-STORAGE.md</code>.
 Verified against the shipped CLI: <code>sgit pki</code> has keygen/export/encrypt/decrypt/sign/verify; there is
-<strong>no</strong> append-lane command in the CLI, so the transport is HTTP or the browser bridge only.*</p></article>
+<strong>no</strong> append-lane command in the CLI, so the transport is HTTP or the browser bridge only.</em></p></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>cli-briefs</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="3a042d9eaa24745511bddbe4a836194554a3d2acfb189711c438967f46957364">3a042d9eaa24</code></dd><dt>Frozen copy</dt><dd><a href="vault-telemetry-via-append-lanes__brief.md">cli-briefs/09/06/vault-telemetry-via-append-lanes__brief.md</a> (11,923 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 <script src="../../../../assets/panel.js"></script>
 </body>

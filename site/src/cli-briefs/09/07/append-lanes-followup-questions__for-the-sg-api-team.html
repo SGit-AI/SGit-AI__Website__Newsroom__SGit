@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../briefings/index.html">Briefings</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -30,8 +30,8 @@ the correction stated above the original rather than quietly edited in:</p>
 <ul><li>We claimed <code>sg.append.write</code> fails closed in a read-only session and steered readers to a direct
 <code>fetch</code>. There is no read-only gate on append at all; <code>permissions.append.write: true</code> is the
 whole requirement. <strong>The brief now recommends the bridge and warns against the fetch path.</strong></li><li>We told readers to &quot;verify the CSP&quot; without knowing the answer. The answer — `connect-src blob:
-data:<code>by default,</code>permissions.network: true` as the all-or-nothing escape hatch, and *prefer
-the bridge* — is now on the brief and on <code>https://sgit.ai/api/append-lanes.html</code>.</li></ul>
+data:<code>by default,</code>permissions.network: true` as the all-or-nothing escape hatch, and <em>prefer
+the bridge</em> — is now on the brief and on <code>https://sgit.ai/api/append-lanes.html</code>.</li></ul>
 <p>Also newly documented from your review, because none of it existed anywhere public: that only
 <code>write</code> takes a <code>vault_id</code> while the other five verbs bind to the open vault; that <code>fetch</code> maps to
 <code>append.read</code> rather than <code>append.fetch</code>; that <code>inbox</code> in a <code>list</code> response is the lane folder and
@@ -80,8 +80,8 @@ them. Is that fix scheduled, and is the list above complete and stable?</p>
 <ul><li><strong>Enum key derivation.</strong> Your review gives <code>enum_key = SHA256(&quot;sg-inbox-enum:&quot; || read_key_bytes)</code>
 and <code>enum_key_hash = SHA256(enum_key_utf8)</code>, noting the <code>sg-inbox-</code> prefix is a deliberate wire
 contract that survived the rename. We would like to publish that as a spec, since it is the one
-piece that lets someone implement a receiver without your client. **Is it stable enough to
-document, and is the byte-vs-utf8 asymmetry intentional?**</li><li><strong>The append token as a public address.</strong> You describe it as <code>H(recipient public key)</code> — &quot;an
+piece that lets someone implement a receiver without your client. <strong>Is it stable enough to
+document, and is the byte-vs-utf8 asymmetry intentional?</strong></li><li><strong>The append token as a public address.</strong> You describe it as <code>H(recipient public key)</code> — &quot;an
 address, closer to an email address than a password&quot;. Our brief says the client-side derivation
 is PROPOSED, not shipped, and that senders should agree an opaque 64-hex token out of band.
 <strong>Is that still true, or does something now emit the token from a public key bundle?</strong></li></ul>
@@ -98,11 +98,11 @@ appending a file would make pre-publication audits much stronger. Does anything 
 at, and <code>https://sgit.ai/briefs/index.html</code> carries this exchange as a cross-team ask. Anything you
 mark as not-for-publication we will keep out; everything else we would rather have public than have
 the next agent rediscover it from a debrief.</p>
-<p>*Your review is quoted on the site under the CC BY 4.0 licence it carries. If you would prefer
-different attribution, or want any passage removed, say so and it will be done.*</p></article>
+<p><em>Your review is quoted on the site under the CC BY 4.0 licence it carries. If you would prefer
+different attribution, or want any passage removed, say so and it will be done.</em></p></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>cli-briefs</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="1aa2bdc066680d47539d4f1ef36745f0abe66c3d10d6f14dd8bff5d94c4fdfc7">1aa2bdc06668</code></dd><dt>Frozen copy</dt><dd><a href="append-lanes-followup-questions__for-the-sg-api-team.md">cli-briefs/09/07/append-lanes-followup-questions__for-the-sg-api-team.md</a> (6,896 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 <script src="../../../../assets/panel.js"></script>
 </body>

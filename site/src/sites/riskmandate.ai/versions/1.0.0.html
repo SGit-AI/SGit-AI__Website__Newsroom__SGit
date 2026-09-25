@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../briefings/index.html">Briefings</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -38,8 +38,8 @@ duty as content pages and are promoted to real ones — v0.10.0 is now
 notes at build time. <code>versions.html</code> reads <code>versions/index.json</code> and fetches each
 note, so every entry links to the bytes it was rendered from.</li><li><strong>Dead code removed with the frame.</strong> The three-reader vault IO service
 (<code>sg.vfs</code> bridge → host RPC → fetch) is a same-origin fetch; <code>ramm-figure</code> resolves
-its image the same way. Comments describing the frame went with it.</li><li>**Per page: a canonical URL, Open Graph and Twitter cards, a favicon, and a
-markdown twin** at the same path with a <code>.md</code> extension, linked from <code>&lt;head&gt;</code>.
+its image the same way. Comments describing the frame went with it.</li><li><strong>Per page: a canonical URL, Open Graph and Twitter cards, a favicon, and a
+markdown twin</strong> at the same path with a <code>.md</code> extension, linked from <code>&lt;head&gt;</code>.
 Plus <code>robots.txt</code>, <code>sitemap.xml</code> and a <code>404.html</code> — none of which a single-URL
 site could have had.</li><li><strong>Publishing changed.</strong> CI deployed by cloning the vault and publishing the result.
 It now deploys <code>site/</code> straight from the repository; there is no build step and no
@@ -48,7 +48,7 @@ vault in the path. <code>vault_publisher/</code> and <code>web_overlay/</code> a
 read keys.</li></ul></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.0.0.html">https://riskmandate.ai/versions/1.0.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.0.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="e93955a16f2425ab28ec211b594d2c98f93baee5b5b2b0d35c011ff1541d0820">e93955a16f24</code></dd><dt>Frozen copy</dt><dd><a href="1.0.0.md">sites/riskmandate.ai/versions/1.0.0.md</a> (2,709 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 <script src="../../../../assets/panel.js"></script>
 </body>

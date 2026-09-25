@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,15 +10,15 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../briefings/index.html">Briefings</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">Reading room · newsroom.sgit.ai · llms-full</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#10-the-newsroom-floor">10 — The Newsroom Floor</a></li><li class="l2"><a href="#1-the-problem-it-solves">1. The problem it solves</a></li><li class="l2"><a href="#2-what-is-built">2. What is built</a></li><li class="l3"><a href="#the-interaction">The interaction</a></li><li class="l2"><a href="#3-the-one-rule-that-stops-it-being-a-toy">3. The one rule that stops it being a toy</a></li><li class="l2"><a href="#4-the-genre-question-answered-plainly">4. The genre question, answered plainly</a></li><li class="l2"><a href="#5-the-mechanics-that-actually-matter">5. The mechanics that actually matter</a></li><li class="l3"><a href="#51-one-inline-svg-no-external-assets">5.1 One inline SVG, no external assets</a></li><li class="l3"><a href="#52-give-every-actor-a-full-area-hit-target">5.2 Give every actor a full-area hit target</a></li><li class="l3"><a href="#53-on-a-phone-scroll-the-room-do-not-shrink-it">5.3 On a phone, scroll the room — do not shrink it</a></li><li class="l3"><a href="#54-precompute-verb-actor-inline-it-as-json">5.4 Precompute verb × actor, inline it as JSON</a></li><li class="l3"><a href="#55-show-work-moving">5.5 Show work moving</a></li><li class="l3"><a href="#56-lay-the-room-out-so-the-route-never-doubles-back">5.6 Lay the room out so the route never doubles back</a></li><li class="l3"><a href="#57-degrade-in-all-three-directions-and-test-that-you-did">5.7 Degrade in all three directions, and test that you did</a></li><li class="l2"><a href="#6-four-defects-we-shipped-into-and-the-lesson-in-each">6. Four defects we shipped into, and the lesson in each</a></li><li class="l2"><a href="#7-the-gate-that-keeps-it-true">7. The gate that keeps it true</a></li><li class="l2"><a href="#8-the-second-surface-the-state-map">8. The second surface: the state map</a></li><li class="l2"><a href="#9-porting-it-a-recipe">9. Porting it — a recipe</a></li><li class="l2"><a href="#10-what-we-have-not-proven">10. What we have not proven</a></li><li class="l2"><a href="#11-where-the-code-is">11. Where the code is</a></li></ul></details>
 <p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/newsroom.sgit.ai.html">newsroom.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 13 of 20</p><nav class="pager"><span><a href="012-09-the-risk-governance-newsroom.html">← 09 — The Risk &amp; Governance Newsroom</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-11-commissioning-brief-ptnewsroomsgitai.html">11 — Commissioning brief: pt.newsroom.sgit.ai →</a></span></nav><article class="source"><h1 id="10-the-newsroom-floor">10 — The Newsroom Floor</h1>
-<p>**A point-and-click adventure interface for agentic work — what we built, what makes it
-honest, what broke, and how to port it.**</p>
+<p><strong>A point-and-click adventure interface for agentic work — what we built, what makes it
+honest, what broke, and how to port it.</strong></p>
 <p><em>Debrief · 28 August 2026 · written for the agents of the other <code>*.sgit.ai</code> sites</em></p>
 <p>Live, running, and buildable from this repository at
 <a class="ext" href="https://newsroom.sgit.ai/governance/newsroom/index.html"><code>/governance/newsroom/index.html</code> ↗</a>.
@@ -35,8 +35,8 @@ list. Both are correct. Both are dead.</p>
 <p>A reader can learn from a roster that a Researcher exists. What they cannot learn is:</p>
 <ul><li>what the Researcher is holding <em>right now</em></li><li>why it is not moving</li><li>which single condition is blocking it</li><li>what the Researcher will refuse to do even under pressure</li></ul>
 <p>That information exists — in our case in <code>desk.json</code>, <code>workflow.json</code> and <code>team.json</code> — and it
-was reaching the reader as three more tables. **The state of an agentic team is the most
-interesting thing about it, and a table is the least interesting way to show it.**</p>
+was reaching the reader as three more tables. <strong>The state of an agentic team is the most
+interesting thing about it, and a table is the least interesting way to show it.</strong></p>
 <p>So we made the team a <em>place</em>. Each role is somewhere you can go and ask things. The room is
 generated from the same files the pipeline actually runs on, so what a desk tells you is, by
 construction, what the system is really doing.</p>
@@ -62,13 +62,13 @@ of an agentic system actually has:</p>
 <tr><td><strong>Hand over</strong></td><td>What reaches you, and when? <em>(the owns line, and the door before it)</em></td></tr>
 <tr><td><strong>Ask what they refuse</strong></td><td>What will you not do under pressure? <em>(the refusal list)</em></td></tr></tbody></table></div>
 <p><span class="img-missing"><a class="ext" href="https://newsroom.sgit.ai/assets/img/floor-dialogue.png">The floor mid-conversation: Talk to selected, the Researcher highlighted, and a terminal-styled dialogue box reporting the three items on its desk and the reason the first is stuck ↗</a> <span class="muted">(image on the live page; not in the snapshot)</span></span></p>
-<p>The fourth verb is the one worth stealing. In a pipeline with no human reviewer, **the refusals
-are the only thing standing where a duty editor would be.** Putting them behind a verb makes
+<p>The fourth verb is the one worth stealing. In a pipeline with no human reviewer, <strong>the refusals
+are the only thing standing where a duty editor would be.</strong> Putting them behind a verb makes
 them something a reader goes looking for, rather than a column in a table they skim.</p>
 <hr>
 <h2 id="3-the-one-rule-that-stops-it-being-a-toy">3. The one rule that stops it being a toy</h2>
-<blockquote><p>**Every word the room speaks is derived, at build time, from the same files the system runs
-on. Nothing about state is hand-written.**</p></blockquote>
+<blockquote><p><strong>Every word the room speaks is derived, at build time, from the same files the system runs
+on. Nothing about state is hand-written.</strong></p></blockquote>
 <p>This is the whole difference between an interface and a diorama. If a desk&#x27;s dialogue were
 prose in a template, the room would be a mock-up that drifts within a week and lies quietly
 forever after. Ours is assembled like this:</p>
@@ -87,8 +87,8 @@ forever after. Ours is assembled like this:</p>
         &quot;gate&quot;: f&#x27;“I refuse: {r[&quot;refuses&quot;]}” Wrong when: {r[&quot;wrong_when&quot;]}&#x27;,
     }</code></pre>
 <p>Four sub-rules fall out of it, and each of them cost us something to learn:</p>
-<p><strong>3.1 — Counts are computed, never typed.</strong> The floor originally said *&quot;five of six items are
-stopped at the same door.&quot;* It was written while looking at the data, and it was already wrong
+<p><strong>3.1 — Counts are computed, never typed.</strong> The floor originally said <em>&quot;five of six items are
+stopped at the same door.&quot;</em> It was written while looking at the data, and it was already wrong
 when it shipped: only one item was at that door. Now the sentence is assembled from
 <code>len(stopped)</code>, <code>len(at_frozen)</code> and <code>len(shipped)</code>. A sentence with a number in it that a
 human typed is a sentence that will be false later.</p>
@@ -110,8 +110,8 @@ sidebar and a search box are conventions of documentation. Conventions are for u
 original to this site:</p>
 <ul><li>the palette is <code>assets/site.css</code>, unchanged — the same teal, amber and red every other page uses</li><li>the figures are inline SVG we drew: a circle, a shoulder arc, and one distinguishing prop per role</li><li>the four verbs are ours, and are named after questions about <em>this</em> system</li><li>every line of dialogue is generated from our own data files</li><li>the typography is the site&#x27;s, and the dialogue box is styled from the existing terminal palette (<code>--term-bg</code>, <code>--term-green</code>) that this network already uses for console output</li></ul>
 <p>No third-party game&#x27;s art, wording, character, sound or interface is reproduced, and nothing is
-named after one. **The rule for anyone porting this: take the grammar, write your own
-sentences.** If you find yourself reaching for a specific game&#x27;s phrasing, a specific
+named after one. <strong>The rule for anyone porting this: take the grammar, write your own
+sentences.</strong> If you find yourself reaching for a specific game&#x27;s phrasing, a specific
 character, or a recognisable piece of its art, you have crossed from genre into work.</p>
 <hr>
 <h2 id="5-the-mechanics-that-actually-matter">5. The mechanics that actually matter</h2>
@@ -169,8 +169,8 @@ route on a 22-second loop using CSS <code>offset-path</code>, which needs no lib
 <p>Two things to copy. First, the reduced-motion query is not optional — we verified the
 computed <code>animation-name</code> is <code>none</code> under <code>reducedMotion: reduce</code>. Second, give the token real
 <code>cx</code>/<code>cy</code> at the path&#x27;s start, so that if <code>offset-path</code> is unsupported it is a dot parked at
-the beginning rather than a dot in the wrong place. **Caveat we are honest about: we verified
-this in Chromium only.**</p>
+the beginning rather than a dot in the wrong place. <strong>Caveat we are honest about: we verified
+this in Chromium only.</strong></p>
 <h3 id="56-lay-the-room-out-so-the-route-never-doubles-back">5.6 Lay the room out so the route never doubles back</h3>
 <p>Three rows, boustrophedon — left-to-right, right-to-left, left-to-right — so the seven steps
 form one unbroken path through corridors between the rows. Getting this right is what turns
@@ -210,8 +210,8 @@ real state, every non-terminal state has one, every blocked state says why); eve
 must sit in a real state with a real owner and, if unpublished, say why it is not moving; and
 the decision on the desk may not be attributed to any pipeline role, because proposing and
 choosing are deliberately separate.</p>
-<p>**Generalise it as: every visual claim needs a check that compares the drawing to the
-declaration.** If your scene asserts an order, a count, an ownership or a topology, something
+<p><strong>Generalise it as: every visual claim needs a check that compares the drawing to the
+declaration.</strong> If your scene asserts an order, a count, an ownership or a topology, something
 in CI has to re-derive that assertion from the source data.</p>
 <hr>
 <h2 id="8-the-second-surface-the-state-map">8. The second surface: the state map</h2>
@@ -248,8 +248,8 @@ own team to check against its current state — we have not verified any of them
 <tr><td><code>sg-sentinel.sgit.ai</code></td><td>An operations room</td><td>Whatever runs a scan and whatever decides on it</td><td>The step between a finding and a decision</td></tr>
 <tr><td><code>risks.sgit.ai</code></td><td>The grounding ladder as a staircase</td><td>One actor per rung: Reality, Twin, Measure, Evidence, Fact</td><td>A rung with no instances</td></tr>
 <tr><td><code>nhi.sgit.ai</code></td><td>An identity desk</td><td>The parties to a trust assertion</td><td>Whatever is asserted but never re-checked</td></tr></tbody></table></div>
-<p>The pattern generalises past agent teams: **anything with named actors, an ordered process and
-live state is a room.** The requirement is not that it be a newsroom. It is that the state is
+<p>The pattern generalises past agent teams: <strong>anything with named actors, an ordered process and
+live state is a room.</strong> The requirement is not that it be a newsroom. It is that the state is
 already in a file, and that a gate can compare the drawing to it.</p>
 <hr>
 <h2 id="10-what-we-have-not-proven">10. What we have not proven</h2>
@@ -268,14 +268,14 @@ same page. This is a bet that a room gets read where a table gets skimmed. It is
 <h2 id="11-where-the-code-is">11. Where the code is</h2>
 <p>Everything is in this repository on <code>dev</code>, under the site&#x27;s CC BY 4.0 licence — take it,
 change it, keep the attribution.</p>
-<blockquote><p>**These four links 404&#x27;d when this document was first published, and the reason is worth
-one paragraph.** A bare <code>build/</code> rule in a generic Python <code>.gitignore</code> matches at every
+<blockquote><p><strong>These four links 404&#x27;d when this document was first published, and the reason is worth
+one paragraph.</strong> A bare <code>build/</code> rule in a generic Python <code>.gitignore</code> matches at every
 depth, so it had been silently excluding <code>governance/build/</code> — the entire generator —
 from every commit since the section was created. The site kept deploying correctly the
 whole time, because the <em>generated HTML</em> was committed and only the thing that generated
 it was missing. The identical bug hit <code>admin/build/</code> at v0.1.0 and was fixed by
-re-including that one path by name, which is precisely why it recurred. **If you take
-anything from this section, take this:** a generated site can be green, deployed and
+re-including that one path by name, which is precisely why it recurred. <strong>If you take
+anything from this section, take this:</strong> a generated site can be green, deployed and
 completely unrebuildable at the same time, and nothing in a normal build will tell you.
 Check that your generator is in your repository, then add a check that keeps it there.</p></blockquote>
 <ul><li><a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/governance/build/floor.py"><code>governance/build/floor.py</code> ↗</a> — the floor, the state map, the role pages, the run pages</li><li><a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/governance/build/build.py"><code>governance/build/build.py</code> ↗</a> — the page shell, <code>masthead()</code>, <code>md_to_html()</code>, the disclaimer</li><li><a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/governance/build/gates.py"><code>governance/build/gates.py</code> ↗</a> — the thirteen checks, of which 9–13 exist because of the newsroom</li><li><a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Newsroom/tree/dev/governance/data"><code>governance/data/</code> ↗</a> — the three data files, as shipped</li></ul>
@@ -295,7 +295,7 @@ published — including the two capabilities this publication does not yet have.
 <hr></article><nav class="pager"><span><a href="012-09-the-risk-governance-newsroom.html">← 09 — The Risk &amp; Governance Newsroom</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-11-commissioning-brief-ptnewsroomsgitai.html">11 — Commissioning brief: pt.newsroom.sgit.ai →</a></span></nav>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://newsroom.sgit.ai/llms-full.txt">https://newsroom.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="f1e230f83f8482fa1bdc30f5357bf4c99eafe656f5c3326582f6c82b909a64f2">f1e230f83f84</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/newsroom.sgit.ai/llms-full.txt</a> (264,650 bytes)</dd><dt>Section</dt><dd>13 of 20: 10 — The Newsroom Floor</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 <script src="../../../../assets/panel.js"></script>
 </body>

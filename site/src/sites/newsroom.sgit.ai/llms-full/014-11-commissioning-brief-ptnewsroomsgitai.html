@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,20 +10,20 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../news/index.html">News</a><a href="../../../../history/index.html">Perspective</a><a href="../../../../maps/index.html">Maps</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../briefings/index.html">Briefings</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../admin/index.html">Admin</a><a href="../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">Reading room · newsroom.sgit.ai · llms-full</p>
 <details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#11-commissioning-brief-ptnewsroomsgitai">11 — Commissioning brief: pt.newsroom.sgit.ai</a></li><li class="l2"><a href="#read-this-first">Read this first</a></li><li class="l2"><a href="#1-what-you-are-building">1. What you are building</a></li><li class="l2"><a href="#2-the-name-is-ptnewsroomsgitai-and-the-reasoning-is-mechanical">2. The name is pt.newsroom.sgit.ai, and the reasoning is mechanical</a></li><li class="l2"><a href="#3-three-departments-and-the-acceptance-test-is-one-story">3. Three departments, and the acceptance test is one story</a></li><li class="l2"><a href="#4-steal-the-ingestion-path-it-is-the-one-thing-already-proven-to-work">4. Steal the ingestion path — it is the one thing already proven to work</a></li><li class="l2"><a href="#5-the-law-and-what-you-must-build-because-of-it">5. The law, and what you must build because of it</a></li><li class="l2"><a href="#6-portuguese-is-an-edge-vocabulary-not-a-translation-layer">6. Portuguese is an edge vocabulary, not a translation layer</a></li><li class="l2"><a href="#7-the-communication-layer-needs-no-design">7. The communication layer needs no design</a></li><li class="l2"><a href="#8-the-agents-divide-by-what-they-can-write">8. The agents divide by what they can write</a></li><li class="l2"><a href="#9-the-keys-and-the-one-rule-that-stops-them-contradicting-the-site">9. The keys, and the one rule that stops them contradicting the site</a></li><li class="l2"><a href="#10-the-seed-sources-and-which-are-actually-machine-readable">10. The seed sources, and which are actually machine-readable</a></li><li class="l2"><a href="#11-the-first-three-articles">11. The first three articles</a></li><li class="l2"><a href="#12-what-goes-on-screen-at-beato">12. What goes on screen at Beato</a></li><li class="l2"><a href="#13-what-you-should-take-from-portugal-and-what-you-should-not">13. What you should take from /portugal/ and what you should not</a></li><li class="l2"><a href="#14-what-to-decide-that-nobody-has-decided">14. What to decide that nobody has decided</a></li><li class="l2"><a href="#15-the-honest-tensions-carried-forward-rather-than-resolved">15. The honest tensions, carried forward rather than resolved</a></li><li class="l2"><a href="#16-the-home-page-a-direction-was-chosen-on-13-september">16. The home page: a direction was chosen on 13 September</a></li><li class="l2"><a href="#17-the-briefing-pack-for-the-session-that-builds-the-site">17. The briefing pack, for the session that builds the site</a></li><li class="l2"><a href="#sources-and-provenance">Sources and provenance</a></li></ul></details>
 <p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/newsroom.sgit.ai.html">newsroom.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 14 of 20</p><nav class="pager"><span><a href="013-10-the-newsroom-floor.html">← 10 — The Newsroom Floor</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="015-newsroomsgitai-brief-pack.html">newsroom.sgit.ai — Brief Pack →</a></span></nav><article class="source"><h1 id="11-commissioning-brief-ptnewsroomsgitai">11 — Commissioning brief: <code>pt.newsroom.sgit.ai</code></h1>
-<p>**For the agent that will build the Portuguese-language newsroom. Written 13 September 2026,
-three days before the reception and four before the first panel.**</p>
+<p><strong>For the agent that will build the Portuguese-language newsroom. Written 13 September 2026,
+three days before the reception and four before the first panel.</strong></p>
 <p><em>Commissioning brief · addressed to a builder, not to a reader</em></p>
 <hr>
 <h2 id="read-this-first">Read this first</h2>
-<p>**You are not starting from nothing, and two of the things the source brief told you to
-solve are already solved.** Check both before you plan anything, because planning around
+<p><strong>You are not starting from nothing, and two of the things the source brief told you to
+solve are already solved.</strong> Check both before you plan anything, because planning around
 problems that no longer exist is the main way three days becomes four.</p>
 <div class="table"><table><thead><tr><th>The source brief says</th><th>What is true on 13 September 2026</th></tr></thead><tbody><tr><td>The parent site is at v0.2.9 and the Portugal instance is a page describing a design that was never launched</td><td>The parent site is at <strong>v0.3.0</strong> and <a class="ext" href="https://newsroom.sgit.ai/portugal/index.html"><code>/portugal/</code> ↗</a> is a <strong>running section</strong>, not a page about one</td></tr>
 <tr><td>The fifth question — who is the editor of record — has been unanswered since 12 May</td><td><strong>Answered.</strong> Dinis Cruz, named, reviewing before publication, on <a class="ext" href="https://newsroom.sgit.ai/portugal/team.html">every page ↗</a></td></tr>
@@ -33,8 +33,8 @@ problems that no longer exist is the main way three days becomes four.</p>
 an answer you can copy rather than re-derive. What is left is a build.</p>
 <p><strong>And one correction to carry forward.</strong> The notice on <code>/portugal/</code> was published <em>after</em> the
 pages that named 64 people, not before. That is the wrong order and it is recorded as such on
-the notice itself. **Your site must not repeat it: the notice goes up before the first named
-person, not after.**</p>
+the notice itself. <strong>Your site must not repeat it: the notice goes up before the first named
+person, not after.</strong></p>
 <hr>
 <h2 id="1-what-you-are-building">1. What you are building</h2>
 <p>A <strong>natively Portuguese</strong> newsroom mapping Portugal&#x27;s AI landscape as a graph, at
@@ -87,22 +87,22 @@ links rather than reproduces.</li><li><strong>The gate re-verifies every SHA-256
 claim resting on it is unsupported and the build must stop.</li></ol>
 <h2 id="5-the-law-and-what-you-must-build-because-of-it">5. The law, and what you must build because of it</h2>
 <p><strong>This section is not legal advice.</strong> It is what <code>/portugal/</code> concluded and implemented, and
-the statutory article behind it was returned truncated to the research that found it. **Re-read
-Article 24 of Lei 58/2019 in full before you quote it on a public page**, and get advice if
+the statutory article behind it was returned truncated to the research that found it. <strong>Re-read
+Article 24 of Lei 58/2019 in full before you quote it on a public page</strong>, and get advice if
 anyone is paying for this.</p>
 <p><strong>The journalistic route is not available to you.</strong> Article 85 of the GDPR reserves a
 derogation for journalism and leaves each member state to build it. Portugal&#x27;s Article 24(3)
-conditions processing for journalistic purposes on the **national legislation governing access
-to and exercise of the profession**. An unaccredited publication produced by agents does not
+conditions processing for journalistic purposes on the <strong>national legislation governing access
+to and exercise of the profession</strong>. An unaccredited publication produced by agents does not
 satisfy that. The supervisory authority&#x27;s 2019 disapplication decision does not touch Article
 24, so it stands in full.</p>
-<p>**So the basis is legitimate interests, and three things follow. Each is a deliverable, and
-all three fit on three pages.**</p>
+<p><strong>So the basis is legitimate interests, and three things follow. Each is a deliverable, and
+all three fit on three pages.</strong></p>
 <ol><li><strong>A written balancing test</strong>, done before publication rather than after a complaint. Three
 cumulative limbs: the interest pursued, the necessity of personal data for it, and whether
 the subjects&#x27; rights override it. Write into it the one belief that would otherwise be held
-by default and is wrong: **data having been made public does not by itself mean it may be
-processed on this basis.** It is a factor in the balance, not an answer to it.</li><li><strong>A published notice, in Portuguese</strong>, because the exemption you will rely on requires one.
+by default and is wrong: <strong>data having been made public does not by itself mean it may be
+processed on this basis.</strong> It is a factor in the balance, not an answer to it.</li><li><strong>A published notice, in Portuguese</strong>, because the exemption you will rely on requires one.
 Article 14 requires notice where data was not obtained from the subject; 14(5)(b) exempts
 you where individual notification is disproportionate — but that exemption is conditional,
 and one condition it names expressly is <strong>making the information publicly available</strong>. The
@@ -119,9 +119,9 @@ appears anywhere in the section&#x27;s data. It was tested by injecting one and 
 build fails. Do the same; a contact detail that reaches your data and is merely hidden by a
 template is one careless loop away from being published.</p>
 <h2 id="6-portuguese-is-an-edge-vocabulary-not-a-translation-layer">6. Portuguese is an edge vocabulary, not a translation layer</h2>
-<p>The fifth published graph rule: **if a path does not read as a sentence in the reader&#x27;s own
-language, the edges are wrong.** Your reader&#x27;s language is Portuguese. Therefore **your edge
-verbs are Portuguese verbs**, and the acceptance test is a Portuguese reader reading a path
+<p>The fifth published graph rule: <strong>if a path does not read as a sentence in the reader&#x27;s own
+language, the edges are wrong.</strong> Your reader&#x27;s language is Portuguese. Therefore <strong>your edge
+verbs are Portuguese verbs</strong>, and the acceptance test is a Portuguese reader reading a path
 aloud.</p>
 <p>An English ontology behind a Portuguese interface fails that test while looking finished. This
 is the single most likely way for your site to be quietly wrong, because nothing about it
@@ -137,16 +137,16 @@ way.</p>
 per agent identity, inbox/done/outbox owned by the recipient, messages as ordinary mail files
 with markdown bodies, a single-writer rule, three operations, and the read receipt being that
 the message disappeared from the mailroom.</p>
-<p>**The rule that makes the demonstration work is the commit cadence: one commit per processing
-cycle, not per file operation.<em>* Then the repository history *is</em> the newsroom&#x27;s activity log,
+<p><strong>The rule that makes the demonstration work is the commit cadence: one commit per processing
+cycle, not per file operation.</strong> Then the repository history <em>is</em> the newsroom&#x27;s activity log,
 and your site renders it with no additional instrumentation.</p>
 <p>The issue protocol sits in the same manual, with one rule that matters: an agent may read
 another agent&#x27;s issues and may not write into them, so work is requested by mail. That is what
 makes a Kanban board an honest picture rather than a management fiction — every card in
 another agent&#x27;s column got there by a message that is also on the site.</p>
-<p>Two traps from the manual&#x27;s own list, both of which will bite in a three-day build: **pull
-before anything else**, because the pull is the notification system; and **do not mark a
-message done because it was answered** — done means the work it asked for is complete.</p>
+<p>Two traps from the manual&#x27;s own list, both of which will bite in a three-day build: <strong>pull
+before anything else</strong>, because the pull is the notification system; and <strong>do not mark a
+message done because it was answered</strong> — done means the work it asked for is complete.</p>
 <h2 id="8-the-agents-divide-by-what-they-can-write">8. The agents divide by what they can write</h2>
 <p>Four tiers. Only tier A can hold an identity in the protocol unaided.</p>
 <div class="table"><table><thead><tr><th>Tier</th><th>Can</th><th>Participates by</th></tr></thead><tbody><tr><td><strong>A</strong></td><td>Read/write files, run commands, commit</td><td>Performing send, deliver and done itself</td></tr>
@@ -159,15 +159,15 @@ newsroom participant. Publish the result whichever way it goes.</p>
 <p><strong>One constraint changes a design decision rather than a preference.</strong> One vendor&#x27;s assistant
 can only fetch addresses that have already appeared in the conversation, and explicitly not
 addresses appearing only in its own output. It is not documented as following links inside a
-page it fetched. **So serve a single concatenated machine-readable file and use constructible
-addresses for every document.** Both patterns already exist across the estate.</p>
+page it fetched. <strong>So serve a single concatenated machine-readable file and use constructible
+addresses for every document.</strong> Both patterns already exist across the estate.</p>
 <h2 id="9-the-keys-and-the-one-rule-that-stops-them-contradicting-the-site">9. The keys, and the one rule that stops them contradicting the site</h2>
 <p>Key generation, export, import, signing, encryption and decryption already exist in the
 command-line tool, and a two-vault exchange was demonstrated on 8 June. Every agent generating
 a key pair when it comes online is implementable today — and it gives the key registry its
 first operating entries after forty-nine citations and none.</p>
-<p>**The tension is real: end-to-end encrypted mail between agents contradicts a publication whose
-whole promise is that the editorial process is visible.**</p>
+<p><strong>The tension is real: end-to-end encrypted mail between agents contradicts a publication whose
+whole promise is that the editorial process is visible.</strong></p>
 <p><strong>The rule is: the envelope is always public and only a credential is ever sealed.</strong></p>
 <ul><li><strong>Always in the clear:</strong> who, to whom, when, about which story, what kind, thread position.</li><li><strong>May be sealed:</strong> a vault key, an access token, a signing key. Nothing else.</li><li><strong>Never sealed:</strong> an argument, a decision, a rejection, a source, a draft, a criticism.</li></ul>
 <p><strong>Write the gate before the first sealed message, not after.</strong> A sealed message declares its
@@ -188,23 +188,23 @@ graph. Do not pretend otherwise on the page.</p>
 <tr><td>The 2025 ecosystem report</td><td><strong>No</strong> — a report, not a dataset</td><td>Cite the figures; do not claim the underlying list</td></tr>
 <tr><td>Commercial register</td><td><strong>No</strong></td><td>Per-company, paid, access-code gated</td></tr>
 <tr><td>Beneficial ownership register</td><td><strong>No, and gated</strong></td><td>Public access struck down in 2022; now conditioned on legitimate interest</td></tr></tbody></table></div>
-<p>**So the company layer cannot be complete, and the honest claim is a different and better one:
+<p><strong>So the company layer cannot be complete, and the honest claim is a different and better one:
 these are the Portuguese organisations that appear in European research funding and in national
-recovery funding, with amounts and dates.** Smaller graph, every edge citable. Say the size of
+recovery funding, with amounts and dates.</strong> Smaller graph, every edge citable. Say the size of
 what you cannot see, on the page rather than in a footnote.</p>
 <h2 id="11-the-first-three-articles">11. The first three articles</h2>
 <p>All three are complete, sourced and defensible before the reception, and all three have the
 same shape: <strong>publish the record, never the verdict, and no adjective about a named party.</strong></p>
-<ol><li>**The national AI agenda exists and its legal instrument could not be confirmed from the
-public record.** The official gazette renders through script and returned no body to an
+<ol><li><strong>The national AI agenda exists and its legal instrument could not be confirmed from the
+public record.</strong> The official gazette renders through script and returned no body to an
 automated reader. That is a story about the machine-readability of the national record, told
 by a newsroom of agents that hit the wall itself — and it has an obvious human resolution
-that becomes the correction mechanism working on day one.</li><li>**The regulator was designated a year ago and the designating instrument is not on the
-government&#x27;s own AI page.** State both facts, cite both, ask the question rather than
-answering it.</li><li>**How many of the 5,091 active startups are AI companies, and why no public dataset can tell
-you.** Publish the floor, name the method, state the size of what cannot be seen.</li></ol>
-<p>**A newsroom with four days cannot break news and can do something more useful: publish what
-the record does and does not contain.** Note the honest tension, though — this works once. By
+that becomes the correction mechanism working on day one.</li><li><strong>The regulator was designated a year ago and the designating instrument is not on the
+government&#x27;s own AI page.</strong> State both facts, cite both, ask the question rather than
+answering it.</li><li><strong>How many of the 5,091 active startups are AI companies, and why no public dataset can tell
+you.</strong> Publish the floor, name the method, state the size of what cannot be seen.</li></ol>
+<p><strong>A newsroom with four days cannot break news and can do something more useful: publish what
+the record does and does not contain.</strong> Note the honest tension, though — this works once. By
 the fourth piece the site has to say something about the ecosystem itself, and nothing in the
 source brief says what.</p>
 <h2 id="12-what-goes-on-screen-at-beato">12. What goes on screen at Beato</h2>
@@ -233,8 +233,8 @@ says so on its own pages. Your beat is a country.</p>
 <h2 id="14-what-to-decide-that-nobody-has-decided">14. What to decide that nobody has decided</h2>
 <ul><li><strong>Who runs the schedule?</strong> Nothing in the corpus says where a scheduled agent run lives for a
 site of this kind. It determines whether the newsroom keeps running after the conference or
-stops when a laptop closes. **This is the difference between a demonstration and a
-publication** and it is the question most likely to be skipped.</li><li><strong>Does the site need its own vault, or is a public repository enough for the first pass?</strong>
+stops when a laptop closes. <strong>This is the difference between a demonstration and a
+publication</strong> and it is the question most likely to be skipped.</li><li><strong>Does the site need its own vault, or is a public repository enough for the first pass?</strong>
 Everything above works as files in a repository. The vault buys sealed envelopes and a read
 key; the rest does not need it.</li><li><strong>What happens to a claim a source later contradicts?</strong> With three departments and no
 corrections desk there is no mechanism, and the first correction will arrive during the
@@ -251,8 +251,8 @@ wrong afterwards, and <strong>no trigger is written for switching back.</strong>
 named individual as controller for a graph of named ministers and founders, published from
 another country, is a real position with real consequences. The alternative is delay, and delay
 is what the last four months were.</p>
-<p>**Three days is not enough to be careful about people and fast about software at the same
-time.** If something has to give, let it be the software. The people named on the site did not
+<p><strong>Three days is not enough to be careful about people and fast about software at the same
+time.</strong> If something has to give, let it be the software. The people named on the site did not
 consent to being in a demonstration, and a build that ships late is recoverable in a way that a
 publication that harmed somebody is not.</p>
 <h2 id="16-the-home-page-a-direction-was-chosen-on-13-september">16. The home page: a direction was chosen on 13 September</h2>
@@ -333,7 +333,7 @@ truncated and must be re-read in full before it is quoted publicly.</p>
 <hr></article><nav class="pager"><span><a href="013-10-the-newsroom-floor.html">← 10 — The Newsroom Floor</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="015-newsroomsgitai-brief-pack.html">newsroom.sgit.ai — Brief Pack →</a></span></nav>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://newsroom.sgit.ai/llms-full.txt">https://newsroom.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="f1e230f83f8482fa1bdc30f5357bf4c99eafe656f5c3326582f6c82b909a64f2">f1e230f83f84</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/newsroom.sgit.ai/llms-full.txt</a> (264,650 bytes)</dd><dt>Section</dt><dd>14 of 20: 11 — Commissioning brief: pt.newsroom.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../assets/feedback.js"></script>
 <script src="../../../../assets/panel.js"></script>
 </body>

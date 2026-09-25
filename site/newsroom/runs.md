@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T15:05:00Z build.desk: Emphasis that runs over a wrapped line rendered as plain asterisks (seen on the relayed message's note).
 - 2026-09-25T14:55:00Z editor.human: The editor of record's decision of 25 September: a vault as the channel to agent@riskmandate.ai, with Email-FS-lite.
 - 2026-09-25T14:50:00Z build.desk: Tooling for the relay (issue 024): send and check messages over the relay vault; show message states on the briefing pages.
 - 2026-09-25T14:45:00Z editor.desk: The relay to other sites' agents, as the editor of record asked: a shared sgit vault under Email-FS-lite. Say how it works, name the identities, tell riskmandate.ai's agent how to join.

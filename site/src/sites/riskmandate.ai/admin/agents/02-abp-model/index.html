@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.14" data-root="../../../../../../">
+<html lang="en-GB" data-version="v0.1.15" data-root="../../../../../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.14 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.15 · snapshot 2026-09-24</span>
 <nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../news/index.html">News</a><a href="../../../../../../history/index.html">Perspective</a><a href="../../../../../../maps/index.html">Maps</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../briefings/index.html">Briefings</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../admin/index.html">Admin</a><a href="../../../../../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../../../../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -23,13 +23,13 @@ Source: <a href="index.html">https://riskmandate.ai/admin/agents/02-abp-model/</
 site. Where this and <code>https://abp.sgit.ai/</code> (v0.3.0, pinned in every vault under
 <code>data/vocabulary/</code>) disagree, the model site is right and this file is stale: fix it.</p>
 <h2 id="what-it-is">What it is</h2>
-<p>An <strong>Agent Behaviour Policy</strong> (ABP) is a written description, for **one agent in one
-deployment**, of everything it can do, what it was authorised to do, the gap between the two,
+<p>An <strong>Agent Behaviour Policy</strong> (ABP) is a written description, for <strong>one agent in one
+deployment</strong>, of everything it can do, what it was authorised to do, the gap between the two,
 and what actually stands in the way. It <strong>describes and does not judge</strong>, so it carries no
 score. The same ABP is dangerous in one deployment and harmless in another, and nothing about
 the document changed; the deployment did. Every ABP carries the validity statement:
-*This describes the deployment shape as at this date. If the risk changed, the deployment
-changed, not this document.*</p>
+<em>This describes the deployment shape as at this date. If the risk changed, the deployment
+changed, not this document.</em></p>
 <p>It is not a new product. It is the primitive the rest of RiskMandate was made of, now named,
 published, and sellable (the store is <code>store.sgit.ai</code>; the entry tier is £10).</p>
 <h2 id="four-objects-and-the-verb-on-each-is-the-model">Four objects, and the verb on each is the model</h2>
@@ -66,8 +66,8 @@ calendar, see every account), so the grant is never silently narrower than the c
 <tr><td>◉</td><td><code>expectation</code></td><td>a rule in prose, enforced by nobody (<code>AGENTS.md</code>, a system prompt, this file)</td><td>no</td></tr>
 <tr><td>◐</td><td><code>setting</code></td><td>a switch the agent&#x27;s own account can flip (a confirmation prompt)</td><td>no</td></tr>
 <tr><td>○</td><td><code>boundary</code></td><td>enforced above the grant, out of the agent&#x27;s reach (a token scope, a branch rule, a sandbox, an egress proxy)</td><td><strong>yes</strong></td></tr></tbody></table></div>
-<p><strong>The enforcer test:</strong> *a control bounds a grant only if it is enforced by something the grant
-does not include.* Consequences: the credential the agent holds is the grant, not a barrier; a
+<p><strong>The enforcer test:</strong> <em>a control bounds a grant only if it is enforced by something the grant
+does not include.</em> Consequences: the credential the agent holds is the grant, not a barrier; a
 prohibition rendered without its barrier is a claim we cannot support; for most deployments
 today the honest answer is the second row.</p>
 <p><strong>Undo classes</strong> (a property of the action, never a severity; irreversible first on every
@@ -85,15 +85,15 @@ granted and wanted. The build refuses to write a delta it cannot reproduce from 
 <h2 id="the-four-counts-and-the-one-number-anybody-can-move">The four counts, and the one number anybody can move</h2>
 <p>A card shows <strong>grant · mandate · excess · unbounded excess</strong> (and shortfall). None is a score.
 <em>Unbounded excess</em> is the only number a control can move: every real control shifts one row into
-the fourth barrier and it falls. The gap between excess and unbounded excess is **the business
-case for a control, with no verdict in it**: *this provision requires X; the grant does not
-bound X; a control of type Y at layer Z would bound X.* That is the partner motion.</p>
+the fourth barrier and it falls. The gap between excess and unbounded excess is <strong>the business
+case for a control, with no verdict in it</strong>: <em>this provision requires X; the grant does not
+bound X; a control of type Y at layer Z would bound X.</em> That is the partner motion.</p>
 <h2 id="where-the-abp-sits-the-label-the-record-the-prescription">Where the ABP sits: the label, the record, the prescription</h2>
 <div class="table"><table><thead><tr><th></th><th>Thing</th><th>Does</th><th>Scored?</th><th>Signed?</th></tr></thead><tbody><tr><td>Label</td><td>the ABP</td><td>describes capability, context-free</td><td><strong>never</strong></td><td>no</td></tr>
 <tr><td>Patient record</td><td>the twin, hooked to the real environment</td><td>supplies assets, tools, data, what is connected</td><td>no</td><td>no</td></tr>
 <tr><td>Prescription</td><td>the Insurability Index + risk acceptance</td><td>combines the two, dated, expiring</td><td><strong>yes</strong></td><td>a named person</td></tr></tbody></table></div>
-<p>riskmandate.ai is the prescription layer commercially and sells the label today. **We are on
-the first step** and the homepage says so. The Index&#x27;s six levels and five dimensions are a published
+<p>riskmandate.ai is the prescription layer commercially and sells the label today. <strong>We are on
+the first step</strong> and the homepage says so. The Index&#x27;s six levels and five dimensions are a published
 design, not a running calculation. <em>Licence to Operate</em>: the organisation is the authority, the
 ABP is the instrument, the agent is the licensee; <em>mandate to operate</em> is retired.</p>
 <h2 id="naming-rules">Naming rules</h2>
@@ -144,7 +144,7 @@ visible edge. The build order is in <code>03-state-and-next.md</code>.</p>
 <tr><td>a documented row could be wrong the way documentation is wrong</td><td>that a documented row was tested</td></tr></tbody></table></div></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/02-abp-model/index.html">https://riskmandate.ai/admin/agents/02-abp-model/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/02-abp-model/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="ce6f9f9b6a3a4830b28177e24ff47708a6b2c2d9d438940a80ff4f11c5b1df76">ce6f9f9b6a3a</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/02-abp-model/index.md</a> (11,370 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.14 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.15 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
 <script src="../../../../../../assets/feedback.js"></script>
 <script src="../../../../../../assets/panel.js"></script>
 </body>

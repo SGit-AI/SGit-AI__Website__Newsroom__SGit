@@ -52,11 +52,12 @@ class Renderer:
         text = re.sub(r'(?<![\w/="\'])(https?://[^\s<>()\[\]`"]*[^\s<>()\[\]`".,;:!?\'*_])',
                       lambda m: keep(self.link(m.group(1), html.escape(m.group(1)))), text)
         text = html.escape(text)
-        text = re.sub(r'\*\*\*(\S(?:.*?\S)?)\*\*\*', r'<strong><em>\1</em></strong>', text)
-        text = re.sub(r'\*\*(\S(?:.*?\S)?)\*\*', r'<strong>\1</strong>', text)
+        # emphasis may run over a line break inside a paragraph (the desks wrap at 110 columns)
+        text = re.sub(r'\*\*\*(\S(?:.*?\S)?)\*\*\*', r'<strong><em>\1</em></strong>', text, flags=re.S)
+        text = re.sub(r'\*\*(\S(?:.*?\S)?)\*\*', r'<strong>\1</strong>', text, flags=re.S)
         text = re.sub(r'(?<![\w*])__(\S(?:.*?\S)?)__(?![\w*])', r'<strong>\1</strong>', text)
-        text = re.sub(r'(?<![\w*])\*(\S(?:.*?\S)?)\*(?![\w*])', r'<em>\1</em>', text)
-        text = re.sub(r'(?<![\w_])_(\S(?:.*?\S)?)_(?![\w_])', r'<em>\1</em>', text)
+        text = re.sub(r'(?<![\w*])\*(\S(?:.*?\S)?)\*(?![\w*])', r'<em>\1</em>', text, flags=re.S)
+        text = re.sub(r'(?<![\w_])_(\S(?:.*?\S)?)_(?![\w_])', r'<em>\1</em>', text, flags=re.S)
         text = re.sub(r'~~(\S(?:.*?\S)?)~~', r'<del>\1</del>', text)
         text = re.sub(r'  +\n|\\\n', '<br>\n', text)
         while '\x00' in text:

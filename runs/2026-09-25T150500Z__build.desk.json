@@ -1,0 +1,9 @@
+{
+  "when": "2026-09-25T15:05:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Emphasis that runs over a wrapped line rendered as plain asterisks (seen on the relayed message's note).",
+  "folders_changed": ["tools/"],
+  "did": ["tools/mdlite.py: bold and italic may span a line break inside a paragraph (the desks and the source sites wrap at ~110 columns); 651 more emphasis runs across 611 pages, spot-checked."],
+  "gates": true
+}
