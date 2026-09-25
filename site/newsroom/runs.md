@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T17:35:00Z editor.human: The editor of record asked for the feedback vault to be created with their access token, and its key handed to them in the session.
 - 2026-09-25T17:25:00Z cartographer.desk: Draw every moving part of issue 048 (feedback sent from the browser over an append lane) so the editor of record can see the whole design.
 - 2026-09-25T17:00:00Z editor.human: File the editor of record's idea of 25 September: feedback sent from the browser to the newsroom over an append lane.
 - 2026-09-25T16:35:00Z editor.human: The editor of record's choice of 25 September: an append lane on the collaboration vault instead of a member's clone.

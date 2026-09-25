@@ -30,3 +30,12 @@ auto-send in batches; the batch is the "Copy for Claude" content; a receiver in 
 verify, mark processed) that files each batch in admin/inbox/ as a paste would be.
 
 Done when: a batch sent from a browser on the live site lands, verified, in admin/inbox/ on the next run.
+
+## Progress, 25 September
+
+- The design drawn: `maps/feedback-over-an-append-lane.md` (v0.1.19).
+- The vault exists: `newsroom-feedback`, id `q06q7w4e`, on dev.send.sgraph.ai (the sgit CLI's default server, and the
+  host where the append route answers). Created at the editor of record's request with their access token; one commit
+  (a README saying what the vault is for); verified by a fresh clone. The vault key was handed to the editor of record
+  in the session and is in no file here.
+- Next: the key pair that decrypts (`sgit pki keygen`), one append token per device, `configure`, then the browser side.
