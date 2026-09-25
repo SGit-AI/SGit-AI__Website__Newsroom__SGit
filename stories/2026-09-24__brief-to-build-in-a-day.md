@@ -2,6 +2,8 @@
 title: A brief written on one site, built on another the same day
 date: 2026-09-24
 desk: Journalist
+standfirst: A build brief written on sgit.ai asked riskmandate.ai for an interview page, and riskmandate.ai built it under the same date. Each site recorded its half in public, and the two records do not quite agree.
+section: news
 sources:
   - https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html
   - https://sgit.ai/docs/briefs/index.html

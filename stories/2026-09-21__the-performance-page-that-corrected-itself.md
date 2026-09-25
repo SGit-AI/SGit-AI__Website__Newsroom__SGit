@@ -2,6 +2,8 @@
 title: The performance page that corrected itself, release by release
 date: 2026-09-21
 desk: Journalist
+standfirst: On 21 September sgit.ai published a page answering one question, then spent six more releases making the answer right and findable. This is the sequence, in the site's own records.
+section: news
 sources:
   - https://sgit.ai/updates/index.html#performance-and-cost
   - https://sgit.ai/admin/versions.html

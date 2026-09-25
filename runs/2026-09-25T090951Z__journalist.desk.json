@@ -1,0 +1,20 @@
+{
+  "when": "2026-09-25T09:09:51Z",
+  "agent": "journalist.desk",
+  "kind": "desk",
+  "task": "Back catalogue, part B: four pieces a new reader needs (a reader's guide to the 32 sites, a feature on abp.sgit.ai, a feature on the three newsrooms, an explainer on how agentic teams are organised), and standfirst and section lines for the three existing stories.",
+  "folders_changed": [
+    "stories/",
+    "runs/"
+  ],
+  "did": [
+    "stories/2026-09-24__a-readers-guide-to-the-sgit-network.md (explainer, about 1,070 words): all 32 sites in seven groups, one or two sentences each from its own llms.txt (front page for the two provider sites without one), file counts from sources/sites/manifest.json.",
+    "stories/2026-09-24__the-agent-behaviour-policy-site.md (feature, about 1,130 words): what an ABP is, 20 releases from v0.1.0 to v0.11.0, 315 files (182 md, 131 json, 2 txt), 14 articles, and riskmandate.ai's use of it (16 vault pages, the reviewed level, Lab 03 requests), shipped and drawn kept apart.",
+    "stories/2026-09-24__three-newsrooms.md (feature, about 1,080 words): newsroom.sgit.ai's three running instances against its design, pt.newsroom.sgit.ai's real and not-real lists, this newsroom from brief/01; records that pt.newsroom.sgit.ai's llms.txt says no story is published while its story index says 5 of 6 are.",
+    "stories/2026-09-25__how-agentic-teams-are-organised.md (explainer, about 1,020 words): teams.sgit.ai's two fields, claim forms 6/7/6, Explorer/Villager/Town Planner, and this newsroom's nine agents compared field by field. Dated 2026-09-25, not 2026-09-24, because the newsroom's register it describes was created on 25 September (commit dee6057).",
+    "Added standfirst and section: news to the three existing stories (2026-09-21, 2026-09-23, 2026-09-24); nothing else in them changed.",
+    "Every quotation in the four new pieces checked by script against the snapshot, brief/, agents/ and the dee6057 commit message: 0 missing."
+  ],
+  "gates": false,
+  "note": "Built and validated into a private folder (NEWSROOM_SITE_OUT) because other desks were working at the same time. The build passed. The validator reported 2 failures, neither in stories/: site/history/the-story-so-far.html links open-questions.html, and a page under site/maps/ links a map not yet written (riskmandate-wardley.html on one run, brief-to-build.html on the next). Both come from uncommitted work by other desks (history/the-story-so-far.md, maps/). For the editor: the abp.sgit.ai piece counts 315 files in the snapshot, of which 182 are markdown (the task said 180). No version bump, commit or push in this run, as asked."
+}

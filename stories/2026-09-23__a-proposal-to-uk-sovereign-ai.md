@@ -2,6 +2,8 @@
 title: sgit.ai makes its case to UK Sovereign AI in public, and labels it a proposal
 date: 2026-09-23
 desk: Journalist
+standfirst: sgit.ai opened a partnerships section with one case, a partnership with UK Sovereign AI, and released it three times in an afternoon. Each release made it more careful about saying it is a proposal.
+section: news
 sources:
   - https://sgit.ai/partnerships/index.html
   - https://sgit.ai/partnerships/sovereign-ai.html
