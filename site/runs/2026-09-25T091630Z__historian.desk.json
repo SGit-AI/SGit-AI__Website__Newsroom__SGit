@@ -1,0 +1,18 @@
+{
+  "when": "2026-09-25T09:16:30Z",
+  "agent": "historian.desk",
+  "kind": "desk",
+  "task": "The bigger picture: history/the-story-so-far.md from the first recorded release to 24 September 2026; history/decisions.md restructured into a numbered log D-001 onward with pre-18 September decisions added; history/open-questions.md numbered Q-001 onward.",
+  "folders_changed": [
+    "history/",
+    "runs/"
+  ],
+  "did": [
+    "Read all 166 sgit.ai version-log entries, riskmandate.ai's versions.md and all 106 release notes, the llms.txt of abp, risks, store, nhi, twins, pki, graphs, open-source, sg-sentinel and what-can-it-do.games, abp.sgit.ai's version notes v0.1.0, v0.2.0 and v0.4.4, data/network.json, the editions of 20 to 24 September and history/*.md.",
+    "history/the-story-so-far.md: 1942 words, covers 2026-06-29 to 2026-09-24; three eras, six connection lines, six moments.",
+    "history/decisions.md: 124 decisions (52 kept from 24 September, 72 added from 29 June to 17 September across riskmandate.ai, sgit.ai and abp.sgit.ai), oldest first, with supersedes and superseded-by lineage; 12 contradictions (3 added).",
+    "history/open-questions.md: 29 questions, 2122 words, 11 August to 24 September."
+  ],
+  "gates": true,
+  "note": "Step 6 of the skill not done by instruction: no version bump, no commit, no push. Built and validated into a scratch NEWSROOM_SITE_OUT folder because several desks ran at once. history/week-2026-39.md and history/lessons.md unchanged. For the Librarian: store.sgit.ai's llms.txt lists a checkout address for t1 while saying no payment link exists (recorded under Contradictions in history/decisions.md); sgit.ai's v0.2.56 and v0.2.58 say 'two days after v0.2.55' though the log dates v0.2.55 and v0.2.56 the same day."
+}

@@ -1,6 +1,14 @@
 # News
 
+- [How agentic teams are organised in the sgit network, and how this newsroom's desks compare](stories/2026-09-25__how-agentic-teams-are-organised.md)
+- [Three newsrooms in one network, and what each one actually runs](stories/2026-09-24__three-newsrooms.md)
+- [Thirty-six published vaults, and what a reader can open today](stories/2026-09-24__thirty-six-published-vaults.md)
+- [abp.sgit.ai, the site that writes down what an agent can do and what it was asked to do](stories/2026-09-24__the-agent-behaviour-policy-site.md)
+- [sgit.ai from v0.1.1 to v0.6.8, release by release](stories/2026-09-24__sgit-ai-from-v0-1-1-to-v0-6-8.md)
+- [RiskMandate.ai from its baseline to v1.34.8](stories/2026-09-24__riskmandate-from-baseline-to-v1-34-8.md)
+- [Five business plans, published as vaults for somebody else to run](stories/2026-09-24__five-business-plans-published-as-vaults.md)
 - [A brief written on one site, built on another the same day](stories/2026-09-24__brief-to-build-in-a-day.md)
+- [A reader's guide to the sgit network](stories/2026-09-24__a-readers-guide-to-the-sgit-network.md)
 - [sgit.ai makes its case to UK Sovereign AI in public, and labels it a proposal](stories/2026-09-23__a-proposal-to-uk-sovereign-ai.md)
 - [The performance page that corrected itself, release by release](stories/2026-09-21__the-performance-page-that-corrected-itself.md)
 - [A brief written on one site, built on another the same day](editions/2026-09-24.md)

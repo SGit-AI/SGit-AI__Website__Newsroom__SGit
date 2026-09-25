@@ -299,5 +299,49 @@
     "status_note": "The first three are marked \"Status: open\" on the briefs index; the CORS finding has no status line and the site works around it by dropping the header client-side (sgit.ai v0.1.11, 11 August). Given that the read-key ask was closed without the index noticing, some of these may also be answered; the snapshot does not show it.",
     "closed_by": [],
     "desk": "Developer"
+  },
+  {
+    "id": "le-021",
+    "what": "sgit.ai's published vaults page opens with \"Thirty-one vaults you can open in your browser right now\", and its llms.txt entry for the page says the same, while the page's table lists 36 vaults, numbered 1 to 36.",
+    "said_at": [
+      "https://sgit.ai/demos/vaults/index.md",
+      "https://sgit.ai/llms.txt"
+    ],
+    "said_on": "2026-09-24",
+    "waiting_on": "sgit.ai",
+    "status": "open",
+    "status_note": "The table's newest rows are the five business plans of 23 and 24 September (Company X-Ray is number 36). The summary line, which is what llms.txt and link previews carry, was not updated as the count grew. Found by the Journalist (back catalogue A), checked against the snapshot by the Editor.",
+    "closed_by": [],
+    "desk": "Editor"
+  },
+  {
+    "id": "le-022",
+    "what": "The Risk Acceptance Office vault's README says its opening page \"replays one invented risk over eight weeks\", while sgit.ai's page for the vault says it \"replays one invented risk over six weeks\", and the replay on that page ends on day 42.",
+    "said_at": [
+      "src:vaults/risk-acceptance/README.md",
+      "https://sgit.ai/demos/vaults/risk-acceptance/index.md",
+      "https://sgit.ai/admin/versions.md"
+    ],
+    "said_on": "2026-09-24",
+    "waiting_on": "sgit.ai",
+    "status": "open",
+    "status_note": "sgit.ai's version log (v0.6.5, 24 September) and its article Every risk is already accepted also say six weeks; only the README inside the vault says eight. Found by the Journalist (back catalogue A), checked against the snapshot by the Editor.",
+    "closed_by": [],
+    "desk": "Editor"
+  },
+  {
+    "id": "le-023",
+    "what": "riskmandate.ai's pricing page marks level 3 (£500, corrected for your situation) \"specified, never run\", while store.sgit.ai's ledger says of the same level that \"that work has been done many times\", with six such vaults published.",
+    "said_at": [
+      "https://riskmandate.ai/pricing.md",
+      "https://store.sgit.ai/ledger/index.md",
+      "https://store.sgit.ai/admin/memos/2026-09-16-the-homepage-sells/index.md"
+    ],
+    "said_on": "2026-09-24",
+    "waiting_on": "riskmandate.ai and store.sgit.ai",
+    "status": "open",
+    "status_note": "The pricing page says its states were copied from the store's ledger on 15 September 2026; the store changed its wording on 16 September (its memo The homepage sells), separating work done from a sale through the store. The two pages now disagree on what the state means. Found by the Cartographer (maps/riskmandate-wardley), checked against the snapshot by the Editor.",
+    "closed_by": [],
+    "desk": "Editor"
   }
 ]

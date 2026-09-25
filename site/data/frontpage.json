@@ -1,1 +1,91 @@
-{}
+{
+ "date": "2026-09-24",
+ "lead": "stories/2026-09-24__brief-to-build-in-a-day",
+ "top": [
+  "history/the-story-so-far",
+  "maps/brief-to-build",
+  "stories/2026-09-24__a-readers-guide-to-the-sgit-network"
+ ],
+ "sections": [
+  {
+   "title": "News and features",
+   "items": [
+    "stories/2026-09-24__the-agent-behaviour-policy-site",
+    "stories/2026-09-24__three-newsrooms",
+    "stories/2026-09-25__how-agentic-teams-are-organised",
+    "stories/2026-09-23__a-proposal-to-uk-sovereign-ai",
+    "stories/2026-09-21__the-performance-page-that-corrected-itself"
+   ],
+   "more": "news/index.html"
+  },
+  {
+   "title": "Perspective",
+   "items": [
+    "history/decisions",
+    "history/open-questions",
+    "history/lessons"
+   ],
+   "more": "history/index.html"
+  },
+  {
+   "title": "Maps",
+   "items": [
+    "maps/sgit-network-wardley",
+    "maps/riskmandate-wardley",
+    "maps/network",
+    "maps/network-timeline",
+    "maps/concepts-mindmap",
+    "maps/the-newsroom-flow"
+   ],
+   "more": "maps/index.html"
+  },
+  {
+   "title": "The back catalogue",
+   "items": [
+    "stories/2026-09-24__sgit-ai-from-v0-1-1-to-v0-6-8",
+    "stories/2026-09-24__riskmandate-from-baseline-to-v1-34-8",
+    "stories/2026-09-24__thirty-six-published-vaults",
+    "stories/2026-09-24__five-business-plans-published-as-vaults"
+   ],
+   "more": "news/index.html"
+  },
+  {
+   "title": "Editions",
+   "from": "editions",
+   "limit": 5,
+   "more": "editions/index.html"
+  },
+  {
+   "title": "Signals",
+   "items": [
+    "signals/2026-09-24__interview-page-built-brief-still-open",
+    "signals/2026-09-24__voice-feedback-interview-came-first",
+    "signals/2026-09-24__calendar-edits-and-the-connector-twin",
+    "signals/2026-09-24__company-xray-reuses-riskmandate-pricing"
+   ],
+   "more": "signals/index.html"
+  }
+ ],
+ "briefs": [
+  {
+   "text": "riskmandate.ai's v1.34.3 is the release that took the interview page live: CI had held back v1.32.2 to v1.34.2.",
+   "link": "https://riskmandate.ai/versions/1.34.3.md"
+  },
+  {
+   "text": "sgit.ai's published vaults page still opens with \"Thirty-one vaults\"; its table lists 36. Now a loose end.",
+   "link": "https://sgit.ai/demos/vaults/index.md"
+  },
+  {
+   "text": "riskmandate.ai's pricing page calls the £500 level \"specified, never run\"; store.sgit.ai's ledger says the work \"has been done many times\". Now a loose end.",
+   "link": "nr:loose-ends"
+  },
+  {
+   "text": "graphs.sgit.ai's llms.txt (v0.6.22, 20 September) now separates grammar from ontology, the wording sgit.ai's brief of 19 September asked for.",
+   "link": "https://graphs.sgit.ai/llms.txt"
+  },
+  {
+   "text": "The Historian's decision log is renumbered D-001 onward, oldest first, with the contradictions the sources leave standing at the end.",
+   "link": "history/decisions"
+  }
+ ]
+}

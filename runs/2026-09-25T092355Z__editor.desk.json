@@ -1,0 +1,22 @@
+{
+  "when": "2026-09-25T09:23:55Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Compose the front page dated 24 September 2026 from this run's Journalist, Historian and Cartographer work; write the editor's notes and the five desks' standing prompts; check the desks' findings in the sources and add those that are loose ends.",
+  "folders_changed": [
+    "data/frontpage.json",
+    "admin/",
+    "data/loose-ends.json",
+    "runs/"
+  ],
+  "did": [
+    "data/frontpage.json: lead stories/2026-09-24__brief-to-build-in-a-day (quotations and figures checked against riskmandate.ai v1.34.2, v1.34.3, v1.34.4, its brief register and sgit.ai's brief and briefs index); 3 top items (history/the-story-so-far, maps/brief-to-build, the reader's guide); 6 sections (News and features 5, Perspective 3, Maps 6, The back catalogue 4, Editions 5, Signals 4); 5 briefs, each with a link.",
+    "admin/notes.md: priorities, what is next for each desk, 37 pieces waiting for the editor of record (11 stories, 5 editions, 5 history, 6 maps, 10 signals), and 4 hand-offs between desks.",
+    "admin/prompts/: 5 standing prompts (editor.desk, librarian.desk, journalist.desk, historian.desk, cartographer.desk).",
+    "data/loose-ends.json: 3 added (le-021 vaults summary thirty-one against 36 rows; le-022 replay eight weeks against six; le-023 level 3 never run against done many times), each checked in the snapshot; 20 existing entries kept.",
+    "Not added, already contradictions in history/decisions.md (all three verified): fifteen or sixteen examples, store.sgit.ai's t1 checkout address, 'two days after v0.2.55'.",
+    "data/sections.json unchanged."
+  ],
+  "gates": true,
+  "note": "Built and validated into a private NEWSROOM_SITE_OUT folder; no version bump, commit or push, as instructed. history/week-2026-39 left off the front page: it has no standfirst, so its card reads 'Counted by this desk from the logs named.' For the Historian: add standfirsts to week-2026-39 and lessons. For the Librarian: riskmandate.ai v1.34.9 to v1.34.12 are named in versions/index.json but not in the snapshot."
+}

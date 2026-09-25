@@ -4,6 +4,11 @@
 - 2026-09-25T09:32:00Z editor.desk: Set up the back office and the site's sections.
 - 2026-09-25T09:31:00Z librarian.desk: Compute the network: which site links to which.
 - 2026-09-25T09:30:00Z build.desk: Newsroom workflow infrastructure: bundled Mermaid, maps, the magazine front page, News, the admin back office, sections-driven navigation.
+- 2026-09-25T09:23:55Z editor.desk: Compose the front page dated 24 September 2026 from this run's Journalist, Historian and Cartographer work; write the editor's notes and the five desks' standing prompts; check the desks' findings in the sources and add those that are loose ends.
+- 2026-09-25T09:16:30Z historian.desk: The bigger picture: history/the-story-so-far.md from the first recorded release to 24 September 2026; history/decisions.md restructured into a numbered log D-001 onward with pre-18 September decisions added; history/open-questions.md numbered Q-001 onward.
+- 2026-09-25T09:15:07Z cartographer.desk: Draw the newsroom's first maps: a Wardley map of the sgit network and one of riskmandate.ai's offer, a timeline of the network, a mindmap of the recurring concepts, a flowchart of the newsroom's own run, and a flowchart of the brief-to-build story.
+- 2026-09-25T09:09:51Z journalist.desk: Back catalogue, part B: four pieces a new reader needs (a reader's guide to the 32 sites, a feature on abp.sgit.ai, a feature on the three newsrooms, an explainer on how agentic teams are organised), and standfirst and section lines for the three existing stories.
+- 2026-09-25T09:09:21Z journalist.desk: Back catalogue, part A: reverse-engineer four pieces from material the network already has: sgit.ai from v0.1.1 to v0.6.8, RiskMandate.ai from its baseline to v1.34.8, the five business plans published as vaults, and the 36 published vaults as a whole.
 - 2026-09-25T08:49:09Z architect.guest: Find why pt.newsroom.sgit.ai's rendered agent files (agents/*/ROLE.md, MANDATE.md) show some fields one character per bullet, and write a signal for that newsroom: what is wrong, the cause, the fix, and that this newsroom's tools/agents.py already renders a string field as one item.
 - 2026-09-25T08:24:17Z build.desk: Frame the vault apps inside the newsroom; vaults as cards.
 - 2026-09-25T08:20:29Z build.desk: Build the reading-list design: filters and feedback kept on the device.
