@@ -3,12 +3,12 @@ title: The performance page that corrected itself, release by release
 date: 2026-09-21
 desk: Journalist
 sources:
-  - https://sgit.ai/updates/2026/09/21/v0.3.2__update__performance-and-cost.html
+  - https://sgit.ai/updates/index.html#performance-and-cost
   - https://sgit.ai/admin/versions.html
   - https://sgit.ai/demos/fractal-graphs/performance.html
-  - https://sgit.ai/updates/2026/09/21/v0.3.4__update__the-design-is-the-performance.html
-  - https://sgit.ai/updates/2026/09/21/v0.3.5__update__that-was-a-cold-start-not-an-architecture-cost.html
-  - https://sgit.ai/updates/2026/09/21/v0.3.6__update__take-the-api-out-of-the-path.html
+  - https://sgit.ai/updates/index.html#the-design-is-the-performance
+  - https://sgit.ai/updates/index.html#that-was-a-cold-start-not-an-architecture-cost
+  - https://sgit.ai/updates/index.html#take-the-api-out-of-the-path
   - https://sgit.ai/index.html
 reviewed_by:
 reviewed_on:
@@ -18,7 +18,7 @@ On 21 September sgit.ai published a page answering one question, and then spent 
 
 ## The question
 
-After the Fractal Semantic Graphs page went out, a reader asked what the performance of this is against ordinary graph engineering ([the update](https://sgit.ai/updates/2026/09/21/v0.3.2__update__performance-and-cost.html)). The version log says the numbers were "MEASURED RATHER THAN ESTIMATED", from an ordinary cloud container against two live published vaults, using the read keys printed on their own pages ([version log, v0.3.2](https://sgit.ai/admin/versions.html)).
+After the Fractal Semantic Graphs page went out, a reader asked what the performance of this is against ordinary graph engineering ([the update](https://sgit.ai/updates/index.html#performance-and-cost)). The version log says the numbers were "MEASURED RATHER THAN ESTIMATED", from an ordinary cloud container against two live published vaults, using the read keys printed on their own pages ([version log, v0.3.2](https://sgit.ai/admin/versions.html)).
 
 ## v0.3.2: the first answer
 
@@ -30,15 +30,15 @@ The author named three things the page was missing: reading an encrypted file in
 
 ## v0.3.4: a count that had moved
 
-The page had quoted 617 nodes and 694 edges for the DSIT graph, taken from the vault's page. The file as cloned that day had 1,051 nodes and 1,289 edges, because the vault had released a new version on 21 September ([version log, v0.3.4](https://sgit.ai/admin/versions.html)). Every count on the page is now counted rather than quoted, and the note says the drift was only visible because the vault keeps its versions ([version log](https://sgit.ai/admin/versions.html)). The same release measured decryption of the 1.0 MB graph file at 0.351 ms, about a tenth of the JSON parse ([the update](https://sgit.ai/updates/2026/09/21/v0.3.4__update__the-design-is-the-performance.html)).
+The page had quoted 617 nodes and 694 edges for the DSIT graph, taken from the vault's page. The file as cloned that day had 1,051 nodes and 1,289 edges, because the vault had released a new version on 21 September ([version log, v0.3.4](https://sgit.ai/admin/versions.html)). Every count on the page is now counted rather than quoted, and the note says the drift was only visible because the vault keeps its versions ([version log](https://sgit.ai/admin/versions.html)). The same release measured decryption of the 1.0 MB graph file at 0.351 ms, about a tenth of the JSON parse ([the update](https://sgit.ai/updates/index.html#the-design-is-the-performance)).
 
 ## v0.3.5: a cold start, not a cost of the design
 
-v0.3.4's table had put a cold network fetch of 1,210 ms at the top. v0.3.5 split it into about 347 ms of fixed overhead and 300 ms of transfer, and called the fixed part the per-invocation cost of running the API serverless, "a deployment choice" ([version log, v0.3.5](https://sgit.ai/admin/versions.html)). It measured batching as a straight line, 0.25 s fixed plus about 71 ms per object, and named the next optimisation rather than claiming it ([the update](https://sgit.ai/updates/2026/09/21/v0.3.5__update__that-was-a-cold-start-not-an-architecture-cost.html)).
+v0.3.4's table had put a cold network fetch of 1,210 ms at the top. v0.3.5 split it into about 347 ms of fixed overhead and 300 ms of transfer, and called the fixed part the per-invocation cost of running the API serverless, "a deployment choice" ([version log, v0.3.5](https://sgit.ai/admin/versions.html)). It measured batching as a straight line, 0.25 s fixed plus about 71 ms per object, and named the next optimisation rather than claiming it ([the update](https://sgit.ai/updates/index.html#that-was-a-cold-start-not-an-architecture-cost)).
 
 ## v0.3.6: take the API out of the path
 
-With the same client, vault and decryption, the full clone took 65.4 s through the serverless API and 2.63 s against plain GETs ([version log, v0.3.6](https://sgit.ai/admin/versions.html)). The note is explicit that the static host was localhost, so the network was free, and that a real CDN adds edge latency ([version log](https://sgit.ai/admin/versions.html)). It records that the static transport already ships in the CLI, and that the missing history-depth flag is the single change that would most improve clone time ([the update](https://sgit.ai/updates/2026/09/21/v0.3.6__update__take-the-api-out-of-the-path.html)).
+With the same client, vault and decryption, the full clone took 65.4 s through the serverless API and 2.63 s against plain GETs ([version log, v0.3.6](https://sgit.ai/admin/versions.html)). The note is explicit that the static host was localhost, so the network was free, and that a real CDN adds edge latency ([version log](https://sgit.ai/admin/versions.html)). It records that the static transport already ships in the CLI, and that the missing history-depth flag is the single change that would most improve clone time ([the update](https://sgit.ai/updates/index.html#take-the-api-out-of-the-path)).
 
 ## v0.3.7 and v0.3.8: the ways in
 

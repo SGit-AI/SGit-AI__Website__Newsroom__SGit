@@ -16,11 +16,16 @@ cd SGit-AI__Website__Newsroom__SGit
 open site/index.html            # macOS; xdg-open on Linux, start on Windows
 ```
 
-Or serve it, if you prefer a local URL (search, filters and every link work either way):
+Or run it locally (search, filters and every link work either way):
 
 ```bash
-python3 -m http.server -d site 8000     # then open http://localhost:8000/
+./run-local.sh              # online: fetch the .md twins of linked pages not yet on disk, rebuild, validate, serve :8000
+./run-local.sh --offline    # the plane: rebuild from disk and serve, no downloads
+./run-local.sh --serve      # just serve the committed site/
 ```
+
+Before you fly, run it once online and commit what it fetched: downloads are cached in the repository
+(`sources/sites/` + `manifest.json`, with misses remembered in `sources/sites/missing.json`).
 
 Everything in `sources/` is plain markdown and text too: any editor reads it.
 
@@ -31,6 +36,7 @@ python3 tools/librarian.py      # data/index.json and data/vaults.json, computed
 python3 tools/build.py          # site/ from sources/, data/, editions/, stories/, history/, signals/
 python3 tools/validate.py       # must pass before every commit
 python3 tools/fetch_sources.py  # refresh the snapshot (network needed; the daily run)
+python3 tools/fetch_missing.py  # bring home the .md twin of every linked network page not in the snapshot
 ```
 
 Python standard library only. The build is deterministic: CI rebuilds and fails if the committed `site/` differs.

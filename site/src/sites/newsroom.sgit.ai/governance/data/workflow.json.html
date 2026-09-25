@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>workflow.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · newsroom.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/newsroom.sgit.ai.html">newsroom.sgit.ai</a> · <a href="workflow.json">raw text</a> · <a class="ext" href="https://newsroom.sgit.ai/governance/data/workflow.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;governance-story-workflow&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;updated&quot;: &quot;2026-08-28&quot;,
+  &quot;note&quot;: &quot;How a story moves from a search result to a published page, and who owns each move. Every state names the one role that can advance it and the door it has to get through — the condition that must be true before the next role will take it. A story can only be in one state; the desk records which.&quot;,
+  &quot;states&quot;: [
+    {
+      &quot;id&quot;: &quot;spotted&quot;,
+      &quot;label&quot;: &quot;Spotted&quot;,
+      &quot;owner&quot;: &quot;researcher&quot;,
+      &quot;seq&quot;: 1,
+      &quot;means&quot;: &quot;A candidate exists. Somebody searched and something came back.&quot;,
+      &quot;door&quot;: &quot;A specific artefact can be named — not a topic, an artefact.&quot;,
+      &quot;exits&quot;: [
+        &quot;registered&quot;,
+        &quot;parked&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;registered&quot;,
+      &quot;label&quot;: &quot;Registered&quot;,
+      &quot;owner&quot;: &quot;librarian&quot;,
+      &quot;seq&quot;: 2,
+      &quot;means&quot;: &quot;The source is in the register with a state and a checked date, and the URL resolved.&quot;,
+      &quot;door&quot;: &quot;The fetch returned 200. A blocked or dead URL cannot pass — that is gate check 7.&quot;,
+      &quot;exits&quot;: [
+        &quot;frozen&quot;,
+        &quot;parked&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;frozen&quot;,
+      &quot;label&quot;: &quot;Frozen&quot;,
+      &quot;owner&quot;: &quot;researcher&quot;,
+      &quot;seq&quot;: 3,
+      &quot;means&quot;: &quot;A byte copy is held and hashed, with the retrieval time recorded.&quot;,
+      &quot;door&quot;: &quot;The hash exists and the bytes are stored.&quot;,
+      &quot;blocked&quot;: true,
+      &quot;blocked_why&quot;: &quot;The fetch-freeze-hash path is not built. Every story is stuck at this door, which is why nothing in the graph is anchored and every fact reads secondary.&quot;,
+      &quot;exits&quot;: [
+        &quot;extracted&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;extracted&quot;,
+      &quot;label&quot;: &quot;Extracted&quot;,
+      &quot;owner&quot;: &quot;extractor&quot;,
+      &quot;seq&quot;: 4,
+      &quot;means&quot;: &quot;Typed nodes and edges exist, conforming to the ontology, anchored where a frozen copy allows it.&quot;,
+      &quot;door&quot;: &quot;Every verb is in the vocabulary and every node names its source. Gate checks 1 and 2.&quot;,
+      &quot;exits&quot;: [
+        &quot;drafted&quot;,
+        &quot;parked&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;drafted&quot;,
+      &quot;label&quot;: &quot;Drafted&quot;,
+      &quot;owner&quot;: &quot;writer&quot;,
+      &quot;seq&quot;: 5,
+      &quot;means&quot;: &quot;Prose exists in markdown, and names the node ids it stands on.&quot;,
+      &quot;door&quot;: &quot;Every sentence traces to a node. Gate check 3.&quot;,
+      &quot;exits&quot;: [
+        &quot;cleared&quot;,
+        &quot;refused&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;cleared&quot;,
+      &quot;label&quot;: &quot;Cleared&quot;,
+      &quot;owner&quot;: &quot;editor&quot;,
+      &quot;seq&quot;: 6,
+      &quot;means&quot;: &quot;The refusal list has been applied and nothing on it was triggered.&quot;,
+      &quot;door&quot;: &quot;No named organisation is assessed; no severity language that the graph does not compute; no implication of human review.&quot;,
+      &quot;exits&quot;: [
+        &quot;gated&quot;,
+        &quot;refused&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;gated&quot;,
+      &quot;label&quot;: &quot;Gated&quot;,
+      &quot;owner&quot;: &quot;qa&quot;,
+      &quot;seq&quot;: 7,
+      &quot;means&quot;: &quot;Both gates pass — the section&#x27;s own checks and the whole-site gate.&quot;,
+      &quot;door&quot;: &quot;Exit zero. A failing gate is answered, never silenced.&quot;,
+      &quot;exits&quot;: [
+        &quot;published&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;published&quot;,
+      &quot;label&quot;: &quot;Published&quot;,
+      &quot;owner&quot;: &quot;publisher&quot;,
+      &quot;seq&quot;: 8,
+      &quot;means&quot;: &quot;Live, versioned, and carrying the beta and no-human-review notices.&quot;,
+      &quot;door&quot;: &quot;The version was bumped and the release note says what is still missing.&quot;,
+      &quot;exits&quot;: [
+        &quot;superseded&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;superseded&quot;,
+      &quot;label&quot;: &quot;Superseded&quot;,
+      &quot;owner&quot;: &quot;extractor&quot;,
+      &quot;seq&quot;: 9,
+      &quot;terminal&quot;: true,
+      &quot;means&quot;: &quot;A later fact replaced one this story rests on. The story stays up; the superseding edge is added.&quot;,
+      &quot;door&quot;: &quot;Never delete. The original remains readable and the edge points forward.&quot;,
+      &quot;exits&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;parked&quot;,
+      &quot;label&quot;: &quot;Parked&quot;,
+      &quot;owner&quot;: &quot;librarian&quot;,
+      &quot;seq&quot;: 0,
+      &quot;terminal&quot;: true,
+      &quot;means&quot;: &quot;Not dead, not moving. Waiting on something outside this newsroom.&quot;,
+      &quot;door&quot;: &quot;The blocker is named, so a reader can see what would unblock it.&quot;,
+      &quot;exits&quot;: [
+        &quot;spotted&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;refused&quot;,
+      &quot;label&quot;: &quot;Refused&quot;,
+      &quot;owner&quot;: &quot;editor&quot;,
+      &quot;seq&quot;: 0,
+      &quot;terminal&quot;: true,
+      &quot;means&quot;: &quot;Killed on the refusal list. Recorded rather than quietly dropped.&quot;,
+      &quot;door&quot;: &quot;The refusal that bit is named. Cut, never softened.&quot;,
+      &quot;exits&quot;: []
+    }
+  ],
+  &quot;lanes&quot;: [
+    {
+      &quot;id&quot;: &quot;gather&quot;,
+      &quot;label&quot;: &quot;Gather&quot;,
+      &quot;states&quot;: [
+        &quot;spotted&quot;,
+        &quot;registered&quot;,
+        &quot;frozen&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;build&quot;,
+      &quot;label&quot;: &quot;Build&quot;,
+      &quot;states&quot;: [
+        &quot;extracted&quot;,
+        &quot;drafted&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;clear&quot;,
+      &quot;label&quot;: &quot;Clear&quot;,
+      &quot;states&quot;: [
+        &quot;cleared&quot;,
+        &quot;gated&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;release&quot;,
+      &quot;label&quot;: &quot;Release&quot;,
+      &quot;states&quot;: [
+        &quot;published&quot;,
+        &quot;superseded&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;stopped&quot;,
+      &quot;label&quot;: &quot;Stopped&quot;,
+      &quot;states&quot;: [
+        &quot;parked&quot;,
+        &quot;refused&quot;
+      ]
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://newsroom.sgit.ai/governance/data/workflow.json">https://newsroom.sgit.ai/governance/data/workflow.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:56Z</dd><dt>sha256</dt><dd><code title="efb7a810e4c3362e9faf391134616b40a16316d29fc7d5975240f9068d1935ca">efb7a810e4c3</code></dd><dt>Frozen copy</dt><dd><a href="workflow.json">sites/newsroom.sgit.ai/governance/data/workflow.json</a> (4,330 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

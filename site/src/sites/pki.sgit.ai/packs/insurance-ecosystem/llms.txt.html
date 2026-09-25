@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>pki.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pki.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#pkisgitaipacksinsurance-ecosystem-the-insurance-ecosystem-pack-draft-1-change-co">pki.sgit.ai/packs/insurance-ecosystem — the insurance ecosystem pack (draft-1 + change control; step 1 built and run)</a></li><li class="l1"><a href="#hub-httpspkisgitaipacksinsurance-ecosystemindexhtml">Hub: https://pki.sgit.ai/packs/insurance-ecosystem/index.html ↗</a></li><li class="l1"><a href="#change-control-httpspkisgitaipacksinsurance-ecosystemchange-controlhtml-ie1ie11-">Change control: https://pki.sgit.ai/packs/insurance-ecosystem/change-control.html ↗ (IE1–IE11, IE-D1–IE-D25, IE-C1–IE-C9)</a></li><li class="l1"><a href="#the-room-a-vault-app-of-six-cards-derived-from-the-ledger-httpspkisgitaipacksins">The room (a vault app of six cards, derived from the ledger): https://pki.sgit.ai/packs/insurance-ecosystem/room/index.html ↗</a></li><li class="l2"><a href="#what-an-agent-should-carry-if-it-summarises-anything-here">What an agent should carry if it summarises anything here</a></li><li class="l2"><a href="#the-documents">The documents</a></li><li class="l2"><a href="#the-tools">The tools</a></li><li class="l2"><a href="#the-conformance-vaults-question-answered-ie-d24">The conformance vault&amp;#x27;s question, answered (IE-D24)</a></li><li class="l2"><a href="#the-ladder-reconciled-ie-d25">The ladder, reconciled (IE-D25)</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/pki.sgit.ai.html">pki.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/llms.txt">live ↗</a></p><article class="source"><h1 id="pkisgitaipacksinsurance-ecosystem-the-insurance-ecosystem-pack-draft-1-change-co">pki.sgit.ai/packs/insurance-ecosystem — the insurance ecosystem pack (draft-1 + change control; step 1 built and run)</h1>
+<p>#</p>
+<h1 id="hub-httpspkisgitaipacksinsurance-ecosystemindexhtml">Hub: <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/index.html">https://pki.sgit.ai/packs/insurance-ecosystem/index.html ↗</a></h1>
+<h1 id="change-control-httpspkisgitaipacksinsurance-ecosystemchange-controlhtml-ie1ie11-">Change control: <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/change-control.html">https://pki.sgit.ai/packs/insurance-ecosystem/change-control.html ↗</a> (IE1–IE11, IE-D1–IE-D25, IE-C1–IE-C9)</h1>
+<h1 id="the-room-a-vault-app-of-six-cards-derived-from-the-ledger-httpspkisgitaipacksins">The room (a vault app of six cards, derived from the ledger): <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/room/index.html">https://pki.sgit.ai/packs/insurance-ecosystem/room/index.html ↗</a></h1>
+<h2 id="what-an-agent-should-carry-if-it-summarises-anything-here">What an agent should carry if it summarises anything here</h2>
+<ol><li>THE POLICY IS A MANDATE-SHAPED STATEMENT, not insurance. Issuer, policyholder, subject with a mandate pinned by sha256,
+an interval and a timezone, units each naming a METER with a normal band, a per-occurrence limit (an exclusion, with a
+reason where the action is irreversible) and a POOL per repository per day with a RESERVE no verdict may draw.</li><li>A DRAW IS A CLAIM, PAID IN THE RESOURCE, and its acceptor is the POLICYHOLDER, never the session. Verdicts:
+normal | drawn | refused | requested | accepted_outside | measured | caught. Zones: below | drawing | outside (uninsured).</li><li>THE GIT HOOKS REFUSE; THE CLAUDE HOOKS INSTRUMENT. The platform fails open on a PreToolUse timeout (IE8), so pre-commit
+and pre-push are the enforcement points. A hook in the agent&#x27;s own clone is a SETTING: --no-verify passes, and the
+point is that it is not used. The destination check (CI) reports; making it refuse is the issuer&#x27;s decision (N31).</li><li>ASSURANCE PER LEVEL IS MEASURED FROM THE LEDGER, never asserted (GM-D105). A catch above the hook is an INCIDENT, not
+a volume event (GM-D106). tools/reconcile.py replays git against the ledger; a commit that carries no claim is the
+detection; commits before the hook was installed are not bypasses (IE-C9).</li><li>THE LEDGER IS APPEND-ONLY AND IS THE LOSS DATA. Nothing is edited; corrections are new entries. Policy numbers are
+placeholders re-fitted from it: r3 raised the limits on the issuer&#x27;s word after one day&#x27;s loss data (IE-D23), to be reviewed.</li><li>ONE SESSION HOLDING THE VAULT KEY MAY RUN ANY ROLE IN ANY VAULT, for the pilot (IE6) — except that accepting an action
+OUTSIDE cover (an exclusion, an exhaustion) is a person&#x27;s, never the session&#x27;s (IE-D16).</li><li>BOTH POLICIES ARE IN NOTIFY MODE since 5 September (IE-D26): every verdict is computed and written to the ledger,
+nothing blocks. A refusal on the ledger after that date was notified, not enforced. To be reviewed with the limits.</li><li>NO SECRETS IN ANY VAULT. Keys and access codes are never written into a vault or this repository.</li></ol>
+<h2 id="the-documents">The documents</h2>
+<p>00 leading brief · 01 concepts · 02 vault topology · 03 the policy object · 04 decision points · 05 parties ·
+06 workflows (W1–W8) · 07 interface (the room) · 08 build order · 09 first increment (the acceptance run and what the
+pack&#x27;s own publication drew) · 10 the eleven answers · 99 change control.
+Documents 01, 03, 04, 05, 06, 07 and 08 carry sections appended on 3 September from memo 13 (the enforcement ladder);
+nothing is rewritten, only superseded.
+Source: <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/src/">https://pki.sgit.ai/packs/insurance-ecosystem/src/ ↗</a></p>
+<h2 id="the-tools">The tools</h2>
+<p>tools/policy.py    check --point pre-commit|pre-push · briefing · request · decide · supersede · derive · validate · drain
+tools/usage.py     the four token counters, from the transcript
+tools/room.py      derives room/content.json and inlines it into the room
+tools/reconcile.py level five: git replayed against the ledger; --report --last N; clips at the hook-install commit
+hooks/pre-commit, hooks/pre-push (chains the mandate hook first)
+policies/pki-site-repo/current.json → git-pilot-2026-09-03-r3 · policies/pki-site-session/tokens-measured-2026-09-03.json</p>
+<h2 id="the-conformance-vaults-question-answered-ie-d24">The conformance vault&#x27;s question, answered (IE-D24)</h2>
+<p>policy/v1 gains top-level conditions[] and exclusions[] BY CONTROL, in the shape the AIUC-1 conformance vault emits
+(conditions: control, required_level, attested_by, valid_until; exclusions: control, state, reason, in_the_control_own_words).
+The policy says how much; the conformance layer says what has to be true of the subject for the cover to hold.</p>
+<h2 id="the-ladder-reconciled-ie-d25">The ladder, reconciled (IE-D25)</h2>
+<p>Doctrine 13&#x27;s six levels and the 4 September brief&#x27;s evidence-mode rungs are one axis. Evidence mode is kept:
+asserted · documented · manual · out-of-band · inline — the enforcer named, and whether the actor can reach it decides.
+Rung → instrument (a proposal by analogy, not agreed practice): asserted/documented → disclosure; manual → rating factor;
+out-of-band → warranty; inline → condition precedent, the only rung that can lift an exclusion.</p>
+<p>CC BY 4.0.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pki.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/llms.txt">https://pki.sgit.ai/packs/insurance-ecosystem/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:00Z</dd><dt>sha256</dt><dd><code title="76fe83cbcdf2116e546eaa1ee9f99b0b9607f3257a450c0d843776f5c58c5724">76fe83cbcdf2</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/pki.sgit.ai/packs/insurance-ecosystem/llms.txt</a> (4,714 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>ontologia.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pt.newsroom.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/pt.newsroom.sgit.ai.html">pt.newsroom.sgit.ai</a> · <a href="ontologia.json">raw text</a> · <a class="ext" href="https://pt.newsroom.sgit.ai/dados/ontologia.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;pt-ontologia&quot;,
+  &quot;versao&quot;: &quot;0.1.0&quot;,
+  &quot;nota&quot;: &quot;A gramática deste grafo. Os verbos são portugueses e o campo `en` é uma anotação: num sítio nativamente português, um caminho que não se lê em voz alta em português tem as arestas erradas (§6 do resumo). O portão 10 lê cada verbo em voz alta e falha a construção se um deles não produzir uma frase.&quot;,
+  &quot;seccoes&quot;: [
+    {
+      &quot;id&quot;: &quot;empresas&quot;,
+      &quot;rotulo&quot;: &quot;As empresas&quot;,
+      &quot;en&quot;: &quot;Companies&quot;
+    },
+    {
+      &quot;id&quot;: &quot;protagonistas&quot;,
+      &quot;rotulo&quot;: &quot;Os protagonistas&quot;,
+      &quot;en&quot;: &quot;People&quot;
+    },
+    {
+      &quot;id&quot;: &quot;instituicoes&quot;,
+      &quot;rotulo&quot;: &quot;As instituições&quot;,
+      &quot;en&quot;: &quot;Institutions&quot;
+    },
+    {
+      &quot;id&quot;: &quot;politicas&quot;,
+      &quot;rotulo&quot;: &quot;As políticas&quot;,
+      &quot;en&quot;: &quot;Policies&quot;
+    },
+    {
+      &quot;id&quot;: &quot;casos-de-uso&quot;,
+      &quot;rotulo&quot;: &quot;Os casos de uso&quot;,
+      &quot;en&quot;: &quot;Use cases&quot;
+    },
+    {
+      &quot;id&quot;: &quot;codigo-aberto&quot;,
+      &quot;rotulo&quot;: &quot;O código aberto&quot;,
+      &quot;en&quot;: &quot;Open source&quot;
+    },
+    {
+      &quot;id&quot;: &quot;diaspora&quot;,
+      &quot;rotulo&quot;: &quot;A diáspora&quot;,
+      &quot;en&quot;: &quot;Diaspora&quot;
+    },
+    {
+      &quot;id&quot;: &quot;eventos&quot;,
+      &quot;rotulo&quot;: &quot;Os eventos&quot;,
+      &quot;en&quot;: &quot;Events&quot;
+    }
+  ],
+  &quot;tipos&quot;: [
+    {
+      &quot;id&quot;: &quot;Evento&quot;,
+      &quot;rotulo&quot;: &quot;Evento&quot;,
+      &quot;en&quot;: &quot;Event&quot;,
+      &quot;cor&quot;: &quot;#0f766e&quot;,
+      &quot;seccao&quot;: &quot;eventos&quot;,
+      &quot;definicao&quot;: &quot;Um encontro datado e localizado que publica um programa e uma lista de quem fala.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Sessao&quot;,
+      &quot;rotulo&quot;: &quot;Sessão&quot;,
+      &quot;en&quot;: &quot;Session&quot;,
+      &quot;cor&quot;: &quot;#115e59&quot;,
+      &quot;seccao&quot;: &quot;eventos&quot;,
+      &quot;definicao&quot;: &quot;Um item do programa publicado de um evento, com um dia, uma hora e normalmente um palco. Título verbatim, na língua em que o evento o publicou.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Palco&quot;,
+      &quot;rotulo&quot;: &quot;Palco&quot;,
+      &quot;en&quot;: &quot;Stage&quot;,
+      &quot;cor&quot;: &quot;#0e7490&quot;,
+      &quot;seccao&quot;: &quot;eventos&quot;,
+      &quot;definicao&quot;: &quot;Uma sala ou palco nomeado onde se agendam sessões. Este evento nomeia os seus palcos de duas maneiras em páginas diferentes do seu próprio site.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Pessoa&quot;,
+      &quot;rotulo&quot;: &quot;Pessoa&quot;,
+      &quot;en&quot;: &quot;Person&quot;,
+      &quot;cor&quot;: &quot;#b45309&quot;,
+      &quot;seccao&quot;: &quot;protagonistas&quot;,
+      &quot;definicao&quot;: &quot;Uma pessoa nomeada na lista de oradores publicada pelo evento, na sua qualidade profissional. Nome, papel listado, organização listada, ligações, os tópicos que o próprio evento lhe atribui, e as palavras da sua página que correspondem a um léxico publicado. Nunca uma biografia, nunca um contacto.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Organizacao&quot;,
+      &quot;rotulo&quot;: &quot;Organização&quot;,
+      &quot;en&quot;: &quot;Organisation&quot;,
+      &quot;cor&quot;: &quot;#1d4ed8&quot;,
+      &quot;seccao&quot;: &quot;empresas&quot;,
+      &quot;definicao&quot;: &quot;Uma organização sob a qual uma pessoa está LISTADA no seu cartão de orador. Derivada dos cartões, nunca escrita à mão; marcadores como «Independent» são assinalados, não removidos.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Local&quot;,
+      &quot;rotulo&quot;: &quot;Local&quot;,
+      &quot;en&quot;: &quot;Place&quot;,
+      &quot;cor&quot;: &quot;#4a5b6a&quot;,
+      &quot;seccao&quot;: &quot;eventos&quot;,
+      &quot;definicao&quot;: &quot;Um sítio onde algo decorre. Não é uma pessoa, por isso a sua morada pode ser detida.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Instituicao&quot;,
+      &quot;rotulo&quot;: &quot;Instituição&quot;,
+      &quot;en&quot;: &quot;Institution&quot;,
+      &quot;cor&quot;: &quot;#7c3aed&quot;,
+      &quot;seccao&quot;: &quot;instituicoes&quot;,
+      &quot;definicao&quot;: &quot;Um organismo público, um regulador ou uma unidade de investigação. Distinto de Organização porque a fonte e as obrigações são diferentes: uma instituição publica registo, uma empresa publica comunicação.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Politica&quot;,
+      &quot;rotulo&quot;: &quot;Política&quot;,
+      &quot;en&quot;: &quot;Policy&quot;,
+      &quot;cor&quot;: &quot;#6d28d9&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;definicao&quot;: &quot;Uma política pública anunciada, e — quando existe e quando se consegue encontrar — o instrumento legal que a cria. O segundo é frequentemente o problema.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Captura&quot;,
+      &quot;rotulo&quot;: &quot;Captura&quot;,
+      &quot;en&quot;: &quot;Snapshot&quot;,
+      &quot;cor&quot;: &quot;#5c5f66&quot;,
+      &quot;seccao&quot;: null,
+      &quot;definicao&quot;: &quot;Uma captura datada das fontes: cada página obtida, congelada em bytes neste repositório, e hasheada.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Fonte&quot;,
+      &quot;rotulo&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: &quot;Source&quot;,
+      &quot;cor&quot;: &quot;#8a8d94&quot;,
+      &quot;seccao&quot;: null,
+      &quot;definicao&quot;: &quot;Uma página congelada de uma captura, com o seu SHA-256. É a coisa até onde uma afirmação anda para trás.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Cobertura&quot;,
+      &quot;rotulo&quot;: &quot;Cobertura&quot;,
+      &quot;en&quot;: &quot;Coverage&quot;,
+      &quot;cor&quot;: &quot;#a16207&quot;,
+      &quot;seccao&quot;: null,
+      &quot;definicao&quot;: &quot;A página publicada por um terceiro sobre esta matéria, obtida, congelada e hasheada como qualquer outra fonte. Ligada, nunca reproduzida.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Historia&quot;,
+      &quot;rotulo&quot;: &quot;História&quot;,
+      &quot;en&quot;: &quot;Story&quot;,
+      &quot;cor&quot;: &quot;#b91c1c&quot;,
+      &quot;seccao&quot;: null,
+      &quot;definicao&quot;: &quot;Uma peça que esta publicação escreveu, assente em fontes congeladas nomeadas e lida pelo editor de registo antes de publicar.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Tema&quot;,
+      &quot;rotulo&quot;: &quot;Tema&quot;,
+      &quot;en&quot;: &quot;Topic&quot;,
+      &quot;cor&quot;: &quot;#7c3aed&quot;,
+      &quot;seccao&quot;: &quot;casos-de-uso&quot;,
+      &quot;definicao&quot;: &quot;Um tópico que o evento lista na página de uma pessoa, verbatim. Lido da página congelada, nunca derivado: o vocabulário deles, não o nosso.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Setor&quot;,
+      &quot;en&quot;: &quot;Industry&quot;,
+      &quot;cor&quot;: &quot;#0e7490&quot;,
+      &quot;seccao&quot;: &quot;empresas&quot;,
+      &quot;definicao&quot;: &quot;Um setor nomeado pelo léxico publicado e correspondido na página de alguém. A aresta leva as palavras correspondidas. Diz que a página contém aquelas palavras; mais nada.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Tecnologia&quot;,
+      &quot;en&quot;: &quot;Technology&quot;,
+      &quot;cor&quot;: &quot;#0369a1&quot;,
+      &quot;seccao&quot;: &quot;casos-de-uso&quot;,
+      &quot;definicao&quot;: &quot;Uma tecnologia nomeada pelo léxico publicado e correspondida numa página congelada. Derivada por fórmula; a aresta mostra a prova.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Ideia&quot;,
+      &quot;en&quot;: &quot;Idea&quot;,
+      &quot;cor&quot;: &quot;#9333ea&quot;,
+      &quot;seccao&quot;: &quot;casos-de-uso&quot;,
+      &quot;definicao&quot;: &quot;Uma ideia recorrente da conversa de fundadores, nomeada pelo léxico publicado. Derivada por fórmula.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Servico&quot;,
+      &quot;rotulo&quot;: &quot;Serviço&quot;,
+      &quot;en&quot;: &quot;Service&quot;,
+      &quot;cor&quot;: &quot;#be185d&quot;,
+      &quot;seccao&quot;: &quot;empresas&quot;,
+      &quot;definicao&quot;: &quot;Uma espécie de serviço que uma página congelada diz que alguém presta, correspondida pelo léxico publicado. Categorias, não nomes de produto.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Produto&quot;,
+      &quot;rotulo&quot;: &quot;Produto&quot;,
+      &quot;en&quot;: &quot;Product&quot;,
+      &quot;cor&quot;: &quot;#c2410c&quot;,
+      &quot;seccao&quot;: &quot;empresas&quot;,
+      &quot;definicao&quot;: &quot;Uma espécie de produto que uma página congelada nomeia, correspondida pelo léxico publicado. Categorias, não nomes de produto.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;Editor&quot;,
+      &quot;rotulo&quot;: &quot;Editor&quot;,
+      &quot;en&quot;: &quot;Publisher&quot;,
+      &quot;cor&quot;: &quot;#475569&quot;,
+      &quot;seccao&quot;: &quot;instituicoes&quot;,
+      &quot;definicao&quot;: &quot;A casa que publica uma página congelada: um organismo, um jornal, um portal, o sítio de um evento. Sai do campo de editor do registo pela fórmula `editor_de_fonte`, e diz quem PUBLICA a página — não quem a escreveu, não quem a opera. Existe como tipo à parte porque a definição de Instituição é «um organismo público, um regulador ou uma unidade de investigação», e um jornal não é nenhuma dessas coisas: alargar aquela definição para caber aqui seria mudar o que ela promete.&quot;
+    }
+  ],
+  &quot;arestas&quot;: [
+    {
+      &quot;verbo&quot;: &quot;fala_em&quot;,
+      &quot;inverso&quot;: &quot;recebe&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Evento&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;speaks_at&quot;,
+        &quot;inverso&quot;: &quot;hosts&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} fala em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} recebe {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;listado_sob&quot;,
+      &quot;inverso&quot;: &quot;organizacao_de&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Organizacao&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;listed_under&quot;,
+        &quot;inverso&quot;: &quot;lists&quot;
+      },
+      &quot;leitura&quot;: &quot;o evento lista {s} sob {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é a organização sob a qual o evento lista {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;decorre_em&quot;,
+      &quot;inverso&quot;: &quot;e_local_de&quot;,
+      &quot;dominio&quot;: &quot;Evento&quot;,
+      &quot;alcance&quot;: &quot;Local&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;takes_place_at&quot;,
+        &quot;inverso&quot;: &quot;venue_of&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} decorre em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é local de {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;organizado_por&quot;,
+      &quot;inverso&quot;: &quot;organiza&quot;,
+      &quot;dominio&quot;: &quot;Evento&quot;,
+      &quot;alcance&quot;: &quot;Organizacao&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;organised_by&quot;,
+        &quot;inverso&quot;: &quot;organises&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é organizado por {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} organiza {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;parte_de&quot;,
+      &quot;inverso&quot;: &quot;contem&quot;,
+      &quot;dominio&quot;: &quot;Sessao&quot;,
+      &quot;alcance&quot;: &quot;Evento&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;part_of&quot;,
+        &quot;inverso&quot;: &quot;contains&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} faz parte de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} contém {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;no_palco&quot;,
+      &quot;inverso&quot;: &quot;acolhe&quot;,
+      &quot;dominio&quot;: &quot;Sessao&quot;,
+      &quot;alcance&quot;: &quot;Palco&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;on_stage&quot;,
+        &quot;inverso&quot;: &quot;stages&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} está no {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} acolhe {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;capturado_em&quot;,
+      &quot;inverso&quot;: &quot;captura&quot;,
+      &quot;dominio&quot;: &quot;Fonte&quot;,
+      &quot;alcance&quot;: &quot;Captura&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;captured_in&quot;,
+        &quot;inverso&quot;: &quot;captures&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} foi capturada em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} captura {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;consta_em&quot;,
+      &quot;inverso&quot;: &quot;atesta&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;attested_by&quot;,
+        &quot;inverso&quot;: &quot;attests&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} consta de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} atesta {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;consta_em&quot;,
+      &quot;inverso&quot;: &quot;atesta&quot;,
+      &quot;dominio&quot;: &quot;Sessao&quot;,
+      &quot;alcance&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;attested_by&quot;,
+        &quot;inverso&quot;: &quot;attests&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} consta de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} atesta {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;consta_em&quot;,
+      &quot;inverso&quot;: &quot;atesta&quot;,
+      &quot;dominio&quot;: &quot;Evento&quot;,
+      &quot;alcance&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;attested_by&quot;,
+        &quot;inverso&quot;: &quot;attests&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} consta de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} atesta {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;consta_em&quot;,
+      &quot;inverso&quot;: &quot;atesta&quot;,
+      &quot;dominio&quot;: &quot;Instituicao&quot;,
+      &quot;alcance&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;attested_by&quot;,
+        &quot;inverso&quot;: &quot;attests&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} consta de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} atesta {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;consta_em&quot;,
+      &quot;inverso&quot;: &quot;atesta&quot;,
+      &quot;dominio&quot;: &quot;Politica&quot;,
+      &quot;alcance&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;attested_by&quot;,
+        &quot;inverso&quot;: &quot;attests&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} consta de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} atesta {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;presente_em&quot;,
+      &quot;inverso&quot;: &quot;inclui&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Captura&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;present_in&quot;,
+        &quot;inverso&quot;: &quot;includes&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} está presente em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} inclui {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;ausente_de&quot;,
+      &quot;inverso&quot;: &quot;nao_inclui&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Captura&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;absent_from&quot;,
+        &quot;inverso&quot;: &quot;lacks&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} está ausente de {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} não inclui {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;cobre&quot;,
+      &quot;inverso&quot;: &quot;coberto_por&quot;,
+      &quot;dominio&quot;: &quot;Cobertura&quot;,
+      &quot;alcance&quot;: &quot;Evento&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;covers&quot;,
+        &quot;inverso&quot;: &quot;covered_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} cobre {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é coberto por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;publicado_por&quot;,
+      &quot;inverso&quot;: &quot;publica&quot;,
+      &quot;dominio&quot;: &quot;Cobertura&quot;,
+      &quot;alcance&quot;: &quot;Organizacao&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;published_by&quot;,
+        &quot;inverso&quot;: &quot;publishes&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é publicada por {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} publica {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;assenta_em&quot;,
+      &quot;inverso&quot;: &quot;sustenta&quot;,
+      &quot;dominio&quot;: &quot;Historia&quot;,
+      &quot;alcance&quot;: &quot;Fonte&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;stands_on&quot;,
+        &quot;inverso&quot;: &quot;supports&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} assenta em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} sustenta {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;relata&quot;,
+      &quot;inverso&quot;: &quot;relatado_por&quot;,
+      &quot;dominio&quot;: &quot;Historia&quot;,
+      &quot;alcance&quot;: &quot;Evento&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;reports&quot;,
+        &quot;inverso&quot;: &quot;reported_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} relata {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é relatado por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;fala_sobre&quot;,
+      &quot;inverso&quot;: &quot;falado_por&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Tema&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;speaks_on&quot;,
+        &quot;inverso&quot;: &quot;spoken_on_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} fala sobre {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é falado por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;atua_em&quot;,
+      &quot;inverso&quot;: &quot;praticado_por&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Setor&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;active_in&quot;,
+        &quot;inverso&quot;: &quot;practised_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} atua em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é praticado por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;usa&quot;,
+      &quot;inverso&quot;: &quot;usado_por&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Tecnologia&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;uses&quot;,
+        &quot;inverso&quot;: &quot;used_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} usa {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é usada por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;defende&quot;,
+      &quot;inverso&quot;: &quot;defendido_por&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Ideia&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;advocates&quot;,
+        &quot;inverso&quot;: &quot;advocated_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} defende {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é defendida por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;oferece&quot;,
+      &quot;inverso&quot;: &quot;oferecido_por&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Servico&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;offers&quot;,
+        &quot;inverso&quot;: &quot;offered_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} oferece {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é oferecido por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;oferece&quot;,
+      &quot;inverso&quot;: &quot;oferecido_por&quot;,
+      &quot;dominio&quot;: &quot;Pessoa&quot;,
+      &quot;alcance&quot;: &quot;Produto&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;offers&quot;,
+        &quot;inverso&quot;: &quot;offered_by&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} oferece {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} é oferecido por {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;publicado_em&quot;,
+      &quot;inverso&quot;: &quot;publica_registo&quot;,
+      &quot;dominio&quot;: &quot;Politica&quot;,
+      &quot;alcance&quot;: &quot;Instituicao&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;published_in&quot;,
+        &quot;inverso&quot;: &quot;publishes_record&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é publicada em {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} publica no registo {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;publicada_por&quot;,
+      &quot;inverso&quot;: &quot;publica_pagina&quot;,
+      &quot;dominio&quot;: &quot;Fonte&quot;,
+      &quot;alcance&quot;: &quot;Editor&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;issued_by&quot;,
+        &quot;inverso&quot;: &quot;issues&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é publicada por {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} publica a página {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;publicada_por&quot;,
+      &quot;inverso&quot;: &quot;publica_pagina&quot;,
+      &quot;dominio&quot;: &quot;Fonte&quot;,
+      &quot;alcance&quot;: &quot;Instituicao&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;issued_by&quot;,
+        &quot;inverso&quot;: &quot;issues&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é publicada por {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} publica a página {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;publicada_por&quot;,
+      &quot;inverso&quot;: &quot;publica_pagina&quot;,
+      &quot;dominio&quot;: &quot;Fonte&quot;,
+      &quot;alcance&quot;: &quot;Evento&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;issued_by&quot;,
+        &quot;inverso&quot;: &quot;issues&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é publicada por {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} publica a página {s}&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;publicada_por&quot;,
+      &quot;inverso&quot;: &quot;publica_pagina&quot;,
+      &quot;dominio&quot;: &quot;Fonte&quot;,
+      &quot;alcance&quot;: &quot;Organizacao&quot;,
+      &quot;en&quot;: {
+        &quot;verbo&quot;: &quot;issued_by&quot;,
+        &quot;inverso&quot;: &quot;issues&quot;
+      },
+      &quot;leitura&quot;: &quot;{s} é publicada por {t}&quot;,
+      &quot;leitura_inversa&quot;: &quot;{t} publica a página {s}&quot;
+    }
+  ],
+  &quot;verbos_derivados&quot;: [
+    &quot;atua_em&quot;,
+    &quot;defende&quot;,
+    &quot;oferece&quot;,
+    &quot;usa&quot;
+  ],
+  &quot;proibidos&quot;: [
+    {
+      &quot;verbo&quot;: &quot;relacionado_com&quot;,
+      &quot;porque&quot;: &quot;Simétrico, logo seria o seu próprio inverso, e não diz nada que um leitor possa percorrer.&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;associado_a&quot;,
+      &quot;porque&quot;: &quot;O verbo a que se recorre quando não se sabe qual é a relação. Descubra-se, ou deixe-se a aresta de fora.&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;menciona&quot;,
+      &quot;porque&quot;: &quot;Num grafo construído a partir de texto, tudo «menciona» alguma coisa. É a ausência de um verbo.&quot;
+    },
+    {
+      &quot;verbo&quot;: &quot;trabalha_em&quot;,
+      &quot;porque&quot;: &quot;Não é o que a fonte diz. Um cartão de orador lista uma organização; não afirma uma relação laboral. A aresta é listado_sob.&quot;
+    }
+  ],
+  &quot;taxonomia&quot;: [
+    {
+      &quot;id&quot;: &quot;entidades&quot;,
+      &quot;rotulo&quot;: &quot;Entidades&quot;,
+      &quot;tipos&quot;: [
+        &quot;Pessoa&quot;,
+        &quot;Organizacao&quot;,
+        &quot;Instituicao&quot;,
+        &quot;Editor&quot;,
+        &quot;Local&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;programa&quot;,
+      &quot;rotulo&quot;: &quot;Programa&quot;,
+      &quot;tipos&quot;: [
+        &quot;Evento&quot;,
+        &quot;Sessao&quot;,
+        &quot;Palco&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;registo&quot;,
+      &quot;rotulo&quot;: &quot;Registo público&quot;,
+      &quot;tipos&quot;: [
+        &quot;Politica&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;prova&quot;,
+      &quot;rotulo&quot;: &quot;Prova&quot;,
+      &quot;tipos&quot;: [
+        &quot;Captura&quot;,
+        &quot;Fonte&quot;,
+        &quot;Cobertura&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;nosso&quot;,
+      &quot;rotulo&quot;: &quot;O nosso trabalho&quot;,
+      &quot;tipos&quot;: [
+        &quot;Historia&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;temas&quot;,
+      &quot;rotulo&quot;: &quot;Temas&quot;,
+      &quot;tipos&quot;: [
+        &quot;Tema&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;derivado&quot;,
+      &quot;rotulo&quot;: &quot;Derivado por fórmula&quot;,
+      &quot;tipos&quot;: [
+        &quot;Setor&quot;,
+        &quot;Tecnologia&quot;,
+        &quot;Ideia&quot;,
+        &quot;Servico&quot;,
+        &quot;Produto&quot;
+      ]
+    }
+  ],
+  &quot;formulas&quot;: [
+    {
+      &quot;id&quot;: &quot;classe_papel&quot;,
+      &quot;o_que_faz&quot;: &quot;Classifica uma pessoa pelo título sob o qual o evento a lista.&quot;,
+      &quot;porque_publicada&quot;: &quot;É a única classificação que este site inventa. Publicada como padrão para que um leitor possa discordar dela.&quot;,
+      &quot;nunca_diz&quot;: &quot;O que a pessoa é. Diz o que o título listado contém.&quot;,
+      &quot;regras&quot;: [
+        {
+          &quot;classe&quot;: &quot;investidor&quot;,
+          &quot;rotulo&quot;: &quot;do lado do investimento, pelo título listado&quot;,
+          &quot;padrao&quot;: &quot;\\b(investor|partner|ventures?|\\bvc\\b|angel|capital|fund|\\blp\\b)\\b&quot;
+        },
+        {
+          &quot;classe&quot;: &quot;fundador&quot;,
+          &quot;rotulo&quot;: &quot;fundador ou operacional, pelo título listado&quot;,
+          &quot;padrao&quot;: &quot;\\b(founder|co-founder|ceo|cto|coo|cpo|chief|head of|director|managing|leader)\\b&quot;
+        },
+        {
+          &quot;classe&quot;: &quot;consultor&quot;,
+          &quot;rotulo&quot;: &quot;consultor, jurista ou académico, pelo título listado&quot;,
+          &quot;padrao&quot;: &quot;\\b(advisor|adviser|counsel|professor|researcher|lawyer|legal|consultant|author|phd)\\b&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;editor_de_fonte&quot;,
+      &quot;o_que_faz&quot;: &quot;Reduz o campo de editor do registo à casa que publica a página.&quot;,
+      &quot;porque_publicada&quot;: &quot;Faz nascer nós e arestas. Dois passos, nomeados, para que um leitor possa refazer o mesmo caminho: tirar o parêntesis final (quem opera) e ficar com o segmento depois do último travessão (a casa, e não a coleção).&quot;,
+      &quot;nunca_diz&quot;: &quot;Que dois nomes diferentes são a mesma casa. Se o registo diz duas coisas, o grafo diz duas coisas.&quot;,
+      &quot;passos&quot;: [
+        &quot;tirar o parêntesis final: «dados.gov.pt (AMA)» → «dados.gov.pt»&quot;,
+        &quot;ficar com o segmento depois do último travessão: «CORDIS — Comissão Europeia» → «Comissão Europeia»&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;lexico&quot;,
+      &quot;o_que_faz&quot;: &quot;Faz nascer arestas derivadas a partir de palavras numa página congelada.&quot;,
+      &quot;porque_publicada&quot;: &quot;dados/lexico.json. O portão 8 volta a correr cada padrão sobre os bytes.&quot;,
+      &quot;nunca_diz&quot;: &quot;Nada sobre a pessoa. Diz que a página contém aquelas palavras.&quot;
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pt.newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pt.newsroom.sgit.ai/dados/ontologia.json">https://pt.newsroom.sgit.ai/dados/ontologia.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:03Z</dd><dt>sha256</dt><dd><code title="aa73e6f37d8663d2c66c1b53362e125b28e39ac2db6c58caeb55ce98b46354ac">aa73e6f37d86</code></dd><dt>Frozen copy</dt><dd><a href="ontologia.json">sites/pt.newsroom.sgit.ai/dados/ontologia.json</a> (20,018 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

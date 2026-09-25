@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>u0.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="u0.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/universes/u0.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/universe/v1&quot;,
+  &quot;id&quot;: &quot;u0&quot;,
+  &quot;n&quot;: 0,
+  &quot;name&quot;: &quot;The source bytes&quot;,
+  &quot;level&quot;: &quot;down&quot;,
+  &quot;owner&quot;: &quot;nobody: the bytes are what they are&quot;,
+  &quot;centre&quot;: &quot;the hash&quot;,
+  &quot;smallest&quot;: &quot;a byte range in a file that was fetched on a date&quot;,
+  &quot;status&quot;: &quot;partial&quot;,
+  &quot;status_note&quot;: &quot;Every promoted file carries its source, its retrieval time and its content hash, and the build refuses to run if the bytes disagree with their manifest. Per file today; per node is the change.&quot;,
+  &quot;node_types&quot;: [
+    {
+      &quot;name&quot;: &quot;SourceFile&quot;,
+      &quot;formula&quot;: &quot;a node with a -fetched_from-&gt; [URL] and a -hashes_to-&gt; [Digest]&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;ByteRange&quot;,
+      &quot;formula&quot;: &quot;a node -inside-&gt; a [SourceFile] with a stated offset and length&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    }
+  ],
+  &quot;verbs&quot;: [
+    {
+      &quot;edge&quot;: &quot;fetched_from&quot;,
+      &quot;inverse&quot;: &quot;serves&quot;,
+      &quot;domain&quot;: &quot;SourceFile&quot;,
+      &quot;range&quot;: &quot;URL&quot;,
+      &quot;reads_as&quot;: &quot;this file was fetched from this address on this date&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this address served this file&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;hashes_to&quot;,
+      &quot;inverse&quot;: &quot;digest_of&quot;,
+      &quot;domain&quot;: &quot;SourceFile&quot;,
+      &quot;range&quot;: &quot;Digest&quot;,
+      &quot;reads_as&quot;: &quot;this file hashes to this digest&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this digest is the digest of this file&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;hashed_from&quot;,
+      &quot;inverse&quot;: &quot;grounds&quot;,
+      &quot;domain&quot;: &quot;Node&quot;,
+      &quot;range&quot;: &quot;ByteRange&quot;,
+      &quot;reads_as&quot;: &quot;this node was read from these bytes&quot;,
+      &quot;inverse_reads_as&quot;: &quot;these bytes ground this node&quot;,
+      &quot;from&quot;: &quot;proposed here; the AIUC-1 vault calls its version anchors&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    }
+  ],
+  &quot;adds&quot;: &quot;Today the provenance block sits on every data file and says the same thing for every row in it. The Regulation Graph ends every chain in a hash of the retrieved bytes, per node. The per row version is what riskmandate.ai asked for in its Lab 03, request three, and it belongs here: a row&#x27;s evidence is a node in U3 that is hashed_from a byte range in U0.&quot;,
+  &quot;junctions_live&quot;: [],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/model/universes/u0/index.html&quot;,
+  &quot;brief&quot;: &quot;https://abp.sgit.ai/docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.html&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;The universe is authored in admin/build/universes.py; the matched counts and the live junctions are computed from the graph on every build.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/universes/u0.json">https://abp.sgit.ai/data/universes/u0.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:44Z</dd><dt>sha256</dt><dd><code title="e79386c9e9881daa47f8e01fcf7629ef951171e22807db8de4e25ec5b5fc652d">e79386c9e988</code></dd><dt>Frozen copy</dt><dd><a href="u0.json">sites/abp.sgit.ai/data/universes/u0.json</a> (3,038 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

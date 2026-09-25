@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Vaults in vaults: the application vault is data, the renderer lives once · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#vaults-in-vaults-the-application-vault-is-data-the-renderer-lives-once">Vaults in vaults: the application vault is data, the renderer lives once</a></li><li class="l2"><a href="#1-the-shape-as-built">1. The shape, as built</a></li><li class="l2"><a href="#2-what-this-buys">2. What this buys</a></li><li class="l2"><a href="#3-what-was-not-settled-and-how-it-was-settled">3. What was not settled, and how it was settled</a></li><li class="l2"><a href="#4-the-rule-that-made-this-easy">4. The rule that made this easy</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/index.html">live ↗</a></p><article class="source"><h1 id="vaults-in-vaults-the-application-vault-is-data-the-renderer-lives-once">Vaults in vaults: the application vault is data, the renderer lives once</h1>
+<blockquote><p>Rendered from docs/briefs/architecture__vaults-in-vaults-for-behaviour-policies.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/</a><a class="ext live" href="https://riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>Date:</strong> 2026-09-15 · <strong>Author:</strong> @website-agent
+<strong>Trigger:</strong> project lead&#x27;s note of 15 September — <em>&quot;organise these ABP-specific vaults to use other ABP template vaults so that, out of the box, there is no code on the main ABP-specific vault apart from a loader index.html&quot;</em>
+<strong>Reads against:</strong> sgit.ai <code>docs/vault/sub-vaults</code>, <code>docs/vault/sg-bridge</code>, <code>docs/briefs/sgit-ai-site-pages</code> (all read 15 September); the nine application vaults and the app vault <code>fl3i7lu4</code></p>
+<hr>
+<h2 id="1-the-shape-as-built">1. The shape, as built</h2>
+<pre><code> app vault  fl3i7lu4  (public read key)        application vault, e.g. ruj286tr  (public read key)
+ ├── index.html    the renderer, once          ├── index.html      the LOADER — same bytes in every vault
+ ├── loader.html   the loader&#x27;s source         ├── app.json        entry: index.html, read only, HUD minimal
+ ├── app.json                                  ├── vault.json      who, which shape, status
+ ├── README.md                                 ├── data/           grant · mandate · delta · validity · app · vocabulary/
+ └── versions/index.json                       ├── *.md            MANDATE · GRANT · DELTA · LICENCE-TO-OPERATE · ABP · README · AGENTS · SKILL
+                                               ├── dist/           the zip, the PDF
+                                               └── history/        one entry per recompute; the grant check</code></pre>
+<p><strong>The loader is about a hundred lines and identical everywhere.</strong> On open it fetches the
+renderer and boots it in place, against the vault it is running in, trying three routes in
+order and naming the one that answered in the renderer&#x27;s top bar:</p>
+<div class="table"><table><thead><tr><th></th><th>Route</th><th>When it works</th><th>Mechanism</th></tr></thead><tbody><tr><td>1</td><td><code>sg.vfs.readText(&#x27;app/index.html&#x27;)</code></td><td>inside a vault host that resolves a <strong>sub-vault link</strong> at <code>app/</code></td><td>the platform&#x27;s own cross-vault read: the link file plus an owner record holding the app vault&#x27;s read key, and the read auto-opens the child read-only (<a href="../../../../sgit.ai/docs/vault/sub-vaults.html">sub-vaults</a><a class="ext live" href="https://sgit.ai/docs/vault/sub-vaults.html" title="live page">↗</a>)</td></tr>
+<tr><td>2</td><td>the app vault, read directly</td><td>anywhere with Web Crypto and a network — a browser, an embed</td><td>the house reader in the loader: derive the ref id from the app vault&#x27;s public read key, fetch ciphertext over CORS, decrypt, walk to <code>index.html</code></td></tr>
+<tr><td>3</td><td><code>../_app/index.html</code></td><td>the copy served from riskmandate.ai under <code>site/vaults/</code></td><td>a same-origin fetch</td></tr></tbody></table></div>
+<p>The renderer never sees which route ran. Its reads for data go through the same bridge or
+same-origin fetch the loader has, so <code>data/grant.json</code> resolves in <strong>this</strong> vault, not in the
+app vault. Booting is: parse the fetched document, move its styles into the head, its markup
+into the body, and append its script as a new script element — the <code>window.sg</code> bridge the
+host installed on the loader&#x27;s window is the one the renderer then uses.</p>
+<p><strong>On riskmandate.ai</strong>, the vault pages&#x27; embed host does what route 1 expects of a vault host:
+a read of <code>app/&lt;path&gt;</code> from inside the sandboxed frame is served from the app vault by a
+second reader, everything else from the application vault. So the loader takes route 1 there.</p>
+<h2 id="2-what-this-buys">2. What this buys</h2>
+<ul><li><strong>One renderer, versioned once.</strong> A fix to the app reaches every policy on its next load;
+<code>versions/index.json</code> in the app vault names each version&#x27;s commit.</li><li><strong>An application vault is data.</strong> Its history is the history of the mandate, the grant and
+the derived documents — the record an underwriter wants — and nothing else moves in it.</li><li><strong>The generator got smaller.</strong> It no longer injects the data into a copy of the app; it
+writes the loader with the app vault&#x27;s address, <code>data/app.json</code> for what the renderer
+cannot derive (which <code>dist/</code> files exist, which app vault), and the documents.</li><li><strong>A buyer&#x27;s private vault works the same way.</strong> It carries the same loader; the app vault
+stays public and read-only; no code is copied into the thing that is sold.</li></ul>
+<h2 id="3-what-was-not-settled-and-how-it-was-settled">3. What was not settled, and how it was settled</h2>
+<p>The first cut shipped without the sub-vault link because the link&#x27;s format was not
+published. The project lead opened <code>exsaxrfr</code> (browser extension) in the vault host: no <code>app</code>
+folder in the tree, no <code>.vault/</code> folder, and the app screen showing the loader&#x27;s error with all
+three routes failed — the host blocks a runtime <code>fetch</code> from the app sandbox (route 2 is
+&quot;Failed to fetch&quot; there, which also answers item 2 below), and the static copy is not beside
+the vault inside the host (route 3). Only route 1 works in the host, and route 1 needs the link.</p>
+<p>The format is in the host&#x27;s own source, which it serves unminified
+(<code>dev.vault.sgraph.ai/_common/js/lib/links/vault-links.js</code>, <code>components/app-shell/declared-mounts.js</code>,
+<code>adapters/composite-data-source.js</code>, and the <em>Add link</em> handler in <code>vault-browse-edit.js</code>):</p>
+<div class="table"><table><thead><tr><th>File</th><th>Shape</th><th>Who reads it</th></tr></thead><tbody><tr><td><code>app.link.json</code></td><td><code>{ &quot;vault_id&quot;: &quot;fl3i7lu4&quot;, &quot;ref_id&quot;: &quot;lk-…&quot;, &quot;label&quot;: &quot;app&quot; }</code> — a dumb pointer; the <code>.link.json</code> suffix is the whole signal; <strong>no key may live here</strong></td><td>the tree (renders as the folder <code>app/</code>), the composite data source, the kernel&#x27;s declared-mounts scan</td></tr>
+<tr><td><code>.vault/owner/ro-links.json</code></td><td><code>{ &quot;&lt;ref_id&gt;&quot;: { &quot;type&quot;: &quot;vault&quot;, &quot;label&quot;, &quot;pin&quot;: {&quot;mode&quot;:&quot;latest&quot;}, &quot;vault_id&quot;, &quot;read_key&quot;: &lt;base64 of the 32 key bytes&gt;, &quot;ref_file_id&quot;: &quot;ref-pid-muw-…&quot; } }</code></td><td><code>VaultLinks.resolveRef</code> → <code>SGVault.openReadOnly(vault_id, read_key, ref_file_id)</code>: the child opens read-only with no prompt, on any device that has the parent</td></tr></tbody></table></div>
+<p>Three facts that made it writable from the generator rather than by hand in the host:</p>
+<ol><li><strong><code>ref_id</code> is opaque.</strong> The host generates <code>&#x27;lk-&#x27; + 6 random bytes</code> when a person adds a
+link; the parser only requires a string, and the record is looked up by it. The generator
+derives it (<code>lk-</code> + 12 hex of SHA-256 over a fixed label and the app vault&#x27;s id) so a rebuild
+is byte-identical and <code>--check</code> can compare it.</li><li><strong><code>ref_file_id</code> is the app vault&#x27;s named ref</strong>, <code>ref-pid-muw-</code> + 12 hex of
+HMAC-SHA256(read key, <code>sg-vault-v1:file-id:ref:&lt;vault_id&gt;</code>) — the same derivation the
+house reader already used to read the app vault on the site, so the generator computes it.</li><li><strong>The record is read-key tier.</strong> It is an ordinary vault file, readable by any holder of
+the parent&#x27;s read key, and it carries the <em>child&#x27;s read key</em> — public by design for the app
+vault, which is on this site. The owner tier (<code>.vault/owner/secrets/&lt;ref&gt;</code>, sealed with a
+key derived from the write key) is for a <em>writable</em> child and is not needed: the app vault
+is read-only from every application vault, which is the point. <code>.vault/**</code> is beneath the
+host&#x27;s permission floor, so the renderer never sees the record either way.</li></ol>
+<p>sgit commits <code>.vault/</code> (its always-ignored set is <code>.sg_vault</code>, <code>.git</code>, tool caches and the
+<code>.env*</code> family; <code>.vault</code> is not in it), so the two files ride the same push as the rest of the
+vault. Verified with the host&#x27;s own library code run in Node: from the record in <code>exsaxrfr</code>,
+<code>DeclaredMounts.resolveCredentials</code> yields the read credential and <code>SGVault.openReadOnly</code>
+opens <code>fl3i7lu4</code> at its v3 head.</p>
+<p><strong>Still open.</strong> Nothing in the loader changed. Route 2 stays for embeds outside the host; the
+site&#x27;s vault pages still serve <code>app/…</code> from their own second reader. Static (<code>SG_STATIC</code>)
+hosting is unchanged: route 3 needs the app copied beside the vault, which is not our case.</p>
+<h2 id="4-the-rule-that-made-this-easy">4. The rule that made this easy</h2>
+<p>The renderer was already forbidden from carrying the vault&#x27;s data as anything but a
+fallback, and every read already went through one function. Removing the fallback and
+moving the file was the whole change; the loader is the reader we already had on the site,
+copied one more time, which is what its brief says to do.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/index.html">https://riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="d81648f373d7c89d96e9bd292e3dc0e3f455b483a89e07368f2709c0c959a99a">d81648f373d7</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/briefs/architecture__vaults-in-vaults-for-behaviour-policies/index.md</a> (8,162 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

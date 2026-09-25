@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>MAP-A-GRANT.md — a prompt for an agent that holds a connector or a credential · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#map-a-grantmd-a-prompt-for-an-agent-that-holds-a-connector-or-a-credential">MAP-A-GRANT.md — a prompt for an agent that holds a connector or a credential</a></li><li class="l2"><a href="#the-prompt">The prompt</a></li><li class="l3"><a href="#the-vocabulary">The vocabulary</a></li><li class="l3"><a href="#the-rules-of-measurement">The rules of measurement</a></li><li class="l3"><a href="#what-to-write">What to write</a></li><li class="l3"><a href="#what-happens-next">What happens next</a></li><li class="l2"><a href="#why-this-file-exists">Why this file exists</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="MAP-A-GRANT.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/vaults/gmail-readonly/MAP-A-GRANT.html">live ↗</a></p><article class="source"><h1 id="map-a-grantmd-a-prompt-for-an-agent-that-holds-a-connector-or-a-credential">MAP-A-GRANT.md — a prompt for an agent that holds a connector or a credential</h1>
+<blockquote><p>Give this to an agent that already holds something — an API key, a connector, a token, a
+bot account — and ask it to measure its own grant and write the first draft of an Agent
+Behaviour Policy. It travels with every vault unchanged. The output is two JSON files the
+generator turns into everything else; a person then corrects the mandate.</p></blockquote>
+<h2 id="the-prompt">The prompt</h2>
+<p>Paste everything below the line into the agent&#x27;s session, with the credential already in
+place. Do not paste the credential into the prompt.</p>
+<hr>
+<p>You hold a credential or a connector. Your task is to measure what it lets you do — not what the
+documentation says, what it actually does when asked — and to write it down in a fixed
+vocabulary so that a person can say which of it they wanted. This is an **Agent Behaviour
+Policy**: four objects, and the verb on each is the whole model.</p>
+<div class="table"><table><thead><tr><th>Object</th><th>Verb</th><th>Who produces it</th></tr></thead><tbody><tr><td>the grant — everything you can do</td><td><strong>measured</strong></td><td>you, now</td></tr>
+<tr><td>the mandate — what you were authorised to do</td><td><strong>elicited</strong></td><td>the person who gave you the credential; you write the first draft and mark it as such</td></tr>
+<tr><td>the delta — excess and shortfall</td><td><strong>derived</strong></td><td>a build script; never typed</td></tr>
+<tr><td>the barrier — what stands in the way of each row</td><td><strong>recorded</strong></td><td>you, one per row</td></tr></tbody></table></div>
+<h3 id="the-vocabulary">The vocabulary</h3>
+<p>Fetch <code>https://abp.sgit.ai/data/index.json</code> and pin the version it names. From it take:</p>
+<ul><li><strong>23 capabilities</strong>, each <code>verb.object.reach</code> — <code>read.file.host</code>, <code>send.message.world</code>,
+<code>authenticate-as.credential.tenant</code>, <code>create.schedule.tenant</code> and so on — with a gloss, a
+reach (<code>project</code> · <code>host</code> · <code>tenant</code> · <code>world</code> · <code>self</code>) and an undo class (<code>yes</code> ·
+<code>with-effort</code> · <code>no</code>). A row is one of these and nothing else. If what you can do has no
+primitive, record it under <code>not_in_grammar</code> with what it is and why no row fits.</li><li><strong>4 barriers</strong>: <code>none</code> (nothing in the way) · <code>expectation</code> (a rule in prose) · <code>setting</code>
+(a switch your own account can flip) · <code>boundary</code> (enforced above the grant, out of your
+reach). <strong>Only a boundary is a control.</strong> The test: *a control bounds a grant only if it is
+enforced by something the grant does not include.* The credential you hold is the grant,
+not a barrier: a key that permits a thing is not what stops it.</li><li><strong>Evidence tiers</strong>, weakest first: <code>derived</code> · <code>inferred</code> · <code>self-reported</code> · <code>documented</code> ·
+<code>measured</code> · <code>observed</code>. <code>measured</code> means a probe you ran, dated, with the evidence kept.
+<code>observed</code> means you saw it on the thing itself. Anything you did not try is <code>derived</code> or
+<code>documented</code>, and says so.</li><li><strong>Whose material</strong> the row reaches: <code>own</code> · <code>organisation</code> · <code>third_party</code> · <code>mixed</code>. A
+mailbox is mixed. A shared drive is mixed. Your own scratch folder is own.</li></ul>
+<h3 id="the-rules-of-measurement">The rules of measurement</h3>
+<ol><li><strong>Measure only what you are entitled to run.</strong> The credential was given to you for this
+system; probe this system and nothing beyond it. Never probe another party&#x27;s system to see
+what it does, and never use what you can reach to reach further.</li><li><strong>Reversible probes only, and clean up.</strong> To test <em>create</em>, create one obviously named test
+artefact and delete it. To test <em>delete</em>, delete only the artefact you created. To test
+<em>send</em>, send only to an address the deployer named for the purpose, or record <code>not tested</code>.
+Never test <em>delete</em> on anything that existed before you did.</li><li><strong>Never move a credential.</strong> If you can read credentials, record that you can, with the
+metadata that proves it (name, type, count) and nothing else. Do not print, copy, forward
+or store a secret. Do not test whether a credential works elsewhere.</li><li><strong>Note the door.</strong> The same operation can be barred through one path and open through
+another — a REST route blocked by a gateway and the identical call open through an MCP
+tunnel. Record each path you tried as its own <code>via</code>, with its own barrier.</li><li><strong>An error is a symptom, not a barrier.</strong> <em>Access denied</em> can be a wrong reference, a
+stale version or an ambiguous name. Trace it before you record it as a bound.</li><li><strong>Say what you did not test.</strong> A row you did not try is not absent; it is <code>derived</code> with a
+note, or it goes in <code>research_needed</code> with how it would be settled.</li><li><strong>Leave the deployment as you found it</strong>, and list every artefact you made and removed.</li></ol>
+<h3 id="what-to-write">What to write</h3>
+<p><strong><code>data/grant.json</code></strong> — <code>abp/profile/v1</code>. One row per capability you hold:</p>
+<pre><code class="lang-json">{ &quot;capability&quot;: &quot;write.file.project&quot;, &quot;barrier&quot;: &quot;none&quot;, &quot;evidence&quot;: &quot;measured&quot;,
+  &quot;via&quot;: [&quot;POST /api/v1/workflows&quot;], &quot;control&quot;: null,
+  &quot;note&quot;: &quot;created, deactivated and deleted one test workflow named ABP-PROBE-&lt;date&gt;&quot;,
+  &quot;undo&quot;: &quot;with-effort&quot;, &quot;is_bounded&quot;: false, &quot;material&quot;: &quot;organisation&quot; }</code></pre>
+<p>Plus: <code>id</code> (vendor/product/variant), <code>vendor</code>, <code>product</code>, <code>surface</code>, <code>profile_version</code> (today),
+a <code>description</code> in one paragraph of what this deployment is, <code>reach_names</code> (what <code>host</code>,
+<code>tenant</code> and <code>world</code> mean here), <code>not_reachable</code> (what you confirmed you cannot do, and how you
+know), <code>tools</code> (the surfaces you used), <code>widest_reach</code>, and where they apply
+<code>not_in_grammar</code>, <code>contradictions</code> (where the vendor&#x27;s pages and the measurement disagree —
+publish unresolved) and <code>research_needed</code> (what you could not settle, and how it would be).</p>
+<p><strong><code>data/mandate.json</code></strong> — <code>abp/mandate/v1</code>, status <code>starting-point</code>. Ask the person who gave
+you the credential what they wanted you to do, in their words, and sort every one of the 23
+primitives into <code>want</code>, <code>do_not_want</code> or <code>unstated</code>. If nobody can be asked, write the draft
+from what you were told when you were set up, and mark <code>authored_by</code> as a draft to be argued
+with. Most people authorised less than an agent assumes and never mentioned the rest.</p>
+<p><strong>A record of the session</strong> — what you probed, in what order, what you created and removed,
+what failed and why, what you did not test. Dated. This is the evidence file the <code>measured</code>
+tier requires.</p>
+<h3 id="what-happens-next">What happens next</h3>
+<p>The build script (<code>scripts/site/build-abp-vault.mjs &lt;slug&gt;</code> in the riskmandate.ai repository)
+computes the delta — excess, refused, unstated, unbounded, shortfall, aligned — and writes
+<code>GRANT.md</code>, <code>MANDATE.md</code>, <code>DELTA.md</code>, <code>LICENCE-TO-OPERATE.md</code> and the rest. It carries no
+score. The person then corrects the mandate; the delta is recomputed; nothing in it is ever
+edited by hand.</p>
+<p>Report when you are done with: the row count, how many rows are <code>measured</code>, how many stand
+at <code>none</code>, and the list of artefacts you created and removed.</p>
+<hr>
+<h2 id="why-this-file-exists">Why this file exists</h2>
+<p>The first measured behaviour policy this site received was produced exactly this way: an agent
+holding an owner-scoped API key on a workflow-automation platform, asked to find the edges of
+what it could do. It found full create-change-delete over automations, an outbound node with no
+restriction on target host, every account on the instance visible, and credential metadata
+readable through one door and not another — and it left one test workflow created and deleted,
+nothing else. The rules above are the ones it followed, and the ones it wished it had.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/vaults/gmail-readonly/MAP-A-GRANT.html">https://riskmandate.ai/vaults/gmail-readonly/MAP-A-GRANT.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/vaults/gmail-readonly/MAP-A-GRANT.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:07Z</dd><dt>sha256</dt><dd><code title="22d025e3125a61fa107fbd43a16bde99c975cc19fa4e77d0438896d1bf9a26cd">22d025e3125a</code></dd><dt>Frozen copy</dt><dd><a href="MAP-A-GRANT.md">sites/riskmandate.ai/vaults/gmail-readonly/MAP-A-GRANT.md</a> (7,213 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

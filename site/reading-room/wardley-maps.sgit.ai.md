@@ -1,7 +1,9 @@
 # wardley-maps.sgit.ai
 
+- [Maps are claims, not pictures](https://wardley-maps.sgit.ai/index.md)
 - [wardley-maps.sgit.ai llms-full.txt](https://wardley-maps.sgit.ai/llms-full.txt)
 - [wardley-maps.sgit.ai llms.txt](https://wardley-maps.sgit.ai/llms.txt)
+- [concepts.json](https://wardley-maps.sgit.ai/agents/concepts.json)
 - [00 — The Brief: wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/briefs/00__BRIEF.md)
 - [wardley-maps.sgit.ai — brief pack](https://wardley-maps.sgit.ai/briefs/00__README.md)
 - [01 — Concepts Index](https://wardley-maps.sgit.ai/briefs/01__concepts-index.md)
@@ -13,3 +15,6 @@
 - [07 — Boundaries, licensing and house style](https://wardley-maps.sgit.ai/briefs/07__boundaries-and-licensing.md)
 - [08 — Gaps, open questions and honest tensions](https://wardley-maps.sgit.ai/briefs/08__gaps-and-open-questions.md)
 - [Licence](https://wardley-maps.sgit.ai/briefs/LICENSE.md)
+- [link-check.json](https://wardley-maps.sgit.ai/data/link-check.json)
+- [doctrine.json](https://wardley-maps.sgit.ai/doctrine/doctrine.json)
+- [captured.json](https://wardley-maps.sgit.ai/screenshots/captured.json)

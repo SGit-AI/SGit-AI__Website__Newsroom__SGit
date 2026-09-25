@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#the-arithmetic-stated">The arithmetic, stated</a></li><li class="l2"><a href="#against-what-we-actually-paid">Against what we actually paid</a></li><li class="l2"><a href="#plan-fit">Plan fit</a></li><li class="l2"><a href="#when-these-numbers-go-wrong">When these numbers go wrong</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/experiments/cost/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Cost model — no key, no network
+description: &quot;Paste a script or a reel.json and get characters, requests, per-model cost and plan fit, with every constant visible. Runs entirely in your browser; makes no network call at all.&quot;
+lead: &quot;Arithmetic you can check, on text you paste, with no key and no request to anybody. Cost figures go stale faster than anything else on this site — this page makes the staleness visible instead of hiding it in a table.&quot;
+order: 21
+kind: experiment
+family: no key needed
+app: cost
+endpoints: &quot;none — this page makes no network call&quot;
+state_chips: [projected]
+toc: true
+</p>
+<hr>
+<p>&lt;div class=&quot;note&quot;&gt;&lt;p&gt;&lt;b&gt;No key bar on this page, because there is nothing to send.&lt;/b&gt; Everything below is computed in
+your browser from the text in the box and the list prices hard-coded in &lt;a href=&quot;/assets/lab.js&quot;&gt;lab.js&lt;/a&gt;. It is the
+only lab here that cannot cost you anything.&lt;/p&gt;&lt;/div&gt;</p>
+<p>{{app}}</p>
+<h2 id="the-arithmetic-stated">The arithmetic, stated</h2>
+<p><strong>Cost = characters ÷ 1,000 × the model&#x27;s rate.</strong> Rates, read 5 September 2026: <code>eleven_v3</code> and <code>eleven_multilingual_v2</code> <strong>$0.10 per 1,000 characters</strong>; <code>eleven_flash_v2_5</code> and <code>eleven_turbo_v2_5</code> <strong>$0.05</strong> {{claim:tts-prices}}. Context text passed as <code>previous_text</code> or <code>next_text</code> is not billed as generated characters, which is why <a href="../text-handling/index.html">stitching</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/text-handling/" title="live page">↗</a> is free.</p>
+<p>Two things this page counts that a rate card does not:</p>
+<ul><li><strong>Requests, not just characters.</strong> A scene-by-scene render fires one request per scene, and the request count is what meets the concurrency limit — the failure mode that costs a render, rather than a rounding error on the bill {{claim:concurrency-unknown}}.</li><li><strong>Your longest scene against the model&#x27;s per-request limit.</strong> <code>eleven_v3</code> takes 5,000 characters, <code>multilingual_v2</code> 10,000, flash and turbo 40,000 {{claim:char-limits}}. Our longest scene is about 420 characters, so limits are not a constraint for a scene-by-scene render — they bite only if somebody concatenates a whole reel into one request, which also destroys the per-scene timing the pipeline needs.</li></ul>
+<h2 id="against-what-we-actually-paid">Against what we actually paid</h2>
+<p>Section 3 puts this page&#x27;s arithmetic beside real invoices from a different provider on named dates {{claim:openrouter-cost-aiuc}}. Only the left-hand column is evidence; the two right-hand columns are this page doing multiplication {{claim:projected-reel-costs}}.</p>
+<p>The conclusion that survives the comparison: <strong>v3 costs about what the incumbent cost, flash costs half</strong>, and both are a rounding error against the value of the timestamps. The reason to switch is not price.</p>
+<h2 id="plan-fit">Plan fit</h2>
+<p>At about 4,000 characters per video, a Creator plan&#x27;s 220,000 characters is roughly 50 videos a month {{claim:creator-covers-50}} — arithmetic, not experience; we have never run a month of it. Section 4 does the same division on your own numbers. What it cannot tell you is whether the plan&#x27;s <strong>concurrency</strong> allowance survives your render, which is the other half of choosing a tier and is <a href="../concurrency/index.html">a different lab</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/concurrency/" title="live page">↗</a>.</p>
+<h2 id="when-these-numbers-go-wrong">When these numbers go wrong</h2>
+<p>The day the vendor changes a price. Everything here carries the date it was read, and the <a href="../../ledger/index.html">ledger</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/ledger/" title="live page">↗</a> marks the whole class of pricing claims as vendor-documentation rather than measurement {{claim:tts-prices}}. If you find a rate that has moved, that is a correction worth sending: it invalidates a row on this site rather than a paragraph.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/experiments/cost/index.md">https://elevenlabs.providers.sgit.ai/experiments/cost/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:51Z</dd><dt>sha256</dt><dd><code title="cf5f7ad393d0144e4e15d789b3ed3822d9a8f41cddb4c36968fb520d23f7f63a">cf5f7ad393d0</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/experiments/cost/index.md</a> (3,521 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

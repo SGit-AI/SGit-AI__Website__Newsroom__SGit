@@ -17,6 +17,7 @@ import posixpath
 import re
 import shutil
 import sys
+import unicodedata
 from urllib.parse import urljoin, urlparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -101,6 +102,7 @@ class Source:
         self.site = parts[1] if self.group == 'sites' and len(parts) > 2 else None
         self.url = meta['url'] if meta else None
         self.fetched = meta['fetched'] if meta else None
+        self.via = meta.get('via') if meta else None
         self.sha = meta['sha256'] if meta else sha256_file(self.abs)
         self.bytes = os.path.getsize(self.abs)
         self.raw = 'src/' + path                            # the file itself, copied beside its page
@@ -111,7 +113,7 @@ class Source:
         elif self.ext in ('.html', '.svg', '.webp', '.png', '.jpg'):
             self.page = None
         elif self.ext in ('.json', '.csv', '.py', '.jsonl', '.txt') and (
-                self.bytes <= RENDER_LIMIT or path.endswith('.txt')):
+                self.bytes <= RENDER_LIMIT or path.endswith('.txt') or path == 'sites/manifest.json'):
             self.page = 'src/' + path + '.html'
         else:
             self.page = None
@@ -336,6 +338,7 @@ class Site:
                 ('sha256', f'<code title="{s.sha}">{s.sha[:12]}</code>'),
                 ('Frozen copy', f'<a href="{{raw}}">{esc(s.path)}</a> ({s.bytes:,} bytes)'),
                 ('Section', esc(section) if section else None),
+                ('Brought home', esc(s.via) if s.via else None),
                 ('Desk', 'Librarian (reading room): rendered as fetched, not edited')]
         return rows
 
@@ -393,7 +396,7 @@ class Site:
 
     def source_body(self, s):
         if s.is_markdown:
-            return self.md(s.text, s.page, base_url=s.url, base_file=s.path)
+            return self.md(s.text, s.page, base_url=self.link_base(s), base_file=s.path)
         if s.ext == '.csv':
             rows = list(csv.reader(io.StringIO(s.text)))
             if rows:
@@ -407,6 +410,14 @@ class Site:
             except ValueError:
                 pass
         return f'<pre class="raw"><code>{esc(text)}</code></pre>', []
+
+    @staticmethod
+    def link_base(s):
+        """The URL a source's relative links are written against. riskmandate.ai's release notes are
+        shown inside /versions.html, so their links are relative to the site root, not /versions/."""
+        if s.url and re.match(r'https://riskmandate\.ai/versions/[^/]+\.md$', s.url):
+            return 'https://riskmandate.ai/versions.html'
+        return s.url
 
     def build_source_page(self, s):
         body, heads = self.source_body(s)
@@ -456,7 +467,10 @@ class Site:
         if not sections:
             return self.build_source_page(s)
         folder = s.page[:-len('llms-full.txt.html')] + 'llms-full/'
-        pages = [f'{folder}{n + 1:03d}-{mdlite.slugify(t)[:40]}.html' for n, (t, _) in enumerate(sections)]
+        # ASCII file names: macOS decomposes accented names, which breaks file:// links after a clone
+        ascii_slug = lambda t: re.sub(r'-+', '-', re.sub(r'[^a-z0-9-]', '', unicodedata.normalize('NFKD', mdlite.slugify(t))
+                                                         .encode('ascii', 'ignore').decode())).strip('-')[:40] or 'section'
+        pages = [f'{folder}{n + 1:03d}-{ascii_slug(t)}.html' for n, (t, _) in enumerate(sections)]
         prov_rows = self.prov_source(s)
         items = ''.join(f'<li><a href="{rel(s.page, p)}">{esc(t)}</a> <span class="muted">'
                         f'{len(c):,} chars</span></li>' for p, (t, c) in zip(pages, sections))
@@ -584,6 +598,9 @@ class Site:
         intro = (f'<h1>The reading room</h1><p class="lede">Every file in the snapshot of {SNAPSHOT_TAKEN}, rendered as a readable '
                  f'page with its provenance. Nothing here needs the network: every link to a snapshotted page stays in the '
                  f'reading room, and the ↗ beside it opens the live page when you are back online.</p>'
+                 f'<p>{sum(1 for x in self.cat.sources.values() if x.via)} of the files were brought home after the snapshot, by '
+                 f'<code>tools/fetch_missing.py</code>: the .md twins of network pages the site links to. Their provenance block says so, '
+                 f'with their own fetch time.</p>'
                  f'<p class="jump"><a href="#new">New since 18 September</a> · <a href="#plans">Business plans</a> · '
                  f'<a href="#briefs">Briefs</a> · <a href="#history">History</a> · <a href="#sites">By site</a></p>')
         md = (f'# The reading room\n\n## New on sgit.ai since 18 September\n\n' +
@@ -996,8 +1013,10 @@ class Site:
                 f'provenance block, so a reader can walk from any claim to the frozen copy it came from. The newsroom does the same thing for the '
                 f'network that <a href="{rel(P, self.cat.find_url("https://pt.newsroom.sgit.ai/llms.txt").link) if self.cat.find_url("https://pt.newsroom.sgit.ai/llms.txt") else "#"}">pt.newsroom.sgit.ai</a> '
                 f'does for Portuguese sources, and that newsroom.sgit.ai argues for.</p>'
-                f'<h2>Reading it offline</h2><p>Clone the repository and open <code>site/index.html</code>, or serve the folder: '
-                f'<code>python3 -m http.server -d site 8000</code>. Search, filters and every page work with the network off.</p>'
+                f'<h2>Reading it offline</h2><p>Clone the repository and open <code>site/index.html</code>, or run '
+                f'<code>./run-local.sh</code>: online, it first brings home the .md twin of every linked network page not yet on disk '
+                f'(<code>tools/fetch_missing.py</code>), then rebuilds, validates and serves on <code>http://localhost:8000/</code>; '
+                f'with <code>--offline</code> it only rebuilds and serves. Search, filters and every page work with the network off.</p>'
                 f'<h2>The brief</h2><ul>{brief}</ul>')
         md = f'# About and method\n\n{re.sub("<[^>]+>", "", honest)}\n'
         self.page(P, 'About and method', body, self.prov_desk(P, 'Editor', sources=None), md=md, eyebrow='Editor')

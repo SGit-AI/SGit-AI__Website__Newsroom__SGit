@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
 <main>
 <p class="eyebrow">Reading room · riskmandate.ai</p>
@@ -17,10 +17,10 @@
 <p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.4.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.4.0.html">live ↗</a></p><article class="source"><h2 id="a-section-for-collaborators-and-their-agents-and-the-twins-stop-dropping-things">A section for collaborators and their agents, and the twins stop dropping things</h2>
 <p>A new section for briefing people who work with us — and, since they work the way we do,
 for the agents they hand our material to.</p>
-<ul><li><strong><a class="ext" href="https://riskmandate.ai/versions/work.html">Working with us ↗</a></strong> — how this estate works in six lines, the seven hard
+<ul><li><strong><a href="../work.html">Working with us</a><a class="ext live" href="https://riskmandate.ai/work.html" title="live page">↗</a></strong> — how this estate works in six lines, the seven hard
 rules that apply to anything produced on our behalf, and what you need to get set up
 (for the first brief: nothing but a browser). In the <em>More</em> menu rather than the top
-bar, because it is an operational page and the bar is at its seven-entry limit.</li><li><strong><a class="ext" href="https://riskmandate.ai/versions/work-abp-power-user.html">Brief B1 — power user and tester of Agent Behaviour Policies ↗</a></strong>.
+bar, because it is an operational page and the bar is at its seven-entry limit.</li><li><strong><a href="../work-abp-power-user.html">Brief B1 — power user and tester of Agent Behaviour Policies</a><a class="ext live" href="https://riskmandate.ai/work-abp-power-user.html" title="live page">↗</a></strong>.
 The first task. It opens with a prompt written to be pasted whole into an agent: who we
 are, what we are selling right now, the two deadlines that shape everything, the seven
 rules, and a reading list of ten sources across <code>abp.sgit.ai</code>, <code>store.sgit.ai</code>,
@@ -38,7 +38,7 @@ Two bugs in the extractor, both fixed:</p>
 <ul><li><strong>Preformatted blocks were dropped entirely.</strong> The extractor handled a fixed set of
 tags and <code>&lt;pre&gt;</code> was not among them — so the collaborator prompt, which is the single
 most important thing on its page and the reason the twin exists, was absent from the
-twin. Also missing: the worked <code>curl</code> examples on <a class="ext" href="https://riskmandate.ai/versions/agents.html">the agents page ↗</a>, gone
+twin. Also missing: the worked <code>curl</code> examples on <a href="../agents.html">the agents page</a><a class="ext live" href="https://riskmandate.ai/agents.html" title="live page">↗</a>, gone
 since v1.0.0. <code>&lt;pre&gt;</code> now becomes a fenced block, whitespace intact.</li><li><strong>Nested lists came out scrambled.</strong> A non-greedy regex matched an <code>&lt;li&gt;</code> to the <em>first</em>
 <code>&lt;/li&gt;</code>, which for a list item containing its own sub-list swallowed the item&#x27;s heading
 and prose into one bullet and then emitted the sub-list as siblings. Close tags are now
@@ -47,6 +47,6 @@ children emitted rather than being flattened. This corrected <code>summit.md</co
 its own headline twice. Excluded.</li></ul></article>
 <aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.4.0.html">https://riskmandate.ai/versions/1.4.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.4.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="8949447d3552b33952a41dcb63ba90edeac3174ceed917f7e2a11101a27ef99f">8949447d3552</code></dd><dt>Frozen copy</dt><dd><a href="1.4.0.md">sites/riskmandate.ai/versions/1.4.0.md</a> (2,719 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 </body>
 </html>

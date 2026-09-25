@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>concepts.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> · <a href="concepts.json">raw text</a> · <a class="ext" href="https://risks.sgit.ai/data/concepts.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;site&quot;: &quot;risks.sgit.ai&quot;,
+  &quot;site_version&quot;: &quot;v0.2.2&quot;,
+  &quot;title&quot;: &quot;The 43 risk concepts&quot;,
+  &quot;description&quot;: &quot;The conceptual corpus of risks.sgit.ai as structured data: 43 concepts. 42 are drawn from ~496,000 words written between 18 June and 22 August 2026; one was authored on this site. The origin field says which is which.&quot;,
+  &quot;important&quot;: &quot;NOTHING IN THIS CORPUS IS IMPLEMENTED IN CODE. Greps for risk_, RiskAcceptance, risk_register and riskmandate across the implementing repository return zero matches. The maturity field describes how well ARGUED a concept is, never how well built. Do not describe any of these as an existing feature.&quot;,
+  &quot;origin_values&quot;: {
+    &quot;corpus&quot;: &quot;drawn from the source material this site consolidates; the source field gives its repository path&quot;,
+    &quot;authored-here&quot;: &quot;written on this site, with no upstream source. Do not attribute it to the corpus.&quot;
+  },
+  &quot;licence&quot;: &quot;CC BY 4.0&quot;,
+  &quot;source_repository&quot;: &quot;SGraph-AI__App__Send @ v0.33.62 (unpublished; the version tag is the address)&quot;,
+  &quot;canonical_page&quot;: &quot;https://risks.sgit.ai/concepts/index.html&quot;,
+  &quot;full_text&quot;: &quot;https://risks.sgit.ai/llms-full.txt&quot;,
+  &quot;reading_order_for_an_agent&quot;: [
+    &quot;C1&quot;,
+    &quot;C2&quot;,
+    &quot;C3&quot;,
+    &quot;C4&quot;,
+    &quot;C5&quot;,
+    &quot;C6&quot;,
+    &quot;C7&quot;,
+    &quot;C19&quot;,
+    &quot;C20&quot;,
+    &quot;C21&quot;,
+    &quot;C22&quot;,
+    &quot;C23&quot;
+  ],
+  &quot;maturity_values&quot;: {
+    &quot;well-developed&quot;: &quot;the argument is complete and worked; not implemented&quot;,
+    &quot;partially argued&quot;: &quot;a mechanism is missing, or the source says so itself; not implemented&quot;,
+    &quot;newly stated&quot;: &quot;appeared late and has not been stress-tested; not implemented&quot;
+  },
+  &quot;teaching_altitudes&quot;: [
+    {
+      &quot;altitude&quot;: &quot;1 · The inversion&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/index.html&quot;,
+      &quot;covers&quot;: &quot;The founding move and its three immediate consequences. Read these four first, in order — each is forced by the one before it.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C1&quot;,
+        &quot;C2&quot;,
+        &quot;C3&quot;,
+        &quot;C4&quot;
+      ]
+    },
+    {
+      &quot;altitude&quot;: &quot;2 · The vocabulary&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptable/index.html&quot;,
+      &quot;covers&quot;: &quot;What the words mean once the inversion has happened, and where a register lives.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C5&quot;,
+        &quot;C25&quot;,
+        &quot;C9&quot;,
+        &quot;C10&quot;,
+        &quot;C11&quot;
+      ]
+    },
+    {
+      &quot;altitude&quot;: &quot;3 · The machinery&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ladder/index.html&quot;,
+      &quot;covers&quot;: &quot;What makes it computable. This is the altitude an agent most needs.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C6&quot;,
+        &quot;C7&quot;,
+        &quot;C8&quot;,
+        &quot;C17&quot;,
+        &quot;C33&quot;
+      ]
+    },
+    {
+      &quot;altitude&quot;: &quot;4 · The exposure&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/plug/index.html&quot;,
+      &quot;covers&quot;: &quot;What the machinery is pointed at: what an agent can reach, and what it costs to stop it.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C19&quot;,
+        &quot;C18&quot;,
+        &quot;C20&quot;,
+        &quot;C21&quot;,
+        &quot;C22&quot;,
+        &quot;C23&quot;
+      ]
+    },
+    {
+      &quot;altitude&quot;: &quot;5 · The organisation&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html&quot;,
+      &quot;covers&quot;: &quot;Who does what, and what keeps a register alive once it exists.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C13&quot;,
+        &quot;C14&quot;,
+        &quot;C15&quot;,
+        &quot;C24&quot;,
+        &quot;C26&quot;,
+        &quot;C28&quot;,
+        &quot;C30&quot;,
+        &quot;C31&quot;,
+        &quot;C35&quot;
+      ]
+    },
+    {
+      &quot;altitude&quot;: &quot;6 · The maturity&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ramm/index.html&quot;,
+      &quot;covers&quot;: &quot;How far along an organisation is, and how confident anyone should be in the numbers.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C37&quot;,
+        &quot;C38&quot;,
+        &quot;C39&quot;
+      ]
+    },
+    {
+      &quot;altitude&quot;: &quot;7 · The boundary&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/examples/execution-boundary/index.html&quot;,
+      &quot;covers&quot;: &quot;Authored on this site rather than drawn from the corpus: what happens in the interval between authorizing an action and executing it.&quot;,
+      &quot;concepts&quot;: [
+        &quot;C43&quot;
+      ]
+    }
+  ],
+  &quot;count&quot;: 43,
+  &quot;concepts&quot;: [
+    {
+      &quot;id&quot;: &quot;C1&quot;,
+      &quot;name&quot;: &quot;Risk acceptance as underwriting, not prediction&quot;,
+      &quot;definition&quot;: &quot;A risk is not a probability estimate about a future event but an exposure that already exists, which a named person underwrites insurance-style for a stated interval, with accountability attached.&quot;,
+      &quot;detail&quot;: &quot;The founding inversion. Traditional risk management predicts the probability of a future event; this model asks a named human to underwrite an exposure that already exists. It relocates the discipline from actuarial estimation to accountable ownership, and it is the reason the rest hangs together: once someone must sign, they demand evidence, which manufactures the demand for the grounding ladder underneath.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — the insurance analogy carries it with no GRC background&quot;,
+      &quot;first_written&quot;: &quot;4 June 2026 (v0.32.3), deepened 18 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/18/agentic-permissions/v0.33.40__arch-brief__…the-risk-already-exists.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/underwriting.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c1&quot;,
+      &quot;related&quot;: [
+        &quot;C2&quot;,
+        &quot;C3&quot;,
+        &quot;C26&quot;,
+        &quot;C31&quot;
+      ],
+      &quot;quote&quot;: &quot;we are not describing the risk of something happening, we are asking them to accept it, to underwrite it&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C2&quot;,
+      &quot;name&quot;: &quot;The no-deny mechanic&quot;,
+      &quot;definition&quot;: &quot;A risk with a real vulnerability under it exists whether or not anyone acknowledges it, so there is no deny button — the only choice is how long you accept it before re-accepting.&quot;,
+      &quot;detail&quot;: &quot;The single most distinctive primitive. Denial in conventional registers is a fiction that only works while the risk has not materialised; removing it converts risk management from a gate into a forcing function. What replaces denial is three moves — accept, escalate, or challenge the fact — so the person is routed rather than cornered.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — outstandingly so&quot;,
+      &quot;first_written&quot;: &quot;23 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/23/risk-mandate-product-and-workflow/v0.33.33__dev-brief__…no-deny-time-boxed-acceptance-expiry-as-cost…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/no-deny.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c2&quot;,
+      &quot;related&quot;: [
+        &quot;C1&quot;,
+        &quot;C3&quot;,
+        &quot;C4&quot;,
+        &quot;C32&quot;
+      ],
+      &quot;quote&quot;: &quot;the mistake of a lot of risk registers is that they allow the risk to be denied, which can only happen when the risk has not materialised&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C3&quot;,
+      &quot;name&quot;: &quot;The acceptance interval ladder&quot;,
+      &quot;definition&quot;: &quot;The interval is not metadata about the decision — the interval IS the decision, because each rung implies a specific operational response and therefore a specific cost. Six rungs: 1h, 4h, 1d, 1w, 1m, 6m, default one month.&quot;,
+      &quot;detail&quot;: &quot;Choosing a duration sets severity and commits resources in the same click. Under 24 hours means pull the plug; a day to a week is a lower-grade incident; a week to a month is a project for an existing team; one to three months means assemble and fund; over three months means you are waiting to see, which is legitimate if said out loud. Rungs that are physically impossible are struck off before the choice is offered.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — a six-row table with plain-language consequences&quot;,
+      &quot;first_written&quot;: &quot;intervals 23 June 2026; consolidated as a ladder 17 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/17/registers-mandate-and-intervals/v0.33.49__arch-brief__…acceptance-interval-ladder…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/the-ladder.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c3&quot;,
+      &quot;related&quot;: [
+        &quot;C2&quot;,
+        &quot;C5&quot;,
+        &quot;C4&quot;
+      ],
+      &quot;quote&quot;: &quot;if you have less than a day risk acceptance, then that is fundamentally a P1, because if you say I do not want to accept this risk for more than an hour once I know about it, then that means you need to pull the plug&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C4&quot;,
+      &quot;name&quot;: &quot;Unaccepted equals critical&quot;,
+      &quot;definition&quot;: &quot;A risk nobody has accepted has not gone away — it rests on whoever is nearest, so it is rated critical by default and rolls upward without anyone choosing to escalate it.&quot;,
+      &quot;detail&quot;: &quot;The sharpest inversion of incentives in the corpus. In most organisations a risk nobody escalated feels safest to the person holding it; here it is the worst state available, because that person is personally carrying an enterprise exposure with no signature above them. It is aimed at attrition rather than refusal: it removes the deniability non-participation depends on, without requiring anyone to cooperate.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;17 July 2026; worked end-to-end 2 August 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/17/registers-mandate-and-intervals/v0.33.49__arch-brief__…acceptance-interval-ladder…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/unaccepted-is-critical.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c4&quot;,
+      &quot;related&quot;: [
+        &quot;C2&quot;,
+        &quot;C3&quot;,
+        &quot;C35&quot;
+      ],
+      &quot;quote&quot;: &quot;that person right now is accountable for the business, which is very bad from a business point of view, but is also very bad for the individual&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C5&quot;,
+      &quot;name&quot;: &quot;Accepted is not acceptable&quot;,
+      &quot;definition&quot;: &quot;Two orthogonal axes, not two stages. Accepted is an act by a named person at a dated moment; acceptable is a threshold the business owns — the moment it is happy to stop funding remediation.&quot;,
+      &quot;detail&quot;: &quot;The vocabulary correction that turns risk appetite into something computable, producing four quadrants each requiring a different response. Acceptable is risk appetite renamed, and renaming it makes it operational because the instruction that matters most is the one that stops work. EU AI Act Article 9(5) requires residual risk to be judged acceptable and never defines the word — so the obligation to judge is imposed and the standard is not supplied.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — the four-quadrant diagram does the work&quot;,
+      &quot;first_written&quot;: &quot;28 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/28/regulation-graph-and-acceptability/v0.33.53__strategy-brief__…accepted-is-not-acceptable…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptable/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c5&quot;,
+      &quot;related&quot;: [
+        &quot;C25&quot;,
+        &quot;C3&quot;,
+        &quot;C30&quot;
+      ],
+      &quot;quote&quot;: &quot;the acceptable risk is the moment that the business is happy to stop funding remediation activities&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C6&quot;,
+      &quot;name&quot;: &quot;The grounding ladder&quot;,
+      &quot;definition&quot;: &quot;Reality → Twin → Measure → Evidence → Fact → Vulnerability → Risk → Top Risk. Every node type is defined by its required paths; downward paths ground, upward paths classify.&quot;,
+      &quot;detail&quot;: &quot;The definitional spine of the corpus, and the concept agents most need. A Vulnerability is simply a Fact with an upward path to a Risk. A Measure is NOT the floor — it is grounded further in a Twin and through it in Reality. The floor is a stopping test: the last node where going deeper would neither improve observability nor change a decision.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — the ladder diagram plus the untested-restore worked example&quot;,
+      &quot;first_written&quot;: &quot;28 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/28/ontology-and-definitions/v0.33.36__arch-brief__…grounding-ladder…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ladder/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c6&quot;,
+      &quot;related&quot;: [
+        &quot;C7&quot;,
+        &quot;C17&quot;,
+        &quot;C41&quot;
+      ],
+      &quot;quote&quot;: &quot;A Fact becomes a Vulnerability purely because of its upward link to a Risk, so that legitimacy is conferred entirely from above&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C7&quot;,
+      &quot;name&quot;: &quot;Node type formulas&quot;,
+      &quot;definition&quot;: &quot;What a node IS should be computed against the graph rather than decided in a classifier&#x27;s head. A node type is a required pattern of typed, directed paths, so classification is a query.&quot;,
+      &quot;detail&quot;: &quot;Classification becomes dynamic and path-relative — promotion and demotion are edge events. Bias does not disappear; it moves out of the classifier&#x27;s head into the formula, where it is visible, versioned and arguable. Two parties who disagree stop trading intuitions and start diffing formulas. The formula LANGUAGE is undefined and nothing executes a formula.&quot;,
+      &quot;maturity&quot;: &quot;well-developed as a mechanism; the formula language is an open question&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;mostly — requires accepting that a type is a path pattern&quot;,
+      &quot;first_written&quot;: &quot;28 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/28/ontology-and-definitions/v0.33.36__arch-brief__…node-type-formulas…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ladder/formulas.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c7&quot;,
+      &quot;related&quot;: [
+        &quot;C6&quot;,
+        &quot;C8&quot;
+      ],
+      &quot;quote&quot;: &quot;the ontology definition of a node type is its upward and downward path-pattern, not a sentence about what it contains&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C8&quot;,
+      &quot;name&quot;: &quot;Ontologies of ontologies — bridges, not merges&quot;,
+      &quot;definition&quot;: &quot;Multiple parties each own their own formula over a shared factual graph, connected at declared crosswalk points rather than merged into one schema.&quot;,
+      &quot;detail&quot;: &quot;A node can be a vulnerability under one formula and not another, and both are valid — they are different queries over the same graph. The worked proof is a security-centric formula (System, Fault, Security Failure, Conditions) which turns out to be a sub-path of the business-centric one: its Security Failure plays exactly the structural role of the promotion edge, differing only in terminus.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;28 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/28/ontology-and-definitions/v0.33.36__arch-brief__…ontologies-of-ontologies…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ladder/bridges.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c8&quot;,
+      &quot;related&quot;: [
+        &quot;C7&quot;,
+        &quot;C6&quot;
+      ],
+      &quot;quote&quot;: &quot;We do not fold their definition into ours, which would erase the security-centric view that is the whole point of having it. We declare a bridge: a Security Failure gives rise to a Business Risk&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C9&quot;,
+      &quot;name&quot;: &quot;The risk register as a graph of graphs&quot;,
+      &quot;definition&quot;: &quot;The register is a hyperlinked semantic graph rather than a spreadsheet, and it begins where scanners stop — at the vulnerability — mapping accepting, funding, and finding who does the work.&quot;,
+      &quot;detail&quot;: &quot;Buildable now because vaults supply the storage and hyperlink layer and PKI solves attribution. Its distinguishing move is where it starts: most security products end at the vulnerability, and everything expensive happens after that point.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — written as a five-movement narrative&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…graph-of-graphs…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/register/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c9&quot;,
+      &quot;related&quot;: [
+        &quot;C10&quot;,
+        &quot;C16&quot;,
+        &quot;C42&quot;
+      ],
+      &quot;quote&quot;: &quot;a lot of security teams and products end on the vulnerability, and what I want to show is the multiple layers involved in fixing it, but even before that, in accepting the risk, funding the solution, and finding who is going to do it&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C10&quot;,
+      &quot;name&quot;: &quot;Fractal risk registers&quot;,
+      &quot;definition&quot;: &quot;Wherever there is a stakeholder who accepts a risk there must be a register — company, department, role. Only the role&#x27;s own register is stored; the rest are queries.&quot;,
+      &quot;detail&quot;: &quot;A person&#x27;s register is all the risks that bubble up to them, derived rather than curated. An individual has at least two and often three: their role-specific register in their own domain language, plus derived views of the registers above.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;17 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/17/registers-mandate-and-intervals/v0.33.49__arch-brief__…fractal-risk-registers…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/register/index.html#fractal&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c10&quot;,
+      &quot;related&quot;: [
+        &quot;C9&quot;,
+        &quot;C11&quot;,
+        &quot;C24&quot;,
+        &quot;C25&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C11&quot;,
+      &quot;name&quot;: &quot;Relevance fade&quot;,
+      &quot;definition&quot;: &quot;Centre a view on a role: that role&#x27;s register is lit in full, and the registers above fade except for the entries that trace back down to it — which turns the register into an education mechanism.&quot;,
+      &quot;detail&quot;: &quot;A database administrator can see that their local “an agent holds unrestricted access to a customer table” is the same object as the board&#x27;s “regulatory penalty, loss of licence, continuity failure”. Seeing that once teaches more than any training course. The visualisation is described and has not been built.&quot;,
+      &quot;maturity&quot;: &quot;partially argued&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;17 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/17/registers-mandate-and-intervals/v0.33.49__arch-brief__…fractal-risk-registers…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/register/index.html#fade&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c11&quot;,
+      &quot;related&quot;: [
+        &quot;C10&quot;,
+        &quot;C24&quot;
+      ],
+      &quot;quote&quot;: &quot;as you go up, imagine the colours can fade away for the next registers for the bits that are not relevant, so the graph starts to point which parts of the risk register above are relevant to this individual&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C12&quot;,
+      &quot;name&quot;: &quot;Registers are one chain, not parallel lists&quot;,
+      &quot;definition&quot;: &quot;Three altitude registers drawn side by side demonstrate a formatting capability; drawn as one chain rooted in an existence fact they demonstrate the entire thesis.&quot;,
+      &quot;detail&quot;: &quot;The CISO&#x27;s risk exists BECAUSE OF the operator&#x27;s risk, which exists because of a fact stating an agent touches production. Drawn side by side that dependency is invisible; drawn as a chain it is the point. A late and consequential correction.&quot;,
+      &quot;maturity&quot;: &quot;well-argued, newly stated&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;2 August 2026&quot;,
+      &quot;source&quot;: &quot;briefs/08/02/field-demo/v0.33.55__arch-brief__…registers-are-one-chain…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/register/index.html#chain&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c12&quot;,
+      &quot;related&quot;: [
+        &quot;C9&quot;,
+        &quot;C24&quot;,
+        &quot;C33&quot;
+      ],
+      &quot;quote&quot;: &quot;at the moment it looks like the cards, they look side by side, and it&#x27;s actually not that&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C13&quot;,
+      &quot;name&quot;: &quot;Technical owner versus business owner&quot;,
+      &quot;definition&quot;: &quot;The technical owner validates that the vulnerability exists; the business owner owns and accepts the risk it gives rise to. Conflating them is the canonical governance failure.&quot;,
+      &quot;detail&quot;: &quot;IT validating a 2FA gap is not IT accepting an HR data-breach exposure. The model&#x27;s response to the confusion is not to reject the acceptance but to make the misplacement a rateable risk of its own — the governance air gap.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#owners&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c13&quot;,
+      &quot;related&quot;: [
+        &quot;C14&quot;,
+        &quot;C15&quot;,
+        &quot;C30&quot;
+      ],
+      &quot;quote&quot;: &quot;most of IT should be technical owners of something, but the business owners are the ones that actually own the risk&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C14&quot;,
+      &quot;name&quot;: &quot;Confirmed, validated, accepted — the three-predicate model&quot;,
+      &quot;definition&quot;: &quot;Three distinct acts held by three distinct roles, tracked per risk per altitude. Confirmed is factual, validated is interpretive, accepted is a judgement about appetite.&quot;,
+      &quot;detail&quot;: &quot;The interesting cases are the mismatches: a risk accepted by an executive but never confirmed is an acceptance of something that may not be true. A single status field cannot express any of them.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;28 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/28/mvp-and-field-demo/v0.33.53__arch-brief__…confirmed-validated-accepted-at-altitude…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#three-predicates&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c14&quot;,
+      &quot;related&quot;: [
+        &quot;C13&quot;,
+        &quot;C24&quot;
+      ],
+      &quot;quote&quot;: &quot;we probably also want the GRC person to validate the risks, especially to do with the compliance element&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C15&quot;,
+      &quot;name&quot;: &quot;The underwriting graph and propagation to the board&quot;,
+      &quot;definition&quot;: &quot;An exec never decides alone: the direct-line owner, the CSO and at least GRC must each have recorded an acceptance or an explicit refusal before an executive acts. Then it propagates upward.&quot;,
+      &quot;detail&quot;: &quot;A recorded refusal counts as much as a recorded acceptance. Once accepted at the right altitude it propagates to the boss, the boss&#x27;s boss and the CEO, who acts for the board, with the largest going to the board itself. Superiors may override in either direction, with the original acceptance preserved and the override attributed — though no authority model for override is stated.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;23 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/23/risk-mandate-product-and-workflow/v0.33.33__arch-brief__…underwriting-propagation-override-pre-approval.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/workflow.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c15&quot;,
+      &quot;related&quot;: [
+        &quot;C1&quot;,
+        &quot;C24&quot;,
+        &quot;C33&quot;,
+        &quot;C13&quot;
+      ],
+      &quot;quote&quot;: &quot;the exec should never make a decision that has not been underwritten by the relevant player&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C16&quot;,
+      &quot;name&quot;: &quot;Cascade and the air gap&quot;,
+      &quot;definition&quot;: &quot;Every change to any risk, fact or evidence must trigger a cascade to the top. The absence of a cascade is an air gap — and so is a risk that exists in the business but is not connected to the register.&quot;,
+      &quot;detail&quot;: &quot;Registers with air gaps silently drift out of date and the business decides on bad data. Cascade works in both directions: a risk appearing propagates up, and a risk resolving propagates up too, clearing it from the board&#x27;s view. Detecting air gaps is an acknowledged open problem.&quot;,
+      &quot;maturity&quot;: &quot;well-developed as principle; detecting air gaps is an acknowledged open problem&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/register/index.html#cascade&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c16&quot;,
+      &quot;related&quot;: [
+        &quot;C9&quot;,
+        &quot;C41&quot;
+      ],
+      &quot;quote&quot;: &quot;every time any risk, any fact, any evidence changes, you have to trigger a cascade that reaches the top. If you do not have that, you have an air gap&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C17&quot;,
+      &quot;name&quot;: &quot;Not knowing is a fact&quot;,
+      &quot;definition&quot;: &quot;Absence of evidence is a first-class node. A measure can be a documented zero, and an unevidenced fact is recorded as unevidenced rather than left blank — which makes it countable, queryable and assignable.&quot;,
+      &quot;detail&quot;: &quot;Gaps in knowledge spawn their own risks. Questions become their own node type, and unanswered question nodes are the most productive output of the whole exercise. Rendered convention: amber is exposure, green is assurance, ghosted is unanswered.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026; questions as nodes 2 August 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ladder/absence.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c17&quot;,
+      &quot;related&quot;: [
+        &quot;C6&quot;,
+        &quot;C34&quot;,
+        &quot;C37&quot;
+      ],
+      &quot;quote&quot;: &quot;not knowing a fact is also a fact. Lack of evidence is also evidence, because then we say we do not know, and somebody needs to investigate until we do&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C18&quot;,
+      &quot;name&quot;: &quot;CIA blast-radius expansion&quot;,
+      &quot;definition&quot;: &quot;From a single risk, expand through confidentiality, integrity and availability — each branch spawning its own risks, each following the full validate-accept-propagate loop.&quot;,
+      &quot;detail&quot;: &quot;A leak splits into two distinct risks with different owners: the CFO&#x27;s, for the fine, and the CEO&#x27;s, for the compliance failure — and inadequate protection may already be a breach. Integrity is the under-modelled axis because it produces no alert. Availability terminates in the question that reliably produces the worst answer: when was a restore last tested? The expansion must be curated, not exhaustive, or it blows up combinatorially.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/blast-radius/index.html#cia&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c18&quot;,
+      &quot;related&quot;: [
+        &quot;C19&quot;,
+        &quot;C28&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C19&quot;,
+      &quot;name&quot;: &quot;Blast radius and authorization closure&quot;,
+      &quot;definition&quot;: &quot;An agent&#x27;s real authorization is the transitive union of everything reachable from what it was given, not the nominal grant — and not what it did. Compute it; do not assert it.&quot;,
+      &quot;detail&quot;: &quot;Two awareness gaps hide the delta: the granter does not know the full scope of what it grants, and the original delegator never authorised re-delegation. Inbox access is access to every account resettable by email; desktop access is every stored credential and live session; code execution escalates. The key quantity is the delta between expected and unexpected permissions.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — the inbox example lands instantly&quot;,
+      &quot;first_written&quot;: &quot;blast radius from 12 February 2026; formalised as closure 2 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/02/authorization-and-maturity-model/v0.33.40__arch-brief__…agent-authorization-union-of-possible…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/blast-radius/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c19&quot;,
+      &quot;related&quot;: [
+        &quot;C18&quot;,
+        &quot;C20&quot;,
+        &quot;C39&quot;
+      ],
+      &quot;quote&quot;: &quot;at the end of the day you are still accountable for those actions, all the way to the board&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C20&quot;,
+      &quot;name&quot;: &quot;Who can pull the plug — two symmetric risks&quot;,
+      &quot;definition&quot;: &quot;If nobody holds the mandate to stop an AI system that is one risk; if the system cannot be stopped when someone decides to, that is a second and different one. An authority gap versus a capability gap.&quot;,
+      &quot;detail&quot;: &quot;The second is widely underestimated. It decomposes into timed sub-risks — can it be stopped in an hour, ten hours, a day, five days; only in office hours — which turns governance into an on-call availability problem, including whether the person can act without fear of losing their job.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes, outstandingly&quot;,
+      &quot;first_written&quot;: &quot;phrase from 17 February 2026 in another sense; as a risk pillar 24 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/24/who-can-pull-the-plug/v0.33.51__strategy-brief__…detection-authority-blast-radius-reversibility-intersect-in-time.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/plug/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c20&quot;,
+      &quot;related&quot;: [
+        &quot;C21&quot;,
+        &quot;C22&quot;,
+        &quot;C23&quot;,
+        &quot;C39&quot;
+      ],
+      &quot;quote&quot;: &quot;if you do not have somebody who has the mandate to pull the plug, you have a risk, and if you do not have a system that can be pulled the plug, you have a risk too&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C21&quot;,
+      &quot;name&quot;: &quot;The four-way time intersection&quot;,
+      &quot;definition&quot;: &quot;Detection, decision, blast radius and reversibility must all line up inside the same window. A gap in any one breaks the whole thing.&quot;,
+      &quot;detail&quot;: &quot;Detection is a curve, not a binary. Decision is whether the authorised people can be assembled in time. Blast radius is steep because models execute and scale fast. Reversibility is the half people forget — stopping is only half the act. The danger case is an affordable window of one or two days of damage colliding with a decision that cannot be made in one or two days.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — the Venn is drawn in the source&quot;,
+      &quot;first_written&quot;: &quot;24 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/24/who-can-pull-the-plug/v0.33.51__strategy-brief__…intersect-in-time.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/plug/index.html#intersection&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c21&quot;,
+      &quot;related&quot;: [
+        &quot;C20&quot;,
+        &quot;C23&quot;,
+        &quot;C39&quot;
+      ],
+      &quot;quote&quot;: &quot;it is not just pulling the plug, it is pulling the plug and reverting the changes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C22&quot;,
+      &quot;name&quot;: &quot;The five-dimension plug profile, and the “no plug” correction&quot;,
+      &quot;definition&quot;: &quot;The plug ALWAYS exists — you can always disconnect, revoke or shut down. What older registers recorded as “no plug” was zero recoverability. The profile carries who holds it, blast radius, speed, side effects and recoverability.&quot;,
+      &quot;detail&quot;: &quot;Restating a blank as a profile turns a frightening dead end into an ownable finding that points at prevention and the most senior acceptance. A blank is unassignable and unfundable; a profile has an owner, an altitude and an interval.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;24 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/24/who-can-pull-the-plug/v0.33.51__strategy-brief__…the-plug-always-exists-the-question-is-the-profile.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/plug/index.html#no-plug&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c22&quot;,
+      &quot;related&quot;: [
+        &quot;C20&quot;,
+        &quot;C23&quot;
+      ],
+      &quot;quote&quot;: &quot;The blank said stop looking. The corrected profile says here is exactly what to do&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C23&quot;,
+      &quot;name&quot;: &quot;Recoverability as the hard limit&quot;,
+      &quot;definition&quot;: &quot;The dimension money cannot buy back, and the one that stops irreversible harm disappearing into an expected-loss calculation. The flagship query: show me every accepted risk whose recoverability is zero.&quot;,
+      &quot;detail&quot;: &quot;An organisation that can run that query and read a short, deliberate, senior-owned list is in control of its worst exposure; one that cannot is accepting its irreversible risks by default and by silence. The small-but-permanent quadrant is the one the model exists to surface. Scoring recoverability — grading the partially recoverable middle — is an open question.&quot;,
+      &quot;maturity&quot;: &quot;well-developed; the scoring of recoverability is an open question&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;24 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/24/who-can-pull-the-plug/v0.33.51__strategy-brief__…what-money-cannot-buy-back-recoverability-the-hard-limit.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/plug/recoverability.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c23&quot;,
+      &quot;related&quot;: [
+        &quot;C22&quot;,
+        &quot;C21&quot;,
+        &quot;C29&quot;
+      ],
+      &quot;quote&quot;: &quot;The money can be refunded; the customer cannot be un-declined&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C24&quot;,
+      &quot;name&quot;: &quot;Altitude&quot;,
+      &quot;definition&quot;: &quot;Organisational elevation as a first-class modelling dimension: a risk is accepted at the right altitude and then propagates, is restated in each altitude&#x27;s own language, and has a different plug at every level.&quot;,
+      &quot;detail&quot;: &quot;Five levels appear in the worked examples: L1 endpoint/IT, L2 security, L3 business, L4 enterprise, L5 board. A risk may be confirmed at one altitude and accepted at another, which is why confirmed, validated and accepted are tracked per altitude.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;as a role metaphor 12 February 2026; as a risk dimension from June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/24/who-can-pull-the-plug/v0.33.51__strategy-brief__…the-plug-changes-at-every-altitude…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#altitude&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c24&quot;,
+      &quot;related&quot;: [
+        &quot;C10&quot;,
+        &quot;C11&quot;,
+        &quot;C14&quot;,
+        &quot;C15&quot;
+      ],
+      &quot;quote&quot;: &quot;this is very important, the multiple altitudes of the risk register, because there might be risks that are only accepted at certain altitudes, or might be risks that are only confirmed at certain altitudes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C25&quot;,
+      &quot;name&quot;: &quot;Risk appetite as a revealed band&quot;,
+      &quot;definition&quot;: &quot;Appetite is a band rather than a number, a fractal network of bands rather than one figure, and discovered rather than declared — computed from what the business paid to reduce and every fresh acceptance.&quot;,
+      &quot;detail&quot;: &quot;The target is to operate inside the band: above it you are buying risk the owners will not underwrite; below it you add attrition and slowness for nothing. The gap between declared and revealed appetite is the finding.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;30 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/30/risk-acceptance-and-appetite/v0.33.38__strategy-brief__…risk-appetite-band-fractal-two-signals-goldilocks-zone…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptable/appetite.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c25&quot;,
+      &quot;related&quot;: [
+        &quot;C5&quot;,
+        &quot;C10&quot;
+      ],
+      &quot;quote&quot;: &quot;risk appetite is that band, that interval between two numbers, if you think of zero to one hundred in terms of risk, it is a spectrum, and it can be wider or shorter&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C26&quot;,
+      &quot;name&quot;: &quot;The psychology of the physical act&quot;,
+      &quot;definition&quot;: &quot;The click, the emoji, the signature is the moment a decision stops being ambient and becomes something a named person did, at a known time, on known information.&quot;,
+      &quot;detail&quot;: &quot;Without it, declining decays into a non-event: someone says “I&#x27;m not comfortable” and nothing happens. Accountability follows the act, and eventually liability, as it should — and the prospect of signing concentrates executive attention in a way dashboards never do.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes, and it is the most persuasive document for a lay reader&quot;,
+      &quot;first_written&quot;: &quot;30 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/30/risk-acceptance-and-appetite/v0.33.38__strategy-brief__…risk-acceptance-psychology-accountability-liability-physical-act…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#psychology&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c26&quot;,
+      &quot;related&quot;: [
+        &quot;C1&quot;,
+        &quot;C31&quot;,
+        &quot;C35&quot;
+      ],
+      &quot;quote&quot;: &quot;suddenly the executives ask good questions, they really engage, they get a level of focus that just was not there before&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C27&quot;,
+      &quot;name&quot;: &quot;Accept first, then adjust the level — the risk level ledger&quot;,
+      &quot;definition&quot;: &quot;For a risk you already have facts for, the first move is universal stakeholder acceptance at its current level. From there the level is a dated ledger of adjustments, each re-accepted.&quot;,
+      &quot;detail&quot;: &quot;Adjustments are triggered by one of three things: new data, a funded project, or an incident. Re-rating up after discovery is honesty rather than failure — the risk did not worsen, the estimate improved. It sits awkwardly with the no-deny mechanic: if the level can be adjusted after acceptance, denial has a route back in.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;12 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/12/acceptance-and-residual/v0.33.48__arch-brief__…accept-first-then-adjust-the-level-risk-level-ledger…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#ledger&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c27&quot;,
+      &quot;related&quot;: [
+        &quot;C33&quot;,
+        &quot;C2&quot;
+      ],
+      &quot;quote&quot;: &quot;you literally cannot mitigate what you cannot count, and the only honest first step is to accept, now, that an unknown and largely over-permissioned population of agents holds access to the enterprise&#x27;s assets&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C28&quot;,
+      &quot;name&quot;: &quot;Everything has risks — register density and calibration by surprise&quot;,
+      &quot;definition&quot;: &quot;A risk is the unintended side effect of a capability, so anything that does something has risks. A complex product should have dozens to thousands of interconnected risks.&quot;,
+      &quot;detail&quot;: &quot;Capabilities exceed features, and undocumented capabilities are where unowned risks live. The diagnostic: a listed risk materialising is expected; an UNLISTED risk materialising is the real alarm, because it raises two questions — why was it missed, and what else was missed?&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;12 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/12/acceptance-and-residual/v0.33.48__arch-brief__…everything-has-risks-register-density-capabilities-vs-features…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#density&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c28&quot;,
+      &quot;related&quot;: [
+        &quot;C18&quot;,
+        &quot;C29&quot;,
+        &quot;C4&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C29&quot;,
+      &quot;name&quot;: &quot;Risks that cannot be fully mitigated&quot;,
+      &quot;definition&quot;: &quot;Mitigation lowers likelihood or impact but cannot reach zero for structural reasons, so a material residual always remains and must be owned. Demanding zero produces covert acceptance.&quot;,
+      &quot;detail&quot;: &quot;Agentic AI&#x27;s residual is today irreducible: prompt injection, emergence, non-determinism, reach, model supply chain. Some harms are irreversible, and compliance reduces but does not remove liability. Covert acceptance is strictly worse than an owned residual — identical exposure, nobody&#x27;s name on it.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — written in board terms deliberately&quot;,
+      &quot;first_written&quot;: &quot;12 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/12/acceptance-and-residual/v0.33.48__strategy-brief__…risks-that-cannot-be-fully-mitigated…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#residual&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c29&quot;,
+      &quot;related&quot;: [
+        &quot;C23&quot;,
+        &quot;C28&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C30&quot;,
+      &quot;name&quot;: &quot;Meta-risks — the risk about your risk management&quot;,
+      &quot;definition&quot;: &quot;A recurring family: not knowing how many agents you have, not having defined an acceptable level, a risk accepted by the wrong person, and systematic downgrading across a business unit.&quot;,
+      &quot;detail&quot;: &quot;Each is a gap in the governance apparatus, stated as a rateable risk with an owner and an interval — which triggers and funds the work that closes it. External anchors defeat systematic downgrading, because an internal severity is an opinion while an external requirement is not.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;as an instance 26 June 2026; named as a family 31 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/31/keeping-the-register-healthy/v0.33.54__strategy-brief__…external-anchors-meta-risk-family-concealment-not-acceptance.md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#meta&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c30&quot;,
+      &quot;related&quot;: [
+        &quot;C5&quot;,
+        &quot;C13&quot;,
+        &quot;C31&quot;
+      ],
+      &quot;quote&quot;: &quot;we are the meta risk; we allow the creation of the project that is going to discover this and that funds this&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C31&quot;,
+      &quot;name&quot;: &quot;The register maintains itself&quot;,
+      &quot;definition&quot;: &quot;Accountability manufactures the demand for evidence, so no separate data-quality function is required. Anticipated review converts care into a demand for evidence before the decision.&quot;,
+      &quot;detail&quot;: &quot;Three primitives produce it: the risk already exists, it attaches to a named person, and the decision is reviewed upward. Three named failure conditions: the reviewer&#x27;s preference being guessable, commitment to a prior position, and broadened information appetite without improved discrimination.&quot;,
+      &quot;maturity&quot;: &quot;well-developed, research-grounded&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;31 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/31/keeping-the-register-healthy/v0.33.54__arch-brief__…register-maintains-itself-accountability-manufactures-demand-for-evidence…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#self-maintaining&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c31&quot;,
+      &quot;related&quot;: [
+        &quot;C1&quot;,
+        &quot;C26&quot;,
+        &quot;C36&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C32&quot;,
+      &quot;name&quot;: &quot;Three moves, none of which is denial&quot;,
+      &quot;definition&quot;: &quot;Accept for a stated interval, escalate (this is not mine to accept), or challenge the fact itself. The person is routed rather than cornered.&quot;,
+      &quot;detail&quot;: &quot;The reconciliation of the no-deny primitive with human reactance: presenting a single button to a person who feels they have no alternative produces counter-argument and resentment, not compliance. The absence of a reject option should be discovered, not announced.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;2 August 2026&quot;,
+      &quot;source&quot;: &quot;briefs/08/02/field-demo/v0.33.55__arch-brief__…acceptance-flow-three-moves-none-is-denial…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#three-moves&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c32&quot;,
+      &quot;related&quot;: [
+        &quot;C2&quot;,
+        &quot;C15&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C33&quot;,
+      &quot;name&quot;: &quot;Decision as a first-class node&quot;,
+      &quot;definition&quot;: &quot;An acceptance is a separate object, not a field on a risk — which is what allows many dated decisions per risk, one decision covering several risks, and a calibration record.&quot;,
+      &quot;detail&quot;: &quot;The calibration record is the point: over time you can ask whether the person who accepted for a month was right. That question is unanswerable if the decision was a field that got overwritten.&quot;,
+      &quot;maturity&quot;: &quot;newly stated, well-argued&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;2 August 2026&quot;,
+      &quot;source&quot;: &quot;briefs/08/02/field-demo/v0.33.55__arch-brief__…registers-are-one-chain-question-is-not-a-risk-decision-as-node…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/acceptance/workflow.html#decision-node&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c33&quot;,
+      &quot;related&quot;: [
+        &quot;C15&quot;,
+        &quot;C27&quot;,
+        &quot;C12&quot;
+      ],
+      &quot;quote&quot;: &quot;a decision is actually captured independently from the risk&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C34&quot;,
+      &quot;name&quot;: &quot;A question is not a risk&quot;,
+      &quot;definition&quot;: &quot;If a sentence cannot sensibly carry a named acceptor and an interval, it is not a risk and does not belong in the register. Questions become their own node type.&quot;,
+      &quot;detail&quot;: &quot;“Nobody accepts ‘whose call is it at three in the morning&#x27; for six months.” A clean quality gate, and one of the few things in the corpus that can be applied mechanically. Unanswered question nodes are the most productive output of the whole exercise.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;2 August 2026&quot;,
+      &quot;source&quot;: &quot;briefs/08/02/field-demo/v0.33.55__arch-brief__…registers-are-one-chain…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#question&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c34&quot;,
+      &quot;related&quot;: [
+        &quot;C17&quot;,
+        &quot;C33&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C35&quot;,
+      &quot;name&quot;: &quot;Do not internalise the risk&quot;,
+      &quot;definition&quot;: &quot;Risk professionals frequently internalise exposures the business decided to carry, at real personal cost. The workflow relocates accountability to where authority already sits.&quot;,
+      &quot;detail&quot;: &quot;The corpus cites survey data of 63–76% of security leaders experiencing or witnessing burnout in a single year, and names accountability-without-authority as the defining pressure. The standard remedy — give the security leader more authority — is correct and rarely achievable; this solves the same equation from the other side. Nothing is taken from anyone; the register records what was always true.&quot;,
+      &quot;maturity&quot;: &quot;well-developed, research-grounded, with an honest scope disclaimer&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;31 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/31/keeping-the-register-healthy/v0.33.54__strategy-brief__…do-not-internalise-the-risk-accountability-without-authority…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#internalise&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c35&quot;,
+      &quot;related&quot;: [
+        &quot;C4&quot;,
+        &quot;C26&quot;
+      ],
+      &quot;quote&quot;: &quot;I would see the risk professionals almost own the risk; they almost take it personally with the risks that the business was taking, and it was a massive source of stress&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C36&quot;,
+      &quot;name&quot;: &quot;The evidence economy — force of proof and the fact certifier&quot;,
+      &quot;definition&quot;: &quot;Once executives are personally accountable and the graph traces their statement to the evidence beneath it, demand for correct evidence becomes cheap to make and impossible to wave away.&quot;,
+      &quot;detail&quot;: &quot;This splits the register into two separately liable roles: the risk-acceptor, who owns the decision and its consequence, and the fact-certifier, who owns the truth of the inputs and sells a correctness guarantee. A wide confidence band converts unease into a purchase order for better evidence. Risk owns the demand side; the supply side belongs to newsroom.sgit.ai.&quot;,
+      &quot;maturity&quot;: &quot;partially argued — commercially rich, mechanically thin&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;mostly&quot;,
+      &quot;first_written&quot;: &quot;5 July 2026&quot;,
+      &quot;source&quot;: &quot;briefs/07/05/evidence-economy/v0.33.44__strategy-brief__…force-of-proof-fact-certification-two-prices…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#evidence-economy&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c36&quot;,
+      &quot;related&quot;: [
+        &quot;C31&quot;,
+        &quot;C37&quot;,
+        &quot;C38&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C37&quot;,
+      &quot;name&quot;: &quot;Confidence bands and margin of error&quot;,
+      &quot;definition&quot;: &quot;Confidence is a first-class property of every node. A rating needs a band, not a point, and the band is widest where the data is thin.&quot;,
+      &quot;detail&quot;: &quot;A band too wide for comfort triggers the get-more-data direction; a band spanning trivial to catastrophic cannot be accepted responsibly. Confidence propagates across the graph like risk, and “we don&#x27;t know” is the widest band.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;30 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/30/ontology-and-data-quality/v0.33.38__arch-brief__…confidence-margin-of-error-node-uncertainty-band…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#confidence&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c37&quot;,
+      &quot;related&quot;: [
+        &quot;C17&quot;,
+        &quot;C36&quot;,
+        &quot;C38&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C38&quot;,
+      &quot;name&quot;: &quot;Two underwritings — decision accountability versus factual accuracy&quot;,
+      &quot;definition&quot;: &quot;The domain expert underwrites that a fact is true and fit for the use being made of it; the business owner underwrites the decision. Both are required.&quot;,
+      &quot;detail&quot;: &quot;Every graph traversal adds an abstraction layer that strips detail and drifts weight, so the signature failure is a component used beyond what its owner would underwrite. Decision accountability is only legitimate if the data underneath it is correct.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;30 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/30/ontology-and-data-quality/v0.33.38__arch-brief__…data-accuracy-owner-underwrites-fitness-for-use…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#confidence&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c38&quot;,
+      &quot;related&quot;: [
+        &quot;C37&quot;,
+        &quot;C13&quot;,
+        &quot;C36&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C39&quot;,
+      &quot;name&quot;: &quot;Observability as a risk dimension&quot;,
+      &quot;definition&quot;: &quot;Capability maps the privilege; observability maps the real impact. A loud, detectable, slowly-scaling, well-drilled risk is lower than a quiet, fast, unwatched one of the same capability.&quot;,
+      &quot;detail&quot;: &quot;Six objective vectors on a maturity scale: capture granularity, log latency, time-to-damage given real throughput limits, whether monitoring is actually on and watched, whether there is a team with playbooks, and whether detection has been drilled. Later sharpened into plug-loaded observability — logs that tell you where you are in the stopping decision.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;22 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/22/how-and-why-and-authorization/v0.33.32__arch-brief__observability-as-a-risk-dimension…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/blast-radius/index.html#observability&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c39&quot;,
+      &quot;related&quot;: [
+        &quot;C19&quot;,
+        &quot;C20&quot;,
+        &quot;C21&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C40&quot;,
+      &quot;name&quot;: &quot;Five whys as a domain translator&quot;,
+      &quot;definition&quot;: &quot;Not a root-cause tool but a translator that moves a statement from one domain into another — as many whys as it takes to reach the top of a domain.&quot;,
+      &quot;detail&quot;: &quot;The graph has natural peaks: on risk it converges to the single risk of staying in business, and because it converges a legitimate single number can be carried to the top. Aimed downward, the same chain captures the second, third and fourth stories — the root causes.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__strategy-brief__five-whys-as-a-domain-translator…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/practice/index.html#five-whys&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c40&quot;,
+      &quot;related&quot;: [
+        &quot;C24&quot;,
+        &quot;C9&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C41&quot;,
+      &quot;name&quot;: &quot;Digital twins and the discipline of reality&quot;,
+      &quot;definition&quot;: &quot;The twin is where the graph stops modelling and continues into a real system — the grounding point beneath every measure. A twin not connected to reality is a tracked air gap.&quot;,
+      &quot;detail&quot;: &quot;How connected a twin is to reality is itself a measurable property, which introduces a useful recursion: trust in a measure depends on the twin&#x27;s connectedness, and that connectedness is itself a measure. Twins in their GENERAL form belong to graphs.sgit.ai; what is risk&#x27;s own is the twin as the grounding point of the ladder.&quot;,
+      &quot;maturity&quot;: &quot;well-developed&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;15 February 2026 (general); as risk grounding 26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/digital-twins-and-world-models/v0.33.35__arch-brief__…digital-twins-twin-of-anything…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/ladder/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c41&quot;,
+      &quot;related&quot;: [
+        &quot;C6&quot;,
+        &quot;C16&quot;
+      ],
+      &quot;quote&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C42&quot;,
+      &quot;name&quot;: &quot;The narrative engine — the register as story&quot;,
+      &quot;definition&quot;: &quot;The register is meant to be experienced as a story rather than read as a spreadsheet: replay the change history so the analyst watches the risks propagate and settle.&quot;,
+      &quot;detail&quot;: &quot;The commit log is the script; the query advances the scene. The analyst watches the vulnerability appear, risks propagate, a governance risk fire and resolve, the blast radius bloom, and everything settle into the board&#x27;s consolidated view. The mechanism is undecided in the source document.&quot;,
+      &quot;maturity&quot;: &quot;partially argued&quot;,
+      &quot;origin&quot;: &quot;corpus&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes&quot;,
+      &quot;first_written&quot;: &quot;26 June 2026&quot;,
+      &quot;source&quot;: &quot;briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…md&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/register/index.html#narrative&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c42&quot;,
+      &quot;related&quot;: [
+        &quot;C9&quot;,
+        &quot;C12&quot;
+      ],
+      &quot;quote&quot;: &quot;I want to show this story played as a narrative, almost like a football commentator, this happens and then that happens, almost like a whodunit, like investigative journalism&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C43&quot;,
+      &quot;name&quot;: &quot;The persistence hope&quot;,
+      &quot;definition&quot;: &quot;You are hoping the conditions that justified an authorization still hold at the moment of execution — and inferring that they do from the fact that the grant is still present.&quot;,
+      &quot;detail&quot;: &quot;A third hope, alongside the two nhi.sgit.ai names for every broad credential. The behaviour hope and the discovery hope are both about the GRANT; this one is about TIME. An authorization is a claim about a moment, execution happens at a different moment, and nothing in a grant reports on the interval between them. It fails the way the other two fail: silently, in the ordinary case, with the paperwork intact. The replacement is to re-establish admissibility at the execution boundary rather than to inherit it — which is only possible if the decision was recorded as a node carrying edges to the predicates it rested on.&quot;,
+      &quot;maturity&quot;: &quot;newly stated&quot;,
+      &quot;origin&quot;: &quot;authored-here&quot;,
+      &quot;newcomer_followable&quot;: &quot;yes — the queued action that outlives its own evidence lands immediately&quot;,
+      &quot;first_written&quot;: &quot;24 August 2026 — authored on this site, not drawn from the corpus&quot;,
+      &quot;source&quot;: &quot;risks.sgit.ai/examples/execution-boundary/ · originating exchange August 2026 · instrumented in vault r48ncij0&quot;,
+      &quot;page&quot;: &quot;https://risks.sgit.ai/examples/execution-boundary/index.html&quot;,
+      &quot;anchor&quot;: &quot;https://risks.sgit.ai/concepts/index.html#c43&quot;,
+      &quot;related&quot;: [
+        &quot;C33&quot;,
+        &quot;C3&quot;,
+        &quot;C17&quot;,
+        &quot;C23&quot;,
+        &quot;C16&quot;
+      ],
+      &quot;quote&quot;: &quot;the action should not inherit the original authorization simply because the grant is still technically present&quot;
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/data/concepts.json">https://risks.sgit.ai/data/concepts.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:08Z</dd><dt>sha256</dt><dd><code title="b5b3b9b506c1c7bab0152261050bdbdbf3d920299631fea4d7006f05d3b4c61f">b5b3b9b506c1</code></dd><dt>Frozen copy</dt><dd><a href="concepts.json">sites/risks.sgit.ai/data/concepts.json</a> (56,960 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

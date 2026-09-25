@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>brief-from-debrief · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../editions/index.html">Editions</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../history/index.html">History</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../about/index.html">About</a><a href="../../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/agents/commands/brief-from-debrief/index.html">live ↗</a></p><article class="source"><h1 id="brief-from-debrief">brief-from-debrief</h1>
+<blockquote><p>Rendered from .claude/commands/brief-from-debrief.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/agents/commands/brief-from-debrief/</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/brief-from-debrief/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<hr>
+<p>description: Turn a voice debrief, a transcript or a note from the lead into a brief in docs/briefs/, in the house shape and voice
+argument-hint: &lt;path to the transcript or the note, or paste it&gt;
+</p>
+<hr>
+<p>Write a brief from: $ARGUMENTS</p>
+<p>Read <code>docs/briefs/direction__abp-as-a-graph-and-stakeholder-views.md</code> and
+<code>docs/briefs/review__first-measured-abp-n8n-owner-key.md</code> first; match their shape exactly.</p>
+<ul><li>File: <code>docs/briefs/&lt;kind&gt;__&lt;slug&gt;.md</code>, kind one of <code>direction</code>, <code>architecture</code>,
+<code>implementation</code>, <code>review</code>, <code>research</code>, <code>summit</code>, <code>vaults</code>, <code>process</code>.</li><li>Title as a claim. Header block: date, author <code>@website-agent</code>, trigger (the lead&#x27;s words,
+quoted, with the source and its length), reads against (sources with versions).</li><li>Section 1: what the source says, in its own order, with the lead&#x27;s phrases quoted where they
+carry the idea. Section 2: where we already are, against the site as built. Then the design or
+the structure it asks for. Then the build order, numbered and sized. End with what it does not
+settle or the decisions needed from the lead.</li><li>The site&#x27;s rules apply to the brief: no score on a behaviour policy, ABP never ADP, never
+&quot;the policy&quot; alone, no verdicts on named third parties, no conformity language, British English.</li><li>Then: one line in <code>.claude/onboarding/01-map.md</code>; a change to <code>03-state-and-next.md</code> if it
+reorders the queue; a task brief in <code>.claude/briefs/</code> for each build item large enough for one
+agent. If the source was a file, register it (<code>05-workflows.md</code> → <em>Register a document</em>).</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/commands/brief-from-debrief/index.html">https://riskmandate.ai/admin/agents/commands/brief-from-debrief/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/commands/brief-from-debrief/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="ba0e05014f2b10d9cd677b09460b8981bbe1b6b3441381f04dab2b23ab47b61d">ba0e05014f2b</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/commands/brief-from-debrief/index.md</a> (1,800 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

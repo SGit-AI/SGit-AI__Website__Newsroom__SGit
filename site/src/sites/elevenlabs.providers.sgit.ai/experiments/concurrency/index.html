@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/experiments/concurrency/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Concurrency probe — where is the wall?
+description: &quot;Fire waves of parallel generations at 1, 2, 4, 8… until something fails, and record the request timeline, the 429s and the highest wave that survived. The one open item on this site that costs money to close.&quot;
+lead: &quot;Concurrent request limits scale with the plan, and a render that fires every scene at once — 10 to 16 requests — meets that limit before it meets any other. <strong>We have never provoked one.</strong> This lab does, deliberately, for a few cents.&quot;
+order: 16
+kind: experiment
+family: operations
+app: concurrency
+endpoints: &quot;POST /v1/text-to-speech/{id}&quot;
+state_chips: [unrun]
+toc: true
+</p>
+<hr>
+<p>{{lab-header}}</p>
+<p>&lt;div class=&quot;warnbox&quot;&gt;&lt;p&gt;&lt;b&gt;This is the one lab here that can cost more than pennies.&lt;/b&gt; It generates real audio, in parallel, until something breaks. The estimate above the button is the worst case for the numbers you have set, computed before anything is sent — read it. Use the shortest text you can and the cheapest model; you are measuring a queue, not a voice.&lt;/p&gt;&lt;/div&gt;</p>
+<p>{{app}}</p>
+<h2 id="what-this-tests">What this tests</h2>
+<p>A <code>429</code> mid-render is the most likely first failure on a small plan {{claim:concurrency-unknown}}, and it is a bad failure: it arrives after you have paid for the requests that succeeded, halfway through a render, with a partly-built video. The number that prevents it — the semaphore width — is a plan-specific fact that nobody has measured for this account.</p>
+<p>The ramp mode fires waves of 1, 2, 4, 8… and stops at the first wave with a failure. The wave before that is your answer.</p>
+<h2 id="how-to-read-the-result">How to read the result</h2>
+<ul><li><strong>The timeline column</strong> places each request by when it started and sizes it by how long it took. In a healthy wave the bars start together and end together; when they start together and finish in a staircase, requests are being queued somewhere between you and the model.</li><li><strong>A 429 is not a bug</strong>, it is the platform&#x27;s own bound doing its job — the same class of event as <a href="../../patterns/index.html">the 402 on the sibling provider</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/patterns/" title="live page">↗</a>, which is the one piece of evidence on this site that a bound is enforceable in practice {{claim:openrouter-402}}.</li><li><strong>Distinguish 429 from 5xx and from a network error.</strong> The vendor&#x27;s error table maps them: 401 key, 402 quota or plan, 422 validation, 429 concurrency or rate, 5xx theirs {{claim:error-table}}. A <code>network</code> row in this table usually means CORS or a host CSP, not the API {{claim:csp-blocks}}.</li></ul>
+<h2 id="what-to-do-with-the-number">What to do with the number</h2>
+<p>Put it in the semaphore. In the pipeline this came from, that is <code>limits.maxConcurrent</code> in the vault&#x27;s terms file — which is also exactly the field <a href="../../pattern-three/index.html">the pattern-three host</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/pattern-three/" title="live page">↗</a> would enforce on behalf of an app that cannot be trusted to enforce it itself {{claim:sg-tts-spec}}. Until somebody runs this, that field holds a guess.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/experiments/concurrency/index.md">https://elevenlabs.providers.sgit.ai/experiments/concurrency/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="30f8e7b573fdb450d849a9492dd0e129d86df1f711456d1508e750a01c492465">30f8e7b573fd</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/experiments/concurrency/index.md</a> (2,926 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

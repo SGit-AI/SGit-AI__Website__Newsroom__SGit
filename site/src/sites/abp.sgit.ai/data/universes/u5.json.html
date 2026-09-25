@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>u5.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="u5.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/universes/u5.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/universe/v1&quot;,
+  &quot;id&quot;: &quot;u5&quot;,
+  &quot;n&quot;: 5,
+  &quot;name&quot;: &quot;The deployer&quot;,
+  &quot;level&quot;: &quot;across&quot;,
+  &quot;owner&quot;: &quot;the deployer, in their own words, and the named person who will correct the draft&quot;,
+  &quot;centre&quot;: &quot;the job&quot;,
+  &quot;smallest&quot;: &quot;one sentence somebody said about one capability on one date&quot;,
+  &quot;status&quot;: &quot;partial&quot;,
+  &quot;status_note&quot;: &quot;Eight starting mandates exist, each a want list, a refuse list and an unstated list over the 23 primitives, with a description and per capability notes in prose. The person, the job, the purpose and whose material are not nodes. This is the universe where customisation and consolidation are one mechanism: a customer&#x27;s mandate is written in their vocabulary and attaches to the grammar by authorises and withholds and to nothing else.&quot;,
+  &quot;node_types&quot;: [
+    {
+      &quot;name&quot;: &quot;Mandate&quot;,
+      &quot;formula&quot;: &quot;[Mandate] := a node that -authorises-&gt; at least one [Capability]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 16
+    },
+    {
+      &quot;name&quot;: &quot;Deployer&quot;,
+      &quot;formula&quot;: &quot;an [Organisation] or [Person] that -issued-&gt; at least one [Mandate]&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Owner&quot;,
+      &quot;formula&quot;: &quot;a [Person] that -corrected-&gt; or -signed-&gt; a [Mandate]; never a team and never a function&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Job&quot;,
+      &quot;formula&quot;: &quot;a node a [Mandate] -is_for-&gt;, in the deployer&#x27;s words: draft the reply, fix the build&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Expectation&quot;,
+      &quot;formula&quot;: &quot;one row of a [Mandate]: a [Capability] with a stance of wanted, refused or unstated, -said_by-&gt; a [Person] on a date&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;MaterialOverride&quot;,
+      &quot;formula&quot;: &quot;a node on a [Mandate] that -overrides-&gt; the material value of one [Capability] from U1, with its authority recorded and the default kept visible&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Correction&quot;,
+      &quot;formula&quot;: &quot;a [Mandate] that -supersedes-&gt; an earlier one; the sale, on riskmandate.ai&#x27;s own account&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    }
+  ],
+  &quot;verbs&quot;: [
+    {
+      &quot;edge&quot;: &quot;authorises&quot;,
+      &quot;inverse&quot;: &quot;authorised_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate authorises this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is authorised by this mandate&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;withholds&quot;,
+      &quot;inverse&quot;: &quot;withheld_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate withholds this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is withheld by this mandate&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;falls_short_of&quot;,
+      &quot;inverse&quot;: &quot;unmet_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate falls short of this capability it asked for&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is unmet by this deployment shape&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;is_for&quot;,
+      &quot;inverse&quot;: &quot;served_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Job&quot;,
+      &quot;reads_as&quot;: &quot;this mandate is for this job&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this job is served by these mandates&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;issued&quot;,
+      &quot;inverse&quot;: &quot;issued_by&quot;,
+      &quot;domain&quot;: &quot;Deployer&quot;,
+      &quot;range&quot;: &quot;Mandate&quot;,
+      &quot;reads_as&quot;: &quot;this deployer issued this mandate&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this mandate was issued by this deployer&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;said_by&quot;,
+      &quot;inverse&quot;: &quot;said&quot;,
+      &quot;domain&quot;: &quot;Expectation&quot;,
+      &quot;range&quot;: &quot;Person&quot;,
+      &quot;reads_as&quot;: &quot;this expectation was said by this person on this date&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this person said these expectations&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;corrected&quot;,
+      &quot;inverse&quot;: &quot;corrected_by&quot;,
+      &quot;domain&quot;: &quot;Person&quot;,
+      &quot;range&quot;: &quot;Mandate&quot;,
+      &quot;reads_as&quot;: &quot;this person corrected this mandate&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this mandate was corrected by this person&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;overrides&quot;,
+      &quot;inverse&quot;: &quot;overridden_by&quot;,
+      &quot;domain&quot;: &quot;MaterialOverride&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate overrides whose material this capability reaches&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability&#x27;s material is overridden by this mandate&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;supersedes&quot;,
+      &quot;inverse&quot;: &quot;superseded_by&quot;,
+      &quot;domain&quot;: &quot;Node&quot;,
+      &quot;range&quot;: &quot;Node&quot;,
+      &quot;reads_as&quot;: &quot;this claim supersedes that one&quot;,
+      &quot;inverse_reads_as&quot;: &quot;that claim is superseded by this one&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai, supersede never delete&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    }
+  ],
+  &quot;adds&quot;: &quot;The interchange form lives here and nowhere else. The W3C rights expression vocabulary, with permission, prohibition and duty, constraints, a conflict strategy in which prohibitions win, and inheritance, is a projection of U5 and U6 written out in U7, and it is never claimed to enforce anything, because enforcement is U4. An ODRL Policy is a scoped term in this universe&#x27;s lexicon; the instrument with bands, a ceiling and a premium on the licence to operate demonstration is a scoped term in U8&#x27;s; the behaviour policy is the root.&quot;,
+  &quot;junctions_live&quot;: [
+    {
+      &quot;edge&quot;: &quot;authorises&quot;,
+      &quot;inverse&quot;: &quot;authorised_by&quot;,
+      &quot;to&quot;: &quot;u1&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;withholds&quot;,
+      &quot;inverse&quot;: &quot;withheld_by&quot;,
+      &quot;to&quot;: &quot;u1&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;falls_short_of&quot;,
+      &quot;inverse&quot;: &quot;unmet_by&quot;,
+      &quot;to&quot;: &quot;u1&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    }
+  ],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/model/universes/u5/index.html&quot;,
+  &quot;brief&quot;: &quot;https://abp.sgit.ai/docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.html&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;The universe is authored in admin/build/universes.py; the matched counts and the live junctions are computed from the graph on every build.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/universes/u5.json">https://abp.sgit.ai/data/universes/u5.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:44Z</dd><dt>sha256</dt><dd><code title="a8844fb1ca17aea595c12231d6a2856ff8be33e9db7004867be865fa5333f53f">a8844fb1ca17</code></dd><dt>Frozen copy</dt><dd><a href="u5.json">sites/abp.sgit.ai/data/universes/u5.json</a> (6,954 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>ci-job.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="ci-job.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/mandates/ci-job.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/mandate/v1&quot;,
+  &quot;id&quot;: &quot;ci-job&quot;,
+  &quot;label&quot;: &quot;A CI job on a hosted runner&quot;,
+  &quot;surface&quot;: [
+    &quot;ci&quot;
+  ],
+  &quot;applies_to&quot;: [
+    &quot;github/actions-runner/ci&quot;
+  ],
+  &quot;status&quot;: &quot;starting-point&quot;,
+  &quot;authored&quot;: &quot;2026-09-09&quot;,
+  &quot;authored_by&quot;: &quot;the site, as a starting point — not measured, not surveyed; the first thing to argue with&quot;,
+  &quot;description&quot;: &quot;Check out the code, build it, run the tests, fetch what it needs, and — when a release is cut — push the tag. I did not want it reading credentials beyond its own token.&quot;,
+  &quot;want&quot;: [
+    &quot;read.file.project&quot;,
+    &quot;write.file.project&quot;,
+    &quot;execute.process.host&quot;,
+    &quot;send.endpoint.world&quot;,
+    &quot;write.repository.tenant&quot;
+  ],
+  &quot;do_not_want&quot;: [
+    &quot;read.credential.host&quot;
+  ],
+  &quot;unstated&quot;: [
+    &quot;authenticate-as.credential.signing&quot;,
+    &quot;authenticate-as.credential.tenant&quot;,
+    &quot;create.record.world&quot;,
+    &quot;create.schedule.host&quot;,
+    &quot;create.schedule.tenant&quot;,
+    &quot;delete.file.host&quot;,
+    &quot;execute.process.self&quot;,
+    &quot;grant.credential.self&quot;,
+    &quot;read.file.host&quot;,
+    &quot;read.message.tenant&quot;,
+    &quot;read.record.browsing&quot;,
+    &quot;read.record.history&quot;,
+    &quot;send.endpoint.allowed&quot;,
+    &quot;send.message.world&quot;,
+    &quot;write.budget.tenant&quot;,
+    &quot;write.file.host&quot;,
+    &quot;write.repository.project&quot;
+  ],
+  &quot;notes&quot;: {
+    &quot;write.repository.tenant&quot;: &quot;deliberately in the mandate: most release workflows push a tag, and this profile&#x27;s token is contents:read — so this row is a shortfall, and the kind the game calls ‘a gap you were counting on’&quot;,
+    &quot;delete.file.host&quot;: &quot;unstated: the runner is destroyed after the job&quot;
+  },
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;Promoted from mandates/ci-job.json. `unstated` is computed here as the primitives the mandate names neither way; the pack leaves it implicit. A mandate is elicited, not measured: these are first drafts written to be argued with.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/mandates/ci-job.json">https://abp.sgit.ai/data/mandates/ci-job.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:43Z</dd><dt>sha256</dt><dd><code title="cafcd730dcf8af59d911af537b0e8d51eb31ebc2d9f23fc661c22169d02b59d3">cafcd730dcf8</code></dd><dt>Frozen copy</dt><dd><a href="ci-job.json">sites/abp.sgit.ai/data/mandates/ci-job.json</a> (2,206 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

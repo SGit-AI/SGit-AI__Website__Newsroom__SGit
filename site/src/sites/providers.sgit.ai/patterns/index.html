@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#the-four">The four</a></li><li class="l2"><a href="#why-pattern-three-is-different-in-kind">Why pattern three is different in kind</a></li><li class="l2"><a href="#the-second-axis-what-the-tool-keeps">The second axis: what the tool keeps</a></li><li class="l2"><a href="#what-this-means-for-a-reader-who-has-to-ship">What this means for a reader who has to ship</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://providers.sgit.ai/patterns/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The four client-side credential patterns
+description: &quot;Client side is not one thing. It is four patterns that differ in where the credential lives and what bounds it — plus a second axis, what your tool keeps, and the intersection of the two.&quot;
+lead: &quot;\&quot;Client side\&quot; is not one thing. It is four patterns, and they differ in exactly two ways: <strong>where the credential lives</strong>, and <strong>what bounds it</strong>. Every provider site in this family answers with one of these, per product, because a vendor with several products has several answers.&quot;
+order: 10
+toc: true
+provenance:
+commit: 7d1916aca5f3
+date: 8 September 2026
+note: &quot;Canonical here. A provider site answers these rather than redefining them.&quot;
+</p>
+<hr>
+<h2 id="the-four">The four</h2>
+<p>{{claim:patterns-canonical}}</p>
+<div class="table"><table><thead><tr><th>#</th><th>Pattern</th><th>Where the credential lives</th><th>What bounds it</th><th>Verdict</th></tr></thead><tbody><tr><td><strong>0</strong></td><td><strong>Key in the page</strong></td><td>In the delivered application</td><td><strong>Nothing</strong></td><td><strong>Never.</strong> Anybody who opens the page has the key and the account. A plan quota is a ceiling, not a bound: it belongs to the whole account</td></tr>
+<tr><td><strong>1</strong></td><td><strong>Bounded key</strong> in the page</td><td>In the page, provisioned per user with a spending limit and a reset</td><td><strong>Money, and a reset window</strong></td><td>Acceptable where the platform can mint one. The limit <em>is</em> the blast radius, so choosing the number is a risk decision rather than a default</td></tr>
+<tr><td><strong>2</strong></td><td><strong>Short-lived token</strong></td><td>Not in the page. A server exchanges the real key for a token with a short life</td><td><strong>Time, and the server&#x27;s policy</strong></td><td>The standard answer — and it needs a server: the vendor&#x27;s, if it offers one for that product, otherwise yours</td></tr>
+<tr><td><strong>3</strong></td><td><strong>Host holds the key</strong></td><td>Never in the application. The application asks a host, which holds the key and enforces the terms</td><td><strong>The host, which the application cannot reach</strong></td><td>The strongest, and this estate&#x27;s own: the only pattern where the bounded thing cannot reach the bounding thing</td></tr></tbody></table></div>
+<p><strong>The ladder is not a maturity model.</strong> Pattern 1 with a $5 limit can be a better answer than pattern 2 with a badly-scoped minter. The question is always <em>what is the blast radius, and who chose it.</em></p>
+<h2 id="why-pattern-three-is-different-in-kind">Why pattern three is different in kind</h2>
+<p>Patterns 0 to 2 all end with a credential in the hands of the code that spends it — for a moment in pattern 2, for good in pattern 0. Pattern 3 does not: the application asks for a <strong>result</strong>, and the host holds the credential, applies the terms, and returns only the output.</p>
+<p>In this estate the vault host already does that for a model call: the app frame never sees the key and cannot read the sealed config under any grant it can be given, and the terms — allowed models, spend cap per session, per-app overrides — live in the vault with the content they govern. <strong>The terms travel with the data</strong>, so a vault shared read-only carries neither the key nor the ability to spend against it.</p>
+<p>Whether that generalises past a model call is the open question this family exists to answer. For a voice API the answer is written down and not yet built {{claim:sg-tts-spec}}.</p>
+<h2 id="the-second-axis-what-the-tool-keeps">The second axis: what the tool keeps</h2>
+<p>The four patterns are a property of <strong>the provider</strong>. There is a second axis and it is a property of <strong>your tool</strong>: what state it keeps. It decides whether the tool works for somebody with no key at all, and whether it survives being downloaded and run somewhere else.</p>
+<div class="table"><table><thead><tr><th>Tier</th><th>What it keeps</th><th>Works with no key?</th><th>Survives being downloaded?</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>Nothing. A pure function in a page</td><td><strong>Yes</strong></td><td>Yes, completely</td></tr>
+<tr><td><strong>2</strong></td><td>This browser&#x27;s <code>localStorage</code>, on this device</td><td>No</td><td>Yes, and it carries no key with it</td></tr>
+<tr><td><strong>3</strong></td><td>A vault, which holds the key the page never sees</td><td>Yes — the <em>vault</em> holds it</td><td><strong>No.</strong> A vault app&#x27;s calls fail on a static host, because the key is sealed to its owner</td></tr></tbody></table></div>
+<p><strong>The intersection is one sentence:</strong> a tier-two tool holding a key in <code>localStorage</code> is <strong>pattern 0 with a ceiling</strong>, and a tier-three tool is <strong>pattern 3</strong>. Said once, the two axes stop competing to explain the same thing.</p>
+<p><strong>And the honest finding is the empty corner.</strong> Across this family, tier three has no working tool: the pattern the argument recommends is the one it has not yet demonstrated. That is a state the ledger has a word for, and the pages use it rather than avoiding the subject.</p>
+<h2 id="what-this-means-for-a-reader-who-has-to-ship">What this means for a reader who has to ship</h2>
+<p>Three questions, in order, and the provider sites answer them per product:</p>
+<ol><li><strong>Can the vendor mint a bounded credential for the product I am using?</strong> If yes, pattern 1 is available and the limit is your blast radius. If no, no amount of care in the page changes it.</li><li><strong>Does the vendor run a minter for that product?</strong> Some do, for some products, and it is easy to read a rule written for one product as a rule for the vendor. <a href="../contract/index.html">That mistake has already been made once in this family and corrected in public.</a><a class="ext live" href="https://providers.sgit.ai/contract/" title="live page">↗</a></li><li><strong>Is there a host that can hold the key for you?</strong> If there is, nothing else on this page matters. If there is not, you are choosing between 1 and 2 and the answer is a risk decision, not a technical one.</li></ol>
+<p><a href="../comparison/index.html">Which provider can do what →</a><a class="ext live" href="https://providers.sgit.ai/comparison/" title="live page">↗</a></p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/patterns/index.md">https://providers.sgit.ai/patterns/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:02Z</dd><dt>sha256</dt><dd><code title="5a92fdf11d792b33f4faa2a217a76b51809828f5fc377ca8b01b67ec4a334b55">5a92fdf11d79</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/providers.sgit.ai/patterns/index.md</a> (5,249 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

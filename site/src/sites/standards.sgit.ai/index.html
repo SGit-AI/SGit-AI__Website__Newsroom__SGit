@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>standards.sgit.ai — point at the provision, or you are asserting · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · standards.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#standardssgitai-point-at-the-provision-or-you-are-asserting">standards.sgit.ai — point at the provision, or you are asserting</a></li><li class="l2"><a href="#first-this-site-is-called-standards-and-is-three-quarters-law">First: this site is called &amp;quot;standards&amp;quot; and is three-quarters law</a></li><li class="l2"><a href="#second-the-thesis">Second: the thesis</a></li><li class="l2"><a href="#how-you-know-five-lines">How you know: five lines</a></li><li class="l2"><a href="#why-more-than-one-instrument">Why more than one instrument</a></li><li class="l2"><a href="#the-constraint-that-reshapes-a-third-of-this-site">The constraint that reshapes a third of this site</a></li><li class="l2"><a href="#what-is-not-here">What is not here</a></li><li class="l2"><a href="#the-vaults-are-the-substrate-this-site-is-a-projection">The vaults are the substrate; this site is a projection</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/standards.sgit.ai.html">standards.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://standards.sgit.ai/index.md">live ↗</a></p><article class="source"><h1 id="standardssgitai-point-at-the-provision-or-you-are-asserting">standards.sgit.ai — point at the provision, or you are asserting</h1>
+<blockquote><p>A standard is only useful when a claim can point at a named provision in a real
+instrument instead of asserting one. This site publishes the method that turns an
+instrument into a graph of addressable provisions, the instruments modelled that way
+so far, and the vaults that deliver them. <strong>One instrument is modelled properly. One.</strong></p></blockquote>
+<p><em>Source: <a href="index.html">https://standards.sgit.ai/index.html</a><a class="ext live" href="https://standards.sgit.ai/index.html" title="live page">↗</a> · site v0.1.4 · markdown twin of the front page.</em></p>
+<hr>
+<h2 id="first-this-site-is-called-standards-and-is-three-quarters-law">First: this site is called &quot;standards&quot; and is three-quarters law</h2>
+<p>Law, standard and framework are three different kinds of instrument, they bind in three
+different ways, and a site that blurs them will mislead you about what you are obliged
+to do. So the distinction leads.</p>
+<blockquote><p>We see this pattern in cybersecurity broadly: <strong>laws vs. frameworks vs. controls.</strong> A
+law (like NIS2 or GDPR) states &quot;what&quot; outcomes must be achieved… often without stating
+&quot;how.&quot; The &quot;how&quot; is found in frameworks like ISO 27002.
+— <em>docs.diniscruz.ai, 31 March 2025</em></p></blockquote>
+<div class="table"><table><thead><tr><th>Kind</th><th>What it is</th><th>How it binds</th><th>Share</th></tr></thead><tbody><tr><td><strong>LAW</strong></td><td>EU AI Act, GDPR/UK GDPR, NIS2, DORA, CRA, HIPAA, PECR, CCPA, SOX, DPA 2018</td><td>Directly; penalties are written into the instrument</td><td>~72%</td></tr>
+<tr><td><strong>FRAMEWORK</strong></td><td>OWASP, NIST, MITRE ATT&amp;CK/ATLAS, BSIMM, CMMC, SLSA</td><td>Not at all on its own — it binds when a contract, regulator or customer points at it</td><td>~20%</td></tr>
+<tr><td><strong>STANDARD</strong></td><td>ISO 27001/27002/42001, SOC 2, PCI DSS, CycloneDX, SPDX, Akoma Ntoso</td><td>By certification or attestation, issued by a third party</td><td>~8%</td></tr></tbody></table></div>
+<p>Every instrument page carries its label in the header, beside whether its text may
+legally be republished at all. <a class="ext" href="https://standards.sgit.ai/instruments/index.html">The instrument index ↗</a>.</p>
+<h2 id="second-the-thesis">Second: the thesis</h2>
+<p>**A risk in a register points at a named obligation in a real instrument instead of
+being asserted.**</p>
+<p>Everything follows. If a claim must point at a provision, provisions need addresses —
+an identity, a stable citation, and a hash of the bytes the text came from. If the
+pointing must be checkable, the provision must be readable by somebody who does not
+trust us. If a finding must be grounded rather than plausible, there has to be a path
+from the finding down to something observed.</p>
+<h2 id="how-you-know-five-lines">How you know: five lines</h2>
+<pre><code>Risk          := a downward path to a Vulnerability AND an upward path toward a top risk
+Vulnerability := a Fact (grounded below) AND an upward path to a Risk
+Fact          := a downward path to Evidence
+Evidence      := a downward path to a Measure
+Measure       := an observation of the node it measures, grounded on a Twin</code></pre>
+<p>A model asked &quot;are we compliant with Article 26?&quot; will answer. A model asked to produce
+the path — this finding, from this fact, from this evidence, from this measure, on this
+twin — either produces it or reports that it cannot. **The ladder is the mechanism that
+turns &quot;sounds right&quot; into &quot;here is the path.&quot;**
+<a class="ext" href="https://standards.sgit.ai/method/ladder.html">The five rules that follow ↗</a>.</p>
+<h2 id="why-more-than-one-instrument">Why more than one instrument</h2>
+<blockquote><p>the AI standard already links to another of the standards… **Map a second instrument
+and the edge resolves; map a third and two more resolve. So each mapping increases the
+value of the ones already done.**</p></blockquote>
+<p>The AI Act refers out to GDPR, to NIS2, to harmonised standards, to conformity
+assessment bodies. Today every one of those references terminates at nothing. Model
+GDPR and one class of them resolves. And crosswalks are
+<a class="ext" href="https://standards.sgit.ai/method/crosswalks.html">bridges rather than merges ↗</a>, because a bridge you disagree with
+is a wrong edge you can find, and a merge you disagree with is a silently wrong node.</p>
+<h2 id="the-constraint-that-reshapes-a-third-of-this-site">The constraint that reshapes a third of this site</h2>
+<p><strong>You cannot republish ISO.</strong> ISO/IEC standards are copyrighted and sold; that revenue
+funds the organisation. Not the requirement text, not Annex A verbatim, not a close
+paraphrase presented as a summary. An ISO folder here holds clause <em>references</em>, the
+project&#x27;s own control interpretations, crosswalks to publishable instruments, a reading
+guide, and an honest page about the paywall — and its <code>source/</code> layer is empty, with the
+page saying why. <a class="ext" href="https://standards.sgit.ai/iso-27001/index.html">The ISO/IEC 27001 folder ↗</a>.</p>
+<h2 id="what-is-not-here">What is not here</h2>
+<div class="table"><table><thead><tr><th>Thing</th><th>Status</th></tr></thead><tbody><tr><td>Instruments modelled</td><td><strong>One.</strong> The EU AI Act</td></tr>
+<tr><td>Cross-instrument mappings</td><td><strong>Zero</strong></td></tr>
+<tr><td>Control catalogue, machine-readable</td><td>None</td></tr>
+<tr><td>Zip / SQLite distribution</td><td>None yet, on any of the twelve published vaults</td></tr>
+<tr><td>The GDPR graph</td><td>Does not exist</td></tr>
+<tr><td>AI Act citations</td><td>Derived from secondary sources; need re-derivation from operative text</td></tr></tbody></table></div>
+<p>Nothing here outputs a pass, a score, or a percentage of compliance. The project&#x27;s own
+warning applies to this site more than any other on the network: *&quot;implying regulatory
+readiness that has not been established is the easiest way to create an obligation
+nobody has met.&quot;* <a class="ext" href="https://standards.sgit.ai/shipped/index.html">The unsoftened version ↗</a> ·
+<a class="ext" href="https://standards.sgit.ai/about/participant.html">where this approach loses ↗</a>.</p>
+<h2 id="the-vaults-are-the-substrate-this-site-is-a-projection">The vaults are the substrate; this site is a projection</h2>
+<div class="table"><table><thead><tr><th></th><th>The vault</th><th>The repo &amp; this site</th></tr></thead><tbody><tr><td>Holds</td><td>Everything — source bytes, transformations, JSON, SQLite, apps, tools</td><td>The projection: rendered pages, raw markdown, the graph as plain files</td></tr>
+<tr><td>Is the</td><td>Working substrate and distribution unit</td><td>Verification surface and citable address</td></tr>
+<tr><td>Authority</td><td>Canonical for data</td><td>Canonical for URLs</td></tr></tbody></table></div>
+<p>The governing rule: **nothing exists only in the vault that a reader would need in order
+to check a claim.** <a class="ext" href="https://standards.sgit.ai/vaults/index.html">The vaults, with their read keys ↗</a>.</p>
+<hr>
+<p>All content CC BY 4.0. The instruments themselves keep their own licences — see
+<a class="ext" href="https://standards.sgit.ai/instruments/index.html#licensing">boundaries and licensing ↗</a>.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>standards.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://standards.sgit.ai/index.md">https://standards.sgit.ai/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:17Z</dd><dt>sha256</dt><dd><code title="b5d9c3116a270a783a46e68e8ff8834478ff9e5e6faaaa0ae7481a00fc9711fe">b5d9c3116a27</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/standards.sgit.ai/index.md</a> (5,730 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

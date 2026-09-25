@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>inferred-from-one-session.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="inferred-from-one-session.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/mandates/inferred-from-one-session.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/mandate/v1&quot;,
+  &quot;id&quot;: &quot;inferred-from-one-session&quot;,
+  &quot;label&quot;: &quot;What the agent inferred it was authorised to do, from one session&quot;,
+  &quot;surface&quot;: [
+    &quot;web&quot;
+  ],
+  &quot;applies_to&quot;: [
+    &quot;anthropic/gmail-connector/measured-2026-09-19&quot;
+  ],
+  &quot;status&quot;: &quot;inferred by the agent, not elicited&quot;,
+  &quot;authored&quot;: &quot;2026-09-19&quot;,
+  &quot;authored_by&quot;: &quot;the agent operating the mailbox, reconstructing from ten things it was asked to do in one session and was not stopped from doing; not the business&quot;,
+  &quot;description&quot;: &quot;The vault&#x27;s MANDATE.md, in the grammar. It is not a mandate and it says so on its first line: it is evidence of one, reconstructed by the agent from the same session that produced the reach, with fifteen questions the business has not answered. It is published beside the site&#x27;s own starting mandate for this shape because the two disagree on exactly one primitive: the agent was asked to send one message and inferred that sending was authorised, so send.message.world sits on the wanted side here and on the refused side there. That one line is what the vault calls the ratchet: an agent that infers its mandate from unchallenged past behaviour will widen it with every action nobody objected to, and the gap closes on paper while nothing has changed.&quot;,
+  &quot;want&quot;: [
+    &quot;read.message.tenant&quot;,
+    &quot;send.message.world&quot;
+  ],
+  &quot;do_not_want&quot;: [
+    &quot;create.schedule.tenant&quot;
+  ],
+  &quot;unstated&quot;: [
+    &quot;authenticate-as.credential.signing&quot;,
+    &quot;authenticate-as.credential.tenant&quot;,
+    &quot;create.record.world&quot;,
+    &quot;create.schedule.host&quot;,
+    &quot;delete.file.host&quot;,
+    &quot;execute.process.host&quot;,
+    &quot;execute.process.self&quot;,
+    &quot;grant.credential.self&quot;,
+    &quot;read.credential.host&quot;,
+    &quot;read.file.host&quot;,
+    &quot;read.file.project&quot;,
+    &quot;read.record.browsing&quot;,
+    &quot;read.record.history&quot;,
+    &quot;send.endpoint.allowed&quot;,
+    &quot;send.endpoint.world&quot;,
+    &quot;write.budget.tenant&quot;,
+    &quot;write.file.host&quot;,
+    &quot;write.file.project&quot;,
+    &quot;write.repository.project&quot;,
+    &quot;write.repository.tenant&quot;
+  ],
+  &quot;notes&quot;: {
+    &quot;read.message.tenant&quot;: &quot;inferred with high confidence: read the inbox and report was the first instruction; the stream isolation and the seventy one messages marked read rest on it too&quot;,
+    &quot;send.message.world&quot;: &quot;inferred with high confidence: an alias was created expressly for the agent to send from, and it was asked to introduce itself to a named third party. Whether that authorises sending to anyone the operator has not named in session is the first of the vault&#x27;s open questions, and this line is where the ratchet shows&quot;,
+    &quot;create.schedule.tenant&quot;: &quot;asked for filters and declined: the one thing the session established as not authorised, and also not reachable&quot;,
+    &quot;the rest&quot;: &quot;the vault&#x27;s other inferred lines (labels, un-inboxing, trash, reading public pages, writing to a vault) are not primitives of this connector&#x27;s grant; the last two belong to the container the same session ran in&quot;
+  },
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;sgit vault 02n7bz55, read with the public read key, at vault v0.4.0: MANDATE.md&quot;,
+    &quot;source_page&quot;: &quot;https://riskmandate.ai/abp-vault-claude-gmail-connector.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-22T10:40:00Z&quot;,
+    &quot;pack_version&quot;: null,
+    &quot;content_hash&quot;: &quot;sha256:60a8b94b5620c82b34fe016ccdc25b282690f8fb6989f5fa56b226a3cb0d01e9&quot;,
+    &quot;verbatim_bytes&quot;: &quot;contributed/riskmandate/gmail-agent-02n7bz55/MANDATE.md&quot;,
+    &quot;contributed_by&quot;: &quot;riskmandate.ai&quot;,
+    &quot;contributed_manifest&quot;: &quot;contributed/riskmandate/manifest.json&quot;,
+    &quot;note&quot;: &quot;The agent&#x27;s own inferred mandate, from MANDATE.md in vault 02n7bz55, mapped into the grammar by this site. Marked inferred and not elicited, as the vault marks it: it is evidence of a mandate and not one. `unstated` is recomputed here.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/mandates/inferred-from-one-session.json">https://abp.sgit.ai/data/mandates/inferred-from-one-session.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:43Z</dd><dt>sha256</dt><dd><code title="e948f6066cce0de2c203bd458a59c8237b4cc4272fd2cdb347348ece1bff5362">e948f6066cce</code></dd><dt>Frozen copy</dt><dd><a href="inferred-from-one-session.json">sites/abp.sgit.ai/data/mandates/inferred-from-one-session.json</a> (3,748 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

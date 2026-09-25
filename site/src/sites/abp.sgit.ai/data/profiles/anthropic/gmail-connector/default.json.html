@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>default.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../editions/index.html">Editions</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../history/index.html">History</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../about/index.html">About</a><a href="../../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="default.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/profiles/anthropic/gmail-connector/default.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/profile/v1&quot;,
+  &quot;id&quot;: &quot;anthropic/gmail-connector/default&quot;,
+  &quot;vendor&quot;: &quot;Google (the MCP server at gmailmcp.googleapis.com, and the account); Anthropic (Claude, the client, the directory listing and the approval prompt)&quot;,
+  &quot;product&quot;: &quot;Claude, with the Gmail connector enabled&quot;,
+  &quot;variant&quot;: &quot;default&quot;,
+  &quot;surface&quot;: &quot;web&quot;,
+  &quot;profile_version&quot;: &quot;2026-09-16&quot;,
+  &quot;description&quot;: &quot;The Gmail connector in Claude&#x27;s directory: \&quot;MADE BY Google\&quot;, connector URL https://gmailmcp.googleapis.com/mcp/v1, \&quot;ADDED March 2026\&quot;, category Communication, sign-in required. It is one of three Google Workspace connectors (Gmail, Calendar, Drive) that Anthropic&#x27;s help article says are \&quot;available for all users on Claude and Claude Desktop\&quot;, toggled individually — so a deployment can run Gmail alone, which is this shape. Three surfaces were read and they do not agree: Anthropic&#x27;s help article (read 2026-09-16, \&quot;Updated over a month ago\&quot;), Google&#x27;s own MCP reference for the server (read 2026-09-16, page dated 2026-07-21, Developer Preview), and the directory listing plus Google&#x27;s consent screens as captured by the deployer on 2026-09-16 (evidence/). Nothing was tested from this site. The directory&#x27;s own footer: \&quot;Only use connectors from developers you trust. Anthropic does not control which tools developers make available and cannot verify that they will work as intended or that they won&#x27;t change.\&quot; Four rows were then measured on 2026-09-16 by the deployer, on an account they run: the sign-in, a read of the inbox, one message sent to an address the deployer named for the purpose, and the label inventory; the record and the screens are in evidence/. Two more were then measured: the message as sent carries nothing that names the client, and permanent deletion is refused — a boundary at Google&#x27;s scope, not a setting in Claude.&quot;,
+  &quot;reach_names&quot;: {
+    &quot;host&quot;: &quot;the mailbox itself: every message and thread, labels, filters and saved drafts, and attachment metadata — never attachment content&quot;,
+    &quot;tenant&quot;: &quot;the Google account the consent was given for&quot;,
+    &quot;world&quot;: &quot;anyone Claude replies to or forwards a message to&quot;
+  },
+  &quot;not_reachable&quot;: [
+    {
+      &quot;what&quot;: &quot;Google Calendar and Google Drive&quot;,
+      &quot;why&quot;: &quot;\&quot;You can enable or disable specific connectors from below the chat interface... Toggle individual connectors on or off.\&quot; This shape has only the Gmail toggle on; the directory lists Gmail, Google Drive and Google Calendar as three connectors.&quot;,
+      &quot;source&quot;: &quot;https://support.claude.com/en/articles/10166901-use-google-workspace-connectors&quot;
+    },
+    {
+      &quot;what&quot;: &quot;attachment content&quot;,
+      &quot;why&quot;: &quot;\&quot;Attachment content is not directly accessible through Gmail (metadata only).\&quot;&quot;,
+      &quot;source&quot;: &quot;https://support.claude.com/en/articles/10166901-use-google-workspace-connectors&quot;
+    },
+    {
+      &quot;what&quot;: &quot;another Google account, or anything the account holder cannot already open&quot;,
+      &quot;why&quot;: &quot;\&quot;Claude can only access the Gmail, Calendar, and Drive data for the Google account you&#x27;ve connected\&quot; and \&quot;Claude mirrors your existing permissions — you cannot access information you don&#x27;t already have access to in Google Workspace.\&quot;&quot;,
+      &quot;source&quot;: &quot;https://support.claude.com/en/articles/10166901-use-google-workspace-connectors&quot;
+    },
+    {
+      &quot;what&quot;: &quot;permanent deletion of mail&quot;,
+      &quot;why&quot;: &quot;the widest scope on the consent screen is gmail.modify — \&quot;Read, compose, and send emails from your Gmail account. This scope does not allow immediate, permanent deletion of threads and messages, bypassing Trash\&quot;; the full https://mail.google.com/ scope (\&quot;Read, compose, send, and permanently delete all your email from Gmail\&quot;) is not asked for. Measured 2026-09-16: asked to delete a trashed message or empty the Trash, Claude reported \&quot;I don&#x27;t have a tool for permanent deletion or emptying Trash — only moving messages/threads to Trash\&quot;. A boundary at Google, and the thirty-day Bin is Google&#x27;s rule.&quot;,
+      &quot;source&quot;: &quot;https://developers.google.com/workspace/gmail/api/auth/scopes&quot;,
+      &quot;evidence&quot;: &quot;measured&quot;
+    }
+  ],
+  &quot;tools&quot;: [
+    &quot;Send email message (the display name in the approval prompt; the tool&#x27;s own name was not shown)&quot;,
+    &quot;search_threads&quot;,
+    &quot;get_thread&quot;,
+    &quot;get_message&quot;,
+    &quot;list_drafts&quot;,
+    &quot;create_draft&quot;,
+    &quot;list_labels&quot;,
+    &quot;create_label&quot;,
+    &quot;delete_label&quot;,
+    &quot;label_message&quot;,
+    &quot;label_thread&quot;,
+    &quot;unlabel_message&quot;,
+    &quot;unlabel_thread&quot;,
+    &quot;list_filters&quot;,
+    &quot;create_filter&quot;,
+    &quot;reply&quot;,
+    &quot;forward&quot;,
+    &quot;mark_message_spam&quot;,
+    &quot;mark_thread_spam&quot;,
+    &quot;apply_sensitive_message… (truncated in the directory listing)&quot;,
+    &quot;apply_sensitive_thread… (truncated in the directory listing)&quot;,
+    &quot;…and more behind the listing&#x27;s \&quot;Show all\&quot;, not expanded in the capture&quot;
+  ],
+  &quot;grant&quot;: [
+    {
+      &quot;capability&quot;: &quot;read.credential.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;inferred&quot;,
+      &quot;via&quot;: [
+        &quot;search_threads&quot;,
+        &quot;get_message&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;password resets, one-time codes, invitations and account-recovery mail arrive in a mailbox; reading messages reads those. Inferred, not documented — no tool or scope on either vendor&#x27;s page separates them.&quot;,
+      &quot;material&quot;: &quot;own&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.record.history&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;measured&quot;,
+      &quot;via&quot;: [
+        &quot;list_labels&quot;,
+        &quot;get_thread&quot;,
+        &quot;list_filters (listed; the agent reported no such tool — see contradictions)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;a mailbox is a retained record of years, and the consent line is \&quot;View your email messages and settings.\&quot; Measured 2026-09-16: asked for the account&#x27;s settings, Claude returned the label structure with thread and unread counts for every system and custom label (an inventory of the mailbox&#x27;s shape), and said it had no tool for forwarding rules, filters, the vacation responder or signatures. Nothing separates this from reading messages, so the barrier is the same as the row above: none beyond the consent itself.&quot;,
+      &quot;material&quot;: &quot;mixed&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;send.message.world&quot;,
+      &quot;barrier&quot;: &quot;setting&quot;,
+      &quot;evidence&quot;: &quot;measured&quot;,
+      &quot;via&quot;: [
+        &quot;Send email message&quot;,
+        &quot;reply&quot;,
+        &quot;forward&quot;
+      ],
+      &quot;control&quot;: &quot;two layers. At consent, Google&#x27;s screen asks for \&quot;Manage drafts and send emails.\&quot; (gmail.compose) and \&quot;Read, compose and send emails from your Gmail account.\&quot; (gmail.modify), each with its own tick box, all pre-ticked under \&quot;Select all\&quot; — unticked, sending would be a boundary; this shape assumes the default. After consent, the per-action approval prompt: \&quot;By default, Claude asks for your approval before each of these actions. On Team and Enterprise plans, owners decide whether members can allow these actions to run without asking each time.\&quot; A switch the account, or an org owner, can flip. On the screen the prompt reads \&quot;Claude wants to use Send email message from Gmail\&quot; with three buttons: Deny · Always allow · Allow once. \&quot;Always allow\&quot; is the switch — one click by the account holder, and the prompt is gone for good.&quot;,
+      &quot;note&quot;: &quot;Anthropic: \&quot;Send, reply to, and forward emails from Gmail.\&quot; and \&quot;During authentication, Google&#x27;s OAuth screen mentions email sending permissions... Claude can send, reply to, and forward emails, but only does so with your explicit approval by default.\&quot; The directory listing names reply and forward; Google&#x27;s own reference for the same server (2026-07-21) names no tool that sends — see contradictions. The credential is the grant; the approval prompt is the barrier, and by the enforcer test it is a setting — the grant includes the ability to remove it. Measured 2026-09-16: one message sent to an address the deployer named for the purpose, after \&quot;Allow once\&quot;; Claude confirmed the send and the sending address. The message as sent carries no header naming the client: no X-Mailer, no User-Agent; the Received line says \&quot;by gmailapi.google.com with HTTPREST\&quot; from a numeric sender that is the OAuth client&#x27;s Google Cloud project number, and the body is signed with the account holder&#x27;s name. To the recipient it is the account holder&#x27;s mail (evidence/09).&quot;,
+      &quot;material&quot;: &quot;third_party&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;authenticate-as.credential.tenant&quot;,
+      &quot;barrier&quot;: &quot;boundary&quot;,
+      &quot;evidence&quot;: &quot;measured&quot;,
+      &quot;via&quot;: [
+        &quot;Sign in with Google — \&quot;Claude for Gmail\&quot;&quot;
+      ],
+      &quot;control&quot;: &quot;the Google OAuth consent; \&quot;You must authenticate directly with your Google account before using these connectors.\&quot; Revocable from the Google account (\&quot;To make changes at any time, go to your Google Account.\&quot;) and from Claude&#x27;s Connectors settings.&quot;,
+      &quot;note&quot;: &quot;acts as the account holder over the Gmail data of the connected account. \&quot;Claude mirrors your existing permissions — you cannot access information you don&#x27;t already have access to in Google Workspace.\&quot; The OAuth application is named \&quot;Claude for Gmail\&quot; on Google&#x27;s screens. Measured 2026-09-16: the three Google screens — choose an account; \&quot;Sign in to Claude for Gmail\&quot;; \&quot;Claude for Gmail wants access to your Google Account\&quot; with the three scope lines pre-ticked — are transcribed in evidence/.&quot;,
+      &quot;material&quot;: &quot;own&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: true
+    },
+    {
+      &quot;capability&quot;: &quot;read.message.tenant&quot;,
+      &quot;barrier&quot;: &quot;boundary&quot;,
+      &quot;evidence&quot;: &quot;measured&quot;,
+      &quot;via&quot;: [
+        &quot;search_threads&quot;,
+        &quot;get_thread&quot;,
+        &quot;get_message&quot;,
+        &quot;list_drafts&quot;
+      ],
+      &quot;control&quot;: &quot;the Google OAuth consent — \&quot;View your email messages and settings.\&quot; (gmail.readonly), one of three lines the person can tick individually on Google&#x27;s screen — and the per-connector toggle in Claude; revocable from Claude&#x27;s Connectors settings and from the Google account&#x27;s third-party access page&quot;,
+      &quot;note&quot;: &quot;Anthropic: \&quot;Search and read emails using natural language queries.\&quot; \&quot;Access email metadata, including attachment metadata (not attachment content).\&quot; Google&#x27;s reference: \&quot;Read data: Search emails, retrieve threads, and list labels.\&quot; Read carries no per-action approval prompt on Anthropic&#x27;s page; the prompt sentence sits under send, reply and forward. Measured 2026-09-16: asked to read the inbox and name the top messages, Claude returned ten threads with sender, subject and date, after \&quot;Loaded tools, used Gmail integration\&quot;.&quot;,
+      &quot;material&quot;: &quot;mixed&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: true
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.tenant&quot;,
+      &quot;barrier&quot;: &quot;setting&quot;,
+      &quot;evidence&quot;: &quot;documented&quot;,
+      &quot;via&quot;: [
+        &quot;create_filter&quot;
+      ],
+      &quot;control&quot;: &quot;the per-action approval prompt: \&quot;By default, each action Claude takes on your behalf requires your explicit approval. On Team and Enterprise plans, owners decide whether members can allow certain actions to run without asking each time.\&quot;&quot;,
+      &quot;note&quot;: &quot;a Gmail filter is a standing rule that acts on every future message without the agent present — labelling, archiving, forwarding — which is what this primitive names: \&quot;something that outlives the session, on the platform\&quot;. The tool is on the directory listing (captured 2026-09-16); it is not on Google&#x27;s reference page for the server (2026-07-21), and the scope that filters need, gmail.settings.basic — \&quot;See, edit, create, or change your email settings and filters in Gmail.\&quot; — is not among the three lines on the consent screen. Whether the tool works under the consented scopes is open; the row records what is listed. Asked in the measured session, Claude said: \&quot;the Gmail connector I have access to only exposes labels/messages, not account-level settings like forwarding rules, filters, vacation responder, IMAP/POP config, or signatures\&quot; — self-reported, and against the listing.&quot;,
+      &quot;material&quot;: &quot;mixed&quot;,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: false
+    }
+  ],
+  &quot;grant_size&quot;: 6,
+  &quot;irreversible&quot;: [
+    &quot;read.credential.host&quot;,
+    &quot;read.record.history&quot;,
+    &quot;send.message.world&quot;,
+    &quot;authenticate-as.credential.tenant&quot;,
+    &quot;read.message.tenant&quot;
+  ],
+  &quot;unbounded&quot;: [
+    &quot;read.credential.host&quot;,
+    &quot;read.record.history&quot;,
+    &quot;send.message.world&quot;,
+    &quot;create.schedule.tenant&quot;
+  ],
+  &quot;widest_reach&quot;: &quot;world&quot;,
+  &quot;rows&quot;: {
+    &quot;total&quot;: 6,
+    &quot;measured&quot;: 4,
+    &quot;derived&quot;: 2
+  },
+  &quot;sources&quot;: [
+    {
+      &quot;label&quot;: &quot;Use Google Workspace connectors (Anthropic help)&quot;,
+      &quot;url&quot;: &quot;https://support.claude.com/en/articles/10166901-use-google-workspace-connectors&quot;,
+      &quot;read&quot;: &quot;2026-09-16&quot;
+    },
+    {
+      &quot;label&quot;: &quot;Gmail — the connector&#x27;s listing in Claude&#x27;s directory (sign-in required; captured by the deployer, screenshots in evidence/)&quot;,
+      &quot;url&quot;: &quot;https://claude.ai/directory/gmail-gmailmcp&quot;,
+      &quot;read&quot;: &quot;2026-09-16&quot;
+    },
+    {
+      &quot;label&quot;: &quot;MCP Reference: gmailmcp.googleapis.com (Google; page dated 2026-07-21)&quot;,
+      &quot;url&quot;: &quot;https://developers.google.com/workspace/gmail/api/reference/mcp&quot;,
+      &quot;read&quot;: &quot;2026-09-16&quot;
+    },
+    {
+      &quot;label&quot;: &quot;Configure the Gmail MCP server (Google)&quot;,
+      &quot;url&quot;: &quot;https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server&quot;,
+      &quot;read&quot;: &quot;2026-09-16&quot;
+    },
+    {
+      &quot;label&quot;: &quot;Gmail API scopes (Google)&quot;,
+      &quot;url&quot;: &quot;https://developers.google.com/workspace/gmail/api/auth/scopes&quot;,
+      &quot;read&quot;: &quot;2026-09-16&quot;
+    },
+    {
+      &quot;label&quot;: &quot;The listing&#x27;s More info links: Documentation, Support, Privacy Policy&quot;,
+      &quot;url&quot;: &quot;https://developers.google.com/workspace/gmail · https://developers.google.com/workspace/support · https://policies.google.com/privacy&quot;,
+      &quot;read&quot;: &quot;2026-09-16&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    {
+      &quot;advertised&quot;: &quot;Google&#x27;s MCP reference for gmailmcp.googleapis.com (page dated 2026-07-21): ten tools — create_draft, get_message, get_thread, label_message, label_thread, list_drafts, list_labels, search_threads, unlabel_message, unlabel_thread — and \&quot;Take action: Create draft emails and label messages.\&quot; None sends.&quot;,
+      &quot;permitted&quot;: &quot;the same server&#x27;s listing in Claude&#x27;s directory (captured 2026-09-16) names reply, forward, create_filter, list_filters, create_label, delete_label, mark_message_spam and mark_thread_spam, with more behind \&quot;Show all\&quot;; and Google&#x27;s consent screen for it asks for gmail.compose and gmail.modify, both of which send.&quot;,
+      &quot;state&quot;: &quot;unresolved&quot;,
+      &quot;sources&quot;: [
+        &quot;https://developers.google.com/workspace/gmail/api/reference/mcp&quot;,
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;
+      ]
+    },
+    {
+      &quot;advertised&quot;: &quot;the directory listing&#x27;s own description: \&quot;Draft replies, summarize threads, &amp; search your inbox\&quot; and \&quot;Claude can search through your messages, read entire email threads to give you context, and help you stay on top of your inbox.\&quot;&quot;,
+      &quot;permitted&quot;: &quot;the listing&#x27;s tool list (reply, forward, create_filter, mark spam) and the consent it opens (\&quot;Manage drafts and send emails.\&quot;, \&quot;Read, compose and send emails from your Gmail account.\&quot;)&quot;,
+      &quot;state&quot;: &quot;unresolved&quot;,
+      &quot;sources&quot;: [
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;
+      ]
+    },
+    {
+      &quot;advertised&quot;: &quot;create_filter is on the listing&quot;,
+      &quot;permitted&quot;: &quot;the three consent lines are gmail.readonly, gmail.compose and gmail.modify; the scope Google names for filters, gmail.settings.basic, is not asked for&quot;,
+      &quot;state&quot;: &quot;undocumented&quot;,
+      &quot;sources&quot;: [
+        &quot;https://developers.google.com/workspace/gmail/api/auth/scopes&quot;,
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;
+      ]
+    },
+    {
+      &quot;advertised&quot;: &quot;Anthropic&#x27;s help article documents the connector&#x27;s behaviour and its approval prompt as Claude&#x27;s&quot;,
+      &quot;permitted&quot;: &quot;the listing says \&quot;MADE BY Google\&quot;, Google&#x27;s page says Developer Preview, and the directory&#x27;s footer says \&quot;Anthropic does not control which tools developers make available and cannot verify that they will work as intended or that they won&#x27;t change.\&quot; Who is accountable for the tool set, and for its changing, is stated by neither.&quot;,
+      &quot;state&quot;: &quot;unresolved&quot;,
+      &quot;sources&quot;: [
+        &quot;https://support.claude.com/en/articles/10166901-use-google-workspace-connectors&quot;,
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;
+      ]
+    },
+    {
+      &quot;advertised&quot;: &quot;the directory listing names list_filters and create_filter&quot;,
+      &quot;permitted&quot;: &quot;in the measured session (2026-09-16) the agent, asked to list the account&#x27;s settings, said: \&quot;the Gmail connector I have access to only exposes labels/messages, not account-level settings like forwarding rules, filters, vacation responder, IMAP/POP config, or signatures — those live in a separate Gmail Settings API that isn&#x27;t wired up here.\&quot; Self-reported; the consent screen did not ask for gmail.settings.basic either.&quot;,
+      &quot;state&quot;: &quot;unresolved&quot;,
+      &quot;sources&quot;: [
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;
+      ]
+    }
+  ],
+  &quot;research_needed&quot;: [
+    {
+      &quot;capability&quot;: &quot;send.message.world&quot;,
+      &quot;question&quot;: &quot;Which tool sends? Google&#x27;s reference names none; the directory names reply and forward; the approval prompt in the measured session named \&quot;Send email message\&quot;, so a plain send exists — its tool name, and whether it sits behind \&quot;Show all\&quot;, were not captured.&quot;,
+      &quot;how&quot;: &quot;Expand \&quot;Show all\&quot; on the listing, or read the tools/list response Google documents for the endpoint. Do not connect an account to find out.&quot;,
+      &quot;sources&quot;: [
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;,
+        &quot;https://developers.google.com/workspace/gmail/api/reference/mcp&quot;
+      ]
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.tenant&quot;,
+      &quot;question&quot;: &quot;Does create_filter work under the three consented scopes, and can a filter it creates forward mail to an outside address?&quot;,
+      &quot;how&quot;: &quot;Google&#x27;s Gmail API documentation for users.settings.filters and forwarding addresses, quoted; the consent screen&#x27;s \&quot;See access details\&quot; for each line.&quot;,
+      &quot;sources&quot;: [
+        &quot;https://developers.google.com/workspace/gmail/api/auth/scopes&quot;
+      ]
+    },
+    {
+      &quot;capability&quot;: &quot;read.record.history&quot;,
+      &quot;question&quot;: &quot;Does list_filters return forwarding addresses and the vacation responder, or only filter criteria and actions?&quot;,
+      &quot;how&quot;: &quot;Google&#x27;s Gmail API documentation for users.settings.filters, quoted.&quot;,
+      &quot;sources&quot;: [
+        &quot;https://developers.google.com/workspace/gmail&quot;
+      ]
+    },
+    {
+      &quot;capability&quot;: &quot;read.message.tenant&quot;,
+      &quot;question&quot;: &quot;Outside the stated exception — a consumer account that opted into model training, where a person copies connector content into a chat — is retrieved mail content ever used for training?&quot;,
+      &quot;how&quot;: &quot;Anthropic&#x27;s model-training data policy page, quoted.&quot;,
+      &quot;sources&quot;: [
+        &quot;https://support.claude.com/en/articles/10166901-use-google-workspace-connectors&quot;
+      ]
+    },
+    {
+      &quot;capability&quot;: null,
+      &quot;question&quot;: &quot;What are apply_sensitive_message… and apply_sensitive_thread…? The names are cut off in the listing and absent from Google&#x27;s reference.&quot;,
+      &quot;how&quot;: &quot;The listing&#x27;s full tool names and descriptions, or Google&#x27;s reference once it lists them.&quot;,
+      &quot;sources&quot;: [
+        &quot;https://claude.ai/directory/gmail-gmailmcp&quot;
+      ]
+    },
+    {
+      &quot;capability&quot;: &quot;send.message.world&quot;,
+      &quot;question&quot;: &quot;Is the numeric sender in the Received line (a Google Cloud project number) the \&quot;Claude for Gmail\&quot; OAuth client&#x27;s, and is there any published way for a recipient to tell that a message was sent by an agent through the connector rather than by the account holder?&quot;,
+      &quot;how&quot;: &quot;Google&#x27;s documentation of the Received header written by gmailapi.google.com, and Anthropic&#x27;s, if any; compare the number against the OAuth client shown on the Google account&#x27;s third-party access page. Do not send further messages to find out.&quot;,
+      &quot;sources&quot;: [
+        &quot;https://developers.google.com/workspace/gmail&quot;
+      ]
+    }
+  ],
+  &quot;not_in_grammar&quot;: [
+    {
+      &quot;what&quot;: &quot;create, list, update and delete drafts&quot;,
+      &quot;permission&quot;: &quot;gmail.compose — \&quot;Manage drafts and send emails.\&quot;&quot;,
+      &quot;why&quot;: &quot;the 23 primitives have write.file.* and delete.file.host; a message is not a file, and no primitive names a draft&quot;
+    },
+    {
+      &quot;what&quot;: &quot;create and delete labels; label and unlabel messages and threads&quot;,
+      &quot;permission&quot;: &quot;gmail.modify&quot;,
+      &quot;why&quot;: &quot;no primitive names labelling&quot;
+    },
+    {
+      &quot;what&quot;: &quot;move a message to Trash (\&quot;Moves a message to Trash\&quot; — measured 2026-09-16, behind the same approval prompt, on the one message Claude had itself sent); mark a message or thread as spam&quot;,
+      &quot;permission&quot;: &quot;gmail.modify — trash, not permanent deletion; the Bin auto-deletes after thirty days&quot;,
+      &quot;why&quot;: &quot;delete.file.host is the nearest primitive and a message is not a file; both actions are recoverable from Gmail&#x27;s own folders for thirty days, and permanent deletion is out of the connector&#x27;s reach (see not_reachable)&quot;
+    },
+    {
+      &quot;what&quot;: &quot;apply_sensitive_message… and apply_sensitive_thread… (names truncated in the capture)&quot;,
+      &quot;permission&quot;: &quot;not stated&quot;,
+      &quot;why&quot;: &quot;not on Google&#x27;s reference page; what they do is not known from the listing&quot;
+    }
+  ],
+  &quot;contributed&quot;: {
+    &quot;by&quot;: &quot;riskmandate.ai&quot;,
+    &quot;vault_page&quot;: &quot;https://riskmandate.ai/abp-vault-claude-gmail-connector.html&quot;,
+    &quot;vocabulary_pinned_by_contributor&quot;: &quot;v0.3.0&quot;,
+    &quot;their_provenance&quot;: {
+      &quot;note&quot;: &quot;Not published at abp.sgit.ai. Authored on this site from the two vendors&#x27; own pages, read on 2026-09-16 and quoted rather than paraphrased, and from the deployer&#x27;s own capture of the directory listing and Google&#x27;s consent screens on the same day (evidence/, address redacted). Nothing was tested. Scoped to the Gmail connector alone — Calendar and Drive are separate toggles and are named in `claude-google-workspace-connector` in `asked_for`, not this shape.&quot;,
+      &quot;requested&quot;: &quot;https://riskmandate.ai/lab-abp-requests.html&quot;,
+      &quot;licence&quot;: &quot;CC BY 4.0&quot;,
+      &quot;id&quot;: &quot;anthropic/gmail-connector/default&quot;
+    }
+  },
+  &quot;not_an_assessment&quot;: &quot;This describes a deployment shape a contributor documented or measured. It is not an assessment, an audit, a certification or a security review of any named product, and it carries no adjective and no score.&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://riskmandate.ai/vaults/claude-gmail-connector/data/grant.json&quot;,
+    &quot;source_page&quot;: &quot;https://riskmandate.ai/abp-vault-claude-gmail-connector.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-20T17:23:43Z&quot;,
+    &quot;pack_version&quot;: null,
+    &quot;content_hash&quot;: &quot;sha256:a0d50c78ad9902349fe243e815e61217baae75132b682b140dcb67bbed4c1957&quot;,
+    &quot;verbatim_bytes&quot;: &quot;contributed/riskmandate/claude-gmail-connector/grant.json&quot;,
+    &quot;contributed_by&quot;: &quot;riskmandate.ai&quot;,
+    &quot;contributed_manifest&quot;: &quot;contributed/riskmandate/manifest.json&quot;,
+    &quot;note&quot;: &quot;Contributed by riskmandate.ai, promoted from claude-gmail-connector/grant.json without renaming anything. The evidence tier on every row is the contributor&#x27;s; `is_bounded` is recomputed here from the barrier; `undo` is the grammar&#x27;s. The contributor&#x27;s contradictions, research needed and what the grammar cannot say are carried whole.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/profiles/anthropic/gmail-connector/default.json">https://abp.sgit.ai/data/profiles/anthropic/gmail-connector/default.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:43Z</dd><dt>sha256</dt><dd><code title="5a8c66aeb4a346d8305650ca5016d7f5bd90d7310c6ca92074b38800c3fdce6d">5a8c66aeb4a3</code></dd><dt>Frozen copy</dt><dd><a href="default.json">sites/abp.sgit.ai/data/profiles/anthropic/gmail-connector/default.json</a> (23,425 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

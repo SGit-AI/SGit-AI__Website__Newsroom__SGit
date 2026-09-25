@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>First run of TTS=elevenlabs — the path nobody has executed · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#first-run-of-ttselevenlabs-the-path-nobody-has-executed">First run of TTS=elevenlabs — the path nobody has executed</a></li><li class="l2"><a href="#step-0-prove-the-account-before-touching-the-pipeline">Step 0 · Prove the account before touching the pipeline</a></li><li class="l2"><a href="#step-1-one-scene-one-render">Step 1 · One scene, one render</a></li><li class="l2"><a href="#the-four-things-most-likely-to-break-and-the-fix-for-each">The four things most likely to break, and the fix for each</a></li><li class="l3"><a href="#1-pcm-44100-may-not-be-on-your-plan-most-likely-failure">1 · pcm_44100 may not be on your plan — most likely failure</a></li><li class="l3"><a href="#2-eleven-v3-may-not-be-available-on-your-key-or-may-reject-the-settings">2 · eleven_v3 may not be available on your key, or may reject the settings</a></li><li class="l3"><a href="#3-timestamps-may-not-come-back-in-the-shape-the-shim-expects">3 · Timestamps may not come back in the shape the shim expects</a></li><li class="l3"><a href="#4-concurrency-pool2-fires-two-generations-at-once">4 · Concurrency — POOL=2 fires two generations at once</a></li><li class="l2"><a href="#two-smaller-things-worth-knowing">Two smaller things worth knowing</a></li><li class="l2"><a href="#optional-and-high-value-the-pronunciation-dictionary">Optional, and high value: the pronunciation dictionary</a></li><li class="l2"><a href="#write-down-what-happened">Write down what happened</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="02__ELEVENLABS-FIRST-RUN.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__brief__video-pipeline/02__ELEVENLABS-FIRST-RUN.md">live ↗</a></p><article class="source"><h1 id="first-run-of-ttselevenlabs-the-path-nobody-has-executed">First run of <code>TTS=elevenlabs</code> — the path nobody has executed</h1>
+<p><code>tooling/scripts/sg-tts-shim-elevenlabs.js</code> and the <code>TTS=elevenlabs</code> branch of <code>02-render.mjs</code> were <strong>written on 5 September 2026 from the API reference, in a container that could not reach <code>api.elevenlabs.io</code>.</strong> Every other provider path (<code>kokoro</code>, <code>local</code>, <code>openrouter</code>) has produced a shipped video. This one has never made a sound.</p>
+<p>You are the first person who can run it. Do it on <strong>one scene</strong>, not a full reel, and work through the four failure points below before spending a render.</p>
+<hr>
+<h2 id="step-0-prove-the-account-before-touching-the-pipeline">Step 0 · Prove the account before touching the pipeline</h2>
+<pre><code class="lang-bash">export ELEVENLABS_API_KEY=&lt;key&gt;            # environment only
+bash materials/elevenlabs/examples/00-smoke.sh     # key valid, quota, one sentence of audio
+bash materials/elevenlabs/examples/voices.sh       # pick a voice_id — note it
+curl -s https://api.elevenlabs.io/v1/models -H &quot;xi-api-key: $ELEVENLABS_API_KEY&quot; | jq &#x27;.[] | {model_id, name, can_do_text_to_speech}&#x27;</code></pre>
+<p>These example scripts are <strong>also unrun</strong>. If one is wrong, fix it and note the fix — the site&#x27;s <code>elevenlabs.md</code> §9 wants exactly this kind of finding.</p>
+<p>Record the <code>voice_id</code> you choose and put it in the site&#x27;s ElevenLabs page. <code>pNInz6obpgDQGcFmaJgB</code> (premade &quot;Adam&quot;) is the only voice this estate has ever exercised, in the bench, at 5.0–5.8 s per 187-character generation.</p>
+<h2 id="step-1-one-scene-one-render">Step 1 · One scene, one render</h2>
+<p>Make a throwaway reel with a single scene and about twenty words of narration, then:</p>
+<pre><code class="lang-bash">cd videos/&lt;throwaway&gt;/scripts
+TTS=elevenlabs VOICE=&lt;voice_id&gt; FORMAT=landscape node 02-render.mjs 2&gt;&amp;1 | grep --line-buffered -v UNDICI</code></pre>
+<p>Check three things in <code>../render-log.landscape.json</code>: the generation&#x27;s <code>durationMs</code> is close to the audio you hear, <code>cost</code> is populated and sane, and <code>../narration-timings.landscape.json</code> exists with an <code>alignment</code> object per scene. If all three hold, the path works and you can render a real reel.</p>
+<hr>
+<h2 id="the-four-things-most-likely-to-break-and-the-fix-for-each">The four things most likely to break, and the fix for each</h2>
+<h3 id="1-pcm-44100-may-not-be-on-your-plan-most-likely-failure">1 · <code>pcm_44100</code> may not be on your plan — <strong>most likely failure</strong></h3>
+<p>The shim requests <code>?output_format=pcm_44100</code> and converts 16-bit little-endian PCM straight to <code>Float32Array</code>, which avoids needing a decoder. <strong>PCM output formats are gated to higher subscription tiers.</strong> On a Creator-tier key this is likely to come back <code>401</code>/<code>422</code> with a <code>detail</code> naming the output format.</p>
+<p><strong>Fix:</strong> request MP3 and decode it in the page. In <code>sg-tts-shim-elevenlabs.js</code>, change the query to <code>output_format=mp3_44100_128</code> and replace the <code>pcm16ToFloat32</code> call with a decode:</p>
+<pre><code class="lang-js">const bytes = Uint8Array.from(atob(j.audio_base64), c =&gt; c.charCodeAt(0));
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+const buf = await ctx.decodeAudioData(bytes.buffer);
+const data = buf.getChannelData(0);          // Float32Array, mono
+const SAMPLE_RATE_ACTUAL = buf.sampleRate;   // return this, not the constant</code></pre>
+<p>Return <code>{ data, sampleRate: SAMPLE_RATE_ACTUAL, durationSecs: buf.duration }</code>. Everything downstream takes the sample rate from the return value, so nothing else changes. <strong>Note it in <code>FINDINGS.md</code> either way</strong> — &quot;pcm worked on tier X&quot; is as useful a finding as the failure.</p>
+<h3 id="2-eleven-v3-may-not-be-available-on-your-key-or-may-reject-the-settings">2 · <code>eleven_v3</code> may not be available on your key, or may reject the settings</h3>
+<p>The shim defaults to <code>model_id: eleven_v3</code> and sends <code>voice_settings.stability: 0.5</code>. Two risks: v3 may not be enabled for API use on your account, and v3 treats stability as three discrete modes (Creative 0.0 / Natural 0.5 / Robust 1.0) rather than a continuum — an arbitrary value can <code>422</code>.</p>
+<p><strong>Fix:</strong> <code>ELEVEN_MODEL=eleven_multilingual_v2</code> is the stable workhorse and takes a continuous stability. For narration of somebody else&#x27;s compliance standard, <strong>Natural (0.5) or Robust (1.0), never Creative</strong> — Creative hallucinates. A <code>422</code> body&#x27;s <code>detail</code> names the offending field; the shim surfaces it.</p>
+<h3 id="3-timestamps-may-not-come-back-in-the-shape-the-shim-expects">3 · Timestamps may not come back in the shape the shim expects</h3>
+<p>The shim reads <code>j.alignment</code> and <code>j.normalized_alignment</code>, each <code>{characters, character_start_times_seconds, character_end_times_seconds}</code>, and pushes both into <code>window.__ttsAlignments</code>, which <code>02-render.mjs</code> writes to <code>narration-timings.&lt;format&gt;.json</code>.</p>
+<p><strong>Check rather than assume</strong>: dump one response before trusting it. If <code>alignment</code> is null on your model (some models do not return it), the whole SRT/chapters/karaoke chain is unavailable on that model and you should switch models rather than work around it — the alignment is the reason to be here.</p>
+<h3 id="4-concurrency-pool2-fires-two-generations-at-once">4 · Concurrency — <code>POOL=2</code> fires two generations at once</h3>
+<p>Never tested against the plan&#x27;s concurrency limit. A <code>429</code> mid-render wastes the whole run.</p>
+<p><strong>Fix:</strong> run the first real reel with <code>POOL=1</code>. It is slower and it cannot 429. Raise it once you know the limit, and write the limit into the site&#x27;s page — it is a fact nobody publishes.</p>
+<hr>
+<h2 id="two-smaller-things-worth-knowing">Two smaller things worth knowing</h2>
+<ul><li><strong><code>SPEED</code> means something different here.</strong> For Kokoro it is a duration scale applied after synthesis; for ElevenLabs it is <code>voice_settings.speed</code>, clamped by the shim to the API&#x27;s 0.7–1.2. The shim already clamps, so a <code>SPEED=1.5</code> inherited from a Kokoro command line will silently become 1.2 rather than erroring. Check the closing slide, which prints the speed actually used.</li><li><strong>The cost on the closing slide is list price arithmetic</strong>, not a billed figure: characters × $0.10/1k for v3, × $0.05 for flash and turbo. Compare it once against <code>GET /v1/user/subscription</code>&#x27;s character counter before and after a render, and if it disagrees, fix the rate in <code>02-render.mjs</code> and say so in the findings.</li></ul>
+<hr>
+<h2 id="optional-and-high-value-the-pronunciation-dictionary">Optional, and high value: the pronunciation dictionary</h2>
+<p>Do this <strong>after</strong> the first successful render, not before.</p>
+<ol><li>Run the names test — the bench&#x27;s one-click button, or just narrate a scene containing <code>sgit</code>, <code>sgit.ai</code>, <code>SG/Vault</code>, <code>SGraph</code>, <code>AIUC-1</code>, <code>SHA-256</code>, <code>llms.txt</code>, <code>OWASP</code>, <code>VoiceDebrief</code>, <code>v0.1.29</code>. Listen. Write down which ones are wrong.</li><li>Build the lexicon from <code>materials/elevenlabs/pronunciations.pls</code>, correcting it against what you actually heard. Aliases work on every model; <strong>phoneme rules only on <code>eleven_flash_v2</code> and <code>eleven_v3</code></strong>.</li><li>Upload it (<code>docs/04</code> has the two curl calls), note the id and version, and pass <code>ELEVEN_DICT=&lt;id&gt;:&lt;version_id&gt;</code> to the render.</li><li><strong>Then strip the phonetic spellings out of <code>reel.json</code></strong> — <code>sgit dot ai</code> becomes <code>sgit.ai</code> — and re-render. The caption band will read like prose for the first time.</li></ol>
+<p>That last step is the visible payoff, and it is worth a before/after screenshot on the site.</p>
+<hr>
+<h2 id="write-down-what-happened">Write down what happened</h2>
+<p>Whatever you find, put it in that reel&#x27;s <code>FINDINGS.md</code> and in the site&#x27;s <code>elevenlabs.md</code> §9. Right now the site says the shim is unrun, which is honest but not interesting. <strong>&quot;It was run on this date, on this tier, and here is what broke&quot; is the most valuable paragraph the page could gain</strong>, and you are the only one who can write it.</p>
+<hr>
+<p><em>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__brief__video-pipeline/02__ELEVENLABS-FIRST-RUN.md">https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__brief__video-pipeline/02__ELEVENLABS-FIRST-RUN.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:31Z</dd><dt>sha256</dt><dd><code title="5a98b3f94660a909695bc50819a2fc2bc87b98354d1db575a3847e06039f5e13">5a98b3f94660</code></dd><dt>Frozen copy</dt><dd><a href="02__ELEVENLABS-FIRST-RUN.md">sites/elevenlabs.providers.sgit.ai/briefs/2026-09-07__brief__video-pipeline/02__ELEVENLABS-FIRST-RUN.md</a> (7,098 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

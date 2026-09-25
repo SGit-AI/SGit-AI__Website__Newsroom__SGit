@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>u1.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="u1.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/universes/u1.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/universe/v1&quot;,
+  &quot;id&quot;: &quot;u1&quot;,
+  &quot;n&quot;: 1,
+  &quot;name&quot;: &quot;The grammar&quot;,
+  &quot;level&quot;: &quot;down&quot;,
+  &quot;owner&quot;: &quot;abp.sgit.ai, promoted from what-can-it-do.games.sgit.ai and bridged back to it&quot;,
+  &quot;centre&quot;: &quot;the primitive&quot;,
+  &quot;smallest&quot;: &quot;the word&quot;,
+  &quot;status&quot;: &quot;live&quot;,
+  &quot;status_note&quot;: &quot;Complete for what it is: 10 verbs, 9 object classes, 5 reach classes, 9 families, 3 undo classes, 23 primitives, 33 word nodes with their own addresses. Nothing is added to it by the map except one property, material, and that is deliberate: the grammar is the shared layer that everybody reads by address and nobody forks, so it has to stay small.&quot;,
+  &quot;node_types&quot;: [
+    {
+      &quot;name&quot;: &quot;Verb&quot;,
+      &quot;formula&quot;: &quot;[Verb] := a node that is the -verb_of-&gt; at least one [Capability]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 10
+    },
+    {
+      &quot;name&quot;: &quot;ObjectClass&quot;,
+      &quot;formula&quot;: &quot;[ObjectClass] := a node that is -acted_on_by-&gt; at least one [Capability]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 9
+    },
+    {
+      &quot;name&quot;: &quot;ReachClass&quot;,
+      &quot;formula&quot;: &quot;[ReachClass] := a node that is -reachable_from-&gt; at least one [Capability]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 5
+    },
+    {
+      &quot;name&quot;: &quot;Family&quot;,
+      &quot;formula&quot;: &quot;[Family] := a node that is the -family_of-&gt; at least one [Capability]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 9
+    },
+    {
+      &quot;name&quot;: &quot;UndoClass&quot;,
+      &quot;formula&quot;: &quot;a node that is the -undo_class_of-&gt; at least one [Capability]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Capability&quot;,
+      &quot;formula&quot;: &quot;[Capability] := a node with a -has_verb-&gt; [Verb] and an -acts_on-&gt; [ObjectClass] and a -reaches-&gt; [ReachClass]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: &quot;Gains one property, material, with the values own, organisation, third_party and mixed: whose material a capability reaches. A property, never a fourth element of the grammar. The default lives here; the override lives on the mandate in U5.&quot;,
+      &quot;matched&quot;: 23
+    }
+  ],
+  &quot;verbs&quot;: [
+    {
+      &quot;edge&quot;: &quot;has_verb&quot;,
+      &quot;inverse&quot;: &quot;verb_of&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;Verb&quot;,
+      &quot;reads_as&quot;: &quot;this capability has the verb read&quot;,
+      &quot;inverse_reads_as&quot;: &quot;read is the verb of these capabilities&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;acts_on&quot;,
+      &quot;inverse&quot;: &quot;acted_on_by&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;ObjectClass&quot;,
+      &quot;reads_as&quot;: &quot;this capability acts on files&quot;,
+      &quot;inverse_reads_as&quot;: &quot;files are acted on by these capabilities&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;reaches&quot;,
+      &quot;inverse&quot;: &quot;reachable_from&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;ReachClass&quot;,
+      &quot;reads_as&quot;: &quot;this capability reaches this reach class&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this reach class is reachable from this capability&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai edge set&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;in_family&quot;,
+      &quot;inverse&quot;: &quot;family_of&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;Family&quot;,
+      &quot;reads_as&quot;: &quot;this capability is in the filesystem family&quot;,
+      &quot;inverse_reads_as&quot;: &quot;the filesystem family is the family of these capabilities&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;has_undo_class&quot;,
+      &quot;inverse&quot;: &quot;undo_class_of&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;UndoClass&quot;,
+      &quot;reads_as&quot;: &quot;this capability has the undo class no&quot;,
+      &quot;inverse_reads_as&quot;: &quot;undo class no is the undo class of these capabilities&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;similar_to&quot;,
+      &quot;inverse&quot;: &quot;similar_to&quot;,
+      &quot;domain&quot;: &quot;Node&quot;,
+      &quot;range&quot;: &quot;Node&quot;,
+      &quot;reads_as&quot;: &quot;our node is similar to their node&quot;,
+      &quot;inverse_reads_as&quot;: &quot;symmetric, and partial on purpose&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai anchor nodes&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    }
+  ],
+  &quot;adds&quot;: &quot;Two verbs in it, receive and revoke, have nothing under them and are kept as named absences. The grammar is the fixed point of the whole map: what every other universe attaches to by address, and what none of them may change.&quot;,
+  &quot;junctions_live&quot;: [],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/model/universes/u1/index.html&quot;,
+  &quot;brief&quot;: &quot;https://abp.sgit.ai/docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.html&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;The universe is authored in admin/build/universes.py; the matched counts and the live junctions are computed from the graph on every build.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/universes/u1.json">https://abp.sgit.ai/data/universes/u1.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:44Z</dd><dt>sha256</dt><dd><code title="20b0e7d1419007a450f5cc3dbda7a4d36828f21ee3c40ed527b3087f71215e57">20b0e7d14190</code></dd><dt>Frozen copy</dt><dd><a href="u1.json">sites/abp.sgit.ai/data/universes/u1.json</a> (5,068 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

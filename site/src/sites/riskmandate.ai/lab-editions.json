@@ -1,0 +1,264 @@
+{
+  "note": "Every PDF edition ever cut of a Lab page. A Lab page holds current thinking and changes; an edition is a dated, immutable copy of what it said on the day, so the reasoning can be followed and not only its conclusion. Editions are never edited or removed — the list only grows. `content` is the sha256 of the page body the edition was cut from, which is how the renderer knows whether anything actually changed; `sha256` is the digest of the PDF itself, so a file somebody was sent can be checked against this list. `note`, where present, says what separates an edition from the one before it — two editions a day apart otherwise read as two states of an argument, and sometimes one of them is only a repair.",
+  "entries": [
+    {
+      "slug": "lab",
+      "file": "lab.html",
+      "title": "The Lab — everything so far",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab--the-whole-lab--v1--2026-09-12.pdf",
+          "bytes": 595406,
+          "sha256": "92adb9d607209580f86aeb7ac6967c6f69f5856e810c35e59a00ce8f204f426e",
+          "content": "ef6d596fc89c558913455e5ff6811c80b6b8d0ebb80fc583a55ae90921e57126",
+          "pages": 22,
+          "combines": [
+            "assets/lab/lab-connector-grants--v1--2026-09-12.pdf",
+            "assets/lab/lab-abp-flow--v1--2026-09-12.pdf",
+            "assets/lab/lab-abp-requests--v1--2026-09-12.pdf"
+          ]
+        },
+        {
+          "v": 2,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab--the-whole-lab--v2--2026-09-12.pdf",
+          "bytes": 1042181,
+          "sha256": "80ac49a464106c469c7865adb6f09c0c888f5590225a974ae8a040da73066b4a",
+          "content": "546e7c1ebc7d8bd20c2d3c5cde3dc6ab8a7e4f5ba3eae99fd541e07faec91018",
+          "pages": 41,
+          "combines": [
+            "assets/lab/lab-connector-grants--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-flow--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-requests--v2--2026-09-12.pdf",
+            "assets/lab/lab-shape-collector--v1--2026-09-12.pdf"
+          ],
+          "note": "Adds entry 04, the shape-collector build specification. The first three entries are unchanged from v1 apart from the stray-text repair noted against each."
+        },
+        {
+          "v": 3,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab--the-whole-lab--v3--2026-09-12.pdf",
+          "bytes": 1369090,
+          "sha256": "ab98520262d3dc4c535eb80b2a40c00ceffafb61a5c57e46856cd68db78d1301",
+          "content": "18c92cfafaaab991ebc2de0f3e3e6223c835d10ce46adcb855d7ccddd885d29a",
+          "pages": 55,
+          "combines": [
+            "assets/lab/lab-connector-grants--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-flow--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-requests--v2--2026-09-12.pdf",
+            "assets/lab/lab-shape-collector--v1--2026-09-12.pdf",
+            "assets/lab/lab-commit-author--v1--2026-09-12.pdf"
+          ],
+          "note": "Adds entry 05, the commit-author finding. Entries 01 to 04 are unchanged from v2."
+        },
+        {
+          "v": 4,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab--the-whole-lab--v4--2026-09-12.pdf",
+          "bytes": 1841377,
+          "sha256": "512c13f6652146dca29cb11f78dfd2ae44d1f10bc79ccfd0cb6c15ce58cf0221",
+          "content": "0cc623e2db1fa019c54e4108a7329a6d50bbc7412d8771a1b1e52f4edb3bf920",
+          "pages": 76,
+          "combines": [
+            "assets/lab/lab-connector-grants--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-flow--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-requests--v2--2026-09-12.pdf",
+            "assets/lab/lab-shape-collector--v1--2026-09-12.pdf",
+            "assets/lab/lab-commit-author--v1--2026-09-12.pdf",
+            "assets/lab/lab-network-reach--v1--2026-09-12.pdf"
+          ],
+          "note": "Adds entry 06, the unbounded network grant. Entries 01 to 05 are unchanged from v3."
+        },
+        {
+          "v": 5,
+          "date": "2026-09-14",
+          "file": "assets/lab/lab--the-whole-lab--v5--2026-09-14.pdf",
+          "bytes": 1841559,
+          "sha256": "c8b12e9e034163fcc82e572ecb65ac8efef868b1a44b0853fc12c540286b0c78",
+          "content": "710a867c76a4897d114d049ca8837ce6f1a1b54c7c8fe948821834c12270755a",
+          "pages": 76,
+          "combines": [
+            "assets/lab/lab-connector-grants--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-flow--v3--2026-09-14.pdf",
+            "assets/lab/lab-abp-requests--v2--2026-09-12.pdf",
+            "assets/lab/lab-shape-collector--v1--2026-09-12.pdf",
+            "assets/lab/lab-commit-author--v1--2026-09-12.pdf",
+            "assets/lab/lab-network-reach--v1--2026-09-12.pdf"
+          ],
+          "note": "Re-cut to carry lab-abp-flow v3. The only change in the whole Lab is the one sentence described against that edition."
+        },
+        {
+          "v": 6,
+          "date": "2026-09-24",
+          "file": "assets/lab/lab--the-whole-lab--v6--2026-09-24.pdf",
+          "bytes": 2008471,
+          "sha256": "28d9107d12ec8909d66b671ca90f38f274974f933dc6014cc99df9b37d73cd7b",
+          "content": "f9737ecd324c765862d26ef45130b1cc8892f078a52533f3948760de203145fe",
+          "pages": 85,
+          "combines": [
+            "assets/lab/lab-connector-grants--v2--2026-09-12.pdf",
+            "assets/lab/lab-abp-flow--v4--2026-09-24.pdf",
+            "assets/lab/lab-abp-requests--v2--2026-09-12.pdf",
+            "assets/lab/lab-shape-collector--v1--2026-09-12.pdf",
+            "assets/lab/lab-commit-author--v1--2026-09-12.pdf",
+            "assets/lab/lab-network-reach--v1--2026-09-12.pdf",
+            "assets/lab/lab-vault-delivered--v1--2026-09-15.pdf"
+          ],
+          "note": "Re-cut because one word changed in Lab 02; see its v4. Nothing else in the Lab moved."
+        }
+      ]
+    },
+    {
+      "slug": "lab-abp-flow",
+      "file": "lab-abp-flow.html",
+      "title": "What buying a behaviour policy would look like — RiskMandate Lab 02",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-abp-flow--v1--2026-09-12.pdf",
+          "bytes": 257814,
+          "sha256": "1bb8e4176917f5d81fba6ca760d8062fc2e8204f304abd893f99438bb06621d7",
+          "content": "6e8e24fd5a28805c56c023f34a810f70b66f0a287ae8f634aca50083c9fe26b6"
+        },
+        {
+          "v": 2,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-abp-flow--v2--2026-09-12.pdf",
+          "bytes": 256701,
+          "sha256": "c55f7b9832df010a2e41ec912392e2b001508f31e4677fef0c7f85d4128c2c6e",
+          "content": "dd36d39f2c6948b2f7b92ceff8f98255dce1dce87aecc4faaeb7e635f945e9d4",
+          "note": "Identical argument to v1. Re-cut only to remove a line of stray script text that the page was rendering onto its last page."
+        },
+        {
+          "v": 3,
+          "date": "2026-09-14",
+          "file": "assets/lab/lab-abp-flow--v3--2026-09-14.pdf",
+          "bytes": 256891,
+          "sha256": "e72c58ced81ea46e2e32664602703fc81ad8664791e13581358ab638faa56bca",
+          "content": "b36f125b4dc5e2a8f12c9e02abe3a03ef7ae809b84c6844e55a53978c6e4cb79",
+          "note": "One sentence changed, and it was a claim rather than a phrasing. The delivery stage said “nothing in it is authored except the mandate”, in the same breath as calling the thing a corrected draft. Both cannot be true. The corrections are most of what makes a policy the customer’s, so the sentence now says that instead. Nothing else on the page moved."
+        },
+        {
+          "v": 4,
+          "date": "2026-09-24",
+          "file": "assets/lab/lab-abp-flow--v4--2026-09-24.pdf",
+          "bytes": 256674,
+          "sha256": "db8985e21de922706366b3bf8c8d362368f8ad63e9bb18124f0e7e62693b3a4e",
+          "content": "e73cc90d1e9fac5d42566cedc569edcad64ae21da440923d7f3261449c57f991",
+          "note": "One word changed, in the sentence that says how far above a stranger the Index sits: the ladder now has steps, the word the rest of the site uses. The argument is identical to v3."
+        }
+      ]
+    },
+    {
+      "slug": "lab-abp-requests",
+      "file": "lab-abp-requests.html",
+      "title": "Changes we are asking of the behaviour-policy site — RiskMandate Lab 03",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-abp-requests--v1--2026-09-12.pdf",
+          "bytes": 195675,
+          "sha256": "d613ab37d7bb373c10a69bfba4ac405d41ab416dbe33b94a007685395c12f4c8",
+          "content": "1e15ddb7d9f18afa151665abf7f29c7dc84b097d1b469f1214f9aa0bc6c7a393"
+        },
+        {
+          "v": 2,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-abp-requests--v2--2026-09-12.pdf",
+          "bytes": 191299,
+          "sha256": "aa172f14066bcea1e989285782e77a9f28a160ea5b0ce8004198e50e4009243b",
+          "content": "9138b933c2428270e3e99652f78e756d49004f9c48e9f6707af84a773ab83d98",
+          "note": "Identical argument to v1. Re-cut only to remove a line of stray script text that the page was rendering onto its last page."
+        }
+      ]
+    },
+    {
+      "slug": "lab-commit-author",
+      "file": "lab-commit-author.html",
+      "title": "RiskMandate — Lab 05 · the commit author is a free text field",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-commit-author--v1--2026-09-12.pdf",
+          "bytes": 350719,
+          "sha256": "a8cd4f1efae9ba5d1a0582be7f6c137f8208aca4807bc39c3e0d820882114d13",
+          "content": "693ef3f300b6cac10ffc3218cfb5f2b6b1672b41a97d1f6e5b93608818c69d7e"
+        }
+      ]
+    },
+    {
+      "slug": "lab-connector-grants",
+      "file": "lab-connector-grants.html",
+      "title": "The grant is user-shaped, not data-shaped — RiskMandate Lab 01",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-connector-grants--v1--2026-09-12.pdf",
+          "bytes": 192295,
+          "sha256": "b8872ace204cb9da05e4de40db390e52dbe7d9e8ef173be535de82b03f0c636c",
+          "content": "61747f279ec2ce4935d098e2796ed6a4548ee641cea90e53b3fd9917ca0d354e"
+        },
+        {
+          "v": 2,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-connector-grants--v2--2026-09-12.pdf",
+          "bytes": 191738,
+          "sha256": "bd32b602d7e9d1fc1b87c12df4a11923e7812689958a207cba8ddc8fd2def8c3",
+          "content": "c93853e26d7634a97e58664128bafbd33a87594be0410eec594cf4080b361ec0",
+          "note": "Identical argument to v1. Re-cut only to remove a line of stray script text that the page was rendering onto its last page."
+        }
+      ]
+    },
+    {
+      "slug": "lab-network-reach",
+      "file": "lab-network-reach.html",
+      "title": "RiskMandate — Lab 06 · every routable address is in the grant",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-network-reach--v1--2026-09-12.pdf",
+          "bytes": 503380,
+          "sha256": "ad8287423d2f3d0b94f98231a1094933a3a4ea06d22f908b765cd13ef121b2f9",
+          "content": "87f33039c6319b240940b01859796595034153c9d462715413119fb07cafa099"
+        }
+      ]
+    },
+    {
+      "slug": "lab-shape-collector",
+      "file": "lab-shape-collector.html",
+      "title": "RiskMandate — Lab 04 · the shape collector",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-12",
+          "file": "assets/lab/lab-shape-collector--v1--2026-09-12.pdf",
+          "bytes": 477597,
+          "sha256": "eeb5da3fdba77648d4c94f17418f9ec08617f31668ba62d31f1dbc1c443b1131",
+          "content": "874f349f44359f71f01e7b320f33652daca7a6e35f12af8a41bef37cd7994a55"
+        }
+      ]
+    },
+    {
+      "slug": "lab-vault-delivered",
+      "file": "lab-vault-delivered.html",
+      "title": "What you are actually buying — an Agent Behaviour Policy as a vault — RiskMandate Lab 07",
+      "editions": [
+        {
+          "v": 1,
+          "date": "2026-09-15",
+          "file": "assets/lab/lab-vault-delivered--v1--2026-09-15.pdf",
+          "bytes": 185811,
+          "sha256": "8699e55b57f14853f976f4657eb8d6a76671142b5a71ed17a735629956fe9e8f",
+          "content": "ee32be26bbc6fcdd47e71cf5bfbb86456ec93538b543e374f4225ef3abe914ae"
+        }
+      ]
+    }
+  ]
+}

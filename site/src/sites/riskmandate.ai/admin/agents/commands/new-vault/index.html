@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>new-vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../editions/index.html">Editions</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../history/index.html">History</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../about/index.html">About</a><a href="../../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/agents/commands/new-vault/index.html">live ↗</a></p><article class="source"><h1 id="new-vault">new-vault</h1>
+<blockquote><p>Rendered from .claude/commands/new-vault.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/agents/commands/new-vault/</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/new-vault/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<hr>
+<p>description: Add a behaviour-policy template vault for a new deployment shape, from the vendor&#x27;s own pages or a measured grant
+argument-hint: &lt;slug&gt; &lt;shape, e.g. slack/bot-token/default&gt; [measured|documented]
+</p>
+<hr>
+<p>Add the vault $ARGUMENTS following <code>.claude/onboarding/05-workflows.md</code> → <em>Add a vault</em> and the
+model in <code>.claude/onboarding/02-abp-model.md</code>. Read <code>site/vaults/gmail-readonly/data/grant.json</code>
+as the example of a documented grant and <code>site/vaults/n8n-owner-api-key/data/grant.json</code> as the
+example of a measured one.</p>
+<p>Rules that decide whether the vault is publishable:</p>
+<ul><li>Never test somebody else&#x27;s system. A documented row quotes the vendor&#x27;s page with URL and the
+date read, in the row&#x27;s <code>note</code>. A measured row exists only for a system we are entitled to run,
+with the session record in <code>history/</code>.</li><li>The credential is the grant, not a barrier. <code>material</code> on every row. Note the door: one row,
+several <code>via</code>. What the pages could not settle goes in <code>research_needed</code>; where the vendor&#x27;s
+own pages disagree, <code>contradictions</code>, unresolved; what the grammar cannot name, <code>not_in_grammar</code>.</li><li>The mandate is a starting point in the deployer&#x27;s words, sorted over the 23 primitives.
+Six scenarios, three normal and three advanced, none wanting and refusing the same row.</li><li>No score, anywhere.</li></ul>
+<p>Then: <code>build-abp-vault.mjs &lt;slug&gt;</code> and <code>--check</code>; add the catalogue entry to
+<code>site/vaults/index.json</code> without <code>vid</code>/<code>key</code> (the lead pushes and fills them);
+<code>build-abp-pages.mjs</code>; <code>generate.mjs</code>; <code>npm run check</code>. Record in <code>.claude/work/&lt;branch&gt;.md</code>
+that the vault is built and unpushed, and list the open questions count. Add a line to
+<code>.claude/onboarding/03-state-and-next.md</code>.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/commands/new-vault/index.html">https://riskmandate.ai/admin/agents/commands/new-vault/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/commands/new-vault/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="456ac090111ca02ec5c9b901b7304302953f0fa6dbb65f098978601767d33c4e">456ac090111c</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/commands/new-vault/index.md</a> (1,925 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

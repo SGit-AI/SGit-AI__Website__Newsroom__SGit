@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>case.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="case.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/cases/estate-002/case.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/case/v1&quot;,
+  &quot;id&quot;: &quot;estate-002&quot;,
+  &quot;label&quot;: &quot;One person, three surfaces of one product, one account holding every past conversation&quot;,
+  &quot;who&quot;: &quot;A deployer who runs the same assistant in the browser, as a coding agent and as a desktop work product, and who knows the past conversations contain secrets.&quot;,
+  &quot;elicited&quot;: &quot;2026-09-22&quot;,
+  &quot;elicited_by&quot;: &quot;the deployer, in a voice memo on 22 September 2026, transcribed automatically; the transcript is not published&quot;,
+  &quot;corrected&quot;: null,
+  &quot;status&quot;: &quot;elicited, not yet corrected by the deployer, no grant measured except the coding agent&#x27;s, which is the published shape&quot;,
+  &quot;universe&quot;: &quot;u9&quot;,
+  &quot;assistants&quot;: [
+    {
+      &quot;id&quot;: &quot;claude&quot;,
+      &quot;name&quot;: &quot;Claude, on three surfaces&quot;,
+      &quot;consent&quot;: &quot;not stated&quot;,
+      &quot;consent_note&quot;: &quot;the approval mode on the browser and the desktop product was not raised; the coding agent runs under its harness&#x27;s permission mode.&quot;
+    }
+  ],
+  &quot;shared_account&quot;: {
+    &quot;what&quot;: &quot;one account with the vendor&quot;,
+    &quot;deployments&quot;: [
+      &quot;claude-web&quot;,
+      &quot;claude-code&quot;,
+      &quot;claude-cowork&quot;
+    ],
+    &quot;why_it_matters&quot;: &quot;The account holds the conversation record and the connectors. Whatever any surface can reach of the record, the account&#x27;s exposure is the union across the three, and across every conversation that ever happened on any of them.&quot;
+  },
+  &quot;out_of_scope&quot;: [
+    &quot;Whichever connectors turn out to be enabled. Each is a deployment of its own once named, with the mailbox walkthrough&#x27;s prompts ready for it.&quot;,
+    &quot;The CLI on the deployer&#x27;s own machine, if they run it. It is a different shape with a different host, and the site holds a derived profile for it.&quot;
+  ],
+  &quot;information_architecture&quot;: [
+    {
+      &quot;fact&quot;: &quot;The record contains secrets&quot;,
+      &quot;detail&quot;: &quot;\&quot;past messages, which I think actually contain quite a number of secrets. It contains quite a lot of data.\&quot; Things get pasted into a chat that would never be committed to a repository, and the chat keeps them.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;Reading the past should be on demand&quot;,
+      &quot;detail&quot;: &quot;\&quot;that should always be an on-demand thing.\&quot; Not never: on demand, named, in the conversation that needs it. The grammar has a primitive for reading a retained record and no word for when.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;Some connectors may still be on&quot;,
+      &quot;detail&quot;: &quot;\&quot;I might still have some connectors enabled.\&quot; Which is the first open question, and each one is a deployment of its own.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;The question is blast radius, then policy&quot;,
+      &quot;detail&quot;: &quot;\&quot;I want to understand the blast radius, and then I want to start to see what policies can I put in place... especially taking into account the exposure.\&quot; The exposure is what is already in the record; the blast radius is what each surface can do with it.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;What is being given is context on what matters&quot;,
+      &quot;detail&quot;: &quot;\&quot;we&#x27;re giving agent context on what&#x27;s important, what&#x27;s not important, and I think that&#x27;s an important concept.\&quot; The mandate as an importance list before it is a list of prohibitions.&quot;
+    }
+  ],
+  &quot;open_questions&quot;: [
+    {
+      &quot;question&quot;: &quot;Which surfaces can read past conversations, and is it on by default?&quot;,
+      &quot;why&quot;: &quot;The deployer believes one or all of the three can. The measured coding agent shape says its container holds only the session&#x27;s own tool outputs; the other two are not measured. Prompt A asks each surface directly.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Which connectors are enabled on the account today?&quot;,
+      &quot;why&quot;: &quot;Each one is a deployment with its own grant, and the browser shape&#x27;s five rows are placeholders until they are named.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Does Claude Code here mean the web container, the CLI on a machine, or both?&quot;,
+      &quot;why&quot;: &quot;The web container is measured and its host is the container. The CLI&#x27;s host is the machine, with the deployer&#x27;s own credentials in the home directory, and it is a different case.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;What does the desktop work product expose?&quot;,
+      &quot;why&quot;: &quot;Local files, applications, connectors, the record: nothing this site has read describes it, and its page holds no shape.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Are past conversations shared across the three surfaces?&quot;,
+      &quot;why&quot;: &quot;If they are, the record is one credential store with three readers; if not, the exposure is per surface. The answer decides whether the estate has one junction or three.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Can the secrets already in the record be found and removed?&quot;,
+      &quot;why&quot;: &quot;A purge is itself a read of the record by something, and that something needs a mandate of its own.&quot;
+    }
+  ],
+  &quot;deployments&quot;: [
+    {
+      &quot;id&quot;: &quot;claude-web&quot;,
+      &quot;name&quot;: &quot;Claude in the browser, with connectors possibly still on&quot;,
+      &quot;assistant&quot;: &quot;claude&quot;,
+      &quot;connector&quot;: &quot;the browser&quot;,
+      &quot;consent&quot;: &quot;unknown: \&quot;I might still have some connectors enabled\&quot;&quot;,
+      &quot;nearest_shape&quot;: &quot;anthropic/claude-web/connectors-on&quot;,
+      &quot;nearest_note&quot;: &quot;the derived shape for the web assistant with connectors switched on, 0 of 5 rows measured. Which connectors is the deployer&#x27;s to name and they have not named them yet, so the shape may be wider or narrower than this deployment by every connector row.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/estate-002/mandates/claude-web.json&quot;,
+      &quot;delta&quot;: &quot;cases/estate-002/deltas/claude-web.json&quot;,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/estate-002/claude-web/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.file.project&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;read.record.history&quot;,
+        &quot;read.credential.host&quot;
+      ],
+      &quot;unstated_count&quot;: 20,
+      &quot;said_count&quot;: 2,
+      &quot;inferred_count&quot;: 1,
+      &quot;provisional&quot;: true,
+      &quot;provisional_excess&quot;: 4,
+      &quot;provisional_unbounded_excess&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;claude-code&quot;,
+      &quot;name&quot;: &quot;Claude Code, in a container with a repository attached&quot;,
+      &quot;assistant&quot;: &quot;claude&quot;,
+      &quot;connector&quot;: &quot;the coding agent&quot;,
+      &quot;consent&quot;: &quot;the harness&#x27;s permission mode&quot;,
+      &quot;nearest_shape&quot;: &quot;anthropic/claude-code-remote/ccr-container&quot;,
+      &quot;nearest_note&quot;: &quot;the shape this site is maintained from, measured by the thing being profiled, 13 of 20 rows seen on the container itself. If the deployer also runs the CLI on their own machine, that is a second deployment with a different reach for host, and it is an open question.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/estate-002/mandates/claude-code.json&quot;,
+      &quot;delta&quot;: &quot;cases/estate-002/deltas/claude-code.json&quot;,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/estate-002/claude-code/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.file.project&quot;,
+        &quot;write.file.project&quot;,
+        &quot;write.repository.project&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;read.record.history&quot;,
+        &quot;read.credential.host&quot;
+      ],
+      &quot;unstated_count&quot;: 18,
+      &quot;said_count&quot;: 4,
+      &quot;inferred_count&quot;: 1,
+      &quot;provisional&quot;: true,
+      &quot;provisional_excess&quot;: 12,
+      &quot;provisional_unbounded_excess&quot;: 9
+    },
+    {
+      &quot;id&quot;: &quot;claude-cowork&quot;,
+      &quot;name&quot;: &quot;Claude Cowork, on the desktop&quot;,
+      &quot;assistant&quot;: &quot;claude&quot;,
+      &quot;connector&quot;: &quot;the desktop work product&quot;,
+      &quot;consent&quot;: &quot;unknown&quot;,
+      &quot;nearest_shape&quot;: null,
+      &quot;nearest_note&quot;: &quot;no published shape, and nothing this site has read documents what the product exposes: which local files, which applications, whether it reads past conversations, and on what approval. The gap is declared.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/estate-002/mandates/claude-cowork.json&quot;,
+      &quot;delta&quot;: null,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/estate-002/claude-cowork/index.html&quot;,
+      &quot;want&quot;: [],
+      &quot;do_not_want&quot;: [
+        &quot;read.record.history&quot;,
+        &quot;read.credential.host&quot;
+      ],
+      &quot;unstated_count&quot;: 21,
+      &quot;said_count&quot;: 1,
+      &quot;inferred_count&quot;: 1
+    }
+  ],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/cases/estate-002/index.html&quot;,
+  &quot;not_an_assessment&quot;: &quot;Nothing here is an assessment, an audit or a review of any named product. The mandates were elicited from one person and have not been corrected by them; every delta marked provisional is against a shape that is not this deployment.&quot;
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/cases/estate-002/case.json">https://abp.sgit.ai/data/cases/estate-002/case.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:41Z</dd><dt>sha256</dt><dd><code title="243988b5b9c6c5864bf7347361e8309ae8415272bc78baeaf06bd244b3dc4617">243988b5b9c6</code></dd><dt>Frozen copy</dt><dd><a href="case.json">sites/abp.sgit.ai/data/cases/estate-002/case.json</a> (8,221 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Start Here: The UnGovr Vault MVP And Its Provider Site · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#start-here-the-ungovr-vault-mvp-and-its-provider-site">Start Here: The UnGovr Vault MVP And Its Provider Site</a></li><li class="l2"><a href="#copy-this-to-brief-the-session">Copy This To Brief The Session</a></li><li class="l2"><a href="#what-happened-yesterday-in-one-paragraph">What Happened Yesterday, In One Paragraph</a></li><li class="l2"><a href="#the-order-and-why-it-is-strict">The Order, And Why It Is Strict</a></li><li class="l2"><a href="#what-is-already-decided">What Is Already Decided</a></li><li class="l2"><a href="#what-to-do-first-in-order">What To Do First, In Order</a></li><li class="l2"><a href="#the-two-things-that-will-go-wrong">The Two Things That Will Go Wrong</a></li><li class="l2"><a href="#tone-and-claims">Tone And Claims</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="00__START-HERE.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__pack__ungovr-site-and-vault/00__START-HERE.md">live ↗</a></p><article class="source"><h1 id="start-here-the-ungovr-vault-mvp-and-its-provider-site">Start Here: The UnGovr Vault MVP And Its Provider Site</h1>
+<p><strong>version</strong> v0.33.68
+<strong>date</strong> 9 September 2026
+<strong>for</strong> a Claude Code session with network egress and repository access
+<strong>status</strong> The vault exists and holds a specification. <strong>Nothing it specifies is built.</strong> The site repository exists and holds three files.</p>
+<hr>
+<h2 id="copy-this-to-brief-the-session">Copy This To Brief The Session</h2>
+<blockquote><p>You are picking up a project with two deliverables and a strict order between them.</p>
+<p><strong>First</strong>, build the MVP of an existing sgit vault that demonstrates semantic graphs and ontologies over open
+government data, using UnGovr&#x27;s Atlas as the source. The vault already contains its own specification,
+published as its first commit before any implementation. Your job is the implementation.</p>
+<p><strong>Second</strong>, build <code>github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr</code> — a GitHub Pages site for
+<code>ungovr.providers.sgit.ai</code>, using the same build system, CI gate, release discipline and styles as every
+other <code>*.sgit.ai</code> site, and obeying the providers contract at <code>https://providers.sgit.ai/contract/</code>.
+The vault is the centrepiece of that site, embedded by its read key.</p>
+<p><strong>Read these in order, all of them, before writing anything:</strong></p>
+<ol><li><code>00__START-HERE.md</code> (this file)</li><li><code>01__what-is-already-built.md</code> — the vault as it stands, and what the previous session refused to do</li><li><code>02__the-house-pattern.md</code> — the tech stack, workflow, styles and contract, read from the live sites</li><li><code>03__vault-mvp.md</code> — <strong>deliverable one. This is the work</strong></li><li><code>04__the-site.md</code> — deliverable two, and the definitional problem you must resolve before writing a word of it</li><li><code>05__verification.md</code> — the acceptance tests for both, and what would make this pack wrong</li></ol>
+<p><strong>Then clone the vault before you clone the repository.</strong> The vault carries a seven-file specification pack
+at <code>/pack/</code>, four agentic team role files at <code>/team/</code>, and a retrieval log recording a blocked fetch.
+Read the vault&#x27;s own <code>/pack/03__the-worked-example.md</code> before you fetch anything.</p></blockquote>
+<hr>
+<h2 id="what-happened-yesterday-in-one-paragraph">What Happened Yesterday, In One Paragraph</h2>
+<p>A previous session was given a brief pack and asked to create the vault. <strong>It created the vault and wrote the specification, and it fetched no UnGovr data</strong>, because its container&#x27;s egress policy answered 403 to CONNECT on <code>data.ungovr.org</code> — the open endpoints, not only the authenticated ones. A summarising fetch path was available and was declined, on the grounds that a node retrieved that way cannot carry a hash of its source bytes, and committing one as a retrieval would put a false provenance record at the root of a vault whose entire argument is provenance.</p>
+<p><strong>You are the session that unblocks it.</strong> Everything the vault specifies about retrieval assumes a container that can reach the host. <strong>Confirm that yours can before you plan anything</strong>, because the answer changes the shape of both deliverables.</p>
+<h2 id="the-order-and-why-it-is-strict">The Order, And Why It Is Strict</h2>
+<p><strong>The vault MVP is first and the site is second.</strong> Not because the site is less important, but because the site is <em>a report on the vault</em>. Its ledger states what was verified, on what date, with what left unrun. <strong>A site written before the vault has anything measured is a site whose ledger is entirely <code>spec</code> and <code>unrun</code></strong>, and the family already has one of those; the honest thing is to build the measurement first and let the site report it.</p>
+<p><strong>Ship the site anyway, at v0.1.0, with the sections it can honestly fill.</strong> See <code>04__the-site.md</code>. What is forbidden is filling a section with something plausible because the section exists.</p>
+<h2 id="what-is-already-decided">What Is Already Decided</h2>
+<p>Do not relitigate these. Each was settled and is recorded in the vault or in this pack.</p>
+<div class="table"><table><thead><tr><th>Decision</th><th>Where</th></tr></thead><tbody><tr><td><strong>You continue the existing vault.</strong> Same write key, same history</td><td>This pack, and the project lead, 9 September</td></tr>
+<tr><td>Scope is one county, one law, one acceptance. Widening it weakens it</td><td>Vault <code>/pack/00__README.md</code></td></tr>
+<tr><td><strong>Santa Barbara County, California; the California Public Records Act</strong></td><td>Vault <code>/pack/03__the-worked-example.md</code></td></tr>
+<tr><td>Nodes derived from their data must be visibly distinct from nodes that are our model</td><td>Vault <code>/pack/02__the-model.md</code>, the two-edge rule</td></tr>
+<tr><td>Bulk data is compiled to a few large artefacts, never scattered into files</td><td>Vault <code>/pack/05__the-workbench.md</code></td></tr>
+<tr><td>Anchor to published identifiers rather than minting. <strong>Akoma Ntoso for legislative text</strong></td><td>Vault <code>/pack/02__the-model.md</code></td></tr>
+<tr><td>Every claim carries a state, and the default is the weakest one</td><td>Both the vault and the providers contract</td></tr>
+<tr><td><strong>The site carries all nine contract sections at v0.1.0</strong>, several answered <code>spec</code> or <code>unrun</code></td><td>This pack, and the project lead, 9 September</td></tr>
+<tr><td>The site is GitHub Pages from <code>docs/</code>, built by <code>build.py</code>, no third-party anything</td><td>The house pattern, read from the live sites</td></tr>
+<tr><td><code>ungovr.providers.sgit.ai</code> is <strong>not yet pointed</strong>. It answers 404 today</td><td>Measured 9 September 2026</td></tr></tbody></table></div>
+<h2 id="what-to-do-first-in-order">What To Do First, In Order</h2>
+<ol><li><strong>Confirm egress.</strong> <code>curl https://data.ungovr.org/v1/entities/index.json</code>. If it fails, stop and say so; do not substitute a lossy path.</li><li><strong>Clone the vault</strong> and read its pack. It is the specification you are implementing, and it was written to be read before the work.</li><li><strong>Fetch one country subset and compute the coverage of their <code>open_records.law</code> edge.</strong> That single number is the argument, measured from their own data, <strong>and it may not exist anywhere.</strong> It is the highest-value thing in this entire pack.</li><li><strong>Then</strong> build the join: entity → instrument → provision → obligation → control → evidence → acceptance.</li><li><strong>Then</strong> the site, reporting what steps 3 and 4 actually produced.</li></ol>
+<h2 id="the-two-things-that-will-go-wrong">The Two Things That Will Go Wrong</h2>
+<p><strong>Scope.</strong> Every reader wants to model all 398 records laws, or all 205 countries, or the whole entity graph. <strong>One instrument modelled properly beats forty sketched.</strong> If the vault tries to be a complete ontology of government it will ship nothing.</p>
+<p><strong>The word &quot;provider&quot;.</strong> The family this site joins uses that word in one specific sense, and UnGovr does not fit it. <strong>Read <code>04__the-site.md</code> §1 before you write a line of site content.</strong> Getting this wrong means writing nine sections that answer the wrong questions well.</p>
+<h2 id="tone-and-claims">Tone And Claims</h2>
+<p><strong>This vault and this site may be shown to UnGovr.</strong> Neither is a critique of their work. The missing edge is exactly right for their stated purpose, which is helping a person reach their government, and it is one hop short of what everybody downstream needs. Write it that way.</p>
+<p><strong>And do not overclaim.</strong> The method site says of itself that its semantic layer is designed rather than shipped. That honesty survives into both deliverables.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__pack__ungovr-site-and-vault/00__START-HERE.md">https://ungovr.providers.sgit.ai/briefs/2026-09-09__pack__ungovr-site-and-vault/00__START-HERE.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:17Z</dd><dt>sha256</dt><dd><code title="03f3ea59d1110fb501b2ec4daad2524f92e52abd2020e5f4e9277cbf044117d3">03f3ea59d111</code></dd><dt>Frozen copy</dt><dd><a href="00__START-HERE.md">sites/ungovr.providers.sgit.ai/briefs/2026-09-09__pack__ungovr-site-and-vault/00__START-HERE.md</a> (6,834 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

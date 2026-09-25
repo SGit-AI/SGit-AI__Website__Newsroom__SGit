@@ -109,7 +109,10 @@ class Renderer:
                 flush()
                 level, content = len(m.group(1)), m.group(2)
                 inner = self.inline(content)
-                hid = self.heading_id(inner)
+                # a heading that links to its own anchor ("### [Title](#slug)") keeps that anchor,
+                # so deep links into the source page (sgit.ai's updates, for one) still land
+                own = re.match(r'^\[[^\]]*\]\(#([\w-]+)\)', content)
+                hid = self.heading_id(own.group(1) if own else inner)
                 self.headings.append((level, re.sub(r'<[^>]+>', '', inner), hid))
                 out.append(f'<h{level} id="{hid}">{inner}</h{level}>')
                 i += 1; continue

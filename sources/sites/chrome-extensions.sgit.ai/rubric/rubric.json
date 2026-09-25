@@ -1,0 +1,110 @@
+{
+  "site": "chrome-extensions.sgit.ai",
+  "version": "v0.1.0",
+  "updated": "2026-09-09",
+  "licence": "CC BY 4.0",
+  "purpose": "The checklist an agent walks before writing an extension. Every row is derived from a specific incident in the four guides, so a score is a claim about which failures the extension can still suffer, not a style opinion.",
+  "grading": {
+    "scale": ["yes", "no", "not-applicable"],
+    "rule": "Never a number out of ten."
+  },
+  "claim_state_note": "The three efforts' grades below are REPORTED from the guides' own claims, not computed by re-reading source (gaps G2, G5 in the brief pack). The recorder's source lives in a separate vault this site does not have access to.",
+  "sections": [
+    {
+      "id": "A",
+      "title": "Does it stay safe to leave running?",
+      "checks": [
+        { "id": "A1", "check": "Never originates a request", "why": "Every fact in the dataset is something the target volunteered to a real user in a real session" },
+        { "id": "A2", "check": "Never blocks, delays or alters a response", "why": "A recorder that alters a response can break the page it is watching and you will spend a day thinking the target changed" },
+        { "id": "A3", "check": "Every hook wrapped in try/catch; never throws into the page", "why": "An exception in a wrapper is a bug in the target's app, from the target's point of view" },
+        { "id": "A4", "check": "Never transmits; export is a manual download", "why": "The invariant that makes the tool defensible" },
+        { "id": "A5", "check": "A deny list that is a privacy floor, re-derived per transport", "why": "Message content never captured in any mode, including all" }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Can it prove what it saw?",
+      "checks": [
+        { "id": "B1", "check": "Build version stamped into every artefact", "why": "Ten days lost to a browser running an old build; a quiet week on the target" },
+        { "id": "B2", "check": "Running build shown in the UI, on the surface opened first, and coloured when stale", "why": "The badge shipped to the side panel while the popup went on saying nothing for two versions — exactly the wrong way round" },
+        { "id": "B3", "check": "Coverage reported per surface, including zeroes", "why": "A surface absent reads as 'nothing happened'. A surface listed with zero reads as 'we never looked'" },
+        { "id": "B4", "check": "Truncation flagged, with the original length stored", "why": "A record that says truncated: true with 4 MiB of content is a fact you can act on. A dropped record is silence" },
+        { "id": "B5", "check": "Skips counted by endpoint in an unparsed tally", "why": "That tally is the to-do list for the next parser" },
+        { "id": "B6", "check": "An observations log recording what was refused, and why", "why": "Twice settled questions nothing else could, including proving an old build was running" }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Does it fail in the right direction?",
+      "checks": [
+        { "id": "C1", "check": "Missing is null; never 0, '' or {}", "why": "res || {} turned 'no answer' into 'an answer with nothing in it' and cost two runs" },
+        { "id": "C2", "check": "No file constructed from an unchecked value", "why": "new Blob([undefined]) writes the word 'undefined' and calls it undefined.json" },
+        { "id": "C3", "check": "Records with no stable identifier yield nothing, never the previous id", "why": "Losing two is correct; mislabelling two is not" },
+        { "id": "C4", "check": "Bulk data never crosses a size-limited channel", "why": "113 MB export vs chrome.runtime.sendMessage; the fix is to remove the boundary, not widen it" },
+        { "id": "C5", "check": "A circuit breaker over live counters, with generous thresholds", "why": "Three runs lost silently; a breaker that trips on noise gets ignored, and an ignored breaker is worse than none" },
+        { "id": "C6", "check": "Failures loud at mechanisms, quiet at data", "why": "Quiet-and-counted for what you did not understand; loud-and-stop for what did not work" }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Is the evidence separable from the interpretation?",
+      "checks": [
+        { "id": "D1", "check": "Phase 0 first — a recorder with no parsers", "why": "'This is not the product.' The best decision in the project" },
+        { "id": "D2", "check": "captures/ read-only; everything else regenerable", "why": "Being wrong costs a re-derive, not a re-capture" },
+        { "id": "D3", "check": "Derived format versioned, and refused when unknown", "why": "Silently reading a v1 file understates the dataset without saying so" },
+        { "id": "D4", "check": "Code and data in separate stores, with a per-folder publication rule", "why": "Different sensitivity, lifecycle, size and failure mode" },
+        { "id": "D5", "check": "Exports split full / skeleton / debug, with a redaction verifier", "why": "The verifier counts what it checked, so '0 leaks' means something" }
+      ]
+    },
+    {
+      "id": "E",
+      "title": "Is it built on evidence rather than one example?",
+      "checks": [
+        { "id": "E1", "check": "A shape survey written before the parser", "why": "Found 58 distinct type names in one run and answered a week-old question" },
+        { "id": "E2", "check": "Routing on what the response says about itself", "why": "Request-side ids are the caller's opinion; three result sets shared a path and a prefix" },
+        { "id": "E3", "check": "Derived facts verified against an artefact the system produced", "why": "Two independent clocks agreeing to within a round trip is strong. One clock agreeing with itself is nothing" },
+        { "id": "E4", "check": "Structural markers read instead of rendered English", "why": "Parsing the sentence works until the string is localised, pluralised, or A/B tested" },
+        { "id": "E5", "check": "Types in structured identifiers read as data, with branching", "why": "A variant means loosen; a different type means branch" },
+        { "id": "E6", "check": "Sample caps checked for selecting against the evidence", "why": "59 of 70 whole — because the whole ones were the small ones" },
+        { "id": "E7", "check": "Timestamp provenance labelled (urn vs captured)", "why": "Lets consumers filter on evidence quality" }
+      ]
+    },
+    {
+      "id": "F",
+      "title": "Do the tests pin the lessons?",
+      "checks": [
+        { "id": "F1", "check": "Test files auto-discovered; exits non-zero on zero found", "why": "'No tests found' and 'all tests passed' must never look the same" },
+        { "id": "F2", "check": "Optional-dependency suites print SKIPPED loudly", "why": "A suite silently dropping 11 tests will eventually be why a bug ships" },
+        { "id": "F3", "check": "Test names state decisions, not behaviours", "why": "The label goes with the value; tells the next reader why the code looks that way" },
+        { "id": "F4", "check": "Fixtures hand-authored and synthetic; real captures never become test data", "why": "A privacy rule that turned out to be a design rule" },
+        { "id": "F5", "check": "A real browser drives anything with a real browser boundary", "why": "The 113 MB messaging bug was invisible to unit tests by construction" }
+      ]
+    }
+  ],
+  "graded_efforts": [
+    {
+      "name": "The recorder",
+      "date": "2026-08 to 2026-09",
+      "version": "v0.16.0",
+      "evidence_state": "measured",
+      "grade_note": "Reported from what the four guides claim about it — every check above describes behaviour the guides attribute to this tool. Not independently verified against its source (gap G2/G5).",
+      "default_grade": "yes"
+    },
+    {
+      "name": "SGraph Key Vault (March 2026)",
+      "date": "2026-03-05",
+      "version": "v0.11.12",
+      "evidence_state": "recalled",
+      "grade_note": "A 28-file dev pack, confirmed never built (8 Sep 2026). No code exists to check any behavioural claim against.",
+      "default_grade": "not-applicable"
+    },
+    {
+      "name": "The secrets manager (September 2026)",
+      "date": "2026-09-05",
+      "version": "v0.33.65",
+      "evidence_state": "read",
+      "grade_note": "A dev brief with platform constraints read from documentation. No code was written, so there is nothing to grade.",
+      "default_grade": "not-applicable"
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>specs.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> · <a href="specs.json">raw text</a> · <a class="ext" href="https://sg-compute.sgit.ai/data/specs.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;schema&quot;: &quot;sg-compute-spec-catalogue/v1&quot;,
+  &quot;surveyed&quot;: &quot;2026-08-24&quot;,
+  &quot;repo_version&quot;: &quot;v0.2.71&quot;,
+  &quot;source&quot;: &quot;sg_compute_specs/*/manifest.py, measured from the tree at /root/sg-playwright&quot;,
+  &quot;specs_source&quot;: &quot;Transcribed from 04__the-spec-system.md section 1, which measured every row from sg_compute_specs/*/manifest.py in the source tree. The brief pack&#x27;s own catalogue JSON advertised this array and shipped without it; see admin/comms.html R1. Every derived total on the site is computed from these rows by admin/build/gen_specs.py and cross-checked against the counts and loc blocks below - a disagreement fails the build.&quot;,
+  &quot;specs&quot;: [
+    {
+      &quot;spec_id&quot;: &quot;vault_publish&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 11682,
+      &quot;capabilities&quot;: [
+        &quot;vault-writes&quot;,
+        &quot;subdomain-routing&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 45,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;vault&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;The largest spec in the tree. Publishes vault content and routes it on a subdomain — one of the two specs whose declared capability is literally vault-writes, while the platform&#x27;s own generic vault artefact sink still raises NotImplementedError.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;playwright&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 10180,
+      &quot;capabilities&quot;: [
+        &quot;browser-automation&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 30,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;browser&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;The spec the repository is named after, and 1 of 16. A stateless browser data plane: every call launches a fresh Playwright subprocess and Chromium, runs the declared steps, and tears both down in try/finally before returning.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;sg_edge&quot;,
+      &quot;registered&quot;: false,
+      &quot;loc&quot;: 9108,
+      &quot;capabilities&quot;: [],
+      &quot;boot_seconds_typical&quot;: null,
+      &quot;stability&quot;: null,
+      &quot;family&quot;: &quot;infra&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;The second-largest directory in the spec tree and the one the registry cannot see: it has no manifest.py, so Spec__Loader never finds it. Either register it or move it out of sg_compute_specs/ — leaving the largest unregistered thing inside the spec tree is confusing for anyone reading the catalogue.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;vault_app&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 8261,
+      &quot;capabilities&quot;: [
+        &quot;vault-writes&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 45,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;vault&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;Runs a vault as an application. The one spec that supports fractional teardown (max_hours = 0.1, six minutes) and defaults to spot instances.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;content_proxy&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 4971,
+      &quot;capabilities&quot;: [
+        &quot;mitm-proxy&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 600,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;browser&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;A content-inspecting proxy in front of the browser. Ten-minute typical boot — joint slowest in the catalogue with docker.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;firefox&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1992,
+      &quot;capabilities&quot;: [
+        &quot;mitm-proxy&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 90,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;browser&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;A second browser engine behind the same proxy surface.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;vnc&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1876,
+      &quot;capabilities&quot;: [
+        &quot;mitm-proxy&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 120,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;browser&quot;,
+      &quot;create_node&quot;: true,
+      &quot;note&quot;: &quot;A headed browser on an X display, reachable over VNC. One of only three specs create_node can provision through the control-plane API.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;docker&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1558,
+      &quot;capabilities&quot;: [
+        &quot;container-runtime&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 600,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;runtime&quot;,
+      &quot;create_node&quot;: true,
+      &quot;note&quot;: &quot;A general container runtime node. One of the three specs create_node supports.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;local_claude&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1498,
+      &quot;capabilities&quot;: [
+        &quot;llm-inference&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 180,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;llm&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;A node that runs Claude Code locally against a workspace, provisioned by the Claude_Code__Firstboot user-data section.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;mitmproxy&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1448,
+      &quot;capabilities&quot;: [
+        &quot;mitm-proxy&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 15,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;network&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;The fastest spec in the catalogue at 15 seconds typical, and the sidecar the browser specs route through: isolation is the Docker network, and the sidecar&#x27;s :8080 is unreachable from outside the EC2 node.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;elastic&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1372,
+      &quot;capabilities&quot;: [
+        &quot;metrics&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 180,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;observability&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;An Elasticsearch node for the observability family.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;prometheus&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1311,
+      &quot;capabilities&quot;: [
+        &quot;metrics&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 120,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;observability&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;Prometheus, paired with the /metrics endpoint every data-plane node already exposes.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;opensearch&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1221,
+      &quot;capabilities&quot;: [
+        &quot;metrics&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 180,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;observability&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;OpenSearch, the third of the observability family and a remote-write target for the observability service.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;podman&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1199,
+      &quot;capabilities&quot;: [
+        &quot;container-runtime&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 120,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;runtime&quot;,
+      &quot;create_node&quot;: true,
+      &quot;note&quot;: &quot;A rootless container runtime alongside docker. One of the three specs create_node supports.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;neko&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 1180,
+      &quot;capabilities&quot;: [
+        &quot;iframe-embed&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 120,
+      &quot;stability&quot;: &quot;STABLE&quot;,
+      &quot;family&quot;: &quot;browser&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;A browser you can embed in an iframe and share — the collaborative end of the browser family.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;ollama&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 939,
+      &quot;capabilities&quot;: [
+        &quot;llm-inference&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 120,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;llm&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;Local model inference, provisioned by the Ollama and NVIDIA_Container_Toolkit user-data sections on a GPU instance.&quot;
+    },
+    {
+      &quot;spec_id&quot;: &quot;open_design&quot;,
+      &quot;registered&quot;: true,
+      &quot;loc&quot;: 773,
+      &quot;capabilities&quot;: [
+        &quot;design-tool&quot;
+      ],
+      &quot;boot_seconds_typical&quot;: 480,
+      &quot;stability&quot;: &quot;EXPERIMENTAL&quot;,
+      &quot;family&quot;: &quot;tool&quot;,
+      &quot;create_node&quot;: false,
+      &quot;note&quot;: &quot;A design tool node, and the smallest spec in the catalogue — which is the point: a spec costs a manifest, a route class and a service.&quot;
+    }
+  ],
+  &quot;counts&quot;: {
+    &quot;total_dirs&quot;: 17,
+    &quot;registered&quot;: 16,
+    &quot;stable&quot;: 9,
+    &quot;experimental&quot;: 7,
+    &quot;browser_family&quot;: 5,
+    &quot;create_node_supported&quot;: 3
+  },
+  &quot;loc&quot;: {
+    &quot;generic_core_sg_compute&quot;: 10416,
+    &quot;browser_specs&quot;: 20199,
+    &quot;non_browser_specs&quot;: 40370,
+    &quot;legacy_cli&quot;: 71182,
+    &quot;repo_total_python&quot;: 217266,
+    &quot;non_browser_share_of_new_code&quot;: &quot;56.9%&quot;,
+    &quot;browser_share_of_new_code&quot;: &quot;28.5%&quot;,
+    &quot;note&quot;: &quot;Playwright is 1 of 16 registered specs and 17% of spec LOC. Including legacy __cli, browser-specific code is ~14% of the whole repo.&quot;
+  },
+  &quot;manifest_schema&quot;: {
+    &quot;class&quot;: &quot;Schema__Spec__Manifest__Entry&quot;,
+    &quot;fields&quot;: [
+      &quot;spec_id&quot;,
+      &quot;display_name&quot;,
+      &quot;icon&quot;,
+      &quot;version&quot;,
+      &quot;stability&quot;,
+      &quot;boot_seconds_typical&quot;,
+      &quot;capabilities&quot;,
+      &quot;nav_group&quot;,
+      &quot;extends&quot;,
+      &quot;soon&quot;,
+      &quot;create_endpoint_path&quot;
+    ],
+    &quot;quote&quot;: &quot;Single source of truth. Every spec&#x27;s manifest.py exposes MANIFEST.&quot;
+  },
+  &quot;generalisation_mechanisms&quot;: [
+    {
+      &quot;name&quot;: &quot;manifest.py per spec&quot;,
+      &quot;what&quot;: &quot;typed Schema__Spec__Manifest__Entry — the registry&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Spec__Routes__Loader&quot;,
+      &quot;what&quot;: &quot;convention-based route discovery: spec_id &#x27;docker&#x27; -&gt; sg_compute_specs.docker.api.routes.Routes__Docker__Stack. &#x27;Specs without a route class are silently skipped.&#x27;&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Spec__CLI__Builder&quot;,
+      &quot;what&quot;: &quot;generates the same 10 verbs for every spec: list, info, create, wait, health, connect, exec, delete, ami list|bake, cert&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Spec__Loader entry points&quot;,
+      &quot;what&quot;: &quot;PEP 621 entry-point discovery, group &#x27;sg_compute.specs&#x27; — third-party specs architecturally supported, untested in the wild&quot;
+    }
+  ],
+  &quot;not_the_mechanism&quot;: {
+    &quot;artefact&quot;: &quot;capabilities.json&quot;,
+    &quot;why&quot;: &quot;Frozen at v0.1.29 while the repo is at v0.2.71 (42 minor versions). COPY&#x27;d into the image and served at /admin/capabilities. The repo&#x27;s own docs say not to read it: &#x27;The UI reads GET /health/capabilities (the live Schema__Service__Capabilities, populated by Capability__Detector) — never the stale capabilities.json.&#x27;&quot;,
+    &quot;live_mechanism&quot;: &quot;Capability__Detector, which detects the deployment target from env vars (laptop | ci | claude_web | container | lambda) and builds capabilities at runtime&quot;
+  },
+  &quot;boot_benchmarks&quot;: {
+    &quot;source&quot;: &quot;utils/ec2_boot_bench/ec2_boot_bench_results.csv — 24 real runs, eu-west-2, 11 May 2026, time to SSM-ready&quot;,
+    &quot;note&quot;: &quot;INSTANCE IDs AND AMI IDs MUST BE STRIPPED BEFORE PUBLISHING. Publish the timings.&quot;,
+    &quot;runs&quot;: [
+      {
+        &quot;instance_type&quot;: &quot;t3.micro&quot;,
+        &quot;purchase&quot;: &quot;on-demand&quot;,
+        &quot;seconds&quot;: &quot;16.4-16.5&quot;
+      },
+      {
+        &quot;instance_type&quot;: &quot;c5.large&quot;,
+        &quot;purchase&quot;: &quot;on-demand&quot;,
+        &quot;seconds&quot;: &quot;16.2-16.3&quot;
+      },
+      {
+        &quot;instance_type&quot;: &quot;g5.xlarge&quot;,
+        &quot;purchase&quot;: &quot;on-demand&quot;,
+        &quot;seconds&quot;: &quot;18.2-18.7&quot;,
+        &quot;ami&quot;: &quot;A&quot;
+      },
+      {
+        &quot;instance_type&quot;: &quot;g5.xlarge&quot;,
+        &quot;purchase&quot;: &quot;spot&quot;,
+        &quot;seconds&quot;: &quot;20.5-20.6&quot;
+      },
+      {
+        &quot;instance_type&quot;: &quot;g5.xlarge&quot;,
+        &quot;purchase&quot;: &quot;on-demand&quot;,
+        &quot;seconds&quot;: &quot;38.5-69.5&quot;,
+        &quot;ami&quot;: &quot;B&quot;,
+        &quot;note&quot;: &quot;different AMI — 2-4x slower&quot;
+      }
+    ],
+    &quot;failures&quot;: &quot;7 recorded InsufficientInstanceCapacity failures for g5.xlarge across both AZs. Honest, publishable evidence that spot GPU capacity is not guaranteed.&quot;
+  },
+  &quot;cold_start_ladder&quot;: {
+    &quot;source&quot;: &quot;v0.27.45 serverless brief&quot;,
+    &quot;rungs&quot;: [
+      {
+        &quot;substrate&quot;: &quot;EC2 cold&quot;,
+        &quot;time&quot;: &quot;30-60s&quot;
+      },
+      {
+        &quot;substrate&quot;: &quot;EC2 from warm pool&quot;,
+        &quot;time&quot;: &quot;5-15s&quot;,
+        &quot;status&quot;: &quot;NOT IMPLEMENTED&quot;
+      },
+      {
+        &quot;substrate&quot;: &quot;Fargate cold&quot;,
+        &quot;time&quot;: &quot;10-30s&quot;
+      },
+      {
+        &quot;substrate&quot;: &quot;container on running EC2&quot;,
+        &quot;time&quot;: &quot;1-5s&quot;
+      },
+      {
+        &quot;substrate&quot;: &quot;cached-image restart&quot;,
+        &quot;time&quot;: &quot;100-500ms&quot;
+      },
+      {
+        &quot;substrate&quot;: &quot;Firecracker snapshot restore&quot;,
+        &quot;time&quot;: &quot;&lt;50ms&quot;,
+        &quot;status&quot;: &quot;FUTURE&quot;
+      }
+    ]
+  },
+  &quot;images&quot;: [
+    {
+      &quot;name&quot;: &quot;diniscruz/sg-playwright&quot;,
+      &quot;base&quot;: &quot;mcr.microsoft.com/playwright/python:v1.58.0-noble&quot;,
+      &quot;port&quot;: 8000,
+      &quot;cmd&quot;: &quot;python3 -m sg_compute_specs.playwright.core.fast_api.lambda_handler&quot;
+    },
+    {
+      &quot;name&quot;: &quot;diniscruz/sg-playwright-vnc&quot;,
+      &quot;base&quot;: &quot;the above, by digest&quot;,
+      &quot;ports&quot;: [
+        8000,
+        6080
+      ],
+      &quot;adds&quot;: &quot;Xvfb, openbox, x11vnc, novnc, websockify, supervisord&quot;
+    },
+    {
+      &quot;name&quot;: &quot;diniscruz/sg-host-control&quot;,
+      &quot;base&quot;: &quot;python:3.12-alpine&quot;,
+      &quot;role&quot;: &quot;the pod sidecar&quot;
+    }
+  ],
+  &quot;image_sizes&quot;: &quot;NOT RECORDED ANYWHERE and not derivable without a build. Do not publish a number.&quot;,
+  &quot;not_implemented&quot;: [
+    &quot;warm pools (specified in a 1,729-word brief, zero code)&quot;,
+    &quot;multi-node stacks (Routes__Compute__Stacks returns a list; Cli__Compute__Stack unwired)&quot;,
+    &quot;non-EC2 platforms (&#x27;k8s&#x27; | &#x27;gcp&#x27; | &#x27;local&#x27; are a comment in the Platform ABC)&quot;,
+    &quot;artefact sinks VAULT and S3 (both raise NotImplementedError)&quot;,
+    &quot;create_node for 13 of 16 specs (EC2__Platform._service_for covers docker, podman, vnc only)&quot;,
+    &quot;a real cost model (the dashboard tracker is a self-declared placeholder with 5 hardcoded t3 rates)&quot;
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/data/specs.json">https://sg-compute.sgit.ai/data/specs.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:09Z</dd><dt>sha256</dt><dd><code title="4d78b7939e95e6b85765e7b41ca6bfbc94049bd69896dd18feeaba98fa3bca74">4d78b7939e95</code></dd><dt>Frozen copy</dt><dd><a href="specs.json">sites/sg-compute.sgit.ai/data/specs.json</a> (13,067 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

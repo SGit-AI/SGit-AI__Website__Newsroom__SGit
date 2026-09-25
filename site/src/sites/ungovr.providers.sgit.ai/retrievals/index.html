@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/retrievals/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The retrieval log — every fetch, including the failures
+description: &quot;Twenty-one named retrievals plus a 49-request sample, each with the sha256 of the response bytes, the UTC timestamp and the outcome. The refusals are rows, not absences.&quot;
+lead: &quot;The rule: write the raw response bytes to disk unmodified, hash <strong>those</strong> bytes, and log before parsing anything. A node that cannot name the bytes it came from is an assertion, not a retrieval.&quot;
+order: 3
+toc: false
+wide: true
+</p>
+<hr>
+<p>Every number on this site derives from these bytes. Nothing on any page here is fetched at read time — the site makes no network call at all — so this log is the only thing standing between a published figure and an unsupported one.</p>
+<p>{{retrievals}}</p>
+<h2 id="the-failures-and-why-they-are-rows">The failures, and why they are rows</h2>
+<p>Three responses here are not <code>200</code>, and they are the useful ones.</p>
+<div class="table"><table><thead><tr><th>Row</th><th>What it means</th></tr></thead><tbody><tr><td><code>404</code> on <code>/v1/laws/records/us/ca.json</code></td><td>The path separator in the law corpus is <code>--</code>, not <code>/</code> — the same convention the entity detail endpoint uses. A guess, logged as a guess, then corrected to <code>us--ca.json</code></td></tr>
+<tr><td><code>404</code> on <code>/v1/cgj/counties/us--ca--santa-barbara.json</code></td><td>The CGJ corpus is keyed by bare county code (<code>santa-barbara</code>), not by entity slug. Two identifier schemes for the same county, in one API</td></tr>
+<tr><td><code>401</code> on <code>/v1/ai-laws/index.json</code></td><td>Blocker <strong>B2</strong>. A key arrived while this report was being written and <strong>the row above is the last anonymous one</strong> — the corpus was then read {{claim:ai-laws-gated}}</td></tr></tbody></table></div>
+<p>Recording a refusal as an entry rather than leaving it as an absence is the point: a reader can see what was tried, what was declined, and that a shortcut existed and was not taken.</p>
+<h2 id="the-49-request-sample">The 49-request sample</h2>
+<p>The coverage sample&#x27;s per-request log is not inlined above — 49 near-identical detail fetches would drown the page — but it is complete and downloadable:</p>
+<ul><li><a class="ext" href="https://ungovr.providers.sgit.ai/files/computation-1-sample-retrievals.tsv"><code>computation-1-sample-retrievals.tsv</code> ↗</a> — timestamp, status, sha256 and URL for all 49</li></ul>
+<h2 id="what-is-not-here-and-why">What is not here, and why</h2>
+<p><strong>The AI-law corpus was read, and none of it is republished.</strong></p>
+<p>Six further requests were made under the key: the index, the vocabulary, the United States record, the JSON Schema, the export manifest, and one 404 that establishes the corpus is addressed by bare slug rather than by the entity API&#x27;s <code>--</code> convention. Their log rows — URL, status, byte count, <code>sha256</code> — are metadata about <em>our own requests</em> and are in the table above.</p>
+<p><strong>Their content is not, and cannot be.</strong> That corpus carries its own licence block, whose grant field reads <em>&quot;No license is conveyed by receipt of this file.&quot;</em> {{claim:ai-laws-licence}} It is not CC BY 4.0, whatever the OpenAPI document declares at the top level. So this site describes it, <a href="../index.html#9-what-went-wrong">measures it</a><a class="ext live" href="https://ungovr.providers.sgit.ai/#9-what-went-wrong" title="live page">↗</a>, and redistributes none of it — and <code>tools/check_site.py</code> fails the build if the payload ever appears in this repository or in the vault&#x27;s tree.</p>
+<p><strong>This is the difference between a report and a mirror</strong>, and it is the one place on this project where the distinction had teeth.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/retrievals/index.md">https://ungovr.providers.sgit.ai/retrievals/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:56Z</dd><dt>sha256</dt><dd><code title="0beb9598bb199f1788dc82da0f73e526344ff42503d9e96202ae2080a2465d6b">0beb9598bb19</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/ungovr.providers.sgit.ai/retrievals/index.md</a> (3,200 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

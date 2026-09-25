@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#how-to-read-it">How to read it</a></li><li class="l2"><a href="#the-three-rules-that-are-the-argument">The three rules that are the argument</a></li><li class="l2"><a href="#two-vocabularies-and-why-they-must-not-merge">Two vocabularies, and why they must not merge</a></li><li class="l2"><a href="#what-is-out-of-this-mvp-said-here-rather-than-left-to-be-noticed">What is out of this MVP, said here rather than left to be noticed</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/join/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The seven-step join — one entity, one clause, one acceptance
+description: &quot;Santa Barbara County to the California Public Records Act and down to an unowned acceptance node, with the provenance of every node and the assertion class of every edge.&quot;
+lead: &quot;One county. One law. One acceptance. And a refusal to widen it — because one instrument modelled properly beats forty sketched, and a vault that tries to be a complete ontology of government ships nothing.&quot;
+order: 4
+toc: true
+wide: true
+provenance:
+vault: dkeclt5r
+date: 9 September 2026
+note: &quot;The join was built in this session from bytes retrieved in this session.&quot;
+</p>
+<hr>
+<h2 id="how-to-read-it">How to read it</h2>
+<p>Two things are being said about every node, and they are different questions:</p>
+<ul><li><strong>Origin</strong> — whose claim is this? <code>ung:</code> is transcribed from UnGovr and <strong>never edited, corrected, enriched or re-typed</strong>. <code>akn:</code> is the instrument. <code>sg:</code> is our model.</li><li><strong>Assertion class</strong> — how strongly is it held? <code>asserted</code> or <code>inferred</code>.</li></ul>
+<p><strong>Origin is carried by border and shape; assertion class by colour.</strong> Hue is already spent on the second, so the first cannot also use it. Merging them would lose both, and a reader checking this work should check that separation first.</p>
+<p>{{join}}</p>
+<h2 id="the-three-rules-that-are-the-argument">The three rules that are the argument</h2>
+<p><strong>The county was resolved, not guessed.</strong> <code>us/ca/santa-barbara</code> came out of <code>/v1/entities/us/ca.json</code> rather than out of anybody&#x27;s memory, which is what closed blocker B4. {{claim:sb-slug}}</p>
+<p><strong>Attach, never mutate.</strong> No <code>ung:</code> node is edited. The entity above is exactly the bytes UnGovr served, and the things we have to say about it hang off it rather than being written into it. That is what makes the compiled artefact checkable against the retrieved JSON it came from.</p>
+<p><strong><code>sg:resolvesTo</code> is inferred, not asserted.</strong> It is the only edge crossing from their data into our model and it is the most important claim in the demonstration. <strong>UnGovr did not make it.</strong> <a href="../coverage/index.html">The rule that produces it, and the 20.5% of cases where it would be wrong, are measured on the coverage page.</a><a class="ext live" href="https://ungovr.providers.sgit.ai/coverage/" title="live page">↗</a></p>
+<p><strong>The default evidence tier is the weakest one.</strong> The evidence node above is <code>unevidenced</code>, and it stays that way, because nobody has observed Santa Barbara County&#x27;s determinations against the control. That is a statement about <strong>our</strong> observation, not about the county&#x27;s compliance.</p>
+<h2 id="two-vocabularies-and-why-they-must-not-merge">Two vocabularies, and why they must not merge</h2>
+<p>This is the thing a reader is most likely to get wrong, so it is stated rather than left implicit.</p>
+<div class="table"><table><thead><tr><th></th><th>The vault&#x27;s states</th><th>This site&#x27;s states</th></tr></thead><tbody><tr><td>Answer the question</td><td><em>How well is this subject&#x27;s compliance observed?</em></td><td><em>How well does this site know what it says?</em></td></tr>
+<tr><td>Values</td><td><code>unevidenced</code>, <code>asserted</code>, <code>documented</code>, <code>manually-checked</code>, <code>programmatic-out-of-band</code>, <code>programmatic-inline</code></td><td><code>verified</code>, <code>measured</code>, <code>docs</code>, <code>spec</code>, <code>unrun</code>, <code>projected</code></td></tr>
+<tr><td>Default</td><td><code>unevidenced</code></td><td>nothing ships without one</td></tr></tbody></table></div>
+<p><strong>A vault node&#x27;s evidence tier is never rendered as a site claim state.</strong> If it were, a reader would see <code>unevidenced</code> on the evidence node and conclude that <em>this site does not know something</em>. It means <strong>the county has not been observed</strong>. The two vocabularies are <a href="../briefs/index.html">crosswalked in the brief</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/" title="live page">↗</a>, not merged.</p>
+<h2 id="what-is-out-of-this-mvp-said-here-rather-than-left-to-be-noticed">What is out of this MVP, said here rather than left to be noticed</h2>
+<ul><li><strong>The full fractal zoom</strong> to sentence level — zoom into an entity, a law and a provision and have each expand under identical rules. Specified, not built. {{claim:vault-viewer-mvp}}</li><li><strong>The document viewer opening a byte range</strong> in the instrument&#x27;s own source. Blocked by something real: <a href="../index.html#9-what-went-wrong">there is no machine-readable CPRA to open</a><a class="ext live" href="https://ungovr.providers.sgit.ai/#9-what-went-wrong" title="live page">↗</a>. {{claim:cpra-no-akn}}</li><li><strong>The remaining six computations.</strong> Two are done.</li><li><strong>A named owner on the acceptance node.</strong> It ships open. {{claim:acceptance-unowned}}</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/join/index.md">https://ungovr.providers.sgit.ai/join/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:56Z</dd><dt>sha256</dt><dd><code title="0df5c2a4e9399f1b5f0e0c8dd4ce713d6dd189ff2ae55c067ba81b295cc55f4d">0df5c2a4e939</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/ungovr.providers.sgit.ai/join/index.md</a> (3,960 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

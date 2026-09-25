@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>T06 — The next five connector vaults, then the three business functions · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#t06-the-next-five-connector-vaults-then-the-three-business-functions">T06 — The next five connector vaults, then the three business functions</a></li><li class="l2"><a href="#the-task">The task</a></li><li class="l2"><a href="#constraints">Constraints</a></li><li class="l2"><a href="#done-means">Done means</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/work/T06/index.html">live ↗</a></p><article class="source"><h1 id="t06-the-next-five-connector-vaults-then-the-three-business-functions">T06 — The next five connector vaults, then the three business functions</h1>
+<blockquote><p>Rendered from .claude/briefs/T06-next-connector-vaults.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/work/T06/</a><a class="ext live" href="https://riskmandate.ai/admin/work/T06/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>From:</strong> the research brief §3 (the queue) and the library page&#x27;s <em>not yet researched</em> tiles.
+<strong>Size:</strong> half a day per vault; one or two vaults per branch. <strong>Touches:</strong> <code>site/vaults/&lt;slug&gt;/</code>
+(new), <code>site/vaults/index.json</code> (move the entry from <code>asked_for</code> to <code>vaults</code>), the generated
+pages.</p>
+<h2 id="the-task">The task</h2>
+<p>In the order a stranger recognises them: **Claude&#x27;s Google Workspace connector, Slack, GitHub,
+Notion, Salesforce.** Each becomes a vault the way the five connector vaults were: read the
+connector&#x27;s own scope or permission page, write <code>data/grant.json</code> with a row per capability the
+scopes permit (<code>material</code> on each), a starting mandate in the deployer&#x27;s words, six scenarios,
+the contradictions, the open questions. The generator and the site do the rest. The prompt is
+<code>.claude/commands/new-vault.md</code>.</p>
+<p>Then the business functions, a different axis: **the CRM, the customer-service desk, finance
+data.** The mandate is the same across products; the grant is per product; each becomes a vault
+once one product&#x27;s grant is documented for it (Salesforce for the CRM is the natural first).</p>
+<h2 id="constraints">Constraints</h2>
+<ul><li>Documented tier only. Nothing is tested. Every row quotes a page with URL and date.</li><li>The catalogue entry has no <code>vid</code>/<code>key</code> until the lead pushes the vault; the tile lists as
+<em>asked for</em> until then. Remove the slug from <code>asked_for</code> only when it moves to <code>vaults</code>.</li><li>The library page&#x27;s copy for the tile (<code>blurb</code>) is one or two sentences in the site&#x27;s voice:
+what the shape is, and the one thing the pages said that a reader would not expect.</li><li>Slack and GitHub have two connector models each (bot token vs user token; fine-grained token
+vs OAuth app). Pick the one the assistant vendors actually use and say so in <code>shape_note</code>.</li></ul>
+<h2 id="done-means">Done means</h2>
+<ul><li>The vault builds and <code>--check</code>s; the pages regenerate; <code>npm run check</code> green.</li><li>The work file lists the vault as built and unpushed with its open-questions count.</li><li><code>03-state-and-next.md</code> moves the connector from <em>asked for</em> to <em>built, unpushed</em>.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/work/T06/index.html">https://riskmandate.ai/admin/work/T06/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/work/T06/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="8697fea8df48f51f0004e7a860b7c821cd5ae4798e8e8d7d9aada0d1594f86bf">8697fea8df48</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/work/T06/index.md</a> (2,300 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

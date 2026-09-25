@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Briefing Pack: elevenlabs.providers.sgit.ai, v0.2 · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#briefing-pack-elevenlabsproviderssgitai-v02">Briefing Pack: elevenlabs.providers.sgit.ai, v0.2</a></li><li class="l2"><a href="#read-these-in-order">Read These In Order</a></li><li class="l2"><a href="#the-governing-discipline">The Governing Discipline</a></li><li class="l2"><a href="#what-has-already-been-decided-and-should-not-be-reopened">What Has Already Been Decided, And Should Not Be Reopened</a></li><li class="l2"><a href="#what-the-audit-established">What The Audit Established</a></li><li class="l2"><a href="#the-success-criterion">The Success Criterion</a></li><li class="l2"><a href="#scope-boundary-what-this-pack-does-not-cover">Scope Boundary: What This Pack Does Not Cover</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="00__README.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/00__README.md">live ↗</a></p><article class="source"><h1 id="briefing-pack-elevenlabsproviderssgitai-v02">Briefing Pack: elevenlabs.providers.sgit.ai, v0.2</h1>
+<p><strong>version</strong> v0.33.66
+<strong>date</strong> 7 September 2026
+<strong>for</strong> the agent working on the ElevenLabs provider site (assume no prior context)
+<strong>source briefs</strong> the eight documents in <code>source-briefs/</code>, being one of 5 September and seven of 7 September
+<strong>status</strong> PROPOSED. Nothing in this pack is built. The site it describes is live at v0.1.1</p>
+<hr>
+<h2 id="read-these-in-order">Read These In Order</h2>
+<ol><li>This file.</li><li><code>01__audit-and-manifest.md</code>, which is what the site has today, checked page by page on 7 September, and what is missing against the briefs.</li><li><code>02__architecture-and-decisions.md</code>, which is the two axes, the audiences, the page contract, and eleven numbered decisions.</li><li><code>03__implementation-plan.md</code>, which is the sequence.</li><li><code>04__verification-and-acceptance.md</code>, which is how you know you are done.</li><li><code>05__open-questions.md</code>, which is what nobody has decided and you should not decide alone.</li></ol>
+<p>The eight source briefs are in <code>source-briefs/</code>. <strong>Read <code>v0.33.65__strategy-brief__platforms-is-the-right-shelf...</code> first</strong>, because the site you have already implements it and this pack extends it.</p>
+<h2 id="the-governing-discipline">The Governing Discipline</h2>
+<p><strong>The site is narrower than the vendor&#x27;s own environment, not better.</strong> It serves one workflow properly rather than every workflow adequately. Every decision below follows from that, and any feature that would only make sense for a general audience is out of scope.</p>
+<p><strong>No claim without a state.</strong> The site already gives every factual claim one of six verification states and joins them at build time so a claim cannot appear on a page without appearing in the ledger. <strong>Everything added by this pack obeys that rule</strong>, including claims about our own unshipped work, which take the specification or unrun state rather than being written as though they were true.</p>
+<p><strong>Absences are stated as absences, not as roadmap.</strong> A page that says a capability does not exist here is more credible than one that says it is coming.</p>
+<h2 id="what-has-already-been-decided-and-should-not-be-reopened">What Has Already Been Decided, And Should Not Be Reopened</h2>
+<div class="table"><table><thead><tr><th>Decision</th><th>Where it was settled</th></tr></thead><tbody><tr><td>The family is called <strong>providers</strong>, not platforms</td><td>7 September, confirmed by the project lead. The word matches what the code already calls these services</td></tr>
+<tr><td>The nine-section report structure, with cost and failures given the weight</td><td>5 September. <strong>Already implemented at v0.1.0</strong></td></tr>
+<tr><td>Four credential patterns as the credential axis</td><td>5 September. Already implemented</td></tr>
+<tr><td>Disclosure exists before any relationship does, and is recorded there first</td><td>5 September, and the site&#x27;s own disclosures page already commits to it</td></tr>
+<tr><td>A grant or credit award is a research subsidy, never inventory</td><td>7 September. Two providers now restrict resale</td></tr>
+<tr><td>Component code stays canonical in the tools site; this site holds the context</td><td>7 September</td></tr>
+<tr><td>Move and delete are separate reversible steps</td><td>7 September</td></tr>
+<tr><td>The six claim states are the evidence model</td><td>Site v0.1.0, which went further than the brief asked. <strong>Adopt it, do not redesign it</strong></td></tr></tbody></table></div>
+<h2 id="what-the-audit-established">What The Audit Established</h2>
+<p>Checked against the live site on 7 September, not recalled:</p>
+<ul><li><strong>The nine-section report, the four patterns and the ledger are built.</strong> The patterns page fills in all four for this vendor rather than describing them in the abstract.</li><li><strong>The site corrected one of its own source briefs.</strong> The 5 September brief quoted the agent product&#x27;s signed-URL rule as though it were the vendor&#x27;s rule; the speech endpoint supports only key scoping. <strong>The site&#x27;s version is correct and the brief is superseded on that point.</strong></li><li><strong>Twelve experiments exist</strong>, and two of them, forced alignment and the captions studio, are the foundation of a workflow nobody on the site has connected yet.</li><li><strong>Real measurements are published</strong>, including three timestamped generations of a 187-character sample returning in 5.0 to 5.8 seconds and a verification session costing about $0.075.</li><li><strong>The OpenRouter stub proves that adding a provider is one file with front matter</strong>, which means the multi-provider shape is already solved.</li></ul>
+<h2 id="the-success-criterion">The Success Criterion</h2>
+<p><strong>One sentence.</strong> A developer who has never seen this site can arrive with a specific job, learn in five minutes whether this provider can do it, what it will cost them, where their key has to live for their deployment shape, and what will break, and leave with a working example they ran themselves.</p>
+<p><strong>And one for the estate.</strong> A page on this site says what capabilities this provider adds to an agent that connects it, so the site joins the grant work rather than sitting beside it.</p>
+<h2 id="scope-boundary-what-this-pack-does-not-cover">Scope Boundary: What This Pack Does Not Cover</h2>
+<ul><li><strong>The parent hub at providers.sgit.ai.</strong> It does not exist. This pack notes what the ElevenLabs site must do to be composable with it and stops there.</li><li><strong>Any commercial model.</strong> Resale is prohibited by both providers written about here. Nothing in this pack assumes credits can be passed on.</li><li><strong>The video toolchain itself.</strong> The rendering, assembly and encoding pieces are unbuilt and are not this site&#x27;s job. What is in scope is the part this provider serves.</li><li><strong>Migrating the tools site.</strong> A separate specification covers it, and its discipline is that move and delete never happen in one commit.</li></ul>
+<hr>
+<p><em>Released under CC BY 4.0.</em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/00__README.md">https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/00__README.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:31Z</dd><dt>sha256</dt><dd><code title="805a0bdb1284c1518fdedc35e351b13c76f5710eff120afcf23f1ba3dc19a5b8">805a0bdb1284</code></dd><dt>Frozen copy</dt><dd><a href="00__README.md">sites/elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/00__README.md</a> (5,262 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

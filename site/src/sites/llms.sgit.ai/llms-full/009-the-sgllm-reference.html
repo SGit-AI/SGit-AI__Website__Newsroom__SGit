@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
 <main>
 <p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
@@ -19,8 +19,8 @@
 <p>Generated, not written</p>
 <p>Everything below the rule is <strong>generated verbatim</strong> from the section <em>Calling an LLM (<code>sg.llm.*</code>)</em> of <code>library/guides/vault-html/AUTHORING.md</code> in <a class="ext" href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/main/library/guides/vault-html/AUTHORING.md">the-cyber-boardroom/SGraph-AI__App__Send ↗</a>, at product version <strong>v0.33.62</strong> (commit <code>b561fa6b1</code>). Nobody edits it here.</p>
 <p>That is deliberate. The corpus refused to create a second copy of this contract, on the grounds that <em>&quot;adding a competing document would create a second source of truth that drifts&quot;</em>, and it was right. It also left a gap: a contract nobody can find is not published. So the canonical file stays canonical, its hash is recorded in <code>sources/MANIFEST.json</code>, and the pre-release gate fails the build if this page stops matching it. The reference is readable here and it still has exactly one author.</p>
-<p>Source hash <code>c8691cf98901721b</code> · <a class="ext" href="https://llms.sgit.ai/sources/AUTHORING__calling-an-llm.md">the vendored section, verbatim ↗</a> · <a class="ext" href="https://llms.sgit.ai/traps.md">the traps page ↗</a> is written by this site and is not generated.</p>
-<p><strong>The contract is young and it has moved.</strong> The bridge shipped on 2 August 2026; <code>listen</code> and <code>imagePart</code> landed on 3 August, one day later. Read the dates in the headings as part of the contract, and check a claim against the shipped code before you build on it. <a class="ext" href="https://llms.sgit.ai/shipped/index.md#drift">One place where this page and the shipped code already disagree ↗</a> is recorded on the shipped page.</p>
+<p>Source hash <code>c8691cf98901721b</code> · <a href="../sources/AUTHORING__calling-an-llm.html">the vendored section, verbatim</a><a class="ext live" href="https://llms.sgit.ai/sources/AUTHORING__calling-an-llm.md" title="live page">↗</a> · <a class="ext" href="https://llms.sgit.ai/traps.md">the traps page ↗</a> is written by this site and is not generated.</p>
+<p><strong>The contract is young and it has moved.</strong> The bridge shipped on 2 August 2026; <code>listen</code> and <code>imagePart</code> landed on 3 August, one day later. Read the dates in the headings as part of the contract, and check a claim against the shipped code before you build on it. <a href="../shipped/index.html#drift">One place where this page and the shipped code already disagree</a><a class="ext live" href="https://llms.sgit.ai/shipped/index.md#drift" title="live page">↗</a> is recorded on the shipped page.</p>
 <hr>
 <p>Your app can call a language model <strong>without ever holding an API key</strong>. The key lives in <code>.vault/llm/config.json</code> (inside the permission floor — your app cannot read it), and the host makes the call on your behalf. You send messages and receive text.</p>
 <h2 id="1-declare-the-grants">1. Declare the grants</h2>
@@ -116,12 +116,12 @@ const { text } = await p;</code></pre>
 <h2 id="what-this-is-not">What this is not</h2>
 <p>There is no tool-calling loop. <code>sg.llm.chat</code> is a <strong>reader</strong>: it takes messages and returns text. If you want the model to act on the vault, <em>your app</em> decides what to do with the reply and calls <code>sg.vfs.*</code> / <code>sg.fs.*</code> itself — under the grants you already declared. That separation is deliberate: the LLM never gets ambient authority over the vault.</p>
 <p><strong>Honest limitation.</strong> The key still lives in the vault, so sharing a vault key still shares the credential with anyone who can open it. Short-lived minted credentials are planned (Phase 4) and would remove that; until then, treat a vault with an AI key configured as a vault that carries a secret.</p>
-<p><a class="ext" href="https://llms.sgit.ai/chat-pane/samples.md">← The samples ↗</a> <a class="ext" href="https://llms.sgit.ai/traps.md">The traps → ↗</a></p>
+<p><a href="../chat-pane/samples.html">← The samples</a><a class="ext live" href="https://llms.sgit.ai/chat-pane/samples.md" title="live page">↗</a> <a class="ext" href="https://llms.sgit.ai/traps.md">The traps → ↗</a></p>
 <hr>
 <p>/api/traps.md</p>
 <hr></article><nav class="pager"><span><a href="008-the-sgllm-reference.html">← The sg.llm. reference</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-the-traps.html">The traps →</a></span></nav>
 <aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>9 of 49: The sg.llm. reference</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 </body>
 </html>

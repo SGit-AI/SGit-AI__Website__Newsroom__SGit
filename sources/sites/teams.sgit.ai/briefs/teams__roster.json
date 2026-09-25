@@ -1,0 +1,408 @@
+{
+  "version": "v0.33.64",
+  "generated": "2026-09-07",
+  "licence": "CC BY 4.0",
+  "method": "parsed from ROLE.md files on disk and git log over a full clone (4335 commits); regenerate rather than trusting these figures",
+  "totals": {
+    "role_md_files_total": 39,
+    "unique_role_names": 19,
+    "explorer_dirs": 17,
+    "explorer_defined": 13,
+    "villager_dirs": 17,
+    "villager_defined": 17,
+    "town_planner_dirs": 4,
+    "town_planner_defined": 3,
+    "sg_playwright_defined": 6,
+    "comms_files": 130,
+    "skill_md_files": 40,
+    "first_party_skills": 7
+  },
+  "claim_forms": {
+    "falsifiable": 6,
+    "descriptive": 7,
+    "absent": 6,
+    "note": "falsifiable = states an if-then failure condition; this is the older bullet-list format and the recommended one (01__ section 3)"
+  },
+  "portable_core": {
+    "roles": [
+      "architect",
+      "dev",
+      "devops",
+      "historian",
+      "librarian",
+      "qa"
+    ],
+    "defined_as": "defined in all three OPERATIONAL teams: Explorer, Villager, and the second product sg-playwright",
+    "excludes": "Town Planner is excluded — it is a commercial team (accountant, alchemist, designer, librarian), not an operational one",
+    "why": "the estate independently reached for these six when standing up a second product — the closest thing to a controlled experiment in the corpus"
+  },
+  "topologies": {
+    "explorer": {
+      "mandate": "build the new thing",
+      "rule": "discover"
+    },
+    "villager": {
+      "mandate": "harden what exists",
+      "rules": [
+        "Harden, do not build",
+        "Preserve behaviour exactly",
+        "User experience is frozen",
+        "Harden, do not redesign"
+      ],
+      "handback": "send redesigns back to Explorer"
+    },
+    "town-planner": {
+      "mandate": "industrialise and capitalise",
+      "note": "sketch only: 4 dirs / 3 definitions; librarian missing"
+    },
+    "transition_trigger": "UNDOCUMENTED — see gap G2 / question Q3"
+  },
+  "learnings": [
+    {
+      "date": "2026-03-30",
+      "title": "roles did not know where to talk",
+      "commit_subject": "Librarian: remove dangling comms/03/ folder, add comms awareness to roles",
+      "roles_touched": [
+        "conductor",
+        "dev",
+        "qa"
+      ],
+      "generalised": "building the shared channel is not enough — every role must carry its own inbox/outbox addresses and a session-start sequence that reads them"
+    },
+    {
+      "date": "2026-04-08",
+      "title": "a new capability arrived without its prohibition",
+      "commit_subject": "Librarian: add vault communication guidance + secret protection rules",
+      "roles_touched": [
+        "dev",
+        "qa",
+        "librarian"
+      ],
+      "also": ".claude/CLAUDE.md",
+      "generalised": "when you grant a role a new tool, write the prohibition in the same commit and the same table row as the grant"
+    },
+    {
+      "date": "2026-02..2026-03",
+      "title": "the format regressed",
+      "commit_subject": "(drift, not a single commit)",
+      "generalised": "a format migration can silently drop a semantic constraint; diff the meaning, not just the rendering"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-02-11",
+      "event": "Add ROLE.md identity documents for all 10 agent roles",
+      "note": "eleven files landed despite the message saying ten — published as-is"
+    },
+    {
+      "date": "2026-02-12",
+      "event": "advocate, grc, sherpa added"
+    },
+    {
+      "date": "2026-02-13",
+      "event": "ambassador, dpo added; full team activation for incident handling series (5 phases)"
+    },
+    {
+      "date": "2026-03-10",
+      "event": "role review folders refactored from 26-MM-DD to MM/DD"
+    },
+    {
+      "date": "2026-03-16",
+      "event": "designer added — the nineteenth role"
+    },
+    {
+      "date": "2026-03-18",
+      "event": "Librarian catalogues its own operating guidance (meta-recursion)"
+    },
+    {
+      "date": "2026-03-30",
+      "event": "comms awareness added to roles"
+    },
+    {
+      "date": "2026-04-08",
+      "event": "vault communication guidance + secret protection rules"
+    },
+    {
+      "date": "2026-05-01",
+      "event": "reality document refactored from monolith into 13-domain fractal tree"
+    },
+    {
+      "date": "2026-05-25",
+      "event": "code scan, app.json injection documented, B-008 ROLE.md link fix"
+    }
+  ],
+  "roles": [
+    {
+      "slug": "accountant",
+      "teams": {
+        "town-planner": "defined"
+      },
+      "core_mission": null,
+      "central_claim": null,
+      "claim_form": "absent",
+      "claim_markup": null,
+      "not_responsible_for": null,
+      "role_md_commits": 0,
+      "in_operational_core": false
+    },
+    {
+      "slug": "advocate",
+      "teams": {
+        "explorer": "directory-only",
+        "villager": "defined"
+      },
+      "core_mission": null,
+      "central_claim": null,
+      "claim_form": "absent",
+      "claim_markup": null,
+      "not_responsible_for": null,
+      "role_md_commits": 3,
+      "in_operational_core": false
+    },
+    {
+      "slug": "alchemist",
+      "teams": {
+        "explorer": "directory-only",
+        "town-planner": "defined"
+      },
+      "core_mission": null,
+      "central_claim": null,
+      "claim_form": "absent",
+      "claim_markup": null,
+      "not_responsible_for": null,
+      "role_md_commits": 0,
+      "in_operational_core": false
+    },
+    {
+      "slug": "ambassador",
+      "teams": {
+        "explorer": "directory-only",
+        "villager": "defined"
+      },
+      "core_mission": null,
+      "central_claim": null,
+      "claim_form": "absent",
+      "claim_markup": null,
+      "not_responsible_for": null,
+      "role_md_commits": 2,
+      "in_operational_core": false
+    },
+    {
+      "slug": "appsec",
+      "teams": {
+        "explorer": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Verify and protect the zero-knowledge guarantee -- the server never sees plaintext, never holds decryption keys, and never stores file names. Every security claim the product makes must be provably true.",
+      "central_claim": "If any code path exists where plaintext, decryption keys, or original file names could reach the server, AppSec has failed.",
+      "claim_form": "falsifiable",
+      "claim_markup": "bullet",
+      "not_responsible_for": "Writing application code, making product decisions, deploying infrastructure, producing user-facing content, or network/infrastructure security (firewalls, VPCs, OS hardening).",
+      "role_md_commits": 2,
+      "in_operational_core": false
+    },
+    {
+      "slug": "architect",
+      "teams": {
+        "explorer": "defined",
+        "sg-playwright": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Define and guard the boundaries between components, own API contracts and data models, and ensure all technology decisions serve the zero-knowledge encryption guarantee",
+      "central_claim": "The Architect owns the boundaries. Every interface contract, dependency direction, and abstraction layer passes through architectural review.",
+      "claim_form": "descriptive",
+      "claim_markup": "table",
+      "not_responsible_for": "Writing production code, running tests, deploying infrastructure, managing CI/CD pipelines, or tracking project status",
+      "role_md_commits": 4,
+      "in_operational_core": true
+    },
+    {
+      "slug": "cartographer",
+      "teams": {
+        "explorer": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Map the system topology, data flows, security boundaries, and dependency relationships so that every team member can see what connects to what, what blocks what, and where the boundaries are.",
+      "central_claim": "If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed.",
+      "claim_form": "falsifiable",
+      "claim_markup": "bullet",
+      "not_responsible_for": "Writing application code, making architecture decisions (maps reflect decisions, they do not make them), running tests, deploying infrastructure, or producing user-facing content.",
+      "role_md_commits": 2,
+      "in_operational_core": false
+    },
+    {
+      "slug": "conductor",
+      "teams": {
+        "explorer": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Orchestrate workflow across all roles, maintain priority alignment, and ensure every task moves toward the current sprint goal",
+      "central_claim": "The Conductor sees the full picture. No task starts without routing. No blocker persists without escalation.",
+      "claim_form": "descriptive",
+      "claim_markup": "table",
+      "not_responsible_for": "Writing code, running tests, deploying infrastructure, making architecture decisions, or performing security reviews",
+      "role_md_commits": 5,
+      "in_operational_core": false
+    },
+    {
+      "slug": "designer",
+      "teams": {
+        "explorer": "defined",
+        "town-planner": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Design is how things work — ensuring that every artifact in SG/Send communicates its purpose through its form, functions well for its audience, and expresses intention through structure, naming, formatting, and interaction",
+      "central_claim": "Design is the discipline of making things that function well, feel right, and express intention through their form. A well-designed API is as much a design artifact as a well-designed interface. The structure of a configuration file, the shape of a CLI command, the naming of a function, the rhythm of a test suite — these are all design. They all communicate. They all either help or hinder the person or agent encountering them. The Designer owns the quality of that communication across the entire ecosystem.",
+      "claim_form": "descriptive",
+      "claim_markup": "table",
+      "not_responsible_for": "Implementation (Dev), testing (QA), architecture decisions (Architect), deployment (DevOps), knowledge curation (Librarian), security policy (AppSec)",
+      "role_md_commits": 1,
+      "in_operational_core": false
+    },
+    {
+      "slug": "dev",
+      "teams": {
+        "explorer": "defined",
+        "sg-playwright": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Implement features and fixes with high code quality, following established patterns, Type_Safe schemas, and the no-mocks testing discipline",
+      "central_claim": "Dev turns architecture contracts into working, tested code. Every line follows the project's patterns. Every test uses real implementations.",
+      "claim_form": "descriptive",
+      "claim_markup": "table",
+      "not_responsible_for": "Making architecture decisions, choosing technologies, defining API contracts, managing CI/CD pipelines, or prioritising work",
+      "role_md_commits": 5,
+      "in_operational_core": true
+    },
+    {
+      "slug": "devops",
+      "teams": {
+        "explorer": "defined",
+        "sg-playwright": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Own the CI/CD pipelines, manage all 7 deployment targets, and ensure every push flows automatically from commit to tested deployment",
+      "central_claim": "DevOps owns the path from commit to production. Every deployment target works. Every deployment is smoke-tested. Every release is reproducible.",
+      "claim_form": "descriptive",
+      "claim_markup": "table",
+      "not_responsible_for": "Writing application code, making architecture decisions, defining API contracts, writing business logic tests, or prioritising features",
+      "role_md_commits": 4,
+      "in_operational_core": true
+    },
+    {
+      "slug": "dpo",
+      "teams": {
+        "explorer": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Ensure all personal data processing is lawful, transparent, and compliant with UK GDPR, Data Protection Act 2018, and PECR. Own the legal accuracy of every privacy claim the product makes.",
+      "central_claim": "The DPO owns data protection. Every processing activity, privacy notice, DPIA, breach notification, and data subject rights request passes through the DPO. If a privacy claim is made that is not legally accurate, the DPO has failed.",
+      "claim_form": "falsifiable",
+      "claim_markup": "table",
+      "not_responsible_for": "Determining purposes and means of processing (that is the controller), implementing technical security controls (that is AppSec/DevOps), writing marketing content (that is the Journalist), user satisfaction (that is the Advocate), or owning the risk register (that is GRC)",
+      "role_md_commits": 1,
+      "in_operational_core": false
+    },
+    {
+      "slug": "grc",
+      "teams": {
+        "explorer": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Identify, assess, and manage risks to the SGraph Send project. Establish governance policies that ensure the project's security claims, operational practices, and development processes are sound, auditable, and compliant with stated commitments.",
+      "central_claim": "Every risk the project faces -- technical, operational, reputational -- must be identified, assessed, and either mitigated or formally accepted with documented rationale.",
+      "claim_form": "descriptive",
+      "claim_markup": "bullet",
+      "not_responsible_for": "Writing application code, making product decisions, deploying infrastructure, implementing security controls (that is AppSec/DevOps), or producing user-facing content.",
+      "role_md_commits": 2,
+      "in_operational_core": false
+    },
+    {
+      "slug": "historian",
+      "teams": {
+        "explorer": "defined",
+        "sg-playwright": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Track every decision, spec change, and architectural evolution so the team always knows what was decided, why it was decided, and what it superseded. Record the \"why,\" not just the \"what.\"",
+      "central_claim": "If a decision was made but its rationale is not recorded, the Historian has failed. The team will re-litigate it, wasting time and risking inconsistency.",
+      "claim_form": "falsifiable",
+      "claim_markup": "bullet",
+      "not_responsible_for": "Making decisions, writing application code, running tests, deploying infrastructure, making architecture recommendations, or producing user-facing content.",
+      "role_md_commits": 3,
+      "in_operational_core": true
+    },
+    {
+      "slug": "journalist",
+      "teams": {
+        "explorer": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Communicate what SGraph Send is, how it works, and why it matters -- to beta users, developers, and the broader audience. Capture the present: what is happening now, what just shipped, what the team learned.",
+      "central_claim": "If a potential user visits the site and cannot understand the zero-knowledge guarantee within 60 seconds, the Journalist has failed.",
+      "claim_form": "falsifiable",
+      "claim_markup": "bullet",
+      "not_responsible_for": "Writing application code, making architecture decisions, running tests, deploying infrastructure, making product decisions, or maintaining internal documentation (that is the Librarian's job).",
+      "role_md_commits": 2,
+      "in_operational_core": false
+    },
+    {
+      "slug": "librarian",
+      "teams": {
+        "explorer": "defined",
+        "sg-playwright": "defined",
+        "town-planner": "directory-only",
+        "villager": "defined"
+      },
+      "core_mission": "Maintain knowledge connectivity across all project artifacts, ensuring every document is discoverable, cross-referenced, and current.",
+      "central_claim": "If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed.",
+      "claim_form": "falsifiable",
+      "claim_markup": "bullet",
+      "not_responsible_for": "Writing application code, making architecture decisions, running tests, deploying infrastructure, creating original specifications, or making product decisions.",
+      "role_md_commits": 6,
+      "in_operational_core": true
+    },
+    {
+      "slug": "qa",
+      "teams": {
+        "explorer": "defined",
+        "sg-playwright": "defined",
+        "villager": "defined"
+      },
+      "core_mission": "Own the test strategy, maintain coverage across the full deployment matrix, and ensure every release meets quality gates before reaching users",
+      "central_claim": "QA owns the test matrix. Every storage mode, deployment target, and test level is covered. No release ships without QA sign-off.",
+      "claim_form": "descriptive",
+      "claim_markup": "table",
+      "not_responsible_for": "Writing production code, making architecture decisions, managing CI/CD pipelines, or deploying to production",
+      "role_md_commits": 6,
+      "in_operational_core": true
+    },
+    {
+      "slug": "sherpa",
+      "teams": {
+        "explorer": "directory-only",
+        "villager": "defined"
+      },
+      "core_mission": null,
+      "central_claim": null,
+      "claim_form": "absent",
+      "claim_markup": null,
+      "not_responsible_for": null,
+      "role_md_commits": 3,
+      "in_operational_core": false
+    },
+    {
+      "slug": "translator",
+      "teams": {
+        "villager": "defined"
+      },
+      "core_mission": null,
+      "central_claim": null,
+      "claim_form": "absent",
+      "claim_markup": null,
+      "not_responsible_for": null,
+      "role_md_commits": 0,
+      "in_operational_core": false
+    }
+  ]
+}

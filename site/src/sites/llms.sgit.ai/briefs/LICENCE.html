@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Licence · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#licence">Licence</a></li><li class="l2"><a href="#this-pack">This pack</a></li><li class="l2"><a href="#the-site-this-pack-commissions">The site this pack commissions</a></li><li class="l2"><a href="#do-not-create-a-second-source-of-truth">⚠️ Do not create a second source of truth</a></li><li class="l2"><a href="#keys-this-site-is-the-most-likely-place-in-the-estate-to-leak-one">⚠️ Keys — this site is the most likely place in the estate to leak one</a></li><li class="l2"><a href="#publish-the-security-gap">Publish the security gap</a></li><li class="l2"><a href="#do-not-publish">Do not publish</a></li><li class="l2"><a href="#accuracy">Accuracy</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> · <a href="LICENCE.md">raw text</a> · <a class="ext" href="https://llms.sgit.ai/briefs/LICENCE.md">live ↗</a></p><article class="source"><h1 id="licence">Licence</h1>
+<h2 id="this-pack">This pack</h2>
+<p>Everything in this brief pack — the nine numbered documents, <code>code__chat-pane-samples.md</code>, <code>09__source-manifest.csv</code>, this file and <code>README.md</code> — is released under the <strong>Creative Commons Attribution 4.0 International licence (CC BY 4.0)</strong>.</p>
+<p>Copyright (c) 2026 Dinis Cruz
+Licensed under CC BY 4.0 — <a class="ext" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/ ↗</a></p>
+<p>Attribution: <strong>Dinis Cruz</strong>, with AI co-authorship (Claude, Anthropic).</p>
+<p><strong>In <code>code__chat-pane-samples.md</code>, the <code>sg.llm.*</code> calls are the shipped API contract; the surrounding UI code was written for this pack.</strong> Say which half is which when publishing — a reader needs to know what is a contract and what is an example.</p>
+<h2 id="the-site-this-pack-commissions">The site this pack commissions</h2>
+<p><strong>The entire content of <code>llms.sgit.ai</code></strong> is CC BY 4.0, consistent with the network. Stamp every raw markdown document; gate with <code>licence-audit.py --check</code>.</p>
+<p><strong>The code quoted throughout is Apache-2.0</strong> — <code>SGraph-AI__App__Send</code> and the vault-html guides. Retain the notice where snippets run long.</p>
+<hr>
+<h2 id="do-not-create-a-second-source-of-truth">⚠️ Do not create a second source of truth</h2>
+<p>The corpus already refused to, deliberately:</p>
+<blockquote><p><em>&quot;<strong>No — and deliberately.</strong> It belongs in the two homes that already exist: <code>AUTHORING.md</code> — the canonical <code>window.sg.*</code> contract. <strong>Adding a competing document would create a second source of truth that drifts.</strong>&quot;</em></p></blockquote>
+<p>That reasoning applies to this site. <strong><code>AUTHORING.md</code> stays canonical; the site generates its reference from it and says so on the page.</strong> <code>07__</code> §2, <code>08__</code> Q1.</p>
+<hr>
+<h2 id="keys-this-site-is-the-most-likely-place-in-the-estate-to-leak-one">⚠️ Keys — this site is the most likely place in the estate to leak one</h2>
+<p>Rule 13 of the estate&#x27;s code rules: <em>&quot;No vault keys in Git… <strong>If one appears in a diff, block the commit.</strong>&quot;</em></p>
+<p>Every page here is about credentials, so:</p>
+<ul><li><strong>Every sample uses an obviously-fake placeholder.</strong> Never a realistic-looking key.</li><li><strong>Add <code>sk-or-</code>, <code>sgit_vk1_</code> and OpenRouter key shapes to the CI leak check</strong> before the first sample page ships.</li><li><strong>If the demo vault in <code>06__</code> §4 is built: read key only</strong>, and only after spend caps are set. A vault with an LLM key configured <strong>carries a credential</strong> — publishing its read key shares the ability to spend it (<code>03__</code> §6).</li></ul>
+<hr>
+<h2 id="publish-the-security-gap">Publish the security gap</h2>
+<p><code>03__</code> §5. The corpus states plainly that CSP egress lockdown is not built, and that this is <em>&quot;the gap that turns the current design from a convenience into a guarantee.&quot;</em></p>
+<p><strong>Publish it, unsoftened, within one click of the front-page claim.</strong> Publishing a known limitation of your own security design is the estate&#x27;s own standard — the vault catalogue publishes its own key-exposure incident, and the reality-document rule is <em>&quot;briefs are aspirations, not facts.&quot;</em></p>
+<p><strong>Do not</strong> publish an exploitation path, and do not frame it as a vulnerability disclosure. It is a scope statement: <em>the bridge protects the credential you trusted us with; it does not prevent all egress.</em></p>
+<h2 id="do-not-publish">Do not publish</h2>
+<p><code>library/alchemist/materials/</code> (whole tree) · the positioning and competitor briefs · <code>team/roles/appsec/reviews/02/21/…pki-architecture-security-revised.md</code> (<em>&quot;an attack roadmap for live code&quot;</em>) · <code>team/roles/grc/reviews/02/19/</code> (names a private individual with signature blocks).</p>
+<p><strong>Tier-2 rows are marked <code>HOLD</code></strong> — the injection material must not be published until <code>08__</code> Q3 has an answer.</p>
+<h2 id="accuracy">Accuracy</h2>
+<p><strong>The API is eight months old and still moving</strong> — <code>listen</code> and <code>imagePart</code> landed a day after the rest of it. Verify every claim against the shipped code, not only against <code>AUTHORING.md</code>, and date the contract on the page.</p>
+<p><strong>The corpus counts here</strong> (442 OpenRouter files, 92 injection, 144 Ollama, 2 cost-per-token) were measured in this session. Generate them or date them.</p>
+<hr>
+<p>This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/briefs/LICENCE.md">https://llms.sgit.ai/briefs/LICENCE.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:54Z</dd><dt>sha256</dt><dd><code title="e17720014039ff49f4acaabbfe39f41afff669cf813f95b8c5f1deadcf3973f2">e17720014039</code></dd><dt>Frozen copy</dt><dd><a href="LICENCE.md">sites/llms.sgit.ai/briefs/LICENCE.md</a> (3,837 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

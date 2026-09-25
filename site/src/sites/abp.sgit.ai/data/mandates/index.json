@@ -1,0 +1,235 @@
+{
+  "type": "abp/mandates-index/v1",
+  "_what_this_is": "Starting mandates, one per surface. A mandate is what a reasonable person WANTED, stated per capability. None was measured or surveyed: each is a first draft written to be argued with.",
+  "count": 16,
+  "mandates": [
+    {
+      "id": "coding-assistant-on-my-machine",
+      "label": "A coding assistant on my machine",
+      "surface": [
+        "cli"
+      ],
+      "applies_to": [
+        "anthropic/claude-code/local-default",
+        "anthropic/claude-code/local-confirmations-off"
+      ],
+      "want": 5,
+      "do_not_want": 11,
+      "file": "mandates/coding-assistant-on-my-machine.json"
+    },
+    {
+      "id": "coding-assistant-in-a-container",
+      "label": "A coding assistant in a container on the web",
+      "surface": [
+        "agentbox"
+      ],
+      "applies_to": [
+        "anthropic/claude-code-remote/ccr-container"
+      ],
+      "want": 6,
+      "do_not_want": 3,
+      "file": "mandates/coding-assistant-in-a-container.json"
+    },
+    {
+      "id": "desktop-app-with-local-tools",
+      "label": "The desktop app, with local tools switched on",
+      "surface": [
+        "desktop"
+      ],
+      "applies_to": [
+        "anthropic/claude-desktop/default"
+      ],
+      "want": 3,
+      "do_not_want": 6,
+      "file": "mandates/desktop-app-with-local-tools.json"
+    },
+    {
+      "id": "chat-with-connectors",
+      "label": "Chat, with connectors switched on",
+      "surface": [
+        "web"
+      ],
+      "applies_to": [
+        "anthropic/claude-web/connectors-on"
+      ],
+      "want": 3,
+      "do_not_want": 2,
+      "file": "mandates/chat-with-connectors.json"
+    },
+    {
+      "id": "chat-no-connectors",
+      "label": "Chat in the browser, nothing connected",
+      "surface": [
+        "web"
+      ],
+      "applies_to": [
+        "openai/chatgpt-web/default"
+      ],
+      "want": 1,
+      "do_not_want": 14,
+      "file": "mandates/chat-no-connectors.json"
+    },
+    {
+      "id": "ci-job",
+      "label": "A CI job on a hosted runner",
+      "surface": [
+        "ci"
+      ],
+      "applies_to": [
+        "github/actions-runner/ci"
+      ],
+      "want": 5,
+      "do_not_want": 1,
+      "file": "mandates/ci-job.json"
+    },
+    {
+      "id": "browser-extension-i-installed",
+      "label": "A browser extension I installed",
+      "surface": [
+        "extension"
+      ],
+      "applies_to": [
+        "generic/browser-extension/broad-host-permissions"
+      ],
+      "want": 1,
+      "do_not_want": 2,
+      "file": "mandates/browser-extension-i-installed.json"
+    },
+    {
+      "id": "scheduled-job-under-a-service-account",
+      "label": "A scheduled job under a service account",
+      "surface": [
+        "service"
+      ],
+      "applies_to": [
+        "generic/scheduled-job/service-account"
+      ],
+      "want": 4,
+      "do_not_want": 2,
+      "file": "mandates/scheduled-job-under-a-service-account.json"
+    },
+    {
+      "id": "reader-on-my-mailbox",
+      "label": "A reader on my mailbox",
+      "surface": [
+        "connector"
+      ],
+      "applies_to": [
+        "google/gmail/readonly-connector"
+      ],
+      "want": 1,
+      "do_not_want": 2,
+      "file": "mandates/reader-on-my-mailbox.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "read-and-draft-never-send",
+      "label": "Find things in the inbox, draft replies, never send",
+      "surface": [
+        "web"
+      ],
+      "applies_to": [
+        "anthropic/gmail-connector/default",
+        "anthropic/gmail-connector/measured-2026-09-19"
+      ],
+      "want": 1,
+      "do_not_want": 3,
+      "file": "mandates/read-and-draft-never-send.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "reader-on-my-drive",
+      "label": "A reader on my drive",
+      "surface": [
+        "connector"
+      ],
+      "applies_to": [
+        "google/drive/readonly-connector"
+      ],
+      "want": 1,
+      "do_not_want": 3,
+      "file": "mandates/reader-on-my-drive.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "search-our-tenant-read-only",
+      "label": "Search our tenant, read-only",
+      "surface": [
+        "web"
+      ],
+      "applies_to": [
+        "anthropic/microsoft-365-connector/default"
+      ],
+      "want": 2,
+      "do_not_want": 2,
+      "file": "mandates/search-our-tenant-read-only.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "find-and-read-my-files",
+      "label": "Find and read my files",
+      "surface": [
+        "mcp"
+      ],
+      "applies_to": [
+        "dropbox/mcp-server/default"
+      ],
+      "want": 1,
+      "do_not_want": 3,
+      "file": "mandates/find-and-read-my-files.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "assistant-over-my-workspace",
+      "label": "An assistant over my Workspace, reading",
+      "surface": [
+        "mcp"
+      ],
+      "applies_to": [
+        "google/workspace-mcp/default"
+      ],
+      "want": 2,
+      "do_not_want": 3,
+      "file": "mandates/assistant-over-my-workspace.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "sandbox-build-one-agent-workflow",
+      "label": "A sandbox: build and run one AI-agent workflow",
+      "surface": [
+        "api"
+      ],
+      "applies_to": [
+        "n8n/self-hosted/owner-api-key"
+      ],
+      "want": 4,
+      "do_not_want": 2,
+      "file": "mandates/sandbox-build-one-agent-workflow.json",
+      "contributed_by": "riskmandate.ai"
+    },
+    {
+      "id": "inferred-from-one-session",
+      "label": "What the agent inferred it was authorised to do, from one session",
+      "surface": [
+        "web"
+      ],
+      "applies_to": [
+        "anthropic/gmail-connector/measured-2026-09-19"
+      ],
+      "want": 2,
+      "do_not_want": 1,
+      "file": "mandates/inferred-from-one-session.json",
+      "contributed_by": "riskmandate.ai"
+    }
+  ],
+  "provenance": {
+    "source": "https://what-can-it-do.games.sgit.ai/data/",
+    "source_page": "https://what-can-it-do.games.sgit.ai/map/index.html",
+    "retrieved": "2026-09-11T13:00:37Z",
+    "pack_version": "v0.8.0",
+    "content_hash": "sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef",
+    "verbatim_bytes": "upstream/",
+    "note": "Generated from the mandate files.",
+    "licence": "CC BY 4.0"
+  }
+}

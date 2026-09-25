@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>How it&#x27;s scored · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · what-can-it-do.games.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#how-its-scored">How it&amp;#x27;s scored</a></li><li class="l1"><a href="#how-its-scored-1">How it&amp;#x27;s scored</a></li><li class="l2"><a href="#why-wrong-costs-more-than-right-earns">Why wrong costs more than right earns</a></li><li class="l2"><a href="#why-dont-know-is-worth-exactly-nothing">Why “don&amp;#x27;t know” is worth exactly nothing</a></li><li class="l2"><a href="#the-number-that-actually-matters">The number that actually matters</a></li><li class="l2"><a href="#the-second-score-kept-separate">The second score, kept separate</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/what-can-it-do.games.sgit.ai.html">what-can-it-do.games.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://what-can-it-do.games.sgit.ai/how-it-is-scored/index.md">live ↗</a></p><article class="source"><h1 id="how-its-scored">How it&#x27;s scored</h1>
+<blockquote><p>+30 for right, −50 for wrong, 0 for don&#x27;t know — and why a wrong answer costs more than a right one earns.</p></blockquote>
+<p>*Source: <a href="index.html">https://what-can-it-do.games.sgit.ai/how-it-is-scored/index.html</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/how-it-is-scored/index.html" title="live page">↗</a> · site v0.8.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../index.html">Play</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/index.md" title="live page">↗</a> / How it&#x27;s scored</p>
+<h1 id="how-its-scored-1">How it&#x27;s scored</h1>
+<p>The rule is published before you play, because a score you cannot check the rule behind is just a number.</p>
+<div class="table"><table><thead><tr><th>You answer</th><th>If you&#x27;re right</th><th>If you&#x27;re wrong</th></tr></thead><tbody><tr><td><strong>Yes</strong> or <strong>No</strong></td><td>+30</td><td>−50</td></tr>
+<tr><td><strong>Don&#x27;t know</strong></td><td>0</td><td>0</td></tr></tbody></table></div>
+<h2 id="why-wrong-costs-more-than-right-earns">Why wrong costs more than right earns</h2>
+<p>Because otherwise the way to win is to say <strong>yes to everything</strong>.</p>
+<p>Real permissions are wider than people expect. If you answered yes to every question you would be right more often than not — and you would have demonstrated nothing, and learned nothing. Making a wrong answer cost nearly twice what a right one earns removes that strategy. The game&#x27;s own automated test checks it: answering <em>yes</em> to everything scores <strong>deeply negative</strong> for every setup in the game, while answering perfectly scores about +3,800.</p>
+<h2 id="why-dont-know-is-worth-exactly-nothing">Why “don&#x27;t know” is worth exactly nothing</h2>
+<p>Not a small penalty. Nothing. The game is measuring how well you know what you know, and a person who correctly recognises the edge of their knowledge is doing the right thing. Punishing that would be measuring confidence instead, which is the opposite of the point.</p>
+<p>So there is no forced guess anywhere. If you do not know, say so and move on.</p>
+<h2 id="the-number-that-actually-matters">The number that actually matters</h2>
+<p>Not the points — the <strong>calibration</strong> figure. It answers: when you said yes, how often were you right? When you said no, how often were you right? Somebody with a modest score and honest uncertainty is in better shape than somebody with a high score who got there by being confidently right about easy things and confidently wrong about hard ones.</p>
+<p>The end screen breaks it down both ways, and shows you specifically <strong>where you were confidently wrong</strong> — which is the part most worth reading.</p>
+<h2 id="the-second-score-kept-separate">The second score, kept separate</h2>
+<p>After you answer <em>can it?</em>, a <strong>but…</strong> appears — <em>but it shouldn&#x27;t be able to</em>, or <em>but I&#x27;d want it to</em>. Ticking it is worth <strong>+20 if you are flagging something real</strong> and <strong>−20 if you are flagging something that is not there</strong>. It is counted separately from the main score and never mixed into it, because it is measuring a different thing: not what you know, but what you want.</p>
+<p>Under all of this is a standard statistical scoring rule (a Brier score, shifted so <em>don&#x27;t know</em> lands on zero). <a href="../../games.sgit.ai/method/calibration.html">The full working, if you want it</a><a class="ext live" href="https://games.sgit.ai/method/calibration.html" title="live page">↗</a>.</p>
+<blockquote><p><strong>Honest caveat:</strong> the exact numbers — +30, −50, ±20 — are a starting point, not a finding. They will be adjusted once enough people have played for the spread to mean something. That is stated in the game too.</p></blockquote>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/how-it-is-scored/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>what-can-it-do.games.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://what-can-it-do.games.sgit.ai/how-it-is-scored/index.md">https://what-can-it-do.games.sgit.ai/how-it-is-scored/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:56Z</dd><dt>sha256</dt><dd><code title="9f0aaea07a594f9acb4266e8770c412ca3d9a68a1f2b0842314e55a6a4fc3912">9f0aaea07a59</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/what-can-it-do.games.sgit.ai/how-it-is-scored/index.md</a> (3,150 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

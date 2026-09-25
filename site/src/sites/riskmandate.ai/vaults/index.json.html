@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.json">raw text</a> · <a class="ext" href="https://riskmandate.ai/vaults/index.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;note&quot;: &quot;The catalogue of behaviour-policy vaults on this site — the single source for the directory page (abp-vaults.html) and one page per vault (abp-vault-&lt;slug&gt;.html), both written by scripts/site/build-abp-pages.mjs. `key` is the vault&#x27;s PUBLIC read key (64 hex): derived one-way, read and nothing else, published on purpose. A write credential never appears here or anywhere in site/. `asked_for` are applications whose grant is not yet published at abp.sgit.ai, so no vault can be derived for them yet — they are listed so the gap is visible, never filled in by hand. `store_page: false` marks a shape the store has not built a page for yet, so the buy link points at the store&#x27;s list of shapes rather than at a 404; it is removed once the store promotes the shape.&quot;,
+  &quot;endpoint&quot;: &quot;https://dev.send.sgraph.ai&quot;,
+  &quot;vaults&quot;: [
+    {
+      &quot;slug&quot;: &quot;claude-code-web&quot;,
+      &quot;vid&quot;: &quot;ruj286tr&quot;,
+      &quot;key&quot;: &quot;6042edc39e0bcb1f17af1da0cf9d4ded6f89a7bb6a5394aa9554bb76913a249c&quot;,
+      &quot;app&quot;: &quot;Claude Code on the web&quot;,
+      &quot;title&quot;: &quot;Claude Code on the web, with one repository attached&quot;,
+      &quot;title_lead&quot;: &quot;Claude Code on the web,&quot;,
+      &quot;title_tail&quot;: &quot;with one repository attached.&quot;,
+      &quot;shape&quot;: &quot;anthropic/claude-code-remote/ccr-container&quot;,
+      &quot;family&quot;: &quot;code&quot;,
+      &quot;glyph&quot;: &quot;CC&quot;,
+      &quot;blurb&quot;: &quot;A managed, ephemeral container with one repository attached and an egress proxy above it. The shape this site is maintained from; 13 of 20 rows measured on the thing itself.&quot;,
+      &quot;logo&quot;: &quot;claude&quot;,
+      &quot;brand&quot;: &quot;#D97757&quot;,
+      &quot;group&quot;: &quot;Coding agents&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;claude-code-cli&quot;,
+      &quot;vid&quot;: &quot;amicdz0h&quot;,
+      &quot;key&quot;: &quot;46c3f77951dfea80c8bf3d72d5a84915e2694129ca8df4a1c58ccecfeb31bc47&quot;,
+      &quot;app&quot;: &quot;Claude Code on your machine&quot;,
+      &quot;title&quot;: &quot;Claude Code on your own machine, confirmations on&quot;,
+      &quot;title_lead&quot;: &quot;Claude Code on your machine,&quot;,
+      &quot;title_tail&quot;: &quot;confirmations on.&quot;,
+      &quot;shape&quot;: &quot;anthropic/claude-code/local-default&quot;,
+      &quot;family&quot;: &quot;code&quot;,
+      &quot;glyph&quot;: &quot;CC&quot;,
+      &quot;blurb&quot;: &quot;The coding agent on a developer&#x27;s own machine with confirmation prompts enabled. Read this one beside the confirmations-off shape: one setting moves one barrier and not one number changes.&quot;,
+      &quot;logo&quot;: &quot;terminal&quot;,
+      &quot;brand&quot;: &quot;#D97757&quot;,
+      &quot;group&quot;: &quot;Coding agents&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;claude-code-cli-confirmations-off&quot;,
+      &quot;vid&quot;: &quot;ahly2cho&quot;,
+      &quot;key&quot;: &quot;7894e9462c18014303ec8137593610880171f0d6fa8a999b5f9f8687ba100b86&quot;,
+      &quot;app&quot;: &quot;Claude Code, confirmations off&quot;,
+      &quot;title&quot;: &quot;Claude Code on your own machine, confirmations off&quot;,
+      &quot;title_lead&quot;: &quot;Claude Code on your machine,&quot;,
+      &quot;title_tail&quot;: &quot;confirmations off.&quot;,
+      &quot;shape&quot;: &quot;anthropic/claude-code/local-confirmations-off&quot;,
+      &quot;family&quot;: &quot;code&quot;,
+      &quot;glyph&quot;: &quot;CC&quot;,
+      &quot;blurb&quot;: &quot;The same agent, the same machine, the same account, with the confirmation prompt switched off. The prompt was the only thing between an authorised capability and the whole machine, and it was a switch the agent&#x27;s account could flip.&quot;,
+      &quot;logo&quot;: &quot;terminal&quot;,
+      &quot;brand&quot;: &quot;#D97757&quot;,
+      &quot;group&quot;: &quot;Coding agents&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;claude-desktop&quot;,
+      &quot;vid&quot;: &quot;ty3axtmo&quot;,
+      &quot;key&quot;: &quot;0773b3bf99cb7ef237fa83c77778eb85009a89dbaf566c2d16a83a8f3c693635&quot;,
+      &quot;app&quot;: &quot;Claude Desktop&quot;,
+      &quot;title&quot;: &quot;Claude Desktop, with local tools switched on&quot;,
+      &quot;title_lead&quot;: &quot;Claude Desktop,&quot;,
+      &quot;title_tail&quot;: &quot;with local tools switched on.&quot;,
+      &quot;shape&quot;: &quot;anthropic/claude-desktop/default&quot;,
+      &quot;family&quot;: &quot;desktop&quot;,
+      &quot;glyph&quot;: &quot;CD&quot;,
+      &quot;blurb&quot;: &quot;The desktop app with local tools on: files, processes and the network of the machine it sits on. Ten capabilities, three wanted, eight with nothing real in the way.&quot;,
+      &quot;logo&quot;: &quot;claude&quot;,
+      &quot;brand&quot;: &quot;#D97757&quot;,
+      &quot;group&quot;: &quot;Chat assistants&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;claude-web-connectors&quot;,
+      &quot;vid&quot;: &quot;wkm5owfl&quot;,
+      &quot;key&quot;: &quot;2bf331cfad716bdc7f37feddd7f1892c651425dd844381d3f392ed1b3419447d&quot;,
+      &quot;app&quot;: &quot;Claude in the browser, connectors on&quot;,
+      &quot;title&quot;: &quot;Claude in the browser, with connectors switched on&quot;,
+      &quot;title_lead&quot;: &quot;Claude in the browser,&quot;,
+      &quot;title_tail&quot;: &quot;with connectors switched on.&quot;,
+      &quot;shape&quot;: &quot;anthropic/claude-web/connectors-on&quot;,
+      &quot;family&quot;: &quot;chat&quot;,
+      &quot;glyph&quot;: &quot;CW&quot;,
+      &quot;blurb&quot;: &quot;Chat with connectors enabled: the tenant&#x27;s accounts are in reach through whatever was connected. The two excess rows here both sit behind a boundary, which is the exception in this directory.&quot;,
+      &quot;logo&quot;: &quot;claude&quot;,
+      &quot;brand&quot;: &quot;#D97757&quot;,
+      &quot;group&quot;: &quot;Chat assistants&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;chatgpt-web&quot;,
+      &quot;vid&quot;: &quot;dd1teu9n&quot;,
+      &quot;key&quot;: &quot;8f7da12c7ab0f2496471ff9d5e4f4755975ce51e7830dafa39dc728b5aa71001&quot;,
+      &quot;app&quot;: &quot;ChatGPT in the browser&quot;,
+      &quot;title&quot;: &quot;ChatGPT in the browser, nothing connected&quot;,
+      &quot;title_lead&quot;: &quot;ChatGPT in the browser,&quot;,
+      &quot;title_tail&quot;: &quot;nothing connected.&quot;,
+      &quot;shape&quot;: &quot;openai/chatgpt-web/default&quot;,
+      &quot;family&quot;: &quot;chat&quot;,
+      &quot;glyph&quot;: &quot;GP&quot;,
+      &quot;blurb&quot;: &quot;The smallest grant in the set: one capability, one wanted, no excess. The baseline every other shape is measured against, and the proof that a template can be empty and still be right.&quot;,
+      &quot;logo&quot;: &quot;openai&quot;,
+      &quot;brand&quot;: &quot;#412991&quot;,
+      &quot;group&quot;: &quot;Chat assistants&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;browser-extension&quot;,
+      &quot;vid&quot;: &quot;exsaxrfr&quot;,
+      &quot;key&quot;: &quot;875818b8d845c17801db7aa4bef5037a70e084db717749533179af0b2abc68df&quot;,
+      &quot;app&quot;: &quot;A browser extension&quot;,
+      &quot;title&quot;: &quot;A browser extension with broad host permissions&quot;,
+      &quot;title_lead&quot;: &quot;A browser extension&quot;,
+      &quot;title_tail&quot;: &quot;with broad host permissions.&quot;,
+      &quot;shape&quot;: &quot;generic/browser-extension/broad-host-permissions&quot;,
+      &quot;family&quot;: &quot;browser&quot;,
+      &quot;glyph&quot;: &quot;EX&quot;,
+      &quot;blurb&quot;: &quot;Other people&#x27;s data, and the mandate nobody wrote down. Three capabilities, all three irreversible; the shortest policy in the directory and not the mildest.&quot;,
+      &quot;logo&quot;: &quot;googlechrome&quot;,
+      &quot;brand&quot;: &quot;#4285F4&quot;,
+      &quot;group&quot;: &quot;Chat assistants&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;github-actions&quot;,
+      &quot;vid&quot;: &quot;0hpdpj80&quot;,
+      &quot;key&quot;: &quot;28afd90f03365372d9c0181808680519523ffdbeadc1fce7ec8e2074c28e36e3&quot;,
+      &quot;app&quot;: &quot;GitHub Actions&quot;,
+      &quot;title&quot;: &quot;A GitHub Actions runner, a hosted CI job&quot;,
+      &quot;title_lead&quot;: &quot;GitHub Actions,&quot;,
+      &quot;title_tail&quot;: &quot;a hosted CI job.&quot;,
+      &quot;shape&quot;: &quot;github/actions-runner/ci&quot;,
+      &quot;family&quot;: &quot;ci&quot;,
+      &quot;glyph&quot;: &quot;GA&quot;,
+      &quot;blurb&quot;: &quot;A hosted runner under a service account: persistence, and reach beyond the turn. Eight of eight rows measured, the only fully measured shape besides the web container.&quot;,
+      &quot;logo&quot;: &quot;githubactions&quot;,
+      &quot;brand&quot;: &quot;#2088FF&quot;,
+      &quot;group&quot;: &quot;Automation &amp; CI&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;scheduled-job&quot;,
+      &quot;vid&quot;: &quot;kd7zeimj&quot;,
+      &quot;key&quot;: &quot;cf9307d3ac3f3674049590684d9af0c10116364c813dea77d8584c8fa5a10e7c&quot;,
+      &quot;app&quot;: &quot;A scheduled job&quot;,
+      &quot;title&quot;: &quot;A scheduled job running as a service account&quot;,
+      &quot;title_lead&quot;: &quot;A scheduled job&quot;,
+      &quot;title_tail&quot;: &quot;under a service account.&quot;,
+      &quot;shape&quot;: &quot;generic/scheduled-job/service-account&quot;,
+      &quot;family&quot;: &quot;service&quot;,
+      &quot;glyph&quot;: &quot;SJ&quot;,
+      &quot;blurb&quot;: &quot;A job that outlives the person who made it, running as a service account nobody logs in as. Seven capabilities, four wanted, four with nothing in the way.&quot;,
+      &quot;logo&quot;: &quot;clock&quot;,
+      &quot;brand&quot;: &quot;#374151&quot;,
+      &quot;group&quot;: &quot;Automation &amp; CI&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;google-workspace-mcp&quot;,
+      &quot;vid&quot;: &quot;pq7ct02p&quot;,
+      &quot;key&quot;: &quot;093c4c58f1593dacecc727de965ee22f883a6530cac20b2ff9ae6b7ea811c1e4&quot;,
+      &quot;app&quot;: &quot;Google Workspace MCP servers&quot;,
+      &quot;title&quot;: &quot;The Google Workspace MCP servers&quot;,
+      &quot;title_lead&quot;: &quot;The Google Workspace&quot;,
+      &quot;title_tail&quot;: &quot;MCP servers.&quot;,
+      &quot;shape&quot;: &quot;google/workspace-mcp/default&quot;,
+      &quot;family&quot;: &quot;google&quot;,
+      &quot;glyph&quot;: &quot;G&quot;,
+      &quot;blurb&quot;: &quot;Gmail, Drive, Docs, Sheets, Slides, Calendar and Chat, one server each. The page advertises drafting mail and scheduling meetings; the scopes it asks for send mail and cannot touch a calendar.&quot;,
+      &quot;kind&quot;: &quot;connector&quot;,
+      &quot;logo&quot;: &quot;google&quot;,
+      &quot;brand&quot;: &quot;#4285F4&quot;,
+      &quot;group&quot;: &quot;Mail &amp; files connectors&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;claude-gmail-connector&quot;,
+      &quot;vid&quot;: &quot;oc433z3m&quot;,
+      &quot;key&quot;: &quot;22fd71dfcc045d047846972e051fd97444f75e0c53da3fde9a233060023cee04&quot;,
+      &quot;app&quot;: &quot;Claude&#x27;s Gmail connector&quot;,
+      &quot;title&quot;: &quot;Claude, with the Gmail connector on one inbox&quot;,
+      &quot;title_lead&quot;: &quot;Claude, with the Gmail&quot;,
+      &quot;title_tail&quot;: &quot;connector on one inbox.&quot;,
+      &quot;shape&quot;: &quot;anthropic/gmail-connector/default&quot;,
+      &quot;family&quot;: &quot;mail&quot;,
+      &quot;glyph&quot;: &quot;G&quot;,
+      &quot;blurb&quot;: &quot;Search and read carry no approval prompt; send, reply and forward do, on by default — a setting the account, or an org owner, can turn off. The consent screen already permits sending before the prompt is ever removed. Four of six rows measured on an account the deployer runs; permanent deletion measured as out of reach.&quot;,
+      &quot;kind&quot;: &quot;measured&quot;,
+      &quot;logo&quot;: &quot;gmail&quot;,
+      &quot;brand&quot;: &quot;#EA4335&quot;,
+      &quot;group&quot;: &quot;Mail &amp; files connectors&quot;,
+      &quot;store_page&quot;: false,
+      &quot;store_note&quot;: &quot;The store builds a page per shape by promoting this catalogue at its own build time. This shape was added on 16 September and store.sgit.ai v0.3.17 does not list it yet, so /p/claude-gmail-connector/ is a 404. Until the store&#x27;s next build the buy link points at its list of shapes. Flip this to true (or delete it) once the page exists.&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;gmail-readonly&quot;,
+      &quot;vid&quot;: &quot;l2zlv3ng&quot;,
+      &quot;key&quot;: &quot;865ea2d50ada749c30554380f22202dffe4c362a4a85a565accd045b84eefaf8&quot;,
+      &quot;app&quot;: &quot;Gmail, read-only scope&quot;,
+      &quot;title&quot;: &quot;An assistant on a personal Gmail mailbox&quot;,
+      &quot;title_lead&quot;: &quot;An assistant on a&quot;,
+      &quot;title_tail&quot;: &quot;personal Gmail mailbox.&quot;,
+      &quot;shape&quot;: &quot;google/gmail/readonly-connector&quot;,
+      &quot;family&quot;: &quot;mail&quot;,
+      &quot;glyph&quot;: &quot;M&quot;,
+      &quot;blurb&quot;: &quot;The narrowest scope that reads one message reads every message. Lab 03 asked the model site for this shape first; here it is, read from Google&#x27;s scope page.&quot;,
+      &quot;kind&quot;: &quot;connector&quot;,
+      &quot;logo&quot;: &quot;gmail&quot;,
+      &quot;brand&quot;: &quot;#EA4335&quot;,
+      &quot;group&quot;: &quot;Mail &amp; files connectors&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;google-drive-readonly&quot;,
+      &quot;vid&quot;: &quot;vz03p8it&quot;,
+      &quot;key&quot;: &quot;e04bb066d11479d33ecb9e5d0c1a621e13e4599e8c2b5380001ab16e8c932270&quot;,
+      &quot;app&quot;: &quot;Google Drive, read-only scope&quot;,
+      &quot;title&quot;: &quot;An assistant on a personal Google Drive&quot;,
+      &quot;title_lead&quot;: &quot;An assistant on a&quot;,
+      &quot;title_tail&quot;: &quot;personal Google Drive.&quot;,
+      &quot;shape&quot;: &quot;google/drive/readonly-connector&quot;,
+      &quot;family&quot;: &quot;files&quot;,
+      &quot;glyph&quot;: &quot;D&quot;,
+      &quot;blurb&quot;: &quot;The default corpus is \&quot;files owned by or shared to the user\&quot;: everything anybody ever shared, on day one, without anyone choosing it.&quot;,
+      &quot;kind&quot;: &quot;connector&quot;,
+      &quot;logo&quot;: &quot;googledrive&quot;,
+      &quot;brand&quot;: &quot;#4285F4&quot;,
+      &quot;group&quot;: &quot;Mail &amp; files connectors&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;claude-m365-connector&quot;,
+      &quot;vid&quot;: &quot;dgx3nvu4&quot;,
+      &quot;key&quot;: &quot;43d439062419da78ef22e544257d775f5774b33830d92f7a3abe5c05c2873669&quot;,
+      &quot;app&quot;: &quot;Microsoft 365 connector (Claude)&quot;,
+      &quot;title&quot;: &quot;Claude&#x27;s Microsoft 365 connector&quot;,
+      &quot;title_lead&quot;: &quot;Claude&#x27;s&quot;,
+      &quot;title_tail&quot;: &quot;Microsoft 365 connector.&quot;,
+      &quot;shape&quot;: &quot;anthropic/microsoft-365-connector/default&quot;,
+      &quot;family&quot;: &quot;microsoft&quot;,
+      &quot;glyph&quot;: &quot;MS&quot;,
+      &quot;blurb&quot;: &quot;Delegated permissions, consented once by a Global Administrator. Shared mailboxes are in scope; site-specific narrowing is unsupported because the search is tenant-wide; and the page that says \&quot;read-only access\&quot; also lists the tools that send mail as the user.&quot;,
+      &quot;kind&quot;: &quot;connector&quot;,
+      &quot;logo&quot;: &quot;microsoft&quot;,
+      &quot;brand&quot;: &quot;#5E5E5E&quot;,
+      &quot;group&quot;: &quot;Mail &amp; files connectors&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;dropbox-mcp&quot;,
+      &quot;vid&quot;: &quot;9eqa7e4p&quot;,
+      &quot;key&quot;: &quot;f22db64f51e4268a4531bebe0c6d46f3e51dd1337193a7e8137efac9cdfc5990&quot;,
+      &quot;app&quot;: &quot;Dropbox MCP server&quot;,
+      &quot;title&quot;: &quot;The official Dropbox MCP server&quot;,
+      &quot;title_lead&quot;: &quot;The official&quot;,
+      &quot;title_tail&quot;: &quot;Dropbox MCP server.&quot;,
+      &quot;shape&quot;: &quot;dropbox/mcp-server/default&quot;,
+      &quot;family&quot;: &quot;files&quot;,
+      &quot;glyph&quot;: &quot;Db&quot;,
+      &quot;blurb&quot;: &quot;Eight scopes, two of them write and two of them sharing, and no folder-scoped variant. It reads, creates, moves, deletes and makes shared links; the page says files are not deleted permanently and that recovery depends on your plan.&quot;,
+      &quot;kind&quot;: &quot;connector&quot;,
+      &quot;logo&quot;: &quot;dropbox&quot;,
+      &quot;brand&quot;: &quot;#0061FF&quot;,
+      &quot;group&quot;: &quot;Mail &amp; files connectors&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;n8n-owner-api-key&quot;,
+      &quot;vid&quot;: &quot;l8opgcug&quot;,
+      &quot;key&quot;: &quot;d85b128b1eff181a71f3e4eec16a27510934ca73aecc450617b7c40d750909b3&quot;,
+      &quot;app&quot;: &quot;n8n, owner API key&quot;,
+      &quot;title&quot;: &quot;A self-hosted n8n instance, owner API key&quot;,
+      &quot;title_lead&quot;: &quot;A self-hosted n8n instance,&quot;,
+      &quot;title_tail&quot;: &quot;owner API key.&quot;,
+      &quot;shape&quot;: &quot;n8n/self-hosted/owner-api-key&quot;,
+      &quot;family&quot;: &quot;service&quot;,
+      &quot;glyph&quot;: &quot;n8n&quot;,
+      &quot;kind&quot;: &quot;measured&quot;,
+      &quot;blurb&quot;: &quot;The first grant here measured on a live instance, by an early beta user&#x27;s agent: full control of every automation, an outbound node with no restriction on target, every account visible, and credential metadata open through one door and shut through another.&quot;,
+      &quot;logo&quot;: &quot;n8n&quot;,
+      &quot;brand&quot;: &quot;#EA4B71&quot;,
+      &quot;group&quot;: &quot;Automation &amp; CI&quot;
+    }
+  ],
+  &quot;asked_for&quot;: [
+    {
+      &quot;slug&quot;: &quot;claude-google-workspace-connector&quot;,
+      &quot;app&quot;: &quot;Claude&#x27;s Calendar &amp; Drive connectors&quot;,
+      &quot;family&quot;: &quot;google&quot;,
+      &quot;glyph&quot;: &quot;G&quot;,
+      &quot;blurb&quot;: &quot;Google Calendar and Google Drive, the two Google Workspace connectors not yet in the directory — Gmail&#x27;s own is.&quot;,
+      &quot;note&quot;: &quot;not yet researched — next in the queue&quot;,
+      &quot;logo&quot;: &quot;google&quot;,
+      &quot;brand&quot;: &quot;#4285F4&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;slack-connector&quot;,
+      &quot;app&quot;: &quot;An assistant connected to Slack&quot;,
+      &quot;family&quot;: &quot;chat&quot;,
+      &quot;glyph&quot;: &quot;S&quot;,
+      &quot;blurb&quot;: &quot;Channels are mostly other people&#x27;s writing, and a bot token reaches every channel it is in.&quot;,
+      &quot;note&quot;: &quot;not yet researched&quot;,
+      &quot;logo&quot;: &quot;slack&quot;,
+      &quot;brand&quot;: &quot;#4A154B&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;github-connector&quot;,
+      &quot;app&quot;: &quot;An assistant connected to GitHub&quot;,
+      &quot;family&quot;: &quot;code&quot;,
+      &quot;glyph&quot;: &quot;GH&quot;,
+      &quot;blurb&quot;: &quot;A fine-grained token can be scoped to a repository; an OAuth app cannot, and most connectors are OAuth apps.&quot;,
+      &quot;note&quot;: &quot;not yet researched&quot;,
+      &quot;logo&quot;: &quot;github&quot;,
+      &quot;brand&quot;: &quot;#181717&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;notion-connector&quot;,
+      &quot;app&quot;: &quot;An assistant connected to Notion&quot;,
+      &quot;family&quot;: &quot;files&quot;,
+      &quot;glyph&quot;: &quot;N&quot;,
+      &quot;blurb&quot;: &quot;An integration is added page by page, which is the one connector model with a floor. Whether the assistant&#x27;s connector uses it is the question.&quot;,
+      &quot;note&quot;: &quot;not yet researched&quot;,
+      &quot;logo&quot;: &quot;notion&quot;,
+      &quot;brand&quot;: &quot;#000000&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;salesforce-connector&quot;,
+      &quot;app&quot;: &quot;An assistant connected to Salesforce&quot;,
+      &quot;family&quot;: &quot;service&quot;,
+      &quot;glyph&quot;: &quot;SF&quot;,
+      &quot;blurb&quot;: &quot;A CRM is entirely third-party material by construction.&quot;,
+      &quot;note&quot;: &quot;not yet researched&quot;,
+      &quot;logo&quot;: &quot;salesforce&quot;,
+      &quot;brand&quot;: &quot;#00A1E0&quot;
+    }
+  ],
+  &quot;app_vault&quot;: {
+    &quot;vault_id&quot;: &quot;vbhmlulo&quot;,
+    &quot;key&quot;: &quot;ae52f01b60792f13444056dfd0b624dc31c223907aee65700a0e06cf82b84caf&quot;,
+    &quot;entry&quot;: &quot;index.html&quot;,
+    &quot;version&quot;: &quot;v5&quot;,
+    &quot;note&quot;: &quot;The renderer every application vault loads (site/vaults/_app/), pushed as its own vault. v5 is the left-navigation reading app with the consequence layer and the dual licence. Public read key; read and nothing else. The previous app vault fl3i7lu4 (v4) still serves the vaults not yet re-pushed.&quot;
+  },
+  &quot;asked_for_note&quot;: &quot;Connector shapes not yet built. Each becomes a vault once its vendor pages have been read and quoted; the four Lab 03 asked the model site for are built above, ahead of the model site, and carry their open questions in RESEARCH-NEEDED.md.&quot;,
+  &quot;functions&quot;: [
+    {
+      &quot;slug&quot;: &quot;access-to-the-crm&quot;,
+      &quot;app&quot;: &quot;Access to the CRM&quot;,
+      &quot;logo&quot;: &quot;crm&quot;,
+      &quot;brand&quot;: &quot;#00A1E0&quot;,
+      &quot;blurb&quot;: &quot;Customer records are third-party material by construction. Salesforce, HubSpot, Dynamics.&quot;,
+      &quot;note&quot;: &quot;asked for — a policy for the function, whichever product holds it&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;customer-service-desk&quot;,
+      &quot;app&quot;: &quot;The customer-service desk&quot;,
+      &quot;logo&quot;: &quot;desk&quot;,
+      &quot;brand&quot;: &quot;#1A7F5A&quot;,
+      &quot;blurb&quot;: &quot;Tickets, and the conversations inside them. Zendesk, Intercom, Freshdesk.&quot;,
+      &quot;note&quot;: &quot;asked for&quot;
+    },
+    {
+      &quot;slug&quot;: &quot;finance-data&quot;,
+      &quot;app&quot;: &quot;Finance data&quot;,
+      &quot;logo&quot;: &quot;sheet&quot;,
+      &quot;brand&quot;: &quot;#B45309&quot;,
+      &quot;blurb&quot;: &quot;Spreadsheets, ledgers and the exports beside them. Sheets, Excel, NetSuite.&quot;,
+      &quot;note&quot;: &quot;asked for&quot;
+    }
+  ],
+  &quot;functions_note&quot;: &quot;Policies by business function: what the agent is FOR, whichever product holds the data. The mandate is the same across products; the grant is per product. Each becomes a vault once one product&#x27;s grant is documented for it.&quot;
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/vaults/index.json">https://riskmandate.ai/vaults/index.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="e0ce5b3e20f0ba900a25b07c44d542a5b110464c212ec15a12e066af1cfabc58">e0ce5b3e20f0</code></dd><dt>Frozen copy</dt><dd><a href="index.json">sites/riskmandate.ai/vaults/index.json</a> (17,030 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

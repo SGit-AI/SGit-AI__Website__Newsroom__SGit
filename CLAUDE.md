@@ -23,6 +23,8 @@ site/           the built site. Generated: never edit by hand.
 
 ```bash
 python3 tools/fetch_sources.py          # refresh the snapshot (network needed)
+python3 tools/fetch_missing.py          # fetch .md twins of linked network pages not in the snapshot
+./run-local.sh [--offline|--serve]      # fetch (if online), build, validate, serve on :8000
 python3 tools/build.py                  # build site/ from everything else
 python3 tools/validate.py               # must pass before every commit
 ```

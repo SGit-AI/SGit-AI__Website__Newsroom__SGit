@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — The Model: Nodes, Edges, Addressing, Provenance · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-the-model-nodes-edges-addressing-provenance">02 — The Model: Nodes, Edges, Addressing, Provenance</a></li><li class="l2"><a href="#the-one-rule-everything-else-serves">The One Rule Everything Else Serves</a></li><li class="l2"><a href="#namespaces-which-are-also-the-visual-classes">Namespaces, Which Are Also The Visual Classes</a></li><li class="l3"><a href="#and-separately-the-three-assertion-classes-from-the-method-site">And separately, the three assertion classes from the method site</a></li><li class="l2"><a href="#node-types">Node Types</a></li><li class="l3"><a href="#derived-from-ungovr-ung">Derived from UnGovr (ung:)</a></li><li class="l3"><a href="#anchored-to-published-identifiers-akn">Anchored to published identifiers (akn:)</a></li><li class="l3"><a href="#our-model-sg">Our model (sg:)</a></li><li class="l2"><a href="#edge-types">Edge Types</a></li><li class="l2"><a href="#the-address-scheme-two-hashes">The Address Scheme: Two Hashes</a></li><li class="l2"><a href="#provenance-fields">Provenance Fields</a></li><li class="l2"><a href="#the-two-edge-rule-applied">The Two-Edge Rule, Applied</a></li><li class="l2"><a href="#claim-states">Claim States</a></li><li class="l2"><a href="#what-this-model-deliberately-does-not-do">What This Model Deliberately Does Not Do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="02__the-model.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md">live ↗</a></p><article class="source"><h1 id="02-the-model-nodes-edges-addressing-provenance">02 — The Model: Nodes, Edges, Addressing, Provenance</h1>
+<p><strong>version</strong> v0.33.67
+<strong>date</strong> 8 September 2026</p>
+<p><a href="01__what-exists.html">← 01 What Exists</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/01__what-exists.md" title="live page">↗</a> · <a href="README.html">Pack hub</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/README.md" title="live page">↗</a> · Next → <a href="03__the-worked-example.html">03 The Worked Example</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md" title="live page">↗</a></p>
+<hr>
+<h2 id="the-one-rule-everything-else-serves">The One Rule Everything Else Serves</h2>
+<blockquote><p><strong>Their nodes are theirs. Our nodes attach without altering them.</strong></p></blockquote>
+<p>This is the attach-never-mutate rule of 9 August, applied. <strong>No node derived from UnGovr&#x27;s data is ever edited, corrected, enriched or re-typed in this vault.</strong> It is transcribed with its provenance and left alone. Everything this estate adds hangs off it as a new node with a new edge.</p>
+<p><strong>Two reasons, and the second is the operational one.</strong> First, it is their data under their licence and modifying it while attributing it is dishonest. Second, <strong>a snapshot that has been improved cannot be diffed against the live source</strong>, so the moment we mutate we lose the ability to say what changed when they push.</p>
+<hr>
+<h2 id="namespaces-which-are-also-the-visual-classes">Namespaces, Which Are Also The Visual Classes</h2>
+<p>Three prefixes, and <strong>they are never mixed in one node identifier</strong>.</p>
+<div class="table"><table><thead><tr><th>Prefix</th><th>Origin</th><th>Rendered as</th><th>Meaning</th></tr></thead><tbody><tr><td><code>ung:</code></td><td><strong>Derived</strong> from UnGovr data</td><td>One visual class, labelled with attribution</td><td>Transcribed from their API. Never our judgement</td></tr>
+<tr><td><code>akn:</code></td><td><strong>Anchored</strong> to a published external identifier</td><td>A second visual class</td><td>Addressed in Akoma Ntoso terms, pointing at legislative text somebody else published</td></tr>
+<tr><td><code>sg:</code></td><td><strong>Our model</strong></td><td>A third visual class</td><td>Asserted by this estate. Everything below the provision</td></tr></tbody></table></div>
+<p><strong>Acceptance test 5 is the check on this</strong>, and a partner will run it first: open the graph and it must be impossible to confuse a <code>ung:</code> node with a <code>sg:</code> node without reading the label. Colour alone is not enough — colour is already spent on the assertion classes below, so <strong>the origin distinction must be carried by shape or border, not by hue.</strong></p>
+<h3 id="and-separately-the-three-assertion-classes-from-the-method-site">And separately, the three assertion classes from the method site</h3>
+<p>Never mixed, and orthogonal to origin:</p>
+<div class="table"><table><thead><tr><th>Class</th><th>Means</th><th>Failure it prevents</th></tr></thead><tbody><tr><td><strong>Asserted</strong></td><td>Someone stated it, and the bytes are cited</td><td>—</td></tr>
+<tr><td><strong>Inferred</strong></td><td>Derived by a transformation this vault can name and rerun</td><td>An inference read as a fact</td></tr>
+<tr><td><strong>Possible</strong></td><td>A hypothesis. Drawn, and drawn differently</td><td><strong>A hypothesis drawn like a fact, which is the failure this whole estate exists to prevent</strong></td></tr></tbody></table></div>
+<hr>
+<h2 id="node-types">Node Types</h2>
+<h3 id="derived-from-ungovr-ung">Derived from UnGovr (<code>ung:</code>)</h3>
+<div class="table"><table><thead><tr><th>Type</th><th>Identifier</th><th>Carries</th></tr></thead><tbody><tr><td><code>ung:Entity</code></td><td>Their published slug, verbatim</td><td><code>name</code>, <code>type</code>, <code>country</code>, <code>state</code>, <code>population</code>, <code>website</code>, <code>children_count</code></td></tr>
+<tr><td><code>ung:Boundary</code></td><td>Entity slug + <code>#boundary</code></td><td>GeoJSON as retrieved, unmodified</td></tr>
+<tr><td><code>ung:Domain</code></td><td>The domain string</td><td>Verbatim</td></tr>
+<tr><td><code>ung:Membership</code></td><td>The membership string</td><td>Verbatim</td></tr>
+<tr><td><code>ung:LawReference</code></td><td>Entity slug + <code>#open_records.law</code></td><td><strong>The law name exactly as they publish it.</strong> Not normalised, not matched, not resolved</td></tr></tbody></table></div>
+<p><strong>Note the last one.</strong> <code>ung:LawReference</code> is a <em>string they published</em>, not a law. It is the near side of the join. Resolving it to an instrument is our inference and is modelled as such.</p>
+<h3 id="anchored-to-published-identifiers-akn">Anchored to published identifiers (<code>akn:</code>)</h3>
+<div class="table"><table><thead><tr><th>Type</th><th>Identifier</th><th>Carries</th></tr></thead><tbody><tr><td><code>akn:Instrument</code></td><td>Akoma Ntoso FRBR work URI</td><td>Title, jurisdiction, enactment date, the retrieval that produced the text</td></tr>
+<tr><td><code>akn:Provision</code></td><td>Two hashes (below)</td><td>Position, text, source byte range</td></tr></tbody></table></div>
+<p><strong>Akoma Ntoso is the anchor, and this is settled before anything is minted.</strong> It is the published standard for legislative text, it is in the standards site&#x27;s covered set, and the August rule is to anchor to published identifiers rather than mint. <strong>If a jurisdiction&#x27;s law has no Akoma Ntoso rendering, that is recorded as an open item rather than solved by inventing an identifier scheme.</strong></p>
+<h3 id="our-model-sg">Our model (<code>sg:</code>)</h3>
+<div class="table"><table><thead><tr><th>Type</th><th>Carries</th><th>Notes</th></tr></thead><tbody><tr><td><code>sg:Obligation</code></td><td>What is required, of whom, within what interval, with what trigger</td><td>The first node that is entirely our judgement</td></tr>
+<tr><td><code>sg:Control</code></td><td>What would satisfy the obligation</td><td>Descriptive, not prescriptive</td></tr>
+<tr><td><code>sg:Evidence</code></td><td>A tier, a subject, an observation, a date</td><td><strong>Default state is <code>unevidenced</code></strong></td></tr>
+<tr><td><code>sg:Acceptance</code></td><td>A named owner, an interval, a revocation path</td><td>Carried in the vault and versioned</td></tr>
+<tr><td><code>sg:Retrieval</code></td><td>Source URL, timestamp, method, response hash</td><td>Attached to every derived node</td></tr>
+<tr><td><code>sg:Inference</code></td><td>The transformation that produced an edge, named and rerunnable</td><td>Attached to every inferred edge</td></tr></tbody></table></div>
+<hr>
+<h2 id="edge-types">Edge Types</h2>
+<pre><code>   ung:Entity ──ung:parent──────────&gt; ung:Entity
+   ung:Entity ──ung:child───────────&gt; ung:Entity
+   ung:Entity ──ung:boundary────────&gt; ung:Boundary
+   ung:Entity ──ung:domain──────────&gt; ung:Domain
+   ung:Entity ──ung:membership──────&gt; ung:Membership
+   ung:Entity ──ung:openRecordsLaw──&gt; ung:LawReference     ← their graph ends here
+   ─────────────────────────────────────────────────────────────────────────────
+   ung:LawReference ──sg:resolvesTo─&gt; akn:Instrument       ← THE JOIN. Inferred
+   akn:Instrument ──akn:hasProvision&gt; akn:Provision
+   akn:Provision ──sg:creates───────&gt; sg:Obligation
+   sg:Obligation ──sg:satisfiedBy───&gt; sg:Control
+   sg:Control ──sg:evidencedBy──────&gt; sg:Evidence
+   sg:Evidence ──sg:accepted────────&gt; sg:Acceptance
+   * ──sg:retrievedBy───────────────&gt; sg:Retrieval         ← on every derived node
+   * ──sg:inferredBy────────────────&gt; sg:Inference         ← on every inferred edge</code></pre>
+<p><strong>One edge carries the whole argument and it is <code>sg:resolvesTo</code>.</strong> It is the only edge in the diagram that crosses from their data into ours, it is <strong>inferred rather than asserted</strong>, and it must be rendered in the inferred class. A reader who thinks UnGovr asserted that resolution has been misled by the drawing.</p>
+<hr>
+<h2 id="the-address-scheme-two-hashes">The Address Scheme: Two Hashes</h2>
+<p>Inherited unchanged from standards.sgit.ai. <strong>A provision has two addresses because it has two kinds of identity, and conflating them is how citations rot.</strong></p>
+<div class="table"><table><thead><tr><th>Hash</th><th>Over</th><th>Answers</th><th>Changes when</th></tr></thead><tbody><tr><td><strong>Position hash</strong></td><td>The canonical hierarchical path, normalised</td><td><em>Which slot in the instrument is this?</em></td><td>The instrument is restructured</td></tr>
+<tr><td><strong>Content hash</strong></td><td><strong>The raw source bytes of the provision, unnormalised</strong></td><td><em>Is this the same text I read before?</em></td><td>A single byte of the text changes</td></tr></tbody></table></div>
+<pre><code>   akn:Provision
+     position_hash  sha256( &quot;akn:us-ca/act/cpra/sec-7922.535/(a)&quot; )
+     content_hash   sha256( &lt;the exact bytes of that subsection as retrieved&gt; )</code></pre>
+<p><strong>Why both.</strong> An amendment that rewords a subsection leaves the position and changes the content, so a citation to the position still resolves and a claim resting on the wording is correctly invalidated. A renumbering does the reverse. <strong>A single identifier cannot express that difference</strong>, and a system with one hash silently picks which kind of change it is blind to.</p>
+<p><strong>Normalisation rule, and it is asymmetric on purpose.</strong> The position path is normalised — case folded, whitespace collapsed, numbering canonicalised — because it is a name. <strong>The content bytes are never normalised</strong>, because the hash&#x27;s whole job is to be a hash of what was published. Normalising before hashing would mean the artefact cannot be checked against the source it claims to come from.</p>
+<hr>
+<h2 id="provenance-fields">Provenance Fields</h2>
+<p><strong>Every derived node and every quoted span carries all seven.</strong> A node missing any of them fails verification rather than degrading quietly.</p>
+<div class="table"><table><thead><tr><th>Field</th><th>Example</th><th>Why</th></tr></thead><tbody><tr><td><code>source_url</code></td><td><code>https://data.ungovr.org/v1/entities/detail/{slug}.json</code></td><td>Where to check it</td></tr>
+<tr><td><code>retrieved_at</code></td><td><code>2026-09-08T14:22:11Z</code></td><td><strong>The minimum honesty on a snapshot of live data</strong></td></tr>
+<tr><td><code>method</code></td><td><code>HTTPS GET, no auth</code></td><td>So a failed or degraded retrieval is visible as one</td></tr>
+<tr><td><code>response_sha256</code></td><td><code>sha256</code> of the raw response bytes</td><td>The artefact is checkable against the bytes it came from</td></tr>
+<tr><td><code>byte_range</code></td><td><code>[10412, 10598]</code></td><td>Which part of the source produced this node</td></tr>
+<tr><td><code>licence</code></td><td><code>CC BY 4.0, UnGovr</code></td><td>Attribution travels with the node, not with a page footer</td></tr>
+<tr><td><code>snapshot_release</code></td><td><code>@2026-09-08</code></td><td>The release channel that pins this retrieval</td></tr></tbody></table></div>
+<p><strong>The <code>method</code> field is doing real work and is not boilerplate.</strong> A retrieval that went through a summariser, a transcription, or any lossy path records that here — and a node whose method is not a direct byte-preserving fetch <strong>cannot carry a content hash</strong>, because there are no source bytes to hash. See <a href="06__verification.html"><code>06__verification.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/06__verification.md" title="live page">↗</a>, where exactly this situation is recorded as the current blocker.</p>
+<hr>
+<h2 id="the-two-edge-rule-applied">The Two-Edge Rule, Applied</h2>
+<p><strong>Settled 4 September. Every node in this vault carries two mandatory edges before it carries anything interesting:</strong></p>
+<ol><li><strong>An origin edge</strong> — who asserted this: UnGovr, a published standard, or us</li><li><strong>A provenance edge</strong> — <code>sg:retrievedBy</code> for derived nodes, <code>sg:inferredBy</code> for inferred ones</li></ol>
+<p><strong>A node that cannot carry both is not added to the graph.</strong> That is the constraint that makes the honest-label requirement mechanical rather than editorial: the model refuses to hold an unattributed node, so nobody has to remember to write the footnote.</p>
+<p><strong>And the rendering follows from it</strong>, which is the part a partner will check. Origin decides shape. Assertion class decides colour. Provenance decides what the node&#x27;s detail panel opens.</p>
+<hr>
+<h2 id="claim-states">Claim States</h2>
+<p><strong>Every claim carries a state, and <code>unevidenced</code> is the default.</strong> Settled in the 4 September conformance layer, applied here without modification.</p>
+<div class="table"><table><thead><tr><th>State</th><th>Means</th></tr></thead><tbody><tr><td><code>unevidenced</code></td><td><strong>The default.</strong> Nothing has been observed about this subject</td></tr>
+<tr><td><code>asserted</code></td><td>Someone said so</td></tr>
+<tr><td><code>documented</code></td><td>There is a document</td></tr>
+<tr><td><code>manually-checked</code></td><td>A person looked</td></tr>
+<tr><td><code>programmatic-out-of-band</code></td><td>Observed by a system that is not in the path of the thing observed</td></tr>
+<tr><td><code>programmatic-inline</code></td><td>Observed by something in the request path</td></tr></tbody></table></div>
+<p><strong>One limit stated plainly, because the temptation runs the other way.</strong> This estate is out of band and can <em>evidence</em> any rung including the last. <strong>It can never be the inline control that makes the last rung true.</strong> A control bounds a grant only if it is enforced by something the grant does not include, and an out-of-band party is never that enforcer. A page that blurs those two is claiming the one thing the architecture rules out.</p>
+<hr>
+<h2 id="what-this-model-deliberately-does-not-do">What This Model Deliberately Does Not Do</h2>
+<div class="table"><table><thead><tr><th>Not done</th><th>Why</th></tr></thead><tbody><tr><td>Mint an identifier for a jurisdiction</td><td>Their slugs are the anchor. That is the entire reason this vault is worth building</td></tr>
+<tr><td>Normalise their law reference strings</td><td>It is their published value. Normalisation is an inference and is modelled as one</td></tr>
+<tr><td>Publish a formal OWL/RDF ontology</td><td>The method site says its semantic layer is designed rather than shipped, and that honesty survives here</td></tr>
+<tr><td>Model more than one instrument</td><td>One properly beats forty sketched</td></tr>
+<tr><td>Assert anything about a subject&#x27;s compliance</td><td>The conformance layer holds what a standard says apart from what a subject does</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md">https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="7e44ae0e0fb01bbfd367e31567e4218543070d44d60eceaf94f8c75cc681626e">7e44ae0e0fb0</code></dd><dt>Frozen copy</dt><dd><a href="02__the-model.md">sites/ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md</a> (11,631 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

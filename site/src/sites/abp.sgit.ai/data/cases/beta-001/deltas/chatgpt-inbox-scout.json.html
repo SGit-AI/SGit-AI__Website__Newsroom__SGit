@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>chatgpt-inbox-scout.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../editions/index.html">Editions</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../history/index.html">History</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../about/index.html">About</a><a href="../../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="chatgpt-inbox-scout.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/cases/beta-001/deltas/chatgpt-inbox-scout.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/delta/v1&quot;,
+  &quot;profile&quot;: &quot;generic/scheduled-job/service-account&quot;,
+  &quot;mandate&quot;: &quot;beta-001/chatgpt-inbox-scout&quot;,
+  &quot;grant_version&quot;: &quot;2026-09-05&quot;,
+  &quot;mandate_version&quot;: &quot;2026-09-21&quot;,
+  &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+  &quot;computed_at&quot;: &quot;2026-09-21T00:00:00Z&quot;,
+  &quot;computed_by&quot;: &quot;abp.delta/v1&quot;,
+  &quot;excess&quot;: [
+    {
+      &quot;capability&quot;: &quot;authenticate-as.credential.tenant&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;a service-account credential, rarely rotated&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;send.endpoint.world&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.budget.tenant&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;if the credential is billed&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;execute.process.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;as the service account, on a schedule&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;it is one&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: false
+    }
+  ],
+  &quot;excess_refused&quot;: [
+    {
+      &quot;capability&quot;: &quot;execute.process.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;as the service account, on a schedule&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    }
+  ],
+  &quot;excess_unstated&quot;: [
+    {
+      &quot;capability&quot;: &quot;authenticate-as.credential.tenant&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;a service-account credential, rarely rotated&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;send.endpoint.world&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.budget.tenant&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;if the credential is billed&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;it is one&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: false
+    }
+  ],
+  &quot;unbounded_excess&quot;: [
+    {
+      &quot;capability&quot;: &quot;authenticate-as.credential.tenant&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;a service-account credential, rarely rotated&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;send.endpoint.world&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.budget.tenant&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;if the credential is billed&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;execute.process.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;as the service account, on a schedule&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: null,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;derived&quot;,
+      &quot;via&quot;: [
+        &quot;the job&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;it is one&quot;,
+      &quot;material&quot;: null,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: false
+    }
+  ],
+  &quot;shortfall&quot;: [
+    &quot;read.message.tenant&quot;
+  ],
+  &quot;aligned&quot;: [],
+  &quot;derived_never_authored&quot;: &quot;No field in this record is writable by a person. The way to change a delta is to change a grant or a mandate, and then recompute.&quot;,
+  &quot;provisional&quot;: true,
+  &quot;provisional_note&quot;: &quot;Computed against the nearest published shape, which is not this deployment. It shows what the delta would look like if the deployment&#x27;s grant matched that shape, and nothing more. The deployment&#x27;s own grant has not been measured.&quot;
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/cases/beta-001/deltas/chatgpt-inbox-scout.json">https://abp.sgit.ai/data/cases/beta-001/deltas/chatgpt-inbox-scout.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:40Z</dd><dt>sha256</dt><dd><code title="4a90187b8d836b6bca9a6efdc8e203af7fcae6f874603e15420dca3acfe850a7">4a90187b8d83</code></dd><dt>Frozen copy</dt><dd><a href="chatgpt-inbox-scout.json">sites/abp.sgit.ai/data/cases/beta-001/deltas/chatgpt-inbox-scout.json</a> (6,871 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

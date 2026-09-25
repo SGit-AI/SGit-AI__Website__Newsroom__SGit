@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · store.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#what-you-are-looking-at-in-one-minute">What you are looking at, in one minute</a></li><li class="l3"><a href="#what-is-real-and-what-is-a-stand-in">What is real and what is a stand-in</a></li><li class="l2"><a href="#the-codes">The codes</a></li><li class="l3"><a href="#the-same-two-walkthroughs-as-pdfs">The same two walkthroughs as PDFs</a></li><li class="l2"><a href="#a-if-you-are-a-person">A. If you are a person</a></li><li class="l3"><a href="#1-open-the-catalogue-with-a-code-on-it">1. Open the catalogue with a code on it</a></li><li class="l3"><a href="#2-pick-a-shape-and-look-at-its-four-levels">2. Pick a shape and look at its four levels</a></li><li class="l3"><a href="#3-add-two-of-them">3. Add two of them</a></li><li class="l3"><a href="#4-look-at-your-order">4. Look at your order</a></li><li class="l3"><a href="#5-pay">5. Pay</a></li><li class="l3"><a href="#6-read-what-happens-now">6. Read what happens now</a></li><li class="l3"><a href="#7-follow-the-handover">7. Follow the handover</a></li><li class="l3"><a href="#what-is-worth-reporting">What is worth reporting</a></li><li class="l2"><a href="#b-if-you-are-an-agent">B. If you are an agent</a></li><li class="l3"><a href="#mode-1-with-a-browser">Mode 1 — with a browser</a></li><li class="l3"><a href="#mode-2-with-nothing-but-a-fetch-tool">Mode 2 — with nothing but a fetch tool</a></li><li class="l3"><a href="#what-an-agent-should-report">What an agent should report</a></li><li class="l2"><a href="#what-this-walkthrough-cannot-show-you">What this walkthrough cannot show you</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/store.sgit.ai.html">store.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://store.sgit.ai/admin/try/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Run the whole flow yourself
+description: &quot;A walkthrough of store.sgit.ai from the catalogue to the page after payment, for a person and for an agent. It takes about four minutes, it costs nothing, and the discount codes that make it free are printed on this page.&quot;
+lead: &quot;<strong>Go from the catalogue to the page that says what happens after payment, for nothing, in about four minutes.</strong> A discount code on this page takes the whole price off — the order still places, the reference is still generated, and the handover to riskmandate.ai still carries it. Two sets of instructions below: one for a person, one for an agent driving a browser or reading files. <strong>The addresses here are the previous design&#x27;s, at <code>/v1/</code></strong>, because this walkthrough drives the cart engine that draws it — the same engine behind the fifteen shape pages and every printed discount code. The flow the store sells through today has its own engine and its own walkthrough is still to be written.&quot;
+order: 91
+robots: &quot;noindex,follow&quot;
+toc: true
+console: true
+</p>
+<hr>
+<h2 id="what-you-are-looking-at-in-one-minute">What you are looking at, in one minute</h2>
+<p><strong>The store sells one thing at four levels.</strong> The thing is an Agent Behaviour
+Policy for one agent in one deployment: everything that agent <em>can</em> do, what it
+was <em>authorised</em> to do, and the gap between the two. Sixteen shapes are on the
+catalogue — Claude Code, ChatGPT in a browser, GitHub Actions, Gmail read-only,
+n8n, and so on — and each one can be bought at any of four levels.</p>
+<div class="table"><table><thead><tr><th>Level</th><th>Price</th><th>What changes</th><th>Who does the work</th></tr></thead><tbody><tr><td>1 · the pack, downloaded</td><td><strong>£10</strong></td><td>the files for that shape, as a zip</td><td>nobody — it is published</td></tr>
+<tr><td>2 · a working vault</td><td><strong>£50</strong></td><td>the same material as a vault you hold the keys to</td><td>a build, no conversation</td></tr>
+<tr><td>3 · corrected for you</td><td><strong>£500</strong></td><td>the mandate corrected against your situation</td><td>somebody, from what you send</td></tr>
+<tr><td>4 · two sessions</td><td><strong>£1,500</strong></td><td>built from an interview, reviewed and signed off</td><td>two half-hours with your team</td></tr></tbody></table></div>
+<p><strong>Levels 3 and 4 take a fifth on the order and the rest on delivery</strong>, because
+they are somebody&#x27;s work and neither has run for a paying buyer. Levels 1 and 2
+take the whole price.</p>
+<p><strong>The page after payment is not on this site.</strong> riskmandate.ai publishes one page
+per level, and its level-one page <em>is</em> the download — the zip, its size, its
+sha256 and a hash check that runs in your own browser. The store hands you over
+with your order reference, and at level one the shape you bought. That handover
+is the part most worth testing: it is the seam between two sites.</p>
+<h3 id="what-is-real-and-what-is-a-stand-in">What is real and what is a stand-in</h3>
+<ul><li><strong>Real:</strong> the catalogue, the sixteen shapes and their counts, the prices, the SKUs, the order reference, the arithmetic, the deposit split, the discount codes, and the handover links — including the query they carry.</li><li><strong>A stand-in:</strong> the wallet. It is a balance in your own browser, it charges nothing, nothing leaves the page, and it says so on every screen it appears on. It tops itself back up when it empties.</li><li><strong>Not built:</strong> the payment rails. Every checkout URL in this repository is empty and the buttons say so rather than looking live.</li></ul>
+<p><strong>So nothing you do here costs anybody anything</strong>, and you cannot break a real
+order, because this store has not taken one yet.</p>
+<h2 id="the-codes">The codes</h2>
+<p><strong>These take a hundred per cent off. They are printed here on purpose</strong>, because
+a walkthrough somebody has to be <em>sent</em> a code for is not a walkthrough. Put one
+in the address of any page on the store:</p>
+<pre><code>https://store.sgit.ai/v1/policies/?code=BETA7LOOP</code></pre>
+<div class="table"><table><thead><tr><th>Code</th><th>Use it for</th><th>Takes off</th></tr></thead><tbody><tr><td><code>BETA7LOOP</code></td><td>a person walking the flow from this page</td><td>100%</td></tr>
+<tr><td><code>SYNTH4DELTA</code></td><td>an agent driving the flow from the script below</td><td>100%</td></tr>
+<tr><td><code>DEMO3STAND</code></td><td>showing somebody the flow on a laptop or a phone</td><td>100%</td></tr></tbody></table></div>
+<p><strong>There is nowhere to type a code</strong>, and that is not an oversight. No page on
+this site has a field a code could go in — no form, no input, no select — and a
+build check refuses any page that grows one. (One page, <a href="../../review/index.html">the partner
+review</a><a class="ext live" href="https://store.sgit.ai/review/" title="live page">↗</a>, carries reason boxes, by a ruling that allowed those and
+nothing else.) So a code arrives in the address,
+which is what a printed card or a QR at a stand does anyway. The store recognises
+it, shows it as a chip you can remove, and takes it back out of the address bar
+so a screenshot of a checkout does not carry it.</p>
+<p><strong>What ships is the hash of each code and never the code</strong>, and a build check
+reads every byte of the built site against every code to keep it that way. These
+three are the exception, and the exception is mechanical too: a printed code at a
+hundred per cent and a live payment rail can never be in the same build, because
+<code>check_printable_codes_need_a_dead_rail</code> fails the release if they are. When a
+real rail is switched on, these codes come off this page in the same commit.
+{{claim:discount-code-is-in-the-browser}}</p>
+<h3 id="the-same-two-walkthroughs-as-pdfs">The same two walkthroughs as PDFs</h3>
+<p>Snapshots of this page, split in two and laid out to be read away from a screen or
+handed to somebody. <strong>The live page is the source of truth</strong>; each PDF carries the
+version it was taken at in its own filename, so a stale copy is stale on its face.</p>
+<ul><li><strong><a class="ext" href="https://store.sgit.ai/admin/downloads/store-walkthrough-by-hand-v0.1.11.pdf">Run the store end to end, by hand ↗</a></strong> — 11 pages, all seven screenshots.</li><li><strong><a class="ext" href="https://store.sgit.ai/admin/downloads/store-walkthrough-as-an-agent-v0.1.11.pdf">Run the store end to end, as an agent ↗</a></strong> — 7 pages, the assertions and both modes.</li></ul>
+<h2 id="a-if-you-are-a-person">A. If you are a person</h2>
+<p><strong>Seven steps, about four minutes.</strong> Use a normal browser window rather than a
+private one — the order lives in local storage, and a private window throws it
+away when you close it, which is a fine thing to test <em>second</em>.</p>
+<h3 id="1-open-the-catalogue-with-a-code-on-it">1. Open the catalogue with a code on it</h3>
+<p>Go to <strong><a href="../../v1/policies/index.html">store.sgit.ai/v1/policies/?code=BETA7LOOP</a><a class="ext live" href="https://store.sgit.ai/v1/policies/?code=BETA7LOOP" title="live page">↗</a></strong>.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/01-catalogue.png&quot; alt=&quot;The catalogue with a discount chip at the top reading 100% off, Beta walkthrough, and a Remove button beside it.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check.&lt;/b&gt; A green chip appears under the title saying &lt;b&gt;100% off · Beta walkthrough&lt;/b&gt;. The address bar no longer contains the code. Sixteen shapes are listed, filterable by chips rather than a search box.&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<h3 id="2-pick-a-shape-and-look-at-its-four-levels">2. Pick a shape and look at its four levels</h3>
+<p>Click any tile — <strong><a href="../../p/gmail-readonly/index.html">Gmail, read-only scope</a><a class="ext live" href="https://store.sgit.ai/p/gmail-readonly/" title="live page">↗</a></strong> is a good one
+because it is small enough to read in a sitting.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/02-levels.png&quot; alt=&quot;A product page showing four levels side by side at £5, £50, £500 and £1,500, each with a description, an Add to order button and a SKU.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check.&lt;/b&gt; Four levels, four prices, four SKUs of the form &lt;code&gt;ABP-GML-P&lt;/code&gt; — product, shape, level. The £500 and £1,500 rows say what is &lt;em&gt;not&lt;/em&gt; included as plainly as what is.&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<h3 id="3-add-two-of-them">3. Add two of them</h3>
+<p>Add <strong>the pack</strong> at £5 and <strong>corrected for your situation</strong> at £500. Two lines
+with different deposit rules is the interesting case — one takes the whole price,
+the other takes a fifth.</p>
+<h3 id="4-look-at-your-order">4. Look at your order</h3>
+<p>Go to <strong><a href="../../v1/cart/index.html">your order</a><a class="ext live" href="https://store.sgit.ai/v1/cart/" title="live page">↗</a></strong>.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/03-cart.png&quot; alt=&quot;The order page showing two lines with their list prices struck through, a total of £0, and a deposit box.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check.&lt;/b&gt; Each line shows its list price struck through beside what it is now. The total is &lt;b&gt;£0&lt;/b&gt;. Your order reference — six characters with no &lt;code&gt;0&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt; in it — is at the bottom, with the order line that would go to a payment provider.&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<p><strong>Without a code</strong>, the same two lines are £505, of which £105 is due now and
+£400 on delivery. Worth removing the chip once to watch the numbers move, then
+putting the code back by reopening the address in step 1.</p>
+<h3 id="5-pay">5. Pay</h3>
+<p>Go to <strong><a href="../../v1/pay/index.html">paying</a><a class="ext live" href="https://store.sgit.ai/v1/pay/" title="live page">↗</a></strong>.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/04-pay.png&quot; alt=&quot;The paying page showing £0 due now, the two lines with their before and after prices, and three payment rails of which only the simulated wallet is live.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check.&lt;/b&gt; Four rails. The demonstration wallet says &lt;b&gt;simulated — charges nothing&lt;/b&gt; before it says anything else. Stripe and contactless say &lt;b&gt;Nothing to take&lt;/b&gt;, because a code took the whole price off and there is no amount to hand them. &lt;b&gt;The screenshot is from v0.1.11 and shows a fourth rail, SumUp, which came off the store on 16 September&lt;/b&gt; — the shot is left as it was taken rather than restaged, because a walkthrough whose pictures are quietly re-shot is a walkthrough nobody can date.&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<p>Press <strong>Place the order</strong>.</p>
+<h3 id="6-read-what-happens-now">6. Read what happens now</h3>
+<p>You land on <strong><a href="../../paid/index.html">what happens now</a><a class="ext live" href="https://store.sgit.ai/paid/" title="live page">↗</a></strong> — a different page from the one you
+read before buying, which is the point of it.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/05-order.png&quot; alt=&quot;The post-sale page showing the order reference, nothing to pay, and a card per line saying what arrives and when.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check.&lt;/b&gt; The same reference you saw in the cart. One card per line. Five rows each: what arrives and when, what you do next, how the key reaches you, what done means, and how you check it. &lt;b&gt;No key is ever on this page&lt;/b&gt;, and a build check refuses the release if anything key-shaped lands here.&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<p>The £500 card also carries the prompt you would run, with a copy button.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/06-order-level3.png&quot; alt=&quot;The level three card on the post-sale page, showing the 24-hour follow-up, the instruction to run MAP-A-GRANT.md, and the prompt itself in a code block.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check.&lt;/b&gt; It names the file — &lt;code&gt;MAP-A-GRANT.md&lt;/code&gt; — and the three things to send back. The last line of the prompt says it does not act and asks for no credential, which is the line to read before pasting a prompt anywhere.&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<h3 id="7-follow-the-handover">7. Follow the handover</h3>
+<p>Press <strong>Download it now</strong> on the £10 card. It leaves this site.</p>
+<p>&lt;figure class=&quot;walkshot&quot;&gt;&lt;img src=&quot;/assets/shots/07-riskmandate-paid-t1.png&quot; alt=&quot;The riskmandate.ai level one page, showing the order reference carried over, the shape that was bought, a download button and the zip&#x27;s sha256 and byte count.&quot;&gt;&lt;figcaption&gt;&lt;b&gt;What to check, and this is the important one.&lt;/b&gt; riskmandate.ai shows &lt;b&gt;your order reference&lt;/b&gt; and &lt;b&gt;the shape you bought&lt;/b&gt;, with the right zip, its sha256 and its size. Two sites, one order, no account and nothing posted between them — the link carried a reference and a slug and that was all it needed. &lt;em&gt;Captured 15 September 2026; their page is theirs and moves on its own release schedule.&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;</p>
+<h3 id="what-is-worth-reporting">What is worth reporting</h3>
+<ul><li><strong>Any number that disagrees with another number.</strong> A price, a deposit, a total, a discount. Everything on this site comes from one file per fact, so two numbers disagreeing is a real bug and not a rounding opinion.</li><li><strong>Any sentence that promises something the site does not do.</strong> The whole argument of this store is that what it says is checkable; a sentence that is not is worth more than a layout nit.</li><li><strong>Anything that looks like a key, a token or a credential.</strong> On any page. That is a security report, not a bug report.</li><li><strong>Layout on a phone.</strong> The flow has been driven at 1160 pixels far more than at 390.</li><li><strong>The back button, a reload, two tabs, a private window.</strong> The order lives in local storage and these are exactly where that goes wrong.</li></ul>
+<p>Where it goes: <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Store">the repository on GitHub ↗</a>.
+Quote the order reference if you have one — it is in your browser and nowhere
+else, so it means nothing to anybody until you say it.</p>
+<h2 id="b-if-you-are-an-agent">B. If you are an agent</h2>
+<p><strong>Two modes.</strong> The first drives a browser, which is the only way to exercise the
+cart. The second needs nothing but the ability to fetch a URL, and checks
+everything that is decided at build time.</p>
+<p><strong>Read this page as markdown</strong> at
+<a href="index.html"><code>/admin/try/index.md</code></a><a class="ext live" href="https://store.sgit.ai/admin/try/index.md" title="live page">↗</a> — every page on this site is also served that
+way, and <a href="../../llms.txt.html"><code>/llms.txt</code></a><a class="ext live" href="https://store.sgit.ai/llms.txt" title="live page">↗</a> lists all of them with their descriptions.</p>
+<h3 id="mode-1-with-a-browser">Mode 1 — with a browser</h3>
+<p>Use <code>SYNTH4DELTA</code> rather than the human code, so an order record says which of
+the two produced it.</p>
+<pre><code>1.  GOTO   https://store.sgit.ai/v1/policies/?code=SYNTH4DELTA
+    ASSERT document.querySelector(&#x27;.codebar .cb-chip&#x27;).textContent contains &#x27;100% off&#x27;
+    ASSERT location.search does not contain &#x27;code=&#x27;
+    ASSERT localStorage[&#x27;sgit.store.code.v1&#x27;] === &#x27;synth-agent&#x27;
+
+2.  GOTO   https://store.sgit.ai/p/gmail-readonly/
+    ASSERT document.querySelectorAll(&#x27;.lvl&#x27;).length === 4
+    ASSERT the four .lvl-price are [&#x27;£5&#x27;,&#x27;£50&#x27;,&#x27;£500&#x27;,&#x27;£1,500&#x27;]
+    ASSERT every .lvl-sku matches /^ABP-[A-Z0-9]{3}-[PVCS]$/
+
+3.  CLICK  .lvl:nth-of-type(1) button   (adds the £10 level)
+    CLICK  .lvl:nth-of-type(3) button   (adds the £500 level)
+    ASSERT localStorage[&#x27;sgit.store.order.v1&#x27;] parses, and .items has two keys
+
+4.  GOTO   https://store.sgit.ai/v1/cart/
+    ASSERT .ct-sum reads &#x27;£0&#x27;
+    ASSERT .ct-off names the discount and its percentage
+    ASSERT .ob-ref matches /^SG-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{6}$/
+
+5.  GOTO   https://store.sgit.ai/v1/pay/
+    ASSERT .ps-now reads &#x27;£0&#x27;
+    ASSERT exactly one rail carries .rail-sim
+    ASSERT its .rail-flag textContent is &#x27;Simulated — charges nothing&#x27;
+           (innerText will be upper case: the CSS transforms it, and innerText
+            is what is rendered. This one catches people out.)
+    CLICK  .rail-sim button.buy
+
+6.  WAIT   for the URL to end /order/
+    ASSERT .oh-ref equals the reference from step 4
+    ASSERT document.querySelectorAll(&#x27;.aftercard&#x27;).length === 2
+    ASSERT every .ac-go a[href] matches
+           /^https:\/\/riskmandate\.ai\/paid-t[1-4]\.html\?order=SG-[A-Z0-9]{6}(&amp;shape=[a-z0-9-]+)?$/
+    ASSERT the level-1 link carries &amp;shape=gmail-readonly and the level-3 link does not
+    ASSERT no string on the page matches
+           /sgit_private_(vault|write|read)_[A-Za-z0-9]{6,}/
+
+7.  GOTO   the level-1 handover link
+    ASSERT the page shows the same order reference
+    ASSERT it names gmail-readonly and offers that zip with a sha256</code></pre>
+<p><strong>These forty-six assertions are also a script</strong>, and the script is what was run
+before this page was written: <code>tools/walkthrough.mjs</code> in the repository, which
+serves <code>docs/</code> on a loopback address and drives Chromium against it. It is not in
+the release gate — that is Python and <code>node --check</code> with nothing installed, and
+a browser in the release path would make every release depend on a download — so
+it is run by hand when the cart, the discount or the handover changes.</p>
+<p><strong>Three invariants to assert on every page you touch</strong>, because they are the
+rules this site is built on rather than preferences:</p>
+<pre><code>NO FORM      document.querySelectorAll(&#x27;form,input,textarea,select&#x27;).length === 0
+NO NETWORK   no request leaves the origin — no fetch, no XHR, no beacon,
+             no websocket, no iframe, no third-party font, script or image
+NO KEY       nothing matching /sgit_private_(vault|write|read)_[A-Za-z0-9]{6,}/
+             and no passphrase:uuid pair. Both shapes, spelled out: the trailing
+             length is what keeps this page — which prints the pattern — from
+             matching itself.</code></pre>
+<h3 id="mode-2-with-nothing-but-a-fetch-tool">Mode 2 — with nothing but a fetch tool</h3>
+<p>Everything decided at build time is readable without running anything.</p>
+<div class="table"><table><thead><tr><th>Fetch</th><th>What it settles</th></tr></thead><tbody><tr><td><code>/assets/site-index.json</code></td><td>every offer with its price, state, deposit and <code>pay_now_pct</code>, and the site version</td></tr>
+<tr><td><code>/llms.txt</code></td><td>every page with its description, the six offers, and where each payment code lands</td></tr>
+<tr><td><code>/llms-full.txt</code></td><td>the whole site as one document</td></tr>
+<tr><td><code>/cart/index.html</code></td><td>the <code>#shop-model</code> JSON island: levels, shapes, SKU codes, rails, and the discount hashes</td></tr>
+<tr><td><code>/ledger/index.md</code></td><td>every factual claim with the state it earned and the date</td></tr>
+<tr><td>any page <code>+ /index.md</code></td><td>that page as markdown</td></tr></tbody></table></div>
+<p>Useful checks against those:</p>
+<pre><code>PRICES      site-index.json offers t1..t4 read £5, £50, £500, £1,500
+SPLIT       pay_now_pct is 100, 100, 20, 20
+RAILS       every rail url in the shop model is empty, and exactly one is simulated
+CODES       every entry in model.codes has a 64-hex &#x27;hash&#x27; and NO &#x27;code&#x27; field
+HANDOVER    every level has post_url https://riskmandate.ai/paid-t&lt;n&gt;.html
+            and post_carries [&#x27;order&#x27;] — plus &#x27;shape&#x27; at level one only
+SHAPES      the shop model has 16 shapes; 15 of them match the slugs published
+            at riskmandate.ai/abp-vaults.html</code></pre>
+<p><strong>The hash of a code is in the model and the code is not</strong>, so an agent cannot
+read a discount off the page. That is deliberate and it is also not much of a
+defence — a short code can be ground out of a hash. What stops a stranger paying
+nothing is that a browser does not take money: a code changes the amount a
+payment link would be issued for, and the rail decides what is charged. The three
+codes at the top of this page are the ones meant to be used.</p>
+<h3 id="what-an-agent-should-report">What an agent should report</h3>
+<p><strong>The assertions above, pass or fail, with the page and the selector.</strong> Beyond
+that, the two findings worth more than a bug: **a page that says something the
+build cannot support<strong>, and **anything credential-shaped anywhere in the output</strong>.
+Both are checkable from the outside, which is the point of the site being built
+this way.</p>
+<h2 id="what-this-walkthrough-cannot-show-you">What this walkthrough cannot show you</h2>
+<ul><li><strong>A real payment.</strong> No rail is live; the only checkout that completes is a wallet that charges nothing.</li><li><strong>What actually arrives at £50, £500 and £1,500.</strong> The walkthrough stops at the page after payment; what lands after that at the two upper levels is a person&#x27;s work, on a calendar. {{claim:abp-correction-by-a-person}}</li><li><strong>The follow-up.</strong> Their pages promise a person within 24 hours, and nothing yet carries a sale from this store to that person — which is the one thing standing between here and a first real order. {{claim:sale-notification-absent}}</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>store.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://store.sgit.ai/admin/try/index.md">https://store.sgit.ai/admin/try/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:17Z</dd><dt>sha256</dt><dd><code title="f6876c7f86517ba763e197cc88513fc49e118f9eafaf323010c4bb08cb95ec53">f6876c7f8651</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/store.sgit.ai/admin/try/index.md</a> (18,322 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

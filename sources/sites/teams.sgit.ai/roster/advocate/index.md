@@ -1,0 +1,27 @@
+# Advocate
+
+*Source: <https://teams.sgit.ai/roster/advocate/index.html> · markdown twin of the entry page.*
+
+*Assure role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 3
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It has a directory with no `ROLE.md` inside it in Explorer. It is marked **defined** in Villager — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | directory only, no ROLE.md |
+| Villager | defined |
+
+## Revision history
+
+3 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).

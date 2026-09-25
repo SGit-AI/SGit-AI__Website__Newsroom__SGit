@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Rules of engagement for agents working in parallel · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#rules-of-engagement-for-agents-working-in-parallel">Rules of engagement for agents working in parallel</a></li><li class="l2"><a href="#1-before-you-start-claim-a-scope">1. Before you start: claim a scope</a></li><li class="l2"><a href="#2-what-conflicts-and-what-to-do-about-it">2. What conflicts, and what to do about it</a></li><li class="l2"><a href="#3-branches-and-merging">3. Branches and merging</a></li><li class="l2"><a href="#4-external-state">4. External state</a></li><li class="l2"><a href="#5-ownership-by-surface">5. Ownership by surface</a></li><li class="l2"><a href="#6-what-every-merge-into-dev-must-carry">6. What every merge into dev must carry</a></li><li class="l2"><a href="#7-when-the-rules-are-wrong">7. When the rules are wrong</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/agents/04-rules-of-engagement/index.html">live ↗</a></p><article class="source"><h1 id="rules-of-engagement-for-agents-working-in-parallel">Rules of engagement for agents working in parallel</h1>
+<blockquote><p>Rendered from .claude/onboarding/04-rules-of-engagement.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/agents/04-rules-of-engagement/</a><a class="ext live" href="https://riskmandate.ai/admin/agents/04-rules-of-engagement/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p>Several agents work on this repository at once, each on its own <code>claude/&lt;name&gt;</code> branch, all
+merging into <code>dev</code>. <code>dev</code> is the default branch, the integration branch, and <strong>the live site</strong>:
+CI deploys <code>site/</code> on every push to <code>dev</code>. So a merge into <code>dev</code> is a deploy, and a broken
+merge is a broken site. These rules exist so that two agents who never talk to each other
+can still land their work without undoing each other&#x27;s.</p>
+<h2 id="1-before-you-start-claim-a-scope">1. Before you start: claim a scope</h2>
+<p>Write <code>.claude/work/&lt;your-branch&gt;.md</code> in your first commit (the template is in that folder).
+It says what you are doing, which files and page families you expect to touch, which vaults you
+will push, and when you started. Read the other files in that folder first: if somebody has
+claimed the page or the vault you were going to work on, pick a different task from
+<code>.claude/briefs/</code> or narrow yours so the file sets do not overlap. Delete your file in the
+commit that merges you into <code>dev</code>.</p>
+<p>This is a rule in prose and it bounds nothing. It works because everyone reads it first.</p>
+<h2 id="2-what-conflicts-and-what-to-do-about-it">2. What conflicts, and what to do about it</h2>
+<div class="table"><table><thead><tr><th>Surface</th><th>Why it conflicts</th><th>Rule</th></tr></thead><tbody><tr><td><strong>The version restamp</strong> (<code>release.mjs</code> touches every page, <code>versions/index.json</code>, <code>riskmandate_ai/version</code>, <code>pyproject.toml</code>)</td><td>two branches releasing = every HTML file conflicts on the version chip</td><td>Cut the release <strong>only as the last commit before merge, after merging <code>dev</code> in</strong>. If <code>dev</code> took your number first, re-run <code>release.mjs</code> with the next one. Never merge a branch that releases an older number than <code>dev</code> already has</td></tr>
+<tr><td><strong>The version number itself</strong></td><td>two agents each taking a second-number bump makes the record read as if the site changed shape twice in a day</td><td><strong>Move the third number by default</strong>: <code>1.19.0</code> → <code>1.19.1</code>, then <code>1.19.2</code>. The second number is for a release that changes what the site is or sells (a new section, a new product, a page family rebuilt), and one agent&#x27;s session rarely is that, however many pages it touched. When in doubt, the third. The first number is the lead&#x27;s</td></tr>
+<tr><td><strong>Generated files</strong> (<code>*.md</code> twins, <code>sitemap.xml</code>, <code>llms.txt</code>, <code>llms-full.txt</code>, <code>404.html</code>, <code>versions.md</code>, <code>abp-vault-*.html</code>, <code>agent-behaviour-policy.html</code>, <code>site/admin/**</code>, everything derived inside <code>site/vaults/&lt;slug&gt;/</code>)</td><td>both sides regenerate</td><td>Never resolve by hand. Take either side, then run the generator (<code>generate.mjs</code>, <code>build-abp-pages.mjs</code>, <code>build-abp-vault.mjs &lt;slug&gt;</code>) and commit its output</td></tr>
+<tr><td><strong>Every-page edits</strong> (<code>sync-modules.mjs</code>, <code>add-licence-chrome.mjs</code>, a footer or header change, a menu change)</td><td>touches 50+ files</td><td>Do it in its own small commit, merge it into <code>dev</code> the same day, and tell the other agents in your work file so they merge <code>dev</code> before continuing</td></tr>
+<tr><td><code>site/pages.json</code></td><td>two branches add a page</td><td>Keep both entries. Respect the 7-top-level-entries cap; a new page goes in a group</td></tr>
+<tr><td><code>site/vaults/index.json</code></td><td>two branches add a vault</td><td>Keep both entries, in the order that reads best on the library page; rebuild the pages</td></tr>
+<tr><td><strong>Append-only records</strong>: <code>versions/index.json</code> + <code>versions/&lt;v&gt;.md</code>, <code>briefs-register.json</code> + <code>assets/briefs/</code>, <code>lab-editions.json</code> + <code>assets/lab/*.pdf</code>, <code>site/vaults/&lt;slug&gt;/history/</code></td><td>history</td><td>Never edit or renumber an existing entry. Add yours. A Lab edition is cut on <code>dev</code> or by the agent who owns that page, never by two agents for the same page in the same day</td></tr>
+<tr><td><code>docs/briefs/</code></td><td>none, if names differ</td><td>One file per brief, named <code>&lt;kind&gt;__&lt;slug&gt;.md</code>. Never rewrite another agent&#x27;s brief; add a dated note at the top if it is superseded</td></tr>
+<tr><td><code>.claude/onboarding/</code> and <code>CLAUDE.md</code></td><td>both sides update the map</td><td>Small, surgical edits; merge <code>dev</code> first; the map must describe <code>dev</code> after your merge</td></tr>
+<tr><td>The Lab page content hashes</td><td>an every-page chrome change looks like every Lab page changed</td><td><code>render-lab-pdfs.mjs</code> strips chrome from the hash. If <code>--check</code> still reports every page moved after a chrome change, the hash rule needs extending, not the register restamping</td></tr></tbody></table></div>
+<h2 id="3-branches-and-merging">3. Branches and merging</h2>
+<ol><li>Branch from <code>dev</code>. Name it as the harness gave it to you (<code>claude/&lt;words&gt;</code>) or <code>feature/&lt;slug&gt;</code>.</li><li>Commit as you go with messages in the site&#x27;s voice: what changed and why. The subject line
+is the register entry; <code>git log --oneline</code> should read as a story.</li><li>Push to your branch as often as you like. **Never push to <code>dev</code>, <code>qa</code> or <code>main</code> from a
+branch session unless the task says to merge.**</li><li>To merge: <code>git fetch origin dev &amp;&amp; git merge origin/dev</code> on your branch first. Resolve per §2.
+Regenerate. <code>npm run check</code> green. Only then cut the release (§2, row 1), check again, and
+merge into <code>dev</code> with a merge commit (<code>--no-ff</code>), never a rebase of somebody else&#x27;s history.</li><li>If the branch&#x27;s pull request was already merged and you are asked for follow-up, start the
+branch again from <code>origin/dev</code>; never stack on merged history.</li><li>Nobody force-pushes <code>dev</code>. A wrong deploy is fixed forward with a new release.</li></ol>
+<h2 id="4-external-state">4. External state</h2>
+<p>Some things are not in git and do not merge:</p>
+<ul><li><strong>Vault pushes to sgit.</strong> Every application vault and the app vault have a write key the lead
+holds. Building and <code>--check</code>ing a vault locally is always allowed; pushing needs the key. Say
+in your work file which vaults are built and unpushed, so the lead can push them. Never
+commit a write key or a token, anywhere. The test suite fails the build if one lands in <code>site/</code>.</li><li><strong>The app vault&#x27;s renderer version.</strong> A change to <code>site/vaults/_app/index.html</code> must be
+pushed to the app vault and recorded in <code>_app/versions/index.json</code>; every application vault&#x27;s
+<code>vault.json</code> names the renderer version it was built against.</li><li><strong>PDF editions.</strong> A Lab edition somebody was sent is a promise. Never delete, replace or
+regenerate a registered PDF.</li><li><strong>The live site.</strong> A push to <code>dev</code> is live within minutes. If a merge breaks CI, the previous
+deploy stays up; fix forward.</li></ul>
+<h2 id="5-ownership-by-surface">5. Ownership by surface</h2>
+<p>A surface has one owner at a time. Ownership is whatever <code>.claude/work/</code> says.</p>
+<ul><li><strong>A page family</strong> (<code>lab-*</code>, <code>demo-*</code>, the ABP pages, the summit pages): one agent at a time.</li><li><strong>A vault</strong>: one agent at a time, per slug. Two agents can add two different vaults freely.</li><li><strong>The library page and the vault pages</strong>: generated; owned by whoever changes <code>index.json</code>
+or <code>scripts/site/abp/</code>. Two agents changing <code>scripts/site/abp/</code> at once will conflict in JS:
+claim it.</li><li><strong>Chrome and shared modules</strong>: claim it, do it small, merge it fast.</li><li><strong>Briefs</strong>: the author owns the file. Anyone may reference it.</li></ul>
+<h2 id="6-what-every-merge-into-dev-must-carry">6. What every merge into dev must carry</h2>
+<ul><li><code>npm run check</code> green on the merged tree, not just on the branch.</li><li>A release note if any page under <code>site/</code> changed, in the voice of the existing notes, saying
+what was not done beside what was.</li><li><code>.claude/onboarding/03-state-and-next.md</code> updated if the state moved (a vault added, a task
+done, a decision taken).</li><li>Your <code>.claude/work/</code> file removed.</li></ul>
+<h2 id="7-when-the-rules-are-wrong">7. When the rules are wrong</h2>
+<p>They will be. Write the case in your work file, do the safest thing, and propose the change to
+this file in the same push. A rule that was silently worked around is worse than one that was
+argued with in public, which is the same thing the site says about a draft behaviour policy.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/04-rules-of-engagement/index.html">https://riskmandate.ai/admin/agents/04-rules-of-engagement/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/04-rules-of-engagement/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="b41b46ebe1e61dce7612247af43a501dd679e4b83995b4a22cd58069797ffe9e">b41b46ebe1e6</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/04-rules-of-engagement/index.md</a> (7,571 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
 <main>
 <p class="eyebrow">Reading room · abp.sgit.ai</p>
@@ -22,7 +22,7 @@ below point at them.*</p>
 <hr>
 <p><a href="../index.html">Home</a><a class="ext live" href="https://abp.sgit.ai/index.md" title="live page">↗</a> / Versions</p>
 <h1 id="versions-1">Versions</h1>
-<p>Every release of this site. <strong>The badge in the top bar reads <code>current</code> from <a class="ext" href="https://abp.sgit.ai/versions/index.json"><code>versions/index.json</code> ↗</a> and links to that version&#x27;s own details</strong>, rather than to a generic changelog, which is what the guidance asks for.</p>
+<p>Every release of this site. <strong>The badge in the top bar reads <code>current</code> from <a href="index.json.html"><code>versions/index.json</code></a><a class="ext live" href="https://abp.sgit.ai/versions/index.json" title="live page">↗</a> and links to that version&#x27;s own details</strong>, rather than to a generic changelog, which is what the guidance asks for.</p>
 <div class="table"><table><thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead><tbody><tr><td><a href="v0.11.0/index.html">v0.11.0</a><a class="ext live" href="https://abp.sgit.ai/versions/v0.11.0/index.md" title="live page">↗</a></td><td>2026-09-22</td><td>the Gmail connector measured end to end by the agent that holds it, read from a vault, mapped into the grammar, and set beside the profile read from the vendors&#x27; pages</td></tr>
 <tr><td><a href="v0.10.1/index.html">v0.10.1</a><a class="ext live" href="https://abp.sgit.ai/versions/v0.10.1/index.md" title="live page">↗</a></td><td>2026-09-22</td><td>the desktop walkthrough gets its article, with six figures captured from the v0.10.0 tag</td></tr>
 <tr><td><a href="v0.10.0/index.html">v0.10.0</a><a class="ext live" href="https://abp.sgit.ai/versions/v0.10.0/index.md" title="live page">↗</a></td><td>2026-09-22</td><td>the desktop walkthrough: an assistant on your own machine, the map of what matters on it, and the rules that open with the map; plus the article for v0.9.0</td></tr>
@@ -44,13 +44,13 @@ below point at them.*</p>
 <tr><td><a href="v0.2.0/index.html">v0.2.0</a><a class="ext live" href="https://abp.sgit.ai/versions/v0.2.0/index.md" title="live page">↗</a></td><td>2026-09-11</td><td>the delta is derived and never authored, so it is stored with its inputs pinned and the gate recomputes it</td></tr>
 <tr><td><a href="v0.1.0/index.html">v0.1.0</a><a class="ext live" href="https://abp.sgit.ai/versions/v0.1.0/index.md" title="live page">↗</a></td><td>2026-09-11</td><td>the ontology is promoted out of a game and the five examples are derived rather than written</td></tr></tbody></table></div>
 <h2 id="how-the-version-cannot-drift">How the version cannot drift</h2>
-<p><code>admin/build/version.txt</code> owns the version. The tag is derived from it by CI, which refuses to tag unless the newest release commit&#x27;s subject carries the same string and the bump is the next one. The build generates <a class="ext" href="https://abp.sgit.ai/versions/index.json"><code>versions/index.json</code> ↗</a> and a file per version from that same string, and the release gate fails if the badge, <code>llms.txt</code>, the twins or the version surface disagree with it.</p>
+<p><code>admin/build/version.txt</code> owns the version. The tag is derived from it by CI, which refuses to tag unless the newest release commit&#x27;s subject carries the same string and the bump is the next one. The build generates <a href="index.json.html"><code>versions/index.json</code></a><a class="ext live" href="https://abp.sgit.ai/versions/index.json" title="live page">↗</a> and a file per version from that same string, and the release gate fails if the badge, <code>llms.txt</code>, the twins or the version surface disagree with it.</p>
 <p><strong>Each entry records the commit</strong>, because a version without one cannot be verified later, and <strong>says when it was reconstructed</strong>, because history assembled after the fact has to be labelled.</p>
-<p><a class="ext" href="https://abp.sgit.ai/versions/index.json">The machine readable index ↗</a> · <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__ABP">The repository ↗</a></p>
+<p><a href="index.json.html">The machine readable index</a><a class="ext live" href="https://abp.sgit.ai/versions/index.json" title="live page">↗</a> · <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__ABP">The repository ↗</a></p>
 <hr>
 <p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/versions/index.html" title="live page">↗</a></em></p></article>
 <aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/versions/index.md">https://abp.sgit.ai/versions/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:42Z</dd><dt>sha256</dt><dd><code title="24430cf8c6cba6e69438a98b07f464bd284253898da7132e072723b5f93c2d50">24430cf8c6cb</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/abp.sgit.ai/versions/index.md</a> (5,227 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 </body>
 </html>

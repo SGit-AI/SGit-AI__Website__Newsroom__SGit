@@ -1,0 +1,1866 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>graph.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="graph.json">raw text</a> · <a class="ext" href="https://riskmandate.ai/business-case/owasp/graph.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;_&quot;: &quot;A semantic graph of OWASP, as found by RiskMandate on 24 September 2026: the foundation, its families of projects, each project or document, and the numbered items of eleven lists, titles only, with the relationships OWASP&#x27;s own pages state. Levels are the live project pages&#x27;, with disputed ones marked. The bridge to the RiskGraph model is RiskMandate&#x27;s reading, not OWASP&#x27;s. Offered to OWASP: take it.&quot;,
+  &quot;read&quot;: &quot;2026-09-24&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;id&quot;: &quot;owasp&quot;,
+      &quot;kind&quot;: &quot;org&quot;,
+      &quot;name&quot;: &quot;OWASP Foundation&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/&quot;,
+      &quot;what&quot;: &quot;An open community for software security: projects, chapters and conferences, each project with its own documents, tools and lists.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;g-genai&quot;,
+      &quot;kind&quot;: &quot;group&quot;,
+      &quot;name&quot;: &quot;The GenAI Security Project&quot;,
+      &quot;parent&quot;: &quot;owasp&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;what&quot;: &quot;The umbrella project for generative AI and agent security, renamed from the LLM Top 10 project on 26 March 2025, with its own initiatives and documents.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;g-ai&quot;,
+      &quot;kind&quot;: &quot;group&quot;,
+      &quot;name&quot;: &quot;Other OWASP AI projects&quot;,
+      &quot;parent&quot;: &quot;owasp&quot;,
+      &quot;what&quot;: &quot;AI and agent projects that sit beside the GenAI Security Project, each its own OWASP project.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;g-std&quot;,
+      &quot;kind&quot;: &quot;group&quot;,
+      &quot;name&quot;: &quot;Standards, lists and guides an agent deployment touches&quot;,
+      &quot;parent&quot;: &quot;owasp&quot;,
+      &quot;what&quot;: &quot;OWASP work that predates agents but applies to the systems they run in and call.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;g-tool&quot;,
+      &quot;kind&quot;: &quot;group&quot;,
+      &quot;name&quot;: &quot;Tools&quot;,
+      &quot;parent&quot;: &quot;owasp&quot;,
+      &quot;what&quot;: &quot;Software an organisation can run, several with a business case on this site.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;OWASP Top 10 for LLM Applications 2025&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/&quot;,
+      &quot;version&quot;: &quot;17 November 2024&quot;,
+      &quot;what&quot;: &quot;Ten risk categories for applications built on large language models.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;OWASP Top 10 for LLM Applications 2026&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;,
+      &quot;version&quot;: &quot;August 2026&quot;,
+      &quot;what&quot;: &quot;The edition that replaces 2025, ranked by community vote and incident data, with a different order.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;OWASP Top 10 for Agentic Applications for 2026&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;,
+      &quot;version&quot;: &quot;9 December 2025&quot;,
+      &quot;what&quot;: &quot;Ten risk categories for agents that plan and act.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-tm&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Agentic AI – Threats and Mitigations&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/&quot;,
+      &quot;version&quot;: &quot;17 February 2025&quot;,
+      &quot;what&quot;: &quot;The detailed agent threat taxonomy the Agentic Top 10 relies on.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-secure-guide&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Securing Agentic Applications Guide 1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/securing-agentic-applications-guide-1-0/&quot;,
+      &quot;version&quot;: &quot;27 July 2025&quot;,
+      &quot;what&quot;: &quot;Guidance for building and deploying agent applications.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-mas-tm&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Multi-Agentic System Threat Modeling Guide v1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/&quot;,
+      &quot;version&quot;: &quot;23 April 2025&quot;,
+      &quot;what&quot;: &quot;The threat taxonomy applied to systems of several agents.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-state&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;State of Agentic AI Security and Governance 2.01&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/&quot;,
+      &quot;version&quot;: &quot;1 June 2026&quot;,
+      &quot;what&quot;: &quot;An overview of frameworks and regulation for agents.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-ans&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Agent Name Service (ANS) v1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/agent-name-service-ans-for-secure-al-agent-discovery-v1-0/&quot;,
+      &quot;version&quot;: &quot;14 May 2025&quot;,
+      &quot;what&quot;: &quot;A proposed scheme for naming and discovering agents.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;acs&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Agent Control Standard (ACS)&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/agent-control-standard-acs/&quot;,
+      &quot;version&quot;: &quot;1 September 2026&quot;,
+      &quot;what&quot;: &quot;Standard hooks for inspecting and controlling agents at runtime, donated to the project.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-server-guide&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;A Practical Guide for Secure MCP Server Development&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/&quot;,
+      &quot;version&quot;: &quot;16 February 2026&quot;,
+      &quot;what&quot;: &quot;Guidance for people who build MCP servers.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-3p-cheatsheet&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Cheat Sheet: Securely Using Third-Party MCP Servers 1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/cheatsheet-a-practical-guide-for-securely-using-third-party-mcp-servers-1-0/&quot;,
+      &quot;version&quot;: &quot;4 November 2025&quot;,
+      &quot;what&quot;: &quot;Guidance for people who use MCP servers written by others.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;redteam-guide&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;GenAI Red Teaming Guide&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-red-teaming-guide/&quot;,
+      &quot;version&quot;: &quot;22 January 2025&quot;,
+      &quot;what&quot;: &quot;A method for adversarial testing of generative AI systems.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;redteam-vendor-criteria&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Vendor Evaluation Criteria for AI Red Teaming Providers and Tooling v1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-vendor-evaluation-criteria-for-ai-red-teaming-providers-tooling-v1-0/&quot;,
+      &quot;version&quot;: &quot;4 February 2026&quot;,
+      &quot;what&quot;: &quot;Questions to ask red-teaming vendors.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm-checklist&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;LLM Applications Cybersecurity and Governance Checklist v1.1&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/llm-applications-cybersecurity-and-governance-checklist-english/&quot;,
+      &quot;version&quot;: &quot;7 May 2024&quot;,
+      &quot;what&quot;: &quot;A checklist for leaders adopting large language models.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;landscape-agentic&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;AI Security Solutions Landscape for Agentic AI, Q2 2026&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/ai-security-solutions-landscape-for-agentic-ai-q2-2026/&quot;,
+      &quot;version&quot;: &quot;17 March 2026&quot;,
+      &quot;what&quot;: &quot;A quarterly map of tools by lifecycle stage, for agents.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;landscape-llm&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;AI Security Solutions Landscape for LLM and GenAI Apps, Q2 2026&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/al-security-solutions-landscape-for-llm-and-gen-al-apps-q2-2026/&quot;,
+      &quot;version&quot;: &quot;17 March 2026&quot;,
+      &quot;what&quot;: &quot;The same map, for LLM applications.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;landscape-redteam&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Solutions Landscape for AI and Agentic Red Teaming, Q2 2026&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/ai-security-solutions-landscape-for-ai-and-agentic-red-teaming-q2-2026/&quot;,
+      &quot;version&quot;: &quot;9 April 2026&quot;,
+      &quot;what&quot;: &quot;The same map, for red-teaming tools.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;dsgai&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;GenAI Data Security Risks and Mitigations 2026 v1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/&quot;,
+      &quot;version&quot;: &quot;17 March 2026&quot;,
+      &quot;what&quot;: &quot;Data-layer risks for generative AI systems.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;crosswalk&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;GenAI Security Industry Framework Crosswalk&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-security-industry-framework-crosswalk/&quot;,
+      &quot;version&quot;: &quot;1 September 2026&quot;,
+      &quot;what&quot;: &quot;Maps the project&#x27;s risks to controls in outside frameworks.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;aiuc1-crosswalk&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;AIUC-1 Crosswalk of the Agentic Top 10&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/aiuc-1-crosswalks-owasp-top-10-for-agentic-applications/&quot;,
+      &quot;version&quot;: &quot;25 May 2026&quot;,
+      &quot;what&quot;: &quot;A two-way mapping between AIUC-1 and the Agentic Top 10.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;compass&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;Threat Defense COMPASS 1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-security-project-threat-defense-compass-1-0/&quot;,
+      &quot;version&quot;: &quot;10 September 2025&quot;,
+      &quot;what&quot;: &quot;A worksheet method for prioritising AI threats.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ir-guide&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;GenAI Incident Response Guide 1.0&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-incident-response-guide-1-0/&quot;,
+      &quot;version&quot;: &quot;28 July 2025&quot;,
+      &quot;what&quot;: &quot;Incident response for generative AI systems.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;aibom-gen&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;OWASP AIBOM Generator&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-aibom-generator/&quot;,
+      &quot;version&quot;: &quot;17 December 2025&quot;,
+      &quot;what&quot;: &quot;A tool that writes AI bills of materials in CycloneDX format.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;finbot&quot;,
+      &quot;kind&quot;: &quot;document&quot;,
+      &quot;name&quot;: &quot;FinBot Agentic AI CTF&quot;,
+      &quot;parent&quot;: &quot;g-genai&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/finbot-agentic-ai-capture-the-flag-ctf-application/&quot;,
+      &quot;version&quot;: &quot;12 August 2025&quot;,
+      &quot;what&quot;: &quot;A deliberately vulnerable agent application for training.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ai-exchange&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP AI Exchange&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Reference guidance on AI threats and controls, continuously updated.&quot;,
+      &quot;disputed&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;aitg&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP AI Testing Guide&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;,
+      &quot;level&quot;: &quot;Incubator&quot;,
+      &quot;type&quot;: &quot;Other&quot;,
+      &quot;what&quot;: &quot;A method and test cases for testing AI systems; v1, 26 November 2025.&quot;,
+      &quot;disputed&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;aivss&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP AI Vulnerability Scoring System (AIVSS)&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/ai-vulnerability-scoring-system-aivss&quot;,
+      &quot;level&quot;: &quot;Incubator&quot;,
+      &quot;type&quot;: &quot;Other&quot;,
+      &quot;what&quot;: &quot;A scoring method, starting with agent risks; v0.8.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;aisvs&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP AI Security Verification Standard (AISVS)&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/AISVS&quot;,
+      &quot;level&quot;: &quot;Incubator&quot;,
+      &quot;type&quot;: &quot;Standards&quot;,
+      &quot;what&quot;: &quot;Testable security requirements for AI systems; 1.0, June 2026.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP Machine Learning Security Top Ten&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-machine-learning-security-top-10&quot;,
+      &quot;level&quot;: &quot;Lab&quot;,
+      &quot;type&quot;: &quot;Other&quot;,
+      &quot;what&quot;: &quot;Ten risk categories for machine-learning systems; the 2023 list, marked in draft.&quot;,
+      &quot;disputed&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP MCP Top 10&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/mcp-top-10&quot;,
+      &quot;level&quot;: &quot;Production&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Ten risk categories for MCP systems; a 2025 beta, next release announced for October 2026.&quot;,
+      &quot;disputed&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP Non-Human Identities Top 10&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-non-human-identities-top-10/2025/&quot;,
+      &quot;level&quot;: &quot;Incubator&quot;,
+      &quot;type&quot;: &quot;Other&quot;,
+      &quot;what&quot;: &quot;Ten risk categories for machine identities: keys, tokens, service accounts; 2025 edition.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP Agentic Skills Top 10&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/agentic-skills-top-10&quot;,
+      &quot;level&quot;: &quot;Incubator&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Ten risk categories for agent skills, the layer that carries out an agent&#x27;s actions; in public review.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;aibom&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP AIBOM&quot;,
+      &quot;parent&quot;: &quot;g-ai&quot;,
+      &quot;url&quot;: &quot;https://owaspaibom.org/&quot;,
+      &quot;type&quot;: &quot;Code&quot;,
+      &quot;what&quot;: &quot;Inventories of the parts of an AI system.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asvs&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP ASVS&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/asvs&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Standards&quot;,
+      &quot;what&quot;: &quot;Security requirements for web applications; 5.0.0, May 2025.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;samm&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP SAMM&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://owaspsamm.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Standards&quot;,
+      &quot;what&quot;: &quot;A maturity model for software security programmes; v2.0.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP Top 10: 2025&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://top10.owasp.org/2025&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Ten web application risk categories; the 2025 edition.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;OWASP API Security Top 10&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/api-security-project&quot;,
+      &quot;level&quot;: &quot;Production&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Ten API risk categories; the 2023 edition.&quot;,
+      &quot;disputed&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;cyclonedx&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;CycloneDX (ECMA-424)&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://cyclonedx.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Standards&quot;,
+      &quot;what&quot;: &quot;A bill-of-materials standard with a machine-learning variant; specification 1.7.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;scvs&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Software Component Verification Standard&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-software-component-verification-standard/&quot;,
+      &quot;level&quot;: &quot;Lab&quot;,
+      &quot;type&quot;: &quot;Other&quot;,
+      &quot;what&quot;: &quot;Supply-chain verification controls; 1.0.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Top 10 CI/CD Security Risks&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/top-10-cicd-security-risks&quot;,
+      &quot;level&quot;: &quot;Lab&quot;,
+      &quot;type&quot;: &quot;Other&quot;,
+      &quot;what&quot;: &quot;Ten build-pipeline risk categories.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Kubernetes Top Ten&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://kubernetes-top10.owasp.org/&quot;,
+      &quot;level&quot;: &quot;Incubator&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Ten Kubernetes risk categories; the 2025 list.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cheatsheets&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Cheat Sheet Series&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://cheatsheetseries.owasp.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;Short guides, one topic each.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;tm-project&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Threat Modeling Project&quot;,
+      &quot;parent&quot;: &quot;g-std&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/threat-modeling-project&quot;,
+      &quot;level&quot;: &quot;Lab&quot;,
+      &quot;type&quot;: &quot;Documentation&quot;,
+      &quot;what&quot;: &quot;The entry point for OWASP&#x27;s threat-modelling guidance, including agentic threat modelling.&quot;,
+      &quot;disputed&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;threat-dragon&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Threat Dragon&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-threat-dragon/&quot;,
+      &quot;level&quot;: &quot;Production&quot;,
+      &quot;type&quot;: &quot;Tool&quot;,
+      &quot;what&quot;: &quot;Threat models as data-flow diagrams.&quot;,
+      &quot;case&quot;: &quot;owasp-threat-dragon&quot;
+    },
+    {
+      &quot;id&quot;: &quot;pytm&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;pytm&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-pytm/&quot;,
+      &quot;level&quot;: &quot;Production&quot;,
+      &quot;type&quot;: &quot;Code&quot;,
+      &quot;what&quot;: &quot;Threat models written as Python code.&quot;,
+      &quot;case&quot;: &quot;owasp-threat-dragon&quot;
+    },
+    {
+      &quot;id&quot;: &quot;coraza&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Coraza Web Application Firewall&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://coraza.io/&quot;,
+      &quot;level&quot;: &quot;Production&quot;,
+      &quot;type&quot;: &quot;Code&quot;,
+      &quot;what&quot;: &quot;A web application firewall engine.&quot;,
+      &quot;case&quot;: &quot;owasp-coraza&quot;
+    },
+    {
+      &quot;id&quot;: &quot;crs&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Core Rule Set (CRS)&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://coreruleset.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Code&quot;,
+      &quot;what&quot;: &quot;Detection rules for web application firewalls.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;dtrack&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Dependency-Track&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://dependencytrack.org/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Tool&quot;,
+      &quot;what&quot;: &quot;Tracks component risk from bills of materials.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;dcheck&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Dependency-Check&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-dependency-check/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Tool&quot;,
+      &quot;what&quot;: &quot;Finds known vulnerable dependencies.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;defectdojo&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;DefectDojo&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-defectdojo/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Tool&quot;,
+      &quot;what&quot;: &quot;Collects and manages security findings.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;juice-shop&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;Juice Shop&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-juice-shop/&quot;,
+      &quot;level&quot;: &quot;Flagship&quot;,
+      &quot;type&quot;: &quot;Tool&quot;,
+      &quot;what&quot;: &quot;A deliberately vulnerable web application for training.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;wrongsecrets&quot;,
+      &quot;kind&quot;: &quot;project&quot;,
+      &quot;name&quot;: &quot;WrongSecrets&quot;,
+      &quot;parent&quot;: &quot;g-tool&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/www-project-wrongsecrets/&quot;,
+      &quot;level&quot;: &quot;Production&quot;,
+      &quot;type&quot;: &quot;Tool&quot;,
+      &quot;what&quot;: &quot;Secrets-management training exercises.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-atlas&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;MITRE ATLAS&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-attack&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;MITRE ATT&amp;CK&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-cwe&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;MITRE CWE&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-ai-rmf&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;NIST AI RMF (AI 100-1)&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-600-1&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;NIST AI 600-1&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-aicm&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;CSA AI Controls Matrix&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-42001&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;ISO/IEC 42001&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-27090&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;ISO/IEC 27090&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-aia&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;EU AI Act&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-aiuc1&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;AIUC-1&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-saif&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;Google SAIF&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-aml&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;NIST AML taxonomy&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-maestro&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;CSA MAESTRO&quot;
+    },
+    {
+      &quot;id&quot;: &quot;x-zap&quot;,
+      &quot;kind&quot;: &quot;external&quot;,
+      &quot;name&quot;: &quot;ZAP (left OWASP, 1 August 2023)&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM01:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM01:2025 Prompt Injection&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM02:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM02:2025 Sensitive Information Disclosure&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM03:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM03:2025 Supply Chain&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM04:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM04:2025 Data and Model Poisoning&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM05:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM05:2025 Improper Output Handling&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM06:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM06:2025 Excessive Agency&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM07:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM07:2025 System Prompt Leakage&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM08:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM08:2025 Vector and Embedding Weaknesses&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM09:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM09:2025 Misinformation&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2025:LLM10:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM10:2025 Unbounded Consumption&quot;,
+      &quot;parent&quot;: &quot;llm10-2025&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM01:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM01:2026 Prompt Injection&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM02:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM02:2026 Sensitive Information Disclosure&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM03:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM03:2026 Excessive Agency&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM04:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM04:2026 Supply Chain&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM05:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM05:2026 Data and Model Poisoning&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM06:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM06:2026 Unbounded Consumption&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM07:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM07:2026 Misinformation&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM08:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM08:2026 Hidden Context Exposure&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM09:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM09:2026 Vector and Embedding Weaknesses&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;llm10-2026:LLM10:2026&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;LLM10:2026 Improper Output Handling&quot;,
+      &quot;parent&quot;: &quot;llm10-2026&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI01&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI01 Agent Goal Hijack&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI02&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI02 Tool Misuse and Exploitation&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI03&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI03 Identity and Privilege Abuse&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI04&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI04 Agentic Supply Chain Vulnerabilities&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI05&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI05 Unexpected Code Execution (RCE)&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI06&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI06 Memory &amp; Context Poisoning&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI07&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI07 Insecure Inter-Agent Communication&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI08&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI08 Cascading Failures&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI09&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI09 Human-Agent Trust Exploitation&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;asi-top10:ASI10&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ASI10 Rogue Agents&quot;,
+      &quot;parent&quot;: &quot;asi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML01:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML01:2023 Input Manipulation Attack&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML02:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML02:2023 Data Poisoning Attack&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML03:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML03:2023 Model Inversion Attack&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML04:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML04:2023 Membership Inference Attack&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML05:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML05:2023 Model Theft&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML06:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML06:2023 AI Supply Chain Attacks&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML07:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML07:2023 Transfer Learning Attack&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML08:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML08:2023 Model Skewing&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML09:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML09:2023 Output Integrity Attack&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ml-top10:ML10:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;ML10:2023 Model Poisoning&quot;,
+      &quot;parent&quot;: &quot;ml-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI1:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI1:2025 Improper Offboarding&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI2:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI2:2025 Secret Leakage&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI3:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI3:2025 Vulnerable Third-Party NHI&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI4:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI4:2025 Insecure Authentication&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI5:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI5:2025 Overprivileged NHI&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI6:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI6:2025 Insecure Cloud Deployment Configurations&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI7:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI7:2025 Long-Lived Secrets&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI8:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI8:2025 Environment Isolation&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI9:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI9:2025 NHI Reuse&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nhi-top10:NHI10:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;NHI10:2025 Human Use of NHI&quot;,
+      &quot;parent&quot;: &quot;nhi-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API1:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API1:2023 Broken Object Level Authorization&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API2:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API2:2023 Broken Authentication&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API3:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API3:2023 Broken Object Property Level Authorization&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API4:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API4:2023 Unrestricted Resource Consumption&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API5:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API5:2023 Broken Function Level Authorization&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API6:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API6:2023 Unrestricted Access to Sensitive Business Flows&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API7:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API7:2023 Server Side Request Forgery&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API8:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API8:2023 Security Misconfiguration&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API9:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API9:2023 Improper Inventory Management&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api-top10:API10:2023&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;API10:2023 Unsafe Consumption of APIs&quot;,
+      &quot;parent&quot;: &quot;api-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP01:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP01:2025 Token Mismanagement &amp; Secret Exposure&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP02:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP02:2025 Privilege Escalation via Scope Creep&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP03:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP03:2025 Tool Poisoning&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP04:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP04:2025 Software Supply Chain Attacks &amp; Dependency Tampering&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP05:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP05:2025 Command Injection &amp; Execution&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP06:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP06:2025 Intent Flow Subversion&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP07:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP07:2025 Insufficient Authentication &amp; Authorization&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP08:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP08:2025 Lack of Audit and Telemetry&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP09:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP09:2025 Shadow MCP Servers&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mcp-top10:MCP10:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;MCP10:2025 Context Injection &amp; Over-Sharing&quot;,
+      &quot;parent&quot;: &quot;mcp-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A01:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A01:2025 Broken Access Control&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A02:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A02:2025 Security Misconfiguration&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A03:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A03:2025 Software Supply Chain Failures&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A04:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A04:2025 Cryptographic Failures&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A05:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A05:2025 Injection&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A06:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A06:2025 Insecure Design&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A07:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A07:2025 Authentication Failures&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A08:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A08:2025 Software or Data Integrity Failures&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A09:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A09:2025 Security Logging and Alerting Failures&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;top10:A10:2025&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;A10:2025 Mishandling of Exceptional Conditions&quot;,
+      &quot;parent&quot;: &quot;top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST01&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST01 Malicious Skills&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST02&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST02 Supply Chain Compromise&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST03&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST03 Over-Privileged Skills&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST04&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST04 Insecure Metadata&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST05&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST05 Untrusted External Instructions&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST06&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST06 Weak Isolation&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST07&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST07 Update Drift&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST08&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST08 Poor Scanning&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST09&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST09 No Governance&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ast10:AST10&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;AST10 Cross-Platform Reuse&quot;,
+      &quot;parent&quot;: &quot;ast10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-1&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-1 Insufficient Flow Control Mechanisms&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-2&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-2 Inadequate Identity and Access Management&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-3&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-3 Dependency Chain Abuse&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-4&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-4 Poisoned Pipeline Execution (PPE)&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-5&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-5 Insufficient PBAC (Pipeline-Based Access Controls)&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-6&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-6 Insufficient Credential Hygiene&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-7&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-7 Insecure System Configuration&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-8&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-8 Ungoverned Usage of 3rd Party Services&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-9&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-9 Improper Artifact Integrity Validation&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cicd-top10:CICD-SEC-10&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;CICD-SEC-10 Insufficient Logging and Visibility&quot;,
+      &quot;parent&quot;: &quot;cicd-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K01&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K01 Insecure Workload Configurations&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K02&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K02 Overly Permissive Authorization Configurations&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K03&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K03 Secrets Management Failures&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K04&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K04 Lack Of Cluster Level Policy Enforcement&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K05&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K05 Missing Network Segmentation Controls&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K06&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K06 Overly Exposed Kubernetes Components&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K07&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K07 Misconfigured And Vulnerable Cluster Components&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K08&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K08 Cluster To Cloud Lateral Movement&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K09&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K09 Broken Authentication Mechanisms&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;k8s-top10:K10&quot;,
+      &quot;kind&quot;: &quot;item&quot;,
+      &quot;name&quot;: &quot;K10 Inadequate Logging And Monitoring&quot;,
+      &quot;parent&quot;: &quot;k8s-top10&quot;
+    }
+  ],
+  &quot;edges&quot;: [
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;llm10-2025&quot;,
+      &quot;rel&quot;: &quot;supersedes&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026:LLM08:2026&quot;,
+      &quot;to&quot;: &quot;llm10-2025:LLM07:2025&quot;,
+      &quot;rel&quot;: &quot;renames and broadens&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;,
+      &quot;quote&quot;: &quot;What used to be System Prompt Leakage is now Hidden Context Exposure&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;asi-top10&quot;,
+      &quot;rel&quot;: &quot;hands agent risks over to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;,
+      &quot;quote&quot;: &quot;the risk moves to the OWASP Agentic Top 10&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;dsgai&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;aivss&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-top10&quot;,
+      &quot;to&quot;: &quot;asi-tm&quot;,
+      &quot;rel&quot;: &quot;relies on&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;,
+      &quot;quote&quot;: &quot;our foundational and detailed taxonomy that this Top 10 relies upon&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-top10&quot;,
+      &quot;to&quot;: &quot;llm10-2025&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-top10&quot;,
+      &quot;to&quot;: &quot;aivss&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-top10&quot;,
+      &quot;to&quot;: &quot;cyclonedx&quot;,
+      &quot;rel&quot;: &quot;complemented by&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;,
+      &quot;quote&quot;: &quot;CycloneDX helps organizations answer, “What components and tools are in my AI system?”&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-top10&quot;,
+      &quot;to&quot;: &quot;aibom&quot;,
+      &quot;rel&quot;: &quot;intends to align with&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;nhi-top10&quot;,
+      &quot;to&quot;: &quot;asi-top10&quot;,
+      &quot;rel&quot;: &quot;mapped to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-secure-guide&quot;,
+      &quot;to&quot;: &quot;asi-tm&quot;,
+      &quot;rel&quot;: &quot;complements&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/securing-agentic-applications-guide-1-0/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-mas-tm&quot;,
+      &quot;to&quot;: &quot;asi-tm&quot;,
+      &quot;rel&quot;: &quot;builds on&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;landscape-agentic&quot;,
+      &quot;to&quot;: &quot;asi-tm&quot;,
+      &quot;rel&quot;: &quot;organised by&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/ai-security-solutions-landscape-for-agentic-ai-q2-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;acs&quot;,
+      &quot;to&quot;: &quot;g-genai&quot;,
+      &quot;rel&quot;: &quot;donated to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/agent-control-standard-acs/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aibom-gen&quot;,
+      &quot;to&quot;: &quot;cyclonedx&quot;,
+      &quot;rel&quot;: &quot;writes&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-aibom-generator/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aisvs&quot;,
+      &quot;to&quot;: &quot;asvs&quot;,
+      &quot;rel&quot;: &quot;modelled on&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/AISVS&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aisvs&quot;,
+      &quot;to&quot;: &quot;llm10-2025&quot;,
+      &quot;rel&quot;: &quot;complements&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/AISVS&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aisvs&quot;,
+      &quot;to&quot;: &quot;asi-top10&quot;,
+      &quot;rel&quot;: &quot;complements&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/AISVS&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ai-exchange&quot;,
+      &quot;to&quot;: &quot;ml-top10&quot;,
+      &quot;rel&quot;: &quot;aligns with&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ai-exchange&quot;,
+      &quot;to&quot;: &quot;llm10-2026&quot;,
+      &quot;rel&quot;: &quot;cross-references&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;llm10-2025&quot;,
+      &quot;rel&quot;: &quot;draws on&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;ai-exchange&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;redteam-guide&quot;,
+      &quot;rel&quot;: &quot;acknowledges&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;tm-project&quot;,
+      &quot;to&quot;: &quot;asi-mas-tm&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/threat-modeling-project&quot;
+    },
+    {
+      &quot;from&quot;: &quot;tm-project&quot;,
+      &quot;to&quot;: &quot;asi-top10&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/threat-modeling-project&quot;
+    },
+    {
+      &quot;from&quot;: &quot;tm-project&quot;,
+      &quot;to&quot;: &quot;threat-dragon&quot;,
+      &quot;rel&quot;: &quot;lists&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/threat-modeling-project&quot;
+    },
+    {
+      &quot;from&quot;: &quot;tm-project&quot;,
+      &quot;to&quot;: &quot;pytm&quot;,
+      &quot;rel&quot;: &quot;lists&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/threat-modeling-project&quot;
+    },
+    {
+      &quot;from&quot;: &quot;top10:A03:2025&quot;,
+      &quot;to&quot;: &quot;cyclonedx&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://top10.owasp.org/2025&quot;
+    },
+    {
+      &quot;from&quot;: &quot;top10:A03:2025&quot;,
+      &quot;to&quot;: &quot;dtrack&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://top10.owasp.org/2025&quot;
+    },
+    {
+      &quot;from&quot;: &quot;top10&quot;,
+      &quot;to&quot;: &quot;asvs&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://top10.owasp.org/2025&quot;
+    },
+    {
+      &quot;from&quot;: &quot;top10&quot;,
+      &quot;to&quot;: &quot;samm&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://top10.owasp.org/2025&quot;
+    },
+    {
+      &quot;from&quot;: &quot;cheatsheets&quot;,
+      &quot;to&quot;: &quot;asvs&quot;,
+      &quot;rel&quot;: &quot;bridges to&quot;,
+      &quot;url&quot;: &quot;https://cheatsheetseries.owasp.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;coraza&quot;,
+      &quot;to&quot;: &quot;crs&quot;,
+      &quot;rel&quot;: &quot;compatible with&quot;,
+      &quot;url&quot;: &quot;https://coraza.io/&quot;,
+      &quot;quote&quot;: &quot;100% compatible with OWASP Core Ruleset&quot;
+    },
+    {
+      &quot;from&quot;: &quot;crs&quot;,
+      &quot;to&quot;: &quot;top10&quot;,
+      &quot;rel&quot;: &quot;defends against&quot;,
+      &quot;url&quot;: &quot;https://coreruleset.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;api-top10&quot;,
+      &quot;to&quot;: &quot;asvs&quot;,
+      &quot;rel&quot;: &quot;recommends&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/api-security-project&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ast10&quot;,
+      &quot;to&quot;: &quot;mcp-top10&quot;,
+      &quot;rel&quot;: &quot;positions itself beside&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/agentic-skills-top-10&quot;,
+      &quot;quote&quot;: &quot;MCP = how the model talks to tools; AST10 = what those tools actually do.&quot;
+    },
+    {
+      &quot;from&quot;: &quot;dtrack&quot;,
+      &quot;to&quot;: &quot;cyclonedx&quot;,
+      &quot;rel&quot;: &quot;consumes&quot;,
+      &quot;url&quot;: &quot;https://dependencytrack.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;x-zap&quot;,
+      &quot;to&quot;: &quot;owasp&quot;,
+      &quot;rel&quot;: &quot;left&quot;,
+      &quot;url&quot;: &quot;https://www.zaproxy.org/blog/2023-08-01-zap-is-joining-the-software-security-project/&quot;,
+      &quot;quote&quot;: &quot;ZAP can only be in one foundation, so regretfully ZAP will be leaving OWASP.&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;x-atlas&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;x-attack&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;x-cwe&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;x-600-1&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;x-ai-rmf&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;llm10-2026&quot;,
+      &quot;to&quot;: &quot;x-aicm&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;crosswalk&quot;,
+      &quot;to&quot;: &quot;x-ai-rmf&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-security-industry-framework-crosswalk/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;crosswalk&quot;,
+      &quot;to&quot;: &quot;x-42001&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-security-industry-framework-crosswalk/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;crosswalk&quot;,
+      &quot;to&quot;: &quot;x-atlas&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-security-industry-framework-crosswalk/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;crosswalk&quot;,
+      &quot;to&quot;: &quot;x-aia&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/genai-security-industry-framework-crosswalk/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aiuc1-crosswalk&quot;,
+      &quot;to&quot;: &quot;x-aiuc1&quot;,
+      &quot;rel&quot;: &quot;maps both ways&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/aiuc-1-crosswalks-owasp-top-10-for-agentic-applications/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aiuc1-crosswalk&quot;,
+      &quot;to&quot;: &quot;asi-top10&quot;,
+      &quot;rel&quot;: &quot;maps both ways&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/aiuc-1-crosswalks-owasp-top-10-for-agentic-applications/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aisvs&quot;,
+      &quot;to&quot;: &quot;x-ai-rmf&quot;,
+      &quot;rel&quot;: &quot;provides controls for&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/AISVS&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aisvs&quot;,
+      &quot;to&quot;: &quot;x-42001&quot;,
+      &quot;rel&quot;: &quot;provides controls for&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/AISVS&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ai-exchange&quot;,
+      &quot;to&quot;: &quot;x-aia&quot;,
+      &quot;rel&quot;: &quot;feeds into&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ai-exchange&quot;,
+      &quot;to&quot;: &quot;x-27090&quot;,
+      &quot;rel&quot;: &quot;feeds into&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ai-exchange&quot;,
+      &quot;to&quot;: &quot;x-atlas&quot;,
+      &quot;rel&quot;: &quot;references&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;x-ai-rmf&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;x-42001&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;x-aml&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;aitg&quot;,
+      &quot;to&quot;: &quot;x-saif&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;from&quot;: &quot;ast10&quot;,
+      &quot;to&quot;: &quot;x-maestro&quot;,
+      &quot;rel&quot;: &quot;maps to&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/projects/agentic-skills-top-10&quot;
+    },
+    {
+      &quot;from&quot;: &quot;asi-ans&quot;,
+      &quot;to&quot;: &quot;x-maestro&quot;,
+      &quot;rel&quot;: &quot;supports&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/resource/agent-name-service-ans-for-secure-al-agent-discovery-v1-0/&quot;
+    }
+  ],
+  &quot;bridge&quot;: [
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI01&quot;,
+      &quot;questions&quot;: [
+        &quot;q9&quot;,
+        &quot;q15&quot;,
+        &quot;q11&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-15&quot;,
+        &quot;RISK-28&quot;,
+        &quot;RISK-16&quot;
+      ],
+      &quot;why&quot;: &quot;A hijacked agent does what its reach allows: the answers that bound it are whether it changes things on its own, where it can send data, and what it can do to the data in reach.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI02&quot;,
+      &quot;questions&quot;: [
+        &quot;q11&quot;,
+        &quot;q9&quot;,
+        &quot;q7&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-16&quot;,
+        &quot;RISK-6&quot;,
+        &quot;RISK-22&quot;
+      ],
+      &quot;why&quot;: &quot;Misuse of a tool is bounded by what the tool may change, whether a person approves it, and whether the change can be undone.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI03&quot;,
+      &quot;questions&quot;: [
+        &quot;q14&quot;,
+        &quot;q6&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-14&quot;,
+        &quot;RISK-8&quot;,
+        &quot;RISK-17&quot;
+      ],
+      &quot;why&quot;: &quot;Whose account the agent acts under, and whether anybody can state what it is entitled to reach.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI04&quot;,
+      &quot;questions&quot;: [],
+      &quot;risks&quot;: [],
+      &quot;why&quot;: &quot;Not in the model: none of its sixteen questions asks where the agent&#x27;s components came from.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI05&quot;,
+      &quot;questions&quot;: [
+        &quot;q15&quot;,
+        &quot;q9&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-28&quot;,
+        &quot;RISK-6&quot;
+      ],
+      &quot;why&quot;: &quot;Code the agent runs reaches what the agent can reach; isolation and egress are the answers that bound it.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI06&quot;,
+      &quot;questions&quot;: [],
+      &quot;risks&quot;: [],
+      &quot;why&quot;: &quot;Not in the model: it has no question about what the agent remembers or which context it trusts.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI07&quot;,
+      &quot;questions&quot;: [],
+      &quot;risks&quot;: [],
+      &quot;why&quot;: &quot;Not in the model: it describes one agent, not agents talking to each other.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI08&quot;,
+      &quot;questions&quot;: [
+        &quot;q5&quot;,
+        &quot;q3&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-10&quot;,
+        &quot;RISK-20&quot;,
+        &quot;RISK-30&quot;,
+        &quot;RISK-2&quot;
+      ],
+      &quot;why&quot;: &quot;Whether the side effects of stopping are known, and whether stopping is one action.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI09&quot;,
+      &quot;questions&quot;: [
+        &quot;qE&quot;,
+        &quot;q9&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-34&quot;,
+        &quot;RISK-27&quot;
+      ],
+      &quot;why&quot;: &quot;Whether the agent&#x27;s output decides about a person, and whether a person approves each change.&quot;
+    },
+    {
+      &quot;item&quot;: &quot;asi-top10:ASI10&quot;,
+      &quot;questions&quot;: [
+        &quot;q3&quot;,
+        &quot;q4&quot;,
+        &quot;q12&quot;,
+        &quot;q13&quot;
+      ],
+      &quot;risks&quot;: [
+        &quot;RISK-35&quot;,
+        &quot;RISK-9&quot;,
+        &quot;RISK-38&quot;,
+        &quot;RISK-13&quot;
+      ],
+      &quot;why&quot;: &quot;Whether it can be stopped, how fast, whether that has ever been done, and whether what it did can be read back.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    {
+      &quot;topic&quot;: &quot;Project levels&quot;,
+      &quot;text&quot;: &quot;OWASP records a project&#x27;s level in three places: the live project page, the committee&#x27;s level file and the project&#x27;s own page source. For several projects they disagree: the AI Exchange is Flagship on the live page, Incubator in the committee file and level 4 in its own source; the AI Testing Guide is Incubator on the live page and level 4 in its source; the MCP Top 10 is Production on the live page and level 2 in both others. This graph shows the live page&#x27;s level and marks the disputed ones.&quot;,
+      &quot;urls&quot;: [
+        &quot;https://github.com/OWASP/owasp.github.io/blob/main/_data/project_levels.json&quot;
+      ]
+    },
+    {
+      &quot;topic&quot;: &quot;The sixth MCP item&quot;,
+      &quot;text&quot;: &quot;MCP06:2025 is titled Intent Flow Subversion in the project&#x27;s repository and Prompt Injection via Contextual Payloads on the live project page. This graph uses the repository&#x27;s title.&quot;,
+      &quot;urls&quot;: [
+        &quot;https://github.com/OWASP/www-project-mcp-top-10&quot;,
+        &quot;https://owasp.org/projects/mcp-top-10&quot;
+      ]
+    },
+    {
+      &quot;topic&quot;: &quot;The date of the 2026 LLM Top 10&quot;,
+      &quot;text&quot;: &quot;3 August in the project&#x27;s feed, 4 August on the page and the cover, and a placeholder, publication date to be set, inside the document.&quot;,
+      &quot;urls&quot;: [
+        &quot;https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/&quot;
+      ]
+    },
+    {
+      &quot;topic&quot;: &quot;The ML Top 10&#x27;s status&quot;,
+      &quot;text&quot;: &quot;Lab on the live site; an Incubator badge and in draft on its own page.&quot;,
+      &quot;urls&quot;: [
+        &quot;https://github.com/OWASP/www-project-machine-learning-security-top-10&quot;
+      ]
+    },
+    {
+      &quot;topic&quot;: &quot;What the AI Testing Guide is&quot;,
+      &quot;text&quot;: &quot;It calls itself a standard; the live site lists it as an Incubator project of type Other.&quot;,
+      &quot;urls&quot;: [
+        &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+      ]
+    }
+  ],
+  &quot;involve&quot;: [
+    {
+      &quot;name&quot;: &quot;OWASP Slack&quot;,
+      &quot;url&quot;: &quot;https://owasp.org/slack/invite&quot;
+    },
+    {
+      &quot;name&quot;: &quot;GenAI Security Project: contributing&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/contributing/&quot;
+    },
+    {
+      &quot;name&quot;: &quot;GenAI Security Project: meetings&quot;,
+      &quot;url&quot;: &quot;https://genai.owasp.org/meetings/&quot;
+    },
+    {
+      &quot;name&quot;: &quot;MCP Top 10 on GitHub&quot;,
+      &quot;url&quot;: &quot;https://github.com/owasp/www-project-mcp-top-10&quot;
+    },
+    {
+      &quot;name&quot;: &quot;NHI Top 10 on GitHub&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-non-human-identities-top-10&quot;
+    },
+    {
+      &quot;name&quot;: &quot;AI Testing Guide on GitHub&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-project-ai-testing-guide&quot;
+    },
+    {
+      &quot;name&quot;: &quot;AI Exchange&quot;,
+      &quot;url&quot;: &quot;https://owaspai.org/&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Cheat Sheet Series on GitHub&quot;,
+      &quot;url&quot;: &quot;https://github.com/OWASP/CheatSheetSeries&quot;
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/business-case/owasp/graph.json">https://riskmandate.ai/business-case/owasp/graph.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:05Z</dd><dt>sha256</dt><dd><code title="de33a87aa08666a24e3fcd43eec8b5075c926d34c610aa4f56f4a4e4c20e1f9a">de33a87aa086</code></dd><dt>Frozen copy</dt><dd><a href="graph.json">sites/riskmandate.ai/business-case/owasp/graph.json</a> (48,110 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

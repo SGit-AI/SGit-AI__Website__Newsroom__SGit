@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>library.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pki.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/pki.sgit.ai.html">pki.sgit.ai</a> · <a href="library.json">raw text</a> · <a class="ext" href="https://pki.sgit.ai/assess/library.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;version&quot;: &quot;2026-08-21&quot;,
+  &quot;basis&quot;: &quot;Every tree here is derived from what a surface ARCHITECTURALLY is, not from a security assessment of any vendor. That a command-line agent running under your account can reach what your account can reach is a fact about command-line programs, true of all of them, and it is not a claim about whoever wrote one. Where a node comes from something stronger than that — a published third-party audit, or a direct measurement — the node says so and carries its date.&quot;,
+  &quot;evidence&quot;: {
+    &quot;derived&quot;: &quot;Reasoned from what the surface is. True by construction, and nobody has checked this instance.&quot;,
+    &quot;third-party&quot;: &quot;From a published read-only audit tool&#x27;s module list, so the row is comparable with something public.&quot;,
+    &quot;measured&quot;: &quot;Observed inside a running installation on the stated date. One vendor, one surface, one date. Not generalised.&quot;,
+    &quot;tested&quot;: &quot;The boundary was probed by making requests rather than by reading documentation.&quot;
+  },
+  &quot;tiers&quot;: {
+    &quot;boundary&quot;: &quot;Enforced by something outside the grant — the OS, a separate account, a container, a network policy. It holds against a compromised agent.&quot;,
+    &quot;setting&quot;: &quot;Enforced by the tool itself, running inside the grant. Anything that can run code here can go around it.&quot;,
+    &quot;expectation&quot;: &quot;Enforced by nothing. Written in a prompt or a rules file. It is a mandate, not a control.&quot;,
+    &quot;none&quot;: &quot;No mechanism is claimed. This is simply reachable.&quot;
+  },
+  &quot;surfaces&quot;: [
+    {
+      &quot;id&quot;: &quot;cli&quot;,
+      &quot;label&quot;: &quot;A command-line agent&quot;,
+      &quot;where&quot;: &quot;your machine&quot;,
+      &quot;oneline&quot;: &quot;Runs under your user account, so it inherits your account&#x27;s reach.&quot;,
+      &quot;icon&quot;: &quot;terminal&quot;
+    },
+    {
+      &quot;id&quot;: &quot;desktop&quot;,
+      &quot;label&quot;: &quot;A desktop application&quot;,
+      &quot;where&quot;: &quot;your machine&quot;,
+      &quot;oneline&quot;: &quot;Also runs as you — the difference from a CLI is which prompts are on by default, and a default is a setting.&quot;,
+      &quot;icon&quot;: &quot;window&quot;
+    },
+    {
+      &quot;id&quot;: &quot;web&quot;,
+      &quot;label&quot;: &quot;A hosted assistant&quot;,
+      &quot;where&quot;: &quot;the vendor&quot;,
+      &quot;oneline&quot;: &quot;Reaches what you paste in and whatever connectors you switch on. Not your filesystem.&quot;,
+      &quot;icon&quot;: &quot;cloud&quot;
+    },
+    {
+      &quot;id&quot;: &quot;agentbox&quot;,
+      &quot;label&quot;: &quot;A hosted agent container&quot;,
+      &quot;where&quot;: &quot;the vendor&quot;,
+      &quot;oneline&quot;: &quot;A container you do not control, holding the repository you attached to it.&quot;,
+      &quot;icon&quot;: &quot;box&quot;
+    }
+  ],
+  &quot;products&quot;: [
+    {
+      &quot;id&quot;: &quot;claude-code&quot;,
+      &quot;surface&quot;: &quot;cli&quot;,
+      &quot;label&quot;: &quot;Claude Code&quot;,
+      &quot;vendor&quot;: &quot;Anthropic&quot;
+    },
+    {
+      &quot;id&quot;: &quot;codex-cli&quot;,
+      &quot;surface&quot;: &quot;cli&quot;,
+      &quot;label&quot;: &quot;Codex CLI&quot;,
+      &quot;vendor&quot;: &quot;OpenAI&quot;
+    },
+    {
+      &quot;id&quot;: &quot;gemini-cli&quot;,
+      &quot;surface&quot;: &quot;cli&quot;,
+      &quot;label&quot;: &quot;Gemini CLI&quot;,
+      &quot;vendor&quot;: &quot;Google&quot;
+    },
+    {
+      &quot;id&quot;: &quot;other-cli&quot;,
+      &quot;surface&quot;: &quot;cli&quot;,
+      &quot;label&quot;: &quot;Another CLI agent&quot;,
+      &quot;vendor&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;claude-desktop&quot;,
+      &quot;surface&quot;: &quot;desktop&quot;,
+      &quot;label&quot;: &quot;Claude Desktop&quot;,
+      &quot;vendor&quot;: &quot;Anthropic&quot;
+    },
+    {
+      &quot;id&quot;: &quot;chatgpt-desktop&quot;,
+      &quot;surface&quot;: &quot;desktop&quot;,
+      &quot;label&quot;: &quot;ChatGPT Desktop&quot;,
+      &quot;vendor&quot;: &quot;OpenAI&quot;
+    },
+    {
+      &quot;id&quot;: &quot;other-desktop&quot;,
+      &quot;surface&quot;: &quot;desktop&quot;,
+      &quot;label&quot;: &quot;Another desktop app&quot;,
+      &quot;vendor&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;claude-web&quot;,
+      &quot;surface&quot;: &quot;web&quot;,
+      &quot;label&quot;: &quot;Claude (web)&quot;,
+      &quot;vendor&quot;: &quot;Anthropic&quot;
+    },
+    {
+      &quot;id&quot;: &quot;chatgpt-web&quot;,
+      &quot;surface&quot;: &quot;web&quot;,
+      &quot;label&quot;: &quot;ChatGPT (web)&quot;,
+      &quot;vendor&quot;: &quot;OpenAI&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mistral-web&quot;,
+      &quot;surface&quot;: &quot;web&quot;,
+      &quot;label&quot;: &quot;Le Chat (web)&quot;,
+      &quot;vendor&quot;: &quot;Mistral&quot;
+    },
+    {
+      &quot;id&quot;: &quot;other-web&quot;,
+      &quot;surface&quot;: &quot;web&quot;,
+      &quot;label&quot;: &quot;Another assistant&quot;,
+      &quot;vendor&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;claude-code-web&quot;,
+      &quot;surface&quot;: &quot;agentbox&quot;,
+      &quot;label&quot;: &quot;Claude Code on the web&quot;,
+      &quot;vendor&quot;: &quot;Anthropic&quot;
+    },
+    {
+      &quot;id&quot;: &quot;other-agentbox&quot;,
+      &quot;surface&quot;: &quot;agentbox&quot;,
+      &quot;label&quot;: &quot;Another hosted agent&quot;,
+      &quot;vendor&quot;: &quot;&quot;
+    }
+  ],
+  &quot;facts&quot;: [
+    {
+      &quot;id&quot;: &quot;creds&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;q&quot;: &quot;Are there credential files in your home directory?&quot;,
+      &quot;hint&quot;: &quot;Cloud config, kubeconfig, SSH keys, registry tokens — the usual dotfiles.&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cloud&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;requires&quot;: [
+        &quot;creds&quot;
+      ],
+      &quot;q&quot;: &quot;Do any of them open a cloud or cluster account?&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    },
+    {
+      &quot;id&quot;: &quot;codehost&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;requires&quot;: [
+        &quot;creds&quot;
+      ],
+      &quot;q&quot;: &quot;Do any of them push to a code host?&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    },
+    {
+      &quot;id&quot;: &quot;registry&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;requires&quot;: [
+        &quot;creds&quot;
+      ],
+      &quot;q&quot;: &quot;Do any of them publish packages or images?&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    },
+    {
+      &quot;id&quot;: &quot;history&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;q&quot;: &quot;Do you keep shell history or previous session transcripts?&quot;,
+      &quot;hint&quot;: &quot;A transcript is a superset of every file that session read.&quot;,
+      &quot;default&quot;: &quot;yes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;exec&quot;,
+      &quot;surfaces&quot;: [
+        &quot;desktop&quot;
+      ],
+      &quot;q&quot;: &quot;Can it run terminal commands for you?&quot;,
+      &quot;hint&quot;: &quot;Many desktop apps can, through a tool or an extension.&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    },
+    {
+      &quot;id&quot;: &quot;connectors&quot;,
+      &quot;surfaces&quot;: [
+        &quot;web&quot;
+      ],
+      &quot;q&quot;: &quot;Have you connected it to anything — mail, drive, a code host, an MCP server?&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    },
+    {
+      &quot;id&quot;: &quot;upload&quot;,
+      &quot;surfaces&quot;: [
+        &quot;web&quot;
+      ],
+      &quot;q&quot;: &quot;Do you paste or upload work files into it?&quot;,
+      &quot;default&quot;: &quot;yes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;repo&quot;,
+      &quot;surfaces&quot;: [
+        &quot;agentbox&quot;
+      ],
+      &quot;q&quot;: &quot;Does it have a repository attached?&quot;,
+      &quot;default&quot;: &quot;yes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;signing&quot;,
+      &quot;surfaces&quot;: [
+        &quot;agentbox&quot;
+      ],
+      &quot;q&quot;: &quot;Is a commit signing identity configured in it?&quot;,
+      &quot;default&quot;: &quot;unsure&quot;
+    }
+  ],
+  &quot;controls&quot;: [
+    {
+      &quot;id&quot;: &quot;sep-account&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;
+      ],
+      &quot;label&quot;: &quot;It runs under a separate user account&quot;,
+      &quot;effort&quot;: &quot;hard — days, and it fights you&quot;,
+      &quot;tier&quot;: &quot;boundary&quot;,
+      &quot;removes&quot;: [
+        &quot;creds&quot;,
+        &quot;hist&quot;
+      ],
+      &quot;note&quot;: &quot;The single largest reduction available, and the reason almost nobody does it is that it is genuinely difficult: paths, permissions, agents and editors all assume one account. Desktop applications frequently cannot be run this way at all.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;container&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;
+      ],
+      &quot;label&quot;: &quot;It runs in a container with only the project mounted&quot;,
+      &quot;effort&quot;: &quot;an afternoon, then ongoing friction&quot;,
+      &quot;tier&quot;: &quot;boundary&quot;,
+      &quot;removes&quot;: [
+        &quot;creds&quot;,
+        &quot;hist&quot;
+      ],
+      &quot;downgrades&quot;: {
+        &quot;exec&quot;: &quot;container&quot;
+      },
+      &quot;note&quot;: &quot;Execution survives inside the container and stops being execution on your machine. The friction is real and recurring — mounts, tokens, editor integration.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;egress&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;,
+        &quot;agentbox&quot;
+      ],
+      &quot;label&quot;: &quot;Outbound traffic goes through an allowlist&quot;,
+      &quot;effort&quot;: &quot;an hour, if you already have somewhere to put it&quot;,
+      &quot;tier&quot;: &quot;boundary&quot;,
+      &quot;swaps&quot;: {
+        &quot;net.any&quot;: &quot;net.allowed&quot;
+      },
+      &quot;note&quot;: &quot;The one control the hosted container already has, demonstrated rather than claimed. You can have it too.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;vault-creds&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;label&quot;: &quot;Credentials live somewhere the agent&#x27;s account cannot open&quot;,
+      &quot;effort&quot;: &quot;an afternoon&quot;,
+      &quot;tier&quot;: &quot;boundary&quot;,
+      &quot;removes&quot;: [
+        &quot;creds&quot;
+      ],
+      &quot;note&quot;: &quot;Only helps if the agent cannot become you — pair it with a separate account or a container, or it is a setting wearing a boundary&#x27;s clothes.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;no-skip&quot;,
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;label&quot;: &quot;Permission prompts are on, with no skip flag set&quot;,
+      &quot;effort&quot;: &quot;five minutes&quot;,
+      &quot;tier&quot;: &quot;setting&quot;,
+      &quot;marks&quot;: {
+        &quot;cfg&quot;: &quot;setting&quot;
+      },
+      &quot;note&quot;: &quot;Worth doing and it is NOT a boundary: the prompt is enforced by the tool, and this grant can rewrite the file that disables it. Labelled honestly so you are not misled.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;no-connect&quot;,
+      &quot;surfaces&quot;: [
+        &quot;web&quot;
+      ],
+      &quot;label&quot;: &quot;No connectors are switched on&quot;,
+      &quot;effort&quot;: &quot;immediate&quot;,
+      &quot;tier&quot;: &quot;boundary&quot;,
+      &quot;removes&quot;: [
+        &quot;connect&quot;
+      ],
+      &quot;note&quot;: &quot;The connector list is the whole of a hosted assistant&#x27;s reach beyond the conversation. It is enforced by the vendor and it is genuinely outside the session.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;less-in&quot;,
+      &quot;surfaces&quot;: [
+        &quot;web&quot;,
+        &quot;agentbox&quot;
+      ],
+      &quot;label&quot;: &quot;Only non-sensitive material goes in&quot;,
+      &quot;effort&quot;: &quot;immediate, and continuous&quot;,
+      &quot;tier&quot;: &quot;expectation&quot;,
+      &quot;note&quot;: &quot;The hosted grant reaches what you put in front of it, and that part IS yours. It is an expectation rather than a boundary because nothing enforces it but you, every time.&quot;
+    }
+  ],
+  &quot;nodes&quot;: {
+    &quot;cli&quot;: [
+      {
+        &quot;id&quot;: &quot;root&quot;,
+        &quot;parent&quot;: null,
+        &quot;label&quot;: &quot;Runs as your user account&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;detail&quot;: &quot;This is the grant. Everything below is a consequence of it rather than a separate decision — the agent inherits your account, so it inherits your account&#x27;s reach.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;conv&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;The conversation itself&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;chat&quot;,
+          &quot;draft&quot;,
+          &quot;explain&quot;
+        ],
+        &quot;detail&quot;: &quot;Everything an agent does starts here, and it is the part nobody thinks of as a grant. It is drawn because a tool that only lists frightening capabilities is measuring its own framing rather than your setup.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;files&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Read and write anything your account can&quot;,
+        &quot;mechanism&quot;: &quot;the tool&#x27;s own directory restriction&quot;,
+        &quot;tier&quot;: &quot;setting&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;detail&quot;: &quot;The folder restriction is enforced by the tool, which runs inside this grant. Anything that can execute as you can step around it — see the escalation edge from “Execute programs as you”.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;proj&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;The project you are working on&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.project&quot;,
+          &quot;write.project&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;creds&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;Credential files in your home directory&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;creds&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.credentials&quot;
+        ],
+        &quot;detail&quot;: &quot;A published read-only audit tool enumerates exactly this class: key files and their permissions, cloud and cluster credentials, registry tokens, code-host credentials. Nothing stands in the way, because the files are owned by the account the agent runs as.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;cloud&quot;,
+        &quot;parent&quot;: &quot;creds&quot;,
+        &quot;label&quot;: &quot;Cloud and cluster accounts&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;cloud&quot;,
+        &quot;reaches&quot;: [
+          &quot;cloud.api&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;code&quot;,
+        &quot;parent&quot;: &quot;creds&quot;,
+        &quot;label&quot;: &quot;Code hosts and signing keys&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;codehost&quot;,
+        &quot;reaches&quot;: [
+          &quot;git.push&quot;,
+          &quot;sign.commits&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;pkg&quot;,
+        &quot;parent&quot;: &quot;creds&quot;,
+        &quot;label&quot;: &quot;Package and image registries&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;registry&quot;,
+        &quot;reaches&quot;: [
+          &quot;pkg.publish&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;hist&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;Shell history and past transcripts&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;history&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.transcripts&quot;
+        ],
+        &quot;detail&quot;: &quot;A session transcript is a superset of every file that session read, so excluding a secret by path does not exclude its contents. Two independent routes reached this conclusion, which is why it is a finding rather than an observation.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;cfg&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;Its own configuration and rules files&quot;,
+        &quot;mechanism&quot;: &quot;a permission prompt&quot;,
+        &quot;tier&quot;: &quot;setting&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;reaches&quot;: [
+          &quot;alter.limits&quot;
+        ],
+        &quot;detail&quot;: &quot;A prompt that a flag in a writable file can disable is an expectation wearing a setting&#x27;s clothes. The audit tool named below looks for exactly those flags in shell initialisation.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;exec&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Execute programs as you&quot;,
+        &quot;mechanism&quot;: &quot;an approved-tools list&quot;,
+        &quot;tier&quot;: &quot;setting&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;exec.local&quot;
+        ],
+        &quot;detail&quot;: &quot;This is the node that makes the two settings above cosmetic. It is why the escalation edges exist.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;net&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Open outbound connections&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;net.any&quot;
+        ]
+      }
+    ],
+    &quot;desktop&quot;: [
+      {
+        &quot;id&quot;: &quot;root&quot;,
+        &quot;parent&quot;: null,
+        &quot;label&quot;: &quot;Runs as your user account&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;detail&quot;: &quot;A desktop application installed by you runs as you. The difference from the command line is which confirmations are on by default — and a default is a setting.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;conv&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;The conversation itself&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;chat&quot;,
+          &quot;draft&quot;,
+          &quot;explain&quot;
+        ],
+        &quot;detail&quot;: &quot;Everything an agent does starts here, and it is the part nobody thinks of as a grant. It is drawn because a tool that only lists frightening capabilities is measuring its own framing rather than your setup.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;files&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Read and write anything your account can&quot;,
+        &quot;mechanism&quot;: &quot;a workspace-folder restriction&quot;,
+        &quot;tier&quot;: &quot;setting&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.project&quot;,
+          &quot;write.project&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;creds&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;Credential files in your home directory&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;creds&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.credentials&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;cloud&quot;,
+        &quot;parent&quot;: &quot;creds&quot;,
+        &quot;label&quot;: &quot;Cloud and cluster accounts&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;cloud&quot;,
+        &quot;reaches&quot;: [
+          &quot;cloud.api&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;code&quot;,
+        &quot;parent&quot;: &quot;creds&quot;,
+        &quot;label&quot;: &quot;Code hosts and signing keys&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;codehost&quot;,
+        &quot;reaches&quot;: [
+          &quot;git.push&quot;,
+          &quot;sign.commits&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;pkg&quot;,
+        &quot;parent&quot;: &quot;creds&quot;,
+        &quot;label&quot;: &quot;Package and image registries&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;registry&quot;,
+        &quot;reaches&quot;: [
+          &quot;pkg.publish&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;hist&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;Shell history and past transcripts&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;third-party&quot;,
+        &quot;requires&quot;: &quot;history&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.transcripts&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;cfg&quot;,
+        &quot;parent&quot;: &quot;files&quot;,
+        &quot;label&quot;: &quot;Its own settings and rules files&quot;,
+        &quot;mechanism&quot;: &quot;a confirmation dialog&quot;,
+        &quot;tier&quot;: &quot;setting&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;alter.limits&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;exec&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Run terminal commands as you&quot;,
+        &quot;mechanism&quot;: &quot;a per-command confirmation&quot;,
+        &quot;tier&quot;: &quot;setting&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;requires&quot;: &quot;exec&quot;,
+        &quot;reaches&quot;: [
+          &quot;exec.local&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;net&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Open outbound connections&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;net.any&quot;
+        ]
+      }
+    ],
+    &quot;web&quot;: [
+      {
+        &quot;id&quot;: &quot;root&quot;,
+        &quot;parent&quot;: null,
+        &quot;label&quot;: &quot;Runs in the vendor&#x27;s environment&quot;,
+        &quot;mechanism&quot;: &quot;it is not your machine&quot;,
+        &quot;tier&quot;: &quot;boundary&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;detail&quot;: &quot;This is the one place a hosted surface is structurally better: your filesystem is not reachable, and the boundary is enforced by something entirely outside the session. You also cannot inspect it, change it, or get it attested.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;conv&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;The conversation&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;reaches&quot;: [
+          &quot;chat&quot;,
+          &quot;draft&quot;,
+          &quot;explain&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;paste&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;What you paste or upload&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;requires&quot;: &quot;upload&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.project&quot;
+        ],
+        &quot;detail&quot;: &quot;This is the part of a hosted grant that is genuinely yours to control, and the only part. Everything you put in is inside the grant for as long as the conversation exists.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;connect&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Connectors you switched on&quot;,
+        &quot;mechanism&quot;: &quot;the connector list&quot;,
+        &quot;tier&quot;: &quot;boundary&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;,
+        &quot;requires&quot;: &quot;connectors&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.home&quot;,
+          &quot;git.push&quot;,
+          &quot;cloud.api&quot;
+        ],
+        &quot;detail&quot;: &quot;A connector moves a hosted assistant from “reaches what you paste” to “reaches an account”. It is enforced by the vendor and it is outside the session, so it is a real boundary — one you set, and one worth re-reading occasionally.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;home&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Your own machine&#x27;s files&quot;,
+        &quot;mechanism&quot;: &quot;the vendor&#x27;s environment is not your machine&quot;,
+        &quot;tier&quot;: &quot;boundary&quot;,
+        &quot;evidence&quot;: &quot;derived&quot;
+      }
+    ],
+    &quot;agentbox&quot;: [
+      {
+        &quot;id&quot;: &quot;root&quot;,
+        &quot;parent&quot;: null,
+        &quot;label&quot;: &quot;Runs as root inside a vendor container&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;measured&quot;,
+        &quot;detail&quot;: &quot;Measured inside one running session on 20 August 2026. Root inside the container, with passwordless escalation — so there is no internal boundary at all. One vendor, one surface, one date, and the vendor is not named because the point is the taxonomy rather than the grade.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;repo&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;The repository you attached&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;measured&quot;,
+        &quot;requires&quot;: &quot;repo&quot;,
+        &quot;reaches&quot;: [
+          &quot;read.project&quot;,
+          &quot;write.project&quot;,
+          &quot;git.push&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;sign&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;A configured commit signing identity&quot;,
+        &quot;tier&quot;: &quot;none&quot;,
+        &quot;evidence&quot;: &quot;measured&quot;,
+        &quot;requires&quot;: &quot;signing&quot;,
+        &quot;reaches&quot;: [
+          &quot;sign.commits&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;home&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Your own machine&#x27;s files&quot;,
+        &quot;mechanism&quot;: &quot;the container is not your machine&quot;,
+        &quot;tier&quot;: &quot;boundary&quot;,
+        &quot;evidence&quot;: &quot;measured&quot;
+      },
+      {
+        &quot;id&quot;: &quot;creds&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Credential stores in the image&quot;,
+        &quot;mechanism&quot;: &quot;present, and empty of usable material&quot;,
+        &quot;tier&quot;: &quot;boundary&quot;,
+        &quot;evidence&quot;: &quot;measured&quot;
+      },
+      {
+        &quot;id&quot;: &quot;net&quot;,
+        &quot;parent&quot;: &quot;root&quot;,
+        &quot;label&quot;: &quot;Outbound network&quot;,
+        &quot;mechanism&quot;: &quot;an egress allowlist the process cannot edit&quot;,
+        &quot;tier&quot;: &quot;boundary&quot;,
+        &quot;evidence&quot;: &quot;tested&quot;,
+        &quot;reaches&quot;: [
+          &quot;net.allowed&quot;
+        ],
+        &quot;detail&quot;: &quot;Probed by making two requests: a package index resolved, an arbitrary public host did not. It is a real boundary for a precise reason — the agent is root, and root cannot defeat it, because nothing inside the container enforces it. This is the only tier-one boundary in the whole library, and it is published because a page that only reports unfavourable findings is doing advocacy rather than measurement.&quot;
+      }
+    ]
+  },
+  &quot;escalations&quot;: [
+    {
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;from&quot;: &quot;exec&quot;,
+      &quot;to&quot;: &quot;cfg&quot;,
+      &quot;why&quot;: &quot;Anything that can run programs as you can rewrite the file that turns the prompt off.&quot;
+    },
+    {
+      &quot;surfaces&quot;: [
+        &quot;cli&quot;,
+        &quot;desktop&quot;
+      ],
+      &quot;from&quot;: &quot;exec&quot;,
+      &quot;to&quot;: &quot;creds&quot;,
+      &quot;why&quot;: &quot;The folder restriction is enforced by the tool. Execution as you goes around it.&quot;
+    }
+  ],
+  &quot;capabilities&quot;: [
+    {
+      &quot;id&quot;: &quot;chat&quot;,
+      &quot;group&quot;: &quot;benign&quot;,
+      &quot;label&quot;: &quot;Have a conversation&quot;,
+      &quot;weight&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;draft&quot;,
+      &quot;group&quot;: &quot;benign&quot;,
+      &quot;label&quot;: &quot;Draft or edit a document for me&quot;,
+      &quot;weight&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;explain&quot;,
+      &quot;group&quot;: &quot;benign&quot;,
+      &quot;label&quot;: &quot;Explain code or a file I show it&quot;,
+      &quot;weight&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;read.project&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Read the project it is working on&quot;,
+      &quot;weight&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;write.project&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Change the project it is working on&quot;,
+      &quot;weight&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;exec.local&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Run programs as you&quot;,
+      &quot;weight&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;net.allowed&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Reach a permitted list of hosts&quot;,
+      &quot;weight&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;net.any&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Reach any host on the internet&quot;,
+      &quot;weight&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;git.push&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Push to your code hosts&quot;,
+      &quot;weight&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;sign.commits&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Sign commits as you&quot;,
+      &quot;weight&quot;: 2
+    },
+    {
+      &quot;id&quot;: &quot;pkg.publish&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Publish packages and images as you&quot;,
+      &quot;weight&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;cloud.api&quot;,
+      &quot;group&quot;: &quot;work&quot;,
+      &quot;label&quot;: &quot;Act in your cloud and cluster accounts&quot;,
+      &quot;weight&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;read.home&quot;,
+      &quot;group&quot;: &quot;reach&quot;,
+      &quot;label&quot;: &quot;Read your other files&quot;,
+      &quot;weight&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;write.home&quot;,
+      &quot;group&quot;: &quot;reach&quot;,
+      &quot;label&quot;: &quot;Change your other files&quot;,
+      &quot;weight&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;read.credentials&quot;,
+      &quot;group&quot;: &quot;reach&quot;,
+      &quot;label&quot;: &quot;Read your stored credentials&quot;,
+      &quot;weight&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;read.transcripts&quot;,
+      &quot;group&quot;: &quot;reach&quot;,
+      &quot;label&quot;: &quot;Read your shell history and past sessions&quot;,
+      &quot;weight&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;alter.limits&quot;,
+      &quot;group&quot;: &quot;reach&quot;,
+      &quot;label&quot;: &quot;Change its own permission settings&quot;,
+      &quot;weight&quot;: 4
+    }
+  ],
+  &quot;examples&quot;: [
+    {
+      &quot;id&quot;: &quot;solo-dev&quot;,
+      &quot;label&quot;: &quot;A developer on a laptop&quot;,
+      &quot;blurb&quot;: &quot;One CLI agent, credentials in the home directory, no containment. The common case, and the one with the widest gap.&quot;,
+      &quot;state&quot;: {
+        &quot;products&quot;: [
+          &quot;claude-code&quot;
+        ],
+        &quot;facts&quot;: {
+          &quot;creds&quot;: &quot;yes&quot;,
+          &quot;cloud&quot;: &quot;yes&quot;,
+          &quot;codehost&quot;: &quot;yes&quot;,
+          &quot;registry&quot;: &quot;no&quot;,
+          &quot;history&quot;: &quot;yes&quot;
+        },
+        &quot;controls&quot;: [],
+        &quot;intent&quot;: [
+          &quot;chat&quot;,
+          &quot;explain&quot;,
+          &quot;read.project&quot;,
+          &quot;write.project&quot;
+        ]
+      }
+    },
+    {
+      &quot;id&quot;: &quot;careful-dev&quot;,
+      &quot;label&quot;: &quot;The same developer, contained&quot;,
+      &quot;blurb&quot;: &quot;The same agent, in a container, with an egress allowlist. Shows what the controls actually remove.&quot;,
+      &quot;state&quot;: {
+        &quot;products&quot;: [
+          &quot;claude-code&quot;
+        ],
+        &quot;facts&quot;: {
+          &quot;creds&quot;: &quot;yes&quot;,
+          &quot;cloud&quot;: &quot;yes&quot;,
+          &quot;codehost&quot;: &quot;yes&quot;,
+          &quot;registry&quot;: &quot;no&quot;,
+          &quot;history&quot;: &quot;yes&quot;
+        },
+        &quot;controls&quot;: [
+          &quot;container&quot;,
+          &quot;egress&quot;
+        ],
+        &quot;intent&quot;: [
+          &quot;chat&quot;,
+          &quot;explain&quot;,
+          &quot;read.project&quot;,
+          &quot;write.project&quot;,
+          &quot;exec.local&quot;
+        ]
+      }
+    },
+    {
+      &quot;id&quot;: &quot;mixed&quot;,
+      &quot;label&quot;: &quot;A team using three surfaces&quot;,
+      &quot;blurb&quot;: &quot;A CLI on the laptop, a hosted assistant in the browser, and a hosted agent container. Three shapes, one dashboard.&quot;,
+      &quot;state&quot;: {
+        &quot;products&quot;: [
+          &quot;claude-code&quot;,
+          &quot;chatgpt-web&quot;,
+          &quot;claude-code-web&quot;
+        ],
+        &quot;facts&quot;: {
+          &quot;creds&quot;: &quot;yes&quot;,
+          &quot;cloud&quot;: &quot;unsure&quot;,
+          &quot;codehost&quot;: &quot;yes&quot;,
+          &quot;registry&quot;: &quot;unsure&quot;,
+          &quot;history&quot;: &quot;yes&quot;,
+          &quot;connectors&quot;: &quot;yes&quot;,
+          &quot;upload&quot;: &quot;yes&quot;,
+          &quot;repo&quot;: &quot;yes&quot;,
+          &quot;signing&quot;: &quot;yes&quot;
+        },
+        &quot;controls&quot;: [],
+        &quot;intent&quot;: [
+          &quot;chat&quot;,
+          &quot;draft&quot;,
+          &quot;explain&quot;,
+          &quot;read.project&quot;,
+          &quot;write.project&quot;
+        ]
+      }
+    },
+    {
+      &quot;id&quot;: &quot;hosted-only&quot;,
+      &quot;label&quot;: &quot;No local agents at all&quot;,
+      &quot;blurb&quot;: &quot;Only a hosted assistant, no connectors. The smallest grant in the library — and the one you can least verify.&quot;,
+      &quot;state&quot;: {
+        &quot;products&quot;: [
+          &quot;claude-web&quot;
+        ],
+        &quot;facts&quot;: {
+          &quot;connectors&quot;: &quot;no&quot;,
+          &quot;upload&quot;: &quot;yes&quot;
+        },
+        &quot;controls&quot;: [
+          &quot;no-connect&quot;
+        ],
+        &quot;intent&quot;: [
+          &quot;chat&quot;,
+          &quot;draft&quot;,
+          &quot;explain&quot;,
+          &quot;read.project&quot;
+        ]
+      }
+    }
+  ],
+  &quot;rerun&quot;: {
+    &quot;cli&quot;: &quot;Run a published read-only agent-risk audit against your own machine — e.g. github.com/bartek-filipiuk/ai-agent-audit — and compare its modules with the nodes here. It reports path, type, count and a redacted fingerprint, and never leaves your machine.&quot;,
+    &quot;desktop&quot;: &quot;The same audit covers a desktop install: what matters is which account the application runs under, and whether it can run commands.&quot;,
+    &quot;web&quot;: &quot;Open the connector or integration settings and list what is switched on. That list is the whole of the grant beyond the conversation.&quot;,
+    &quot;agentbox&quot;: &quot;Inside a session, check the process identity, look for an attestation device, and probe egress by requesting one expected host and one arbitrary one. Two requests is the whole test.&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pki.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pki.sgit.ai/assess/library.json">https://pki.sgit.ai/assess/library.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:00Z</dd><dt>sha256</dt><dd><code title="9bde8f9aa540b675df47c79cae34970d164c86e617f6194b0753962aad219e8a">9bde8f9aa540</code></dd><dt>Frozen copy</dt><dd><a href="library.json">sites/pki.sgit.ai/assess/library.json</a> (27,681 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

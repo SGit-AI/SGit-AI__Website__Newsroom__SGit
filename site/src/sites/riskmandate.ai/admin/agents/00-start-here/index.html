@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Start here · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#start-here">Start here</a></li><li class="l2"><a href="#ten-minutes-whatever-the-task">Ten minutes, whatever the task</a></li><li class="l2"><a href="#by-task">By task</a></li><li class="l2"><a href="#what-a-good-session-leaves-behind">What a good session leaves behind</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/agents/00-start-here/index.html">live ↗</a></p><article class="source"><h1 id="start-here">Start here</h1>
+<blockquote><p>Rendered from .claude/onboarding/00-start-here.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/agents/00-start-here/</a><a class="ext live" href="https://riskmandate.ai/admin/agents/00-start-here/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p>You are working on riskmandate.ai: a plain-HTML marketing site that is also the working record
+of a product being built in public. The product is the <strong>Agent Behaviour Policy</strong> (ABP). Read
+<code>../../CLAUDE.md</code> first if you have not; it is the rules. This file is the reading order.</p>
+<h2 id="ten-minutes-whatever-the-task">Ten minutes, whatever the task</h2>
+<ol><li><code>02-abp-model.md</code> — the model. Four objects, four barriers, 23 primitives, no score. Five
+minutes, and it replaces five briefs and the model site.</li><li><code>03-state-and-next.md</code> — where the site is today and what is queued, in order.</li><li><code>04-rules-of-engagement.md</code> — how to work when other agents are on sibling branches.</li><li><code>01-map.md</code> — skim the headings so you know what exists. Come back to it when you need a path.</li></ol>
+<p>Then pick the branch below that matches your task and read only that.</p>
+<h2 id="by-task">By task</h2>
+<p><strong>Changing a page on the site</strong></p>
+<ul><li><code>05-workflows.md</code> → <em>Add or edit a page</em>. The chrome is identical everywhere and is copied
+from a donor page; <code>generate.mjs</code> after every edit; <code>npm run check</code> before every commit.</li><li>The voice: read one finished page&#x27;s markdown twin, for example <code>site/abp.md</code>, before writing.</li><li><code>docs/how-the-website-works.md</code> only if you are touching the shared modules or the menu.</li></ul>
+<p><strong>Adding or changing a behaviour-policy vault</strong></p>
+<ul><li><code>02-abp-model.md</code> → <em>The vault</em> section, then <code>05-workflows.md</code> → <em>Add a vault</em>.</li><li>One real vault as the example: <code>site/vaults/n8n-owner-api-key/</code> (measured) and
+<code>site/vaults/gmail-readonly/</code> (documented, with open questions). Read <code>README.md</code> and
+<code>data/grant.json</code> in one of them; the rest is derived.</li><li><code>site/vaults/_template/MAP-A-GRANT.md</code> is the prompt that produces a grant; its rules of
+measurement are the rules you follow.</li><li>A vault push to sgit needs a write key you do not have unless the lead gave you one. Build
+and check locally; say in your work file that the push is owed.</li></ul>
+<p><strong>Researching the open questions in a connector vault</strong></p>
+<ul><li><code>docs/briefs/research__connector-grants-open-questions.md</code> §2 is the brief. It is short.</li><li>The command <code>.claude/commands/research-vault.md</code> is the prompt.</li></ul>
+<p><strong>Building the graph (behaviour pages, edges, views, projections)</strong></p>
+<ul><li><code>docs/briefs/direction__abp-as-a-graph-and-stakeholder-views.md</code> in full; it is the spec.</li><li><code>.claude/briefs/T01-behaviour-pages.md</code> onward are the ordered tasks cut from it.</li></ul>
+<p><strong>Turning a voice debrief or a note from the lead into a brief</strong></p>
+<ul><li>Read two existing briefs for the shape: <code>docs/briefs/direction__abp-at-the-centre.md</code> and
+<code>docs/briefs/review__first-measured-abp-n8n-owner-key.md</code>. Header block, numbered sections,
+what it asks for, what it does not settle, decisions needed.</li><li><code>.claude/commands/brief-from-debrief.md</code> is the prompt.</li></ul>
+<p><strong>Merging a branch into dev</strong></p>
+<ul><li><code>04-rules-of-engagement.md</code> in full, then <code>.claude/commands/merge-to-dev.md</code>.</li></ul>
+<p><strong>Cutting a release</strong></p>
+<ul><li><code>05-workflows.md</code> → <em>Cut a release</em>. Notes are written in the voice of <code>site/versions/1.15.0.md</code>:
+what changed, why, what was not changed and why not.</li></ul>
+<h2 id="what-a-good-session-leaves-behind">What a good session leaves behind</h2>
+<ul><li>The work, checked: <code>npm run check</code> green before every push.</li><li>A release note if a page changed; a brief in <code>docs/briefs/</code> if a decision or a design was made.</li><li><code>.claude/work/&lt;branch&gt;.md</code> updated, or deleted if the branch merged.</li><li>Anything in this folder that your change made stale, fixed in the same commit.</li><li>A final message that says what was done, what was not, and what needs the lead: a key, a
+decision, a push you could not make.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/00-start-here/index.html">https://riskmandate.ai/admin/agents/00-start-here/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/00-start-here/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="bcf58c6ab3964177d68fab3e956b90d0749a2cdcc6ff807547ec7cd59d5f2703">bcf58c6ab396</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/00-start-here/index.md</a> (3,720 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

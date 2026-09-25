@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>research.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · newsroom.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/newsroom.sgit.ai.html">newsroom.sgit.ai</a> · <a href="research.json">raw text</a> · <a class="ext" href="https://newsroom.sgit.ai/governance/data/research.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;governance-research-runs&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;updated&quot;: &quot;2026-08-28&quot;,
+  &quot;note&quot;: &quot;The Researcher&#x27;s runs. Each records what was searched, what was found, which URLs were actually fetched and what came back — including the ones our egress blocked, because a source we could not read is a fact about our reach, not about the source. Candidates are proposals for the desk; the recommendation is the Researcher&#x27;s, and the Conductor&#x27;s pick is recorded separately in desk.json.&quot;,
+  &quot;runs&quot;: [
+    {
+      &quot;id&quot;: &quot;run-2026-08-28&quot;,
+      &quot;date&quot;: &quot;2026-08-28&quot;,
+      &quot;role&quot;: &quot;researcher&quot;,
+      &quot;brief&quot;: &quot;Scan for new or ongoing stories on the beat. Propose candidates; recommend one.&quot;,
+      &quot;queries&quot;: [
+        &quot;EU AI Act guidance regulator August 2026&quot;,
+        &quot;EU AI Act Article 6 classification guidelines delayed high-risk 2026&quot;,
+        &quot;digital omnibus AI Act simplification Council Parliament agreement 2026 delay high-risk&quot;,
+        &quot;\&quot;AI Act\&quot; final guidelines high-risk classification adopted August 2026 status&quot;
+      ],
+      &quot;fetched&quot;: [
+        {
+          &quot;url&quot;: &quot;https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august&quot;,
+          &quot;http&quot;: 200,
+          &quot;read&quot;: true,
+          &quot;publisher&quot;: &quot;European Commission&quot;,
+          &quot;kind&quot;: &quot;primary&quot;,
+          &quot;note&quot;: &quot;Read in full. Published 31 July 2026. States enforcement and transparency obligations begin 2 August 2026, enforced by the Commission&#x27;s AI Office with national authorities. NOTE: the page does NOT cite article numbers — the attribution to Article 50 comes from secondary commentary, not from here.&quot;
+        },
+        {
+          &quot;url&quot;: &quot;https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems&quot;,
+          &quot;http&quot;: 200,
+          &quot;read&quot;: true,
+          &quot;publisher&quot;: &quot;European Commission&quot;,
+          &quot;kind&quot;: &quot;primary&quot;,
+          &quot;note&quot;: &quot;Read in full. Draft guidelines under Article 6(5), published 19 May 2026, last updated 23 July 2026, STILL DRAFT. The page states no date for final guidelines.&quot;
+        },
+        {
+          &quot;url&quot;: &quot;https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai&quot;,
+          &quot;http&quot;: 200,
+          &quot;read&quot;: false,
+          &quot;publisher&quot;: &quot;European Commission&quot;,
+          &quot;kind&quot;: &quot;primary&quot;,
+          &quot;note&quot;: &quot;Resolved but not read this run. Registered for a later pass.&quot;
+        },
+        {
+          &quot;url&quot;: &quot;https://artificialintelligenceact.eu/article/6/&quot;,
+          &quot;http&quot;: 200,
+          &quot;read&quot;: false,
+          &quot;publisher&quot;: &quot;artificialintelligenceact.eu&quot;,
+          &quot;kind&quot;: &quot;secondary&quot;,
+          &quot;note&quot;: &quot;Resolved but not read this run. A tracker, not a regulator.&quot;
+        },
+        {
+          &quot;url&quot;: &quot;https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/&quot;,
+          &quot;http&quot;: 403,
+          &quot;read&quot;: false,
+          &quot;publisher&quot;: &quot;Council of the EU&quot;,
+          &quot;kind&quot;: &quot;primary&quot;,
+          &quot;note&quot;: &quot;BLOCKED BY OUR EGRESS, not confirmed dead. Cannot enter the register: gate check 7 requires a source to have resolved when checked. This is a limitation of our reach and is recorded as one.&quot;
+        },
+        {
+          &quot;url&quot;: &quot;https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/&quot;,
+          &quot;http&quot;: 403,
+          &quot;read&quot;: false,
+          &quot;publisher&quot;: &quot;Council of the EU&quot;,
+          &quot;kind&quot;: &quot;primary&quot;,
+          &quot;note&quot;: &quot;Same: blocked by our egress, unverified, excluded from the register.&quot;
+        }
+      ],
+      &quot;candidates&quot;: [
+        {
+          &quot;id&quot;: &quot;cand-a&quot;,
+          &quot;headline&quot;: &quot;The guidance that was due in February is still a draft in August&quot;,
+          &quot;what&quot;: &quot;Article 6(5) of the AI Act required the Commission to publish classification guidelines by 2 February 2026. A draft appeared on 19 May — 106 days late. As of today it is still marked draft, last touched 23 July, with no date given for a final version. That is 207 days past the statutory deadline.&quot;,
+          &quot;why_it_fits&quot;: &quot;A duty exists in binding text and what satisfies it is undetermined — the publication&#x27;s own UnpriceableObligation formula, instantiated from a primary source we read ourselves.&quot;,
+          &quot;evidence_state&quot;: &quot;primary — read directly from the Commission&#x27;s own library page&quot;,
+          &quot;strength&quot;: &quot;The whole story is checkable from one official page and a date subtraction. No characterisation of anybody is required.&quot;,
+          &quot;weakness&quot;: &quot;The deferral (see cand-b) reduces the immediate practical bite: the duty it governs no longer lands until December 2027.&quot;,
+          &quot;recommended&quot;: true
+        },
+        {
+          &quot;id&quot;: &quot;cand-b&quot;,
+          &quot;headline&quot;: &quot;Two things happened to the AI Act on the same day, in opposite directions&quot;,
+          &quot;what&quot;: &quot;On 2 August 2026 transparency obligations became enforceable, while the high-risk obligations originally due that same day were deferred to 2 December 2027 — 487 days — with the Annex I route moved to 2 August 2028.&quot;,
+          &quot;why_it_fits&quot;: &quot;A single Milestone node with two Instruments pointing at it in opposite directions. It is the clearest thing on the beat to draw as a graph.&quot;,
+          &quot;evidence_state&quot;: &quot;mixed — the 2 August enforcement is primary; the deferral dates reached us only through secondary commentary, because the Council pages our egress blocked are where the primary record sits&quot;,
+          &quot;strength&quot;: &quot;Genuinely surprising and easy to verify once the Council pages can be reached.&quot;,
+          &quot;weakness&quot;: &quot;We cannot currently read the primary source for the half that matters most. Publishing it now would mean labelling the key dates secondary.&quot;,
+          &quot;recommended&quot;: false
+        },
+        {
+          &quot;id&quot;: &quot;cand-c&quot;,
+          &quot;headline&quot;: &quot;The transparency rules are live, and the Commission&#x27;s own announcement names no article&quot;,
+          &quot;what&quot;: &quot;The Commission&#x27;s 31 July notice says transparency obligations apply from 2 August and describes them, but cites no article number. Every secondary account attributes them to Article 50. The attribution is almost certainly right and is not, on this evidence, primary.&quot;,
+          &quot;why_it_fits&quot;: &quot;Exactly the primary/secondary distinction the source register exists to make, caught in the wild on day one.&quot;,
+          &quot;evidence_state&quot;: &quot;primary for what the notice says; secondary for the article attribution&quot;,
+          &quot;strength&quot;: &quot;A small, honest, method-demonstrating piece the publication could stand behind completely.&quot;,
+          &quot;weakness&quot;: &quot;Thin as news. It is a story about citation practice, interesting mostly to this publication&#x27;s own argument.&quot;,
+          &quot;recommended&quot;: false
+        },
+        {
+          &quot;id&quot;: &quot;cand-d&quot;,
+          &quot;headline&quot;: &quot;180 organisations signed a Code of Practice nobody has counted&quot;,
+          &quot;what&quot;: &quot;The Commission&#x27;s notice states that over 180 organisations have signed the Code of Practice on transparency of AI-generated content. Who they are, and whether the list is published, is not stated on that page.&quot;,
+          &quot;why_it_fits&quot;: &quot;A countable claim with an uncounted list — a natural absence report if the signatory list turns out not to be public.&quot;,
+          &quot;evidence_state&quot;: &quot;primary for the number; nothing yet on the list&quot;,
+          &quot;strength&quot;: &quot;If the list is unpublished, that is a finding. If it is published, it is a graph of 180 named bodies.&quot;,
+          &quot;weakness&quot;: &quot;Requires a second research pass before it is a story at all. Not ready today.&quot;,
+          &quot;recommended&quot;: false
+        }
+      ],
+      &quot;recommendation&quot;: {
+        &quot;candidate&quot;: &quot;cand-a&quot;,
+        &quot;because&quot;: &quot;It is the only candidate where every load-bearing fact came from a primary source this newsroom fetched and read itself, and where the finding needs no characterisation of any organisation — which matters, because the editor role refuses that absolutely and there is no legal sign-off. It also instantiates the publication&#x27;s own formula rather than merely illustrating it, and it would produce the first primary-state nodes in the graph.&quot;,
+        &quot;risk&quot;: &quot;The deferral in cand-b changes what the delay means in practice. The story must carry that, or it overstates the consequence.&quot;,
+        &quot;next&quot;: &quot;Freeze both Commission pages, hash them, anchor the four load-bearing quotes, and open the Council pages from a network that is not blocked so cand-b&#x27;s dates can be lifted to primary.&quot;
+      }
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://newsroom.sgit.ai/governance/data/research.json">https://newsroom.sgit.ai/governance/data/research.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:56Z</dd><dt>sha256</dt><dd><code title="d71079f2a54b3ce7eb6f0657cb5bdd1698fd049f649554bc004e5bd40a778a88">d71079f2a54b</code></dd><dt>Frozen copy</dt><dd><a href="research.json">sites/newsroom.sgit.ai/governance/data/research.json</a> (8,304 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

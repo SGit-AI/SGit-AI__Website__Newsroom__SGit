@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>T10 — The two Voice Debrief use-case vaults, and a use-case axis on the library · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#t10-the-two-voice-debrief-use-case-vaults-and-a-use-case-axis-on-the-library">T10 — The two Voice Debrief use-case vaults, and a use-case axis on the library</a></li><li class="l2"><a href="#the-task">The task</a></li><li class="l2"><a href="#constraints">Constraints</a></li><li class="l2"><a href="#done-means">Done means</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/work/T10/index.html">live ↗</a></p><article class="source"><h1 id="t10-the-two-voice-debrief-use-case-vaults-and-a-use-case-axis-on-the-library">T10 — The two Voice Debrief use-case vaults, and a use-case axis on the library</h1>
+<blockquote><p>Rendered from .claude/briefs/T10-use-case-vaults.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/work/T10/</a><a class="ext live" href="https://riskmandate.ai/admin/work/T10/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>From:</strong> <code>docs/briefs/direction__use-case-driven-policies-and-the-prompt-workflow.md</code> §4–5.
+<strong>Size:</strong> a day, after the agent that knows the Voice Debrief workflows has run the prompt.
+<strong>Touches:</strong> <code>site/vaults/voice-debrief-web/</code>, <code>site/vaults/voice-debrief-whatsapp-n8n/</code> (new),
+<code>site/vaults/index.json</code> (a <em>Use cases</em> group), <code>scripts/site/build-abp-pages.mjs</code> (the group),
+<code>vault.json</code> (<code>kind: use-case</code>).</p>
+<h2 id="the-task">The task</h2>
+<p>Two vaults for two workflows of our own product, documented from the workflows as built:
+the web flow (upload, transcribe, infographic; audio and text sent through a model-routing
+service to several providers) and the WhatsApp flow through n8n (the measured n8n grant plus
+the messaging platform&#x27;s bot scope). The lead&#x27;s instruction is that the agent that knows the
+workflows runs <code>MAP-A-GRANT.md</code> and sends the two JSON files here; this brief packages them.
+This is the £500 workflow run on ourselves before it is run for a customer.</p>
+<h2 id="constraints">Constraints</h2>
+<ul><li>The web flow&#x27;s grant is unbounded on <code>send.endpoint.world</code> and <code>write.budget.tenant</code>, and the
+mandate is one sentence. Publish that delta as it is; it is the point.</li><li>Where the routing service&#x27;s providers&#x27; retention cannot be read from a page, it is a
+<code>research_needed</code> row, not a guess. <code>material</code> is <code>own</code> for the speaker and <code>third_party</code> for
+whoever else is in the recording; say so on the rows.</li><li>A use case that spans two applications names the source vault on every row. The generator does
+not merge grants yet; until it does, the second vault carries both sets of rows with <code>via</code>
+saying which application each came from.</li><li>No score; no verdict on the routing service or the providers.</li></ul>
+<h2 id="done-means">Done means</h2>
+<ul><li>Two vaults build and <code>--check</code>; the library shows a <em>Use cases</em> group; the store agent is told
+the slugs so the store can list them; the state file moves the item.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/work/T10/index.html">https://riskmandate.ai/admin/work/T10/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/work/T10/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="6a58c76dca0acbcc6cd7648c18e6f0ef718e2ca7c3b35ddd90731e2015779b17">6a58c76dca0a</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/work/T10/index.md</a> (2,157 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

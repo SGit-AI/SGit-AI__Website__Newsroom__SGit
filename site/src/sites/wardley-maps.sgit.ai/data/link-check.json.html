@@ -1,0 +1,2211 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>link-check.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · wardley-maps.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/wardley-maps.sgit.ai.html">wardley-maps.sgit.ai</a> · <a href="link-check.json">raw text</a> · <a class="ext" href="https://wardley-maps.sgit.ai/data/link-check.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;schema&quot;: &quot;wardley-maps-link-check/v1&quot;,
+  &quot;run_at&quot;: &quot;2026-09-07T12:28:25Z&quot;,
+  &quot;method&quot;: &quot;HEAD then GET, redirects followed, 20s timeout. A 401/403/429/451/999 is recorded as blocked (the host refused a robot), not as error (the link is broken). Hosts that block outright are skipped, never ok. Our own host is skipped: validate.js checks those against the files on disk.&quot;,
+  &quot;user_agent&quot;: &quot;wardley-maps.sgit.ai link-verification (+https://wardley-maps.sgit.ai/resources/verification.html)&quot;,
+  &quot;skip_hosts&quot;: [
+    &quot;www.linkedin.com&quot;,
+    &quot;linkedin.com&quot;,
+    &quot;www.slideshare.net&quot;,
+    &quot;slideshare.net&quot;,
+    &quot;www.youtube.com&quot;,
+    &quot;youtube.com&quot;,
+    &quot;youtu.be&quot;,
+    &quot;www.youtube-nocookie.com&quot;,
+    &quot;discord.com&quot;,
+    &quot;discord.gg&quot;
+  ],
+  &quot;count&quot;: 198,
+  &quot;tally&quot;: {
+    &quot;ok&quot;: 82,
+    &quot;blocked&quot;: 29,
+    &quot;error&quot;: 4,
+    &quot;self&quot;: 69,
+    &quot;skipped&quot;: 14
+  },
+  &quot;results&quot;: [
+    {
+      &quot;url&quot;: &quot;https://2018.open-security-summit.org/outcomes/tracks/maps-and-graphs/user-sessions/create-wardley-mappings-for-multiple-security-scenarios/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2018.open-security-summit.org/tracks/maps-and-graphs/user-sessions/create-wardley-mappings-for-multiple-security-scenarios/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2018.open-security-summit.org/tracks/maps-and-graphs/user-sessions/soc-value-chain-using-wardley-maps/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2019.open-security-summit.org/outcomes/wardley-mapping/working-sessions/wardley-keynote/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2020.open-security-summit.org/tracks/covid/wardley-mapping-covid-safe-paths-app/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2020.open-security-summit.org/tracks/wardley-maps/working-sessions/how-do-i-do-it-byom/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2020.open-security-summit.org/tracks/wardley-maps/working-sessions/team-topologies/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://2020.open-security-summit.org/tracks/wardley-maps/working-sessions/threat-mapping/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://blog.gardeviance.org/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;,
+        &quot;about/participant.html&quot;,
+        &quot;admin/comms.html&quot;,
+        &quot;admin/index.html&quot;,
+        &quot;admin/versions.html&quot;,
+        &quot;agents/index.html&quot;,
+        &quot;dinis/index.html&quot;,
+        &quot;doctrine/index.html&quot;,
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/index.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;,
+        &quot;glossary/index.html&quot;,
+        &quot;index.html&quot;,
+        &quot;maps/index.html&quot;,
+        &quot;method/broken-middle.html&quot;,
+        &quot;method/custom-axes.html&quot;,
+        &quot;method/de-commoditisation.html&quot;,
+        &quot;method/index.html&quot;,
+        &quot;method/maps-as-graphs.html&quot;,
+        &quot;network/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;,
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+        &quot;resources/awesome-wardley-maps.html&quot;,
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/cli-owm.html&quot;,
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+        &quot;resources/dead/index.html&quot;,
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+        &quot;resources/index.html&quot;,
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;,
+        &quot;resources/onlinewardleymaps-owm.html&quot;,
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+        &quot;resources/simon-wardley-s-map-repository.html&quot;,
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+        &quot;resources/the-value-flywheel-effect.html&quot;,
+        &quot;resources/the-wardley-mapping-canvas.html&quot;,
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+        &quot;resources/verification.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+        &quot;resources/wardley-maps-for-obsidian.html&quot;,
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;,
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+        &quot;resources/wardleypedia.html&quot;,
+        &quot;resources/wardleytogo.html&quot;,
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;,
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+        &quot;resources/wikipedia-wardley-map.html&quot;,
+        &quot;shipped/index.html&quot;,
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://blog.gardeviance.org/2015/03/on-pioneers-settlers-town-planners-and.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;glossary/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://blog.gardeviance.org/2016/04/whats-in-wardley-map-and-need-for-cheat.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://blog.mattedgar.com/2017/08/13/what-do-wardley-maps-really-map-a-settler-writes/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/marked@12/marked.min.js&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://conversations.apievangelist.com/store/2026-06-19-simon-wardley/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://creativecommons.org/licenses/by-sa/4.0/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://dannybuerkli.medium.com/where-the-map-ends-understanding-wardley-maps-limitations-6c41b8feae68&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://diniscruz.blogspot.com/2018/12/3-wardley-maps-templates-im-using-to.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://diniscruz.blogspot.com/2018/12/creating-wardley-maps-using-lambda.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://docs.diniscruz.ai/2025/06/10/security-implications-of-the-model-context-protocol-mcp-and-the-need-for-robust-infrastructure.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://docs.onlinewardleymaps.com/docs/dsl-reference/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/onlinewardleymaps-owm.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://en.wikipedia.org/wiki/Wardley_map&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wikipedia-wardley-map.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://gcati.org/certificate/foundation-wardley-mapping&quot;,
+      &quot;state&quot;: &quot;error&quot;,
+      &quot;error&quot;: &quot;fetch failed&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/HiredThought/wardley-mapping-canvas&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/the-wardley-mapping-canvas.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/OWASP/www-chapter-london/blob/master/tab_pastevents.md&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/SGit-AI/SGit-AI__Website__Wardley-Maps&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;,
+        &quot;about/participant.html&quot;,
+        &quot;admin/comms.html&quot;,
+        &quot;admin/index.html&quot;,
+        &quot;admin/versions.html&quot;,
+        &quot;agents/index.html&quot;,
+        &quot;dinis/index.html&quot;,
+        &quot;doctrine/index.html&quot;,
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/index.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;,
+        &quot;glossary/index.html&quot;,
+        &quot;index.html&quot;,
+        &quot;maps/index.html&quot;,
+        &quot;method/broken-middle.html&quot;,
+        &quot;method/custom-axes.html&quot;,
+        &quot;method/de-commoditisation.html&quot;,
+        &quot;method/index.html&quot;,
+        &quot;method/maps-as-graphs.html&quot;,
+        &quot;network/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;,
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+        &quot;resources/awesome-wardley-maps.html&quot;,
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/cli-owm.html&quot;,
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+        &quot;resources/dead/index.html&quot;,
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+        &quot;resources/index.html&quot;,
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;,
+        &quot;resources/onlinewardleymaps-owm.html&quot;,
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+        &quot;resources/simon-wardley-s-map-repository.html&quot;,
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+        &quot;resources/the-value-flywheel-effect.html&quot;,
+        &quot;resources/the-wardley-mapping-canvas.html&quot;,
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+        &quot;resources/verification.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+        &quot;resources/wardley-maps-for-obsidian.html&quot;,
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;,
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+        &quot;resources/wardleypedia.html&quot;,
+        &quot;resources/wardleytogo.html&quot;,
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;,
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+        &quot;resources/wikipedia-wardley-map.html&quot;,
+        &quot;shipped/index.html&quot;,
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/SGit-AI/SGit-AI__Website__Wardley-Maps/blob/dev/.github/workflows/deploy-pages.yml&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/SGit-AI/SGit-AI__Website__Wardley-Maps/blob/dev/.github/workflows/verify-links.yml&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/andrewharmellaw/wardley-maps-book&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/damonsk/obsidian-wardley-maps&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-for-obsidian.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/monkeypants/cli-owm&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/cli-owm.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/owulveryck/wardleyToGo&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleytogo.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/swardley/WARDLEY-MAP-REPOSITORY&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/simon-wardley-s-map-repository.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/tractorjuice/arc-kit&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/tractorjuice/wardley-maps-mermaid&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://github.com/wardley-maps-community/awesome-wardley-maps&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/awesome-wardley-maps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://graphs.sgit.ai&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://graphs.sgit.ai/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://graphs.sgit.ai/v1/maps/index.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;,
+        &quot;about/participant.html&quot;,
+        &quot;admin/comms.html&quot;,
+        &quot;admin/index.html&quot;,
+        &quot;admin/versions.html&quot;,
+        &quot;agents/index.html&quot;,
+        &quot;dinis/index.html&quot;,
+        &quot;doctrine/index.html&quot;,
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/index.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;,
+        &quot;glossary/index.html&quot;,
+        &quot;index.html&quot;,
+        &quot;maps/index.html&quot;,
+        &quot;method/broken-middle.html&quot;,
+        &quot;method/custom-axes.html&quot;,
+        &quot;method/de-commoditisation.html&quot;,
+        &quot;method/index.html&quot;,
+        &quot;method/maps-as-graphs.html&quot;,
+        &quot;network/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;,
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+        &quot;resources/awesome-wardley-maps.html&quot;,
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/cli-owm.html&quot;,
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+        &quot;resources/dead/index.html&quot;,
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+        &quot;resources/index.html&quot;,
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;,
+        &quot;resources/onlinewardleymaps-owm.html&quot;,
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+        &quot;resources/simon-wardley-s-map-repository.html&quot;,
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+        &quot;resources/the-value-flywheel-effect.html&quot;,
+        &quot;resources/the-wardley-mapping-canvas.html&quot;,
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+        &quot;resources/verification.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+        &quot;resources/wardley-maps-for-obsidian.html&quot;,
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;,
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+        &quot;resources/wardleypedia.html&quot;,
+        &quot;resources/wardleytogo.html&quot;,
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;,
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+        &quot;resources/wikipedia-wardley-map.html&quot;,
+        &quot;shipped/index.html&quot;,
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://itrevolution.com/product/the-value-flywheel-effect/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/the-value-flywheel-effect.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://leanpub.com/practicalintroductiontowardleymapping/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://leanpub.com/wardley-maps&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/2019/12/28/the-value-of-doctrine/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/2020/08/17/principles-first/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/2020/12/07/getting-started-with-wardleys-doctrine-is-easier-than-you-think/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/doctrine/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/portfolio/wardley-mapping-canvas/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/the-wardley-mapping-canvas.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://learnwardleymapping.com/tools/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://list.wardleymaps.com/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/awesome-wardley-maps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://map.tranquil.systems&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://map.tranquil.systems/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://mapasdewardley.com/estrategia/acelera-tu-aprendizia/&quot;,
+      &quot;state&quot;: &quot;error&quot;,
+      &quot;status&quot;: 404,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/awesome-wardley-maps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://marketplace.visualstudio.com/items?itemName=damonsk.vscode-wardley-maps&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/@dinis.cruz/dot-language-graph-based-diagrams-c3baf4c0decc&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/@dinis.cruz/we-are-hiring-5x-productivity-engineers-interns-for-our-squads-rules-of-engagement-6bc8b685e5d3&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/learn-wardley-mapping/bringing-wardley-maps-to-mermaid-a-journey-from-idea-to-open-source-contribution-8fe5009eafd3&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/mapcamp/map-camp-4f483b36de23&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-camp.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/swlh/doctrine-or-dogma-2abeaef0cbc7&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/a-smorgasbord-of-the-slightly-useful-2498a1163dd6&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/anticipation-89692e9b0ced&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/better-for-less-58fe8c0a3aaa&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/doctrine-8bb0015688e5&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/exploring-the-map-ad0266fad59b&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/finding-a-new-purpose-8c60c9484d3b&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/finding-a-path-cdb1249078c0&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/getting-started-yourself-e1a359b785a2&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/i-wasnt-expecting-that-dcfe122a2234&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/keeping-the-wolves-at-bay-93de21b6b2f8&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/on-being-lost-2ef5f05eb1ec&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/on-playing-chess-2634b825dbac&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/on-the-practice-of-scenario-planning-49eed8279e90&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/round-round-get-around-i-loop-around-d88e865d4337&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/something-wicked-this-way-comes-b028d5c607bf&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/the-play-and-a-decision-to-act-8eb796b1dff1&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/the-scenario-8bc05feee81&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/to-infinity-and-beyond-c7a53ccd2a07&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://medium.com/wardleymaps/to-thine-own-self-be-true-543cfe2cd1a&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://mermaid.js.org/syntax/wardley.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://nhi.sgit.ai&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://nhi.sgit.ai/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/comms.html&quot;,
+        &quot;network/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://onlinewardleymaps.com/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/onlinewardleymaps-owm.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/projects/wardley-maps/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/sessions/2020/mini-summits/dec/wardley-maps/ama-with-simon-wardley/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/sessions/2022/mini-summits/jul/wardley-maps/why-wardley-maps-changed-how-i-think/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/sessions/2022/mini-summits/mar/threat-modeling/threat-models-and-wardley-maps/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/sessions/2022/mini-summits/sep/wardley-maps/data-culture/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/sessions/2024/mini-summits/jun/governance/attack-surface-mapping/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://open-security-summit.org/sessions/2024/mini-summits/sep/wardley-maps/advanced-persistent-threat-apt-mapping-and-mitigation/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://pki.sgit.ai&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://pki.sgit.ai/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;,
+        &quot;about/participant.html&quot;,
+        &quot;admin/comms.html&quot;,
+        &quot;admin/index.html&quot;,
+        &quot;admin/versions.html&quot;,
+        &quot;agents/index.html&quot;,
+        &quot;dinis/index.html&quot;,
+        &quot;doctrine/index.html&quot;,
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/index.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;,
+        &quot;glossary/index.html&quot;,
+        &quot;index.html&quot;,
+        &quot;maps/index.html&quot;,
+        &quot;method/broken-middle.html&quot;,
+        &quot;method/custom-axes.html&quot;,
+        &quot;method/de-commoditisation.html&quot;,
+        &quot;method/index.html&quot;,
+        &quot;method/maps-as-graphs.html&quot;,
+        &quot;network/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;,
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+        &quot;resources/awesome-wardley-maps.html&quot;,
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/cli-owm.html&quot;,
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+        &quot;resources/dead/index.html&quot;,
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+        &quot;resources/index.html&quot;,
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;,
+        &quot;resources/onlinewardleymaps-owm.html&quot;,
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+        &quot;resources/simon-wardley-s-map-repository.html&quot;,
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+        &quot;resources/the-value-flywheel-effect.html&quot;,
+        &quot;resources/the-wardley-mapping-canvas.html&quot;,
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+        &quot;resources/verification.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+        &quot;resources/wardley-maps-for-obsidian.html&quot;,
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;,
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+        &quot;resources/wardleypedia.html&quot;,
+        &quot;resources/wardleytogo.html&quot;,
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;,
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+        &quot;resources/wikipedia-wardley-map.html&quot;,
+        &quot;shipped/index.html&quot;,
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://pki.sgit.ai/admin/index.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://pki.sgit.ai/packs/registry-mvp/index.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/participant.html&quot;,
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;maps/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://sabsa.org/evolution-informed-security-architecture-wardley-maps/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://sg-sentinel.sgit.ai&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://sg-sentinel.sgit.ai/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;network/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://sgit.ai&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://sgit.ai/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;,
+        &quot;about/participant.html&quot;,
+        &quot;admin/comms.html&quot;,
+        &quot;admin/index.html&quot;,
+        &quot;admin/versions.html&quot;,
+        &quot;agents/index.html&quot;,
+        &quot;dinis/index.html&quot;,
+        &quot;doctrine/index.html&quot;,
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/index.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;,
+        &quot;glossary/index.html&quot;,
+        &quot;index.html&quot;,
+        &quot;maps/index.html&quot;,
+        &quot;method/broken-middle.html&quot;,
+        &quot;method/custom-axes.html&quot;,
+        &quot;method/de-commoditisation.html&quot;,
+        &quot;method/index.html&quot;,
+        &quot;method/maps-as-graphs.html&quot;,
+        &quot;network/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;,
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+        &quot;resources/awesome-wardley-maps.html&quot;,
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/cli-owm.html&quot;,
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+        &quot;resources/dead/index.html&quot;,
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+        &quot;resources/index.html&quot;,
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;,
+        &quot;resources/onlinewardleymaps-owm.html&quot;,
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+        &quot;resources/simon-wardley-s-map-repository.html&quot;,
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+        &quot;resources/the-value-flywheel-effect.html&quot;,
+        &quot;resources/the-wardley-mapping-canvas.html&quot;,
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+        &quot;resources/verification.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+        &quot;resources/wardley-maps-for-obsidian.html&quot;,
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;,
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+        &quot;resources/wardleypedia.html&quot;,
+        &quot;resources/wardleytogo.html&quot;,
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;,
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+        &quot;resources/wikipedia-wardley-map.html&quot;,
+        &quot;shipped/index.html&quot;,
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://sgit.ai/demos/sgit-maps.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;maps/index.html&quot;,
+        &quot;network/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://sgit.ai/demos/strategy-maps.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;maps/index.html&quot;,
+        &quot;network/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://sgit.ai/network/index.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;,
+        &quot;about/participant.html&quot;,
+        &quot;admin/comms.html&quot;,
+        &quot;admin/index.html&quot;,
+        &quot;admin/versions.html&quot;,
+        &quot;agents/index.html&quot;,
+        &quot;dinis/index.html&quot;,
+        &quot;doctrine/index.html&quot;,
+        &quot;documents/boundaries-and-licensing.html&quot;,
+        &quot;documents/brief.html&quot;,
+        &quot;documents/concepts-index.html&quot;,
+        &quot;documents/gaps-and-open-questions.html&quot;,
+        &quot;documents/index.html&quot;,
+        &quot;documents/job-a-dinis-published-material.html&quot;,
+        &quot;documents/job-b-industry-resources.html&quot;,
+        &quot;documents/license.html&quot;,
+        &quot;documents/maps-and-rendering.html&quot;,
+        &quot;documents/pioneers-settlers-town-planners.html&quot;,
+        &quot;documents/readme.html&quot;,
+        &quot;documents/site-architecture.html&quot;,
+        &quot;glossary/index.html&quot;,
+        &quot;index.html&quot;,
+        &quot;maps/index.html&quot;,
+        &quot;method/broken-middle.html&quot;,
+        &quot;method/custom-axes.html&quot;,
+        &quot;method/de-commoditisation.html&quot;,
+        &quot;method/index.html&quot;,
+        &quot;method/maps-as-graphs.html&quot;,
+        &quot;network/index.html&quot;,
+        &quot;patterns/pst/index.html&quot;,
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+        &quot;resources/awesome-wardley-maps.html&quot;,
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/cli-owm.html&quot;,
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+        &quot;resources/dead/index.html&quot;,
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+        &quot;resources/index.html&quot;,
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;,
+        &quot;resources/onlinewardleymaps-owm.html&quot;,
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+        &quot;resources/simon-wardley-s-map-repository.html&quot;,
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+        &quot;resources/the-value-flywheel-effect.html&quot;,
+        &quot;resources/the-wardley-mapping-canvas.html&quot;,
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+        &quot;resources/verification.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+        &quot;resources/wardley-maps-for-obsidian.html&quot;,
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;,
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+        &quot;resources/wardleypedia.html&quot;,
+        &quot;resources/wardleytogo.html&quot;,
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;,
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+        &quot;resources/wikipedia-wardley-map.html&quot;,
+        &quot;shipped/index.html&quot;,
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://swardley.medium.com&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;final_url&quot;: &quot;https://swardley.medium.com/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://swardley.medium.com/&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://twitter.com/swardley&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://uk.linkedin.com/in/simonwardley&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://vimeo.com/channels/wardleymaps&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-camp.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/about/licensing.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/licensing.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/about/participant.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;about/participant.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/admin/comms.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/comms.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/admin/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/admin/versions.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;admin/versions.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/agents/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;agents/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/dinis/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/doctrine/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/boundaries-and-licensing.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/boundaries-and-licensing.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/brief.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/brief.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/concepts-index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/concepts-index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/gaps-and-open-questions.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/gaps-and-open-questions.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/job-a-dinis-published-material.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/job-a-dinis-published-material.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/job-b-industry-resources.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/job-b-industry-resources.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/license.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/license.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/maps-and-rendering.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/maps-and-rendering.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/pioneers-settlers-town-planners.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/pioneers-settlers-town-planners.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/readme.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/readme.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/documents/site-architecture.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;documents/site-architecture.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/glossary/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;glossary/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/maps/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;maps/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/method/broken-middle.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;method/broken-middle.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/method/custom-axes.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;method/custom-axes.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/method/de-commoditisation.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;method/de-commoditisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/method/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;method/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/method/maps-as-graphs.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;method/maps-as-graphs.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/network/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;network/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/patterns/pst/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;patterns/pst/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/arckit-wardley-mapping-for-ai-coding-assistants.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/awesome-wardley-maps.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/awesome-wardley-maps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/cli-owm.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/cli-owm.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/dead/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/dead/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/diagramming-templates-miro-mural-figma-draw-io-excalidraw.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/evolution-informed-security-architecture-using-wardley.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/evolution-informed-security-architecture-using-wardley.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/gcati-foundation-in-wardley-mapping-certification.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/gcati-foundation-in-wardley-mapping-certification.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/learn-wardley-mapping-learnwardleymapping-com-ben-mosior.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/map-camp.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-camp.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/map-macos-linux-tranquil-systems.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-macos-linux-tranquil-systems.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/onlinewardleymaps-owm.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/onlinewardleymaps-owm.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/practical-introduction-to-wardley-mapping-leanpub.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/simon-wardley-s-map-repository.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/simon-wardley-s-map-repository.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/situation-normal-everything-must-change-talk.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/the-map-cheat-sheet-doctrine-list-climatic-patterns-and.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/the-value-flywheel-effect.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/the-value-flywheel-effect.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/the-wardley-mapping-canvas.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/the-wardley-mapping-canvas.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/verification.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/verification.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-mapping-discord-replaces-the-slack.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-mapping-in-security-threat-models-and-wardley-maps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-compiled-editions-leanpub-github-audiobook.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-maps-for-obsidian.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-for-obsidian.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-maps-for-visual-studio-code.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-for-visual-studio-code.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-maps-in-mermaid-wardley-beta.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-in-mermaid-wardley-beta.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardley-maps-the-book-medium-serialisation.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardleypedia.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleypedia.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wardleytogo.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleytogo.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/what-do-wardley-maps-really-map-a-settler-writes-critique.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/where-the-doctrine-ends-critique.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/where-the-map-ends-understanding-wardley-maps-limitations.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/resources/wikipedia-wardley-map.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wikipedia-wardley-map.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/shipped/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;shipped/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardley-maps.sgit.ai/start/index.html&quot;,
+      &quot;state&quot;: &quot;self&quot;,
+      &quot;reason&quot;: &quot;our own host — checked against the files on disk by validate.js&quot;,
+      &quot;linked_from&quot;: [
+        &quot;start/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardleypedia.org/mediawiki/index.php/Climatic_patterns&quot;,
+      &quot;state&quot;: &quot;error&quot;,
+      &quot;error&quot;: &quot;fetch failed&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleypedia.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://wardleypedia.org/mediawiki/index.php/Main_Page&quot;,
+      &quot;state&quot;: &quot;error&quot;,
+      &quot;error&quot;: &quot;fetch failed&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleypedia.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.infoq.com/presentations/stuational-awareness/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/crossing-the-river-by-feeling-the-stones-talk.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.linkedin.com/posts/diniscruz_a-strategy-and-wardley-mapping-primer-activity-7157550467890184192-wVpR&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.linkedin.com/posts/diniscruz_scenario-analysis-with-wardley-maps-activity-7151671690853285890-Or_v&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.map-camp.com/_pages/events/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.mapcamp.co.uk/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-camp.html&quot;,
+        &quot;resources/wardley-mapping-discord-replaces-the-slack.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.slideshare.net/DinisCruz/map-camp-why-context-is-your-crown-jewels-wardley-maps-and-threat-modeling&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.swardleymaps.com&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://www.swardleymaps.com/&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardley-maps-the-book-medium-serialisation.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.swardleymaps.com/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/bits-or-pieces-simon-wardley-s-blog.html&quot;,
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.swardleymaps.com/resources.html&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;final_url&quot;: &quot;https://www.swardleymaps.com/resources&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/swardleymaps-com-simon-wardley-s-current-home-swardleymaps.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.tickettailor.com/events/swardleymapsltd/2240281&quot;,
+      &quot;state&quot;: &quot;blocked&quot;,
+      &quot;status&quot;: 403,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;reason&quot;: &quot;the host refused an automated request — not evidence the link is dead&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/map-camp.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.wardleymaps.com/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.wardleymaps.com/commentaries/where-the-doctrine-ends&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/where-the-doctrine-ends-critique.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.wardleymaps.com/glossary/doctrine&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;doctrine/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.wardleymaps.com/guides/wardley-mapping-101&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/wardleymaps-com-chris-krzysztof-daniel.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/6gpgnYo6M14&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/7ZMZMYB-DiI&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/9F3PuuBTu98&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/FcaUN4w2TdY&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/KxS7TzpreZQ&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/OAwmV3VsjaY&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/YKHPUZJMkUs&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/YkgV6gZNdvE&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube-nocookie.com/embed/aYh60wq4LXg&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube.com/watch?v=fYH-vLWHhyY&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/situation-normal-everything-must-change-talk.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://www.youtube.com/watch?v=l59LK8246-s&quot;,
+      &quot;state&quot;: &quot;skipped&quot;,
+      &quot;reason&quot;: &quot;host blocks automated retrieval — needs a human&quot;,
+      &quot;linked_from&quot;: [
+        &quot;dinis/index.html&quot;
+      ]
+    },
+    {
+      &quot;url&quot;: &quot;https://xebia.com/blog/using-wardley-mapping-for-optimizing-your-threat-modeling-strategy/&quot;,
+      &quot;state&quot;: &quot;ok&quot;,
+      &quot;status&quot;: 200,
+      &quot;method&quot;: &quot;HEAD&quot;,
+      &quot;linked_from&quot;: [
+        &quot;resources/using-wardley-mapping-for-optimizing-your-threat-modeling.html&quot;
+      ]
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>wardley-maps.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://wardley-maps.sgit.ai/data/link-check.json">https://wardley-maps.sgit.ai/data/link-check.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:20Z</dd><dt>sha256</dt><dd><code title="1c130ad01cbdedf1b380d8203dffb31ad0fdc9de7c28b23061d8f5da6b16f81f">1c130ad01cbd</code></dd><dt>Frozen copy</dt><dd><a href="link-check.json">sites/wardley-maps.sgit.ai/data/link-check.json</a> (69,559 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

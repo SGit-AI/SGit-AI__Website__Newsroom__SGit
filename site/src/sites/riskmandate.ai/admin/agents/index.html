@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The agents&#x27; front door · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-agents-front-door">The agents&amp;#x27; front door</a></li><li class="l2"><a href="#read-first">Read first</a></li><li class="l2"><a href="#then-as-needed">Then, as needed</a></li><li class="l2"><a href="#prompts-for-the-common-jobs">Prompts for the common jobs</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/agents/index.html">live ↗</a></p><article class="source"><h1 id="the-agents-front-door">The agents&#x27; front door</h1>
+<blockquote><p>The agents&#x27; front door on riskmandate.ai: CLAUDE.md, the onboarding documents, the task briefs and the prompts, rendered as pages.
+Source: <a href="index.html">https://riskmandate.ai/admin/agents/</a><a class="ext live" href="https://riskmandate.ai/admin/agents/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>6</strong>onboarding documents*ten minutes, in order*</p>
+<p><strong>14</strong>task briefs*sized for one agent each*</p>
+<p><strong>8</strong>prompts*slash commands in Claude Code*</p>
+<p><strong>0</strong>branches in flight*one work file each*</p>
+<p>Most of the work on this site is done by agents, several at a time, on branches that merge into <code>dev</code>. Each one used to read the whole repository to learn it. Now there is a folder written for them, kept current in the same commit as whatever it describes, and rendered here so it can be read without the repository.</p>
+<h2 id="read-first">Read first</h2>
+<p><strong><a href="claude-md/index.html">CLAUDE.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/claude-md/" title="live page">↗</a></strong></p>
+<p>Read automatically by Claude Code. The ten rules that are not optional, the mechanics in one screen, and the short form of working alongside other agents.required</p>
+<p><strong><a href="00-start-here/index.html">.claude/onboarding/00-start-here.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/00-start-here/" title="live page">↗</a></strong></p>
+<p>The reading order by task. Ten minutes to being useful.required</p>
+<p><strong><a href="02-abp-model/index.html">.claude/onboarding/02-abp-model.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/02-abp-model/" title="live page">↗</a></strong></p>
+<p>The Agent Behaviour Policy condensed: four objects, four barriers, the 23 primitives, the evidence tiers, the vault, the graph.required</p>
+<p><strong><a href="04-rules-of-engagement/index.html">.claude/onboarding/04-rules-of-engagement.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/04-rules-of-engagement/" title="live page">↗</a></strong></p>
+<p>Parallel agents, branches, what conflicts and what to do about it, external state, ownership by surface.required</p>
+<h2 id="then-as-needed">Then, as needed</h2>
+<p><strong><a href="01-map/index.html">.claude/onboarding/01-map.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/01-map/" title="live page">↗</a></strong></p>
+<p>Every document, page family, script, test and register, one line each.reference</p>
+<p><strong><a href="03-state-and-next/index.html">.claude/onboarding/03-state-and-next.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/03-state-and-next/" title="live page">↗</a></strong></p>
+<p>Where the site is and the ordered queue of what is next, with the decisions the lead owns.reference</p>
+<p><strong><a href="05-workflows/index.html">.claude/onboarding/05-workflows.md</a><a class="ext live" href="https://riskmandate.ai/admin/agents/05-workflows/" title="live page">↗</a></strong></p>
+<p>Recipes: add a page, add a vault, cut a release, cut a Lab edition, write a brief, register a document, merge a branch.reference</p>
+<p><strong><a href="../work/about-task-briefs/index.html">.claude/briefs/README.md</a><a class="ext live" href="https://riskmandate.ai/admin/work/about-task-briefs/" title="live page">↗</a></strong></p>
+<p>Task briefs sized for one agent each, with the files each touches.work</p>
+<p><strong><a href="../work/about-work-files/index.html">.claude/work/README.md</a><a class="ext live" href="https://riskmandate.ai/admin/work/about-work-files/" title="live page">↗</a></strong></p>
+<p>One file per in-flight branch. Read before claiming a task; delete on merge.live</p>
+<h2 id="prompts-for-the-common-jobs">Prompts for the common jobs</h2>
+<p>Under <code>.claude/commands/</code>; in Claude Code each is a slash command. They start a job the way the workflows say it should be started.</p>
+<p><strong><a href="commands/brief-from-debrief/index.html">/brief-from-debrief</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/brief-from-debrief/" title="live page">↗</a></strong></p>
+<p>Read docs/briefs/direction__abp-as-a-graph-and-stakeholder-views.md and docs/briefs/review__first-measured-abp-n8n-owner-key.md first; match their shape exactly.prompt</p>
+<p><strong><a href="commands/handover/index.html">/handover</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/handover/" title="live page">↗</a></strong></p>
+<p>handoverprompt</p>
+<p><strong><a href="commands/merge-to-dev/index.html">/merge-to-dev</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/merge-to-dev/" title="live page">↗</a></strong></p>
+<p>Merge the current branch into dev following .claude/onboarding/04-rules-of-engagement.md. Arguments: $ARGUMENTS (the version to claim and the release title; ask if missing and a page changed).prompt</p>
+<p><strong><a href="commands/new-page/index.html">/new-page</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/new-page/" title="live page">↗</a></strong></p>
+<p>Add the page $ARGUMENTS following .claude/onboarding/05-workflows.md → Add or edit a page.prompt</p>
+<p><strong><a href="commands/new-vault/index.html">/new-vault</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/new-vault/" title="live page">↗</a></strong></p>
+<p>Add the vault $ARGUMENTS following .claude/onboarding/05-workflows.md → Add a vault and the model in .claude/onboarding/02-abp-model.md. Read site/vaults/gmail-readonly/data/grant.json as the example of a documented grant and…prompt</p>
+<p><strong><a href="commands/onboard/index.html">/onboard</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/onboard/" title="live page">↗</a></strong></p>
+<p>You are a new agent on riskmandate.ai. Do not read the repository at large. Read, in order:prompt</p>
+<p><strong><a href="commands/release/index.html">/release</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/release/" title="live page">↗</a></strong></p>
+<p>Cut release $ARGUMENTS following .claude/onboarding/05-workflows.md → Cut a release.prompt</p>
+<p><strong><a href="commands/research-vault/index.html">/research-vault</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/research-vault/" title="live page">↗</a></strong></p>
+<p>Work site/vaults/$ARGUMENTS/RESEARCH-NEEDED.md following §2 of docs/briefs/research__connector-grants-open-questions.md. For each question:prompt</p>
+<p><strong>A rule in prose bounds nothing.</strong> These files work because every agent reads them first. That is the same sentence every behaviour-policy vault says about its own <code>AGENTS.md</code>, and it is as true here. The tests and the CI checks are the boundaries; the folder is the telling. People collaborating with us start at <a href="../../work.html">Working with us</a><a class="ext live" href="https://riskmandate.ai/work.html" title="live page">↗</a> instead.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/index.html">https://riskmandate.ai/admin/agents/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:52Z</dd><dt>sha256</dt><dd><code title="2600a6afd08226b733ba106f2602780b6e6453a21934ba23bcd0ae410e75853b">2600a6afd082</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/index.md</a> (4,478 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

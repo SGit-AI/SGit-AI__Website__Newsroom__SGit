@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>05 — Integration · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#05-integration">05 — Integration</a></li><li class="l2"><a href="#what-each-existing-thing-gains-and-what-it-gives">What each existing thing gains, and what it gives</a></li><li class="l2"><a href="#licence-to-operate-posrhzp3">Licence to Operate — posrhzp3</a></li><li class="l2"><a href="#the-aiuc-1-conformance-layer-2wzct4k7">The AIUC-1 conformance layer — 2wzct4k7</a></li><li class="l2"><a href="#risk-mandate-4zf6pf2z">Risk Mandate — 4zf6pf2z</a></li><li class="l2"><a href="#eu-ai-actstandardsriskmandateai">eu-ai-act.standards.riskmandate.ai</a></li><li class="l2"><a href="#the-graph-family-graphssgitai">The graph family — graphs.sgit.ai</a></li><li class="l2"><a href="#the-composite-question-this-makes-answerable">The composite question this makes answerable</a></li><li class="l2"><a href="#what-integration-must-not-do">What integration must not do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="05__integration.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/packs/security-graph/05__integration.md">live ↗</a></p><article class="source"><h1 id="05-integration">05 — Integration</h1>
+<p><strong>version</strong> v0.1 · 9 September 2026</p>
+<p><a href="04__the-worked-example.html">← 04 The worked example</a><a class="ext live" href="https://ungovr.providers.sgit.ai/packs/security-graph/04__the-worked-example.md" title="live page">↗</a> · Next → <a href="06__verification.html">06 Verification</a><a class="ext live" href="https://ungovr.providers.sgit.ai/packs/security-graph/06__verification.md" title="live page">↗</a></p>
+<hr>
+<h2 id="what-each-existing-thing-gains-and-what-it-gives">What each existing thing gains, and what it gives</h2>
+<p><strong>Every row is read from that vault&#x27;s or site&#x27;s own published page</strong>, linked, and quoted rather
+than recalled.</p>
+<h2 id="licence-to-operate-posrhzp3">Licence to Operate — <code>posrhzp3</code></h2>
+<p><strong>What it is.</strong> An agent&#x27;s grant, its mandate, and the delta between them, priced. **12
+capabilities can do, 4 may do, 8 in the delta** — *&quot;inside the agent&#x27;s reach, outside its
+authority. No policy covers these.&quot;*</p>
+<p><strong>What it gains from the anchor.</strong> A <code>policy/v1</code> covering an agent acting **for a body, in a
+jurisdiction** currently has no way to name either. With the anchors, the mandate stops being
+<em>&quot;answer a customer&#x27;s question&quot;</em> and becomes *&quot;answer a records request on behalf of
+<code>ung:us/ca/santa-barbara</code>, under <code>us/ca</code>, within the statutory 10 days&quot;* — **a mandate with a
+deadline that came from a legislature rather than from a product decision.**</p>
+<p><strong>What it gives back.</strong> The delta. Our graph has no way to express *the agent could reach this
+obligation&#x27;s evidence and is not authorised to*, and that is the sharpest thing in their model.</p>
+<h2 id="the-aiuc-1-conformance-layer-2wzct4k7">The AIUC-1 conformance layer — <code>2wzct4k7</code></h2>
+<p><strong>What it is.</strong> 53 conformance rows for a named subject where <code>unevidenced</code> is the default, and
+<strong>insurability computed as a query</strong> — 1 condition met, 52 exclusions at build, **53 exclusions
+when the date moves to 2027-01-15 with nothing edited by anybody**.</p>
+<p><strong>What it gains.</strong> <em>Subjects</em>, with stable ids. Today a conformance run names its subject as a
+string, so two runs cannot be compared and none can be aggregated. **With <code>ung:entity</code> the subject
+is a node**, and <em>&quot;how many bodies in this jurisdiction have an unevidenced control here&quot;</em> becomes
+a query rather than a spreadsheet.</p>
+<p><strong>What it gives back — and this is the one to steal.</strong> Their <code>valid_until</code> mechanism, where **time
+alone turns conditions into exclusions.** We contribute a second clock: theirs expires because an
+<em>attestation</em> lapsed, ours because a <em>statute</em> says 10 calendar days. **An attestation expiry is a
+parameter somebody chose. A statutory deadline is a fact about the world.** A model carrying both
+is strictly better than one carrying either.</p>
+<h2 id="risk-mandate-4zf6pf2z">Risk Mandate — <code>4zf6pf2z</code></h2>
+<p><strong>What it is.</strong> A working application delivered as a vault — 124 files, 98 commits, eight entry
+points, pinned releases — that <strong>calls an LLM without ever holding the API key.</strong></p>
+<p><strong>What it gains.</strong> A register assembled for a <em>named body in a named jurisdiction</em> rather than for
+a scenario. The eight questions stay; what changes is that the answers hang off an anchor and can
+be compared with somebody else&#x27;s.</p>
+<p><strong>What it gives back.</strong> The delivery pattern, and the honest one: an app in a vault, offline once
+cached, with <code>takeaway.html</code> rebuilding a saved register from the link alone. **This vault already
+copied that shape** — index.html, data as its own cached immutable object, no permissions.</p>
+<h2 id="eu-ai-actstandardsriskmandateai">eu-ai-act.standards.riskmandate.ai</h2>
+<p><strong>What it is.</strong> The composed current text of Regulation (EU) 2024/1689 with the Digital Omnibus
+applied by a deterministic gated parser, <strong>published so it can be checked</strong>: per-provision ids and
+sha256 rolling to a root hash, <code>.md</code> and <code>.llm.json</code> on every slug, JSON-LD and Turtle exports,
+and a manifest hashing every file. It states plainly that it is <strong>derived and not authentic law.</strong></p>
+<p><strong>What it gains.</strong> Almost nothing — and that is the point. **It is the layer this pack needs and
+does not have to build.** Step 2 of the work order is a join, not a parse.</p>
+<p><strong>What it gives.</strong> The standard every other instrument in this graph should be held to. Set beside
+the CPRA — where the operative clause is prose in a notes field — it is the clearest possible
+statement of what <em>addressable</em> means, and it is why <a href="04__the-worked-example.html">the worked example</a><a class="ext live" href="https://ungovr.providers.sgit.ai/packs/security-graph/04__the-worked-example.md" title="live page">↗</a>
+puts the two side by side.</p>
+<p><strong>And the honesty to copy.</strong> It says on its own front page that only the Official Journal is
+authentic, and it publishes a root hash so a reader knows exactly which version they read. **Our
+inferred edges deserve the same treatment, and get it.**</p>
+<h2 id="the-graph-family-graphssgitai">The graph family — <code>graphs.sgit.ai</code></h2>
+<p><strong>What it is.</strong> The grammar this pack obeys: nine sentences, five rules, fifteen edges with named
+inverses, and the instruction to bridge rather than merge.</p>
+<p><strong>What it gains.</strong> A worked instance of anchor nodes with a <strong>measured</strong> bridge — 96.6% reach,
+20.5% needing a human. The site argues that confidence is computable; this is a case where
+somebody computed it and published the part that does not work.</p>
+<h2 id="the-composite-question-this-makes-answerable">The composite question this makes answerable</h2>
+<p>None of the vaults above can answer this today. Together, with the anchors, they can:</p>
+<blockquote><p>*For this body, in this jurisdiction: which obligations bind it, which standard controls address
+each, what is the evidence state of each, what would an insurer exclude — and which of those
+links did we infer rather than read?*</p></blockquote>
+<p><strong>Every clause of that question maps to one layer</strong>, and the last clause is the one that keeps it
+honest.</p>
+<h2 id="what-integration-must-not-do">What integration must not do</h2>
+<div class="table"><table><thead><tr><th>Not this</th><th>Because</th></tr></thead><tbody><tr><td>Merge the vocabularies into one control set</td><td>Merging erases the disagreement. <strong>Bridge through anchors</strong></td></tr>
+<tr><td>Import UnGovr&#x27;s AI-law corpus into any of these vaults</td><td><strong>It is not CC BY 4.0.</strong> Its own licence conveys none</td></tr>
+<tr><td>Draw a crosswalk and leave who drew it implicit</td><td>A crosswalk without an author is an assertion nobody owns</td></tr>
+<tr><td>Generate an acceptance owner to make a demo look finished</td><td>An acceptance without an owner is a note, and a generated one is worse</td></tr>
+<tr><td>Treat 96.6% as 100% because it rounds nicely</td><td>The 20.5% that needs a human is the whole reason the edge is inferred</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/packs/security-graph/05__integration.md">https://ungovr.providers.sgit.ai/packs/security-graph/05__integration.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="2cdf08a38c056854d44b242097ffa76a272ea52c92e8e723197d75bb30fab65b">2cdf08a38c05</code></dd><dt>Frozen copy</dt><dd><a href="05__integration.md">sites/ungovr.providers.sgit.ai/packs/security-graph/05__integration.md</a> (5,933 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>07 — Site architecture, licensing and boundaries · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · open-source.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#07-site-architecture-licensing-and-boundaries">07 — Site architecture, licensing and boundaries</a></li><li class="l2"><a href="#1-the-house-pattern-and-one-requirement-this-site-cannot-skip">1. The house pattern — and one requirement this site cannot skip</a></li><li class="l2"><a href="#2-resolve-the-licensing-inconsistency-before-writing-a-word">2. ⚠️ Resolve the licensing inconsistency before writing a word</a></li><li class="l2"><a href="#3-quoting-other-peoples-material">3. Quoting other people&amp;#x27;s material</a></li><li class="l2"><a href="#4-do-not-publish">4. Do not publish</a></li><li class="l2"><a href="#5-naming-other-people-and-projects">5. Naming other people and projects</a></li><li class="l2"><a href="#6-network-boundaries">6. Network boundaries</a></li><li class="l2"><a href="#7-page-by-page">7. Page by page</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/open-source.sgit.ai.html">open-source.sgit.ai</a> · <a href="07__site-architecture-and-boundaries.md">raw text</a> · <a class="ext" href="https://open-source.sgit.ai/briefs/07__site-architecture-and-boundaries.md">live ↗</a></p><article class="source"><h1 id="07-site-architecture-licensing-and-boundaries">07 — Site architecture, licensing and boundaries</h1>
+<h2 id="1-the-house-pattern-and-one-requirement-this-site-cannot-skip">1. The house pattern — and one requirement this site cannot skip</h2>
+<p>Copy <strong><code>pki.sgit.ai</code></strong>: <code>/llms.txt</code> as the whole agent surface, <code>/documents/</code> with raw markdown as source of truth, <code>/admin/comms.html</code> numbering asks (N1…) and tasks (T1…), <code>/admin/versions.html</code>, <code>/about/participant.html</code>, <code>/shipped/</code>. Add the <code>/llms-full.txt</code> that pki lacks.</p>
+<p><strong>The one thing this site cannot treat as optional</strong> is the agent-discovery ladder from <code>05__</code> §4, because a site about open source that agents cannot traverse fails in exactly the way the corpus already diagnosed:</p>
+<blockquote><p><em>&quot;many agents can only fetch URLs that a search engine has already returned to them… <strong>A link listed inside a fetched document did not count as having been seen.</strong> It can read the map and cannot walk it.&quot;</em></p></blockquote>
+<blockquote><p><em>&quot;the package registry page, which is a summary written for a different purpose, <strong>becomes the authoritative source by default because it is the only one that ranks</strong>.&quot;</em></p></blockquote>
+<p>So: get indexed (the real fix), make <code>/llms.txt</code> <strong>self-sufficient</strong> rather than a link list (the cheap fix), and ship <code>/llms-full.txt</code> as a single-file concatenation (removes link-following entirely). And carry the estate&#x27;s own practice — <strong>the markdown twin at every URL</strong>, extension swapped, with links inside the markdown pointing at markdown. <code>02__</code> §5 has the mechanism, including the Lambda@Edge detail that makes it work on static files.</p>
+<hr>
+<h2 id="2-resolve-the-licensing-inconsistency-before-writing-a-word">2. ⚠️ Resolve the licensing inconsistency before writing a word</h2>
+<p>Covered fully in <code>02__</code> §1. Restated here because it blocks the build:</p>
+<p><strong>The estate runs three licences and the corpus never mentions the third.</strong> Apache-2.0 on code, CC BY 4.0 on ~1,100+ brief footers, and <strong>CC0 1.0 on <code>docs.diniscruz.ai</code></strong> — which nobody has noticed and no document reconciles.</p>
+<p>A site <em>about open source licensing</em> that carries an unexplained licence mismatch will be caught. Decide first: deliberate layered choice, or drift to be fixed. Then write the page — it is interesting either way.</p>
+<p><strong>And write the missing page:</strong> why Apache-2.0 rather than MIT. The patent grant? The NOTICE file? Defensive termination? The entire estate rests on that choice and the reasoning exists nowhere.</p>
+<p><strong>This site&#x27;s own content is CC BY 4.0</strong>, consistent with the network. Stamp every raw markdown document and gate it in CI with <code>licence-audit.py</code> from the <code>graphs.sgit.ai</code> pack.</p>
+<hr>
+<h2 id="3-quoting-other-peoples-material">3. Quoting other people&#x27;s material</h2>
+<p>Different from the sibling sites, because this one quotes the open-source world at length.</p>
+<div class="table"><table><thead><tr><th>Source</th><th>Regime</th><th>What the site may do</th></tr></thead><tbody><tr><td><strong><code>research__history-and-success-stories.md</code></strong> (in this pack)</td><td>CC BY 4.0</td><td>Ours. The <strong>sources it cites retain their own licences</strong> — check before reproducing anything beyond a short quotation</td></tr>
+<tr><td><strong>Wikipedia</strong> (used heavily in the research)</td><td><strong>CC BY-SA 4.0</strong></td><td>Quote with attribution and a link back. <strong>Do not adapt</strong> — ShareAlike would bind the page. <code>04__</code>-style paraphrase-with-citation is fine; wholesale restructuring is not</td></tr>
+<tr><td><strong>Project documentation</strong> — curl FAQ, sqlite.org, letsencrypt.org, ASF annual report</td><td>Per project; several are permissive, some are ARR</td><td>Quote briefly with attribution. <strong>Do not mirror.</strong> The ASF FY2025 report is a PDF — link it, do not rehost</td></tr>
+<tr><td><strong>Vendor and analyst reports</strong> — Black Duck OSSRA, CNCF survey, Stack Overflow, Octoverse, StatCounter, W3Techs</td><td><strong>All rights reserved</strong></td><td>Cite the number, the source, the date and the caveat. <strong>Never reproduce their charts.</strong> The research file&#x27;s evidence table is already in the safe form</td></tr>
+<tr><td><strong>HBS WP 24-038</strong></td><td>Academic paper</td><td>Cite and link. Quote the method briefly. See <code>03__</code> §4 on the $8.8tn figure — never publish it without its definition</td></tr>
+<tr><td><strong><code>docs.diniscruz.ai</code> articles</strong></td><td><strong>CC0 1.0</strong></td><td>Republish freely. Attribute anyway, and keep <code>rel=&quot;canonical&quot;</code> on the original URL with the recorded first-published date</td></tr></tbody></table></div>
+<p><strong>One rule above all of these:</strong> the research file marks several facts <em>not verified this session</em> and reports every fetch failure. <strong>Do not publish a marked-unverified fact as established.</strong> The site&#x27;s credibility position is that it corrects other people&#x27;s unsourced numbers; shipping one of its own would be self-defeating.</p>
+<hr>
+<h2 id="4-do-not-publish">4. Do not publish</h2>
+<div class="table"><table><thead><tr><th>Path</th><th>Reason</th></tr></thead><tbody><tr><td><code>library/alchemist/materials/</code> — <strong>the whole tree</strong></td><td>Investment figures, valuation, revenue model, competitive positioning, pitch decks, named-competitor pricing. <strong>Note the founder profile lives here</strong> — the OWASP board claim in <code>06__</code> §1 is sourced from it, and that <em>fact</em> is public and quotable while the surrounding document is not</td></tr>
+<tr><td><code>team/humans/dinis_cruz/briefs/07/12/positioning-and-market/</code> — both files</td><td>Names Microsoft and dissects its governance programme as a partnering target; and a competitor map</td></tr>
+<tr><td><code>library/docs/_to_process/secure-send-llm-retention-compliance-gtm.md</code></td><td>API-credit resale margins, competitive analysis, naming-research admission</td></tr>
+<tr><td><code>team/roles/grc/reviews/03/01/v0.7.19__workstream-proposal__grc.md</code></td><td>Names a legal entity and enumerates its unfulfilled GDPR obligations; also maps a named third party&#x27;s alleged violations</td></tr>
+<tr><td><code>team/roles/grc/reviews/02/19/</code> — both files</td><td>Name a <strong>private individual</strong> as risk acceptor, with signature blocks</td></tr>
+<tr><td><code>team/roles/appsec/reviews/02/21/v0.5.0__review__pki-architecture-security-revised.md</code></td><td>Already classified: <em>&quot;publishing an attack roadmap for live code&quot;</em></td></tr>
+<tr><td><code>library/sgraph-send/dev_packs/v0.32.1__vault-to-vault-append-comms/03__provisioning-and-topologies.md</code></td><td>Names the driving rollout customer</td></tr>
+<tr><td><code>team/humans/dinis_cruz/briefs/08/06/payments-platform/*</code></td><td>Pricing, margins, provider endpoint detail</td></tr></tbody></table></div>
+<p><strong>Publish with care:</strong> the <em>&quot;somebody has to be the villagers&quot;</em> brief is excellent and belongs on the site, but its M&amp;A statistic and seven market figures are loosely attributed (<em>&quot;reported&quot;</em>, <em>&quot;is cited as finding&quot;</em>) and the brief itself flags that <em>&quot;much of what circulates is vendor commentary recycling a smaller set of underlying studies.&quot;</em> Re-source or soften.</p>
+<hr>
+<h2 id="5-naming-other-people-and-projects">5. Naming other people and projects</h2>
+<p><strong>Fine, and necessary:</strong> naming projects, foundations, licences, and the public authors of public work — Torvalds, Stallman, Peterson, Raymond, Stenberg, Hipp, Roosendaal, Freund. Recording that curl shut down its bounty on 31 January 2026 and why, with Stenberg&#x27;s own published words, is factual reporting the community needs.</p>
+<p><strong>Fine:</strong> naming companies in the relicensing history — MongoDB, Elastic, HashiCorp, Redis, IBM, Oracle. These are documented corporate acts with dates and public statements.</p>
+<p><strong>Not fine:</strong> running the Change-of-Control Stress Test on a named commercial competitor and publishing the verdict as a scorecard. <strong>Ship the test; let readers run it.</strong> The one exception is running it on yourself, which <code>04__</code> §2 recommends doing publicly.</p>
+<p><strong>Never:</strong> quoting forum, Discord or mailing-list participants without consent, or naming a private individual from the internal corpus.</p>
+<hr>
+<h2 id="6-network-boundaries">6. Network boundaries</h2>
+<div class="table"><table><thead><tr><th>Site</th><th>Owns</th><th>Boundary</th></tr></thead><tbody><tr><td><strong><code>open-source.sgit.ai</code></strong></td><td>The open-source position, the practice, the history, survivability, sovereignty, funding, OWASP</td><td>—</td></tr>
+<tr><td><code>wardley-maps.sgit.ai</code></td><td>Mapping technique, Explorer/Villager/Town Planner as a pattern</td><td><strong>Shared: &quot;somebody has to be the villagers&quot;.</strong> Wardley owns the PST <em>pattern</em>; open-source owns the <em>NFR market argument</em>. One canonical copy, cross-linked. Also shared: de-commoditisation, genesis-by-accident</td></tr>
+<tr><td><code>standards.sgit.ai</code></td><td>Instruments, provisions, crosswalks</td><td><strong>Shared: SPDX as an evidence artefact, and the licence-compliance thesis</strong> (<code>05__</code> §5a). Standards owns the machinery; open-source owns the argument</td></tr>
+<tr><td><code>graphs.sgit.ai</code></td><td>Graph theory, meaning through connectivity</td><td>Semantic OWASP and the PBOM sit on the boundary. Open-source owns the <em>why</em>, graphs owns the <em>how</em></td></tr>
+<tr><td><code>risks.sgit.ai</code></td><td>Risk, acceptance, the grounding ladder</td><td>Little overlap. Supply-chain risk links both ways</td></tr>
+<tr><td><code>sgit.ai</code>, <code>pki.sgit.ai</code>, <code>nhi.sgit.ai</code>, <code>sg-sentinel.sgit.ai</code></td><td>Product and domain sites</td><td>Should link <em>here</em> for the licence and sovereignty argument</td></tr>
+<tr><td><code>riskmandate.ai</code></td><td>Commercial</td><td>References, is not referenced</td></tr></tbody></table></div>
+<hr>
+<h2 id="7-page-by-page">7. Page by page</h2>
+<p><strong><code>/</code></strong> — the thesis in 300 words: <em>&quot;the power of open source is not for the community… it is not to give back&quot;</em> and <em>&quot;open source is not free… what you get is freedom.&quot;</em> Then the six history corrections as a teaser, because they establish that this site checks things.</p>
+<p><strong><code>/views/</code></strong> — <code>01__</code>&#x27;s five original pages. The site&#x27;s identity.</p>
+<p><strong><code>/survivability/</code></strong> — <code>04__</code> §§1–2. <strong>The stress test as a working tool, plus the self-audit.</strong></p>
+<p><strong><code>/history/</code></strong> — <code>03__</code>. Corrections first, timeline behind them, six success stories not fourteen.</p>
+<p><strong><code>/practice/</code></strong> — <code>02__</code>. The three licences, why Apache-2.0, the read-key discipline, publish-the-source-next-to-the-render, and the compliance gap stated honestly or closed before launch.</p>
+<p><strong><code>/agents/</code></strong> — <code>05__</code>. Dual purpose: the argument <em>about</em> agents, and the machine surface <em>for</em> them.</p>
+<p><strong><code>/owasp/</code></strong> — <code>06__</code>. <strong>Blocked on the interview.</strong> Ship the summit history and mark the first-person account as pending rather than writing around it.</p>
+<p><strong><code>/funding/</code></strong> — <code>04__</code> §§4–5. Three proposals, the cURL evidence, and a stated position.</p>
+<p><strong><code>/shipped/</code></strong> — <code>00__</code> §7, unsoftened, including the self-audit and the missing SBOM.</p>
+<p><strong><code>/admin/</code>, <code>/network/</code></strong> — house pattern. Publish the build order unresolved with <code>08__</code>&#x27;s questions and tensions visible.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>open-source.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://open-source.sgit.ai/briefs/07__site-architecture-and-boundaries.md">https://open-source.sgit.ai/briefs/07__site-architecture-and-boundaries.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:59Z</dd><dt>sha256</dt><dd><code title="b427c0b1cdca42ff12a79bf03ca6203f8ea39e4e5ae419df6fe4821cb6e62f01">b427c0b1cdca</code></dd><dt>Frozen copy</dt><dd><a href="07__site-architecture-and-boundaries.md">sites/open-source.sgit.ai/briefs/07__site-architecture-and-boundaries.md</a> (9,765 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

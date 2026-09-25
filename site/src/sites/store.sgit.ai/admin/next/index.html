@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>/next/ — the next store · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · store.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#next-the-next-store">/next/ — the next store</a></li><li class="l2"><a href="#the-till-is-on">The till is on</a></li><li class="l2"><a href="#one-section-of-the-design-is-not-built">One section of the design is not built</a></li><li class="l2"><a href="#the-names-ruled-on-16-september">The names, ruled on 16 September</a></li><li class="l2"><a href="#built-from">Built from</a></li><li class="l2"><a href="#the-journey">The journey</a></li><li class="l2"><a href="#the-filter-that-cannot-run">The filter that cannot run</a></li><li class="l2"><a href="#artwork">Artwork</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/store.sgit.ai.html">store.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://store.sgit.ai/admin/next/index.md">live ↗</a></p><article class="source"><h1 id="next-the-next-store">/next/ — the next store</h1>
+<p>The v3 design direction <strong>01 / ABP first</strong>, built here. It runs beside the store that sells today rather than replacing it.</p>
+<h2 id="the-till-is-on">The till is on</h2>
+<p>At least one level carries a payment link. The checkout renders one button per line and each hands the buyer to the provider carrying the order reference and nothing else.</p>
+<h2 id="one-section-of-the-design-is-not-built">One section of the design is not built</h2>
+<p>The v3 pages carry a mission line that uses a word this site bars absolutely, on every page, with no allowlist and no carve-out for a quotation. Their own notes record that the project lead asked for it. The section is left out, the mirror keeps their file intact, and the ruling is on the board.</p>
+<h2 id="the-names-ruled-on-16-september">The names, ruled on 16 September</h2>
+<div class="table"><table><thead><tr><th>Code</th><th>Name</th><th>Price</th><th>Arrives</th><th>State</th></tr></thead><tbody><tr><td><code>ABP-T1</code></td><td>ABP Pack — The material, downloaded.</td><td>£10</td><td>Immediately from your payment</td><td>exists and runs</td></tr>
+<tr><td><code>ABP-T2</code></td><td>ABP Vault — The material, in a working vault.</td><td>£50</td><td>1 to 2 days from your payment</td><td>exists and runs</td></tr>
+<tr><td><code>ABP-T3</code></td><td>ABP Tailored — Your deployment, reflected in the mandate.</td><td>£500</td><td>1 to 3 days from your reply</td><td>delivered by a person</td></tr>
+<tr><td><code>ABP-T4</code></td><td>ABP Reviewed — Two sessions and a custom vault.</td><td>£1,500</td><td>1 to 5 days from your reply</td><td>delivered by a person</td></tr></tbody></table></div>
+<h2 id="built-from">Built from</h2>
+<p><a class="ext" href="https://abp-marketplace-v3.diniscruz.chatgpt.site">https://abp-marketplace-v3.diniscruz.chatgpt.site ↗</a>, retrieved 2026-09-16, 10 files hashed.</p>
+<ul><li><code>index.html</code> — the chosen direction: 01 / ABP first — <code>4bd678b4ef62606f</code></li><li><code>style.css</code> — the base stylesheet — <code>191df5956c53ab5a</code></li><li><code>marketplace.css</code> — the marketplace layer — <code>98f9a10227445d72</code></li><li><code>data.js</code> — the four levels and the vault file list, as data — <code>2ef5c502ffc12589</code></li><li><code>app.js</code> — level selection, edition switching, file explorer — <code>3918ffd17d8b2582</code></li><li><code>products.html</code> — the product page, with the level switcher — <code>36b835144cb8e2bb</code></li><li><code>assets/marketplace.png</code> — ABP Pack artwork — <code>c25c561c43abd098</code></li><li><code>assets/vault-marketplace.png</code> — ABP Vault artwork — <code>677509ba1f9ec793</code></li><li><code>assets/toolkit-marketplace.png</code> — ABP Tailored artwork — <code>6a5438806a34c308</code></li><li><code>assets/reviewed-marketplace.png</code> — ABP Reviewed artwork — <code>4a91f746d9bd03d3</code></li></ul>
+<h2 id="the-journey">The journey</h2>
+<p>The picker, the order, the checkout and the page after it are built from the store&#x27;s own data. The order they share is the live store&#x27;s order: the same local-storage key, the same schema, the same line shape, the same reference alphabet and the same SKUs, so an order started in this design round is still there on the store that sells today. A check compares the two models field by field.</p>
+<h2 id="the-filter-that-cannot-run">The filter that cannot run</h2>
+<p>The capability vocabulary has 23 named behaviours and every shape publishes how many of them its grant contains. Which ones is not published for any shape, so the behaviour filter narrows nothing and says why, and the capability strip in the panel is one uncoloured cell per capability. For five of the fifteen shapes, wanted plus not-asked overshoots the grant by exactly one; ten are exact.</p>
+<h2 id="artwork">Artwork</h2>
+<ul><li><code>pack.jpg</code> — ABP Pack — 1536×1024 → 720×480, 2024KB → 39KB</li><li><code>vault.jpg</code> — ABP Vault — 1536×1024 → 720×480, 1980KB → 28KB</li><li><code>tailored.jpg</code> — ABP Tailored — 1536×1024 → 720×480, 1825KB → 33KB</li><li><code>reviewed.jpg</code> — ABP Reviewed — 1536×1024 → 720×480, 1847KB → 25KB</li><li><code>audiences.jpg</code> — The five audiences, illustrated — 2172×724 → 1400×467, 1280KB → 42KB</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>store.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://store.sgit.ai/admin/next/index.md">https://store.sgit.ai/admin/next/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:55Z</dd><dt>sha256</dt><dd><code title="3ea4f99d2b93b9b2df93915188a286fcac6867d5197fe4b9818258eb27769e2b">3ea4f99d2b93</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/store.sgit.ai/admin/next/index.md</a> (3,541 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>GRANT — everything the agent can do · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#grant-everything-the-agent-can-do">GRANT — everything the agent can do</a></li><li class="l2"><a href="#what-the-words-mean-here">What the words mean here</a></li><li class="l2"><a href="#the-rows">The rows</a></li><li class="l2"><a href="#the-notes-behind-the-rows">The notes behind the rows</a></li><li class="l2"><a href="#permitted-and-blocked">Permitted, and blocked</a></li><li class="l2"><a href="#the-four-barriers-and-the-test">The four barriers, and the test</a></li><li class="l2"><a href="#evidence-tiers">Evidence tiers</a></li><li class="l2"><a href="#ask-the-agent-to-check-it">Ask the agent to check it</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="GRANT.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/GRANT.html">live ↗</a></p><article class="source"><h1 id="grant-everything-the-agent-can-do">GRANT — everything the agent can do</h1>
+<blockquote><p>Measured from the deployment shape, not from your account and not by you. Every row says how it is known, what stands in the way, and whether it can be undone. Irreversible rows first.</p></blockquote>
+<p><strong>Vault</strong> <code>claude-code-web</code> · <strong>status</strong> template · <strong>shape</strong> <code>anthropic/claude-code-remote/ccr-container</code> · <strong>grant</strong> 2026-09-05.2 · <strong>mandate</strong> 2026-09-09 · <strong>vocabulary</strong> abp.sgit.ai v0.3.0 · <strong>as at</strong> 2026-09-15</p>
+<hr>
+<p><strong>Shape</strong> Claude Code on the web (a remote session container) (Anthropic) · <strong>surface</strong> agentbox · <strong>grant version</strong> 2026-09-05.2 · <strong>rows</strong> 15, of which <strong>13 measured</strong> and 2 derived · <strong>widest reach</strong> tenant</p>
+<h2 id="what-the-words-mean-here">What the words mean here</h2>
+<p>A managed cloud container, ephemeral, one git repository attached, an egress proxy above it, and a set of harness tools scoped by the platform. MEASURED, by the thing being profiled: the shell probed on 5 September with probes/run.py, the fetch tool&#x27;s reach and the harness tools reported by the operator. HOST MEANS THE CONTAINER, not your machine; TENANT means the platform&#x27;s scoped tokens, not your accounts. The same environment measured on 26 August is the Grant &amp; Mandate library&#x27;s first entry, and the two agree on every row they share.</p>
+<div class="table"><table><thead><tr><th>Reach</th><th>In this shape means</th></tr></thead><tbody><tr><td>host</td><td>this container — ephemeral, the vendor&#x27;s; not your machine</td></tr>
+<tr><td>tenant</td><td>the attached repository and the platform&#x27;s scoped tokens; not your accounts</td></tr>
+<tr><td>world</td><td>the hosts the proxy allows</td></tr></tbody></table></div>
+<h2 id="the-rows">The rows</h2>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>Barrier</th><th>Undo</th><th>Evidence</th><th>Via</th><th>What stands in the way</th></tr></thead><tbody><tr><td><code>authenticate-as.credential.signing</code></td><td>Sign commits with the key it holds</td><td>● none</td><td>no</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>delete.file.host</code></td><td>Delete files anywhere the account can reach</td><td>● none</td><td>no</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>read.credential.host</code></td><td>Read credentials stored where it runs</td><td>● none</td><td>no</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>read.file.host</code></td><td>Read any file the account can reach</td><td>● none</td><td>no</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>read.record.history</code></td><td>Read a retained record: shell history, past sessions</td><td>● none</td><td>no</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>authenticate-as.credential.tenant</code></td><td>Act in accounts with the credentials it holds</td><td>○ boundary</td><td>no</td><td>inferred</td><td>shell (Bash), harness (MCP and built-in tools)</td><td>the token&#x27;s scope, set by the platform (in-scope repositories only)</td></tr>
+<tr><td><code>send.endpoint.allowed</code></td><td>Reach a permitted list of hosts</td><td>○ boundary</td><td>no</td><td>observed ✓</td><td>shell (Bash), fetch (WebFetch), harness (MCP and built-in tools)</td><td>a mandatory egress proxy configured above this process — hosts it refuses are refused with a 403 on the CONNECT; the six hosts probed on 5 September all answered</td></tr>
+<tr><td><code>execute.process.host</code></td><td>Run programs as the account</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>write.file.host</code></td><td>Change any file the account can reach</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>write.file.project</code></td><td>Change the project it is working on</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>write.repository.project</code></td><td>Commit to the repository it was pointed at</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>shell (Bash)</td><td>—</td></tr>
+<tr><td><code>write.repository.tenant</code></td><td>Push to a code host (any branch it can reach)</td><td>◐ setting</td><td>with-effort</td><td>observed ✓</td><td>shell (Bash), harness (MCP and built-in tools)</td><td>pre-commit and pre-push hooks in the clone (the mandate hook and the insurance policy) — refuse by exit code, --no-verify passes; no branch rule at the host</td></tr>
+<tr><td><code>read.file.project</code></td><td>Read the project it is working on</td><td>● none</td><td>yes</td><td>observed ✓</td><td>shell (Bash), harness (MCP and built-in tools)</td><td>—</td></tr>
+<tr><td><code>create.schedule.tenant</code></td><td>Create something that outlives the session, on the platform (a routine, a scheduled trigger, a new session)</td><td>◐ setting</td><td>yes</td><td>self-reported</td><td>harness (MCP and built-in tools)</td><td>the platform&#x27;s routines are the operator&#x27;s to list and delete</td></tr>
+<tr><td><code>create.schedule.host</code></td><td>Create something that outlives the turn where it runs (a cron, a service)</td><td>○ boundary</td><td>yes</td><td>observed ✓</td><td>shell (Bash)</td><td>the container is ephemeral: whatever is scheduled here dies with it</td></tr></tbody></table></div>
+<h2 id="the-notes-behind-the-rows">The notes behind the rows</h2>
+<ul><li><strong><code>authenticate-as.credential.signing</code></strong> — commits are signed with the session&#x27;s own key, registered as an agent identity in this site&#x27;s registry (sha256-f9facb4c94da6c19) — not with yours</li><li><strong><code>delete.file.host</code></strong> — anything in the container, including the clone; irreversible for the container, and the container is disposable</li><li><strong><code>read.credential.host</code></strong> — the credential-shaped paths present are the SESSION&#x27;S OWN: its commit-signing key and its vault keystore. No user credential is in the container; presence cannot tell whose a key is, so this is the operator&#x27;s account</li><li><strong><code>read.file.host</code></strong> — any file in the container — the attached clone, the harness&#x27;s state, the system. Not your machine&#x27;s files (the assess tree&#x27;s &#x27;home: boundary&#x27;)</li><li><strong><code>read.record.history</code></strong> — the harness&#x27;s project directory holds this session&#x27;s own earlier tool outputs; no user shell history exists here</li><li><strong><code>authenticate-as.credential.tenant</code></strong> — five key-shaped variables and a code-host token — the platform&#x27;s, scoped to in-scope repositories; it acts as the platform&#x27;s app, never as you</li><li><strong><code>send.endpoint.allowed</code></strong> — six of six probed hosts answered through the proxy; a sibling container measured on 4 September had three refused: same product, two policies</li><li><strong><code>execute.process.host</code></strong> — root inside the container: every process and file IN THE CONTAINER. The container is the host; your machine is not reachable</li><li><strong><code>write.file.host</code></strong> — a zero-byte file was created and removed in /etc: system configuration of the container is writable</li><li><strong><code>write.file.project</code></strong> — the attached working tree is writable</li><li><strong><code>write.repository.project</code></strong> — a repository is attached and writable</li><li><strong><code>write.repository.tenant</code></strong> — the attached repository only (any branch it can reach); branch discipline is the clone&#x27;s hooks, a setting; no rule at the host</li><li><strong><code>read.file.project</code></strong> — the attached working tree is readable</li><li><strong><code>create.schedule.tenant</code></strong> — a routine or a scheduled trigger resumes this session or spawns another later: it outlives the container</li><li><strong><code>create.schedule.host</code></strong> — systemctl and /etc/cron.d exist, so a cron can be written — and dies with the container; the real scheduler is the platform&#x27;s routines, on the harness row</li></ul>
+<h2 id="permitted-and-blocked">Permitted, and blocked</h2>
+<p>The grant above is what the agent can do <strong>after</strong> the blocks. This is what something withholds. A block is not a property of the credential: some of these are the credential&#x27;s own ceiling, and some are a vendor choosing not to ship a tool the credential would authorise. Each one names what blocks it, because those two are not the same object and a reader who is shown them under one heading has been told something this document cannot support.</p>
+<div class="table"><table><thead><tr><th>What</th><th>Blocked by</th><th>Who holds the block</th><th>Why</th><th>Source</th></tr></thead><tbody><tr><td>your machine&#x27;s files</td><td>the container this runs in — no path from it to the operator&#x27;s computer</td><td><em>not yet recorded</em></td><td>the container has no path to the operator&#x27;s computer; the assess tree records home as a boundary</td><td>assess/library.json (agentbox: home)</td></tr>
+<tr><td>your credentials</td><td>the image — no user credential is in it; the keys present are the session&#x27;s own</td><td><em>not yet recorded</em></td><td>no user credential is in the image; the keys present are the session&#x27;s own</td><td>evidence: filesystem.credential-presence, 5 Sep</td></tr>
+<tr><td>hosts the proxy refuses</td><td>the egress proxy, set above the process: a 403 on the CONNECT</td><td><em>not yet recorded</em></td><td>a 403 on the CONNECT, set above the process</td><td>evidence: network.egress-shell</td></tr>
+<tr><td>repositories outside the platform&#x27;s scope</td><td>the platform, which scopes the token and refuses an out-of-scope call from its own API tool</td><td><em>not yet recorded</em></td><td>the token is scoped by the platform; the API tool refuses out-of-scope calls</td><td>harness.platform-tools, self-reported</td></tr></tbody></table></div>
+<h2 id="the-four-barriers-and-the-test">The four barriers, and the test</h2>
+<div class="table"><table><thead><tr><th></th><th>Barrier</th><th>What stands in the way</th><th>Is it a control</th></tr></thead><tbody><tr><td>●</td><td>none</td><td>nothing in the way</td><td>no</td></tr>
+<tr><td>◉</td><td>expectation</td><td>a rule in prose, enforced by nobody</td><td>no</td></tr>
+<tr><td>◐</td><td>setting</td><td>a switch the agent&#x27;s own account can flip</td><td>no</td></tr>
+<tr><td>○</td><td>boundary</td><td>enforced above the grant, out of the agent&#x27;s reach</td><td><strong>yes</strong></td></tr></tbody></table></div>
+<blockquote><p>A control bounds a grant only if it is enforced by something the grant does not include.</p></blockquote>
+<p>A setting the agent&#x27;s own account can change is not a control, because the grant includes the ability to remove the bound. A boundary enforced above it is one, because it does not.</p>
+<h2 id="evidence-tiers">Evidence tiers</h2>
+<div class="table"><table><thead><tr><th>Tier</th><th>Means</th></tr></thead><tbody><tr><td>derived</td><td>from what the thing architecturally is; a claim until somebody runs the probes</td></tr>
+<tr><td>inferred</td><td>from another row or another profile, by reasoning rather than by observation</td></tr>
+<tr><td>self-reported</td><td>reported by the operator, the harness or the tool itself, without an independent probe</td></tr>
+<tr><td>documented</td><td>the vendor, or a published tool, says so</td></tr>
+<tr><td>measured ✓</td><td>a probe run on an instance, dated, with an evidence file</td></tr>
+<tr><td>observed ✓</td><td>seen directly, on the thing itself, by the thing itself</td></tr></tbody></table></div>
+<p>✓ marks the tiers this vault counts as measured. Nothing here was obtained by probing anybody else&#x27;s system: a row is measured only from a system we are entitled to run, or from the vendor&#x27;s own published documentation.</p>
+<h2 id="ask-the-agent-to-check-it">Ask the agent to check it</h2>
+<p>The agent is running in the deployment this file describes, so it can look. What it reports is a claim until a log held outside it agrees — but a claim from inside the deployment is a better starting point than a template. Paste this into a session running in the shape above:</p>
+<pre><code>You are running inside the deployment described in GRANT.md. Compare each row with what you
+can actually reach from here, and report — do not change any file except the one named below.
+
+For every row: PRESENT, ABSENT or CANNOT TELL; which tool reaches it; one line of evidence
+(a command&#x27;s output, a tool&#x27;s own description, a documentation sentence with its URL).
+Never exercise a capability whose undo class is &quot;no&quot; to prove it exists: presence of a
+credential file is evidence; using it is not permitted.
+Add a row for anything you can reach that is not listed, in verb.object.reach form, using
+only the 23 primitives in data/vocabulary/capabilities.json. A new path, host or mailbox is
+an instance of an existing primitive, not a new one.
+Do not touch MANDATE.md or data/mandate.json — that file is the deployer&#x27;s, not yours.
+Write the result to history/grant-check--&lt;today&gt;.md with the date and the tool versions
+you can see. Everything in it is self-report; say so at the top.</code></pre>
+<hr>
+<p><em>This describes the deployment shape as at this date. If the risk changed, the deployment changed — not this document.</em>
+No score, rating, level or traffic light appears in this vault or in its data, and none will. The behaviour policy describes; it does not judge.
+Generated by <code>scripts/site/build-abp-vault.mjs</code> from <code>data/grant.json</code>, <code>data/mandate.json</code> and the pinned vocabulary; <code>data/mandate.json</code> is the only file a person writes. Licence: the published template is CC BY 4.0; a paid copy carries a commercial licence to the buyer. See LICENCE.md.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/GRANT.html">https://riskmandate.ai/vaults/claude-code-web/GRANT.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/vaults/claude-code-web/GRANT.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:06Z</dd><dt>sha256</dt><dd><code title="bb8b97bd6494a94bdf78fbd1353be3eb6e5787cdbd80b7e0a9e74b6edae182e3">bb8b97bd6494</code></dd><dt>Frozen copy</dt><dd><a href="GRANT.md">sites/riskmandate.ai/vaults/claude-code-web/GRANT.md</a> (11,439 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

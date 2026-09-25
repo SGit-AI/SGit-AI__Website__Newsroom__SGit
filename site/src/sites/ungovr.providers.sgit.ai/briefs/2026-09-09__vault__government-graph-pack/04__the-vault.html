@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>04 — The Vault: Team, Viewers, Settings, Releases · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#04-the-vault-team-viewers-settings-releases">04 — The Vault: Team, Viewers, Settings, Releases</a></li><li class="l2"><a href="#why-the-vaults-own-shape-is-part-of-the-argument">Why The Vault&amp;#x27;s Own Shape Is Part Of The Argument</a></li><li class="l2"><a href="#the-agentic-team">The Agentic Team</a></li><li class="l3"><a href="#the-single-writer-rule">The single-writer rule</a></li><li class="l3"><a href="#why-the-reviewers-framing-matters">Why the reviewer&amp;#x27;s framing matters</a></li><li class="l2"><a href="#the-viewers">The Viewers</a></li><li class="l2"><a href="#the-graph-viewer-and-why-the-settings-are-the-point">The Graph Viewer, And Why The Settings Are The Point</a></li><li class="l3"><a href="#the-fractal-test-which-is-the-acceptance-criterion">The fractal test, which is the acceptance criterion</a></li><li class="l3"><a href="#and-the-discipline-carried-from-the-method-site">And the discipline carried from the method site</a></li><li class="l2"><a href="#the-shareable-form">The Shareable Form</a></li><li class="l2"><a href="#releases-the-citation-mechanism">Releases: The Citation Mechanism</a></li><li class="l3"><a href="#the-release-plan-for-this-vault">The release plan for this vault</a></li><li class="l2"><a href="#the-catalogue-entry">The Catalogue Entry</a></li><li class="l2"><a href="#the-corrections-offer">The Corrections Offer</a></li><li class="l2"><a href="#host-chrome">Host Chrome</a></li><li class="l2"><a href="#where-state-goes">Where State Goes</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="04__the-vault.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md">live ↗</a></p><article class="source"><h1 id="04-the-vault-team-viewers-settings-releases">04 — The Vault: Team, Viewers, Settings, Releases</h1>
+<p><strong>version</strong> v0.33.67
+<strong>date</strong> 8 September 2026</p>
+<p><a href="03__the-worked-example.html">← 03 The Worked Example</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md" title="live page">↗</a> · <a href="README.html">Pack hub</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/README.md" title="live page">↗</a> · Next → <a href="05__the-workbench.html">05 The Workbench</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/05__the-workbench.md" title="live page">↗</a></p>
+<hr>
+<h2 id="why-the-vaults-own-shape-is-part-of-the-argument">Why The Vault&#x27;s Own Shape Is Part Of The Argument</h2>
+<p><strong>A vault demonstrating how to operate a graph must be operable in the way it describes.</strong> If the team is real, the viewers work, and the demonstration can be cited by version, then the method is shown rather than asserted. If any of those is a diagram in a document, the vault is a slide deck with a URL.</p>
+<hr>
+<h2 id="the-agentic-team">The Agentic Team</h2>
+<p><strong>The house model, unchanged: agents never address each other and coordinate through file artefacts.</strong> An issue is a <em>contract between roles</em> rather than a to-do item. A session finishes by writing a handoff and exiting; the next role starts fresh and picks it up.</p>
+<p><strong>Four roles, and no more.</strong> Their instructions live in the vault as ordinary files at <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/team/README.md"><code>/team/</code> ↗</a>, so a clone carries the team.</p>
+<div class="table"><table><thead><tr><th>Role</th><th>Owns</th><th>Writes to</th><th>Reads</th></tr></thead><tbody><tr><td><strong>Cartographer</strong></td><td>The graph. Node and edge construction, the join, the viewer</td><td><code>/graph/</code>, <code>/app/</code></td><td>Everything</td></tr>
+<tr><td><strong>Librarian</strong></td><td>Provenance, retrieval log, attribution, the catalogue entry</td><td><code>/provenance/</code>, <code>/catalogue/</code></td><td>Everything</td></tr>
+<tr><td><strong>Architect</strong></td><td>The schema and the model. Owns <a href="02__the-model.html"><code>02__the-model.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md" title="live page">↗</a></td><td><code>/pack/02__*</code>, <code>/schema/</code></td><td>Everything</td></tr>
+<tr><td><strong>Reviewer</strong></td><td>Contradiction. <strong>Commissioned to contradict, not instructed to be critical</strong></td><td><code>/review/</code></td><td>Everything</td></tr></tbody></table></div>
+<p><strong>The cartographer leads on this vault.</strong> The role exists in the house model and has previously been a reviewer; here it is the lead, which is a first and worth noting when the handoffs are read later.</p>
+<h3 id="the-single-writer-rule">The single-writer rule</h3>
+<p><strong>No file has two writers.</strong> Generated files flow one way, contributed files the other. <strong>A correction is recorded beside the thing rather than as an edit to it.</strong></p>
+<p><strong>A path with a single writer and defined readers is an interface between two agents</strong>, and the set of such paths <em>is</em> the architecture of this vault. Adding a participant means granting a path, not changing anybody&#x27;s code.</p>
+<h3 id="why-the-reviewers-framing-matters">Why the reviewer&#x27;s framing matters</h3>
+<p>&quot;Be critical&quot; produces a reviewer who agrees with well-written work. <strong>&quot;Contradict this&quot; produces a reviewer with a job.</strong> The reviewer&#x27;s output goes to <code>/review/</code> as its own artefact and is never merged into the thing it reviews — which is the same rule as the corrections path below, applied internally.</p>
+<hr>
+<h2 id="the-viewers">The Viewers</h2>
+<p><strong>The rule: a source sits beside the node it produced.</strong> Three viewers, and the third is the one that makes the provenance claim checkable rather than stated.</p>
+<div class="table"><table><thead><tr><th>Viewer</th><th>Shows</th><th>Requirement</th></tr></thead><tbody><tr><td><strong>Graph viewer</strong></td><td>The nodes and edges, with settings</td><td>See below</td></tr>
+<tr><td><strong>JSON viewer</strong></td><td>The retrieved payload behind a <code>ung:</code> node</td><td>Unmodified, beside the node</td></tr>
+<tr><td><strong>Document viewer</strong></td><td>The instrument&#x27;s own PDF or XML</td><td><strong>A provision node links to the exact page or byte range that produced it, and the viewer opens it there</strong></td></tr></tbody></table></div>
+<p><strong>Acceptance test 4 is the document viewer test</strong>, and it is what turns &quot;we recorded the provenance&quot; into something a stranger can check in one click.</p>
+<hr>
+<h2 id="the-graph-viewer-and-why-the-settings-are-the-point">The Graph Viewer, And Why The Settings Are The Point</h2>
+<p><strong>A graph nobody can re-lay-out is a picture.</strong> The configurable surface is what turns it into an instrument.</p>
+<div class="table"><table><thead><tr><th>Setting</th><th>Why it earns its place</th></tr></thead><tbody><tr><td>Filter by node and edge type</td><td>The only way to see <code>ung:</code> alone, which is what a partner will want first</td></tr>
+<tr><td>Collapse and expand a subtree</td><td>159,926 US entities do not fit on a screen and never will</td></tr>
+<tr><td>Change what a node is coloured and sized by</td><td>Colour is spent on assertion class by default; the ability to rebind it is what makes the view an argument rather than a decoration</td></tr>
+<tr><td>Pin a node and walk outward by degree</td><td>The natural motion of checking a claim</td></tr>
+<tr><td>Switch coarse and fine over the same data</td><td>Entity level and sentence level are the same graph</td></tr>
+<tr><td><strong>Export the current view with its settings</strong></td><td><strong>So somebody else sees the same thing.</strong> A screenshot of a graph is not evidence of a graph</td></tr></tbody></table></div>
+<h3 id="the-fractal-test-which-is-the-acceptance-criterion">The fractal test, which is the acceptance criterion</h3>
+<p><strong>Zoom into any node and it expands into a graph obeying identical rules.</strong></p>
+<div class="table"><table><thead><tr><th>Zoom into</th><th>Expands into</th></tr></thead><tbody><tr><td>An entity</td><td>Its children</td></tr>
+<tr><td>A law</td><td>Its provisions</td></tr>
+<tr><td>A provision</td><td>Its sentences</td></tr></tbody></table></div>
+<p><strong>Same interaction, same address scheme, same three assertion classes.</strong> That is acceptance test 6.</p>
+<h3 id="and-the-discipline-carried-from-the-method-site">And the discipline carried from the method site</h3>
+<p><strong>Three visual classes that are never mixed: asserted, inferred, possible.</strong> With origin — <code>ung:</code> / <code>akn:</code> / <code>sg:</code> — carried by shape or border rather than by hue, because hue is already spent.</p>
+<p><strong>A hypothesis drawn like a fact is the failure this whole estate exists to prevent.</strong> In this vault the specific instance is <code>sg:resolvesTo</code>, the edge from their law string to an instrument. It is our inference. Drawn like their assertion, it is a lie about the source of the most important claim in the demonstration.</p>
+<hr>
+<h2 id="the-shareable-form">The Shareable Form</h2>
+<p><strong>The vault opens read-only for a stranger and asks for nothing.</strong> That is acceptance test 8, and the Risk Graph Explorer vault already demonstrates it: its <code>app.json</code> requests no permissions.</p>
+<div class="table"><table><thead><tr><th>Requirement</th><th>Consequence</th></tr></thead><tbody><tr><td>No permission prompts on open</td><td>Any capability the app requests must be optional</td></tr>
+<tr><td>No model calls on the read-only path</td><td><strong>A vault app&#x27;s model calls fail on a static host when the key is owner-sealed</strong>, because the seal derives from the write key. So nothing on the demonstration path may depend on an LLM</td></tr>
+<tr><td>No writes on the read-only path</td><td>Every write is refused as read-only off-site</td></tr>
+<tr><td>The corrections path is separate and explicitly entered</td><td>See below</td></tr></tbody></table></div>
+<p><strong>Read keys yes, write keys never.</strong> The read key is published by definition. <strong>And escrow the write key before publishing, not after</strong>, because a vault whose write key is lost is frozen: readable forever, never correctable.</p>
+<hr>
+<h2 id="releases-the-citation-mechanism">Releases: The Citation Mechanism</h2>
+<p><code>.vault/releases.json</code>, schema <code>sg-releases/v1</code>. <strong>Use releases from the first artefact, not retrofitted.</strong></p>
+<p><strong>Two properties matter here and both are load-bearing for a demonstration built on somebody else&#x27;s data.</strong></p>
+<p><strong>A release is the same content-addressed objects, not a copy that might have drifted</strong>, so a dated snapshot is exact rather than approximately exact. <strong>And publishing new work does not change what an existing link holder sees</strong>, so a link handed over at a meeting keeps showing what was shown at the meeting.</p>
+<p><strong>Two traps, recorded so nobody hits them.</strong> A pinned view is <strong>read-only for everybody including the owner</strong>, refusing with <code>EPINNED</code> — so do not pin the working branch. And there are <strong>no collection roots yet</strong>, so when garbage collection is built, pinned commits must become roots or a published release could be collected out from under a live link. That is an upstream dependency, not a thing this vault can fix, and it belongs in the risk register rather than in a footnote.</p>
+<h3 id="the-release-plan-for-this-vault">The release plan for this vault</h3>
+<div class="table"><table><thead><tr><th>Release</th><th>Pins</th></tr></thead><tbody><tr><td><code>@pack-v0.33.67</code></td><td><strong>This pack, as the first commit, before anything is built</strong></td></tr>
+<tr><td><code>@2026-09-08</code></td><td>The retrieval snapshot of UnGovr data, when it happens</td></tr>
+<tr><td><code>@demo-v1</code></td><td>The worked example, complete, as shown</td></tr></tbody></table></div>
+<p><strong>A link pins with <code>#key|@v1-2</code>.</strong> Resolution runs url, then stored choice, then default, then live.</p>
+<hr>
+<h2 id="the-catalogue-entry">The Catalogue Entry</h2>
+<p><strong>Yes, immediately.</strong> The submission-queue design says so and it takes under a minute. The catalogue is an index of published vaults that is itself a vault and lists itself, and a graph vault that is not in it is arguing against its own method.</p>
+<p>The entry lives at <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/catalogue/entry.json"><code>/catalogue/entry.json</code> ↗</a> and names the read key, the default release, the one-line description, and the attribution to UnGovr.</p>
+<hr>
+<h2 id="the-corrections-offer">The Corrections Offer</h2>
+<p><strong>A public dataset of 320,000 entities will contain errors, and there is no visible mechanism for an outsider to propose a fix.</strong> No repository, no fork, no pull request.</p>
+<p><strong>The GDPR vault already demonstrates the shape</strong>: writes scoped to a feedback folder. And the rule was settled on 31 July: <strong>a correction is a proposal recorded beside the thing rather than an edit to it, and no file has two writers.</strong></p>
+<p><strong>So this vault carries <code>/corrections/</code></strong>, a folder where a reader may record a proposed correction to a derived node without touching the node. Each correction names the node, the retrieval it disagrees with, and the evidence for the disagreement.</p>
+<p><strong>Three reasons this is built rather than discussed.</strong></p>
+<p>It demonstrates the point in a way a slide cannot. It costs almost nothing, since the mechanism is shipped and published elsewhere. <strong>And it pre-empts a decision that is theirs</strong>: nothing here proposes that UnGovr adopt anything. A correction sitting in a stranger&#x27;s vault is a suggestion they may ignore, which is the correct power relationship for a first meeting.</p>
+<blockquote><p><strong>Honest tension, recorded rather than resolved.</strong> Building a corrections path for somebody else&#x27;s data before asking them is a stranger implying their data needs correcting. The mitigation is that the folder ships empty, with the mechanism visible and no corrections filed.</p></blockquote>
+<hr>
+<h2 id="host-chrome">Host Chrome</h2>
+<p><strong><code>app.json</code> configures the chrome through <code>hud</code></strong> — modes full, minimal, hidden and none — and it supplies back, forward, home, reload and a path bar.</p>
+<p><strong>Do not build app-side navigation.</strong> A vault app that draws its own back button is fighting the host and will drift from it.</p>
+<p><strong>And a homepage</strong> comes from <code>.vault/app.json</code> naming an <code>entry</code> with <code>present: true</code> and <code>auto_open</code>, or from a root <code>_page.json</code> which renders immediately on open. <strong>This vault uses both</strong>, because the second works in the plain browse view and the first works in the app host.</p>
+<p><strong>A menu to sub-sections is a <code>cards</code> component whose items link to relative paths.</strong> The <code>navigation</code> field is in-page anchors only, and the declarative folder-narrative manifest was proposed in March and never built.</p>
+<p><strong>One markdown limitation that shapes every file in this pack</strong>: markdown here <strong>does not render task lists and does not support nested lists.</strong> A checklist must be part of a page layout or an application. Every file in this pack uses tables and flat lists for exactly that reason.</p>
+<hr>
+<h2 id="where-state-goes">Where State Goes</h2>
+<div class="table"><table><thead><tr><th>Kind of state</th><th>Where</th><th>Travels with the vault?</th></tr></thead><tbody><tr><td>A per-device preference: theme, panel size, a dismissal</td><td><code>sg.state.*</code>, 64 KiB per key, no grant needed</td><td>No</td></tr>
+<tr><td>Anything whose loss would be a bug</td><td><code>sg.fs.write(&#x27;.app-state/...&#x27;)</code>, a real commit</td><td>Yes</td></tr></tbody></table></div>
+<p><strong>The rule verbatim from the guide</strong>: if losing it when the user switches browsers would be fine, use device state; <strong>if losing it would be a bug, write it into the vault.</strong></p>
+<p><strong>Applied here</strong>: graph viewer layout and filter settings are device state. <strong>An exported view, a correction, and an acceptance are commits.</strong></p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md">https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="a8e43a14d9468dc3f0ae91778d5811ab5c817502ef3c516265b13ac23e7d51a9">a8e43a14d946</code></dd><dt>Frozen copy</dt><dd><a href="04__the-vault.md">sites/ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md</a> (11,199 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

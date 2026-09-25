@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>lexico.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pt.newsroom.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/pt.newsroom.sgit.ai.html">pt.newsroom.sgit.ai</a> · <a href="lexico.json">raw text</a> · <a class="ext" href="https://pt.newsroom.sgit.ai/dados/lexico.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;pt-lexico&quot;,
+  &quot;versao&quot;: &quot;0.1.0&quot;,
+  &quot;atualizado&quot;: &quot;2026-09-14&quot;,
+  &quot;o_que_e&quot;: &quot;Uma fórmula publicada. Cada entrada é uma expressão regular que corre sobre o texto congelado da página de uma pessoa ou de uma organização; quando corresponde, nasce uma aresta derivada no grafo que leva consigo as palavras que correspondeu e mais nada.&quot;,
+  &quot;o_que_nao_e&quot;: &quot;Uma caracterização de ninguém. Uma etiqueta diz que aquela página contém aquelas palavras. Não diz o que a pessoa é, faz, sabe ou vale. Nenhuma frase da biografia é copiada para lado nenhum: o que fica é a palavra que a expressão apanhou, cortada aos 40 caracteres.&quot;,
+  &quot;porque_publicada&quot;: &quot;Uma fórmula com que um leitor pode discordar vale mais do que um juízo em que tem de confiar. Está aqui em ficheiro, corre no build, e o portão 8 de build/gates.py volta a correr cada padrão sobre os bytes congelados — uma etiqueta escrita à mão falha o build, e uma etiqueta que deixou de corresponder desaparece.&quot;,
+  &quot;a_lingua_dos_padroes&quot;: &quot;Os rótulos são portugueses porque o leitor deste site é português. Os PADRÕES são ingleses porque a fonte é inglesa: o Startup Summit publica as suas páginas em inglês, e uma expressão regular portuguesa a correr sobre prosa inglesa não corresponderia a nada enquanto parecia estar a funcionar. Fazer o contrário seria exatamente o erro que o §6 do resumo descreve — uma ontologia numa língua por trás de uma interface noutra, errada sem parecer avariada. Quando esta redação ler uma fonte portuguesa, os padrões dessa fonte são portugueses; cada entrada diz sobre que língua corre.&quot;,
+  &quot;entradas&quot;: [
+    {
+      &quot;id&quot;: &quot;capital-de-risco&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Capital de risco&quot;,
+      &quot;en&quot;: &quot;Venture capital&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(venture capital|VC fund|early.stage fund|seed fund|limited partner|LP)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;investimento-anjo&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Investimento anjo&quot;,
+      &quot;en&quot;: &quot;Angel investing&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(angel investor|angel investing|business angel)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;fintech&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Tecnologia financeira&quot;,
+      &quot;en&quot;: &quot;Fintech&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(fintech|payments? (?:platform|infrastructure)|banking|insurtech)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;saude&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Saúde&quot;,
+      &quot;en&quot;: &quot;Health&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(healthcare|health.?tech|medical device|biotech|life sciences)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;energia&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Energia e clima&quot;,
+      &quot;en&quot;: &quot;Energy and climate&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(climate.?tech|renewable|solar|energy transition|decarboni[sz])\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;imobiliario&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Imobiliário&quot;,
+      &quot;en&quot;: &quot;Real estate&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(real estate|prop.?tech|construction tech)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;educacao&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Educação&quot;,
+      &quot;en&quot;: &quot;Education&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(ed.?tech|education technology|learning platform)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;comercio&quot;,
+      &quot;tipo&quot;: &quot;Setor&quot;,
+      &quot;rotulo&quot;: &quot;Comércio e retalho&quot;,
+      &quot;en&quot;: &quot;Commerce and retail&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(e.?commerce|marketplace|retail tech|d2c|direct.to.consumer)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ia&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Inteligência artificial&quot;,
+      &quot;en&quot;: &quot;Artificial intelligence&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(artificial intelligence|machine learning|\\bAI\\b|\\bML\\b|deep learning)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ia-generativa&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;IA generativa&quot;,
+      &quot;en&quot;: &quot;Generative AI&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(generative AI|GenAI|large language model|\\bLLM\\b|foundation model)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;agentes&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Agentes autónomos&quot;,
+      &quot;en&quot;: &quot;Autonomous agents&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(AI agents?|agentic|autonomous agents?|multi.agent)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;dados&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Dados&quot;,
+      &quot;en&quot;: &quot;Data&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(data (?:platform|infrastructure|engineering|science)|big data|analytics)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;nuvem&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Computação em nuvem&quot;,
+      &quot;en&quot;: &quot;Cloud&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(cloud (?:platform|infrastructure|native)|SaaS|serverless|kubernetes)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ciberseguranca&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Cibersegurança&quot;,
+      &quot;en&quot;: &quot;Cybersecurity&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(cyber.?security|information security|appsec|privacy engineering)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;hardware&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Hardware&quot;,
+      &quot;en&quot;: &quot;Hardware&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(hardware|robotics|semiconductor|chip design|manufacturing tech)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;cadeia-de-blocos&quot;,
+      &quot;tipo&quot;: &quot;Tecnologia&quot;,
+      &quot;rotulo&quot;: &quot;Cadeia de blocos&quot;,
+      &quot;en&quot;: &quot;Blockchain&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(blockchain|web3|crypto(?:currency)?|digital assets)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;escalar&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Escalar&quot;,
+      &quot;en&quot;: &quot;Scaling&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(scal(?:e|ing) (?:up|a company|globally)|hypergrowth|growth stage)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;internacionalizar&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Internacionalizar&quot;,
+      &quot;en&quot;: &quot;Going global&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(international expansion|go(?:ing)? global|cross.border|new markets)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;angariar&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Angariar capital&quot;,
+      &quot;en&quot;: &quot;Fundraising&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(fundrais(?:e|ing)|raised? (?:a )?(?:seed|series [A-D]|round)|pitch deck)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;saida&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Saída&quot;,
+      &quot;en&quot;: &quot;Exit&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(exit|acquisition|acquired by|IPO|merger)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;produto&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Construir produto&quot;,
+      &quot;en&quot;: &quot;Building product&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(product.market fit|building products?|product.led|zero to one)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;sustentabilidade&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Sustentabilidade&quot;,
+      &quot;en&quot;: &quot;Sustainability&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(sustainab(?:le|ility)|impact (?:investing|driven)|ESG|circular economy)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;diaspora&quot;,
+      &quot;tipo&quot;: &quot;Ideia&quot;,
+      &quot;rotulo&quot;: &quot;Diáspora&quot;,
+      &quot;en&quot;: &quot;Diaspora&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(Portuguese diaspora|returned to Portugal|Portuguese.born|from Portugal to)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;consultoria&quot;,
+      &quot;tipo&quot;: &quot;Serviço&quot;,
+      &quot;rotulo&quot;: &quot;Consultoria&quot;,
+      &quot;en&quot;: &quot;Consulting&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(consult(?:ing|ancy)|advisory (?:firm|services)|fractional)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;juridico&quot;,
+      &quot;tipo&quot;: &quot;Serviço&quot;,
+      &quot;rotulo&quot;: &quot;Jurídico&quot;,
+      &quot;en&quot;: &quot;Legal&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(law firm|legal (?:counsel|advice|services)|attorney|solicitor)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;aceleracao&quot;,
+      &quot;tipo&quot;: &quot;Serviço&quot;,
+      &quot;rotulo&quot;: &quot;Aceleração&quot;,
+      &quot;en&quot;: &quot;Acceleration&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(accelerator|incubator|venture builder|startup studio)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;recrutamento&quot;,
+      &quot;tipo&quot;: &quot;Serviço&quot;,
+      &quot;rotulo&quot;: &quot;Recrutamento&quot;,
+      &quot;en&quot;: &quot;Talent&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(talent (?:acquisition|partner)|recruit(?:ing|ment)|executive search)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;plataforma&quot;,
+      &quot;tipo&quot;: &quot;Produto&quot;,
+      &quot;rotulo&quot;: &quot;Plataforma&quot;,
+      &quot;en&quot;: &quot;Platform&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(platform for|B2B platform|operating system for)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;aplicacao&quot;,
+      &quot;tipo&quot;: &quot;Produto&quot;,
+      &quot;rotulo&quot;: &quot;Aplicação&quot;,
+      &quot;en&quot;: &quot;Application&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(mobile app|consumer app|web app)\\b&quot;
+    },
+    {
+      &quot;id&quot;: &quot;api&quot;,
+      &quot;tipo&quot;: &quot;Produto&quot;,
+      &quot;rotulo&quot;: &quot;Interface programática&quot;,
+      &quot;en&quot;: &quot;API&quot;,
+      &quot;corre_sobre&quot;: &quot;en&quot;,
+      &quot;padrao&quot;: &quot;\\b(API|developer tools?|SDK|infrastructure for developers)\\b&quot;
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pt.newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pt.newsroom.sgit.ai/dados/lexico.json">https://pt.newsroom.sgit.ai/dados/lexico.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:03Z</dd><dt>sha256</dt><dd><code title="34d5113b7daf6e98ebb90ae671d01a9d3f82cdd1b6108b1fe658c14b73f404c8">34d5113b7daf</code></dd><dt>Frozen copy</dt><dd><a href="lexico.json">sites/pt.newsroom.sgit.ai/dados/lexico.json</a> (7,721 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

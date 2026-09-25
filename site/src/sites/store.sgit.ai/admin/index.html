@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · store.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#the-queue-and-how-work-gets-here">The queue, and how work gets here</a></li><li class="l2"><a href="#hand-somebody-a-code">Hand somebody a code</a></li><li class="l2"><a href="#next-taking-money">Next: taking money</a></li><li class="l2"><a href="#run-it-yourself">Run it yourself</a></li><li class="l2"><a href="#the-record">The record</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/store.sgit.ai.html">store.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://store.sgit.ai/admin/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The console
+description: &quot;The operations surface for this store: what is blocking a first paid order, the units of work in flight, the memo queue behind them, the payment rails, the reviews and the walkthrough. Public, like every page here, and kept out of the sitemap because it is not a selling surface.&quot;
+lead: &quot;&quot;
+order: 90
+robots: &quot;noindex,follow&quot;
+console: true
+blurb: &quot;&lt;b&gt;Everything here is public&lt;/b&gt;, because every page on this site is — no login, no account, nothing gated. What is different is that it is not &lt;em&gt;advertised&lt;/em&gt;: noindex, out of the sitemap, out of &lt;code&gt;llms-full.txt&lt;/code&gt;. Anybody handed the address reads every word.&quot;
+</p>
+<hr>
+<p>{{console-dash}}</p>
+<h2 id="the-queue-and-how-work-gets-here">The queue, and how work gets here</h2>
+<p><strong><a href="memos/index.html">The memo queue →</a><a class="ext live" href="https://store.sgit.ai/admin/memos/" title="live page">↗</a></strong> — a memo from the project lead arrives
+spoken, is kept here word for word, is read into a brief, and the brief is broken
+into units of work. The reading is kept separate from the memo on purpose: what
+somebody said and what we made of it are two different objects, and only one of
+them is allowed to be wrong.</p>
+<p><strong><a href="work/index.html">The board →</a><a class="ext live" href="https://store.sgit.ai/admin/work/" title="live page">↗</a></strong> — those units, in four columns, grouped into
+workstreams. A workstream never moves by hand; it moves because a task inside it
+moved, so the summary cannot contradict the detail.</p>
+<h2 id="hand-somebody-a-code">Hand somebody a code</h2>
+<p>A code is a link, not something to type. Open one on the laptop you are holding,
+or send it, and the shop comes up with the discount already on it and the four
+prices repainted.</p>
+<p>{{code-links}}</p>
+<h2 id="next-taking-money">Next: taking money</h2>
+<p><strong><a href="rails/index.html">Both rails →</a><a class="ext live" href="https://store.sgit.ai/admin/rails/" title="live page">↗</a></strong> — no payment rail is live, which is the single
+fact that most shapes this store. {{claim:checkout-links-not-issued}}</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><a href="rails/stripe/index.html">Stripe</a><a class="ext live" href="https://store.sgit.ai/admin/rails/stripe/" title="live page">↗</a></td><td>The rail that turns a buyer into a customer, including a buyer who pays nothing. Six products, eight prices, three coupons — and a webhook that has to listen to the session rather than the payment, because a hundred-per-cent order creates no charge at all.</td></tr>
+<tr><td><a href="rails/sumup/index.html">SumUp — parked</a><a class="ext live" href="https://store.sgit.ai/admin/rails/sumup/" title="live page">↗</a></td><td>Taken off the store on 16 September for the first end-to-end MVP. The plan is kept rather than deleted, so turning it back on is restoring a record instead of rediscovering an argument.</td></tr></tbody></table></div>
+<h2 id="run-it-yourself">Run it yourself</h2>
+<p><strong><a href="try/index.html">The walkthrough →</a><a class="ext live" href="https://store.sgit.ai/admin/try/" title="live page">↗</a></strong> — a beta tester or an agent goes from the
+catalogue to the page after payment in about four minutes, for nothing, with a
+discount code printed on the page. Screenshots of every step, and a script an
+agent can follow without a person in the loop.</p>
+<p>The same thing as PDFs, for sharing or for reading away from a screen —
+<a class="ext" href="https://store.sgit.ai/admin/downloads/store-walkthrough-by-hand-v0.1.11.pdf">by hand ↗</a> (11 pages, every
+screenshot) and <a class="ext" href="https://store.sgit.ai/admin/downloads/store-walkthrough-as-an-agent-v0.1.11.pdf">as an agent ↗</a>
+(7 pages, the assertions). Both are snapshots; the page is the source of truth.</p>
+<h2 id="the-record">The record</h2>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><a href="reviews/index.html">Reviews, dated and kept</a><a class="ext live" href="https://store.sgit.ai/admin/reviews/" title="live page">↗</a></td><td>Every review of this store, newest first. A review is a moment locked: the version it was taken against, the screenshots, and a stance on every proposal in it.</td></tr>
+<tr><td><a href="status/index.html">What happened to each memo</a><a class="ext live" href="https://store.sgit.ai/admin/status/" title="live page">↗</a></td><td>The join: every memo from the project lead, the units of work it became, the page each one built and the release it shipped in.</td></tr>
+<tr><td><a href="concepts/index.html">The homepage concepts, reviewed</a><a class="ext live" href="https://store.sgit.ai/admin/concepts/" title="live page">↗</a></td><td>Three homepage directions drawn for this store from outside, screenshotted and measured against the live page — what is taken, what is refused, and the live pricing contradiction the review found.</td></tr>
+<tr><td><a href="design-brief/index.html">The design brief</a><a class="ext live" href="https://store.sgit.ai/admin/design-brief/" title="live page">↗</a></td><td>What a design session needs to mock up the rest of this store without access to the repository: the constraints with the hard rules named, the real tokens read from the stylesheet, eighteen components and nine screens. The markdown twin is the pasteable form.</td></tr>
+<tr><td><a href="../ledger/index.html">The claim ledger</a><a class="ext live" href="https://store.sgit.ai/ledger/" title="live page">↗</a></td><td>Every factual claim this site makes, with the state it earned and the date. Pages cite a claim and the chip links back here.</td></tr>
+<tr><td><a href="../disclosures/index.html">What we do not say, and why</a><a class="ext live" href="https://store.sgit.ai/disclosures/" title="live page">↗</a></td><td>The words this site will not use, the sentence it will not print, and the naming collision that is still open.</td></tr>
+<tr><td><a href="../dev-packs/index.html">The dev packs</a><a class="ext live" href="https://store.sgit.ai/dev-packs/" title="live page">↗</a></td><td>The working documents behind the store, and the manifest of which of them are held back and why.</td></tr>
+<tr><td><a href="../versions/index.html">Release history</a><a class="ext live" href="https://store.sgit.ai/versions/" title="live page">↗</a></td><td>Every release, what changed, and the commit it is.</td></tr>
+<tr><td><a href="../lab/index.html">The purchase lab</a><a class="ext live" href="https://store.sgit.ai/lab/" title="live page">↗</a></td><td>The tool that turns a described deployment into a depth band. Nothing on it can be bought.</td></tr>
+<tr><td><a href="../catalogue/index.html">What is not for sale yet</a><a class="ext live" href="https://store.sgit.ai/catalogue/" title="live page">↗</a></td><td>The offers that exist as specifications and have not been built.</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>store.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://store.sgit.ai/admin/index.md">https://store.sgit.ai/admin/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:17Z</dd><dt>sha256</dt><dd><code title="625b202d27322117cd01187424c765bdbec8f8cf1175031738e5935e46692957">625b202d2732</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/store.sgit.ai/admin/index.md</a> (4,738 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

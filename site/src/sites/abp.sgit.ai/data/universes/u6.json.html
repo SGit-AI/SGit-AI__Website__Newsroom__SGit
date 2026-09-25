@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>u6.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="u6.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/universes/u6.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/universe/v1&quot;,
+  &quot;id&quot;: &quot;u6&quot;,
+  &quot;n&quot;: 6,
+  &quot;name&quot;: &quot;The derivation&quot;,
+  &quot;level&quot;: &quot;across&quot;,
+  &quot;owner&quot;: &quot;the computation, and never a person&quot;,
+  &quot;centre&quot;: &quot;the pinned input&quot;,
+  &quot;smallest&quot;: &quot;one stored record with its inputs, its time and the version of the code that produced it&quot;,
+  &quot;status&quot;: &quot;partial&quot;,
+  &quot;status_note&quot;: &quot;Nine stored deltas, each pinning the profile version, the mandate version, the pack version, the time and abp.delta/v1, recomputed by the gate on every build. What is missing is the series, the trigger and the crossing. No field on any node here is authored: a Trigger is received, a Crossing is computed, a Series is appended.&quot;,
+  &quot;node_types&quot;: [
+    {
+      &quot;name&quot;: &quot;Excess&quot;,
+      &quot;formula&quot;: &quot;[Excess] := a [GrantedCapability] with NO -authorised_by-&gt; path to the [Mandate] in scope&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 82
+    },
+    {
+      &quot;name&quot;: &quot;UnboundedExcess&quot;,
+      &quot;formula&quot;: &quot;[UnboundedExcess] := an [Excess] whose -bounded_by-&gt; [Barrier] is not a [Control]&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 64
+    },
+    {
+      &quot;name&quot;: &quot;Shortfall&quot;,
+      &quot;formula&quot;: &quot;[Shortfall] := a [Capability] that a [Mandate] -authorises-&gt; and no [DeploymentShape] in scope -grants-&gt;&quot;,
+      &quot;exists_today&quot;: true,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: 2
+    },
+    {
+      &quot;name&quot;: &quot;DeltaRecord&quot;,
+      &quot;formula&quot;: &quot;a node -derived_from-&gt; exactly one [GrantVersion] and exactly one [MandateVersion], -computed_by-&gt; one [Computation], with an excess, an unbounded excess and a shortfall set; no field writable by a person&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: &quot;Exists as a file under data/deltas/ and not yet as a node in the graph.&quot;,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Computation&quot;,
+      &quot;formula&quot;: &quot;a version of the code: abp.delta/v1 today&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Series&quot;,
+      &quot;formula&quot;: &quot;the ordered set of [DeltaRecord]s for one shape and one mandate, each -supersedes-&gt; the last&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Trigger&quot;,
+      &quot;formula&quot;: &quot;an event that -causes_recompute-&gt; of a [Series]: a credential change, a token claims change, an assurance level change, a device compliance change; a new observation in U3; a corrected mandate in U5; a new pack version in U1&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    },
+    {
+      &quot;name&quot;: &quot;Crossing&quot;,
+      &quot;formula&quot;: &quot;a [DeltaRecord] whose count -crosses-&gt; a [Threshold] somebody set in advance; a record, never a verdict&quot;,
+      &quot;exists_today&quot;: false,
+      &quot;note&quot;: null,
+      &quot;matched&quot;: null
+    }
+  ],
+  &quot;verbs&quot;: [
+    {
+      &quot;edge&quot;: &quot;exceeds&quot;,
+      &quot;inverse&quot;: &quot;exceeded_by&quot;,
+      &quot;domain&quot;: &quot;GrantedCapability&quot;,
+      &quot;range&quot;: &quot;Mandate&quot;,
+      &quot;reads_as&quot;: &quot;this granted capability exceeds this mandate&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this mandate is exceeded by these granted capabilities&quot;,
+      &quot;from&quot;: &quot;this site&quot;,
+      &quot;status&quot;: &quot;live&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;derived_from&quot;,
+      &quot;inverse&quot;: &quot;derived_into&quot;,
+      &quot;domain&quot;: &quot;DeltaRecord&quot;,
+      &quot;range&quot;: &quot;GrantVersion or MandateVersion&quot;,
+      &quot;reads_as&quot;: &quot;this record was derived from these pinned inputs&quot;,
+      &quot;inverse_reads_as&quot;: &quot;these inputs were derived into this record&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;computed_by&quot;,
+      &quot;inverse&quot;: &quot;computed&quot;,
+      &quot;domain&quot;: &quot;DeltaRecord&quot;,
+      &quot;range&quot;: &quot;Computation&quot;,
+      &quot;reads_as&quot;: &quot;this record was computed by this version of the code&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this version of the code computed these records&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;causes_recompute&quot;,
+      &quot;inverse&quot;: &quot;recomputed_on&quot;,
+      &quot;domain&quot;: &quot;Trigger&quot;,
+      &quot;range&quot;: &quot;Series&quot;,
+      &quot;reads_as&quot;: &quot;this event caused this series to recompute&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this series was recomputed on this event&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    },
+    {
+      &quot;edge&quot;: &quot;crosses&quot;,
+      &quot;inverse&quot;: &quot;crossed_by&quot;,
+      &quot;domain&quot;: &quot;DeltaRecord&quot;,
+      &quot;range&quot;: &quot;Threshold&quot;,
+      &quot;reads_as&quot;: &quot;this record crosses this threshold&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this threshold is crossed by these records&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;status&quot;: &quot;proposed&quot;
+    }
+  ],
+  &quot;adds&quot;: &quot;The gate&#x27;s twelfth check, which recomputes every stored delta from its pinned inputs, extends to the series without a new idea: every record in a series recomputes, and a series with a gap in its supersedes chain fails the build. Lab 07&#x27;s history folder, one entry per recompute, is the live instance of Series and it exists in riskmandate.ai&#x27;s vault today.&quot;,
+  &quot;junctions_live&quot;: [],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/model/universes/u6/index.html&quot;,
+  &quot;brief&quot;: &quot;https://abp.sgit.ai/docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.html&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;The universe is authored in admin/build/universes.py; the matched counts and the live junctions are computed from the graph on every build.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/universes/u6.json">https://abp.sgit.ai/data/universes/u6.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:44Z</dd><dt>sha256</dt><dd><code title="b8f081d319b697b567203bc149f2e0f2a74b175931fa031036f2d001a27417f1">b8f081d319b6</code></dd><dt>Frozen copy</dt><dd><a href="u6.json">sites/abp.sgit.ai/data/universes/u6.json</a> (5,599 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

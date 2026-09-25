@@ -1,0 +1,875 @@
+{
+  "current": "v0.3.24",
+  "releases": [
+    {
+      "version": "v0.3.24",
+      "date": "2026-09-17",
+      "commit": "",
+      "site": "store.sgit.ai",
+      "title": "the emails nobody has turned on, and the one a free order cannot send",
+      "summary": "Neither side is emailed on a sale today. The buyer's receipt is a dashboard\nsetting rather than a property of the payment, and the seller's notification is\na per-person preference on the account; both are steps on the rail page now.\n\nThe half worth reading twice is that neither fires on a zero-total order. A\nhundred-per-cent code takes the total to zero, a zero total creates no charge,\nand both of those emails hang off a charge \u2014 so the exact journey this rail was\nbuilt for, handing somebody a code at an event and ending up with a person in a\nsystem, is the journey that notifies nobody by any route. It is on the board as\nan argument rather than a setting.",
+      "changes": [
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.23",
+      "date": "2026-09-17",
+      "commit": "5cbeb893aa350175544abea899b0720eb1195d54",
+      "site": "store.sgit.ai",
+      "title": "the page a buyer lands on after paying can find their order",
+      "summary": "The redirect on level one's payment link points at /paid/t1/, which wears the\nprevious design's chrome and runs shop.js. That engine looked for the order\nreference under two keys only the old place-an-order step ever wrote \u2014 and the\nstore that sells today has no such step, because a buyer goes from the checkout\nstraight to the provider. So the page a buyer lands on after paying could not\nfind their reference, and told them instead that they must have ordered in a\ndifferent browser: false, and said to the one person least able to argue.\n\nshop.js now falls back to the shared order record both engines read, and reads\nthe provider's session id out of the address the way the store's own engine\ndoes. A check holds the two readers identical.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.22",
+      "date": "2026-09-17",
+      "commit": "a01342cf4f963844636082dfcc92277f543b4587",
+      "site": "store.sgit.ai",
+      "title": "level one can be paid for",
+      "summary": "The first payment link exists. It is level one's, created on 17 September 2026,\nand the checkout renders a real button against it carrying the order reference\nand, where the buyer arrived with one, the discount code. Levels two, three and\nfour still carry an empty checkout_url and render the reason rather than a\nbutton. The claim ledger moved with it, which the build refused to proceed\nwithout.\n\nTwo things the first real link taught the store. A payment link has no quantity\nparameter, so a button opens at one unit: two packs rendered Pay \u00a320 against a\nlink that charges \u00a310, and the button now names the unit with the line total\nbeside it. And whether a buyer may change the quantity at all is the provider's\nsetting, which this site cannot ask about, so it is a field in the offer data\nand false unless somebody has confirmed otherwise.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.21",
+      "date": "2026-09-17",
+      "commit": "39585a99b452d789112368f615a75843a62a00ce",
+      "site": "store.sgit.ai",
+      "title": "the checkout hands over to the provider",
+      "summary": "The store's side of the payment rail, built. The checkout renders one button\nper line of the order \u2014 a payment link sells one fixed set of lines, so a cart\nof several cannot be one link \u2014 and each carries client_reference_id, which is\nhow the lines of one order find each other on the provider's side. A discount\ncode travels as prefilled_promo_code, but only while the plaintext is still in\nhand from the address: the store keeps the record id and never the code, so a\ncheckout opened without it says the code must be re-applied rather than\ncharging a price nobody was shown. The page after paying reads the provider's\nsession id and says you came back, never that you paid \u2014 there is no server\nhere to ask.\n\nSeventeen sentences saying nothing can be bought here now have a second half\nthat is true after a link is pasted, held by a check in both directions, and\nthe build refuses to run while the claim ledger still says no link exists.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.20",
+      "date": "2026-09-17",
+      "commit": "2c92a1928c22046de276dfc657478f4a95ecbff1",
+      "site": "store.sgit.ai",
+      "title": "the disclosure moves off the top of the page",
+      "summary": "The strip above the fold carried the whole paragraph, two links and a version\nbadge: 251 characters and 71px of a phone screen before anything the reader\ncame for. It now carries the sentence and one link \u2014 51 characters, 30px \u2014 and\nthe body, the compliance denial, the three links and the version moved into the\nfooter. Hard rule 5 is unchanged: the phrase still sits above main on every\npage, because a disclosure found only at the bottom does the opposite of its\njob. A new check holds both halves \u2014 the strip cannot grow back past 80\ncharacters, and the footer cannot lose the sentences the strip gave up.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.19",
+      "date": "2026-09-16",
+      "commit": "c77fa621c3d0311d9eff6d0c79b052e1c39eacd2",
+      "site": "store.sgit.ai",
+      "title": "the five doors, drawn the way v4 draws them",
+      "summary": "\"What brings you here?\" on the front page was five paragraphs of text in a grid\nwith no picture in it. On a phone that was three rows, 549 pixels, and it landed\n1,185 pixels down \u2014 a section nobody meets. It is now the v4 handback's band: a\n64px thumbnail, a label, one short line and an arrow.\n\n**One strip, five cards.** The same five-up image already banner-cropped on\n/audiences/ is cropped square here: laid out five squares wide inside a 64px box\nand pulled left by a whole square per position, so each card shows its own fifth.\n\n**On a phone the band comes first and scrolls.** A flex row with scroll-snap,\n255px cards, 112px tall, the second card half-visible as the affordance \u2014 247px\ninstead of 549, above the hero instead of below it. At 1280 the hero and the four\nfacts are one screen and the band is already under them, so the order is left\nalone there; 1050 and below drops to three columns.\n\n**The labels are shorter.** \"Founder\" rather than \"You are a founder\", and\n\"Shipping with agents.\" \u2014 the door sentence cut at its first comma rather than a\nsixth field in the data, because the first clause is the same fact said shorter.\n\nNew rule: five doors, five thumbnails, five different fifths, and the short line\nhas to be the real sentence's own opening. It holds the load-bearing\n`max-width: none` too \u2014 the reset's `img { max-width: 100% }` silently beat\n`width: 500%` when this crop was first built on /audiences/ and left four of five\ncards showing an empty box, with every other check passing.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.18",
+      "date": "2026-09-16",
+      "commit": "afc694477f23499461c09e1306ab56c2c6731069",
+      "site": "store.sgit.ai",
+      "title": "the buy references, and the rest of v4 that the store was missing",
+      "summary": "The live store was put beside the v4 site and found wanting, the buy references\nfirst. The v4 site is byte-for-byte the pack already mirrored here, so the gap\nwas not a newer version: it was what the first implementation left out. Every v4\nscreen was diffed against its page.\n\n**Buy this level, on every offer card, everywhere.** As v4 has it: a link to the\nproduct page carrying a level and a policy, where *Add to your order* adds the\nline. The product page now sells a policy at a level, names the default shape as\na default beside a link to change it, and the disabled control that says no\npayment link exists lives on the checkout \u2014 the page that would take money \u2014\nrather than on a button that now does something real.\n\nThe comparison leads with the four cards and a print action. The five audience\ndoors are drawn in this design, the reader's question as the headline and the\ncards under it, lead and quiet drawn by hierarchy and never by hiding. Describe\nyour agent is in the store, on the lab's own engine. The ledger explains its ten\nstates, the page after paying prints, and the picker panel names the two files\nyou hand the agent and opens the example vault on the shape's own page.\n\nDeliberately not taken: v4's preview controls, its live-looking checkout button,\nthe placeholder scenario selector and side-effect ladder, the drawn vault frame,\nthe handoff explorer, and its product names.\n\nSix deliberate breaks on the retargeted checks, six failures by name. Five\n\"the same X on the store that sells today\" links had pointed at themselves since\nthe swap; they point at the archive now.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.17",
+      "date": "2026-09-16",
+      "commit": "b8ca1ff3b5293f693f7bc3834e0ae79a75b2cd49",
+      "site": "store.sgit.ai",
+      "title": "five readers walked the whole store, and four stopped in the same place",
+      "summary": "The previous panel ended by naming what it could not do: a panel is a weaker\ninstrument than a journey. This is the journey. The same five readers, written on\n15 September and carried across unchanged, each walked ten screens in the order a\nbuyer meets them, at 1280 and at 390.\n\n**Four of the five reached the checkout and stopped.** Not because the page is\nunclear \u2014 three of them called the disabled button the most honest thing on the\nsite \u2014 but because there is nothing on that page to do next. No address, no way\nto be told when the till opens. That is the true state of the till and not a flaw\nin the drawing of it, and it is the only finding here that costs a buyer\nsomething today.\n\nFive of the six findings carry a measurement, which is the only defence this\ninstrument has. The evidence band begins 3,098 pixels down a 4,395-pixel front\npage, and 6,677 of 9,406 on a phone. The picker's filter bar is 521 pixels tall\nwith eighteen chips, and the first of the fifteen policy shapes starts at 1,220\npixels on an 844-pixel viewport.\n\nThree new units on the board and one unblocked. The walkthrough was repointed at\nthe archive it now drives and caught a real defect on the way: the previous\ndesign's checkout was sending buyers to /order/, which the swap had removed.\n\nThis run has no vault. The two before it are published as encrypted vaults;\npushing to one needs its write key on a command line and that was refused here.\nThe page says so where the vault would have been.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.16",
+      "date": "2026-09-16",
+      "commit": "86b68b9ca835b540c060bd6d2331fbce92d0d0c8",
+      "site": "store.sgit.ai",
+      "title": "the new design is the store, and the one it replaced is kept at /v1/",
+      "summary": "The design built across four rounds at /next/ is now what store.sgit.ai serves.\nNine pages existed in both designs, so the new one takes the address and the old\none is archived one directory down: the front page, the picker, the comparison,\nthe audiences, the ledger, the order, the checkout, the page after paying and the\nreviewer register. Every /v1/ page carries a strip saying it is not the live one,\nis noindex, and has its links to the other moved pages rewritten so the archive\ndoes not tip a reader into the store halfway through.\n\nEvery other public page kept its address and is re-drawn in the new chrome. They\nload site.css and then next.css: the chrome and the base type come from the new\nfile, the block components keep the rules that already draw them. Fourteen rules\nin the old stylesheet were scoped to the old chrome's own element and are\nreplaced by the reading column in the new one; the other four hundred and\nsixty-seven were untouched. That layering is transitional and is on the board.\n\n**Every address the design round used still resolves.** Ten pages at /next/, each\nsaying where its page went, carrying the canonical link and refreshing there.\n\n**The printed cards still work.** A code arrives in the address off a card or a\nQR, and the cards in circulation point at the front page \u2014 which is the new\ndesign, where the old engine is not. The capture, the expiry and the per-level\narithmetic are ported into next.js, sharing shop.js's storage key, record shape\nand sha256, with a check holding the two copies of the hash identical. A code\nlanding on a page drawn by the old engine is handed to the order page rather than\ndropped, and every page has somewhere to say a code was applied or refused.\n\nThe homepage regained the evidence band it had lost: six published vaults, linked,\nwith the claim that the work has been done. Two build checks caught that on the\nday the round became the store, which is what they were written for.\n\nNew rule: the sitemap advertises nothing it hides. Nineteen noindex pages were\nlisted in it for the length of one build.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.15",
+      "date": "2026-09-16",
+      "commit": "7c11b81d47957a3d68357157c5382d93c4ccc747",
+      "site": "store.sgit.ai",
+      "title": "the rest of the next store: the comparison, the doors, the ledger and the person",
+      "summary": "Four more pages at /next/, each rendered from the file the current store is\nalready rendered from: what arrives at every level, who this is for, the claim\nledger, and who does the work at the two levels a person does.\n\n**The ledger is here so a claim chip stops throwing the reader out of the\nround.** Every chip on every /next/ page now lands on a row in this design.\nIt is the same 52 claims from the same file \u2014 there is no second copy \u2014 and it\nprints which pages say each one.\n\nThe fifth screen in the pack, the generic template, is deliberately not a page:\nit is a reading column already exercised by the ledger and the reviewer page,\nand re-rendering an existing content page at a second URL to demonstrate it\nwould put the same paragraphs in two places on one site.\n\n**A claim now registers the URL of the page that says it, not that page's\ninternal label.** Several generated pages carry a label that does not match\ntheir route \u2014 /admin/reviews/ registers \"reviews\" \u2014 and resolving one from the\nother produced ten dead links on the ledger's first build.\n\nTen deliberate breaks across the two new checks, each naming its own thing: a\ncomparison row, a row group, the free column's position, an audience lens\nwithout a panel, a lens that hides something, the ledger as a selection, a\ntruncated reviewer name, a dropped source, and a round number of years the\nreviewer file says at length must never be published.\n\nAlso: `img { max-width: 100% }` in the reset silently won the cascade against\n`width: 500%`, so four of the five audience cards showed an empty box with the\nartwork pushed off it.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.14",
+      "date": "2026-09-16",
+      "commit": "de2d735b5a9b01f5dc13e7c436aaa7d519db991b",
+      "site": "store.sgit.ai",
+      "title": "the buying flow, end to end, and one order across both designs",
+      "summary": "The v4 handback supplied the policy picker, the cart, the checkout and the\npost-purchase screens. All four are built at /next/ from the store's own data:\n/next/policies/, /next/cart/, /next/pay/ and /next/paid/, mirroring the routes\nthe store that sells today already uses.\n\n**It is the live store's order, not a second one.** The current store keeps an\norder in the browser under one key; /next/ reads and writes that record \u2014 same\nkey, same schema, same line shape, same reference alphabet, same SKUs \u2014 so an\norder started in this design round is still there on the current store, and\nback. Two carts under two keys would be a bug that only appears for the one\nperson who uses both. A check compares the two models field by field on every\nbuild.\n\n**Still no typing surface anywhere.** Quantities are buttons, the behaviour\nfilter is a `<details>`, and the picker's search holds no field at all: the\nquery lives on the body element and characters are read off the keyboard. The\ncost is that a phone with no hardware keyboard cannot type there, and the\ndialog says so and points at the chips.\n\n**Two findings about the published catalogue, both on the board.** The picker\noffers a filter by behaviour that narrows nothing: the 23-behaviour vocabulary\nis published and every shape's totals are published, but which behaviours make\nup a particular grant is not. And for five of the fifteen shapes, wanted plus\nnot-asked overshoots the grant by exactly one \u2014 ten are exact. The panel's\ncapability strip was being painted green and amber as though those numbers\npartitioned the grant; it is now one uncoloured cell per capability, and the\nfive shapes say so.\n\nThe evidence state behind each shape is typed out in data/products.yml rather\nthan derived, because deriving it got it wrong: `chatgpt-web`'s summary calls it\n\"the baseline every other shape is measured against\", and a regex cannot read a\npreposition.\n\nNew rule: check_every_anchor_a_page_points_at_is_there. check_links has always\nheld the file half of a link and never looked past the #. The site was clean\nwhen the rule was added, which is the only comfortable moment to add one.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.13",
+      "date": "2026-09-16",
+      "commit": "94fe9dc7fbe888e18087cad453164165eebfb8a7",
+      "site": "store.sgit.ai",
+      "title": "the next store, in the design we chose",
+      "summary": "The v3 direction 01 / ABP first, built here as a parallel set of pages at /next/. The store that sells today keeps selling; the two swap over when the buying flow is wired end to end.\n\nPack, Vault, Tailored, Reviewed. The project lead ruled the names out of this design round, which is the decision TK-7 had been waiting on: a short name at heading size with the precise line underneath, rather than a choice between the two. They live in data/offers.yml beside the price and are frozen by the same check.\n\nEvery price, name, delivery estimate, claim and audience on these pages is read out of the files the current store is already built from. There is no second copy of a number to drift. check_next_is_the_offer_data holds both pages to that file per page rather than over the set \u2014 its first version joined the two and asserted against the join, so a price edited on the homepage alone passed because the product page still carried the right one.\n\nNothing on /next/ can be bought and both pages say so. No level has a checkout link, so the product page renders a disabled control carrying its reason and the homepage says it in words. The check caught that the homepage had four priced cards and never mentioned the till was off, which is the shop-window-on-a-closed-shop problem the concept critique made its headline finding.\n\nassets/next.css and assets/next.js are a real layer rather than an override. The v3 source loads this site's own stylesheet and overrides :root in a second file \u2014 right for a mockup, wrong to ship: it carries 26KB of a design we are leaving and makes every new rule fight an old one. These pages load those two files and nothing else. The cost is stated: a few components exist twice for now, in two visual languages, until /next/ takes over.\n\nOne deliberate change from the source. It declares Arial, Helvetica outright, which renders as drawn on two platforms and as a substitute everywhere else. /next/ uses a stack resolving to the same faces on macOS and Windows that degrades to a real grotesque elsewhere.\n\nFour product renders arrived as 7.9MB of PNG and ship as 126KB of JPEG, re-encoded by tools/shoot_v3.mjs through Chromium because there is no image library on this machine. The source hash of each is recorded so the re-encode traces back to what arrived.\n\nOn a phone the headline lands at 334px against the live store's 358, the first real action at 690 against 784, and the page is 7,646px against 10,710. The first draft was worse than the live store on the first of those: three strips of chrome each wrapping to three lines. Each keeps its job and loses its second line.\n\nOne section of the design is not built and it is named. The v3 pages carry a mission line using a word this site bars absolutely on every page carrying a price, and their own notes record that the project lead asked for it. TK-11 is the ruling.",
+      "changes": [
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.12",
+      "date": "2026-09-16",
+      "commit": "04bebcf86452eb1359d1b93fbf4a9d916761fc1e",
+      "site": "store.sgit.ai",
+      "title": "the comparison table, on paper",
+      "summary": "Memo 5 asked for the table and for the brochure. The table shipped in v0.2.8; this is the brochure, and it is the last unit of that memo that was mine to do.\n\ntools/make_pdfs.mjs renders the real page through the real print stylesheet, so nothing is retyped \u2014 a row added to data/comparison.yml is in the PDF on the next run. A4 landscape, because five columns and a wide row label do not fit portrait without shrinking the body copy past reading at arm's length. Six sheets: four of table, two of the explanation under it. The header repeats on every sheet so the prices are never a page away from the ticks, and no row splits across a break, because a row that loses its label loses the only thing the table exists to show.\n\nThe disclosure strip prints. It is required above main on every surface this site produces and paper is a surface.\n\nWhere a download lands now depends on whether anything vouches for it. The two walkthrough PDFs stay behind /admin/ because they print discount codes and the code check exempts that path alone; the brochure is a selling document with no codes in it and sending a buyer to /admin/ to fetch one would be absurd. The rule is the safe way round: a file recorded in data/downloads.json was produced by the tool from a named page and is buyer-facing, and anything else in that folder is unvouched-for and stays behind /admin/. Dropping a file in by hand does not quietly publish it.\n\ncheck_the_brochure_has_not_drifted holds four things and notes a fifth: the file still hashes to what the tool recorded, its version is one this site really released, it is published where the page says, nothing unvouched-for reaches a selling path \u2014 and a brochure that lags the current release is a NOTE rather than a failure, because forcing a browser render on every release would put Playwright in the gate, which this repository refuses. The page prints the version beside the link, so a stale copy is stale on its face. Four deliberate breaks, all fired.\n\nOne unit of that memo is still open and it is not mine: what support means, and who answers the mailbox.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.11",
+      "date": "2026-09-16",
+      "commit": "d93cfcd0531223439df35c15a02b95ae383035d9",
+      "site": "store.sgit.ai",
+      "title": "the vault contract, learned the hard way",
+      "summary": "The synthetic-panel vault shipped yesterday rendered every one of its ten screenshots as a broken image, and the same files served over plain HTTP were perfect \u2014 which is exactly why a local check passed it and only opening the vault itself showed the fault.\n\nA vault app runs inside an iframe loaded from a blob: URL, so the browser fetches anything declarative before the vault bridge can install. The app built its figures as innerHTML strings carrying an image tag with a src attribute, which the parser treats as markup: the fetch resolved against the frame's opaque origin and found nothing.\n\nThe vault is fixed and re-pushed. One helper now creates the element and assigns .src as a property, after the bridge is up, and the app posts sg-app-ready, which it never did. The read key is unchanged, so the review page needs nothing.\n\nThe vault written on 15 September got this right and carried a comment saying so. The knowledge was in that vault and not in this repository, so it is now a ninth constraint in the design brief and a note on the vault-embed component. Two of this store's four products are vaults and one prototype produces them, so it is not an edge case here.",
+      "changes": [
+        "build.py",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.10",
+      "date": "2026-09-16",
+      "commit": "1d799aac679c87e6ca3a01f155c236ee0f0ec785",
+      "site": "store.sgit.ai",
+      "title": "a brief somebody can work from",
+      "summary": "The last round came back as three finished homepages and this store could use the structure of two of them and none of the execution, because they were pages rather than a system. Three palettes arrived, none of them ours, and nothing could be dropped into a build without being redrawn.\n\nSo this is the brief for the next round, at /admin/design-brief/, and it asks for the components first and the screens second. Eighteen components with every state named, nine screens in priority order, eight constraints with the five that have build checks behind them marked as hard rules.\n\nThe tokens are read out of assets/site.css at build time rather than typed, because a brief that prints a hex value somebody has to trust is wrong the first time the stylesheet moves. A check asserts the page prints what the stylesheet says.\n\nThe markdown twin is the deliverable. Every page here emits one; for this page that twin is the thing handed over \u2014 23KB carrying every constraint, token, component and screen, pasteable whole into a session that has never seen the site.\n\ncheck_the_design_brief_points_at_pages_that_exist holds four things: every URL the brief hands over is a page this build emits, the tokens on the page are the tokens in the stylesheet, the twin still carries every component, screen and constraint, and at least one constraint is marked hard. Five deliberate breaks, all fired.\n\nTwo bugs it found on the way. The brief said twelve claim states and there are ten, in a document whose entire value is being accurate about a codebase the reader cannot open \u2014 the page counts them now and a check refuses a hand-typed count in the prose. And the chip classes live in site.css, which console pages do not load, so the chip table rendered as ten lines of plain text; the rules are restated where the console can see them, same shape as the .tablewrap bug two releases ago.\n\nOne thing recorded rather than fixed: two claim states share a CSS class, so 'specified, not built' and 'part exists' are indistinguishable on a card. They mean different things and one is worse news. It is in the brief as something for the chip component to solve.\n\nStating the barred-word rule broke it. The first draft named the two roots to tell a designer not to use them, and the gate refused the page \u2014 which is exactly the absoluteness the rule claims, and the same reason /disclosures/ does not print them either.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.9",
+      "date": "2026-09-16",
+      "commit": "1be8078f45f8211e2cd95619fc1a58e16834182b",
+      "site": "store.sgit.ai",
+      "title": "the moves, on the board",
+      "summary": "Ten units under a new workstream, take-the-moves. The critique produced six moves and the panel produced six proposals, and until now every one of them existed only in prose on two pages \u2014 which is how a borrowed idea gets adopted and then quietly reverted.\n\nThree are next: the four-fact trust strip with every fact linked to its claim, the price at 42px, and the two rulings. Five are queued behind them. Two are the project lead's alone.\n\nTK-9 is the live defect an outside reader found in a single pass: this store prices the pack at \u00a310 and riskmandate.ai still says \u00a35. It is the other team's file, so it goes to them as a correction.\n\nTK-10 is the one the review recorded as won't-do and the board records as queued: show one real reader the same four folds. A bigger synthetic panel scales the problem rather than the evidence, because the sample and the thing being sampled have the same author. One stranger would outweigh the whole vault.\n\nThe workstream is an orphan \u2014 no memo names it, because it came from three concepts that arrived from outside rather than from a voice memo. The status page has a section for exactly that and it appears there.",
+      "changes": [
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.8",
+      "date": "2026-09-16",
+      "commit": "eecda03c29e57b7237b09516b4164c40edbe8530",
+      "site": "store.sgit.ai",
+      "title": "four homepages, five readers",
+      "summary": "The same five readers who walked this store on 15 September were shown four versions of its front page \u2014 the live one and the three ChatGPT concepts \u2014 in five different orders, and made to rank them with no ties allowed.\n\n01 Marketplace 17, 03 Studio 14, the live page 13, 02 Guided 6, on a Borda count over five forced rankings. The concepts' own review page recommended Marketplace too, reasoning from the shape of a four-level offer rather than from any reader.\n\nThe result underneath that one is what the panel is for. The two readers with small budgets put a concept first. The two who would sign off \u00a31,500 put the live page first, and both named the same two elements unprompted: the disclosure strip above the fold and the claim badges on the cards, which all three concepts had deleted. The density that loses the skimmer is what wins the reader of the expensive thing.\n\nThree findings nobody was looking for. Marketplace's trust strip has four ticked claims and not one of them is a link, which is the difference between a trust strip and a claim \u2014 and every one of those four facts is already in this store's ledger. Two concepts print their price at 12px in a caption colour and readers reported no price on folds that had one; that is the only finding here that can be settled without asking anybody anything. And the reader the live homepage identifies by name \u2014 a C-level exec, have to answer for it, to a board \u2014 clicked his own door and still ranked the page last, which is worth writing down because the obvious reading of this panel is 'lead with the personas' and the panel does not support it.\n\nThe vault is xy06m1tb: eighteen files, the four folds every reader was shown, the five personas carried across byte-identical, the protocol, twenty reads, the rankings, eight findings and four reasons to discount all of them. Read-only key, embedded on the review page, allowlisted for that page alone.\n\nSix proposals. Three to do now, one held, one needing a ruling on naming, and one refused: a bigger panel would scale the problem rather than the evidence, because the sample and the thing being sampled have the same author. One real reader would outweigh the whole vault.",
+      "changes": [
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.7",
+      "date": "2026-09-16",
+      "commit": "c63bf4392df76e7a50d477f3653b40e7077b61f0",
+      "site": "store.sgit.ai",
+      "title": "the homepage concepts, reviewed",
+      "summary": "Three homepage directions were drawn for this store from outside, by a ChatGPT session working from the live page. This release reviews them.\n\nThe concepts are mirrored and hashed under data/concepts/ before anything is said about them, because a critique of a page that can change underneath it is a critique of nothing. tools/promote_concepts.py takes the ten files once and --check re-fetches and diffs; the CDN injects a per-request nonce on every response, so that one script is stripped before hashing and the record says so.\n\nFourteen screenshots, all generated by tools/shoot_concepts.mjs from that mirror and from this repository's own build \u2014 same viewport, same encoder, same wait, so the only variable is the page.\n\nSeven things measured, six of which go against the live homepage: 1,980 words against 457, forty-eight header links against nine, 10,710 pixels of phone against 5,042, a 40px headline against 72, a 28px price against 42. The seventh is an agreement and is the finding that outranks the rest \u2014 neither the live store nor any concept has a buy button.\n\nTwo concepts carry structure worth taking and one is pointed at a buyer this store does not have. Six moves are adopted, each with what it costs us written next to it, and four things are refused outright, the footer disclosure among them: it is required above main here and a check refuses a page without it.\n\nThe review page attached to the concepts made four claims about the live site and every one was checked. One is a live defect: this store prices the pack at \u00a310 and riskmandate.ai still says \u00a35. An outside reader found it in a single pass.\n\ncheck_the_concept_critique_shows_what_it_says holds the page to its evidence \u2014 the images on the page and the images in the repository are one set, the mirror still matches its own hashes, every verdict is one of three, and a finding marked confirmed has to record what was checked. Its first assertion was vacuous: it re-implemented check_links with a weaker regex, matched nothing because the build writes relative URLs, and passed a deliberate break. Rewritten to assert what check_links cannot, it immediately found four committed screenshots that were not on the page \u2014 including the price-ladder comparison the whole argument rests on.\n\nOne latent bug fell out of it. The console has its own stylesheet and does not load site.css, so .tablewrap has never done anything on an admin page; no console table had been wide enough to show it until a five-column comparison landed on a phone and scrolled the whole page sideways.\n\n/admin/status/ was reachable only from the memo queue. It and the new page are both in the console rail now.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.6",
+      "date": "2026-09-16",
+      "commit": "a2fa742f7a008985b14a24a7d0d989387fbe30c2",
+      "site": "store.sgit.ai",
+      "title": "what happened to each memo, on one page",
+      "summary": "The queue said what arrived. The board said what it became. The release history said what shipped. No page put the three together, so the honest way to answer what happened to that memo I sent you was to read three pages and hold the join in your head.\n\n/admin/status/ is that join, and it is generated: every memo, the units of work it became, whether each is done, the page it built and the release it went out in. Every done unit now carries a structured record of where it landed rather than a sentence mentioning it in passing \u2014 forty-seven of them, backfilled.\n\nDONE IS THE ONLY STATUS THAT CAN BE WRONG WITHOUT ANYBODY NOTICING. Every other state on the board is a statement about the future and unfalsifiable by design; done is a claim about the past and it is the claim a reader of this page is actually relying on. So check_every_done_unit_points_at_something holds a done unit to naming a release this site has actually made and at least one page this build actually emits, and it checks the anchors too. A done unit pointing at a 404 is a status page that is worse than no status page, because it looks like evidence. Four deliberate breaks were run against it.\n\nTWO THINGS THE PAGE GOT WRONG ABOUT ITSELF BEFORE IT SHIPPED. It printed 55 done against a board that had 47, because two memos can name the same workstream and a per-memo tally added to a running total counts those units twice. And it left out a workstream entirely \u2014 close the loop after payment came out of the partner review rather than a memo, so a page organised by memo had nowhere to put it while its units still counted on the board. Both are fixed, and a check now holds every unit on the board to appearing on the status page, because a status page that is silently incomplete is worse than one that says where its own edges are.\n\nAnd one thing that would have stopped the gate dead: an elif attached to a block that no longer ended where it used to, which is a syntax error rather than a wrong answer. The gate refused to run at all until it was fixed, which is the right failure.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.5",
+      "date": "2026-09-16",
+      "commit": "44c6f6e36ffa740dd345cfc08f858386c7d1c8fd",
+      "site": "store.sgit.ai",
+      "title": "describe your agent, in words this store did not invent",
+      "summary": "The page the project lead expects to use most in conversation, and it is free. Somebody builds their agent by clicking capabilities onto it, and what comes out is a document a model session can turn into a vault. It produces the GRANT \u2014 everything the agent can do \u2014 which is one of four objects in an Agent Behaviour Policy, and every prototype has to say so or the release fails: a reader who thought this was the whole document would be taking three quarters of the \u00a3500 level for nothing in their own head.\n\nIt also closes a proposal this store recorded in a review and did not act on. The partner found that MAP-A-GRANT already exists, is already free, ships in every public template pack, and was only ever surfaced AFTER a \u00a3500 purchase \u2014 and that moving it to the front door is a re-ordering rather than a build. This is that re-ordering with an interface on it.\n\nTHE VOCABULARY IS NOT THIS STORE'S AND THAT IS THE LOAD-BEARING PART. Twenty-three primitives on a verb.object.reach grammar, read out of riskmandate.ai's own template vault with its published read key and promoted by a new tool with the hash of the bytes it came from. If this store had made up a palette, a buyer would describe their agent in one vocabulary and receive a document written in another, which is the worst outcome available to a page whose entire job is producing an input to that document. The ultimate source turned out to be what-can-it-do.games.sgit.ai \u2014 one of the games the memo was pointing at when it asked for a UI like the games we created.\n\nTWO PROTOTYPES, BECAUSE TWO WERE ASKED FOR. A canvas with all nine families on one screen, for somebody being walked through it by a person; and one family per screen, for somebody working alone. Both render the same primitives and emit the same document, which is what makes them an experiment rather than two drafts \u2014 and each carries what is wrong with it, because two options presented with only their strengths is a menu.\n\nWHAT THE GATE CAN AND CANNOT DO, SAID PLAINLY. It checks every invariant that survives offline: three segments, the verb matches, the reach is one the file defines, every chip on every page is a real primitive and none is missing. It CANNOT tell a promoted file from a hand-edited one, because the content hash is self-reported and anybody editing the rows could edit the hash beside them \u2014 a deliberate break proved exactly that. So the tool grew a --check mode that re-fetches and diffs, which needs a connection and is therefore a person's command rather than a build step. Both were run; the gate missed the hand-edit and --check caught it.\n\nAND ONE ASSERTION WAS WRONG ABOUT THE DATA AND THE DATA WON. The first version rebuilt each id from verb.object.reach and demanded a match. Five real primitives failed: the id uses a short form, and its last segment is sometimes a discriminator rather than the reach \u2014 send.endpoint.allowed has reach tenant. Two primitives can share a verb, an object and a reach and still be different things, which is what that segment is for. Anything tighter would have been this store's opinion about somebody else's vocabulary.\n\nOne more thing caught by the gate rather than by reading: explaining that a clause was removed for using a barred word, by quoting the clause. The rule demonstrating itself. It is described now and not quoted, the same way the disclosures page has always handled it.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.4",
+      "date": "2026-09-16",
+      "commit": "1e27920b7677214e4812ccc20948df562bd2b55f",
+      "site": "store.sgit.ai",
+      "title": "a product page, prototyped where it cannot do any harm",
+      "summary": "A level page on this store argues about what a policy is. A product page shows the thing. Those are different documents and this store has only ever written the first \u2014 which is the diagnosis, in the words it arrived in: we go there, we don't know what we're buying.\n\n/lab/product/ is what the second would look like: the buy box beside the material rather than under it, a gallery, specifications, editions, and a reviews section. It is in the lab because that is the surface that already protects it. A page that looks like a shop and is not one is the most dangerous thing this site could publish, and /lab/ states that on its own face with a build check refusing any page there that stops saying it. An Amazon-style mock is the closest anything here has come to that line, so it gets the protection that already exists rather than a new one written for it. The button is disabled in the markup rather than by script.\n\nTHE EMPTY SLOTS ARE LEFT VISIBLY EMPTY. The ask was tons and tons of screenshots; seven exist and three of them are of this store's own screens. Four slots say what belongs in them instead. A carousel padded with decoration would be the one dishonest thing on a page whose entire job is showing what you actually get \u2014 and it would hide how much of this is still to do, which is the more expensive half.\n\nNO STARS, NOW OR LATER. The reviews section says there are none and says what will fill them: work given away in exchange for comment, dated and attributable. A rating out of five on a product with four reviews is a decoration rather than a measurement.\n\nEditions are a first cut and the page says so: five buttons that change one sentence. Whether an edition should change the PICTURES is the open question, and mocking that up would have answered it by assertion.\n\nTWO CHECKS SPLIT RATHER THAN RELAXED. Every assertion about the lab assumed every page in it was a configurator prototype. The warning is the rule the surface exists for and now applies to every page there without exception, along with no-checkout-links and the markdown twin; the configurator assertions apply to the five that are configurators. Two deliberate breaks were run against the half that stayed absolute.\n\nAnd one thing caught by testing rather than reading: the edition buttons rendered, looked clickable and did nothing, because the page did not load the script they live in. On a page about whether an interface works, that is worse than not having them.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.3",
+      "date": "2026-09-16",
+      "commit": "5078346ab0a55fbb4cd1058e89429c2c5e30886a",
+      "site": "store.sgit.ai",
+      "title": "you see a vault on the page you land on, and the rule was narrowed a second time to allow it",
+      "summary": "When you have sold a vault, you should just see the vault. The difficulty is that at the moment somebody pays there is nothing of THEIRS to show: at the vault level it is built for them within a day or two, at the two upper levels after they send their details. A page that showed your vault at that moment would be lying at the one moment a buyer is paying most attention to it.\n\nSo what is embedded is a published vault of exactly this kind of work \u2014 an agent's grant, its mandate and the eight-capability delta between them \u2014 said to be an example in its first sentence. For a buyer who has never held one that is the more useful of the two things anyway: a vault is hard to picture from a description and takes about a minute to read. The pack level has nothing to show and does not get the component at all, which is the difference between a narrow exception and a wide one.\n\nTHE RULE WAS NARROWED, NOT LOOSENED, FOR THE SECOND TIME. What stayed absolute: every page that SELLS anything opens no connection, and there is now a check that refuses an embed on one by name rather than only by omission from an allowlist. Five deliberate breaks were run.\n\nAND THE NARROWING MADE A PUBLISHED SENTENCE FALSE, WHICH IS WHAT CAUGHT IT. Both embedding pages had to say the one place on this site that opens a connection, and a second kind of page made that untrue. The check requiring it failed on the release that made it false, before either page shipped saying it. The sentence is now true of both.\n\nChasing that down found the same imprecision in seven more places, and it had been wrong since the FIRST narrowing rather than this one: the review pages told a reader typing into a reason box \u201cno page here opens a network connection\u201d, on the very pages that embed a vault. Also the lab prototypes, the catalogue page, two claims in the ledger, and two data files. Each now says what is true, and check_the_network_claim_is_qualified fails the release if the comfortable version comes back. A quoted historical claim is exempt, because a site that could not quote its own corrections could not explain them.\n\nONE REAL HOLE FOUND BY A BREAK THAT DID NOT FIRE. The read-key check matched the prefixed form and the colon-joined form, and the embed carries its key and its vault id in two separate attributes \u2014 so a key sitting in live markup matched neither, which is the exact shape a careless copy would produce because it is the shape this site's own pages carry. It is caught now.\n\nAnd OS-4 is blocked for a named reason rather than a vague one: their manifest exists, with bytes and a sha256 for all fifteen shapes, and it lives inside a JavaScript const in their HTML rather than at a JSON address. CORS is confirmed; the shape is the gap. The brief on /boundary/ now says exactly that.",
+      "changes": [
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.2",
+      "date": "2026-09-16",
+      "commit": "251a8720ca41a8e4b0ca766112299b8ce5263807",
+      "site": "store.sgit.ai",
+      "title": "who owns what, written down where both sides' agents can read it",
+      "summary": "Two sites, one purchase, and until today the boundary between them existed only in the heads of the people who drew it. /boundary/ is the rule: this store owns the cart, the order reference, the discount codes, the rails and the page a buyer lands on after paying; riskmandate.ai owns the fifteen shapes, the policies, the vaults, the deeper explanation and the screenshots. Every other question about where something belongs follows from that sentence, including which side a file currently on the wrong one has to move to.\n\nIt is on the selling side rather than in the admin console on purpose. A boundary nobody published is a boundary that moves, and a contract between two sites' agents has to be findable by both \u2014 so it is indexed, has a markdown twin and is in llms.txt.\n\nTHE SECOND HALF IS THE BRIEF, ADDRESSED TO THEM. Four asks in the order that makes each useful on its own: publish a manifest per level so this store can render the download in its own chrome; publish the shape catalogue as data rather than as a page this store parses; do not build a cart; and agree the SHAPE of what we both read rather than just the address, because CORS makes a read possible and does not make it safe to depend on. Plus what is explicitly not being asked for \u2014 no callback, no session, no shared state, no account on either side, because both are static sites and the arrangement works precisely because neither needs the other to be up in order to be correct.\n\nStatus open, and it will be recorded there when it is answered including if the answer is no. A brief that only appears when it succeeds is a brief nobody should trust.\n\nTHE ONE FILE ON THE WRONG SIDE IS MARKED AS DEBT RATHER THAN LEFT TO BE DISCOVERED. data/abp-catalogue.json is promoted from riskmandate.ai at build time with the source URL, the retrieval time and a sha256 of the page it was read from. Promotion at build time is the honest version of the wrong arrangement: it cannot drift silently. It is still the wrong arrangement and the page says so.\n\nAND THE CHECK ADDED YESTERDAY CAUGHT THIS RELEASE'S OWN PREDECESSOR. The v0.3.1 note named the leaked code in its text, and a release note is an indexed page that never declared itself as one of that code's journeys. The rule is right and the note was wrong: it now describes the code without printing it.",
+      "changes": [
+        "build.py",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.1",
+      "date": "2026-09-16",
+      "commit": "bbfbfb35b730eeb15ceb943b7e2e19e8849cc4b2",
+      "site": "store.sgit.ai",
+      "title": "a code published on the two journeys it applies to, and it cannot buy anybody's day",
+      "summary": "The ask was to publish a discount code on the main site on specific journeys. The obvious objection is that a code at a hundred per cent, sitting where anybody can read it, is free product.\n\nSO IT IS SAFE BY CONSTRUCTION RATHER THAN BY TRUST. The code \u2014 printed on those two pages and not repeated here, because a release note is an indexed page and the check that holds a code to its journeys is right to refuse one \u2014 is held to the two levels that are PRODUCED the moment you pay, out of material already published free under CC BY. It takes ten pounds and fifty pounds to zero and leaves five hundred and fifteen hundred exactly where they were. What it gives away is the packaging and the licence, not a person's day \u2014 which is the same reasoning the project lead gave for not needing redemption caps at all, applied to the thing that actually carries the risk.\n\ncheck_a_leaked_code_cannot_buy_somebody_s_day is absolute and it is the half that matters: a code published on a journey may never reach a level that is somebody's time, may never apply to every level, and the page carrying it has to say what it does not cover \u2014 a reader who assumes it covers everything has been misled by omission.\n\nTHE JOURNEYS ARE THE TWO LEVEL PAGES THE CODE APPLIES TO, not the home page. A code on a first screen discounts a decision nobody has made yet; a code at the end of a level page discounts one somebody is in the middle of making.\n\nTHREE RULES NARROWED, AND EXACTLY THIS FAR. A printed code used to be allowed under /admin/ and nowhere else; it may now also appear on the journeys IT ITSELF DECLARES, and on no others, because a code that leaked onto every page would be a price change nobody decided. A printed code used to have to be on /admin/try/; one that names journeys lives on those instead. And the dead-rail rule used to refuse any printed code once a rail could take money \u2014 it now asks what the code can REACH, because a person's day cannot be given away by a typo and a zip of published files can.\n\nFour deliberate breaks were run. One of them found a real bug rather than proving a check: levels is a list or the string all, and the block rendering the code iterated the string character by character and raised on the first one. A crash was the right failure there, and it now renders honestly instead.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.3.0",
+      "date": "2026-09-16",
+      "commit": "620fbb37b04560d6668a4f57b590c218571da580",
+      "site": "store.sgit.ai",
+      "title": "the buyer lands on this site",
+      "summary": "Until today the success address was riskmandate.ai's page for the level, and the reasoning for that was good: their level-one page IS the download, with the zip, its size, its sha256 and a hash check that runs in the buyer's own browser \u2014 and copying a size and a hash over here would mean two of each, one of which goes stale the first time a template changes.\n\nWhat that reasoning missed is what it cost. A synthetic buyer said it plainly: they did a whole shopping experience on one site and were dropped onto another, with a different interface and a different voice, at the exact moment they had just paid. It was logged as a confusion and treated as a copy problem. It was an architecture problem.\n\nSo /paid/t1/ to /paid/t4/ are on this site, in this site's chrome. Each one carries the order reference \u2014 filled from the browser that placed it, never invented, and saying plainly when it does not have yours \u2014 what was bought, when it arrives, who does it at the two upper levels, what done looks like and how you check it. They are noindex, because a page that says you bought has no business in a search result, and every one of them is correct with no script at all: a browser that blocked it still reads the part that matters.\n\nTHE ONE REMAINING HOP IS NAMED RATHER THAN HIDDEN. At level one the artefact genuinely lives on the other domain, and the page says so in one sentence with the reason. Closing it means the store reading their manifest over CORS \u2014 which is possible rather than hoped for: their pages answer access-control-allow-origin star, verified today \u2014 and that means opening a connection on a selling page, which is this site's hardest rule. So it is its own piece of work with the rule narrowing in front of it, rather than something smuggled in here.\n\nWHAT STAYS ABSOLUTE IN THE CONTRACT. The two parameters are unchanged \u2014 order everywhere, shape at level one \u2014 because they are still the right two and a printed link cannot be recalled. What is new in the check is that the destination must be on this site AND must be a page this build actually emits: a success address pointing at a 404 is the one dead link nobody clicks until a stranger has paid. And the old destination is not deleted \u2014 every level keeps post_upstream, so the page holding the artefact stays one named link away rather than disappearing into git history.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.9",
+      "date": "2026-09-16",
+      "commit": "93af071d6518b4e72b9c2e3df56a2a8e63de858e",
+      "site": "store.sgit.ai",
+      "title": "the two upper levels say whose work they are",
+      "summary": "Until today this store asked for \u00a31,500 for a security review from nobody in particular, which is a worse problem than any price on it. /who/ names the person who does the \u00a3500 correction and the \u00a31,500 sessions, and both level pages carry it above what arrives rather than three clicks away.\n\nNOTHING ON THAT PAGE WAS WRITTEN FROM WHAT ANYBODY TOLD US, and that is the point of it. Every row of the record is read off open-source.sgit.ai's published author page, which is CC BY 4.0, and the delivered work is read off the published vault catalogue. Both are named on the page with the date they were read, above the record rather than under it. A biography this store composed would be the worst thing on the domain to stand next to a price \u2014 this site's whole argument is that its sentences can be checked, and that is worth nothing if it stops applying the moment a sentence is flattering.\n\nIT CARRIES NO COUNT OF YEARS, ON PURPOSE. Twenty years of cybersecurity is almost certainly right and it is not what is published. What is published is a record starting in 2008 \u2014 the OWASP Summits, the O2 Platform in 2010 \u2014 and a reader can do that arithmetic themselves and check every step of it. A round number nobody can verify is weaker than a date anybody can, and the check fails the release if a year count appears on a reviewer page.\n\nBUILT FOR A LIST ON THE DAY IT HAD ONE NAME ON IT. The project lead is approaching other security professionals and negotiating rates so they can take some of this work. Adding the second is adding a record to data/reviewers.yml; the page, the markdown twin, the register entry and the links from the level pages are all generated. The frozen list in the gate moves with it deliberately, so a reviewer cannot appear by accident.\n\ncheck_every_reviewer_line_is_sourced holds every page to naming its sources with dates, to carrying the sentence that says nothing on it came from hearsay, to linking the levels that person runs, and to having no year count. And every level delivered by a person has to carry a section naming one.\n\nThat last assertion was vacuous when first written \u2014 it searched for /who/, which the nav links from every page on the site, so it was true of a page with nothing on it and a deliberate break walked straight through. It is anchored to the section id now. Four breaks run in total.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.8",
+      "date": "2026-09-16",
+      "commit": "062b2d001bab88f644c6b5c6ad78e43c42f74f1a",
+      "site": "store.sgit.ai",
+      "title": "the comparison table, free column first",
+      "summary": "The store explained each level on its own page, which meant nobody ever saw the four side by side \u2014 and every sentence worth reading about them is a DIFFERENCE, which is only legible next to the thing it differs from. /compare/ is fourteen rows in four groups: what you get, whose work it is, what you may do with it, and when it arrives.\n\nTHE FREE COLUMN LEADS, AND THAT IS THE ARGUMENT RATHER THAN A CONCESSION. The templates being published had been treated on this site as an objection to handle. Put first, it becomes the first row of the case: here is what you can have for nothing, here is what each step adds. The licence row on its own explains the first paid step \u2014 CC BY obliges you to credit the source wherever it ends up, and every paid level replaces that with a commercial licence to you over the same material.\n\nEVERY CELL IS READ OFF SOMETHING, OR THE ROW IS NOT THERE. A table is where an unproven claim is hardest to notice: fourteen rows of ticks read as fact at a glance and nobody cross-checks a tick against the page it came from. So a row qualifies only when each of its five cells can be pointed at \u2014 a price in data/offers.yml, a gets sentence, a not-promised line, or a ruling. A support level nobody has scoped and a board-readable cut still being specified are both absent on purpose and are on the board instead.\n\nOne thing that looked like a proposal turned out to be already true: the memo offered you only get a vault in the fifty-quid version as an example, and it is what the level pages have said since they were written.\n\ncheck_the_comparison_agrees_with_the_offers holds every column to a real offer, every row to filling every column \u2014 an empty cell renders as nothing and reads as a no, which is a claim nobody made \u2014 and every row to carrying the sentence that says what the reader is buying.\n\nAND ONE ASSERTION IN IT WAS PROVED VACUOUS BEFORE IT SHIPPED. The first version compared the prices in the table header against data/offers.yml, and the header reads them straight out of that file at build time, so it was asserting a variable equals itself; a deliberate break walked straight through. The delivery cells ARE typed by hand and can drift, so that is what is checked now \u2014 a table saying one to two days beside a level page saying one to three is the one place a buyer will not think to look.\n\nAlso fixed: the site's th is a small tracked uppercase column label, and every header in this table is a sentence. Fourteen row headers were rendering in all caps at 11px, which is the fastest way to make a comparison table unreadable, and it was doing exactly that.",
+      "changes": [
+        "assets",
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.7",
+      "date": "2026-09-16",
+      "commit": "5b2d539185812c5233d0d003f98c67030791c245",
+      "site": "store.sgit.ai",
+      "title": "five audiences, five doors, and nothing hidden from anybody",
+      "summary": "Asked for on 16 September, and the design brief for it is physical rather than visual: a laptop turned round at a stand, somebody says what they are, one tap, and the view opens on the level that fits. So /are/ is five large targets \u2014 founder, investor, C-level executive, security professional, risk and governance \u2014 five across on a laptop, two on a tablet, one on a phone, and they are on the home page above the four things for sale.\n\nEach view leads with one level, says what changes for that reader, then shows the rest of the ladder, then points at the one published vault that speaks to them: an investor gets the eleven-step risk-acceptance walk, an executive gets the standard turned into conformance rows, a security professional gets the risk graph explorer.\n\nSHOWN DIFFERENTLY, NOT HIDDEN, AND THAT WAS THE DECISION. The ask was that not every product is shown to every audience \u2014 an investor is not sold a ten-pound licence. The tempting implementation is to drop the cheap levels out of their view. That would make this site show different catalogues to different readers, which is a thing that has to be said out loud before it is built and nobody has said it. So: lead with what fits, quiet the rest at 72% opacity, hide nothing. check_the_five_audiences_hide_nothing holds every level reachable from every view and refuses display:none anywhere on one, because quiet becoming absent is one CSS rule away and would look like a tidy-up in a diff. Both breaks were run.\n\nTHIS DOES NOT REPLACE THE THREE BUYER GROUPS AND THAT IS OPEN, NOT DECIDED. The existing three are cut by situation; these five are cut by role. Both are indexes over the same six offers, neither invents a seventh thing to sell, and whether the three retire is on the board rather than settled in a commit.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.6",
+      "date": "2026-09-16",
+      "commit": "abbf7a67cea6c3b47ea475520565b5794e91d708",
+      "site": "store.sgit.ai",
+      "title": "SumUp comes off the store for the first end-to-end MVP, and the plan for it is parked rather than deleted",
+      "summary": "Stripe works: six products priced, three coupons, and a reconciliation running on every release. A second rail that is half set up is a second thing to explain on a selling page and a second thing to keep true, and the first end-to-end store needs neither. So SumUp is off data/checkout.yml, off /paying/, off /how-it-works/ and out of the cart.\n\nNothing is deleted. /admin/rails/sumup/ keeps the whole plan behind a banner that says it is parked and why, because the argument for running two rails is a good one and it will be worth reading again the day the first rail has taken money \u2014 which is exactly when it stops being hypothetical. That is queued rather than forgotten.\n\nThe finding that came out of writing the SumUp plan up \u2014 that check_checkout_links pinned every destination to Stripe's hosts and would have refused a SumUp URL with a message about Stripe \u2014 is now moot rather than fixed, and stays written down because it will be true again the day the rail comes back.\n\nOne walkthrough caption corrected rather than restaged. The screenshot at step four is from v0.1.11 and shows four rails including SumUp. The caption now says so and the picture is left as it was taken, because a walkthrough whose images are quietly re-shot is a walkthrough nobody can date.\n\nAnd one comment in data/checkout.yml that had gone stale is now true: it still said no product catalogue goes inside the providers, sixty-two SKUs maintained twice is sixty-two SKUs that will disagree. That reversed on 16 September and the file now says so \u2014 the objection was sized wrong, because a price here does not vary by shape, so Stripe needs six products rather than sixty-two, and what the catalogue buys is a buyer who becomes a customer with an email rather than an anonymous card charge.",
+      "changes": [
+        "build.py",
+        "content",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.5",
+      "date": "2026-09-16",
+      "commit": "c0fbe75497c00eed217d4fdab3b7a1432a39610c",
+      "site": "store.sgit.ai",
+      "title": "the never-done language comes off the site, because it was describing the sale and reading as the work",
+      "summary": "Ruled by the project lead: remove it, do not narrow it again. The previous release had softened these sentences rather than removing them, and the reasoning behind keeping them was wrong \u2014 every one of them described whether this STORE had taken an order, while sitting on a card about the PRODUCT, and what a reader took from it was that nobody had ever done the work. That is false. It has been done many times, six vaults of it are published, and the person who does it is the one selling it.\n\nSo the chip that said specified, never run and then never bought here now says delivered by a person, and its tooltip says what that means: a named security professional does this work and signs it off, which is why its delivery estimate depends on a calendar rather than a queue. That is a property worth a chip, because it is the real difference between the top two levels and the two below them.\n\nEvery claim that carried the old framing was rewritten rather than deleted. The ledger keeps its job \u2014 the \u00a3500 and \u00a31,500 rows now say what is true of them, which is that they are somebody's work and that work is published and open to read.\n\nONE RULE HAD ITS PREMISE CORRECTED. A check refused a deposit on anything whose state was not unrun, on the reasoning that a deposit is how an unproven thing is sold honestly. That was never the main reason and it is not a reason now: a deposit is how scheduled professional work is sold, because what it reserves is somebody's calendar. What stays barred is the case the rule was really for \u2014 a thing produced the moment you pay, taking a deposit.\n\nAND THE RENAME EXPOSED A SILENT FAILURE THAT HAD ALREADY SHIPPED. chip() fell back to unknown with an empty tooltip for a state it did not recognise, so two claims pointing at the retired name rendered as unknown in production, on the page whose entire job is saying how true each sentence is, and nothing failed. A fallback that produces a plausible-looking page is worse than one that stops: chip() now raises, and check_every_claim_state_is_real catches it one step earlier in the data. Two deliberate breaks were run against both.\n\nAlso found: st-p was already the class for projected, and the new person chip had taken it \u2014 a second meaning on one class is how a chip quietly starts lying about a different claim. It is st-n now.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.4",
+      "date": "2026-09-16",
+      "commit": "e92148b8a9d5baa3d55eae4a4a5aa6267a93a912",
+      "site": "store.sgit.ai",
+      "title": "the cap on the hundred-per-cent coupon is ruled out rather than dropped, and level four takes the name the product has",
+      "summary": "The gate flagged the hundred-per-cent coupon for having no redemption cap and no expiry, and said it would fail the release that turned a rail on. The project lead overruled it, and the reasons are kept on the page rather than the concern being quietly deleted: every purchase is managed directly, so a redemption is seen rather than found in a monthly total; abuse at a volume worth doing is abuse at a volume that shows; and what a hundred-per-cent code skips paying for is already published free, so it removes a payment for material anybody could have downloaded. What it does not remove is the work at the upper levels, which a person does and would notice.\n\nSo check_a_hundred_per_cent_coupon_is_capped reports the state on every release instead of failing on it, and its own docstring carries the ruling and the three reasons \u2014 because the day the first of them stops being true is a day somebody should be reminded this was a decision rather than an oversight.\n\nLevel four is now Two sessions and a custom vault, following the rename the project lead made in Stripe. It is the better name: it says what the buyer ends up holding rather than what happens to it. The professional signing it has not been dropped \u2014 it is on the level's own page, where it is a property of the thing rather than the name of it.",
+      "changes": [
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.3",
+      "date": "2026-09-16",
+      "commit": "982fa1c3a98e81153ddc83d789f706919d785dc6",
+      "site": "store.sgit.ai",
+      "title": "three coupons exist, zero promotion codes do, and that is the whole gap",
+      "summary": "The coupons were created on 16 September at 25, 50 and 100 per cent, all once, and they reconcile exactly against the percentages this store honours. The reconciliation now covers them alongside the products: every percentage in data/discounts.yml has a coupon, no coupon exists at a percentage nothing here explains, and two deliberate breaks were run against each direction.\n\nTHE GAP IS PROMOTION CODES, AND THE DISTINCTION IS WORTH STATING. A coupon carries a percentage. A promotion code is the string a person is actually handed, it is a separate object attached to a coupon, and it is what a link can carry pre-applied. Until one exists there is nothing to give anybody, so /admin/rails/stripe/ says that in those words rather than showing three green ticks.\n\nThree coupons onto seven codes is the right shape and not a shortfall. Five of this store's seven codes are at a hundred per cent and exist as five so that an order record says which one produced it \u2014 a beta tester, an agent driving a script, somebody at a stand. That distinction lives in the promotion code; the coupon only ever needs to carry the percentage.\n\nTHE HUNDRED-PER-CENT COUPON HAS NO CAP AND NO EXPIRY. Harmless today, because no promotion code exists over it and no link exists to use one on, so there is nothing to redeem. It stops being harmless the moment either changes, and a code at a hundred per cent cannot be recalled once it is on a card. check_a_hundred_per_cent_coupon_is_capped notes it on every release now and FAILS the release that turns a rail on with the cap still missing \u2014 which is the release where somebody will be thinking about twelve other things. It is the same rule check_printable_codes_need_a_dead_rail already makes, moved to the provider's side.\n\nThe coupon ids are in the repository because the reconciliation has to point at a row, and are on no page. A coupon id is not what a buyer applies \u2014 a promotion code is \u2014 so publishing it would most likely be harmless, and not publishing it costs nothing, and this store does not spend a maybe on a convenience.\n\nTWO DISPLAY BUGS FOUND BY LOOKING AT THE PAGE. The state chips are uppercased by their own CSS, which turned 5000p into 5000P \u2014 a unit nobody uses, on the one number a reader is most likely to be checking against a dashboard; they read as money now. And the coupon chips rendered green while saying UNCAPPED, which is a chip arguing with itself; rank now follows what the state costs, red where an uncapped hundred-per-cent code cannot be recalled and amber where a cap is merely missing.",
+      "changes": [
+        "build.py",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.2",
+      "date": "2026-09-16",
+      "commit": "85660404d9d1ca5d91aa1ffa9b3c627c84f7120b",
+      "site": "store.sgit.ai",
+      "title": "the home page becomes a shop front, and the Stripe catalogue becomes a reconciliation",
+      "summary": "THE HOME PAGE SELLS. It opened by explaining what an Agent Behaviour Policy is; a shop opens with what is for sale. The four levels are now cards at the top \u2014 name, who it is for, the price, when it arrives, what is true of it today, and a button \u2014 four across on a laptop, two on a tablet, one on a phone, with 48px targets where there is no mouse. The brief for this was physical rather than visual: a laptop turned round at a stand, somebody says what they are, two taps to a checkout.\n\nThe essay did not get deleted. What is actually in one, why there is no score and never will be, and the argument about the free template against the paid instance moved whole to /what-is-in-one/ and into the nav.\n\nA CODE IS A LINK NOW, NOT SOMETHING TO TYPE. Following one applies the discount, repaints all four prices with the list price struck through beside them, and takes the code out of the address before the page settles \u2014 so it is not in history, not in a bookmark and not in a referrer. The admin console has the three printable codes as ready-made links to hand out. The other four still ship as a SHA-256 and never as a string.\n\nTHE STRIPE PRODUCTS EXIST. Created by the project lead, and in a better shape than this plan had guessed: the two upper levels are a DEPOSIT and a DELIVERY that sum to the price, so a buyer paying in full adds both lines and a buyer starting adds one. That is the store's own a-fifth-now-and-the-rest-on-delivery as two rows rather than a rule somebody has to remember to apply. All six reconcile against data/offers.yml to the penny. The codes are ABP-T1, ABP-T3-DEPOSIT and so on rather than the SG- this plan proposed, and they live in the Stripe price description rather than in a lookup key, because the dashboard's product view surfaces no lookup key. That is not the same object as Price.lookup_key, which is the field a webhook would map a line item back to a level by \u2014 it works for a person reading the dashboard and it is not queryable, and the difference is written down rather than found later by a handler that cannot tell what was bought.\n\nSo catalogue.json stopped being a shopping list and became a reconciliation: the left is what this site implies, the right is what the dashboard holds. The site cannot ask Stripe anything \u2014 it opens no connection and that rule is not moving for this \u2014 so the other side is the dashboard's own CSV export, committed to the repository, with the amounts read off the product list the same day. That is weaker than an API call and it is said so on the page: it catches a price changed here and not there, which is the direction that actually happens, and it goes stale the other way until somebody re-exports.\n\nONE CHIP RELABELLED, BECAUSE IT WAS DOING TWO JOBS. specified, never run meant never sold through this store and read as never done at all. It now says never bought here.\n\nAND ONE CHECK WAS PROVED DEAD AND REWRITTEN. The split-adds-up assertion compared the generated rows against each other \u2014 and they are derived from data/offers.yml, so they sum correctly by construction and a deliberate break walked straight through. It now reads the dashboard export directly, which is what a buyer actually pays. Six deliberate breaks were run across the reconciliation.\n\nAlso fixed: .buy was already the buy-button class, so every card on the new shop front inherited font-weight 700 from it. Same shape of bug as the embed width three releases ago. The cards are .sku now.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.1",
+      "date": "2026-09-16",
+      "commit": "76c0136d84a7eb7f28dc776bb3792d563217aaf3",
+      "site": "store.sgit.ai",
+      "title": "the work has been done, and the site finally says where to go and look",
+      "summary": "The store's claims said the \u00a3500 and \u00a31,500 levels had never run for a paying buyer. Every word of that was true, and what a reader took from it was that nobody had ever done this work at all \u2014 which is false, and it was costing sales on a site whose whole argument is that it does not print false things.\n\nThe evidence was never missing. It was published on another domain and never linked from here. Twenty-eight encrypted vaults are published at sgit.ai, each opened by a read key that site publishes on the vault's own page; six of them are this work, and they are now on the home page: an agent's grant, its mandate and the eight-capability delta between them simulated end to end; an eleven-step risk-acceptance walk over one evolving register; a fact-to-risk graph explorer; a standard turned into 53 conformance rows where unevidenced is the default; eleven linked threat models presented at a conference in Barcelona; and the EU AI Act parsed into a graph you can cite a row of. Every URL was checked and returns 200.\n\nSo the evidence leads and the disclosure narrows to what is genuinely undone. The home page now says all four exist and two have never been bought here. The \u00a3500 and \u00a31,500 rows say the work has been done many times and what has not run is a sale through this checkout \u2014 you would be the first through it, not the first to have it done. And the ledger's own legend for specified, never run was quietly wrong: it read never executed once, which is not what it has meant since today.\n\nNO READ KEY CROSSES ONTO THIS DOMAIN. Each vault publishes its own on its own page, which is where a reader gets it, so this store's key surface stays at exactly one vault \u2014 the one its own review embeds.\n\nTWO QUOTATIONS WERE SWAPPED FOR DIFFERENT PUBLISHED ONES, AND THE FILE SAYS WHY. The catalogue's one-line descriptions of two vaults contain a word hard rule 1 bars from this site absolutely, because the site carries prices. Nothing was paraphrased: sgit.ai publishes a longer description of each and those are quoted instead, with the substitution recorded above each entry rather than made silently.\n\ncheck_the_evidence_is_real holds every entry to the domain that publishes it, the home page to linking all of them and to citing the claim, and the file to carrying no key of any shape \u2014 including the bare hex-and-vault-id form the catalogue prints, which none of the existing key patterns matched and which is the exact thing a careless copy would bring across. Four deliberate breaks were run against it.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.2.0",
+      "date": "2026-09-16",
+      "commit": "60993ad04dde8917fc45277a4314412ad87af918",
+      "site": "store.sgit.ai",
+      "title": "the entry level becomes a licence at \u00a310, and every level says when it arrives",
+      "summary": "Two reviewers, one human and one invented, independently said \u00a35 read as a commodity price for something sophisticated. The answer ruled on 16 September is not a larger number for the same thing. The entry level goes to \u00a310 and what it sells changes: the same files stay published free under CC BY, which obliges anybody using them to attribute, and what the buyer gets is a commercial licence to them over the same material \u2014 client work, inside a product, a document that goes to a regulator, without our name travelling with it. It is grantable because the copyright in the pack is ours, which is now also a constraint on what may go into a pack. The wording is not drafted, and the ledger says so rather than the page implying otherwise.\n\nThe price has now moved three times and all three are on the page: \u00a310 on 10 September because the fixed card fee is about four per cent of a fiver, \u00a35 on 15 September by ruling with the arithmetic unchanged, \u00a310 again today because of what the level carries rather than what it costs to take the money. A price that moves quietly is a price nobody can argue with.\n\nEvery level says when it arrives. \u00a310 immediately, \u00a350 in one to two days, \u00a3500 in one to three days and \u00a31,500 in one to five \u2014 and at the two upper levels the clock starts at the buyer's reply, not at their payment, because until they send the details there is nothing to work on. That distinction is the whole honesty of the number, so it is a field of its own rather than a clause somebody might drop, and it is frozen in the gate beside the prices. The constraint is named as one person's calendar rather than borrowed from a shop that holds stock, which would have been the only false sentence on the page.\n\nThis closes a finding that cost a sale: a founder persona with six weeks to a term sheet walked the store, found no date anywhere on it, and named the missing date as the reason they left without buying. The claim that answered it said the time had never been measured so there was nothing to quote. There is now an estimate, and an estimate labelled as one is an answer.\n\ncheck_delivery_estimates freezes both halves and fails the release if a level page stops printing its own date. Two deliberate breaks were run against it.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.18",
+      "date": "2026-09-16",
+      "commit": "f70959171023c68bd72aa0a35a209a51cdeb40da",
+      "site": "store.sgit.ai",
+      "title": "the admin section becomes a console, with its own UI, the two payment rails written up as plans, a board of the work, and the queue the work comes out of",
+      "summary": "The admin pages ran on the shop's stylesheet, so a page whose job is *what is blocking a first sale* was set in the same warm paper and generous measure as a page explaining an offer slowly to somebody deciding whether to buy it. Those two want opposite things. /admin/ now has its own shell \u2014 a dark rail carrying counts, a four-rank status scale where only rank one is filled, and a page head that names the place rather than describing it. The architecture is adopted from the console at pt.newsroom.sgit.ai and credited in the stylesheet; the palette and the ranks are this store's.\n\nEvery number on it is computed from the files the pages are built from, so a tile cannot disagree with the page it points at. Admin also joins the top-level nav: it was public and unadvertised by design, and unfindable by the people building it by accident.\n\n**Taking money, as two plans rather than two intentions.** /admin/rails/ carries what each provider is handed, what it is never handed, the steps in order, and what is still open. The Stripe plan changed shape this release on a ruling: the rail is no longer an amount-only link but Stripe's own catalogue, with a Customer created from the buyer's email even when a hundred-per-cent code means they pay nothing \u2014 which is the entire point of it. That reverses a position this store had published, and the reversal is written above the old reasoning rather than instead of it. Two findings came out of writing it down: a hundred-per-cent order creates no charge, so a webhook keyed on a succeeded payment would see every paid order and none of the free ones; and the host check pins every destination to Stripe's hosts, so a SumUp URL pasted in today is refused by the gate with a message about Stripe.\n\nThe catalogue Stripe needs is eight prices across six products, not sixty-two, because a price here does not vary by shape. It is generated from data/offers.yml and served beside the page, and a check compares the two.\n\n**A board, and the queue behind it.** /admin/work/ is thirteen workstreams and seventy units of work in four columns, modelled on the board at sgraph.ai/en-gb/dev/workstreams/ \u2014 a workstream is never dragged; its column is computed from its own tasks, so the summary cannot contradict the detail. /admin/memos/ is where the work comes from: six memos kept word for word, each read into a brief and broken into units that carry the memo they came from. One memo contradicts another from the same day about where a buyer lands after paying, and the board says so rather than quietly resolving it.\n\n**Hard rule twelve met a quotation, and the rule won.** A memo uses a barred word in passing. The check that holds the rule says in its own comment that an allowance is a thing that widens, so the term is withheld in place \u2014 a visible marker, counted, named, linked to the ruling \u2014 and the promise on the page changes from *nothing trimmed* to *nothing trimmed, one term withheld and marked*. The memo itself is intact in the data file. Whether a quotation should have been in scope is a ruling and it is on the board.\n\n**One check narrowed, and exactly how far.** The stray-checkout check matched any absolute URL with a provider's name in it, which was right until a page here had a provider's name in its own address. It now exempts one origin, this one, and the reason is a fact rather than a convenience: nothing on store.sgit.ai takes a payment. Four checks added \u2014 the board is whole, the rendered board agrees with its own arithmetic, the Stripe catalogue is the offers, and a withheld term is declared. Seven deliberate breaks were run against them before shipping.",
+      "changes": [
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.17",
+      "date": "2026-09-16",
+      "commit": "ad46c8f1b75492fe77974a0044f4f3e322370ba4",
+      "site": "store.sgit.ai",
+      "title": "the vault is embedded, and the claim it costs is rewritten to be exactly true",
+      "summary": "The synthetic-users vault is embedded on its own review page, using the estate's component vendored byte for byte from sgit.ai/assets/vault-ui-embed.js with its source, date and sha256 in the header. Two surfaces, stacked: the vault's own app, then the file browser.\n\nTHE MECHANISM IS BETTER THAN AN EMBED AND IS WORTH READING. The frame is built at RUNTIME, which is why no page here has an iframe in its markup and why a check that only read HTML could not have seen this at all. It is opened carrying no credential; it announces itself with a message; only then is the read key posted to it with the target origin pinned, and replies from any other origin are ignored. So the key is not in a URL, not in history, not in a referrer and not in the frame's storage. It is a READ key, which opens a vault and cannot write to it.\n\nTHE CLAIM IT COSTS IS REWRITTEN RATHER THAN QUIETLY BROKEN. \u201cNo page here opens a network connection at all\u201d was in the footer of every page, in llms.txt and on three content pages, and an embed makes it false. It now reads: every page that sells anything opens no connection at all, one kind of page embeds the vault it reviews from one host and says so on itself, and nothing anywhere sends anything about a reader. All three halves are checked.\n\nTwo checks, seven deliberate breaks. check_no_network now refuses the embed on any page that is not a review with a vault, and refuses any other script on the site from building a frame at all. check_the_embed_is_what_it_says holds the component to one host, to checking e.origin, to pinning targetOrigin, to keeping the credential out of a frame src, and holds the page carrying it to saying so in the reader's words.\n\nThe twelve-second fallback is stated rather than glossed: if the handshake does not complete the component opens the vault with the key in the frame's URL fragment, which is never sent to a server and never in a referrer but is in that frame's address. The page says so.\n\nOne thing found on the way. site.css already carried the estate's embed rules with a comment saying the surface is deliberately wider than the text column \u2014 and `.sgv-uiembed iframe` at (0,1,1) beat the component's own `.sgv-breakout` at (0,1,0), so the frame had always been exactly the width of the column and the comment described something that was not happening. The breakout moved to the container, and review.css stopped keeping a second copy of rules site.css owns.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.16",
+      "date": "2026-09-15",
+      "commit": "0d873dc16cebab4660a669e08573f30c049bcba4",
+      "site": "store.sgit.ai",
+      "title": "reviews become a dated register, and the second one is this repository reviewing its own instrument",
+      "summary": "There are two reviews now and there will be more, so they live in a dated register at /admin/reviews/ rather than at one address: newest first, each carrying the version it was taken against and the screenshots it was taken from. A review is a moment locked \u2014 dated, kept, never rewritten \u2014 and a month from now it is the only record of what this store looked like today.\n\nADDING ONE IS ADDING A FILE. A review is a JSON record in data/reviews/ and a line in the register; the page, its markdown twin, its card and its place in the sort are generated. The build refuses a register entry with no file and a file with no register entry, and a check holds the cards to date order, every review to naming the version it reviewed, and every cited screenshot to existing.\n\nTHE SECOND REVIEW IS THIS REPOSITORY READING ITS OWN INSTRUMENT, and the case against is longer than the case for. The synthetic-user runs found eighteen things, three costing a sale, two of them regressions this repository had shipped four releases earlier \u2014 and two findings a human partner independently made the same week, which is the only external validity evidence the method has. Against that: the agent never chose anything. The protocol says it is shown a screenshot and decides; the runner follows a step list written beforehand, so the divergence the journeys promised was structurally impossible. The persona and their reaction were written by the same model in the same pass, which cannot be fixed and is marked won\u2019t do rather than dressed up.\n\nTHE VAULT IS LINKED AND NOT EMBEDDED, and the page says why in those words. An embed is an iframe, an iframe is a connection to another host, and \u201cno page here opens a network connection at all\u201d sits in the footer of every page, in llms.txt, and behind a build check. That is a larger claim than the one that moved to put reason boxes on a review, and it is not the builder\u2019s to spend. The slot is rendered, the read key is printed, the link works.\n\nTWO RULES NARROWED RATHER THAN LOOSENED. A vault WRITE key stays barred from this output absolutely, with no page and no ruling that makes one acceptable. A READ key \u2014 which opens a vault and cannot write to it, verified by cloning with one \u2014 may appear for a vault in a frozen list of vaults ruled public, on that vault\u2019s review page and nowhere else. And the secret scanner\u2019s generic JSON pattern learned what its own header already said: a value that is publishable by design is not a finding, while a random value in a field called read_key still is.\n\n/review/ stays where it was and says where the register went, because a published address should not start returning nothing. The sitemap and llms-full.txt now exclude what is noindex rather than what sits under one path, which is what made that stub possible.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.15",
+      "date": "2026-09-15",
+      "commit": "06267775cd11172569f639a1ecfe7c5e530ad7fc",
+      "site": "store.sgit.ai",
+      "title": "a partner's review, published in full, and the one rule that moved to let it be answered",
+      "summary": "A partner walked the whole store and sent back a critique. It is at /review/, verbatim and unedited, including the parts that say the entry is built the wrong way round and the \u00a35 price may be a mistake. Under it: sixteen points sorted into keep, friction and recommendation; two drawings; and eleven proposals, each carrying what it would cost, what it touches, and a stance \u2014 two of which are \u201cwon\u2019t do\u201d and three of which need a ruling that is not the builder\u2019s to make.\n\nIT IS PUBLISHED FOR THE REASON THE LEDGER IS. A critique only the seller has read is a critique that changes nothing, and a review held back because it is unflattering would be the one thing on this domain kept off it for that reason.\n\nTHE RULE THAT MOVED, AND HOW FAR. Until this release there was no form, input, textarea or select anywhere in docs/, and a check refused any release that grew one. Asking somebody to answer a review with no way to answer it would have been the joke version of this site\u2019s whole argument, so the rule moved by ruling \u2014 and it moved as little as it could. <form> is still barred everywhere, because it is the element that submits. <input> and <select> are still barred everywhere, because that is where a card number would be typed. <textarea> is allowed on one named page and nowhere else, and check_no_forms says which page by name.\n\ncheck_no_network did not move an inch, so the one page that takes typing still cannot send it. A second check holds the boxes to carrying no name attribute \u2014 a name is what a field is called when it is submitted \u2014 to carrying an id so they can be labelled, to the page saying in those words where what you type goes, and to review.js containing no fetch, XHR, beacon or socket. Five deliberate breaks were run against those checks before this shipped.\n\nThe pages that said \u201cno form, no input, no field\u201d now say what is actually true, and the ledger carries the ruling with the reasoning. The markdown twin renders the whole review rather than the shortcode, because an agent reads the twin and a twin with the critique missing is a page about nothing.\n\nTwo things the gate found while this shipped. A release note that named the form element put a real one into its own version page, because inline() passes anything tag-shaped straight through for trusted content \u2014 right for a page whose author writes markup on purpose, wrong for a prose field in a JSON file. Release notes now render as data: escaped, no shortcode run, links held to safe schemes. And blank lines in a note now make paragraphs, which they did not, so every multi-paragraph note since v0.1.9 had been rendering as one wall of text on its own page.",
+      "changes": [
+        "README.md",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.14",
+      "date": "2026-09-15",
+      "commit": "911c1ccbb1b61244343d50c7b06e8e1b59d68ee1",
+      "site": "store.sgit.ai",
+      "title": "the gitignore rule that swallowed the PDFs, anchored \u2014 and a check that asks git",
+      "summary": "v0.1.12 and v0.1.13 did not deploy. The Python template's `downloads/` rule \u2014 pip's download cache \u2014 is unanchored, so it matches a directory of that name at any depth. It matched assets/downloads/, where the two walkthrough PDFs live, AND docs/admin/downloads/, where the build writes them. The gate builds from the working tree, where both are on disk, so it passed here; CI builds from a clean checkout, where neither is, so /admin/downloads/ was never created and four links on two pages were dead.\n\nTHE RULE IS NOW ANCHORED. `/downloads/` is pip's cache at the repository root, which is what it was ever meant to be, and anchoring it kills the whole class rather than negating it one path at a time. The explicit un-ignores stay beside it as belt and braces.\n\nSECOND TIME ON THIS ESTATE, same shape both times: a language template's ignore rule matching a directory of this estate's own. The first swallowed admin/build/ on a sibling site and shipped a release with no gate at all, and the comment recording it sits three lines below the rule that just failed.\n\nSo the fix is not only the anchor. check_the_build_reads_nothing_git_ignores asks GIT what it ignores, across assets/, content/, data/ and docs/, and fails the release if the build reads or writes one of them \u2014 a source file absent from a clone builds a different site in CI, and a built file git ignores never reaches the deployed one. Neither should be found by a deploy going red, a third time.",
+      "changes": [
+        ".gitignore",
+        "assets",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.13",
+      "date": "2026-09-15",
+      "commit": "688c10812df4f159e11c009902431231115f4998",
+      "site": "store.sgit.ai",
+      "title": "three things five synthetic users found, two of them regressions from v0.1.9",
+      "summary": "Five invented buyers were walked through the store a screenshot at a time and interviewed afterwards. They found eighteen things; three of them cost a sale and two of those were regressions this repository introduced in v0.1.9.\n\nTHE \u00a3500 PAGE DESCRIBED ITS OWN PROCESS TWO WAYS and the post-sale page a third. The delivery page said both \u201cnobody interviews you: you send the details\u201d and \u201cwe send a prompt, you run it\u201d, while the page after payment said the prompt is MAP-A-GRANT.md, which the buyer already has because it ships in every zip. A buyer would have had to pay to find out which was true. The delivery page now carries the same five steps the post-sale page does, and names the file and the three things that come back.\n\nAND IT CARRIED NO DURATION AT ALL. The founder persona's single decisive question is how long \u00a3500 takes, and it was answerable nowhere before purchase \u2014 earlier copy had it and it was lost when the follow-up wording moved to 24 hours. The honest fix is not a new number: the 24 hours is riskmandate.ai's commitment to follow up, and the time from a buyer's reply to a delivered vault has never run for a paying buyer, so the page says that and the ledger carries it as absent.\n\nFIFTEEN AGAINST SIXTEEN. The copy said fifteen applications; the catalogue rendered \u201c16 of 16 shapes\u201d, because the tile for a deployment with no template was counted as a template. One place on this site where two numbers about the same thing disagreed, on a site whose whole argument is that facts come from one file so they cannot. The count line now separates the fifteen published shapes from the one catch-all, and a check holds the word in the copy to the number in the promoted catalogue.\n\nNothing on either side of that was wrong on its own, and the two numbers are four pages apart. It was found by reading the site as somebody who counts tiles \u2014 which is the argument for running the walk at all.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.12",
+      "date": "2026-09-15",
+      "commit": "d2427fb84d5dcfb87b42c86147f84706ff02df1b",
+      "site": "store.sgit.ai",
+      "title": "the two walkthroughs as PDFs, hosted under /admin/",
+      "summary": "The walkthrough, split in two and laid out for print: eleven pages for a person with all seven screenshots, seven pages for an agent with the assertions and both modes. They are served from /admin/downloads/ rather than /assets/ for one reason \u2014 they print the walkthrough discount codes, and the check that keeps those codes off every other file in the built site exempts /admin/ alone. Each filename carries the version it was taken at, so a stale copy is stale on its face rather than silently, and both documents say on their last page that the live page is the source of truth and a disagreement between the two is itself worth reporting.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.11",
+      "date": "2026-09-15",
+      "commit": "9c6042b92895beee0a9e48197ce991b48289b382",
+      "site": "store.sgit.ai",
+      "title": "the walkthrough codes stay out of the indexed bulk file too",
+      "summary": "/admin/ is noindex and out of sitemap.xml because the walkthrough prints working discount codes, and the page says so in those words. llms-full.txt \u2014 the whole site as one document, linked from the footer and indexed \u2014 carried the same codes, which made that sentence false. It now omits /admin/ and says at the end that it does, llms.txt still lists both pages with their addresses, and the check that keeps codes off every other page no longer exempts the bulk file. Public and advertised are different things, and a claim about which one a page is should be true of every file that renders it.",
+      "changes": [
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.10",
+      "date": "2026-09-15",
+      "commit": "456b3bddb55e3f25b0aa83a59197a99e24b38a0b",
+      "site": "store.sgit.ai",
+      "title": "a walkthrough anybody can run, with the codes printed on it",
+      "summary": "A page anybody can be pointed at to walk the whole store end to end, at /admin/try/, with seven screenshots of the flow as it actually runs and two sets of instructions \u2014 one for a person, one for an agent driving a browser or reading files.\n\nTHREE DISCOUNT CODES ARE PRINTED ON IT, at a hundred per cent, and that is the point: a walkthrough somebody has to be sent a code for is not a walkthrough. Every other code on this site is still barred from the built output by a check that reads every byte of it, so a new field says which codes may be printed and the frozen table rules on it alongside the percentage. What makes printing them safe is not a promise but a build check: check_printable_codes_need_a_dead_rail fails the release if a printed hundred-per-cent code and a live payment rail are ever in the same build, and a printed code at less than a hundred per cent is refused outright.\n\nThe forty-six assertions the page tells a synthetic user to make are also a script \u2014 tools/walkthrough.mjs \u2014 and the script is what was run before the page was written. It is deliberately not in the gate: the release path is Python and node --check with nothing installed, and a browser there would make every release depend on a download. Two of the forty-six failed on the first run and both were the page's fault rather than the site's: an innerText comparison against text the CSS upper-cases, and a key-shaped pattern that matched the page printing it. Both are now written so they pass, and the first is written down as the gotcha it is.\n\nTWO BUGS, ONE OF THEM VISIBLE ON EVERY POST-SALE PAGE. `.doc code` is more specific than `pre code`, so the inline-code chip \u2014 a white box with a border \u2014 was winning inside a code block: every line of the level-three prompt had a white box behind it. It only shows where a pre contains a code element, which on this site is the prompt the cart writes in by script, on no server-rendered page \u2014 so nothing anybody read caught it. Screenshotting the flow did. The other: the link checker called an internal link with a query string dead, which made /policies/?code=\u2026 unlinkable; a query is read by the page, not by the file system.\n\n/admin/ is a new page and gathers the internal surfaces \u2014 the walkthrough, the ledger, the dev packs, the release history, the lab. It is public, because every page here is and a static site could not pretend otherwise, and it is noindex and out of sitemap.xml, because public and advertised are different things: somebody handed the address can read it, and nobody arrives by searching for a discount code.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.9",
+      "date": "2026-09-15",
+      "commit": "00a03b81cfd5e1d990587ce34f9d5b3ae0c7e4b2",
+      "site": "store.sgit.ai",
+      "title": "the handover to the page after payment, and a discount code that arrives in the address",
+      "summary": "The loop closes. riskmandate.ai published the contract for what happens after the money moves \u2014 one page per level, and since its v1.19.2 the \u00a35 page IS the download, with the zip's size and sha256 stamped by their build and a hash check that runs in the buyer's own browser. This release hands the buyer over to it: every line of an order carries a link to the page for its level, with the store's order reference and, at level one, the shape's slug \u2014 the two plain-text parameters that contract allows, and nothing else. Nothing is copied here, because two copies of a hash is one hash that will go stale.\n\nThree things that were wrong are right. The follow-up said \u201cwithin one working day\u201d, a day slower than the twenty-four hours their pages commit to in public, and a check now refuses the phrase. Level one said the pack arrives by email; it is a download on the page you land on, so the level is renamed and its SKU letter moves from E to P. Level three said \u201csend back what it printed\u201d and named no route; it now names MAP-A-GRANT.md, grant.json, mandate.json and the session record, with no secret in them and the order reference on the message.\n\nDiscount codes, at 25, 50 and 100 per cent. A code arrives in the address rather than in a field, because this site has no text input and the gate refuses one \u2014 which is how a printed card or a QR hands one over anyway. What ships is sha256 of the code and never the code, and a check reads every byte of the built site against every code to keep it that way. It comes off the price of every line and the deposit is taken on what is left; a code at a hundred per cent still places an order and still lands on the page that says what happens next, which is how the whole flow gets walked before a rail exists.\n\nWhat the handover still owes is on the ledger rather than in somebody's head: nothing carries a sale from this store to the person who follows up, no receipt has ever been issued, the level-three files come back by email until a write-only vault exists, the follow-up mailbox has no named owner, and the opinion add-on is listed here with no page there. The first of those gates the first paid order at \u00a350, \u00a3500 and \u00a31,500.\n\nOne bug found by driving it: shop.js was loaded twice on the cart, paying and order pages \u2014 the cart engine running twice against one document, the second copy undoing what the first did. A check now holds every page to one copy of each script.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.8",
+      "date": "2026-09-15",
+      "commit": "41985da6ef0533bd9295b49e1f1ae33b580e3d67",
+      "site": "store.sgit.ai",
+      "title": "the flow runs end to end on a simulated wallet, and two levels take a fifth on the order",
+      "summary": "The whole purchase runs end to end without a payment link existing: catalogue, order, paying, and the page that says what happens now. Paying is a demonstration wallet \u2014 a balance in the reader's own browser, charging nothing, labelled as simulated on every screen it appears on, beside the three real rails which still say no link has been issued. The two levels that are somebody's work take a fifth on the order and the rest on delivery: \u00a3100 of \u00a3500, \u00a3300 of \u00a31,500, frozen in the gate exactly as a price is, and the split belongs to the offer rather than the rail so a card tapped at the stand takes the same deposit as a link on a phone. The post-sale page is new and is a different page from the delivery page: per line it carries the reference, what arrives and when, what the buyer does next, how a key reaches them \u2014 never the key \u2014 and what done means, which at the vault levels is a commit in their own history. Level three now says what the buyer actually does and carries the prompt they run; the add-on that cannot be bought has a page instead of a 404; and the two-word shortening a ruling forbids is gone from the pages that carried it.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.7",
+      "date": "2026-09-15",
+      "commit": "326e07809425e5acf8a5705d21a3edbaa54adcf3",
+      "site": "store.sgit.ai",
+      "title": "the store: fifteen agent behaviour policies, four levels each, a cart and two rails",
+      "summary": "The store proper. Fifteen Agent Behaviour Policy shapes promoted from riskmandate.ai at build time with a content hash, times four levels \u2014 the pack by email at \u00a35, a working vault at \u00a350, corrected for your situation at \u00a3500, and two sessions with a security professional signing it at \u00a31,500 \u2014 plus one for a deployment nobody has profiled, which starts at the third level because the first two deliver a template and for it there is not one. A catalogue with chip filters, a page per shape, an order that survives a reload, and two payment rails. The four tiers of the 10 September pack were replaced by ruling; the identifiers did not change, so a printed code still lands. Nothing is collected here: every control is a button, no page opens a connection, and what reaches the provider is an amount and an order reference carrying the product codes.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.6",
+      "date": "2026-09-11",
+      "commit": "892e790c3f45a1a5a6bc528542554f700f6f0b06",
+      "site": "store.sgit.ai",
+      "title": "the tier four deposit paragraph stops saying the balance is invoiced twice",
+      "summary": "A one-sentence duplication on /d/t4/: the deposit paragraph ended \"the balance is invoiced. The rest is invoiced.\" It was noticed before v0.1.5 shipped and the edit missed, because the search string carried a trailing space the file did not \u2014 the second time that has happened in this repository, and the first where the miss was reported as a fix and reached the live site.",
+      "changes": [
+        "build.py",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.5",
+      "date": "2026-09-11",
+      "commit": "43c77bff7600a5f7e7f0542cc5232ee40f06c9ff",
+      "site": "store.sgit.ai",
+      "title": "tier four takes a \u00a3500 deposit by payment link, and the balance stays on the invoice rail",
+      "summary": "The pack already called tier 4 a booking with a deposit; the deposit was simply not payable. It is now \u00a3500 by payment link, with the \u00a35,000 to \u00a310,000 balance still invoiced \u2014 because the fee arithmetic that put tier 4 on the invoice rail was always about the \u00a310,000 and never about the deposit. Two amounts and two rails on one offer, with the card, the offer page and the delivery page each naming which of the two the button takes. The deposit amount is frozen against the pack exactly as the six prices are, and three further checks hold it: below the threshold this site's own copy names, below the engagement it is a deposit against, and never on a page that also presents the marketplace. The deposit follows the conversation and a written scope, because what happens to a deposit for an engagement that cannot be scheduled is not written down \u2014 and that gap is in the ledger rather than papered over with a term nobody agreed.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.4",
+      "date": "2026-09-11",
+      "commit": "920f8f2a0a2820264c0f3554a1766e074fc284e9",
+      "site": "store.sgit.ai",
+      "title": "a prototype can switch view in place, so one page can host all five",
+      "summary": "assets/lab.js exposes window.SGitLab.setView, so a single page can host more than one prototype and a brief follows between them. On the site each prototype has its own URL and local storage already carries the brief across, so switching there is a link; this is for one page showing all five side by side, which is how they are compared before one of them is chosen.",
+      "changes": [
+        "assets",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.3",
+      "date": "2026-09-11",
+      "commit": "1a860430b762071af8b9f5fce128bb04c8cb13cc",
+      "site": "store.sgit.ai",
+      "title": "five prototypes of the purchase flow for the grant and mandate mapping work",
+      "summary": "/lab/ \u2014 five interfaces over one configurator for the consulting work this store exists to sell: mapping what the agents a company already runs were granted, what they are expected to do, and the policies that would close the gap. An interview, a ladder, an estate board, a delta matrix and a scenario start, all rendering data/brief.yml and all emitting the same JSON brief, so the interface is the variable and the document is not. Nothing in the area can be bought and every page says so above the tool; the work is done by people and the team specified for it has never run. The brief carries excess_authority, computed from justification edges published in the model, and unknowns, which is what the brief could not establish. The price is not computed: options add up, the total lands in a band, and the band names one of the four existing tiers and its price, with the deliverable setting a floor. All five were driven in a real browser, which is how the missing track selector on two of them was found.",
+      "changes": [
+        "README.md",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.2",
+      "date": "2026-09-11",
+      "commit": "daf6d3069695f15b078d47d728c021d24e8a454b",
+      "site": "store.sgit.ai",
+      "title": "the six offers are grouped by which of three buyers each was built for, and the checkout is wired to payment links",
+      "summary": "The offer list gains a second index: three buyers \u2014 a team running agents, an investor backing a company, a startup about to meet diligence \u2014 with a page each at /for/<id>/, rendered from data/buyers.yml. It adds no offer and no price, and the gate holds it to that: a group may name offer ids only, every tier belongs to exactly one group, and the one group with nothing built for it says so above its offers rather than below them. The checkout is wired at the same time \u2014 a checkout_url per offer, a live button where a link exists and a sentence where one does not, every URL pinned to the payment provider's own hosts, and the mode of each checkout frozen against the price it follows from. No payment link has been issued for any offer, which is what the site now says. Plus tools/refs.py and data/refs.yml: the sgit.ai guidance and briefs this site is built against, fetched as their markdown twins, hashed, dated, and re-checkable when one moves.",
+      "changes": [
+        ".gitignore",
+        "README.md",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.1",
+      "date": "2026-09-10",
+      "commit": "14b96dbada2ed3aa1f6d6f42ad589fb113899972",
+      "site": "store.sgit.ai",
+      "title": "the delivery pages stop printing the page navigation twice",
+      "summary": "the delivery pages stop printing the page navigation twice",
+      "changes": [
+        "build.py",
+        "data"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.0",
+      "date": "2026-09-10",
+      "commit": "3779062835292198a7b6c3d7f8c36bda6cd59d75",
+      "site": "store.sgit.ai",
+      "title": "the offer page, the four codes, the two rails and the pack",
+      "summary": "The first release. The offer page with four tiers and two add-ons, a delivery page per offer, the booking flow for the two tiers that are a booking, the two payment rails kept strictly apart, the audience routing, the claim ledger, and the store pack published raw at /dev-packs/store/. The pipeline is the estate's: validate, tag, deploy.",
+      "changes": [
+        "admin",
+        "assets",
+        "bin",
+        "build.py",
+        "content",
+        "data",
+        "packs",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    }
+  ]
+}

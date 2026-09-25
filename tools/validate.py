@@ -31,7 +31,7 @@ SECRET_PATTERNS = [
     ('legacy vault key', re.compile(r'sgit_vk1_[A-Za-z0-9][A-Za-z0-9._~-]{7,}')),
     ('vault-key-shaped string', re.compile(r'(?<![A-Za-z0-9_])[a-z0-9]{24}:[a-z0-9]{4,24}(?![a-z0-9])')),
     ('AWS access key id', re.compile(r'AKIA[0-9A-Z]{16}')),
-    ('API key', re.compile(r'sk-(?:ant|or|proj)-[A-Za-z0-9_-]{20,}')),
+    ('API key', re.compile(r'(?<![A-Za-z0-9])sk-(?:ant|or|proj)-[A-Za-z0-9_-]{20,}')),
 ]
 # Read keys a source site publishes on purpose may be quoted; they are removed before scanning.
 PUBLISHED_READ_KEY = re.compile(r'sgit_public_read_[0-9a-f]{16,}(?::|%3A)[a-z0-9]{4,24}')
@@ -130,7 +130,8 @@ def check_site():
 def check_repo():
     tracked = subprocess.run(['git', 'ls-files', '-z'], cwd=ROOT, capture_output=True, text=True)
     files = [os.path.join(ROOT, f) for f in tracked.stdout.split('\0') if f] if tracked.returncode == 0 else []
-    extra = [p for d in DESK_DIRS if os.path.isdir(os.path.join(ROOT, d)) for p in text_files(os.path.join(ROOT, d))]
+    # desk files and the snapshot are scanned whether or not they are tracked yet
+    extra = [p for d in DESK_DIRS + ('sources',) if os.path.isdir(os.path.join(ROOT, d)) for p in text_files(os.path.join(ROOT, d))]
     seen = set()
     for path in files + extra:
         if path in seen or path.startswith(SITE + os.sep) or not os.path.isfile(path):

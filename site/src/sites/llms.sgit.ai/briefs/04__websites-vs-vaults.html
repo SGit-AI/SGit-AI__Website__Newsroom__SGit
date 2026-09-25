@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>04 — Websites vs vaults: what changes when there is no host · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#04-websites-vs-vaults-what-changes-when-there-is-no-host">04 — Websites vs vaults: what changes when there is no host</a></li><li class="l2"><a href="#1-what-a-vault-gives-you-that-a-website-does-not">1. What a vault gives you that a website does not</a></li><li class="l2"><a href="#2-the-three-options-on-a-website-honestly-compared">2. The three options on a website, honestly compared</a></li><li class="l2"><a href="#3-what-exists-today">3. What exists today</a></li><li class="l2"><a href="#4-the-one-thing-that-transfers-unchanged">4. The one thing that transfers unchanged</a></li><li class="l2"><a href="#5-the-llmstxt-connection-the-sites-other-llm-surface">5. The llms.txt connection — the site&amp;#x27;s other LLM surface</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> · <a href="04__websites-vs-vaults.md">raw text</a> · <a class="ext" href="https://llms.sgit.ai/briefs/04__websites-vs-vaults.md">live ↗</a></p><article class="source"><h1 id="04-websites-vs-vaults-what-changes-when-there-is-no-host">04 — Websites vs vaults: what changes when there is no host</h1>
+<p>The commission asked for chat panes on <strong>websites and vaults</strong>. The vault story is complete, shipped and documented (<code>01__</code>–<code>03__</code>). <strong>The website story is the thinner half, and the site should be honest about that</strong> — it is a gap to fill, not an existing asset to publish.</p>
+<hr>
+<h2 id="1-what-a-vault-gives-you-that-a-website-does-not">1. What a vault gives you that a website does not</h2>
+<p>Everything in <code>03__</code> depends on <strong>a host at a different origin from the app</strong>. Take the host away and every guarantee changes:</p>
+<div class="table"><table><thead><tr><th>Mechanism</th><th>In a vault</th><th>On a plain website</th></tr></thead><tbody><tr><td><strong>Key storage</strong></td><td><code>.vault/llm/config.json</code>, below the permission floor</td><td><strong>nowhere safe in the browser</strong></td></tr>
+<tr><td><strong>Who calls the provider</strong></td><td>the host</td><td>your page, or your backend</td></tr>
+<tr><td><strong>Grant model</strong></td><td><code>app.json</code>, default-deny, enforced by the host</td><td>nothing enforces it</td></tr>
+<tr><td><strong>Consent</strong></td><td>host HUD, outside the app&#x27;s control</td><td>you draw it, so you could fake it</td></tr>
+<tr><td><strong>Budget caps</strong></td><td>host, before the call</td><td>your backend, or nothing</td></tr>
+<tr><td><strong>Recording indicator</strong></td><td>host chrome — <strong>unfakeable by the app</strong></td><td>your own DOM — fakeable</td></tr>
+<tr><td><strong>Cost ledger</strong></td><td>host, two-source reconciled</td><td>you build it</td></tr></tbody></table></div>
+<p><strong>The one-line rule:</strong> <em>the vault bridge exists because the app and the credential are in different trust boundaries. On a plain website they are not, so the same design does not transfer — the question becomes where you put the boundary instead.</em></p>
+<hr>
+<h2 id="2-the-three-options-on-a-website-honestly-compared">2. The three options on a website, honestly compared</h2>
+<p><strong>(a) A backend proxy — the standard answer.</strong> Your server holds the key; the page calls your endpoint. This is the vault model with your own backend playing host. It gets you real key protection, real budget caps and a real ledger — and it costs you a server, an auth story and an abuse-prevention story that the vault host already solved.</p>
+<p><strong>(b) Bring-your-own-key in the browser.</strong> The visitor pastes their own key; it stays in their browser. <strong>There is precedent in the estate</strong>: the Regulation Graph vault&#x27;s Article 9 Lab <em>&quot;requires a bring-your-own OpenRouter key — deliberately, so no metered capability sits behind the published read key.&quot;</em></p>
+<p>That reasoning generalises cleanly to a static site: <strong>a public page cannot carry a spending credential, so the visitor brings their own or there is no chat.</strong> It is honest, it costs nothing to run, and it converts badly.</p>
+<p><strong>(c) Embed the vault surface.</strong> Point the reader at a vault that already has the panel. This is the option nobody has written up and it may be the best one for <code>*.sgit.ai</code> specifically, since the estate already publishes read keys and already embeds vault content in pages — the embedding mechanism (sandboxed iframe, <code>postMessage</code> key handshake, key never in a URL) is built and documented.</p>
+<blockquote><p>⚠️ <strong>But see <code>03__</code> §6</strong>: a vault with an LLM key configured carries a credential, so <strong>publishing a read key for it shares the ability to spend.</strong> Option (c) works only for a vault whose key tier and spend caps were chosen with publication in mind.</p></blockquote>
+<hr>
+<h2 id="3-what-exists-today">3. What exists today</h2>
+<p><strong>For websites: almost nothing.</strong> There is no website chat component in the estate, no documented pattern, and no code. What exists that is adjacent:</p>
+<ul><li><strong>The versioned component CDN</strong> (<code>dev.tools.sgraph.ai</code>) already serves <code>sg-vault-client.js</code> and <code>sg-vault-write.js</code> — so <strong>a <code>sg-llm-chat</code> component is a natural next member of that family</strong>, and the component conventions are documented (<code>coding.sgit.ai</code> <code>02__</code>).</li><li><strong>The BYOK precedent</strong> in the Article 9 Lab, with its reasoning stated.</li><li><strong>The offline Ollama chat UI</strong> (18 March 2026) — a FastAPI proxy to a local Ollama, built on the <code>sg-layout</code> web component, for <em>&quot;offline LLM chat during travel.&quot;</em> Small, and it is a real worked example of a chat UI against a proxy endpoint, which is option (a) in miniature.</li></ul>
+<p><strong>Recommendation:</strong> <code>/websites/</code> should present the three options with this honesty, recommend <strong>(a) for products and (c) for <code>*.sgit.ai</code> pages</strong>, and ship <strong>a <code>sg-llm-chat</code> web component</strong> as the concrete artefact — built to the estate&#x27;s own component conventions, with a pluggable transport so the same component serves all three options. <code>08__</code> G1.</p>
+<hr>
+<h2 id="4-the-one-thing-that-transfers-unchanged">4. The one thing that transfers unchanged</h2>
+<p><strong>The honesty mechanisms.</strong> None of them depend on a host:</p>
+<ul><li>one shared context budget, never one per file</li><li><code>TRUNCATED</code> in the text the model sees</li><li>estimates rendered with <code>~</code>, never as a bill</li><li>images cleared after one send</li><li><code>available()</code> before rendering</li><li>branch on error codes, not message text</li><li>recording announced in words</li></ul>
+<p><strong>Those are the transferable part of this work</strong>, and a website chat pane built without them is worse than a vault one for reasons that have nothing to do with key storage. <code>code__chat-pane-samples.md</code> §8 is the checklist; it applies verbatim.</p>
+<hr>
+<h2 id="5-the-llmstxt-connection-the-sites-other-llm-surface">5. The <code>llms.txt</code> connection — the site&#x27;s other LLM surface</h2>
+<p>There is a second sense in which this estate serves LLMs, and <code>llms.sgit.ai</code> is the natural home for it.</p>
+<p>Every <code>*.sgit.ai</code> site publishes <code>/llms.txt</code> as its agent surface, and the estate&#x27;s practice goes further: <strong>the markdown twin at every URL</strong>, extension swapped, with links inside the markdown pointing at markdown, <em>&quot;so a traversing agent never has to parse HTML.&quot;</em> The mechanism is non-obvious — these are static files, so the rendering happens in a <strong>Lambda@Edge function</strong>.</p>
+<p>And the finding from the 14 August agent-access report:</p>
+<blockquote><p><em>&quot;<strong>The audience is disproportionately agents</strong>… many agents can only fetch URLs that a search engine has already returned to them… <strong>It can read the map and cannot walk it.</strong>&quot;</em></p></blockquote>
+<p><strong>That belongs on this site</strong>, because it is the other half of the same subject: <code>01__</code>–<code>03__</code> are about <em>putting a model inside your page</em>, and this is about <em>making your page readable to a model that arrives from outside</em>. Cross-link with <code>coding.sgit.ai</code> <code>05__</code> §5, which has the conventions.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/briefs/04__websites-vs-vaults.md">https://llms.sgit.ai/briefs/04__websites-vs-vaults.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:54Z</dd><dt>sha256</dt><dd><code title="e7a3f62b8933677ddbf0c5e7bdb5906aa5ec78331530b1ca0c7d90668934cec4">e7a3f62b8933</code></dd><dt>Frozen copy</dt><dd><a href="04__websites-vs-vaults.md">sites/llms.sgit.ai/briefs/04__websites-vs-vaults.md</a> (6,036 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

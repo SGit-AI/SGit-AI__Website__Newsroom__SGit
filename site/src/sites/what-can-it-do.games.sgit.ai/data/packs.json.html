@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>packs.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · what-can-it-do.games.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/what-can-it-do.games.sgit.ai.html">what-can-it-do.games.sgit.ai</a> · <a href="packs.json">raw text</a> · <a class="ext" href="https://what-can-it-do.games.sgit.ai/data/packs.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;packs-registry/v1&quot;,
+  &quot;_what_this_is&quot;: &quot;Known packs the game can be pointed at: an id, a name, where the pack is served, who maintains it. `?pack=&lt;id&gt;` on the game resolves here; `?pack=&lt;url&gt;` does not need it. The `resolved` block on each entry is written by the site build (admin/build/map_pages.py, write_pack) from the pack&#x27;s own manifest — version, hash, counts and the day it was read — so an entry never claims a hash it did not read, and the release gate refuses an entry whose manifest does not resolve. Add a pack by pull request: id, name, base, maintainer, licence. A pack is a folder with a pack.json manifest of type pack/v1, served with CORS open; the public pack lists itself first.&quot;,
+  &quot;packs&quot;: [
+    {
+      &quot;id&quot;: &quot;public&quot;,
+      &quot;name&quot;: &quot;What Can It Do? — the public pack&quot;,
+      &quot;base&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+      &quot;maintainer&quot;: &quot;this site, by pull request&quot;,
+      &quot;licence&quot;: &quot;CC BY 4.0&quot;,
+      &quot;about&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/index.html&quot;,
+      &quot;resolved&quot;: {
+        &quot;_generated&quot;: &quot;by the site build, from the pack&#x27;s manifest — not edited by hand&quot;,
+        &quot;version&quot;: &quot;v0.8.0&quot;,
+        &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+        &quot;files&quot;: 27,
+        &quot;counts&quot;: {
+          &quot;profiles&quot;: 9,
+          &quot;capabilities&quot;: 23,
+          &quot;reductions&quot;: 22,
+          &quot;ceiling&quot;: 17,
+          &quot;questions&quot;: 25,
+          &quot;mandates&quot;: 8,
+          &quot;files&quot;: 27
+        },
+        &quot;resolved_at&quot;: &quot;2026-09-09&quot;,
+        &quot;from&quot;: &quot;this build&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;mavs&quot;,
+      &quot;name&quot;: &quot;The Mavs PoC — a draft pack&quot;,
+      &quot;base&quot;: &quot;https://what-can-it-do.games.sgit.ai/packs/mavs/&quot;,
+      &quot;maintainer&quot;: &quot;this site, as a draft for Mavs AI to correct (packs/mavs/generate.py)&quot;,
+      &quot;licence&quot;: &quot;CC BY 4.0&quot;,
+      &quot;about&quot;: &quot;https://what-can-it-do.games.sgit.ai/packs/mavs/index.html&quot;,
+      &quot;status&quot;: &quot;draft — pending the Mavs input session&quot;,
+      &quot;resolved&quot;: {
+        &quot;_generated&quot;: &quot;by the site build, from the pack&#x27;s manifest — not edited by hand&quot;,
+        &quot;version&quot;: &quot;v0.1.0-draft&quot;,
+        &quot;content_hash&quot;: &quot;sha256:085e8d5909e27fefb7bbed73db4a320d6b066d42bf5a33f9d69d9652dda7f80e&quot;,
+        &quot;files&quot;: 21,
+        &quot;counts&quot;: {
+          &quot;profiles&quot;: 8,
+          &quot;capabilities&quot;: 6,
+          &quot;capabilities_proposed&quot;: 4,
+          &quot;ceiling&quot;: 5,
+          &quot;questions&quot;: 6,
+          &quot;mandates&quot;: 2,
+          &quot;scenarios&quot;: 4
+        },
+        &quot;resolved_at&quot;: &quot;2026-09-09&quot;,
+        &quot;from&quot;: &quot;packs/mavs/pack.json on this site&quot;
+      }
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>what-can-it-do.games.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://what-can-it-do.games.sgit.ai/data/packs.json">https://what-can-it-do.games.sgit.ai/data/packs.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:56Z</dd><dt>sha256</dt><dd><code title="f5547b461ccba5988b53ac3236d3a65d275014e7b8ae04fa014e10e717affd27">f5547b461ccb</code></dd><dt>Frozen copy</dt><dd><a href="packs.json">sites/what-can-it-do.games.sgit.ai/data/packs.json</a> (2,576 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

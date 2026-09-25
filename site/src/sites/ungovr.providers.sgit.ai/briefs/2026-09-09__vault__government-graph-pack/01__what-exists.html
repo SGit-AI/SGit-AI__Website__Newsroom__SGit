@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>01 — What Exists: The Assembly Inventory · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#01-what-exists-the-assembly-inventory">01 — What Exists: The Assembly Inventory</a></li><li class="l2"><a href="#why-this-file-exists-first">Why This File Exists First</a></li><li class="l2"><a href="#part-a-what-is-published-on-this-side">Part A: What Is Published On This Side</a></li><li class="l3"><a href="#the-six-graph-vaults">The six graph vaults</a></li><li class="l3"><a href="#standardssgitai-at-v014">standards.sgit.ai, at v0.1.4</a></li><li class="l3"><a href="#graphssgitai">graphs.sgit.ai</a></li><li class="l2"><a href="#part-b-what-is-published-on-their-side">Part B: What Is Published On Their Side</a></li><li class="l3"><a href="#the-atlas">The Atlas</a></li><li class="l3"><a href="#the-api-surface">The API surface</a></li><li class="l3"><a href="#the-schema-and-the-edge-that-stops-short">The schema, and the edge that stops short</a></li><li class="l3"><a href="#what-is-a-graph-here-and-what-is-not">What is a graph here, and what is not</a></li><li class="l3"><a href="#licence-and-publishing">Licence and publishing</a></li><li class="l2"><a href="#part-c-the-ledger">Part C: The Ledger</a></li><li class="l2"><a href="#sources">Sources</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="01__what-exists.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/01__what-exists.md">live ↗</a></p><article class="source"><h1 id="01-what-exists-the-assembly-inventory">01 — What Exists: The Assembly Inventory</h1>
+<p><strong>version</strong> v0.33.67
+<strong>date</strong> 8 September 2026</p>
+<p><a href="00__README.html">← 00 README</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/00__README.md" title="live page">↗</a> · <a href="README.html">Pack hub</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/README.md" title="live page">↗</a> · Next → <a href="02__the-model.html">02 The Model</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md" title="live page">↗</a></p>
+<hr>
+<h2 id="why-this-file-exists-first">Why This File Exists First</h2>
+<p><strong>Because the size of the work is decided by what is already published, not by what the argument needs.</strong> Six of the twenty-six vaults on the demos index are graph vaults, and three of them are precisely the thing UnGovr does not have. Two live sites already ship the addressing scheme and the provenance discipline this pack inherits. <strong>So the pack is assembly plus one new join</strong>, and any plan that treats it as a build has mis-sized it by an order of magnitude.</p>
+<hr>
+<h2 id="part-a-what-is-published-on-this-side">Part A: What Is Published On This Side</h2>
+<h3 id="the-six-graph-vaults">The six graph vaults</h3>
+<div class="table"><table><thead><tr><th>Vault</th><th>What it is</th><th>Why it matters here</th></tr></thead><tbody><tr><td><strong>Standards Atlas (GDPR)</strong></td><td>GDPR as a semantic graph, with writes scoped to a feedback folder</td><td>A law as a graph, <strong>with a contribution path</strong>. The corrections shape</td></tr>
+<tr><td><strong>Regulation Graph</strong></td><td>The EU AI Act parsed from Formex into an evidence graph, article by article</td><td>A law parsed <strong>from its official XML</strong> into a graph, article by article</td></tr>
+<tr><td><strong>AIUC-1 conformance layer</strong></td><td>The AIUC-1 standard as a graph, plus a layer computing insurability over it</td><td>The layer that turns a graph of requirements into a judgement about a subject</td></tr>
+<tr><td><strong>Risk Graph Explorer</strong></td><td>A fact-to-risk graph explorer, built to be public: its <code>app.json</code> requests nothing</td><td><strong>The shareable form.</strong> A public graph app that asks for no permissions</td></tr>
+<tr><td><strong>Agentic Browser Isolation</strong></td><td>A living risk graph, rendered per stakeholder</td><td>The same graph per audience without changing the facts</td></tr>
+<tr><td><strong>Scaling Threat Modeling</strong></td><td>Eleven linked threat models across 51 nodes and 179 threats</td><td>Linked graphs at a countable scale</td></tr></tbody></table></div>
+<p><strong>And the catalogue itself is the recursion argument</strong>: an index of published vaults that is itself a vault and lists itself.</p>
+<h3 id="standardssgitai-at-v014">standards.sgit.ai, at v0.1.4</h3>
+<p>Honestly labelled a proof of concept. The EU AI Act ships as <strong>1,523 nodes and 1,944 edges</strong> including a 2026 amendment. Provisions are addressed by <strong>two hashes</strong>, one for hierarchical position and one for current text. Each carries a <strong>SHA-256 of the source bytes</strong> and provenance recording the retrieval source, timestamp and method. Akoma Ntoso is in its covered set.</p>
+<p><strong>Its own summary of its state is the sentence to keep</strong>: one instrument is modelled properly. One.</p>
+<h3 id="graphssgitai">graphs.sgit.ai</h3>
+<p>The stronger discipline, and the standard this vault inherits:</p>
+<ul><li>Documents decomposed so that <strong>section, block, sentence and word each become a node with stable identity</strong></li><li><strong>The markdown rebuilds from the graph byte for byte</strong></li><li>Quotes verified byte by byte on every build</li><li>The frozen edition hashed so the build fails if a byte changes</li></ul>
+<p><strong>And its own honest label</strong>: the semantic layer is <em>designed</em> rather than <em>shipped</em>. That distinction must survive into anything shown to a third party.</p>
+<hr>
+<h2 id="part-b-what-is-published-on-their-side">Part B: What Is Published On Their Side</h2>
+<p><em>Fetched from UnGovr&#x27;s own site and live open API on 8 September 2026. Re-check anything you are about to depend on: their data moves, and their marketing pages already disagree with each other by a few thousand entities.</em></p>
+<h3 id="the-atlas">The Atlas</h3>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Entities</td><td>~320,000. The site quotes 330,000, 321,000 and 320,000 on three different pages</td></tr>
+<tr><td>Countries</td><td><strong>205</strong>, confirmed live from the index endpoint</td></tr>
+<tr><td>Boundaries</td><td>160,000</td></tr>
+<tr><td>United States</td><td><strong>159,926 entities. Half the Atlas is one country</strong></td></tr>
+<tr><td>France</td><td>35,235</td></tr>
+<tr><td>Italy</td><td>15,968</td></tr></tbody></table></div>
+<p><strong>Their definition of an entity is by obligation, and it is a good one.</strong> An organisation qualifies if it <strong>independently handles public records requests</strong> and has designated leadership with decision-making authority. A place with staff but no independent governance is a <em>facility</em>, not an entity. That is a definition by accountability, which is the same instinct that makes this estate insist a mandate names an owner.</p>
+<p><strong>Their depth claim</strong>: in California, special districts outnumber cities by more than ten to one, and that layer below city hall is what nobody else maps.</p>
+<p><strong>Their measurement</strong>: 40.7 per cent of addresses written &quot;Santa Barbara, CA&quot; fall outside the city limits. <strong>A measured claim with a named method that changes what a system should do.</strong> It is the reason Santa Barbara is the county in <a href="03__the-worked-example.html"><code>03__the-worked-example.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md" title="live page">↗</a>.</p>
+<h3 id="the-api-surface">The API surface</h3>
+<p>Base URL <code>data.ungovr.org/v1</code>, HTTPS, <strong>most of it open with no authentication</strong>. Auth header <code>X-API-Key</code>.</p>
+<div class="table"><table><thead><tr><th>Endpoint</th><th>Auth</th><th>Returns</th></tr></thead><tbody><tr><td><code>/entities/index.json</code></td><td>Open</td><td>Countries with entity counts</td></tr>
+<tr><td><code>/entities/{cc}.json</code></td><td>Open</td><td>First-tier entities for a country</td></tr>
+<tr><td><code>/entities/{cc}/{state}.json</code></td><td>Open</td><td>Entities within a state or province</td></tr>
+<tr><td><code>/entities/detail/{id}.json</code></td><td>Open</td><td>Full detail for one entity</td></tr>
+<tr><td><code>/entities/children/{id}.json</code></td><td>Open</td><td>Child entities of a parent</td></tr>
+<tr><td><code>/entities/boundaries/{id}.geojson</code></td><td>Open</td><td>GeoJSON boundary</td></tr>
+<tr><td><code>/laws/records/index.json</code></td><td>Open</td><td>Records-law corpus, compact index</td></tr>
+<tr><td><code>/laws/records/{jurisdiction}.json</code></td><td>Open</td><td>One records law in full</td></tr>
+<tr><td><code>/laws/transparency/index.json</code></td><td>Open</td><td>Transparency laws across five domains</td></tr>
+<tr><td><code>/cgj/index.json</code>, <code>/cgj/counties.json</code>, <code>/cgj/counties/{code}.json</code></td><td>Open</td><td>Grand jury collection, 58 counties</td></tr>
+<tr><td><code>/cgj/reports/{id}.json</code></td><td><strong>Key</strong></td><td>Full report with findings</td></tr>
+<tr><td><code>/ai-laws/index.json</code>, <code>/ai-laws/{jurisdiction}.json</code>, <code>/ai-laws/vocab.json</code></td><td><strong>Key</strong></td><td>AI and crawling law, verdict per jurisdiction, plus vocabulary</td></tr>
+<tr><td><code>/meta/countries.json</code>, <code>/meta/schema.json</code>, <code>/meta/openapi.yaml</code>, <code>/meta/last-updated.json</code></td><td>Open</td><td>Registry, JSON Schema, OpenAPI 3.1, refresh timestamp</td></tr></tbody></table></div>
+<p><strong>Rate limits</strong>: entity data 100/day per IP; grand jury indices unlimited; report detail 50/day per key. Over the limit the API answers <strong>HTTP 402</strong> with a payment challenge and the MCP server answers JSON-RPC <code>-32042</code>. Entity data $0.001/request, report detail $0.01/request, $5.00 minimum wallet, Stripe.</p>
+<p><strong>MCP server</strong> at <code>mcp.ungovr.org/mcp</code>, five tools: <code>list_countries</code>, <code>search_entities</code>, <code>get_entity</code>, <code>search_cgj_reports</code>, <code>get_cgj_report</code>.</p>
+<p><strong>A published JSON Schema and an OpenAPI 3.1 specification.</strong> That is a level of machine-readability most public bodies never reach, and it is what makes the join cheap.</p>
+<h3 id="the-schema-and-the-edge-that-stops-short">The schema, and the edge that stops short</h3>
+<p>From <code>/meta/schema.json</code>, JSON Schema Draft 2020-12.</p>
+<p><code>entity_detail</code> requires <code>slug</code>, <code>name</code>, <code>type</code>, <code>country</code>, <code>children_count</code>, <code>geography</code>, <code>url</code>, and also carries <code>state</code>, <code>parent</code> (an object with <code>slug</code> and <code>name</code>), <code>children_url</code>, <code>domains</code>, <code>memberships</code>, <code>geography</code> (with <code>has_boundary</code> and <code>boundary_url</code>), <code>population</code>, <code>website</code>, and:</p>
+<blockquote><p><strong><code>open_records</code>, an object with <code>law</code>. This is the edge that stops short.</strong></p></blockquote>
+<pre><code>   THEIR GRAPH                                     WHERE IT STOPS
+
+   place --spatially--&gt; entity --&gt; parent
+                          |    --&gt; children
+                          |    --&gt; boundary (GeoJSON)
+                          |    --&gt; domains
+                          |    --&gt; memberships
+                          |
+                          +----&gt; open_records.law  ---------&gt;  X
+                                 &quot;which law applies&quot;
+                                                          no provision
+                                                          no obligation
+                                                          no requirement
+                                                          nothing to point at</code></pre>
+<p><strong>The consequence is concrete.</strong> A claim built on their data today can say <em>this water district is governed by the California Public Records Act</em>. It cannot say <em>this water district must respond within ten days under section such-and-such, and here is the byte range that says so, retrieved on this date</em>. <strong>The first is a fact about a jurisdiction. The second is an obligation, and only the second can carry a risk, a control, or an acceptance.</strong></p>
+<p><strong>And the same gap is visible in their newest work.</strong> The AI and crawling law endpoints return a <strong>verdict</strong> per jurisdiction with a vocabulary defining what the verdict values mean. A verdict is a summary judgement; the provisions it summarises are not addressable, so a reader can neither check it nor disagree with it at the level where disagreement is useful.</p>
+<h3 id="what-is-a-graph-here-and-what-is-not">What is a graph here, and what is not</h3>
+<p><strong>It earns the name for structure.</strong> Real edges: entity→parent, entity→children, entity→boundary, entity→domain, entity→membership, entity→open-records law. <strong>And the spatial join is the part nobody else has</strong>: given a location they resolve every entity that serves it, and a single address may fall under a city, a county, a school district, a water district and a fire district at once. That is a many-to-many relation computed from geometry rather than declared.</p>
+<p><strong>What makes it less than a semantic graph is that the vocabulary is not published as one.</strong> There is a JSON Schema, which types payloads. There is no ontology: no formal classes, no declared predicates, no equivalence statements to the identifier systems they cross-reference.</p>
+<p><strong>And one open question worth asking them.</strong> Their platform page says Atlas IDs are cross-referenced to <strong>GeoNames, Wikidata, OCD and FIPS</strong>. Those cross-references <strong>do not appear in the schema definitions</strong>. If they are exposed somewhere, joining their entities to anything else becomes free. If they are not, that is the cheapest possible improvement to their surface.</p>
+<h3 id="licence-and-publishing">Licence and publishing</h3>
+<p><strong>CC BY 4.0 with attribution to UnGovr</strong>, per their open-data page, with <strong>bulk downloads as JSON</strong> for offline analysis, research or integration. That is the same licence this corpus releases its own briefs under, and it removes the main blocker on building this vault.</p>
+<p><strong>There is no public repository of theirs.</strong> Their technology page lists GitHub as their own source control with no repository linked, and a search of the public index found nothing. <strong>So there is no clone, no fork, no pull request, and no corrections path for an outsider.</strong> See <a href="04__the-vault.html"><code>04__the-vault.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md" title="live page">↗</a> for the corrections offer that follows from this, which is a thing to build rather than a criticism to level.</p>
+<hr>
+<h2 id="part-c-the-ledger">Part C: The Ledger</h2>
+<p><strong>What exists, what is new, and the ratio that should govern the plan.</strong></p>
+<div class="table"><table><thead><tr><th>Component of the worked example</th><th>State</th></tr></thead><tbody><tr><td>Step 1 — entity resolved from a published slug, with boundary</td><td><strong>New.</strong> Nobody has joined their slugs to an instrument graph</td></tr>
+<tr><td>Step 2 — instrument rendered as addressable provisions</td><td><strong>Done twice.</strong> GDPR and the EU AI Act. Reuse the method</td></tr>
+<tr><td>Step 3 — provision as a node with two-hash addressing</td><td>Shipped at standards.sgit.ai</td></tr>
+<tr><td>Step 4 — obligation</td><td>Shipped in the conformance work</td></tr>
+<tr><td>Step 5 — control</td><td>Shipped</td></tr>
+<tr><td>Step 6 — evidence tier, unevidenced as default</td><td>Shipped, 4 September conformance layer</td></tr>
+<tr><td>Step 7 — acceptance with owner, interval, revocation</td><td>Shipped, and already carried in a published vault</td></tr>
+<tr><td>The coverage measurement of their law edge</td><td><strong>New, and it may not exist anywhere</strong></td></tr>
+<tr><td>The graph viewer with configurable settings</td><td>Documented on the method site</td></tr>
+<tr><td>The agentic team coordinating through files</td><td>House model, in use</td></tr>
+<tr><td>Release channels for citation by version</td><td>Shipped 3 August</td></tr></tbody></table></div>
+<p><strong>Two new things. Nine reused.</strong> Plan accordingly.</p>
+<hr>
+<h2 id="sources">Sources</h2>
+<ul><li>The published vaults index on sgit.ai, read 8 September 2026, for the twenty-six vaults and the six graph vaults. <a href="../../../sgit.ai/demos/vaults/index.html">https://sgit.ai/demos/vaults/index.html</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a></li><li>graphs.sgit.ai, read 8 September 2026, for the decomposition rules, the byte-for-byte rebuild, the byte-verified quotes, the hashed frozen edition, and the statement that the semantic layer is designed rather than shipped. <a class="ext" href="https://graphs.sgit.ai">https://graphs.sgit.ai ↗</a></li><li>standards.sgit.ai at v0.1.4, read 8 September 2026, for two-hash addressing, the SHA-256 of source bytes, the provenance fields, the shipped EU AI Act at 1,523 nodes and 1,944 edges, the covered instruments including Akoma Ntoso, and the one-instrument statement. <a href="../../../standards.sgit.ai/index.html">https://standards.sgit.ai</a><a class="ext live" href="https://standards.sgit.ai" title="live page">↗</a></li><li>UnGovr homepage, platform, architecture, entities, agents, vision, tech and open-data pages, read 8 September 2026. <a class="ext" href="https://www.ungovr.org/">https://www.ungovr.org/ ↗</a></li><li>UnGovr Open Data API and MCP pages, read 8 September 2026. <a class="ext" href="https://www.ungovr.org/open-data/api">https://www.ungovr.org/open-data/api ↗</a> and <a class="ext" href="https://www.ungovr.org/open-data/mcp">https://www.ungovr.org/open-data/mcp ↗</a></li><li>The live schema and country index endpoints, called 8 September 2026. <a class="ext" href="https://data.ungovr.org/v1/meta/schema.json">https://data.ungovr.org/v1/meta/schema.json ↗</a> and <a class="ext" href="https://data.ungovr.org/v1/entities/index.json">https://data.ungovr.org/v1/entities/index.json ↗</a></li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/01__what-exists.md">https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/01__what-exists.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="b6a71ad55746380610b0cb01a16e75d8a4adcffa59ad67ab3779044e3e849b81">b6a71ad55746</code></dd><dt>Frozen copy</dt><dd><a href="01__what-exists.md">sites/ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/01__what-exists.md</a> (12,763 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#the-six-states">The six states</a></li><li class="l2"><a href="#why-a-model-rather-than-a-disclaimer">Why a model rather than a disclaimer</a></li><li class="l2"><a href="#the-mix-across-the-family">The mix, across the family</a></li><li class="l2"><a href="#where-the-claims-live">Where the claims live</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://providers.sgit.ai/evidence/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Evidence — the six states, and the family&#x27;s mix
+description: &quot;Every claim on every site in this family carries one of six verification states. Here is what each means, why the model exists, and how much of the family is actually verified rather than read in a vendor&#x27;s documentation.&quot;
+lead: &quot;<strong>No claim without a state.</strong> Six of them, joined to the pages that make them at build time, so a claim cannot appear on a page without appearing in a ledger. This page says what they mean — and rolls up how much of the family is actually verified.&quot;
+order: 50
+toc: true
+provenance:
+commit: 7d1916aca5f3
+date: 8 September 2026
+</p>
+<hr>
+<h2 id="the-six-states">The six states</h2>
+<div class="table"><table><thead><tr><th>Chip</th><th>Means</th><th>What you may do with it</th></tr></thead><tbody><tr><td>{{badge:verified}}</td><td>Somebody ran it and watched it work, on that date, in a named place</td><td>Treat as fact for that date and that setup</td></tr>
+<tr><td>{{badge:measured}}</td><td>Our own pipeline produced this number on a named workload</td><td>Treat as fact about <em>our</em> workload; yours will differ</td></tr>
+<tr><td>{{badge:docs}}</td><td>Read in the vendor&#x27;s documentation on that date; never executed by us</td><td>Check it against the vendor before relying on it — and tell us if it moved</td></tr>
+<tr><td>{{badge:spec}}</td><td>A written specification for something that does not exist</td><td>Never plan around it. Future tense only</td></tr>
+<tr><td>{{badge:unrun}}</td><td>Code we wrote and have never executed</td><td>Read it, then run it and find out. Expect it to be wrong somewhere</td></tr>
+<tr><td>{{badge:projected}}</td><td>Arithmetic, with its workings shown</td><td>Re-do the arithmetic with your own numbers</td></tr></tbody></table></div>
+<h2 id="why-a-model-rather-than-a-disclaimer">Why a model rather than a disclaimer</h2>
+<p>Because the alternative is a page that is <em>mostly</em> true and gives you no way to tell which parts.</p>
+<p>The first site in this family was written by a machine that <strong>could not reach the API it was documenting</strong>. A small, specific set of things was verified in a browser by a human; everything else was read from the vendor&#x27;s reference. A disclaimer at the top would have covered both and distinguished neither. Six states, attached per sentence and joined to a table, mean a reader can see exactly which half they are standing on.</p>
+<p><strong>It also changes what a correction is.</strong> When that site&#x27;s first render finally ran, four claims changed state in one afternoon and two predictions turned out wrong. With a ledger, that is a dated row moving from <code>written, not run</code> to <code>verified</code> — visible, checkable, and worth publishing. Without one, it is a paragraph quietly rewritten.</p>
+<h2 id="the-mix-across-the-family">The mix, across the family</h2>
+<p>{{evidence}}</p>
+<p><strong>Read the <code>docs</code> column as the honest debt.</strong> Those are facts taken from a vendor&#x27;s own documentation and never executed by anybody here — true when read, on the date shown, and the first thing to check if something behaves oddly. <strong>Read <code>unrun</code> as the invitation:</strong> code published so somebody can run it, badged so nobody mistakes it for tested.</p>
+<p><strong>And read <code>verified</code> narrowly.</strong> It means somebody watched it work once, in one place, on one account tier. The most-cited verified claim in this family — that a provider&#x27;s alignment matches its audio to the millisecond — was measured on nine files on a free-tier key in one afternoon. That is enormously better than a guess, and it is not a guarantee.</p>
+<h2 id="where-the-claims-live">Where the claims live</h2>
+<p>Each provider site keeps its own ledger, publishes it as a page, and publishes a machine-readable index of it that this hub syncs. <strong>The hub does not hold a copy of anybody&#x27;s claims</strong> — the counts above are read from those indexes at sync time {{claim:family-live}}, and the links go to the ledgers themselves.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/evidence/index.md">https://providers.sgit.ai/evidence/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:02Z</dd><dt>sha256</dt><dd><code title="bcc4f53de802e405d8f26887d280af34518dcefcb0961f60578d3bb9bc781cc5">bcc4f53de802</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/providers.sgit.ai/evidence/index.md</a> (3,638 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

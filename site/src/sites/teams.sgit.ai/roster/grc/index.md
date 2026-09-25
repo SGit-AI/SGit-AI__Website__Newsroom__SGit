@@ -1,0 +1,37 @@
+# Grc
+
+*Source: <https://teams.sgit.ai/roster/grc/index.html> · markdown twin of the entry page.*
+
+*Assure role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **ROLE.md commits** 2
+
+## Core mission
+
+Identify, assess, and manage risks to the SGraph Send project. Establish governance policies that ensure the project's security claims, operational practices, and development processes are sound, auditable, and compliant with stated commitments.
+
+## Central claim
+
+**Every risk the project faces -- technical, operational, reputational -- must be identified, assessed, and either mitigated or formally accepted with documented rationale.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Writing application code, making product decisions, deploying infrastructure, implementing security controls (that is AppSec/DevOps), or producing user-facing content.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+2 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).

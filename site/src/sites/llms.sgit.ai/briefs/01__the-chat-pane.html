@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>01 — The chat pane: three surfaces · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#01-the-chat-pane-three-surfaces">01 — The chat pane: three surfaces</a></li><li class="l2"><a href="#1-the-decision-table">1. The decision table</a></li><li class="l2"><a href="#2-surface-1-the-vault-chat-panel">2. Surface 1 — the vault chat panel</a></li><li class="l2"><a href="#3-surface-2-the-same-panel-beside-a-running-app">3. Surface 2 — the same panel, beside a running app</a></li><li class="l2"><a href="#4-surface-3-ai-inside-your-app">4. Surface 3 — AI inside your app</a></li><li class="l2"><a href="#5-turning-it-on-for-a-vault-once">5. Turning it on for a vault (once)</a></li><li class="l2"><a href="#6-model-defaults-a-bug-worth-publishing">6. Model defaults — a bug worth publishing</a></li><li class="l2"><a href="#7-what-to-build-first">7. What to build first</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> · <a href="01__the-chat-pane.md">raw text</a> · <a class="ext" href="https://llms.sgit.ai/briefs/01__the-chat-pane.md">live ↗</a></p><article class="source"><h1 id="01-the-chat-pane-three-surfaces">01 — The chat pane: three surfaces</h1>
+<p>The commission asked for <em>&quot;the work and code samples of how to add an LLM chat pane to websites and vaults.&quot;</em> This document is the decision layer — <strong>which of three surfaces you want</strong>. <code>code__chat-pane-samples.md</code> is the code.</p>
+<hr>
+<h2 id="1-the-decision-table">1. The decision table</h2>
+<div class="table"><table><thead><tr><th></th><th><strong>1. Vault chat panel</strong></th><th><strong>2. Beside a running app</strong></th><th><strong>3. Inside your app</strong></th></tr></thead><tbody><tr><td><strong>Where</strong></td><td><code>/vault</code> → ✨ AI Chat</td><td><code>/en-gb/app/</code> → ✨ AI</td><td>your app&#x27;s own UI</td></tr>
+<tr><td><strong>Code required</strong></td><td><strong>none</strong></td><td><strong>none</strong></td><td>yes — <code>02__</code></td></tr>
+<tr><td><strong>Permission required</strong></td><td><strong>none</strong></td><td><strong>none</strong></td><td><code>permissions.llm.chat</code></td></tr>
+<tr><td><strong>Who holds the key</strong></td><td>host, at the real origin</td><td>host, at the real origin</td><td>host — <strong>never your frame</strong></td></tr>
+<tr><td><strong>Who holds the microphone</strong></td><td>host</td><td>host</td><td>host, via <code>sg.llm.listen()</code></td></tr>
+<tr><td><strong>Can the app read the conversation?</strong></td><td>n/a</td><td><strong>no</strong></td><td>it <em>is</em> the app</td></tr>
+<tr><td><strong>Works on existing apps unchanged</strong></td><td>n/a</td><td><strong>yes</strong></td><td>no</td></tr>
+<tr><td><strong>Use when</strong></td><td>you want to chat about vault files</td><td>you want AI beside an app you did not write</td><td>AI is part of what your app <em>does</em></td></tr></tbody></table></div>
+<p><strong>Start at the top and stop as soon as one fits.</strong> Surfaces 1 and 2 cost nothing to adopt and carry no attack surface of your own. Surface 3 is for when the model is part of the product, not a companion to it.</p>
+<hr>
+<h2 id="2-surface-1-the-vault-chat-panel">2. Surface 1 — the vault chat panel</h2>
+<p>Open it from <strong>✨ AI Chat</strong> in the vault header, or <strong>➕ Add to chat</strong> on any file. Nothing to build.</p>
+<p>What it does, and each of these is a design decision worth publishing:</p>
+<ul><li><strong>Attach several files.</strong> Each shows as a chip with a <code>×</code>. <strong>Re-adding a file replaces its contents</strong>, so it refreshes after an edit rather than duplicating.</li><li><strong>Files share one 24,000-character budget</strong> — <em>&quot;not one each, so attaching a second file cannot silently double your prompt or your bill.&quot;</em> Trimmed files say <code>TRUNCATED</code> <strong>in the text the model sees</strong>, <em>&quot;so it cannot pretend to have read the whole thing.&quot;</em></li><li><strong>⚙ request params</strong> — temperature, top-p, max tokens. Blank means the provider&#x27;s default. <strong>Max tokens is clamped to the vault policy, and says so when it clamps.</strong></li><li><strong>🧾 AI Requests</strong> — every call with its <strong>OpenRouter generation id</strong>, tokens, cost, latency and the files it referenced; running totals; CSV/JSON export. <strong>Billed and estimated costs are shown separately</strong> — <em>&quot;an estimate is never rendered as a bill.&quot;</em></li><li><strong>🖼 paste a screenshot</strong> — attaches as a thumbnail and goes with your <strong>next message only, then clears</strong>: <em>&quot;unlike a file, an image left attached would silently re-send and re-bill on every turn.&quot;</em> Downscaled to 1568px. <strong>If the picked model cannot read images the panel says so on attach, names it, and suggests ones that can.</strong></li><li><strong>🎤 voice</strong> — tap the mic, speak, tap ■. Recording is stated <strong>in words</strong> — <em>&quot;● Recording — your microphone is on&quot;</em> — <em>&quot;not left to an icon.&quot;</em> <strong>Cancel releases the device, not just the bar.</strong> Transcription uses an audio-capable model (<code>google/gemini-3.5-flash</code> by default), <em>&quot;not your chat model, which almost certainly cannot hear.&quot;</em></li><li><strong>Panels are ordinary <code>sg-layout</code> panes</strong> — drag, resize, close. Closing <strong>parks</strong> them: transcript, attached files and cost pills survive reopening.</li></ul>
+<p><strong>Every one of those bullets is a small honesty mechanism</strong>, and collectively they are the strongest argument the site can make. <code>TRUNCATED</code> in the model&#x27;s own text, one shared budget rather than one per file, estimates never shown as bills, images that clear after one turn, recording announced in words. <strong>Publish them as a list of decisions with their reasons</strong> — that page is more persuasive than any feature tour.</p>
+<hr>
+<h2 id="3-surface-2-the-same-panel-beside-a-running-app">3. Surface 2 — the same panel, beside a running app</h2>
+<p>Open a vault app at <code>/en-gb/app/#&lt;key&gt;</code> and there is a <strong>✨ AI</strong> button in the HUD, next to <em>Open Vault</em>. Identical chat and requests panels, beside the app.</p>
+<blockquote><p><strong><em>&quot;The app is not involved.</strong> The panel runs on host chrome at the real origin, so it holds the vault key and the microphone directly; the sandboxed app frame sees neither, cannot read the conversation, and needs no <code>permissions.llm.*</code>. <strong>Every existing vault app gets this without being changed.</strong>&quot;</em></p></blockquote>
+<p>App authors get a <strong>preference, not authority</strong>:</p>
+<pre><code class="lang-json">{ &quot;hud&quot;: { &quot;show&quot;: { &quot;llm&quot;: false } } }</code></pre>
+<p><code>false</code> hides the button if a chat control would clash with their own UI; <code>true</code> forces it on in <code>minimal</code> mode, where it is off by default. <em>&quot;That is a preference about chrome, not authority: it does not affect what the app itself may do.&quot;</em></p>
+<p><strong>This surface is the best-value thing on the whole site</strong> — every existing app gets an AI panel for one config line or none — and it is currently documented in exactly one debrief.</p>
+<hr>
+<h2 id="4-surface-3-ai-inside-your-app">4. Surface 3 — AI inside your app</h2>
+<p>This is the one that needs code and grants. Three steps, and step 2 is the one people skip.</p>
+<p><strong>1. Declare the grants</strong> in <code>app.json</code> — default-deny, like every other capability:</p>
+<pre><code class="lang-json">{
+  &quot;entry&quot;: &quot;index.html&quot;,
+  &quot;permissions&quot;: {
+    &quot;llm&quot;: { &quot;chat&quot;: true, &quot;models&quot;: true, &quot;usage&quot;: true }
+  }
+}</code></pre>
+<p><em>&quot;<code>chat</code> is the one that spends money; <code>models</code> and <code>usage</code> are read-only. Grant only what you use.&quot;</em></p>
+<p><strong>2. Check availability BEFORE you render a chat UI.</strong></p>
+<blockquote><p><em>&quot;<code>sg.llm.available()</code> is <strong>not optional politeness</strong>. Unlike other namespaces, LLM access depends on *runtime</em> state: whether the vault has a key configured, whether this is a read-only session, whether the budget is spent. <strong>Ask first, then decide what to draw.</strong>&quot;*</p></blockquote>
+<pre><code class="lang-js">const a = await sg.llm.available();
+if (!a.ok) { showFallbackUI(a.reason); return; }   // ENOKEY | EPERM | EREADONLY
+console.log(&#x27;ready:&#x27;, a.model, &#x27;remaining:&#x27;, a.remaining);</code></pre>
+<p><strong>3. Chat.</strong> Full samples in <code>code__chat-pane-samples.md</code>; the API in <code>02__</code>.</p>
+<hr>
+<h2 id="5-turning-it-on-for-a-vault-once">5. Turning it on for a vault (once)</h2>
+<p>Before any surface works, the vault needs a key:</p>
+<ol><li>Open the vault with its <strong>full key</strong> — <em>&quot;an owner-sealed key cannot be unsealed in a read-only session — <strong>that is cryptographic, not a policy check</strong>.&quot;</em></li><li><strong>Settings → AI models (OpenRouter)</strong> → paste an OpenRouter key → <strong>Test</strong> → <strong>Save</strong>.</li><li>Optional: default model, an allowed-models list as <strong>globs</strong> (<code>anthropic/*</code>), and spend caps (<code>maxCostPerSession</code>, <code>maxCallsPerSession</code>, <code>maxTokensPerCall</code>).</li></ol>
+<p><strong>Two key tiers, and the choice matters:</strong></p>
+<div class="table"><table><thead><tr><th>Tier</th><th>Behaviour</th></tr></thead><tbody><tr><td><strong><code>owner</code></strong> (default)</td><td>Sealed with the vault&#x27;s <strong>write</strong> key. A read-only opener gets <code>EREADONLY</code> and cannot use it</td></tr>
+<tr><td><strong><code>shared</code></strong></td><td>Readable by anyone who can open the vault</td></tr></tbody></table></div>
+<blockquote><p><em>&quot;Prefer <code>owner</code> unless you deliberately want every opener to be able to spend.&quot;</em></p></blockquote>
+<p>And the warning that belongs on every configuration page:</p>
+<blockquote><p><em>&quot;<strong>Know what you are storing.</strong> With a key configured, the vault contains a credential. Sharing the vault key shares the ability to spend it. Short-lived minted credentials are planned (Phase 4) and would remove this; <strong>until then, treat such a vault as carrying a secret.</strong>&quot;</em></p></blockquote>
+<hr>
+<h2 id="6-model-defaults-a-bug-worth-publishing">6. Model defaults — a bug worth publishing</h2>
+<p>From the status section, and it is a good story:</p>
+<blockquote><p><em>&quot;With no <code>models.default</code> configured the panel auto-picks, and it now tries named models first (<code>anthropic/claude-sonnet-5</code>, then opus-5, sonnet-4, gemini-3.5-flash, gpt-5). <strong>It used to match only on the vendor prefix against an alphabetically sorted list, which picked <code>anthropic/claude-3-haiku</code> — the oldest model on the key, and not a vision model.</strong>&quot;</em></p></blockquote>
+<p>Alphabetical order picked the worst available model, silently, and the symptom would have looked like <em>&quot;the AI is bad&quot;</em> rather than <em>&quot;the default is wrong.&quot;</em> An explicit <code>models.default</code> and the <code>models.allow</code> list still win.</p>
+<p><strong>Publish it under a &quot;defaults are a design decision&quot; heading.</strong> It is exactly the kind of thing the site should teach.</p>
+<hr>
+<h2 id="7-what-to-build-first">7. What to build first</h2>
+<ol><li><strong>The decision table</strong> (§1) as the landing page. Most readers will discover they need no code at all, which is the right outcome.</li><li><strong>Surface 2&#x27;s one-line HUD config</strong>, because <em>&quot;every existing vault app gets this without being changed&quot;</em> is the single highest-value sentence in the corpus and it is buried in a debrief.</li><li><strong>The honesty-mechanism list</strong> (§2), as decisions-with-reasons rather than features.</li><li><strong>Then the code</strong> — <code>02__</code> and the samples.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/briefs/01__the-chat-pane.md">https://llms.sgit.ai/briefs/01__the-chat-pane.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:54Z</dd><dt>sha256</dt><dd><code title="24f3fe82384e7ba9b6de3fe983a60d8ebe009162cbc21c763e650aca314e40d1">24f3fe82384e</code></dd><dt>Frozen copy</dt><dd><a href="01__the-chat-pane.md">sites/llms.sgit.ai/briefs/01__the-chat-pane.md</a> (8,378 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

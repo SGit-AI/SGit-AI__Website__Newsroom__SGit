@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Local and offline models · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#local-and-offline-models">Local and offline models</a></li><li class="l1"><a href="#local-and-offline-models-1">Local and offline models</a></li><li class="l2"><a href="#the-offline-chat-and-the-flight-it-was-built-for">The offline chat, and the flight it was built for</a></li><li class="l2"><a href="#two-sg-compute-workload-specs">Two sg-compute workload specs</a></li><li class="l2"><a href="#the-through-line">The through-line</a></li><li class="l2"><a href="#why-this-matters-more-for-models-than-for-most-dependencies">Why this matters more for models than for most dependencies</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://llms.sgit.ai/local/index.md">live ↗</a></p><article class="source"><h1 id="local-and-offline-models">Local and offline models</h1>
+<p><em>Source: <a href="index.html">https://llms.sgit.ai/local/index.html</a><a class="ext live" href="https://llms.sgit.ai/local/index.html" title="live page">↗</a> · site v0.2.0 · the markdown twin of this page, generated from it.</em></p>
+<hr>
+<p><a href="../index.html">llms.sgit.ai</a><a class="ext live" href="https://llms.sgit.ai/index.md" title="live page">↗</a> / local</p>
+<h1 id="local-and-offline-models-1">Local and offline models</h1>
+<p>Ollama appears in 144 files in this corpus, and behind them are three concrete artefacts rather than an intention.</p>
+<h2 id="the-offline-chat-and-the-flight-it-was-built-for">The offline chat, and the flight it was built for</h2>
+<p>March 2026: a chat UI plus a FastAPI proxy to a host-native Ollama, with sessions surviving container rebuilds, built on the same <code>sg-layout</code> web component the vault UI uses. The stated requirement is disarmingly specific and it is the reason the thing is any good:</p>
+<blockquote><p>Offline LLM chat during travel (flight on 19 March 2026). Must work completely disconnected from the internet once the Docker image is built and Ollama models are pulled.</p></blockquote>
+<p>A requirement with a date in it produces a different artefact from a requirement with a principle in it. &quot;Must work offline&quot; gets argued about; &quot;the flight is on the 19th&quot; gets built.</p>
+<h2 id="two-sg-compute-workload-specs">Two sg-compute workload specs</h2>
+<div class="table"><table><thead><tr><th>Spec</th><th>Class</th><th>Size</th><th>Boot</th><th>Status</th></tr></thead><tbody><tr><td><code>ollama</code></td><td>llm-inference</td><td>939 LOC</td><td>120s</td><td>EXPERIMENTAL</td></tr>
+<tr><td><code>local_claude</code></td><td>llm-inference</td><td>1,498 LOC</td><td>180s</td><td>EXPERIMENTAL</td></tr></tbody></table></div>
+<p>Each carries a manifest, a CLI, a service, schemas and tests. There is also a <code>docker/local-claude</code> image: a local model alongside a Claude Code harness.</p>
+<p><strong>The specs are not this site&#x27;s to own.</strong> <a href="../../sg-compute.sgit.ai/index.html">sg-compute.sgit.ai</a><a class="ext live" href="https://sg-compute.sgit.ai" title="live page">↗</a> owns the workload specs and their lifecycle. This page links to them for the local-model story and does not duplicate them, in the same way <a href="../provenance/index.html#grounding">the grounding ladder</a><a class="ext live" href="https://llms.sgit.ai/provenance/index.md#grounding" title="live page">↗</a> is stated in three lines and left to the site that owns it.</p>
+<h2 id="the-through-line">The through-line</h2>
+<p>The same <code>/api/chat</code> proxy shape works against a local Ollama and against a remote tunnel, which is why the offline work was never a detour.</p>
+<p>That also makes the offline chat the estate&#x27;s clearest existing example of <a href="../websites/index.html#options">option (a), the backend proxy</a><a class="ext live" href="https://llms.sgit.ai/websites/index.md#options" title="live page">↗</a>, on the websites page: a chat UI whose transport is an endpoint you control. It is small, it is real, and it is closer to a website chat pane than anything else that exists here.</p>
+<h2 id="why-this-matters-more-for-models-than-for-most-dependencies">Why this matters more for models than for most dependencies</h2>
+<p>The open-source position in this estate is that <em>you are one SLA away from losing access</em>. For most dependencies that is a slow problem: a library can be forked, a service can be migrated over a quarter. For a hosted model it is not slow and it is not always about outages. A model can be deprecated, re-tuned, re-priced, or restricted by policy, and your outputs change underneath you without anything failing. <a href="../provenance/index.html">The provenance thread</a><a class="ext live" href="https://llms.sgit.ai/provenance/index.md" title="live page">↗</a> is what makes that visible: if you logged the generation id and the model, you can at least tell when the ground moved.</p>
+<p>A local model is worse at almost everything and it is <strong>yours</strong>. That is the trade, stated plainly, and this estate has taken both sides of it deliberately: <a href="../openrouter/index.html">an aggregator for reach</a><a class="ext live" href="https://llms.sgit.ai/openrouter/index.md" title="live page">↗</a>, local for the case where reach is not available.</p>
+<p><a href="../openrouter/index.html">← The provider layer</a><a class="ext live" href="https://llms.sgit.ai/openrouter/index.md" title="live page">↗</a> <a href="../agents/index.html">Pages that models read →</a><a class="ext live" href="https://llms.sgit.ai/agents/index.md" title="live page">↗</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/local/index.md">https://llms.sgit.ai/local/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:54Z</dd><dt>sha256</dt><dd><code title="fc39058bec97d525bdb123df971931bbebacac4ca841d5fa67775006a64f5259">fc39058bec97</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/llms.sgit.ai/local/index.md</a> (3,227 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

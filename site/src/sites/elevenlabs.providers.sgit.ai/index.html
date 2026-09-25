@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#what-this-site-is-and-is-not">What this site is, and is not</a></li><li class="l2"><a href="#1-disclosure">1 · Disclosure</a></li><li class="l2"><a href="#2-what-it-grants">2 · What it grants</a></li><li class="l2"><a href="#3-which-pattern-and-for-which-product">3 · Which pattern — and for which product</a></li><li class="l2"><a href="#4-where-the-key-goes">4 · Where the key goes</a></li><li class="l2"><a href="#5-the-bounding-primitive">5 · The bounding primitive</a></li><li class="l2"><a href="#6-the-minimal-working-example">6 · The minimal working example</a></li><li class="l2"><a href="#7-what-we-use-it-for">7 · What we use it for</a></li><li class="l2"><a href="#8-what-it-cost">8 · What it cost</a></li><li class="l2"><a href="#9-what-went-wrong">9 · What went wrong</a></li><li class="l3"><a href="#and-what-went-wrong-the-first-time-somebody-ran-it">And what went wrong the first time somebody ran it</a></li><li class="l3"><a href="#what-has-not-gone-wrong-because-nobody-has-tried-it">What has not gone wrong, because nobody has tried it</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: ElevenLabs — text to speech with character-level timestamps
+description: &quot;An independent report on the ElevenLabs API: what it cost on a named workload on a named date, what broke, and which of four client-side credential patterns the product can actually support.&quot;
+lead: &quot;This is a report, not a tutorial. The vendor&#x27;s documentation explains the API better than we can and stays fresher; what follows is what happened when we actually used it — <strong>what it cost on a named workload on a named date, what broke, and which credential patterns the product can support.</strong> Sections 8 and 9 are the point of the page.&quot;
+order: 1
+toc: true
+wide: false
+provenance:
+commit: 7d1916aca5f3
+date: 7 September 2026
+note: &quot;Prose from platforms/elevenlabs.md, with the figures behind it from four reels&#x27; worth of pipeline findings.&quot;
+platform_grants:</p>
+<ul><li>verb: send
+object: text
+reach: endpoint
+reversible: true
+product: Text to speech
+note: the words you send leave for the model</li><li>verb: read
+object: audio+timing
+reach: self
+reversible: true
+product: Text to speech
+note: &quot;character-level alignment — the capability the vendor does not frame as one&quot;</li><li>verb: spend
+object: characters
+reach: tenant
+reversible: true
+product: any
+note: bounded by the plan&#x27;s monthly quota and nothing narrower</li><li>verb: create
+object: voice
+reach: tenant
+reversible: true
+product: Voices — instant and professional cloning
+note: &quot;<strong>the row a reader will not expect.</strong> A voice that did not exist before, from under two minutes of audio. Deletable, so reversible in the platform&#x27;s terms — and consent is not a technical control&quot;</li><li>verb: read
+object: audio
+reach: tenant
+reversible: true
+product: Speech to text (Scribe), forced alignment
+note: transcription of material you supply, priced by the hour</li><li>verb: send
+object: media
+reach: endpoint
+reversible: true
+product: Dubbing
+note: media you supply, re-voiced in another language</li><li>verb: send
+object: message
+reach: world
+reversible: false
+product: Agents (conversational)
+note: &quot;<strong>the only irreversible row this vendor offers.</strong> A live agent speaks to a person, and a thing said to somebody cannot be unsaid&quot;
+grants:</li><li>verb: spend
+object: characters
+reach: tenant
+reversible: true
+bounded_by: the plan&#x27;s monthly quota only — there is no per-key spend limit</li><li>verb: send
+object: text
+reach: endpoint
+reversible: true
+bounded_by: narration text leaves for the model</li><li>verb: read
+object: audio+timing
+reach: self
+reversible: true
+bounded_by: &quot;character-level alignment — the new capability this API brings&quot;
+not_granted: [voice cloning, dubbing, agents]
+patterns:</li><li>provider: ElevenLabs
+product: Text to speech (REST)
+server: &quot;Yes — ours, until sg.tts ships&quot;
+p0:
+verdict: never
+note: &quot;CORS allows it; the account quota is the only bound&quot;
+p1:
+verdict: no
+note: &quot;no per-key spend limit exists&quot;
+p2:
+verdict: yes
+note: &quot;only with a server we run&quot;
+p3:
+verdict: spec
+note: &quot;sg.tts specified; terms file in the vault&quot;</li><li>provider: ElevenLabs
+product: Agents (conversational)
+server: &quot;Yes — the vendor&#x27;s minter holds your key&quot;
+p0:
+verdict: never
+note: &quot;the vendor forbids it explicitly&quot;
+p1:
+verdict: no
+note: &quot;no bounded key to mint&quot;
+p2:
+verdict: yes
+note: &quot;vendor signed URL, 15 min; or a hostname allowlist — not both&quot;
+p3:
+verdict: na
+note: &quot;not attempted&quot;
+
+<hr></li></ul>
+<p>&lt;div class=&quot;note&quot;&gt;&lt;p&gt;&lt;b&gt;How to read this page.&lt;/b&gt; Every factual claim carries a chip saying how we know it: {{badge:verified}} we ran it and watched it work, on that date · {{badge:measured}} our own pipeline produced this number on a named workload · {{badge:docs}} we read it in the vendor&#x27;s documentation on that date and never executed it · {{badge:spec}} it does not exist yet · {{badge:unrun}} we wrote it and never ran it · {{badge:projected}} arithmetic, with the workings shown. Click any chip for &lt;a href=&quot;/ledger/&quot;&gt;the ledger&lt;/a&gt;, which lists all of them in one table.&lt;/p&gt;&lt;/div&gt;</p>
+<h2 id="what-this-site-is-and-is-not">What this site is, and is not</h2>
+<p><strong>It is narrower than the vendor&#x27;s own environment, not better.</strong> The vendor serves millions of users across every workload; this site serves one — narrating explainer videos from a scripted pipeline — and reports what that cost, where the key had to live, and what broke. A general-purpose interface cannot be narrow, which is why this one does not try to be: <a href="experiments/index.html">the labs here</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/" title="live page">↗</a> exist because the vendor&#x27;s own console does not fit this workflow, not because it is inadequate.</p>
+<p><strong>It is a report with a workbench attached, not a tutorial and not an index of somebody else&#x27;s documentation.</strong> If a section here could be replaced by a link to the vendor, it should be deleted, and the vendor&#x27;s page is linked with the date we read it. What this site has that nobody else does is <a href="index.html#8-what-it-cost">what it cost on a named workload on a named date</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/#8-what-it-cost" title="live page">↗</a>, <a href="index.html#9-what-went-wrong">what went wrong</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/#9-what-went-wrong" title="live page">↗</a>, and <a href="patterns/index.html">which credential patterns the product can actually support</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/patterns/" title="live page">↗</a>.</p>
+<p><strong>&quot;Provider&quot; here means one thing only: a service that serves models over an API</strong> — the sense this estate&#x27;s own code uses, where a constant of that name holds an entry per model service. It does not mean a customer who redistributes capability to the people they serve, which is the other established sense in this estate and is not what any page here is about.</p>
+<p><strong>It is not an endorsement, and not the vendor&#x27;s.</strong> <a href="disclosures/index.html">No commercial relationship exists</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/disclosures/" title="live page">↗</a>, the page saying so shipped before there was anything to disclose, and every claim carries <a href="ledger/index.html">the state that says how we know it</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/ledger/" title="live page">↗</a>.</p>
+<h2 id="1-disclosure">1 · Disclosure</h2>
+<p><strong>None.</strong> No credits, programme, or commercial relationship with ElevenLabs as of 5 September 2026. The key used for the one session reported in §8 is a Creator-tier key we pay for ourselves at list price. The full list — which currently has no entries in the &quot;relationship&quot; column — is at <a href="disclosures/index.html">/disclosures/</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/disclosures/" title="live page">↗</a>, and it shipped with this site&#x27;s first version precisely so that the page&#x27;s existence is not read as evidence of a relationship.</p>
+<h2 id="2-what-it-grants">2 · What it grants</h2>
+<p>The rows an agent&#x27;s grant gains when this platform is connected, as capability tuples — <em>verb × object class × reach</em>, with reversibility marked. This is the block a capability index joins on; it is emitted as front-matter in <a href="index.html">this page&#x27;s markdown</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/index.md" title="live page">↗</a> as well as in the table below.</p>
+<p>{{grants}}</p>
+<p><strong>Read the two tables as one argument.</strong> The first is what an agent gains the moment this provider is connected at all; the second is what the key this evaluation actually used can reach. The gap between them is the work a scope does, and it is the only part of a credential story this vendor lets you control.</p>
+<p><strong>The row worth stopping on is <code>create × voice × tenant</code>.</strong> Connecting this provider gives an agent the capability to <em>produce a voice that did not exist</em> — instant cloning takes under two minutes of audio. That is a different order of thing from producing audio, no vendor page frames it as a capability, and the platform&#x27;s controls for it are procedural rather than technical: professional cloning requires verification of the speaker, and instant cloning requires you to have the right to the recording you upload. <strong>Consent is not something the API can check.</strong> Our key is scoped to exclude it, and the <a href="experiments/key-scope/index.html">key-scope probe</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/key-scope/" title="live page">↗</a> is how you check that yours is too.</p>
+<p><strong>One row a reader might expect is deliberately absent.</strong> It has been proposed that connecting a voice platform grants <code>send × audio × world</code>, irreversibly, on the reasoning that audio sent is sent. <strong>Not for this product.</strong> The text-to-speech endpoint returns audio to the caller; nothing leaves for the world, and the estate&#x27;s own primitive distinguishes <code>endpoint</code> reach from <code>world</code> reach exactly here. The irreversible row this vendor does offer is Agents, in the table above, and it is scoped out of our key. Saying otherwise would tell a reader that generating narration publishes it — which is <a href="index.html#4-where-the-key-goes">the error §4 exists to prevent</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/#4-where-the-key-goes" title="live page">↗</a>, one product over. {{claim:agents-only-signed-urls}}</p>
+<p>Two more things are worth saying in prose. First, <strong><code>read × audio+timing × self</code> is the new capability</strong> — this API returns the start and end time of every character it speaks, which the pipeline that drove this evaluation never had from any other provider. Everything in the <a href="experiments/captions/index.html">captions studio</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/captions/" title="live page">↗</a> is arithmetic on that array. Second, <strong>nothing our key grants reaches the world.</strong> The pipeline receives audio; publishing a video is a separate, human act by a person who watched it first. That distinction is the difference between a narration tool and a voice agent, and it is why Agents is scoped out of the key rather than merely unused.</p>
+<h2 id="3-which-pattern-and-for-which-product">3 · Which pattern — and for which product</h2>
+<p>A vendor with several products has several answers, so this section is indexed by product, not by vendor. The four patterns are defined on <a href="patterns/index.html">/patterns/</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/patterns/" title="live page">↗</a>; the generated matrix, including the sibling provider, is at <a href="comparison/index.html">/comparison/</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/comparison/" title="live page">↗</a>.</p>
+<p><strong>Text to speech (the REST API — what we use).</strong></p>
+<ul><li><strong>Pattern 0, key in the page:</strong> technically available. CORS permits a browser to call <code>api.elevenlabs.io</code> directly {{claim:cors-browser}} — and the only bound on that key is the account&#x27;s monthly quota {{claim:no-per-key-spend-limit}}. So a key in a published page is <em>pattern 0 with a ceiling</em>. <strong>Never publish one.</strong> Every lab on this site is the narrower case: the key&#x27;s owner, testing their own key, in their own browser.</li><li><strong>Pattern 1, bounded key in the page:</strong> <strong>not available.</strong> ElevenLabs keys are <em>scoped</em>, not <em>bounded</em> — see §5.</li><li><strong>Pattern 2, short-lived token:</strong> available <strong>only with a server we run</strong>. The vendor offers no short-lived credential for TTS {{claim:agents-only-signed-urls}}. Such a minter would be ours to build, host and pay for; it does not exist.</li><li><strong>Pattern 3, host holds the key:</strong> <a href="pattern-three/index.html">specified, not shipped</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/pattern-three/" title="live page">↗</a> {{claim:sg-tts-spec}}.</li></ul>
+<p><strong>Agents (conversational).</strong> Pattern 2 with the vendor&#x27;s own signed URL (15 minutes), or a hostname allowlist — and the vendor&#x27;s documentation says not to configure both on one agent {{claim:agents-only-signed-urls}}. <strong>These mechanisms are the reason §4 exists, and they do not apply to text to speech.</strong></p>
+<h2 id="4-where-the-key-goes">4 · Where the key goes</h2>
+<p>Every quote below carries the <strong>product</strong> it belongs to, the URL, and the date we read it. This is not pedantry: an earlier draft of our own strategy quoted the Agents rule on a TTS page, which would have sent a reader off to build a signed-URL minter for an endpoint that does not accept one.</p>
+<p><strong>Agents product</strong> — read 5 September 2026 at <a class="ext" href="https://elevenlabs.io/docs/eleven-agents/customization/authentication">https://elevenlabs.io/docs/eleven-agents/customization/authentication ↗</a>: &quot;Never expose your ElevenLabs API key client-side.&quot; Signed URLs &quot;are valid for 15 minutes… the conversation must be initiated within the 15 minute window&quot;; allowlists use exact hostname matching; &quot;Do not configure signed URLs and allowlists together on the same agent.&quot; {{claim:agents-only-signed-urls}}</p>
+<p><strong>Text-to-speech product</strong> — there is no equivalent page. The key goes in the <code>xi-api-key</code> request header {{claim:api-key-shape}}, and the only vendor-side control is <strong>scoping a key to endpoints</strong> in the dashboard. No signed URL, no allowlist, no origin check. A TTS key is a bearer credential for the account&#x27;s quota, and the vendor&#x27;s client-side warning above is written about a different product — which does not make it wrong here, only unenforceable here.</p>
+<p>Where the key goes in our own estate, for completeness: owner-sealed at <code>.vault/elevenlabs/config.json</code> (AES-256-GCM under a key derived from the vault&#x27;s <em>write</em> key, so a read-key holder cannot open it), opened for the life of one shell command. A key pasted into a lab on this site goes to this browser&#x27;s <code>localStorage</code> and nowhere else {{claim:keys-local-only}}.</p>
+<h2 id="5-the-bounding-primitive">5 · The bounding primitive</h2>
+<p><strong>The plan&#x27;s monthly character quota</strong>, reported by <code>GET /v1/user/subscription</code> {{claim:plan-quotas}}. That is the whole bound, and it belongs to the account, not to the key.</p>
+<p>Per key, ElevenLabs gives you <strong>scope, not spend</strong>: a key can be restricted to endpoints — text-to-speech yes, dubbing no — which limits <em>what a leaked key can do</em>, and does nothing at all to limit <em>how much of your quota it can burn</em> {{claim:no-per-key-spend-limit}}.</p>
+<p><strong>What it does not cap:</strong></p>
+<ul><li>Any single key can consume the whole account&#x27;s quota.</li><li>Nothing resets faster than the billing cycle — there is no daily or weekly window to fall back to.</li><li>There is no per-key limit, and therefore no equivalent of the thing that saved us on the sibling provider: a refusal at a ceiling you chose in advance {{claim:openrouter-402}}.</li></ul>
+<p>A leaked ElevenLabs key is bounded by the plan. A leaked OpenRouter provisioned key is bounded by the number you typed when you minted it. That difference is the entire reason the <a href="comparison/index.html">comparison table</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/comparison/" title="live page">↗</a> earns its place on this site.</p>
+<h2 id="6-the-minimal-working-example">6 · The minimal working example</h2>
+<p>The smallest thing that runs, as a file rather than a snippet — and every one of these is <strong>written from the vendor&#x27;s reference and never executed</strong> {{claim:examples-unrun}}, because the container that wrote them could not reach the API {{claim:egress-blocked}}.</p>
+<p>{{examples}}</p>
+<p>The pipeline invocation they were written for:</p>
+<pre><code class="lang-bash">export ELEVENLABS_API_KEY=$(node tooling/scripts/vault-secrets.mjs open elevenlabs)
+node examples/tts-timestamps.mjs &quot;&lt;text&gt;&quot; &lt;voice_id&gt; /tmp/out   # → .wav + .words.json + .srt</code></pre>
+<p>The interactive version is <a href="bench/index.html">the bench</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/bench/" title="live page">↗</a>, which <em>has</em> run: it is the source of every {{badge:verified}} chip on this page. The rest of the labs — <a href="experiments/index.html">twelve of them</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/" title="live page">↗</a> — extend the bench to the features this evaluation did not reach, and they are all {{claim:labs-unrun}}.</p>
+<h2 id="7-what-we-use-it-for">7 · What we use it for</h2>
+<p>Nothing in a shipped video yet, and it is worth saying that plainly before the numbers.</p>
+<p>The workload is a video pipeline that renders explainer reels from a <code>reel.json</code> script: one narration string per scene, rendered to audio, composited over stills with the narration text on screen as a caption band. It has run with three speech providers — a local Kokoro model ($0), an OpenRouter-hosted <code>gpt-audio</code> (paid, measured in §8), and now this one, evaluated. Four reels, six cuts, are published.</p>
+<p>What this API would change, ranked by how much it improves those videos rather than by how impressive it is:</p>
+<ol><li><strong>Character-level timestamps</strong> — SRT sidecars, chapters accurate to the sentence, and a word-synced caption band. None of it is possible with either incumbent provider, and all of it is arithmetic on one response field. This is the reason for the evaluation.</li><li><strong>A speed control back.</strong> <code>voice_settings.speed</code>, 0.7–1.2 {{claim:speed-range}}. The incumbent has none, and the cost of that was a portrait cut losing a third of its script rather than 15% of its pace {{claim:openrouter-no-speed}}.</li><li><strong>A pronunciation dictionary</strong>, so the narration text can say <code>sgit.ai</code> instead of <code>sgit dot ai</code> — because in this pipeline <strong>the narration text is the caption text</strong>, so every pronunciation hack is on screen where viewers read it as a typo {{claim:phoneme-models}}.</li><li><strong>Forced alignment of the six existing cuts</strong> — subtitles for videos already published, including the two Kokoro cuts that will never have API timestamps, for about two cents {{claim:alignment-stt-price}}.</li><li><strong>Scribe as a QA gate</strong> — transcribe the finished file, diff it against the script, and catch automatically the two failures we have shipped and then caught by eye.</li></ol>
+<p>Items 1–3 have a lab each on this site. None of the five has been run.</p>
+<h2 id="8-what-it-cost">8 · What it cost</h2>
+<p>&lt;p class=&quot;small dim&quot;&gt;Figures as of &lt;b&gt;7 September 2026&lt;/b&gt;. List prices move; every number below carries the date, the workload size, the model and the request count, because &quot;$0.30 for a 3:46 video&quot; without them is not a fact, it is a vibe.&lt;/p&gt;</p>
+<p>&lt;div class=&quot;tiles&quot;&gt;&lt;div class=&quot;tile cool&quot;&gt;&lt;b&gt;$0.075&lt;/b&gt;&lt;span&gt;the entire ElevenLabs spend behind this report — one bench session, 5 Sep 2026&lt;/span&gt;&lt;em&gt;≈750 characters, 4 generations, &lt;code&gt;eleven_v3&lt;/code&gt;, list price {{claim:bench-cost}}&lt;/em&gt;&lt;/div&gt;&lt;div class=&quot;tile cool&quot;&gt;&lt;b&gt;5.0–5.8&amp;thinsp;s&lt;/b&gt;&lt;span&gt;round trip for a 187-character sample with timestamps, three samples&lt;/span&gt;&lt;em&gt;voice &lt;code&gt;pNInz6obpgDQGcFmaJgB&lt;/code&gt;, &lt;code&gt;eleven_v3&lt;/code&gt;, 5 Sep 2026 {{claim:latency-5s}}&lt;/em&gt;&lt;/div&gt;&lt;div class=&quot;tile hot&quot;&gt;&lt;b&gt;$0.2997&lt;/b&gt;&lt;span&gt;what the same class of workload cost on the incumbent: a 3:46 reel&lt;/span&gt;&lt;em&gt;599 words, 16 requests, &lt;code&gt;openai/gpt-audio&lt;/code&gt;, 3 Sep 2026 {{claim:openrouter-cost-aiuc}}&lt;/em&gt;&lt;/div&gt;&lt;div class=&quot;tile hot&quot;&gt;&lt;b&gt;$0.18–0.36&lt;/b&gt;&lt;span&gt;projected for that reel here — flash to v3&lt;/span&gt;&lt;em&gt;3,600 characters × list rate; no such render has been paid for {{claim:projected-reel-costs}}&lt;/em&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p><strong>What we actually paid ElevenLabs, in full:</strong> one bench session on 5 September 2026 — four generations of the same 187-character sample on <code>eleven_v3</code> with timestamps, about 750 characters, <strong>$0.075</strong> at the list rate of $0.10 per 1,000 characters {{claim:tts-prices}}. That is the entire measured spend. Everything else in this section is arithmetic, and is labelled as such.</p>
+<p><strong>Projected, with the arithmetic shown.</strong> Our scripts run about 6 characters per word; the word counts are measured from the four reels we have rendered {{claim:openrouter-cost-aiuc}}. Characters × the model&#x27;s list rate:</p>
+<div class="table"><table><thead><tr><th>Reel</th><th>Words (measured)</th><th>≈ chars</th><th>Flash @ $0.05/1k</th><th>v3 @ $0.10/1k</th><th>Actually paid (incumbent)</th></tr></thead><tbody><tr><td>AIUC-1 landscape 3:46</td><td>599</td><td>3,600</td><td>$0.18</td><td>$0.36</td><td>$0.2997</td></tr>
+<tr><td>AIUC-1 portrait 2:09</td><td>318</td><td>1,900</td><td>$0.10</td><td>$0.19</td><td>$0.1708</td></tr>
+<tr><td>VoiceDebrief deck landscape 4:17</td><td>699</td><td>4,200</td><td>$0.21</td><td>$0.42</td><td>— (local model, $0)</td></tr>
+<tr><td>VoiceDebrief deck portrait 2:51</td><td>480</td><td>2,900</td><td>$0.14</td><td>$0.29</td><td>— (local model, $0)</td></tr>
+<tr><td>VoiceDebrief pitch landscape 1:55</td><td>304</td><td>1,800</td><td>$0.09</td><td>$0.18</td><td>$0.1554</td></tr>
+<tr><td>VoiceDebrief pitch portrait 1:24</td><td>190</td><td>1,150</td><td>$0.06</td><td>$0.12</td><td>$0.1112</td></tr>
+<tr><td><strong>All six, one pass</strong></td><td><strong>2,590</strong></td><td><strong>15,550</strong></td><td><strong>$0.78</strong></td><td><strong>$1.56</strong></td><td></td></tr></tbody></table></div>
+<p>{{badge:projected}} for the two ElevenLabs columns — no reel has been rendered with this API. {{badge:measured}} for the words and for the right-hand column. The conclusion the arithmetic supports: <strong>v3 costs about what the incumbent costs; flash costs half</strong> — and both are a rounding error against the value of the timestamps, which is the only sound reason to switch.</p>
+<p><strong>And one more measured figure, added 8 September 2026:</strong> the first video made with this API — nine scenes, 1,821 characters, 2:08 of speech, two cuts — cost <strong>$0.18 at list price</strong> and was paid in a free tier&#x27;s quota rather than in money {{claim:first-video}}. Zero re-renders, because the script was written first. <a href="video/index.html">The full account is on /video/</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/video/" title="live page">↗</a>.</p>
+<p><strong>Plan arithmetic.</strong> At about 4,000 characters per video, a Creator plan&#x27;s 220,000 monthly characters is roughly 50 videos a month {{claim:creator-covers-50}}. Rates and quotas: {{claim:plan-quotas}}, {{claim:tts-prices}}.</p>
+<p><strong>Run the arithmetic on your own script</strong> in the <a href="experiments/cost/index.html">cost model</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/cost/" title="live page">↗</a> — it needs no key and makes no network call.</p>
+<h2 id="9-what-went-wrong">9 · What went wrong</h2>
+<p>The section nobody else writes. Four things, in the order they cost us time.</p>
+<p>&lt;div class=&quot;fails&quot;&gt;&lt;div class=&quot;fail&quot;&gt;&lt;p class=&quot;who&quot;&gt;The host, not the vendor&lt;/p&gt;&lt;h3&gt;The app frame&#x27;s CSP ate every request&lt;/h3&gt;&lt;p&gt;The first Connect from inside the vault app failed with &lt;code&gt;connect-src blob: data:&lt;/code&gt; — the SG/App host locks every app frame to &lt;em&gt;no network at all&lt;/em&gt;, by design, and the bench reported the generic &lt;em&gt;Failed to fetch&lt;/em&gt;. Nothing to do with the key, the CORS headers, or the vendor. {{claim:csp-blocks}}&lt;/p&gt;&lt;p&gt;&lt;b&gt;Fixed by&lt;/b&gt; &lt;code&gt;&quot;permissions&quot;: {&quot;network&quot;: true}&lt;/code&gt; in &lt;code&gt;app.json&lt;/code&gt;, which omits the meta tag and makes the host&#x27;s HUD show a standing &quot;direct network access&quot; chip, so the exception is never silent. &lt;b&gt;Right for this vault&lt;/b&gt; — nothing in it is confidential except the sealed keys, which sit below the permission floor and are unreachable from any frame regardless. &lt;b&gt;Wrong for a vault whose app holds private content&lt;/b&gt;: that grant is per-app and it is a real widening.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail&quot;&gt;&lt;p class=&quot;who&quot;&gt;Us, not the vendor&lt;/p&gt;&lt;h3&gt;The container that wrote all of this could not reach the API&lt;/h3&gt;&lt;p&gt;&lt;code&gt;api.elevenlabs.io:443&lt;/code&gt; was refused to the authoring container by the egress proxy — &lt;code&gt;connect_rejected&lt;/code&gt;, organization policy — from curl and from Node, on the regional hosts too. {{claim:egress-blocked}}&lt;/p&gt;&lt;p&gt;So the render shim {{claim:shim-unrun}}, every example script {{claim:examples-unrun}}, the pronunciation-dictionary upload {{claim:lexicon-hypothesis}} and every lab on this site {{claim:labs-unrun}} were written from the vendor&#x27;s reference and have never been executed. &lt;b&gt;This is why the site is badged the way it is.&lt;/b&gt; The one exception is the bench, run from a human&#x27;s own browser, which is the reason there are any {{badge:verified}} chips at all.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail ok&quot;&gt;&lt;p class=&quot;who&quot;&gt;Caught in review, before it shipped&lt;/p&gt;&lt;h3&gt;The mechanism we nearly documented was the wrong product&#x27;s&lt;/h3&gt;&lt;p&gt;An earlier draft carried the Agents rules — &quot;never expose your key client-side&quot;, the 15-minute signed URL, the hostname allowlist — as if they governed text to speech. They do not: &lt;b&gt;the TTS REST API has neither mechanism.&lt;/b&gt; {{claim:agents-only-signed-urls}}&lt;/p&gt;&lt;p&gt;Had it shipped, a reader could have spent a week building a signed-URL minter for an endpoint that does not accept one. The conclusion survived the correction — TTS still needs a server for pattern 2 — but the mechanism named did not. Hence the rule this page obeys: &lt;b&gt;every quote carries its product.&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;p class=&quot;who&quot;&gt;Still open&lt;/p&gt;&lt;h3&gt;Concurrency is unknown, and our render fires 16 requests at once&lt;/h3&gt;&lt;p&gt;Concurrent request limits scale with the plan. Our render fires every scene in parallel — 10 to 16 requests — so a &lt;code&gt;429&lt;/code&gt; mid-render is the most likely first failure on a small plan, and we have never provoked one to find out where the wall is. {{claim:concurrency-unknown}}&lt;/p&gt;&lt;p&gt;The &lt;a href=&quot;/experiments/concurrency/&quot;&gt;concurrency probe&lt;/a&gt; exists to answer exactly this, at a cost of a few cents. Nobody has run it. Until somebody does, the honest planning number for a Starter or Creator plan is &lt;em&gt;unknown&lt;/em&gt;, and the mitigation — a semaphore in the shim — is written but untested.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<h3 id="and-what-went-wrong-the-first-time-somebody-ran-it">And what went wrong the first time somebody ran it</h3>
+<p>On 8 September 2026 the render path ran for the first time {{claim:first-video}}. Three of the four things that broke are the vendor&#x27;s, and one is ours:</p>
+<p>&lt;div class=&quot;fails&quot;&gt;&lt;div class=&quot;fail&quot;&gt;&lt;p class=&quot;who&quot;&gt;Their tier gate&lt;/p&gt;&lt;h3&gt;PCM output is Pro-and-above&lt;/h3&gt;&lt;p&gt;&lt;code&gt;403&lt;/code&gt;, naming the format. {{claim:pcm-gated}} The shim asks for PCM to skip a decoder, so on any lower tier that is a dead path with a six-line fallback.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail&quot;&gt;&lt;p class=&quot;who&quot;&gt;Their model&lt;/p&gt;&lt;h3&gt;Stitching is not available on v3&lt;/h3&gt;&lt;p&gt;&lt;code&gt;400 unsupported_model&lt;/code&gt; for &lt;code&gt;previous_text&lt;/code&gt;/&lt;code&gt;next_text&lt;/code&gt;. {{claim:stitching-v3}} The first request failed before any audio existed, and &lt;a href=&quot;/experiments/text-handling/&quot;&gt;the lab that offered the same combination&lt;/a&gt; now refuses it.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail ok&quot;&gt;&lt;p class=&quot;who&quot;&gt;Their key scoping, working&lt;/p&gt;&lt;h3&gt;The 401 that names its own permission&lt;/h3&gt;&lt;p&gt;&lt;em&gt;&amp;ldquo;missing the permission &lt;code&gt;pronunciation_dictionaries_write&lt;/code&gt;&amp;rdquo;&lt;/em&gt;. {{claim:key-scope-observed}} Precise about what the key may &lt;em&gt;do&lt;/em&gt;, silent about what it may &lt;em&gt;spend&lt;/em&gt; — which is &lt;a href=&quot;/#5-the-bounding-primitive&quot;&gt;§5&lt;/a&gt; arriving as an error message.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail&quot;&gt;&lt;p class=&quot;who&quot;&gt;Ours&lt;/p&gt;&lt;h3&gt;The encoder added 14 seconds of silence&lt;/h3&gt;&lt;p&gt;ffmpeg&#x27;s &lt;code&gt;-shortest&lt;/code&gt; with a looped still ran past the end of the audio, up to 1.8 s per scene. {{claim:shortest-trap}} &lt;b&gt;The provider&#x27;s timing was exact to the millisecond&lt;/b&gt; {{claim:alignment-exact}} — the drift was entirely ours, which is the first time this estate has been able to say which.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<h3 id="what-has-not-gone-wrong-because-nobody-has-tried-it">What has not gone wrong, because nobody has tried it</h3>
+<p>The most useful thing in this section is the list of failures we have <em>not yet had the opportunity to have.</em> {{claim:names-test}} {{claim:cue-rule}} {{claim:labs-unrun}} Every one of them has a lab on this site, and each lab prints a result you can paste back into the vault as evidence.</p>
+<p>The full list of what remains unverified — and who could verify it — is <a href="ledger/index.html#open-items">the open items</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/ledger/#open-items" title="live page">↗</a>, which is the last section of the ledger.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/index.md">https://elevenlabs.providers.sgit.ai/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:48Z</dd><dt>sha256</dt><dd><code title="4b755944289b6949127fe2d491fbf2867fd07c1c4b2582274c1b509b92402580">4b755944289b</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/index.md</a> (25,296 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

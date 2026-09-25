@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>issues-fs.sgit.ai — the issues are files and the files are a graph · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · issues-fs.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#issues-fssgitai-the-issues-are-files-and-the-files-are-a-graph">issues-fs.sgit.ai — the issues are files and the files are a graph</a></li><li class="l2"><a href="#it-installs-and-it-works-today">It installs and it works, today</a></li><li class="l2"><a href="#what-is-built">What is built</a></li><li class="l2"><a href="#three-agent-operable-surfaces">Three agent-operable surfaces</a></li><li class="l2"><a href="#what-you-can-install-right-now">What you can install right now</a></li><li class="l2"><a href="#why-a-graph-rather-than-a-schema-of-fields">Why a graph rather than a schema of fields</a></li><li class="l2"><a href="#the-backlog-for-when-this-project-has-energy-again">The backlog, for when this project has energy again</a></li><li class="l2"><a href="#for-an-agent">For an agent</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/issues-fs.sgit.ai.html">issues-fs.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://issues-fs.sgit.ai/index.md">live ↗</a></p><article class="source"><h1 id="issues-fssgitai-the-issues-are-files-and-the-files-are-a-graph">issues-fs.sgit.ai — the issues are files and the files are a graph</h1>
+<blockquote><p>A node is a JSON file on disk. An edge is a typed verb stored on <strong>both</strong> endpoints. The
+folder hierarchy is the containment structure. <strong>Nothing runs</strong> — no server, no daemon, no
+database — so the tracker lives inside the repository it tracks, versions with it, branches
+with it, and can be read by <code>cat</code>, <code>grep</code> and <code>find</code>.</p></blockquote>
+<p><em>Source: <a href="index.html">https://issues-fs.sgit.ai/index.html</a><a class="ext live" href="https://issues-fs.sgit.ai/index.html" title="live page">↗</a> · site v0.1.2 · markdown twin of the front page.</em></p>
+<p><strong>5,401</strong> lines of source across 98 files · <strong>604</strong> test functions across 45 files, 1.5 lines of
+test per line of source · <strong>14</strong> CLI commands, every one taking <code>--for-agent</code> · <strong>3</strong>
+agent-operable surfaces · <strong>71</strong> nodes and 141 link entries in the flagship live graph, depth 8 ·
+<strong>59</strong> documents in the corpus.</p>
+<hr>
+<h2 id="it-installs-and-it-works-today">It installs and it works, today</h2>
+<pre><code class="lang-bash">pip install issues-fs-cli
+issues-fs init
+issues-fs types init
+issues-fs create task &quot;Write the DSL grammar page&quot; --priority high --tags site,docs
+issues-fs link Task-1 blocks Bug-1
+issues-fs list --for-agent          # same data, JSON, for an agent</code></pre>
+<p><a class="ext" href="https://issues-fs.sgit.ai/start/index.html">The walkthrough ↗</a> · <a class="ext" href="https://issues-fs.sgit.ai/cli/index.html">all 14 commands ↗</a>.</p>
+<h2 id="what-is-built">What is built</h2>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong><a class="ext" href="https://issues-fs.sgit.ai/model/index.html">A real type system ↗</a></strong></td><td>12 node types and 10 link types — and an edge type is not a string, it carries a declared inverse and <em>domain and range constraints</em> on which node types it may join. Five regex-validated primitives underneath, in strict mode, so invalid input <strong>raises rather than being coerced</strong></td></tr>
+<tr><td><strong><a class="ext" href="https://issues-fs.sgit.ai/model/index.html#backends">Four storage backends ↗</a></strong></td><td><code>memory</code>, <code>local_disk</code>, <code>sqlite</code>, <code>zip</code> — all real, all through one factory. The same graph can live in a directory, a SQLite file, a zip archive, or nothing at all</td></tr>
+<tr><td><strong><a class="ext" href="https://issues-fs.sgit.ai/cli/index.html">A complete CLI ↗</a></strong></td><td>14 commands, 1,080 lines, 94 tests, three output formats, git-style repository discovery — it walks <em>up</em> to find <code>.issues/</code>, so it works from anywhere in the tree</td></tr>
+<tr><td><strong><a class="ext" href="https://issues-fs.sgit.ai/examples/index.html">Four live graphs ↗</a></strong></td><td>147 nodes in real use. The flagship carries 71 nodes and 141 link entries across 84 files, nested eight path segments deep, with <strong>all 13 schema fields on all 71 nodes</strong></td></tr>
+<tr><td><strong><a class="ext" href="https://issues-fs.sgit.ai/concepts/index.html">The foundational corpus ↗</a></strong></td><td>59 documents, and the five at the centre became the conceptual foundation of the whole <code>*.sgit.ai</code> estate</td></tr>
+<tr><td><strong><a class="ext" href="https://issues-fs.sgit.ai/roles/index.html">An eleven-role team ↗</a></strong></td><td>Each role is its own repository with its own <code>ROLE.md</code> and its own <code>.issues/</code> graph</td></tr></tbody></table></div>
+<h2 id="three-agent-operable-surfaces">Three agent-operable surfaces</h2>
+<p><strong>No other project in the estate has three.</strong> One needs no install at all.</p>
+<div class="table"><table><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>1 · <a class="ext" href="https://issues-fs.sgit.ai/lite/index.html">Issues-FS-lite ↗</a></strong></td><td>Markdown + YAML front-matter, three folders, four <code>mv</code> operations. No install, no Python, no runtime</td><td>Usable today</td></tr>
+<tr><td><strong>2 · <a class="ext" href="https://issues-fs.sgit.ai/dsl/index.html">The <code>.issues</code> DSL ↗</a></strong></td><td>A line-oriented format parsed into nodes: 11 source files, ~55 tests, 3 live examples, a five-stage pipeline wired into the repository API</td><td>Built and tested</td></tr>
+<tr><td><strong>3 · <a class="ext" href="https://issues-fs.sgit.ai/cli/index.html"><code>--for-agent</code> JSON ↗</a></strong></td><td>Every one of the 14 commands forces JSON output. Not a mode — one flag, and an agent that knows only that rule can drive the whole surface</td><td>Shipping in 0.3.0</td></tr></tbody></table></div>
+<h2 id="what-you-can-install-right-now">What you can install right now</h2>
+<div class="table"><table><thead><tr><th>Install</th><th>Version</th><th>What you get</th></tr></thead><tbody><tr><td><code>pip install issues-fs</code></td><td><strong>0.7.0</strong></td><td>The Python API. 103-file wheel · 5,401 LOC · <strong>604 tests</strong>. Repository, node and link services, graph traversal, comments, status services, the <code>.issues</code> parser</td></tr>
+<tr><td><code>pip install issues-fs-cli</code></td><td><strong>0.3.0</strong></td><td>The <code>issues-fs</code> command. 23-file wheel · <strong>14 commands</strong> · 94 tests · <code>--for-agent</code> on every one</td></tr></tbody></table></div>
+<p>Four more repositories exist and are further along on <code>dev</code> than on <code>main</code>: the service UI (142
+files, its own 49-node graph), the documentation package (all 59 documents), the development
+umbrella (19 submodules), and dev utils (535 LOC, 19 tests). CI publishes to PyPI only from
+<code>main</code>, so what is on PyPI is the last state of <code>main</code> rather than the state of the work.
+<a class="ext" href="https://issues-fs.sgit.ai/shipped/why.html">The release mechanism ↗</a> · <a class="ext" href="https://issues-fs.sgit.ai/shipped/index.html">package by package ↗</a>.</p>
+<h2 id="why-a-graph-rather-than-a-schema-of-fields">Why a graph rather than a schema of fields</h2>
+<p>A node has no inherent meaning; **meaning is discovered through the edges you can trace from
+it**. That is why the type system is a graph of typed relationships rather than a schema of
+fields, and why an edge type carries domain and range constraints.</p>
+<p>That thinking was written <strong>here</strong>. <code>thinking-in-graphs.md</code> is dated <strong>5 February 2026</strong>, was
+written for Issues-FS, and reached SGraph Send four months later.</p>
+<p><strong>The boundary:</strong> <a class="ext" href="https://graphs.sgit.ai">graphs.sgit.ai ↗</a> owns the philosophy and teaches it
+at length. <strong>This site owns the implementation — and the origin.</strong>
+<a class="ext" href="https://issues-fs.sgit.ai/network/index.html">The full map ↗</a>.</p>
+<h2 id="the-backlog-for-when-this-project-has-energy-again">The backlog, for when this project has energy again</h2>
+<p>Issues-FS was built fast in February 2026 and the code has been ahead of its documentation ever
+since — <strong>the good direction for a project to drift in</strong>. Everything here is a chore rather than
+a defect, and most of them are one command.</p>
+<ul><li><strong>Merge <code>dev</code> → <code>main</code> where it is overdue.</strong> Seven of eight repositories are ahead on <code>dev</code>,
+and CI publishes only from <code>main</code>. The release helper is already in every repository.
+<a class="ext" href="https://issues-fs.sgit.ai/shipped/why.html">The gap, per repository ↗</a>.</li><li><strong>Fill or retire the two service placeholders.</strong> Published early; the code behind them has not
+been written yet. Either outcome is fine — the page just says which is true today.</li><li><strong>Refresh the READMEs.</strong> They describe an earlier version: fewer tests than there are, a
+backend and an integration considered and not taken, a lexicon that is still a design.
+<a class="ext" href="https://issues-fs.sgit.ai/shipped/corrections.html">All of them, with what was measured ↗</a>.</li><li><strong>Write down what is already built</strong> — the <code>.issues</code> DSL, the status services, the eleventh
+role. <a class="ext" href="https://issues-fs.sgit.ai/dsl/index.html"><code>/dsl/</code> ↗</a> is the first write-up of the DSL anywhere.</li><li><strong>Name the copyright holder.</strong> One line per repository, and it is what makes the licence
+usable by anybody else.</li><li><strong>Decide the seven open questions.</strong> <a class="ext" href="https://issues-fs.sgit.ai/network/index.html#open">Q1–Q7 ↗</a> — none blocks using the
+tool.</li></ul>
+<h2 id="for-an-agent">For an agent</h2>
+<p>Issues-FS is a git-native tracker with three operable surfaces. With a filesystem and no
+tooling, use <strong>lite</strong>: <code>issues/open|blocked|done/NNN-slug.md</code> with YAML front-matter, and four
+<code>mv</code> operations. If you can install, <code>pip install issues-fs-cli</code> and pass <code>--for-agent</code> to any
+of the 14 commands to force JSON. Address nodes by label (<code>Task-1</code>, <code>Bug-27</code>), never by GUID;
+<code>link</code> writes the inverse edge for you. Read another agent&#x27;s <code>issues/</code>; never write into it.
+Enumerate a graph by walking for <code>issue.json</code> rather than reading <code>_index.json</code>, which is a
+cache. The upstream READMEs describe an earlier version — check a capability claim against
+<a class="ext" href="https://issues-fs.sgit.ai/shipped/corrections.html">/shipped/corrections.html ↗</a> before repeating it.</p>
+<hr>
+<p>Published by the sgit project, which builds and uses Issues-FS —
+<a class="ext" href="https://issues-fs.sgit.ai/about/participant.html">participant disclosure ↗</a>. Site content CC BY 4.0; the upstream
+Issues-FS repositories are Apache 2.0.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>issues-fs.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://issues-fs.sgit.ai/index.md">https://issues-fs.sgit.ai/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:52Z</dd><dt>sha256</dt><dd><code title="014caf45c2a0233de41d312c0c339df374d2e5af0fef10a5426a792d2069acf5">014caf45c2a0</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/issues-fs.sgit.ai/index.md</a> (7,107 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

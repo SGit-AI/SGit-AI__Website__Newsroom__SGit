@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>What we learn from you · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · what-can-it-do.games.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#what-we-learn-from-you">What we learn from you</a></li><li class="l1"><a href="#what-we-learn-from-you-1">What we learn from you</a></li><li class="l2"><a href="#how-much-is-this-really">How much is this, really?</a></li><li class="l2"><a href="#what-is-sent">What is sent</a></li><li class="l2"><a href="#what-is-deliberately-not-sent">What is deliberately not sent</a></li><li class="l2"><a href="#how-to-stop-it">How to stop it</a></li><li class="l2"><a href="#what-it-can-and-cannot-prove">What it can and cannot prove</a></li><li class="l2"><a href="#the-second-lane-when-you-press-or">The second lane: when you press 👍 or 👎</a></li><li class="l2"><a href="#this-site-itself">This site itself</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/what-can-it-do.games.sgit.ai.html">what-can-it-do.games.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://what-can-it-do.games.sgit.ai/what-we-learn/index.md">live ↗</a></p><article class="source"><h1 id="what-we-learn-from-you">What we learn from you</h1>
+<blockquote><p>Exactly what the game sends while you play, what it deliberately does not send, what it can and cannot prove, and how to switch it off.</p></blockquote>
+<p>*Source: <a href="index.html">https://what-can-it-do.games.sgit.ai/what-we-learn/index.html</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/what-we-learn/index.html" title="live page">↗</a> · site v0.8.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../index.html">Play</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/index.md" title="live page">↗</a> / What we learn</p>
+<h1 id="what-we-learn-from-you-1">What we learn from you</h1>
+<p>The game counts usage anonymously while you play. Here is exactly what is in those counts, what is deliberately left out, and how to stop it. Nothing on this page is a summary of something less flattering.</p>
+<blockquote><p>This game counts usage anonymously — which screens people reach, which answers are common. No cookies, no analytics script, nothing that identifies you or your machine, and a pause switch on every screen. <a href="index.html">What is sent</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/what-we-learn/index.md" title="live page">↗</a>.</p></blockquote>
+<h2 id="how-much-is-this-really">How much is this, really?</h2>
+<p><strong>Less than almost every other site you will open today.</strong> No cookies. No analytics script — no Google Analytics, no tag manager, no third-party pixel of any kind. No account, because there is nothing to sign up for. No fingerprinting. Not even the page you came from.</p>
+<p>It is less than a <strong>default web-server access log</strong>, which by default records your IP address, the exact page, the time, your full browser string and the site that referred you, for every request, on essentially every website in existence.</p>
+<p>So why the notice at all? Not because this is invasive — it is not. Because the thing the game is published <em>inside</em> normally sends nothing anywhere, and a departure from that promise gets stated plainly wherever the game appears. It would be strange to write a game about knowing what software does on your behalf and then be vague about what this one does.</p>
+<h2 id="what-is-sent">What is sent</h2>
+<ul><li><strong>Which screens you reached</strong> — that you started, got to question 12, finished.</li><li><strong>The answers you gave</strong> and the points they scored.</li><li><strong>Which setup you picked</strong> from the list of nine — the <em>public</em> option you chose, meaning “Claude Code on a machine”, not anything about your machine.</li><li><strong>A session id</strong>: sixteen random characters made up in memory when the page opened and gone when you close the tab. It links your answers within one sitting and to nothing else, ever.</li><li><strong>A rough form factor</strong> — phone or desktop — and a language.</li></ul>
+<h2 id="what-is-deliberately-not-sent">What is deliberately not sent</h2>
+<ul><li><strong>No name, no email, no account</strong> — the game has none to send.</li><li><strong>No fingerprint.</strong> No browser fingerprinting of any kind. The sender <em>can</em> compute one; the switch that would turn it on (<code>signals</code> in the vault&#x27;s <code>telemetry/telemetry.config.json</code>) is <strong>off</strong> in the game&#x27;s vault at v1.2.0 (checked 2026-09-09), and the vault&#x27;s own telemetry page says so. The release gate refuses a build where this sentence and the vault&#x27;s config disagree.</li><li><strong>No URL and no referrer</strong> — not the page you came from, not the link you followed.</li><li><strong>Not your full browser string, not your screen size.</strong></li><li><strong>Nothing you type.</strong> The game has a chat panel; the fact that you used it is counted, the words are not sent and are not stored.</li></ul>
+<h2 id="how-to-stop-it">How to stop it</h2>
+<p>Every screen has a <strong>pause switch</strong> next to the notice, and it works before the first question. Nothing is sent while it is paused. You do not need to give a reason and nothing about you is remembered for the next visit — because nothing about you is remembered at all.</p>
+<h2 id="what-it-can-and-cannot-prove">What it can and cannot prove</h2>
+<blockquote><p><strong>It proves nothing about anyone, and that is by design.</strong> The game is published openly, so the token it uses to send events is public too — anyone could forge or flood the lane. So we treat every event as a claim, not as a fact. It is enough to see that people get stuck on question 12; it is not evidence about any person and could never be used as any. Sessions are tabs, not people.</p></blockquote>
+<h2 id="the-second-lane-when-you-press-or">The second lane: when you press 👍 or 👎</h2>
+<p>Feedback you deliberately give travels separately from the counting, and nothing is sent unless you press something. It is kept apart so that the counting can be deleted without losing what people actually said.</p>
+<p>What comes back out of it is public: disagreements are turned into positions and published, and <strong>a question you argued with then carries our answer</strong> for the next person who reaches it. Nobody is named and nobody&#x27;s words are quoted unless they were deliberately marked as quotable. <a href="../../games.sgit.ai/games/ideas.html">How that works</a><a class="ext live" href="https://games.sgit.ai/games/ideas.html" title="live page">↗</a>.</p>
+<h2 id="this-site-itself">This site itself</h2>
+<p>No analytics, no cookies, no tracking pixels, no server. It is static files. The only thing that sends anything is the game, in its frame, on the lanes described above.</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://what-can-it-do.games.sgit.ai/what-we-learn/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>what-can-it-do.games.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://what-can-it-do.games.sgit.ai/what-we-learn/index.md">https://what-can-it-do.games.sgit.ai/what-we-learn/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:57Z</dd><dt>sha256</dt><dd><code title="02ed3e41de064c45d691eaa81caafbe227e4ee4b6c988723b70cc7b50178b952">02ed3e41de06</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/what-can-it-do.games.sgit.ai/what-we-learn/index.md</a> (4,816 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

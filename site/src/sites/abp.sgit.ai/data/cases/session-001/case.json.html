@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>case.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="case.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/cases/session-001/case.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/case/v1&quot;,
+  &quot;id&quot;: &quot;session-001&quot;,
+  &quot;label&quot;: &quot;The session that built this site&#x27;s last twelve releases, as a ledger&quot;,
+  &quot;who&quot;: &quot;An agent in a managed container with this repository attached, over three days and nine turns, with a deployer giving instructions in prose and a harness with standing rules.&quot;,
+  &quot;elicited&quot;: &quot;2026-09-22&quot;,
+  &quot;elicited_by&quot;: &quot;the agent that ran the session, from the deployer&#x27;s nine messages and the harness&#x27;s standing rules, and from the repository and the code host&#x27;s workflow log for every count&quot;,
+  &quot;corrected&quot;: null,
+  &quot;status&quot;: &quot;elicited, not yet corrected by the deployer, grant measured (the published shape), ledger counted, not yet read by an accountant&quot;,
+  &quot;universe&quot;: &quot;u9&quot;,
+  &quot;assistants&quot;: [
+    {
+      &quot;id&quot;: &quot;claude&quot;,
+      &quot;name&quot;: &quot;Claude Code on the web&quot;,
+      &quot;consent&quot;: &quot;the harness&#x27;s permission mode&quot;,
+      &quot;consent_note&quot;: &quot;a classifier in front of some commands, which blocked five in the session and handed each to the deployer.&quot;
+    }
+  ],
+  &quot;shared_account&quot;: null,
+  &quot;out_of_scope&quot;: [
+    &quot;The two sessions before this one, which built v0.1.0 to v0.3.0. Their ledgers could be counted the same way from the repository and were not.&quot;
+  ],
+  &quot;information_architecture&quot;: [
+    {
+      &quot;fact&quot;: &quot;One commit per release, and a tag per commit&quot;,
+      &quot;detail&quot;: &quot;The release gate wants the version in the commit subject and tags every commit on the release branch, so a feature and its article are two commits and two pipeline runs, not one.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;The build regenerates most of the tree&quot;,
+      &quot;detail&quot;: &quot;418 of the 523 files this session changed were generated. A file count that does not separate hand written from generated says nothing about what the session cost.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;The harness has a cost policy of its own&quot;,
+      &quot;detail&quot;: &quot;Commit only when asked, no subagents unless asked, scratch files in the scratchpad, do not poll: four clauses that were in force before anybody wrote one down.&quot;
+    }
+  ],
+  &quot;open_questions&quot;: [
+    {
+      &quot;question&quot;: &quot;What did the session cost in tokens?&quot;,
+      &quot;why&quot;: &quot;The one number on the ledger the agent cannot see. The platform&#x27;s usage page has it, and it is the number every other line is a proxy for.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;How long did the deployer spend?&quot;,
+      &quot;why&quot;: &quot;Nine turns read and answered, three questions decided, five blocked commands decided. Nothing records the minutes.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Would an accountant agree with the outside list?&quot;,
+      &quot;why&quot;: &quot;The agent judged which of its own spend fell outside the mandate. The ninth prompt of the cost walkthrough exists so that a session with no stake in the answer does.&quot;
+    }
+  ],
+  &quot;deployments&quot;: [
+    {
+      &quot;id&quot;: &quot;claude-code-web&quot;,
+      &quot;name&quot;: &quot;Claude Code on the web, one repository attached: the session that built v0.4.0 to v0.8.1&quot;,
+      &quot;assistant&quot;: &quot;claude&quot;,
+      &quot;connector&quot;: &quot;this repository&quot;,
+      &quot;consent&quot;: &quot;the harness&#x27;s permission mode, with a classifier that blocked five commands&quot;,
+      &quot;nearest_shape&quot;: &quot;anthropic/claude-code-remote/ccr-container&quot;,
+      &quot;nearest_note&quot;: &quot;the shape this site is maintained from, measured by the thing being profiled: 13 of 20 rows seen on the container itself. For once the nearest shape is the deployment.&quot;,
+      &quot;grant&quot;: &quot;the published shape&quot;,
+      &quot;mandate&quot;: &quot;cases/session-001/mandates/claude-code-web.json&quot;,
+      &quot;delta&quot;: &quot;cases/session-001/deltas/claude-code-web.json&quot;,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/session-001/claude-code-web/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.file.project&quot;,
+        &quot;write.file.project&quot;,
+        &quot;write.repository.project&quot;,
+        &quot;write.repository.tenant&quot;,
+        &quot;send.endpoint.allowed&quot;,
+        &quot;execute.process.host&quot;,
+        &quot;read.record.history&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;create.schedule.tenant&quot;
+      ],
+      &quot;unstated_count&quot;: 15,
+      &quot;said_count&quot;: 6,
+      &quot;inferred_count&quot;: 2,
+      &quot;provisional&quot;: false,
+      &quot;provisional_excess&quot;: 8,
+      &quot;provisional_unbounded_excess&quot;: 6
+    }
+  ],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/cases/session-001/index.html&quot;,
+  &quot;not_an_assessment&quot;: &quot;Nothing here is an assessment, an audit or a review of any named product. The mandates were elicited from one person and have not been corrected by them; every delta marked provisional is against a shape that is not this deployment.&quot;,
+  &quot;ledger&quot;: {
+    &quot;period&quot;: &quot;20 September 2026 09:21 to 22 September 2026 09:27, the first commit to the last; working time inside that is not recorded anywhere&quot;,
+    &quot;counted_on&quot;: &quot;2026-09-22&quot;,
+    &quot;counted_by&quot;: &quot;the agent that ran the session, from the repository and the code host&#x27;s workflow log; not yet read by an accountant&quot;,
+    &quot;lines&quot;: [
+      {
+        &quot;what&quot;: &quot;commits&quot;,
+        &quot;n&quot;: 13,
+        &quot;evidence&quot;: &quot;repository&quot;,
+        &quot;note&quot;: &quot;git log v0.3.0..HEAD, one per release from v0.4.0 to v0.8.1&quot;
+      },
+      {
+        &quot;what&quot;: &quot;pushes to the release branch&quot;,
+        &quot;n&quot;: 10,
+        &quot;evidence&quot;: &quot;platform&quot;,
+        &quot;note&quot;: &quot;the workflow log: runs 6 to 15, one per push; three pushes carried two commits&quot;
+      },
+      {
+        &quot;what&quot;: &quot;pipeline runs started&quot;,
+        &quot;n&quot;: 10,
+        &quot;evidence&quot;: &quot;platform&quot;,
+        &quot;note&quot;: &quot;9 succeeded, 1 cancelled when the next push arrived two minutes later&quot;
+      },
+      {
+        &quot;what&quot;: &quot;pushes to the working branch&quot;,
+        &quot;n&quot;: 13,
+        &quot;evidence&quot;: &quot;estimate&quot;,
+        &quot;note&quot;: &quot;one per commit, from memory; the code host does not list them&quot;
+      },
+      {
+        &quot;what&quot;: &quot;files changed&quot;,
+        &quot;n&quot;: 523,
+        &quot;evidence&quot;: &quot;repository&quot;,
+        &quot;note&quot;: &quot;298 added, 225 modified, over the whole session&quot;
+      },
+      {
+        &quot;what&quot;: &quot;files written by hand&quot;,
+        &quot;n&quot;: 20,
+        &quot;evidence&quot;: &quot;repository&quot;,
+        &quot;note&quot;: &quot;the build modules, the stylesheet, one script and the README: 7,990 lines inserted, 39 deleted&quot;
+      },
+      {
+        &quot;what&quot;: &quot;files copied in unchanged&quot;,
+        &quot;n&quot;: 53,
+        &quot;evidence&quot;: &quot;repository&quot;,
+        &quot;note&quot;: &quot;31 documents from two packs and one research note, 22 contributed data files held with their hashes&quot;
+      },
+      {
+        &quot;what&quot;: &quot;screenshots captured&quot;,
+        &quot;n&quot;: 48,
+        &quot;evidence&quot;: &quot;repository&quot;,
+        &quot;note&quot;: &quot;from detached worktrees of nine tags; about six more were taken and discarded after a scrolling mistake&quot;
+      },
+      {
+        &quot;what&quot;: &quot;files generated by the build&quot;,
+        &quot;n&quot;: 418,
+        &quot;evidence&quot;: &quot;repository&quot;,
+        &quot;note&quot;: &quot;214 added, 204 modified: pages, twins, data files, llms.txt, the sitemap&quot;
+      },
+      {
+        &quot;what&quot;: &quot;fetches and searches&quot;,
+        &quot;n&quot;: 110,
+        &quot;evidence&quot;: &quot;estimate&quot;,
+        &quot;note&quot;: &quot;about 40 pages read from three sites, about 30 to resolve 24 references in a research note, about 40 polls of the code host and the live site; no proxy log was consulted&quot;
+      },
+      {
+        &quot;what&quot;: &quot;subagents spawned&quot;,
+        &quot;n&quot;: 0,
+        &quot;evidence&quot;: &quot;self&quot;,
+        &quot;note&quot;: &quot;the harness&#x27;s standing rule said not to unless asked, and nobody asked&quot;
+      },
+      {
+        &quot;what&quot;: &quot;questions asked of the deployer&quot;,
+        &quot;n&quot;: 3,
+        &quot;evidence&quot;: &quot;self&quot;,
+        &quot;note&quot;: &quot;a missing read key; whether three details from an interview should be published; whether to push that case live&quot;
+      },
+      {
+        &quot;what&quot;: &quot;things handed to the deployer to read&quot;,
+        &quot;n&quot;: 9,
+        &quot;evidence&quot;: &quot;self&quot;,
+        &quot;note&quot;: &quot;one reply per turn, each a summary of a release&quot;
+      },
+      {
+        &quot;what&quot;: &quot;reviews requested, people notified&quot;,
+        &quot;n&quot;: 0,
+        &quot;evidence&quot;: &quot;self&quot;,
+        &quot;note&quot;: &quot;no pull request was opened; nobody was assigned anything&quot;
+      },
+      {
+        &quot;what&quot;: &quot;commands the harness blocked&quot;,
+        &quot;n&quot;: 5,
+        &quot;evidence&quot;: &quot;self&quot;,
+        &quot;note&quot;: &quot;each one an interruption the deployer had to read and decide on: two pushes, two polling loops, one read of a data file&quot;
+      },
+      {
+        &quot;what&quot;: &quot;tokens&quot;,
+        &quot;n&quot;: null,
+        &quot;evidence&quot;: &quot;cannot see&quot;,
+        &quot;note&quot;: &quot;the platform can, on the account&#x27;s usage page; the agent never can&quot;
+      },
+      {
+        &quot;what&quot;: &quot;wall clock the deployer spent&quot;,
+        &quot;n&quot;: null,
+        &quot;evidence&quot;: &quot;cannot see&quot;,
+        &quot;note&quot;: &quot;nine turns read and answered; nothing records how long each took&quot;
+      }
+    ],
+    &quot;clauses_in_force&quot;: [
+      {
+        &quot;clause&quot;: &quot;commit or push only when the deployer asks&quot;,
+        &quot;from&quot;: &quot;the harness&quot;,
+        &quot;kept&quot;: &quot;mostly: every push was asked for or covered by a standing instruction to push and continue; 13 commits against 4 explicit asks, because the release gate wants one commit per version&quot;
+      },
+      {
+        &quot;clause&quot;: &quot;no subagents or workflows unless asked&quot;,
+        &quot;from&quot;: &quot;the harness&quot;,
+        &quot;kept&quot;: &quot;yes: none&quot;
+      },
+      {
+        &quot;clause&quot;: &quot;temporary files go in the scratchpad, never the project&quot;,
+        &quot;from&quot;: &quot;the harness&quot;,
+        &quot;kept&quot;: &quot;once broken: a scratch figure was copied into the tree, the gate caught it on the next build, and it was removed before the commit&quot;
+      },
+      {
+        &quot;clause&quot;: &quot;push to the designated branch and to the release branch only&quot;,
+        &quot;from&quot;: &quot;the deployer&quot;,
+        &quot;kept&quot;: &quot;yes&quot;
+      },
+      {
+        &quot;clause&quot;: &quot;one article per release, with screenshots from that release&#x27;s tag&quot;,
+        &quot;from&quot;: &quot;the deployer&quot;,
+        &quot;kept&quot;: &quot;yes, at the cost of a second release per feature: v0.6.1, v0.7.1, v0.8.1 exist to carry articles&quot;
+      },
+      {
+        &quot;clause&quot;: &quot;do not poll external state in a loop; wait for a notification&quot;,
+        &quot;from&quot;: &quot;the harness&quot;,
+        &quot;kept&quot;: &quot;no: several polling loops against the code host and the live site, two of which the harness blocked&quot;
+      }
+    ],
+    &quot;outside&quot;: [
+      &quot;README rows for every new module: five edits nobody asked for, in keeping with a standing house rule&quot;,
+      &quot;home page cards and notes for three new sections&quot;,
+      &quot;three new gate checks, 14, 15 and 16, each written to the house pattern of proving it fails before committing&quot;,
+      &quot;status notes on two universes&quot;,
+      &quot;a copy button and its script, so a prompt could be pasted&quot;,
+      &quot;about six screenshots taken and discarded&quot;,
+      &quot;one scratch file that reached the tree and the gate&quot;
+    ],
+    &quot;would_not_again&quot;: [
+      &quot;poll the live site and the code host with sleep loops; the harness blocks them and a single check after a wait does the same job&quot;,
+      &quot;capture a page section by scrolling the viewport; a clip on a full page screenshot is exact&quot;,
+      &quot;write anything into the project tree that is not meant to ship&quot;
+    ]
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/cases/session-001/case.json">https://abp.sgit.ai/data/cases/session-001/case.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:41Z</dd><dt>sha256</dt><dd><code title="0b99f18b8eea0d5378bb94336183bb35c436d3ab35eab08da9fc6990121cee39">0b99f18b8eea</code></dd><dt>Frozen copy</dt><dd><a href="case.json">sites/abp.sgit.ai/data/cases/session-001/case.json</a> (10,581 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

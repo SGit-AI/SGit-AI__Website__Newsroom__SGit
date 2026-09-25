@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/ledger/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The ledger — every claim, and how we know it
+description: &quot;Every factual claim this site makes, in one table, with its verification state, its date and the pages that say it. Six states, from verified-by-execution to specified-and-not-shipped.&quot;
+lead: &quot;Almost everything written about this API here was written by a machine that <strong>could not reach the API</strong>. A small, specific set of things was verified in a real browser on 5 September 2026. The distinction between the two is the most useful thing this site has, so it is a table rather than a disclaimer.&quot;
+order: 80
+toc: true
+provenance:
+commit: 7d1916aca5f3
+date: 7 September 2026
+note: &quot;Assembled from the source vault&#x27;s own materials inventory.&quot;
+</p>
+<hr>
+<h2 id="the-six-states">The six states</h2>
+<div class="table"><table><thead><tr><th>Chip</th><th>Means</th><th>What you may do with it</th></tr></thead><tbody><tr><td>{{badge:verified}}</td><td>We ran it and watched it work, on that date, in a named place</td><td>Treat as fact for that date and that setup</td></tr>
+<tr><td>{{badge:measured}}</td><td>Our own pipeline produced this number on a named workload</td><td>Treat as fact about <em>our</em> workload; yours will differ</td></tr>
+<tr><td>{{badge:docs}}</td><td>Read in the vendor&#x27;s documentation on that date; never executed by us</td><td>Check it against the vendor before you rely on it — and tell us if it moved</td></tr>
+<tr><td>{{badge:spec}}</td><td>A written specification for something that does not exist</td><td>Never plan around it. Future tense only</td></tr>
+<tr><td>{{badge:unrun}}</td><td>Code we wrote and have never executed</td><td>Read it, then run it and find out. Expect it to be wrong somewhere</td></tr>
+<tr><td>{{badge:projected}}</td><td>Arithmetic, with its workings shown</td><td>Re-do the arithmetic with your own numbers</td></tr></tbody></table></div>
+<p>Every chip on this site links here. Every claim below names where it is said, so a claim cannot appear on a page without appearing in this table — the join is done at build time.</p>
+<p>{{ledger}}</p>
+<h2 id="open-items">Open items</h2>
+<p>The honest list of what is unfinished, so that nothing here is presented as done. It matches the handover brief this site was built from, and it is the first thing to fix.</p>
+<p>&lt;div class=&quot;fails&quot;&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;h3&gt;The names-pronunciation test has not been run&lt;/h3&gt;&lt;p&gt;The bench has had the button since 5 September 2026. Nobody has pressed it. Until somebody does, this site cannot say which names &lt;code&gt;eleven_v3&lt;/code&gt; mispronounces, and &lt;code&gt;pronunciations.pls&lt;/code&gt; is a hypothesis rather than a lexicon. {{claim:names-test}}&lt;/p&gt;&lt;p&gt;&lt;b&gt;Cost to close it:&lt;/b&gt; about 120 characters, roughly $0.012, and two minutes of listening. &lt;a href=&quot;/experiments/pronunciation/&quot;&gt;The lab is here.&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;h3&gt;&lt;code&gt;sg.tts&lt;/code&gt; is unimplemented&lt;/h3&gt;&lt;p&gt;It needs host-side work in SG/Vault, which is not in this repository. Until it lands, ElevenLabs cannot reach pattern 3 and the labs on this site cannot drop their key boxes. {{claim:sg-tts-spec}}&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;h3&gt;Pattern 2 has no server&lt;/h3&gt;&lt;p&gt;For text to speech the vendor offers no short-lived credential, so a minter would be ours to run. Nobody has written one, and this site is not the place for it. {{claim:agents-only-signed-urls}}&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;h3&gt;The render shim and every example file are unrun&lt;/h3&gt;&lt;p&gt;Written by a container with no egress to the API. {{claim:shim-unrun}} {{claim:examples-unrun}} The same is true of &lt;a href=&quot;/experiments/&quot;&gt;every lab on this site&lt;/a&gt;. {{claim:labs-unrun}}&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;h3&gt;Concurrency is unknown&lt;/h3&gt;&lt;p&gt;The plan&#x27;s concurrent-request limit against a render that fires 16 requests at once has never been tested. {{claim:concurrency-unknown}} &lt;a href=&quot;/experiments/concurrency/&quot;&gt;The probe exists&lt;/a&gt;; it costs a few cents to run.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;fail open&quot;&gt;&lt;h3&gt;These pages will move&lt;/h3&gt;&lt;p&gt;Long term, the patterns, comparison, ledger and disclosures belong at &lt;code&gt;providers.sgit.ai&lt;/code&gt;, shared by every provider site. Version 1 carries them here, and the templates are built so that the move is a redirect rather than a rewrite.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<h2 id="what-we-would-need-a-human-with-api-access-to-check">What we would need a human with API access to check</h2>
+<p>Handed back rather than guessed at. This is the list in <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__ElevenLabs/blob/main/HANDBACK.md"><code>HANDBACK.md</code> ↗</a> in the repository, kept short enough to work through in an afternoon:</p>
+<ol><li><strong>The smoke test</strong> — <code>examples/00-smoke.sh</code>. Does the key work, what is the quota, does one sentence come back? Everything else depends on it.</li><li><strong>Which names v3 gets wrong</strong> — the <a href="../experiments/pronunciation/index.html">pronunciation lab</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/pronunciation/" title="live page">↗</a>, the &quot;names to test&quot; sample, and two minutes of listening.</li><li><strong>Whether the alias rules in <code>pronunciations.pls</code> fix them</strong> — the same lab, with the dictionary attached.</li><li><strong>Where the concurrency wall is</strong> on the plan in use — the <a href="../experiments/concurrency/index.html">concurrency probe</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/concurrency/" title="live page">↗</a>, which is the only lab here that can cost more than pennies if you set the numbers high.</li><li><strong>Whether the cue rule produces readable subtitles</strong> on a real reel rather than on a 187-character sample — the <a href="../experiments/captions/index.html">captions studio</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/captions/" title="live page">↗</a> {{claim:cue-rule}}.</li><li><strong>Whether forced alignment matches the Kokoro-rendered cuts</strong> to their scripts, which would give subtitles to six already-published videos for about two cents {{claim:alignment-stt-price}}.</li><li><strong>Whether the list prices in the tables here still hold.</strong> They carry the date they were read; they are the fastest-staling thing on the site {{claim:tts-prices}}.</li></ol>
+<p>None of these needs a key from anyone; each needs somebody&#x27;s own key, in their own browser, for a few minutes. Results paste back as markdown from every lab.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/ledger/index.md">https://elevenlabs.providers.sgit.ai/ledger/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:51Z</dd><dt>sha256</dt><dd><code title="9f9ce7317f4f9488ca841acad1aa10c177b75c96bc4abf9ab2dda04a930f43ff">9f9ce7317f4f</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/ledger/index.md</a> (5,644 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

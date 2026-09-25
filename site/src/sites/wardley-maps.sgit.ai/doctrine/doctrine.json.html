@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>doctrine.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · wardley-maps.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/wardley-maps.sgit.ai.html">wardley-maps.sgit.ai</a> · <a href="doctrine.json">raw text</a> · <a class="ext" href="https://wardley-maps.sgit.ai/doctrine/doctrine.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;version&quot;: &quot;2026-08-21&quot;,
+  &quot;subject&quot;: &quot;The registry MVP pack, assessed as if built as specified&quot;,
+  &quot;caveat&quot;: &quot;A self-assessment by the party being assessed, which is the weakest kind there is. It is published in that form on purpose: the ratings are arguable, every one carries the artefact it rests on, and a reader who disagrees with a rating has the evidence in front of them to say so.&quot;,
+  &quot;statuses&quot;: {
+    &quot;strong&quot;: {
+      &quot;label&quot;: &quot;Practised&quot;,
+      &quot;note&quot;: &quot;Visible in an artefact somebody can go and read.&quot;
+    },
+    &quot;partial&quot;: {
+      &quot;label&quot;: &quot;Partly&quot;,
+      &quot;note&quot;: &quot;The mechanism exists and the evidence behind it is thin, or it holds in one place and not another.&quot;
+    },
+    &quot;weak&quot;: {
+      &quot;label&quot;: &quot;Not practised&quot;,
+      &quot;note&quot;: &quot;We do not do this, and in most cases we know why.&quot;
+    },
+    &quot;na&quot;: {
+      &quot;label&quot;: &quot;No basis yet&quot;,
+      &quot;note&quot;: &quot;Requires an organisation. There is one agent and one project lead, so rating it would be theatre.&quot;
+    }
+  },
+  &quot;categories&quot;: {
+    &quot;communication&quot;: {
+      &quot;label&quot;: &quot;Communication&quot;,
+      &quot;gist&quot;: &quot;Can people talk about the same thing without arguing past each other?&quot;
+    },
+    &quot;development&quot;: {
+      &quot;label&quot;: &quot;Development&quot;,
+      &quot;gist&quot;: &quot;Do you build the right thing, for someone you actually know?&quot;
+    },
+    &quot;operations&quot;: {
+      &quot;label&quot;: &quot;Operations&quot;,
+      &quot;gist&quot;: &quot;Do you know what is happening, and cope when it breaks?&quot;
+    },
+    &quot;learning&quot;: {
+      &quot;label&quot;: &quot;Learning&quot;,
+      &quot;gist&quot;: &quot;Do you find things out, or repeat what you assumed?&quot;
+    },
+    &quot;leadership&quot;: {
+      &quot;label&quot;: &quot;Leadership&quot;,
+      &quot;gist&quot;: &quot;Does somebody decide, own it, and change their mind in public?&quot;
+    },
+    &quot;structure&quot;: {
+      &quot;label&quot;: &quot;Structure&quot;,
+      &quot;gist&quot;: &quot;Is the organisation shaped so that any of the above can happen?&quot;
+    }
+  },
+  &quot;phases&quot;: {
+    &quot;1&quot;: {
+      &quot;label&quot;: &quot;Stop self-destructive behaviour&quot;,
+      &quot;gist&quot;: &quot;Basic hygiene. Know who you serve, agree what words mean, and stop arguing from assumption.&quot;
+    },
+    &quot;2&quot;: {
+      &quot;label&quot;: &quot;Become more context aware&quot;,
+      &quot;gist&quot;: &quot;Small, fast, restrained. Cope with failure, act rather than plan, push decisions down.&quot;
+    },
+    &quot;3&quot;: {
+      &quot;label&quot;: &quot;Better for less&quot;,
+      &quot;gist&quot;: &quot;Standards, flow, ownership, humility. The doctrines that need somebody to answer for things.&quot;
+    },
+    &quot;4&quot;: {
+      &quot;label&quot;: &quot;Continuously evolve&quot;,
+      &quot;gist&quot;: &quot;Ecosystem, landscape, no permanent core, more than one culture. These need other people by definition.&quot;
+    }
+  },
+  &quot;doctrines&quot;: [
+    {
+      &quot;id&quot;: &quot;C1&quot;,
+      &quot;cat&quot;: &quot;communication&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Use a common language&quot;,
+      &quot;what&quot;: &quot;Everyone involved should be able to describe the same situation with the same words — maps are Wardley&#x27;s own example of one.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;The pack is largely a vocabulary exercise, and its sharpest moments are definitional. &lt;b&gt;Grant&lt;/b&gt;, &lt;b&gt;mandate&lt;/b&gt; and &lt;b&gt;excess authority&lt;/b&gt; are defined, and the definition of &lt;em&gt;grant&lt;/em&gt; was corrected in public on the day draft-1 shipped. Six Wardley maps put the argument in a language other strategists already read.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — C1, the grant redefinition&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ],
+        [
+          &quot;09 — Wardley maps&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;C2&quot;,
+      &quot;cat&quot;: &quot;communication&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Be transparent&quot;,
+      &quot;what&quot;: &quot;Bias towards openness. Publish the reasoning, not only the conclusion, and publish what you got wrong.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Corrections are published &lt;em&gt;as corrections&lt;/em&gt; rather than edited away — including a factual error of ours that was live for a day. The participant disclosure names the conflict of interest on every page. A third of the decisions register is openly marked unresolved.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Where our approach loses&quot;,
+          &quot;https://pki.sgit.ai/about/participant.html&quot;
+        ],
+        [
+          &quot;Release history, v0.1.7&quot;,
+          &quot;https://pki.sgit.ai/admin/versions.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;C3&quot;,
+      &quot;cat&quot;: &quot;communication&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Challenge assumptions&quot;,
+      &quot;what&quot;: &quot;Speak up, question, and expect to be questioned — including upwards.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Appendix C is twenty-five entries of assumptions being overturned, several of them ours. &lt;b&gt;C19 declines a proposal from the project lead outright&lt;/b&gt; and says why, rather than implementing it and hoping. The PR/FAQ then challenged the pack&#x27;s own framing and found the honest claim narrower.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — C19&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ],
+        [
+          &quot;Appendix A — the PR/FAQ&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/pr-faq.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;C4&quot;,
+      &quot;cat&quot;: &quot;communication&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Focus on high situational awareness&quot;,
+      &quot;what&quot;: &quot;Understand what is being considered, and where it sits, before deciding about it.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;Six maps exist and the positions on them are &lt;b&gt;judgements with no measurement behind them&lt;/b&gt;, which the document says in its own tensions. The grant library is the same: mostly &lt;code&gt;derived&lt;/code&gt;, with one measured tree.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;09 — Wardley maps, honest tensions&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ],
+        [
+          &quot;The library of trees&quot;,
+          &quot;https://pki.sgit.ai/assess/library.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;C5&quot;,
+      &quot;cat&quot;: &quot;communication&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Open by default&quot;,
+      &quot;what&quot;: &quot;Default to publishing — the site, the sources, the working, the tooling.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Every source document, every supporting brief and the reference implementation are public and CC BY 4.0, downloadable as one archive. The build scripts and the validator are in the same repository.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The pack, downloadable&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/registry-mvp-briefing-pack.zip&quot;
+        ],
+        [
+          &quot;The reference implementation&quot;,
+          &quot;https://pki.sgit.ai/assess/index.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;C6&quot;,
+      &quot;cat&quot;: &quot;communication&quot;,
+      &quot;phase&quot;: 4,
+      &quot;name&quot;: &quot;Listen to your ecosystem&quot;,
+      &quot;what&quot;: &quot;Use what others build on you as a sensing engine — the ecosystem tells you what to do next.&quot;,
+      &quot;status&quot;: &quot;weak&quot;,
+      &quot;us&quot;: &quot;&lt;b&gt;There is no ecosystem.&lt;/b&gt; Nobody outside the project has built on this or, as far as we know, read it. Internal FAQ 11 names this as the one question the whole pack cannot answer, and the observability layer is the mechanism that would eventually sense it — unbuilt.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix A — internal FAQ 11&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/pr-faq.html&quot;
+        ],
+        [
+          &quot;11 — Observability&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/observability.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D1&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Know your users&quot;,
+      &quot;what&quot;: &quot;Know who they are, and know them as people rather than as a segment in a deck.&quot;,
+      &quot;status&quot;: &quot;weak&quot;,
+      &quot;us&quot;: &quot;&lt;b&gt;The sharpest gap in the whole assessment.&lt;/b&gt; The only user is the project itself: the site agent that built this is a rented session that needed an identity and had none. Every workflow was written for that user. Internal FAQ 1 puts it plainly — either the strongest dogfooding story available or a market of one, and the PR/FAQ cannot tell which.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix A — internal FAQ 1&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/pr-faq.html&quot;
+        ],
+        [
+          &quot;Decision 39: ask five operators&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D2&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Focus on user needs&quot;,
+      &quot;what&quot;: &quot;Anchor everything on a need, not on a capability you happen to have.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The design is anchored on one need and says so — &lt;em&gt;a third party who must answer&lt;/em&gt; may this agent do this? &lt;b&gt;No user has confirmed that it is a need.&lt;/b&gt; Anchoring correctly on an unverified need is half of this doctrine.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;09 — map W1, the verifier&#x27;s question&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ],
+        [
+          &quot;10 — the six users&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/user-stories.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D3&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Remove bias and duplication&quot;,
+      &quot;what&quot;: &quot;One source of truth. Find the duplicated effort and the inherited assumption, and remove them.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The pack deliberately keeps superseded text alongside its corrections, which is honest and &lt;b&gt;does produce two readings of the same schema&lt;/b&gt;. REP-0001 exists precisely to be the single current source — so the duplication is named and has a fix, rather than being removed.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix B — REP-0001&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/rep-0001.html&quot;
+        ],
+        [
+          &quot;02 — Schemas, superseded in place&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/schemas.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D4&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Use appropriate methods&quot;,
+      &quot;what&quot;: &quot;Different stages of evolution need different methods. Do not run one process over everything.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Every claim in the grant library carries an &lt;b&gt;evidence class&lt;/b&gt; — derived, third-party, measured, tested — so the method is visible per row rather than averaged. The shipped primitives are inherited rather than rebuilt; the unbuilt parts are specified rather than assumed.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;12 — the three-tier control test&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/grant-tree.html&quot;
+        ],
+        [
+          &quot;The library of trees&quot;,
+          &quot;https://pki.sgit.ai/assess/library.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D5&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Think FIRE — fast, inexpensive, restrained, elegant&quot;,
+      &quot;what&quot;: &quot;Build small, cheap and disposable at the uncertain end; industrialise at the other.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;The reference implementation is roughly twelve hundred lines with &lt;b&gt;no dependencies and no build step&lt;/b&gt;, on a static site with no backend. It was rebuilt in a day when its first reader broke its model.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;14 — the user assessment, v2&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/user-assessment.html&quot;
+        ],
+        [
+          &quot;The tool&quot;,
+          &quot;https://pki.sgit.ai/assess/index.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D6&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Focus on outcomes, not contracts&quot;,
+      &quot;what&quot;: &quot;Judge by what happens, not by what was specified and signed.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;Every phase&#x27;s definition of done is an &lt;b&gt;outcome test on a fresh session&lt;/b&gt;, not a deliverable list. But no phase has been run, so the tests are written and unexecuted.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;04 — the acceptance tests&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/build-order.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D7&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Be pragmatic&quot;,
+      &quot;what&quot;: &quot;Do the thing that works. Elegance that costs a month is not pragmatism.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;Arguable in both directions, so it is rated as arguable. Hand-writing an SVG renderer rather than importing one &lt;b&gt;kept a claim the page makes about itself&lt;/b&gt; — but it is still a hand-written renderer. And the pack is fifteen documents deep with no registry built.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;14 — why no charting library&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/user-assessment.html&quot;
+        ],
+        [
+          &quot;Appendix C — C23&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D8&quot;,
+      &quot;cat&quot;: &quot;development&quot;,
+      &quot;phase&quot;: 4,
+      &quot;name&quot;: &quot;Design for constant evolution&quot;,
+      &quot;what&quot;: &quot;Assume every component moves. Build so the structure survives the movement.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;&lt;em&gt;Supersede, never rewrite&lt;/em&gt; is exactly this doctrine as an editorial rule, and the change-control appendix is the mechanism. The design itself is less ready: the record model already has &lt;b&gt;a queued change that has not been applied&lt;/b&gt;.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — C7, growth moves to the commit graph&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O1&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;Know the details&quot;,
+      &quot;what&quot;: &quot;Get close enough to the thing to know how it actually behaves.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;The hosted container was &lt;b&gt;measured rather than described&lt;/b&gt;: root inside, passwordless escalation, and an egress allowlist probed with two requests. The lane&#x27;s limits are quoted from its reference, and the one CI failure that mattered was root-caused to a SIGPIPE race rather than retried.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;12 — the measured hosted tree&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/grant-tree.html&quot;
+        ],
+        [
+          &quot;Release history, v0.1.6&quot;,
+          &quot;https://pki.sgit.ai/admin/versions.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O2&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Manage failure&quot;,
+      &quot;what&quot;: &quot;Expect it, design for it, and remove blame from it.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Failure modes are named in public rather than discovered later: the 2019 flood the whole design answers, the blind acknowledgement&#x27;s deliberate indistinguishability, &lt;b&gt;a drain that fails silently&lt;/b&gt;, and the local-folder origin that breaks the tool first in a downloadable bundle.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;11 — draining is an obligation that fails silently&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/observability.html&quot;
+        ],
+        [
+          &quot;Why they don&#x27;t exist&quot;,
+          &quot;https://pki.sgit.ai/failure/index.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O3&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Effectiveness over efficiency&quot;,
+      &quot;what&quot;: &quot;Doing the right thing beats doing the wrong thing cheaply.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The work is thorough and it is &lt;b&gt;not established that it is effective&lt;/b&gt; — which is the same finding as D1 and internal FAQ 11 arriving from a different direction. Efficiency is good; effectiveness is unmeasured.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix A — internal FAQ 11&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/pr-faq.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O4&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Use standards where appropriate&quot;,
+      &quot;what&quot;: &quot;Do not reinvent what already has a settled form.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;RFC 2119 for the normative language, RFC 3339 for time, &lt;b&gt;PEP form for the specification and Working Backwards for the PR/FAQ&lt;/b&gt;, CC BY 4.0 throughout, plus &lt;code&gt;llms.txt&lt;/code&gt;, a sitemap and canonical links enforced in CI.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix B — REP-0001&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/rep-0001.html&quot;
+        ],
+        [
+          &quot;Appendix A — the PR/FAQ&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/pr-faq.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O5&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Optimise flow&quot;,
+      &quot;what&quot;: &quot;Find where work queues and remove the constraint.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The release path is automated end to end — validate, tag, publish, with a version check that fails the build rather than shipping a lie. &lt;b&gt;There is no flow of work through people to optimise&lt;/b&gt;, which makes half of this doctrine unmeasurable here.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Engineering &amp; admin&quot;,
+          &quot;https://pki.sgit.ai/admin/index.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O6&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Do better with less&quot;,
+      &quot;what&quot;: &quot;Continual improvement in the direction of less: less cost, less code, less ceremony.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;A static site with &lt;b&gt;no backend, no dependencies and no build step&lt;/b&gt;. The privacy claim is a consequence of that rather than a policy on top of it — there is nothing to send data to.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The tool&quot;,
+          &quot;https://pki.sgit.ai/assess/index.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;O7&quot;,
+      &quot;cat&quot;: &quot;operations&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Set exceptional standards&quot;,
+      &quot;what&quot;: &quot;Define good, then hold it — including when nobody is checking.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Every claim carries its evidence class and its date. Published documents are never silently edited. And the standard is enforced mechanically: a &lt;b&gt;key-leak tripwire&lt;/b&gt; fails the build on a credential-shaped string anywhere in the tree, and every link and version badge is validated before anything publishes.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — the rule this page implements&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;L1&quot;,
+      &quot;cat&quot;: &quot;learning&quot;,
+      &quot;phase&quot;: 1,
+      &quot;name&quot;: &quot;A systematic mechanism of learning (bias towards data)&quot;,
+      &quot;what&quot;: &quot;Decide from evidence, and have a repeatable way of getting it.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The &lt;b&gt;mechanism&lt;/b&gt; is real — an evidence class on every node, a re-run method published beside every tree, so anybody can check. The &lt;b&gt;data&lt;/b&gt; is thin: one measured container, one third-party audit tool, and thirty-odd rows derived from architecture.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The library of trees&quot;,
+          &quot;https://pki.sgit.ai/assess/library.html&quot;
+        ],
+        [
+          &quot;12 — provenance per node&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/grant-tree.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;L2&quot;,
+      &quot;cat&quot;: &quot;learning&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;A bias towards action&quot;,
+      &quot;what&quot;: &quot;Try it. You learn more from doing than from another round of analysis.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;The assessment shipped, met its first reader, and was &lt;b&gt;rebuilt the same day&lt;/b&gt; when that reader broke its model. Mermaid&#x27;s Wardley support was verified by running the parser rather than by reading about it.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — C25&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ],
+        [
+          &quot;09 — the grammar that works&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;L3&quot;,
+      &quot;cat&quot;: &quot;learning&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Think aptitude and attitude&quot;,
+      &quot;what&quot;: &quot;People differ in skill and in disposition, and both matter when you place them.&quot;,
+      &quot;status&quot;: &quot;na&quot;,
+      &quot;us&quot;: &quot;One agent and one project lead. Rating this would be theatre.&quot;,
+      &quot;evidence&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;L4&quot;,
+      &quot;cat&quot;: &quot;learning&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;A bias towards the new&quot;,
+      &quot;what&quot;: &quot;Be curious. Take the risk of the unfamiliar rather than defaulting to what you know.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Mermaid&#x27;s &lt;code&gt;wardley-beta&lt;/code&gt; was adopted for the maps — and its grammar established empirically, with the four constraints found the hard way written down for whoever draws the next one. PEP form and the PR/FAQ were both borrowed rather than invented.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;09 — Wardley maps&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ],
+        [
+          &quot;Appendix B — REP-0001&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/rep-0001.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;L5&quot;,
+      &quot;cat&quot;: &quot;learning&quot;,
+      &quot;phase&quot;: 4,
+      &quot;name&quot;: &quot;Exploit the landscape&quot;,
+      &quot;what&quot;: &quot;Use where things sit on the map to choose where to act — do not just draw it.&quot;,
+      &quot;status&quot;: &quot;weak&quot;,
+      &quot;us&quot;: &quot;Six maps describe a landscape and &lt;b&gt;no move has been made on the strength of one&lt;/b&gt;. The maps say the two absences sit in Genesis at the top of the value chain; nothing in the build order changed as a result.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;09 — map W3&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;L6&quot;,
+      &quot;cat&quot;: &quot;learning&quot;,
+      &quot;phase&quot;: 4,
+      &quot;name&quot;: &quot;There is no core — everything is transient&quot;,
+      &quot;what&quot;: &quot;No component is permanent. Treat today&#x27;s core as tomorrow&#x27;s commodity.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The pack states its own status as a design pack with one shipped consumer, and C23 records the uncomfortable version: &lt;b&gt;the first useful thing it produced needed none of the infrastructure the pack is about&lt;/b&gt;. That is this doctrine arriving uninvited and being written down rather than argued with.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — C23&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD1&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Move fast&quot;,
+      &quot;what&quot;: &quot;An imperfect decision now usually beats a perfect one later.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Nineteen releases in two days, each validated before publishing, each with its reasoning recorded. Corrections shipped within hours of being found.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Release history&quot;,
+          &quot;https://pki.sgit.ai/admin/versions.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD2&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Strategy is iterative, not linear&quot;,
+      &quot;what&quot;: &quot;Act, observe, adjust. A plan that survives contact unchanged was not testing anything.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;The change-control appendix &lt;em&gt;is&lt;/em&gt; the artefact for this doctrine: twenty-five corrections, most of them arriving after the thing they correct had shipped.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix C — Change control&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD3&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Manage inertia&quot;,
+      &quot;what&quot;: &quot;Expect resistance to change, especially where past success came from.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;Inertia is &lt;b&gt;marked on the maps&lt;/b&gt; — fixtures, and &lt;em&gt;verifiable by nobody&lt;/em&gt; — with the reason it will resist: an interface that admits what it cannot check looks worse than one that does not. Marking it is not managing it, and none of it has been overcome.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;09 — inertia on W4 and W6&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD4&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Commit to the direction, adapt along the path&quot;,
+      &quot;what&quot;: &quot;Be firm about where you are going and flexible about how you get there.&quot;,
+      &quot;status&quot;: &quot;partial&quot;,
+      &quot;us&quot;: &quot;The direction is committed and published — four rules, held to even when a fifth was proposed rather than renumbering them. &lt;b&gt;A third of the decisions register is still open&lt;/b&gt;, several of them blocking phase 3 outright.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The four rules&quot;,
+          &quot;https://pki.sgit.ai/rules/index.html&quot;
+        ],
+        [
+          &quot;The decisions register&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD5&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Be the owner&quot;,
+      &quot;what&quot;: &quot;Take responsibility. Somebody has to be answerable for the thing.&quot;,
+      &quot;status&quot;: &quot;weak&quot;,
+      &quot;us&quot;: &quot;&lt;b&gt;REP-0001&#x27;s &lt;code&gt;Sponsor&lt;/code&gt; field is empty, and that is not an oversight.&lt;/b&gt; There is no champion and no accepting authority, so nothing can move past &lt;code&gt;Draft&lt;/code&gt;. Every document here has exactly the standing of an agent saying so.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix B — the empty Sponsor field&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/rep-0001.html&quot;
+        ],
+        [
+          &quot;Decision 38: who accepts a REP?&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD6&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Inspire others&quot;,
+      &quot;what&quot;: &quot;Give people a reason to follow, beyond the org chart.&quot;,
+      &quot;status&quot;: &quot;weak&quot;,
+      &quot;us&quot;: &quot;There are no others. The briefing pack is written to be picked up by somebody, which is a preparation for this doctrine rather than an instance of it.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The briefing pack&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/registry-mvp-briefing-pack.zip&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD7&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Embrace uncertainty&quot;,
+      &quot;what&quot;: &quot;Say what you do not know. Certainty about the unknown is the expensive failure.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;Every document ends in &lt;em&gt;open questions&lt;/em&gt; and &lt;em&gt;honest tensions&lt;/em&gt;. The tool treats &lt;b&gt;“not sure” as a first-class answer&lt;/b&gt; that keeps the branch and marks it. The press release&#x27;s customer-quote slot is published empty with the reason in it.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Appendix A — the empty customer quote&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/pr-faq.html&quot;
+        ],
+        [
+          &quot;The tool&quot;,
+          &quot;https://pki.sgit.ai/assess/index.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;LD8&quot;,
+      &quot;cat&quot;: &quot;leadership&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Be humble&quot;,
+      &quot;what&quot;: &quot;Listen, admit error, and do it in public.&quot;,
+      &quot;status&quot;: &quot;strong&quot;,
+      &quot;us&quot;: &quot;A factual error of ours was live for a day and is &lt;b&gt;recorded on the page rather than quietly edited&lt;/b&gt;. When the tool&#x27;s first reader broke it, the finding published was &lt;em&gt;the model was wrong, not the button&lt;/em&gt;. The briefing pack requires a section titled &lt;em&gt;where I think the pack is wrong&lt;/em&gt;.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;Release history, v0.1.7&quot;,
+          &quot;https://pki.sgit.ai/admin/versions.html&quot;
+        ],
+        [
+          &quot;Appendix C — C25&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;S1&quot;,
+      &quot;cat&quot;: &quot;structure&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Think small teams&quot;,
+      &quot;what&quot;: &quot;Nothing larger than can be fed by two pizzas, with clear interfaces between.&quot;,
+      &quot;status&quot;: &quot;na&quot;,
+      &quot;us&quot;: &quot;One agent and one project lead. There is no team to size.&quot;,
+      &quot;evidence&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;S2&quot;,
+      &quot;cat&quot;: &quot;structure&quot;,
+      &quot;phase&quot;: 2,
+      &quot;name&quot;: &quot;Distribute power and decision making&quot;,
+      &quot;what&quot;: &quot;Push decisions to where the information is.&quot;,
+      &quot;status&quot;: &quot;weak&quot;,
+      &quot;us&quot;: &quot;&lt;b&gt;Every open decision routes to one person&lt;/b&gt;, and the register proves it — the &lt;em&gt;made by&lt;/em&gt; column has one name in it. That is efficient at this size and it is the opposite of this doctrine, so it is rated as the opposite.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The decisions register&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/change-control.html&quot;
+        ],
+        [
+          &quot;Comms&quot;,
+          &quot;https://pki.sgit.ai/admin/comms.html&quot;
+        ]
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;S3&quot;,
+      &quot;cat&quot;: &quot;structure&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Seek the best&quot;,
+      &quot;what&quot;: &quot;Hire and keep people better than you at the thing.&quot;,
+      &quot;status&quot;: &quot;na&quot;,
+      &quot;us&quot;: &quot;No hiring, no team.&quot;,
+      &quot;evidence&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;S4&quot;,
+      &quot;cat&quot;: &quot;structure&quot;,
+      &quot;phase&quot;: 3,
+      &quot;name&quot;: &quot;Provide purpose, mastery and autonomy&quot;,
+      &quot;what&quot;: &quot;The three things that actually motivate people doing difficult work.&quot;,
+      &quot;status&quot;: &quot;na&quot;,
+      &quot;us&quot;: &quot;No people to provide it to.&quot;,
+      &quot;evidence&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;S5&quot;,
+      &quot;cat&quot;: &quot;structure&quot;,
+      &quot;phase&quot;: 4,
+      &quot;name&quot;: &quot;There is no single culture — pioneers, settlers, town planners&quot;,
+      &quot;what&quot;: &quot;Different stages of evolution need different kinds of people, and one culture cannot serve all three.&quot;,
+      &quot;status&quot;: &quot;na&quot;,
+      &quot;us&quot;: &quot;Requires an organisation. Worth noting for whoever builds one: this pack is &lt;b&gt;pioneer output&lt;/b&gt; — exploratory, documentation-heavy, unbuilt — and handing it to a settler is exactly what the briefing pack is for.&quot;,
+      &quot;evidence&quot;: [
+        [
+          &quot;The briefing pack&quot;,
+          &quot;https://pki.sgit.ai/packs/registry-mvp/registry-mvp-briefing-pack.zip&quot;
+        ]
+      ]
+    }
+  ],
+  &quot;moved_from&quot;: &quot;https://pki.sgit.ai/packs/registry-mvp/doctrine.html&quot;,
+  &quot;moved_note&quot;: &quot;Moved to wardley-maps.sgit.ai/doctrine/ in August 2026. The subject of the assessment is unchanged — it is the pki.sgit.ai registry MVP pack — and the evidence links are absolute URLs back to that site, because the artefacts each rating rests on did not move.&quot;,
+  &quot;licence&quot;: &quot;CC BY 4.0&quot;
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>wardley-maps.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://wardley-maps.sgit.ai/doctrine/doctrine.json">https://wardley-maps.sgit.ai/doctrine/doctrine.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:20Z</dd><dt>sha256</dt><dd><code title="0fdb40307f47d9f30dbf3a86b10d29f886ab3462e2cd656a5014c4404a085c2a">0fdb40307f47</code></dd><dt>Frozen copy</dt><dd><a href="doctrine.json">sites/wardley-maps.sgit.ai/doctrine/doctrine.json</a> (27,844 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

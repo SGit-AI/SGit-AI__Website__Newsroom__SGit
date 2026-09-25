@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>T05 — Settle the open questions in the five connector vaults · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#t05-settle-the-open-questions-in-the-five-connector-vaults">T05 — Settle the open questions in the five connector vaults</a></li><li class="l2"><a href="#the-task">The task</a></li><li class="l2"><a href="#constraints">Constraints</a></li><li class="l2"><a href="#done-means">Done means</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/work/T05/index.html">live ↗</a></p><article class="source"><h1 id="t05-settle-the-open-questions-in-the-five-connector-vaults">T05 — Settle the open questions in the five connector vaults</h1>
+<blockquote><p>Rendered from .claude/briefs/T05-research-open-questions.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/work/T05/</a><a class="ext live" href="https://riskmandate.ai/admin/work/T05/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>From:</strong> <code>docs/briefs/research__connector-grants-open-questions.md</code> §2 (the brief for the
+research agent). <strong>Size:</strong> a day per vault; one vault per branch. <strong>Touches:</strong>
+<code>site/vaults/&lt;slug&gt;/data/grant.json</code> and the derived files; nothing else.</p>
+<h2 id="the-task">The task</h2>
+<p>Take one vault: <code>google-workspace-mcp</code> (4 questions), <code>gmail-readonly</code> (3),
+<code>google-drive-readonly</code> (3), <code>claude-m365-connector</code> (4), <code>dropbox-mcp</code> (4). Open its
+<code>RESEARCH-NEEDED.md</code>. For each question, settle it from the vendor&#x27;s published page, quote the
+sentence with URL and date read, move the row&#x27;s evidence tier, delete the question; or, if the
+page is silent, record that as a contradiction with <code>state: &quot;undocumented&quot;</code>. The prompt is
+<code>.claude/commands/research-vault.md</code>.</p>
+<p>The three most likely to move a row: whether the Gmail MCP server exposes a <em>send</em> tool; whether
+Claude&#x27;s Microsoft 365 write tools are on by default or gated behind <code>Mail.Send</code>; the default
+audience of a Dropbox <code>CreateSharedLink</code>.</p>
+<h2 id="constraints">Constraints</h2>
+<ul><li><strong>Read, do not test.</strong> Never connect an assistant to an account to see what happens. A row
+becomes <em>measured</em> only from a system we are entitled to run, which none of these is.</li><li>Vendor pages move: record the date; if a page contradicts what the vault already quotes, keep
+both readings with both dates.</li><li>No verdict on the vendor. Facts, dates, sources.</li></ul>
+<h2 id="done-means">Done means</h2>
+<ul><li><code>RESEARCH-NEEDED.md</code> shorter, <code>history/</code> recording whether the counts moved, <code>--check</code> green.</li><li>The vault page&#x27;s open-questions count moved on the tile.</li><li>The push to sgit is the lead&#x27;s: the work file says the vault is rebuilt and unpushed.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/work/T05/index.html">https://riskmandate.ai/admin/work/T05/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/work/T05/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="bb3821355d44f6ddf515217097d7496c800caac9e1dd25f9fe3e32f01adcf73c">bb3821355d44</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/work/T05/index.md</a> (1,888 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

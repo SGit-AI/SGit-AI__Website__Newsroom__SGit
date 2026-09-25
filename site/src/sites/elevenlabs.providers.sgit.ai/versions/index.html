@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/versions/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Release history
+description: &quot;Every release of this site, with what changed. The version is owned by admin/build/version.txt, must appear in the release commit&#x27;s subject, and CI verifies the two agree before it tags anything.&quot;
+lead: &quot;Every release of this site, with what changed and when. The estate&#x27;s convention: <strong>one file owns the version</strong>, the release commit&#x27;s subject repeats it, and the pipeline refuses to tag anything if the two disagree.&quot;
+order: 95
+</p>
+<hr>
+<p>&lt;div class=&quot;tablewrap&quot;&gt;&lt;table class=&quot;vers&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;What changed&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</p>
+<p>&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.3.0&lt;/td&gt;&lt;td&gt;2026-09-08&lt;/td&gt;&lt;td&gt;a chat pane that answers from the site&#x27;s own index with no key and speaks with yours; a pricing page whose first rule is that characters are never resold; the ElevenLabs Grants Program case with their criteria checked one by one including the borderline one; two-level navigation&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.2.1&lt;/td&gt;&lt;td&gt;2026-09-08&lt;/td&gt;&lt;td&gt;the first video: the ElevenLabs render path ran for the first time, and the site gained what it found — two tier refusals, a model that rejects stitching, a key that names its own missing permission, and an alignment exact to the millisecond that attributes the estate&#x27;s drift to the encoder rather than the speech&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.2.0&lt;/td&gt;&lt;td&gt;2026-09-08&lt;/td&gt;&lt;td&gt;the providers-site pack implemented (two-layer capability block, the tool-state tier axis and its intersection with the patterns, positioning, a disclosure line on every page, pattern three&#x27;s exact scope, page-level family links); both briefs published raw at /briefs/ under CC BY 4.0 with a page reviewing what was accepted, modified and rejected; the video-pipeline brief processed into /video/ with its measured numbers, its four first-run failure points and the reason no video was made&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.1.2&lt;/td&gt;&lt;td&gt;2026-09-07&lt;/td&gt;&lt;td&gt;fix the vendor citation in section 4 — a bare URL in angle brackets reached the browser as an unknown tag, so the URL a reader is supposed to check was invisible on the page&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.1.1&lt;/td&gt;&lt;td&gt;2026-09-07&lt;/td&gt;&lt;td&gt;make every internal URL relative to its page — the site was serving under a GitHub Pages project path, where root-absolute URLs 404 the stylesheet, the lab runtime and the favicon&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.1.0&lt;/td&gt;&lt;td&gt;2026-09-07&lt;/td&gt;&lt;td&gt;First release. The nine-section report with §8 and §9 given the visual weight; the four credential patterns and the generated provider × pattern matrix; the claim ledger, six verification states, joined to the pages that cite them at build time; the sg.tts specification, future tense throughout; the ported test bench and twelve browser labs, keys in localStorage and one host; the example scripts and the PLS lexicon as downloadable files; disclosures; the CI pipeline (validate → tag → deploy) with a secret scan, a reproducible-build check, the acceptance assertions and the lab runtime&#x27;s own browser tests.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</p>
+<h2 id="how-a-release-is-made-here">How a release is made here</h2>
+<p>The same three steps as every other site in this estate — <code>validate</code> → <code>tag-release</code> → <code>deploy</code>, in that order, with a failure at any stage stopping the release rather than shipping past it.</p>
+<p><strong>1 · The version is owned by one file.</strong> <code>admin/build/version.txt</code>. Nothing else may invent one: the nav badge, the footer, <code>llms.txt</code> and the table above are all rendered from it, and the release gate fails if any of them disagree.</p>
+<p><strong>2 · One command bumps it.</strong></p>
+<pre><code class="lang-bash">bin/bump.py &quot;what changed in this release&quot;     # --major for vR.M+1.0
+python3 build.py
+admin/build/validate.sh
+git commit -am &quot;site v0.1.1: what changed in this release&quot;</code></pre>
+<p>The commit subject is not decoration. <code>tag-release</code> reads <code>version.txt</code>, finds the commit in this history whose <strong>subject</strong> carries the same version, and tags that commit — which is <code>HEAD</code> on a direct push and <code>HEAD</code>&#x27;s parent when a pull request lands as a merge. If no commit carries the version, or the tag already exists on an earlier commit, the release stops: a version was reused rather than bumped.</p>
+<p><strong>3 · Every push to the release branch is a minor.</strong> The new tag must be the next <code>vR.M.N+1</code>, or a deliberate <code>vR.M+1.0</code>. The first run backfills tags for any historical release it can read out of the commit subjects.</p>
+<h2 id="what-the-gate-checks-before-anything-is-tagged">What the gate checks before anything is tagged</h2>
+<p>The four house checks, plus what this particular site promises:</p>
+<div class="table"><table><thead><tr><th>Check</th><th>Why it exists here</th></tr></thead><tbody><tr><td><strong>The build is reproducible</strong> — <code>docs/</code> must match <code>content/</code></td><td>Markdown is the source of truth; a stale build would publish prose nobody wrote</td></tr>
+<tr><td><strong>Version agreement</strong> — <code>version.txt</code> against every page badge, the table above, and <code>llms.txt</code></td><td>A blanket version bump that misses a page ships two versions of one site</td></tr>
+<tr><td><strong>Internal links resolve</strong>, and every canonical URL is on the host in <code>CNAME</code></td><td>A moved page and a copy-pasted canonical are the two ways a static site quietly breaks</td></tr>
+<tr><td><strong>Key-leak tripwire</strong> — API keys, vault keys, private keys, over the whole tree including <code>docs/</code></td><td>This repository is public; the vault its content came from was not. A leak here would be the site&#x27;s own headline</td></tr>
+<tr><td><strong>One host</strong> — no third-party resource, and no network origin in any script but <code>api.elevenlabs.io</code></td><td>It is the <a href="../experiments/index.html">labs&#x27;</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/" title="live page">↗</a> central claim, so it is a build failure rather than a promise</td></tr>
+<tr><td><strong>The report&#x27;s nine sections, in order; every claim cited; the non-affiliation line in every footer; <code>sg.tts</code> in the future tense</strong></td><td>The <a href="../ledger/index.html">acceptance checklist</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/ledger/" title="live page">↗</a>, enforced instead of remembered</td></tr>
+<tr><td><strong>The lab runtime parses and passes its own tests</strong></td><td>Thirty-four assertions over the key store and the alignment arithmetic, in a real browser, with no network</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/versions/index.md">https://elevenlabs.providers.sgit.ai/versions/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:31Z</dd><dt>sha256</dt><dd><code title="465177a096546d709e69c09e4cc4b8bf12bc5d0b5444aec9159a5d1d0c0aae28">465177a09654</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/versions/index.md</a> (5,990 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

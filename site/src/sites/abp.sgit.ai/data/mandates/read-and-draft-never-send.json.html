@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>read-and-draft-never-send.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="read-and-draft-never-send.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/mandates/read-and-draft-never-send.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/mandate/v1&quot;,
+  &quot;id&quot;: &quot;read-and-draft-never-send&quot;,
+  &quot;label&quot;: &quot;Find things in the inbox, draft replies, never send&quot;,
+  &quot;surface&quot;: [
+    &quot;web&quot;
+  ],
+  &quot;applies_to&quot;: [
+    &quot;anthropic/gmail-connector/default&quot;,
+    &quot;anthropic/gmail-connector/measured-2026-09-19&quot;
+  ],
+  &quot;status&quot;: &quot;starting-point&quot;,
+  &quot;authored&quot;: &quot;2026-09-16&quot;,
+  &quot;authored_by&quot;: &quot;the site, as a starting point — not measured, not surveyed; the first thing to argue with&quot;,
+  &quot;description&quot;: &quot;We connected Gmail to Claude so it could find things in the inbox, answer questions about it, and draft replies for a person to send themselves. Reading is what was wanted. Nobody asked it to send mail as them — Google&#x27;s own consent screen already permits it, and only the per-action approval prompt stands between the two.&quot;,
+  &quot;want&quot;: [
+    &quot;read.message.tenant&quot;
+  ],
+  &quot;do_not_want&quot;: [
+    &quot;send.message.world&quot;,
+    &quot;read.credential.host&quot;,
+    &quot;create.schedule.tenant&quot;
+  ],
+  &quot;unstated&quot;: [
+    &quot;authenticate-as.credential.signing&quot;,
+    &quot;authenticate-as.credential.tenant&quot;,
+    &quot;create.record.world&quot;,
+    &quot;create.schedule.host&quot;,
+    &quot;delete.file.host&quot;,
+    &quot;execute.process.host&quot;,
+    &quot;execute.process.self&quot;,
+    &quot;grant.credential.self&quot;,
+    &quot;read.file.host&quot;,
+    &quot;read.file.project&quot;,
+    &quot;read.record.browsing&quot;,
+    &quot;read.record.history&quot;,
+    &quot;send.endpoint.allowed&quot;,
+    &quot;send.endpoint.world&quot;,
+    &quot;write.budget.tenant&quot;,
+    &quot;write.file.host&quot;,
+    &quot;write.file.project&quot;,
+    &quot;write.repository.project&quot;,
+    &quot;write.repository.tenant&quot;
+  ],
+  &quot;notes&quot;: {
+    &quot;send.message.world&quot;: &quot;refused; bounded today only by the approval prompt, which is a setting and not a boundary — an org owner can remove it&quot;,
+    &quot;read.message.tenant&quot;: &quot;wanted — and reads every message the account can already read, which is more than most people picture when they say \&quot;read my mail\&quot;&quot;,
+    &quot;create.schedule.tenant&quot;: &quot;refused; a filter is a rule that keeps acting on mail after the chat ends, and nobody asked for one&quot;
+  },
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://riskmandate.ai/vaults/claude-gmail-connector/data/mandate.json&quot;,
+    &quot;source_page&quot;: &quot;https://riskmandate.ai/abp-vault-claude-gmail-connector.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-20T17:23:43Z&quot;,
+    &quot;pack_version&quot;: null,
+    &quot;content_hash&quot;: &quot;sha256:cf7e3c1e8af38979099b193e9c98a502924e8d4f11cc6079c8c1d9573b2534b3&quot;,
+    &quot;verbatim_bytes&quot;: &quot;contributed/riskmandate/claude-gmail-connector/mandate.json&quot;,
+    &quot;contributed_by&quot;: &quot;riskmandate.ai&quot;,
+    &quot;contributed_manifest&quot;: &quot;contributed/riskmandate/manifest.json&quot;,
+    &quot;note&quot;: &quot;Contributed by riskmandate.ai, promoted from claude-gmail-connector/mandate.json. `unstated` is recomputed here. A mandate is elicited, not measured: this is the contributor&#x27;s first draft, written to be argued with.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  },
+  &quot;applies_to_extended&quot;: {
+    &quot;to&quot;: &quot;anthropic/gmail-connector/measured-2026-09-19&quot;,
+    &quot;note&quot;: &quot;Extended at v0.11.0 to the measured variant of the same shape, so that the site&#x27;s own starting mandate and the agent&#x27;s inferred one can be read against one grant. The contributed bytes are unchanged; the extension is the site&#x27;s.&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/mandates/read-and-draft-never-send.json">https://abp.sgit.ai/data/mandates/read-and-draft-never-send.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:43Z</dd><dt>sha256</dt><dd><code title="6b9b570348ea4495726efc9364ab530541c0e8eb8d411de890e2250c02537a3b">6b9b570348ea</code></dd><dt>Frozen copy</dt><dd><a href="read-and-draft-never-send.json">sites/abp.sgit.ai/data/mandates/read-and-draft-never-send.json</a> (3,117 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

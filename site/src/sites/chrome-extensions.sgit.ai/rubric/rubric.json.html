@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>rubric.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · chrome-extensions.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/chrome-extensions.sgit.ai.html">chrome-extensions.sgit.ai</a> · <a href="rubric.json">raw text</a> · <a class="ext" href="https://chrome-extensions.sgit.ai/rubric/rubric.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;site&quot;: &quot;chrome-extensions.sgit.ai&quot;,
+  &quot;version&quot;: &quot;v0.1.0&quot;,
+  &quot;updated&quot;: &quot;2026-09-09&quot;,
+  &quot;licence&quot;: &quot;CC BY 4.0&quot;,
+  &quot;purpose&quot;: &quot;The checklist an agent walks before writing an extension. Every row is derived from a specific incident in the four guides, so a score is a claim about which failures the extension can still suffer, not a style opinion.&quot;,
+  &quot;grading&quot;: {
+    &quot;scale&quot;: [
+      &quot;yes&quot;,
+      &quot;no&quot;,
+      &quot;not-applicable&quot;
+    ],
+    &quot;rule&quot;: &quot;Never a number out of ten.&quot;
+  },
+  &quot;claim_state_note&quot;: &quot;The three efforts&#x27; grades below are REPORTED from the guides&#x27; own claims, not computed by re-reading source (gaps G2, G5 in the brief pack). The recorder&#x27;s source lives in a separate vault this site does not have access to.&quot;,
+  &quot;sections&quot;: [
+    {
+      &quot;id&quot;: &quot;A&quot;,
+      &quot;title&quot;: &quot;Does it stay safe to leave running?&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;id&quot;: &quot;A1&quot;,
+          &quot;check&quot;: &quot;Never originates a request&quot;,
+          &quot;why&quot;: &quot;Every fact in the dataset is something the target volunteered to a real user in a real session&quot;
+        },
+        {
+          &quot;id&quot;: &quot;A2&quot;,
+          &quot;check&quot;: &quot;Never blocks, delays or alters a response&quot;,
+          &quot;why&quot;: &quot;A recorder that alters a response can break the page it is watching and you will spend a day thinking the target changed&quot;
+        },
+        {
+          &quot;id&quot;: &quot;A3&quot;,
+          &quot;check&quot;: &quot;Every hook wrapped in try/catch; never throws into the page&quot;,
+          &quot;why&quot;: &quot;An exception in a wrapper is a bug in the target&#x27;s app, from the target&#x27;s point of view&quot;
+        },
+        {
+          &quot;id&quot;: &quot;A4&quot;,
+          &quot;check&quot;: &quot;Never transmits; export is a manual download&quot;,
+          &quot;why&quot;: &quot;The invariant that makes the tool defensible&quot;
+        },
+        {
+          &quot;id&quot;: &quot;A5&quot;,
+          &quot;check&quot;: &quot;A deny list that is a privacy floor, re-derived per transport&quot;,
+          &quot;why&quot;: &quot;Message content never captured in any mode, including all&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;B&quot;,
+      &quot;title&quot;: &quot;Can it prove what it saw?&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;id&quot;: &quot;B1&quot;,
+          &quot;check&quot;: &quot;Build version stamped into every artefact&quot;,
+          &quot;why&quot;: &quot;Ten days lost to a browser running an old build; a quiet week on the target&quot;
+        },
+        {
+          &quot;id&quot;: &quot;B2&quot;,
+          &quot;check&quot;: &quot;Running build shown in the UI, on the surface opened first, and coloured when stale&quot;,
+          &quot;why&quot;: &quot;The badge shipped to the side panel while the popup went on saying nothing for two versions — exactly the wrong way round&quot;
+        },
+        {
+          &quot;id&quot;: &quot;B3&quot;,
+          &quot;check&quot;: &quot;Coverage reported per surface, including zeroes&quot;,
+          &quot;why&quot;: &quot;A surface absent reads as &#x27;nothing happened&#x27;. A surface listed with zero reads as &#x27;we never looked&#x27;&quot;
+        },
+        {
+          &quot;id&quot;: &quot;B4&quot;,
+          &quot;check&quot;: &quot;Truncation flagged, with the original length stored&quot;,
+          &quot;why&quot;: &quot;A record that says truncated: true with 4 MiB of content is a fact you can act on. A dropped record is silence&quot;
+        },
+        {
+          &quot;id&quot;: &quot;B5&quot;,
+          &quot;check&quot;: &quot;Skips counted by endpoint in an unparsed tally&quot;,
+          &quot;why&quot;: &quot;That tally is the to-do list for the next parser&quot;
+        },
+        {
+          &quot;id&quot;: &quot;B6&quot;,
+          &quot;check&quot;: &quot;An observations log recording what was refused, and why&quot;,
+          &quot;why&quot;: &quot;Twice settled questions nothing else could, including proving an old build was running&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;C&quot;,
+      &quot;title&quot;: &quot;Does it fail in the right direction?&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;id&quot;: &quot;C1&quot;,
+          &quot;check&quot;: &quot;Missing is null; never 0, &#x27;&#x27; or {}&quot;,
+          &quot;why&quot;: &quot;res || {} turned &#x27;no answer&#x27; into &#x27;an answer with nothing in it&#x27; and cost two runs&quot;
+        },
+        {
+          &quot;id&quot;: &quot;C2&quot;,
+          &quot;check&quot;: &quot;No file constructed from an unchecked value&quot;,
+          &quot;why&quot;: &quot;new Blob([undefined]) writes the word &#x27;undefined&#x27; and calls it undefined.json&quot;
+        },
+        {
+          &quot;id&quot;: &quot;C3&quot;,
+          &quot;check&quot;: &quot;Records with no stable identifier yield nothing, never the previous id&quot;,
+          &quot;why&quot;: &quot;Losing two is correct; mislabelling two is not&quot;
+        },
+        {
+          &quot;id&quot;: &quot;C4&quot;,
+          &quot;check&quot;: &quot;Bulk data never crosses a size-limited channel&quot;,
+          &quot;why&quot;: &quot;113 MB export vs chrome.runtime.sendMessage; the fix is to remove the boundary, not widen it&quot;
+        },
+        {
+          &quot;id&quot;: &quot;C5&quot;,
+          &quot;check&quot;: &quot;A circuit breaker over live counters, with generous thresholds&quot;,
+          &quot;why&quot;: &quot;Three runs lost silently; a breaker that trips on noise gets ignored, and an ignored breaker is worse than none&quot;
+        },
+        {
+          &quot;id&quot;: &quot;C6&quot;,
+          &quot;check&quot;: &quot;Failures loud at mechanisms, quiet at data&quot;,
+          &quot;why&quot;: &quot;Quiet-and-counted for what you did not understand; loud-and-stop for what did not work&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;D&quot;,
+      &quot;title&quot;: &quot;Is the evidence separable from the interpretation?&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;id&quot;: &quot;D1&quot;,
+          &quot;check&quot;: &quot;Phase 0 first — a recorder with no parsers&quot;,
+          &quot;why&quot;: &quot;&#x27;This is not the product.&#x27; The best decision in the project&quot;
+        },
+        {
+          &quot;id&quot;: &quot;D2&quot;,
+          &quot;check&quot;: &quot;captures/ read-only; everything else regenerable&quot;,
+          &quot;why&quot;: &quot;Being wrong costs a re-derive, not a re-capture&quot;
+        },
+        {
+          &quot;id&quot;: &quot;D3&quot;,
+          &quot;check&quot;: &quot;Derived format versioned, and refused when unknown&quot;,
+          &quot;why&quot;: &quot;Silently reading a v1 file understates the dataset without saying so&quot;
+        },
+        {
+          &quot;id&quot;: &quot;D4&quot;,
+          &quot;check&quot;: &quot;Code and data in separate stores, with a per-folder publication rule&quot;,
+          &quot;why&quot;: &quot;Different sensitivity, lifecycle, size and failure mode&quot;
+        },
+        {
+          &quot;id&quot;: &quot;D5&quot;,
+          &quot;check&quot;: &quot;Exports split full / skeleton / debug, with a redaction verifier&quot;,
+          &quot;why&quot;: &quot;The verifier counts what it checked, so &#x27;0 leaks&#x27; means something&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;E&quot;,
+      &quot;title&quot;: &quot;Is it built on evidence rather than one example?&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;id&quot;: &quot;E1&quot;,
+          &quot;check&quot;: &quot;A shape survey written before the parser&quot;,
+          &quot;why&quot;: &quot;Found 58 distinct type names in one run and answered a week-old question&quot;
+        },
+        {
+          &quot;id&quot;: &quot;E2&quot;,
+          &quot;check&quot;: &quot;Routing on what the response says about itself&quot;,
+          &quot;why&quot;: &quot;Request-side ids are the caller&#x27;s opinion; three result sets shared a path and a prefix&quot;
+        },
+        {
+          &quot;id&quot;: &quot;E3&quot;,
+          &quot;check&quot;: &quot;Derived facts verified against an artefact the system produced&quot;,
+          &quot;why&quot;: &quot;Two independent clocks agreeing to within a round trip is strong. One clock agreeing with itself is nothing&quot;
+        },
+        {
+          &quot;id&quot;: &quot;E4&quot;,
+          &quot;check&quot;: &quot;Structural markers read instead of rendered English&quot;,
+          &quot;why&quot;: &quot;Parsing the sentence works until the string is localised, pluralised, or A/B tested&quot;
+        },
+        {
+          &quot;id&quot;: &quot;E5&quot;,
+          &quot;check&quot;: &quot;Types in structured identifiers read as data, with branching&quot;,
+          &quot;why&quot;: &quot;A variant means loosen; a different type means branch&quot;
+        },
+        {
+          &quot;id&quot;: &quot;E6&quot;,
+          &quot;check&quot;: &quot;Sample caps checked for selecting against the evidence&quot;,
+          &quot;why&quot;: &quot;59 of 70 whole — because the whole ones were the small ones&quot;
+        },
+        {
+          &quot;id&quot;: &quot;E7&quot;,
+          &quot;check&quot;: &quot;Timestamp provenance labelled (urn vs captured)&quot;,
+          &quot;why&quot;: &quot;Lets consumers filter on evidence quality&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;F&quot;,
+      &quot;title&quot;: &quot;Do the tests pin the lessons?&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;id&quot;: &quot;F1&quot;,
+          &quot;check&quot;: &quot;Test files auto-discovered; exits non-zero on zero found&quot;,
+          &quot;why&quot;: &quot;&#x27;No tests found&#x27; and &#x27;all tests passed&#x27; must never look the same&quot;
+        },
+        {
+          &quot;id&quot;: &quot;F2&quot;,
+          &quot;check&quot;: &quot;Optional-dependency suites print SKIPPED loudly&quot;,
+          &quot;why&quot;: &quot;A suite silently dropping 11 tests will eventually be why a bug ships&quot;
+        },
+        {
+          &quot;id&quot;: &quot;F3&quot;,
+          &quot;check&quot;: &quot;Test names state decisions, not behaviours&quot;,
+          &quot;why&quot;: &quot;The label goes with the value; tells the next reader why the code looks that way&quot;
+        },
+        {
+          &quot;id&quot;: &quot;F4&quot;,
+          &quot;check&quot;: &quot;Fixtures hand-authored and synthetic; real captures never become test data&quot;,
+          &quot;why&quot;: &quot;A privacy rule that turned out to be a design rule&quot;
+        },
+        {
+          &quot;id&quot;: &quot;F5&quot;,
+          &quot;check&quot;: &quot;A real browser drives anything with a real browser boundary&quot;,
+          &quot;why&quot;: &quot;The 113 MB messaging bug was invisible to unit tests by construction&quot;
+        }
+      ]
+    }
+  ],
+  &quot;graded_efforts&quot;: [
+    {
+      &quot;name&quot;: &quot;The recorder&quot;,
+      &quot;date&quot;: &quot;2026-08 to 2026-09&quot;,
+      &quot;version&quot;: &quot;v0.16.0&quot;,
+      &quot;evidence_state&quot;: &quot;measured&quot;,
+      &quot;grade_note&quot;: &quot;Reported from what the four guides claim about it — every check above describes behaviour the guides attribute to this tool. Not independently verified against its source (gap G2/G5).&quot;,
+      &quot;default_grade&quot;: &quot;yes&quot;
+    },
+    {
+      &quot;name&quot;: &quot;SGraph Key Vault (March 2026)&quot;,
+      &quot;date&quot;: &quot;2026-03-05&quot;,
+      &quot;version&quot;: &quot;v0.11.12&quot;,
+      &quot;evidence_state&quot;: &quot;recalled&quot;,
+      &quot;grade_note&quot;: &quot;A 28-file dev pack, confirmed never built (8 Sep 2026). No code exists to check any behavioural claim against.&quot;,
+      &quot;default_grade&quot;: &quot;not-applicable&quot;
+    },
+    {
+      &quot;name&quot;: &quot;The secrets manager (September 2026)&quot;,
+      &quot;date&quot;: &quot;2026-09-05&quot;,
+      &quot;version&quot;: &quot;v0.33.65&quot;,
+      &quot;evidence_state&quot;: &quot;read&quot;,
+      &quot;grade_note&quot;: &quot;A dev brief with platform constraints read from documentation. No code was written, so there is nothing to grade.&quot;,
+      &quot;default_grade&quot;: &quot;not-applicable&quot;
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>chrome-extensions.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://chrome-extensions.sgit.ai/rubric/rubric.json">https://chrome-extensions.sgit.ai/rubric/rubric.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:45Z</dd><dt>sha256</dt><dd><code title="3ca4e996308c629786d4ca24c64ad698a9ace7d5569ebb095834d5f37a9929fe">3ca4e996308c</code></dd><dt>Frozen copy</dt><dd><a href="rubric.json">sites/chrome-extensions.sgit.ai/rubric/rubric.json</a> (8,425 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

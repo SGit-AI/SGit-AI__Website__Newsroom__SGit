@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>threat-modeling.sgit.ai — a threat model is a claim you can check · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · threat-modeling.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#threat-modelingsgitai-a-threat-model-is-a-claim-you-can-check">threat-modeling.sgit.ai — a threat model is a claim you can check</a></li><li class="l2"><a href="#the-two-strongest-things-this-site-has">The two strongest things this site has</a></li><li class="l2"><a href="#the-move-in-two-parts">The move, in two parts</a></li><li class="l2"><a href="#seven-white-papers-one-argument">Seven white papers, one argument</a></li><li class="l2"><a href="#the-honest-constraints">The honest constraints</a></li><li class="l2"><a href="#related">Related</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/threat-modeling.sgit.ai.html">threat-modeling.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://threat-modeling.sgit.ai/index.md">live ↗</a></p><article class="source"><h1 id="threat-modelingsgitai-a-threat-model-is-a-claim-you-can-check">threat-modeling.sgit.ai — a threat model is a claim you can check</h1>
+<blockquote><p>**The industry&#x27;s own diagnosis is that threat modeling is a fairly subjective process
+producing static, siloed, context-poor documents.** This site publishes two things
+instead: models built as machine-readable graph data, and — its actual differentiator
+— the audit that says which parts of a threat model turned out to be wrong.</p></blockquote>
+<p>Eleven linked threat models, live at ThreatModCon 2025 · one threat model validated
+line-by-line against its code the next day · seven white papers · <a class="ext" href="https://threat-modeling.sgit.ai/about/participant.html">why this site is not
+a neutral vantage point ↗</a>.</p>
+<p><em>Source: <a href="index.html">https://threat-modeling.sgit.ai/index.html</a><a class="ext live" href="https://threat-modeling.sgit.ai/index.html" title="live page">↗</a> · site v0.1.0 · markdown twin of the front page.</em></p>
+<hr>
+<h2 id="the-two-strongest-things-this-site-has">The two strongest things this site has</h2>
+<p>Everyone publishes threat models. Almost nobody publishes the audit that says which
+parts of theirs turned out to be wrong.</p>
+<ul><li><strong><a class="ext" href="https://threat-modeling.sgit.ai/eleven-layers/index.html">Eleven linked layers, live ↗</a></strong> — &quot;One model answers what
+could go wrong here. Eleven linked models answer what does this line of code put at
+risk.&quot; A published vault — Customer through Compute, 51 nodes, 179 threats — not a
+diagram of the idea.</li><li><strong><a class="ext" href="https://threat-modeling.sgit.ai/validated/index.html">A claim, checked the next day ↗</a></strong> — 16 March 2026: a threat
+model of a real flow. 17 March: every finding checked against the code. Two confirmed
+real, one confirmed already safe, two confirmed missing, two marked as proposals with
+nothing built yet — and all four kinds published.</li></ul>
+<h2 id="the-move-in-two-parts">The move, in two parts</h2>
+<p>The industry&#x27;s diagnosis, in the founder&#x27;s words: threat modeling is *&quot;a fairly
+subjective process&quot;* producing <em>&quot;static documents&quot;</em> that are <em>&quot;siloed&quot;</em>,
+<em>&quot;fragmented&quot;</em> and <em>&quot;context-poor&quot;</em>. The answer here is not another methodology.</p>
+<ol><li><strong>Make the model machine-readable</strong> — a semantic knowledge graph, not a Word
+document. <a class="ext" href="https://threat-modeling.sgit.ai/graph/index.html">Threat models as graph data → ↗</a></li><li><strong>Make the model falsifiable — then falsify it.</strong> A threat model was written 16
+March 2026; a validation pass checked every finding against the code the next day.
+<a class="ext" href="https://threat-modeling.sgit.ai/validated/index.html">The validation pair → ↗</a></li></ol>
+<p>The policy position that follows: <a class="ext" href="https://threat-modeling.sgit.ai/disclosure/index.html">threat models as mandatory
+disclosures ↗</a> — security is a market for lemons, and a
+published, dated, checkable threat model is the correction.</p>
+<h2 id="seven-white-papers-one-argument">Seven white papers, one argument</h2>
+<p>Written in a burst — five of the seven inside four days at the end of May 2025 —
+building from a diagnosis to a mechanism to a scaling case to a policy position.
+<a class="ext" href="https://threat-modeling.sgit.ai/papers/index.html">All seven, in order → ↗</a></p>
+<h2 id="the-honest-constraints">The honest constraints</h2>
+<p>**Most of the practice material is a security review of the founder&#x27;s own live
+product.** It names unmitigated weaknesses. The rule this site publishes under:
+publish the method always, publish findings only once they are closed or harmless by
+design, hold anything still open. <a class="ext" href="https://threat-modeling.sgit.ai/disclosure/index.html">The disclosure boundary, in full → ↗</a></p>
+<p><strong>The graph tooling is real but young.</strong> The ThreatModCon vault is live; the
+continuous-modelling pipeline the papers describe is a vision with partial
+implementation. <a class="ext" href="https://threat-modeling.sgit.ai/graph/index.html#real-vs-argued">What is real versus argued → ↗</a></p>
+<p>This site is published by the estate whose own product it threat-models — a conflict
+of interest worth naming rather than discovered later. <a class="ext" href="https://threat-modeling.sgit.ai/about/participant.html">The participant disclosure, in
+full → ↗</a></p>
+<h2 id="related">Related</h2>
+<ul><li><a href="../sgit.ai/index.html">https://sgit.ai</a><a class="ext live" href="https://sgit.ai" title="live page">↗</a> — the parent project and the network index</li><li><a href="../sgit.ai/demos/vaults/threatmodcon-2025/index.html">https://sgit.ai/demos/vaults/threatmodcon-2025/</a><a class="ext live" href="https://sgit.ai/demos/vaults/threatmodcon-2025/" title="live page">↗</a> — the eleven-layer vault, live</li><li><a href="../wardley-maps.sgit.ai/index.html">https://wardley-maps.sgit.ai</a><a class="ext live" href="https://wardley-maps.sgit.ai" title="live page">↗</a> · <a class="ext" href="https://graphs.sgit.ai">https://graphs.sgit.ai ↗</a> · <a href="../standards.sgit.ai/index.html">https://standards.sgit.ai</a><a class="ext live" href="https://standards.sgit.ai" title="live page">↗</a></li><li><a href="../risks.sgit.ai/index.html">https://risks.sgit.ai</a><a class="ext live" href="https://risks.sgit.ai" title="live page">↗</a> · <a href="../pki.sgit.ai/index.html">https://pki.sgit.ai</a><a class="ext live" href="https://pki.sgit.ai" title="live page">↗</a></li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>threat-modeling.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://threat-modeling.sgit.ai/index.md">https://threat-modeling.sgit.ai/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:19Z</dd><dt>sha256</dt><dd><code title="fe58bd1c8de584569f60104d7aba24fe8a8d512f309ca828578901741cb9232f">fe58bd1c8de5</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/threat-modeling.sgit.ai/index.md</a> (3,727 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

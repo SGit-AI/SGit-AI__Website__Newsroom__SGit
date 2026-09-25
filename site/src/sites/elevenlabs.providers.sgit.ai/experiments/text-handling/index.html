@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#1-does-it-normalise-numbers-reliably">1 · Does it normalise numbers reliably?</a></li><li class="l2"><a href="#2-does-stitching-change-the-read">2 · Does stitching change the read?</a></li><li class="l2"><a href="#3-does-a-seed-repeat">3 · Does a seed repeat?</a></li><li class="l2"><a href="#what-this-costs-and-what-it-settles">What this costs, and what it settles</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/experiments/text-handling/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Text handling — normalisation, stitching and seeds
+description: &quot;Three A/Bs that decide how a script should be written: does the model normalise numbers reliably, does passing neighbouring scenes as context change the read, and does a fixed seed actually repeat?&quot;
+lead: &quot;Three questions that decide <strong>how a script is written</strong>, not how it sounds. Each is a controlled A/B: same voice, same seed, one variable. Together they are the difference between rewriting four script files and leaving them alone.&quot;
+order: 22
+kind: experiment
+family: text
+app: text-handling
+endpoints: &quot;POST /v1/text-to-speech/{id}/with-timestamps&quot;
+state_chips: [unrun]
+toc: true
+</p>
+<hr>
+<p>{{lab-header}}</p>
+<p>{{app}}</p>
+<h2 id="1-does-it-normalise-numbers-reliably">1 · Does it normalise numbers reliably?</h2>
+<p>The scripts in the source estate spell numbers out — <em>&quot;two thousand seven hundred and eighty-eight&quot;</em> — because two earlier engines needed it. But <strong>the narration text is the caption text</strong>, so the caption band shows the words rather than the digits, and a graph slide that says &quot;2,788 nodes&quot; on screen is better than one that says it in longhand.</p>
+<p><code>apply_text_normalization</code> takes <code>auto</code>, <code>on</code> or <code>off</code>. If <code>auto</code> reliably reads <code>2,788</code> as the number and <code>2026-09-03</code> as a date, four script files can be rewritten and the caption band improves everywhere. If it is unreliable, the longhand stays. This lab generates all three settings on the same line so the difference is audible rather than argued about.</p>
+<p>Note what the alignment gives you here: <code>alignment</code> is over the text you <strong>sent</strong>, <code>normalized_alignment</code> over what the model actually <strong>read</strong> — so a caption showing your text should use the first, and a caption showing what was spoken should use the second {{claim:timestamps-roundtrip}}.</p>
+<h2 id="2-does-stitching-change-the-read">2 · Does stitching change the read?</h2>
+<p>Every scene in a scene-by-scene render is generated cold. <code>previous_text</code> and <code>next_text</code> pass the neighbouring scenes as context so prosody carries across the cut — and <strong>context text is not billed</strong> {{claim:tts-prices}}, so if it helps at all it is free.</p>
+<p><strong>On <code>eleven_v3</code> this is not available at all</strong> {{claim:stitching-v3}} — the API answers <code>400 unsupported_model</code>, which the first real render discovered by failing on its very first request. The lab now refuses the combination instead of spending a request to rediscover it, and stitching has to be tested on <code>eleven_multilingual_v2</code> or a flash model.</p>
+<p>The measurable part is small: spoken length usually changes a little. The audible part is the whole point — whether the reel sounds like one read or like sixteen. Listen to the two clips back to back with the following scene in mind.</p>
+<h2 id="3-does-a-seed-repeat">3 · Does a seed repeat?</h2>
+<p>The vendor documents <code>seed</code> as best-effort determinism. For a pipeline that wants to re-render a video a year from now and get the same file, &quot;best-effort&quot; is the difference between an archive and a lottery ticket.</p>
+<p>Two generations, identical everything, same seed. Compare byte length and per-word drift. <strong>Identical byte lengths are promising, not proof</strong> — an encoder can produce the same length from a different waveform — but a <em>different</em> byte length settles it in the other direction immediately. If the seed does not hold, the reproducible-render answer is to commit the audio files rather than the parameters.</p>
+<h2 id="what-this-costs-and-what-it-settles">What this costs, and what it settles</h2>
+<p>About <strong>$0.05</strong> for all three sections on v3 at the default texts {{claim:tts-prices}}. What it settles: whether four script files get rewritten, whether the render passes neighbouring scenes, and whether renders are reproducible from parameters or need their audio archived. None of it has been run {{claim:labs-unrun}}.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/experiments/text-handling/index.md">https://elevenlabs.providers.sgit.ai/experiments/text-handling/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="e6bdc2dd40873fee883960ebb94b53fc64710105237aaf55a9aefd10b70dc39a">e6bdc2dd4087</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/experiments/text-handling/index.md</a> (3,765 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

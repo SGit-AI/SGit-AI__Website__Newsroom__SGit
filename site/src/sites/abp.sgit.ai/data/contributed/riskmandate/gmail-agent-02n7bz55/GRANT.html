@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>GRANT.md — Reach · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../editions/index.html">Editions</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../history/index.html">History</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../about/index.html">About</a><a href="../../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#grantmd-reach">GRANT.md — Reach</a></li><li class="l2"><a href="#1-mail-surface">1. Mail surface</a></li><li class="l3"><a href="#unprompted-runs-with-no-approval-10-of-30">Unprompted — runs with no approval, 10 of 30</a></li><li class="l3"><a href="#gated-stops-at-an-approval-prompt-20-of-30">Gated — stops at an approval prompt, 20 of 30</a></li><li class="l3"><a href="#blocked-0-of-30">Blocked — 0 of 30</a></li><li class="l2"><a href="#2-sending-identity">2. Sending identity</a></li><li class="l2"><a href="#3-beyond-the-mailbox">3. Beyond the mailbox</a></li><li class="l2"><a href="#4-what-is-absent">4. What is absent</a></li><li class="l2"><a href="#5-named-gaps-in-this-record">5. Named gaps in this record</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="GRANT.md">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/contributed/riskmandate/gmail-agent-02n7bz55/GRANT.md">live ↗</a></p><article class="source"><h1 id="grantmd-reach">GRANT.md — Reach</h1>
+<p><strong>Agent:</strong> Claude, via the Claude.ai Gmail connector
+<strong>Deployment:</strong> Google Workspace account <code>athena@thecyberboardroom.com</code>, sending as <code>agent@riskmandate.ai</code>
+<strong>Measured:</strong> 2026-09-19, from the connector&#x27;s own tool schemas and the live permission UI
+<strong>Vault:</strong> 02n7bz55 · recorded at v0.3.0</p>
+<p>Reach is what the agent can actually do in this deployment. It is measured, not asserted: every line below comes from a tool schema this agent read or a permission state observed in the settings page, not from the connector&#x27;s description of itself.</p>
+<p><strong>Not in the <code>verb.object.reach</code> grammar.</strong> abp.sgit.ai pins 23 capability primitives and this file does not use them — it is in the connector&#x27;s own vocabulary. That is a known gap, listed at the end.</p>
+<hr>
+<h2 id="1-mail-surface">1. Mail surface</h2>
+<p>The connector exposes <strong>30 tools</strong> against one mailbox: 6 read-only, 24 that write or delete.</p>
+<h3 id="unprompted-runs-with-no-approval-10-of-30">Unprompted — runs with no approval, 10 of 30</h3>
+<div class="table"><table><thead><tr><th>Tool</th><th>Reach</th></tr></thead><tbody><tr><td><code>search_threads</code></td><td>Any message in the account. Full Gmail operator set including <code>in:anywhere</code>, so archived, sent and trashed mail are all in scope.</td></tr>
+<tr><td><code>get_message</code>, <code>get_thread</code>, <code>get_draft</code>, <code>list_drafts</code>, <code>list_labels</code></td><td>Full content of anything <code>search_threads</code> can find.</td></tr>
+<tr><td><code>create_label</code></td><td>New labels, including nested.</td></tr>
+<tr><td><code>label_message</code>, <code>unlabel_message</code></td><td>Any label on any message, including system labels — so <code>INBOX</code> removal and <code>UNREAD</code> clearing are both here.</td></tr>
+<tr><td><code>send_message</code></td><td><strong>Outbound email to any address, with attachments to 25MB.</strong> The only irreversible action in the set, and it is in this table.</td></tr></tbody></table></div>
+<h3 id="gated-stops-at-an-approval-prompt-20-of-30">Gated — stops at an approval prompt, 20 of 30</h3>
+<p><code>create_draft</code>, <code>update_draft</code>, <code>delete_draft</code>, <code>reply</code>, <code>forward</code>, <code>update_label</code>, <code>delete_label</code>, <code>label_thread</code>, <code>unlabel_thread</code>, <code>update_message_labels</code>, <code>trash_message</code>, <code>untrash_message</code>, <code>trash_thread</code>, <code>untrash_thread</code>, <code>mark_message_spam</code>, <code>unmark_message_spam</code>, <code>mark_thread_spam</code>, <code>unmark_thread_spam</code>, <code>apply_sensitive_message_label</code>, <code>apply_sensitive_thread_label</code></p>
+<h3 id="blocked-0-of-30">Blocked — 0 of 30</h3>
+<p>Nothing is set to Blocked on this deployment.</p>
+<hr>
+<h2 id="2-sending-identity">2. Sending identity</h2>
+<p>The compose tools carry <strong>no sender field</strong>. <code>send_message</code>, <code>reply</code>, <code>create_draft</code> and <code>update_draft</code> were all inspected: no <code>from</code>, no <code>sendAs</code>, no <code>alias</code>. The From header is therefore whatever Gmail&#x27;s default send-as entry is, and the agent cannot select or override it per message.</p>
+<p>Current default: <code>agent@riskmandate.ai</code>, DKIM-signed as <code>riskmandate.ai</code>, confirmed aligned by a live round trip on 2026-09-19.</p>
+<p>Consequence for reach: <strong>the agent sends as the business, and cannot send as anything else.</strong> It also cannot send as <code>athena@thecyberboardroom.com</code> while this default stands.</p>
+<hr>
+<h2 id="3-beyond-the-mailbox">3. Beyond the mailbox</h2>
+<div class="table"><table><thead><tr><th>Surface</th><th>Reach</th></tr></thead><tbody><tr><td>Web</td><td>Fetch and read any public page. Used this session to read riskmandate.ai and sgit.ai.</td></tr>
+<tr><td>Shell + filesystem</td><td>A Linux container with network egress to an allowlist including <code>*.sgit.ai</code>, <code>*.sgraph.ai</code>, <code>github.com</code>, package registries and <code>api.anthropic.com</code>.</td></tr>
+<tr><td>sgit vaults</td><td>With a key: clone, read, write, commit and push. This vault was modified from that container.</td></tr>
+<tr><td>Vault write scope</td><td>Any vault whose key reaches this session. Two were held today.</td></tr></tbody></table></div>
+<p>This row matters and is easy to miss: <strong>the agent&#x27;s reach is not the Gmail connector.</strong> The connector is one surface. A shell with egress and a vault key is a larger one, and a behaviour policy scoped to the mailbox alone would have understated the reach by a wide margin.</p>
+<hr>
+<h2 id="4-what-is-absent">4. What is absent</h2>
+<p>Not barriers anyone chose — capabilities the connector does not expose. Recorded because they cap the blast radius, and because a future version could remove them silently.</p>
+<ul><li><strong>No account settings.</strong> No filters, forwarding, vacation responder, signatures, delegation, IMAP/POP. No persistence mechanism outlives a session.</li><li><strong>No permanent deletion.</strong> No hard delete, no empty-trash. A 30-day floor under every destructive mail action.</li><li><strong>No second account.</strong> One Google identity at a time.</li><li><strong>No introspection.</strong> The agent cannot read back its own permission state. A restriction is discovered by hitting it, and the failure is indistinguishable from a timeout.</li></ul>
+<hr>
+<h2 id="5-named-gaps-in-this-record">5. Named gaps in this record</h2>
+<ul><li>Not expressed in abp.sgit.ai&#x27;s 23 <code>verb.object.reach</code> primitives. Until it is, this reach cannot be joined to the agent rung of the fractal ladder.</li><li>The container&#x27;s egress allowlist is recorded from its declared configuration, not probed.</li><li>Vault reach is stated as a capability, not enumerated — no list exists of which vaults a key could reach.</li><li>Measured in one session on one day. Connector tool sets change without notice; this is a snapshot with a date on it, not a standing fact.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/contributed/riskmandate/gmail-agent-02n7bz55/GRANT.md">https://abp.sgit.ai/data/contributed/riskmandate/gmail-agent-02n7bz55/GRANT.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:41Z</dd><dt>sha256</dt><dd><code title="e29b5e86763e171789e0f5784c2e0419bfe7429467b09c35507b09f600290ad5">e29b5e86763e</code></dd><dt>Frozen copy</dt><dd><a href="GRANT.md">sites/abp.sgit.ai/data/contributed/riskmandate/gmail-agent-02n7bz55/GRANT.md</a> (4,762 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

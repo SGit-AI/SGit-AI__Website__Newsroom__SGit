@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>DELTA — what it can do that you did not ask for · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#delta-what-it-can-do-that-you-did-not-ask-for">DELTA — what it can do that you did not ask for</a></li><li class="l2"><a href="#four-counts-and-none-of-them-is-a-score">Four counts, and none of them is a score</a></li><li class="l2"><a href="#excess-you-refused-3">Excess you refused (3)</a></li><li class="l2"><a href="#excess-you-never-mentioned-6">Excess you never mentioned (6)</a></li><li class="l2"><a href="#unbounded-excess-7">Unbounded excess (7)</a></li><li class="l2"><a href="#shortfall-0">Shortfall (0)</a></li><li class="l2"><a href="#aligned-6">Aligned (6)</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="DELTA.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/DELTA.html">live ↗</a></p><article class="source"><h1 id="delta-what-it-can-do-that-you-did-not-ask-for">DELTA — what it can do that you did not ask for</h1>
+<blockquote><p>Derived from the grant and the mandate, never authored. Recomputed on every build, with both inputs pinned. If this file looks wrong, one of the two inputs is.</p></blockquote>
+<p><strong>Vault</strong> <code>claude-code-web</code> · <strong>status</strong> template · <strong>shape</strong> <code>anthropic/claude-code-remote/ccr-container</code> · <strong>grant</strong> 2026-09-05.2 · <strong>mandate</strong> 2026-09-09 · <strong>vocabulary</strong> abp.sgit.ai v0.3.0 · <strong>as at</strong> 2026-09-15</p>
+<hr>
+<p><strong>Grant</strong> 2026-09-05.2 · <strong>mandate</strong> 2026-09-09 · <strong>computed</strong> 2026-09-15T00:17:26Z · <strong>agrees row for row with</strong> the published record <code>anthropic__claude-code-remote__ccr-container__coding-assistant-in-a-container</code> (2026-09-11T13:00:37Z)</p>
+<h2 id="four-counts-and-none-of-them-is-a-score">Four counts, and none of them is a score</h2>
+<div class="table"><table><thead><tr><th></th><th>Count</th><th>Meaning</th></tr></thead><tbody><tr><td>Grant</td><td>15</td><td>capabilities the deployment reaches</td></tr>
+<tr><td>Mandate</td><td>6</td><td>capabilities the deployer wanted</td></tr>
+<tr><td>Excess</td><td>9</td><td>in the grant and not wanted</td></tr>
+<tr><td><strong>Unbounded excess</strong></td><td><strong>7</strong></td><td>excess with no boundary in the way — the only number anybody can move</td></tr>
+<tr><td>Shortfall</td><td>0</td><td>wanted and not in the grant</td></tr>
+<tr><td>Aligned</td><td>6</td><td>wanted and granted</td></tr></tbody></table></div>
+<h2 id="excess-you-refused-3">Excess you refused (3)</h2>
+<p>You said no. Each row says what, if anything, enforces the no.</p>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>Barrier</th><th>Undo</th><th>Evidence</th><th>Mandate</th></tr></thead><tbody><tr><td><code>authenticate-as.credential.signing</code></td><td>Sign commits with the key it holds</td><td>● none</td><td>no</td><td>observed ✓</td><td>refused by the mandate</td></tr>
+<tr><td><code>read.record.history</code></td><td>Read a retained record: shell history, past sessions</td><td>● none</td><td>no</td><td>observed ✓</td><td>refused by the mandate</td></tr>
+<tr><td><code>create.schedule.tenant</code></td><td>Create something that outlives the session, on the platform (a routine, a scheduled trigger, a new session)</td><td>◐ setting</td><td>yes</td><td>self-reported</td><td>refused by the mandate</td></tr></tbody></table></div>
+<h2 id="excess-you-never-mentioned-6">Excess you never mentioned (6)</h2>
+<p>Authority nobody scoped. Not wrong — unstated. These are the rows to read twice.</p>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>Barrier</th><th>Undo</th><th>Evidence</th><th>Mandate</th></tr></thead><tbody><tr><td><code>delete.file.host</code></td><td>Delete files anywhere the account can reach</td><td>● none</td><td>no</td><td>observed ✓</td><td>unstated by the mandate</td></tr>
+<tr><td><code>read.credential.host</code></td><td>Read credentials stored where it runs</td><td>● none</td><td>no</td><td>observed ✓</td><td>unstated by the mandate</td></tr>
+<tr><td><code>read.file.host</code></td><td>Read any file the account can reach</td><td>● none</td><td>no</td><td>observed ✓</td><td>unstated by the mandate</td></tr>
+<tr><td><code>authenticate-as.credential.tenant</code></td><td>Act in accounts with the credentials it holds</td><td>○ boundary</td><td>no</td><td>inferred</td><td>unstated by the mandate</td></tr>
+<tr><td><code>write.file.host</code></td><td>Change any file the account can reach</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>unstated by the mandate</td></tr>
+<tr><td><code>create.schedule.host</code></td><td>Create something that outlives the turn where it runs (a cron, a service)</td><td>○ boundary</td><td>yes</td><td>observed ✓</td><td>unstated by the mandate</td></tr></tbody></table></div>
+<h2 id="unbounded-excess-7">Unbounded excess (7)</h2>
+<p>The excess whose barrier is anything but a boundary. Every real control moves one of these rows into the fourth barrier and this list gets shorter; nothing else does.</p>
+<ul><li><code>authenticate-as.credential.signing</code> — Sign commits with the key it holds — ● none</li><li><code>delete.file.host</code> — Delete files anywhere the account can reach — ● none</li><li><code>read.credential.host</code> — Read credentials stored where it runs — ● none</li><li><code>read.file.host</code> — Read any file the account can reach — ● none</li><li><code>read.record.history</code> — Read a retained record: shell history, past sessions — ● none</li><li><code>write.file.host</code> — Change any file the account can reach — ● none</li><li><code>create.schedule.tenant</code> — Create something that outlives the session, on the platform (a routine, a scheduled trigger, a new session) — ◐ setting — the platform&#x27;s routines are the operator&#x27;s to list and delete</li></ul>
+<h2 id="shortfall-0">Shortfall (0)</h2>
+<p><em>none — everything wanted is granted.</em></p>
+<h2 id="aligned-6">Aligned (6)</h2>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>Barrier</th><th>Undo</th><th>Evidence</th><th>Mandate</th></tr></thead><tbody><tr><td><code>send.endpoint.allowed</code></td><td>Reach a permitted list of hosts</td><td>○ boundary</td><td>no</td><td>observed ✓</td><td>in the mandate</td></tr>
+<tr><td><code>execute.process.host</code></td><td>Run programs as the account</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>in the mandate</td></tr>
+<tr><td><code>write.file.project</code></td><td>Change the project it is working on</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>in the mandate</td></tr>
+<tr><td><code>write.repository.project</code></td><td>Commit to the repository it was pointed at</td><td>● none</td><td>with-effort</td><td>observed ✓</td><td>in the mandate</td></tr>
+<tr><td><code>write.repository.tenant</code></td><td>Push to a code host (any branch it can reach)</td><td>◐ setting</td><td>with-effort</td><td>observed ✓</td><td>in the mandate</td></tr>
+<tr><td><code>read.file.project</code></td><td>Read the project it is working on</td><td>● none</td><td>yes</td><td>observed ✓</td><td>in the mandate</td></tr></tbody></table></div>
+<hr>
+<p><em>This describes the deployment shape as at this date. If the risk changed, the deployment changed — not this document.</em>
+No score, rating, level or traffic light appears in this vault or in its data, and none will. The behaviour policy describes; it does not judge.
+Generated by <code>scripts/site/build-abp-vault.mjs</code> from <code>data/grant.json</code>, <code>data/mandate.json</code> and the pinned vocabulary; <code>data/mandate.json</code> is the only file a person writes. Licence: the published template is CC BY 4.0; a paid copy carries a commercial licence to the buyer. See LICENCE.md.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/DELTA.html">https://riskmandate.ai/vaults/claude-code-web/DELTA.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/vaults/claude-code-web/DELTA.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:06Z</dd><dt>sha256</dt><dd><code title="195f07baa8fffb6a62d6cdb7d9b7ce8a8d606b77454d79934bf306db294f0942">195f07baa8ff</code></dd><dt>Frozen copy</dt><dd><a href="DELTA.md">sites/riskmandate.ai/vaults/claude-code-web/DELTA.md</a> (5,198 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

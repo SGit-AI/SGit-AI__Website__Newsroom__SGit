@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>00 — The Brief: llms.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#00-the-brief-llmssgitai">00 — The Brief: llms.sgit.ai</a></li><li class="l2"><a href="#1-the-commission">1. The commission</a></li><li class="l2"><a href="#2-the-headline-there-are-three-chat-pane-surfaces-not-one">2. The headline: there are three chat-pane surfaces, not one</a></li><li class="l2"><a href="#3-the-idea-worth-leading-with">3. The idea worth leading with</a></li><li class="l2"><a href="#4-what-is-actually-shipped">4. What is actually shipped</a></li><li class="l2"><a href="#5-the-honesty-constraint-and-one-item-on-it-is-load-bearing">5. ⚠️ The honesty constraint — and one item on it is load-bearing</a></li><li class="l2"><a href="#6-the-wider-llm-work-broad-and-unevenly-developed">6. The wider LLM work — broad, and unevenly developed</a></li><li class="l2"><a href="#7-the-numbers">7. The numbers</a></li><li class="l2"><a href="#8-build-order">8. Build order</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> · <a href="00__BRIEF.md">raw text</a> · <a class="ext" href="https://llms.sgit.ai/briefs/00__BRIEF.md">live ↗</a></p><article class="source"><h1 id="00-the-brief-llmssgitai">00 — The Brief: <code>llms.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.62 · 24 August 2026
+<strong>From</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>To</strong> the agent commissioned to build <code>llms.sgit.ai</code>
+<strong>Licence</strong> CC BY 4.0</p>
+<hr>
+<h2 id="1-the-commission">1. The commission</h2>
+<blockquote><p><em>&quot;focused on my work about LLMs, which should include <strong>the work and code samples of how to add an LLM chat pane to websites and vaults</strong> (this will be <code>llms.sgit.ai</code>).&quot;</em></p></blockquote>
+<p>The chat-pane half is the strongest thing here and it is <strong>already built, already documented, and already shipping</strong> — but the documentation lives in an agent authoring contract that no human reader will ever find. The wider LLM work is broad and scattered.</p>
+<hr>
+<h2 id="2-the-headline-there-are-three-chat-pane-surfaces-not-one">2. The headline: there are three chat-pane surfaces, not one</h2>
+<p>This is the thing to get right on page one, because they differ in <strong>who holds the key</strong> and <strong>who needs permission</strong> — and most people assume there is only one.</p>
+<div class="table"><table><thead><tr><th>Surface</th><th>Where</th><th>App involvement</th><th>Permission needed</th></tr></thead><tbody><tr><td><strong>1. The vault chat panel</strong></td><td><code>/vault</code> → <strong>✨ AI Chat</strong></td><td>none</td><td><strong>none</strong></td></tr>
+<tr><td><strong>2. The same panel, beside a running app</strong></td><td><code>/en-gb/app/</code> → <strong>✨ AI</strong></td><td><strong>none</strong></td><td><strong>none</strong></td></tr>
+<tr><td><strong>3. AI inside your own app</strong></td><td>your vault app&#x27;s UI</td><td>you build it</td><td><strong><code>permissions.llm.chat</code></strong></td></tr></tbody></table></div>
+<p>Surfaces 1 and 2 are <strong>no-code</strong>. The panel runs on <strong>host chrome at the real origin</strong>, so it holds the vault key and the microphone directly; the sandboxed app frame sees neither and cannot read the conversation.</p>
+<blockquote><p><strong><em>&quot;Every existing vault app gets this without being changed.&quot;</em></strong></p></blockquote>
+<p>Surface 3 is the one that needs code, and it is the one the commission asked for samples of. <code>01__</code> covers all three; <code>02__</code> is the API; <strong><code>code__chat-pane-samples.md</code> ships runnable samples.</strong></p>
+<hr>
+<h2 id="3-the-idea-worth-leading-with">3. The idea worth leading with</h2>
+<blockquote><p><strong>Your app calls a language model without ever holding an API key.</strong></p></blockquote>
+<p>The key lives in <code>.vault/llm/config.json</code>, <strong>inside the permission floor</strong> — the app cannot read it. The host makes the call. You send messages and receive text.</p>
+<p>That single sentence is the site&#x27;s thesis, and it is unusual enough to be the front page. Everything else — the grants, the consent HUD, the budget caps, the streaming contract, the cost ledger — follows from deciding that <strong>the credential and the code that spends it should not be in the same trust boundary</strong>.</p>
+<hr>
+<h2 id="4-what-is-actually-shipped">4. What is actually shipped</h2>
+<p>Verbatim from the 2 August capability brief:</p>
+<blockquote><p><strong>Shipped:</strong> the shared engine (<code>SGLlm</code>), vault key/policy resolution (<code>SGLlmVault</code>), the admin settings panel, the host-native chat panel (multi-file, params, ledger, <strong>voice</strong>, <strong>pasted screenshots</strong>) on <strong>both</strong> <code>/vault</code> and <code>/en-gb/app/</code>, and the <code>sg.llm.*</code> bridge with permission + consent + budget + streaming + cancel + <code>listen</code> + <code>imagePart</code>.</p></blockquote>
+<p>That is a lot, and it is unusually complete for something with no public documentation.</p>
+<hr>
+<h2 id="5-the-honesty-constraint-and-one-item-on-it-is-load-bearing">5. ⚠️ The honesty constraint — and one item on it is load-bearing</h2>
+<p>The same brief&#x27;s <strong>Not built</strong> list, and the first item is not a nice-to-have:</p>
+<blockquote><p><strong>CSP egress lockdown.</strong> <em>App frames are not yet served with a <code>connect-src</code> that blocks direct network access, so a malicious app could still call an LLM provider itself with its own key.</em> <strong>&quot;The bridge protects <em>your</em> key; it is not yet a boundary that prevents all egress. This is the gap that turns the current design from a convenience into a guarantee.&quot;</strong></p></blockquote>
+<p><strong>Publish that sentence.</strong> A site whose thesis is <em>&quot;your app never holds the key&quot;</em> must say plainly that the mechanism currently protects the vault&#x27;s key rather than preventing all egress. It is the difference between a convenience and a guarantee, the corpus says so itself, and a reader will find it either way.</p>
+<p>Also not built:</p>
+<ul><li><strong>Phase 4 minted credentials</strong> — short-lived, budget-capped tokens so the vault holds a <em>reference</em>, not a key. Described as <em>&quot;the commercially load-bearing piece&quot;</em>, and the thing that would make vault-sharing safe with AI configured.</li><li><strong>ViV kernel parity</strong> — nested vault-in-vault kernels do not relay <code>sg.llm.*</code> yet.</li><li><strong>A per-vault audio model setting</strong> — the transcription model is a constant.</li></ul>
+<p>And the standing warning from Part 1 of the how-to, which belongs on every page about configuration:</p>
+<blockquote><p><em>&quot;<strong>Know what you are storing.</strong> With a key configured, the vault contains a credential. Sharing the vault key shares the ability to spend it.&quot;</em></p></blockquote>
+<hr>
+<h2 id="6-the-wider-llm-work-broad-and-unevenly-developed">6. The wider LLM work — broad, and unevenly developed</h2>
+<p>Beyond the chat pane, measured across the corpus:</p>
+<div class="table"><table><thead><tr><th>Thread</th><th>Files</th><th>State</th></tr></thead><tbody><tr><td><strong>Provenance / determinism</strong></td><td>431 mention provenance, 421 determinism</td><td><strong>The oldest thread</strong> — the earliest dated artefact in the whole estate is <em>Deterministic GenAI Outputs with Provenance</em>, OWASP AppSec Lisbon, 28 June 2024</td></tr>
+<tr><td><strong>RAG and graph grounding</strong></td><td>2,095</td><td>Pervasive, and mostly <em>about</em> graphs rather than about retrieval</td></tr>
+<tr><td><strong>Prompt injection</strong></td><td>92</td><td>Real, concentrated in the agent-to-agent and sentinel clusters</td></tr>
+<tr><td><strong>OpenRouter as the provider layer</strong></td><td>442</td><td>The estate&#x27;s actual model access path — BYOK, model globs, generation-id reconciliation</td></tr>
+<tr><td><strong>Local LLMs / Ollama</strong></td><td>144</td><td>Offline chat, the Docker dev environment, and two sg-compute specs (<code>ollama</code>, <code>local_claude</code>)</td></tr>
+<tr><td><strong>Structured output</strong></td><td>41</td><td>Underdeveloped relative to how much the estate depends on it</td></tr>
+<tr><td><strong>Hallucination</strong></td><td>45</td><td>Mostly framed as a grounding problem, not a model problem</td></tr>
+<tr><td><strong>Cost per token / model routing</strong></td><td>2 / 1</td><td><strong>Almost nothing written</strong>, despite the ledger being built</td></tr></tbody></table></div>
+<p><strong>The shape to publish:</strong> this estate&#x27;s LLM position is not about models. It is about <strong>provenance, grounding, and keeping the credential away from the code</strong> — and that has been consistent since June 2024.</p>
+<hr>
+<h2 id="7-the-numbers">7. The numbers</h2>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The API</strong></td><td><code>sg.llm.available</code> · <code>chat</code> · <code>cancel</code> · <code>usage</code> · <code>models</code> · <code>imagePart</code> · <code>listen</code> · <code>listenStop</code> · <code>listenCancel</code> · <code>listening</code></td></tr>
+<tr><td><strong>Grants</strong></td><td><code>chat</code> · <code>models</code> · <code>usage</code> · <code>listen</code> — <strong>default-deny</strong>, and <code>listen</code> is never implied by <code>chat</code></td></tr>
+<tr><td><strong>Error codes</strong></td><td>9 — <code>EPERM</code> <code>ECONSENT</code> <code>ENOKEY</code> <code>EREADONLY</code> <code>EBUDGET</code> <code>EMODEL</code> <code>EABORT</code> <code>EIMGSIZE</code> <code>EPROTO</code></td></tr>
+<tr><td><strong>Chat panel</strong></td><td>24,000-char shared file budget · streaming coalesced on a ~50 ms timer · CSV/JSON ledger export with OpenRouter generation ids</td></tr>
+<tr><td><strong>Images</strong></td><td>png/jpeg/webp/gif · downscaled to 1568px · <strong>base64 chunked at 8190, not 8192</strong></td></tr>
+<tr><td><strong>Voice</strong></td><td>host-held microphone · <code>google/gemini-3.5-flash</code> by default · consent every time</td></tr>
+<tr><td><strong>Canonical docs</strong></td><td><code>AUTHORING.md</code> §&quot;Calling an LLM&quot; · the <code>create-vault-apps</code> skill · the 2 Aug how-to brief</td></tr>
+<tr><td><strong>This pack</strong></td><td>9 documents + a runnable code-samples file · manifest of 24 rows</td></tr></tbody></table></div>
+<hr>
+<h2 id="8-build-order">8. Build order</h2>
+<ol><li><strong><code>/chat-pane/</code></strong> — the three surfaces, the decision table, and the samples. <strong>This is the commission.</strong> <code>01__</code> + <code>code__chat-pane-samples.md</code>.</li><li><strong><code>/api/</code></strong> — the full <code>sg.llm.*</code> reference. <code>02__</code>. It exists today only inside a 9,487-word agent authoring contract; extracting it is the single highest-value publishing act available.</li><li><strong><code>/security/</code></strong> — the key-never-in-the-frame model, the grant ladder, consent, budgets, <strong>and the CSP gap stated plainly</strong>. <code>03__</code>.</li><li><strong><code>/websites/</code></strong> — what changes when there is no vault. <code>04__</code>. <strong>This is the half of the commission with the least existing material</strong> — see <code>08__</code> G1.</li><li><strong><code>/provenance/</code></strong> — the oldest and most distinctive thread, from the 2024 OWASP talk forward. <code>05__</code>.</li><li><strong><code>/local/</code></strong> — Ollama, the offline Docker chat, and the two sg-compute specs.</li><li><strong><code>/shipped/</code></strong> — §5, unsoftened, with the CSP sentence quoted.</li></ol>
+<p>Publish the build order unresolved with <code>08__</code>&#x27;s open questions and tensions visible.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/briefs/00__BRIEF.md">https://llms.sgit.ai/briefs/00__BRIEF.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:54Z</dd><dt>sha256</dt><dd><code title="d8c8690621e7adc96d967c71201c5c259d6cca6544cfcf58ae07ce29ee7ddbb3">d8c8690621e7</code></dd><dt>Frozen copy</dt><dd><a href="00__BRIEF.md">sites/llms.sgit.ai/briefs/00__BRIEF.md</a> (7,845 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

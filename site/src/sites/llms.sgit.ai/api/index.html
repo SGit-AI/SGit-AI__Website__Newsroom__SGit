@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The sg.llm. reference · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-sgllm-reference">The sg.llm.* reference</a></li><li class="l1"><a href="#the-sgllm-reference-1">The sg.llm.* reference</a></li><li class="l2"><a href="#1-declare-the-grants">1. Declare the grants</a></li><li class="l2"><a href="#2-check-availability-before-you-render-a-chat-ui">2. Check availability BEFORE you render a chat UI</a></li><li class="l2"><a href="#3-chat-with-streaming">3. Chat, with streaming</a></li><li class="l2"><a href="#4-cancel-a-call-in-flight">4. Cancel a call in flight</a></li><li class="l2"><a href="#5-show-what-it-costs">5. Show what it costs</a></li><li class="l2"><a href="#6-send-an-image-a-screenshot-a-chart-a-scan-new-2026-08-03">6. Send an image (a screenshot, a chart, a scan) — NEW 2026-08-03</a></li><li class="l2"><a href="#what-the-host-does-that-you-dont-have-to">What the host does that you don&amp;#x27;t have to</a></li><li class="l2"><a href="#error-codes">Error codes</a></li><li class="l2"><a href="#voice-input-sgllmlisten-new-2026-08-03">Voice input (sg.llm.listen) — NEW 2026-08-03</a></li><li class="l2"><a href="#driving-the-take-from-your-own-ui">Driving the take from your own UI</a></li><li class="l2"><a href="#what-this-is-not">What this is not</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://llms.sgit.ai/api/index.md">live ↗</a></p><article class="source"><h1 id="the-sgllm-reference">The sg.llm.* reference</h1>
+<p><em>Source: <a href="index.html">https://llms.sgit.ai/api/index.html</a><a class="ext live" href="https://llms.sgit.ai/api/index.html" title="live page">↗</a> · site v0.2.0 · the markdown twin of this page, generated from it.</em></p>
+<hr>
+<p><a href="../index.html">llms.sgit.ai</a><a class="ext live" href="https://llms.sgit.ai/index.md" title="live page">↗</a> / api</p>
+<h1 id="the-sgllm-reference-1">The <code>sg.llm.*</code> reference</h1>
+<p>Ten calls, four grants and nine error codes. Every app that talks to a model through a vault uses this surface, and until now the complete version of it existed only inside an agent authoring contract that no human reader would open.</p>
+<p>Generated, not written</p>
+<p>Everything below the rule is <strong>generated verbatim</strong> from the section <em>Calling an LLM (<code>sg.llm.*</code>)</em> of <code>library/guides/vault-html/AUTHORING.md</code> in <a class="ext" href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/main/library/guides/vault-html/AUTHORING.md">the-cyber-boardroom/SGraph-AI__App__Send ↗</a>, at product version <strong>v0.33.62</strong> (commit <code>b561fa6b1</code>). Nobody edits it here.</p>
+<p>That is deliberate. The corpus refused to create a second copy of this contract, on the grounds that <em>&quot;adding a competing document would create a second source of truth that drifts&quot;</em>, and it was right. It also left a gap: a contract nobody can find is not published. So the canonical file stays canonical, its hash is recorded in <code>sources/MANIFEST.json</code>, and the pre-release gate fails the build if this page stops matching it. The reference is readable here and it still has exactly one author.</p>
+<p>Source hash <code>c8691cf98901721b</code> · <a href="../sources/AUTHORING__calling-an-llm.html">the vendored section, verbatim</a><a class="ext live" href="https://llms.sgit.ai/sources/AUTHORING__calling-an-llm.md" title="live page">↗</a> · <a href="traps.html">the traps page</a><a class="ext live" href="https://llms.sgit.ai/api/traps.md" title="live page">↗</a> is written by this site and is not generated.</p>
+<p><strong>The contract is young and it has moved.</strong> The bridge shipped on 2 August 2026; <code>listen</code> and <code>imagePart</code> landed on 3 August, one day later. Read the dates in the headings as part of the contract, and check a claim against the shipped code before you build on it. <a href="../shipped/index.html#drift">One place where this page and the shipped code already disagree</a><a class="ext live" href="https://llms.sgit.ai/shipped/index.md#drift" title="live page">↗</a> is recorded on the shipped page.</p>
+<hr>
+<p>Your app can call a language model <strong>without ever holding an API key</strong>. The key lives in <code>.vault/llm/config.json</code> (inside the permission floor — your app cannot read it), and the host makes the call on your behalf. You send messages and receive text.</p>
+<h2 id="1-declare-the-grants">1. Declare the grants</h2>
+<p>Default-deny, like every other capability. In <code>app.json</code>:</p>
+<pre><code>{
+ &quot;entry&quot;: &quot;index.html&quot;,
+ &quot;permissions&quot;: {
+ &quot;llm&quot;: { &quot;chat&quot;: true, &quot;models&quot;: true, &quot;usage&quot;: true }
+ }
+}</code></pre>
+<p><code>chat</code> is the one that spends money; <code>models</code> and <code>usage</code> are read-only. Grant only what you use.</p>
+<h2 id="2-check-availability-before-you-render-a-chat-ui">2. Check availability BEFORE you render a chat UI</h2>
+<p><code>sg.llm.available()</code> is not optional politeness. Unlike other namespaces, LLM access depends on <em>runtime</em> state: whether the vault has a key configured, whether this is a read-only session, whether the budget is spent. Ask first, then decide what to draw.</p>
+<pre><code>const a = await sg.llm.available();
+if (!a.ok) {
+ // &#x27;ENOKEY&#x27; — no key configured for this vault (tell the user: Settings → AI models)
+ // &#x27;EPERM&#x27; — this app wasn&#x27;t granted permissions.llm.chat
+ // &#x27;EREADONLY&#x27; — owner-sealed key, and this is a read-only session
+ showFallbackUI(a.reason);
+ return;
+}
+console.log(&#x27;ready:&#x27;, a.model, &#x27;remaining:&#x27;, a.remaining); // {calls, cost} — null = uncapped</code></pre>
+<h2 id="3-chat-with-streaming">3. Chat, with streaming</h2>
+<pre><code>const res = await sg.llm.chat(
+ { messages: [{ role: &#x27;user&#x27;, content: &#x27;Summarise this vault in one line.&#x27; }] },
+ (delta, acc) =&gt; { out.textContent = acc; } // optional — called as text arrives
+);
+console.log(res.content, res.usage, res.cost, res.id);</code></pre>
+<p>Three properties worth relying on:</p>
+<ul><li><strong>The terminal reply is authoritative.</strong> An app that ignores <code>onToken</code> entirely still gets the complete <code>content</code>. Deltas are a UX affordance, never the source of truth.</li><li><strong>Deltas carry only the increment</strong> (<code>delta</code>), plus the running <code>acc</code> for convenience. The host coalesces them on a ~50 ms timer, so you get readable chunks rather than a postMessage per token.</li><li><strong><code>cost</code> is labelled</strong>: <code>{value, source, estimated}</code>. <code>estimated: true</code> means it was computed from token counts × list price, not billed. Render estimates with a <code>~</code>. Never show one as a bill.</li></ul>
+<p>Optional request fields: <code>model</code>, <code>maxTokens</code>, <code>temperature</code>, <code>topP</code>, <code>stream: false</code>.</p>
+<h2 id="4-cancel-a-call-in-flight">4. Cancel a call in flight</h2>
+<p>The promise carries the request id:</p>
+<pre><code>const p = sg.llm.chat({ messages }, onToken);
+stopBtn.onclick = () =&gt; sg.llm.cancel(p.requestId);
+try { await p; } catch (e) { if (e.code === &#x27;EABORT&#x27;) { /* partial text is already rendered */ } }</code></pre>
+<h2 id="5-show-what-it-costs">5. Show what it costs</h2>
+<pre><code>const u = await sg.llm.usage();
+meter.textContent = `${u.calls} calls · $${u.cost.toFixed(4)} · ${u.remaining.cost ?? &#x27;∞&#x27;} left`;</code></pre>
+<p><code>usage()</code> reports the <strong>whole session</strong>, including calls made by the vault UI&#x27;s own chat panel — one bill per session, not one per surface.</p>
+<h2 id="6-send-an-image-a-screenshot-a-chart-a-scan-new-2026-08-03">6. Send an image (a screenshot, a chart, a scan) — NEW 2026-08-03</h2>
+<p>A message&#x27;s <code>content</code> can be an array of parts instead of a string:</p>
+<pre><code>const part = await sg.llm.imagePart(blobOrBytes); // or a data: URL you already have
+const res = await sg.llm.chat({
+ messages: [{ role: &#x27;user&#x27;, content: [
+ { type: &#x27;text&#x27;, text: &#x27;What is wrong in this screenshot?&#x27; },
+ part
+ ] }]
+});</code></pre>
+<p><strong>Use <code>sg.llm.imagePart()</code> rather than encoding it yourself.</strong> It runs in your frame (no host round trip — the bytes are already yours) and chunks base64 at <strong>8190, not 8192</strong>. <code>8192 % 3 === 2</code>, so a 8192-sized chunk emits <code>=</code> padding mid-string and <code>atob()</code> rejects it; this codebase has shipped that exact bug three times. It accepts a <code>Blob</code>/<code>File</code>, a <code>Uint8Array</code>, an <code>ArrayBuffer</code>, or passes a <code>data:</code> URL straight through.</p>
+<p>Accepted types: <strong>png, jpeg, webp, gif</strong>. Not svg — it is a scriptable document, not a bitmap, and no provider takes it.</p>
+<p><strong>The model must be able to read images</strong>, and the host checks before spending the call:</p>
+<ul><li>capability is read from the <strong>live model catalogue</strong> (<code>architecture.modality</code> / <code>input_modalities</code>), not a hard-coded list, so a new vision model works the day it ships;</li><li>a model that cannot see gets you <code>EMODEL</code> <strong>naming the model</strong>, instead of a provider error that names nothing;</li><li>note that <code>text-&gt;image</code> is an image <em>generator</em>, not a reader — it is correctly refused.</li></ul>
+<p>The host also caps the total image payload (<code>EIMGSIZE</code>). That ceiling is not yours to raise: it is spending the vault&#x27;s key.</p>
+<p>Images appear in the request ledger as their own count, never folded into the character total — <code>sg.llm.usage()</code> and the AI Requests pane both stay honest about what the expensive calls were.</p>
+<p><strong>Not a new grant.</strong> An image is an ordinary <code>chat()</code> call under <code>permissions.llm.chat</code>.</p>
+<h2 id="what-the-host-does-that-you-dont-have-to">What the host does that you don&#x27;t have to</h2>
+<div class="table"><table><thead><tr><th>Concern</th><th>Who handles it</th></tr></thead><tbody><tr><td>Holding the API key</td><td>Host. It is never in your frame, your bundle, or any message you receive.</td></tr>
+<tr><td>Which models you may use</td><td>Host — <code>models()</code> is already filtered by the vault&#x27;s allow-list, so a picker you build from it is automatically correct.</td></tr>
+<tr><td>Spend caps</td><td>Host. <code>maxCostPerSession</code> / <code>maxCallsPerSession</code> are enforced before the call; you get <code>EBUDGET</code>.</td></tr>
+<tr><td><code>maxTokens</code></td><td>Host <strong>clamps</strong> it to the vault policy. Asking for more is not an error, it is just capped.</td></tr>
+<tr><td>Consent</td><td>Host. The first <code>chat()</code> raises a HUD prompt the user must accept; declining gives you <code>ECONSENT</code>.</td></tr>
+<tr><td>Whether the model can read an image</td><td>Host, from the live catalogue. You get <code>EMODEL</code> naming the model, not a provider error naming nothing.</td></tr>
+<tr><td>Image size ceiling</td><td>Host (<code>EIMGSIZE</code>). It is spending the vault&#x27;s key, so the limit is not the app&#x27;s to set.</td></tr>
+<tr><td>Cost reconciliation</td><td>Host, two-source (stream <code>usage.cost</code>, then the authoritative <code>/generation</code> lookup).</td></tr></tbody></table></div>
+<h2 id="error-codes">Error codes</h2>
+<p><code>EPERM</code> (no grant) · <code>ECONSENT</code> (user declined) · <code>ENOKEY</code> (no key configured) · <code>EREADONLY</code> (owner-sealed key, read-only session) · <code>EBUDGET</code> (cap reached) · <code>EMODEL</code> (model not in the allow-list, none selected, or it cannot read the image/audio you sent) · <code>EABORT</code> (cancelled) · <code>EIMGSIZE</code> (image payload over the host ceiling) · <code>EPROTO</code> (upstream failure). They arrive as <code>err.code</code>, so branch on that rather than on message text.</p>
+<h2 id="voice-input-sgllmlisten-new-2026-08-03">Voice input (<code>sg.llm.listen</code>) — NEW 2026-08-03</h2>
+<p>Speak instead of type. One call: the <strong>host</strong> opens the microphone, shows a red recording bar with a Stop button, transcribes with the vault&#x27;s key, and hands you back text.</p>
+<pre><code>{ &quot;permissions&quot;: { &quot;llm&quot;: { &quot;chat&quot;: true, &quot;listen&quot;: true } } }</code></pre>
+<pre><code>micBtn.onclick = async () =&gt; {
+ try {
+ const { text } = await sg.llm.listen(); // opts: {maxMs, model, prompt}
+ input.value = text; // then send it as a normal chat message
+ } catch (e) {
+ if (e.code === &#x27;ECONSENT&#x27;) return; // user declined — not an error worth showing
+ if (e.code === &#x27;ENOMIC&#x27;) showTypeInstead();
+ }
+};</code></pre>
+<p><strong><code>listen</code> is a separate grant and is never implied by <code>chat</code>.</strong> Recording a room is a categorically different act from sending text, so an app that can talk to a model does not thereby get a microphone. It also <strong>asks for consent every time</strong> by default (tune with <code>permissions.consent[&quot;llm.listen&quot;]</code> if you are building a kiosk).</p>
+<p><strong>Your frame never touches audio.</strong> A sandboxed app frame has no <code>navigator.mediaDevices</code> at all, so capture happens in the host — which is also why the recording indicator is on host chrome where the user can always see it. You receive <code>{text, durationMs, bytes, format, cost}</code> and nothing else; the recording itself never crosses into your frame.</p>
+<p>The transcription is an ordinary paid call: it counts against the vault&#x27;s spend caps, appears in the request ledger, and its cost is labelled <code>estimated</code> like any other.</p>
+<h2 id="driving-the-take-from-your-own-ui">Driving the take from your own UI</h2>
+<p><code>listen()</code> stays pending until the take ends. By default the <strong>host&#x27;s</strong> bar ends it (Stop &amp; send / Cancel) or <code>maxMs</code> expires — but an app that renders its own record button needs its own stop, so:</p>
+<pre><code>const p = sg.llm.listen({ maxMs: 120000 }); // do NOT await yet — you need the stop path
+myStopBtn.onclick = () =&gt; sg.llm.listenStop(); // → p resolves with the transcript
+myCancelBtn.onclick = () =&gt; sg.llm.listenCancel(); // → p rejects with EABORT, mic released
+const { text } = await p;</code></pre>
+<ul><li>The transcript comes back through the <strong>original <code>listen()</code> promise</strong> — stopping does not open a second channel to read.</li><li>Both resolve <code>{stopped:false}</code> when nothing is recording, so calling stop defensively (on unmount, on a route change) is safe and needs no error handling.</li><li><code>sg.llm.listening()</code> → <code>{recording}</code> if you need to render button state.</li><li>All three sit behind the <strong>same <code>llm.listen</code> grant</strong> and raise <strong>no consent prompt</strong> — ending a take you already started is strictly less authority than starting one, and nobody should have to approve stopping.</li><li><strong>The host&#x27;s own Stop/Cancel stay on the bar.</strong> An app gaining a stop button must not cost the user theirs.</li><li>A second <code>listen()</code> while one is running is refused with <code>EBUSY</code> rather than opening a second microphone.</li></ul>
+<p><strong>Leave <code>model</code> alone unless you know the model hears.</strong> Transcription does <strong>not</strong> use the vault&#x27;s chat model — most chat models have no audio endpoint and OpenRouter answers <code>404 No endpoints found that support input audio</code>. <code>listen()</code> defaults to <code>google/gemini-3.5-flash</code>; passing a model that does not accept audio is refused up front with <code>EMODEL</code> and a message naming one that does. Currently accepted: <code>google/gemini-3.5-flash</code>, <code>google/gemini-3.1-flash-lite</code>, <code>google/gemini-3-flash-preview</code>, <code>google/gemini-3.1-flash-lite-preview</code>, <code>openai/gpt-audio</code>, <code>openai/gpt-audio-mini</code>, <code>mistralai/voxtral-small-24b-2507</code>. The vault&#x27;s <code>models.allow</code> list still applies on top.</p>
+<p>Extra error codes: <code>ENOMIC</code> (no microphone / sandboxed / permission refused by the browser), <code>EINSECURE</code> (not HTTPS), <code>EABORT</code> (user pressed Cancel).</p>
+<p><strong>iPad note.</strong> This works on iPad Safari — the host records <code>audio/mp4</code>, which OpenRouter accepts as <code>m4a</code> with no conversion. Desktop Chrome records <code>webm</code>, which is <em>not</em> accepted, so the host transcodes to WAV automatically. You do not need to care which happened.</p>
+<h2 id="what-this-is-not">What this is not</h2>
+<p>There is no tool-calling loop. <code>sg.llm.chat</code> is a <strong>reader</strong>: it takes messages and returns text. If you want the model to act on the vault, <em>your app</em> decides what to do with the reply and calls <code>sg.vfs.*</code> / <code>sg.fs.*</code> itself — under the grants you already declared. That separation is deliberate: the LLM never gets ambient authority over the vault.</p>
+<p><strong>Honest limitation.</strong> The key still lives in the vault, so sharing a vault key still shares the credential with anyone who can open it. Short-lived minted credentials are planned (Phase 4) and would remove that; until then, treat a vault with an AI key configured as a vault that carries a secret.</p>
+<p><a href="../chat-pane/samples.html">← The samples</a><a class="ext live" href="https://llms.sgit.ai/chat-pane/samples.md" title="live page">↗</a> <a href="traps.html">The traps →</a><a class="ext live" href="https://llms.sgit.ai/api/traps.md" title="live page">↗</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/api/index.md">https://llms.sgit.ai/api/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:53Z</dd><dt>sha256</dt><dd><code title="2337a6861921a5a8ae9f00a9e675896e584ec1bfdbf0962429e7405a8039da73">2337a6861921</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/llms.sgit.ai/api/index.md</a> (12,769 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# Dev
+
+*Source: <https://teams.sgit.ai/roster/dev/index.html> · markdown twin of the entry page.*
+
+*Build role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 5
+
+## Core mission
+
+Implement features and fixes with high code quality, following established patterns, Type_Safe schemas, and the no-mocks testing discipline
+
+## Central claim
+
+**Dev turns architecture contracts into working, tested code. Every line follows the project's patterns. Every test uses real implementations.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Making architecture decisions, choosing technologies, defining API contracts, managing CI/CD pipelines, or prioritising work
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| sg-playwright | defined |
+
+## Revision history
+
+5 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>host.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="host.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/lexicon/reaches/host.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/lexicon-node/v1&quot;,
+  &quot;id&quot;: &quot;reach/host&quot;,
+  &quot;node_type&quot;: &quot;ReachClass&quot;,
+  &quot;label&quot;: &quot;host&quot;,
+  &quot;gloss&quot;: &quot;the machine, container or account it runs as&quot;,
+  &quot;_meaning&quot;: &quot;A node carries no inherent meaning. What this node IS emerges from the edges below, not from the gloss. The gloss is a convenience for a reader and is never the definition.&quot;,
+  &quot;in_capabilities&quot;: [
+    &quot;create.schedule.host&quot;,
+    &quot;delete.file.host&quot;,
+    &quot;execute.process.host&quot;,
+    &quot;read.credential.host&quot;,
+    &quot;read.file.host&quot;,
+    &quot;read.record.browsing&quot;,
+    &quot;read.record.history&quot;,
+    &quot;write.file.host&quot;
+  ],
+  &quot;count&quot;: 8,
+  &quot;unused&quot;: false,
+  &quot;unused_note&quot;: null,
+  &quot;named_by&quot;: [
+    {
+      &quot;shape&quot;: &quot;anthropic/claude-code-remote/ccr-container&quot;,
+      &quot;means&quot;: &quot;this container — ephemeral, the vendor&#x27;s; not your machine&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/claude-code/local-confirmations-off&quot;,
+      &quot;means&quot;: &quot;your machine, as your user account&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/claude-code/local-default&quot;,
+      &quot;means&quot;: &quot;your machine, as your user account&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/claude-desktop/default&quot;,
+      &quot;means&quot;: &quot;your machine, as your user account&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/claude-web/connectors-on&quot;,
+      &quot;means&quot;: &quot;what the drive connector is scoped to; not your machine&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;generic/browser-extension/broad-host-permissions&quot;,
+      &quot;means&quot;: &quot;your browser — every page, every logged-in site&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;generic/scheduled-job/service-account&quot;,
+      &quot;means&quot;: &quot;the server it runs on, as the service account&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;github/actions-runner/ci&quot;,
+      &quot;means&quot;: &quot;the runner — destroyed after the job; not your machine&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;openai/chatgpt-web/default&quot;,
+      &quot;means&quot;: &quot;the vendor&#x27;s environment; not your machine&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;google/gmail/readonly-connector&quot;,
+      &quot;means&quot;: &quot;the mailbox itself, as a store: every message and the account&#x27;s mail settings&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/gmail-connector/default&quot;,
+      &quot;means&quot;: &quot;the mailbox itself: every message and thread, labels, filters and saved drafts, and attachment metadata — never attachment content&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;google/drive/readonly-connector&quot;,
+      &quot;means&quot;: &quot;the Drive as a store: every file owned by or shared to the user&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/microsoft-365-connector/default&quot;,
+      &quot;means&quot;: &quot;SharePoint sites and OneDrive files the user can already open — searched tenant-wide&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;dropbox/mcp-server/default&quot;,
+      &quot;means&quot;: &quot;the Dropbox account as a store — and for a team user, \&quot;the usage and quota for the entire team\&quot;&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;google/workspace-mcp/default&quot;,
+      &quot;means&quot;: &quot;the Google account&#x27;s Drive and mailbox — every file owned by or shared to the user; not your machine&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;n8n/self-hosted/owner-api-key&quot;,
+      &quot;means&quot;: &quot;the instance itself: its accounts, its credential store, its execution records&quot;
+    },
+    {
+      &quot;shape&quot;: &quot;anthropic/gmail-connector/measured-2026-09-19&quot;,
+      &quot;means&quot;: &quot;the mailbox itself, whole: every message and thread including archived, sent and trashed mail, every label with its counts, every draft; attachment content on the way out, up to 25MB&quot;
+    }
+  ],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/model/lexicon/reaches/host/index.html&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;Derived from the published grammar: every capability id is verb.object.reach, and this node is what the id spells with.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/lexicon/reaches/host.json">https://abp.sgit.ai/data/lexicon/reaches/host.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:42Z</dd><dt>sha256</dt><dd><code title="364d7b0d8ed291db8754ee9a01f58f7b1c501b544991b87b23980ee328da98e2">364d7b0d8ed2</code></dd><dt>Frozen copy</dt><dd><a href="host.json">sites/abp.sgit.ai/data/lexicon/reaches/host.json</a> (3,922 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

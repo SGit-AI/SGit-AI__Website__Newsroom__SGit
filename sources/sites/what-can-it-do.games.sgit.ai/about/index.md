@@ -1,0 +1,52 @@
+# About the game
+
+> Who made it, where the answers come from, what it cannot tell you, and how to open the whole thing yourself and check.
+
+*Source: <https://what-can-it-do.games.sgit.ai/about/index.html> · site v0.8.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links
+below point at them.*
+
+---
+
+[Play](../index.md) / About
+
+# About the game
+
+Built by an AI agent, from a written brief, in September 2026 — for the sgit.ai project. Everything it says is checkable, because the whole game is published rather than described.
+
+## Where the answers come from
+
+From **published profiles** — what each vendor says their product does — collected at [pki.sgit.ai](https://pki.sgit.ai) and copied into the game on 6 September 2026, with that date shown on every screen. Nine setups are covered in detail. If you use something that has not been measured, the game plays you against the nearest one it has, **says on the board that it is doing that**, and notes where the two differ.
+
+## What it cannot tell you
+
+- **Whether *your* setup is safe.** It answers from what a vendor publishes, which is the weakest kind of evidence there is. It never sees your machine, your account or your configuration.
+- **That a good score means you are fine.** The score is about you, not about your setup. You can be perfectly calibrated about a badly configured agent.
+- **That the difficulty levels are exactly right.** They are calculated from a map of how capabilities connect, and that map has known gaps — one capability has no route recorded at all.
+- **That the mandate it hands you is a real mandate.** It is what one person said while playing a game, and the game labels it that way.
+
+That list is copied from the game's own source, where it is called the *does-not-prove* list. We would rather you read it here than discover it later.
+
+## Open the whole thing
+
+The game is published as an **encrypted vault**: the scoring engine, the automated tests, the build script, and the readable source. Not a description of them — the actual files, which is what makes any of the claims above checkable. The data it runs on is [the pack](../data/index.md) on this site, read live on every load, so a row that changes here changes in the game with no copy in between.
+
+[Open the vault read-only in a new tab](https://dev.vault.sgraph.ai/#cf04d8a9bac6185dcb71e9c6f19ae13238b6434780324b1873504f2d6f7b505f%3Apg87npy3) — no account, no install. The key that opens it is a **read** key: it cannot change anything. Since 9 September 2026 the game has a vault of its own (`pg87npy3`, v1.0.0); the version that shipped inside the two-game vault described on [its page at sgit.ai](https://sgit.ai/demos/vaults/agent-permission-games/) is locked there on branch `release-2026-09-09`, beside a security audit of what was inside it.
+
+The game you played above is that vault, opened live in this page. There is no copy of it on this site.
+
+## Why it exists
+
+Because the gap between what an AI agent is *allowed* to do and what you *meant* it to do is real, mostly unmeasured, and nobody fills in a form about it honestly. A game gets an answer out of you while you are thinking about something else.
+
+It is part of [**RiskMandate**](https://riskmandate.ai) — *the business risk layer for autonomous systems* — which starts where this game stops. The game gets a person to say what they wanted; RiskMandate is what turns the gap into a named owner and a decision with a date on it. [What to do next](../what-next/index.md) is the short version of that handover.
+
+The longer version of the argument — and the other games — is at [games.sgit.ai](https://games.sgit.ai).
+
+## Say something
+
+The fastest route is the 👍/👎 on any question in the game: one tap, no form, and it is filed against that specific question. There is a longer form behind *say more*, and a feedback tab in the game for anything that is not about one question. [What happens to it](https://games.sgit.ai/games/ideas.html).
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://what-can-it-do.games.sgit.ai/about/index.html)*

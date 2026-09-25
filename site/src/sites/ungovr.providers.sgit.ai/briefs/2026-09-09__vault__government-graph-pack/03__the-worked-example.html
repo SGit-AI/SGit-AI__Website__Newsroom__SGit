@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03 — The Worked Example: One County, One Law, One Acceptance · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-the-worked-example-one-county-one-law-one-acceptance">03 — The Worked Example: One County, One Law, One Acceptance</a></li><li class="l2"><a href="#this-is-the-deliverable">This Is The Deliverable</a></li><li class="l2"><a href="#the-choice-and-why">The Choice, And Why</a></li><li class="l2"><a href="#the-seven-steps">The Seven Steps</a></li><li class="l3"><a href="#step-1-entity">Step 1 — Entity</a></li><li class="l3"><a href="#step-2-instrument">Step 2 — Instrument</a></li><li class="l3"><a href="#step-3-provision">Step 3 — Provision</a></li><li class="l3"><a href="#step-4-obligation">Step 4 — Obligation</a></li><li class="l3"><a href="#step-5-control">Step 5 — Control</a></li><li class="l3"><a href="#step-6-evidence">Step 6 — Evidence</a></li><li class="l3"><a href="#step-7-acceptance">Step 7 — Acceptance</a></li><li class="l2"><a href="#the-two-properties-that-must-hold-visibly">The Two Properties That Must Hold Visibly</a></li><li class="l2"><a href="#what-ships-at-the-end-of-this">What Ships At The End Of This</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="03__the-worked-example.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md">live ↗</a></p><article class="source"><h1 id="03-the-worked-example-one-county-one-law-one-acceptance">03 — The Worked Example: One County, One Law, One Acceptance</h1>
+<p><strong>version</strong> v0.33.67
+<strong>date</strong> 8 September 2026
+<strong>status</strong> Specified, not built. Every value marked <em>pending retrieval</em> is a slot, not a claim.</p>
+<p><a href="02__the-model.html">← 02 The Model</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md" title="live page">↗</a> · <a href="README.html">Pack hub</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/README.md" title="live page">↗</a> · Next → <a href="04__the-vault.html">04 The Vault</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md" title="live page">↗</a></p>
+<hr>
+<h2 id="this-is-the-deliverable">This Is The Deliverable</h2>
+<p><strong>Everything else in this pack exists to make this one path defensible.</strong> If you read one file, read this one.</p>
+<p>The path runs from a real government entity, resolved from a slug somebody else publishes, to a named person who accepted a residual risk — and at every step you can see the bytes it came from and the date they were retrieved.</p>
+<hr>
+<h2 id="the-choice-and-why">The Choice, And Why</h2>
+<div class="table"><table><thead><tr><th>Slot</th><th>Choice</th><th>Why this one</th></tr></thead><tbody><tr><td><strong>County</strong></td><td><strong>Santa Barbara County, California</strong></td><td>It is the city behind <strong>their own published measurement</strong>: 40.7 per cent of addresses written &quot;Santa Barbara, CA&quot; fall outside the city limits. The example lands on ground they have already done fieldwork on, which makes it a compliment rather than a probe</td></tr>
+<tr><td><strong>Instrument</strong></td><td><strong>The California Public Records Act</strong></td><td>It is the records law their <code>open_records.law</code> edge points at for Californian bodies, so the join is against a reference they actually publish rather than one we chose</td></tr>
+<tr><td><strong>Acceptance</strong></td><td>One, named, with an interval and a revocation path</td><td>Because an acceptance without an owner is a note</td></tr></tbody></table></div>
+<p><strong>And a secondary reason for California that matters for step 1.</strong> Their own depth claim is that Californian special districts outnumber cities by more than ten to one, and that layer below city hall is what nobody else maps. <strong>The overlapping-jurisdiction stack for a Santa Barbara address is therefore the richest available demonstration of the one thing only they can do.</strong></p>
+<p><strong>Refuse to widen it.</strong> Not all 58 counties. Not all 398 records laws. Not the transparency corpus as well. One.</p>
+<hr>
+<h2 id="the-seven-steps">The Seven Steps</h2>
+<pre><code>   1  ENTITY        a real UnGovr slug, fetched live, with its boundary
+                    and its published law reference
+                          |
+   2  INSTRUMENT    that records law, rendered as addressable provisions:
+                    two-hash addressing, source bytes hashed,
+                    retrieval source and timestamp recorded
+                          |
+   3  PROVISION     one clause. The one that creates a duty
+                          |
+   4  OBLIGATION    what it requires, of whom, within what interval
+                          |
+   5  CONTROL       what would satisfy it
+                          |
+   6  EVIDENCE      at a stated tier, with unevidenced as the default
+                          |
+   7  ACCEPTANCE    a named owner, an interval, a revocation path,
+                    carried in the vault and versioned</code></pre>
+<p><strong>Steps 1 and 2 are the join that does not exist today. Steps 3 to 7 are the chain this estate already has.</strong></p>
+<hr>
+<h3 id="step-1-entity">Step 1 — Entity</h3>
+<p><strong>Produces</strong>: one <code>ung:Entity</code>, one <code>ung:Boundary</code>, one <code>ung:LawReference</code>, one <code>sg:Retrieval</code>.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Source</td><td><code>GET /v1/entities/us/ca.json</code>, then <code>GET /v1/entities/detail/{slug}.json</code></td></tr>
+<tr><td>Slug</td><td><strong>Pending retrieval.</strong> Do not guess it. Resolve it from their index and transcribe it verbatim</td></tr>
+<tr><td>Boundary</td><td><code>GET /v1/entities/boundaries/{slug}.geojson</code>, stored unmodified</td></tr>
+<tr><td>Law reference</td><td><code>open_records.law</code>, <strong>transcribed as the exact string they publish</strong></td></tr>
+<tr><td>Rate limit</td><td>100/day per IP on entity data. The whole of step 1 is three calls</td></tr></tbody></table></div>
+<p><strong>The discipline here is the whole vault in miniature.</strong> The slug is not normalised. The GeoJSON is not simplified. The law string is not matched to anything yet. Three files land in the vault with their retrieval metadata and nothing else happens to them.</p>
+<p><strong>Acceptance test 1</strong> is satisfied when the named entity resolves from its published slug and its boundary renders.</p>
+<hr>
+<h3 id="step-2-instrument">Step 2 — Instrument</h3>
+<p><strong>Produces</strong>: one <code>akn:Instrument</code>, N <code>akn:Provision</code> nodes, one <code>sg:Retrieval</code>, and <strong>one <code>sg:Inference</code> for the resolution edge</strong>.</p>
+<p>This is the join. It has two halves and they must not be confused with each other.</p>
+<p><strong>Half one, the resolution.</strong> <code>ung:LawReference</code> → <code>akn:Instrument</code>, via <code>sg:resolvesTo</code>. <strong>This edge is inferred, not asserted</strong>, and it carries the transformation that produced it — a documented, rerunnable match from their published string to an Akoma Ntoso work URI. <strong>UnGovr did not make this claim and the graph must not draw it as if they did.</strong></p>
+<p><strong>Half two, the rendering.</strong> The instrument&#x27;s text is decomposed into addressable provisions by the method already used twice, for GDPR and for the EU AI Act. Section, block, sentence. Two hashes per provision. SHA-256 of the source bytes. Retrieval source, timestamp and method on each.</p>
+<div class="table"><table><thead><tr><th>Requirement</th><th>From</th></tr></thead><tbody><tr><td>Two-hash addressing</td><td>standards.sgit.ai, unchanged</td></tr>
+<tr><td>SHA-256 of source bytes</td><td>standards.sgit.ai, unchanged</td></tr>
+<tr><td><strong>The markdown rebuilds from the graph byte for byte</strong></td><td>graphs.sgit.ai. <strong>This is acceptance test 3 and it is not optional</strong></td></tr>
+<tr><td>Quotes verified byte by byte on build</td><td>graphs.sgit.ai</td></tr></tbody></table></div>
+<p><strong>One open item to settle before building</strong>, and settling it is cheap: whether the CPRA has an Akoma Ntoso rendering, or a published XML source of comparable quality. The EU AI Act had Formex, which is why that vault was tractable. <strong>If Californian statute is only available as HTML, the decomposition is harder and the byte-hash claim is weaker, and that must be said in the vault rather than discovered by a reader.</strong> Record the answer in <code>06__verification.md</code> before writing any parser.</p>
+<hr>
+<h3 id="step-3-provision">Step 3 — Provision</h3>
+<p><strong>Produces</strong>: one <code>akn:Provision</code> promoted to the spine of the example.</p>
+<p><strong>One clause. The one that creates a duty.</strong> The candidate is the CPRA&#x27;s response-interval provision — the ten-day determination requirement, at <strong>Gov. Code § 7922.535</strong> in the 2023 recodification, formerly § 6253(c).</p>
+<blockquote><p><strong>Pending retrieval.</strong> That citation is written here from prior knowledge and is therefore <code>unevidenced</code> under this vault&#x27;s own rule. It is a <em>candidate to verify</em>, not a fact to publish. The provision that ships is whichever one the retrieved bytes actually carry, and if the section number differs the pack is wrong and the bytes are right.</p></blockquote>
+<p><strong>Why an interval clause is the right choice.</strong> It creates a duty with a measurable trigger and a measurable deadline, which means step 6 can distinguish evidence tiers meaningfully instead of collapsing into &quot;there is a policy document&quot;.</p>
+<hr>
+<h3 id="step-4-obligation">Step 4 — Obligation</h3>
+<p><strong>Produces</strong>: one <code>sg:Obligation</code>. <strong>The first node that is entirely our judgement</strong>, and the graph must say so.</p>
+<div class="table"><table><thead><tr><th>Field</th><th>Content</th></tr></thead><tbody><tr><td>Requires</td><td>A determination on whether the request seeks disclosable records</td></tr>
+<tr><td>Of whom</td><td>The agency named at step 1</td></tr>
+<tr><td>Within</td><td>The interval the provision states</td></tr>
+<tr><td>Triggered by</td><td>Receipt of a request</td></tr>
+<tr><td>Derived from</td><td>The <code>akn:Provision</code> at step 3, by <code>sg:creates</code></td></tr></tbody></table></div>
+<p><strong>The honest label lives on this node</strong>, not in a footnote at the bottom of a page. Everything from here down is our model applied to their data. That is acceptance test 5, and it is the thing a partner checks first.</p>
+<hr>
+<h3 id="step-5-control">Step 5 — Control</h3>
+<p><strong>Produces</strong>: one <code>sg:Control</code>.</p>
+<p>What would satisfy the obligation: a logged intake with a timestamp, a determination recorded against it, and a clock that can be measured. <strong>Descriptive, not prescriptive.</strong> The vault says what would satisfy the duty; it does not tell a county what to buy.</p>
+<hr>
+<h3 id="step-6-evidence">Step 6 — Evidence</h3>
+<p><strong>Produces</strong>: one <code>sg:Evidence</code> node, <strong>whose state is <code>unevidenced</code> unless something was actually observed.</strong></p>
+<div class="table"><table><thead><tr><th>Tier</th><th>What it would mean here</th></tr></thead><tbody><tr><td><code>unevidenced</code></td><td><strong>The default, and the honest state for this example unless a real observation exists</strong></td></tr>
+<tr><td><code>asserted</code></td><td>The agency says it responds in time</td></tr>
+<tr><td><code>documented</code></td><td>There is a published policy</td></tr>
+<tr><td><code>manually-checked</code></td><td>Someone read a sample of responses</td></tr>
+<tr><td><code>programmatic-out-of-band</code></td><td>A system that is not in the path measured the interval</td></tr>
+<tr><td><code>programmatic-inline</code></td><td>Something in the request path measured it</td></tr></tbody></table></div>
+<p><strong>Two disciplines apply and both are load-bearing.</strong></p>
+<p>The first: <strong>this estate can evidence any rung and can never be the inline control that makes the last rung true.</strong> An out-of-band party establishes whether an enforcer exists, at what tier, and with what left unobserved. It is not the enforcer.</p>
+<p>The second: <strong>the grand jury corpus is an evidence source already structured for this.</strong> Findings and recommendations arrive as objects with a number, the text and a <strong>page number</strong> — provenance to the page, which is stronger than most compliance tooling manages. A Santa Barbara County grand jury finding about records handling would attach here at <code>documented</code> or <code>manually-checked</code>, under the evidence-pack rule of 9 August: <strong>a pack attaches, adds nodes and edges, and never alters what it attaches to.</strong></p>
+<blockquote><p><strong>Note the constraint.</strong> <code>/cgj/reports/{id}.json</code> is key-gated at 50/day. The county index is open and unlimited. See <a href="06__verification.html"><code>06__verification.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/06__verification.md" title="live page">↗</a> for the access status, which is currently unresolved.</p></blockquote>
+<hr>
+<h3 id="step-7-acceptance">Step 7 — Acceptance</h3>
+<p><strong>Produces</strong>: one <code>sg:Acceptance</code>, carried in the vault and versioned.</p>
+<div class="table"><table><thead><tr><th>Field</th><th>Why it is mandatory</th></tr></thead><tbody><tr><td><strong>A named owner</strong></td><td>An acceptance without a name is a note</td></tr>
+<tr><td><strong>An interval</strong></td><td>An acceptance without an expiry is a permanent decision taken casually</td></tr>
+<tr><td><strong>A revocation path</strong></td><td>An acceptance nobody can withdraw is not a decision</td></tr>
+<tr><td>The residual it accepts</td><td>Stated as the gap between the control and the obligation</td></tr>
+<tr><td>The commit it was made at</td><td>Because the acceptance is only meaningful against a stated version of the facts</td></tr></tbody></table></div>
+<p><strong>This is the node that only a vault can carry properly</strong>, and it is the reason the demonstration is a vault rather than a slide. It is versioned, it is addressable by release, and the state of the world it was made against is pinned to a commit rather than remembered.</p>
+<hr>
+<h2 id="the-two-properties-that-must-hold-visibly">The Two Properties That Must Hold Visibly</h2>
+<p><strong>They are the argument. They are not decoration.</strong></p>
+<p><strong>One — every node traces to bytes somebody else published, with the retrieval date.</strong> Not &quot;sourced from UnGovr&quot;. A URL, a timestamp, a method, a byte range, a hash.</p>
+<p><strong>Two — the whole path is deterministic.</strong> Given the entity slug and the instrument, the same nodes come back, <strong>because the addressing is by content hash rather than by position in a list that may be reordered.</strong> That is acceptance test 7, and it is the reason to build any of this.</p>
+<p><strong>And the determinism claim has a stated limit</strong>, which belongs in the vault rather than in a defence of it: it holds only while both address schemes are stable. Theirs is a slug they maintain; ours is a hash of bytes. If they re-slug, the join breaks loudly, which is the correct failure mode.</p>
+<hr>
+<h2 id="what-ships-at-the-end-of-this">What Ships At The End Of This</h2>
+<div class="table"><table><thead><tr><th>Artefact</th><th>Form</th></tr></thead><tbody><tr><td>The seven nodes above, with their edges</td><td>A graph the viewer opens</td></tr>
+<tr><td>Three retrieved JSON files, unmodified, with hashes</td><td>The bytes, checkable</td></tr>
+<tr><td>The instrument&#x27;s provisions, addressable</td><td>Reusable beyond this example</td></tr>
+<tr><td>A page stating the path in prose, with every number beside its query</td><td>Because a number without its query is an assertion</td></tr>
+<tr><td>A release pinning the whole thing to a date</td><td>So it can be cited</td></tr></tbody></table></div>
+<p><strong>One county. One law. One acceptance. And a refusal to widen it.</strong></p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md">https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="2792da92fd9221b6c4e563c6a5fd6387951c779cbad88dde702f836e599ce09b">2792da92fd92</code></dd><dt>Frozen copy</dt><dd><a href="03__the-worked-example.md">sites/ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/03__the-worked-example.md</a> (11,536 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02: The Two Axes, The Audiences, The Page Contract, And Eleven Decisions · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-the-two-axes-the-audiences-the-page-contract-and-eleven-decisions">02: The Two Axes, The Audiences, The Page Contract, And Eleven Decisions</a></li><li class="l2"><a href="#1-the-two-axes">1. The Two Axes</a></li><li class="l2"><a href="#2-who-this-is-for">2. Who This Is For</a></li><li class="l3"><a href="#a-the-builder-deciding-whether-to-use-this-provider-at-all">A. The builder deciding whether to use this provider at all</a></li><li class="l3"><a href="#b-the-builder-who-has-chosen-and-is-stuck-on-credentials">B. The builder who has chosen and is stuck on credentials</a></li><li class="l3"><a href="#c-the-agent-building-the-next-provider-page-or-a-tool-on-top-of-this-one">C. The agent building the next provider page, or a tool on top of this one</a></li><li class="l3"><a href="#d-the-vendors-own-developer-relations">D. The vendor&amp;#x27;s own developer relations</a></li><li class="l2"><a href="#3-the-page-contract">3. The Page Contract</a></li><li class="l2"><a href="#4-decisions">4. Decisions</a></li><li class="l2"><a href="#5-what-must-not-happen">5. What Must Not Happen</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="02__architecture-and-decisions.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/02__architecture-and-decisions.md">live ↗</a></p><article class="source"><h1 id="02-the-two-axes-the-audiences-the-page-contract-and-eleven-decisions">02: The Two Axes, The Audiences, The Page Contract, And Eleven Decisions</h1>
+<hr>
+<h2 id="1-the-two-axes">1. The Two Axes</h2>
+<p>The site has one and needs both. They are orthogonal and each answers a different question.</p>
+<p><strong>The credential axis is a property of the provider.</strong> Where does the key live and what bounds it: nothing, a spend limit, a clock, or a host the application cannot reach. This is already built and it is the site&#x27;s best analytical content.</p>
+<p><strong>The capability axis is a property of our tool.</strong> What state does it keep: none, this device, or a vault. This decides what a tool can do, whether it survives being downloaded, and whether it works for somebody who has no key at all.</p>
+<pre><code>                    TIER 1              TIER 2              TIER 3
+                    no state            local storage       vault
+                    +-----------------+-----------------+-----------------+
+   PATTERN 0        | the cost model  | the bench       |                 |
+   key in page      | needs no key    | key on device   |                 |
+                    +-----------------+-----------------+-----------------+
+   PATTERN 1        |                 |                 |                 |
+   bounded key      |   NOT AVAILABLE FROM THIS PROVIDER                  |
+                    +-----------------+-----------------+-----------------+
+   PATTERN 2        |                 | needs a server  |                 |
+   short-lived      |                 | agents only     |                 |
+                    +-----------------+-----------------+-----------------+
+   PATTERN 3        |                 |                 | pattern-three   |
+   host holds key   |                 |                 | SPECIFIED ONLY  |
+                    +-----------------+-----------------+-----------------+</code></pre>
+<p><strong>Say the intersection once, on the patterns page</strong>: a tier-two tool holding a key in local storage is pattern zero with a ceiling, and a tier-three tool is pattern three. After that the two axes stop competing for the same explanation.</p>
+<p><strong>And the empty column is the honest finding.</strong> This provider cannot do pattern one, and tier three is specified rather than shipped, so the site&#x27;s own recommended pattern is one it has not yet demonstrated. The ledger has a state for exactly that and the page should use it rather than avoiding the subject.</p>
+<h2 id="2-who-this-is-for">2. Who This Is For</h2>
+<p>Four readers. The site currently serves the second one very well and the others incidentally.</p>
+<h3 id="a-the-builder-deciding-whether-to-use-this-provider-at-all">A. The builder deciding whether to use this provider at all</h3>
+<p><strong>Wants:</strong> can it do the specific thing, what will it cost me, what will break.
+<strong>Is served by:</strong> the report&#x27;s cost and failure sections, the cost model, the model comparison.
+<strong>Fails if:</strong> the site reads as an endorsement, or the cost is a price list rather than a measured workload.</p>
+<h3 id="b-the-builder-who-has-chosen-and-is-stuck-on-credentials">B. The builder who has chosen and is stuck on credentials</h3>
+<p><strong>Wants:</strong> where does my key live given how I deploy.
+<strong>Is served by:</strong> the patterns page and the comparison matrix. <strong>This is the site&#x27;s sharpest existing content and its main reason to exist.</strong>
+<strong>Fails if:</strong> the rule quoted is the vendor&#x27;s general rule rather than the rule for the endpoint being used. <strong>The site has already caught this once and the correction is the site&#x27;s most valuable single paragraph.</strong></p>
+<h3 id="c-the-agent-building-the-next-provider-page-or-a-tool-on-top-of-this-one">C. The agent building the next provider page, or a tool on top of this one</h3>
+<p><strong>Wants:</strong> a pattern to copy and a contract to obey.
+<strong>Is served by:</strong> the markdown-at-every-path convention, the OpenRouter stub, the examples, the ledger contract.
+<strong>Fails if:</strong> the conventions are true and unstated. Say them.</p>
+<h3 id="d-the-vendors-own-developer-relations">D. The vendor&#x27;s own developer relations</h3>
+<p><strong>Wants:</strong> to know what an independent evaluation found, and whether it is fair.
+<strong>Is served by:</strong> the ledger and the disclosures page.
+<strong>Fails if:</strong> a relationship exists and the page did not record it first. <strong>This audience is why the disclosure page was built before there was anything to disclose</strong>, and a grant application makes it live.</p>
+<p><strong>Explicitly not an audience:</strong> somebody learning what speech synthesis is. That reader is served better by the vendor, and serving them is how a narrow site becomes a broad one badly.</p>
+<h2 id="3-the-page-contract">3. The Page Contract</h2>
+<p>The nine sections are built. <strong>Three changes and one addition.</strong></p>
+<div class="table"><table><thead><tr><th>#</th><th>Section</th><th>Change</th></tr></thead><tbody><tr><td>1</td><td>Disclosure</td><td><strong>At the top of each page, one line</strong>, as well as on its own page. A reader who finds it at the bottom rereads everything above it with suspicion</td></tr>
+<tr><td>2</td><td><strong>What it grants</strong></td><td><strong>New. The capability block.</strong> Verb by object class by reach, with reversibility marked. See M1 in the audit</td></tr>
+<tr><td>3</td><td>Which pattern</td><td>Add the tier intersection, once</td></tr>
+<tr><td>4</td><td>Where the key goes</td><td><strong>Per product, never per vendor.</strong> This is the correction the site itself found</td></tr>
+<tr><td>5</td><td>The bounding primitive</td><td>Keep, and keep the sentence about what it does <strong>not</strong> bound</td></tr>
+<tr><td>6</td><td>Minimal working example</td><td>Exists as the examples page. Link it from the report</td></tr>
+<tr><td>7</td><td>What we use it for</td><td><strong>Thin.</strong> Name the actual workflows, or the site is a review rather than a report</td></tr>
+<tr><td>8</td><td>What it cost</td><td>Built</td></tr>
+<tr><td>9</td><td>What went wrong</td><td>Built, and see D7</td></tr></tbody></table></div>
+<h2 id="4-decisions">4. Decisions</h2>
+<p>Each carries a status. Blocking means do not proceed past the step that needs it.</p>
+<div class="table"><table><thead><tr><th>#</th><th>Decision</th><th>Status</th></tr></thead><tbody><tr><td><strong>D1</strong></td><td>The two axes both appear, and their intersection is stated once on the patterns page</td><td><strong>Accepted</strong></td></tr>
+<tr><td><strong>D2</strong></td><td>The capability block is added to the report, in the estate&#x27;s primitive form</td><td><strong>Accepted.</strong> It is why this site belongs to this estate</td></tr>
+<tr><td><strong>D3</strong></td><td>Credential rules are stated per product, never per vendor</td><td><strong>Accepted</strong>, and already proven necessary</td></tr>
+<tr><td><strong>D4</strong></td><td>The four audiences are named in the pack and served by artefact, not by a page each</td><td><strong>Accepted</strong></td></tr>
+<tr><td><strong>D5</strong></td><td>Tier three is either shipped as a working tool or carries the specification state visibly</td><td><strong>Accepted</strong>, method open</td></tr>
+<tr><td><strong>D6</strong></td><td>The site states that it is narrower than the vendor console rather than better</td><td><strong>Accepted</strong></td></tr>
+<tr><td><strong>D7</strong></td><td>A dated record of what was tried and abandoned is published</td><td><strong>Accepted.</strong> It is the page no vendor writes</td></tr>
+<tr><td><strong>D8</strong></td><td>The video line is assembled as one walkthrough: generate, align, caption, time</td><td><strong>Accepted</strong>, and it is the strongest demonstration available from what already exists</td></tr>
+<tr><td><strong>D9</strong></td><td>A speech counterpart to the existing listen call is proposed to the platform team</td><td><strong>Proposed</strong>, and outside this site&#x27;s own delivery</td></tr>
+<tr><td><strong>D10</strong></td><td>Every cross-link points at a page, never at a domain</td><td><strong>Accepted.</strong> The family&#x27;s recorded defect</td></tr>
+<tr><td><strong>D11</strong></td><td>The grant application is disclosed as pending before it is made</td><td><strong>Blocking on the project lead.</strong> The page promises to record a relationship first, and an application is the first moment that promise is testable</td></tr></tbody></table></div>
+<h2 id="5-what-must-not-happen">5. What Must Not Happen</h2>
+<ul><li><strong>No claim without a state.</strong> Including claims about our own unbuilt work.</li><li><strong>No page that could be replaced by a link to the vendor.</strong> If a section adds nothing the vendor does not publish, delete it.</li><li><strong>No pattern zero described neutrally.</strong> It is never acceptable for a published page and the site should keep saying so.</li><li><strong>No silent broadening.</strong> Every feature that serves a general audience rather than a named workflow moves this site toward being a worse version of the vendor&#x27;s own.</li><li><strong>No paid placement, ever</strong>, and no page that reads as one because the disclosure arrived late.</li></ul>
+<hr>
+<p><em>Released under CC BY 4.0.</em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/02__architecture-and-decisions.md">https://elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/02__architecture-and-decisions.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:31Z</dd><dt>sha256</dt><dd><code title="919920001df784ddcf6a3c3bb7dff8623ec4f0baa68419f305009aaa9a5eb31d">919920001df7</code></dd><dt>Frozen copy</dt><dd><a href="02__architecture-and-decisions.md">sites/elevenlabs.providers.sgit.ai/briefs/2026-09-07__pack__providers-site/02__architecture-and-decisions.md</a> (7,459 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

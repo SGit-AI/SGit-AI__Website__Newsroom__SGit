@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06 — Verification: Acceptance Tests, Claim States, Blockers · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-verification-acceptance-tests-claim-states-blockers">06 — Verification: Acceptance Tests, Claim States, Blockers</a></li><li class="l2"><a href="#the-rule-this-file-enforces">The Rule This File Enforces</a></li><li class="l2"><a href="#the-acceptance-tests">The Acceptance Tests</a></li><li class="l2"><a href="#blockers-recorded-rather-than-worked-around">Blockers, Recorded Rather Than Worked Around</a></li><li class="l3"><a href="#b1-egress-policy-refuses-dataungovrorg">B1 — Egress policy refuses data.ungovr.org</a></li><li class="l3"><a href="#b2-the-two-key-gated-corpora-remain-unread">B2 — The two key-gated corpora remain unread</a></li><li class="l3"><a href="#b3-the-instruments-source-format-is-unknown">B3 — The instrument&amp;#x27;s source format is unknown</a></li><li class="l3"><a href="#b4-the-entity-slug-is-not-known">B4 — The entity slug is not known</a></li><li class="l3"><a href="#b5-upstream-no-collection-roots-for-pinned-releases">B5 — Upstream: no collection roots for pinned releases</a></li><li class="l2"><a href="#corrections-recorded-beside-the-thing">Corrections Recorded Beside The Thing</a></li><li class="l2"><a href="#what-would-make-this-pack-wrong">What Would Make This Pack Wrong</a></li><li class="l2"><a href="#honest-tensions">Honest Tensions</a></li><li class="l2"><a href="#open-questions">Open Questions</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="06__verification.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/06__verification.md">live ↗</a></p><article class="source"><h1 id="06-verification-acceptance-tests-claim-states-blockers">06 — Verification: Acceptance Tests, Claim States, Blockers</h1>
+<p><strong>version</strong> v0.33.67
+<strong>date</strong> 8 September 2026</p>
+<p><a href="05__the-workbench.html">← 05 The Workbench</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/05__the-workbench.md" title="live page">↗</a> · <a href="README.html">Pack hub</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/README.md" title="live page">↗</a> · <a href="00__README.html">00 README</a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/00__README.md" title="live page">↗</a></p>
+<hr>
+<h2 id="the-rule-this-file-enforces">The Rule This File Enforces</h2>
+<blockquote><p><strong>Every claim carries a state, and <code>unevidenced</code> is the default.</strong></p></blockquote>
+<p>Settled 4 September. <strong>It applies to this pack about itself</strong>, which is why the status column below is mostly <code>unevidenced</code> and why that is the correct reading rather than an embarrassing one. Nothing here is built. A pack that marked its own tests as passing before the work existed would fail the discipline it specifies.</p>
+<hr>
+<h2 id="the-acceptance-tests">The Acceptance Tests</h2>
+<p><strong>Thirteen tests.</strong> The dev brief lists twelve and numbers two of them <code>10</code>; the duplicate is recorded in the corrections section below rather than silently fixed, and the list is renumbered here to 13.</p>
+<div class="table"><table><thead><tr><th>#</th><th>Test</th><th>Why</th><th>Status</th></tr></thead><tbody><tr><td>1</td><td>A named real entity resolves from its published slug and its boundary renders</td><td>The join is live rather than illustrated</td><td><code>unevidenced</code> — <strong>blocked</strong>, see below</td></tr>
+<tr><td>2</td><td>Every provision node carries the hash of its source bytes and a retrieval date</td><td>The provenance claim, checkable</td><td><code>unevidenced</code></td></tr>
+<tr><td>3</td><td>The markdown of the instrument rebuilds from the graph byte for byte</td><td>The method site&#x27;s own standard, applied here</td><td><code>unevidenced</code></td></tr>
+<tr><td>4</td><td>A provision links to the page or byte range that produced it, and the viewer opens it</td><td>What makes test 2 more than an assertion</td><td><code>unevidenced</code></td></tr>
+<tr><td>5</td><td><strong>Nodes derived from their data are visually distinct from nodes that are our model</strong></td><td>The two-edge discipline, and <strong>the thing a partner will check first</strong></td><td><code>unevidenced</code></td></tr>
+<tr><td>6</td><td>Zoom into an entity, a law and a provision, and each expands under identical rules</td><td>The fractal test</td><td><code>unevidenced</code></td></tr>
+<tr><td>7</td><td>The same query returns the same nodes on a rerun</td><td>Deterministic, <strong>which is the reason to build it at all</strong></td><td><code>unevidenced</code></td></tr>
+<tr><td>8</td><td>The vault opens read-only for a stranger and asks for nothing</td><td>The shareable form, as the Risk Graph Explorer already does</td><td><code>unevidenced</code></td></tr>
+<tr><td>9</td><td>The demonstration is citable by version</td><td>A release is the same objects rather than a copy that drifted</td><td><strong><code>asserted</code></strong> — release channel configured at this commit; not yet exercised by a third party</td></tr>
+<tr><td>10</td><td>The compiled table is one artefact rather than thousands of files</td><td>The write-amplification measurement of 7 September, applied</td><td><code>unevidenced</code></td></tr>
+<tr><td>11</td><td>Every computed number is shown beside the query that produced it, and the retrieval date</td><td><strong>A number without its query is an assertion</strong></td><td><code>unevidenced</code></td></tr>
+<tr><td>12</td><td>The compiled artefact is checkable against the retrieved JSON it came from</td><td>The provenance claim, end to end</td><td><code>unevidenced</code></td></tr>
+<tr><td>13</td><td><strong>The pack is in the vault as its first commit and is readable before anything is built</strong></td><td>The method, demonstrated by the artefact</td><td><strong><code>programmatic-out-of-band</code></strong> — this file is that commit. Verifiable from the vault&#x27;s own history</td></tr></tbody></table></div>
+<p><strong>Test 13 is the only one that passes today, and it passes by construction.</strong> That is the intended state of a pack published before its implementation.</p>
+<hr>
+<h2 id="blockers-recorded-rather-than-worked-around">Blockers, Recorded Rather Than Worked Around</h2>
+<h3 id="b1-egress-policy-refuses-dataungovrorg">B1 — Egress policy refuses <code>data.ungovr.org</code></h3>
+<p><strong>Status: open. It blocks tests 1, 2, 3, 4, 10 and 12.</strong></p>
+<p>The session that would perform the retrieval cannot reach the host over its shell. The proxy&#x27;s own log:</p>
+<pre><code>{
+  &quot;ts&quot;: &quot;2026-09-08T22:13:06.108Z&quot;,
+  &quot;kind&quot;: &quot;connect_rejected&quot;,
+  &quot;detail&quot;: &quot;gateway answered 403 to CONNECT (policy denial or upstream failure)&quot;,
+  &quot;host&quot;: &quot;data.ungovr.org:443&quot;
+}</code></pre>
+<p><strong>This is the same failure the research brief of 8 September records</strong>, where an issued API key could not be used because the session&#x27;s egress policy refused the authenticated host. <strong>It is now confirmed to apply to the open endpoints too, not only the authenticated ones.</strong> That is new information and it is worse than the earlier finding.</p>
+<p><strong>One path is open and it was deliberately not taken.</strong> A web-fetch tool can reach the host, and it returns <em>model-summarised text rather than raw bytes</em>. A retrieval through that path cannot carry a <code>response_sha256</code>, because there are no source bytes to hash — only a paraphrase of them. <strong>Committing such a payload as if it were a retrieval would put a false provenance record at the root of a vault whose entire argument is provenance.</strong></p>
+<p><strong>So nothing was fetched.</strong> The pack ships with the retrieval specified and unrun.</p>
+<div class="table"><table><thead><tr><th>Resolution path</th><th>Cost</th><th>Preference</th></tr></thead><tbody><tr><td>Run the fetch from an environment with unrestricted egress and commit the raw bytes</td><td>Low. It is four open endpoints and one bulk download</td><td><strong>Preferred</strong></td></tr>
+<tr><td>Have the bulk JSON supplied directly and hash it on arrival</td><td>Low, and the provenance holds if the supplier records their own retrieval</td><td>Acceptable</td></tr>
+<tr><td>Fetch through the summarising path and mark every node <code>method: transcribed-through-model</code>, with no content hash</td><td>Low effort, <strong>high cost to the argument</strong></td><td><strong>Rejected</strong></td></tr></tbody></table></div>
+<p><strong>The rejection is the finding.</strong> A vault that argues for byte-level provenance and then ships transcribed data has refuted itself in its first commit.</p>
+<h3 id="b2-the-two-key-gated-corpora-remain-unread">B2 — The two key-gated corpora remain unread</h3>
+<p><strong>Status: open, and it is the same blocker as B1 plus a key question.</strong></p>
+<p><code>/ai-laws/*</code> and <code>/cgj/reports/{id}.json</code> are gated behind <code>X-API-Key</code>. <strong>These are the two most interesting endpoints to this work</strong> and neither has been read.</p>
+<p>The AI-laws corpus matters beyond this vault: <strong>the conformance work of 4 September left 1,064 crosswalks with nothing to resolve into, blocked until another framework is published as a graph.</strong> Whether UnGovr&#x27;s AI-law corpus is a graph or only per-jurisdiction verdicts is <strong>the single most valuable question to ask them</strong>, because one answer unblocks a parked item.</p>
+<h3 id="b3-the-instruments-source-format-is-unknown">B3 — The instrument&#x27;s source format is unknown</h3>
+<p><strong>Status: open. It gates test 3.</strong></p>
+<p>The EU AI Act vault was tractable because Formex XML exists. <strong>Whether the California Public Records Act has an Akoma Ntoso rendering, or a published XML source of comparable quality, has not been established.</strong></p>
+<p><strong>If Californian statute is available only as HTML, the byte-for-byte rebuild claim is weaker and the decomposition is harder.</strong> That must be stated in the vault rather than discovered by a reader. <strong>Resolve this before writing any parser</strong>, because it may change which provision — or which instrument — the worked example uses.</p>
+<h3 id="b4-the-entity-slug-is-not-known">B4 — The entity slug is not known</h3>
+<p><strong>Status: open, downstream of B1.</strong></p>
+<p>The Santa Barbara County slug has deliberately <strong>not been guessed</strong>. It is resolved from <code>/entities/us/ca.json</code> and transcribed verbatim. A guessed slug in a vault about published identifier spaces would be the most embarrassing possible defect.</p>
+<h3 id="b5-upstream-no-collection-roots-for-pinned-releases">B5 — Upstream: no collection roots for pinned releases</h3>
+<p><strong>Status: open, upstream, not fixable here.</strong></p>
+<p>There are no collection roots yet, so when garbage collection is built, <strong>pinned commits must become roots or a published release could be collected out from under a live link.</strong> This vault&#x27;s citation story depends on that being resolved upstream. It is recorded here so that a reader relying on a pinned link knows the dependency exists.</p>
+<hr>
+<h2 id="corrections-recorded-beside-the-thing">Corrections Recorded Beside The Thing</h2>
+<p><strong>A correction is a proposal recorded beside the thing rather than an edit to it, and no file has two writers.</strong> Two are open against the source briefs.</p>
+<div class="table"><table><thead><tr><th>#</th><th>Against</th><th>Correction</th></tr></thead><tbody><tr><td>C1</td><td>The dev brief&#x27;s acceptance-test table</td><td><strong>Two rows are numbered <code>10</code>.</strong> The tests themselves are distinct and both are kept. Renumbered to 13 above; the source is not edited</td></tr>
+<tr><td>C2</td><td>The research brief&#x27;s finding on egress</td><td>It records that the <em>authenticated</em> host was refused. <strong>The open host is refused too.</strong> Recorded here rather than as an edit to that brief</td></tr></tbody></table></div>
+<hr>
+<h2 id="what-would-make-this-pack-wrong">What Would Make This Pack Wrong</h2>
+<p><strong>Stated in advance, because a specification that cannot be refuted is not one.</strong></p>
+<div class="table"><table><thead><tr><th>If this turns out to be true</th><th>Then</th></tr></thead><tbody><tr><td>Their <code>open_records.law</code> coverage is near-total and richly structured</td><td><strong>The gap this vault exists to close is smaller than claimed</strong>, and the argument shrinks to the provision layer alone</td></tr>
+<tr><td>The CPRA has no usable machine-readable source</td><td>Test 3 cannot pass and the honest move is to say so and pick a different instrument, not to weaken the test</td></tr>
+<tr><td>The cross-references to GeoNames, Wikidata, OCD and FIPS <em>are</em> exposed</td><td>The join is cheaper than described and part of <a href="02__the-model.html"><code>02__the-model.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/02__the-model.md" title="live page">↗</a> is over-engineered</td></tr>
+<tr><td>DuckDB-WASM cannot carry the workload on a cold open</td><td>The recommendation in <a href="05__the-workbench.html"><code>05__the-workbench.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/05__the-workbench.md" title="live page">↗</a> is wrong and should be replaced with the proven SQLite path</td></tr>
+<tr><td>UnGovr already publishes the coverage number</td><td><strong>Computation 1 is not new</strong>, and the honest response is to cite theirs and check it rather than to present it as a finding</td></tr></tbody></table></div>
+<hr>
+<h2 id="honest-tensions">Honest Tensions</h2>
+<div class="table"><table><thead><tr><th>Tension</th><th>Note</th></tr></thead><tbody><tr><td>Showing a partner the gap in their data</td><td>It is the clearest possible argument, and it is a stranger telling them their model is short by one edge</td></tr>
+<tr><td>Building on a snapshot</td><td>It is reproducible and dated, and <strong>it is stale the moment they push</strong></td></tr>
+<tr><td>One county, one law</td><td>Depth beats breadth for a demonstration, and <strong>one instance proves nothing about coverage</strong></td></tr>
+<tr><td>Our nodes on their graph</td><td>The attach-never-mutate rule makes it safe, and a viewer renders both as one dataset unless the classes are visibly distinct</td></tr>
+<tr><td>The determinism claim</td><td>The strongest property here, and it holds only while both address schemes are stable</td></tr>
+<tr><td>Building a corrections path before asking</td><td>It demonstrates the point, and it implies their data needs correcting. Ships empty</td></tr>
+<tr><td>Doing this before the meeting</td><td>A built thing beats a slide, and <strong>arriving with one can read as presumption rather than as effort</strong></td></tr></tbody></table></div>
+<hr>
+<h2 id="open-questions">Open Questions</h2>
+<div class="table"><table><thead><tr><th>Question</th><th>Notes</th></tr></thead><tbody><tr><td>Is the AI and crawling law corpus a graph, or only per-jurisdiction verdicts?</td><td><strong>The ask with the highest value.</strong> It unblocks 1,064 parked crosswalks</td></tr>
+<tr><td>Are the GeoNames, Wikidata, OCD and FIPS cross-references exposed in the API?</td><td>On the platform page, absent from the schema</td></tr>
+<tr><td>Do we ask before publishing a vault built on their data?</td><td>The licence permits it with attribution. <strong>Asking is not required and is probably right</strong></td></tr>
+<tr><td>How does a snapshot stay honest as their data moves?</td><td>The retrieval date is the minimum. <strong>A refresh cadence is the real answer</strong></td></tr>
+<tr><td>Does the corrections offer go in the vault, or stay a conversation?</td><td>Built, and shipped empty, per <a href="04__the-vault.html"><code>04__the-vault.md</code></a><a class="ext live" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/04__the-vault.md" title="live page">↗</a></td></tr>
+<tr><td>Does this vault join the catalogue immediately?</td><td>Yes. Under a minute, and a graph vault absent from the index argues against its own method</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/06__verification.md">https://ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/06__verification.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="9a6bb505b44d76f058b3fdcad2dbf82815666c243ec0170a5b438029bd3be14b">9a6bb505b44d</code></dd><dt>Frozen copy</dt><dd><a href="06__verification.md">sites/ungovr.providers.sgit.ai/briefs/2026-09-09__vault__government-graph-pack/06__verification.md</a> (10,954 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

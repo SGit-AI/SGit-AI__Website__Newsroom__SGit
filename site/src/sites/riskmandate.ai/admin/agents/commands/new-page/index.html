@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>new-page · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../../index.html">Front page</a><a href="../../../../../../../editions/index.html">Editions</a><a href="../../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../../library/index.html">Index</a><a href="../../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../../history/index.html">History</a><a href="../../../../../../../signals/index.html">Signals</a><a href="../../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../../about/index.html">About</a><a href="../../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/agents/commands/new-page/index.html">live ↗</a></p><article class="source"><h1 id="new-page">new-page</h1>
+<blockquote><p>Rendered from .claude/commands/new-page.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/agents/commands/new-page/</a><a class="ext live" href="https://riskmandate.ai/admin/agents/commands/new-page/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<hr>
+<p>description: Add a page to the site with the shared chrome, register it, regenerate, check
+argument-hint: &lt;name&gt; &quot;&lt;title&gt;&quot; &quot;&lt;description&gt;&quot; [menu group | unlisted | private]
+</p>
+<hr>
+<p>Add the page $ARGUMENTS following <code>.claude/onboarding/05-workflows.md</code> → <em>Add or edit a page</em>.</p>
+<ul><li>Read the markdown twin of a finished page in the same family first for the voice
+(<code>site/abp.md</code> for the model, <code>site/work.md</code> for process pages, a <code>lab-*.md</code> for the Lab).</li><li>Write the body and the page CSS in the scratchpad; scaffold with <code>new-page.mjs</code> using
+<code>work.html</code> as the donor unless the family has a better one; run <code>add-licence-chrome.mjs</code>.</li><li>Register it in <code>site/pages.json</code> in the group given (or <code>unlisted</code>/<code>private</code>); keep at most 7
+top-level entries. <code>generate.mjs</code>, <code>npm run check</code>.</li><li>Every claim on the page carries a source and a date. Nothing is scored. No literal hex outside
+<code>:root</code>. No <code>innerHTML</code>.</li><li>A page change ships as a release: do not cut it on the branch; note in <code>.claude/work/&lt;branch&gt;.md</code>
+that a release is owed at merge.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/agents/commands/new-page/index.html">https://riskmandate.ai/admin/agents/commands/new-page/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/agents/commands/new-page/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:57:16Z</dd><dt>sha256</dt><dd><code title="a9b14deb804c3fa51ce38aa6571946f098a7b873a55d17c359f8e5cbd14fe83e">a9b14deb804c</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/agents/commands/new-page/index.md</a> (1,271 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

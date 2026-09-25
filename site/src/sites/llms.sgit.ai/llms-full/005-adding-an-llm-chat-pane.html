@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
 <nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
 <main>
 <p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
@@ -31,7 +31,7 @@
 <p><strong>Grants needed:</strong> none <strong>Code:</strong> none</p>
 <p>Open it from <strong>✨ AI Chat</strong> in the vault header, or <strong>➕ Add to chat</strong> on any file. There is nothing to build. What it does is worth reading closely, because <strong>every behaviour below is a design decision rather than a feature</strong>, and the decisions are the argument.</p>
 <h3 id="the-honesty-mechanisms-as-decisions-with-their-reasons">The honesty mechanisms, as decisions with their reasons</h3>
-<p>These are the best work in the LLM bridge and, until this page, they were published nowhere. Each one is a small refusal to mislead, and collectively they are more persuasive than any feature tour. They are also the part that <a class="ext" href="https://llms.sgit.ai/websites/index.md#transfers">transfers unchanged ↗</a> to a chat pane with no vault behind it at all.</p>
+<p>These are the best work in the LLM bridge and, until this page, they were published nowhere. Each one is a small refusal to mislead, and collectively they are more persuasive than any feature tour. They are also the part that <a href="../websites/index.html#transfers">transfers unchanged</a><a class="ext live" href="https://llms.sgit.ai/websites/index.md#transfers" title="live page">↗</a> to a chat pane with no vault behind it at all.</p>
 <h4 id="attached-files-share-one-24000-character-budget-not-one-each">Attached files share one 24,000-character budget, not one each</h4>
 <p>Attach a second file and the budget is divided, not doubled. &quot;Not one each, so attaching a second file cannot silently double your prompt or your bill.&quot;</p>
 <h4 id="a-trimmed-file-says-truncated-in-the-text-the-model-sees">A trimmed file says <code>TRUNCATED</code> in the text the model sees</h4>
@@ -56,7 +56,7 @@
 <p>An app author gets a <strong>preference, not authority</strong>. In <code>app.json</code>:</p>
 <pre><code>{ &quot;hud&quot;: { &quot;show&quot;: { &quot;llm&quot;: false } } }</code></pre>
 <p><code>false</code> hides the button if a chat control would clash with the app&#x27;s own UI; <code>true</code> forces it on in <code>minimal</code> mode, where it is off by default. The flag is on by default in <code>full</code> mode and off in <code>minimal</code>, <code>hidden</code> and <code>none</code>. It is a preference about chrome and not authority: it does not change what the app itself may do, and it cannot suppress the sovereignty rail.</p>
-<p><strong>Verified against the shipped code</strong>, not only against the brief: <code>hud.show.llm</code> is still the config key and still carries those per-mode defaults, at product version v0.33.62. <a class="ext" href="https://llms.sgit.ai/shipped/index.md#verified">The other claims this site re-checked ↗</a>, including one where the contract and the code now disagree.</p>
+<p><strong>Verified against the shipped code</strong>, not only against the brief: <code>hud.show.llm</code> is still the config key and still carries those per-mode defaults, at product version v0.33.62. <a href="../shipped/index.html#verified">The other claims this site re-checked</a><a class="ext live" href="https://llms.sgit.ai/shipped/index.md#verified" title="live page">↗</a>, including one where the contract and the code now disagree.</p>
 <h2 id="surface-3-ai-inside-your-own-app">Surface 3 — AI inside your own app</h2>
 <p><strong>Grants needed:</strong> llm.chat llm.models llm.usage <strong>Code:</strong> yes</p>
 <p>Three steps, and step 2 is the one people skip.</p>
@@ -67,30 +67,30 @@
  &quot;llm&quot;: { &quot;chat&quot;: true, &quot;models&quot;: true, &quot;usage&quot;: true }
  }
 }</code></pre>
-<p><code>chat</code> is the one that spends money; <code>models</code> and <code>usage</code> are read-only. Grant only what you use, and note that <a class="ext" href="https://llms.sgit.ai/security/index.md#ladder"><code>listen</code> is never implied by <code>chat</code> ↗</a>.</p>
+<p><code>chat</code> is the one that spends money; <code>models</code> and <code>usage</code> are read-only. Grant only what you use, and note that <a href="../security/index.html#ladder"><code>listen</code> is never implied by <code>chat</code></a><a class="ext live" href="https://llms.sgit.ai/security/index.md#ladder" title="live page">↗</a>.</p>
 <p><strong>2. Check availability before you render a chat UI.</strong> This is the step that gets skipped and the one the contract is most insistent about:</p>
 <blockquote><p><code>sg.llm.available()</code> is not optional politeness. Unlike other namespaces, LLM access depends on <em>runtime</em> state: whether the vault has a key configured, whether this is a read-only session, whether the budget is spent. Ask first, then decide what to draw.</p></blockquote>
 <pre><code>const a = await sg.llm.available();
 if (!a.ok) { showFallbackUI(a.reason); return; } // ENOKEY | EPERM | EREADONLY
 console.log(&#x27;ready:&#x27;, a.model, &#x27;remaining:&#x27;, a.remaining);</code></pre>
-<p><strong>3. Chat.</strong> <a class="ext" href="https://llms.sgit.ai/samples.md">Eight runnable samples ↗</a>, and <a class="ext" href="https://llms.sgit.ai/api/index.md">the full reference ↗</a>.</p>
+<p><strong>3. Chat.</strong> <a class="ext" href="https://llms.sgit.ai/samples.md">Eight runnable samples ↗</a>, and <a href="../api/index.html">the full reference</a><a class="ext live" href="https://llms.sgit.ai/api/index.md" title="live page">↗</a>.</p>
 <h2 id="turning-it-on-for-a-vault-once">Turning it on for a vault, once</h2>
 <p>Before any surface works, the vault needs a key:</p>
 <ol><li>Open the vault with its <strong>full key</strong>. An owner-sealed key cannot be unsealed in a read-only session, and <strong>that is cryptographic rather than a policy check</strong>.</li><li><strong>Settings → AI models (OpenRouter)</strong>, paste an OpenRouter key, <strong>Test</strong>, <strong>Save</strong>.</li><li>Optionally: a default model, an allowed-models list as globs (<code>anthropic/*</code>), and spend caps (<code>maxCostPerSession</code>, <code>maxCallsPerSession</code>, <code>maxTokensPerCall</code>).</li></ol>
-<p>Use an obviously fake placeholder anywhere you write this down. This site never prints a realistic-looking key, and <a class="ext" href="https://llms.sgit.ai/admin/index.md#checks">its pre-release gate refuses to publish anything shaped like one ↗</a>.</p>
+<p>Use an obviously fake placeholder anywhere you write this down. This site never prints a realistic-looking key, and <a href="../admin/index.html#checks">its pre-release gate refuses to publish anything shaped like one</a><a class="ext live" href="https://llms.sgit.ai/admin/index.md#checks" title="live page">↗</a>.</p>
 <h3 id="two-key-tiers-and-the-choice-matters">Two key tiers, and the choice matters</h3>
 <div class="table"><table><thead><tr><th>Tier</th><th>Behaviour</th></tr></thead><tbody><tr><td><code>owner</code> (default)</td><td>Sealed with the vault&#x27;s <strong>write</strong> key. A read-only opener gets <code>EREADONLY</code> and cannot use it</td></tr>
 <tr><td><code>shared</code></td><td>Readable by anyone who can open the vault</td></tr></tbody></table></div>
 <p>Prefer <code>owner</code> unless you deliberately want every opener to be able to spend.</p>
-<p><strong>Know what you are storing.</strong> With a key configured, the vault contains a credential. <strong>Sharing the vault key shares the ability to spend it.</strong> Short-lived minted credentials are planned (Phase 4) and would remove this; until then, treat such a vault as carrying a secret. This changes the sharing calculus for a vault: <a class="ext" href="https://llms.sgit.ai/security/index.md#storing">publishing a read key for a vault with AI configured is not the same act as publishing one for a plain vault ↗</a>.</p>
+<p><strong>Know what you are storing.</strong> With a key configured, the vault contains a credential. <strong>Sharing the vault key shares the ability to spend it.</strong> Short-lived minted credentials are planned (Phase 4) and would remove this; until then, treat such a vault as carrying a secret. This changes the sharing calculus for a vault: <a href="../security/index.html#storing">publishing a read key for a vault with AI configured is not the same act as publishing one for a plain vault</a><a class="ext live" href="https://llms.sgit.ai/security/index.md#storing" title="live page">↗</a>.</p>
 <h2 id="what-to-reach-for-first">What to reach for first</h2>
-<ol><li><p><strong>The decision table above.</strong> Most readers need no code, which is the right outcome.</p></li><li><p><strong>Surface 2&#x27;s one config line</strong>, if you already have apps. Every one of them gets a chat panel.</p></li><li><p><strong>The honesty mechanisms</strong>, if you are building surface 3. They are the difference between a demo and something a person can trust with a bill.</p></li><li><p><strong>Then the code</strong>: <a class="ext" href="https://llms.sgit.ai/samples.md">the samples ↗</a>, <a class="ext" href="https://llms.sgit.ai/api/index.md">the reference ↗</a>, <a class="ext" href="https://llms.sgit.ai/api/traps.md">the traps ↗</a>.</p>
-<p><a class="ext" href="https://llms.sgit.ai/index.md">← Front page ↗</a> <a class="ext" href="https://llms.sgit.ai/samples.md">The code samples → ↗</a></p></li></ol>
+<ol><li><p><strong>The decision table above.</strong> Most readers need no code, which is the right outcome.</p></li><li><p><strong>Surface 2&#x27;s one config line</strong>, if you already have apps. Every one of them gets a chat panel.</p></li><li><p><strong>The honesty mechanisms</strong>, if you are building surface 3. They are the difference between a demo and something a person can trust with a bill.</p></li><li><p><strong>Then the code</strong>: <a class="ext" href="https://llms.sgit.ai/samples.md">the samples ↗</a>, <a href="../api/index.html">the reference</a><a class="ext live" href="https://llms.sgit.ai/api/index.md" title="live page">↗</a>, <a href="../api/traps.html">the traps</a><a class="ext live" href="https://llms.sgit.ai/api/traps.md" title="live page">↗</a>.</p>
+<p><a href="../index.html">← Front page</a><a class="ext live" href="https://llms.sgit.ai/index.md" title="live page">↗</a> <a class="ext" href="https://llms.sgit.ai/samples.md">The code samples → ↗</a></p></li></ol>
 <hr>
 <p>/chat-pane/samples.md</p>
 <hr></article><nav class="pager"><span><a href="004-adding-an-llm-chat-pane.html">← Adding an LLM chat pane</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="006-the-code-samples.html">The code samples →</a></span></nav>
 <aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>5 of 49: Adding an LLM chat pane</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
 </body>
 </html>

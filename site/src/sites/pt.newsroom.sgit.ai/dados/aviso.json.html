@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>aviso.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pt.newsroom.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/pt.newsroom.sgit.ai.html">pt.newsroom.sgit.ai</a> · <a href="aviso.json">raw text</a> · <a class="ext" href="https://pt.newsroom.sgit.ai/dados/aviso.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;pt-aviso-protecao-dados&quot;,
+  &quot;versao&quot;: &quot;0.1.0&quot;,
+  &quot;atualizado&quot;: &quot;2026-09-14&quot;,
+  &quot;publicado_antes_de_nomear&quot;: true,
+  &quot;nota_de_ordem&quot;: &quot;Este aviso foi escrito e publicado na MESMA versão que as primeiras páginas que nomeiam pessoas, e antes de qualquer uma delas ter estado em linha. A secção /portugal/ de newsroom.sgit.ai, de onde este método vem, publicou o seu aviso DEPOIS das páginas que nomearam 64 pessoas, e regista isso na própria página como tendo sido a ordem errada. O resumo de comissionamento manda expressamente não repetir esse erro. É a única razão por que este ficheiro existe antes de existir uma única página de pessoas.&quot;,
+  &quot;nao_e_aconselhamento_juridico&quot;: &quot;Este aviso é o que uma publicação deve às pessoas que nomeia, escrito por quem publica. Não é aconselhamento jurídico e nenhum jurista o reviu. O artigo em que assenta — o artigo 24.º da Lei n.º 58/2019 — foi devolvido truncado à investigação que o encontrou e tem de ser lido na íntegra antes de ser citado numa página pública. Se está a usar isto como modelo, procure aconselhamento próprio.&quot;,
+  &quot;responsavel&quot;: {
+    &quot;quem&quot;: &quot;Dinis Cruz, a título pessoal&quot;,
+    &quot;porque_pessoal&quot;: &quot;Não existe nenhuma entidade por trás desta publicação. Nomear uma pessoa em vez de um projeto é a versão honesta e é também a barata: significa que a via de oposição abaixo chega a alguém que pode agir sobre ela, e não a um formulário.&quot;,
+    &quot;contacto&quot;: &quot;dinis.cruz@owasp.org&quot;
+  },
+  &quot;titulares&quot;: &quot;Pessoas nomeadas na lista de oradores publicada pelo próprio evento, na sua qualidade profissional: o nome, o papel sob o qual estão listadas, a organização sob a qual estão listadas, as ligações que o evento publicou para elas, os tópicos que o evento lista na página de cada uma, e as palavras dessa página que correspondem a um léxico publicado.&quot;,
+  &quot;categorias_detidas&quot;: [
+    &quot;Nome, tal como publicado pelo evento&quot;,
+    &quot;Papel profissional, tal como publicado pelo evento&quot;,
+    &quot;Organização, tal como publicada pelo evento&quot;,
+    &quot;O endereço da página dessa pessoa no site do evento&quot;,
+    &quot;Um endereço de perfil do LinkedIn, quando o evento publicou um&quot;,
+    &quot;Os tópicos que o evento lista na página da própria pessoa, verbatim&quot;,
+    &quot;As palavras dessa página que correspondem a um léxico publicado de setores, tecnologias, ideias, serviços e produtos — apenas as palavras correspondidas, nunca a frase&quot;
+  ],
+  &quot;categorias_recusadas&quot;: [
+    &quot;Moradas postais de qualquer pessoa singular&quot;,
+    &quot;Endereços de correio eletrónico de qualquer pessoa singular&quot;,
+    &quot;Números de telefone de qualquer pessoa singular&quot;,
+    &quot;Quaisquer dados de categoria especial&quot;,
+    &quot;Biografias como texto: são o texto de quem as escreveu, e são ligadas em vez de reproduzidas. Um léxico publicado lê-as à procura de palavras e guarda apenas as palavras&quot;,
+    &quot;Qualquer avaliação, classificação, pontuação ou caracterização de uma pessoa nomeada. Uma etiqueta derivada diz que a página contém certas palavras; as ligações entre entidades são feitas ao nível da organização e não nomeiam ninguém&quot;
+  ],
+  &quot;recusa_imposta_por&quot;: &quot;A recusa corre no ponto de LEITURA, não no de apresentação: build/extract.py descarta o campo antes de ele chegar a um ficheiro de dados. Os portões de build/gates.py são a segunda linha — o portão 5 falha o build se um endereço de correio eletrónico, um número de telefone ou uma morada de pessoa singular aparecer em qualquer ficheiro de dados; o portão 6 falha-o se algum campo for longo o suficiente para ser uma biografia reproduzida; o portão 8 volta a correr cada padrão do léxico sobre os bytes congelados, para que uma etiqueta nunca possa ser escrita à mão. Um contacto que chega aos dados e é apenas escondido por um template está a um ciclo distraído de ser publicado.&quot;,
+  &quot;origem&quot;: &quot;Duas espécies de fonte, ambas obtidas e congeladas em capturas datadas neste repositório: o site do próprio evento, e páginas de terceiros sobre o evento. Os dados detidos sobre qualquer pessoa vêm apenas da lista de oradores do evento e da página dessa pessoa no site do evento. Todas as fontes estão listadas com o seu SHA-256 no registo público.&quot;,
+  &quot;finalidade&quot;: &quot;Relatar sobre um evento profissional público e sobre o ecossistema à sua volta, e demonstrar um método em que cada afirmação publicada pode ser percorrida para trás até uma cópia hasheada da fonte de onde veio.&quot;,
+  &quot;fundamento&quot;: {
+    &quot;base&quot;: &quot;Interesses legítimos&quot;,
+    &quot;nao_e_jornalismo&quot;: &quot;A derrogação jornalística NÃO é invocada. O artigo 24.º, n.º 3, da Lei n.º 58/2019 condiciona o tratamento para fins jornalísticos à legislação nacional que rege o acesso e o exercício da profissão. Esta publicação não está acreditada ao abrigo dela e não satisfaz essa condição, por isso não se apoia nela. A decisão de desaplicação de 2019 da autoridade de controlo não toca no artigo 24.º, pelo que este se mantém por inteiro.&quot;,
+    &quot;teste&quot;: [
+      {
+        &quot;membro&quot;: &quot;O interesse&quot;,
+        &quot;dizemos&quot;: &quot;Relatar o que um evento público publicou sobre si próprio, e demonstrar um método de verificação sobre isso. Ambos são matérias de interesse público e nenhum é comercial — este site não tem preço, não tem publicidade e não tem rastreio.&quot;
+      },
+      {
+        &quot;membro&quot;: &quot;A necessidade&quot;,
+        &quot;dizemos&quot;: &quot;O relato não pode ser feito sem os nomes, porque o assunto É quem está a falar. Os dados detidos são o mínimo: os campos profissionais publicados e mais nada. Nenhuma biografia é guardada, nenhum contacto é guardado, e nenhuma inferência sobre ninguém é feita ou publicada.&quot;
+      },
+      {
+        &quot;membro&quot;: &quot;O equilíbrio&quot;,
+        &quot;dizemos&quot;: &quot;Cada dado foi publicado pelo próprio evento com o propósito expresso de anunciar estas pessoas como oradoras, na sua qualidade profissional, e não tem conteúdo de vida privada. Contra isso: estar listado num site de terceiros não é algo a que alguém tenha consentido, e é por isso que a via de oposição abaixo é incondicional em vez de avaliada. Registamos também, porque de outro modo ficaria por dizer e seria a crença errada a ficar por omissão, que o facto de dados terem sido tornados públicos NÃO significa por si só que possam ser tratados com este fundamento — é um fator no equilíbrio, não uma resposta a ele.&quot;
+      }
+    ],
+    &quot;orientacao&quot;: &quot;Os três membros seguem as orientações do Comité Europeu para a Proteção de Dados sobre interesses legítimos, adotadas a 8 de outubro de 2024.&quot;
+  },
+  &quot;porque_um_aviso_publico&quot;: {
+    &quot;regra&quot;: &quot;Quando os dados pessoais não são obtidos junto da pessoa a quem dizem respeito, o artigo 14.º do RGPD exige que ela seja informada. O artigo 14.º, n.º 5, alínea b), dispensa o responsável quando a notificação individual exigir um esforço desproporcionado — mas essa dispensa é condicional, e uma das medidas que exige expressamente é tornar a informação publicamente disponível.&quot;,
+    &quot;portanto&quot;: &quot;Esta página é essa medida. Existe para que a dispensa seja ganha e não presumida.&quot;,
+    &quot;e_a_ordem_certa&quot;: &quot;Foi escrita antes de existir uma única página deste site que nomeie uma pessoa, e não depois. É a correção que o resumo de comissionamento manda transportar da secção que veio antes desta.&quot;
+  },
+  &quot;conservacao&quot;: &quot;As capturas congeladas das fontes são permanentes, porque são a prova que torna cada afirmação verificável e apagá-las quebraria o método. Os dados derivados são reconstruídos a partir delas em cada execução. Se uma pessoa se opuser, a sua entrada é removida dos dados derivados e de todas as páginas apresentadas; a captura congelada não é alterada, porque é uma cópia do que outra pessoa publicou numa data, e não o nosso registo sobre ela.&quot;,
+  &quot;direitos&quot;: [
+    &quot;Perguntar o que é detido sobre si, e obter uma cópia&quot;,
+    &quot;Corrigir o que estiver inexato&quot;,
+    &quot;Opor-se a ser incluído, e ser removido&quot;,
+    &quot;Que a remoção se propague a todas as páginas na construção seguinte, que corre a pedido e não apenas por agenda&quot;,
+    &quot;Reclamar junto da Comissão Nacional de Proteção de Dados, ou da autoridade de controlo do país onde vive&quot;
+  ],
+  &quot;oposicao&quot;: {
+    &quot;como&quot;: &quot;Enviar correio eletrónico ao responsável indicado acima. Diga quem é e que quer a sua entrada removida.&quot;,
+    &quot;promessa&quot;: &quot;Não é exigida nenhuma razão e nenhuma será pedida. A remoção não é avaliada, discutida nem adiada à espera de um exercício de ponderação.&quot;,
+    &quot;e_depois&quot;: &quot;A entrada é removida dos dados derivados, o site é reconstruído, e o nome deixa de aparecer em qualquer página. Como a remoção altera o que a diferença entre capturas mostraria, a página de mudanças regista que uma entrada foi removida a pedido do titular, sem nome — que é a única forma de manter a diferença honesta sem voltar a publicar o nome que foi pedido para remover.&quot;
+  },
+  &quot;regra_sem_razao&quot;: &quot;Quando um nome saiu da lista publicada pelo próprio evento entre duas das nossas capturas, esta publicação regista a mudança e não declara nenhuma razão. Retirada, conflito de agenda, registo duplicado e erro de edição são indistinguíveis de fora, e atribuir um motivo a uma pessoa nomeada com esta prova seria a coisa mais danosa que esta publicação poderia fazer.&quot;,
+  &quot;o_que_este_site_nao_faz&quot;: [
+    &quot;Não usa publicidade, não usa rastreio e não define cookies. Nenhum cookie é definido acima do próprio anfitrião: o limite do domínio registável faz com que um cookie definido ao nível da plataforma fosse visível para todos os sites irmãos.&quot;,
+    &quot;Não reproduz o texto de terceiros. Liga, e resume por palavras suas.&quot;,
+    &quot;Não publica fotografias sem uma fonte registada.&quot;,
+    &quot;Não deixa uma execução automática publicar seja o que for: o estado «publicado» é a linha do editor de registo, e só dele.&quot;
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pt.newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pt.newsroom.sgit.ai/dados/aviso.json">https://pt.newsroom.sgit.ai/dados/aviso.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:03Z</dd><dt>sha256</dt><dd><code title="ef18ce1043d6bc0c2e745448499841ddbd509d366eda2672481527f97c03114d">ef18ce1043d6</code></dd><dt>Frozen copy</dt><dd><a href="aviso.json">sites/pt.newsroom.sgit.ai/dados/aviso.json</a> (9,981 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

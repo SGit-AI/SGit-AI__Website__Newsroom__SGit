@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The policy is a graph, and every stakeholder gets a projection of it · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-policy-is-a-graph-and-every-stakeholder-gets-a-projection-of-it">The policy is a graph, and every stakeholder gets a projection of it</a></li><li class="l2"><a href="#1-what-the-debrief-says-in-its-own-order">1. What the debrief says, in its own order</a></li><li class="l2"><a href="#2-where-we-already-are">2. Where we already are</a></li><li class="l2"><a href="#3-the-vault-structure-this-asks-for">3. The vault structure this asks for</a></li><li class="l2"><a href="#4-what-to-build-next-in-order">4. What to build next, in order</a></li><li class="l2"><a href="#5-two-asks-for-the-model-site-added-to-lab-03">5. Two asks for the model site, added to Lab 03</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/index.html">live ↗</a></p><article class="source"><h1 id="the-policy-is-a-graph-and-every-stakeholder-gets-a-projection-of-it">The policy is a graph, and every stakeholder gets a projection of it</h1>
+<blockquote><p>Rendered from docs/briefs/direction__abp-as-a-graph-and-stakeholder-views.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/</a><a class="ext live" href="https://riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>Date:</strong> 2026-09-15 · <strong>Author:</strong> @website-agent
+<strong>Trigger:</strong> project lead&#x27;s voice debrief of 15 September, <em>&quot;ABP Graph and Stakeholder Views&quot;</em> (Otter transcript, four minutes)
+<strong>Reads against:</strong> the fifteen vaults in the library; abp.sgit.ai v0.3.0; the library page as built today</p>
+<hr>
+<h2 id="1-what-the-debrief-says-in-its-own-order">1. What the debrief says, in its own order</h2>
+<ol><li><strong>Behaviours are standalone, addressable items.</strong> Each has an id you can hyperlink and
+cross-reference: remote code execution, network access, changing data, acting
+independently — <em>&quot;all those primitives that you can do&quot;</em>. Controls are behaviours too, *&quot;a
+control is still a behaviour … it is preventing the behaviour&quot;*.</li><li><strong>They connect outward.</strong> To a MITRE ATT&amp;CK-style tree, to other standards, to GDPR and its
+neighbours — <em>&quot;that&#x27;s a great centre node&quot;</em>.</li><li><strong>The graph is navigated in several directions.</strong> *Which policies impact command execution?
+Which impact data deletion or corruption? Which agents allow automation, or a large number of
+actions at speed?* — the calendar with five thousand entries added or deleted, and what
+backups exist. Each behaviour carries metrics: <em>fast, small, a lot, medium</em>.</li><li><strong>The ABP is a semantic graph</strong> — nodes and edges that <em>are</em> the policy; the documents are
+what is produced from it.</li><li><strong>Multiple audiences.</strong> CEO, CFO, CTO; and investor, buyer, operator, engineer, project
+manager. Each is a filtered view of the same data, and the view is content that lives in the
+vault — which is why data management and reuse of building blocks matter as the vault count
+grows.</li><li><strong>Projections are reproducible.</strong> The prose a stakeholder reads is generated from a prompt
+over the data, the graph and the evidence. Ship the prompt and the script with the vault, so
+the customer can regenerate it — *&quot;a selling point … fifty quid is not an expensive way of
+learning how all this is done&quot;*.</li></ol>
+<h2 id="2-where-we-already-are">2. Where we already are</h2>
+<p>More of this exists than it looks, because the model site made the primitives into ids on day one:</p>
+<ul><li><strong>The 23 capabilities are the behaviour nodes.</strong> <code>execute.process.host</code> <em>is</em> &quot;remote code
+execution as the account&quot;; <code>delete.file.host</code> <em>is</em> &quot;data deletion&quot;; <code>send.endpoint.world</code> <em>is</em>
+&quot;network access&quot;; <code>create.schedule.tenant</code> <em>is</em> &quot;acting independently&quot;. Every vault&#x27;s grant is
+a set of edges from the policy to those nodes, each edge carrying a barrier, an evidence tier,
+an undo class, a <code>via</code> (the door), a <code>material</code> and a note.</li><li><strong>&quot;Which policies impact X&quot; is already a query.</strong> The library&#x27;s search matches capability ids,
+so typing <code>delete.file.host</code> lists every policy that can delete. The list view sorts by what
+is unbounded. What is missing is the <em>facet</em> — a first-class &quot;by behaviour&quot; filter with the
+glosses — and the reverse page: one page per behaviour, listing the policies and the barriers.</li><li><strong>Controls are recorded, not modelled.</strong> The barrier column says <em>what stands in the way</em>
+per edge; it is a property of the edge, not a node. The n8n check showed the same behaviour
+barred through one door and open through another — so the barrier belongs on the <em>path</em>, which
+the graph model handles naturally and the flat table does not.</li><li><strong>Scenarios are the first &quot;views&quot;.</strong> Six mandates per vault, each a projection of the same
+grant for a different purpose. Audiences are the next axis of the same idea.</li></ul>
+<h2 id="3-the-vault-structure-this-asks-for">3. The vault structure this asks for</h2>
+<p>Proposed additions, all derived except the two authored ones, all inside the vault so they travel with it:</p>
+<pre><code>data/
+  behaviours/            one node per behaviour used by this vault — id, gloss, reach, undo,
+                         metrics {speed, volume, blast}, links {mitre[], standards[], gdpr[]}
+                         (the 23 from the vocabulary, pinned; extensions declared as such)
+  edges.json             the grant as edges: policy → behaviour, with barrier, via (the door),
+                         evidence, material, undo — one edge PER PATH, not per row
+  scenarios.json         alternative mandates (exists)
+  views/
+    ceo.json · cfo.json · cto.json · investor.json · buyer.json · operator.json ·
+    engineer.json · project-manager.json
+                         what each audience sees: which behaviours, which counts, which
+                         evidence, what is hidden and why — a filter over the graph, authored
+prompts/
+  &lt;audience&gt;.md          the prompt that turns the graph + evidence into that audience&#x27;s prose
+  build.sh               the script that ran it — model, version, date; reproducible
+projections/
+  &lt;audience&gt;.md          the generated prose, dated, with the prompt&#x27;s hash in its footer</code></pre>
+<p>Two things are authored: the views (a person decides what an investor sees) and the prompts.
+Everything else is derived, and the build refuses to write a projection whose prompt hash does
+not match the prompt beside it — the same discipline the delta already has.</p>
+<h2 id="4-what-to-build-next-in-order">4. What to build next, in order</h2>
+<ol><li><strong>The behaviour facet on the library</strong> — a &quot;by behaviour&quot; filter listing the 23 with their
+glosses; one click answers <em>which policies can delete files</em>. Small, and it is the graph&#x27;s
+first visible edge. (Done in v1.16.0 alongside this brief.)</li><li><strong>One page per behaviour</strong> — <code>behaviour-&lt;id&gt;.html</code>: the gloss, the reach and undo class, the
+metrics, the outward links, and every policy that has the edge with its barrier and door.
+Generated from the catalogue like the vault pages are.</li><li><strong><code>data/edges.json</code> per path</strong> — the n8n lesson made structural: barrier per door.</li><li><strong>Metrics on behaviours</strong> — speed, volume, blast radius as coarse ordinals (<code>fast/slow</code>,
+<code>one/some/many</code>), authored once in the vocabulary extension, asked of the model site.</li><li><strong>Outward links</strong> — ATT&amp;CK technique ids and GDPR articles per behaviour, in the vocabulary
+extension, cited.</li><li><strong>Views and projections</strong> — the eight audiences as filters, the prompt and the script in the
+vault, the projection regenerated by the build and refused when stale.</li></ol>
+<h2 id="5-two-asks-for-the-model-site-added-to-lab-03">5. Two asks for the model site, added to Lab 03</h2>
+<ul><li>A barrier per path rather than per row (the n8n check).</li><li>Metrics and outward links as properties on the 23 primitives, or a sanctioned extension
+namespace so a policy can carry them without forking the grammar.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/index.html">https://riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:04Z</dd><dt>sha256</dt><dd><code title="15f2eb623bdd28480a223f8c0d2d46bd63580270f1e1005a06076cc132a8d5db">15f2eb623bdd</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/briefs/direction__abp-as-a-graph-and-stakeholder-views/index.md</a> (6,694 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

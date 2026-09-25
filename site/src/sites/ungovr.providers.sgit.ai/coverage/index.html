@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>the frames, hashed as they land — the raw bytes, unmodified · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#computation-1-the-edge-they-publish">Computation 1 — the edge they publish</a></li><li class="l3"><a href="#why-this-is-a-sample-and-not-a-census">Why this is a sample and not a census</a></li><li class="l3"><a href="#what-would-make-this-wrong">What would make this wrong</a></li><li class="l2"><a href="#computation-2-the-edge-we-would-have-to-infer">Computation 2 — the edge we would have to infer</a></li><li class="l3"><a href="#the-rule-in-full">The rule, in full</a></li><li class="l3"><a href="#where-the-rule-breaks-which-is-the-point">Where the rule breaks, which is the point</a></li><li class="l2"><a href="#reproducing-both">Reproducing both</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/coverage/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The coverage measurement, and the query that produced it
+description: &quot;Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates.&quot;
+lead: &quot;A number without its query is an assertion, and this site exists to argue the opposite. So both computations are here with the exact question, the seed, the sampling frame, the byte hashes of the frames, and the date they were run.&quot;
+order: 2
+toc: true
+provenance:
+vault: dkeclt5r
+date: 9 September 2026
+note: &quot;Both computations were run in this session against bytes retrieved in this session.&quot;
+</p>
+<hr>
+<h2 id="computation-1-the-edge-they-publish">Computation 1 — the edge they publish</h2>
+<p><strong>The question.</strong> Of UnGovr&#x27;s entities, how many carry a non-empty <code>open_records.law</code>?</p>
+<p><strong>Before the number, the framing, because the number is easy to misread.</strong> A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The result below measures how far the join can currently reach. It is <strong>not a defect count</strong>, and there is a build check that refuses to publish the figure on any page that omits this paragraph.</p>
+<p>{{coverage}}</p>
+<h3 id="why-this-is-a-sample-and-not-a-census">Why this is a sample and not a census</h3>
+<p><code>open_records</code> appears in exactly one place in the API: the per-entity detail document, one HTTP request per entity. It is absent from every bulk surface — UnGovr&#x27;s own OpenAPI describes the full-depth index as <em>&quot;a compact record ({slug, name, type, parent_slug?, population?})&quot;</em>. {{claim:law-not-in-bulk}}</p>
+<p>So a census of 327,138 entities is 327,138 requests, against a free tier of 100 a day: <strong>about 9 years, or $327.14 metered.</strong> {{claim:census-cost}} Nobody on the open tier can compute this number exactly, including us. What can be done honestly is a stratified random sample with a published seed and an interval — which is what is above.</p>
+<h3 id="what-would-make-this-wrong">What would make this wrong</h3>
+<ul><li><strong>If UnGovr already publish this figure</strong>, then computation 1 is not new and the honest response is to cite theirs and check it. No such figure was found on their published pages on 9 September 2026; if one exists, this section is the one to correct.</li><li><strong>If the sample missed a populated stratum.</strong> 49 draws across five strata cannot rule out pockets of coverage; the 95% interval says so — the true rate could be anything up to 7.3%. It cannot be <em>high</em>, which is the only thing this measurement needs to establish.</li><li><strong>If <code>open_records</code> is populated on entity types not sampled.</strong> Seventeen types were drawn, including states, counties, cities, school and special districts, utilities and ministries. A type not in that list is not covered by this claim.</li></ul>
+<h2 id="computation-2-the-edge-we-would-have-to-infer">Computation 2 — the edge we would have to infer</h2>
+<p>The first computation measures how far the join falls short. This one measures <strong>how far it would reach if we drew it ourselves</strong> — and, more importantly, where drawing it would be wrong.</p>
+<p>{{inferred}}</p>
+<h3 id="the-rule-in-full">The rule, in full</h3>
+<p>An entity slug is a path: <code>us/ca/santa-barbara/spd/goleta-west-sanitary-district</code>. A law in the records corpus is keyed by a jurisdiction that is a path of the same shape: <code>us</code>, <code>us/ca</code>, <code>ar/b</code>, <code>mx/baja-california</code>. So for each entity, take the <strong>longest law jurisdiction that is a path-prefix of its slug</strong>.</p>
+<pre><code>us/ca/santa-barbara/spd/goleta-west-sanitary-district
+us/ca/santa-barbara
+us/ca                 &lt;- longest match: California Public Records Act
+us                    (Freedom of Information Act — the shorter, wrong answer)</code></pre>
+<p><strong>This is not a claim UnGovr make.</strong> They publish the entities and they publish the laws; they do not join them. Every edge the rule produces is <code>inferred</code>, and <a href="../join/index.html">the graph draws it that way</a><a class="ext live" href="https://ungovr.providers.sgit.ai/join/" title="live page">↗</a> everywhere it appears. Rendered as an assertion it would be a lie about the source.</p>
+<h3 id="where-the-rule-breaks-which-is-the-point">Where the rule breaks, which is the point</h3>
+<p>Slug hierarchy is <strong>geography</strong>. Records law is <strong>jurisdiction</strong>. They coincide for general-purpose local government and they come apart for exactly the bodies a requester most often wants:</p>
+<div class="table"><table><thead><tr><th>Body</th><th>Why geography gives the wrong law</th></tr></thead><tbody><tr><td>Interstate compacts</td><td>Governed by their compact and by member-state law, not by where they sit</td></tr>
+<tr><td>Federal categories and agencies</td><td>Federal FOIA applies, whatever state the building is in</td></tr>
+<tr><td>Tribal nations</td><td>Sovereign. Neither state nor federal records law simply applies</td></tr>
+<tr><td>Regulated utilities</td><td>Often private bodies with statutory duties, not public agencies</td></tr>
+<tr><td>Charter schools</td><td>Chartered under their own act, with varying records obligations</td></tr></tbody></table></div>
+<p>That is the 20.5%. {{claim:inferred-suspect}} It is why the edge carries an assertion class rather than being silently added, and it is the whole reason the vault has assertion classes at all.</p>
+<h2 id="reproducing-both">Reproducing both</h2>
+<pre><code class="lang-bash"># the frames, hashed as they land — the raw bytes, unmodified
+./fetch.sh https://data.ungovr.org/v1/entities/us/ca/all.json    data/raw/entities-us-ca-all.json
+./fetch.sh https://data.ungovr.org/v1/laws/records/index.json    data/raw/laws-records-index.json
+
+python3 bin/coverage-sample.py --plan   # print the sample, fetch nothing
+python3 bin/coverage-sample.py --run    # 49 requests, writes data/computation-1.json
+python3 bin/inferred-join.py            # local only, writes data/computation-2.json</code></pre>
+<p>Both scripts are <a href="../examples/index.html">downloadable</a><a class="ext live" href="https://ungovr.providers.sgit.ai/examples/" title="live page">↗</a> and both are the originals. The seed is <code>20260909</code> and the frames are pinned by sha256 in <a href="../retrievals/index.html">the retrieval log</a><a class="ext live" href="https://ungovr.providers.sgit.ai/retrievals/" title="live page">↗</a>, so the same run selects the same entities — which is acceptance test 7, and the reason to build any of this.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/coverage/index.md">https://ungovr.providers.sgit.ai/coverage/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:56Z</dd><dt>sha256</dt><dd><code title="59f823055b8cbf1d6e060344978eaadc11d9488ce9d141d17fcb633bb5a78a4f">59f823055b8c</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/ungovr.providers.sgit.ai/coverage/index.md</a> (5,733 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

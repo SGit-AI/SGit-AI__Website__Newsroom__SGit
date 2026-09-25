@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>redacao.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pt.newsroom.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/pt.newsroom.sgit.ai.html">pt.newsroom.sgit.ai</a> · <a href="redacao.json">raw text</a> · <a class="ext" href="https://pt.newsroom.sgit.ai/dados/redacao.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;pt-mesa&quot;,
+  &quot;versao&quot;: &quot;0.1.0&quot;,
+  &quot;atualizado&quot;: &quot;2026-09-14&quot;,
+  &quot;nota&quot;: &quot;A mesa como estado, não como narrativa. Cada número é uma contagem de ficheiros ou de entradas que já existem noutro lado deste repositório; nada aqui é escrito. Nenhuma coluna se move a partir desta página: mostra onde as coisas estão, e quem as move é quem tem direito de escrita naquela pasta.&quot;,
+  &quot;colunas&quot;: [
+    {
+      &quot;id&quot;: &quot;procurado&quot;,
+      &quot;rotulo&quot;: &quot;Procurado&quot;,
+      &quot;o_que_significa&quot;: &quot;A história está encomendada e o material ainda não a sustenta.&quot;,
+      &quot;quem_move&quot;: &quot;pesquisa&quot;
+    },
+    {
+      &quot;id&quot;: &quot;congelado&quot;,
+      &quot;rotulo&quot;: &quot;Congelado&quot;,
+      &quot;o_que_significa&quot;: &quot;As fontes estão congeladas e hasheadas; falta escrever ou verificar.&quot;,
+      &quot;quem_move&quot;: &quot;pesquisa&quot;
+    },
+    {
+      &quot;id&quot;: &quot;rascunho&quot;,
+      &quot;rotulo&quot;: &quot;Rascunho&quot;,
+      &quot;o_que_significa&quot;: &quot;Há prosa, e cada afirmação já aponta para uma fonte congelada.&quot;,
+      &quot;quem_move&quot;: &quot;redacao&quot;
+    },
+    {
+      &quot;id&quot;: &quot;verificado&quot;,
+      &quot;rotulo&quot;: &quot;Verificado&quot;,
+      &quot;o_que_significa&quot;: &quot;Cada afirmação foi relida contra os bytes e tem um veredito registado.&quot;,
+      &quot;quem_move&quot;: &quot;verificacao&quot;
+    },
+    {
+      &quot;id&quot;: &quot;publicado&quot;,
+      &quot;rotulo&quot;: &quot;Publicado&quot;,
+      &quot;o_que_significa&quot;: &quot;Está no ar. É a única coluna para onde nenhuma execução automática pode empurrar um cartão: a linha é do editor de registo, e é isso que torna esta publicação responsabilidade de uma pessoa nomeada.&quot;,
+      &quot;quem_move&quot;: &quot;editor&quot;
+    }
+  ],
+  &quot;bancadas&quot;: [
+    {
+      &quot;id&quot;: &quot;pesquisa&quot;,
+      &quot;nome&quot;: &quot;Pesquisa&quot;,
+      &quot;especie&quot;: &quot;departamento&quot;,
+      &quot;gravidade&quot;: &quot;Nenhuma afirmação sem bytes que tenhamos em mãos.&quot;,
+      &quot;faz&quot;: &quot;Encontra a fonte primária. Obtém-na, congela-a numa captura datada, hasheia-a, regista-a, extrai dela e compara com a captura anterior.&quot;,
+      &quot;recusa&quot;: &quot;Ler uma fonte pela rede no momento de publicar; citar uma página que ninguém congelou; arrumar um valor confuso da fonte para um mais limpo.&quot;,
+      &quot;escreve_em&quot;: [
+        &quot;fontes/congeladas/&lt;data&gt;/&quot;,
+        &quot;dados/registo.json&quot;,
+        &quot;dados/*.json extraídos das fontes&quot;
+      ],
+      &quot;carga&quot;: {
+        &quot;entradas&quot;: 11,
+        &quot;abertas&quot;: 5,
+        &quot;por_especie&quot;: {
+          &quot;acao&quot;: 6,
+          &quot;pergunta&quot;: 5
+        },
+        &quot;cartoes_a_espera&quot;: 2
+      },
+      &quot;cartoes&quot;: [
+        &quot;quantas-startups-sao-de-ia&quot;,
+        &quot;007&quot;
+      ],
+      &quot;correio&quot;: {
+        &quot;entrada&quot;: 1,
+        &quot;saida&quot;: 0,
+        &quot;tratado&quot;: 0,
+        &quot;em_transito&quot;: 0
+      },
+      &quot;execucoes&quot;: 16
+    },
+    {
+      &quot;id&quot;: &quot;redacao&quot;,
+      &quot;nome&quot;: &quot;Redação&quot;,
+      &quot;especie&quot;: &quot;departamento&quot;,
+      &quot;gravidade&quot;: &quot;Cada frase assenta numa fonte registada.&quot;,
+      &quot;faz&quot;: &quot;Escreve a partir do que a pesquisa registou, e de mais nada. Cada afirmação leva o identificador da fonte congelada em que assenta.&quot;,
+      &quot;recusa&quot;: &quot;Uma afirmação sem fonte; um adjetivo sobre uma parte nomeada; prosa mais certa do que as capturas são.&quot;,
+      &quot;escreve_em&quot;: [
+        &quot;conteudo/*.md&quot;
+      ],
+      &quot;carga&quot;: {
+        &quot;entradas&quot;: 7,
+        &quot;abertas&quot;: 3,
+        &quot;por_especie&quot;: {
+          &quot;acao&quot;: 4,
+          &quot;falta&quot;: 3
+        },
+        &quot;cartoes_a_espera&quot;: 0
+      },
+      &quot;cartoes&quot;: [],
+      &quot;correio&quot;: {
+        &quot;entrada&quot;: 0,
+        &quot;saida&quot;: 0,
+        &quot;tratado&quot;: 0,
+        &quot;em_transito&quot;: 1
+      },
+      &quot;execucoes&quot;: 0
+    },
+    {
+      &quot;id&quot;: &quot;verificacao&quot;,
+      &quot;nome&quot;: &quot;Verificação&quot;,
+      &quot;especie&quot;: &quot;departamento&quot;,
+      &quot;gravidade&quot;: &quot;Publica-se o registo, nunca o veredicto.&quot;,
+      &quot;faz&quot;: &quot;Relê cada fonte citada na cópia congelada. Marca cada afirmação: confirmada, disputada ou não encontrada.&quot;,
+      &quot;recusa&quot;: &quot;Editar a história. Marcar como confirmada uma afirmação que não releu.&quot;,
+      &quot;escreve_em&quot;: [
+        &quot;dados/verificacoes/*.json&quot;
+      ],
+      &quot;carga&quot;: {
+        &quot;entradas&quot;: 13,
+        &quot;abertas&quot;: 0,
+        &quot;por_especie&quot;: {
+          &quot;acao&quot;: 4,
+          &quot;verificacao&quot;: 9
+        },
+        &quot;cartoes_a_espera&quot;: 0
+      },
+      &quot;cartoes&quot;: [],
+      &quot;correio&quot;: {
+        &quot;entrada&quot;: 0,
+        &quot;saida&quot;: 0,
+        &quot;tratado&quot;: 0,
+        &quot;em_transito&quot;: 0
+      },
+      &quot;execucoes&quot;: 16
+    },
+    {
+      &quot;id&quot;: &quot;editor&quot;,
+      &quot;nome&quot;: &quot;Dinis Cruz&quot;,
+      &quot;especie&quot;: &quot;editor de registo&quot;,
+      &quot;gravidade&quot;: &quot;A linha que nenhuma execução automática pode escrever.&quot;,
+      &quot;faz&quot;: &quot;Lê cada página antes de ela ir para o ar, e é a pessoa nomeada que responde pelo que esta publicação diz.&quot;,
+      &quot;recusa&quot;: null,
+      &quot;escreve_em&quot;: [
+        &quot;Pôr uma história em «publicado». Nenhuma execução automática o pode fazer.&quot;,
+        &quot;Decidir uma remoção ao abrigo do aviso.&quot;,
+        &quot;Limpar um item que ficou «parado».&quot;
+      ],
+      &quot;carga&quot;: {
+        &quot;entradas&quot;: 20,
+        &quot;abertas&quot;: 8,
+        &quot;por_especie&quot;: {
+          &quot;acao&quot;: 8,
+          &quot;decisao&quot;: 12
+        },
+        &quot;cartoes_a_espera&quot;: 0,
+        &quot;entregas_por_rever&quot;: 2
+      },
+      &quot;cartoes&quot;: [],
+      &quot;correio&quot;: {
+        &quot;entrada&quot;: 1,
+        &quot;saida&quot;: 1,
+        &quot;tratado&quot;: 0,
+        &quot;em_transito&quot;: 3
+      },
+      &quot;execucoes&quot;: 0
+    }
+  ],
+  &quot;quadro&quot;: {
+    &quot;procurado&quot;: [
+      {
+        &quot;id&quot;: &quot;quantas-startups-sao-de-ia&quot;,
+        &quot;titulo&quot;: &quot;Quantas das startups ativas em Portugal são empresas de IA, e porque nenhum conjunto de dados público o diz&quot;,
+        &quot;seccao&quot;: &quot;empresas&quot;,
+        &quot;estado&quot;: &quot;procurado&quot;,
+        &quot;especie&quot;: &quot;artigo&quot;,
+        &quot;url&quot;: &quot;artigos/2026/09/14/quantas-startups-sao-de-ia/&quot;,
+        &quot;issue&quot;: &quot;003&quot;,
+        &quot;irmaos&quot;: 0,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;pesquisa&quot;,
+          &quot;quando&quot;: &quot;2026-09-14&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+        &quot;de&quot;: &quot;dados/historias.json#historias[quantas-startups-sao-de-ia]&quot;
+      }
+    ],
+    &quot;congelado&quot;: [
+      {
+        &quot;id&quot;: &quot;007&quot;,
+        &quot;titulo&quot;: &quot;Entrega ChatGPT 1/8 (políticas, 2.ª passagem): valida contra o esquema, 3 de 4 afirmações com excerto nos bytes&quot;,
+        &quot;seccao&quot;: &quot;politicas&quot;,
+        &quot;estado&quot;: &quot;congelado&quot;,
+        &quot;especie&quot;: &quot;issue&quot;,
+        &quot;url&quot;: null,
+        &quot;issue&quot;: &quot;007&quot;,
+        &quot;irmaos&quot;: 0,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;pesquisa&quot;,
+          &quot;quando&quot;: &quot;2026-09-15&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-15&quot;,
+        &quot;de&quot;: &quot;redacao/issues/007&quot;
+      }
+    ],
+    &quot;rascunho&quot;: [],
+    &quot;verificado&quot;: [],
+    &quot;publicado&quot;: [
+      {
+        &quot;id&quot;: &quot;vinte-e-cinco-milhoes-para-ia-na-administracao-publica&quot;,
+        &quot;titulo&quot;: &quot;O Governo anunciou 25 milhões de euros para adoção de IA na Administração Pública&quot;,
+        &quot;seccao&quot;: &quot;politicas&quot;,
+        &quot;estado&quot;: &quot;publicado&quot;,
+        &quot;especie&quot;: &quot;artigo&quot;,
+        &quot;url&quot;: &quot;artigos/2026/09/14/vinte-e-cinco-milhoes-para-ia-na-administracao-publica/&quot;,
+        &quot;issue&quot;: &quot;004&quot;,
+        &quot;irmaos&quot;: 3,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;pesquisa&quot;,
+          &quot;quando&quot;: &quot;2026-09-14&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+        &quot;de&quot;: &quot;dados/historias.json#historias[vinte-e-cinco-milhoes-para-ia-na-administracao-publica]&quot;
+      },
+      {
+        &quot;id&quot;: &quot;regulador-designacao-ausente&quot;,
+        &quot;titulo&quot;: &quot;O regulador foi designado e o instrumento de designação não está na página de IA do Governo&quot;,
+        &quot;seccao&quot;: &quot;instituicoes&quot;,
+        &quot;estado&quot;: &quot;publicado&quot;,
+        &quot;especie&quot;: &quot;artigo&quot;,
+        &quot;url&quot;: &quot;artigos/2026/09/14/regulador-designacao-ausente/&quot;,
+        &quot;issue&quot;: &quot;002&quot;,
+        &quot;irmaos&quot;: 0,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;editor&quot;,
+          &quot;quando&quot;: &quot;2026-09-15&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+        &quot;de&quot;: &quot;dados/historias.json#historias[regulador-designacao-ausente]&quot;
+      },
+      {
+        &quot;id&quot;: &quot;plano-nacional-centros-de-dados&quot;,
+        &quot;titulo&quot;: &quot;O Plano Nacional de Centros de Dados foi aprovado por resolução, e esta redação conseguiu ler o diploma inteiro&quot;,
+        &quot;seccao&quot;: &quot;politicas&quot;,
+        &quot;estado&quot;: &quot;publicado&quot;,
+        &quot;especie&quot;: &quot;artigo&quot;,
+        &quot;url&quot;: &quot;artigos/2026/09/14/plano-nacional-centros-de-dados/&quot;,
+        &quot;issue&quot;: &quot;004&quot;,
+        &quot;irmaos&quot;: 3,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;pesquisa&quot;,
+          &quot;quando&quot;: &quot;2026-09-14&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+        &quot;de&quot;: &quot;dados/historias.json#historias[plano-nacional-centros-de-dados]&quot;
+      },
+      {
+        &quot;id&quot;: &quot;gigafabricas-de-ia-duzentos-milhoes&quot;,
+        &quot;titulo&quot;: &quot;O Conselho de Ministros aprovou a entrada de Portugal nas Gigafábricas de IA europeias, com um investimento até 200 milhões de euros&quot;,
+        &quot;seccao&quot;: &quot;politicas&quot;,
+        &quot;estado&quot;: &quot;publicado&quot;,
+        &quot;especie&quot;: &quot;artigo&quot;,
+        &quot;url&quot;: &quot;artigos/2026/09/14/gigafabricas-de-ia-duzentos-milhoes/&quot;,
+        &quot;issue&quot;: &quot;004&quot;,
+        &quot;irmaos&quot;: 3,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;pesquisa&quot;,
+          &quot;quando&quot;: &quot;2026-09-14&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+        &quot;de&quot;: &quot;dados/historias.json#historias[gigafabricas-de-ia-duzentos-milhoes]&quot;
+      },
+      {
+        &quot;id&quot;: &quot;a-agenda-de-ia-tem-32-iniciativas-e-o-diploma-continua-por-ler&quot;,
+        &quot;titulo&quot;: &quot;A agenda nacional de IA integra 32 iniciativas, e o diploma que a aprova continua sem se deixar ler&quot;,
+        &quot;seccao&quot;: &quot;politicas&quot;,
+        &quot;estado&quot;: &quot;publicado&quot;,
+        &quot;especie&quot;: &quot;artigo&quot;,
+        &quot;url&quot;: &quot;artigos/2026/09/14/a-agenda-de-ia-tem-32-iniciativas-e-o-diploma-continua-por-ler/&quot;,
+        &quot;issue&quot;: &quot;004&quot;,
+        &quot;irmaos&quot;: 3,
+        &quot;ultimo_toque&quot;: {
+          &quot;quem&quot;: &quot;pesquisa&quot;,
+          &quot;quando&quot;: &quot;2026-09-14&quot;
+        },
+        &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+        &quot;de&quot;: &quot;dados/historias.json#historias[a-agenda-de-ia-tem-32-iniciativas-e-o-diploma-continua-por-ler]&quot;
+      }
+    ]
+  },
+  &quot;fora_do_quadro&quot;: [
+    {
+      &quot;id&quot;: &quot;001&quot;,
+      &quot;titulo&quot;: &quot;A agenda nacional de IA existe e o seu instrumento legal não pôde ser confirmado no registo público legível por máquina&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;fechado&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;001&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;editor&quot;,
+        &quot;quando&quot;: &quot;2026-09-15&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-14&quot;,
+      &quot;de&quot;: &quot;redacao/issues/001&quot;
+    },
+    {
+      &quot;id&quot;: &quot;005&quot;,
+      &quot;titulo&quot;: &quot;O leitor de PDF diz «é provavelmente um PDF digitalizado» quando o que lhe falta é uma dependência&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;bloqueado&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;005&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;editor&quot;,
+        &quot;quando&quot;: &quot;2026-09-15&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-15&quot;,
+      &quot;de&quot;: &quot;redacao/issues/005&quot;
+    },
+    {
+      &quot;id&quot;: &quot;006&quot;,
+      &quot;titulo&quot;: &quot;Encontrar o PDF da Série I do Diário da República n.º 5/2026 — desbloqueia três itens de uma vez&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;extraido&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;006&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;editor&quot;,
+        &quot;quando&quot;: &quot;2026-09-15&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-15&quot;,
+      &quot;de&quot;: &quot;redacao/issues/006&quot;
+    },
+    {
+      &quot;id&quot;: &quot;008&quot;,
+      &quot;titulo&quot;: &quot;Três linhas em ficheiros na lista de recusa separam /admin/ de desaparecer&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;bloqueado&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;008&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;editor&quot;,
+        &quot;quando&quot;: &quot;2026-09-15&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-15&quot;,
+      &quot;de&quot;: &quot;redacao/issues/008&quot;
+    },
+    {
+      &quot;id&quot;: &quot;009&quot;,
+      &quot;titulo&quot;: &quot;Onde vivem as entrevistas a startups, e a primeira vez que este site tem conteúdo nascido noutra língua&quot;,
+      &quot;seccao&quot;: &quot;empresas&quot;,
+      &quot;estado&quot;: &quot;proposto&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;009&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;editor&quot;,
+        &quot;quando&quot;: &quot;2026-09-18&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-18&quot;,
+      &quot;de&quot;: &quot;redacao/issues/009&quot;
+    },
+    {
+      &quot;id&quot;: &quot;010&quot;,
+      &quot;titulo&quot;: &quot;A regra da língua em CLAUDE.md é o que separa três línguas prontas de três línguas publicadas&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;bloqueado&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;010&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;sessao-a-linha-de-publicacao&quot;,
+        &quot;quando&quot;: &quot;2026-09-22&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-22&quot;,
+      &quot;de&quot;: &quot;redacao/issues/010&quot;
+    },
+    {
+      &quot;id&quot;: &quot;011&quot;,
+      &quot;titulo&quot;: &quot;A execução agendada nunca correu: falta o segredo, e falhou igual todos os dias&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;bloqueado&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;011&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;sessao-a-linha-de-publicacao&quot;,
+        &quot;quando&quot;: &quot;2026-09-22&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-22&quot;,
+      &quot;de&quot;: &quot;redacao/issues/011&quot;
+    },
+    {
+      &quot;id&quot;: &quot;012&quot;,
+      &quot;titulo&quot;: &quot;A cobertura não vê um rótulo sem acento: 1 798 ocorrências medidas, e sete regras por escrever&quot;,
+      &quot;seccao&quot;: &quot;metodo&quot;,
+      &quot;estado&quot;: &quot;aberto&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;012&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;sessao-as-tres-linguas&quot;,
+        &quot;quando&quot;: &quot;2026-09-23&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-23&quot;,
+      &quot;de&quot;: &quot;redacao/issues/012&quot;
+    },
+    {
+      &quot;id&quot;: &quot;013&quot;,
+      &quot;titulo&quot;: &quot;A saída de emergência do CLAUDE.md escreve numa pasta que nada lê, e uma mensagem está lá há oito dias&quot;,
+      &quot;seccao&quot;: &quot;metodo&quot;,
+      &quot;estado&quot;: &quot;aberto&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;013&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;sessao-as-tres-linguas&quot;,
+        &quot;quando&quot;: &quot;2026-09-23&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-23&quot;,
+      &quot;de&quot;: &quot;redacao/issues/013&quot;
+    },
+    {
+      &quot;id&quot;: &quot;014&quot;,
+      &quot;titulo&quot;: &quot;A proposta europeia CADA e o quadro comum de contratação pública de Cloud e IA&quot;,
+      &quot;seccao&quot;: &quot;politicas&quot;,
+      &quot;estado&quot;: &quot;extraido&quot;,
+      &quot;especie&quot;: &quot;issue&quot;,
+      &quot;url&quot;: null,
+      &quot;issue&quot;: &quot;014&quot;,
+      &quot;irmaos&quot;: 0,
+      &quot;ultimo_toque&quot;: {
+        &quot;quem&quot;: &quot;sessao-as-tres-linguas&quot;,
+        &quot;quando&quot;: &quot;2026-09-23&quot;
+      },
+      &quot;aberto_em&quot;: &quot;2026-09-23&quot;,
+      &quot;de&quot;: &quot;redacao/issues/014&quot;
+    }
+  ],
+  &quot;execucoes&quot;: [
+    {
+      &quot;quando&quot;: &quot;2026-09-14T12:00:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.1.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;fontes/congeladas/&quot;,
+        &quot;redacao/&quot;,
+        &quot;assets/&quot;,
+        &quot;admin/&quot;,
+        &quot;.github/&quot;
+      ],
+      &quot;movidos&quot;: 4
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-14T23:07:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.4.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;aviso/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;briefs/&quot;,
+        &quot;build/&quot;,
+        &quot;casos-de-uso/&quot;,
+        &quot;codigo-aberto/&quot;,
+        &quot;dados/&quot;,
+        &quot;diaspora/&quot;,
+        &quot;empresas/&quot;,
+        &quot;entidades/&quot;,
+        &quot;entregas/&quot;,
+        &quot;equipa/&quot;,
+        &quot;eventos/&quot;,
+        &quot;ficheiros/&quot;,
+        &quot;grafo/&quot;,
+        &quot;index.html&quot;,
+        &quot;index.md&quot;,
+        &quot;instituicoes/&quot;,
+        &quot;llms.txt&quot;,
+        &quot;metodo/&quot;,
+        &quot;politicas/&quot;,
+        &quot;protagonistas/&quot;,
+        &quot;proveniencia/&quot;,
+        &quot;redacao/&quot;,
+        &quot;registo/&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;sobre/&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-14T23:30:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.5.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;aviso/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;briefs/&quot;,
+        &quot;build/&quot;,
+        &quot;casos-de-uso/&quot;,
+        &quot;codigo-aberto/&quot;,
+        &quot;dados/&quot;,
+        &quot;diaspora/&quot;,
+        &quot;empresas/&quot;,
+        &quot;entidades/&quot;,
+        &quot;entregas/&quot;,
+        &quot;equipa/&quot;,
+        &quot;eventos/&quot;,
+        &quot;ficheiros/&quot;,
+        &quot;grafo/&quot;,
+        &quot;index.html&quot;,
+        &quot;index.md&quot;,
+        &quot;instituicoes/&quot;,
+        &quot;llms.txt&quot;,
+        &quot;metodo/&quot;,
+        &quot;politicas/&quot;,
+        &quot;protagonistas/&quot;,
+        &quot;proveniencia/&quot;,
+        &quot;redacao/&quot;,
+        &quot;registo/&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;sobre/&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T00:10:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.6.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;briefs/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;redacao/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;entidades/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T00:45:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.7.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;assets/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;redacao/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T00:55:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.7.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;briefs/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;entidades/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T01:20:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.7.1&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;.claude/&quot;,
+        &quot;admin/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;build/&quot;,
+        &quot;index.html&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T01:30:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.8.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;redacao/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;entidades/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T02:15:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.9.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, sessão remota)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;redacao/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;entidades/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T02:40:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.9.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, remote session)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;.claude/&quot;,
+        &quot;admin/&quot;,
+        &quot;agents/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;briefs/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;docs/&quot;,
+        &quot;entidades/&quot;,
+        &quot;fontes/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T03:15:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.11.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, remote session)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;build/&quot;,
+        &quot;carteira/&quot;,
+        &quot;dados/&quot;,
+        &quot;redacao/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;entidades/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T03:20:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.10.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Opus 5 (Claude Code, remote session)&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;.claude/&quot;,
+        &quot;admin/&quot;,
+        &quot;agents/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;briefs/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;docs/&quot;,
+        &quot;entidades/&quot;,
+        &quot;fontes/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T05:45:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.11.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Code, remote session&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;dados/&quot;,
+        &quot;entidades/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T07:15:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.13.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Code, remote session&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;entidades/&quot;,
+        &quot;ficheiros/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T08:30:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.15.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Code, remote session&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;docs/&quot;,
+        &quot;entidades/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T10:15:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.20.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Code, remote session&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;.claude/&quot;,
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;artigos/&quot;,
+        &quot;assets/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;docs/&quot;,
+        &quot;entidades/&quot;,
+        &quot;redacao/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    },
+    {
+      &quot;quando&quot;: &quot;2026-09-15T11:45:00Z&quot;,
+      &quot;versao&quot;: &quot;v0.22.0&quot;,
+      &quot;modelo&quot;: &quot;Claude Code, remote session&quot;,
+      &quot;portoes&quot;: true,
+      &quot;pastas&quot;: [
+        &quot;admin/&quot;,
+        &quot;api/&quot;,
+        &quot;build/&quot;,
+        &quot;dados/&quot;,
+        &quot;docs/&quot;,
+        &quot;redacao/&quot;,
+        &quot;backoffice/&quot;,
+        &quot;artigos/&quot;,
+        &quot;entidades/&quot;,
+        &quot;index.html&quot;,
+        &quot;llms.txt&quot;,
+        &quot;sitemap.xml&quot;,
+        &quot;index.md&quot;
+      ],
+      &quot;movidos&quot;: 0
+    }
+  ],
+  &quot;contagens&quot;: {
+    &quot;cartoes&quot;: 17,
+    &quot;bancadas&quot;: 4,
+    &quot;execucoes&quot;: 17,
+    &quot;publicados&quot;: 5,
+    &quot;a_espera_do_editor&quot;: 2
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pt.newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pt.newsroom.sgit.ai/dados/redacao.json">https://pt.newsroom.sgit.ai/dados/redacao.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:03Z</dd><dt>sha256</dt><dd><code title="af063d50431e4e99ce8e1aa14a525a47444bece13989431a3e2bcfe87a96a6ea">af063d50431e</code></dd><dt>Frozen copy</dt><dd><a href="redacao.json">sites/pt.newsroom.sgit.ai/dados/redacao.json</a> (22,976 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

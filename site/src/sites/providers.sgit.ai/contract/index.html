@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#1-the-nine-sections-fixed">1 · The nine sections, fixed</a></li><li class="l2"><a href="#2-the-rule-that-has-already-caught-somebody">2 · The rule that has already caught somebody</a></li><li class="l2"><a href="#3-the-six-claim-states">3 · The six claim states</a></li><li class="l2"><a href="#4-composition-rules">4 · Composition rules</a></li><li class="l2"><a href="#5-what-is-a-build-failure-rather-than-a-review-comment">5 · What is a build failure rather than a review comment</a></li><li class="l2"><a href="#6-the-release-discipline">6 · The release discipline</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://providers.sgit.ai/contract/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: The contract — what a provider site owes
+description: &quot;The nine fixed sections, the six claim states, the composition rules and the build discipline that every site in this family obeys, so that a second provider is a Markdown file rather than a rewrite.&quot;
+lead: &quot;The reason a comparison across these sites means anything is that they are not free to answer different questions. This is the contract: <strong>nine sections, six states, and a short list of things that are build failures rather than review comments.</strong>&quot;
+order: 40
+toc: true
+provenance:
+commit: 7d1916aca5f3
+date: 8 September 2026
+note: &quot;The nine sections come from the source vault&#x27;s TEMPLATE.md; everything else was learned by building the first site.&quot;
+</p>
+<hr>
+<h2 id="1-the-nine-sections-fixed">1 · The nine sections, fixed</h2>
+<p>Not added to, not reordered, not merged. A provider page that skips §9 is the thing this family exists not to be.</p>
+<div class="table"><table><thead><tr><th>#</th><th>Section</th><th>What it is for</th></tr></thead><tbody><tr><td>1</td><td><strong>Disclosure</strong></td><td>One line: commercial relationship, or none, with the date it was checked</td></tr>
+<tr><td>2</td><td><strong>What it grants</strong></td><td>The capability block — verb × object class × reach, reversibility marked — in two layers: what the platform can grant per product, and what <em>your</em> scoped key grants</td></tr>
+<tr><td>3</td><td><strong>Which pattern</strong></td><td>Which of <a href="../patterns/index.html">the four</a><a class="ext live" href="https://providers.sgit.ai/patterns/" title="live page">↗</a> this provider supports and which it forbids, <strong>per product</strong></td></tr>
+<tr><td>4</td><td><strong>Where the key goes</strong></td><td>The exact mechanism, quoted with the product it belongs to, the URL and the date read</td></tr>
+<tr><td>5</td><td><strong>The bounding primitive</strong></td><td>What caps the blast radius — and what it does <strong>not</strong> cap</td></tr>
+<tr><td>6</td><td><strong>The minimal working example</strong></td><td>The smallest thing that runs, as a file rather than a snippet</td></tr>
+<tr><td>7</td><td><strong>What we use it for</strong></td><td>Named workloads, so the page is a report rather than a tutorial</td></tr>
+<tr><td>8</td><td><strong>What it cost</strong></td><td>Date, workload size, model, request count, price. These go stale fastest</td></tr>
+<tr><td>9</td><td><strong>What went wrong</strong></td><td>The failures, the limits hit, the surprises. <strong>The section nobody else writes</strong></td></tr></tbody></table></div>
+<p><strong>Sections 8 and 9 get the visual weight.</strong> If a reader takes one screenshot from a provider site, it should be §9.</p>
+<h2 id="2-the-rule-that-has-already-caught-somebody">2 · The rule that has already caught somebody</h2>
+<p><strong>Credential rules are stated per product, never per vendor.</strong></p>
+<p>The first site in this family had to correct its own source brief on exactly this: a &quot;never expose your key client-side&quot; rule, a 15-minute signed URL and a hostname allowlist were quoted as the vendor&#x27;s rules when they belong to one of that vendor&#x27;s products. The endpoint actually in use has none of those mechanisms. Quoting the wrong product&#x27;s rule would have sent a reader off to build a signed-URL minter for an endpoint that does not accept one.</p>
+<p>So: <strong>every quote carries the product it belongs to, the URL, and the date it was read.</strong> The correction is published on the site rather than quietly applied, because a site that corrects itself in public is the only kind whose uncorrected claims are worth anything.</p>
+<h2 id="3-the-six-claim-states">3 · The six claim states</h2>
+<p>{{evidence}}</p>
+<p>Every factual claim on every site in this family carries one of these, and the join is done at build time: <strong>a claim that appears on a page and not in that site&#x27;s ledger fails the build.</strong> <a href="../evidence/index.html">More on why, and what the states mean →</a><a class="ext live" href="https://providers.sgit.ai/evidence/" title="live page">↗</a></p>
+<h2 id="4-composition-rules">4 · Composition rules</h2>
+<ul><li><strong>A cross-link points at the page that answers the question</strong>, never at a domain. A domain link is a referral rather than a composition, and it is this family&#x27;s one recorded defect.</li><li><strong>Every page is served as markdown at the same path</strong>, so an agent never has to parse HTML and never has to leave the markdown surface once it arrives.</li><li><strong>Machine-readable where it is cheap</strong>: <code>llms.txt</code>, <code>llms-full.txt</code>, and a claim index each site publishes for its own search. This hub syncs from those rather than from anything bespoke.</li><li><strong>The canonical URL is the intent, the link is the reality.</strong> A link goes wherever that site is measured to be serving, which is the canonical host once it answers and the project path before it does {{claim:domains-live}} — and the page says which.</li></ul>
+<h2 id="5-what-is-a-build-failure-rather-than-a-review-comment">5 · What is a build failure rather than a review comment</h2>
+<p>Learned by building the first site, and each one is enforced by a check rather than remembered:</p>
+<div class="table"><table><thead><tr><th>Check</th><th>Why it exists</th></tr></thead><tbody><tr><td>The build is <strong>reproducible</strong> — the committed output matches the sources</td><td>Markdown is the source of truth; a stale build publishes prose nobody wrote</td></tr>
+<tr><td><strong>Version agreement</strong> across every page badge, the release history and both machine indexes</td><td>A blanket bump that misses a page ships two versions of one site</td></tr>
+<tr><td><strong>Internal links resolve</strong>, and every canonical URL is on the host in <code>CNAME</code></td><td>The two ways a static site quietly breaks</td></tr>
+<tr><td><strong>No root-absolute internal URL</strong></td><td>The first site shipped one and served unstyled under a project path for a day</td></tr>
+<tr><td><strong>No bare <code>&lt;https://…&gt;</code> autolink</strong></td><td>It reaches the browser as an unknown tag and the URL vanishes from the page</td></tr>
+<tr><td><strong>A key-shape scan</strong> over the whole tree, including the built output</td><td>These repositories are public; the vaults they came from were not</td></tr>
+<tr><td><strong>Every claim cited</strong>, and every state dated</td><td>The contract, enforced instead of promised</td></tr>
+<tr><td><strong>The disclosure line present</strong> on every page, and no vendor described as a collaborator it is not</td><td>A disclosure found at the bottom does the opposite of its job</td></tr></tbody></table></div>
+<h2 id="6-the-release-discipline">6 · The release discipline</h2>
+<p>The same as every other site in this estate: <strong>validate → tag → deploy</strong>, in that order, with a failure at any stage stopping the release. One file owns the version, the release commit&#x27;s subject repeats it, and CI refuses to tag if the two disagree. Every push to the release branch is a minor.</p>
+<p>That is not ceremony. It is what makes &quot;as of v0.2.1, this claim was verified&quot; a statement somebody can check a year later.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/contract/index.md">https://providers.sgit.ai/contract/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:02Z</dd><dt>sha256</dt><dd><code title="33de2e9937ffd3a9ebed74be5a5ca2ec4c82f3c204c9de88850debb8a542cbe5">33de2e9937ff</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/providers.sgit.ai/contract/index.md</a> (5,881 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

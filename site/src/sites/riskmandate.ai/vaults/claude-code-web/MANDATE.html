@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>MANDATE — what the agent is authorised and expected to do · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#mandate-what-the-agent-is-authorised-and-expected-to-do">MANDATE — what the agent is authorised and expected to do</a></li><li class="l2"><a href="#in-one-paragraph">In one paragraph</a></li><li class="l2"><a href="#what-is-wanted-6">What is wanted (6)</a></li><li class="l2"><a href="#what-is-explicitly-not-wanted-3">What is explicitly not wanted (3)</a></li><li class="l2"><a href="#unstated-14">Unstated (14)</a></li><li class="l2"><a href="#correct-it">Correct it</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="MANDATE.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/MANDATE.html">live ↗</a></p><article class="source"><h1 id="mandate-what-the-agent-is-authorised-and-expected-to-do">MANDATE — what the agent is authorised and expected to do</h1>
+<blockquote><p>A starting point, not a survey. It is written to be argued with, and the correction is usually upward: read it and tell us where it is wrong.</p></blockquote>
+<p><strong>Vault</strong> <code>claude-code-web</code> · <strong>status</strong> template · <strong>shape</strong> <code>anthropic/claude-code-remote/ccr-container</code> · <strong>grant</strong> 2026-09-05.2 · <strong>mandate</strong> 2026-09-09 · <strong>vocabulary</strong> abp.sgit.ai v0.3.0 · <strong>as at</strong> 2026-09-15</p>
+<hr>
+<p><strong>Mandate id</strong> <code>coding-assistant-in-a-container</code> · <strong>status</strong> starting-point · <strong>authored</strong> 2026-09-09 by the site, as a starting point — not measured, not surveyed; the first thing to argue with</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>I attached a repository and I want it worked on: read it, change it, run things, commit, and push to that repository — that is why I attached it. The container is disposable, so what it does to the container&#x27;s own files is its business. I do not want it signing as me, and I do not want it creating sessions or routines that keep going after this one ends.</p>
+<h2 id="what-is-wanted-6">What is wanted (6)</h2>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>Reach</th></tr></thead><tbody><tr><td><code>read.file.project</code></td><td>Read the project it is working on</td><td>project</td></tr>
+<tr><td><code>write.file.project</code></td><td>Change the project it is working on</td><td>project</td></tr>
+<tr><td><code>execute.process.host</code></td><td>Run programs as the account</td><td>host — this container — ephemeral, the vendor&#x27;s; not your machine</td></tr>
+<tr><td><code>write.repository.project</code></td><td>Commit to the repository it was pointed at</td><td>project</td></tr>
+<tr><td><code>write.repository.tenant</code></td><td>Push to a code host (any branch it can reach)</td><td>tenant — the attached repository and the platform&#x27;s scoped tokens; not your accounts</td></tr>
+<tr><td><code>send.endpoint.allowed</code></td><td>Reach a permitted list of hosts</td><td>tenant — the attached repository and the platform&#x27;s scoped tokens; not your accounts</td></tr></tbody></table></div>
+<h2 id="what-is-explicitly-not-wanted-3">What is explicitly not wanted (3)</h2>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>Reach</th></tr></thead><tbody><tr><td><code>authenticate-as.credential.signing</code></td><td>Sign commits with the key it holds</td><td>tenant — the attached repository and the platform&#x27;s scoped tokens; not your accounts</td></tr>
+<tr><td><code>create.schedule.tenant</code></td><td>Create something that outlives the session, on the platform (a routine, a scheduled trigger, a new session)</td><td>tenant — the attached repository and the platform&#x27;s scoped tokens; not your accounts</td></tr>
+<tr><td><code>read.record.history</code></td><td>Read a retained record: shell history, past sessions</td><td>host — this container — ephemeral, the vendor&#x27;s; not your machine</td></tr></tbody></table></div>
+<h2 id="unstated-14">Unstated (14)</h2>
+<p>Named neither way. For the ones that are in the grant, this is authority nobody scoped — see <code>DELTA.md</code>.</p>
+<div class="table"><table><thead><tr><th>Capability</th><th>What it is</th><th>In the grant</th><th>Note</th></tr></thead><tbody><tr><td><code>authenticate-as.credential.tenant</code></td><td>Act in accounts with the credentials it holds</td><td>yes</td><td>unstated: the scoped platform token is how it pushes at all — not a want, not a refusal, a mechanism</td></tr>
+<tr><td><code>create.record.world</code></td><td>Publish packages, images or pages under the name it holds</td><td>no</td><td></td></tr>
+<tr><td><code>create.schedule.host</code></td><td>Create something that outlives the turn where it runs (a cron, a service)</td><td>yes</td><td></td></tr>
+<tr><td><code>delete.file.host</code></td><td>Delete files anywhere the account can reach</td><td>yes</td><td></td></tr>
+<tr><td><code>execute.process.self</code></td><td>Run programs inside its own sandbox only</td><td>no</td><td></td></tr>
+<tr><td><code>grant.credential.self</code></td><td>Change its own permission settings</td><td>no</td><td></td></tr>
+<tr><td><code>read.credential.host</code></td><td>Read credentials stored where it runs</td><td>yes</td><td>unstated: the only keys in the image are the session&#x27;s own</td></tr>
+<tr><td><code>read.file.host</code></td><td>Read any file the account can reach</td><td>yes</td><td>unstated: host is the container, and the container is thrown away</td></tr>
+<tr><td><code>read.message.tenant</code></td><td>Read mail or chat it is connected to</td><td>no</td><td></td></tr>
+<tr><td><code>read.record.browsing</code></td><td>Read every page you visit</td><td>no</td><td></td></tr>
+<tr><td><code>send.endpoint.world</code></td><td>Reach any host on the internet</td><td>no</td><td></td></tr>
+<tr><td><code>send.message.world</code></td><td>Send a message to anyone</td><td>no</td><td></td></tr>
+<tr><td><code>write.budget.tenant</code></td><td>Spend money or tokens against an account it holds</td><td>no</td><td></td></tr>
+<tr><td><code>write.file.host</code></td><td>Change any file the account can reach</td><td>yes</td><td></td></tr></tbody></table></div>
+<h2 id="correct-it">Correct it</h2>
+<p>Move any capability between the three lists in <code>data/mandate.json</code> and rebuild. Three questions settle most rows:</p>
+<ul><li><strong>Did you ask for this?</strong> Then it is a want.</li><li><strong>Would you object if it happened?</strong> Then it is a do-not-want — and the barrier column in <code>GRANT.md</code> says whether anything actually stops it.</li><li><strong>Neither?</strong> Leave it unstated. Unstated rows in the grant are the ones that turn up in an incident report as &quot;nobody said it couldn&#x27;t&quot;.</li></ul>
+<hr>
+<p><em>This describes the deployment shape as at this date. If the risk changed, the deployment changed — not this document.</em>
+No score, rating, level or traffic light appears in this vault or in its data, and none will. The behaviour policy describes; it does not judge.
+Generated by <code>scripts/site/build-abp-vault.mjs</code> from <code>data/grant.json</code>, <code>data/mandate.json</code> and the pinned vocabulary; <code>data/mandate.json</code> is the only file a person writes. Licence: the published template is CC BY 4.0; a paid copy carries a commercial licence to the buyer. See LICENCE.md.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/MANDATE.html">https://riskmandate.ai/vaults/claude-code-web/MANDATE.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/vaults/claude-code-web/MANDATE.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:06Z</dd><dt>sha256</dt><dd><code title="ebe084ac499b4c22b96b06dc1ab1e74c6565aed690e81a244f9e574254a8dccc">ebe084ac499b</code></dd><dt>Frozen copy</dt><dd><a href="MANDATE.md">sites/riskmandate.ai/vaults/claude-code-web/MANDATE.md</a> (4,970 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

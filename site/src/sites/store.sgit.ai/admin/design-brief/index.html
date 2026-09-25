@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Design brief — store.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · store.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#design-brief-storesgitai">Design brief — store.sgit.ai</a></li><li class="l2"><a href="#what-is-being-sold-and-to-whom">What is being sold, and to whom</a></li><li class="l2"><a href="#the-constraints">The constraints</a></li><li class="l3"><a href="#hard-rule-use-the-tokens-below-and-add-none">HARD RULE: Use the tokens below and add none.</a></li><li class="l3"><a href="#hard-rule-the-model-assistance-strip-stays-above-the-main-element-on-every-scree">HARD RULE: The model-assistance strip stays above the main element on every screen. It never moves to the footer.</a></li><li class="l3"><a href="#hard-rule-no-star-ratings-no-testimonials-no-customer-counts-no-standards-body-m">HARD RULE: No star ratings, no testimonials, no customer counts, no standards-body marks, no logos of companies that have not bought anything.</a></li><li class="l3"><a href="#hard-rule-never-invent-a-price-a-delivery-time-a-capacity-a-number-of-customers-">HARD RULE: Never invent a price, a delivery time, a capacity, a number of customers, or a claim about what has been delivered. Use the numbers in this brief exactly. Where a real value is missing, write [PLACEHOLDER] and say what belongs there.</a></li><li class="l3"><a href="#hard-rule-two-word-roots-never-appear-anywhere-on-this-site-in-any-form-includin">HARD RULE: Two word-roots never appear anywhere on this site, in any form, including inside a denial. Do not write copy that implies this store sells a regulated financial product, or that anything here carries a conformity mark or a third-party stamp of approval.</a></li><li class="l3"><a href="#expected-where-a-slot-has-no-content-yet-a-screenshot-a-review-a-logo-draw-the-e">Expected: Where a slot has no content yet — a screenshot, a review, a logo — draw the empty frame with a line saying what belongs there. Do not fill it with decoration.</a></li><li class="l3"><a href="#expected-every-screen-must-be-drawn-at-390px-as-well-as-at-1200px-and-the-phone-">Expected: Every screen must be drawn at 390px as well as at 1200px, and the phone version is the one to get right first.</a></li><li class="l3"><a href="#expected-one-primary-action-per-screen-repeated-down-it-not-three-competing-butt">Expected: One primary action per screen, repeated down it. Not three competing buttons.</a></li><li class="l3"><a href="#hard-rule-anything-that-will-live-inside-a-vault-sets-every-image-stylesheet-and">HARD RULE: Anything that will live inside a vault sets every image, stylesheet and script from JavaScript, never as markup.</a></li><li class="l2"><a href="#already-settled-and-not-up-for-redesign">Already settled, and not up for redesign</a></li><li class="l2"><a href="#open-and-genuinely-wanted">Open, and genuinely wanted</a></li><li class="l2"><a href="#the-tokens">The tokens</a></li><li class="l3"><a href="#the-10-claim-states">The 10 claim states</a></li><li class="l2"><a href="#the-component-set">The component set</a></li><li class="l3"><a href="#button-button">Button (button)</a></li><li class="l3"><a href="#price-block-price">Price block (price)</a></li><li class="l3"><a href="#offer-card-offer-card">Offer card (offer-card)</a></li><li class="l3"><a href="#claim-chip-claim-chip">Claim chip (claim-chip)</a></li><li class="l3"><a href="#persona-door-persona-door">Persona door (persona-door)</a></li><li class="l3"><a href="#application-chip-app-chip">Application chip (app-chip)</a></li><li class="l3"><a href="#trust-strip-item-trust-item">Trust strip item (trust-item)</a></li><li class="l3"><a href="#media-frame-media-frame">Media frame (media-frame)</a></li><li class="l3"><a href="#specification-row-spec-row">Specification row (spec-row)</a></li><li class="l3"><a href="#disclosure-strip-disclosure">Disclosure strip (disclosure)</a></li><li class="l3"><a href="#version-badge-version-badge">Version badge (version-badge)</a></li><li class="l3"><a href="#section-header-section-head">Section header (section-head)</a></li><li class="l3"><a href="#vault-frame-vault-embed">Vault frame (vault-embed)</a></li><li class="l3"><a href="#reviews-empty-review-empty">Reviews, empty (review-empty)</a></li><li class="l3"><a href="#edition-switcher-edition-switch">Edition switcher (edition-switch)</a></li><li class="l3"><a href="#callout-callout">Callout (callout)</a></li><li class="l3"><a href="#header-and-footer-nav">Header and footer (nav)</a></li><li class="l3"><a href="#comparison-table-table">Comparison table (table)</a></li><li class="l2"><a href="#the-screens">The screens</a></li><li class="l3"><a href="#the-product-page-first">The product page — first</a></li><li class="l3"><a href="#the-comparison-table-first">The comparison table — first</a></li><li class="l3"><a href="#the-level-page-first">The level page — first</a></li><li class="l3"><a href="#the-order-and-the-payment-hand-off-second">The order and the payment hand-off — second</a></li><li class="l3"><a href="#after-the-sale-second">After the sale — second</a></li><li class="l3"><a href="#the-audience-landing-second">The audience landing — second</a></li><li class="l3"><a href="#describe-your-agent-second">Describe your agent — second</a></li><li class="l3"><a href="#the-professionals-page-third">The professional&amp;#x27;s page — third</a></li><li class="l3"><a href="#the-claim-ledger-third">The claim ledger — third</a></li><li class="l2"><a href="#how-to-hand-it-back">How to hand it back</a></li><li class="l2"><a href="#read-these-first">Read these first</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/store.sgit.ai.html">store.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://store.sgit.ai/admin/design-brief/index.md">live ↗</a></p><article class="source"><h1 id="design-brief-storesgitai">Design brief — store.sgit.ai</h1>
+<p><em>Version 1, 16 September 2026. Written for a design session with no access to this repository.</em></p>
+<p>The first round produced three handsome homepages and this store could only use parts of them, for one reason: they were pages, not a system. Three palettes arrived, none of them ours, and nothing that came back could be dropped into a build without being redrawn. This brief asks for the components first and the screens second, and says exactly what shape the answer has to come back in.</p>
+<h2 id="what-is-being-sold-and-to-whom">What is being sold, and to whom</h2>
+<p><strong>What is sold.</strong> Agent Behaviour Policy documents: for one AI agent, in one deployment, what it can do, what you authorised it to do, and the gap between them. Fifteen application templates, four service levels.</p>
+<p><strong>Who buys.</strong> Five audiences, and they do not want the same page. A founder shipping with agents; an investor backing companies that run them; a C-level exec who has to answer to a board; a security professional who does this for a living; a risk-and-governance lead who owns the register.</p>
+<p><strong>Levels.</strong> £10 the pack downloaded, immediately. £50 a working vault, 1 to 2 days. £500 corrected for your situation, 1 to 3 days from your reply. £1,500 two sessions and a custom vault, 1 to 5 days from your reply. The top two are a named security professional&#x27;s actual work and are signed off.</p>
+<p><strong>The state of it.</strong> Six products are priced in Stripe and reconcile to the penny on every release. No checkout link has been issued, so every card on the live site shows a disabled box where a buy button belongs. That is the next release and this brief assumes it has happened: DRAW THE BUY BUTTON.</p>
+<p><strong>What happened last time.</strong> Three homepage concepts were drawn on 16 September and reviewed at /admin/concepts/. Two carry structure this store adopted. The same four folds were then shown to five synthetic readers at /admin/reviews/2026-09-16-four-homepages/. Read both before starting — they are short, and between them they say which moves are already settled.</p>
+<h2 id="the-constraints">The constraints</h2>
+<h3 id="hard-rule-use-the-tokens-below-and-add-none">HARD RULE: Use the tokens below and add none.</h3>
+<p>The last round produced navy-and-amber, forest green and cobalt. All three are handsome and none of them is this brand or riskmandate.ai&#x27;s, and a buyer is meant to move between the two properties without noticing. If a colour is genuinely missing, say which and why, rather than picking one.</p>
+<h3 id="hard-rule-the-model-assistance-strip-stays-above-the-main-element-on-every-scree">HARD RULE: The model-assistance strip stays above the main element on every screen. It never moves to the footer.</h3>
+<p>A build check refuses any page without it, so a mock that relocates it cannot be implemented. It is also the single element that won the two readers who would spend the most. It may get quieter — one line on a phone with the rest behind a link — but it stays where it is.</p>
+<h3 id="hard-rule-no-star-ratings-no-testimonials-no-customer-counts-no-standards-body-m">HARD RULE: No star ratings, no testimonials, no customer counts, no standards-body marks, no logos of companies that have not bought anything.</h3>
+<p>Nothing has been sold here yet. A review section is wanted and is in scope — as an EMPTY STATE that says so. The review attached to the last round reached this conclusion independently, which is why it is stated as a rule rather than a preference.</p>
+<h3 id="hard-rule-never-invent-a-price-a-delivery-time-a-capacity-a-number-of-customers-">HARD RULE: Never invent a price, a delivery time, a capacity, a number of customers, or a claim about what has been delivered. Use the numbers in this brief exactly. Where a real value is missing, write [PLACEHOLDER] and say what belongs there.</h3>
+<p>Every price on this site is frozen by a build check against one file, and a mock carrying a different number produces a page that cannot ship. Two concepts last round carried a price the store had already changed.</p>
+<h3 id="hard-rule-two-word-roots-never-appear-anywhere-on-this-site-in-any-form-includin">HARD RULE: Two word-roots never appear anywhere on this site, in any form, including inside a denial. Do not write copy that implies this store sells a regulated financial product, or that anything here carries a conformity mark or a third-party stamp of approval.</h3>
+<p>This site carries prices, and a priced page making either kind of claim is making an offer it is not allowed to make. The two roots are not printed here for the same reason they are not printed on the page that explains them: an exception for the page explaining a rule is how a rule stops applying. /disclosures/ sets out the full reasoning, without printing them either. In practice this costs a designer nothing — write about what the product IS rather than what it is not, and if a phrase does trip the check we will say so and it takes one word to fix. This brief&#x27;s own first draft tripped it, by stating the rule.</p>
+<h3 id="expected-where-a-slot-has-no-content-yet-a-screenshot-a-review-a-logo-draw-the-e">Expected: Where a slot has no content yet — a screenshot, a review, a logo — draw the empty frame with a line saying what belongs there. Do not fill it with decoration.</h3>
+<p>The product page prototype already does this: three of seven media slots are real files and four are labelled frames. A carousel padded with stock art on a page whose whole job is showing what you actually get would be the one dishonest thing on the site.</p>
+<h3 id="expected-every-screen-must-be-drawn-at-390px-as-well-as-at-1200px-and-the-phone-">Expected: Every screen must be drawn at 390px as well as at 1200px, and the phone version is the one to get right first.</h3>
+<p>The live homepage is 10,710px tall on a phone — thirteen and a half screens — against roughly 5,000 for each concept. Phone is where this is lost.</p>
+<h3 id="expected-one-primary-action-per-screen-repeated-down-it-not-three-competing-butt">Expected: One primary action per screen, repeated down it. Not three competing buttons.</h3>
+<p>Standard, and the last round got it right; it is here so it stays right.</p>
+<h3 id="hard-rule-anything-that-will-live-inside-a-vault-sets-every-image-stylesheet-and">HARD RULE: Anything that will live inside a vault sets every image, stylesheet and script from JavaScript, never as markup.</h3>
+<p>A vault app is served from a blob: URL and the browser resolves declarative resources against an opaque origin before the vault bridge exists. An image tag carrying a src in markup — including markup assembled in a string and handed to innerHTML — is a broken image for every reader, and it looks perfect when the same folder is served over HTTP, so a local check will not catch it. Two of this store&#x27;s products are vaults and one of its prototypes produces them, so this is not an edge case here.</p>
+<h2 id="already-settled-and-not-up-for-redesign">Already settled, and not up for redesign</h2>
+<ul><li>The price sits at 42px on a card, not 28px inline with the delivery estimate. Every reader used the prices when they were set large and two reported seeing none when they were set at 12px in a caption colour.</li><li>A four-fact trust strip sits under the hero, and every fact is a link to the claim that evidences it. The concept version had four ticks and no links, which the one reader who checks things rejected on sight.</li><li>Applications are chips, not a list, with a sixth chip reading &#x27;something else — from £500&#x27; so a visitor whose agent is missing lands on the level that exists for them rather than at the end of a directory.</li><li>The header carries three destinations and the order. Everything else goes to the footer or the console. It currently carries forty-eight.</li><li>The persona doors stay, and stay above the product. All three concepts routed by application and dropped them; the brief for this store was explicit about wanting &#x27;who are you&#x27; first.</li></ul>
+<h2 id="open-and-genuinely-wanted">Open, and genuinely wanted</h2>
+<ul><li>Product naming. &#x27;Professional review&#x27; reads out loud in a board meeting; &#x27;two sessions and a custom vault&#x27; is more honest about what arrives. The proposal is a short name at heading size with the precise description as the line beneath. Draw the anatomy that supports both and leave the words to us.</li><li>The headline. &#x27;Every agent needs a licence to operate&#x27; was not misread by any reader, and an outside review flagged that &#x27;licence to operate&#x27; can be taken as regulatory permission. &#x27;Powerful agents. Clear boundaries.&#x27; was the only line every reader understood on sight. Not settled. Show the hero working with a long headline and a short one.</li></ul>
+<h2 id="the-tokens">The tokens</h2>
+<p>Read from the live stylesheet by the build that produced this file. Use these and add none.</p>
+<div class="table"><table><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code>--bg</code></td><td><code>#faf9f5</code></td></tr>
+<tr><td><code>--panel</code></td><td><code>#ffffff</code></td></tr>
+<tr><td><code>--panel2</code></td><td><code>#f2f0e9</code></td></tr>
+<tr><td><code>--line</code></td><td><code>#e5e1d5</code></td></tr>
+<tr><td><code>--line2</code></td><td><code>#d5d0c2</code></td></tr>
+<tr><td><code>--fg</code></td><td><code>#1c1d21</code></td></tr>
+<tr><td><code>--dim</code></td><td><code>#5c5f66</code></td></tr>
+<tr><td><code>--dim2</code></td><td><code>#8a8d94</code></td></tr>
+<tr><td><code>--ink</code></td><td><code>#34363c</code></td></tr>
+<tr><td><code>--accent</code></td><td><code>#0f766e</code></td></tr>
+<tr><td><code>--accent-dk</code></td><td><code>#115e59</code></td></tr>
+<tr><td><code>--warm</code></td><td><code>#b45309</code></td></tr>
+<tr><td><code>--green</code></td><td><code>#15803d</code></td></tr>
+<tr><td><code>--blue</code></td><td><code>#0369a1</code></td></tr>
+<tr><td><code>--red</code></td><td><code>#b91c1c</code></td></tr>
+<tr><td><code>--sans</code></td><td><code>ui-sans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif</code></td></tr>
+<tr><td><code>--serif</code></td><td><code>ui-serif,Georgia,&quot;Times New Roman&quot;,serif</code></td></tr>
+<tr><td><code>--mono</code></td><td><code>ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace</code></td></tr></tbody></table></div>
+<h3 id="the-10-claim-states">The 10 claim states</h3>
+<div class="table"><table><thead><tr><th>Id</th><th>Label</th><th>What it means</th></tr></thead><tbody><tr><td><code>exists</code></td><td>exists and runs</td><td>Built, and it runs today.</td></tr>
+<tr><td><code>measured</code></td><td>measured</td><td>Measured by our own pipeline on a named workload and date.</td></tr>
+<tr><td><code>docs</code></td><td>read, not run</td><td>Read from a published source on this date. Never executed by us.</td></tr>
+<tr><td><code>projected</code></td><td>projected</td><td>Arithmetic, not an invoice. The workings are shown.</td></tr>
+<tr><td><code>spec</code></td><td>specified, not built</td><td>A specification. The thing it specifies does not exist yet.</td></tr>
+<tr><td><code>person</code></td><td>delivered by a person</td><td>A named security professional does this work and signs it off. It is somebody&#x27;s time rather than a pipeline, which is why its delivery estimate depends on availability.</td></tr>
+<tr><td><code>unlocated</code></td><td>built, not located</td><td>It was built. It has not been found since, and until it is, nothing here promises it.</td></tr>
+<tr><td><code>booking</code></td><td>a booking, not a download</td><td>What is bought is a person&#x27;s time, not a file.</td></tr>
+<tr><td><code>partial</code></td><td>part exists</td><td>One half of it runs. The half that carries the guarantee does not.</td></tr>
+<tr><td><code>absent</code></td><td>does not exist yet</td><td>It does not exist. It is listed so that nobody proposes it as new.</td></tr></tbody></table></div>
+<h2 id="the-component-set">The component set</h2>
+<p>This is the deliverable that matters most. Every component, every state, before any screen is drawn.</p>
+<h3 id="button-button">Button (<code>button</code>)</h3>
+<p>States: primary, secondary, disabled with a reason, destructive — none exist yet</p>
+<p>The disabled state is real and shipping today: &#x27;the payment link has not been issued yet&#x27;. It needs to look deliberate rather than broken, because it is on every card until the next release.</p>
+<h3 id="price-block-price">Price block (<code>price</code>)</h3>
+<p>States: single price, deposit split — a fifth now, the rest on delivery, free, from £N</p>
+<p>42px, with the delivery estimate and the clock it runs from. The split is two Stripe products that sum to the price, so it is a real thing to draw and not a presentational trick.</p>
+<h3 id="offer-card-offer-card">Offer card (<code>offer-card</code>)</h3>
+<p>States: level 01 to 04, free, leading in an audience view, quieted in an audience view, add-on</p>
+<p>The one component that appears on the most screens. Anatomy: level and delivery on one line, name, one line of who it is for, price, one sentence, claim chip, action.</p>
+<h3 id="claim-chip-claim-chip">Claim chip (<code>claim-chip</code>)</h3>
+<p>States: one per claim state — the page lists them, with what each means</p>
+<p>Links to the ledger. Only one state is the fully-earned one, which is deliberate: if most chips look confident the component has failed. ONE THING TO FIX WHILE YOU ARE IN HERE — two states currently share a CSS class and therefore render identically, so &#x27;specified, not built&#x27; and &#x27;part exists&#x27; are indistinguishable on a card. They mean different things and one of them is worse news than the other. Give the set enough visual range that ten of them stay legible at chip size.</p>
+<h3 id="persona-door-persona-door">Persona door (<code>persona-door</code>)</h3>
+<p>States: five audiences, current, on a phone</p>
+<p>Five across at 1200px. At 390px five stacked cards is 500px of screen before anything is for sale, so this needs a real phone answer.</p>
+<h3 id="application-chip-app-chip">Application chip (<code>app-chip</code>)</h3>
+<p>States: one of fifteen, the catch-all, from £500, selected</p>
+<p>The catch-all chip is the point of the component.</p>
+<h3 id="trust-strip-item-trust-item">Trust strip item (<code>trust-item</code>)</h3>
+<p>States: linked to a claim, four across, two-by-two on a phone</p>
+<p>Never unlinked.</p>
+<h3 id="media-frame-media-frame">Media frame (<code>media-frame</code>)</h3>
+<p>States: a real screenshot with a caption, a labelled empty frame naming what belongs there, in a carousel, expanded</p>
+<p>Both states ship together. The empty one is not a placeholder to be removed later — it is how the page stays honest while the screenshots are taken.</p>
+<h3 id="specification-row-spec-row">Specification row (<code>spec-row</code>)</h3>
+<p>States: plain, with a chip, on a phone</p>
+<p>Label and value. Reads as a datasheet, not as prose.</p>
+<h3 id="disclosure-strip-disclosure">Disclosure strip (<code>disclosure</code>)</h3>
+<p>States: desktop, two lines, phone, one line with the rest behind a link</p>
+<p>Above main, always. See the constraint.</p>
+<h3 id="version-badge-version-badge">Version badge (<code>version-badge</code>)</h3>
+<p>States: current, in the console</p>
+<p>How a reader knows which build they are quoting. Quiet, not absent.</p>
+<h3 id="section-header-section-head">Section header (<code>section-head</code>)</h3>
+<p>States: with an action on the right, centred, on a phone</p>
+<p>Eyebrow, heading, one line of subheading, optional action. Used on every screen and currently inconsistent.</p>
+<h3 id="vault-frame-vault-embed">Vault frame (<code>vault-embed</code>)</h3>
+<p>States: loading, open, an example, labelled, failed</p>
+<p>An iframe opened with a read key. The labelled-example state is the one that matters — see the after-the-sale screen.&lt;br&gt;&lt;br&gt;&lt;b&gt;If you are drawing anything that will live INSIDE a vault rather than beside one&lt;/b&gt;, the authoring contract is not the web&#x27;s. A vault app runs in an iframe loaded from a &lt;code&gt;blob:&lt;/code&gt; URL, so the browser fetches anything declarative before the vault bridge installs: no stylesheet link, no script src, and no &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; written as markup, including markup you build in a string and assign to &lt;code&gt;innerHTML&lt;/code&gt;. Create the element and assign &lt;code&gt;.src&lt;/code&gt; as a property instead. This store shipped a vault on 16 September that broke exactly that rule and rendered ten broken images to every reader, while the same files served over plain HTTP were perfect — which is why it survived a local check.</p>
+<h3 id="reviews-empty-review-empty">Reviews, empty (<code>review-empty</code>)</h3>
+<p>States: no reviews yet, one review, several</p>
+<p>The empty state is the one shipping. Draw the other two so the page does not have to be redesigned the day somebody writes one.</p>
+<h3 id="edition-switcher-edition-switch">Edition switcher (<code>edition-switch</code>)</h3>
+<p>States: five audiences, one selected, on a phone</p>
+<p>Changes the argument in place, without a page load and without changing the product.</p>
+<h3 id="callout-callout">Callout (<code>callout</code>)</h3>
+<p>States: a ruling, a caveat, a hold, an example</p>
+<p>Four kinds and they must not all look the same, because one of them means &#x27;this is not what you think it is&#x27;.</p>
+<h3 id="header-and-footer-nav">Header and footer (<code>nav</code>)</h3>
+<p>States: header at four links, footer carrying eleven, phone menu, console rail</p>
+<p>The header goes from forty-eight to four. The footer takes the evidence apparatus. Both need drawing, because the footer is now load-bearing.</p>
+<h3 id="comparison-table-table">Comparison table (<code>table</code>)</h3>
+<p>States: five columns, row group, a yes, a no, a qualified yes, on a phone</p>
+<p>The qualified yes is the hard one — most of the interesting rows are not a tick or a cross.</p>
+<h2 id="the-screens">The screens</h2>
+<h3 id="the-product-page-first">The product page — first</h3>
+<p>Live today: <a href="../../lab/product/index.html">https://store.sgit.ai/lab/product/</a><a class="ext live" href="https://store.sgit.ai/lab/product/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> A prototype, in the lab, marked unbuyable on its own face.</p>
+<p>The one the store most needs and has never had. A level page argues about what a policy is; a product page shows the thing. Amazon-shaped: description left, price and buy on the right, a screenshot carousel, specifications, and a reviews section that is honest about being empty.</p>
+<p>It has to carry:</p>
+<ul><li>A media carousel with many slots, of which only some have a real image — the rest are labelled frames naming what belongs there.</li><li>A right-hand rail that stays with the reader: price at 42px, delivery estimate and the clock it runs from, the buy button, and for the top two levels the deposit split (a fifth now, the rest on delivery).</li><li>A specifications table — product code, what it is, how many shapes, delivered in, licence, formats, whether an account is needed.</li><li>A reviews section as an empty state.</li><li>An edition switcher: the same product described five ways, one per audience, switching in place without a page load.</li></ul>
+<p><strong>The hard part.</strong> The edition switcher has to change the argument without changing the product. Five audiences, one SKU, one price, five reasons.</p>
+<h3 id="the-comparison-table-first">The comparison table — first</h3>
+<p>Live today: <a href="../../compare/index.html">https://store.sgit.ai/compare/</a><a class="ext live" href="https://store.sgit.ai/compare/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> Fourteen rows in four groups across five columns, including a free one.</p>
+<p>Features down the left, five columns across — free, then the four levels. It has to work as a page, as something printable, and as a thing a reader screenshots and sends to somebody else.</p>
+<p>It has to carry:</p>
+<ul><li>Five columns including the free one, which comes first.</li><li>Row groups with headings, so a reader can find the row they care about.</li><li>A phone version that does not become a horizontal scroll nobody uses.</li><li>A print-shaped version: this is explicitly wanted as a brochure and a PDF.</li></ul>
+<p><strong>The hard part.</strong> Five columns at 390px. Most comparison tables give up here and become five stacked cards, which loses the comparison — which is the entire point of the page.</p>
+<h3 id="the-level-page-first">The level page — first</h3>
+<p>Live today: <a href="../../d/t2/index.html">https://store.sgit.ai/d/t2/</a><a class="ext live" href="https://store.sgit.ai/d/t2/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> One per level, plus two add-ons.</p>
+<p>The page a buyer lands on from a card. What this level is, what arrives, what does not, who does the work, and the way to buy it. Shorter than the product page and pointed at one decision.</p>
+<p>It has to carry:</p>
+<ul><li>What arrives and what does not, as two lists rather than a paragraph.</li><li>For the top two: who does the work, with the professional&#x27;s name and face.</li><li>The delivery estimate and the clock it runs from — from your payment for the first two, from your reply for the top two.</li><li>The buy button, and the deposit split where there is one.</li></ul>
+<p><strong>The hard part.</strong> &#x27;What does not arrive&#x27; has to be as prominent as what does, and has to not read as an apology.</p>
+<h3 id="the-order-and-the-payment-hand-off-second">The order and the payment hand-off — second</h3>
+<p>Live today: <a href="../../cart/index.html">https://store.sgit.ai/cart/</a><a class="ext live" href="https://store.sgit.ai/cart/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> An order built in the reader&#x27;s own browser, no account, nothing stored anywhere else.</p>
+<p>Everything up to the moment the reader leaves for the payment provider. No form fields — the provider&#x27;s page collects the name, the email and the card, and this store never sees any of them. There is no input, textarea or select anywhere in this site&#x27;s output and a check holds that line, so draw a cart made of buttons.</p>
+<p>It has to carry:</p>
+<ul><li>The order reference, generated in the browser and shown on the page.</li><li>A discount code applied and its effect visible.</li><li>The hand-off explained before it happens: what the provider will ask for, and what this store will never see.</li></ul>
+<p><strong>The hard part.</strong> A checkout with no form. It is a real constraint, not a stylistic one, and it is the thing this store can say that most stores cannot.</p>
+<h3 id="after-the-sale-second">After the sale — second</h3>
+<p>Live today: <a href="../../paid/t2/index.html">https://store.sgit.ai/paid/t2/</a><a class="ext live" href="https://store.sgit.ai/paid/t2/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> One per level.</p>
+<p>The instruction was &#x27;when you have sold a vault, you should just see the vault&#x27;. So the screen after payment is not a receipt with a link on it — the thing bought is on the screen, open, with the receipt beside it.</p>
+<p>It has to carry:</p>
+<ul><li>The vault itself, embedded and open, above anything congratulatory.</li><li>For a buyer whose own vault does not exist yet, a published example labelled as an example in its first sentence.</li><li>What happens next and when, with the date.</li><li>For the top two levels: who is doing the work, and how they will make contact.</li></ul>
+<p><strong>The hard part.</strong> The reader has paid and is now looking at somebody else&#x27;s example vault. That has to be obviously an example without feeling like a bait and switch.</p>
+<h3 id="the-audience-landing-second">The audience landing — second</h3>
+<p>Live today: <a href="../../are/founder/index.html">https://store.sgit.ai/are/founder/</a><a class="ext live" href="https://store.sgit.ai/are/founder/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> Five of them, one per audience.</p>
+<p>Where a persona door leads. The same four levels, led with the one that fits this reader and the rest quieted rather than hidden.</p>
+<p>It has to carry:</p>
+<ul><li>Nothing hidden. A check refuses display:none on an offer in an audience view — every level stays reachable from every audience, and what changes is which one leads and what is said about it.</li><li>The reader&#x27;s own question in their own words, at the top.</li><li>One level foregrounded, the others at reduced emphasis and still clickable.</li></ul>
+<p><strong>The hard part.</strong> &#x27;Quieted, not hidden&#x27; is a visual problem. Opacity alone reads as broken; a different treatment entirely reads as a different product.</p>
+<h3 id="describe-your-agent-second">Describe your agent — second</h3>
+<p>Live today: <a href="../../lab/agent-canvas/index.html">https://store.sgit.ai/lab/agent-canvas/</a><a class="ext live" href="https://store.sgit.ai/lab/agent-canvas/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> Two prototypes in the lab — a canvas and a sequence.</p>
+<p>A free page, and the one the project lead expects to use most in conversation. The agent sits in the centre; the things it can reach sit around it — a database, the internet, part of the internet, a file system, the ability to send email. The reader clicks or drags them onto the agent and builds up a description of what it can actually do.</p>
+<p>It has to carry:</p>
+<ul><li>The agent at the centre and its capabilities around it, clickable and draggable.</li><li>Twenty-three capability primitives on a verb.object.reach grammar, which exist already and are not to be invented.</li><li>A running description of what has been assembled, in plain words.</li><li>An export at the end: the description, in a form that can be handed to a model session with a template vault, which then produces the buyer&#x27;s own vault.</li><li>It has to work on a phone and in a room, over somebody&#x27;s shoulder.</li></ul>
+<p><strong>The hard part.</strong> This is a toy that has to produce a document. Show at least two different interactions for it — the canvas and something else entirely — because which one works in a live conversation is not known yet.</p>
+<h3 id="the-professionals-page-third">The professional&#x27;s page — third</h3>
+<p>Live today: <a href="../../who/dinis-cruz/index.html">https://store.sgit.ai/who/dinis-cruz/</a><a class="ext live" href="https://store.sgit.ai/who/dinis-cruz/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> One, for the person doing the work today.</p>
+<p>Who does the £500 and £1,500 work. Built for a list: more professionals are being recruited, so it is a template with one entry today, not a personal page.</p>
+<p>It has to carry:</p>
+<ul><li>Enough for a buyer to decide whether this person&#x27;s signature is worth £1,500.</li><li>Every biographical line sourced, because a check refuses one that is not.</li><li>An index that works with one entry and with twelve.</li></ul>
+<p><strong>The hard part.</strong> A page of one person&#x27;s credentials that does not read as a CV.</p>
+<h3 id="the-claim-ledger-third">The claim ledger — third</h3>
+<p>Live today: <a href="../../ledger/index.html">https://store.sgit.ai/ledger/</a><a class="ext live" href="https://store.sgit.ai/ledger/" title="live page">↗</a></p>
+<p><strong>What is there today.</strong> Fifty-two claims, each with a state and a date, cited from the pages that make them.</p>
+<p>Every factual claim this site makes, the state it has earned, and the date. Pages cite a claim and the chip links back here. It is the store&#x27;s whole argument for being believed, and it currently looks like a table.</p>
+<p>It has to carry:</p>
+<ul><li>Every claim state visually distinct and legible at chip size. The page lists them; two currently share a class and render identically.</li><li>The join in both directions: from a claim to the pages citing it, and from a page&#x27;s chip to the claim.</li><li>It should be possible to skim for the claims that are weakest, not just the ones that are strongest.</li></ul>
+<p><strong>The hard part.</strong> Making a page of caveats feel like confidence rather than hedging.</p>
+<h2 id="how-to-hand-it-back">How to hand it back</h2>
+<p>Last round came back as three finished pages and this store could use the structure of two of them and none of the execution. What makes a mock implementable is not more polish, it is the system underneath it named and specified.</p>
+<ol><li>ONE COMPONENT SHEET FIRST, before any screen. Every component in the list above, every state, at both widths, on one page. This is the deliverable that matters most; a beautiful screen built from unnamed parts costs more to implement than it saves.</li><li>THEN THE SCREENS, in the priority order given. Each at 1200px and 390px.</li><li>A TOKEN TABLE of everything actually used, so any value that is not in the set below is visible at a glance rather than discovered later.</li><li>A SHORT NOTE PER SCREEN: what you changed from the brief and why. Disagreement is wanted — the last round&#x27;s disagreements are on the board. Silent substitutions are not.</li><li>PLAIN HTML AND CSS, one file per screen, no build step, no framework, no external requests except a font. It does not need to be production code — it needs to be readable, because it is going to be read and re-implemented rather than pasted.</li></ol>
+<p>And not:</p>
+<ul><li>Do not produce a design system document with principles and no pixels.</li><li>Do not use a component library&#x27;s defaults. The whole exercise is this store&#x27;s own vocabulary.</li><li>Do not fill an empty state with sample data unless it is labelled as sample in the mock itself.</li></ul>
+<h2 id="read-these-first">Read these first</h2>
+<ul><li><a href="../concepts/index.html">The review of the last round</a><a class="ext live" href="https://store.sgit.ai/admin/concepts/" title="live page">↗</a> — What was taken from the three concepts, what was refused, and the seven measurements that decided it.</li><li><a class="ext" href="https://store.sgit.ai/admin/reviews/2026-09-16-four-homepages/">Five readers on the same four folds ↗</a> — Eight findings, including the three nobody was looking for.</li><li><a href="../../lab/product/index.html">The product page prototype</a><a class="ext live" href="https://store.sgit.ai/lab/product/" title="live page">↗</a> — The starting point for the first screen, and the source of the media-frame component.</li><li><a href="../../compare/index.html">What each level gets you</a><a class="ext live" href="https://store.sgit.ai/compare/" title="live page">↗</a> — The five columns, and the rows as they stand.</li><li><a href="../../disclosures/index.html">What we do not say, and why</a><a class="ext live" href="https://store.sgit.ai/disclosures/" title="live page">↗</a> — The barred words, in full, with the reasoning.</li><li><a href="../../ledger/index.html">The claim ledger</a><a class="ext live" href="https://store.sgit.ai/ledger/" title="live page">↗</a> — Every claim state, and what each one means. The chip set is one of the eighteen components.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>store.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://store.sgit.ai/admin/design-brief/index.md">https://store.sgit.ai/admin/design-brief/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:55Z</dd><dt>sha256</dt><dd><code title="2ac5d50867ad48769036e077932c8f593d09ac5c993ea6301a355ce332172e41">2ac5d50867ad</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/store.sgit.ai/admin/design-brief/index.md</a> (25,268 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

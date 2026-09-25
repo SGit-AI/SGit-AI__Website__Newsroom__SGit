@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>lexicon.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · graphs.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/graphs.sgit.ai.html">graphs.sgit.ai</a> · <a href="lexicon.json">raw text</a> · <a class="ext" href="https://graphs.sgit.ai/v2/lexicon/data/lexicon.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;version&quot;: &quot;v0.6.22&quot;,
+  &quot;scopes&quot;: [
+    {
+      &quot;scope&quot;: &quot;book&quot;,
+      &quot;parent&quot;: null,
+      &quot;kind&quot;: &quot;root&quot;,
+      &quot;altitude&quot;: &quot;the book (the second edition&#x27;s root vocabulary)&quot;,
+      &quot;provenance&quot;: {
+        &quot;from&quot;: &quot;v1/altitudes/data/altitudes.json&quot;,
+        &quot;sha256&quot;: &quot;8f5c605ffcff8d5f812eaf001720c219af0cdcba423efc5bda4802d678b2822d&quot;,
+        &quot;release&quot;: &quot;v0.3.26&quot;,
+        &quot;verdict&quot;: &quot;CARRY&quot;,
+        &quot;note&quot;: &quot;All 24 first-edition concepts copied as the seed. CARRY is the audit&#x27;s hypothesis, re-tested in phase 3; one term is already overridden.&quot;
+      },
+      &quot;terms&quot;: [
+        {
+          &quot;id&quot;: &quot;meaning-through-connectivity&quot;,
+          &quot;label&quot;: &quot;Meaning through connectivity&quot;,
+          &quot;definition&quot;: &quot;What a thing **is** emerges from the edges traceable from it, not from anything stored inside it. The node is the address; the edges are the meaning.&quot;,
+          &quot;also_called&quot;: [
+            &quot;the thesis&quot;,
+            &quot;the title after the colon&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;semantic search — which infers meaning from similarity rather than deriving it from structure&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;node-alone-means-nothing&quot;,
+          &quot;label&quot;: &quot;A node alone means nothing&quot;,
+          &quot;definition&quot;: &quot;A label is not a meaning. A node with no edges cannot be distinguished from any other node carrying the same label, so it carries no information at all.&quot;,
+          &quot;also_called&quot;: [
+            &quot;a node is just a node&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;an empty node — which has a type and a place, and is therefore not the same thing&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;confidence-from-connectivity&quot;,
+          &quot;label&quot;: &quot;Confidence is a function of connectivity&quot;,
+          &quot;definition&quot;: &quot;How much a claim can be trusted is computable from how richly it is connected: no edges, local edges, typed definitions, anchor nodes, external references, rich multi-hop paths.&quot;,
+          &quot;also_called&quot;: [
+            &quot;the confidence ladder&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;probability — the ladder is not a likelihood, it is a reachability measure&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;enrichment-not-enforcement&quot;,
+          &quot;label&quot;: &quot;Enrichment, not enforcement&quot;,
+          &quot;definition&quot;: &quot;When confidence is low the remedy is adding edges, never adding rules. The graph grows; it does not constrain.&quot;,
+          &quot;also_called&quot;: [
+            &quot;the graph grows, it doesn&#x27;t constrain&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;validation — which is enforcement wearing a helpful name&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;named-absence&quot;,
+          &quot;label&quot;: &quot;A named absence beats a hidden one&quot;,
+          &quot;definition&quot;: &quot;Three of ten pieces of evidence is information. An absence that is stated can be queried, assigned and closed; an absence that is hidden silently supports whatever rests on it.&quot;,
+          &quot;also_called&quot;: [
+            &quot;honest uncertainty&quot;,
+            &quot;the ghosted node&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a missing value — which is the absence of a record, not a recorded absence&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;edge-is-a-verb&quot;,
+          &quot;label&quot;: &quot;Every edge is a verb with a distinct inverse&quot;,
+          &quot;definition&quot;: &quot;An edge is named as a verb, and its inverse is a **different** verb rather than the same edge walked backwards: `owned_by` and `owns` have different fan-out, and that asymmetry is what bounds traversal.&quot;,
+          &quot;also_called&quot;: [
+            &quot;the grammar rule&quot;,
+            &quot;verb edges&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a labelled edge — a label is not yet a verb, and a verb without a distinct inverse is half an edge&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;banned-generic-edge&quot;,
+          &quot;label&quot;: &quot;The generic association edge is banned&quot;,
+          &quot;definition&quot;: &quot;`relates-to` is refused because everything relates to everything: it constrains nothing, costs fan-out, and is what you reach for when you have not yet decided what you mean.&quot;,
+          &quot;also_called&quot;: [
+            &quot;no relates-to&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a weak edge — which still says something, where a generic edge says nothing&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;path-reads-as-a-sentence&quot;,
+          &quot;label&quot;: &quot;A path must read as a sentence&quot;,
+          &quot;definition&quot;: &quot;If a traversal does not read as natural language in the reader&#x27;s own tongue, the edges are wrong. The test is linguistic because the failure is semantic.&quot;,
+          &quot;also_called&quot;: [
+            &quot;the sentence test&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a readable label — the test is over a whole path, not one edge&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;bidirectional-paths&quot;,
+          &quot;label&quot;: &quot;Both directions carry a name&quot;,
+          &quot;definition&quot;: &quot;Because every edge names its inverse, a path can be walked and read in either direction, and the reading changes: down a grounds chain reaches assumptions, up it reaches consequences.&quot;,
+          &quot;also_called&quot;: [
+            &quot;walk it both ways&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;an undirected edge — which has no reading at all&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;render-the-query&quot;,
+          &quot;label&quot;: &quot;Never render the whole graph&quot;,
+          &quot;definition&quot;: &quot;You render the **result of a query**, never the graph itself. Build wide, find the few, then flip. A rendered graph past a few hundred nodes is a picture of nothing.&quot;,
+          &quot;also_called&quot;: [
+            &quot;build wide, find the few, flip&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;filtering — which hides what it does not show; a query states what it asked&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;fractal&quot;,
+          &quot;label&quot;: &quot;The same grammar at every altitude&quot;,
+          &quot;definition&quot;: &quot;Semantic graphs nested fractally: graphs of graphs of graphs, ontologies of ontologies. A well-connected lexicon exists, and any scope may extend, specialise or override it where it needs to, without asking the centre. Uniformity of grammar is the mechanism that makes an override safe rather than a fork; composition with local override is the claim.&quot;,
+          &quot;also_called&quot;: [
+            &quot;fractal semantic graphs&quot;,
+            &quot;graphs of graphs of graphs&quot;,
+            &quot;G3&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;self-similar visuals — the claim is about rules, not about how the picture looks&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1, overridden-at-v2&quot;,
+          &quot;superseded&quot;: {
+            &quot;definition&quot;: &quot;One grammar, one validator, one provenance rule at every level of zoom: expand any node and the thing inside obeys identical rules. Stated as falsifiable, not as a metaphor.&quot;,
+            &quot;by&quot;: &quot;brief 20, the founder, 23 August 2026 (v2/briefs/20__founder-memo__the-universe-first.md)&quot;,
+            &quot;note&quot;: &quot;The first edition defined the term as uniformity: one grammar at every level. Brief 20 corrected it: uniformity is the mechanism, not the claim.&quot;
+          },
+          &quot;evidence&quot;: [
+            &quot;universe:thinking-in-graphs#c-override&quot;,
+            &quot;universe:thinking-in-graphs#local-vocabulary&quot;
+          ]
+        },
+        {
+          &quot;id&quot;: &quot;junction-rule&quot;,
+          &quot;label&quot;: &quot;Join at the node layer, never document to document&quot;,
+          &quot;definition&quot;: &quot;To connect two bodies of text, lift **both** into typed nodes first and join at an intermediate layer. A document-to-document link is only as good as the sentence somebody wrote around it.&quot;,
+          &quot;also_called&quot;: [
+            &quot;node-to-node&quot;,
+            &quot;the junction&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a citation — which points at a document and stops&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;twin-attachment&quot;,
+          &quot;label&quot;: &quot;Obligations attach at the twin&quot;,
+          &quot;definition&quot;: &quot;A duty binds the running instance and its telemetry, not the paragraph in the register beside it. The graph attaches the obligation where it actually bites.&quot;,
+          &quot;also_called&quot;: [
+            &quot;attach at the instance&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a control mapping — which attaches to a document about the thing&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;schema-first&quot;,
+          &quot;label&quot;: &quot;Schema-first thinking&quot;,
+          &quot;definition&quot;: &quot;Deciding in advance what types exist and requiring everything to conform, so that meaning is attached **to nodes** rather than derived from edges. The position this book takes a stand against.&quot;,
+          &quot;also_called&quot;: [
+            &quot;conform-first&quot;,
+            &quot;the Semantic Web&#x27;s practical mistake&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;having a schema at all — the objection is to the direction of authority, not to structure&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;dont-merge-vocabularies&quot;,
+          &quot;label&quot;: &quot;Merging erases the disagreement&quot;,
+          &quot;definition&quot;: &quot;Two parties&#x27; vocabularies are kept intact and bridged, because the disagreement between them is usually the most valuable thing present. Three layers: shared facts owned by nobody, per-party formulas, declared bridges.&quot;,
+          &quot;also_called&quot;: [
+            &quot;keep both senses&quot;,
+            &quot;divergence as output&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;translation — which produces one text where there were two positions&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;anchor-nodes&quot;,
+          &quot;label&quot;: &quot;Reference without authority&quot;,
+          &quot;definition&quot;: &quot;A shared vocabulary node others **may** link to, rather than a definition they **must** conform to. Interoperability without conformity; partial mapping is normal.&quot;,
+          &quot;also_called&quot;: [
+            &quot;the lexicon&quot;,
+            &quot;bridge nodes&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a canonical model — which is an anchor that acquired authority&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;compatibility-computed&quot;,
+          &quot;label&quot;: &quot;Compatibility is computed, not declared&quot;,
+          &quot;definition&quot;: &quot;Whether two things can work together is a spectrum, asymmetric and purpose-relative, computed from the edges — not a boolean somebody asserts in a standard.&quot;,
+          &quot;also_called&quot;: [
+            &quot;a spectrum, not a boolean&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;conformance testing — which asks whether one thing matches a fixed target&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;classification-as-query&quot;,
+          &quot;label&quot;: &quot;Classification is a query, not a judgment&quot;,
+          &quot;definition&quot;: &quot;A node type is a **formula over paths**: a Vulnerability is a Fact with an upward `gives_rise_to` path to a Risk. Judgment does not disappear; it moves out of a head and into something visible, versioned and arguable.&quot;,
+          &quot;also_called&quot;: [
+            &quot;node type formulas&quot;,
+            &quot;the content does not decide the type, the paths do&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;tagging — which records a judgment instead of computing one&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;supersede-never-delete&quot;,
+          &quot;label&quot;: &quot;Supersede, never delete&quot;,
+          &quot;definition&quot;: &quot;A corrected claim is marked from a date and kept, because removing it destroys the record of what was resting on it. The question a correction must be able to ask is: what rested on this?&quot;,
+          &quot;also_called&quot;: [
+            &quot;mark it, keep it&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;versioning — which keeps the old text without keeping what depended on it&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;two-identities&quot;,
+          &quot;label&quot;: &quot;Two identities for one thing&quot;,
+          &quot;definition&quot;: &quot;A positional identity that survives renumbering and a content identity that moves with the wording, so a citation can outlive an amendment without pretending the text is unchanged.&quot;,
+          &quot;also_called&quot;: [
+            &quot;positional hash and content hash&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a version number — one identity trying to do two jobs&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;provenance-chain&quot;,
+          &quot;label&quot;: &quot;A claim is worth its chain of custody&quot;,
+          &quot;definition&quot;: &quot;Claim, graph node, file, commit, official source with the hash of the retrieved bytes. Every link walkable by a reader who holds nothing privileged.&quot;,
+          &quot;also_called&quot;: [
+            &quot;chain of custody&quot;,
+            &quot;end-to-end provenance&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;a citation list — which names sources without making them checkable&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;ephemeral-engines&quot;,
+          &quot;label&quot;: &quot;The file system is the source of truth&quot;,
+          &quot;definition&quot;: &quot;Query engines are loaded on demand over files and thrown away. There is no live database anywhere, and that is an architectural position rather than a purity claim: an engine with no state of its own cannot drift.&quot;,
+          &quot;also_called&quot;: [
+            &quot;no live databases&quot;,
+            &quot;the browser is the database&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;no databases at all — the corrected claim is narrower and stronger&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;projection&quot;,
+          &quot;label&quot;: &quot;Documents are projections of graphs&quot;,
+          &quot;definition&quot;: &quot;A page, a chapter, a PDF and a slide are renderings of one underlying structure. Change the structure and every projection follows; change a projection and you have created a fork.&quot;,
+          &quot;also_called&quot;: [
+            &quot;render, do not author twice&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;export — which copies a document rather than deriving it&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;properties-carry-data-not-meaning&quot;,
+          &quot;label&quot;: &quot;Properties may carry data, never meaning&quot;,
+          &quot;definition&quot;: &quot;A property may hold a timestamp. It may not hold the answer to *what kind of thing is this?*, because that answer is a query over edges.&quot;,
+          &quot;also_called&quot;: [
+            &quot;properties are just words&quot;
+          ],
+          &quot;near_but_not&quot;: [
+            &quot;property graphs — which are a storage model, not the objection&quot;
+          ],
+          &quot;origin&quot;: &quot;carried-from-v1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;lexicon&quot;,
+          &quot;label&quot;: &quot;the lexicon&quot;,
+          &quot;definition&quot;: &quot;The book&#x27;s shared vocabulary, held as scopes that may extend, specialise or override one another. Not a schema registry and not the authoritative source of definitions: a well-connected reference layer any scope may link to, or not.&quot;,
+          &quot;also_called&quot;: [],
+          &quot;near_but_not&quot;: [
+            &quot;a glossary, which is one flat list with one author and no scopes&quot;
+          ],
+          &quot;origin&quot;: &quot;authored-at-v2&quot;,
+          &quot;evidence&quot;: [
+            &quot;universe:thinking-in-graphs#lexicon&quot;,
+            &quot;universe:thinking-in-graphs#c-no-special-authority&quot;
+          ]
+        },
+        {
+          &quot;id&quot;: &quot;scope&quot;,
+          &quot;label&quot;: &quot;scope&quot;,
+          &quot;definition&quot;: &quot;A place where vocabulary is defined: the book itself, an altitude, a single source document. Each scope keeps its own terms, and a child scope never registers its vocabulary with its parent.&quot;,
+          &quot;also_called&quot;: [],
+          &quot;near_but_not&quot;: [
+            &quot;a namespace, which disambiguates names but carries no definitions&quot;
+          ],
+          &quot;origin&quot;: &quot;authored-at-v2&quot;,
+          &quot;evidence&quot;: [
+            &quot;universe:thinking-in-graphs#local-vocabulary&quot;,
+            &quot;universe:thinking-in-graphs#c-no-registration&quot;
+          ]
+        },
+        {
+          &quot;id&quot;: &quot;override&quot;,
+          &quot;label&quot;: &quot;override&quot;,
+          &quot;definition&quot;: &quot;A scope&#x27;s replacement of an inherited definition, recorded with its authority and with the superseded definition kept visible. Supersede, never delete, applied to the vocabulary itself.&quot;,
+          &quot;also_called&quot;: [],
+          &quot;near_but_not&quot;: [
+            &quot;an edit, which replaces the old definition and loses the history&quot;
+          ],
+          &quot;origin&quot;: &quot;authored-at-v2&quot;,
+          &quot;evidence&quot;: [
+            &quot;universe:thinking-in-graphs#c-override&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;scope&quot;: &quot;source:thinking-in-graphs&quot;,
+      &quot;parent&quot;: &quot;book&quot;,
+      &quot;kind&quot;: &quot;source-scope&quot;,
+      &quot;altitude&quot;: &quot;one source document (layer 1 of the universe)&quot;,
+      &quot;terms_from&quot;: &quot;v2/universe/data/universe.json&quot;,
+      &quot;note&quot;: &quot;The document&#x27;s terms are not re-authored here: they live in the universe extraction, anchored to the frozen bytes, and this scope declaration only maps them onto the book&#x27;s vocabulary. same-concept means the two scopes name one idea; grounds means the document&#x27;s term is what the book&#x27;s term compresses or narrows; an unmapped term is a finding, not an error.&quot;,
+      &quot;mappings&quot;: [
+        {
+          &quot;term&quot;: &quot;meaning-through-connectivity&quot;,
+          &quot;book_term&quot;: &quot;meaning-through-connectivity&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;The book&#x27;s thesis is this document&#x27;s; the book&#x27;s subtitle is the document&#x27;s subtitle.&quot;
+        },
+        {
+          &quot;term&quot;: &quot;node&quot;,
+          &quot;book_term&quot;: &quot;node-alone-means-nothing&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;The document&#x27;s definition of a node is what the book&#x27;s term compresses.&quot;
+        },
+        {
+          &quot;term&quot;: &quot;connectivity&quot;,
+          &quot;book_term&quot;: &quot;confidence-from-connectivity&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;schema-first&quot;,
+          &quot;book_term&quot;: &quot;schema-first&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;declared-meaning&quot;,
+          &quot;book_term&quot;: &quot;schema-first&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;The document&#x27;s name for the posture the book&#x27;s term takes a stand against.&quot;
+        },
+        {
+          &quot;term&quot;: &quot;discovered-meaning&quot;,
+          &quot;book_term&quot;: &quot;meaning-through-connectivity&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;compatibility&quot;,
+          &quot;book_term&quot;: &quot;compatibility-computed&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;anchor-node&quot;,
+          &quot;book_term&quot;: &quot;anchor-nodes&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;fractal-principle&quot;,
+          &quot;book_term&quot;: &quot;fractal&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;The document states the repetition; its Part 7 carries the override licence that brief 20 made the book&#x27;s claim.&quot;
+        },
+        {
+          &quot;term&quot;: &quot;confidence-spectrum&quot;,
+          &quot;book_term&quot;: &quot;confidence-from-connectivity&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;enrichment&quot;,
+          &quot;book_term&quot;: &quot;enrichment-not-enforcement&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;honest-uncertainty&quot;,
+          &quot;book_term&quot;: &quot;named-absence&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;The book&#x27;s term is the operational narrowing of the document&#x27;s posture.&quot;
+        },
+        {
+          &quot;term&quot;: &quot;graphs-of-graphs&quot;,
+          &quot;book_term&quot;: &quot;fractal&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;local-vocabulary&quot;,
+          &quot;book_term&quot;: &quot;dont-merge-vocabularies&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;The licence whose discipline the book&#x27;s term states.&quot;
+        },
+        {
+          &quot;term&quot;: &quot;name-clash&quot;,
+          &quot;book_term&quot;: &quot;dont-merge-vocabularies&quot;,
+          &quot;relation&quot;: &quot;grounds&quot;,
+          &quot;note&quot;: &quot;&quot;
+        },
+        {
+          &quot;term&quot;: &quot;lexicon&quot;,
+          &quot;book_term&quot;: &quot;lexicon&quot;,
+          &quot;relation&quot;: &quot;same-concept&quot;,
+          &quot;note&quot;: &quot;The book adopts the document&#x27;s negative definition: not a dictionary, not a schema registry.&quot;
+        }
+      ],
+      &quot;unmapped_notes&quot;: {
+        &quot;cross-graph-edge&quot;: &quot;The book&#x27;s 24 concepts have no term for this. A real gap: the mechanism the document calls its most powerful has no name in the book&#x27;s vocabulary yet.&quot;,
+        &quot;version-pinning&quot;: &quot;No book term. Candidate for the universe to surface in phase 2.&quot;,
+        &quot;semantic-web&quot;: &quot;A historical actor, not a book concept; the book&#x27;s schema-first term carries the position taken.&quot;,
+        &quot;librarian&quot;: &quot;Used but never defined in the source; nothing to map.&quot;,
+        &quot;type-safe&quot;: &quot;Used but never defined in the source; nothing to map.&quot;,
+        &quot;role-md&quot;: &quot;Used but never defined in the source; nothing to map.&quot;
+      }
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>graphs.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://graphs.sgit.ai/v2/lexicon/data/lexicon.json">https://graphs.sgit.ai/v2/lexicon/data/lexicon.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:50Z</dd><dt>sha256</dt><dd><code title="52eb4a280656a1baa80b37ded59c169b57a5be5eba2e08120820969f99ff3612">52eb4a280656</code></dd><dt>Frozen copy</dt><dd><a href="lexicon.json">sites/graphs.sgit.ai/v2/lexicon/data/lexicon.json</a> (19,244 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

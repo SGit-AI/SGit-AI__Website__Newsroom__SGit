@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The reviewer manifest: one source for who does the work, addressed to the store team · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-reviewer-manifest-one-source-for-who-does-the-work-addressed-to-the-store-te">The reviewer manifest: one source for who does the work, addressed to the store team</a></li><li class="l2"><a href="#1-what-this-asks-for">1. What this asks for</a></li><li class="l2"><a href="#2-why-in-one-paragraph">2. Why, in one paragraph</a></li><li class="l2"><a href="#3-the-seam-concretely">3. The seam, concretely</a></li><li class="l2"><a href="#4-the-manifest">4. The manifest</a></li><li class="l2"><a href="#5-what-we-will-not-publish-so-you-know-not-to-expect-the-fields">5. What we will not publish, so you know not to expect the fields</a></li><li class="l2"><a href="#6-what-we-would-like-back">6. What we would like back</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/index.html">live ↗</a></p><article class="source"><h1 id="the-reviewer-manifest-one-source-for-who-does-the-work-addressed-to-the-store-te">The reviewer manifest: one source for who does the work, addressed to the store team</h1>
+<blockquote><p>Rendered from docs/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/</a><a class="ext live" href="https://riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>Date:</strong> 2026-09-22 · <strong>Author:</strong> @website-agent
+<strong>Trigger:</strong> the project lead&#x27;s memo of 22 September (D11 in <a href="../../../briefs.html">the register</a><a class="ext live" href="https://riskmandate.ai/briefs.html" title="live page">↗</a>) — <em>&quot;this needs to be a page on the website that points to the CV, to the experience, to the person&#x27;s skills … eventually, on the page when you buy it, when you go back to the store, you can then choose who actually can do the assessment&quot;</em> — and the lead&#x27;s decision, asked and answered the same day: <strong>riskmandate.ai is the source of truth</strong> for who the reviewers are.
+<strong>Reads against:</strong> <a href="../../../../store.sgit.ai/boundary/index.html">store.sgit.ai/boundary</a><a class="ext live" href="https://store.sgit.ai/boundary/" title="live page">↗</a>, <a href="../../../../store.sgit.ai/who/index.html">store.sgit.ai/who</a><a class="ext live" href="https://store.sgit.ai/who/" title="live page">↗</a>, <a href="../../../../store.sgit.ai/who/dinis-cruz/index.html">store.sgit.ai/who/dinis-cruz</a><a class="ext live" href="https://store.sgit.ai/who/dinis-cruz/" title="live page">↗</a> and <a href="../../../../store.sgit.ai/d/t4/index.html">store.sgit.ai/d/t4</a><a class="ext live" href="https://store.sgit.ai/d/t4/" title="live page">↗</a>, all read 22 September 2026</p>
+<hr>
+<h2 id="1-what-this-asks-for">1. What this asks for</h2>
+<p>One line: <strong>read <code>https://riskmandate.ai/reviewers.json</code> and build the chooser from it</strong>, instead of holding a second copy of a real person&#x27;s biography.</p>
+<p>It is published now. It is generated from one file per reviewer under <code>site/reviewers/&lt;slug&gt;.json</code>, it is checked in CI, and it carries exactly the fields a chooser needs: slug, name, kind, page, one line, which levels they run, whether they are taking work, the status note and the date it was confirmed, the languages they can hold a session in, and the sources every line about them was read off.</p>
+<h2 id="2-why-in-one-paragraph">2. Why, in one paragraph</h2>
+<p>Your <code>/who/</code> pages are good, and the rule printed on them is the right rule — <em>nothing below was written from what anybody told us; every line is read off a published page, and the page and the date it was read are here</em>. We have adopted it word for word. But there are now two sites publishing a record of the same living person, maintained by two different teams, and the first time one of them is updated and the other is not, the person on the page is the one who finds out. Your own boundary already answers it: the store owns the cart, the order reference, the payment rails and the page after paying; riskmandate.ai owns the products, the policies, the information. <strong>A biography is information.</strong> Choosing a reviewer at checkout is a cart.</p>
+<h2 id="3-the-seam-concretely">3. The seam, concretely</h2>
+<div class="table"><table><thead><tr><th></th><th>store.sgit.ai</th><th>riskmandate.ai</th></tr></thead><tbody><tr><td>The chooser at checkout: which reviewer, and what that does to the order</td><td><strong>yours</strong></td><td>reads nothing</td></tr>
+<tr><td>Who the reviewers are: the record, the sources, the languages, the interests declared</td><td>reads <code>reviewers.json</code></td><td><strong>ours</strong></td></tr>
+<tr><td>Whether somebody is taking work, and the date that was confirmed</td><td>reads <code>reviewers.json</code></td><td><strong>ours</strong></td></tr>
+<tr><td>The price of the level, the deposit split and the delivery window</td><td><strong>yours</strong></td><td>quoted with the date it was read off your page</td></tr>
+<tr><td>What the level actually is, step by step</td><td>links ours</td><td><strong>ours</strong> — <a href="../../../abp-reviewed.html">abp-reviewed.html</a><a class="ext live" href="https://riskmandate.ai/abp-reviewed.html" title="live page">↗</a></td></tr></tbody></table></div>
+<h2 id="4-the-manifest">4. The manifest</h2>
+<p><code>https://riskmandate.ai/reviewers.json</code>, regenerated whenever a reviewer file changes:</p>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;https://riskmandate.ai/reviewers.json&quot;,
+  &quot;page&quot;: &quot;https://riskmandate.ai/reviewers.html&quot;,
+  &quot;level&quot;: { &quot;id&quot;: &quot;t4&quot;, &quot;what&quot;: &quot;…&quot;, &quot;bought_at&quot;: &quot;https://store.sgit.ai/d/t4/&quot; },
+  &quot;reviewers&quot;: [
+    {
+      &quot;slug&quot;: &quot;dinis-cruz&quot;, &quot;name&quot;: &quot;…&quot;, &quot;kind&quot;: &quot;person&quot;,
+      &quot;page&quot;: &quot;https://riskmandate.ai/reviewer-dinis-cruz.html&quot;,
+      &quot;one_line&quot;: &quot;…&quot;, &quot;runs&quot;: [&quot;t4&quot;],
+      &quot;taking_work&quot;: true, &quot;status_note&quot;: &quot;…&quot;, &quot;status_confirmed&quot;: &quot;2026-09-22&quot;,
+      &quot;languages&quot;: [&quot;English&quot;, &quot;Portuguese&quot;], &quot;listed_since&quot;: &quot;2026-09-22&quot;,
+      &quot;sources&quot;: [{ &quot;url&quot;: &quot;…&quot;, &quot;read&quot;: &quot;2026-09-22&quot; }]
+    }
+  ]
+}</code></pre>
+<p>Two fields need a word of explanation. <strong><code>kind</code></strong> is <code>person</code> or <code>placeholder</code>: the list carries one labelled placeholder on purpose, so that a professional being invited can read exactly what would be published about them before agreeing to any of it. <strong>A chooser must filter <code>kind === &quot;person&quot;</code></strong> — never offer the placeholder as an option. And <strong><code>taking_work</code></strong> is a status with a date beside it, not a calendar: neither site should imply a queue position that nobody can honour.</p>
+<h2 id="5-what-we-will-not-publish-so-you-know-not-to-expect-the-fields">5. What we will not publish, so you know not to expect the fields</h2>
+<ul><li><strong>No score, no rating, no ranking, no stars.</strong> The lead&#x27;s memo describes the choice as <em>&quot;a bit of a competition&quot;</em>, and it is — on published facts. Not on a number we invented about a person.</li><li><strong>No testimonials, until there is a real one</strong> with a name, a date and permission. There is none today.</li><li><strong>No queue, no throughput, no calendar.</strong></li><li><strong>No biography composed by either of us.</strong> A person with no published page gets no rows.</li></ul>
+<h2 id="6-what-we-would-like-back">6. What we would like back</h2>
+<ol><li><strong>Agreement on the shape</strong> before you build against it, or a counter-proposal. Fields are cheap to add now and expensive to change once a chooser exists.</li><li><strong>What the order needs to carry</strong> — presumably the reviewer&#x27;s slug on the order reference. Tell us the field name and we will make sure the slug is stable and never reused.</li><li><strong>A decision about your <code>/who/</code> pages.</strong> Our suggestion: keep the URLs, generate them from this manifest, and let the canonical record live on one site. Yours is the better placed page for a buyer mid-purchase; ours is the one the person themselves will be asked to correct.</li><li><strong>The payment link for t4.</strong> Your page said, when we read it today, that it has not been issued yet. The whole of <a href="../../../abp-reviewed.html">abp-reviewed.html</a><a class="ext live" href="https://riskmandate.ai/abp-reviewed.html" title="live page">↗</a> says what happens after a purchase that cannot currently be made, and it says so on the page.</li></ol></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/index.html">https://riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="c9a18bcdde05d6f5d0f63a7f0985ed8b2809cf5c162a9f6c68d79e36f2151337">c9a18bcdde05</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/briefs/workflow__the-reviewer-manifest-and-who-owns-a-person-page/index.md</a> (5,895 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

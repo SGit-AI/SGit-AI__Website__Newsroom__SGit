@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — How he actually uses open source · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · open-source.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-how-he-actually-uses-open-source">02 — How he actually uses open source</a></li><li class="l2"><a href="#1-resolve-this-before-writing-the-page-the-estate-runs-three-licences-and-nobody">1. ⚠️ Resolve this before writing the page: the estate runs three licences and nobody has noticed</a></li><li class="l2"><a href="#2-the-cc-by-reasoning-which-is-documented">2. The CC BY reasoning, which is documented</a></li><li class="l2"><a href="#3-the-line-everything-open-except-at-the-customer">3. The line: everything open, except at the customer</a></li><li class="l2"><a href="#4-what-has-actually-been-published">4. What has actually been published</a></li><li class="l2"><a href="#5-publish-the-source-next-to-the-render-a-real-implemented-practice">5. &amp;quot;Publish the source next to the render&amp;quot; — a real, implemented practice</a></li><li class="l2"><a href="#6-read-keys-write-keys-and-openness-applied-to-itself">6. Read keys, write keys, and openness applied to itself</a></li><li class="l2"><a href="#7-licence-compliance-in-practice-one-artefact-and-it-is-honest-about-being-manua">7. Licence compliance in practice — one artefact, and it is honest about being manual</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/open-source.sgit.ai.html">open-source.sgit.ai</a> · <a href="02__practice.md">raw text</a> · <a class="ext" href="https://open-source.sgit.ai/briefs/02__practice.md">live ↗</a></p><article class="source"><h1 id="02-how-he-actually-uses-open-source">02 — How he actually uses open source</h1>
+<p>The views are well documented. The <strong>practice</strong> is documented in fragments, and one significant part of it appears to be accidental. This is the page that makes the site credible — anyone can hold a position; showing the licence file is different.</p>
+<hr>
+<h2 id="1-resolve-this-before-writing-the-page-the-estate-runs-three-licences-and-nobody">1. ⚠️ Resolve this before writing the page: the estate runs three licences and nobody has noticed</h2>
+<div class="table"><table><thead><tr><th>Layer</th><th>Licence</th><th>Evidence</th></tr></thead><tbody><tr><td><strong>Code</strong> — <code>SGraph-AI__App__Send</code>, all seven Issues-FS repos</td><td><strong>Apache-2.0</strong></td><td><code>LICENSE</code> files; <code>license = &quot;Apache 2.0&quot;</code> in every <code>pyproject.toml</code></td></tr>
+<tr><td><strong>Briefs / corpus documents</strong></td><td><strong>CC BY 4.0</strong> — footer on ~1,100+ files</td><td><em>&quot;This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).&quot;</em></td></tr>
+<tr><td><strong>Published articles</strong> — <code>docs.diniscruz.ai</code></td><td><strong>CC0 1.0 Universal</strong></td><td><code>/root/docs.diniscruz.ai/LICENSE</code></td></tr></tbody></table></div>
+<p><strong>The briefs assume CC BY is the site-wide answer. The published-articles repo is actually public domain.</strong> No document anywhere in the corpus mentions CC0 or reconciles it with the CC BY rule.</p>
+<p>This is either a <strong>deliberate maximal-openness choice worth a page</strong> — CC0 on the essays, CC BY on the working corpus, Apache-2.0 on the code, each chosen for its layer — or an <strong>inconsistency to fix before the new site inherits it</strong>. It cannot be neither. Decide, then write it up; the reasoning is genuinely interesting either way, and the site loses credibility if a reader finds the mismatch first.</p>
+<p><strong>And a second, larger gap:</strong> there is no discussion anywhere in the corpus of <strong>why Apache-2.0 rather than MIT</strong>. The patent grant? The NOTICE file? Defensive termination? For a site about open source, written by someone whose entire estate is Apache-2.0, that is the most conspicuous unwritten page in the pack.</p>
+<hr>
+<h2 id="2-the-cc-by-reasoning-which-is-documented">2. The CC BY reasoning, which <em>is</em> documented</h2>
+<p>Four distinct arguments, all quotable:</p>
+<p><strong>Alignment, not compliance.</strong> <em>&quot;<strong>The Creative Commons licence aligns with our zero-lock-in principle.</strong> We are already committed to zero lock-in and open standards. A project released entirely under CC BY 4.0, using open source tools, with no proprietary components — this is the natural extension of our existing values.&quot;</em></p>
+<p><strong>It is a hard rule, not a preference.</strong> Rule 2 of the corpus discipline: <em>&quot;<strong>CC BY 4.0 licence</strong> at the bottom of every document.&quot;</em> Every day-index brief closes with it.</p>
+<p><strong>BY vs BY-SA was actively considered, and BY won.</strong> <em>&quot;CC BY-SA 4.0 or CC BY 4.0 for the licence? | BY-SA encourages derivatives to stay open; BY is more permissive.&quot;</em> He chose permissive. <strong>That is a real decision with a real reason and it deserves its own section</strong> — especially since the survivability argument in <code>04__</code> §1 is, in effect, an argument that licences are the <em>weakest</em> of the structural protections.</p>
+<p><strong>Openness is a credibility asset, and it is backed.</strong> <em>&quot;The transparency claim is credible because it is <strong>backed</strong> (the CC BY 4.0 corpus, the public briefs, rendering from a public vault).&quot;</em></p>
+<p><strong>Downstream licences are respected.</strong> <em>&quot;CC BY 4.0 for the article and most contents; original source materials retain their own licences.&quot;</em> Wardley-map briefs carry a bespoke footer crediting Simon Wardley&#x27;s own CC licence — a small discipline worth showing as an example.</p>
+<hr>
+<h2 id="3-the-line-everything-open-except-at-the-customer">3. The line: everything open, except at the customer</h2>
+<p>The stated position, verbatim:</p>
+<blockquote><p><em>&quot;The line is very simple: <strong>everything is open source</strong>, so you do not even have that conversation. It is a key pillar. It is not for everybody, some investors will not like it, but you find the ones who do, and it is a good match. You can always commercial-license or relicense everything for a customer who wants it, but the core is all open source. <strong>No part of the company or the ecosystem is not open source.</strong>&quot;</em></p></blockquote>
+<p>And the single boundary:</p>
+<blockquote><p><em>&quot;The moment you have closed repos is the moment you do customisations for the customer, the moment you hit customer data… that becomes the natural place for proprietary, non-public information, because at that point it is the customer&#x27;s data and their strategy.&quot;</em></p></blockquote>
+<p>With the commercial hook explicitly <strong>not</strong> being the code:</p>
+<blockquote><p><em>&quot;We do not have that lock-in on technology, and that is fundamental. The natural line is a business line, and that is okay: that is when you charge to maintain it. It is the hook, but a hook based on value… The customer&#x27;s schemas can be closed, a lot of their data is closed, <strong>but our schemas are open</strong>.&quot;</em></p></blockquote>
+<p>The mechanism, historically: <strong>selling access to private GitHub repos</strong> — <em>&quot;the repo is what you sell access to, it is how you communicate with the customer, and the customer simply clones or pulls to get all the scripts and everything needed to run it.&quot;</em></p>
+<p><strong>⚠️ This section and <code>04__</code> §2 must be written together.</strong> Five weeks after the &quot;nothing proprietary&quot; statement, the corpus says customers get a subset — and calls it open-core itself.</p>
+<hr>
+<h2 id="4-what-has-actually-been-published">4. What has actually been published</h2>
+<p>Verified against the reality document, not the briefs:</p>
+<div class="table"><table><thead><tr><th>Package</th><th>Where</th><th>Note</th></tr></thead><tbody><tr><td><strong><code>sgit-ai</code></strong></td><td>PyPI · <code>SGit-AI/SGit-AI__CLI</code></td><td>Name chosen because <em>&quot;<code>sgit</code> was already taken&quot;</em>. CI: push to <code>main</code> → tests → deploy to qa → <strong>PyPI publish</strong></td></tr>
+<tr><td><code>sg-send-cli</code></td><td>PyPI</td><td><strong>Deprecated 20 March 2026</strong>, superseded by <code>sgit-ai</code></td></tr>
+<tr><td><strong><code>issues-fs</code></strong> + six siblings</td><td><code>owasp-sbot</code> org</td><td><code>issues_fs_cli</code>, <code>issues_fs_service</code>, <code>issues_fs_service_ui</code>, <code>issues_fs_service_client_python</code>, <code>issues_fs_dev_utils</code>, <code>issues_fs_docs</code> — all Apache-2.0</td></tr>
+<tr><td><strong>The <code>osbot-*</code> / <code>mgraph-*</code> family</strong></td><td>PyPI · <code>owasp-sbot</code></td><td><code>osbot-utils</code> (885 mentions across the corpus), <code>osbot-aws</code>, <code>osbot-fast-api</code>, <code>osbot-fast-api-serverless</code>, <code>memory_fs</code>, <code>mgraph-db</code>, <code>mgraph-ai-service-cache</code>. Described internally as <em>&quot;2 years of open source infrastructure&quot;</em></td></tr></tbody></table></div>
+<p><strong><code>MGraph-DB</code> is publicly credited to OWASP</strong> — <em>&quot;an open source, serverless graph database… published by the OWASP community… available in the OWASP SBot GitHub repositories (within <code>owasp-sbot/MGraph-DB</code>)&quot;</em>. And the whole Issues-FS estate lives under <strong><code>owasp-sbot</code></strong>, tying the current work to the OWASP identity. See <code>06__</code>.</p>
+<p><strong>Not documented anywhere:</strong> why any of these was open-sourced, what the licence decision was for each, or what happened afterwards. Five real published projects and not one retrospective. The O2 Platform article is the honourable exception — and it is written <em>about</em> him, not <em>by</em> him in the first person.</p>
+<hr>
+<h2 id="5-publish-the-source-next-to-the-render-a-real-implemented-practice">5. &quot;Publish the source next to the render&quot; — a real, implemented practice</h2>
+<p>This is the strongest practice page available, because it is a mechanism rather than an intention.</p>
+<p><strong>The markdown twin at every URL:</strong></p>
+<blockquote><p><em>&quot;<strong>every page is available as markdown at the same path with the extension swapped, and links inside the markdown point at markdown, so a traversing agent never has to parse HTML.</strong>&quot;</em></p></blockquote>
+<p><strong>How it was built</strong> — and this detail matters, because it is the hard part:</p>
+<blockquote><p><em>&quot;we added native support to the library for serving <code>llms.txt</code> and <code>.md</code> files… The way it was done is important: it was done using <strong>edge functions</strong>. These are static files, the browser will not run any JavaScript on them, so we couldn&#x27;t render encrypted data. What we did was add a little bit of JavaScript on the Lambda@Edge function that does the rendering of the file.&quot;</em></p></blockquote>
+<p><strong>The ambition beyond markdown:</strong></p>
+<blockquote><p><em>&quot;for every page on the website, serve not just the content but <strong>the semantic knowledge graph of that content (and the references)</strong>, alongside the LLM-friendly text.&quot;</em></p></blockquote>
+<p><strong>And publishing the working, not just the output:</strong></p>
+<blockquote><p>publish <em>&quot;not just the article text but the full body of evidence, the semantic graph, the source materials, the multilingual versions, the agentic workflow provenance, and <strong>every prompt and decision that went into the finished piece</strong>.&quot;</em></p></blockquote>
+<p>That last one is a genuinely radical openness claim and it is barely stated anywhere public. It belongs on the front page of this site.</p>
+<hr>
+<h2 id="6-read-keys-write-keys-and-openness-applied-to-itself">6. Read keys, write keys, and openness applied to itself</h2>
+<blockquote><p><em>&quot;<strong>A public vault&#x27;s read key is published by definition</strong>, so cataloguing read keys adds convenience and no exposure.&quot;</em></p></blockquote>
+<p>versus the hard rule — a central list of write keys <em>&quot;would be a single artefact whose compromise hands over write access to everything, and this site already documents the time a key exposure happened to it.&quot;</em></p>
+<p>And the irreversibility, which is the interesting part for an open-source site:</p>
+<blockquote><p><em>&quot;<strong>Nothing published can be corrected.</strong> If a frozen sample vault turns out to contain something it should not, there is no edit available.&quot;</em> → <em>&quot;<strong>escrow the write key before publishing, not after.</strong>&quot;</em></p></blockquote>
+<p>The self-applied version, listed by the corpus as an honest tension: <em>&quot;Publishing security reviews | It is unusually transparent and <strong>it publishes your own weaknesses to an audience that includes people looking for them</strong>.&quot;</em></p>
+<p><strong>Use that as the page&#x27;s closing argument.</strong> It is openness costing something real, disclosed rather than glossed — which is exactly the standard the site holds others to in <code>04__</code>.</p>
+<hr>
+<h2 id="7-licence-compliance-in-practice-one-artefact-and-it-is-honest-about-being-manua">7. Licence compliance in practice — one artefact, and it is honest about being manual</h2>
+<p>The only worked compliance document in the corpus (25 Feb 2026, 761 words): one line, <code>fastapi-mcp = &quot;*&quot;</code>, pulled in <strong>17 transitive dependencies</strong>. The review tabulates each with its SPDX identifier against the project&#x27;s Apache-2.0 licence and concludes: <strong><em>&quot;License verdict: No compliance issues. All MIT, BSD-3-Clause, or Apache-2.0.&quot;</em></strong> It also flags a non-licence concern — Pydantic entering the tree against an architectural rule.</p>
+<p><strong>That is one manual review, once, eighteen months ago.</strong> There is no SBOM of the estate, no automated licence scanning, no policy document, and no upstream-contribution record. The corpus argues that companies should <em>&quot;declare your supply chain&quot;</em> and there is no evidence of doing so.</p>
+<p><strong>Two honest options for the page.</strong> Publish the gap as a stated intention with a date — which is consistent with the house style and costs nothing. Or close it before launch: an SBOM of the estate plus a CI licence check is a day&#x27;s work, and it would make <code>04__</code>&#x27;s organic-food argument something demonstrated rather than proposed. <strong>The second is much stronger.</strong></p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>open-source.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://open-source.sgit.ai/briefs/02__practice.md">https://open-source.sgit.ai/briefs/02__practice.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:59Z</dd><dt>sha256</dt><dd><code title="c01512e141218d6ee3fbd8409a5dd3df002332ab56bd764a31ce702f90630beb">c01512e14121</code></dd><dt>Frozen copy</dt><dd><a href="02__practice.md">sites/open-source.sgit.ai/briefs/02__practice.md</a> (10,420 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

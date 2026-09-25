@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#the-argument-in-one-paragraph">The argument, in one paragraph</a></li><li class="l2"><a href="#the-family">The family</a></li><li class="l2"><a href="#the-two-axes">The two axes</a></li><li class="l2"><a href="#what-makes-this-different-from-a-review-site">What makes this different from a review site</a></li><li class="l2"><a href="#the-one-measurement-worth-reading-first">The one measurement worth reading first</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://providers.sgit.ai/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Where the key goes — provider reports for people who have to deploy one
+description: &quot;The hub of the *.providers.sgit.ai family: four credential patterns, one page contract, and one site per provider reporting what it cost on a named workload, what broke, and where the key has to live.&quot;
+lead: &quot;One question decides most integrations and almost nobody writes it down: <strong>where does the credential live, and what bounds it.</strong> This is the hub for a family of sites that answer it one provider at a time — with dates, costs and failures attached.&quot;
+order: 1
+toc: true
+provenance:
+commit: 7d1916aca5f3
+date: 8 September 2026
+note: &quot;The four patterns come from the source vault; everything about a provider comes from that provider&#x27;s own site.&quot;
+</p>
+<hr>
+<p>&lt;div class=&quot;note&quot;&gt;&lt;p&gt;&lt;b&gt;Both domains in this family now serve.&lt;/b&gt; {{claim:domains-live}} &lt;code&gt;providers.sgit.ai&lt;/code&gt; and &lt;code&gt;elevenlabs.providers.sgit.ai&lt;/code&gt; were unpointed for the whole of this site&#x27;s first release, which is why the links here are not typed but &lt;em&gt;measured&lt;/em&gt;: &lt;code&gt;bin/sync-providers.py&lt;/code&gt; fetches each site&#x27;s own published index from its canonical host, and every cross-link goes to whichever host answered. A build check fails if a link disagrees — which caught canonical links while the domains were dead, and now catches a stale project path left behind after they came up.&lt;/p&gt;&lt;/div&gt;</p>
+<h2 id="the-argument-in-one-paragraph">The argument, in one paragraph</h2>
+<p>Vendor documentation tells you what an API does. It does not tell you <strong>what it cost on a named workload on a named date</strong>, <strong>what broke</strong>, or <strong>which credential patterns the product can actually support</strong> — and the third one is the question that decides your architecture. A site in this family exists to answer those three, per provider, with every claim carrying the state that says how far it can be trusted.</p>
+<p>The strongest form of the answer is a pattern rather than a rule: <em>a browser application can use a paid API without ever holding the key, because a host holds it and enforces the terms.</em> That is <a href="patterns/index.html">pattern three</a><a class="ext live" href="https://providers.sgit.ai/patterns/" title="live page">↗</a>, it is <a href="contract/index.html">specified and not shipped</a><a class="ext live" href="https://providers.sgit.ai/contract/" title="live page">↗</a> {{claim:sg-tts-spec}}, and saying so is the point.</p>
+<h2 id="the-family">The family</h2>
+<p>{{family}}</p>
+<h2 id="the-two-axes">The two axes</h2>
+<p>Everything in this family is indexed on two questions that are usually mixed together. They are orthogonal, and the intersection is <a href="patterns/index.html">on the patterns page</a><a class="ext live" href="https://providers.sgit.ai/patterns/" title="live page">↗</a>.</p>
+<p>&lt;div class=&quot;beforeafter&quot;&gt;&lt;div class=&quot;ba now&quot;&gt;&lt;h4&gt;The credential pattern — a property of the &lt;em&gt;provider&lt;/em&gt;&lt;/h4&gt;&lt;p&gt;Where the credential lives and what bounds it: &lt;b&gt;nothing&lt;/b&gt;, &lt;b&gt;a spend limit&lt;/b&gt;, &lt;b&gt;a clock&lt;/b&gt;, or &lt;b&gt;a host the application cannot reach&lt;/b&gt;. It is decided by what the vendor&#x27;s product can mint, and no amount of care in your code changes it.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;/patterns/&quot;&gt;The four patterns &amp;rarr;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;ba then&quot;&gt;&lt;h4&gt;The capability tier — a property of &lt;em&gt;your tool&lt;/em&gt;&lt;/h4&gt;&lt;p&gt;What state it keeps: &lt;b&gt;none&lt;/b&gt;, &lt;b&gt;this device&lt;/b&gt;, or &lt;b&gt;a vault&lt;/b&gt;. It decides whether your tool works for somebody with no key, and whether it survives being downloaded and run somewhere else.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;/patterns/#the-second-axis-what-the-tool-keeps&quot;&gt;The tier axis &amp;rarr;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<h2 id="what-makes-this-different-from-a-review-site">What makes this different from a review site</h2>
+<p><strong>Nothing here is replaceable by a link to the vendor.</strong> If a section could be, it should be deleted — the vendor&#x27;s own documentation is better and stays fresher.</p>
+<p><strong>Every claim carries a state.</strong> Six of them, from <em>verified by execution on this date</em> to <em>specified and not shipped</em>, joined to the pages that make them at build time. A claim that appears on a page and not in a ledger fails the build. <a href="evidence/index.html">How that works, and the current mix across the family →</a><a class="ext live" href="https://providers.sgit.ai/evidence/" title="live page">↗</a></p>
+<p><strong>The failures are published.</strong> Including our own: the first render in this family broke four times before it made a sound, and <a class="ext" href="https://providers.sgit.ai/{{live:ElevenLabs|video/}}">one of the four was our bug rather than the vendor&#x27;s ↗</a>.</p>
+<p><strong>And there is no commercial relationship with anybody.</strong> <a href="disclosures/index.html">None</a><a class="ext live" href="https://providers.sgit.ai/disclosures/" title="live page">↗</a>, checked and dated, with the page built before there was anything to disclose so that its later appearance cannot be read as a signal.</p>
+<h2 id="the-one-measurement-worth-reading-first">The one measurement worth reading first</h2>
+<p>&lt;div class=&quot;fails&quot;&gt;&lt;div class=&quot;fail ok&quot;&gt;&lt;p class=&quot;who&quot;&gt;3 September 2026 · OpenRouter&lt;/p&gt;&lt;h3&gt;A 402 that was the point, not an outage&lt;/h3&gt;&lt;p&gt;At &lt;b&gt;$4.79 used against a $5.00 limit&lt;/b&gt; on a provisioned key, every audio request was refused: &lt;code&gt;402 — this request requires at least $0.50 in balance for audio output&lt;/code&gt;, with &lt;code&gt;limit_source: openrouter_key_limit&lt;/code&gt;. {{claim:openrouter-402}}&lt;/p&gt;&lt;p&gt;That is a bound doing its job, observed rather than described: chosen in advance, enforced by the platform rather than by our code, and visible in the refusal. &lt;b&gt;It is the only evidence in this family that any of this is enforceable in practice&lt;/b&gt; — and the reason the comparison is worth generating, because the other provider here cannot do it at all {{claim:no-per-key-spend-limit}}.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/index.md">https://providers.sgit.ai/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:01Z</dd><dt>sha256</dt><dd><code title="c79416be7286205fc7c49915f40cbe078de9a21b0cdac396887714b7c7647f01">c79416be7286</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/providers.sgit.ai/index.md</a> (5,128 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

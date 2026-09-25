@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>grant.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="grant.json">raw text</a> · <a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/data/grant.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/profile/v1&quot;,
+  &quot;id&quot;: &quot;anthropic/claude-code-remote/ccr-container&quot;,
+  &quot;vendor&quot;: &quot;Anthropic&quot;,
+  &quot;product&quot;: &quot;Claude Code on the web (a remote session container)&quot;,
+  &quot;variant&quot;: &quot;ccr-container&quot;,
+  &quot;surface&quot;: &quot;agentbox&quot;,
+  &quot;profile_version&quot;: &quot;2026-09-05.2&quot;,
+  &quot;description&quot;: &quot;A managed cloud container, ephemeral, one git repository attached, an egress proxy above it, and a set of harness tools scoped by the platform. MEASURED, by the thing being profiled: the shell probed on 5 September with probes/run.py, the fetch tool&#x27;s reach and the harness tools reported by the operator. HOST MEANS THE CONTAINER, not your machine; TENANT means the platform&#x27;s scoped tokens, not your accounts. The same environment measured on 26 August is the Grant &amp; Mandate library&#x27;s first entry, and the two agree on every row they share.&quot;,
+  &quot;reach_names&quot;: {
+    &quot;host&quot;: &quot;this container — ephemeral, the vendor&#x27;s; not your machine&quot;,
+    &quot;tenant&quot;: &quot;the attached repository and the platform&#x27;s scoped tokens; not your accounts&quot;,
+    &quot;world&quot;: &quot;the hosts the proxy allows&quot;
+  },
+  &quot;blocked&quot;: [
+    {
+      &quot;what&quot;: &quot;your machine&#x27;s files&quot;,
+      &quot;blocked_by&quot;: &quot;the container this runs in — no path from it to the operator&#x27;s computer&quot;,
+      &quot;why&quot;: &quot;the container has no path to the operator&#x27;s computer; the assess tree records home as a boundary&quot;,
+      &quot;source&quot;: &quot;assess/library.json (agentbox: home)&quot;
+    },
+    {
+      &quot;what&quot;: &quot;your credentials&quot;,
+      &quot;blocked_by&quot;: &quot;the image — no user credential is in it; the keys present are the session&#x27;s own&quot;,
+      &quot;why&quot;: &quot;no user credential is in the image; the keys present are the session&#x27;s own&quot;,
+      &quot;source&quot;: &quot;evidence: filesystem.credential-presence, 5 Sep&quot;
+    },
+    {
+      &quot;what&quot;: &quot;hosts the proxy refuses&quot;,
+      &quot;blocked_by&quot;: &quot;the egress proxy, set above the process: a 403 on the CONNECT&quot;,
+      &quot;why&quot;: &quot;a 403 on the CONNECT, set above the process&quot;,
+      &quot;source&quot;: &quot;evidence: network.egress-shell&quot;
+    },
+    {
+      &quot;what&quot;: &quot;repositories outside the platform&#x27;s scope&quot;,
+      &quot;blocked_by&quot;: &quot;the platform, which scopes the token and refuses an out-of-scope call from its own API tool&quot;,
+      &quot;why&quot;: &quot;the token is scoped by the platform; the API tool refuses out-of-scope calls&quot;,
+      &quot;source&quot;: &quot;harness.platform-tools, self-reported&quot;
+    }
+  ],
+  &quot;tools&quot;: [
+    &quot;shell (Bash)&quot;,
+    &quot;fetch (WebFetch)&quot;,
+    &quot;harness (MCP and built-in tools)&quot;
+  ],
+  &quot;grant&quot;: [
+    {
+      &quot;capability&quot;: &quot;authenticate-as.credential.signing&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;commits are signed with the session&#x27;s own key, registered as an agent identity in this site&#x27;s registry (sha256-f9facb4c94da6c19) — not with yours&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;delete.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;anything in the container, including the clone; irreversible for the container, and the container is disposable&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.credential.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;the credential-shaped paths present are the SESSION&#x27;S OWN: its commit-signing key and its vault keystore. No user credential is in the container; presence cannot tell whose a key is, so this is the operator&#x27;s account&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;any file in the container — the attached clone, the harness&#x27;s state, the system. Not your machine&#x27;s files (the assess tree&#x27;s &#x27;home: boundary&#x27;)&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.record.history&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;the harness&#x27;s project directory holds this session&#x27;s own earlier tool outputs; no user shell history exists here&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;authenticate-as.credential.tenant&quot;,
+      &quot;barrier&quot;: &quot;boundary&quot;,
+      &quot;evidence&quot;: &quot;inferred&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;,
+        &quot;harness (MCP and built-in tools)&quot;
+      ],
+      &quot;control&quot;: &quot;the token&#x27;s scope, set by the platform (in-scope repositories only)&quot;,
+      &quot;note&quot;: &quot;five key-shaped variables and a code-host token — the platform&#x27;s, scoped to in-scope repositories; it acts as the platform&#x27;s app, never as you&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: true
+    },
+    {
+      &quot;capability&quot;: &quot;send.endpoint.allowed&quot;,
+      &quot;barrier&quot;: &quot;boundary&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;,
+        &quot;fetch (WebFetch)&quot;,
+        &quot;harness (MCP and built-in tools)&quot;
+      ],
+      &quot;control&quot;: &quot;a mandatory egress proxy configured above this process — hosts it refuses are refused with a 403 on the CONNECT; the six hosts probed on 5 September all answered&quot;,
+      &quot;note&quot;: &quot;six of six probed hosts answered through the proxy; a sibling container measured on 4 September had three refused: same product, two policies&quot;,
+      &quot;undo&quot;: &quot;no&quot;,
+      &quot;is_bounded&quot;: true
+    },
+    {
+      &quot;capability&quot;: &quot;execute.process.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;root inside the container: every process and file IN THE CONTAINER. The container is the host; your machine is not reachable&quot;,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.file.host&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;a zero-byte file was created and removed in /etc: system configuration of the container is writable&quot;,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.file.project&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;the attached working tree is writable&quot;,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.repository.project&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;a repository is attached and writable&quot;,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;write.repository.tenant&quot;,
+      &quot;barrier&quot;: &quot;setting&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;,
+        &quot;harness (MCP and built-in tools)&quot;
+      ],
+      &quot;control&quot;: &quot;pre-commit and pre-push hooks in the clone (the mandate hook and the insurance policy) — refuse by exit code, --no-verify passes; no branch rule at the host&quot;,
+      &quot;note&quot;: &quot;the attached repository only (any branch it can reach); branch discipline is the clone&#x27;s hooks, a setting; no rule at the host&quot;,
+      &quot;undo&quot;: &quot;with-effort&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;read.file.project&quot;,
+      &quot;barrier&quot;: &quot;none&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;,
+        &quot;harness (MCP and built-in tools)&quot;
+      ],
+      &quot;control&quot;: null,
+      &quot;note&quot;: &quot;the attached working tree is readable&quot;,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.tenant&quot;,
+      &quot;barrier&quot;: &quot;setting&quot;,
+      &quot;evidence&quot;: &quot;self-reported&quot;,
+      &quot;via&quot;: [
+        &quot;harness (MCP and built-in tools)&quot;
+      ],
+      &quot;control&quot;: &quot;the platform&#x27;s routines are the operator&#x27;s to list and delete&quot;,
+      &quot;note&quot;: &quot;a routine or a scheduled trigger resumes this session or spawns another later: it outlives the container&quot;,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: false
+    },
+    {
+      &quot;capability&quot;: &quot;create.schedule.host&quot;,
+      &quot;barrier&quot;: &quot;boundary&quot;,
+      &quot;evidence&quot;: &quot;observed&quot;,
+      &quot;via&quot;: [
+        &quot;shell (Bash)&quot;
+      ],
+      &quot;control&quot;: &quot;the container is ephemeral: whatever is scheduled here dies with it&quot;,
+      &quot;note&quot;: &quot;systemctl and /etc/cron.d exist, so a cron can be written — and dies with the container; the real scheduler is the platform&#x27;s routines, on the harness row&quot;,
+      &quot;undo&quot;: &quot;yes&quot;,
+      &quot;is_bounded&quot;: true
+    }
+  ],
+  &quot;grant_size&quot;: 15,
+  &quot;irreversible&quot;: [
+    &quot;authenticate-as.credential.signing&quot;,
+    &quot;delete.file.host&quot;,
+    &quot;read.credential.host&quot;,
+    &quot;read.file.host&quot;,
+    &quot;read.record.history&quot;,
+    &quot;authenticate-as.credential.tenant&quot;,
+    &quot;send.endpoint.allowed&quot;
+  ],
+  &quot;unbounded&quot;: [
+    &quot;authenticate-as.credential.signing&quot;,
+    &quot;delete.file.host&quot;,
+    &quot;read.credential.host&quot;,
+    &quot;read.file.host&quot;,
+    &quot;read.record.history&quot;,
+    &quot;execute.process.host&quot;,
+    &quot;write.file.host&quot;,
+    &quot;write.file.project&quot;,
+    &quot;write.repository.project&quot;,
+    &quot;write.repository.tenant&quot;,
+    &quot;read.file.project&quot;,
+    &quot;create.schedule.tenant&quot;
+  ],
+  &quot;widest_reach&quot;: &quot;tenant&quot;,
+  &quot;rows&quot;: {
+    &quot;total&quot;: 20,
+    &quot;measured&quot;: 13,
+    &quot;derived&quot;: 7
+  },
+  &quot;sources&quot;: [
+    &quot;evidence/anthropic__claude-code-remote__ccr-container__shell__2026-09-05.json&quot;,
+    &quot;evidence/anthropic__claude-code-remote__ccr-container__fetch__2026-09-05.json&quot;,
+    &quot;evidence/anthropic__claude-code-remote__ccr-container__harness__2026-09-05.json&quot;,
+    &quot;packs/grant-and-mandate/library/claude-code-remote__ccr-container__2026-08-26.json (the same environment, 26 August)&quot;
+  ],
+  &quot;not_an_assessment&quot;: &quot;This describes a published deployment shape. It is not an assessment, an audit, a certification or a security review of any named product, and it carries no adjective and no score.&quot;,
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;Promoted from profiles/anthropic/claude-code-remote/ccr-container.json. The grant is the union of its tool rows; where two tools reach the same capability the WEAKEST barrier is kept, because the agent takes the easier path.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/vaults/claude-code-web/data/grant.json">https://riskmandate.ai/vaults/claude-code-web/data/grant.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:06Z</dd><dt>sha256</dt><dd><code title="6f24509c61e6895e5af3bdb67acecffdb45a4280530751c432783dbd8b328b64">6f24509c61e6</code></dd><dt>Frozen copy</dt><dd><a href="grant.json">sites/riskmandate.ai/vaults/claude-code-web/data/grant.json</a> (10,601 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

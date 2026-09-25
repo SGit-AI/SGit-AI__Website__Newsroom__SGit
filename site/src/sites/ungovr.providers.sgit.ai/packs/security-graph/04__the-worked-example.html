@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>04 — The Worked Example · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · ungovr.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#04-the-worked-example">04 — The Worked Example</a></li><li class="l2"><a href="#this-is-the-deliverable">This is the deliverable</a></li><li class="l2"><a href="#the-path">The path</a></li><li class="l2"><a href="#why-this-pair-specifically">Why this pair, specifically</a></li><li class="l2"><a href="#the-seven-steps">The seven steps</a></li><li class="l2"><a href="#the-asymmetry-that-makes-the-point">The asymmetry that makes the point</a></li><li class="l2"><a href="#acceptance-and-the-thing-it-must-not-do">Acceptance, and the thing it must not do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/ungovr.providers.sgit.ai.html">ungovr.providers.sgit.ai</a> · <a href="04__the-worked-example.md">raw text</a> · <a class="ext" href="https://ungovr.providers.sgit.ai/packs/security-graph/04__the-worked-example.md">live ↗</a></p><article class="source"><h1 id="04-the-worked-example">04 — The Worked Example</h1>
+<p><strong>version</strong> v0.1 · 9 September 2026 · <strong>status: specified, not built</strong></p>
+<p><a href="03__the-standards-map.html">← 03 The standards map</a><a class="ext live" href="https://ungovr.providers.sgit.ai/packs/security-graph/03__the-standards-map.md" title="live page">↗</a> · Next → <a href="05__integration.html">05 Integration</a><a class="ext live" href="https://ungovr.providers.sgit.ai/packs/security-graph/05__integration.md" title="live page">↗</a></p>
+<hr>
+<h2 id="this-is-the-deliverable">This is the deliverable</h2>
+<p>**One control. One body. One jurisdiction. End to end, with every node carrying either a hash or
+an honest note saying it is ours.**</p>
+<p>Not a survey of standards. Not a crosswalk matrix. **One path that reads as a sentence and can be
+checked byte for byte at every hop.**</p>
+<h2 id="the-path">The path</h2>
+<pre><code>  ung:us/ca/santa-barbara          ENTITY        UnGovr, sha256, CC BY 4.0
+        |
+        | governed_by                            &lt;- INFERRED. UnGovr do not draw this
+        v
+  ung:jurisdiction/us-ca           JURISDICTION  UnGovr, sha256
+        |
+        | governs -&gt; instrument
+        v
+  akn:cpra                         INSTRUMENT    Cal. Gov. Code 7920-7931
+        |
+        | has_provision
+        v
+  akn:cpra#7922.535(a)             PROVISION     cited in prose, NOT addressable  &lt;- the gap
+        |
+        | creates_obligation
+        v
+  sg:obl/determine-and-notify-10d  OBLIGATION    ours. 10 calendar days, +14
+        ^
+        | addresses                              &lt;- INFERRED. AIUC-1 do not draw this
+        |
+  std:aiuc-1/A001                  CONTROL       AIUC-1, sha256, forked byte for byte
+        |
+        | has_requirement
+        v
+  std:aiuc-1/A001-R1               REQUIREMENT   AIUC-1
+        |
+        | attested_by                            &lt;- the conformance layer&#x27;s edge
+        v
+  sg:attestation/none              (absent)      unevidenced. THE DEFAULT
+        |
+        | accepted_by
+        v
+  sg:acceptance/unassigned         ACCEPTANCE    no owner. Ships open</code></pre>
+<p><strong>Two edges are inferred and both are marked.</strong> <code>governed_by</code>, because UnGovr publish entities and
+laws and do not join them. <code>addresses</code>, because AIUC-1 publish controls and crosswalks to other
+standards and do not map to statutory obligations. **Neither body made the claim we are making,
+and drawing either solid would be a lie about the source.**</p>
+<h2 id="why-this-pair-specifically">Why this pair, specifically</h2>
+<p><strong>Because the two ends are as unlike each other as the graph will ever have to handle.</strong></p>
+<p>One end is a <strong>statutory</strong> obligation: a legislature wrote it, the deadline is in calendar days,
+and nobody negotiates it. The other is a <strong>standard&#x27;s</strong> control: a private body wrote it, its
+requirements carry tiers, and conformance is attested rather than adjudicated.</p>
+<p>If the model survives that pair it survives ISO-to-NIST, which is two control sets of the same
+kind. <strong>Prove the hard join first.</strong></p>
+<h2 id="the-seven-steps">The seven steps</h2>
+<div class="table"><table><thead><tr><th>#</th><th>Step</th><th>Cost</th><th>Where the bytes come from</th></tr></thead><tbody><tr><td>1</td><td>Transcribe the entity</td><td><strong>done</strong> in this vault</td><td><code>/v1/entities/detail/us--ca--santa-barbara.json</code>, sha256 <code>8d5e6db9…</code></td></tr>
+<tr><td>2</td><td>Transcribe the jurisdiction and instrument</td><td><strong>done</strong></td><td><code>/v1/laws/records/us--ca.json</code>, sha256 <code>ce8bc474…</code></td></tr>
+<tr><td>3</td><td>Draw <code>governed_by</code>, marked inferred, with its measured reach</td><td><strong>done</strong> — 96.6%, of which 20.5% need a human</td><td><code>bin/inferred-join.py</code></td></tr>
+<tr><td>4</td><td>Mint the provision node</td><td><strong>done, and it is the finding</strong></td><td>The clause is prose in <code>response_deadline_notes</code>. <strong>No addressable id exists to point at</strong></td></tr>
+<tr><td>5</td><td>Fork AIUC-1&#x27;s control byte for byte</td><td><strong>not started</strong></td><td>Vault <code>2wzct4k7</code>, published read key</td></tr>
+<tr><td>6</td><td>Draw <code>addresses</code>, marked inferred</td><td><strong>not started</strong></td><td>One edge, drawn by hand, once</td></tr>
+<tr><td>7</td><td>Leave <code>attested_by</code> absent and the acceptance unowned</td><td><strong>done</strong></td><td>Both are the default and both stay</td></tr></tbody></table></div>
+<p><strong>Five of seven already exist in this vault.</strong> The pack is mostly a specification for steps 5 and
+6, which is deliberate: the expensive parts are done and the remaining work is one fork and one
+edge.</p>
+<h2 id="the-asymmetry-that-makes-the-point">The asymmetry that makes the point</h2>
+<p>Compare the two instrument layers at step 4:</p>
+<div class="table"><table><thead><tr><th></th><th>CPRA (UnGovr)</th><th>EU AI Act (RiskMandate)</th></tr></thead><tbody><tr><td>Provision addressable?</td><td><strong>No.</strong> <code>§ 7922.535(a)</code> is prose inside a notes field</td><td><strong>Yes.</strong> Per-provision id</td></tr>
+<tr><td>Provision hashed?</td><td>No</td><td><strong>Yes</strong>, sha256 per provision, rolling to a root hash</td></tr>
+<tr><td>Machine-readable source?</td><td><strong>No.</strong> JSF-rendered HTML both URLs</td><td><strong>Yes.</strong> <code>.llm.json</code>, JSON-LD, Turtle</td></tr>
+<tr><td>Can you cite the clause?</td><td><strong>No</strong></td><td><strong>Yes</strong></td></tr></tbody></table></div>
+<p>**Same layer of the same graph, two sources, and one of them can carry evidence and the other
+cannot.** That contrast is the strongest argument in this pack for what an instrument layer needs
+to look like — and it costs nothing to make, because both artefacts already exist.</p>
+<p><strong>It is also the fair reading of UnGovr&#x27;s position.</strong> They built a records-law corpus for people
+filing records requests, and for that purpose a citation in prose is entirely adequate. The
+addressable-provision requirement comes from <em>our</em> use, not from a defect in theirs.</p>
+<h2 id="acceptance-and-the-thing-it-must-not-do">Acceptance, and the thing it must not do</h2>
+<p>The path ends on <code>sg:acceptance/unassigned</code> — **no named owner, no review interval, no revocation
+path** — and it stays that way.</p>
+<p>An acceptance is the only node in this graph that a human must sign. **Generating one because the
+schema has a slot for it would make every downstream number meaningless**, and it is precisely
+what the AIUC-1 layer means by <em>&quot;unevidenced is a state, and it is the default.&quot;</em></p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>ungovr.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://ungovr.providers.sgit.ai/packs/security-graph/04__the-worked-example.md">https://ungovr.providers.sgit.ai/packs/security-graph/04__the-worked-example.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:57:32Z</dd><dt>sha256</dt><dd><code title="05e09591dd05080f4156b62766e5b61319143e703d8fb3f477787f9d808d6a9b">05e09591dd05</code></dd><dt>Frozen copy</dt><dd><a href="04__the-worked-example.md">sites/ungovr.providers.sgit.ai/packs/security-graph/04__the-worked-example.md</a> (5,378 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

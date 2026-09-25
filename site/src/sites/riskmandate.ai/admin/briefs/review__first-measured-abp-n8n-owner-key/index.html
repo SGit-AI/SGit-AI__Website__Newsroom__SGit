@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The first measured behaviour policy: an owner API key on a self-hosted n8n, read against the model · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-first-measured-behaviour-policy-an-owner-api-key-on-a-self-hosted-n8n-read-a">The first measured behaviour policy: an owner API key on a self-hosted n8n, read against the model</a></li><li class="l2"><a href="#1-what-it-is">1. What it is</a></li><li class="l2"><a href="#2-what-it-found-in-the-models-terms">2. What it found, in the model&amp;#x27;s terms</a></li><li class="l2"><a href="#3-where-the-write-up-and-the-model-disagree-and-who-is-right">3. Where the write-up and the model disagree, and who is right</a></li><li class="l2"><a href="#4-what-it-gives-us">4. What it gives us</a></li><li class="l2"><a href="#5-what-it-does-not-settle">5. What it does not settle</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.html">live ↗</a></p><article class="source"><h1 id="the-first-measured-behaviour-policy-an-owner-api-key-on-a-self-hosted-n8n-read-a">The first measured behaviour policy: an owner API key on a self-hosted n8n, read against the model</h1>
+<blockquote><p>Rendered from docs/briefs/review__first-measured-abp-n8n-owner-key.md in the repository. The text below is that file.
+Source: <a href="index.html">https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/</a><a class="ext live" href="https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/" title="live page">↗</a> · noindex · written by scripts/site/build-admin.mjs</p></blockquote>
+<p><strong>Date:</strong> 2026-09-15 · <strong>Author:</strong> @website-agent
+<strong>Trigger:</strong> project lead&#x27;s note of 15 September — <em>&quot;look at this ABP (previous version) review of n8n … done by one of our early beta users that gave our policy to one of its agents that was connected to n8n&quot;</em>
+<strong>Reads against:</strong> the five-page write-up dated 13 September 2026 (held by RiskMandate, not published); abp.sgit.ai v0.3.0; the fourteen vaults on the site</p>
+<hr>
+<h2 id="1-what-it-is">1. What it is</h2>
+<p>An agent holding an owner-scoped API key on a self-hosted workflow-automation platform was given
+the earlier, prose version of the policy and asked to find the edges of what the key could do. It
+did it the right way: built and ran one real AI-agent workflow against a real model credential,
+created and deleted one obviously named test workflow to measure create-change-delete and
+activation, probed the rest, moved no secret, and wrote down what it did not test. Five pages,
+dated, with a mandate elicited from the deployer in the deployer&#x27;s words.</p>
+<p>**It is the first grant this site holds that was measured on a live instance rather than read
+from a page.<em>* Every connector vault published today stands at *documented</em>; this one stands at
+<em>measured</em> on seven of eight rows. It is now the vault <code>n8n-owner-api-key</code>, translated row for
+row into the v0.3.0 vocabulary, published as the template for that shape rather than as that
+deployment, and without the write-up itself or its author&#x27;s name — both are the project lead&#x27;s
+to publish, not this site&#x27;s.</p>
+<h2 id="2-what-it-found-in-the-models-terms">2. What it found, in the model&#x27;s terms</h2>
+<div class="table"><table><thead><tr><th>Found</th><th>Row</th><th>Barrier</th></tr></thead><tbody><tr><td>full create-change-delete over workflows</td><td><code>write.file.project</code></td><td>none</td></tr>
+<tr><td>activate a workflow; refused only when it has no trigger (a check on shape, not on risk)</td><td><code>create.schedule.tenant</code></td><td>none</td></tr>
+<tr><td>an outbound node accepted with no restriction on target host; execution against a non-public target not tested</td><td><code>send.endpoint.world</code></td><td>none</td></tr>
+<tr><td>credential metadata readable through the MCP interface, blocked on the REST path — by the <em>measuring</em> environment&#x27;s gateway, not the platform</td><td><code>read.credential.host</code></td><td>none</td></tr>
+<tr><td>owner level, on the account&#x27;s project; the key held for the session only</td><td><code>authenticate-as.credential.tenant</code></td><td>none</td></tr>
+<tr><td>a real model call through the workflow, against the deployer&#x27;s credential</td><td><code>write.budget.tenant</code></td><td>none</td></tr>
+<tr><td>execution records</td><td><code>read.record.history</code></td><td>none</td></tr>
+<tr><td>a Code node would run on the platform&#x27;s server — not tested</td><td><code>execute.process.host</code></td><td>none, <em>derived</em></td></tr>
+<tr><td>every account on the instance visible; instance health</td><td><em>not in the grammar</em></td><td>—</td></tr></tbody></table></div>
+<p>Mandate: a sandbox, one AI-agent workflow, nothing else. Delta: four excess rows, all four
+unbounded. The write-up&#x27;s own summary — *&quot;almost the whole grant is currently unused, authorised
+capability&quot;* — survives translation exactly.</p>
+<h2 id="3-where-the-write-up-and-the-model-disagree-and-who-is-right">3. Where the write-up and the model disagree, and who is right</h2>
+<p><strong>The API key as a barrier.</strong> The write-up classes the key as a <em>setting</em> barrier: *&quot;the API key
+itself is the technical gate: broad, but a real gate, not a prose rule.&quot;* The vocabulary&#x27;s
+enforcer test says a control bounds a grant only if it is enforced by something the grant does
+not include. The key <em>is</em> the grant. So in the vault every row the key permits stands at <em>none</em>,
+and the disagreement is recorded in the vault&#x27;s contradictions table, unresolved, because the
+write-up is making a real point: a gate that is broad but real is different from a rule in prose,
+and the four barriers do not have a word for that difference. That is feedback for the model
+site, not something to paper over.</p>
+<p><strong>Barrier class is not a property of a capability.</strong> The write-up&#x27;s sharpest finding: *&quot;the same
+operation (read credential metadata) was setting-barred through one access path and unbarred
+through another, on the same account, in the same session.&quot;* The vault records it as one row with
+two <code>via</code> entries and two outcomes, and <code>MAP-A-GRANT.md</code> now carries it as rule 4: *note the
+door*. The model&#x27;s grammar assumes one barrier per row. It should probably be one per path.</p>
+<p><strong>&quot;Access denied&quot; is a symptom.</strong> Several exchanges chased a permissions hypothesis for what was
+an ambiguous-name bug — two credentials of the same type, the platform resolving the name to the
+wrong one silently. Rule 5 in the prompt.</p>
+<p><strong>The measuring tool has its own grant.</strong> The credential path was blocked by the investigator&#x27;s
+own egress gateway, not the platform, and the write-up said so rather than recording a barrier
+that was not there. Most measured policies will be run through a tool with limits of its own; the
+evidence file has to say which side each limit is on.</p>
+<h2 id="4-what-it-gives-us">4. What it gives us</h2>
+<ul><li><strong>A shape the summit audience recognises immediately</strong> — an automation platform with an owner
+key is the deployment most companies actually have — with a measured grant, which none of the
+documented ones can claim.</li><li><strong>The prompt.</strong> <code>MAP-A-GRANT.md</code> now travels in every vault: give it to an agent that holds a
+credential and it measures its own grant, drafts the mandate from the deployer&#x27;s words, and
+leaves the deployment as it found it. The rules in it are the ones this write-up followed and
+the ones it wished it had.</li><li><strong>Two asks for the model site</strong>, to add to Lab 03: a barrier per path rather than per row, and a
+word for a gate that is real but broad.</li></ul>
+<h2 id="5-what-it-does-not-settle">5. What it does not settle</h2>
+<p>Three open questions carried in the vault&#x27;s <code>RESEARCH-NEEDED.md</code>: what the platform&#x27;s own server
+can reach on the network (an outbound node was accepted, none executed against a non-public
+target); whether a Code node runs arbitrary code on the server and as whom; and whether the owner
+key can create, change, delete or export credentials — the write-up stopped at metadata on
+purpose. And one decision that is the deployer&#x27;s: whether the gateway rule that blocks paths
+naming <em>credentials</em> should be extended to MCP-tunnelled requests, now that the bypass is
+confirmed.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.html">https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.md</dd><dt>Fetched</dt><dd>2026-09-25T07:56:53Z</dd><dt>sha256</dt><dd><code title="077087dbe2a3cd4330ba94d47b333d2544618e0875dcaf7969e15cf9c8262604">077087dbe2a3</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/riskmandate.ai/admin/briefs/review__first-measured-abp-n8n-owner-key/index.md</a> (6,334 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

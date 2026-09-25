@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>edges.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="edges.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/graph/edges.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/edge-vocabulary/v1&quot;,
+  &quot;_what_this_is&quot;: &quot;Every edge this model is written in. Each is a verb with a DISTINCT, meaningfully named inverse, a stated domain and range, and the sentence it reads as. The inverse is not the same edge walked backwards: it has different fan out, and that asymmetry is what stops the graph exploding.&quot;,
+  &quot;the_banned_edge&quot;: &quot;There is no generic association edge in this model and there will not be one. It constrains nothing and costs fan out.&quot;,
+  &quot;extending_it&quot;: &quot;A new edge needs a sentence, its inverse needs a DIFFERENT sentence, and both need a stated domain and range.&quot;,
+  &quot;source&quot;: &quot;https://graphs.sgit.ai/v1/grammar/edge-set.html&quot;,
+  &quot;count&quot;: 22,
+  &quot;universes&quot;: &quot;Each edge names the universe of its domain and of its range, and `crosses` is true when they differ: a junction edge, the property that turns a set of graphs into a fractal rather than a pile. Computed from the node types, never declared. See universes/index.json.&quot;,
+  &quot;edges&quot;: [
+    {
+      &quot;edge&quot;: &quot;grants&quot;,
+      &quot;inverse&quot;: &quot;granted_by&quot;,
+      &quot;domain&quot;: &quot;DeploymentShape&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this deployment shape grants this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is granted by this deployment shape&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai edge set&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;reaches&quot;,
+      &quot;inverse&quot;: &quot;reachable_from&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;ReachClass&quot;,
+      &quot;reads_as&quot;: &quot;this capability reaches this reach class&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this reach class is reachable from this capability&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai edge set&quot;,
+      &quot;domain_universe&quot;: &quot;u1&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;similar_to&quot;,
+      &quot;inverse&quot;: &quot;similar_to&quot;,
+      &quot;domain&quot;: &quot;Node&quot;,
+      &quot;range&quot;: &quot;Node&quot;,
+      &quot;reads_as&quot;: &quot;our node is similar to their node&quot;,
+      &quot;inverse_reads_as&quot;: &quot;symmetric, and partial on purpose&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai anchor nodes&quot;,
+      &quot;domain_universe&quot;: &quot;any&quot;,
+      &quot;range_universe&quot;: &quot;any&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;supersedes&quot;,
+      &quot;inverse&quot;: &quot;superseded_by&quot;,
+      &quot;domain&quot;: &quot;Node&quot;,
+      &quot;range&quot;: &quot;Node&quot;,
+      &quot;reads_as&quot;: &quot;this claim supersedes that one&quot;,
+      &quot;inverse_reads_as&quot;: &quot;that claim is superseded by this one&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai, supersede never delete&quot;,
+      &quot;domain_universe&quot;: &quot;any&quot;,
+      &quot;range_universe&quot;: &quot;any&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;has_verb&quot;,
+      &quot;inverse&quot;: &quot;verb_of&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;Verb&quot;,
+      &quot;reads_as&quot;: &quot;this capability has the verb read&quot;,
+      &quot;inverse_reads_as&quot;: &quot;read is the verb of these capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u1&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;acts_on&quot;,
+      &quot;inverse&quot;: &quot;acted_on_by&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;ObjectClass&quot;,
+      &quot;reads_as&quot;: &quot;this capability acts on files&quot;,
+      &quot;inverse_reads_as&quot;: &quot;files are acted on by these capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u1&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;in_family&quot;,
+      &quot;inverse&quot;: &quot;family_of&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;Family&quot;,
+      &quot;reads_as&quot;: &quot;this capability is in the filesystem family&quot;,
+      &quot;inverse_reads_as&quot;: &quot;the filesystem family is the family of these capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u1&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;has_undo_class&quot;,
+      &quot;inverse&quot;: &quot;undo_class_of&quot;,
+      &quot;domain&quot;: &quot;Capability&quot;,
+      &quot;range&quot;: &quot;UndoClass&quot;,
+      &quot;reads_as&quot;: &quot;this capability has the undo class no&quot;,
+      &quot;inverse_reads_as&quot;: &quot;undo class no is the undo class of these capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u1&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;bounded_by&quot;,
+      &quot;inverse&quot;: &quot;bounds&quot;,
+      &quot;domain&quot;: &quot;GrantedCapability&quot;,
+      &quot;range&quot;: &quot;Barrier&quot;,
+      &quot;reads_as&quot;: &quot;this granted capability is bounded by this barrier&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this barrier bounds these granted capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u3&quot;,
+      &quot;range_universe&quot;: &quot;u4&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;enforced_by&quot;,
+      &quot;inverse&quot;: &quot;enforces&quot;,
+      &quot;domain&quot;: &quot;Barrier&quot;,
+      &quot;range&quot;: &quot;Enforcer&quot;,
+      &quot;reads_as&quot;: &quot;this barrier is enforced by something above the grant&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this enforcer enforces these barriers&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u4&quot;,
+      &quot;range_universe&quot;: &quot;u4&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;authorises&quot;,
+      &quot;inverse&quot;: &quot;authorised_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate authorises this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is authorised by this mandate&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u5&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;withholds&quot;,
+      &quot;inverse&quot;: &quot;withheld_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate withholds this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is withheld by this mandate&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u5&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;exceeds&quot;,
+      &quot;inverse&quot;: &quot;exceeded_by&quot;,
+      &quot;domain&quot;: &quot;GrantedCapability&quot;,
+      &quot;range&quot;: &quot;Mandate&quot;,
+      &quot;reads_as&quot;: &quot;this granted capability exceeds this mandate&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this mandate is exceeded by these granted capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u3&quot;,
+      &quot;range_universe&quot;: &quot;u5&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;falls_short_of&quot;,
+      &quot;inverse&quot;: &quot;unmet_by&quot;,
+      &quot;domain&quot;: &quot;Mandate&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this mandate falls short of this capability it asked for&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is unmet by this deployment shape&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u5&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;known_by&quot;,
+      &quot;inverse&quot;: &quot;evidences&quot;,
+      &quot;domain&quot;: &quot;GrantedCapability&quot;,
+      &quot;range&quot;: &quot;EvidenceTier&quot;,
+      &quot;reads_as&quot;: &quot;this granted capability is known by observation&quot;,
+      &quot;inverse_reads_as&quot;: &quot;observation evidences these granted capabilities&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u3&quot;,
+      &quot;range_universe&quot;: &quot;u3&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;has_variant&quot;,
+      &quot;inverse&quot;: &quot;variant_of&quot;,
+      &quot;domain&quot;: &quot;Product&quot;,
+      &quot;range&quot;: &quot;DeploymentShape&quot;,
+      &quot;reads_as&quot;: &quot;this product has this variant&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this variant is a variant of this product&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u2&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;runs_with&quot;,
+      &quot;inverse&quot;: &quot;run_by&quot;,
+      &quot;domain&quot;: &quot;DeploymentShape&quot;,
+      &quot;range&quot;: &quot;Tool&quot;,
+      &quot;reads_as&quot;: &quot;this shape runs with this tool&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this tool is run by these shapes&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u2&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;exposes&quot;,
+      &quot;inverse&quot;: &quot;exposed_by&quot;,
+      &quot;domain&quot;: &quot;Tool&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this tool exposes this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is exposed by these tools&quot;,
+      &quot;from&quot;: &quot;graphs.sgit.ai edge set&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;moves&quot;,
+      &quot;inverse&quot;: &quot;moved_by&quot;,
+      &quot;domain&quot;: &quot;Setting&quot;,
+      &quot;range&quot;: &quot;Barrier&quot;,
+      &quot;reads_as&quot;: &quot;this setting moves a capability to this barrier&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this barrier is where these settings move a capability to&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u4&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;narrows&quot;,
+      &quot;inverse&quot;: &quot;narrowed_by&quot;,
+      &quot;domain&quot;: &quot;Setting&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this setting narrows this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is narrowed by these settings&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    },
+    {
+      &quot;edge&quot;: &quot;scoped_by&quot;,
+      &quot;inverse&quot;: &quot;scopes&quot;,
+      &quot;domain&quot;: &quot;DeploymentShape&quot;,
+      &quot;range&quot;: &quot;Scope&quot;,
+      &quot;reads_as&quot;: &quot;this shape is scoped by this vendor scope&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this scope scopes these shapes&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u2&quot;,
+      &quot;crosses&quot;: false
+    },
+    {
+      &quot;edge&quot;: &quot;permits&quot;,
+      &quot;inverse&quot;: &quot;permitted_by&quot;,
+      &quot;domain&quot;: &quot;Scope&quot;,
+      &quot;range&quot;: &quot;Capability&quot;,
+      &quot;reads_as&quot;: &quot;this scope permits this capability&quot;,
+      &quot;inverse_reads_as&quot;: &quot;this capability is permitted by these scopes&quot;,
+      &quot;from&quot;: &quot;proposed here&quot;,
+      &quot;domain_universe&quot;: &quot;u2&quot;,
+      &quot;range_universe&quot;: &quot;u1&quot;,
+      &quot;crosses&quot;: true
+    }
+  ],
+  &quot;provenance&quot;: {
+    &quot;source&quot;: &quot;https://what-can-it-do.games.sgit.ai/data/&quot;,
+    &quot;source_page&quot;: &quot;https://what-can-it-do.games.sgit.ai/map/index.html&quot;,
+    &quot;retrieved&quot;: &quot;2026-09-11T13:00:37Z&quot;,
+    &quot;pack_version&quot;: &quot;v0.8.0&quot;,
+    &quot;content_hash&quot;: &quot;sha256:d6d4ba40f1fb1f93f660687e4787ac10c2e1835efeb3929a4c8ad62cee8897ef&quot;,
+    &quot;verbatim_bytes&quot;: &quot;upstream/&quot;,
+    &quot;note&quot;: &quot;Edges marked `graphs.sgit.ai edge set` are reused under their published names. Edges marked `proposed here` are this site&#x27;s, and are marked as such rather than presented as settled.&quot;,
+    &quot;licence&quot;: &quot;CC BY 4.0&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/graph/edges.json">https://abp.sgit.ai/data/graph/edges.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:42Z</dd><dt>sha256</dt><dd><code title="46f5291aec6a20c5612969545f40f2b9f1e2c62a7f1603f9a6462fa51cdc9fa7">46f5291aec6a</code></dd><dt>Frozen copy</dt><dd><a href="edges.json">sites/abp.sgit.ai/data/graph/edges.json</a> (9,961 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

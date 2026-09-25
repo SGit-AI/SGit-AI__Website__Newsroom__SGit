@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>vocabulary.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="vocabulary.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/upstream/vocabulary.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;vocabulary/v1&quot;,
+  &quot;_what_this_is&quot;: &quot;The controlled vocabularies every profile row is written in, ordered. Both the site build (map_pages.py) and the release gate (validate.js) read this file, so a new tier is one pull request here rather than two source edits — and a row using a word that is not here fails the gate rather than shipping as a silent hole in the matrix.&quot;,
+  &quot;evidence_tiers&quot;: {
+    &quot;_order&quot;: &quot;weakest first — how the row is known&quot;,
+    &quot;derived&quot;: &quot;from what the thing architecturally is; a claim until somebody runs the probes&quot;,
+    &quot;inferred&quot;: &quot;from another row or another profile, by reasoning rather than by observation&quot;,
+    &quot;self-reported&quot;: &quot;reported by the operator, the harness or the tool itself, without an independent probe&quot;,
+    &quot;documented&quot;: &quot;the vendor, or a published tool, says so&quot;,
+    &quot;measured&quot;: &quot;a probe run on an instance, dated, with an evidence file&quot;,
+    &quot;observed&quot;: &quot;seen directly, on the thing itself, by the thing itself&quot;
+  },
+  &quot;control_tiers&quot;: {
+    &quot;_order&quot;: &quot;weakest first — what stands on the path&quot;,
+    &quot;none&quot;: &quot;nothing in the way&quot;,
+    &quot;expectation&quot;: &quot;a rule in prose, enforced by nobody&quot;,
+    &quot;setting&quot;: &quot;a switch the agent&#x27;s own account can flip&quot;,
+    &quot;boundary&quot;: &quot;enforced above the grant, out of the agent&#x27;s reach&quot;
+  },
+  &quot;reversible&quot;: {
+    &quot;yes&quot;: &quot;undone by the same actor with no loss&quot;,
+    &quot;with-effort&quot;: &quot;recoverable from a backup, a history or a revert, at a cost&quot;,
+    &quot;no&quot;: &quot;cannot be undone&quot;
+  },
+  &quot;licence&quot;: &quot;CC BY 4.0&quot;
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/upstream/vocabulary.json">https://abp.sgit.ai/data/upstream/vocabulary.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:44Z</dd><dt>sha256</dt><dd><code title="0e42d32675a3e46a4c723543dd062294b76c08273ca7f16e1958d74d2212af13">0e42d32675a3</code></dd><dt>Frozen copy</dt><dd><a href="vocabulary.json">sites/abp.sgit.ai/data/upstream/vocabulary.json</a> (1,505 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

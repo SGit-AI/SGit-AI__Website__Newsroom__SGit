@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>index.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · elevenlabs.providers.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#what-would-exist-already-if-the-verb-landed-tomorrow">What would exist already, if the verb landed tomorrow</a></li><li class="l2"><a href="#the-verb-as-specified">The verb, as specified</a></li><li class="l2"><a href="#why-this-is-the-only-pattern-where-the-bound-holds">Why this is the only pattern where the bound holds</a></li><li class="l2"><a href="#what-it-would-change-for-this-estate">What it would change for this estate</a></li><li class="l2"><a href="#what-would-have-to-ship-precisely">What would have to ship, precisely</a></li><li class="l2"><a href="#what-would-still-be-true">What would still be true</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/elevenlabs.providers.sgit.ai.html">elevenlabs.providers.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://elevenlabs.providers.sgit.ai/pattern-three/index.md">live ↗</a></p><article class="source"><hr>
+<p>title: Pattern three, for a voice API — the sg.tts specification
+description: &quot;What a browser app would look like if the vault host held the ElevenLabs key and enforced the terms: no key box, a spend cap the app cannot reach, and terms that travel with the content. Specified, not shipped.&quot;
+lead: &quot;This is the site&#x27;s argument made concrete: <strong>a browser application using a paid speech API without ever holding the key.</strong> Everything on this page is a specification. <code>sg.tts</code> does not exist; nothing here describes software you can run today.&quot;
+order: 40
+toc: true
+provenance:
+commit: 7d1916aca5f3
+date: 7 September 2026
+note: &quot;From elevenlabs/docs/10-pattern-three-sg-tts.md, which is a specification and is treated as one.&quot;
+</p>
+<hr>
+<p>&lt;div class=&quot;warnbox&quot;&gt;&lt;p&gt;&lt;b&gt;Future tense, throughout.&lt;/b&gt; {{claim:sg-tts-spec}} &lt;code&gt;sg.tts.speak()&lt;/code&gt; is a verb the SG/Vault host &lt;em&gt;would&lt;/em&gt; gain. It is not implemented, not scheduled here, and not something to plan a product around. The one piece that is real is the terms file — &lt;code&gt;.vault/elevenlabs/config.json&lt;/code&gt; — which exists in the source vault today, in the same shape and under the same seal as the host&#x27;s model-router config.&lt;/p&gt;&lt;/div&gt;</p>
+<h2 id="what-would-exist-already-if-the-verb-landed-tomorrow">What would exist already, if the verb landed tomorrow</h2>
+<p>Two of the three pieces are in place, which is the only reason this specification is worth publishing rather than filing.</p>
+<div class="table"><table><thead><tr><th>Piece</th><th>State</th><th>What it is</th></tr></thead><tbody><tr><td>The terms file</td><td>real</td><td><code>.vault/elevenlabs/config.json</code> — owner-sealed key, endpoint, defaults (model, voice, speed, output format) and <code>limits</code> (<code>maxCostPerSession</code>, <code>maxCharsPerRequest</code>, <code>maxConcurrent</code>). Sealed with AES-256-GCM under a key derived from the vault&#x27;s <strong>write</strong> key, so a read-key holder cannot open it</td></tr>
+<tr><td>The permission floor</td><td>real</td><td><code>.vault/**</code> is denied to every app frame under every grant a frame can be given. An app cannot read the terms file, let alone the key inside it</td></tr>
+<tr><td>The host verb</td><td>{{badge:spec}}</td><td><code>sg.tts.*</code>, beside the <code>sg.llm.*</code> that already does exactly this shape of thing for a model router</td></tr></tbody></table></div>
+<h2 id="the-verb-as-specified">The verb, as specified</h2>
+<pre><code class="lang-js">// app side — would require &quot;permissions&quot;: { &quot;tts&quot;: { &quot;speak&quot;: true } } in app.json;
+// denied by default, as every host capability is.
+const r = await sg.tts.speak({ text, voice?, model?, speed?, timestamps?: true });
+// → { audio: Blob, durationSecs, alignment?: { characters, character_start_times_seconds,
+//     character_end_times_seconds }, cost: { chars, usd, estimated: true } }
+
+await sg.tts.available();   // { ok, reason?: &#x27;ENOKEY&#x27; | &#x27;EPERM&#x27; | &#x27;EBUDGET&#x27; | &#x27;EREADONLY&#x27; }
+await sg.tts.voices();      // filtered by the policy&#x27;s voice allow-list
+await sg.tts.usage();       // this session&#x27;s characters and estimated cost</code></pre>
+<p>What the host would do, in order:</p>
+<ol><li><strong>Open the terms file.</strong> Owner-sealed, so only a session holding the vault&#x27;s write key can open it; a read-only opener would get <code>ENOKEY</code>, exactly as the model-router verb does today.</li><li><strong>Enforce the limits.</strong> Refuse over <code>maxCharsPerRequest</code>; keep a per-session character counter and refuse past <code>maxCostPerSession</code> at the model&#x27;s list rate; hold a semaphore at <code>maxConcurrent</code> — which is also the mitigation for <a href="../experiments/concurrency/index.html">the concurrency question</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/experiments/concurrency/" title="live page">↗</a> that is still open {{claim:concurrency-unknown}}.</li><li><strong>Ask, the first time.</strong> The first <code>speak()</code> in a session would raise the host&#x27;s own prompt — <em>&quot;this app wants to generate speech with the vault&#x27;s key — estimated $0.02&quot;</em> — outside the frame, where the app cannot suppress or fake it.</li><li><strong>Make the call at the host&#x27;s origin</strong> with the <code>xi-api-key</code> header, and strip the key from every error surfaced back to the frame.</li><li><strong>Return audio and alignment</strong>, and nothing else. The frame gets a <code>Blob</code> and an array of numbers.</li></ol>
+<h2 id="why-this-is-the-only-pattern-where-the-bound-holds">Why this is the only pattern where the bound holds</h2>
+<p>&lt;div class=&quot;beforeafter&quot;&gt;&lt;div class=&quot;ba now&quot;&gt;&lt;h4&gt;The bench today — pattern 0 with a ceiling&lt;/h4&gt;&lt;p&gt;A key box at the top of the page. Your full account key, in the page&#x27;s own JavaScript, calling the vendor directly. Bounded by the plan&#x27;s monthly quota and nothing else {{claim:no-per-key-spend-limit}}.&lt;/p&gt;&lt;p&gt;The code that spends the money &lt;b&gt;holds the credential that authorises it&lt;/b&gt;. Every safety property is a property of your restraint.&lt;/p&gt;&lt;pre class=&quot;lang-js&quot;&gt;const { items } = JSON.parse(
+localStorage.getItem(&#x27;el.keys.v1&#x27;));
+fetch(&#x27;https://api.elevenlabs.io/v1/…&#x27;, {
+headers: { &#x27;xi-api-key&#x27;: items[0].key }
+});&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;ba then&quot;&gt;&lt;h4&gt;The same page under pattern 3 — specified&lt;/h4&gt;&lt;p&gt;No key box. No key in the page, in storage, or in the network tab. The app asks; the host spends, meters and refuses.&lt;/p&gt;&lt;p&gt;The bounded thing &lt;b&gt;cannot reach the bounding thing&lt;/b&gt;: the terms live below the permission floor, in the vault, with the content they govern. {{claim:sg-tts-spec}}&lt;/p&gt;&lt;pre class=&quot;lang-js&quot;&gt;const { audio, alignment, cost } =
+await sg.tts.speak({ text, timestamps: true });
+// no key, anywhere in this frame&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p>The difference is not cosmetic. In the left-hand version, a cross-site scripting bug in the page is an account compromise. In the right-hand version, it is a request the host will meter and cap — the attacker gets speech, up to <code>maxCostPerSession</code>, and never gets the key.</p>
+<h2 id="what-it-would-change-for-this-estate">What it would change for this estate</h2>
+<ul><li>The <a href="../bench/index.html">bench</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/bench/" title="live page">↗</a> and every lab here would drop the key box, and the pattern box at the top of each would change from <em>0 with a ceiling</em> to <em>3</em>.</li><li><code>app.json</code> would no longer need <code>&quot;permissions&quot;: {&quot;network&quot;: true}</code> for these pages — which is the grant that <a href="../index.html#9-what-went-wrong">bit us on day one</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/#9-what-went-wrong" title="live page">↗</a> {{claim:csp-blocks}} and which is a real widening for any vault whose app holds private content.</li><li>ElevenLabs would move, in <a href="../comparison/index.html">the comparison</a><a class="ext live" href="https://elevenlabs.providers.sgit.ai/comparison/" title="live page">↗</a>, from <em>needs a server</em> to <em>pattern 3, no server</em> — because for a vault app <strong>the host is the server</strong> that pattern 2 keeps asking for. That is the generalisation the family of sites exists to test.</li></ul>
+<h2 id="what-would-have-to-ship-precisely">What would have to ship, precisely</h2>
+<p>So that this page is a specification with a scope rather than an aspiration. Three things, none of them in this repository:</p>
+<div class="table"><table><thead><tr><th>#</th><th>What</th><th>Where it would land</th><th>State</th></tr></thead><tbody><tr><td>1</td><td>The host verb — <code>sg.tts.speak</code>, <code>available</code>, <code>voices</code>, <code>usage</code> — beside the <code>sg.llm.*</code> that already does this shape of thing</td><td>The SG/Vault host&#x27;s bridge</td><td>{{badge:spec}}</td></tr>
+<tr><td>2</td><td>The policy read: open the owner-sealed terms file, enforce <code>maxCharsPerRequest</code>, meter <code>maxCostPerSession</code>, hold a semaphore at <code>maxConcurrent</code></td><td>The same host, reusing the model-router&#x27;s own policy path</td><td>{{badge:spec}}</td></tr>
+<tr><td>3</td><td>The consent prompt, raised <strong>outside</strong> the app frame so the app can neither suppress it nor fake it</td><td>The host&#x27;s HUD, which already does this for a model call</td><td>{{badge:spec}}</td></tr></tbody></table></div>
+<p><strong>What is already real:</strong> the terms file at <code>.vault/elevenlabs/config.json</code>, in the same shape and under the same seal as the model router&#x27;s; and the permission floor that denies <code>.vault/**</code> to every app frame under every grant. Two of three pieces, and the missing one is the verb.</p>
+<p><strong>Until all three ship, no page on this site may say pattern three works here</strong> — and the build enforces it: the gate rejects <code>sg.tts</code> written in the present tense anywhere in the built site. That check exists because this is exactly the kind of page where a specification quietly becomes a claim.</p>
+<h2 id="what-would-still-be-true">What would still be true</h2>
+<p>The host is not magic. Under pattern 3 the terms are only as good as the numbers in them, the estimate is an estimate at list price rather than an invoice, and a compromised <em>host</em> is a compromised key — the trust moves, it does not vanish. What changes is <strong>who chose the blast radius and where the choice is recorded</strong>: a number in a file that travels with the content, rather than a promise about how carefully an application will behave.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>elevenlabs.providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://elevenlabs.providers.sgit.ai/pattern-three/index.md">https://elevenlabs.providers.sgit.ai/pattern-three/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:56:51Z</dd><dt>sha256</dt><dd><code title="543e65b2775556b4f382d61905b782cf7fca8b1b8e64417719d85eb7f8d6b5e5">543e65b27755</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/elevenlabs.providers.sgit.ai/pattern-three/index.md</a> (7,976 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

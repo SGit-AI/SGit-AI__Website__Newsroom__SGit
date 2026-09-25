@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>case.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.1 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="case.json">raw text</a> · <a class="ext" href="https://abp.sgit.ai/data/cases/beta-001/case.json">live ↗</a></p><article class="source"><pre class="raw"><code>{
+  &quot;type&quot;: &quot;abp/case/v1&quot;,
+  &quot;id&quot;: &quot;beta-001&quot;,
+  &quot;label&quot;: &quot;One person, two assistants, six deployments, one shared account&quot;,
+  &quot;who&quot;: &quot;An early beta user: a business user whose day runs in a mail, calendar and files suite, with two chat assistants connected to different parts of it and a third, out of scope here, handling text messages.&quot;,
+  &quot;elicited&quot;: &quot;2026-09-21&quot;,
+  &quot;elicited_by&quot;: &quot;riskmandate.ai, in an interview on 21 September 2026, transcribed automatically; the transcript is held by riskmandate.ai and is not published&quot;,
+  &quot;corrected&quot;: null,
+  &quot;status&quot;: &quot;elicited, not yet corrected by the deployer, no grant measured&quot;,
+  &quot;universe&quot;: &quot;u9&quot;,
+  &quot;assistants&quot;: [
+    {
+      &quot;id&quot;: &quot;chatgpt&quot;,
+      &quot;name&quot;: &quot;ChatGPT&quot;,
+      &quot;consent&quot;: &quot;allow all&quot;,
+      &quot;consent_note&quot;: &quot;the per action approval is switched off: asked whether they were authorising every action, the answer was that they had done the allow all. So the one setting that stands in front of an action in this product is off, on every connector below.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;claude&quot;,
+      &quot;name&quot;: &quot;Claude&quot;,
+      &quot;consent&quot;: &quot;not stated&quot;,
+      &quot;consent_note&quot;: &quot;the approval mode for the Slack connector was not asked about.&quot;
+    }
+  ],
+  &quot;shared_account&quot;: {
+    &quot;what&quot;: &quot;one Google account&quot;,
+    &quot;deployments&quot;: [
+      &quot;chatgpt-gmail&quot;,
+      &quot;chatgpt-calendar&quot;,
+      &quot;chatgpt-drive&quot;,
+      &quot;chatgpt-inbox-scout&quot;
+    ],
+    &quot;why_it_matters&quot;: &quot;A connector attaches to the account rather than to a conversation, so each of these grants holds in every session that has it attached, and the account&#x27;s exposure is the union of all four. A scheduled task holds the same grant with nobody in front of it.&quot;
+  },
+  &quot;out_of_scope&quot;: [
+    &quot;A third assistant that handles text messages and WhatsApp. It is connected to neither of the two above and was not mapped.&quot;,
+    &quot;Tasks and notes in the suite: named as present and not connected to either assistant.&quot;
+  ],
+  &quot;information_architecture&quot;: [
+    {
+      &quot;fact&quot;: &quot;Mail is unread counts, not labels&quot;,
+      &quot;detail&quot;: &quot;\&quot;unreads, not so much labels, which I should use basically\&quot;. About 314,000 unread messages, never purged. So the unread set is not a task list here, it is a backlog, and a change to it would go unnoticed for a long time. The one thing that would not: fifty messages flipping state in the part of the inbox they actually look at.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;An auto prioritisation runs on the inbox&quot;,
+      &quot;detail&quot;: &quot;\&quot;auto prioritisation that is also being done based on some P0, P1\&quot;: a priority marking the deployer treats as the real task list. What produces it was not established (a Gmail feature, a filter, a third party, or the assistant) and it is the first open question below.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;An assistant scouts the inbox unattended&quot;,
+      &quot;detail&quot;: &quot;\&quot;I also have OpenAI that is scouting my inbox for high priority emails\&quot;: a task that runs when the person is not in the conversation, over the same grant. It is listed as its own deployment below because a grant with nobody in front of it is a different shape from the same grant in a chat.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;The calendar is the thing that matters most&quot;,
+      &quot;detail&quot;: &quot;\&quot;my calendar runs my life\&quot;. Some events carry detail and some do not; one to ones usually have titles; anything from a third party or a group meeting usually has an agenda. Asked to rank, the calendar sits above mail.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;There is no backup of the calendar&quot;,
+      &quot;detail&quot;: &quot;Asked whether any backup exists: none. As far as the deployer knows a deleted event is gone. The one trail that could rebuild some of it is the mailbox, because invitations, declines and cancellations arrive as mail. Which events could be rebuilt from that trail, and which could not, is a map nobody has drawn.&quot;
+    },
+    {
+      &quot;fact&quot;: &quot;Some of what they hold must never leave&quot;,
+      &quot;detail&quot;: &quot;Agreed without hesitation that the mailbox and the drive contain material received from others that must never be forwarded or passed on, which is an allow list and a deny list nobody has written.&quot;
+    }
+  ],
+  &quot;open_questions&quot;: [
+    {
+      &quot;question&quot;: &quot;What produces the P0 and P1 marking?&quot;,
+      &quot;why&quot;: &quot;If it is a Gmail feature or a filter, it is a setting in the account. If it is the assistant, it is the scout below acting on mail rather than only reading it, which changes that deployment&#x27;s mandate.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;How is the inbox scout implemented?&quot;,
+      &quot;why&quot;: &quot;A scheduled task inside the assistant, a recurring prompt the person runs, or a third party with its own grant. Each is a different shape and only the first is covered by the nearest shape named below.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Which scopes did the calendar and drive consents ask for?&quot;,
+      &quot;why&quot;: &quot;The consent screens were not captured. Read only and full access are different grants and the same allow all click sits in front of both.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;What is the approval mode on the Slack connector?&quot;,
+      &quot;why&quot;: &quot;Not asked. Per action or allow all decides the barrier on every row.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;What does the meeting note taker&#x27;s connector expose?&quot;,
+      &quot;why&quot;: &quot;Transcripts of other people&#x27;s speech, summaries, or both, and whether the connector can write back. Not documented anywhere this site has read.&quot;
+    },
+    {
+      &quot;question&quot;: &quot;Which calendar events could be rebuilt from mail?&quot;,
+      &quot;why&quot;: &quot;Events that arrived as invitations leave a trail in the mailbox; events the person created with no guests leave none. The proportion is unknown and it decides how much of the calendar a deletion would actually cost.&quot;
+    }
+  ],
+  &quot;deployments&quot;: [
+    {
+      &quot;id&quot;: &quot;chatgpt-gmail&quot;,
+      &quot;name&quot;: &quot;ChatGPT with the Gmail connector, allow all&quot;,
+      &quot;assistant&quot;: &quot;chatgpt&quot;,
+      &quot;connector&quot;: &quot;Gmail&quot;,
+      &quot;consent&quot;: &quot;allow all&quot;,
+      &quot;nearest_shape&quot;: &quot;anthropic/gmail-connector/default&quot;,
+      &quot;nearest_note&quot;: &quot;a different client on the same platform: the measured profile for a chat assistant with a Gmail connector, 4 of 6 rows seen on the thing itself. The Google scopes are the same layer; the tool list is not this product&#x27;s.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/beta-001/mandates/chatgpt-gmail.json&quot;,
+      &quot;delta&quot;: &quot;cases/beta-001/deltas/chatgpt-gmail.json&quot;,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/chatgpt-gmail/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.message.tenant&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;send.message.world&quot;,
+        &quot;read.credential.host&quot;,
+        &quot;create.schedule.tenant&quot;
+      ],
+      &quot;unstated_count&quot;: 19,
+      &quot;said_count&quot;: 1,
+      &quot;inferred_count&quot;: 3,
+      &quot;provisional&quot;: true,
+      &quot;provisional_excess&quot;: 5,
+      &quot;provisional_unbounded_excess&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;chatgpt-calendar&quot;,
+      &quot;name&quot;: &quot;ChatGPT with the Google Calendar connector, allow all&quot;,
+      &quot;assistant&quot;: &quot;chatgpt&quot;,
+      &quot;connector&quot;: &quot;Google Calendar&quot;,
+      &quot;consent&quot;: &quot;allow all&quot;,
+      &quot;nearest_shape&quot;: null,
+      &quot;nearest_note&quot;: &quot;no published shape. A calendar connector for a chat assistant is on riskmandate.ai&#x27;s list of shapes asked for and not yet published, and the grammar this site is written in has no word for a calendar event at all, which is the finding on this page.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/beta-001/mandates/chatgpt-calendar.json&quot;,
+      &quot;delta&quot;: null,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/chatgpt-calendar/index.html&quot;,
+      &quot;want&quot;: [],
+      &quot;do_not_want&quot;: [
+        &quot;send.message.world&quot;,
+        &quot;create.schedule.tenant&quot;
+      ],
+      &quot;unstated_count&quot;: 21,
+      &quot;said_count&quot;: 0,
+      &quot;inferred_count&quot;: 2
+    },
+    {
+      &quot;id&quot;: &quot;chatgpt-drive&quot;,
+      &quot;name&quot;: &quot;ChatGPT with the Google Drive connector, allow all&quot;,
+      &quot;assistant&quot;: &quot;chatgpt&quot;,
+      &quot;connector&quot;: &quot;Google Drive&quot;,
+      &quot;consent&quot;: &quot;allow all&quot;,
+      &quot;nearest_shape&quot;: &quot;google/drive/readonly-connector&quot;,
+      &quot;nearest_note&quot;: &quot;the read only shape, derived and not measured. This deployment&#x27;s consent was not captured and may be the full drive scope, in which case the nearest shape understates the grant by every write and delete row.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/beta-001/mandates/chatgpt-drive.json&quot;,
+      &quot;delta&quot;: &quot;cases/beta-001/deltas/chatgpt-drive.json&quot;,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/chatgpt-drive/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.file.host&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;delete.file.host&quot;,
+        &quot;send.message.world&quot;,
+        &quot;create.record.world&quot;
+      ],
+      &quot;unstated_count&quot;: 19,
+      &quot;said_count&quot;: 1,
+      &quot;inferred_count&quot;: 3,
+      &quot;provisional&quot;: true,
+      &quot;provisional_excess&quot;: 2,
+      &quot;provisional_unbounded_excess&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;chatgpt-granola&quot;,
+      &quot;name&quot;: &quot;ChatGPT with a meeting note taker connected&quot;,
+      &quot;assistant&quot;: &quot;chatgpt&quot;,
+      &quot;connector&quot;: &quot;a meeting note taker&quot;,
+      &quot;consent&quot;: &quot;allow all&quot;,
+      &quot;nearest_shape&quot;: null,
+      &quot;nearest_note&quot;: &quot;no published shape, and nothing this site has read documents what the connector exposes: transcripts, summaries, or both, and whether it can write. Everything in it is other people&#x27;s speech.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/beta-001/mandates/chatgpt-granola.json&quot;,
+      &quot;delta&quot;: null,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/chatgpt-granola/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.record.history&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;send.message.world&quot;,
+        &quot;create.record.world&quot;
+      ],
+      &quot;unstated_count&quot;: 20,
+      &quot;said_count&quot;: 1,
+      &quot;inferred_count&quot;: 2
+    },
+    {
+      &quot;id&quot;: &quot;chatgpt-inbox-scout&quot;,
+      &quot;name&quot;: &quot;The inbox scout: the same Gmail grant, running with nobody present&quot;,
+      &quot;assistant&quot;: &quot;chatgpt&quot;,
+      &quot;connector&quot;: &quot;Gmail, unattended&quot;,
+      &quot;consent&quot;: &quot;allow all&quot;,
+      &quot;nearest_shape&quot;: &quot;generic/scheduled-job/service-account&quot;,
+      &quot;nearest_note&quot;: &quot;the derived shape for a job that runs when nobody is watching. It is not a mail connector, so the primitives differ; what it shares with this deployment is the one property that matters: no person&#x27;s judgement stands in front of any action.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/beta-001/mandates/chatgpt-inbox-scout.json&quot;,
+      &quot;delta&quot;: &quot;cases/beta-001/deltas/chatgpt-inbox-scout.json&quot;,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/chatgpt-inbox-scout/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.message.tenant&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;send.message.world&quot;,
+        &quot;read.credential.host&quot;,
+        &quot;create.schedule.tenant&quot;,
+        &quot;execute.process.host&quot;,
+        &quot;write.file.host&quot;,
+        &quot;delete.file.host&quot;
+      ],
+      &quot;unstated_count&quot;: 16,
+      &quot;said_count&quot;: 1,
+      &quot;inferred_count&quot;: 6,
+      &quot;provisional&quot;: true,
+      &quot;provisional_excess&quot;: 7,
+      &quot;provisional_unbounded_excess&quot;: 7
+    },
+    {
+      &quot;id&quot;: &quot;claude-slack&quot;,
+      &quot;name&quot;: &quot;Claude with the Slack connector&quot;,
+      &quot;assistant&quot;: &quot;claude&quot;,
+      &quot;connector&quot;: &quot;Slack&quot;,
+      &quot;consent&quot;: &quot;not stated&quot;,
+      &quot;nearest_shape&quot;: null,
+      &quot;nearest_note&quot;: &quot;no published shape. A Slack connector for a chat assistant is on riskmandate.ai&#x27;s list of shapes asked for and not yet published, with the note that channels are mostly other people&#x27;s writing.&quot;,
+      &quot;grant&quot;: &quot;not measured&quot;,
+      &quot;mandate&quot;: &quot;cases/beta-001/mandates/claude-slack.json&quot;,
+      &quot;delta&quot;: null,
+      &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/claude-slack/index.html&quot;,
+      &quot;want&quot;: [
+        &quot;read.message.tenant&quot;
+      ],
+      &quot;do_not_want&quot;: [
+        &quot;send.message.world&quot;
+      ],
+      &quot;unstated_count&quot;: 21,
+      &quot;said_count&quot;: 1,
+      &quot;inferred_count&quot;: 1
+    }
+  ],
+  &quot;page&quot;: &quot;https://abp.sgit.ai/cases/beta-001/index.html&quot;,
+  &quot;not_an_assessment&quot;: &quot;Nothing here is an assessment, an audit or a review of any named product. The mandates were elicited from one person and have not been corrected by them; every delta marked provisional is against a shape that is not this deployment.&quot;
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/data/cases/beta-001/case.json">https://abp.sgit.ai/data/cases/beta-001/case.json ↗</a></dd><dt>Fetched</dt><dd>2026-09-25T07:55:40Z</dd><dt>sha256</dt><dd><code title="dd79a1c6086975d01a83ff7582e20416dad0bae7fca6d9eb61a0856728067133">dd79a1c60869</code></dd><dt>Frozen copy</dt><dd><a href="case.json">sites/abp.sgit.ai/data/cases/beta-001/case.json</a> (12,018 bytes)</dd><dt>Brought home</dt><dd>fetch_missing: linked from the site, not in the day&#x27;s snapshot</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.1 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

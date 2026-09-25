@@ -1,0 +1,811 @@
+{
+  "latest": "1.34.12",
+  "note": "One entry per release, newest first. `file` is that release's notes, beside this file. `source` names what the release was built from: a commit in this repository from v1.0.0 onward, and the SG/Vault it was published from before that. `reconstructed: true` means the notes were carried over from that vault and the build they describe is not in this repository — read them as a record, not as something you can check out.",
+  "releases": [
+    {
+      "version": "1.34.12",
+      "date": "2026-09-25",
+      "title": "How to read the visualiser",
+      "file": "1.34.12.md",
+      "source": "git:v1.34.12"
+    },
+    {
+      "version": "1.34.11",
+      "date": "2026-09-25",
+      "title": "A walk never turns",
+      "file": "1.34.11.md",
+      "source": "git:v1.34.11"
+    },
+    {
+      "version": "1.34.10",
+      "date": "2026-09-25",
+      "title": "Click, and the rest fades",
+      "file": "1.34.10.md",
+      "source": "git:v1.34.10"
+    },
+    {
+      "version": "1.34.9",
+      "date": "2026-09-24",
+      "title": "Two circles on a role",
+      "file": "1.34.9.md",
+      "source": "git:v1.34.9"
+    },
+    {
+      "version": "1.34.8",
+      "date": "2026-09-24",
+      "title": "A control leaves a green risk",
+      "file": "1.34.8.md",
+      "source": "git:v1.34.8"
+    },
+    {
+      "version": "1.34.7",
+      "date": "2026-09-24",
+      "title": "The version, on every screen",
+      "file": "1.34.7.md",
+      "source": "git:v1.34.7"
+    },
+    {
+      "version": "1.34.6",
+      "date": "2026-09-24",
+      "title": "Risks flow upwards",
+      "file": "1.34.6.md",
+      "source": "git:v1.34.6"
+    },
+    {
+      "version": "1.34.5",
+      "date": "2026-09-24",
+      "title": "The article, drawn",
+      "file": "1.34.5.md",
+      "source": "git:v1.34.5"
+    },
+    {
+      "version": "1.34.4",
+      "date": "2026-09-24",
+      "title": "Who owns what in AI, and the ABP in the interview",
+      "file": "1.34.4.md",
+      "source": "git:v1.34.4"
+    },
+    {
+      "version": "1.34.3",
+      "date": "2026-09-24",
+      "title": "Four releases, delivered",
+      "file": "1.34.3.md",
+      "source": "git:v1.34.3"
+    },
+    {
+      "version": "1.34.2",
+      "date": "2026-09-24",
+      "title": "Twenty minutes of your advice, by voice",
+      "file": "1.34.2.md",
+      "source": "git:v1.34.2"
+    },
+    {
+      "version": "1.34.1",
+      "date": "2026-09-24",
+      "title": "A behaviour policy for everybody the lead talks to",
+      "file": "1.34.1.md",
+      "source": "git:v1.34.1"
+    },
+    {
+      "version": "1.34.0",
+      "date": "2026-09-24",
+      "title": "OWASP and open source first",
+      "file": "1.34.0.md",
+      "source": "git:v1.34.0"
+    },
+    {
+      "version": "1.33.0",
+      "date": "2026-09-24",
+      "title": "Business cases, by the risk they change",
+      "file": "1.33.0.md",
+      "source": "git:v1.33.0"
+    },
+    {
+      "version": "1.32.3",
+      "date": "2026-09-24",
+      "title": "Two articles: pilots that do not stay, and edits that cannot be undone",
+      "file": "1.32.3.md",
+      "source": "git:v1.32.3"
+    },
+    {
+      "version": "1.32.2",
+      "date": "2026-09-24",
+      "title": "UK support, in the open",
+      "file": "1.32.2.md",
+      "source": "git:v1.32.2"
+    },
+    {
+      "version": "1.32.1",
+      "date": "2026-09-24",
+      "title": "The ladder has steps",
+      "file": "1.32.1.md",
+      "source": "git:v1.32.1"
+    },
+    {
+      "version": "1.32.0",
+      "date": "2026-09-24",
+      "title": "How it works, in the order it happens",
+      "file": "1.32.0.md",
+      "source": "git:v1.32.0"
+    },
+    {
+      "version": "1.31.1",
+      "date": "2026-09-23",
+      "title": "The deck carries the direction, not just the day",
+      "file": "1.31.1.md",
+      "source": "git:v1.31.1"
+    },
+    {
+      "version": "1.31.0",
+      "date": "2026-09-23",
+      "title": "The words that start a conversation, and the page that has to back them",
+      "file": "1.31.0.md",
+      "source": "git:v1.31.0"
+    },
+    {
+      "version": "1.30.1",
+      "date": "2026-09-23",
+      "title": "A deck, built from the site rather than written beside it",
+      "file": "1.30.1.md",
+      "source": "git:v1.30.1"
+    },
+    {
+      "version": "1.30.0",
+      "date": "2026-09-23",
+      "title": "A privacy page, and a test that keeps it honest",
+      "file": "1.30.0.md",
+      "source": "git:v1.30.0"
+    },
+    {
+      "version": "1.29.5",
+      "date": "2026-09-23",
+      "title": "The ladder in order",
+      "file": "1.29.5.md",
+      "source": "git:v1.29.5"
+    },
+    {
+      "version": "1.29.4",
+      "date": "2026-09-23",
+      "title": "A 396-character version, because the profile field caps at 400",
+      "file": "1.29.4.md",
+      "source": "git:v1.29.4"
+    },
+    {
+      "version": "1.29.3",
+      "date": "2026-09-23",
+      "title": "The lead's own line, and the verb pair it turns on",
+      "file": "1.29.3.md",
+      "source": "git:v1.29.3"
+    },
+    {
+      "version": "1.29.2",
+      "date": "2026-09-23",
+      "title": "Two shorter descriptions, because a form refused the shortest one",
+      "file": "1.29.2.md",
+      "source": "git:v1.29.2"
+    },
+    {
+      "version": "1.29.1",
+      "date": "2026-09-23",
+      "title": "The logo as EPS, for a printer who asks for one",
+      "file": "1.29.1.md",
+      "source": "git:v1.29.1"
+    },
+    {
+      "version": "1.29.0",
+      "date": "2026-09-22",
+      "title": "The reviewed level, and the people who run it",
+      "file": "1.29.0.md",
+      "source": "git:v1.29.0"
+    },
+    {
+      "version": "1.28.0",
+      "date": "2026-09-21",
+      "title": "Try it — the free rung, and the phase that is about users",
+      "file": "1.28.0.md",
+      "source": "git:v1.28.0"
+    },
+    {
+      "version": "1.27.3",
+      "date": "2026-09-21",
+      "title": "The union is the title, and every article says where it connects",
+      "file": "1.27.3.md",
+      "source": "git:v1.27.3"
+    },
+    {
+      "version": "1.27.2",
+      "date": "2026-09-20",
+      "title": "The section is called Articles, and a session carries every approval you ever gave",
+      "file": "1.27.2.md",
+      "source": "git:v1.27.2"
+    },
+    {
+      "version": "1.27.1",
+      "date": "2026-09-20",
+      "title": "An introduction to the Agent Behaviour Policy",
+      "file": "1.27.1.md",
+      "source": "git:v1.27.1"
+    },
+    {
+      "version": "1.27.0",
+      "date": "2026-09-20",
+      "title": "Writing, and a barrier gains a holder",
+      "file": "1.27.0.md",
+      "source": "git:v1.27.0"
+    },
+    {
+      "version": "1.26.2",
+      "date": "2026-09-19",
+      "title": "The insurance answer stands on its own question",
+      "file": "1.26.2.md",
+      "source": "git:v1.26.2"
+    },
+    {
+      "version": "1.26.1",
+      "date": "2026-09-18",
+      "title": "Can you insure a software program? Yes, and here is every time it was done, dated",
+      "file": "1.26.1.md",
+      "source": "git:v1.26.1"
+    },
+    {
+      "version": "1.26.0",
+      "date": "2026-09-18",
+      "title": "Five menu entries, the product first, and thirteen pages out of the nav",
+      "file": "1.26.0.md",
+      "source": "git:v1.26.0"
+    },
+    {
+      "version": "1.25.4",
+      "date": "2026-09-18",
+      "title": "One menu on the home page, and Lisbon comes out of the nav",
+      "file": "1.25.4.md",
+      "source": "git:v1.25.4"
+    },
+    {
+      "version": "1.25.3",
+      "date": "2026-09-17",
+      "title": "The hero says buy, and the study is a review in the console",
+      "file": "1.25.3.md",
+      "source": "git:v1.25.3"
+    },
+    {
+      "version": "1.25.2",
+      "date": "2026-09-17",
+      "title": "Five synthetic users read the new home page, and four of five would buy",
+      "file": "1.25.2.md",
+      "source": "git:v1.25.2"
+    },
+    {
+      "version": "1.25.1",
+      "date": "2026-09-17",
+      "title": "The home page, built from the partner's own HTML",
+      "file": "1.25.1.md",
+      "source": "git:v1.25.1"
+    },
+    {
+      "version": "1.25.0",
+      "date": "2026-09-17",
+      "title": "The home page as the partner drew it: reach, mandate, gap, barriers",
+      "file": "1.25.0.md",
+      "source": "git:v1.25.0"
+    },
+    {
+      "version": "1.24.2",
+      "date": "2026-09-16",
+      "title": "The label panel names the mandate's word once, beside the row",
+      "file": "1.24.2.md",
+      "source": "git:v1.24.2"
+    },
+    {
+      "version": "1.24.1",
+      "date": "2026-09-16",
+      "title": "The buy links land where the store serves, and name the level not the price",
+      "file": "1.24.1.md",
+      "source": "git:v1.24.1"
+    },
+    {
+      "version": "1.24.0",
+      "date": "2026-09-16",
+      "title": "The MVP vault: a reading app with a left navigation, the consequence layer, and the dual licence",
+      "file": "1.24.0.md",
+      "source": "git:v1.24.0"
+    },
+    {
+      "version": "1.23.0",
+      "date": "2026-09-16",
+      "title": "The admin section is a console, and the Gmail-connector vault is live",
+      "file": "1.23.0.md",
+      "source": "git:v1.23.0"
+    },
+    {
+      "version": "1.22.1",
+      "date": "2026-09-16",
+      "title": "A Gmail-connector vault built from a measured run, and the purchase workflow mapped for one customer",
+      "file": "1.22.1.md",
+      "source": "git:v1.22.1"
+    },
+    {
+      "version": "1.22.0",
+      "date": "2026-09-16",
+      "title": "The home page sells the Agent Behaviour Policy, and holds no price",
+      "file": "1.22.0.md",
+      "source": "git:v1.22.0"
+    },
+    {
+      "version": "1.21.0",
+      "date": "2026-09-16",
+      "title": "Five people who do not exist, reading this site",
+      "file": "1.21.0.md",
+      "source": "git:v1.21.0"
+    },
+    {
+      "version": "1.20.2",
+      "date": "2026-09-15",
+      "title": "Two pages were shipping broken JavaScript",
+      "file": "1.20.2.md",
+      "source": "git:v1.20.2"
+    },
+    {
+      "version": "1.20.1",
+      "date": "2026-09-15",
+      "title": "A real policy on the front page, and the audience pages reach the store",
+      "file": "1.20.1.md",
+      "source": "git:v1.20.1"
+    },
+    {
+      "version": "1.20.0",
+      "date": "2026-09-15",
+      "title": "Who is arriving, what is sold, and the insurance argument on a page of its own",
+      "file": "1.20.0.md",
+      "source": "git:v1.20.0"
+    },
+    {
+      "version": "1.19.3",
+      "date": "2026-09-15",
+      "title": "A debrief for the store team: the after-payment pages, the link contract, and what the store has to do",
+      "file": "1.19.3.md",
+      "source": "git:v1.19.3"
+    },
+    {
+      "version": "1.19.2",
+      "date": "2026-09-15",
+      "title": "The £5 sale is a download: the zip, its hash, and a check in the browser; the other three levels are a follow-up within 24 hours",
+      "file": "1.19.2.md",
+      "source": "git:v1.19.2"
+    },
+    {
+      "version": "1.19.1",
+      "date": "2026-09-15",
+      "title": "After you pay: a page per level for the payment link to land on, the plus-one-thing rule said out loud, and a definition of done you can check",
+      "file": "1.19.1.md",
+      "source": "git:v1.19.1"
+    },
+    {
+      "version": "1.19.0",
+      "date": "2026-09-15",
+      "title": "View a policy, buy a policy: the store linked, pricing as the four levels, the vault pages open on the vault itself, and the Lab steps back",
+      "file": "1.19.0.md",
+      "source": "git:v1.19.0"
+    },
+    {
+      "version": "1.18.0",
+      "date": "2026-09-15",
+      "title": "The agents' front door, and an admin page that shows how the site is run",
+      "file": "1.18.0.md",
+      "source": "git:v1.18.0"
+    },
+    {
+      "version": "1.17.0",
+      "date": "2026-09-15",
+      "title": "The Agent Behaviour Policy library, wider and readable: the label, the lethal trifecta, the diagram, a resizable panel, and a page for what is next",
+      "file": "1.17.0.md",
+      "source": "git:v1.17.0"
+    },
+    {
+      "version": "1.16.0",
+      "date": "2026-09-15",
+      "title": "The behaviour-policy library: one page, two views, a preview panel, scenarios, and a top-level place on the site",
+      "file": "1.16.0.md",
+      "source": "git:v1.16.0"
+    },
+    {
+      "version": "1.15.0",
+      "date": "2026-09-15",
+      "title": "A measured vault from an early beta user, a prompt that lets any agent measure its own grant, and the app in its own window on a phone",
+      "file": "1.15.0.md",
+      "source": "git:v1.15.0"
+    },
+    {
+      "version": "1.14.0",
+      "date": "2026-09-15",
+      "title": "Five connector vaults, read from the vendors' own pages, with their open questions written to be handed on",
+      "file": "1.14.0.md",
+      "source": "git:v1.14.0"
+    },
+    {
+      "version": "1.13.0",
+      "date": "2026-09-15",
+      "title": "Behaviour policies as vaults: Lab 07, a directory of nine, the renderer versioned once",
+      "file": "1.13.0.md",
+      "source": "git:v1.13.0"
+    },
+    {
+      "version": "1.12.0",
+      "date": "2026-09-15",
+      "title": "The homepage leads with the policy, and says which rung we are on",
+      "file": "1.12.0.md",
+      "source": "git:v1.12.0"
+    },
+    {
+      "version": "1.11.0",
+      "date": "2026-09-14",
+      "title": "A policy is a draft, and three of the four objects are written by people",
+      "file": "1.11.0.md",
+      "source": "git:v1.11.0"
+    },
+    {
+      "version": "1.10.0",
+      "date": "2026-09-13",
+      "title": "The vocabulary, and how a behaviour policy differs from an inventory",
+      "file": "1.10.0.md",
+      "source": "git:v1.10.0"
+    },
+    {
+      "version": "1.9.0",
+      "date": "2026-09-13",
+      "title": "A Questions section: real questions from public conversations, answered without naming who asked",
+      "file": "1.9.0.md",
+      "source": "git:v1.9.0"
+    },
+    {
+      "version": "1.8.0",
+      "date": "2026-09-12",
+      "title": "Lab 06: the grant that cannot be enumerated, and the one rule with no barrier",
+      "file": "1.8.0.md",
+      "source": "git:v1.8.0"
+    },
+    {
+      "version": "1.7.0",
+      "date": "2026-09-12",
+      "title": "Lab 05: the commit author is a free text field, and the front page stops implying a deadline",
+      "file": "1.7.0.md",
+      "source": "git:v1.7.0"
+    },
+    {
+      "version": "1.6.0",
+      "date": "2026-09-12",
+      "title": "The Lab gets a submenu, and every brief the site was built from gets a register",
+      "file": "1.6.0.md",
+      "source": "git:v1.6.0"
+    },
+    {
+      "version": "1.5.0",
+      "date": "2026-09-12",
+      "title": "Lab 04: the shape collector, and a stray line of script removed from nine pages",
+      "file": "1.5.0.md",
+      "source": "git:v1.5.0"
+    },
+    {
+      "version": "1.4.0",
+      "date": "2026-09-12",
+      "title": "A section for collaborators and their agents, and the markdown twins stop dropping things",
+      "file": "1.4.0.md",
+      "source": "git:v1.4.0"
+    },
+    {
+      "version": "1.3.0",
+      "date": "2026-09-12",
+      "title": "Every Lab page is also a dated PDF, and the whole Lab is one file you can send",
+      "file": "1.3.0.md",
+      "source": "git:v1.3.0"
+    },
+    {
+      "version": "1.2.1",
+      "date": "2026-09-12",
+      "title": "The version record turns light, and markdown emphasis stops eating its own links",
+      "file": "1.2.1.md",
+      "source": "git:v1.2.1"
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-09-12",
+      "title": "The Lab: findings, interface mockups and open proposals, published as they happen",
+      "file": "1.2.0.md",
+      "source": "git:v1.2.0"
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-12",
+      "title": "The Agent Behaviour Policy becomes a page, and Lisbon gets a landing page",
+      "file": "1.1.0.md",
+      "source": "git:v1.1.0"
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-09-11",
+      "title": "The site becomes the repository: one document per page, real links, no host frame",
+      "file": "1.0.0.md",
+      "source": "sgit://7rfetjwz@v0.14.0"
+    },
+    {
+      "version": "0.14.0",
+      "date": "2026-09-09",
+      "title": "Three more live demos · deferred loading · the privacy claim scoped",
+      "file": "0.14.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.14.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.13.0",
+      "date": "2026-09-09",
+      "title": "The Seal becomes the mark · brand guidelines, design record, feedback page",
+      "file": "0.13.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.13.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.12.2",
+      "date": "2026-09-08",
+      "title": "llms.txt catches up with the insurability pitch · voice feedback interview prompt",
+      "file": "0.12.2.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.12.2.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.12.1",
+      "date": "2026-09-01",
+      "title": "Fix: v0.12.0 shipped with no stylesheet; class-coverage gate added",
+      "file": "0.12.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.12.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.12.0",
+      "date": "2026-08-25",
+      "title": "New homepage: the insurability layer · the Insurability Index",
+      "file": "0.12.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.12.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.11.2",
+      "date": "2026-08-20",
+      "title": "Each vault demo gets its own page",
+      "file": "0.11.2.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.11.2.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.11.1",
+      "date": "2026-08-20",
+      "title": "Fix: vault embeds now open — via the host's embed protocol, automatically",
+      "file": "0.11.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.11.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.11.0",
+      "date": "2026-08-20",
+      "title": "New homepage: the grant is not the mandate · live vault demos · RiskMandate",
+      "file": "0.11.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.11.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.10.1",
+      "date": "2026-08-03",
+      "title": "Fix: nav dropdowns rendered as raw text on three pages",
+      "file": "0.10.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.10.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.10.0",
+      "date": "2026-08-03",
+      "title": "Navigation restructured to five items · How it works · demo enquiries by email",
+      "file": "0.10.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.10.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.9.4",
+      "date": "2026-08-03",
+      "title": "The deck renders as slides instead of an embedded PDF",
+      "file": "0.9.4.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.9.4.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.9.3",
+      "date": "2026-08-03",
+      "title": "Fix: framed pages could not read vault content · Dev renamed to Internal",
+      "file": "0.9.3.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.9.3.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.9.2",
+      "date": "2026-08-03",
+      "title": "Accepted is not acceptable · talks and the proposition deck · RiskGraph",
+      "file": "0.9.2.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.9.2.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.9.1",
+      "date": "2026-07-27",
+      "title": "\"Who can pull the plug?\" — new page, and recoverability as a named dimension",
+      "file": "0.9.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.9.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.9.0",
+      "date": "2026-07-04",
+      "title": "Mobile navigation fix — hamburger drawer replaces the nav bar that vanished below 880px (new 0.9.0 snapshot; shared nav.js)",
+      "file": "0.9.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.9.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.8.0",
+      "date": "2026-07-04",
+      "title": "Homepage links to the interactive risk-acceptance scenarios (new 0.8.0 snapshot)",
+      "file": "0.8.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.8.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.7.0",
+      "date": "2026-07-04",
+      "title": "RAMM featured on the homepage (new 0.7.0 snapshot); interactive five-level pyramid; infographic loader wired for an external asset",
+      "file": "0.7.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.7.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.6.0",
+      "date": "2026-07-04",
+      "title": "Homepage nav decluttered to pages-only (new 0.6.0 snapshot); new Pricing page; new RAMM page — the Risk Acceptance Maturity Model",
+      "file": "0.6.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.6.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.6",
+      "date": "2026-07-03",
+      "title": "Risk Scenarios nav dropdown — Interactive + Statics grouped under one top-level entry",
+      "file": "0.5.6.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.6.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.5",
+      "date": "2026-07-03",
+      "title": "LLM-friendly access surface: /llms.txt, /llms-full.txt, agent-content manifest + Agents page",
+      "file": "0.5.5.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.5.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.4",
+      "date": "2026-07-03",
+      "title": "Library content externalised — loaded at runtime via sg.*, no longer inlined",
+      "file": "0.5.4.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.4.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.3",
+      "date": "2026-07-03",
+      "title": "Scenarios split into two pages — interactive cards (PoC-1) + LinkedIn static set (PoC-2), one shared bank",
+      "file": "0.5.3.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.3.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.2",
+      "date": "2026-07-03",
+      "title": "Light header on top-level pages + chain-derived smoke + old-structure cleanup",
+      "file": "0.5.2.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.2.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.1",
+      "date": "2026-07-03",
+      "title": "Pricing restored — split by value, properties per tier",
+      "file": "0.5.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.5.0",
+      "date": "2026-07-02",
+      "title": "Risk-acceptance focus — aligned with the vision brief",
+      "file": "0.5.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.5.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.4.5",
+      "date": "2026-07-03",
+      "title": "Immutable version chain (IFD layered deltas) + one menu on every page",
+      "file": "0.4.5.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.4.5.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.4.4",
+      "date": "2026-07-03",
+      "title": "Single top-level banner (host chrome hidden) + dev architecture review",
+      "file": "0.4.4.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.4.4.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.4.3",
+      "date": "2026-06-30",
+      "title": "Library page + current design as a selectable version",
+      "file": "0.4.3.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.4.3.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.4.2",
+      "date": "2026-06-30",
+      "title": "Unified menu component + pricing update",
+      "file": "0.4.2.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.4.2.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.4.1",
+      "date": "2026-06-30",
+      "title": "Partners page + top-level page system",
+      "file": "0.4.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.4.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.4.0",
+      "date": "2026-06-30",
+      "title": "IFD version structure + v0.4 redesign",
+      "file": "0.4.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.4.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.3.0",
+      "date": "2026-06-30",
+      "title": "Per-major versioning, version switcher, dev page",
+      "file": "0.3.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.3.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.2.0",
+      "date": "2026-06-30",
+      "title": "Modular refactor + dev section",
+      "file": "0.2.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.2.0.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.1.1",
+      "date": "2026-06-30",
+      "title": "Hero fix, pricing + chrome cleanup",
+      "file": "0.1.1.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.1.1.md",
+      "reconstructed": true
+    },
+    {
+      "version": "0.1.0",
+      "date": "2026-06-29",
+      "title": "Baseline",
+      "file": "0.1.0.md",
+      "source": "sgit://7rfetjwz/dev/releases/0.1.0.md",
+      "reconstructed": true
+    }
+  ]
+}
