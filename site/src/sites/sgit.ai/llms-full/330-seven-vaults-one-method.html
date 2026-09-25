@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Seven vaults, one method (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#seven-vaults-one-method">Seven vaults, one method</a></li><li class="l2"><a href="#the-rule-that-matters-most">The rule that matters most</a></li><li class="l2"><a href="#derive-rather-than-refuse">Derive rather than refuse</a></li><li class="l2"><a href="#audit-with-the-key-you-are-about-to-publish">Audit with the key you are about to publish</a></li><li class="l2"><a href="#capture-evidence-by-driving-the-real-product">Capture evidence by driving the real product</a></li><li class="l2"><a href="#describe-show-then-admit">Describe, show, then admit</a></li><li class="l2"><a href="#what-it-cost-and-what-it-bought">What it cost, and what it bought</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 330 of 358</p><nav class="pager"><span><a href="329-seven-vaults-one-method-sgitai.html">← Seven vaults, one method, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="331-green-does-not-mean-live-sgitai.html">Green does not mean live, sgit.ai →</a></span></nav><article class="source"><h1 id="seven-vaults-one-method">Seven vaults, one method</h1>
+<p>2026-08-19 · vaultspublishingmethod</p>
+<p><strong><em>Abstract:</strong> Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.</em></p>
+<p>Between 14 and 18 August this site published seven vaults. Each one is a real encrypted vault you can open in a browser from a read key printed on its page: <a href="../demos/vaults/algarve-may-2026/index.html">a photo gallery</a><a class="ext live" href="https://sgit.ai/demos/vaults/algarve-may-2026/index.html" title="live page">↗</a>, <a href="../demos/vaults/field-notes/index.html">field notes</a><a class="ext live" href="https://sgit.ai/demos/vaults/field-notes/index.html" title="live page">↗</a>, <a href="../demos/vaults/supplement-stack/index.html">a patient-held supplement record</a><a class="ext live" href="https://sgit.ai/demos/vaults/supplement-stack/index.html" title="live page">↗</a>, <a href="../demos/vaults/risk-mandate/index.html">a risk register</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-mandate/index.html" title="live page">↗</a>, <a href="../demos/vaults/agentic-browser-isolation/index.html">a browser-isolation risk graph</a><a class="ext live" href="https://sgit.ai/demos/vaults/agentic-browser-isolation/index.html" title="live page">↗</a>, <a href="../demos/vaults/risk-graph-explorer/index.html">a fact-to-risk explorer</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html" title="live page">↗</a>, and <a href="../catalogue/index.html">the catalogue that indexes them</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a>, itself a vault.</p>
+<p>By the third one it was obvious that we were repeating ourselves badly. By the seventh there was a method, and every rule in it exists because something went wrong first.</p>
+<h2 id="the-rule-that-matters-most">The rule that matters most</h2>
+<p><strong>Classify the credential before it touches anything.</strong></p>
+<p>Three of the seven vaults arrived as a <em>vault key</em> described as a read key. A vault key is write access. Publishing one would have handed anybody who read the page the ability to rewrite the vault, and because a vault key is also the address and the encryption root, there is no revocation, no rotation, and no undo.</p>
+<p>They were caught by shape. A read key is 64 hex characters; a vault key is a generated passphrase, which is 24 lowercase alphanumerics. That catch depended on somebody looking, which is not a control. So it became <a href="../demos/vaults/publishing.html">a script</a><a class="ext live" href="https://sgit.ai/demos/vaults/publishing.html" title="live page">↗</a>:</p>
+<pre><code>
+$ python3 admin/build/check_credential.py &#x27;&lt;credential&gt;&#x27;
+  form      : vault key (legacy passphrase:vault_id)
+  publish?  : NO
+  why       : 24 characters before the colon and not 64 hex, so it is a
+              passphrase — a WRITE credential
+</code></pre>
+<p>Exit 0 means publishable. Exit 1 means stop. It never echoes what it was given.</p>
+<p>Behind it sits a second line: the release validator scans every tracked file for any key-shaped string and for the actual passphrases, read at build time from a gitignored tier. That tripwire has caught its own author three times, each time writing the prefix in prose, in documentation explaining what a write credential looks like. Which is the point: a rule that only catches other people is not a rule.</p>
+<h2 id="derive-rather-than-refuse">Derive rather than refuse</h2>
+<p>The interesting part of the vault-key catch is what happens next. A read key is <strong>derived one-way</strong> from a vault key, so a submission that cannot be published can still become one that can:</p>
+<pre><code>
+c = Vault__Crypto()
+pw, vid  = c.parse_vault_key(vault_key)
+read_key = c.derive_keys(pw, vid)[&#x27;read_key&#x27;]
+</code></pre>
+<p>The vault key goes into a gitignored tier that the tripwire then scans for. The derived read key gets published. It is one-way: nobody can turn it back.</p>
+<p>That is the whole shape of the thing this project is about, a capability you can hand over that is <em>strictly less</em> than the one you hold, with the reduction enforced by mathematics rather than by policy. The seven vaults span the range deliberately, from one that requests no permissions at all to one that can write a single folder.</p>
+<h2 id="audit-with-the-key-you-are-about-to-publish">Audit with the key you are about to publish</h2>
+<p>Not with the vault key. With <strong>exactly the credential a reader will have</strong>, across every file.</p>
+<p>This caught a real problem. One vault carried a sealed LLM credential, and a published read key in front of a metered capability is an open tab on somebody else&#x27;s budget. Rather than reasoning about whether the sealing was sound, we took the published read key and attempted to open the credential with it. AES-GCM refused, <code>InvalidTag</code>, so no budget was exposed. Checked rather than assumed, and recorded either way.</p>
+<p>That rule did not come from us. It came from the sixth vault, <a href="../demos/vaults/risk-graph-explorer/index.html">Risk Graph Explorer</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html" title="live page">↗</a>, which is the first one here that was <strong>public by design</strong>: it carries its own <code>PUBLIC.md</code> whose three rules its build enforces, and the third, <em>no metered capability behind a published read key</em>, was not in our guidance. It is now.</p>
+<h2 id="capture-evidence-by-driving-the-real-product">Capture evidence by driving the real product</h2>
+<p>Every screenshot on a vault page is taken by opening the actual vault in a real browser with the published read key, performing the navigation, and cropping the result. No mock-ups.</p>
+<p>This is slower than it sounds and worth every minute, because it repeatedly disagreed with what we were about to write. The rig grew a <code>appProbe</code> step for exactly that reason, ask the running app what its elements are called instead of guessing and burning a capture run per guess:</p>
+<pre><code>
+probe [class*=node] -&gt; 37
+  shapes [&quot;g.cnode.inh&quot;,&quot;g.cnode&quot;,&quot;g.cnode.corp&quot;]
+  text   [&quot;R1 An autonomous system operates in the es&quot;,&quot;R2 Stopping the agent is itself…&quot;]
+</code></pre>
+<p>The alternative is a page that describes a product as its author remembers it.</p>
+<h2 id="describe-show-then-admit">Describe, show, then admit</h2>
+<p>Every vault page ends with what the vault does <em>not</em> do. Not as a disclaimer at the bottom in small type, as a section with the same weight as the features.</p>
+<p>This is the part that is tempting to skip and never should be. A published vault is an argument that this way of working is sound; an argument that omits its own edges is a brochure. The <a href="../docs/limitations.html">limitations page</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> is the same instinct at site level, and the <a href="../compare/index.html">comparison pages</a><a class="ext live" href="https://sgit.ai/compare/index.html" title="live page">↗</a> go further still, they include rows where vaults lose.</p>
+<h2 id="what-it-cost-and-what-it-bought">What it cost, and what it bought</h2>
+<p>Seven vaults, roughly four days of work, and the method is now <a href="../demos/vaults/publishing.html">written down as a playbook</a><a class="ext live" href="https://sgit.ai/demos/vaults/publishing.html" title="live page">↗</a> aimed at another site&#x27;s agent rather than at us, which was the real test of whether it was a method or just a habit.</p>
+<p>The honest ledger:</p>
+<ul><li><strong>Three vault keys caught.</strong> None published. Each would have been unrecoverable.</li><li><strong>One budget exposure checked and cleared</strong>, by attempting the attack rather than reasoning about it.</li><li><strong>One upstream rule adopted</strong> from a vault that was stricter than our guidance.</li><li><strong>Three bugs found by testing rather than assumption</strong> on a single page, a malformed selector that silently produced no images at all, escape sequences leaking as literal text, and a page that never loaded the component it depended on. All three would have shipped.</li></ul>
+<p>The last line is the one to keep. Every rule above is short and specific because it was learned by getting something wrong, in public, and writing down what it cost.</p>
+<p><em>The full method, step by step, is on <a href="../demos/vaults/publishing.html">the publishing playbook</a><a class="ext live" href="https://sgit.ai/demos/vaults/publishing.html" title="live page">↗</a>. The vaults themselves are in <a href="../catalogue/index.html">the catalogue</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a>, each with the read key that opens it.</em></p>
+<p><a href="../index.html">← All articles</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="329-seven-vaults-one-method-sgitai.html">← Seven vaults, one method, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="331-green-does-not-mean-live-sgitai.html">Green does not mean live, sgit.ai →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>330 of 358: Seven vaults, one method</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

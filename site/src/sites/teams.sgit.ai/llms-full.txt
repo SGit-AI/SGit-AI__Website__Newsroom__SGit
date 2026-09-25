@@ -1,0 +1,1822 @@
+# teams.sgit.ai — full text
+
+Site version: v0.1.0. Every page and every source document of https://teams.sgit.ai/ in one
+file, so an agent can read the whole thing in a single fetch.
+
+GENERATED — assembled by admin/build/gen_llms_full.py from llms.txt, index.md,
+roster/*/index.md and briefs/*.md, and re-checked in CI. It cannot say anything the
+site does not.
+
+Structure of this file:
+  PART 1  the index (llms.txt), for orientation and the stable-URL promises
+  PART 2  the front page in full (index.md)
+  PART 3  the 19 roster entries, each the markdown twin of its page
+  PART 4  the 12 source documents this site is written from, verbatim
+
+Every role definition published here exists on disk in the estate this pack measures —
+07__ of the commissioning pack is explicit that no ROLE.md is invented for the website.
+Where a role has no ROLE.md, its entry says so rather than filling the gap.
+
+The site's own text, the roster data and the commissioning pack are CC BY 4.0 —
+Dinis Cruz, with AI co-authorship (Claude, Anthropic). Pioneers–Settlers–Town Planners
+is Simon Wardley's model, credited and linked, never reproduced.
+
+
+
+
+==============================================================================
+PART 1 — THE INDEX (source: /llms.txt)
+
+==============================================================================
+
+
+# teams.sgit.ai
+
+> The reference for setting up agentic teams with more than one role. Roles are
+> boundaries. The Conductor never does the work.
+
+Site version: v0.1.0. A site in the [sgit.ai](https://sgit.ai) network, measuring
+Dinis Cruz's own product team: 39 `ROLE.md` files, 19 unique role names, four team
+instantiations (Explorer, Villager, Town Planner, and a second product, sg-playwright).
+Written from a commissioning pack published in full at [/documents/](documents/index.html)
+and [/briefs/](briefs/).
+
+The unit here is the *team*, not the agent. `skills.sgit.ai` owns `SKILL.md` and what
+a role can *do*; this site owns `ROLE.md` and how roles are *composed* — the roster,
+the topologies, the comms protocol and the evolution of the format.
+
+## Start here
+
+- [/](index.html) — the front page: the thesis, the finding, the numbers
+- [/roster/](roster/index.html) — all 19 roles, grouped by function, with the portable
+  six-role core the estate independently reached for twice
+- [/role-format/](role-format/index.html) — the `ROLE.md` schema, measured, and the
+  recommendation: state the Central Claim as a failure condition
+- [/topologies/](topologies/index.html) — Explorer / Villager / Town Planner as staffed
+  Pioneers–Settlers–Town Planners, and the handback rule
+- [/comms/](comms/index.html) — inbox/outbox addressing and the eight-step
+  session-start ritual
+- [/evolution/](evolution/index.html) — dated learnings recovered from git diffs, not
+  from the files themselves
+- [/setup/](setup/index.html) — the assembly guide: stand up a multi-role team from
+  these files
+
+## Reference
+
+- [/roster/<slug>/](roster/index.html) — one role per URL: claim, exclusions, teams
+  present in, revision history
+- [/documents/](documents/index.html) — reader pages for the commissioning pack
+- [/briefs/](briefs/) — the pack itself, verbatim, including the machine-readable
+  [teams__roster.json](briefs/teams__roster.json)
+- [/data/roster.json](data/roster.json) — the same roster, served as data at a stable
+  URL, because the primary consumer of this site is an agent being configured
+
+## Provenance
+
+- [/admin/index.html](admin/index.html) — how this site is built: the pipeline, the
+  release gate, the generators
+- [/admin/versions.html](admin/versions.html) — release history
+- [/admin/comms.html](admin/comms.html) — the open-questions queue: gaps published
+  unresolved rather than smoothed over
+- [/about/index.html](about/index.html) · [/about/participant.html](about/participant.html)
+  — whose estate this measures, and the participant disclosure
+- [/network/index.html](network/index.html) — the sibling sites and the deconfliction
+  rule
+
+## Licence
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic). Pioneers–Settlers–
+Town Planners is Simon Wardley's model, credited and linked, never reproduced.
+
+## Rules for agents reading this site
+
+1. **Never invent a role definition.** Six roles in the roster carry no recorded Core
+   Mission or Central Claim — their pages say so precisely, rather than guessing one.
+   Do not fill the gap; publish it as a gap.
+2. **Every number here is generated from `data/roster.json`**, not typed. If you are
+   quoting a count from this site, prefer fetching the JSON directly.
+3. **This site owns composition, not capability.** For what a role can *do*, follow
+   the link to `skills.sgit.ai`. For Pioneers–Settlers–Town Planners itself, follow
+   the link to `wardley-maps.sgit.ai`.
+
+
+==============================================================================
+PART 2 — THE FRONT PAGE (source: /index.md)
+
+==============================================================================
+
+
+# teams.sgit.ai — roles are boundaries
+
+> **Roles are boundaries. The Conductor never does the work.** The reference for
+> setting up agentic teams with more than one role — not what each role can do, but
+> how nineteen of them are composed into a team that hands work off instead of one
+> generalist doing everything nine times.
+
+*Measured from [Dinis Cruz's](about/index.html) own product team, SG/Send: 39
+`ROLE.md` files, 19 unique role names, four team instantiations, 130 comms files and
+4,335 commits searched — 7 September 2026.*
+
+*Source: <https://teams.sgit.ai/index.html> · site v0.1.0 · markdown twin of the front page.*
+
+---
+
+## What exists, measured
+
+Every number here is computed from [`data/roster.json`](data/roster.json) on every
+build, not typed. 19 unique role names across four team instantiations. 6 carry a
+**falsifiable** central claim — the recommended, older form. 7 carry a **descriptive**
+claim — true, but not checkable. 6 have **no Core Mission or Central Claim recorded**
+and are published as gaps. 6 form the **portable core** — reached for twice,
+independently, when the estate stood up a second product.
+
+## The finding
+
+Explorer, Villager and Town Planner are the same role names, staffed with different
+mandates — Wardley's Pioneers–Settlers–Town Planners, implemented as agent
+configurations rather than drawn as a diagram. As far as the commissioning pack can
+determine, nobody else has published this.
+
+- **Explorer** — build the new thing. 17 role directories, 13 defined. The governing
+  rule is *discover*. [The topologies →](topologies/index.html)
+- **Villager** — harden what exists. 17 directories, 17 defined — the only complete
+  team. *"Harden, do not build."* If a redesign is needed, send it back to Explorer.
+- **Town Planner** — industrialise and capitalise. 4 directories, 3 defined — a
+  sketch, not a template. Financial models wrapped in investor narrative.
+
+## What makes it a team, not one agent nine times
+
+An LLM given a task will attempt it. Capability is not the constraint — willingness
+is — and two fields in the format are what convert a capable generalist into a
+specialist that hands off.
+
+- **`Not Responsible For`** — 31 of 39 files. The explicit exclusion list. A role
+  without one is not a role. [The format, in full →](role-format/index.html#exclusions)
+- **The Central Claim, as a failure condition** — 6 of 39 files. *"If a piece of
+  knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian
+  has failed."* Checkable. The newer table format lost this.
+  [The drift, quantified →](role-format/index.html#claim)
+- **Addresses, not messages** — 130 comms files. A role's definition names the
+  directories it reads and writes, so a new occupant knows its inbox and outbox
+  without being told. [The comms protocol →](comms/index.html)
+
+## What this site does not smooth over
+
+A memory site that edits its own past teaches agents to do the same — so the honest
+parts are published as content, not footnotes.
+
+- **A regression.** Six older roles state their claim as a falsifiable failure. Seven
+  newer ones state it descriptively — true, but not checkable. The migration improved
+  the markup and lost the property that made the field valuable.
+- **Six roles carry no recorded Core Mission or Central Claim.** advocate, alchemist,
+  ambassador and sherpa have an empty directory in Explorer; accountant and translator
+  are marked defined elsewhere with no identity fields extracted from that file. Town
+  Planner's librarian directory is a fifth, separate empty case. Published as gaps,
+  never filled in for this website. [See where they exist →](roster/index.html)
+- **Learnings recovered from diffs, not files.** A `ROLE.md` shows what a role is
+  today. The history shows what went wrong badly enough that someone wrote a rule into
+  it. [Three learnings →](evolution/index.html)
+
+## Build one
+
+Everything above is reference. [The assembly guide](setup/index.html) is the
+deliverable: which six roles to start with, what each exclusion list must say, where
+the comms tree goes, and when to split into Explorer and Villager. Or
+[read the source pack first](documents/index.html).
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+Pioneers–Settlers–Town Planners is Simon Wardley's model, credited and linked, never
+reproduced.
+
+
+==============================================================================
+PART 3 — THE 19 ROSTER ENTRIES
+
+==============================================================================
+
+
+Each is also fetchable on its own at /roster/<slug>/index.md, the markdown
+twin of /roster/<slug>/index.html.
+
+
+
+==============================================================================
+source: /roster/accountant/index.md
+
+==============================================================================
+
+
+# Accountant
+
+*Source: <https://teams.sgit.ai/roster/accountant/index.html> · markdown twin of the entry page.*
+
+*Capitalise role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 0
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It is marked **defined** in Town Planner — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Town Planner | defined |
+
+## Revision history
+
+0 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/advocate/index.md
+
+==============================================================================
+
+
+# Advocate
+
+*Source: <https://teams.sgit.ai/roster/advocate/index.html> · markdown twin of the entry page.*
+
+*Assure role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 3
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It has a directory with no `ROLE.md` inside it in Explorer. It is marked **defined** in Villager — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | directory only, no ROLE.md |
+| Villager | defined |
+
+## Revision history
+
+3 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/alchemist/index.md
+
+==============================================================================
+
+
+# Alchemist
+
+*Source: <https://teams.sgit.ai/roster/alchemist/index.html> · markdown twin of the entry page.*
+
+*Capitalise role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 0
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It has a directory with no `ROLE.md` inside it in Explorer. It is marked **defined** in Town Planner — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | directory only, no ROLE.md |
+| Town Planner | defined |
+
+## Revision history
+
+0 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/ambassador/index.md
+
+==============================================================================
+
+
+# Ambassador
+
+*Source: <https://teams.sgit.ai/roster/ambassador/index.html> · markdown twin of the entry page.*
+
+*Represent role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 2
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It has a directory with no `ROLE.md` inside it in Explorer. It is marked **defined** in Villager — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | directory only, no ROLE.md |
+| Villager | defined |
+
+## Revision history
+
+2 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/appsec/index.md
+
+==============================================================================
+
+
+# Appsec
+
+*Source: <https://teams.sgit.ai/roster/appsec/index.html> · markdown twin of the entry page.*
+
+*Assure role — one of 19 in the roster.*
+
+- **claim form** falsifiable — states an if-then failure condition — the recommended, older form
+- **ROLE.md commits** 2
+
+## Core mission
+
+Verify and protect the zero-knowledge guarantee -- the server never sees plaintext, never holds decryption keys, and never stores file names. Every security claim the product makes must be provably true.
+
+## Central claim
+
+**If any code path exists where plaintext, decryption keys, or original file names could reach the server, AppSec has failed.**
+
+Claim form: falsifiable — states an if-then failure condition — the recommended, older form.
+
+## Not responsible for
+
+Writing application code, making product decisions, deploying infrastructure, producing user-facing content, or network/infrastructure security (firewalls, VPCs, OS hardening).
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+2 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/architect/index.md
+
+==============================================================================
+
+
+# Architect
+
+*Source: <https://teams.sgit.ai/roster/architect/index.html> · markdown twin of the entry page.*
+
+*Build role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 4
+
+## Core mission
+
+Define and guard the boundaries between components, own API contracts and data models, and ensure all technology decisions serve the zero-knowledge encryption guarantee
+
+## Central claim
+
+**The Architect owns the boundaries. Every interface contract, dependency direction, and abstraction layer passes through architectural review.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Writing production code, running tests, deploying infrastructure, managing CI/CD pipelines, or tracking project status
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| sg-playwright | defined |
+
+## Revision history
+
+4 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/cartographer/index.md
+
+==============================================================================
+
+
+# Cartographer
+
+*Source: <https://teams.sgit.ai/roster/cartographer/index.html> · markdown twin of the entry page.*
+
+*Remember role — one of 19 in the roster.*
+
+- **claim form** falsifiable — states an if-then failure condition — the recommended, older form
+- **ROLE.md commits** 2
+
+## Core mission
+
+Map the system topology, data flows, security boundaries, and dependency relationships so that every team member can see what connects to what, what blocks what, and where the boundaries are.
+
+## Central claim
+
+**If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed.**
+
+Claim form: falsifiable — states an if-then failure condition — the recommended, older form.
+
+## Not responsible for
+
+Writing application code, making architecture decisions (maps reflect decisions, they do not make them), running tests, deploying infrastructure, or producing user-facing content.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+2 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/conductor/index.md
+
+==============================================================================
+
+
+# Conductor
+
+*Source: <https://teams.sgit.ai/roster/conductor/index.html> · markdown twin of the entry page.*
+
+*Route role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **ROLE.md commits** 5
+
+## Core mission
+
+Orchestrate workflow across all roles, maintain priority alignment, and ensure every task moves toward the current sprint goal
+
+## Central claim
+
+**The Conductor sees the full picture. No task starts without routing. No blocker persists without escalation.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Writing code, running tests, deploying infrastructure, making architecture decisions, or performing security reviews
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+5 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/designer/index.md
+
+==============================================================================
+
+
+# Designer
+
+*Source: <https://teams.sgit.ai/roster/designer/index.html> · markdown twin of the entry page.*
+
+*Build role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **ROLE.md commits** 1
+
+## Core mission
+
+Design is how things work — ensuring that every artifact in SG/Send communicates its purpose through its form, functions well for its audience, and expresses intention through structure, naming, formatting, and interaction
+
+## Central claim
+
+**Design is the discipline of making things that function well, feel right, and express intention through their form. A well-designed API is as much a design artifact as a well-designed interface. The structure of a configuration file, the shape of a CLI command, the naming of a function, the rhythm of a test suite — these are all design. They all communicate. They all either help or hinder the person or agent encountering them. The Designer owns the quality of that communication across the entire ecosystem.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Implementation (Dev), testing (QA), architecture decisions (Architect), deployment (DevOps), knowledge curation (Librarian), security policy (AppSec)
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| Town Planner | defined |
+
+## Revision history
+
+1 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/dev/index.md
+
+==============================================================================
+
+
+# Dev
+
+*Source: <https://teams.sgit.ai/roster/dev/index.html> · markdown twin of the entry page.*
+
+*Build role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 5
+
+## Core mission
+
+Implement features and fixes with high code quality, following established patterns, Type_Safe schemas, and the no-mocks testing discipline
+
+## Central claim
+
+**Dev turns architecture contracts into working, tested code. Every line follows the project's patterns. Every test uses real implementations.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Making architecture decisions, choosing technologies, defining API contracts, managing CI/CD pipelines, or prioritising work
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| sg-playwright | defined |
+
+## Revision history
+
+5 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/devops/index.md
+
+==============================================================================
+
+
+# Devops
+
+*Source: <https://teams.sgit.ai/roster/devops/index.html> · markdown twin of the entry page.*
+
+*Build role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 4
+
+## Core mission
+
+Own the CI/CD pipelines, manage all 7 deployment targets, and ensure every push flows automatically from commit to tested deployment
+
+## Central claim
+
+**DevOps owns the path from commit to production. Every deployment target works. Every deployment is smoke-tested. Every release is reproducible.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Writing application code, making architecture decisions, defining API contracts, writing business logic tests, or prioritising features
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| sg-playwright | defined |
+
+## Revision history
+
+4 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/dpo/index.md
+
+==============================================================================
+
+
+# Dpo
+
+*Source: <https://teams.sgit.ai/roster/dpo/index.html> · markdown twin of the entry page.*
+
+*Assure role — one of 19 in the roster.*
+
+- **claim form** falsifiable — states an if-then failure condition — the recommended, older form
+- **ROLE.md commits** 1
+
+## Core mission
+
+Ensure all personal data processing is lawful, transparent, and compliant with UK GDPR, Data Protection Act 2018, and PECR. Own the legal accuracy of every privacy claim the product makes.
+
+## Central claim
+
+**The DPO owns data protection. Every processing activity, privacy notice, DPIA, breach notification, and data subject rights request passes through the DPO. If a privacy claim is made that is not legally accurate, the DPO has failed.**
+
+Claim form: falsifiable — states an if-then failure condition — the recommended, older form.
+
+## Not responsible for
+
+Determining purposes and means of processing (that is the controller), implementing technical security controls (that is AppSec/DevOps), writing marketing content (that is the Journalist), user satisfaction (that is the Advocate), or owning the risk register (that is GRC)
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+1 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/grc/index.md
+
+==============================================================================
+
+
+# Grc
+
+*Source: <https://teams.sgit.ai/roster/grc/index.html> · markdown twin of the entry page.*
+
+*Assure role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **ROLE.md commits** 2
+
+## Core mission
+
+Identify, assess, and manage risks to the SGraph Send project. Establish governance policies that ensure the project's security claims, operational practices, and development processes are sound, auditable, and compliant with stated commitments.
+
+## Central claim
+
+**Every risk the project faces -- technical, operational, reputational -- must be identified, assessed, and either mitigated or formally accepted with documented rationale.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Writing application code, making product decisions, deploying infrastructure, implementing security controls (that is AppSec/DevOps), or producing user-facing content.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+2 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/historian/index.md
+
+==============================================================================
+
+
+# Historian
+
+*Source: <https://teams.sgit.ai/roster/historian/index.html> · markdown twin of the entry page.*
+
+*Remember role — one of 19 in the roster.*
+
+- **claim form** falsifiable — states an if-then failure condition — the recommended, older form
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 3
+
+## Core mission
+
+Track every decision, spec change, and architectural evolution so the team always knows what was decided, why it was decided, and what it superseded. Record the "why," not just the "what."
+
+## Central claim
+
+**If a decision was made but its rationale is not recorded, the Historian has failed. The team will re-litigate it, wasting time and risking inconsistency.**
+
+Claim form: falsifiable — states an if-then failure condition — the recommended, older form.
+
+## Not responsible for
+
+Making decisions, writing application code, running tests, deploying infrastructure, making architecture recommendations, or producing user-facing content.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| sg-playwright | defined |
+
+## Revision history
+
+3 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/journalist/index.md
+
+==============================================================================
+
+
+# Journalist
+
+*Source: <https://teams.sgit.ai/roster/journalist/index.html> · markdown twin of the entry page.*
+
+*Remember role — one of 19 in the roster.*
+
+- **claim form** falsifiable — states an if-then failure condition — the recommended, older form
+- **ROLE.md commits** 2
+
+## Core mission
+
+Communicate what SGraph Send is, how it works, and why it matters -- to beta users, developers, and the broader audience. Capture the present: what is happening now, what just shipped, what the team learned.
+
+## Central claim
+
+**If a potential user visits the site and cannot understand the zero-knowledge guarantee within 60 seconds, the Journalist has failed.**
+
+Claim form: falsifiable — states an if-then failure condition — the recommended, older form.
+
+## Not responsible for
+
+Writing application code, making architecture decisions, running tests, deploying infrastructure, making product decisions, or maintaining internal documentation (that is the Librarian's job).
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+
+## Revision history
+
+2 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/librarian/index.md
+
+==============================================================================
+
+
+# Librarian
+
+*Source: <https://teams.sgit.ai/roster/librarian/index.html> · markdown twin of the entry page.*
+
+*Remember role — one of 19 in the roster.*
+
+- **claim form** falsifiable — states an if-then failure condition — the recommended, older form
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 6
+
+## Core mission
+
+Maintain knowledge connectivity across all project artifacts, ensuring every document is discoverable, cross-referenced, and current.
+
+## Central claim
+
+**If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed.**
+
+Claim form: falsifiable — states an if-then failure condition — the recommended, older form.
+
+## Not responsible for
+
+Writing application code, making architecture decisions, running tests, deploying infrastructure, creating original specifications, or making product decisions.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| Town Planner | directory only, no ROLE.md |
+| sg-playwright | defined |
+
+## Revision history
+
+6 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/qa/index.md
+
+==============================================================================
+
+
+# Qa
+
+*Source: <https://teams.sgit.ai/roster/qa/index.html> · markdown twin of the entry page.*
+
+*Build role — one of 19 in the roster.*
+
+- **claim form** descriptive — states the role's purpose descriptively — true and useful, but not checkable
+- **portable core** yes — defined in all three operational teams (Explorer, Villager, sg-playwright)
+- **ROLE.md commits** 6
+
+## Core mission
+
+Own the test strategy, maintain coverage across the full deployment matrix, and ensure every release meets quality gates before reaching users
+
+## Central claim
+
+**QA owns the test matrix. Every storage mode, deployment target, and test level is covered. No release ships without QA sign-off.**
+
+Claim form: descriptive — states the role's purpose descriptively — true and useful, but not checkable.
+
+## Not responsible for
+
+Writing production code, making architecture decisions, managing CI/CD pipelines, or deploying to production
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | defined |
+| Villager | defined |
+| sg-playwright | defined |
+
+## Revision history
+
+6 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/sherpa/index.md
+
+==============================================================================
+
+
+# Sherpa
+
+*Source: <https://teams.sgit.ai/roster/sherpa/index.html> · markdown twin of the entry page.*
+
+*Represent role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 3
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It has a directory with no `ROLE.md` inside it in Explorer. It is marked **defined** in Villager — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Explorer | directory only, no ROLE.md |
+| Villager | defined |
+
+## Revision history
+
+3 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+source: /roster/translator/index.md
+
+==============================================================================
+
+
+# Translator
+
+*Source: <https://teams.sgit.ai/roster/translator/index.html> · markdown twin of the entry page.*
+
+*Represent role — one of 19 in the roster.*
+
+- **claim form** absent — no Core Mission or Central Claim is recorded for this role in this pack's data
+- **ROLE.md commits** 0
+
+## Core mission
+
+No Core Mission or Central Claim is recorded for this role. It is marked **defined** in Villager — a file exists there — but this pack did not extract a Core Mission or Central Claim from it, so this site does not fill the gap by inferring one.
+
+## Where this role exists
+
+| Team | State |
+|---|---|
+| Villager | defined |
+
+## Revision history
+
+0 commit(s) to its ROLE.md since 11 February 2026.
+
+---
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+==============================================================================
+PART 4 — THE 12 SOURCE DOCUMENTS
+
+==============================================================================
+
+
+The commissioning pack, verbatim. Each is also fetchable on its own at
+/briefs/<filename>.
+
+
+
+==============================================================================
+source: /briefs/00__BRIEF.md
+
+==============================================================================
+
+
+# 00 — The Brief: `teams.sgit.ai`
+
+**Version** v0.33.64 · 7 September 2026
+**From** Dinis Cruz, via the SG/Send Librarian
+**To** the agent commissioned to build `teams.sgit.ai`
+**Licence** CC BY 4.0
+
+---
+
+## 1. The commission
+
+The key reference for setting up **agentic teams with more than one role**: the effective workflows and how they evolved, the `ROLE.md` and `SKILL.md` reference material, and the learnings that got written back into the role definitions after something went wrong.
+
+**The name, decided:** `teams.sgit.ai`. The unit is the *team*, not the agent. Every site in the network is named for its unit, and this one is named for the thing the industry keeps skipping.
+
+**The tagline:** *Roles are boundaries. The Conductor never does the work.*
+
+---
+
+## 2. The thesis
+
+> **The leverage in agentic work is division of labour, not model capability.**
+
+The evidence is in the corpus and it is unusual. Most people building multi-agent systems write down what each agent *can* do. This estate writes down what each agent **must not** do — and it does so in a named schema field. The Conductor's own definition lists, under *Not Responsible For*: *"writing code, running tests, deploying infrastructure, making architecture decisions, or performing security reviews."* Its governing principle is stated outright:
+
+> *"Roles are boundaries. The Conductor routes work to the right role; the Conductor never does the work."*
+
+And the second thesis, which the corpus proves and almost nothing else in the field does:
+
+> **A role definition is a falsifiable claim, and it should be written as a failure condition.**
+
+Six roles state their Central Claim as an *if-then failure*: *"If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed."* *"If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed."* *"If any code path exists where plaintext, decryption keys, or original file names could reach the server, AppSec has failed."* A role written this way can be audited. A role written as a job description cannot.
+
+---
+
+## 3. What exists — measured 7 September 2026
+
+**39 `ROLE.md` files. 19 unique role names. Four team instantiations.**
+
+| Team | Role directories | With `ROLE.md` | Character |
+|---|---|---|---|
+| **Explorer** (`team/roles/`) | 17 | 13 | Builds new things |
+| **Villager** (`team/villager/roles/`) | 17 | 17 | Hardens what Explorer built |
+| **Town Planner** (`team/town-planner/roles/`) | 4 | 3 | Financial models, investor narrative, commodity classification |
+| **sg-playwright** (`team/roles/`) | 6 | 6 | A second product, same method |
+
+The nineteen: accountant · advocate · alchemist · ambassador · appsec · architect · cartographer · conductor · designer · dev · devops · dpo · grc · historian · journalist · librarian · qa · sherpa · translator.
+
+**The finding that should be the site's second page.** Explorer / Villager / Town Planner is **Wardley's Pioneers–Settlers–Town Planners, staffed as three agent teams** — the same role names carrying different mandates at different evolutionary stages. The Villager Designer's brief is explicit: *"The UX as delivered by Explorer is what ships. No additions, no changes… Do NOT design new UX features — send to Explorer."* The Villager AppSec: *"Security architecture is frozen from Explorer. Harden what exists. If a redesign is needed, send it back."* The handback path is named in the role definition itself.
+
+Nobody else has published this. It is the most original thing in the corpus on this subject.
+
+**130 files in `team/comms/`** — the inter-role protocol: `briefs/`, `changelog/`, `plans/`, `qa/briefs/`, `qa/questions/`, and a `QA_START_HERE.md` landing page.
+
+**40 `SKILL.md` files**, 7 first-party in `library/skills/` — but these belong to the sibling; see §5.
+
+---
+
+## 4. The honest constraints
+
+- **The format drifted, and it regressed.** Of 17 Explorer role directories: 7 carry the Identity schema as a *table*, 6 as a *bullet list*, and 4 have no `ROLE.md` at all (advocate, alchemist, ambassador, sherpa). Worse, the newer table format's Central Claims are *descriptive* (*"The Architect owns the boundaries"*) while the older bullet format's are *falsifiable* (*"…the Librarian has failed"*). **The migration lost the best property of the format.** The site should say so and recommend restoring it. This is the pack's most useful single finding.
+- **The Town Planner team is thin** — 4 directories, 3 definitions, and its Librarian is missing. Publish it as a sketch, not a template.
+- **Role evolution is in git, not in the files.** The learnings the founder asked for exist only as diffs. `05__` does that archaeology; the site must keep doing it.
+
+---
+
+## 5. Deconfliction: `skills.sgit.ai` already exists
+
+The network page lists nineteen sites — eighteen live, and `skills.sgit.ai` with subdomain and repo established but nothing published. The seam, decided:
+
+> **A skill is a capability. A role is a boundary. A team is a routing table.**
+
+`skills.sgit.ai` owns `SKILL.md` — anatomy, description-as-trigger, lifecycle, the seven first-party skills. `teams.sgit.ai` owns `ROLE.md`, the roster, the topologies, the comms protocol and the workflows. Each links to the other; neither duplicates. Where this site shows a role's tool access, it names the skills and links out.
+
+---
+
+## 6. Build order
+
+1. **`/role-format/`** — the `ROLE.md` schema, measured, with the failure-condition claim as the recommended form and the drift documented (`01__`).
+2. **`/roster/`** — nineteen roles, each with its claim, its boundary and its comms addresses (`02__`).
+3. **`/topologies/`** — Explorer / Villager / Town Planner, and the handback rule. Links to `wardley-maps.sgit.ai` for PST itself (`03__`).
+4. **`/comms/`** — the inbox/outbox protocol and the session-start ritual (`04__`).
+5. **`/evolution/`** — the dated learnings, as diffs (`05__`). This is the memory layer and the reason the site is not a template gallery.
+6. **`/setup/`** — the assembly guide: how to stand up a multi-role team from these files.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/01__the-role-format.md
+
+==============================================================================
+
+
+# 01 — The `ROLE.md` Format: measured, and one recommendation
+
+**Version** v0.33.64 · 7 September 2026
+**Method** All 39 `ROLE.md` files on disk parsed for section headers and Identity fields, 7 September 2026. Every count below is generated, not estimated.
+
+---
+
+## 1. The schema
+
+Five fields make up a role's identity, and they appear (in one markup or the other) across 31 of the 39 files:
+
+| Field | What it does | Why it matters |
+|---|---|---|
+| **Name** | The role's handle | It is how other roles address it in comms |
+| **Location** | `team/roles/<name>/` | The role's home for reviews and outputs |
+| **Core Mission** | One sentence of purpose | The routing key — the Conductor reads this to assign work |
+| **Central Claim** | The role's testable assertion | See §3. This is the field that does the real work |
+| **Not Responsible For** | The explicit exclusion list | See §2. This is the field nobody else writes |
+
+## 2. `Not Responsible For` — the field that makes it a team
+
+**31 of 39 role files carry it.** It is the most distinctive thing in the corpus and the reason a multi-role setup works at all.
+
+Conductor: *"writing code, running tests, deploying infrastructure, making architecture decisions, or performing security reviews."* Librarian: *"writing application code, making architecture decisions, running tests, deploying infrastructure, creating original specifications, or making product decisions."*
+
+Why it matters more than the responsibility list: an LLM given a task will attempt it. Capability is not the constraint — **willingness is**, and the exclusion list is the only thing that converts a capable generalist into a specialist that hands off. Without it, every role silently becomes the same role, and a "team" of nine agents is one agent invoked nine times.
+
+The site should state this as a rule: **a role without an exclusion list is not a role.**
+
+## 3. `Central Claim` — write it as a failure condition
+
+This is the pack's most useful finding, and it is a regression the estate has not noticed.
+
+**The older bullet-list format states claims as falsifiable failures**:
+
+- Librarian — *"If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed."*
+- Cartographer — *"If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed."*
+- AppSec — *"If any code path exists where plaintext, decryption keys, or original file names could reach the server, AppSec has failed."*
+- Historian — *"If a decision was made but its rationale is not recorded, the Historian has failed. The team will re-litigate it…"*
+- Journalist — *"If a potential user visits the site and cannot understand the zero-knowledge guarantee within 60 seconds, the Journalist has failed."*
+
+**The newer table format states them descriptively**:
+
+- Architect — *"The Architect owns the boundaries. Every interface contract… passes through architectural review."*
+- Conductor — *"The Conductor sees the full picture. No task starts without routing."*
+- QA — *"QA owns the test matrix… No release ships without QA sign-off."*
+
+The descriptive claims are true and useful. But you cannot *check* them. The failure-condition claims name a condition, a threshold and sometimes a time bound — *thirty seconds*, *sixty seconds* — which means an auditor (human or agent) can look for a counter-example and find one. That is the same falsifiability discipline that runs through `risks.sgit.ai`, `wardley-maps.sgit.ai` ("maps are claims") and `threat-modeling.sgit.ai` (the validated threat model), applied to organisational design.
+
+**Recommendation for the site**: publish the failure-condition form as the canonical one, show the drift honestly, and offer a rewrite of the seven descriptive claims into testable form as an open build item.
+
+## 4. Format drift, quantified
+
+Across the 17 Explorer role directories:
+
+| State | Count | Roles |
+|---|---|---|
+| Identity as **table** (`\| **Field** \|`) | 7 | architect, conductor, designer, dev, devops, dpo, qa |
+| Identity as **bullet list** (`- **Field:**`) | 6 | appsec, cartographer, grc, historian, journalist, librarian |
+| **No `ROLE.md` at all** | 4 | advocate, alchemist, ambassador, sherpa |
+
+Two markup dialects of one schema, plus four directories that exist without a definition. The schema is stable; the presentation is not. A parser reading these files must handle both — which is itself an argument for the site publishing a **canonical machine-readable form** (`teams__roster.json` in this pack is the first cut) rather than only prose.
+
+## 5. Section anatomy, by frequency
+
+Measured across all 39 files:
+
+| Section | Files | Note |
+|---|---|---|
+| `## Identity` | 37 | The schema above |
+| `## Tools and Access` | 37 | Where skills are named — link out to `skills.sgit.ai` |
+| `## For AI Agents` | 37 | **The role speaking to its own occupant** — see below |
+| `## Quality Gates` | 32 | What must be true before the role signs off |
+| `## Core Workflows` | 25 | The role's repeatable procedures |
+| `## Primary Responsibilities` | 19 | |
+| `## Integration with Other Roles` | 19 | The routing table, per role |
+| `## Measuring Effectiveness` | 18 | |
+| `## Escalation` | 18 | When to hand up rather than out |
+| `## What You DO (Villager Mode)` | 17 | Topology-specific mandate |
+| `## What You Do NOT Do` | 15 | The prose form of the exclusion list |
+| `## Incident Response` | 12 | |
+
+**`## For AI Agents` in 37 of 39 files is the quiet innovation.** These documents are written for a non-human occupant and say so in a dedicated section. That is the difference between an org chart and an agent brief, and it is the section a reader building their own team should copy first.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/02__the-roster.md
+
+==============================================================================
+
+
+# 02 — The Roster: nineteen roles
+
+**Version** v0.33.64 · 7 September 2026
+**Source** `SGraph-AI__App__Send/team/` (Explorer, Villager, Town Planner) and `sg-playwright/team/roles/`
+
+---
+
+## The nineteen
+
+Grouped by what they are *for*, not alphabetically — because the grouping is itself the lesson about how to compose a team.
+
+### Build (5)
+**architect** · **dev** · **devops** · **qa** · **designer**
+
+The conventional core. Two things are not conventional. First, the Architect's claim is about *boundaries*, not design: *"The Architect owns the boundaries. Every interface contract, dependency direction, and abstraction layer passes through architectural review."* Second, the Designer's remit is unusually wide — *"A well-designed API is as much a design artifact as a well-designed interface. The structure of a configuration file, the shape of a CLI command, the naming of a function, the rhythm of a test suite — these are all design."* That role is where the estate's Design-with-a-capital-D influence lands operationally (the Jonathan Ive test as a mandatory UI validator).
+
+Designer is also the newest of the founding group — added **16 March 2026**, five weeks after the rest.
+
+### Assure (4)
+**appsec** · **grc** · **dpo** · **advocate**
+
+Security, risk, data protection, and the user's corner. Three carry falsifiable claims; the DPO's is the sharpest on consequence: *"If a privacy claim is made that is not legally accurate, the DPO has failed."*
+
+### Remember (4)
+**librarian** · **historian** · **cartographer** · **journalist**
+
+**This quartet is the estate's real signature and the hardest thing for others to copy.** Each owns a different failure of institutional memory:
+
+- **Librarian** — findability. *"If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed."*
+- **Historian** — rationale. *"If a decision was made but its rationale is not recorded, the Historian has failed. The team will re-litigate it…"*
+- **Cartographer** — visibility. *"If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed."*
+- **Journalist** — comprehensibility to outsiders, with a time bound: sixty seconds to understand the zero-knowledge guarantee.
+
+Four roles whose entire job is that the team can still think next month. This is the same thesis as the sites-as-memory network, staffed.
+
+### Route (1)
+**conductor**
+
+The orchestrator that does no work. Principles worth publishing verbatim: *"Flow over heroics"*, *"Priority is singular"* (every role knows its single most important task), *"Visibility is accountability"* (*"if it is not tracked in `.issues/` or a review document, it does not exist"*), *"Roles are boundaries"*, *"Blockers decay fast"* (*"an unresolved blocker older than one session is an escalation"*).
+
+### Represent (3)
+**ambassador** · **sherpa** · **translator**
+
+Outward and onboarding-facing. `translator` exists only in the Villager team — worth asking why (Q4).
+
+### Capitalise (2)
+**accountant** · **alchemist**
+
+Town Planner roles. The Accountant *"provides the financial models and projections that the Alchemist wraps in investor narrative."* An agent role for turning numbers into a story, named *alchemist* — the honesty of that naming is a small masterpiece and should be quoted on the site.
+
+---
+
+## Where each role exists
+
+| Role | Explorer | Villager | Town Planner | sg-playwright |
+|---|---|---|---|---|
+| architect · dev · devops · qa · historian · librarian | ● | ● | ○ | ● |
+| designer | ● | ● | ● | ○ |
+| appsec · grc · dpo · cartographer · journalist · conductor · advocate · ambassador · sherpa | ● | ● | ○ | ○ |
+| alchemist | ● | ○ | ● | ○ |
+| accountant | ○ | ○ | ● | ○ |
+| translator | ○ | ● | ○ | ○ |
+
+● present · ○ absent. Explorer has 17 directories but only 13 definitions (advocate, alchemist, ambassador, sherpa are empty); Town Planner has 4 directories and 3 definitions (librarian missing). The site must publish the gaps as gaps — a roster page that hides four empty roles is exactly the false memory `nfrs.sgit.ai` warns about.
+
+## The portability finding
+
+**Six roles are defined in all three *operational* teams** — architect, dev, devops, qa, historian, librarian — across Explorer, Villager and the second product, sg-playwright. (Town Planner is excluded from this test: it is a commercial team — accountant, alchemist, designer, librarian — not an operational one, and only its Librarian overlaps.)
+
+That is the reusable core, and it answers the reader's real question ("what roles do I actually need?") with evidence rather than opinion: the estate independently reached for these six when standing up a second product, which is the closest thing to a controlled experiment the corpus contains.
+
+The `/roster/` page should lead with those six as the recommended starting team, and present the other thirteen as additions with a stated trigger — *add a DPO when you process personal data; add a Cartographer when the dependency graph outgrows one head; add a Journalist when outsiders must understand you.*
+
+## Growth timeline (from git)
+
+| Date | Event |
+|---|---|
+| **11 Feb 2026** | *"Add ROLE.md identity documents for all 10 agent roles"* — eleven files land: appsec, architect, cartographer, conductor, dev, devops, historian, journalist, librarian, qa (+1) |
+| **12 Feb 2026** | advocate, grc, sherpa |
+| **13 Feb 2026** | ambassador, dpo — and *"Execute full team activation for incident handling series (5 phases)"*, the first real exercise |
+| **16 Mar 2026** | designer |
+
+Ten to nineteen in five weeks, then stable. Note the commit message says *ten* roles while eleven files landed — publish the discrepancy rather than smoothing it; a memory site that quietly corrects its own sources teaches agents to do the same.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/03__the-three-topologies.md
+
+==============================================================================
+
+
+# 03 — The Three Topologies: Pioneers, Settlers, Town Planners, staffed
+
+**Version** v0.33.64 · 7 September 2026
+**Source** `team/roles/` (Explorer), `team/villager/roles/`, `team/town-planner/roles/`
+
+---
+
+## 1. The finding
+
+The repo contains **three staffed teams using the same role names with different mandates**, and the naming is Wardley's: Explorer (pioneer), Villager (settler), Town Planner. This is Pioneers–Settlers–Town Planners implemented as agent configurations rather than drawn as a diagram.
+
+As far as this pack can determine, **nobody else has published this**. It should be the site's second page and the thing it is known for.
+
+## 2. What each team is for
+
+| | **Explorer** | **Villager** | **Town Planner** |
+|---|---|---|---|
+| Mandate | Build the new thing | Harden what exists | Industrialise and capitalise |
+| Roles | 17 dirs / 13 defined | 17 / 17 | 4 / 3 |
+| Governing rule | Discover | *"Harden, do not build"* | Classify and fund |
+| On encountering a needed redesign | Do it | **Send it back to Explorer** | — |
+
+The Villager mandate is stated in the role files, not inferred:
+
+> *"The code works. Your job is to make it work reliably under production conditions."*
+> *"Preserve behaviour exactly — every change must produce identical outputs for identical inputs. If behaviour changes, send it back to Explorer."*
+> *"User experience is frozen — the UX as delivered by Explorer is what ships. No additions, no changes."*
+> *"Harden, do not redesign — security architecture is frozen from Explorer. Harden what exists. If a redesign is needed, send it back."*
+
+And the corresponding exclusions: *"Do NOT design new UX features — send to Explorer."* *"Do NOT redesign security architecture — that's Explorer territory."*
+
+The Town Planner team is small and commercial: the Accountant *"provides the financial models and projections that the Alchemist wraps in investor narrative"*, with the Cartographer supplying *"maturity classification (Genesis/Custom/Product/Commodity) and Wardley map financial flows"* — the evolution axis reappearing as the thing that decides which team owns a component.
+
+## 3. Why this solves a real problem
+
+The failure mode in multi-agent systems is not incapacity; it is **an agent improving something it was asked to preserve**. A capable model handed hardening work will notice a better design and implement it, and the result is a system that never stabilises because every pass rewrites the previous one.
+
+The Villager mandate is a *refusal* engineered into the role: preserve behaviour exactly, and when you see something better, **hand it back rather than build it**. That is a genuinely hard instruction to give a capable generalist, and writing it into the role definition — with the destination named — is what makes it stick.
+
+**The handback path is the mechanism.** A topology without a defined return route is just a label; here, every freeze rule names where the work goes instead.
+
+## 4. How to publish it
+
+`/topologies/` should carry:
+
+1. **The three mandates side by side**, quoted from the role files.
+2. **The same role, three ways** — Designer is the best example, existing in all three teams: creating UX in Explorer, guarding frozen UX in Villager, and shaping investor-facing material in Town Planner. One page showing one role's three definitions makes the whole idea land faster than any explanation.
+3. **The handback rules** as a table: what is frozen, and where it goes when it must change.
+4. **The link to `wardley-maps.sgit.ai`** for PST itself — that sibling owns the model; this site owns only its staffing. Do not re-teach evolution axes here.
+
+## 5. The honest caveats
+
+- **Town Planner is a sketch**, not a template: four directories, three definitions, its Librarian missing, and its content is investor-facing rather than operational. Publish it as an early experiment.
+- **The transition is undocumented.** Nothing in the corpus states *when* a component moves from Explorer to Villager, or who decides. The Cartographer's Genesis/Custom/Product/Commodity classification is the obvious candidate, but that connection is inferred by this pack, not stated in the files. It is the single most valuable thing the founder could write next (Q3), and until he does, the site says the trigger is undefined.
+- **Explorer/Villager may have been driven by context limits as much as by Wardley theory** — running one enormous team is impractical, and splitting it is convenient. If that is the real origin, say so; a discovered-then-rationalised pattern is still a good pattern, and the honesty is worth more than the theory.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/04__the-comms-protocol.md
+
+==============================================================================
+
+
+# 04 — The Comms Protocol: how roles hand work to each other
+
+**Version** v0.33.64 · 7 September 2026
+**Source** `SGraph-AI__App__Send/team/comms/` — 130 files
+
+---
+
+## 1. The structure
+
+```
+team/comms/
+├── QA_START_HERE.md      the landing page for one role
+├── briefs/               inter-team briefs
+├── changelog/MM/DD/      what changed, written by whoever changed it
+├── plans/MM/DD/          forward work
+└── qa/
+    ├── briefs/MM/DD/     "here is what to test and why"
+    └── questions/        QA asking the build team
+```
+
+Date-foldered `MM/DD/`, which is the estate's convention everywhere (and itself the product of a refactor — see `05__`).
+
+## 2. The protocol is addresses, not messages
+
+The insight worth extracting: roles do not message each other. **Each role's definition names the directories it reads and the directories it writes.** Communication is a set of addresses in the role file, so a new occupant of a role knows its inbox and outbox without being told.
+
+From the Dev role: write *"a changelog entry in `team/comms/changelog/MM/DD/` documenting the fix and expected test impact"*, and *"if the fix affects UI behaviour, write a QA brief in `team/comms/qa/briefs/MM/DD/` with updated test cases."*
+
+From the QA role, as a read/write table: read `QA_START_HERE.md` — ***"Read first every session"*** — read `changelog/` *"to classify test failures (good vs bad)"*, read `qa/briefs/` for test cases, write `qa/questions/` for the build team.
+
+**That one QA line — reading the changelog to classify a failure as expected or genuine — is the whole value of the protocol in miniature.** Without it, a test failure is ambiguous and the agent must guess or ask. With it, the answer is a file lookup.
+
+## 3. The session-start ritual
+
+QA's role file carries an eight-step opening sequence, which the site should publish as the template for any long-running agent role:
+
+1. Read `QA_START_HERE.md` — *"your landing page for what changed since your last session"*
+2. Check `changelog/` (most recent date folder first)
+3. Check `qa/briefs/` for briefs from the build team
+4. Read your own previous reviews and coverage reports
+5. Read the latest Conductor brief for sprint priorities
+6. Run the test baseline to confirm it is green
+7. Check `.issues/` for open defects
+8. Review the test matrix for the highest-priority untested cell
+
+Steps 1–3 rebuild context, 4–5 restore intent, 6–8 select the next action. **An agent that runs this sequence starts its session knowing what happened while it was gone** — which is the actual problem in long-running agentic work, and it is solved with files rather than memory.
+
+## 4. Why files rather than a message bus
+
+Every property that makes this work is a property of files in a versioned tree: durable across sessions, greppable, diffable, reviewable by a human, and — in this estate — publishable to a vault with a read-only key. A message bus gives none of that. The corpus's `issues-fs.sgit.ai` sibling makes the general argument (*"the issues are files, the files are a graph"*); this site makes the narrower one for **inter-agent comms specifically**, and links out rather than restating.
+
+## 5. What is missing
+
+No acknowledgement mechanism, no delivery guarantee, and no way to tell a read brief from an unread one. The Conductor's *"blockers decay fast"* principle implies chasing, but nothing in the tree records whether a brief was picked up. For a human team that is fine; for an agent team it is the obvious next mechanism (Q5).
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/05__evolution-and-learnings.md
+
+==============================================================================
+
+
+# 05 — Evolution and Learnings: what the roles learned, as diffs
+
+**Version** v0.33.64 · 7 September 2026
+**Method** `git log` over `team/roles/*/ROLE.md` in a full (non-shallow) clone — 4,335 commits available. Every date and quotation below is from the history, not reconstructed.
+
+---
+
+## Why this section exists
+
+The founder asked for *"the evolution and historical learnings"*, and that material is not in the files — it is in the **diffs**. A `ROLE.md` shows what a role is today. The history shows what went wrong badly enough that someone wrote a rule into it. **That is the difference between a template gallery and a memory site**, and it is the reason this page should be built first among the content pages even though it is listed fifth.
+
+**The general pattern**: role definitions do not change often. Of 17 Explorer roles, the busiest are QA and Librarian at **6 commits each**, then Dev and Conductor at 5, DevOps and Architect at 4 — the rest at 1–3. Roles are stable, and the rare edits are therefore high-signal. Each one is worth a dated page.
+
+---
+
+## The timeline
+
+| Date | Event | What it teaches |
+|---|---|---|
+| **11 Feb 2026** | *"Add ROLE.md identity documents for all 10 agent roles"* | Genesis. Eleven files, despite the message saying ten |
+| **12–13 Feb 2026** | advocate, grc, sherpa, then ambassador, dpo | The roster grew by need, not design |
+| **13 Feb 2026** | *"Execute full team activation for incident handling series (5 phases)"* | The first exercise, touching every role |
+| **10 Mar 2026** | *"Refactor all role review folders from 26-MM-DD to MM/DD format"* | Convention debt, paid |
+| **16 Mar 2026** | designer added | The nineteenth role, five weeks late |
+| **18 Mar 2026** | *"Librarian catalogues its own operating guidance (meta-recursion)"* | The role that indexes everything indexes itself |
+| **30 Mar 2026** | *"remove dangling comms/03/ folder, add comms awareness to roles"* | **Learning 1** — below |
+| **8 Apr 2026** | *"add vault communication guidance + secret protection rules"* | **Learning 2** — below |
+| **1 May 2026** | *"refactor reality document from monolith into 13-domain fractal tree"* | Knowledge structure follows the same fractal rule as the code |
+| **25 May 2026** | *"code scan 24–25 May, app.json injection documented, B-008 ROLE.md link fix"* | Routine maintenance; roles now stable |
+
+---
+
+## Learning 1 — roles did not know where to talk (30 March 2026)
+
+**The symptom**, visible in the commit message itself: a *"dangling comms/03/ folder"* — comms directories existing that no role referenced.
+
+**The fix**: read/write directory tables added to Conductor, Dev and QA, plus QA's eight-step session-start sequence. The added lines, verbatim from the diff:
+
+```
++ | `team/comms/` | Cross-team communication — changelogs, QA briefs, inter-team briefs, plans |
++ | `team/comms/QA_START_HERE.md` | **Read first every session** — what changed, what to test |
++ | `team/comms/changelog/` | Read changelogs to classify test failures (good vs bad) |
++ 6. **Write a changelog entry** in `team/comms/changelog/MM/DD/` documenting the fix and expected test impact
++ 7. **If the fix affects UI behaviour**, write a QA brief in `team/comms/qa/briefs/MM/DD/` with updated test cases
+```
+
+**The learning, generalised**: *building the shared channel is not enough — every role must carry the addresses of its own inbox and outbox, and a session-start sequence that reads them.* Infrastructure a role has not been told about does not exist. This is the single most reusable lesson in the corpus for anyone standing up a multi-role team, and `/evolution/` should lead with it.
+
+## Learning 2 — a new capability arrived without its prohibition (8 April 2026)
+
+**The context**: roles gained `sgit` (the vault CLI) for cross-team handovers. **The risk**: vault keys and access tokens are exactly the sort of thing an agent will helpfully commit.
+
+**The fix**, added to Dev, QA and Librarian, and to `.claude/CLAUDE.md` in the same commit:
+
+```
++ - No access tokens, vault keys, share tokens, or API keys are committed to Git — these are secrets
++ - **sgit** (PyPI: `sgit-ai`): Create vaults for cross-team briefing delivery… 
++   **NEVER commit vault keys, share tokens, or access tokens to Git.**
+```
+
+Note the placement: the prohibition sits **inside the tool's own row in the Tools and Access table**, next to the capability it constrains — not in a distant security section a role might not read.
+
+**The learning, generalised**: *when you grant a role a new tool, write the prohibition in the same commit and in the same place as the grant.* A capability added on Monday and a rule added in June is a month of exposure. This connects directly to `pki.sgit.ai`'s key discipline (`sgit_vk1_` write keys never published) — the role file is where that discipline reaches the agent that would otherwise breach it.
+
+## Learning 3 — the format regressed (Feb → Mar 2026)
+
+Not a single commit but a drift, and the estate has not noticed it: the newer table-format Identity blocks state Central Claims **descriptively**, while the older bullet-format ones state them as **falsifiable failure conditions** (`01__` §3). The migration improved the markup and lost the property that made the field valuable.
+
+**The learning, generalised**: *a format migration can silently drop a semantic constraint; diff the meaning, not just the rendering.* Publishing this on the site — a self-criticism of the estate's own reference material — is exactly the credibility the network's other sites are built on.
+
+---
+
+## How the site keeps this alive
+
+`/evolution/` is not a one-time archaeology. Every future change to a `ROLE.md` should produce a dated entry answering three questions: **what broke, what rule was added, and which roles received it.** Three lines. The rule is that a role edit without such an entry is incomplete — because the edited file records the answer but destroys the question, and the question is what an agent needs in order to know whether the rule still applies.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/06__site-architecture.md
+
+==============================================================================
+
+
+# 06 — Site Architecture: `teams.sgit.ai`
+
+**Version** v0.33.64 · 7 September 2026
+**Base** House pattern (copy `pki.sgit.ai`): `llms.txt` + `/llms-full.txt`, `/documents/` raw markdown, markdown twin at every URL, `/admin/comms.html`, `/shipped/`, versions, participant page.
+
+---
+
+## 1. URL scheme
+
+```
+/                      Roles are boundaries. The Conductor never does the work.
+/role-format/          the ROLE.md schema, measured; the failure-condition claim
+/role-format/drift/    the two dialects and the four empty directories, honestly
+/roster/               the nineteen roles; the portable six; add-a-role triggers
+/roster/<slug>/        one role: claim, exclusions, comms addresses, tools
+/topologies/           Explorer / Villager / Town Planner; the handback rules
+/topologies/designer/  the same role, three ways — the fastest way to get it
+/comms/                inbox/outbox addressing; the session-start ritual
+/evolution/            dated learnings as diffs; what broke, what rule was added
+/setup/                stand up a multi-role team from these files
+/documents/            raw markdown of everything
+```
+
+## 2. The site is a reference, so ship the machine-readable form
+
+The primary consumer is an agent being configured. `teams__roster.json` (this pack) is the seed: every role with tier, teams present in, claim, claim-form (falsifiable / descriptive / absent), exclusions, comms addresses. The site serves it at a stable URL alongside the prose, and every `/roster/<slug>/` page is a projection of one record.
+
+**Ship the raw `ROLE.md` files too**, under `/documents/`, so a reader can copy one and start. A reference site about reusable role definitions that makes you retype them has failed its own Librarian test.
+
+## 3. Generated, not claimed
+
+Role counts, per-team coverage, format-dialect tallies, commit counts per role, and the timeline dates are all derivable from the repo. Publish the scan script's identity and date beside every number, and regenerate on each build. `01__` and `02__` carry the 7 September 2026 figures; they will drift.
+
+## 4. Deconfliction
+
+| Topic | Owner | This site's part |
+|---|---|---|
+| `SKILL.md`, skill lifecycle, description-as-trigger | **skills.sgit.ai** | Only *which* skills a role holds, linked out |
+| Pioneers–Settlers–Town Planners, evolution axes | **wardley-maps.sgit.ai** | Only the staffing of PST as three agent teams |
+| Issues-as-files, the `.issues/` tree | **issues-fs.sgit.ai** | Only how roles address it |
+| Coding conventions the Dev role follows | **coding.sgit.ai** | Only that the role points there |
+| CI, testing, documentation as properties | **nfrs.sgit.ai** | Only the roles that own them |
+| Vault keys, `sgit` mechanics | **pki.sgit.ai** / sgit.ai | Only the prohibition as it appears in a role file |
+| Threat modelling as a method | **threat-modeling.sgit.ai** | Only that AppSec is the role that does it |
+
+The rule: **this site owns composition.** Anything about the work itself belongs to the site that owns that work.
+
+## 5. `/setup/` is the page people will actually use
+
+Everything else is reference; this is the deliverable. It should answer, in order: which six roles to start with (the portable core, evidenced by sg-playwright), what each one's exclusion list must say, where to put the comms tree, what the session-start sequence is, and when to split into Explorer/Villager. Written as a procedure, with the corpus's own files as the worked example.
+
+## 6. What this site does NOT do
+
+No agent-framework comparison (LangGraph, CrewAI, AutoGen) — the corpus has no evidence about them and inventing it would break the network's sourced-claims rule. No claim that these roles are optimal; they are *ours, measured, with the gaps shown*. And no synthetic role definitions: the four empty directories stay empty on the site until someone writes them, labelled as missing.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/07__boundaries-and-licensing.md
+
+==============================================================================
+
+
+# 07 — Boundaries and Licensing
+
+**Version** v0.33.64 · 7 September 2026
+
+---
+
+## 1. What is being published
+
+Role definitions, a comms protocol, and the git history of both — all the founder's own work, in his own repos. **This is the least legally exposed site in the network**: no third-party text to reproduce, no findings about a live system, no personal data. The whole corpus can go out under CC BY 4.0.
+
+That makes the *reuse* question the interesting one, not the permission question.
+
+## 2. Publish for copying — and make the licence say so
+
+The point of this site is that someone stands up their own team from it. CC BY 4.0 permits that, including commercially, with attribution. State it in plain words on `/setup/`: *take these role files, change the names, ship your team; keep the attribution line.* A reference site whose licence terms are ambiguous will simply not be used.
+
+The role files should carry the attribution line **inside** them, as a comment or footer, so it survives being copied out of the site and into someone's repo — which is exactly how they will travel.
+
+## 3. What must be scrubbed before publication
+
+The `ROLE.md` files are operational documents from a live product team. Before any file is published verbatim:
+
+| Category | Action |
+|---|---|
+| Vault keys, share tokens, access tokens, API keys | **Never publish.** The 8 April commit exists *because* this is a live risk; grep every file before it ships |
+| Internal hostnames, bucket names, account IDs, ARNs | Replace with placeholders |
+| Paths into private repos | Keep — they are structural and carry no secret — but check for anything under a private path that reveals unreleased work |
+| Named individuals other than the founder | Remove or get consent; roles are named by function, so this should be rare |
+| `.issues/` references pointing at unresolved security defects | Generalise; cross-check against `threat-modeling.sgit.ai`'s disclosure rule |
+
+**The grep is a build step, not a review step.** Run it in CI over everything the site publishes, the same way `licence-audit.py --check` runs elsewhere in the network.
+
+## 4. Third-party frameworks
+
+**Wardley's Pioneers–Settlers–Town Planners** is Simon Wardley's model, published by him under CC BY-SA. Name it, credit him, link to `wardley-maps.sgit.ai` and to his own material. The site's contribution is the *staffing* of it, which is original. Do not present PST as the estate's idea, and do not reproduce his diagrams — redraw, as `influences.sgit.ai` requires.
+
+**Team Topologies** and **Cynefin** appear in the corpus as influences; if the site references them, same rule — name, credit, link, never reproduce.
+
+## 5. The honesty rule that outranks the licence
+
+This site's value is that its claims are checkable against a real repo. Two consequences:
+
+1. **Never publish a role definition that does not exist on disk.** Four Explorer directories and one Town Planner directory have no `ROLE.md`; they are published as gaps, never as drafts written for the website. An invented role definition would make every real one unverifiable.
+2. **Never smooth the history.** The commit that says ten roles while eleven files landed, the format regression, the undocumented Explorer→Villager trigger — these go on the site as they are. A memory site that edits its own past teaches agents to do the same.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/08__gaps-and-open-questions.md
+
+==============================================================================
+
+
+# 08 — Gaps and Open Questions
+
+**Version** v0.33.64 · 7 September 2026
+**House rule** Published unresolved. Questions go to `/admin/comms.html`.
+
+---
+
+## Gaps
+
+**G1 — Four Explorer roles have no definition**: advocate, alchemist, ambassador, sherpa. Directories exist, `ROLE.md` does not. Town Planner's librarian is likewise missing. Publish as gaps; do not write them for the website (`07__` §5).
+
+**G2 — The Explorer→Villager transition trigger is undocumented.** Nothing states when a component moves from build to harden, or who decides. The Cartographer's Genesis/Custom/Product/Commodity classification is the obvious mechanism, but that link is this pack's inference, not the corpus's statement. It is the highest-value thing the founder could write next.
+
+**G3 — No `SKILL.md`-to-role mapping exists.** 40 skill files and 39 role files, with no index of which roles hold which skills. Both sites need it; it is the natural shared artefact and the cleanest way to prove the capability/composition seam works.
+
+**G4 — The workflows are implicit.** The founder asked for *"highly effective agentic workflows"*. What the corpus holds is 25 `## Core Workflows` sections inside role files, plus 130 comms files showing workflows in action — but no standalone workflow documents. Whether the site should extract them into first-class pages, or keep them role-scoped, is an editorial decision (Q6).
+
+**G5 — Effectiveness is asserted, not measured.** 18 role files have a `## Measuring Effectiveness` section, but no measurements appear anywhere in the corpus. The site cannot claim these roles work; it can only show they are defined, used, and revised. Say so plainly.
+
+**G6 — Only three learnings were recovered.** The archaeology in `05__` found three high-signal changes across seven months. There are 4,335 commits; a deeper pass over `team/comms/` and `.issues/` would likely surface more, and the changelog tree (`changelog/03/` through `changelog/08/`) is unexamined.
+
+**G7 — The sg-playwright team was counted, not read.** Six role files in a second product, used here as evidence for the portable core. Their content has not been compared against the main team's — which is the actual test of whether the roster is reusable.
+
+## Open questions for the founder
+
+**Q1** — Is Explorer/Villager/Town Planner deliberately Wardley PST, or did it emerge from practical context limits and get named afterwards? Both are good answers; the site should tell the true one (`03__` §5).
+
+**Q2** — The failure-condition Central Claim (*"…the Librarian has failed"*) versus the newer descriptive form: agreed that the older one is better and should be restored? If so, the site can publish rewrites of the seven descriptive claims as a build item.
+
+**Q3** — What moves a component from Explorer to Villager, and who decides? (G2 — the biggest gap.)
+
+**Q4** — `translator` exists only in the Villager team, and `accountant` only in Town Planner. Deliberate, or accident of when they were written?
+
+**Q5** — Should the comms protocol get an acknowledgement mechanism — a way to tell a read brief from an unread one? (`04__` §5.)
+
+**Q6** — Workflows: extract as first-class pages, or keep them inside the role definitions where they currently live? (G4.)
+
+**Q7** — Are there roles you *tried and removed*? A `status: retired` entry with the reason would be the most useful page on the site for anyone composing their own team — and nothing in the git history shows a deletion, so if it happened it happened before 11 February 2026.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/09__source-manifest.csv
+
+==============================================================================
+
+
+tier,path,words,role,notes
+0,00__BRIEF.md,952,pack,commission; thesis; measured inventory; build order
+0,01__the-role-format.md,982,pack,"ROLE.md schema measured; the failure-condition claim; drift quantified"
+0,02__the-roster.md,893,pack,"nineteen roles; the operational core of six; growth timeline"
+0,03__the-three-topologies.md,747,pack,"Explorer/Villager/Town Planner as staffed PST; handback rules"
+0,04__the-comms-protocol.md,560,pack,"inbox/outbox addressing; the 8-step session-start ritual"
+0,05__evolution-and-learnings.md,1001,pack,"git archaeology; three learnings as diffs — the memory layer"
+0,06__site-architecture.md,594,pack,URLs; machine-readable roster; deconfliction table
+0,07__boundaries-and-licensing.md,565,pack,"publish-for-copying; the pre-publication scrub; PST attribution"
+0,08__gaps-and-open-questions.md,553,pack,7 gaps / 7 comms questions
+0,teams__roster.json,,pack,"19 roles generated from disk + git; claim forms; topologies; learnings"
+1,SGraph-AI__App__Send/team/roles/,,evidence,"Explorer team: 17 role directories, 13 with ROLE.md"
+1,SGraph-AI__App__Send/team/roles/conductor/ROLE.md,1803,evidence,"'Roles are boundaries. The Conductor never does the work.'; Not Responsible For list"
+1,SGraph-AI__App__Send/team/roles/librarian/ROLE.md,1961,evidence,"bullet-format Identity; the 30-second falsifiable claim"
+1,SGraph-AI__App__Send/team/roles/qa/ROLE.md,2128,evidence,"most-revised role (6 commits); the 8-step session-start sequence"
+1,SGraph-AI__App__Send/team/roles/dev/ROLE.md,1929,evidence,"comms write addresses; sgit tool row with its prohibition"
+1,SGraph-AI__App__Send/team/roles/appsec/ROLE.md,2311,evidence,"falsifiable claim on plaintext/keys reaching the server"
+1,SGraph-AI__App__Send/team/roles/designer/ROLE.md,3076,evidence,"widest remit; exists in all three topologies"
+1,SGraph-AI__App__Send/team/villager/roles/,,evidence,"Villager team: 17 directories, 17 defined — the only complete team"
+1,SGraph-AI__App__Send/team/villager/roles/dev/ROLE.md,1150,evidence,"'Harden, do not build'; 'Preserve behaviour exactly'; send-back rule"
+1,SGraph-AI__App__Send/team/town-planner/roles/,,evidence,"Town Planner: 4 directories, 3 defined; librarian missing"
+1,SGraph-AI__App__Send/team/town-planner/roles/accountant/ROLE.md,385,evidence,"financial models the Alchemist wraps in investor narrative"
+1,SGraph-AI__App__Send/team/comms/,,evidence,"130 files: briefs, changelog, plans, qa/briefs, qa/questions, QA_START_HERE.md"
+1,sg-playwright/team/roles/,,evidence,"second product, 6 roles — the portable-core evidence"
+2,SGraph-AI__App__Send git history (4335 commits),,method,"role evolution recovered via git log over team/roles/*/ROLE.md; full clone, not shallow"
+2,https://sgit.ai/network/index.html,,live-source,"fetched 2026-09-07: 19 sites, 18 live, skills.sgit.ai reserved and unpublished"
+2,skills.sgit.ai (reserved sibling),,deconflict,"owns SKILL.md, lifecycle, triggering; this site links out and never duplicates"
+2,wardley-maps.sgit.ai (sibling pack),,deconflict,"PST model itself lives there; this site owns only its staffing"
+2,issues-fs.sgit.ai (sibling),,deconflict,"issues-as-files argument lives there; here only how roles address it"
+3,vault keys / share tokens / access tokens in any ROLE.md,,DO-NOT-PUBLISH,"07__ §3: grep as a CI build step before any file ships"
+3,internal hostnames / bucket names / account IDs / ARNs,,SCRUB,replace with placeholders before publication
+3,the four undefined Explorer roles and town-planner librarian,,PENDING,"publish as gaps; never author replacements for the website (07__ §5)"
+
+
+==============================================================================
+source: /briefs/LICENSE.md
+
+==============================================================================
+
+
+# Licence
+
+## This pack
+
+Everything in this brief pack — the nine numbered documents, `teams__roster.json`, `09__source-manifest.csv`, this file and `README.md` — is released under the **Creative Commons Attribution 4.0 International licence (CC BY 4.0)**.
+
+    Copyright (c) 2026 Dinis Cruz
+    Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+
+Attribution: **Dinis Cruz**, with AI co-authorship (Claude, Anthropic).
+
+## The site this pack commissions
+
+All of it — role definitions, the comms protocol, the roster data, the evolution history — is CC BY 4.0. This is the least legally exposed site in the network: the corpus is the founder's own work in his own repos, with no third-party text to reproduce, no findings about a live system, and no personal data.
+
+**The site exists to be copied.** CC BY 4.0 permits taking these role files, renaming them, and shipping your own team, commercially included, with attribution retained. `/setup/` should say that in plain words, and the published `ROLE.md` files should carry the attribution line *inside* them so it survives being pasted into someone else's repo — which is how they will travel.
+
+## What CC BY does not cover
+
+**Pioneers–Settlers–Town Planners** is Simon Wardley's model, published by him under CC BY-SA. Name it, credit him, link to his material and to `wardley-maps.sgit.ai`. The estate's contribution is the *staffing* of PST as three agent teams, which is original; the model is not. Do not reproduce his diagrams — redraw them. Same rule for **Team Topologies** and **Cynefin** where referenced.
+
+## The rules that outrank the licence
+
+1. **Scrub before publishing.** No vault keys, share tokens, access tokens or API keys — grep as a CI build step, not a review step. The 8 April 2026 commit that added this prohibition to three roles exists because the risk is live. Internal hostnames, bucket names, account IDs and ARNs become placeholders.
+2. **Never publish a role definition that does not exist on disk.** Four Explorer directories and Town Planner's librarian have none; they ship as gaps. An invented role definition would make every real one unverifiable.
+3. **Never smooth the history.** The commit that says ten roles while eleven landed, the format regression, the undocumented Explorer→Villager trigger — all published as they are. A memory site that edits its own past teaches agents to do the same.
+
+
+==============================================================================
+source: /briefs/README.md
+
+==============================================================================
+
+
+# Brief pack — `teams.sgit.ai`
+
+**Version** v0.33.64 · 7 September 2026 · CC BY 4.0
+
+The commission pack for `teams.sgit.ai` — the reference for setting up **agentic teams with more than one role**.
+
+**Thesis:** the leverage in agentic work is division of labour, not model capability.
+**Tagline:** *Roles are boundaries. The Conductor never does the work.*
+
+## Contents
+
+| File | Words | What it is |
+|---|---|---|
+| `00__BRIEF.md` | 952 | Commission, thesis, measured inventory, constraints, build order |
+| `01__the-role-format.md` | 982 | The `ROLE.md` schema measured; the failure-condition claim; drift quantified |
+| `02__the-roster.md` | 893 | Nineteen roles by function; the operational core of six; growth timeline |
+| `03__the-three-topologies.md` | 747 | Explorer / Villager / Town Planner as staffed Wardley PST |
+| `04__the-comms-protocol.md` | 560 | Inbox/outbox addressing; the eight-step session-start ritual |
+| `05__evolution-and-learnings.md` | 1,001 | Git archaeology — three learnings as diffs. The memory layer |
+| `06__site-architecture.md` | 594 | URLs, machine-readable roster, sibling deconfliction |
+| `07__boundaries-and-licensing.md` | 565 | Publish-for-copying; the pre-publication scrub; PST attribution |
+| `08__gaps-and-open-questions.md` | 553 | 7 gaps, 7 questions |
+| `teams__roster.json` | — | 19 roles generated from disk + git: claims, claim-form, exclusions, teams |
+| `09__source-manifest.csv` | — | 4 tiers; all tier-0/1 paths verified; counts via `wc -w` |
+
+## Measured 7 September 2026
+
+**39 `ROLE.md` files · 19 unique roles · 4 team instantiations · 130 comms files · 4,335 commits searched.**
+
+Explorer 17 dirs / 13 defined · Villager 17 / 17 · Town Planner 4 / 3 · sg-playwright 6 / 6.
+
+Central Claim forms: **6 falsifiable · 7 descriptive · 6 absent.** The falsifiable form is the *older* one — the format migration lost it (`01__` §3). That regression is the pack's most useful single finding.
+
+## Two things to know before building
+
+**The best material is not in the files.** The learnings the founder asked for exist only as git diffs — a role file records the answer but destroys the question. `05__` recovers three; there are more (G6).
+
+**`skills.sgit.ai` already exists** (reserved, unpublished). The seam: *a skill is a capability, a role is a boundary, a team is a routing table.* That site owns `SKILL.md`; this one owns `ROLE.md`, the roster, the topologies and the comms protocol.
+
+## Licence
+
+Pack text, tables, schemas and analysis: CC BY 4.0 (attribute Dinis Cruz). Pioneers–Settlers–Town Planners is Simon Wardley's model — named, credited, linked, never reproduced.

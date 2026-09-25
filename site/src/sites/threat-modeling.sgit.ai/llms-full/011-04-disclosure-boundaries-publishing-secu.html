@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>04 — Disclosure Boundaries: publishing security work about a live product (threat-modeling.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · threat-modeling.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#04-disclosure-boundaries-publishing-security-work-about-a-live-product">04 — Disclosure Boundaries: publishing security work about a live product</a></li><li class="l2"><a href="#1-the-problem-stated-plainly">1. The problem, stated plainly</a></li><li class="l2"><a href="#2-the-rule">2. The rule</a></li><li class="l2"><a href="#3-redaction-is-a-versioned-act-not-a-deletion">3. Redaction is a versioned act, not a deletion</a></li><li class="l2"><a href="#4-before-launch-a-closure-pass">4. Before launch: a closure pass</a></li><li class="l2"><a href="#5-licensing">5. Licensing</a></li><li class="l2"><a href="#6-vulnerability-disclosure-for-the-site-itself">6. Vulnerability disclosure for the site itself</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/threat-modeling.sgit.ai.html">threat-modeling.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 11 of 19</p><nav class="pager"><span><a href="010-briefs04disclosure-boundariesmd.html">← briefs/04disclosure-boundaries.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="012-briefs05the-vault-argumentmd.html">briefs/05the-vault-argument.md →</a></span></nav><article class="source"><h1 id="04-disclosure-boundaries-publishing-security-work-about-a-live-product">04 — Disclosure Boundaries: publishing security work about a live product</h1>
+<p><strong>Version</strong> v0.33.63 · 7 September 2026</p>
+<hr>
+<h2 id="1-the-problem-stated-plainly">1. The problem, stated plainly</h2>
+<p>This site&#x27;s best material is a security review of the founder&#x27;s own running platform. It names vulnerabilities by number, locates two of them by file and line, and records several as <code>NOT MITIGATED</code> and two controls as <code>CONFIRMED MISSING</code>. The source brief itself notes that <em>&quot;some access tokens have already been leaked in posts.&quot;</em></p>
+<p>Publishing all of that as-is would be a live exploitation guide for SG/Send. Publishing none of it would gut the site and quietly abandon the mandatory-disclosure position in <code>01__</code>. Neither is acceptable, so the boundary has to be drawn precisely.</p>
+<h2 id="2-the-rule">2. The rule</h2>
+<p><strong>Publish the method always. Publish findings only once they are closed, or once they are harmless by design.</strong></p>
+<div class="table"><table><thead><tr><th>Category</th><th>Publish?</th><th>Reasoning</th></tr></thead><tbody><tr><td>The method — bottom-up file-by-file, the parallel security tree, the <code>.security.json</code> schema, the STRIDE table format, the two-modes pattern, the validation format</td><td><strong>Yes, in full</strong></td><td>Methods are the transferable asset and expose nothing</td></tr>
+<tr><td>Findings that are <strong>fixed</strong>, with the fix and its version</td><td><strong>Yes</strong></td><td>This is the disclosure the papers argue for; the version proves closure</td></tr>
+<tr><td>Findings <strong>mitigated by design</strong> (e.g. server breach → impact None under zero-knowledge)</td><td><strong>Yes</strong></td><td>Publishing an architecture&#x27;s strength is not exposure — but only where the ZK verification section backs it</td></tr>
+<tr><td>Findings <strong>still open</strong> on a live system</td><td><strong>No</strong> — hold</td><td>Publish the <em>count</em> and the <em>class</em>, dated, not the location</td></tr>
+<tr><td><strong>File-and-line locations</strong> of any unfixed finding</td><td><strong>Never</strong></td><td>The validation report&#x27;s precision is its value internally and its danger externally</td></tr>
+<tr><td>Third-party findings (Anthropic log retention, n8n logging, any vendor)</td><td><strong>No</strong></td><td>Not the estate&#x27;s to disclose; describe the <em>question</em> asked, not the answer found</td></tr>
+<tr><td>The leaked-token history</td><td><strong>Yes, as history</strong></td><td>Already public (<code>sgit.ai/case-studies/exposed-vault-key.md</code> tells this class of story); the honest post-mortem is an asset — provided the tokens are dead</td></tr></tbody></table></div>
+<p><strong>The dating rule does the heavy lifting.</strong> A finding published as <em>&quot;open as of 17 March 2026&quot;</em> and later shown as <em>&quot;closed in v0.x.y&quot;</em> is exactly the mandatory-disclosure model working. A finding published as open with no date and no closure is an unmaintained invitation.</p>
+<h2 id="3-redaction-is-a-versioned-act-not-a-deletion">3. Redaction is a versioned act, not a deletion</h2>
+<p>When a source document is published in redacted form, the site says so on the page: which categories were held, and why. A silently trimmed threat model is a false memory of the kind <code>nfrs.sgit.ai</code> warns about. Every redacted page carries: <em>&quot;N findings held under the disclosure rule as of &lt;date&gt;; classes: &lt;list&gt;.&quot;</em> The count is generated.</p>
+<h2 id="4-before-launch-a-closure-pass">4. Before launch: a closure pass</h2>
+<p>The findings in the corpus are from February and March 2026; this pack is dated September 2026. <strong>Nothing may be published as &quot;open&quot; without re-checking it against current code first.</strong> Two failure modes to avoid, in both directions: publishing a fixed vulnerability as open (defames the product), and publishing a still-open one as fixed (defrauds the reader, and is the exact behaviour the mandatory-disclosure paper condemns). This is comms question Q1.</p>
+<h2 id="5-licensing">5. Licensing</h2>
+<p>Site text, schemas, tables and analysis: CC BY 4.0. The white papers are the founder&#x27;s own and carry their existing co-authorship attribution (several credit <em>&quot;ChatGPT Deep Research&quot;</em>). <strong>STRIDE, MITRE ATT&amp;CK, CAPEC, CWE/CVE, OWASP Top 10 and ASVS</strong>: reference by name and link; do not reproduce their content. STRIDE is a Microsoft-originated taxonomy — the six category names are usable as terms of art, but the site publishes <em>its own</em> tables under those headings, never a copied framework text. This is the same link-never-rehost boundary as <code>influences.sgit.ai</code>.</p>
+<h2 id="6-vulnerability-disclosure-for-the-site-itself">6. Vulnerability disclosure for the site itself</h2>
+<p>A site publishing threat models must be reachable by anyone who finds a flaw in it. Ship <code>/.well-known/security.txt</code> and a disclosure policy page from day one. A threat-modeling site without a disclosure channel would be the discipline&#x27;s own joke.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr></article><nav class="pager"><span><a href="010-briefs04disclosure-boundariesmd.html">← briefs/04disclosure-boundaries.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="012-briefs05the-vault-argumentmd.html">briefs/05the-vault-argument.md →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>threat-modeling.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://threat-modeling.sgit.ai/llms-full.txt">https://threat-modeling.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:39Z</dd><dt>sha256</dt><dd><code title="e491cd40da28b4ee7dd108e2f1ee97b01d9cc71d60001ddbd104cf0853cc5640">e491cd40da28</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/threat-modeling.sgit.ai/llms-full.txt</a> (49,157 bytes)</dd><dt>Section</dt><dd>11 of 19: 04 — Disclosure Boundaries: publishing security work about a live product</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

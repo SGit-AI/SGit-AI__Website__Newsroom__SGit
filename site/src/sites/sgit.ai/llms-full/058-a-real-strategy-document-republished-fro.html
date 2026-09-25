@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>A real strategy document, republished from a vault (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#a-real-strategy-document-republished-from-a-vault">A real strategy document, republished from a vault</a></li><li class="l2"><a href="#the-live-embed">The live embed</a></li><li class="l2"><a href="#why-this-vault-could-not-simply-publish-its-read-key">Why this vault could not simply publish its read key</a></li><li class="l2"><a href="#what-this-demo-adds-to-the-embed-host">What this demo adds to the embed host</a></li><li class="l2"><a href="#related">Related</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 58 of 358</p><nav class="pager"><span><a href="057-the-strategy-in-seven-maps-a-real-docume.html">← The Strategy in Seven Maps, a real document republished from</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="059-sgit-on-a-wardley-map-sgitai-demos.html">sgit, on a Wardley Map (sgit.ai demos) →</a></span></nav><article class="source"><h1 id="a-real-strategy-document-republished-from-a-vault">A real strategy document, republished from a vault</h1>
+<p>This is not demo content. It is the actual SG/Send strategy, eight Wardley Maps with commentary, written by the founder, <a class="ext" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7464691060775120896/">published on LinkedIn ↗</a> in May 2026, served live below from an encrypted vault with a published read-only key. And the process of publishing it is itself a security lesson, so that is on this page too.</p>
+<h2 id="the-live-embed">The live embed</h2>
+<p>The vault&#x27;s own app, the scrollable strategy essay with the eight maps, click-to-zoom included. Every byte, including the PNG maps, is fetched as ciphertext and decrypted here.</p>
+<p>~30 encrypted objects (~900 KB, mostly the map PNGs) from <code>dev.send.sgraph.ai</code>, decrypted in your browser.</p>
+<h2 id="why-this-vault-could-not-simply-publish-its-read-key">Why this vault could not simply publish its read key</h2>
+<p>The original lives in a vault created in May 2026, before today&#x27;s key practices. Asked &quot;is it OK to share its read key?&quot;, we audited it, and the answer was <strong>no</strong>, for reasons worth publishing because they generalise:</p>
+<div class="table"><table><thead><tr><th>Finding</th><th>Why it blocks publishing the read key</th></tr></thead><tbody><tr><td><strong>The vault&#x27;s own write credential was inside its content.</strong> A production briefing in the vault documented the clone command, including the vault&#x27;s read-write token, verbatim.</td><td>Publishing the read key would hand every reader the <em>write</em> key. This is the general trap: a read key exposes everything ever committed, including documentation that casually quotes credentials.</td></tr>
+<tr><td><strong>Server-side bookkeeping with live tokens.</strong><code>.vault/owner/public-previews/</code> held records containing <code>delete_auth</code> tokens, capabilities to delete the published previews.</td><td>A read key decrypts the whole tree, dot-folders included. Operational bookkeeping and publishable content were in the same trust boundary.</td></tr>
+<tr><td><strong>Legacy low-entropy credential.</strong> The vault&#x27;s keys derive from a legacy dictionary-words-plus-digits token, a small keyspace by construction.</td><td>Even with the content clean, &quot;public read, protected write&quot; is only as strong as the write credential. This class of token is being retired for exactly this reason.</td></tr></tbody></table></div>
+<p><strong>The fix is the pattern to copy:</strong> republish, don&#x27;t retrofit. The content was copied out, the credential quotes redacted (with a visible publication note in the affected file), the operational bookkeeping and test debris dropped, and the result committed to a <em>new</em> vault (<code>ookq4mn4</code>) with a full-entropy key that has never appeared anywhere. Only then was the read key derived and published:</p>
+<pre><code># the audit, in one honest line: grep before you publish
+$ grep -rniE &quot;token|secret|key|delete_auth&quot; . --include=&quot;*.md&quot; --include=&quot;*.json&quot;
+# the republish
+$ sgit init --existing .   # fresh vault, full-entropy key — saved to a password manager
+$ sgit commit -m &quot;republished, credentials redacted&quot; &amp;&amp; sgit push
+$ sgit dev derive-keys &#x27;&lt;vault-key&gt;&#x27;
+  read_key: 451c4c1e28fbb24a…   ← published below, in full, on purpose</code></pre>
+<pre><code>vault id : ookq4mn4
+endpoint : https://dev.send.sgraph.ai
+read key : 451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b</code></pre>
+<p>The original vault is untouched and stays private. Its history, which contains the credential-bearing briefing, is not carried over: a republish is also how you shed a history you cannot publish.</p>
+<h2 id="what-this-demo-adds-to-the-embed-host">What this demo adds to the embed host</h2>
+<p>The <a class="ext" href="https://sgit.ai/vault-app-embed.md">first demo ↗</a> was built without image files. This app loads eight PNG maps by setting <code>img.src</code> to vault paths, which, inside a sandboxed frame, resolve against an opaque origin and fail. The embed host now does what the real SG/Vault host does: a <code>MutationObserver</code> intercepts vault-path images, reads the bytes over the bridge, and swaps in <code>blob:</code> URLs. The maps you see above each travelled as ciphertext.</p>
+<div class="table"><table><thead><tr><th>Shape</th><th>Evidence status</th><th>Copy or reference</th></tr></thead><tbody><tr><td>Report / strategy microsite</td><td><strong>REAL</strong>: a production artefact, published externally in May 2026; not authored for this demo</td><td><strong>Reference</strong>: the embed reads vault <code>ookq4mn4</code> live; a push updates this page with no rebuild</td></tr></tbody></table></div>
+<h2 id="related">Related</h2>
+<ul><li><a class="ext" href="https://sgit.ai/vault-app-embed.md">The first demo ↗</a>, the walkthrough of the embed mechanism itself</li><li><a href="../case-studies/exposed-vault-key.html">The day we leaked our own vault key</a><a class="ext live" href="https://sgit.ai/case-studies/exposed-vault-key.html" title="live page">↗</a>, the incident behind the audit habits used here</li><li><a href="../docs/briefs/briefing-sgvault-ui-embed.html">Briefing to the SG/Vault UI team</a><a class="ext live" href="https://sgit.ai/docs/briefs/briefing-sgvault-ui-embed.html" title="live page">↗</a>, the path to embedding the official UI instead of our minimal host</li></ul>
+<p><a class="ext" href="https://sgit.ai/vault-app-embed.md">← First demo ↗</a><a href="../index.html">All demos →</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="057-the-strategy-in-seven-maps-a-real-docume.html">← The Strategy in Seven Maps, a real document republished from</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="059-sgit-on-a-wardley-map-sgitai-demos.html">sgit, on a Wardley Map (sgit.ai demos) →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>58 of 358: A real strategy document, republished from a vault</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

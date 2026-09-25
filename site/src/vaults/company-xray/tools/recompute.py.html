@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>recompute.py · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="recompute.py">raw text</a></p><article class="source"><pre class="raw"><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Re-run the arithmetic behind every &quot;computed&quot; finding in the sample X-ray.
+
+Run from the vault root:
+
+    python3 tools/recompute.py
+
+It reads only the customer&#x27;s files in sample/inbox/, recomputes each figure that a computed
+finding in sample/xray/findings.json relies on, compares them, and writes the derived tables to
+sample/xray/evidence/. A figure that does not match is printed as FAIL and the script exits 1.
+
+This is the discipline the plan sells: a computed finding is one anybody can re-run.
+&quot;&quot;&quot;
+import csv, json, sys
+from collections import defaultdict
+from datetime import date
+
+INBOX = &#x27;sample/inbox/&#x27;
+EVID  = &#x27;sample/xray/evidence/&#x27;
+LINES = [&#x27;Cleaning contracts&#x27;, &#x27;Reactive maintenance&#x27;, &#x27;Planned maintenance&#x27;]
+SPLIT = &#x27;2026-04&#x27;          # the April 2026 wage rise; last year is before, this year is from
+MOVED = &#x27;2026-05&#x27;          # the Manchester area supervisor left on 12 May 2026
+XRAY_DATE = date(2026, 9, 18)
+
+
+def rows(name):
+    return list(csv.DictReader(open(INBOX + name, newline=&#x27;&#x27;)))
+
+
+def pct(a, b):
+    return round(100 * a / b, 1)
+
+
+class Recompute:
+
+    def __init__(self):
+        self.acc = rows(&#x27;management-accounts.csv&#x27;)
+        self.cus = rows(&#x27;customers.csv&#x27;)
+        self.com = rows(&#x27;complaints-log.csv&#x27;)
+        self.pip = rows(&#x27;sales-pipeline.csv&#x27;)
+        self.sup = rows(&#x27;supplier-contracts.csv&#x27;)
+        self.too = rows(&#x27;tools-inventory.csv&#x27;)
+        self.fig = {}
+
+    def period(self, before):
+        return [r for r in self.acc if (r[&#x27;month&#x27;] &lt; SPLIT) == before]
+
+    def money(self):
+        out = []
+        for label, before in [(&#x27;FY2025_26&#x27;, True), (&#x27;Apr_Aug_2026&#x27;, False)]:
+            rs = self.period(before)
+            months = len({r[&#x27;month&#x27;] for r in rs})
+            rev = sum(float(r[&#x27;revenue&#x27;]) for r in rs)
+            cost = sum(float(r[&#x27;direct_labour&#x27;]) + float(r[&#x27;materials&#x27;]) + float(r[&#x27;subcontract&#x27;]) + float(r[&#x27;overheads&#x27;]) for r in rs)
+            self.fig[f&#x27;revenue_per_month_{label}&#x27;] = round(rev / months)
+            self.fig[f&#x27;net_per_month_{label}&#x27;] = round((rev - cost) / months)
+            self.fig[f&#x27;net_margin_{label}&#x27;] = pct(rev - cost, rev)
+            for line in LINES:
+                lr = [r for r in rs if r[&#x27;line&#x27;] == line]
+                lrev = sum(float(r[&#x27;revenue&#x27;]) for r in lr)
+                lcost = sum(float(r[&#x27;direct_labour&#x27;]) + float(r[&#x27;materials&#x27;]) + float(r[&#x27;subcontract&#x27;]) for r in lr)
+                self.fig[f&#x27;gross_margin_{line.split()[0].lower()}_{label}&#x27;] = pct(lrev - lcost, lrev)
+                self.fig[f&#x27;share_{line.split()[0].lower()}_{label}&#x27;] = pct(lrev, rev)
+                if line == &#x27;Cleaning contracts&#x27;:
+                    self.fig[f&#x27;cleaning_labour_ratio_{label}&#x27;] = pct(sum(float(r[&#x27;direct_labour&#x27;]) for r in lr), lrev)
+                out.append([label, line, round(lrev), round(lcost), pct(lrev - lcost, lrev)])
+            self.fig[f&#x27;overheads_per_month_{label}&#x27;] = round(sum(float(r[&#x27;overheads&#x27;]) for r in rs) / months)
+        self.fig[&#x27;revenue_growth_per_month_pct&#x27;] = pct(self.fig[&#x27;revenue_per_month_Apr_Aug_2026&#x27;] - self.fig[&#x27;revenue_per_month_FY2025_26&#x27;], self.fig[&#x27;revenue_per_month_FY2025_26&#x27;])
+        # what the cleaning margin drop cost, and the price rise that would restore it
+        last = [r for r in self.period(True) if r[&#x27;line&#x27;] == &#x27;Cleaning contracts&#x27;]
+        this = [r for r in self.period(False) if r[&#x27;line&#x27;] == &#x27;Cleaning contracts&#x27;]
+        ratio = lambda rs: sum(float(r[&#x27;direct_labour&#x27;]) + float(r[&#x27;materials&#x27;]) for r in rs) / sum(float(r[&#x27;revenue&#x27;]) for r in rs)
+        rev_this = sum(float(r[&#x27;revenue&#x27;]) for r in this)
+        self.fig[&#x27;cleaning_margin_lost_apr_aug&#x27;] = round((ratio(this) - ratio(last)) * rev_this, -2)
+        self.fig[&#x27;cleaning_price_rise_to_restore_pct&#x27;] = round(100 * (ratio(this) / ratio(last) - 1), 1)
+        with open(EVID + &#x27;margin-by-line.csv&#x27;, &#x27;w&#x27;, newline=&#x27;&#x27;) as f:
+            w = csv.writer(f); w.writerow([&#x27;period&#x27;, &#x27;line&#x27;, &#x27;revenue&#x27;, &#x27;direct_costs&#x27;, &#x27;gross_margin_pct&#x27;]); w.writerows(out)
+        with open(EVID + &#x27;net-by-month.csv&#x27;, &#x27;w&#x27;, newline=&#x27;&#x27;) as f:
+            w = csv.writer(f); w.writerow([&#x27;month&#x27;, &#x27;revenue&#x27;, &#x27;net&#x27;, &#x27;net_margin_pct&#x27;])
+            for m in sorted({r[&#x27;month&#x27;] for r in self.acc}):
+                rs = [r for r in self.acc if r[&#x27;month&#x27;] == m]
+                rev = sum(float(r[&#x27;revenue&#x27;]) for r in rs)
+                cost = sum(float(r[&#x27;direct_labour&#x27;]) + float(r[&#x27;materials&#x27;]) + float(r[&#x27;subcontract&#x27;]) + float(r[&#x27;overheads&#x27;]) for r in rs)
+                w.writerow([m, round(rev), round(rev - cost), pct(rev - cost, rev)])
+
+    def customers(self):
+        total = sum(int(c[&#x27;revenue_fy2025_26&#x27;]) for c in self.cus)
+        ranked = sorted(self.cus, key=lambda c: -int(c[&#x27;revenue_fy2025_26&#x27;]))
+        self.fig[&#x27;customers&#x27;] = len(self.cus)
+        self.fig[&#x27;revenue_fy2025_26&#x27;] = total
+        self.fig[&#x27;share_top1&#x27;] = pct(int(ranked[0][&#x27;revenue_fy2025_26&#x27;]), total)
+        self.fig[&#x27;share_top3&#x27;] = pct(sum(int(c[&#x27;revenue_fy2025_26&#x27;]) for c in ranked[:3]), total)
+        calder = next(int(c[&#x27;revenue_fy2025_26&#x27;]) for c in self.cus if c[&#x27;customer&#x27;] == &#x27;Calder Retail Group&#x27;)
+        extra = sum(int(p[&#x27;annual_value&#x27;]) for p in self.pip if p[&#x27;customer&#x27;] == &#x27;Calder Retail Group&#x27;)
+        self.fig[&#x27;share_calder_with_new_stores&#x27;] = pct(calder + extra, total + extra)
+        indexed = [c for c in self.cus if c[&#x27;indexation&#x27;] != &#x27;None&#x27;]
+        self.fig[&#x27;share_revenue_without_indexation&#x27;] = pct(total - sum(int(c[&#x27;revenue_fy2025_26&#x27;]) for c in indexed), total)
+        # notice dates: contract end minus notice months, for fixed-term contracts
+        due = []
+        for c in self.cus:
+            if c[&#x27;contract_end&#x27;] == &#x27;rolling&#x27;:
+                continue
+            y, m, d = map(int, c[&#x27;contract_end&#x27;].split(&#x27;-&#x27;))
+            m -= int(c[&#x27;notice_months&#x27;])
+            while m &lt;= 0:
+                m += 12; y -= 1
+            last_day = [31, 29 if y % 4 == 0 else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]
+            notice = date(y, m, min(d, last_day))
+            due.append([c[&#x27;customer&#x27;], c[&#x27;contract_end&#x27;], c[&#x27;notice_months&#x27;], notice.isoformat(), int(c[&#x27;revenue_fy2025_26&#x27;])])
+        due.sort(key=lambda r: r[3])
+        soon = [r for r in due if XRAY_DATE &lt;= date.fromisoformat(r[3]) &lt;= date(2026, 10, 15)]
+        self.fig[&#x27;notice_before_board_customers&#x27;] = sorted(r[0] for r in soon)
+        self.fig[&#x27;notice_before_board_revenue&#x27;] = sum(r[4] for r in soon)
+        self.fig[&#x27;notice_before_board_share&#x27;] = pct(sum(r[4] for r in soon), total)
+        self.fig[&#x27;contracts_already_ended&#x27;] = sorted(r[0] for r in due if date.fromisoformat(r[1]) &lt; XRAY_DATE)
+        with open(EVID + &#x27;notice-dates.csv&#x27;, &#x27;w&#x27;, newline=&#x27;&#x27;) as f:
+            w = csv.writer(f); w.writerow([&#x27;customer&#x27;, &#x27;contract_end&#x27;, &#x27;notice_months&#x27;, &#x27;notice_by&#x27;, &#x27;revenue_fy2025_26&#x27;]); w.writerows(due)
+
+    def complaints(self):
+        before = [c for c in self.com if c[&#x27;date&#x27;] &lt; MOVED]
+        after  = [c for c in self.com if c[&#x27;date&#x27;] &gt;= MOVED]
+        self.fig[&#x27;complaints_total&#x27;] = len(self.com)
+        self.fig[&#x27;complaints_per_month_before&#x27;] = round(len(before) / 8, 1)   # Sep 2025 to Apr 2026
+        self.fig[&#x27;complaints_per_month_after&#x27;] = round(len(after) / 4, 1)     # May to Aug 2026
+        self.fig[&#x27;complaints_manchester_before&#x27;] = f&quot;{sum(c[&#x27;city&#x27;] == &#x27;Manchester&#x27; for c in before)} of {len(before)}&quot;
+        self.fig[&#x27;complaints_manchester_after&#x27;] = f&quot;{sum(c[&#x27;city&#x27;] == &#x27;Manchester&#x27; for c in after)} of {len(after)}&quot;
+        self.fig[&#x27;days_to_close_before&#x27;] = round(sum(int(c[&#x27;days_to_close&#x27;]) for c in before) / len(before), 1)
+        self.fig[&#x27;days_to_close_after&#x27;] = round(sum(int(c[&#x27;days_to_close&#x27;]) for c in after) / len(after), 1)
+        self.fig[&#x27;complaints_calder&#x27;] = sum(c[&#x27;customer&#x27;] == &#x27;Calder Retail Group&#x27; for c in self.com)
+        self.fig[&#x27;complaints_calder_since_may&#x27;] = sum(c[&#x27;customer&#x27;] == &#x27;Calder Retail Group&#x27; for c in after)
+        self.fig[&#x27;complaints_irwell&#x27;] = sum(c[&#x27;customer&#x27;] == &#x27;Irwell Business Park Ltd&#x27; for c in self.com)
+        self.fig[&#x27;complaints_irwell_since_july&#x27;] = sum(c[&#x27;customer&#x27;] == &#x27;Irwell Business Park Ltd&#x27; and c[&#x27;date&#x27;] &gt;= &#x27;2026-07&#x27; for c in self.com)
+        with open(EVID + &#x27;complaints-by-month.csv&#x27;, &#x27;w&#x27;, newline=&#x27;&#x27;) as f:
+            w = csv.writer(f); w.writerow([&#x27;month&#x27;, &#x27;complaints&#x27;, &#x27;manchester&#x27;, &#x27;calder&#x27;, &#x27;irwell&#x27;, &#x27;avg_days_to_close&#x27;])
+            for m in sorted({c[&#x27;date&#x27;][:7] for c in self.com}):
+                cs = [c for c in self.com if c[&#x27;date&#x27;][:7] == m]
+                w.writerow([m, len(cs), sum(c[&#x27;city&#x27;] == &#x27;Manchester&#x27; for c in cs), sum(c[&#x27;customer&#x27;] == &#x27;Calder Retail Group&#x27; for c in cs),
+                            sum(c[&#x27;customer&#x27;] == &#x27;Irwell Business Park Ltd&#x27; for c in cs), round(sum(int(c[&#x27;days_to_close&#x27;]) for c in cs) / len(cs), 1)])
+
+    def pipeline(self):
+        total = sum(int(p[&#x27;annual_value&#x27;]) for p in self.pip)
+        for line in [&#x27;Cleaning&#x27;, &#x27;Planned&#x27;, &#x27;Reactive&#x27;]:
+            self.fig[f&#x27;pipeline_share_{line.lower()}&#x27;] = pct(sum(int(p[&#x27;annual_value&#x27;]) for p in self.pip if p[&#x27;service_line&#x27;] == line), total)
+
+    def contracts_and_tools(self):
+        due = []
+        for s in self.sup:
+            if s[&#x27;renewal_date&#x27;] == &#x27;rolling&#x27; or s[&#x27;auto_renews&#x27;] != &#x27;Yes&#x27;:
+                continue
+            renew = date.fromisoformat(s[&#x27;renewal_date&#x27;])
+            notice = date.fromordinal(renew.toordinal() - int(s[&#x27;notice_days&#x27;]))
+            due.append([s[&#x27;supplier&#x27;], s[&#x27;renewal_date&#x27;], s[&#x27;notice_days&#x27;], notice.isoformat(), s[&#x27;annual_value&#x27;], s[&#x27;owner&#x27;]])
+        due.sort(key=lambda r: r[3])
+        self.fig[&#x27;auto_renewals_notice_by_1_oct_unowned&#x27;] = sorted(r[0] for r in due if r[3] == &#x27;2026-10-01&#x27; and r[5] == &#x27;Nobody named&#x27;)
+        self.fig[&#x27;auto_renewal_notice_passed&#x27;] = sorted(r[0] for r in due if date.fromisoformat(r[3]) &lt; XRAY_DATE)
+        with open(EVID + &#x27;supplier-notice-dates.csv&#x27;, &#x27;w&#x27;, newline=&#x27;&#x27;) as f:
+            w = csv.writer(f); w.writerow([&#x27;supplier&#x27;, &#x27;renews&#x27;, &#x27;notice_days&#x27;, &#x27;notice_by&#x27;, &#x27;annual_value&#x27;, &#x27;owner&#x27;]); w.writerows(due)
+        waste = [&#x27;ServiceBook&#x27;, &#x27;TrackWise&#x27;, &#x27;Dropbox Business&#x27;, &#x27;Zoom&#x27;, &#x27;Google Workspace (old domain)&#x27;, &#x27;Survey tool&#x27;, &#x27;Mailchimp&#x27;]
+        self.fig[&#x27;tools_duplicate_or_unused_per_year&#x27;] = 12 * sum(int(t[&#x27;monthly_cost&#x27;]) for t in self.too if t[&#x27;tool&#x27;] in waste)
+        self.fig[&#x27;tools_without_owner&#x27;] = sum(t[&#x27;owner&#x27;] == &#x27;Nobody named&#x27; for t in self.too)
+
+    def run(self):
+        self.money(); self.customers(); self.complaints(); self.pipeline(); self.contracts_and_tools()
+        return self.fig
+
+
+if __name__ == &#x27;__main__&#x27;:
+    fig = Recompute().run()
+    if &#x27;--print&#x27; in sys.argv:
+        print(json.dumps(fig, indent=1)); sys.exit(0)
+    findings = json.load(open(&#x27;sample/xray/findings.json&#x27;))[&#x27;findings&#x27;]
+    bad = 0; n = 0
+    for f in findings:
+        for k, v in f.get(&#x27;checks&#x27;, {}).items():
+            n += 1
+            ok = fig.get(k) == v
+            bad += not ok
+            print((&#x27;PASS&#x27; if ok else &#x27;FAIL&#x27;), f[&#x27;id&#x27;], k, v if ok else f&#x27;claimed {v}, recomputed {fig.get(k)}&#x27;)
+    print(f&#x27;{n - bad} of {n} figures recomputed from sample/inbox/ and matched.&#x27;)
+    sys.exit(1 if bad else 0)
+</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="fb7b4510564d8602bfd27cc3a23ca5aa0303b44cc8752322421045aa73600be4">fb7b4510564d</code></dd><dt>Frozen copy</dt><dd><a href="recompute.py">vaults/company-xray/tools/recompute.py</a> (11,124 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Try sgit in your browser (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 90 of 358</p><nav class="pager"><span><a href="089-try-sgit-in-your-browser-sgitai.html">← Try sgit in your browser, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="091-skills-for-ai-agents-sgit.html">Skills for AI agents, sgit →</a></span></nav><article class="source"><h1 id="try-sgit-in-your-browser">Try sgit in your browser</h1>
+<p>This page downloads a Python runtime (Pyodide, ~20 MB) and installs the <strong>real <code>sgit-ai</code> wheel from PyPI</strong>, the same code <code>pip install</code> gives you, then runs it right here: a working terminal with the actual <code>sgit</code> CLI, an in-memory filesystem, and a network transport routed through your browser. Keys are derived and content encrypted locally; nothing you type leaves this page except the ciphertext sgit itself sends when <em>you</em> run a network command.</p>
+<p><strong>What this is:</strong> sgit&#x27;s engine, client-side. File commands run against this tab&#x27;s in-memory filesystem (gone on refresh; the remote vault persists). Network commands (<code>clone</code>, <code>push</code>, <code>pull</code>, <code>doctor</code>) go straight from your browser to the SG/Send servers over CORS, the page freezes while they run (synchronous transport; it&#x27;s a demo, not a product). First load is heavy (~20 MB, cached afterwards); 600,000 PBKDF2 rounds take ~1–2 s in WebAssembly.</p>
+<p>engine not loaded</p>
+<h2 id="the-terminal">The terminal</h2>
+<p>The real <code>sgit</code> CLI plus a small toolbox of file commands (<code>ls</code>, <code>cd</code>, <code>cat</code>, <code>mkdir</code>, <code>echo &gt; file</code>, <code>tree</code>, …). Type <code>help</code> for the list. History with ↑/↓.</p>
+<p>load the engine above to start</p>
+<p>/workspace $</p>
+<pre><code># a session to try (the vault key can be any vault you hold a key for):
+sgit init my-vault  cd my-vault  echo &quot;hello&quot; &gt; notes.md
+sgit status  sgit commit -m &quot;from a browser&quot;
+# and the one that makes it real — clone straight from the SG/Send servers:
+sgit clone &lt;vault-key&gt; demo  cd demo  ls  sgit history log --oneline</code></pre>
+<h2 id="python-console">Python console</h2>
+<p>The full <code>sgit_ai</code> package is importable. The last expression&#x27;s value is printed.</p>
+<p>from sgit_ai.crypto.Vault__Crypto import Vault__Crypto vc = Vault__Crypto() vc.derive_keys(&#x27;my-passphrase&#x27;, &#x27;DEMO-VAULT&#x27;)</p>
+<p>How this works: <a href="../docs/vault/static-hosting.html">the same site</a><a class="ext live" href="https://sgit.ai/docs/vault/static-hosting.html" title="live page">↗</a> serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection, the one page on this site that does.</p>
+<hr></article><nav class="pager"><span><a href="089-try-sgit-in-your-browser-sgitai.html">← Try sgit in your browser, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="091-skills-for-ai-agents-sgit.html">Skills for AI agents, sgit →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>90 of 358: Try sgit in your browser</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

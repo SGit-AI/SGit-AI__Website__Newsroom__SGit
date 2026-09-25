@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.13.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.13.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.13.0.html">live ↗</a></p><article class="source"><h2 id="behaviour-policies-as-vaults-lab-07-a-directory-of-nine-the-renderer-versioned-o">Behaviour policies as vaults: Lab 07, a directory of nine, the renderer versioned once</h2>
+<p>This release merges a branch that ran alongside v1.11.0 and v1.12.0. Everything below
+landed on that branch; the notes of the two releases it sits on stand as written.</p>
+<p><strong>Lab 07 — the first behaviour-policy vault, built rather than drawn.</strong>
+<a class="ext" href="https://riskmandate.ai/versions/lab-vault-delivered.html">What you are actually buying ↗</a>: an Agent Behaviour Policy delivered
+as a vault, for the deployment shape this site is maintained from. Eight files from three
+inputs — the published, measured grant, the starting mandate, the vocabulary pinned at
+abp.sgit.ai v0.3.0 — of which the mandate is the only file a person writes. Everything else
+(<code>AGENT-BEHAVIOUR-POLICY.md</code>, <code>GRANT.md</code>, <code>DELTA.md</code>, <code>LICENCE-TO-OPERATE.md</code>, <code>README.md</code>,
+<code>data/delta.json</code>, <code>data/validity.json</code>, the history) is derived by
+<code>scripts/site/build-abp-vault.mjs</code>, which recomputes the delta with abp.delta/v1 semantics
+and refuses to write if it cannot reproduce the record the model site published. <code>AGENTS.md</code>
+and <code>SKILL.md</code> are the generic files handed to the agent, each saying in its own words that it
+is a rule in prose and bounds nothing. <code>LICENCE-TO-OPERATE.md</code> adopts the organisation /
+instrument / licensee referent; <em>mandate to operate</em> is retired. A grant check written from
+inside the shape — eleven of fifteen rows seen present in ordinary work, none absent — is in
+the vault&#x27;s history. Also: a review brief in <code>docs/briefs/</code> reading the Design Studio
+storefront concepts against the workflow that sells a behaviour policy.</p>
+<p><strong>A directory of behaviour-policy vaults, one per application.</strong> A new section under Live
+demos, <a class="ext" href="https://riskmandate.ai/versions/abp-vaults.html">abp-vaults.html ↗</a>, reads like a connector directory: a tile per
+target application with a glyph, a blurb, the four counts and a live chip. Nine vaults are
+available — every deployment shape the model site publishes, each fetched, built, checked
+row for row against the published delta and pushed as its own vault with a public read key
+— and four applications are listed as <em>asked for, not built</em> because their grant is not
+published yet. Each vault has a page (<code>abp-vault-&lt;slug&gt;.html</code>) generated from one catalogue,
+<code>site/vaults/index.json</code>, by <code>scripts/site/build-abp-pages.mjs</code>; the page components and CSS
+live once in <code>scripts/site/abp/</code>. The pages read the encrypted vault directly in the browser
+with sgit.ai&#x27;s house reader, copied in as its brief asks, and fall back to the copy under
+<code>site/vaults/</code> with a visible status chip. Four altitudes of the same bytes: the card (four
+counts, no score), the tables, the vault&#x27;s own app in a sandboxed frame served over
+postMessage, and the live file list.</p>
+<p><strong>The vault app, for whoever was handed the vault.</strong> It opens on <em>Start here</em>: what this is,
+badges with the counts, three next steps, an inline map of the four objects and their route
+to the agent, and the whole policy on one screen as <em>here is what we want you to do</em> beside
+<em>here is what we do not</em>, each line with what enforces it. <em>What is this?</em> is a primer for a
+reader who does not know what an ABP is. <em>Give it to your agent</em> offers the same files three
+ways: copy-and-paste blocks, a zip built by the generator, and a PDF rendered from the app.
+<em>Mandate — correct it</em> recomputes the delta as rows move and exports the corrected
+<code>mandate.json</code>. The host HUD is minimal; the <em>no score</em> badge became an answer to the
+question a new reader has. Builds are idempotent and the zip is checked by CI.</p>
+<p><strong>Vaults in vaults: the application vault is data.</strong> The renderer moved out of every
+application vault into one app vault (<code>fl3i7lu4</code>, public read key), versioned once. Each
+application vault carries a hundred-line loader as its <code>index.html</code> — the same bytes in all
+nine — which fetches the renderer over a sub-vault link when the host resolves one, directly
+from the app vault with its public key otherwise, or from a static copy beside the vault, and
+boots it against the vault&#x27;s own files, naming the route it took in its top bar. A buyer&#x27;s
+private vault works the same way with no code copied into it. The design and the two open asks
+to the platform are in <code>docs/briefs/architecture__vaults-in-vaults-for-behaviour-policies.md</code>.</p>
+<p><strong>The link itself, written.</strong> The first cut of the vaults-in-vaults shape shipped without the
+sub-vault link because its format was not published; opened in the vault host, an application
+vault showed no <code>app/</code> folder, no <code>.vault/</code>, and the loader&#x27;s error screen (the host blocks a
+runtime fetch from the app sandbox, so only the link route works there). The format is in the
+host&#x27;s own unminified source, and the generator now writes both files: <code>app.link.json</code>, a dumb
+pointer with no key in it, and <code>.vault/owner/ro-links.json</code>, the owner record carrying the app
+vault&#x27;s public read key and its named-ref id, so the child opens read-only and silently on any
+device that has the parent. Both derivations are deterministic, so rebuilds stay byte-identical.
+Verified with the host&#x27;s library code run outside the browser: the record opens <code>fl3i7lu4</code> at
+its v3 head. The brief records the format. Also fixed: the vault <code>dist/</code> folders — the zip and
+the PDF a buyer downloads — were caught by the repository&#x27;s global <code>dist/</code> ignore and never
+reached the deployed tree, which is what failed the first CI run of this release.</p>
+<p>CI now checks every vault&#x27;s derivation and the generated pages. Vault <code>ruj286tr</code> is at its
+fifth commit, the eight new vaults at their third, the app vault at its third.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.13.0.html">https://riskmandate.ai/versions/1.13.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.13.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="21caf1de433a6b30072d41388483f5e3391f15414c11afaa6806227fe11c4307">21caf1de433a</code></dd><dt>Frozen copy</dt><dd><a href="1.13.0.md">sites/riskmandate.ai/versions/1.13.0.md</a> (5,543 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

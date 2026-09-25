@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>sg-sentinel.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-sentinel.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sg-sentinelsgitai-sgsentinel-an-app-coupled-edge-security-and-logging-layer-a-de">sg-sentinel.sgit.ai — SG/Sentinel: an app-coupled edge security and logging layer (a design — NOT BUILT)</a></li><li class="l2"><a href="#the-system">The system</a></li><li class="l2"><a href="#the-method">The method</a></li><li class="l2"><a href="#the-documents-all-23-verbatim-with-reader-pages">The documents (all 23, verbatim, with reader pages)</a></li><li class="l2"><a href="#the-code">The code</a></li><li class="l2"><a href="#site">Site</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/sg-sentinel.sgit.ai.html">sg-sentinel.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://sg-sentinel.sgit.ai/llms.txt">live ↗</a></p><article class="source"><h1 id="sg-sentinelsgitai-sgsentinel-an-app-coupled-edge-security-and-logging-layer-a-de">sg-sentinel.sgit.ai — SG/Sentinel: an app-coupled edge security and logging layer (a design — NOT BUILT)</h1>
+<p>IMPORTANT: SG/Sentinel has not been built. This site publishes research documents and
+ideas the project lead created in May 2026 (19 design briefs on 18 May; two
+implementation briefs and a prototype exercise on 23 May), as &quot;this is how I would
+build it&quot; — in the hope that somebody builds it, because the project lead would really
+like to use this next generation of WAF security layer in his projects. There are no
+plans to build it at the moment, unless somebody wants to fund it. All &quot;built&quot;/&quot;proven&quot;
+language below refers to the May 2026 prototype exercise — a design artefact that is
+not deployed, not maintained, and not packaged to install.</p>
+<blockquote><p>SG/Sentinel is a design for an edge guard that replaces rented AWS WAF +
+CloudWatch/Firehose with a layer built on your own primitives. Because the app knows what a valid request looks like, the edge
+allowlists rather than denylists — no invalid request reaches the origin. The
+load-bearing idea: Layer 1 (a CloudFront Function, no I/O) decides and signals; Layer 2
+(Lambda@Edge, the sole actor and sole I/O owner) acts and writes; a deferred Layer 3
+thinks asynchronously. Rules are data, versioned in git, carrying attack technique,
+confidence and compliance metadata. The MVP proves the spine with two use cases —
+logging to S3 and blocking obvious-bad — across three targets (local Node, local
+Docker CloudFront-environment simulation, live AWS), held together by a parity matrix
+asserting identical decisions everywhere.</p></blockquote>
+<p>Site version: v0.1.1 (20 August 2026). Published by the sgit project. All content
+CC BY 4.0 unless noted; the code snapshot under the repository licence.</p>
+<p>Status, precisely: 149 unit tests passing; both MVP use cases work end to end on the
+local-direct and local-docker targets. The live AWS path is code-complete and
+unit-tested via in-memory doubles but has NOT yet been run against a real CloudFront
+distribution. Cost vs the Firehose+WAF baseline is a qualitative argument until
+measured — the site claims no numbers.</p>
+<h2 id="the-system">The system</h2>
+<ul><li><a class="ext" href="https://sg-sentinel.sgit.ai/architecture.html">Architecture ↗</a>: the governing
+correction (L1 decides + signals, never acts; L2 is the sole actor and I/O owner),
+the byte-identical signal spine (Schema__Sentinel__Signal, raw-JSON
+x-sentinel-signal header on AWS, in-process locally), the three targets, the
+Lambda@Edge gotchas, and the parity matrix as the definition of done.</li><li><a class="ext" href="https://sg-sentinel.sgit.ai/rules.html">Rules as data ↗</a>: the tiny core&#x27;s six
+deterministic rules verbatim (0001 capture-all, 0003 banned-ip, 0007 malformed,
+0012 path-never-valid, 0014 hidden-file-probe, 0018 wp-scan-on-static), each a pure
+function with first-block-wins ordering, MITRE ATT&amp;CK tags in the metadata registry,
+HTTP-level block actions (drop_403 / deflect_404), and the designed-but-deferred
+fractal rule graph, rules-as-vault, and anomaly-scoring spectrum.</li><li><a class="ext" href="https://sg-sentinel.sgit.ai/try-it.html">Try it ↗</a>: every <code>sg sentinel</code> command from
+the testing manual — the offline stack (CF-env sim container by default, --direct
+for node), logs/blocks reading the sink, the mutation-gated live AWS flow, the
+Textual operator TUIs, the read-only LLM chat grounded in live state, and the
+traffic generator + echo origin whose bare-vs-fronted contrast is the impact
+measurement.</li><li><a class="ext" href="https://sg-sentinel.sgit.ai/roadmap.html">Roadmap ↗</a>: built vs code-complete vs
+deferred, honestly — the live-AWS run and the cost measurement as the open items in
+front of everything; fingerprint/fast-track, anomaly scoring, Layer 3 async/LLM, the
+known-good profile, the unified evidence-and-compliance graph, deception, threat
+intel, multi-CDN, cache-hit logging all designed and deferred; the honest limits
+(in-profile exploits; defence in depth, not sole defence; no content inspection by
+zero-knowledge design).</li></ul>
+<h2 id="the-method">The method</h2>
+<ul><li><a class="ext" href="https://sg-sentinel.sgit.ai/research.html">Research ↗</a>: 68 days of design — 19 briefs
+dated 18 May 2026 plus the implementation pair on 23 May — pressure-tested with two
+tabletop simulations that surfaced 25 gaps before any code was written. The stories:
+fast-track redesigned as zero-trust acceleration (a fast-tracked user turning
+malicious was fast-tracked by the naive spec); honeytokens as the intent signal
+(IAM verifies identity, deception confirms intent); per-IP keying dead against
+residential proxies (~4 in 10 attacking IPs, so rate-limit per target and key
+evidence multi-dimensionally). Prior art positioned deliberately: OPA&#x27;s PDP/PEP
+split, Sigma/Detection-as-Code&#x27;s compile-to-backend and rule retirement, OWASP CRS
+anomaly scoring and paranoia levels, deception technology, zero-trust/BeyondCorp.
+The honest limit documented: a structurally-valid request with a malicious payload
+passes structural validation — Sentinel is defence in depth, not a sole defence.</li></ul>
+<h2 id="the-documents-all-23-verbatim-with-reader-pages">The documents (all 23, verbatim, with reader pages)</h2>
+<ul><li><a class="ext" href="https://sg-sentinel.sgit.ai/documents/index.html">Index ↗</a> — each page: summary, key
+concepts, key ideas, full markdown rendered from the raw file (the source of truth)
+under <a class="ext" href="https://sg-sentinel.sgit.ai/briefs/">https://sg-sentinel.sgit.ai/briefs/ ↗</a></li><li>Read first: <a class="ext" href="https://sg-sentinel.sgit.ai/documents/mvp-architecture.html">MVP implementation architecture, v0.27.59 ↗</a> ·
+<a class="ext" href="https://sg-sentinel.sgit.ai/documents/mvp-implementation.html">file-by-file dev brief, v0.27.60 ↗</a> ·
+<a class="ext" href="https://sg-sentinel.sgit.ai/documents/testing-manual.html">testing manual ↗</a></li><li>The v0.27.58 design series (18 May 2026): principles, execution model, edge MVP,
+rules engine, rule architecture (fractal graph), interactivity &amp; phases, codebase
+extension, delegation &amp; choke-points, time as a first-class dimension,
+developer-friendliness &amp; the evidence graph, standards research, compliance as a
+living graph, architecture &amp; data flows, TUI mockups, the behavioural spec, tabletop
+simulations 1 &amp; 2, the consolidated addendum, and the planning brief — all under
+<a class="ext" href="https://sg-sentinel.sgit.ai/documents/">https://sg-sentinel.sgit.ai/documents/ ↗</a></li><li><a class="ext" href="https://sg-sentinel.sgit.ai/documents/website-brief.html">The website brief itself ↗</a>
+(v0.27.61) — captured for the site&#x27;s own provenance.</li></ul>
+<h2 id="the-code">The code</h2>
+<ul><li><a class="ext" href="https://sg-sentinel.sgit.ai/code/index.html">Reading guide ↗</a>: the 115-file
+<code>sentinel/</code> package snapshot, verbatim from the packet. Best single file:
+<a class="ext" href="https://sg-sentinel.sgit.ai/code/sentinel/runtime/layer1/sentinel_l1.js">https://sg-sentinel.sgit.ai/code/sentinel/runtime/layer1/sentinel_l1.js ↗</a> — the whole
+L1 engine (six rules, evaluate, CloudFront handler) in one dependency-free file that
+decides and signals, never acts. Also: Sentinel__L2__Actor.py (the sole actor),
+Schema__Sentinel__Signal.py (the parity spine), the log sinks, the deployer, the
+rule registry with ATT&amp;CK tags, the TUIs and traffic tooling.</li></ul>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://sg-sentinel.sgit.ai/admin/comms.html">Comms: tasks, requests, decisions ↗</a></li><li><a class="ext" href="https://sg-sentinel.sgit.ai/admin/versions.html">Release history ↗</a></li><li><a class="ext" href="https://sg-sentinel.sgit.ai/admin/index.html">How the site is built ↗</a> — validate
+gate (version agreement, internal links, key-leak tripwire), then CI: validate →
+auto-tag → deploy to GitHub Pages on every push to dev.</li><li>Related: <a href="../sgit.ai/index.html">sgit.ai</a><a class="ext live" href="https://sgit.ai" title="live page">↗</a> (<a href="../sgit.ai/llms.txt.html">llms.txt</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a>) and
+<a class="ext" href="https://nhi.sgit.ai">nhi.sgit.ai ↗</a> (<a href="../nhi.sgit.ai/llms.txt.html">llms.txt</a><a class="ext live" href="https://nhi.sgit.ai/llms.txt" title="live page">↗</a>)</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-sentinel.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-sentinel.sgit.ai/llms.txt">https://sg-sentinel.sgit.ai/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:38Z</dd><dt>sha256</dt><dd><code title="7747f0b0ac479695c57d981caba43c0cc936d8d6bd5b9e0ef3b8e87aca2fa860">7747f0b0ac47</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/sg-sentinel.sgit.ai/llms.txt</a> (7,396 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

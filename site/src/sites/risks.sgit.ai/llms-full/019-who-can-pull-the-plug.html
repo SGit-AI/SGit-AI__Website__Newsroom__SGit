@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Who can pull the plug (risks.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#who-can-pull-the-plug">Who can pull the plug</a></li><li class="l2"><a href="#the-authority-gap-decomposes-into-timed-sub-risks">The authority gap decomposes into timed sub-risks</a></li><li class="l2"><a href="#the-four-way-time-intersection">The four-way time intersection</a></li><li class="l2"><a href="#the-detection-floor-is-a-hard-number">The detection floor is a hard number</a></li><li class="l2"><a href="#the-correction-the-plug-always-exists">The correction: the plug always exists</a></li><li class="l2"><a href="#the-five-dimension-plug-profile">The five-dimension plug profile</a></li><li class="l2"><a href="#the-plug-is-a-sledgehammer">The plug is a sledgehammer</a></li><li class="l2"><a href="#article-14-as-the-plug-obligation">Article 14 as the plug obligation</a></li><li class="l2"><a href="#provenance">Provenance</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 19 of 58</p><nav class="pager"><span><a href="018-blast-radius-and-authorization-closure.html">← Blast radius and authorization closure</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="020-recoverability-what-money-cannot-buy-bac.html">Recoverability: what money cannot buy back →</a></span></nav><article class="source"><h1 id="who-can-pull-the-plug">Who can pull the plug</h1>
+<p>Two symmetric risks, and most organisations have only noticed the first. If nobody holds the mandate to stop an AI system, that is one risk. If the system cannot be stopped even when someone decides to, that is a second and different one — an authority gap versus a capability gap. The second is widely underestimated, and the four capabilities that have to line up to close it must line up inside the same window.</p>
+<p>“if you do not have somebody who has the mandate to pull the plug, you have a risk, and if you do not have a system that can be pulled the plug, you have a risk too.”</p>
+<h2 id="the-authority-gap-decomposes-into-timed-sub-risks">The authority gap decomposes into timed sub-risks</h2>
+<p>“Can we stop it?” is not answerable as a yes or no. It decomposes into a set of dated questions, which is what turns governance into an on-call availability problem:</p>
+<ul><li><p>Can it be stopped in an hour? In ten hours? In a day? In five days?</p></li><li><p>Only during office hours, or at three on a Sunday morning?</p></li><li><p>Can the person who holds the switch act without fear of losing their job?</p></li><li><p>Is there a clear escalation path when the first person cannot be reached?</p></li></ul>
+<p>That third one is not a soft consideration. A stop button that only a person risking their career will press is, operationally, a stop button that does not exist at three in the morning.</p>
+<h2 id="the-four-way-time-intersection">The four-way time intersection</h2>
+<p>Four capabilities must line up inside the same window. A gap in any one breaks the whole thing, which is why they are drawn intersecting rather than listed.</p>
+<p>1 · detectionHow fast you knowAnd under which scenarios — a curve, not a binary. Some failures announce themselves; others are visible only in a billing line.</p>
+<p>2 · decisionWhether the authorised people can be assembledIn time, with the standing to act, and with enough information to act on.</p>
+<p>3 · blast radiusHow fast the damage scalesModels execute and scale fast, especially when connected. A steep cost curve, not a linear one.</p>
+<p>4 · reversibilityWhether you can put it backStopping is only half the act. Reverting requires journaling and backups that were in place beforehand.</p>
+<p>“it is not just pulling the plug, it is pulling the plug and reverting the changes.”</p>
+<p>The danger case is specific and worth naming: a steep cost curve where an affordable window of one or two days of damage collides with a decision that cannot be made in one or two days. The organisation can afford the damage and cannot afford the delay, and nobody notices until the two are measured against each other.</p>
+<h2 id="the-detection-floor-is-a-hard-number">The detection floor is a hard number</h2>
+<p>Figure | What it means |</p>
+<p>12–18 hours | Hyperscaler cost-reporting delay. For any failure that surfaces first as spend, this is a floor on how fast anyone can know — no logging maturity beats it |</p>
+<p>16 hours | The founder&#x27;s own AWS figure: “AWS usually takes 16 hours to give you the data, so how much damage can be done in 16 hours.” |</p>
+<p>up to 24 hours | The billing-lag damage window recorded against the cost blast radius |</p>
+<p>Numbers like these are what make the intersection concrete. If detection floors at twelve hours and the blast radius is steep, then no amount of decision-making authority helps — the exposure is already realised before the decision is available to be made. That is an argument for prevention, and it is the honest one. Observability as a risk dimension →</p>
+<h2 id="the-correction-the-plug-always-exists">The correction: the plug always exists</h2>
+<p>This is the pillar correction of the whole series, and it is the reason the page is called who can pull the plug rather than whether there is one.</p>
+<p>The plug always exists. You can always disconnect, revoke, or shut down. What earlier registers recorded as “no plug” was never a missing off-switch — it was zero recoverability.</p>
+<p>A data breach has a plug: you can cut the connection. A used credential has a plug: you can revoke it. What neither has is a way back — the data is out, the foothold was used. Recording that as “no plug” conflates two very different findings and produces a blank in the register.</p>
+<p>“The blank said stop looking. The corrected profile says here is exactly what to do.”</p>
+<p>The restatement is not cosmetic. A blank is unassignable and unfundable. A finding that reads “stoppable in minutes by the platform team, blast radius large, side effects severe, recoverability zero” points straight at prevention and at the most senior acceptance — and can be given an owner and an interval like anything else. Recoverability, the hard limit →</p>
+<p>⚠️ A live inconsistency, stated rather than tidied. The corpus records this correction. The published page it moved from does not reflect it. One of the two is wrong, and until the source is reconciled this site publishes the corrected version and says so. This is open ask N1.</p>
+<h2 id="the-five-dimension-plug-profile">The five-dimension plug profile</h2>
+<p>What replaces a yes/no answer. Every stoppable thing gets a profile with five dimensions, and the profile is the finding:</p>
+<p>dimension 1Who holds itWhich role can actually pull it — and at which altitude. The answer changes at every level of the organisation.</p>
+<p>dimension 2Blast radiusWhat else stops when this stops. The plug is a sledgehammer, and pulling it has its own risks.</p>
+<p>dimension 3SpeedHow fast, in the worst realistic case, not the demo case. Minutes, hours, or a contractual notice period.</p>
+<p>dimension 4Side effectsWhat breaks, who is affected, and what the organisation loses by stopping — the reason a plug that exists sometimes does not get pulled.</p>
+<p>dimension 5RecoverabilityThe dimension money cannot buy back. The one that separates catastrophic-but-reversible from smaller-and-permanent. →</p>
+<p>The seven-row worked plug register → — from “agent misuses the isolated session” (IT · small · fast · high recoverability) through “agent misuses the platform itself” (COO/procurement · large · slow and contractual · medium) to “data leaves the boundary” and “unattributable transaction”, both at recoverability: zero.</p>
+<h2 id="the-plug-is-a-sledgehammer">The plug is a sledgehammer</h2>
+<p>The symmetric risk on the other side, and easy to forget once you have spent a page arguing that a plug is necessary. Pulling it has a blast radius of its own: stopping the agent stops the work the agent was doing, and everything downstream of that work. A plug that takes out a production dependency may be more expensive than the exposure it was pulled to stop.</p>
+<p>That is why side effects is a dimension of the profile rather than an afterthought, and why the decision half of the four-way intersection needs information rather than just authority: the person with the switch has to know what else goes dark.</p>
+<h2 id="article-14-as-the-plug-obligation">Article 14 as the plug obligation</h2>
+<p>One of this site&#x27;s three narrow declared bridges into the EU AI Act. Article 14 requires human oversight of high-risk systems, including the ability to intervene and to stop — which makes the plug profile the natural evidence artefact for demonstrating it. Not a compliance product, and not a claim beyond what the provision says: an obligation to be able to stop, met by a register that records who can, how fast, at what cost, and whether it can be undone.</p>
+<p>Legal points on this site are factual and are not legal advice. Provisions are cited from the Regulation Graph vault. Why bridges rather than merges →</p>
+<p>The boundary this site will not cross. The model rates the ability to stop; it does not provide it. The corpus states the refusal directly and notes what it costs: “a customer who scores badly will ask us to supply the stop button, which is exactly the enforcement role the corpus refuses.” In-line enforcement belongs to sg-sentinel.sgit.ai. We measure and evidence; we never sit in-line. The boundary map →</p>
+<h2 id="provenance">Provenance</h2>
+<p>Concepts
+C20 two symmetric risks · C21 the four-way time intersection · C22 the five-dimension profile and the “no plug” correction · C39 the plug is a sledgehammer</p>
+<p>Moved from
+<a href="../../riskmandate.ai/plug.html">https://riskmandate.ai/plug.html</a><a class="ext live" href="https://riskmandate.ai/plug.html" title="live page">↗</a> · moved 22 August 2026 · ⚠️ republished with the “no plug” correction the source page does not carry</p>
+<p>Source
+briefs/07/24/who-can-pull-the-plug/v0.33.51__strategy-brief__…detection-authority-blast-radius-reversibility-intersect-in-time.md — the load-bearing brief, with 12 companion pieces in the same folder</p>
+<p>First written
+24 July 2026 (the phrase appears from 17 February 2026 in another sense)</p>
+<p>Maturity
+well-developed — a 13-document series, and newcomer-followable, outstandingly so</p>
+<p>Licence
+CC BY 4.0 at source and here</p>
+<h4 id="for-an-agent">For an agent</h4>
+<p>C20–C22 — the plug. Two symmetric risks: nobody holds the mandate to stop the system (an authority gap), and the system cannot be stopped even when someone decides to (a capability gap). The second is widely underestimated. The authority gap decomposes into timed sub-risks — stoppable in an hour, ten hours, a day, five days; office hours only; can the holder act without fear of losing their job; is there an escalation path. Four capabilities must line up inside the same window: detection (a curve, not a binary), decision (assembling authorised people in time), blast radius (models scale fast — a steep cost curve), reversibility (“it is not just pulling the plug, it is pulling the plug and reverting the changes”). Hard detection floor: 12–18 hours of hyperscaler cost-reporting delay for anything that surfaces as spend. The pillar correction: the plug ALWAYS exists — you can always disconnect, revoke or shut down. What older registers recorded as “no plug” was zero recoverability, and restating it that way turns an unassignable blank into an ownable finding. Every stoppable thing gets a five-dimension profile: who holds it · blast radius · speed · side effects · recoverability. Pulling the plug is itself a risk (side effects). Boundary: this model rates the ability to stop and never provides it — in-line enforcement is sg-sentinel&#x27;s. Not implemented in code.</p>
+<hr>
+<p>== /plug/recoverability.html</p>
+<hr></article><nav class="pager"><span><a href="018-blast-radius-and-authorization-closure.html">← Blast radius and authorization closure</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="020-recoverability-what-money-cannot-buy-bac.html">Recoverability: what money cannot buy back →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/llms-full.txt">https://risks.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:19Z</dd><dt>sha256</dt><dd><code title="043b6dd54a87b99e5ad22921b82672869533d32d7ec901dc828be518bb08fe23">043b6dd54a87</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/risks.sgit.ai/llms-full.txt</a> (518,813 bytes)</dd><dt>Section</dt><dd>19 of 58: Who can pull the plug</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

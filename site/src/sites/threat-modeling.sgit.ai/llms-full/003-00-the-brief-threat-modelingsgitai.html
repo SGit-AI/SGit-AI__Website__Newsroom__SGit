@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>00 — The Brief: threat-modeling.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · threat-modeling.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#00-the-brief-threat-modelingsgitai">00 — The Brief: threat-modeling.sgit.ai</a></li><li class="l2"><a href="#1-the-commission">1. The commission</a></li><li class="l2"><a href="#2-the-thesis">2. The thesis</a></li><li class="l2"><a href="#3-what-already-exists-all-verified-on-disk-or-live">3. What already exists (all verified on disk or live)</a></li><li class="l2"><a href="#4-the-honest-constraints">4. The honest constraints</a></li><li class="l2"><a href="#5-build-order">5. Build order</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/threat-modeling.sgit.ai.html">threat-modeling.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 3 of 19</p><nav class="pager"><span><a href="002-briefs00briefmd.html">← briefs/00BRIEF.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-briefs01the-researchmd.html">briefs/01the-research.md →</a></span></nav><article class="source"><h1 id="00-the-brief-threat-modelingsgitai">00 — The Brief: <code>threat-modeling.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.63 · 7 September 2026
+<strong>From</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>To</strong> the agent commissioned to build <code>threat-modeling.sgit.ai</code>
+<strong>Licence</strong> CC BY 4.0</p>
+<hr>
+<h2 id="1-the-commission">1. The commission</h2>
+<p>A site for the threat-modeling work: the published research (six white papers on docs.diniscruz.ai), the <strong>practice</strong> (seven real threat models written against a live codebase, one of them validated line-by-line against the code afterwards), and the platform argument (threat models as vault-native graph data rather than documents). The corpus is substantial — 269 files mention threat models; 58 AppSec review documents exist; a ThreatModCon 2025 vault is already published at <code>sgit.ai/demos/vaults/threatmodcon-2025/</code>.</p>
+<p><strong>The name</strong>: <code>threat-modeling.sgit.ai</code>. American spelling, because the discipline&#x27;s own literature, its conference (ThreatModCon), and the founder&#x27;s published article titles all use it — even though his prose sometimes writes <em>modelling</em>. Pick one, redirect the other; <code>threat-modelling.sgit.ai</code> should 301 here.</p>
+<hr>
+<h2 id="2-the-thesis">2. The thesis</h2>
+<blockquote><p><strong>A threat model is a claim about a system, and the site&#x27;s job is to show claims being checked.</strong></p></blockquote>
+<p>This is what the estate has that the discipline mostly does not. The industry&#x27;s own diagnosis, in the founder&#x27;s words, is that threat modeling is <em>&quot;a fairly subjective process&quot;</em> producing <em>&quot;static documents&quot;</em> that are <em>&quot;siloed&quot;</em>, <em>&quot;fragmented&quot;</em>, and <em>&quot;context-poor&quot;</em> — the five failure modes named in the 2025 research. The answer this site publishes is not another methodology. It is two moves:</p>
+<ol><li><strong>Make the model machine-readable</strong> — a semantic knowledge graph, not a Word document, so that overlaying STRIDE, MITRE ATT&amp;CK and OWASP Top 10 on one system becomes a query rather than a workshop.</li><li><strong>Make the model falsifiable</strong> — and then actually falsify it. On 16 March 2026 the AppSec role wrote a threat model of the Simple Token flow; on 17 March a validation pass checked every finding against the backend code and marked each one <strong>CONFIRMED REAL / CONFIRMED SAFE / CONFIRMED MISSING / N/A (proposed, no code yet)</strong>. Two claims were confirmed real, one was confirmed already mitigated, two were confirmed missing, and two were marked as proposals with no code behind them yet.</li></ol>
+<p>That second move is the site&#x27;s differentiator. Everyone publishes threat models. Almost nobody publishes the audit that says which parts of their threat model turned out to be wrong.</p>
+<hr>
+<h2 id="3-what-already-exists-all-verified-on-disk-or-live">3. What already exists (all verified on disk or live)</h2>
+<p><strong>Published research — six white papers, all 2025, all on docs.diniscruz.ai:</strong></p>
+<div class="table"><table><thead><tr><th>Date</th><th>Paper</th><th>The claim it makes</th></tr></thead><tbody><tr><td>29 May</td><td>Advancing Threat Modeling with Semantic Knowledge Graphs</td><td>The foundational one: threats/assets/mitigations/incidents as nodes; multi-ontology overlay; MGraph-DB as the memory-first store</td></tr>
+<tr><td>29 May</td><td>Threat Models as Mandatory Disclosures</td><td>The boldest: security&#x27;s <em>&quot;market for lemons&quot;</em>; threat model publication as regulation, like financial statements and ingredient labels</td></tr>
+<tr><td>30 May</td><td>Graphs of Graphs of Graphs (G³) in Threat Modeling</td><td>Multi-view/multi-graph architecture; organic file-based evolution; ontologies as semantic layers</td></tr>
+<tr><td>30 May</td><td>Using Threat Modeling and Semantic Graphs to Secure the Digital Supply Chain</td><td>Supply chain as the hardest case</td></tr>
+<tr><td>30 May</td><td>Scaling Supply Chain Security using Threat Modeling, Semantic Knowledge Graphs and Maps</td><td>Adds the Wardley-map layer</td></tr>
+<tr><td>9 June</td><td>Supercharging AppSec Threat Modeling Services with GenAI and Semantic Graphs</td><td>The services/consulting argument; multi-stakeholder deliverables</td></tr>
+<tr><td>2 June</td><td>Linking Threat Models with Semantic Business Graphs</td><td>Technical findings ↔ business impact</td></tr></tbody></table></div>
+<p><strong>The ThreatModCon 2025 vault (Barcelona) — already live</strong>, and the single best artefact the site has: <strong>eleven linked threat models</strong> running Customer → Business → Application → Component → Package → Class → Method → Source Code → Environment → Runtime → Compute; <strong>51 nodes, 179 threats, 3 critical findings</strong>. Its own framing is the line the site should lead with: <em>&quot;One model answers what could go wrong here. Eleven linked models answer what does this line of code put at risk.&quot;</em> It also carries the multi-persona demo (one SQL injection in a payment gateway, reframed for Board / CISO / CTO / Developer) and five Wardley walkthroughs moving from <em>&quot;everything is critical&quot;</em> to risk-based prioritisation.</p>
+<p><strong>Seven real threat models in <code>team/roles/appsec/</code></strong>, written against SG/Send itself — see <code>02__</code>. They include a full STRIDE analysis with per-threat mitigation status, data flow diagrams, trust boundaries, attack surfaces, zero-knowledge verification, and a 37-entry risk register.</p>
+<hr>
+<h2 id="4-the-honest-constraints">4. The honest constraints</h2>
+<ul><li><strong>Most of the practice material is a security review of the founder&#x27;s own live product.</strong> It names unmitigated vulnerabilities by number. <code>04__</code> sets the disclosure rule: publish the <em>method</em> and the <em>resolved</em> findings; hold anything still open. This is the site&#x27;s hardest editorial problem and it must be solved before launch, not after.</li><li><strong>The research is co-authored with AI</strong> (several papers credit <em>&quot;ChatGPT Deep Research&quot;</em>). Keep that attribution visible — it is part of how the work was done.</li><li><strong>The graph tooling is real but young</strong>: MGraph-DB exists, the ThreatModCon vault is live, but the &quot;continuous threat modeling&quot; pipeline described in the papers is a vision with partial implementation. Mark the boundary on every page.</li></ul>
+<hr>
+<h2 id="5-build-order">5. Build order</h2>
+<ol><li><strong><code>/eleven-layers/</code></strong> — the ThreatModCon vault, embedded and explained. The strongest thing here; lead with it.</li><li><strong><code>/validated/</code></strong> — the 16→17 March threat-model-then-check-it pair, side by side. The site&#x27;s signature.</li><li><strong><code>/papers/</code></strong> — the six white papers, each with a one-screen summary and the PDF/LinkedIn links.</li><li><strong><code>/practice/</code></strong> — the redacted method: STRIDE tables, the <code>.security.json</code> per-file schema, the two-modes pattern.</li><li><strong><code>/graph/</code></strong> — threat models as vault-native data; the schema; the AppSec-tooling argument.</li><li><strong><code>/disclosure/</code></strong> — the mandatory-disclosure thesis, published as the policy position it is.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr></article><nav class="pager"><span><a href="002-briefs00briefmd.html">← briefs/00BRIEF.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-briefs01the-researchmd.html">briefs/01the-research.md →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>threat-modeling.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://threat-modeling.sgit.ai/llms-full.txt">https://threat-modeling.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:39Z</dd><dt>sha256</dt><dd><code title="e491cd40da28b4ee7dd108e2f1ee97b01d9cc71d60001ddbd104cf0853cc5640">e491cd40da28</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/threat-modeling.sgit.ai/llms-full.txt</a> (49,157 bytes)</dd><dt>Section</dt><dd>3 of 19: 00 — The Brief: threat-modeling.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>nhi.sgit.ai, Agents you run, agents you rent, and the identity gap · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#nhisgitai-agents-you-run-agents-you-rent-and-the-identity-gap-sgitai">nhi.sgit.ai, Agents you run, agents you rent, and the identity gap, sgit.ai</a></li><li class="l1"><a href="#nhisgitai">nhi.sgit.ai</a></li><li class="l2"><a href="#the-distinction-the-whole-site-turns-on">The distinction the whole site turns on</a></li><li class="l2"><a href="#hope-is-not-a-control">&amp;quot;Hope is not a control&amp;quot;</a></li><li class="l2"><a href="#why-it-is-relevant-here">Why it is relevant here</a></li><li class="l2"><a href="#sections">Sections</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="nhi.md">raw text</a> · <a class="ext" href="https://sgit.ai/network/nhi.html">live ↗</a></p><article class="source"><h1 id="nhisgitai-agents-you-run-agents-you-rent-and-the-identity-gap-sgitai">nhi.sgit.ai, Agents you run, agents you rent, and the identity gap, sgit.ai</h1>
+<blockquote><p>The question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name (the ones running in Claude, Codex or behind an API) the honest current answer is to hand over a broad credential and hope.</p></blockquote>
+<p><em>Source: <a href="nhi.html">https://sgit.ai/network/nhi.html</a><a class="ext live" href="https://sgit.ai/network/nhi.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Network</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a> / nhi.sgit.ai</p>
+<h1 id="nhisgitai">nhi.sgit.ai</h1>
+<p>Agents you run, agents you rent, and the identity gap</p>
+<p>Screenshots captured 2026-08-19 · <code>v0.1.14</code> when captured · <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__NHI">SGit-AI__Website__NHI ↗ ↗</a></p>
+<p><a class="ext" href="https://nhi.sgit.ai">Open nhi.sgit.ai ↗ ↗</a></p>
+<h2 id="the-distinction-the-whole-site-turns-on">The distinction the whole site turns on</h2>
+<p><strong>Agents you run</strong> execute on your infrastructure. You can attest the workload, install an identity agent, and control everything. An open standard, SPIFFE, issues short-lived cryptographic identities on exactly that basis.</p>
+<p><strong>Agents you rent</strong> execute on somebody else&#x27;s. You cannot attest the workload, cannot install anything, and the only thing you control is the credential you hand over.</p>
+<p>The site puts the two side by side and lets the table make the argument:</p>
+<p>The home page, with the two-population comparison directly under the thesis.</p>
+<p>The last row is the one that lands: for agents you run, the industry answer is <em>&quot;mature, and expensive&quot;</em>. For agents you rent, it is <em>&quot;none&quot;</em>. SPIFFE is described by practitioners as a multi-year engineering project needing a dedicated team; for rented agents, the equivalent capability is an open feature request.</p>
+<h2 id="hope-is-not-a-control">&quot;Hope is not a control&quot;</h2>
+<p>The site names the current practice rather than describing it politely. When you hand an agent a broad credential you are making <strong>two hopes</strong>: that it will not misuse what it holds, and that it will not discover the rest of what that credential actually reaches. Neither hope changes your accountability, which runs to the board.</p>
+<p>The second hope is the one most people have not costed. The site&#x27;s framing is that <strong>the real authorization is the closure</strong>: inbox access is every account resettable by email; desktop access is every stored credential. The grant is not the words in it. It is everything reachable from them.</p>
+<p>The thesis page: the argument with citations, rather than assertion.</p>
+<h2 id="why-it-is-relevant-here">Why it is relevant here</h2>
+<p>This is the problem sgit&#x27;s <a href="../demos/vaults/index.html">read keys</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> and <a href="../api/append-lanes.html">append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a> are shaped against. A published read key is a credential whose closure is <em>provably</em> bounded, it opens one vault, cannot write, and cannot be turned back into write access. An append token can write to one lane and cannot read it.</p>
+<p>The <a href="../compare/index.html">comparison pages</a><a class="ext live" href="https://sgit.ai/compare/index.html" title="live page">↗</a> use a privilege vocabulary (scope, operations, bearer, mediation, duration, withdrawal, observability) that is the same question asked in a different register.</p>
+<h2 id="sections">Sections</h2>
+<ul><li><strong>Thesis</strong> (the two populations, with citations</li><li><strong>Hope</strong>) why the current workflow is hope-driven, and what the two hopes cost</li><li><strong>Method</strong> (from hope to controls: enumerate, bound, observe, contain, account</li><li><strong>Options, Industry, Collection</strong>) what exists, what it costs, and the open questions</li></ul>
+<p><a href="index.html">← All network sites</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="nhi.html">HTML version</a><a class="ext live" href="https://sgit.ai/network/nhi.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/network/nhi.html">https://sgit.ai/network/nhi.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/network/nhi.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="746815ca921d54c2bba7d8fce4b3d5d1a1fdebef9c9894f32687934466907029">746815ca921d</code></dd><dt>Frozen copy</dt><dd><a href="nhi.md">sites/sgit.ai/network/nhi.md</a> (3,568 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Section 44 (store.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · store.sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/store.sgit.ai.html">store.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 44 of 77</p><nav class="pager"><span><a href="043-section-43.html">← Section 43</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="045-section-45.html">Section 45 →</a></span></nav><article class="source"><h2 id="who-takes-the-card-and-where">Who takes the card, and where</h2>
+<p><strong>One rail, and it is a payment link on Stripe&#x27;s own pages.</strong> Six products are
+priced there, three coupons exist, and the store reconciles both against its own
+data on every release. A second rail was planned and **came off on 16 September
+for the first end-to-end store** — a rail that is half set up is a second thing to
+explain here and a second thing to keep true, and neither is worth it while the
+first one is not live. The plan for it is kept rather than deleted.</p>
+<p><strong>Nothing on this site collects anything.</strong> No form, no input, no select, no account,
+no cookie. The provider takes your name, your contact and your card on its own pages,
+which is the only place a card number should ever be typed. A build check holds every
+page here to that, and a second one holds every page to opening no network connection
+at all.</p>
+<p><strong>One page can be typed into: <a class="ext" href="https://store.sgit.ai/review/">the partner review ↗</a>.</strong> It has reason boxes on it
+because it exists to be answered, and the rule moved by ruling in v0.1.15 to allow exactly
+that and nothing else. There is still no <code>&lt;form&gt;</code> on this domain — that is the element that
+submits — and still no <code>&lt;input&gt;</code> or <code>&lt;select&gt;</code>, which is where a card number would go. What
+somebody types there stays in their own browser until they copy it out.
+{{claim:review-is-the-one-typing-surface}}</p>
+<p><strong>What reaches the provider is the amount and your order reference.</strong> The
+reference carries the product codes for everything you picked, so matching it
+against the name and contact the provider captured gives the whole order.
+<a class="ext" href="https://store.sgit.ai/how-it-works/">How that works, in three steps ↗</a>.</p>
+<h3 id="every-level-is-one-price-so-every-level-can-hold-a-link">Every level is one price, so every level can hold a link</h3>
+<p>The four levels are £5, £50, £500 and £1,500 — <strong>single prices, not bands</strong>, which
+is what a standing payment link needs. The banded tiers and the deposit that this
+page used to describe belonged to the offer line replaced on 15 September: there is
+no band left to fix and no engagement left to deposit against.
+{{claim:checkout-bands-have-no-standing-link}}</p>
+<p><strong>No link has been created on either rail.</strong> <a class="ext" href="https://store.sgit.ai/cart/">Your order ↗</a> renders the
+button as unissued and names the rail that is missing, rather than showing
+something that looks live: **a greyed-out button is a lie about which half of the
+work is done.** Pasting one line into <code>data/checkout.yml</code> turns a rail on, and the
+build holds whatever lands there to that provider&#x27;s own checkout hosts over HTTPS.
+{{claim:checkout-links-not-issued}}</p>
+<h3 id="why-the-catalogue-is-not-inside-either-provider">Why the catalogue is not inside either provider</h3>
+<p>**Sixty-two product codes maintained in two places is sixty-two codes that will one
+day disagree.** The catalogue lives here, in one file, checked on every build; the
+provider takes an amount and a reference; neither side has to know about the other.
+It also means adding a product is a build rather than a build plus a console.</p></article><nav class="pager"><span><a href="043-section-43.html">← Section 43</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="045-section-45.html">Section 45 →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>store.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://store.sgit.ai/llms-full.txt">https://store.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="ebd5ed7cd64c1432ed67389ff2690895a96ddc910acd82884da72dcca3d7a737">ebd5ed7cd64c</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/store.sgit.ai/llms-full.txt</a> (82,158 bytes)</dd><dt>Section</dt><dd>44 of 77: Section 44</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

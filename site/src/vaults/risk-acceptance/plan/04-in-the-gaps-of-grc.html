@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>4. Working in the gaps of the GRC platform · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#4-working-in-the-gaps-of-the-grc-platform">4. Working in the gaps of the GRC platform</a></li><li class="l2"><a href="#what-grc-platforms-already-do-well">What GRC platforms already do well</a></li><li class="l2"><a href="#the-gaps">The gaps</a></li><li class="l2"><a href="#how-the-integration-works">How the integration works</a></li><li class="l2"><a href="#why-the-grc-vendors-should-sponsor-this">Why the GRC vendors should sponsor this</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="04-in-the-gaps-of-grc.md">raw text</a></p><article class="source"><h1 id="4-working-in-the-gaps-of-the-grc-platform">4. Working in the gaps of the GRC platform</h1>
+<p>The service does not replace the customer&#x27;s governance, risk and compliance platform. It works in the gaps that platform leaves, and it should be sold that way from the first meeting.</p>
+<h2 id="what-grc-platforms-already-do-well">What GRC platforms already do well</h2>
+<ul><li><strong>The register.</strong> A list of risks with owners, ratings and review dates.</li><li><strong>Workflow.</strong> Assignments, reminders, approvals and sign-off.</li><li><strong>Frameworks and controls libraries.</strong> Mapping controls to ISO/IEC 27001, SOC 2, NIST and the rest.</li><li><strong>Reporting.</strong> Dashboards and board packs.</li></ul>
+<p>Those are solved problems. A customer who has one of these platforms has paid for it, trained people on it, and built reporting on it. The service keeps all of that.</p>
+<h2 id="the-gaps">The gaps</h2>
+<div class="table"><table><thead><tr><th>Gap</th><th>What it looks like</th><th>What the service adds</th></tr></thead><tbody><tr><td><strong>The air gap to reality</strong></td><td>A register row is typed by a person and reviewed quarterly. Nothing connects it to the configuration, log or fact that made it true.</td><td>Every risk is established by named facts, each with its source, and ceases when other named facts hold.</td></tr>
+<tr><td><strong>Acceptance without a clock</strong></td><td>&quot;Accepted&quot; is a status that never expires, or a review date nobody enforces.</td><td>Every acceptance has an interval. When it ends, the risk is accepted again, escalated, funded or fixed.</td></tr>
+<tr><td><strong>Acceptance without a name</strong></td><td>Risks are accepted by a committee, a function, or nobody.</td><td>Every acceptance is by a named person, and nobody accepts on anybody else&#x27;s behalf.</td></tr>
+<tr><td><strong>Orphaned risks</strong></td><td>A risk held by a team that has no manager in the register, or by nobody at all.</td><td>Every risk has a holder, every holder has a boss, and every path ends at the board. Arrival is computed, not reported.</td></tr>
+<tr><td><strong>Coarse granularity</strong></td><td>One row for &quot;third-party risk&quot; covers forty suppliers and six technologies.</td><td>Risks are fractal: a corporate line opens into business, operational and technical risks, each with its own holder and evidence.</td></tr>
+<tr><td><strong>Evidence that evaporates</strong></td><td>Screenshots in an email, a spreadsheet on a laptop, a decision in a meeting nobody minuted.</td><td>Each significant risk gets a vault: evidence, decisions, history and the acceptance record, hash-chained and openable with a read key.</td></tr></tbody></table></div>
+<h2 id="how-the-integration-works">How the integration works</h2>
+<ul><li><strong>Read from the platform.</strong> Pull the register, owners and controls from the GRC platform&#x27;s API or export.</li><li><strong>Write back what it lacks.</strong> Push acceptance intervals, expiry dates, escalations and links to each risk&#x27;s vault back as fields, comments or attachments.</li><li><strong>Keep the platform as the system of record.</strong> The service is the evidence and decision layer, not a second register.</li></ul>
+<h2 id="why-the-grc-vendors-should-sponsor-this">Why the GRC vendors should sponsor this</h2>
+<p>Every GRC vendor sells the register and the workflow. None of them can close the air gap alone, because closing it means connecting to the customer&#x27;s reality: configurations, logs, agents and people. A service that does that work makes their platform more valuable and harder to leave. The plan proposes offering each major vendor an integration partnership early, and asking for co-selling rather than competing for the same budget line.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="19aa938509e52c49f1148fa53dd0b4fbad0b8821742ff72eed9268138b557e27">19aa938509e5</code></dd><dt>Frozen copy</dt><dd><a href="04-in-the-gaps-of-grc.md">vaults/risk-acceptance/plan/04-in-the-gaps-of-grc.md</a> (3,102 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The edge vocabulary · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-edge-vocabulary">The edge vocabulary</a></li><li class="l1"><a href="#the-edge-vocabulary-1">The edge vocabulary</a></li><li class="l2"><a href="#reused-from-the-published-set-unchanged">Reused from the published set, unchanged</a></li><li class="l2"><a href="#proposed-here">Proposed here</a></li><li class="l2"><a href="#the-sentence-test">The sentence test</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://abp.sgit.ai/model/graph/edges/index.md">live ↗</a></p><article class="source"><h1 id="the-edge-vocabulary">The edge vocabulary</h1>
+<blockquote><p>The 22 edges this model is written in, each a verb with a distinct inverse, a stated domain and range, and the sentence it reads as.</p></blockquote>
+<p>*Source: <a href="index.html">https://abp.sgit.ai/model/graph/edges/index.html</a><a class="ext live" href="https://abp.sgit.ai/model/graph/edges/index.html" title="live page">↗</a> · site v0.11.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../../../index.html">Home</a><a class="ext live" href="https://abp.sgit.ai/index.md" title="live page">↗</a> / <a href="../../index.html">The model</a><a class="ext live" href="https://abp.sgit.ai/model/index.md" title="live page">↗</a> / <a href="../index.html">The graph</a><a class="ext live" href="https://abp.sgit.ai/model/graph/index.md" title="live page">↗</a> / The edges</p>
+<h1 id="the-edge-vocabulary-1">The edge vocabulary</h1>
+<p><strong>22 edges.</strong> Every one is a verb with a distinct, meaningfully named inverse, and the inverse is not the same edge walked backwards: <code>grants</code> and <code>granted_by</code> have different fan out, and that asymmetry is what stops the graph exploding.</p>
+<blockquote><p><strong>The generic association edge is banned, and there is none in this model.</strong> It constrains nothing and costs fan out. If you find yourself wanting <code>relates_to</code>, the honest move is a new edge with a sentence, a different sentence for its inverse, and a stated domain and range.</p></blockquote>
+<h2 id="reused-from-the-published-set-unchanged">Reused from the published set, unchanged</h2>
+<p>These are not this site&#x27;s to rename. They are published at <a class="ext" href="https://graphs.sgit.ai/v1/grammar/edge-set.html">the network&#x27;s edge set ↗</a> and reused under their published names.</p>
+<div class="table"><table><thead><tr><th>Edge</th><th>Inverse</th><th>Domain</th><th>Range</th><th>Reads as</th></tr></thead><tbody><tr><td><code>grants</code></td><td><code>granted_by</code></td><td><code>DeploymentShape</code></td><td><code>Capability</code></td><td>this deployment shape grants this capability</td></tr>
+<tr><td><code>reaches</code></td><td><code>reachable_from</code></td><td><code>Capability</code></td><td><code>ReachClass</code></td><td>this capability reaches this reach class</td></tr>
+<tr><td><code>similar_to</code></td><td><code>similar_to</code></td><td><code>Node</code></td><td><code>Node</code></td><td>our node is similar to their node</td></tr>
+<tr><td><code>supersedes</code></td><td><code>superseded_by</code></td><td><code>Node</code></td><td><code>Node</code></td><td>this claim supersedes that one</td></tr>
+<tr><td><code>exposes</code></td><td><code>exposed_by</code></td><td><code>Tool</code></td><td><code>Capability</code></td><td>this tool exposes this capability</td></tr></tbody></table></div>
+<h2 id="proposed-here">Proposed here</h2>
+<p><strong>Each one carries a sentence, a different sentence for its inverse, and a stated domain and range</strong>, which is the published rule for extending the set. They are marked as proposed here rather than quoted, in the same way the network&#x27;s own edge set marks nine of its inverses as proposed there.</p>
+<div class="table"><table><thead><tr><th>Edge</th><th>Reads as</th><th>Inverse</th><th>Reads as</th><th>Domain</th><th>Range</th></tr></thead><tbody><tr><td><code>has_verb</code></td><td>this capability has the verb read</td><td><code>verb_of</code></td><td>read is the verb of these capabilities</td><td><code>Capability</code></td><td><code>Verb</code></td></tr>
+<tr><td><code>acts_on</code></td><td>this capability acts on files</td><td><code>acted_on_by</code></td><td>files are acted on by these capabilities</td><td><code>Capability</code></td><td><code>ObjectClass</code></td></tr>
+<tr><td><code>in_family</code></td><td>this capability is in the filesystem family</td><td><code>family_of</code></td><td>the filesystem family is the family of these capabilities</td><td><code>Capability</code></td><td><code>Family</code></td></tr>
+<tr><td><code>has_undo_class</code></td><td>this capability has the undo class no</td><td><code>undo_class_of</code></td><td>undo class no is the undo class of these capabilities</td><td><code>Capability</code></td><td><code>UndoClass</code></td></tr>
+<tr><td><code>bounded_by</code></td><td>this granted capability is bounded by this barrier</td><td><code>bounds</code></td><td>this barrier bounds these granted capabilities</td><td><code>GrantedCapability</code></td><td><code>Barrier</code></td></tr>
+<tr><td><code>enforced_by</code></td><td>this barrier is enforced by something above the grant</td><td><code>enforces</code></td><td>this enforcer enforces these barriers</td><td><code>Barrier</code></td><td><code>Enforcer</code></td></tr>
+<tr><td><code>authorises</code></td><td>this mandate authorises this capability</td><td><code>authorised_by</code></td><td>this capability is authorised by this mandate</td><td><code>Mandate</code></td><td><code>Capability</code></td></tr>
+<tr><td><code>withholds</code></td><td>this mandate withholds this capability</td><td><code>withheld_by</code></td><td>this capability is withheld by this mandate</td><td><code>Mandate</code></td><td><code>Capability</code></td></tr>
+<tr><td><code>exceeds</code></td><td>this granted capability exceeds this mandate</td><td><code>exceeded_by</code></td><td>this mandate is exceeded by these granted capabilities</td><td><code>GrantedCapability</code></td><td><code>Mandate</code></td></tr>
+<tr><td><code>falls_short_of</code></td><td>this mandate falls short of this capability it asked for</td><td><code>unmet_by</code></td><td>this capability is unmet by this deployment shape</td><td><code>Mandate</code></td><td><code>Capability</code></td></tr>
+<tr><td><code>known_by</code></td><td>this granted capability is known by observation</td><td><code>evidences</code></td><td>observation evidences these granted capabilities</td><td><code>GrantedCapability</code></td><td><code>EvidenceTier</code></td></tr>
+<tr><td><code>has_variant</code></td><td>this product has this variant</td><td><code>variant_of</code></td><td>this variant is a variant of this product</td><td><code>Product</code></td><td><code>DeploymentShape</code></td></tr>
+<tr><td><code>runs_with</code></td><td>this shape runs with this tool</td><td><code>run_by</code></td><td>this tool is run by these shapes</td><td><code>DeploymentShape</code></td><td><code>Tool</code></td></tr>
+<tr><td><code>moves</code></td><td>this setting moves a capability to this barrier</td><td><code>moved_by</code></td><td>this barrier is where these settings move a capability to</td><td><code>Setting</code></td><td><code>Barrier</code></td></tr>
+<tr><td><code>narrows</code></td><td>this setting narrows this capability</td><td><code>narrowed_by</code></td><td>this capability is narrowed by these settings</td><td><code>Setting</code></td><td><code>Capability</code></td></tr>
+<tr><td><code>scoped_by</code></td><td>this shape is scoped by this vendor scope</td><td><code>scopes</code></td><td>this scope scopes these shapes</td><td><code>DeploymentShape</code></td><td><code>Scope</code></td></tr>
+<tr><td><code>permits</code></td><td>this scope permits this capability</td><td><code>permitted_by</code></td><td>this capability is permitted by these scopes</td><td><code>Scope</code></td><td><code>Capability</code></td></tr></tbody></table></div>
+<h2 id="the-sentence-test">The sentence test</h2>
+<p><strong>If a path does not read as a sentence in the reader&#x27;s own language, the edges are wrong</strong> and the model changes rather than the renderer. Every example page ends with a path built from its own data so the test is applied on every build rather than asserted once here:</p>
+<blockquote><p>deployment shape <code>claude-code local-confirmations-off</code> <strong>grants</strong> capability <code>execute.process.host</code> which <strong>has_verb</strong> <code>execute</code> and <strong>reaches</strong> <code>host</code>, <strong>bounded_by</strong> barrier <code>none</code>, which <strong>exceeds</strong> mandate <code>a coding assistant on my machine</code>, and <strong>has_undo_class</strong> <code>with-effort</code>.</p></blockquote>
+<p><a class="ext" href="https://abp.sgit.ai/data/graph/edges.json">The edges as JSON ↗</a> · <a href="../formulas/index.html">The node type formulas</a><a class="ext live" href="https://abp.sgit.ai/model/graph/formulas/index.md" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/model/graph/edges/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/model/graph/edges/index.md">https://abp.sgit.ai/model/graph/edges/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="444ec26923a5fcfb90a2516494187730ae81b63cdd2a01abf8c73b196aab44aa">444ec26923a5</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/abp.sgit.ai/model/graph/edges/index.md</a> (5,610 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>4. The service · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#4-the-service">4. The service</a></li><li class="l2"><a href="#what-the-customer-gets">What the customer gets</a></li><li class="l2"><a href="#packages">Packages</a></li><li class="l2"><a href="#capture-modes">Capture modes</a></li><li class="l2"><a href="#where-it-runs">Where it runs</a></li><li class="l2"><a href="#what-you-do-not-do">What you do not do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="04-the-service.md">raw text</a></p><article class="source"><h1 id="4-the-service">4. The service</h1>
+<h2 id="what-the-customer-gets">What the customer gets</h2>
+<ul><li><strong>A connector review.</strong> Which agents are connected to what, with which scopes, and which of the actions those scopes allow cannot be undone by the platform. For Gmail with the full scope, that list includes permanent delete; for any mail scope that can send, it includes send; for Calendar, it includes every notification to attendees.</li><li><strong>Capture</strong> in one of three modes, set up and tested.</li><li><strong>The journal</strong>, encrypted, retained for the tier&#x27;s period, searchable, chain-verified.</li><li><strong>The twin</strong>: the rebuilt views, the timeline, before and after, and revert plans.</li><li><strong>Evidence</strong> for the agent behaviour policy: what the agent could do, what it did, what could not be undone, each month.</li><li><strong>Replay on demand</strong> when something goes wrong: what the agent saw, what it did, what it said it did, and what can be put back.</li></ul>
+<h2 id="packages">Packages</h2>
+<div class="table"><table><thead><tr><th></th><th>Price</th><th>For</th></tr></thead><tbody><tr><td>Connector review, small</td><td>£750 once</td><td>Up to 3 connectors and 5 agents</td></tr>
+<tr><td>Connector review, team</td><td>£2,500 once</td><td>Up to 10 connectors and 25 agents, with a replay drill</td></tr>
+<tr><td>Connector review, organisation</td><td>£6,000 once</td><td>Larger estates, with the customer-cloud deployment and an incident runbook</td></tr>
+<tr><td>Journal</td><td>£15 per agent per month</td><td>Capture, 90 days of encrypted retention, search, chain verification</td></tr>
+<tr><td>Twin</td><td>£40 per agent per month</td><td>Journal plus views, before and after, revert plans, 1 year of retention</td></tr>
+<tr><td>Assured</td><td>£90 per agent per month</td><td>Twin plus a monthly evidence pack, two incident replays a year, retention to 7 years, customer-held keys</td></tr>
+<tr><td>Incident replay</td><td>£900 per incident</td><td>A day&#x27;s investigation</td></tr>
+<tr><td>Supervised revert</td><td>£450 per incident</td><td>Executing the revert plan with the customer, journalled</td></tr></tbody></table></div>
+<p>Minimum £150 a month. Every price is a hypothesis to test with the first ten customers.</p>
+<h2 id="capture-modes">Capture modes</h2>
+<p><img src="../diagrams/capture-modes.webp" alt="Capture modes" loading="lazy"></p>
+<div class="table"><table><thead><tr><th>Mode</th><th>How it works</th><th>Evidence grade</th><th>Best for</th></tr></thead><tbody><tr><td><strong>Broker</strong></td><td>A service between the agent and the platform holds the credentials and makes the calls. The agent never holds a platform token.</td><td>Complete: nothing reaches the API without passing through it.</td><td>Regulated customers, the Assured tier.</td></tr>
+<tr><td><strong>Gateway</strong></td><td>A proxy on the MCP or HTTP path copies each call and response into the lane. The agent keeps its own credentials.</td><td>Complete for routed traffic, blind to anything that goes around it.</td><td>Most customers, once routing is enforced.</td></tr>
+<tr><td><strong>Agent-reported</strong></td><td>The agent is instructed to append a copy of every request and response itself.</td><td>Self-reported: an omitted entry leaves no gap the chain can show.</td><td>Day one, pilots, and agents you cannot put a proxy in front of.</td></tr></tbody></table></div>
+<p>The mode does not change the price. It changes what the monthly evidence pack is allowed to say, and it is stated on every page of it.</p>
+<h2 id="where-it-runs">Where it runs</h2>
+<ul><li><strong>Hosted.</strong> You run the broker or gateway and the processor; the journal is stored as ciphertext. Be explicit with the customer: a hosted broker or gateway sees traffic in flight, even though what it stores it cannot read.</li><li><strong>Customer cloud.</strong> The broker, gateway and processor run as containers in the customer&#x27;s account; you ship the software and support it. A platform licence of £500 a month on top of the per-agent price is a reasonable starting point.</li><li><strong>Agent-reported.</strong> No infrastructure at all beyond the vault and its append lane.</li></ul>
+<h2 id="what-you-do-not-do">What you do not do</h2>
+<ul><li>Store platform credentials outside the broker.</li><li>Execute a revert without a person&#x27;s approval.</li><li>Claim completeness for agent-reported capture.</li><li>Keep a full copy of a mailbox. If the agent did not touch it, the twin does not have it.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="723ac689b97a2b8bda9217e6c6ee2df80c660d791c916b3ef15fff8be4db60cc">723ac689b97a</code></dd><dt>Frozen copy</dt><dd><a href="04-the-service.md">vaults/connector-twin/plan/04-the-service.md</a> (3,671 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

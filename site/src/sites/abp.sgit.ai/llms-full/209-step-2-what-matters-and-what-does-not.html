@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Step 2: what matters, and what does not (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#step-2-what-matters-and-what-does-not">Step 2: what matters, and what does not</a></li><li class="l2"><a href="#have-it-draft-the-map">Have it draft the map</a></li><li class="l2"><a href="#then-say-what-must-never-be-reused">Then say what must never be reused</a></li><li class="l2"><a href="#then-the-three-lists">Then the three lists</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 209 of 357</p><nav class="pager"><span><a href="208-step-2-what-matters-and-what-does-not.html">← Step 2: what matters, and what does not</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="210-step-3-write-the-rules.html">Step 3: write the rules →</a></span></nav><article class="source"><h1 id="step-2-what-matters-and-what-does-not">Step 2: what matters, and what does not</h1>
+<p><strong>This is the page the walkthrough exists for.</strong> An agent with the map decides better on its own. An agent without it guesses, reasonably, which is how the folder of client material ends up summarised into a shared document. Have it draft the map from what it can see, then correct the draft.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Give it the map: the folder that is the work, the folders that are not yours to touch, where the credentials live, and what in the record must never be reused.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../desktop/what-it-can-reach/index.html">Step 1: What it can reach on your machine</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-it-can-reach/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../desktop/write-the-rules/index.html">Step 3: Write the rules</a><a class="ext live" href="https://abp.sgit.ai/desktop/write-the-rules/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../desktop/index.html">The desktop walkthrough</a><a class="ext live" href="https://abp.sgit.ai/desktop/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<blockquote><p><strong>What you gain from this page.</strong> A map in your words: what is the work, what is not yours to touch, where the credentials live, what is in the record, and what in all of it must never be reused. It is the mandate, and it is an importance list before it is a list of rules.</p></blockquote>
+<h2 id="have-it-draft-the-map">Have it draft the map</h2>
+<p><strong>Prompt 4: The machine as you see it.</strong> A draft map from what the agent can already see, in four groups.</p>
+<pre><code>From what you can see on this machine, draft a map of it in four groups. Do not open
+anything you have not already opened to do this; use names, locations and what you
+already know.
+
+  THE WORK        the folders and files I am actually working on with you
+  NOT MINE        folders that look like somebody else&#x27;s material: clients, shared
+                  drives, other people&#x27;s projects, mail archives
+  CREDENTIALS     places that look like they hold keys, tokens, passwords, certificates,
+                  or configuration with secrets in it
+  THE RECORD      our past conversations, and anything in them that looks like it should
+                  not have been pasted
+
+For each entry say why you put it there. Where you are not sure which group something
+is in, put it in NOT MINE, and I will move it.</code></pre>
+<p>Now correct it. <strong>The corrections are the map.</strong> Every folder you move is a thing the agent would otherwise have guessed about.</p>
+<h2 id="then-say-what-must-never-be-reused">Then say what must never be reused</h2>
+<p><strong>Prompt 5: What in the record must never come back.</strong> Finds what should not have been pasted, so it can be removed, without repeating it.</p>
+<pre><code>Look at our past conversations, if you can read them, and tell me which ones contain
+something that looks like a secret: a key, a token, a password, a connection string, a
+private document pasted in whole. For each, give me the conversation and the date, and
+say what kind of thing it is. Do not repeat the secret itself, in any form, and do not
+use any of them for anything. I am going to remove them.
+
+If you cannot read past conversations, say so; that is a good answer.</code></pre>
+<blockquote><p><strong>This prompt is a read of the record, and it says so on purpose.</strong> Finding a secret so it can be removed means something reads the record. Do it once, on demand, in a conversation you then close, rather than leaving it as a standing instruction.</p></blockquote>
+<h2 id="then-the-three-lists">Then the three lists</h2>
+<p><strong>Prompt 6: Freely, ask first, never.</strong> The map turned into a mandate, conservatively.</p>
+<pre><code>Using the map, sort everything you can reach on this machine into three lists.
+
+  FREELY      things you may read or do without asking: name them by folder or tool
+  ASK FIRST   things you may reach only after telling me what and waiting
+  NEVER       things you must not reach, open, quote, run or send, whatever I say later
+              in a conversation, unless I say it in a new message that names the thing
+
+Put a thing in FREELY only if it is in THE WORK. Put every CREDENTIALS entry in NEVER.
+Put NOT MINE in ASK FIRST unless I have said otherwise. Put THE RECORD in ASK FIRST,
+with the secrets in it in NEVER. If FREELY is the longest list, do it again.</code></pre>
+<blockquote><p><strong>Where the numbers on this page come from.</strong> The published profile for <code>anthropic/claude-desktop/default</code>, which is derived and not measured: <strong>0 of 11 rows were seen on an instance</strong>, and the rest were read from what a desktop application running as a user account architecturally is. Your deployment is not that one; the prompts on this page produce yours. <a href="../examples/index.html">The rows</a><a class="ext live" href="https://abp.sgit.ai/examples/index.md" title="live page">↗</a>, <a class="ext" href="https://abp.sgit.ai/data/profiles/anthropic/claude-desktop/default.json">the profile as JSON ↗</a>.</p></blockquote>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Give it the map: the folder that is the work, the folders that are not yours to touch, where the credentials live, and what in the record must never be reused.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../desktop/what-it-can-reach/index.html">Step 1: What it can reach on your machine</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-it-can-reach/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../desktop/write-the-rules/index.html">Step 3: Write the rules</a><a class="ext live" href="https://abp.sgit.ai/desktop/write-the-rules/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../desktop/index.html">The desktop walkthrough</a><a class="ext live" href="https://abp.sgit.ai/desktop/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../desktop/what-matters/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-matters/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="208-step-2-what-matters-and-what-does-not.html">← Step 2: what matters, and what does not</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="210-step-3-write-the-rules.html">Step 3: write the rules →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>209 of 357: Step 2: what matters, and what does not</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

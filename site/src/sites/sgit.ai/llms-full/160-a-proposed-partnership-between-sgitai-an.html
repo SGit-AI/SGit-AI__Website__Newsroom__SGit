@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>A proposed partnership between sgit.ai and Netlify · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#a-proposed-partnership-between-sgitai-and-netlify">A proposed partnership between sgit.ai and Netlify</a></li><li class="l2"><a href="#in-short">In short</a></li><li class="l2"><a href="#how-vaults-map-onto-netlify">How vaults map onto Netlify</a></li><li class="l2"><a href="#where-we-are-with-netlify-today">Where we are with Netlify today</a></li><li class="l2"><a href="#what-a-partnership-could-be">What a partnership could be</a></li><li class="l2"><a href="#what-we-are-asking-netlify-for">What we are asking Netlify for</a></li><li class="l2"><a href="#what-this-page-does-not-claim">What this page does not claim</a></li><li class="l2"><a href="#if-you-work-at-netlify">If you work at Netlify</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 160 of 358</p><nav class="pager"><span><a href="159-a-proposed-partnership-between-sgitai-an.html">← A proposed partnership between sgit.ai and Netlify</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="161-models-do-the-work-vaults-hold-it-propos.html">Models do the work, vaults hold it: proposed partnerships wi →</a></span></nav><article class="source"><h1 id="a-proposed-partnership-between-sgitai-and-netlify">A proposed partnership between sgit.ai and Netlify</h1>
+<p><strong>Netlify already hosts the kind of thing a published vault is.</strong> A vault can be read from a plain static host behind a CDN: the browser fetches ciphertext and decrypts it locally, with no server at all. Netlify is named in our static hosting guide for exactly that. The partnership we would like is to make &quot;an encrypted site, readable only with a key, updated with a push&quot; a documented pattern on Netlify.</p>
+<p><strong>Nothing on this page is confidential, and there has been no conversation yet.</strong> Every statement about Netlify comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a><a class="ext live" href="https://sgit.ai/deploy/index.html" title="live page">↗</a>, a published vault or a page on this site. sgit is Apache-2.0, so Netlify does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a class="ext" href="https://sgit.ai/cloud-platforms.md">the cloud platforms page ↗</a>.</p>
+<h2 id="in-short">In short</h2>
+<ul><li><strong>Static hosting is the whole requirement.</strong> A published vault is static files. Netlify&#x27;s CDN serves them; the reader&#x27;s browser decrypts them.</li><li><strong>Named in the docs already.</strong> The static hosting guide lists Netlify with GitHub Pages, S3 with CloudFront, Cloudflare Pages and Firebase.</li><li><strong>The server is not needed for readers.</strong> Netlify Blobs is key-value storage rather than S3, so the writing side of a vault stays on a vault server elsewhere; Netlify serves the published copy.</li><li><strong>What we would like:</strong> a documented pattern, and a place among <a class="ext" href="https://www.netlify.com/partners/technology/">Netlify&#x27;s technology partners ↗</a>.</li></ul>
+<h2 id="how-vaults-map-onto-netlify">How vaults map onto Netlify</h2>
+<div class="table"><table><thead><tr><th>sgit needs</th><th>On Netlify</th><th>Status</th></tr></thead><tbody><tr><td><strong>Static readers</strong></td><td>Netlify&#x27;s CDN</td><td>Documented in our static hosting guide.</td></tr>
+<tr><td><strong>Publishing on push</strong></td><td>Netlify builds from a Git push</td><td>Should work: publish the vault&#x27;s ciphertext as the site. Not tested end to end.</td></tr>
+<tr><td><strong>The writing side</strong></td><td>A vault server elsewhere</td><td>Netlify Blobs is not S3-compatible, so writes stay on a vault server.</td></tr></tbody></table></div>
+<h2 id="where-we-are-with-netlify-today">Where we are with Netlify today</h2>
+<p>Netlify is already in the static hosting guide. We have not published a vault there ourselves yet; this site is on GitHub Pages. The pattern is simple enough that the first piece of work is a short guide and one live example.</p>
+<h2 id="what-a-partnership-could-be">What a partnership could be</h2>
+<div class="table"><table><thead><tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr></thead><tbody><tr><td><strong>1 · A documented pattern</strong></td><td>An encrypted site on Netlify: the vault&#x27;s ciphertext deployed as static files, opened with a read key.</td><td>A technical reviewer.</td></tr>
+<tr><td><strong>2 · An integration</strong></td><td>A Netlify integration that publishes a vault&#x27;s current state on every push.</td><td>The Technology Partner Program.</td></tr>
+<tr><td><strong>3 · Open-source hosting</strong></td><td>sgit&#x27;s own documentation vaults hosted under the Netlify Open Source plan.</td><td>Netlify&#x27;s open-source programme.</td></tr></tbody></table></div>
+<h2 id="what-we-are-asking-netlify-for">What we are asking Netlify for</h2>
+<ol><li>A review of the static hosting pattern for Netlify.</li><li>A place in the <a class="ext" href="https://www.netlify.com/partners/technology/">Technology Partner Program ↗</a>.</li><li>A look at the <a class="ext" href="https://www.netlify.com/legal/open-source-policy/">Netlify Open Source plan ↗</a> for sgit&#x27;s documentation.</li></ol>
+<h2 id="what-this-page-does-not-claim">What this page does not claim</h2>
+<ul><li><strong>No endorsement.</strong> Netlify has not endorsed sgit, and we have not spoken to anyone there about this. Programme and product descriptions quote Netlify&#x27;s own pages as of 24 September 2026.</li><li><strong>Only the read side fits Netlify.</strong> Writing to a vault needs a vault server, which runs elsewhere.</li></ul>
+<h2 id="if-you-work-at-netlify">If you work at Netlify</h2>
+<p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them →</a><a class="ext live" href="https://sgit.ai/about/index.html" title="live page">↗</a></p>
+<p><a class="ext" href="https://sgit.ai/rackspace.md">← Rackspace Technology ↗</a><a class="ext" href="https://sgit.ai/cloud-platforms.md">Cloud platforms → ↗</a></p>
+<hr></article><nav class="pager"><span><a href="159-a-proposed-partnership-between-sgitai-an.html">← A proposed partnership between sgit.ai and Netlify</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="161-models-do-the-work-vaults-hold-it-propos.html">Models do the work, vaults hold it: proposed partnerships wi →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>160 of 358: A proposed partnership between sgit.ai and Netlify</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

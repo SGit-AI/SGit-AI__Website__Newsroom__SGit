@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Lessons learned · sgit newsroom</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../editions/index.html">Editions</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../concepts/index.html">Concepts</a><a href="../vaults/index.html">Vaults</a><a href="index.html">History</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../newsroom/index.html">The newsroom</a><a href="../about/index.html">About</a><a href="../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Historian</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l2"><a href="#24-september-2026">24 September 2026</a></li><li class="l3"><a href="#the-version-has-to-be-visible-where-people-check-it">The version has to be visible where people check it</a></li><li class="l3"><a href="#check-the-way-ci-sees-it">Check the way CI sees it</a></li><li class="l3"><a href="#a-briefs-prompt-is-corrected-to-the-sites-own-words-and-the-correction-is-record">A brief&amp;#x27;s prompt is corrected to the site&amp;#x27;s own words, and the correction is recorded</a></li><li class="l3"><a href="#a-leak-gate-that-compares-lines-misses-a-paraphrase">A leak gate that compares lines misses a paraphrase</a></li><li class="l3"><a href="#splitting-a-menu-group-pushed-the-header-wide">Splitting a menu group pushed the header wide</a></li><li class="l3"><a href="#a-word-removed-and-a-test-that-keeps-it-gone">A word removed, and a test that keeps it gone</a></li><li class="l3"><a href="#styles-left-behind-when-a-component-moved">Styles left behind when a component moved</a></li><li class="l3"><a href="#a-page-that-described-products-which-do-not-exist">A page that described products which do not exist</a></li><li class="l3"><a href="#release-notes-replaced-by-the-release-scripts-stub">Release notes replaced by the release script&amp;#x27;s stub</a></li><li class="l3"><a href="#two-first-drafts-about-hosting-and-storage-corrected-by-research">Two first drafts about hosting and storage, corrected by research</a></li><li class="l3"><a href="#two-first-assumptions-about-another-companys-product-corrected-in-the-text">Two first assumptions about another company&amp;#x27;s product, corrected in the text</a></li><li class="l2"><a href="#23-september-2026">23 September 2026</a></li><li class="l3"><a href="#a-copy-rule-that-lost-to-a-form">A copy rule that lost to a form</a></li><li class="l3"><a href="#old-exports-of-the-mark-named-rather-than-re-cut">Old exports of the mark, named rather than re-cut</a></li><li class="l3"><a href="#a-page-that-fell-behind-its-vault">A page that fell behind its vault</a></li><li class="l3"><a href="#publishing-a-vault-found-two-cli-bugs">Publishing a vault found two CLI bugs</a></li><li class="l3"><a href="#a-proposal-has-to-say-it-is-one">A proposal has to say it is one</a></li><li class="l2"><a href="#22-september-2026">22 September 2026</a></li><li class="l3"><a href="#a-first-person-article-with-no-name-on-it">A first-person article with no name on it</a></li><li class="l2"><a href="#21-september-2026">21 September 2026</a></li><li class="l3"><a href="#a-builder-used-before-it-was-ready">A builder used before it was ready</a></li><li class="l3"><a href="#a-guard-that-did-not-guard-and-a-note-that-overclaimed">A guard that did not guard, and a note that overclaimed</a></li><li class="l3"><a href="#link-previews-with-no-picture-and-a-format-a-crawler-drops-without-a-word">Link previews with no picture, and a format a crawler drops without a word</a></li><li class="l3"><a href="#the-em-dash-rewriters-collateral-found-three-times">The em-dash rewriter&amp;#x27;s collateral, found three times</a></li><li class="l3"><a href="#a-phone-menu-that-would-not-scroll-and-grids-with-a-hard-floor">A phone menu that would not scroll, and grids with a hard floor</a></li><li class="l3"><a href="#a-title-word-that-misdescribed-the-argument">A title word that misdescribed the argument</a></li><li class="l3"><a href="#a-count-that-drifted-on-three-pages">A count that drifted on three pages</a></li><li class="l3"><a href="#the-most-useful-pages-were-the-hardest-to-find">The most useful pages were the hardest to find</a></li><li class="l3"><a href="#a-cold-start-presented-as-an-architecture-cost">A cold start presented as an architecture cost</a></li><li class="l3"><a href="#counts-quoted-from-a-page-and-a-graph-that-had-grown">Counts quoted from a page, and a graph that had grown</a></li><li class="l3"><a href="#an-explanation-disproved-by-new-numbers-and-a-documented-header-that-was-not-liv">An explanation disproved by new numbers, and a documented header that was not live</a></li><li class="l2"><a href="#20-september-2026">20 September 2026</a></li><li class="l3"><a href="#a-local-check-that-ran-five-of-seven-checks">A local check that ran five of seven checks</a></li><li class="l3"><a href="#two-barriers-that-are-nothing-alike-printed-under-one-heading">Two barriers that are nothing alike, printed under one heading</a></li><li class="l3"><a href="#renderer-bugs-that-no-diff-showed">Renderer bugs that no diff showed</a></li><li class="l3"><a href="#the-em-dash-removal-bugs-found-by-checking-rather-than-assuming">The em-dash removal: bugs found by checking rather than assuming</a></li><li class="l3"><a href="#the-human-table-and-the-machine-list-disagreed-for-four-releases">The human table and the machine list disagreed for four releases</a></li><li class="l3"><a href="#a-published-read-key-under-a-label-that-says-secret">A published read key under a label that says secret</a></li><li class="l3"><a href="#the-vault-named-after-the-concept-was-missing-from-the-concepts-page">The vault named after the concept was missing from the concept&amp;#x27;s page</a></li><li class="l2"><a href="#19-september-2026">19 September 2026</a></li><li class="l3"><a href="#a-page-keeps-the-question-and-drops-the-thread-the-record-keeps-both">A page keeps the question and drops the thread; the record keeps both</a></li><li class="l3"><a href="#the-fractal-definition-corrected-three-times-in-a-day">The fractal definition, corrected three times in a day</a></li><li class="l3"><a href="#checked-by-rendering-not-by-eye">Checked by rendering, not by eye</a></li><li class="l3"><a href="#if-it-is-blue-it-must-be-clickable">If it is blue it must be clickable</a></li><li class="l3"><a href="#a-forgotten-branch-kept-purged-files-downloadable">A forgotten branch kept purged files downloadable</a></li><li class="l3"><a href="#a-footer-claim-that-had-never-been-true-of-the-deployed-pages">A footer claim that had never been true of the deployed pages</a></li><li class="l3"><a href="#a-mirror-dead-for-seven-releases-and-nobody-noticed">A mirror dead for seven releases, and nobody noticed</a></li><li class="l3"><a href="#a-hand-written-index-pointing-at-generated-files">A hand-written index pointing at generated files</a></li><li class="l2"><a href="#18-september-2026">18 September 2026</a></li><li class="l3"><a href="#count-the-links-before-unlisting-a-page">Count the links before unlisting a page</a></li><li class="l3"><a href="#two-menus-on-one-page">Two menus on one page</a></li><li class="l3"><a href="#write-for-a-class-not-an-instance">Write for a class, not an instance</a></li><li class="l3"><a href="#a-printed-record-is-dated-not-corrected">A printed record is dated, not corrected</a></li></ul></details>
+<p class="unreviewed-banner">Not yet reviewed by the editor of record.</p><h1>Lessons learned</h1><article><p>Every correction, retraction, rule and &quot;how the mistake was caught&quot; in the two sites&#x27; logs for 18 to 24 September 2026, turned into a lesson. Newest first, grouped by day. Within a day, sgit.ai entries are in release order from its git log; riskmandate.ai&#x27;s record gives dates but no times, so the order between the two sites on the same day is not known.</p>
+<p>sgit.ai&#x27;s version record is one table with no per-version anchors, so each sgit.ai lesson links to <a href="../src/sites/sgit.ai/admin/versions.html">the record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a> and names the version; the same entries are in <a href="../src/history/sgit.ai-version-log.json.html">the version log</a>. riskmandate.ai lessons link to that release&#x27;s own note. Where a source does not state a rule or does not say how something was caught, the lesson says so rather than supplying one.</p>
+<p>sgit.ai keeps its own index of rules and their origins at <a href="../src/sites/sgit.ai/lessons/index.html">Lessons learned</a><a class="ext live" href="https://sgit.ai/lessons/index.html" title="live page">↗</a>, which this page does not replace.</p>
+<h2 id="24-september-2026">24 September 2026</h2>
+<h3 id="the-version-has-to-be-visible-where-people-check-it">The version has to be visible where people check it</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.34.7.html">v1.34.7</a><a class="ext live" href="https://riskmandate.ai/versions/1.34.7.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The header&#x27;s version chip, present since v1.0.0, was hidden below 1400px by the rule that made room for the GitHub link and below 1040px by the drawer rule. It showed only on a wide monitor.
+<strong>How it was caught.</strong> The site&#x27;s lead had no good way to confirm that a new version was live.
+<strong>The rule.</strong> The laptop rule now hides only the GitHub link; on a phone or tablet the menu drawer&#x27;s first entry carries the version. The rule lives in the script that rewrites and checks every page in CI.</p>
+<h3 id="check-the-way-ci-sees-it">Check the way CI sees it</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.34.3.html">v1.34.3</a><a class="ext live" href="https://riskmandate.ai/versions/1.34.3.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The releases from v1.32.2 to v1.34.2 were merged but never reached the live site, because the site deploys only when CI passes and CI failed on every one. Three hand-scaffolded pages lacked the licence chrome, and the repository ignored every <code>dist/</code> folder, so the pack&#x27;s zip was never committed. The note&#x27;s title calls them four releases; the version record lists six in that range.
+<strong>How it was caught.</strong> CI failed on each release. The local <code>npm run check</code> did not run the licence-chrome check, &quot;so it passed here and failed there&quot;.
+<strong>The rule.</strong> The local check runs the same check as CI, the two folders are tracked, and every CI command is run on a clean export of the commit, not the working folder, before a push.</p>
+<h3 id="a-briefs-prompt-is-corrected-to-the-sites-own-words-and-the-correction-is-record">A brief&#x27;s prompt is corrected to the site&#x27;s own words, and the correction is recorded</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.34.2.html">v1.34.2</a><a class="ext live" href="https://riskmandate.ai/versions/1.34.2.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The interview prompt in sgit.ai&#x27;s brief described two things differently from riskmandate.ai&#x27;s own pages: what the home page says about who stands behind one record, and whether the behaviour policy is the licence&#x27;s instrument or its evidence.
+<strong>How it was caught.</strong> The prompt was checked against the home page and the Licence to Operate page.
+<strong>The rule.</strong> The brief allowed this kind of change; both corrections are recorded beside the prompt. The voice run the brief asked for was not done, because the site&#x27;s agent has no account for it, and the note says that run is the lead&#x27;s.</p>
+<h3 id="a-leak-gate-that-compares-lines-misses-a-paraphrase">A leak gate that compares lines misses a paraphrase</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.34.1.html">v1.34.1</a><a class="ext live" href="https://riskmandate.ai/versions/1.34.1.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The first version of the gate for the behaviour-policy pack missed a paraphrased note.
+<strong>How it was caught.</strong> The gate was proved against six planted leaks.
+<strong>The rule.</strong> The gate compares runs of words rather than lines, and fails on a run of seven words from the lead&#x27;s private notes, another person&#x27;s name, organisation or keys, anything shaped like a vault or write key, an email address or a personal LinkedIn link. It must pass before any push.</p>
+<h3 id="splitting-a-menu-group-pushed-the-header-wide">Splitting a menu group pushed the header wide</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.33.0.html">v1.33.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.33.0.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Placing the new business-case entries inside the <em>More</em> group split it in two and pushed the header past 1280 pixels on every page.
+<strong>How it was caught.</strong> The note places it before this release; it does not say how it was noticed.
+<strong>The rule.</strong> A test now fails if a menu group&#x27;s entries are split in the page list.</p>
+<h3 id="a-word-removed-and-a-test-that-keeps-it-gone">A word removed, and a test that keeps it gone</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.32.1.html">v1.32.1</a><a class="ext live" href="https://riskmandate.ai/versions/1.32.1.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The lead asked for the word <em>rung</em> to go, because it is not a common word and reads oddly, most of all in a second language. The deck had dropped it, but it was still on eleven pages.
+<strong>How it was caught.</strong> The lead&#x27;s request; the pages were then found and changed, with a different word where <em>step</em> would have been wrong.
+<strong>The rule.</strong> Any page, markdown twin or <code>llms.txt</code> that says the word fails the build. Release notes and the brief register keep it, because they &quot;are records of what was written on their date, and those are never rewritten&quot;.</p>
+<h3 id="styles-left-behind-when-a-component-moved">Styles left behind when a component moved</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.32.1.html">v1.32.1</a><a class="ext live" href="https://riskmandate.ai/versions/1.32.1.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The Index ladder on the Insurance page showed six empty boxes with pale text. Its six level colours were defined on the old home page and stayed behind when the ladder moved.
+<strong>How it was caught.</strong> While checking the renamed buttons. The note says it &quot;was broken before today, not by the rename&quot;.
+<strong>The rule.</strong> Not stated as a general rule; the colours now live on the page that draws the ladder.</p>
+<h3 id="a-page-that-described-products-which-do-not-exist">A page that described products which do not exist</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.32.0.html">v1.32.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.32.0.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> How it works described an architecture from before the Agent Behaviour Policy existed, and one line of it said the opposite of the lead&#x27;s memo of the same day.
+<strong>How it was caught.</strong> A peer asked in a chat what the product does and how it technically works; the page did not answer the second question.
+<strong>The rule.</strong> The page was rebuilt in the memo&#x27;s order with the status of each step on the step, and the claims about unbuilt capabilities were removed. The note gives the reason: such a page &quot;is not an aspiration; it is the one page a technical reader would use to decide we are not serious.&quot;</p>
+<h3 id="release-notes-replaced-by-the-release-scripts-stub">Release notes replaced by the release script&#x27;s stub</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.32.0.html">v1.32.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.32.0.html" title="live page">↗</a>; see also <a href="../src/sites/riskmandate.ai/versions/1.29.3.html">v1.29.3</a><a class="ext live" href="https://riskmandate.ai/versions/1.29.3.html" title="live page">↗</a> to <a href="../src/sites/riskmandate.ai/versions/1.31.1.html">v1.31.1</a><a class="ext live" href="https://riskmandate.ai/versions/1.31.1.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The notes for v1.32.0 were written before the release was cut, the release script replaced them with its stub, and the stub shipped in the first commit. Separately, seven notes of 23 September (v1.29.3, v1.29.4, v1.29.5, v1.30.0, v1.30.1, v1.31.0 and v1.31.1) are still the unfilled stub in the snapshot.
+<strong>How it was caught.</strong> For v1.32.0, the note records it and says the text followed in the next commit. For the seven stubs of 23 September, the record says nothing.
+<strong>The rule.</strong> Not stated in the source.</p>
+<h3 id="two-first-drafts-about-hosting-and-storage-corrected-by-research">Two first drafts about hosting and storage, corrected by research</h3>
+<p><em>sgit.ai v0.6.4, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Two first drafts of the partnership pages were wrong: the site is served from GitHub Pages, not AWS, and the server&#x27;s S3 mode is only proven on Amazon S3.
+<strong>How it was caught.</strong> Research for the pages.
+<strong>The rule.</strong> Every provider fact comes from the provider&#x27;s own pages, researched that day, and credit amounts are left out &quot;because several could not be confirmed&quot;.</p>
+<h3 id="two-first-assumptions-about-another-companys-product-corrected-in-the-text">Two first assumptions about another company&#x27;s product, corrected in the text</h3>
+<p><em>sgit.ai v0.6.3, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The connector-twin article started from two assumptions that were wrong: Google Vault has covered Calendar since November 2023, and the admin audit log does record some earlier values.
+<strong>How it was caught.</strong> Research against Google&#x27;s own pages.
+<strong>The rule.</strong> Every claim about Gmail and Calendar is Google&#x27;s own and linked, and the text says what research corrected.</p>
+<h2 id="23-september-2026">23 September 2026</h2>
+<h3 id="a-copy-rule-that-lost-to-a-form">A copy rule that lost to a form</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.29.2.html">v1.29.2</a><a class="ext live" href="https://riskmandate.ai/versions/1.29.2.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The brand page&#x27;s boilerplate said to say nothing shorter than its 180-character version. An exhibitor description field rejected 180 characters.
+<strong>How it was caught.</strong> The form refused it on 23 September 2026. The note: &quot;A rule this site wrote about its own copy lost to a form that counts.&quot;
+<strong>The rule.</strong> Two shorter versions (110 and 80 characters) keep the order of the claim and drop the company name. The note on the 180-character version now says what happened and when, &quot;rather than carrying an instruction a real field has disproved&quot;.</p>
+<h3 id="old-exports-of-the-mark-named-rather-than-re-cut">Old exports of the mark, named rather than re-cut</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.29.1.html">v1.29.1</a><a class="ext live" href="https://riskmandate.ai/versions/1.29.1.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Two PNG exports of the mark were made before the mark was revised on 14 September and show a wider <code>RM</code> than everything shipped since.
+<strong>How it was caught.</strong> Measuring the new EPS files: every file was rasterised back and checked against the current mark.
+<strong>The rule.</strong> Proofed rather than assumed. The two old files are left alone &quot;rather than quietly re-cut, and named so somebody decides.&quot;</p>
+<h3 id="a-page-that-fell-behind-its-vault">A page that fell behind its vault</h3>
+<p><em>sgit.ai v0.6.1, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The DSIT AI Risk Toolkit vault had moved on since 20 September, and the page still opened on four worlds and 617 nodes.
+<strong>How it was caught.</strong> A brief asked for the page to be rebuilt.
+<strong>The rule.</strong> A status table separates each edition and graph without merging them, and the deck viewer shows a counted &quot;N screenshots could not be read&quot; status &quot;instead of a plausible-looking gap&quot;.</p>
+<h3 id="publishing-a-vault-found-two-cli-bugs">Publishing a vault found two CLI bugs</h3>
+<p><em>sgit.ai v0.6.0, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The CLI&#x27;s auto transport treated a fresh vault&#x27;s object 404 as no live API and switched push to the read-only static transport; and push, pull, fetch, status and delete ignored <code>--transport</code>.
+<strong>How it was caught.</strong> Publishing the thirty-second vault.
+<strong>The rule.</strong> Both fixed in the CLI repository with a pinning test.</p>
+<h3 id="a-proposal-has-to-say-it-is-one">A proposal has to say it is one</h3>
+<p><em>sgit.ai v0.5.9, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> A reader landing on the Sovereign AI partnership page from a forwarded link had no way to know it was a proposal from sgit.ai&#x27;s side.
+<strong>How it was caught.</strong> The entry states the problem from that reader&#x27;s point of view; it does not say who raised it.
+<strong>The rule.</strong> The title, eyebrow and lead now say the partnership is proposed and name both parties.</p>
+<h2 id="22-september-2026">22 September 2026</h2>
+<h3 id="a-first-person-article-with-no-name-on-it">A first-person article with no name on it</h3>
+<p><em>sgit.ai v0.5.5, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The news article is written in the first person and its author&#x27;s name appeared nowhere on it, on a site whose argument is provenance.
+<strong>How it was caught.</strong> The author noticed.
+<strong>The rule.</strong> Articles may carry an author and a link; the build refuses an author without a URL, because &quot;a byline without a link is a name, not provenance.&quot;</p>
+<h2 id="21-september-2026">21 September 2026</h2>
+<h3 id="a-builder-used-before-it-was-ready">A builder used before it was ready</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.28.0.html">v1.28.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.28.0.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The admin console&#x27;s builder rendered document summaries before the link resolver it uses was initialised. No summary had had a link in its first paragraph, so nothing had failed; the first one that did brought the whole build down.
+<strong>How it was caught.</strong> By shipping.
+<strong>The rule.</strong> The resolver is declared where it is used, with a note saying why.</p>
+<h3 id="a-guard-that-did-not-guard-and-a-note-that-overclaimed">A guard that did not guard, and a note that overclaimed</h3>
+<p><em>sgit.ai v0.5.1, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The v0.5.0 note said the validator catches a forgotten preview-card run. It did not: the fallback always names a file that exists, so a new article with a hero would ship with the generic card and build clean.
+<strong>How it was caught.</strong> The author asked whether it would work for new articles with an image; it was tested and simulated, and the answer was no.
+<strong>The rule.</strong> The build refuses any article with a figure and no card, names every offender and prints the command. Proved both ways. The log calls this the house pattern: &quot;the build refuses rather than guessing.&quot;</p>
+<h3 id="link-previews-with-no-picture-and-a-format-a-crawler-drops-without-a-word">Link previews with no picture, and a format a crawler drops without a word</h3>
+<p><em>sgit.ai v0.5.0, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Pages carried no <code>og:image</code> at all. The obvious fix would also have failed: every figure is WebP, and LinkedIn&#x27;s crawler drops WebP silently.
+<strong>How it was caught.</strong> Reported from a LinkedIn compose box.
+<strong>The rule.</strong> Preview cards are JPEG, and a validator check fails the build if a page has no <code>og:image</code>, points at a <code>.webp</code>, or names a missing file. Proved by deleting the default card: 138 pages failed.</p>
+<h3 id="the-em-dash-rewriters-collateral-found-three-times">The em-dash rewriter&#x27;s collateral, found three times</h3>
+<p><em>sgit.ai v0.5.0, v0.3.9 and v0.3.0, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The rewriter&#x27;s paired rule turned dashes into brackets. On 20 September it left seven brackets opening in one table cell and closing in another (v0.3.0). The article title template then shipped with no closing bracket on nine pages (v0.3.9), and sixteen page titles had an unbalanced bracket (v0.5.0).
+<strong>How it was caught.</strong> A balance check (v0.3.0); for v0.3.9 the entry records that the validator&#x27;s prose check does not read <code>.py</code> files; for v0.5.0, because the preview alt text is built from the page title.
+<strong>The rule.</strong> Each was fixed by hand. The source states no single rule covering all three.</p>
+<h3 id="a-phone-menu-that-would-not-scroll-and-grids-with-a-hard-floor">A phone menu that would not scroll, and grids with a hard floor</h3>
+<p><em>sgit.ai v0.4.9, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> On a phone the open menu stood 1536px tall against a 664px viewport with no scroll of its own. Two grids used a minimum column width wider than a 320px phone&#x27;s content box and overflowed.
+<strong>How it was caught.</strong> Reported from an iPhone and reproduced at three phone profiles; the grid bug was found while verifying the menu fix.
+<strong>The rule.</strong> The menu is capped to the viewport and scrolls itself; grids use <code>minmax(min(Npx,100%),1fr)</code>, with a comment recording the rule &quot;because the next person will reach for a bare minmax again.&quot;</p>
+<h3 id="a-title-word-that-misdescribed-the-argument">A title word that misdescribed the argument</h3>
+<p><em>sgit.ai v0.4.5, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The SaaS article&#x27;s title called the outcome optional, and three passages leaned on that word. The mechanism the article describes is inertia, not choice.
+<strong>How it was caught.</strong> The author said why the word was wrong.
+<strong>The rule.</strong> The lead, abstract and closing were rewritten; the word does not survive anywhere in the piece, &quot;checked by the build&quot;.</p>
+<h3 id="a-count-that-drifted-on-three-pages">A count that drifted on three pages</h3>
+<p><em>sgit.ai v0.4.1, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The fractal ladder has nine vaults, but the vaults page said eight and the fractal page&#x27;s lead implied eight. Both drifted when the DSIT vault became a rung in v0.3.1 and the surrounding prose was not updated.
+<strong>How it was caught.</strong> While checking the work on the vaults page.
+<strong>The rule.</strong> Counted from the table rather than recalled.</p>
+<h3 id="the-most-useful-pages-were-the-hardest-to-find">The most useful pages were the hardest to find</h3>
+<p><em>sgit.ai v0.3.7 and v0.3.8, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The performance page was reachable from one nav entry and three content links, none on a landing page. Fixing that surfaced a larger omission: Fractal Semantic Graphs had no homepage presence at all.
+<strong>How it was caught.</strong> The author asked where the link actually was (v0.3.7); the omission surfaced while fixing the routes (v0.3.8).
+<strong>The rule.</strong> Counts on the new homepage band &quot;were checked against the pages rather than recalled&quot;.</p>
+<h3 id="a-cold-start-presented-as-an-architecture-cost">A cold start presented as an architecture cost</h3>
+<p><em>sgit.ai v0.3.5, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The performance page&#x27;s headline latency was a client figure that included a cold start, presented as though the architecture cost it, and the batch optimisations were missing.
+<strong>How it was caught.</strong> Flagged by the author, then measured over six runs each.
+<strong>The rule.</strong> The fixed cost is named as a property of running the API serverless; a deployment not measured gets no number, and the page says so.</p>
+<h3 id="counts-quoted-from-a-page-and-a-graph-that-had-grown">Counts quoted from a page, and a graph that had grown</h3>
+<p><em>sgit.ai v0.3.4, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The performance page said 617 nodes and 694 edges, quoting the vault&#x27;s page. The file as cloned had 1,051 nodes and 1,289 edges, because the vault had released a new version.
+<strong>How it was caught.</strong> By measuring.
+<strong>The rule.</strong> &quot;Every count on the page is now counted rather than quoted.&quot; The log adds that the drift was only visible because the vault keeps its versions.</p>
+<h3 id="an-explanation-disproved-by-new-numbers-and-a-documented-header-that-was-not-liv">An explanation disproved by new numbers, and a documented header that was not live</h3>
+<p><em>sgit.ai v0.3.3, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> v0.3.2 explained a 65-second clone as a cost of the architecture. New measurements showed one batch hitting the response-size limit and degrading to 50 single fetches. Separately, the caching contract page promised a <code>Cache-Control</code> header that the read endpoint did not send.
+<strong>How it was caught.</strong> By measuring the transport directly.
+<strong>The rule.</strong> The page names it as &quot;a client-side chunking bug&quot; in those words, and reports the header gap &quot;rather than smoothed over&quot;.</p>
+<h2 id="20-september-2026">20 September 2026</h2>
+<h3 id="a-local-check-that-ran-five-of-seven-checks">A local check that ran five of seven checks</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.27.1.html">v1.27.1</a><a class="ext live" href="https://riskmandate.ai/versions/1.27.1.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> A page carries every template&#x27;s zip size and sha256. The v1.27.0 work changed every zip, and the stamp went stale.
+<strong>How it was caught.</strong> The v1.27.0 push went red on CI. The local <code>npm run check</code> had not noticed, because it ran five of CI&#x27;s seven checkers.
+<strong>The rule.</strong> The local check now runs all of them, and the new checker was proven to bite by putting a wrong hash in the page.</p>
+<h3 id="two-barriers-that-are-nothing-alike-printed-under-one-heading">Two barriers that are nothing alike, printed under one heading</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.27.0.html">v1.27.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.27.0.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> On the Gmail-connector record, attachment content and permanent deletion were both filed as not reachable. One needs a new consent screen somebody has to tick; the other can move in a vendor&#x27;s release with nothing to click.
+<strong>How it was caught.</strong> Working that example through against the vendor&#x27;s own reference.
+<strong>The rule.</strong> Every vault carries a blocked list, and the build refuses an entry that does not name what blocks it. A holder record that calls a control strong, weak or similar fails the build.</p>
+<h3 id="renderer-bugs-that-no-diff-showed">Renderer bugs that no diff showed</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.27.0.html">v1.27.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.27.0.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Two renderer bugs had shipped from the reading app, and two tables had been rendering <code>|,|</code> since the consequence layer landed.
+<strong>How it was caught.</strong> The note says neither was visible in a diff; the new test found the tables.
+<strong>The rule.</strong> A test boots the reading app against a real vault in a fake DOM and builds every view; a view that throws, renders nothing, prints <code>undefined</code> or leaves a comma-joined table fails the build.</p>
+<h3 id="the-em-dash-removal-bugs-found-by-checking-rather-than-assuming">The em-dash removal: bugs found by checking rather than assuming</h3>
+<p><em>sgit.ai v0.3.0, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Removing 3,200 em-dashes site-wide broke things four ways: a whitespace tidy reflowed ASCII diagrams, the pair rule bridged table cells, a page&#x27;s script compared against text the markup no longer had, and colons before conjunctions read badly.
+<strong>How it was caught.</strong> By checking, including a bracket balance check.
+<strong>The rule.</strong> The rewriter was made mask-aware, and the validator uses the same exclusions as the rewriter &quot;so the two agree&quot;.</p>
+<h3 id="the-human-table-and-the-machine-list-disagreed-for-four-releases">The human table and the machine list disagreed for four releases</h3>
+<p><em>sgit.ai v0.2.99, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The vaults table rendered in file order while its docstring claimed newest first; the machine list sorted correctly. The key-lifting routine also did not know the public read prefix, so relabelled keys lost their declaration in <code>llms.txt</code>.
+<strong>How it was caught.</strong> The author asked for the table order to be fixed; the prefix gap was found on the way.
+<strong>The rule.</strong> One newest-first order for the whole site, with assertions that ordinals are unique, gapless and in date order. Both assertions were tested by breaking the data on purpose.</p>
+<h3 id="a-published-read-key-under-a-label-that-says-secret">A published read key under a label that says secret</h3>
+<p><em>sgit.ai v0.2.98, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Seven published read credentials on two vault pages carried the private read prefix, which the CLI defines as read-only and kept secret.
+<strong>How it was caught.</strong> Another agent declined to open them and said it would not work around the restriction. The log: &quot;It was right and our label was wrong.&quot;
+<strong>The rule.</strong> The validator bans both private prefixes in tracked files, the credential checker refuses the private read prefix for publication, and credentials are classified &quot;by declaration and never by shape&quot;.</p>
+<h3 id="the-vault-named-after-the-concept-was-missing-from-the-concepts-page">The vault named after the concept was missing from the concept&#x27;s page</h3>
+<p><em>sgit.ai v0.2.96, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The Fractal Semantic Graphs page walked seven graph vaults and never cited the one that carries the name.
+<strong>How it was caught.</strong> A question about whether a GitHub repository was in the collection; cloning both showed it mirrored that vault.
+<strong>The rule.</strong> Not stated as a rule; the page gained a section crediting the vault, and the vault&#x27;s page records its mirror.</p>
+<h2 id="19-september-2026">19 September 2026</h2>
+<h3 id="a-page-keeps-the-question-and-drops-the-thread-the-record-keeps-both">A page keeps the question and drops the thread; the record keeps both</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.26.2.html">v1.26.2</a><a class="ext live" href="https://riskmandate.ai/versions/1.26.2.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The insurance page opened by recounting who asked whom, under which post.
+<strong>How it was caught.</strong> The lead&#x27;s reading was that the page is better without it.
+<strong>The rule.</strong> The page states the question plainly. The v1.26.1 note still records how the question arrived: &quot;records are not rewritten.&quot;</p>
+<h3 id="the-fractal-definition-corrected-three-times-in-a-day">The fractal definition, corrected three times in a day</h3>
+<p><em>sgit.ai v0.2.89, v0.2.91 and v0.2.95, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> v0.2.87 defined a fractal semantic graph as the same rules at every level, which describes a hierarchy. v0.2.91 corrected a sentence saying that the deeper you go the less you learn, and v0.2.95 replaced the folder tree as the contrast.
+<strong>How it was caught.</strong> Each time by the author&#x27;s reading of the page.
+<strong>The rule.</strong> What stays constant is the grammar, never the schema. A wording to pass upstream was recorded on the page &quot;with the date rather than silently corrected&quot;, and in v0.2.94 became a brief to graphs.sgit.ai.</p>
+<h3 id="checked-by-rendering-not-by-eye">Checked by rendering, not by eye</h3>
+<p><em>sgit.ai v0.2.90, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> After a rewording, diagram captions overran their columns and a footer line was a pixel from the edge.
+<strong>How it was caught.</strong> By rendering the SVG at two widths.
+<strong>The rule.</strong> Checked by rendering, &quot;not by eye on the source&quot;.</p>
+<h3 id="if-it-is-blue-it-must-be-clickable">If it is blue it must be clickable</h3>
+<p><em>sgit.ai v0.2.88, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The ladder diagram&#x27;s right-hand column was long blue text that read as links nobody could click.
+<strong>How it was caught.</strong> A second read of the page.
+<strong>The rule.</strong> &quot;if it is blue, it must be clickable; if it is not clickable, it must not be blue.&quot; Each of the twelve new links was tested by clicking it.</p>
+<h3 id="a-forgotten-branch-kept-purged-files-downloadable">A forgotten branch kept purged files downloadable</h3>
+<p><em>sgit.ai v0.2.86, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> After the history purge, a fully merged August branch still pointed at the old chain, so a fresh clone still downloaded the purged objects.
+<strong>How it was caught.</strong> Verified by fetching into a clean clone. The branch deletion was refused three times by the session&#x27;s git proxy.
+<strong>The rule.</strong> Reachability gets its own section in the case study, and the page opens with the rule &quot;for a secret, rotate first, rewrite second.&quot;</p>
+<h3 id="a-footer-claim-that-had-never-been-true-of-the-deployed-pages">A footer claim that had never been true of the deployed pages</h3>
+<p><em>sgit.ai v0.2.85, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> Every page&#x27;s footer said the site was served from an encrypted vault. The log says this was false since v0.2.76 and never true of the deployed pages.
+<strong>How it was caught.</strong> Found while purging the mirror.
+<strong>The rule.</strong> Not stated as a rule; the footer now says what is true.</p>
+<h3 id="a-mirror-dead-for-seven-releases-and-nobody-noticed">A mirror dead for seven releases, and nobody noticed</h3>
+<p><em>sgit.ai v0.2.84, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The site&#x27;s vault mirror had no reader and had been dead since v0.2.76, while it made up 91% of the repository. Three Vaults-menu pages were stale, one listing nine catalogue entries against thirty in the gallery.
+<strong>How it was caught.</strong> The question whether the mirror was still needed.
+<strong>The rule.</strong> The mirror was deleted and purged; historical release notes were &quot;left as the dated records they are&quot;.</p>
+<h3 id="a-hand-written-index-pointing-at-generated-files">A hand-written index pointing at generated files</h3>
+<p><em>sgit.ai v0.2.83, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The root <code>llms.txt</code> sent agents to two addresses that returned 404 and buried the guidance it should lead with.
+<strong>How it was caught.</strong> By a new guard, not by reading: the site&#x27;s validator had never looked, because it checks links inside pages and <code>llms.txt</code> is not a page.
+<strong>The rule.</strong> The build asserts that every path the preamble points at is a file the build produces.</p>
+<h2 id="18-september-2026">18 September 2026</h2>
+<h3 id="count-the-links-before-unlisting-a-page">Count the links before unlisting a page</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.26.0.html">v1.26.0</a><a class="ext live" href="https://riskmandate.ai/versions/1.26.0.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The menu proposal would have unlisted <em>Give feedback</em>, which nothing but the 404 page links, and three essays, two of which had no editorial inbound link.
+<strong>How it was caught.</strong> The link counts.
+<strong>The rule.</strong> Two departures from the proposal &quot;because the counted links said so&quot;: the feedback page stays in the menu, and the essays got a home before they lost their menu row.</p>
+<h3 id="two-menus-on-one-page">Two menus on one page</h3>
+<p><em>riskmandate.ai <a href="../src/sites/riskmandate.ai/versions/1.25.4.html">v1.25.4</a><a class="ext live" href="https://riskmandate.ai/versions/1.25.4.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> v1.25.1 kept the partner design&#x27;s in-page anchor strip under the shared menu, which made two menus and, after v1.25.3, the buy action twice above the fold.
+<strong>How it was caught.</strong> The note describes it as seen on the page; it does not say who noticed.
+<strong>The rule.</strong> One menu; the buy action appears once at each end of the page.</p>
+<h3 id="write-for-a-class-not-an-instance">Write for a class, not an instance</h3>
+<p><em>sgit.ai v0.2.82, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The earlier pack described a real role and withheld the company, which meant auditing whether an unnamed client could be inferred.
+<strong>How it was caught.</strong> Comparing the two packs from the same generator.
+<strong>The rule.</strong> &quot;a document written for a class can be published; a document written for an instance has to be scrubbed.&quot;</p>
+<h3 id="a-printed-record-is-dated-not-corrected">A printed record is dated, not corrected</h3>
+<p><em>sgit.ai v0.2.81, in <a href="../src/sites/sgit.ai/admin/versions.html">the version record</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a></em></p>
+<p><strong>What happened.</strong> The summit handouts carried a vault count that was stale by summit week.
+<strong>How it was caught.</strong> The previous release had pointed out the change; the author ruled on it.
+<strong>The rule.</strong> The sheets are kept as printed with a dating note, because &quot;a printed artefact that gets silently re-edited to match today stops being a record of anything.&quot;</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Historian</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Sources</dt><dd><ul><li><a href="../src/history/sgit.ai-version-log.json.html">sgit.ai-version-log.json</a> <code>6175cccc7efa</code> history</li><li><a href="../src/sites/sgit.ai/admin/versions.html">Release history</a> <code>819fb80935ce</code> sgit.ai <a class="ext" href="https://sgit.ai/admin/versions.html">↗</a></li><li><a href="../src/sites/sgit.ai/lessons/index.html">Lessons learned, the rules and the incidents behind them</a> <code>7dcbff1b0870</code> sgit.ai <a class="ext" href="https://sgit.ai/lessons/index.html">↗</a></li><li><a href="../src/sites/riskmandate.ai/versions.html">RiskMandate — version record</a> <code>d1369a31ce31</code> riskmandate.ai <a class="ext" href="https://riskmandate.ai/versions.html">↗</a></li></ul></dd><dt>Editor of record</dt><dd><strong class="unreviewed">not yet reviewed</strong></dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="lessons.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

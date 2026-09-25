@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The setup, step by step · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-setup-step-by-step">The setup, step by step</a></li><li class="l2"><a href="#1-the-repository">1. The repository</a></li><li class="l2"><a href="#2-the-site">2. The site</a></li><li class="l2"><a href="#3-the-branches">3. The branches</a></li><li class="l2"><a href="#4-the-deploy">4. The deploy</a></li><li class="l2"><a href="#5-the-domain">5. The domain</a></li><li class="l2"><a href="#6-the-agent">6. The agent</a></li><li class="l2"><a href="#7-the-vault">7. The vault</a></li><li class="l2"><a href="#8-the-checklist-to-keep-in-the-operators-vault">8. The checklist, to keep in the operator&amp;#x27;s vault</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="github-pages-setup.md">raw text</a></p><article class="source"><p><a href="README.html">← Prototypes</a> · <a href="../plan/00-START-HERE.html">Index</a></p>
+<h1 id="the-setup-step-by-step">The setup, step by step</h1>
+<p>What the operator&#x27;s session does for a new customer, in order. About an hour the first time, twenty minutes by the tenth.</p>
+<h2 id="1-the-repository">1. The repository</h2>
+<ul><li>Create a <strong>public</strong> repository under the customer&#x27;s own GitHub account (create the account with them on the call if they do not have one; it is theirs, not yours). Name it after the domain: <code>example-bakery-co-uk</code>.</li><li>Add the operator as a collaborator. The customer owns; the operator works.</li><li>Initialise with <code>README.md</code>, <code>PLAYBOOK.md</code> (from the template), <code>CHANGELOG.md</code>, and a <code>.gitignore</code>.</li></ul>
+<h2 id="2-the-site">2. The site</h2>
+<ul><li>Plain HTML with one shared stylesheet, or a very small static generator the agent can maintain. Plain HTML is the default; it has no build to break.</li><li>One file per page under <code>pages/</code>, the home page at <code>index.html</code>, images under <code>images/</code>, the brand assets (logo, colours, fonts) under <code>assets/brand/</code>.</li><li><code>site.json</code> holds the structured content the pages repeat: name, address, hours, phone, social links. Pages read it at build or the agent keeps them in step; either way there is one source for the facts that change most.</li><li>Every template ships with <code>privacy.html</code>, <code>accessibility.html</code> and a no-cookie posture. No analytics unless the customer asks and the playbook records it.</li></ul>
+<h2 id="3-the-branches">3. The branches</h2>
+<pre><code>main       the live site
+preview    what the customer looks at before it goes live</code></pre>
+<p>Protect <code>main</code> so that only the operator and the customer&#x27;s own account can push. Set the default branch for the customer&#x27;s session to <code>preview</code> for anything the playbook marks as needing a look.</p>
+<h2 id="4-the-deploy">4. The deploy</h2>
+<ul><li>GitHub Pages, source: GitHub Actions. The standard static deploy workflow, unchanged.</li><li>Two environments: <code>main</code> to the production Pages site, <code>preview</code> to a second Pages deployment or a preview host. If Pages will not deploy two branches for this account, the preview branch deploys to a bucket behind a CDN or to Netlify; the files are the same.</li><li>Confirm the deploy runs on push and the site is up before touching the domain.</li></ul>
+<h2 id="5-the-domain">5. The domain</h2>
+<ul><li>The customer owns the domain and pays for it. If they do not have one, register it in their name, not yours.</li><li>CNAME (or A records for the apex) pointing at GitHub Pages, set at the customer&#x27;s registrar. Enforce HTTPS in the Pages settings once the certificate is issued.</li><li><code>preview.&lt;domain&gt;</code> as a CNAME to the preview deployment, if the customer wants a friendly preview address.</li></ul>
+<h2 id="6-the-agent">6. The agent</h2>
+<ul><li>The operator&#x27;s session: a project with the repository connected and the playbook loaded.</li><li>The customer&#x27;s session: a separate project under the customer&#x27;s own account, with the same repository connected and the playbook loaded, and a one-page guide on how to ask for a change.</li><li>Test both: make a content change from the customer&#x27;s session and watch it go live; ask for a layout change and watch it go to preview.</li></ul>
+<h2 id="7-the-vault">7. The vault</h2>
+<ul><li>Create the customer&#x27;s vault: the setup notes, the materials they sent, the brand pack, the playbook, and the handover page. Commit, push, and give the customer the read key.</li><li>The customer now holds everything: the repository, the domain, the vault. Say so in the handover.</li></ul>
+<h2 id="8-the-checklist-to-keep-in-the-operators-vault">8. The checklist, to keep in the operator&#x27;s vault</h2>
+<ul><li>[ ] Repository public, under the customer&#x27;s account, operator as collaborator</li><li>[ ] <code>PLAYBOOK.md</code> filled in, every blank</li><li>[ ] <code>privacy.html</code>, <code>accessibility.html</code> present and correct for this business</li><li>[ ] Images resized; no phone originals committed</li><li>[ ] <code>main</code> protected; <code>preview</code> deploying</li><li>[ ] Domain pointed, HTTPS enforced</li><li>[ ] Customer&#x27;s session tested with one live change and one preview change</li><li>[ ] Customer vault created, read key handed over</li><li>[ ] First line in <code>CHANGELOG.md</code>: &quot;Site launched&quot;</li><li>[ ] Setup time recorded</li></ul>
+<hr>
+<p><a href="README.html">← Prototypes</a> · <a href="../plan/00-START-HERE.html">Index</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="a84fcbdb9988ffc60576fcccd4e673e81fb5d9c49e8261f06b4befc23647d684">a84fcbdb9988</code></dd><dt>Frozen copy</dt><dd><a href="github-pages-setup.md">vaults/agent-webmaster/prototypes/github-pages-setup.md</a> (3,891 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

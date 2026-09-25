@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Step 2: what you actually paid for (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#step-2-what-you-actually-paid-for">Step 2: what you actually paid for</a></li><li class="l2"><a href="#have-it-draft-the-three-lists">Have it draft the three lists</a></li><li class="l2"><a href="#then-have-it-say-what-waste-looks-like-for-you">Then have it say what waste looks like for you</a></li><li class="l2"><a href="#what-the-published-shapes-say">What the published shapes say</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 199 of 357</p><nav class="pager"><span><a href="198-step-2-what-you-actually-paid-for.html">← Step 2: what you actually paid for</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="200-step-3-write-the-cost-policy.html">Step 3: write the cost policy →</a></span></nav><article class="source"><h1 id="step-2-what-you-actually-paid-for">Step 2: what you actually paid for</h1>
+<p><strong>A budget written from a blank page is a guess. A budget corrected from a draft is a mandate.</strong> Have the agent sort its own typical actions into three lists, then argue with it. The argument is the mandate.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Sort what it did into what you asked for, what it decided was needed, and what it would now call waste. Then say what waste means for you.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../cost/what-it-spent/index.html">Step 1: What it has already spent</a><a class="ext live" href="https://abp.sgit.ai/cost/what-it-spent/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../cost/write-the-cost-policy/index.html">Step 3: Write the cost policy</a><a class="ext live" href="https://abp.sgit.ai/cost/write-the-cost-policy/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../cost/index.html">The cost walkthrough</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<blockquote><p><strong>What you gain from this page.</strong> A cost mandate in your own units: spend freely, batch or ask, never. And a definition of waste that is yours rather than generic, drawn from what it has already done.</p></blockquote>
+<h2 id="have-it-draft-the-three-lists">Have it draft the three lists</h2>
+<p><strong>Prompt 4: Freely, batched, never.</strong> A draft mandate over everything it spends, conservative by instruction.</p>
+<pre><code>Draft a cost mandate for yourself, over everything you spend, in three lists.
+
+  FREELY    things I want you to do without counting: name them
+  BATCHED   things I want you to do, but grouped, or only after telling me the count first:
+            name them and propose the batch size or the threshold
+  NEVER     things I never want you to spend on without asking me first
+
+Cover at least: writing files, creating new files, committing, pushing, fetching from the
+web, searching, spawning subagents, asking me questions, producing documents for me to
+read, and opening anything for another person to review.
+
+Put a thing in FREELY only if you can point at something I have said or done that shows I
+want it. When unsure, put it in BATCHED. If NEVER is empty you are guessing on my behalf.</code></pre>
+<p>Now correct it. Move things between the lists out loud and say why. <strong>The corrections are the part that is yours.</strong></p>
+<h2 id="then-have-it-say-what-waste-looks-like-for-you">Then have it say what waste looks like for you</h2>
+<p>Waste is not generic. For one deployer it is research; for another it is files; for a third it is the review queue. The agent has watched you long enough to know which.</p>
+<p><strong>Prompt 5: What waste looks like for me in particular.</strong> Drawn from what you have discarded, squashed, ignored and rewritten.</p>
+<pre><code>From what you have seen of how I work, tell me what waste looks like for me specifically.
+Look at:
+
+  - files you wrote that I deleted, moved or never opened
+  - commits I squashed, reverted or amended
+  - research or summaries you produced that I did not use in the next message
+  - questions you asked that I did not answer, or answered with &quot;just do it&quot;
+  - things you handed me to review that I approved without reading
+
+For each, say what it cost in the ledger&#x27;s units, and propose the one rule that would
+have prevented it. Then rank the rules by how much they would have saved me, in my time
+rather than yours.</code></pre>
+<blockquote><p><strong>The rule about other people&#x27;s time is the one that will not draft itself.</strong> An agent asked what it wasted will list files and fetches, because it can count those. It will not list the twenty minutes a colleague spent on a review it opened, because that never came back to it. Add that line yourself if it is missing, and it will be.</p></blockquote>
+<h2 id="what-the-published-shapes-say">What the published shapes say</h2>
+<p>Nothing, which is the finding. Of 17 shapes on this site, 2 grant <code>write.budget.tenant</code>, and none carries a row for a count of any kind, because the grammar has no such row. <strong>Every cost mandate on this page is over things the grant cannot express</strong>, and that is why step three is a document rather than a permission.</p>
+<blockquote><p><strong>Nothing on this page is measured by this site.</strong> There are no runtime logs here and there will not be; the runtime is universe u11, owned by whoever holds the logs and never by this site. Every number an agent gives back is a self report, which counts as a claim rather than a measurement, and the bill is the only log.</p></blockquote>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Sort what it did into what you asked for, what it decided was needed, and what it would now call waste. Then say what waste means for you.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../cost/what-it-spent/index.html">Step 1: What it has already spent</a><a class="ext live" href="https://abp.sgit.ai/cost/what-it-spent/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../cost/write-the-cost-policy/index.html">Step 3: Write the cost policy</a><a class="ext live" href="https://abp.sgit.ai/cost/write-the-cost-policy/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../cost/index.html">The cost walkthrough</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../cost/what-you-paid-for/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/cost/what-you-paid-for/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="198-step-2-what-you-actually-paid-for.html">← Step 2: what you actually paid for</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="200-step-3-write-the-cost-policy.html">Step 3: write the cost policy →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>199 of 357: Step 2: what you actually paid for</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

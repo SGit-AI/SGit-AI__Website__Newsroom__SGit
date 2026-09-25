@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06 — Boundaries, Redaction and House Style (newsroom.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · newsroom.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-boundaries-redaction-and-house-style">06 — Boundaries, Redaction and House Style</a></li><li class="l2"><a href="#1-boundaries-against-the-five-siblings">1. Boundaries against the five siblings</a></li><li class="l3"><a href="#the-risk-mandate-inversion-the-most-important-boundary">The Risk Mandate inversion — the most important boundary</a></li><li class="l2"><a href="#2-redaction-watch-list">2. Redaction watch-list</a></li><li class="l2"><a href="#3-house-style-inherited">3. House style, inherited</a></li><li class="l2"><a href="#4-two-demonstrations-to-build-in-from-day-one">4. Two demonstrations to build in from day one</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/newsroom.sgit.ai.html">newsroom.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 10 of 20</p><nav class="pager"><span><a href="009-05-site-architecture.html">← 05 — Site Architecture</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="011-07-gaps-and-open-questions.html">07 — Gaps and Open Questions →</a></span></nav><article class="source"><h1 id="06-boundaries-redaction-and-house-style">06 — Boundaries, Redaction and House Style</h1>
+<hr>
+<h2 id="1-boundaries-against-the-five-siblings">1. Boundaries against the five siblings</h2>
+<p>The largest risk to this site is not scarcity — it is <strong>duplication</strong>. Map by subject, because <code>__Send</code> @ v0.33.62 predates most of the subdomain build-out (the only <code>*.sgit.ai</code> hostnames appearing in the whole repo are <code>hub.sgit.ai</code>, <code>pki.sgit.ai</code> once, and <code>star.sgit.ai</code>).</p>
+<div class="table"><table><thead><tr><th>Sibling</th><th>What newsroom would duplicate</th><th>Where the boundary sits</th></tr></thead><tbody><tr><td><strong>sgit.ai</strong></td><td>The entire delivery substrate: articles-as-vaults, mini-site deployment, static vault projections, vault CI. ~6 briefs</td><td><strong>Cite, don&#x27;t re-explain.</strong> Zero words on S3/CloudFront/loaders. And inherit its known problem: client-side-assembled vault pages are invisible to crawlers — existential for a news site</td></tr>
+<tr><td><strong>pki.sgit.ai</strong></td><td>PKI-signed claims, key registries, chain of trust, the identity spectrum</td><td>Newsroom owns the <strong>application</strong> of PKI to <em>claims and citations</em> — the source-attribution chain, and <strong>CC-Signed</strong>, a rights argument PKI would not naturally carry</td></tr>
+<tr><td><strong>nhi.sgit.ai</strong></td><td>Agent trust scores, web of trust, NHI 2.0 identity graphs</td><td>Newsroom borrows <em>who is the actor</em> but owns <strong>whose agenda, whose funding, who is citing</strong> — the five attribution roles. An editorial model, not an identity model</td></tr>
+<tr><td><strong>graphs.sgit.ai</strong></td><td>The grounding ladder, node-type formulas, graphs-of-graphs, Wikidata anchoring, decompilation, assertion-vs-pointer</td><td>Newsroom owns the <strong>news ontology</strong> — stories, claims, sources, authors — plus the two things graphs would state generically and news must state urgently: <strong>correction propagation</strong> and <strong>citation edges typed by faithfulness</strong></td></tr>
+<tr><td><strong>sg-sentinel.sgit.ai</strong></td><td>Source reputability scoring</td><td>Sentinel scores infrastructure; newsroom scores <strong>sources and authors</strong>. One cross-link on the shared principle: reputation is context, not verdict</td></tr></tbody></table></div>
+<h3 id="the-risk-mandate-inversion-the-most-important-boundary">The Risk Mandate inversion — the most important boundary</h3>
+<p><code>briefs/07/05/evidence-economy/</code> (all three), <code>briefs/07/04</code> credibility-calibration, <code>briefs/06/30</code> riskmandate-library and <code>briefs/07/31</code> paying-the-fact-creator were <strong>written for Risk Mandate</strong>, framing news as the evidence supply for risk graphs.</p>
+<p><strong>Invert it.</strong> Risk Mandate is <em>one customer</em> of the future-of-news stack, not its parent. The material is genuinely dual-use — but published under Risk Mandate it reads as a compliance feature; published here it reads as a thesis about journalism. Strip the risk-register framing from every republished evidence-economy brief and let the news argument stand on its own. Add a <code>/network/riskmandate/</code> page that says, honestly, &quot;this is what the same machinery looks like pointed at corporate risk.&quot;</p>
+<hr>
+<h2 id="2-redaction-watch-list">2. Redaction watch-list</h2>
+<p>Run these before any bulk publication.</p>
+<div class="table"><table><thead><tr><th>Item</th><th>Reach</th><th>Action</th></tr></thead><tbody><tr><td><strong>MyFeeds.ai</strong></td><td><strong>212 mentions across 52 files.</strong> The <code>05/17</code> briefs carry the strategic repositioning, the <strong>full B2B price list ([redacted])</strong>, the legal-entity and contracting to-do list, the dual-track editorial-independence discussion, and the <code>[redacted]</code> review</td><td><strong>Highest priority.</strong> Ideas yes; pricing, clients and entity detail no</td></tr>
+<tr><td><strong>[a named VC — redacted, see PUBLIC.md]</strong></td><td>Named Porto-based VC with a planned meeting and a private collaboration vault</td><td><strong>Do not publish</strong></td></tr>
+<tr><td><strong>The Cyber Boardroom / CBR</strong></td><td>Named in the Portuguese newsroom brief and the town-planner reviews</td><td>De-name in <code>/newsroom/</code> pages</td></tr>
+<tr><td><strong>Dan Raywood</strong></td><td>Named journalist, subject of a personalised briefing (2025-06-06)</td><td><strong>Already published</strong> on docs.diniscruz.ai — but confirm consent before featuring it on a new site</td></tr>
+<tr><td><strong>Named provider / clinical topic</strong></td><td><code>06/11/doctor-patient-workflow</code> and <code>06/13</code> reference a provider&#x27;s clinical-guidance site as first customer; <code>06/13</code> flags health-content safety risk</td><td><strong>Do not name</strong></td></tr>
+<tr><td><strong>Placeholders &quot;Dr. X, Prof. Y&quot;, &quot;User A/B&quot;</strong></td><td><code>05/12</code> newsroom-layout, <code>02/17</code> stakeholder-communication</td><td>Already anonymised — the pattern signals real names sat behind them. Leave anonymised</td></tr>
+<tr><td><strong>Palantir Foundry OSMM assessment</strong></td><td><code>briefs/07/24/sovereignty-and-osmm/…palantir-foundry-scrydon-level-1…</code></td><td>Named public assessment of a third party — legal sign-off if republished</td></tr>
+<tr><td><strong>Family reference</strong></td><td><code>briefs/02/23/part-3</code> email-and-messaging brief uses &quot;my daughter&quot;</td><td>Strip</td></tr>
+<tr><td><strong>Exposed-vault-key runbook</strong></td><td><code>08/14</code> topic-sections brief links sgit.ai&#x27;s runbook including the case study of when it happened to that site</td><td>Linking re-surfaces the incident. Deliberate choice, not an accident</td></tr>
+<tr><td><strong>AWS account <code>[redacted]</code></strong></td><td>49 occurrences / 17 files (infra docs)</td><td>Scrub on any bulk docs-tree publication</td></tr></tbody></table></div>
+<p><strong>Safe with citations:</strong> Malcolm Gladwell and Anders Ericsson (public figures in published, cited work — note Ericsson is deceased and the brief characterises his career; keep the sources attached) · Replit&#x27;s production-database deletion · Microsoft/EchoLeak (CVE-2025-32711) · Gartner, Forrester, Bloomberg, Cloudflare, AWS, Stripe, Coinbase as benchmarks.</p>
+<hr>
+<h2 id="3-house-style-inherited">3. House style, inherited</h2>
+<p>Full treatment in the graphs pack <code>06__house-style-and-conventions.md</code>. The essentials:</p>
+<p><strong>Structure:</strong> <code>/llms.txt</code> at root · <code>/documents/</code> with raw markdown as source of truth and rendered reader pages · <code>/about/participant.html</code> · <code>/admin/comms.html</code> with numbered asks (N1, N2…) and tasks (T1, T2…) in explicit states · <code>/admin/versions.html</code> · a build order published unresolved with open questions and honest tensions.</p>
+<p><strong>Voice:</strong> short declarative sentences making checkable claims · publish the argument before the implementation and say which is which · name what you got wrong · open questions stay open and numbered · no marketing adjectives.</p>
+<p><strong><code>llms.txt</code> is the whole surface.</strong> Measured on sgit.ai: the index fetch worked and was <em>&quot;better than almost anything comparable&quot;</em>, then link-following failed because agent fetch tools refuse URLs a search has not returned. Each entry must carry the page&#x27;s <strong>single most important fact</strong>, not just its topic. Publish <code>/llms-full.txt</code> as a single-file concatenation.</p>
+<p><strong>Decide rendering before content.</strong> A client-side-decrypted vault site is invisible to crawlers. For a <em>news</em> site this is existential — not a nice-to-have.</p>
+<p><strong>Every section serves three readers:</strong> documentation · live demonstration · <strong>agent guidance</strong> (the one most sites omit). For this site the agent block matters commercially, not just editorially: the evidence-packs thesis is that an agent buys facts by API. The site should be the first worked example of its own product.</p>
+<p><strong>Vault rules:</strong> publish read keys, never write keys · escrow the write key before publishing · audit before publish and adopt the <code>PUBLIC.md</code> transparency convention · no metered capability behind a published read key.</p>
+<p><strong>Licence:</strong> CC BY 4.0, per the 21 August 2026 decision. Source material from <code>docs.diniscruz.ai</code> is CC0 — state the source licence per page; see <code>02</code> §5.1.</p>
+<hr>
+<h2 id="4-two-demonstrations-to-build-in-from-day-one">4. Two demonstrations to build in from day one</h2>
+<p>The site&#x27;s credibility rests on practising what it argues. Two are cheap and available immediately:</p>
+<ol><li><strong>A corrections log that propagates.</strong> When a page is revised, do not overwrite — attach, date, and link to what it supersedes, then show what else cited the superseded claim. That is theme 3 running on the site itself.</li><li><strong>A provenance block on every derived page.</strong> Original date, original link, original co-authors, honest curation label — <code>02</code> §1. A future-of-news site that loses its own chain has refuted itself on page one.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>== briefs/07__gaps-and-open-questions.md</p>
+<hr></article><nav class="pager"><span><a href="009-05-site-architecture.html">← 05 — Site Architecture</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="011-07-gaps-and-open-questions.html">07 — Gaps and Open Questions →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://newsroom.sgit.ai/llms-full.txt">https://newsroom.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="f1e230f83f8482fa1bdc30f5357bf4c99eafe656f5c3326582f6c82b909a64f2">f1e230f83f84</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/newsroom.sgit.ai/llms-full.txt</a> (264,650 bytes)</dd><dt>Section</dt><dd>10 of 20: 06 — Boundaries, Redaction and House Style</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

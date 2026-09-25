@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>plan.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="plan.json">raw text</a></p><article class="source"><pre class="raw"><code>{
+  &quot;title&quot;: &quot;Connector Twin: know what your agent did, see what it saw, undo what it changed&quot;,
+  &quot;one_line&quot;: &quot;A service that journals every request and response an AI agent makes through a connector such as Gmail, Google Calendar, Drive or Slack, and replays that journal into the views the agent saw, with a before and after for every change and a revert plan for each one.&quot;,
+  &quot;question&quot;: &quot;Do you know what your agents did?&quot;,
+  &quot;policy&quot;: [
+    {
+      &quot;q&quot;: &quot;What can the agent do?&quot;,
+      &quot;without&quot;: &quot;The scopes you granted, if anybody wrote them down.&quot;,
+      &quot;with&quot;: &quot;The same scopes, plus the list of actions they allow that cannot be undone, such as a permanent delete or a sent email.&quot;
+    },
+    {
+      &quot;q&quot;: &quot;What did it do?&quot;,
+      &quot;without&quot;: &quot;The agent&#x27;s own summary, and administrator audit logs that record that events changed.&quot;,
+      &quot;with&quot;: &quot;Every call, with the request and the response, in order, hash-chained so a missing or edited entry shows.&quot;
+    },
+    {
+      &quot;q&quot;: &quot;What did it see?&quot;,
+      &quot;without&quot;: &quot;Nothing. The inbox has moved on since.&quot;,
+      &quot;with&quot;: &quot;The inbox and the calendar as the agent saw them at each step, rebuilt from the responses it received.&quot;
+    },
+    {
+      &quot;q&quot;: &quot;Why did it do it?&quot;,
+      &quot;without&quot;: &quot;Nothing, unless the chat was kept.&quot;,
+      &quot;with&quot;: &quot;The instruction that led to each call, when prompt capture is on.&quot;
+    },
+    {
+      &quot;q&quot;: &quot;Can you undo it?&quot;,
+      &quot;without&quot;: &quot;Deletes to trash, yes, for 30 days. Edits, sent email and notifications, no. A permanent delete, only by an administrator&#x27;s bulk restore within 25 days.&quot;,
+      &quot;with&quot;: &quot;A revert plan for every change, and a named list of what cannot be undone and why.&quot;
+    },
+    {
+      &quot;q&quot;: &quot;Can you show someone else?&quot;,
+      &quot;without&quot;: &quot;Your word, and screenshots.&quot;,
+      &quot;with&quot;: &quot;An evidence chain that an auditor, an insurer or a board can open with a read key.&quot;
+    }
+  ],
+  &quot;packages&quot;: {
+    &quot;setup&quot;: [
+      {
+        &quot;name&quot;: &quot;Connector review, small&quot;,
+        &quot;price&quot;: &quot;£750&quot;,
+        &quot;for&quot;: &quot;Up to 3 connectors and 5 agents&quot;,
+        &quot;includes&quot;: &quot;Irreversibility map of the scopes in use, capture set up in one mode, a first behaviour-policy baseline.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Connector review, team&quot;,
+        &quot;price&quot;: &quot;£2,500&quot;,
+        &quot;for&quot;: &quot;Up to 10 connectors and 25 agents&quot;,
+        &quot;includes&quot;: &quot;As above, plus retention rules, key custody set up with the customer, and a replay drill on a real session.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Connector review, organisation&quot;,
+        &quot;price&quot;: &quot;£6,000&quot;,
+        &quot;for&quot;: &quot;Larger estates&quot;,
+        &quot;includes&quot;: &quot;As above, plus the customer-cloud deployment, the broker in front of the connectors, and an incident runbook.&quot;
+      }
+    ],
+    &quot;monthly&quot;: [
+      {
+        &quot;name&quot;: &quot;Journal&quot;,
+        &quot;price&quot;: &quot;£15&quot;,
+        &quot;unit&quot;: &quot;per agent per month&quot;,
+        &quot;includes&quot;: &quot;Capture of every request and response, encrypted retention for 90 days, search, chain verification.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Twin&quot;,
+        &quot;price&quot;: &quot;£40&quot;,
+        &quot;unit&quot;: &quot;per agent per month&quot;,
+        &quot;includes&quot;: &quot;Journal, plus the rebuilt views, before and after for every change, revert plans, and 1 year of retention.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Assured&quot;,
+        &quot;price&quot;: &quot;£90&quot;,
+        &quot;unit&quot;: &quot;per agent per month&quot;,
+        &quot;includes&quot;: &quot;Twin, plus a monthly evidence pack for the behaviour policy and the insurer, two incident replays a year, retention to 7 years, keys held by the customer.&quot;
+      }
+    ],
+    &quot;on_demand&quot;: [
+      {
+        &quot;name&quot;: &quot;Incident replay&quot;,
+        &quot;price&quot;: &quot;£900&quot;,
+        &quot;unit&quot;: &quot;per incident&quot;,
+        &quot;includes&quot;: &quot;A day&#x27;s investigation: what the agent saw, what it did, what it said it did, and what can be put back.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Supervised revert&quot;,
+        &quot;price&quot;: &quot;£450&quot;,
+        &quot;unit&quot;: &quot;per incident&quot;,
+        &quot;includes&quot;: &quot;Executing the revert plan with the customer watching, and recording the result in the journal.&quot;
+      }
+    ],
+    &quot;minimum&quot;: &quot;£150 per month&quot;,
+    &quot;note&quot;: &quot;Every price is a hypothesis to test with the first ten customers, not a measured result.&quot;
+  },
+  &quot;modes&quot;: [
+    {
+      &quot;name&quot;: &quot;Broker&quot;,
+      &quot;where&quot;: &quot;A service between the agent and the connector holds the credentials and makes the calls.&quot;,
+      &quot;evidence&quot;: &quot;Strongest: nothing reaches the API without passing through it. This is the execution broker described on twins.sgit.ai.&quot;,
+      &quot;trade&quot;: &quot;The broker holds credentials and sees traffic in flight, so it is the highest-value target in the estate.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Gateway&quot;,
+      &quot;where&quot;: &quot;A proxy on the MCP or HTTP path records calls but the agent keeps its own credentials.&quot;,
+      &quot;evidence&quot;: &quot;Strong for anything routed through it; blind to any path around it.&quot;,
+      &quot;trade&quot;: &quot;Easier to deploy; needs the routing enforced.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Agent-reported&quot;,
+      &quot;where&quot;: &quot;The agent is told to append a copy of every request and response it sends.&quot;,
+      &quot;evidence&quot;: &quot;Weakest: an agent that omits an entry leaves a gap the chain cannot show. Marked as self-reported in the policy.&quot;,
+      &quot;trade&quot;: &quot;Available today with no infrastructure at all.&quot;
+    }
+  ],
+  &quot;economics&quot;: {
+    &quot;assumptions&quot;: [
+      &quot;An active assistant agent makes about 500 connector calls a day, and a call with its response averages about 20 KB of JSON. That is about 10 MB a day, or 0.3 GB a month, per agent.&quot;,
+      &quot;Object storage costs about 0.02 USD per GB per month. A year of retention for one agent is about 3.6 GB, well under 0.10 USD a month.&quot;,
+      &quot;Broker and processor compute is estimated at 3 GBP per agent per month at small scale, so infrastructure is about 3.10 GBP per agent per month including storage.&quot;,
+      &quot;Two founders at 6,000 GBP a month each fully loaded, plus 2,000 GBP a month of tooling, is a monthly burn of 14,000 GBP.&quot;
+    ],
+    &quot;break_even&quot;: &quot;At the Twin price of 40 GBP per agent, less about 3.10 GBP of infrastructure, break-even on that burn is about 380 agents: roughly 38 customers with ten agents each.&quot;
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="c3cecc70b1496fe2116cc664ce2be75444c898a2c6c345c11537aa959678806d">c3cecc70b149</code></dd><dt>Frozen copy</dt><dd><a href="plan.json">vaults/connector-twin/plan/plan.json</a> (6,055 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

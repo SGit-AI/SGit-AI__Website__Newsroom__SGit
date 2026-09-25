@@ -1,0 +1,32 @@
+# `repository`
+
+The object `repository`, and every primitive it appears in. **This page is a query, not a definition.**
+
+> **A node carries no inherent meaning.** What `repository` means here emerges from the edges traceable from it, and confidence in that meaning is proportional to how richly it is connected. It is connected to **2 of 23 primitives** here. That, and not the sentence above, is what it means. [The discipline this follows](https://graphs.sgit.ai/).
+
+
+
+## The 2 primitives with this object
+
+| Primitive | Published gloss | Spelled out | Undo | In how many shapes |
+|---|---|---|---|---|
+| [`write.repository.project`](../../../../model/capabilities/write.repository.project/index.md) | Commit to the repository it was pointed at | [`write`](../../../../model/lexicon/verbs/write/index.md)`.`[`repository`](../../../../model/lexicon/objects/repository/index.md)`.`[`project`](../../../../model/lexicon/reaches/project/index.md) | with-effort | 4 of 17 |
+| [`write.repository.tenant`](../../../../model/capabilities/write.repository.tenant/index.md) | Push to a code host (any branch it can reach) | [`write`](../../../../model/lexicon/verbs/write/index.md)`.`[`repository`](../../../../model/lexicon/objects/repository/index.md)`.`[`tenant`](../../../../model/lexicon/reaches/tenant/index.md) | with-effort | 4 of 17 |
+
+## How this node connects
+
+| Edge | Reads as | To |
+|---|---|---|
+| `acted_on_by` | `repository` is the object class of these 2 primitives | 2 capabilities |
+| `acts_on` | the inverse, walked the other way, with different fan out | one capability at a time |
+
+[This node as JSON](../../../../data/lexicon/objects/repository.json) · [The lexicon](../../../../model/lexicon/index.md) · [The edge vocabulary](../../../../model/graph/edges/index.md)
+
+---
+
+*[Site index for agents](../../../../llms.txt) · [HTML version](https://abp.sgit.ai/model/lexicon/objects/repository/index.html)*
+
+
+------------------------------------------------------------------------
+
+<!-- https://abp.sgit.ai/model/lexicon/objects/schedule/index.html -->

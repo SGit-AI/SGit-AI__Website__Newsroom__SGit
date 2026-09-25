@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>04 — Bash, and the generated-shell pattern (coding.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#04-bash-and-the-generated-shell-pattern">04 — Bash, and the generated-shell pattern</a></li><li class="l2"><a href="#1-where-shell-actually-lives">1. Where shell actually lives</a></li><li class="l2"><a href="#2-the-section-pattern">2. The Section__* pattern</a></li><li class="l2"><a href="#3-the-fifteen-sections">3. The fifteen sections</a></li><li class="l2"><a href="#4-why-this-is-better-than-sh-files-and-what-it-costs">4. Why this is better than .sh files, and what it costs</a></li><li class="l2"><a href="#5-hand-written-shell-where-it-survives">5. Hand-written shell — where it survives</a></li><li class="l2"><a href="#6-what-a-linter-would-encode">6. What a linter would encode</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 9 of 14</p><nav class="pager"><span><a href="008-03-html-and-css.html">← 03 — HTML and CSS</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-05-what-is-shared-across-all-five-langua.html">05 — What is shared across all five languages →</a></span></nav><article class="source"><h1 id="04-bash-and-the-generated-shell-pattern">04 — Bash, and the generated-shell pattern</h1>
+<p><strong>There are five <code>.sh</code> files in a 217,000-line repository.</strong> That is the finding. Shell is not written here — it is <strong>generated from typed Python</strong>, and the pattern is original enough to be the site&#x27;s most interesting infrastructure page.</p>
+<hr>
+<h2 id="1-where-shell-actually-lives">1. Where shell actually lives</h2>
+<div class="table"><table><thead><tr><th>Location</th><th>What</th></tr></thead><tbody><tr><td><strong><code>sg_compute/platforms/ec2/user_data/</code></strong></td><td><strong>15 <code>Section__*</code> classes</strong> that render shell fragments. This is where nearly all shell in the estate lives</td></tr>
+<tr><td><code>docker/</code></td><td>Dockerfiles (<code>host-control</code>, <code>local-claude</code>) and their <code>RUN</code> lines</td></tr>
+<tr><td><code>.github/workflows/</code></td><td>inline <code>run:</code> blocks</td></tr>
+<tr><td><code>scripts/</code></td><td>a handful of <code>.sh</code> and Python CLI shims</td></tr></tbody></table></div>
+<hr>
+<h2 id="2-the-section-pattern">2. The <code>Section__*</code> pattern</h2>
+<p><code>sg_compute/platforms/ec2/user_data/Section__Shutdown.py</code>, verbatim and entire:</p>
+<pre><code class="lang-python"># ═══════════════════════════════════════════════════════════════════════════════
+# Ephemeral EC2 — Section__Shutdown
+# Schedules auto-termination via systemd-run. Paired with
+# InstanceInitiatedShutdownBehavior=terminate in EC2__Launch__Helper so that
+# halt causes termination, not stop.
+# max_hours=0 emits a no-op comment (caller omits this section instead).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+from osbot_utils.type_safe.Type_Safe import Type_Safe
+
+TEMPLATE = &#x27;&#x27;&#x27;
+# ── Auto-terminate after {max_hours}h ({seconds}s) ───────────────────────────
+systemd-run --on-active={seconds}s /sbin/shutdown -h now
+echo &quot;[ephemeral-ec2] auto-terminate timer set: {max_hours}h ({seconds}s) from now&quot;
+&#x27;&#x27;&#x27;
+
+
+class Section__Shutdown(Type_Safe):
+
+    def render(self, max_hours: float = 1.0) -&gt; str:
+        seconds = max(1, int(round(max_hours * 3600)))
+        return TEMPLATE.format(max_hours=max_hours, seconds=seconds)</code></pre>
+<p><strong>The anatomy, and every part of it is a convention:</strong></p>
+<ol><li><strong>A <code>═══</code> banner</strong> carrying not just the purpose but <strong>the coupling</strong> — <em>&quot;Paired with <code>InstanceInitiatedShutdownBehavior=terminate</code> in <code>EC2__Launch__Helper</code>.&quot;</em> The shell and the API call that makes it correct are documented together, in the place where forgetting one would break the other.</li><li><strong>A module-level <code>TEMPLATE</code></strong> — a triple-quoted string, so the shell is readable as shell.</li><li><strong>The generated shell gets its own banner</strong>, using the JS box-drawing character <code>──</code> rather than Python&#x27;s <code>═══</code>. <strong>Shell inside Python is marked as a different language by its comment style.</strong></li><li><strong><code>Section__X(Type_Safe)</code> with a single <code>render()</code> method</strong> returning <code>str</code>.</li><li><strong>Computation in Python, not in shell.</strong> <code>seconds = max(1, int(round(max_hours * 3600)))</code> — the arithmetic, the clamping and the rounding all happen where they can be tested. The emitted shell contains a literal.</li><li><strong>An <code>echo</code> breadcrumb</strong> with a bracketed prefix (<code>[ephemeral-ec2]</code>) so the boot log is greppable.</li><li><strong>The edge case documented in the banner</strong> — <code>max_hours=0</code> — with the caller&#x27;s correct behaviour named.</li></ol>
+<hr>
+<h2 id="3-the-fifteen-sections">3. The fifteen sections</h2>
+<p><code>Base</code> · <code>Docker</code> · <code>Sidecar</code> · <code>Nginx</code> · <code>Env__File</code> · <code>GPU_Verify</code> · <code>NVIDIA_Container_Toolkit</code> · <code>Ollama</code> · <code>VLLM</code> · <code>SGit_Venv</code> · <code>Claude_Code__Firstboot</code> · <code>Claude_Launch</code> · <code>Agent_Tools</code> · <code>Node</code> · <code>Shutdown</code></p>
+<p>A node&#x27;s user-data is composed by rendering the sections it needs and concatenating them. <strong>Composition is a list, not a template with conditionals</strong> — which is why there is no <code>{% if gpu %}</code> anywhere, and why a spec that does not need CUDA simply omits <code>NVIDIA_Container_Toolkit</code>.</p>
+<hr>
+<h2 id="4-why-this-is-better-than-sh-files-and-what-it-costs">4. Why this is better than <code>.sh</code> files, and what it costs</h2>
+<p>Worth arguing on the site, because it is a real trade.</p>
+<p><strong>What it buys:</strong></p>
+<ul><li><strong>The parameters are typed and tested.</strong> <code>Section__Shutdown</code> has unit tests; a bash script interpolated with <code>sed</code> does not.</li><li><strong>No quoting hell.</strong> Values are substituted by <code>str.format</code> in Python, not by shell expansion inside a heredoc inside a YAML string.</li><li><strong>Composition without conditionals.</strong> Include a section or do not.</li><li><strong>The shell is diffable as a unit.</strong> A change to the shutdown behaviour is a change to one small file, not a hunk inside a 400-line boot script.</li><li><strong>The coupling is documented next to the code</strong>, as the banner shows.</li></ul>
+<p><strong>What it costs:</strong></p>
+<ul><li><strong>You cannot run it directly.</strong> There is no <code>bash -n</code> on a template, no <code>shellcheck</code>, and no way to execute a section in isolation without rendering it first.</li><li><strong>Two languages in one file</strong>, with <code>{}</code> meaning <code>str.format</code> in a language where <code>{}</code> also means shell brace expansion. A literal <code>{</code> in the shell must be escaped as <code>{{</code>.</li><li><strong>The rendered output is not committed</strong>, so a reviewer reads the template and not the script.</li></ul>
+<p><strong>Both mitigations are cheap and neither exists yet:</strong> render every section in a test and pipe it through <code>shellcheck</code>; and commit a rendered golden file per section so diffs show the actual shell. <code>08__</code> §1.</p>
+<hr>
+<h2 id="5-hand-written-shell-where-it-survives">5. Hand-written shell — where it survives</h2>
+<p>Five <code>.sh</code> files, and <strong><code>set -e</code> discipline is inconsistent</strong>: 2 of 5 have it, in three different forms — <code>set -euo pipefail</code>, <code>set -eu</code>, <code>set -u</code>.</p>
+<p>That is a small enough surface to fix in an hour, and the site should publish the rule it settles on. <strong>The recommendation is <code>set -euo pipefail</code> everywhere</strong>, since it is already the strictest form in use and the other two are strictly weaker.</p>
+<p>For <code>RUN</code> lines in Dockerfiles and <code>run:</code> blocks in workflows, the conventions visible in the repo are: one logical step per <code>RUN</code>, <code>&amp;&amp;</code> chaining with <code>\</code> continuations, cleanup in the same layer, and — from the Playwright Dockerfile — <strong>build-time assertions rather than trust</strong>, with a comment naming the production incident that motivated each.</p>
+<hr>
+<h2 id="6-what-a-linter-would-encode">6. What a linter would encode</h2>
+<ul><li><strong><code>shellcheck</code> on rendered sections</strong> — the highest-value change in this document. Render each <code>Section__*</code> in a test and shellcheck the output.</li><li><strong><code>set -euo pipefail</code> required</strong> in every <code>.sh</code> file.</li><li><strong>Every generated section starts with a <code># ── … ──</code> banner.</strong></li><li><strong>Every section emits at least one bracketed <code>echo</code> breadcrumb</strong>, so boot logs stay greppable.</li><li><strong>No <code>{</code> in a <code>TEMPLATE</code> that is not a format placeholder or escaped as <code>{{</code></strong> — a small custom check that prevents a real and confusing class of bug.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/05__cross-cutting.md</p>
+<hr></article><nav class="pager"><span><a href="008-03-html-and-css.html">← 03 — HTML and CSS</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-05-what-is-shared-across-all-five-langua.html">05 — What is shared across all five languages →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>9 of 14: 04 — Bash, and the generated-shell pattern</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

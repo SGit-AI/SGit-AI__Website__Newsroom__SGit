@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — The sg.llm. API (llms.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-the-sgllm-api">02 — The sg.llm.* API</a></li><li class="l2"><a href="#1-the-surface">1. The surface</a></li><li class="l2"><a href="#2-the-three-streaming-properties-to-rely-on">2. The three streaming properties to rely on</a></li><li class="l2"><a href="#3-error-codes-branch-on-errcode">3. Error codes — branch on err.code</a></li><li class="l2"><a href="#4-images">4. Images</a></li><li class="l2"><a href="#5-voice">5. Voice</a></li><li class="l2"><a href="#6-what-the-host-does-that-you-do-not-have-to">6. What the host does that you do not have to</a></li><li class="l2"><a href="#7-usage-reports-the-session-not-the-surface">7. usage() reports the session, not the surface</a></li><li class="l2"><a href="#8-how-to-publish-this">8. How to publish this</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 41 of 49</p><nav class="pager"><span><a href="040-01-the-chat-pane-three-surfaces.html">← 01 — The chat pane: three surfaces</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="042-03-the-security-model-and-the-gap-in-it.html">03 — The security model, and the gap in it →</a></span></nav><article class="source"><h1 id="02-the-sgllm-api">02 — The <code>sg.llm.*</code> API</h1>
+<p>The complete reference currently exists <strong>only inside <code>library/guides/vault-html/AUTHORING.md</code></strong>, a 9,487-word agent authoring contract. Extracting it into a readable public reference is the single highest-value publishing act on this site.</p>
+<p>Shipped <strong>2 August 2026</strong>; <code>listen</code> and <code>imagePart</code> added <strong>3 August 2026</strong>.</p>
+<hr>
+<h2 id="1-the-surface">1. The surface</h2>
+<div class="table"><table><thead><tr><th>Call</th><th>Grant</th><th>Returns</th></tr></thead><tbody><tr><td><code>sg.llm.available()</code></td><td>—</td><td><code>{ok, reason, model, remaining:{calls,cost}}</code></td></tr>
+<tr><td><code>sg.llm.chat(req, onToken?)</code></td><td><code>chat</code></td><td><code>{content, usage, cost, id}</code> · promise carries <code>.requestId</code></td></tr>
+<tr><td><code>sg.llm.cancel(requestId)</code></td><td>—</td><td>aborts an in-flight call</td></tr>
+<tr><td><code>sg.llm.models()</code></td><td><code>models</code></td><td>the vault&#x27;s <strong>already-filtered</strong> allow-list</td></tr>
+<tr><td><code>sg.llm.usage()</code></td><td><code>usage</code></td><td><code>{calls, cost, remaining}</code> for the <strong>whole session</strong></td></tr>
+<tr><td><code>sg.llm.imagePart(blobOrBytes)</code></td><td>—</td><td>a content part for a multimodal message</td></tr>
+<tr><td><code>sg.llm.listen(opts?)</code></td><td><code>listen</code></td><td><code>{text, durationMs, bytes, format, cost}</code></td></tr>
+<tr><td><code>sg.llm.listenStop()</code> / <code>listenCancel()</code> / <code>listening()</code></td><td><code>listen</code></td><td>recording control and state</td></tr></tbody></table></div>
+<p><strong>Request fields:</strong> <code>messages</code> (required), plus optional <code>model</code>, <code>maxTokens</code>, <code>temperature</code>, <code>topP</code>, <code>stream: false</code>.</p>
+<hr>
+<h2 id="2-the-three-streaming-properties-to-rely-on">2. The three streaming properties to rely on</h2>
+<p>These are contract guarantees, not implementation details, and they are what let you write a chat UI without defensive code:</p>
+<ol><li><strong>The terminal reply is authoritative.</strong> <em>&quot;An app that ignores <code>onToken</code> entirely still gets the complete <code>content</code>. <strong>Deltas are a UX affordance, never the source of truth.</strong>&quot;</em></li><li><strong>Deltas carry only the increment</strong> (<code>delta</code>), plus a running <code>acc</code> for convenience. <em>&quot;The host coalesces them on a ~50 ms timer, so you get readable chunks rather than a postMessage per token.&quot;</em></li><li><strong><code>cost</code> is labelled</strong> — <code>{value, source, estimated}</code>. <em>&quot;<code>estimated: true</code> means it was computed from token counts × list price, not billed. <strong>Render estimates with a <code>~</code>. Never show one as a bill.</strong>&quot;</em></li></ol>
+<p>That third one is a house rule with teeth, and it should appear on the site as a rule rather than a note.</p>
+<hr>
+<h2 id="3-error-codes-branch-on-errcode">3. Error codes — branch on <code>err.code</code></h2>
+<div class="table"><table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>EPERM</code></td><td>no grant</td></tr>
+<tr><td><code>ECONSENT</code></td><td>user declined</td></tr>
+<tr><td><code>ENOKEY</code></td><td>no key configured for this vault</td></tr>
+<tr><td><code>EREADONLY</code></td><td>owner-sealed key, read-only session</td></tr>
+<tr><td><code>EBUDGET</code></td><td>cap reached</td></tr>
+<tr><td><code>EMODEL</code></td><td>model not allow-listed, none selected, or <strong>it cannot read the image/audio you sent</strong></td></tr>
+<tr><td><code>EABORT</code></td><td>cancelled</td></tr>
+<tr><td><code>EIMGSIZE</code></td><td>image payload over the host ceiling</td></tr>
+<tr><td><code>EPROTO</code></td><td>upstream failure</td></tr></tbody></table></div>
+<blockquote><p><em>&quot;They arrive as <code>err.code</code>, so <strong>branch on that rather than on message text.</strong>&quot;</em></p></blockquote>
+<p><strong><code>EMODEL</code> names the model.</strong> <em>&quot;A model that cannot see gets you <code>EMODEL</code> naming the model, instead of a provider error that names nothing.&quot;</em> That is a deliberate error-design choice and worth publishing as one.</p>
+<hr>
+<h2 id="4-images">4. Images</h2>
+<pre><code class="lang-js">const part = await sg.llm.imagePart(blobOrBytes);          // or a data: URL you already have
+const res  = await sg.llm.chat({
+    messages: [{ role: &#x27;user&#x27;, content: [
+        { type: &#x27;text&#x27;, text: &#x27;What is wrong in this screenshot?&#x27; },
+        part
+    ] }]
+});</code></pre>
+<p><strong>Three things the site must carry, because each is a real trap:</strong></p>
+<p><strong>(a) The 8190 bug — publish this verbatim.</strong></p>
+<blockquote><p><em>&quot;Use <code>sg.llm.imagePart()</code> rather than encoding it yourself. It runs in your frame (no host round trip — the bytes are already yours) and <strong>chunks base64 at 8190, not 8192</strong>. <code>8192 % 3 === 2</code>, so a 8192-sized chunk emits <code>=</code> padding mid-string and <code>atob()</code> rejects it; <strong>this codebase has shipped that exact bug three times.</strong>&quot;</em></p></blockquote>
+<p>A three-times-shipped bug with the arithmetic explained is the best kind of documentation.</p>
+<p><strong>(b) Vision capability is read from the live catalogue, not a hard-coded list</strong> — <em>&quot;so a new vision model works the day it ships.&quot;</em> And: <em>&quot;note that <code>text-&gt;image</code> is an image <strong>generator</strong>, not a reader — it is correctly refused.&quot;</em></p>
+<p><strong>(c) Not a new grant.</strong> <em>&quot;An image is an ordinary <code>chat()</code> call under <code>permissions.llm.chat</code>.&quot;</em> And the size ceiling is the host&#x27;s: <em>&quot;That ceiling is not yours to raise: <strong>it is spending the vault&#x27;s key.</strong>&quot;</em></p>
+<p>Accepted types: <strong>png, jpeg, webp, gif</strong>. <em>&quot;Not svg — it is a scriptable document, not a bitmap, and no provider takes it.&quot;</em></p>
+<p>Images appear in the ledger <strong>as their own count, never folded into the character total</strong> — <em>&quot;<code>sg.llm.usage()</code> and the AI Requests pane both stay honest about what the expensive calls were.&quot;</em></p>
+<hr>
+<h2 id="5-voice">5. Voice</h2>
+<pre><code class="lang-json">{ &quot;permissions&quot;: { &quot;llm&quot;: { &quot;chat&quot;: true, &quot;listen&quot;: true } } }</code></pre>
+<pre><code class="lang-js">micBtn.onclick = async () =&gt; {
+    try {
+        const { text } = await sg.llm.listen();     // opts: {maxMs, model, prompt}
+        input.value = text;
+    } catch (e) {
+        if (e.code === &#x27;ECONSENT&#x27;) return;           // user declined — not an error worth showing
+        if (e.code === &#x27;ENOMIC&#x27;)   showTypeInstead();
+    }
+};</code></pre>
+<p><strong>Two design decisions to publish:</strong></p>
+<blockquote><p><em>&quot;<strong><code>listen</code> is a separate grant and is never implied by <code>chat</code>.</strong> Recording a room is a categorically different act from sending text, so an app that can talk to a model does not thereby get a microphone.&quot;</em> It also <strong>asks for consent every time</strong> by default.</p></blockquote>
+<blockquote><p><em>&quot;<strong>Your frame never touches audio.</strong> A sandboxed app frame has no <code>navigator.mediaDevices</code> at all, so capture happens in the host — which is also <strong>why the recording indicator is on host chrome where the user can always see it.</strong> You receive <code>{text, durationMs, bytes, format, cost}</code> and nothing else; the recording itself never crosses into your frame.&quot;</em></p></blockquote>
+<p>The second is the better argument: the indicator is trustworthy <em>because</em> it is not the app&#x27;s to draw.</p>
+<hr>
+<h2 id="6-what-the-host-does-that-you-do-not-have-to">6. What the host does that you do not have to</h2>
+<p>Verbatim, and this table is the API&#x27;s real value proposition:</p>
+<div class="table"><table><thead><tr><th>Concern</th><th>Who handles it</th></tr></thead><tbody><tr><td><strong>Holding the API key</strong></td><td>Host. <em>&quot;It is never in your frame, your bundle, or any message you receive.&quot;</em></td></tr>
+<tr><td>Which models you may use</td><td>Host — <code>models()</code> is <strong>already filtered</strong>, so a picker built from it is automatically correct</td></tr>
+<tr><td>Spend caps</td><td>Host. <code>maxCostPerSession</code> / <code>maxCallsPerSession</code> enforced <strong>before</strong> the call; you get <code>EBUDGET</code></td></tr>
+<tr><td><code>maxTokens</code></td><td>Host <strong>clamps</strong> it. <em>&quot;Asking for more is not an error, it is just capped.&quot;</em></td></tr>
+<tr><td>Consent</td><td>Host. The first <code>chat()</code> raises a HUD prompt; declining gives <code>ECONSENT</code></td></tr>
+<tr><td>Whether the model can read an image</td><td>Host, from the live catalogue</td></tr>
+<tr><td>Image size ceiling</td><td>Host (<code>EIMGSIZE</code>)</td></tr>
+<tr><td>Cost reconciliation</td><td>Host, <strong>two-source</strong>: the stream&#x27;s <code>usage.cost</code>, then the authoritative <code>/generation</code> lookup</td></tr></tbody></table></div>
+<p><strong>Seven concerns an app does not implement.</strong> That is the page&#x27;s argument: the bridge is not a convenience wrapper, it is a list of things that would each be got wrong independently by every app that had to do them itself.</p>
+<hr>
+<h2 id="7-usage-reports-the-session-not-the-surface">7. <code>usage()</code> reports the session, not the surface</h2>
+<blockquote><p><em>&quot;<code>usage()</code> reports the <strong>whole session</strong>, including calls made by the vault UI&#x27;s own chat panel — <strong>one bill per session, not one per surface.</strong>&quot;</em></p></blockquote>
+<p>Which means a meter you draw in your app is the <em>true</em> total, including the host panel&#x27;s spending. That is the right default and it is not the obvious one.</p>
+<hr>
+<h2 id="8-how-to-publish-this">8. How to publish this</h2>
+<ol><li><strong>Extract it into a real reference page</strong>, per call, with the signature, the grant, the errors and one runnable sample.</li><li><strong>Keep <code>AUTHORING.md</code> canonical and generate from it</strong>, or you create the second source of truth the corpus explicitly refused to create — see <code>08__</code> Q1.</li><li><strong>Lead every call with its grant.</strong> Default-deny is the model; the grant is the first thing a reader needs.</li><li><strong>Publish the traps as their own page</strong> — the 8190 chunking, <code>available()</code> before rendering, images clearing after one turn, estimates never shown as bills, <code>listen</code> never implied by <code>chat</code>. <strong>That page will be the most-visited on the site.</strong></li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>/briefs/03__the-security-model.md</p>
+<hr></article><nav class="pager"><span><a href="040-01-the-chat-pane-three-surfaces.html">← 01 — The chat pane: three surfaces</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="042-03-the-security-model-and-the-gap-in-it.html">03 — The security model, and the gap in it →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>41 of 49: 02 — The sg.llm. API</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

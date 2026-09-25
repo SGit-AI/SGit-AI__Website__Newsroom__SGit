@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The vault catalogue · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://sgit.ai/catalogue/index.html">live ↗</a></p><article class="source"><h1 id="the-vault-catalogue-sgitai">The vault catalogue, sgit.ai</h1>
+<blockquote><p>An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost, a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived.</p></blockquote>
+<p><em>Source: <a href="index.html">https://sgit.ai/catalogue/index.html</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / Catalogue</p>
+<h1 id="the-vault-catalogue">The vault catalogue</h1>
+<p>An index of published vaults, rendered live from a vault that indexes vaults, including itself. Every entry carries a deliberately published read key, an honest evidence status, and its write-key status, because a vault whose write key is lost can never be corrected and a reader deserves to know.</p>
+<p><strong>The design constraint, stated openly:</strong> the bottleneck is one person with a backlog of vaults, so an entry costs <strong>a read key and one line</strong>: everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault <code>kc67yhgw</code> directly, a push to it updates this page with no site deploy. The human companion is <a href="../demos/vaults/index.html">the published-vaults gallery</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a>: one page per vault, with the vault running live in it.</p>
+<p><strong>Where it stands, checked 19 September 2026.</strong> The catalogue vault holds <strong>nine</strong> entries and was last pushed when the site had nine published vaults; the gallery now has <strong>thirty</strong>. The twenty-one missing rows are not a queue problem (those vaults are published, audited and live on their own pages) they are a write-key problem: the catalogue can only be updated by whoever holds its key, and that is not the site&#x27;s build. Until it catches up, <a href="../demos/vaults/index.html">the gallery</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> and <a class="ext" href="https://sgit.ai/demos/vaults/llms.txt">its machine-readable twin ↗</a> are the complete list, generated from one file on every release. What this page adds is the shape taxonomy, the evidence and write-key status per entry, and the proof that an index of vaults can itself be a vault.</p>
+<p>opening the catalogue…</p>
+<p>Fetching the encrypted index…</p>
+<h3 id="vault-debug-how-this-works">Vault debug <a href="../case-studies/live-vault-docs.html">how this works →</a><a class="ext live" href="https://sgit.ai/case-studies/live-vault-docs.html" title="live page">↗</a></h3>
+<p>not open yet</p>
+<p>what you are looking at</p>
+<p>Every row above is an encrypted object pulled from the SG/Send API and decrypted locally: click one: click one to see what it actually contains. Objects whose id contains <strong>-imm-</strong> are content-addressed and therefore immutable, so they are cached permanently; the mutable <strong>ref</strong> is the one mutable object, so it is checked at most once per freshness window (120s) rather than once per page, inside the window, reading the docs makes no requests at all, and <strong>check for new commit</strong> forces one whenever you want it.</p>
+<p>The <strong>tree</strong> objects are the reason a first visit reads more than one file: filenames are encrypted inside them, so building the navigation means reading every directory. That index is a pure function of the commit id, so it is memoised, after the first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.</p>
+<p><a href="../case-studies/live-vault-docs.html">How this page works →</a><a class="ext live" href="https://sgit.ai/case-studies/live-vault-docs.html" title="live page">↗</a> Architecture diagrams, the object model, the cache tiers, and how a page like this one reads a vault it holds only the read key to.</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/catalogue/index.html">https://sgit.ai/catalogue/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/catalogue/index.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:03Z</dd><dt>sha256</dt><dd><code title="63f9281e012444be6935f0a0cc6b051009ae39e533a95c9a926ba952d9d871d1">63f9281e0124</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/sgit.ai/catalogue/index.md</a> (3,708 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

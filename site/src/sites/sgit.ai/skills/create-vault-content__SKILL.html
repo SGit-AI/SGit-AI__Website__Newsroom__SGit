@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>SKILL: Create Vault Content for SG/Send Browse · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#skill-create-vault-content-for-sgsend-browse">SKILL: Create Vault Content for SG/Send Browse</a></li><li class="l2"><a href="#overview">Overview</a></li><li class="l2"><a href="#quick-decision-pagejson-vs-markdown">Quick decision: _page.json vs Markdown</a></li><li class="l2"><a href="#part-1-pagejson-page-layouts">Part 1: _page.json Page Layouts</a></li><li class="l3"><a href="#11-file-placement">1.1 File placement</a></li><li class="l3"><a href="#12-top-level-structure">1.2 Top-level structure</a></li><li class="l3"><a href="#13-theme">1.3 Theme</a></li><li class="l3"><a href="#14-navigation-bar">1.4 Navigation bar</a></li><li class="l3"><a href="#15-components-reference">1.5 Components reference</a></li><li class="l3"><a href="#16-file-path-rules">1.6 File path rules</a></li><li class="l3"><a href="#17-source-view">1.7 Source view</a></li><li class="l3"><a href="#18-edit-mode">1.8 Edit mode</a></li><li class="l2"><a href="#part-2-markdown-and-csv-authoring-rules">Part 2: Markdown and CSV Authoring Rules</a></li><li class="l3"><a href="#21-internal-links">2.1 Internal links</a></li><li class="l3"><a href="#22-image-sizing-discourse-pipe-syntax">2.2 Image sizing (Discourse pipe syntax)</a></li><li class="l3"><a href="#23-navigation-patterns">2.3 Navigation patterns</a></li><li class="l3"><a href="#24-auto-open-behaviour">2.4 Auto-open behaviour</a></li><li class="l3"><a href="#25-supported-syntax-quick-ref">2.5 Supported syntax quick-ref</a></li><li class="l2"><a href="#part-3-typical-vault-content-workflow">Part 3: Typical Vault Content Workflow</a></li><li class="l2"><a href="#part-4-authoring-checklists">Part 4: Authoring Checklists</a></li><li class="l3"><a href="#pagejson-checklist">_page.json checklist</a></li><li class="l3"><a href="#markdown-checklist">Markdown checklist</a></li><li class="l2"><a href="#part-5-quick-copy-templates">Part 5: Quick-copy Templates</a></li><li class="l3"><a href="#minimal-page">Minimal page</a></li><li class="l3"><a href="#hub-page-cards-subfolders">Hub page (cards → subfolders)</a></li><li class="l3"><a href="#image-heavy-article">Image-heavy article</a></li><li class="l2"><a href="#reference">Reference</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="create-vault-content__SKILL.md">raw text</a> · <a class="ext" href="https://sgit.ai/skills/create-vault-content__SKILL.html">live ↗</a></p><article class="source"><hr>
+<p>name: create-vault-content
+description: &gt;
+Use this skill whenever you need to create, edit, or structure content inside an
+SG/Send encrypted vault — including writing _page.json page layouts, markdown
+documents, folder navigation, or any vault file structure intended to be browsed
+via send.sgraph.ai. Triggers include: &quot;create a vault page&quot;, &quot;add a _page.json&quot;,
+&quot;build a hub page&quot;, &quot;make a slideshow&quot;, &quot;author vault content&quot;, &quot;write a page
+layout&quot;, &quot;create a gallery&quot;, &quot;add navigation to the vault&quot;, &quot;build an article&quot;,
+&quot;write markdown for the vault&quot;, or any request to create or improve structured
+content inside an sgit vault. Does NOT require cloning the SGraph-AI__App__Send
+repo — the full schema reference is embedded in this skill.
+</p>
+<hr>
+<h1 id="skill-create-vault-content-for-sgsend-browse">SKILL: Create Vault Content for SG/Send Browse</h1>
+<h2 id="overview">Overview</h2>
+<p>The SG/Send Browse view (<a class="ext" href="https://send.sgraph.ai">send.sgraph.ai ↗</a>) decrypts and
+renders the contents of an encrypted vault in a two-pane layout: file tree on the
+left, tabbed preview on the right.</p>
+<p>You can create two types of rich content in a vault:</p>
+<ul><li><strong><code>_page.json</code></strong> — component-based page layouts (hero, gallery, slides, cards, etc.)</li><li><strong>Markdown (<code>.md</code>)</strong> — prose documents with images, links, and tables</li></ul>
+<p>This skill gives you the complete reference for both. Use the sgit skill to create,
+commit, and push to the vault.</p>
+<hr>
+<h2 id="quick-decision-pagejson-vs-markdown">Quick decision: <code>_page.json</code> vs Markdown</h2>
+<div class="table"><table><thead><tr><th>Use <code>_page.json</code> when</th><th>Use Markdown when</th></tr></thead><tbody><tr><td>You want a designed hero banner</td><td>You want prose-first documents</td></tr>
+<tr><td>Gallery of images / slideshow</td><td>Text with inline images</td></tr>
+<tr><td>Hub page with clickable cards</td><td>Linked document hierarchy</td></tr>
+<tr><td>Multiple distinct layout sections</td><td>Article, README, report</td></tr>
+<tr><td>Investor deck, portfolio page</td><td>Working notes, specs</td></tr>
+<tr><td>Embedded PDF viewer</td><td>Step-by-step guide</td></tr>
+<tr><td>Explicit theme and font control</td><td>Quick content with minimal setup</td></tr></tbody></table></div>
+<p>Both can coexist in the same folder. <code>_page.json</code> takes priority in the Browse view;
+markdown files remain as alternatives.</p>
+<hr>
+<h2 id="part-1-pagejson-page-layouts">Part 1: <code>_page.json</code> Page Layouts</h2>
+<h3 id="11-file-placement">1.1 File placement</h3>
+<p>Name the file exactly <code>_page.json</code> in the folder it describes. The Browse view
+auto-detects it — no registration needed.</p>
+<pre><code>my-vault/
+  _page.json          ← root page
+  articles/
+    _page.json        ← articles hub
+    deep-dive/
+      _page.json      ← article page
+      images/
+        cover.jpg</code></pre>
+<p>Auto-open: if the vault root has <code>_page.json</code>, it renders immediately when the vault
+is opened.</p>
+<h3 id="12-top-level-structure">1.2 Top-level structure</h3>
+<pre><code class="lang-json">{
+  &quot;title&quot;:      &quot;Page Title&quot;,
+  &quot;theme&quot;:      { &quot;mode&quot;: &quot;dark&quot;, &quot;accent&quot;: &quot;#00d4aa&quot; },
+  &quot;navigation&quot;: [
+    { &quot;label&quot;: &quot;Overview&quot;, &quot;anchor&quot;: &quot;overview&quot; }
+  ],
+  &quot;components&quot;: [
+    { &quot;type&quot;: &quot;hero&quot;, &quot;props&quot;: { &quot;title&quot;: &quot;...&quot; } }
+  ]
+}</code></pre>
+<div class="table"><table><thead><tr><th>Field</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>yes</td><td>Shows in the tab label</td></tr>
+<tr><td><code>theme</code></td><td>no</td><td>Visual theme (see §1.3)</td></tr>
+<tr><td><code>navigation</code></td><td>no</td><td>Sticky nav bar with anchor links</td></tr>
+<tr><td><code>components</code></td><td>yes</td><td>Ordered list of components to render</td></tr></tbody></table></div>
+<h3 id="13-theme">1.3 Theme</h3>
+<p><strong>Simple:</strong></p>
+<pre><code class="lang-json">&quot;theme&quot;: &quot;dark&quot;    // or &quot;light&quot; (default)</code></pre>
+<p><strong>Full control:</strong></p>
+<pre><code class="lang-json">&quot;theme&quot;: {
+  &quot;mode&quot;:    &quot;dark&quot;,
+  &quot;accent&quot;:  &quot;#00d4aa&quot;,
+  &quot;font&quot;:    &quot;sans&quot;,
+  &quot;density&quot;: &quot;comfortable&quot;
+}</code></pre>
+<div class="table"><table><thead><tr><th>Field</th><th>Values</th><th>Effect</th></tr></thead><tbody><tr><td><code>mode</code></td><td><code>&quot;dark&quot;</code>, <code>&quot;light&quot;</code>, <code>&quot;auto&quot;</code></td><td>Palette; <code>&quot;auto&quot;</code> = light</td></tr>
+<tr><td><code>accent</code></td><td>Any CSS colour</td><td>Nav highlight, image border colour</td></tr>
+<tr><td><code>font</code></td><td><code>&quot;sans&quot;</code>, <code>&quot;serif&quot;</code>, <code>&quot;mono&quot;</code>, <code>&quot;system&quot;</code></td><td>Font family</td></tr>
+<tr><td><code>density</code></td><td><code>&quot;compact&quot;</code>, <code>&quot;comfortable&quot;</code>, <code>&quot;spacious&quot;</code></td><td>Section padding</td></tr>
+<tr><td><code>background</code></td><td>Any CSS colour/gradient</td><td>Page container background; defaults to <code>#ffffff</code> (safe for print). E.g. <code>&quot;linear-gradient(135deg,#667eea,#764ba2)&quot;</code></td></tr></tbody></table></div>
+<p><strong>Theme personality quick guide:</strong></p>
+<ul><li>Technical / developer content → <code>&quot;mono&quot;</code> + <code>&quot;compact&quot;</code></li><li>Long-form narrative / article → <code>&quot;serif&quot;</code> + <code>&quot;spacious&quot;</code></li><li>Investor deck / marketing → <code>&quot;sans&quot;</code> + <code>&quot;comfortable&quot;</code></li><li>Data-dense dashboard → <code>&quot;sans&quot;</code> + <code>&quot;compact&quot;</code></li></ul>
+<h4 id="named-schemes">Named schemes</h4>
+<p>Six ready-made theme configurations — copy the JSON snippet for the scheme you want:</p>
+<pre><code class="lang-json">// default — neutral, professional
+&quot;theme&quot;: { &quot;mode&quot;: &quot;light&quot;, &quot;accent&quot;: &quot;#4ecdc4&quot;, &quot;font&quot;: &quot;sans&quot;, &quot;density&quot;: &quot;normal&quot;, &quot;background&quot;: &quot;#ffffff&quot; }
+
+// navy — deep navy, formal reports / investor decks
+&quot;theme&quot;: { &quot;mode&quot;: &quot;light&quot;, &quot;accent&quot;: &quot;#1a8fe0&quot;, &quot;font&quot;: &quot;sans&quot;, &quot;density&quot;: &quot;normal&quot;, &quot;background&quot;: &quot;#f7f9fc&quot; }
+
+// slate — warm charcoal, articles / case studies
+&quot;theme&quot;: { &quot;mode&quot;: &quot;light&quot;, &quot;accent&quot;: &quot;#a0522d&quot;, &quot;font&quot;: &quot;serif&quot;, &quot;density&quot;: &quot;spacious&quot;, &quot;background&quot;: &quot;#faf9f7&quot; }
+
+// minimal — pure white, no accent colour, print-first
+&quot;theme&quot;: { &quot;mode&quot;: &quot;light&quot;, &quot;accent&quot;: &quot;#111111&quot;, &quot;font&quot;: &quot;serif&quot;, &quot;density&quot;: &quot;normal&quot;, &quot;background&quot;: &quot;#ffffff&quot; }
+
+// brand — SG/Send teal accent, internal materials
+&quot;theme&quot;: { &quot;mode&quot;: &quot;light&quot;, &quot;accent&quot;: &quot;#4ecdc4&quot;, &quot;font&quot;: &quot;sans&quot;, &quot;density&quot;: &quot;normal&quot;, &quot;background&quot;: &quot;#f6fefe&quot; }
+
+// dark-deck — dark background + indigo-blue accent, presentation-style
+&quot;theme&quot;: { &quot;mode&quot;: &quot;dark&quot;, &quot;accent&quot;: &quot;#7b9ef5&quot;, &quot;font&quot;: &quot;sans&quot;, &quot;density&quot;: &quot;normal&quot;, &quot;background&quot;: &quot;#141820&quot; }</code></pre>
+<p>Print-safe: <code>default</code>, <code>navy</code>, <code>slate</code>, <code>minimal</code>, <code>brand</code>. <code>dark-deck</code> requires <code>print-color-adjust: exact</code> — use <code>minimal</code> or <code>slate</code> when print is the primary output.</p>
+<h3 id="14-navigation-bar">1.4 Navigation bar</h3>
+<p>Renders a sticky top bar. Add when the page has 3+ sections and meaningful scroll.</p>
+<pre><code class="lang-json">&quot;navigation&quot;: [
+  { &quot;label&quot;: &quot;Overview&quot;,   &quot;anchor&quot;: &quot;overview&quot; },
+  { &quot;label&quot;: &quot;Gallery&quot;,    &quot;anchor&quot;: &quot;gallery&quot; },
+  { &quot;label&quot;: &quot;Full Deck&quot;,  &quot;anchor&quot;: &quot;full-deck&quot; }
+]</code></pre>
+<p>Anchor ids are derived from section titles by kebab-casing:
+<code>&quot;The Four Archetypes&quot;</code> → <code>the-four-archetypes</code>
+<code>&quot;Key Numbers &amp; Metrics&quot;</code> → <code>key-numbers--metrics</code></p>
+<h3 id="15-components-reference">1.5 Components reference</h3>
+<hr>
+<h4 id="hero-full-width-banner"><code>hero</code> — Full-width banner</h4>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;hero&quot;,
+  &quot;props&quot;: {
+    &quot;title&quot;:    &quot;The Cryptographic Blueprint&quot;,
+    &quot;subtitle&quot;: &quot;Zero-knowledge file sharing&quot;,
+    &quot;image&quot;:    &quot;images/banner.jpg&quot;,
+    &quot;color&quot;:    &quot;#0d1117&quot;,
+    &quot;height&quot;:   &quot;large&quot;,
+    &quot;align&quot;:    &quot;center&quot;,
+    &quot;overlay&quot;:  &quot;gradient&quot;
+  }
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>title</code></td><td>—</td><td>Heading text</td></tr>
+<tr><td><code>subtitle</code></td><td>—</td><td>Lighter line below title</td></tr>
+<tr><td><code>image</code></td><td>—</td><td>Background image path</td></tr>
+<tr><td><code>color</code></td><td><code>#0d1117</code></td><td>Background colour fallback</td></tr>
+<tr><td><code>height</code></td><td>standard</td><td><code>&quot;small&quot;</code> 150px, <code>&quot;medium&quot;</code> 250px, <code>&quot;large&quot;</code> 400px, <code>&quot;full&quot;</code> 100vh</td></tr>
+<tr><td><code>align</code></td><td><code>&quot;left&quot;</code></td><td><code>&quot;left&quot;</code>, <code>&quot;center&quot;</code>, <code>&quot;right&quot;</code></td></tr>
+<tr><td><code>overlay</code></td><td><code>&quot;gradient&quot;</code> if image, else <code>&quot;none&quot;</code></td><td><code>&quot;gradient&quot;</code>, <code>&quot;dark&quot;</code>, <code>&quot;light&quot;</code>, <code>&quot;solid&quot;</code>, <code>&quot;none&quot;</code></td></tr></tbody></table></div>
+<hr>
+<h4 id="section-container-with-heading-and-anchor"><code>section</code> — Container with heading and anchor</h4>
+<p>The only component that has <code>children</code>. Wrap all leaf components in sections.</p>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;section&quot;,
+  &quot;props&quot;: {
+    &quot;title&quot;:      &quot;Key Numbers&quot;,
+    &quot;layout&quot;:     &quot;narrow&quot;,
+    &quot;background&quot;: &quot;alt&quot;,
+    &quot;divider&quot;:    &quot;line&quot;
+  },
+  &quot;children&quot;: [
+    { &quot;type&quot;: &quot;text&quot;, &quot;props&quot;: { &quot;content&quot;: &quot;...&quot; } }
+  ]
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>title</code></td><td>—</td><td><code>&lt;h2&gt;</code> heading (also sets scroll anchor id)</td></tr>
+<tr><td><code>layout</code></td><td>standard</td><td><code>&quot;full-bleed&quot;</code> 100%, <code>&quot;narrow&quot;</code> 640px, <code>&quot;wide&quot;</code> 1200px</td></tr>
+<tr><td><code>background</code></td><td>—</td><td>CSS colour or <code>&quot;alt&quot;</code> (subtle alternating shade)</td></tr>
+<tr><td><code>divider</code></td><td><code>&quot;line&quot;</code></td><td><code>&quot;line&quot;</code>, <code>&quot;space&quot;</code> (no line, extra padding), <code>&quot;none&quot;</code></td></tr></tbody></table></div>
+<hr>
+<h4 id="text-paragraph"><code>text</code> — Paragraph</h4>
+<pre><code class="lang-json">{ &quot;type&quot;: &quot;text&quot;, &quot;props&quot;: { &quot;content&quot;: &quot;Paragraph text.&quot; } }</code></pre>
+<hr>
+<h4 id="bullet-points-styled-list"><code>bullet-points</code> — Styled list</h4>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;bullet-points&quot;,
+  &quot;props&quot;: { &quot;items&quot;: [&quot;First point&quot;, &quot;Second point&quot;, &quot;Third point&quot;] }
+}</code></pre>
+<hr>
+<h4 id="title-standalone-heading"><code>title</code> — Standalone heading</h4>
+<pre><code class="lang-json">{ &quot;type&quot;: &quot;title&quot;, &quot;props&quot;: { &quot;text&quot;: &quot;Subheading&quot;, &quot;level&quot;: &quot;3&quot; } }</code></pre>
+<p><code>level</code>: <code>&quot;1&quot;</code> – <code>&quot;6&quot;</code>, default <code>&quot;2&quot;</code>.</p>
+<hr>
+<h4 id="image-single-image"><code>image</code> — Single image</h4>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;image&quot;,
+  &quot;props&quot;: {
+    &quot;file&quot;:    &quot;images/diagram.png&quot;,
+    &quot;caption&quot;: &quot;Architecture overview&quot;,
+    &quot;width&quot;:   &quot;80%&quot;,
+    &quot;align&quot;:   &quot;center&quot;,
+    &quot;shadow&quot;:  true,
+    &quot;rounded&quot;: true,
+    &quot;border&quot;:  false
+  }
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>file</code></td><td>—</td><td>Path relative to <code>_page.json</code> folder</td></tr>
+<tr><td><code>caption</code></td><td>—</td><td>Text below image</td></tr>
+<tr><td><code>width</code></td><td><code>100%</code></td><td>CSS value: <code>&quot;60%&quot;</code>, <code>&quot;400px&quot;</code></td></tr>
+<tr><td><code>align</code></td><td><code>&quot;center&quot;</code></td><td><code>&quot;left&quot;</code>, <code>&quot;center&quot;</code>, <code>&quot;right&quot;</code></td></tr>
+<tr><td><code>border</code></td><td><code>false</code></td><td>1px accent-coloured border</td></tr>
+<tr><td><code>shadow</code></td><td><code>false</code></td><td>Drop shadow</td></tr>
+<tr><td><code>rounded</code></td><td><code>false</code></td><td>8px radius</td></tr></tbody></table></div>
+<hr>
+<h4 id="gallery-thumbnail-grid-with-lightbox"><code>gallery</code> — Thumbnail grid with lightbox</h4>
+<p>Click any thumbnail → full-size lightbox (arrow keys + ESC to navigate).</p>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;gallery&quot;,
+  &quot;props&quot;: {
+    &quot;images&quot;:        [&quot;images/s1.jpg&quot;, &quot;images/s2.jpg&quot;, &quot;images/s3.jpg&quot;],
+    &quot;captions&quot;:      [&quot;Slide 1 caption&quot;, &quot;Slide 2 caption&quot;, &quot;Slide 3 caption&quot;],
+    &quot;columns&quot;:       3,
+    &quot;aspect&quot;:        &quot;16:9&quot;,
+    &quot;gap&quot;:           &quot;small&quot;,
+    &quot;show_captions&quot;: true
+  }
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>images</code></td><td>—</td><td>Array of file paths</td></tr>
+<tr><td><code>captions</code></td><td><code>[]</code></td><td>Positionally matched to images</td></tr>
+<tr><td><code>columns</code></td><td><code>3</code></td><td>Grid columns (e.g. <code>7</code> for a 7×2 mosaic)</td></tr>
+<tr><td><code>aspect</code></td><td><code>&quot;16:9&quot;</code></td><td><code>&quot;16:9&quot;</code>, <code>&quot;4:3&quot;</code>, <code>&quot;1:1&quot;</code>, <code>&quot;auto&quot;</code></td></tr>
+<tr><td><code>gap</code></td><td><code>&quot;small&quot;</code></td><td><code>&quot;none&quot;</code>, <code>&quot;small&quot;</code>, <code>&quot;medium&quot;</code>, <code>&quot;large&quot;</code></td></tr>
+<tr><td><code>show_captions</code></td><td><code>true</code> when captions present</td><td>Explicit boolean</td></tr></tbody></table></div>
+<hr>
+<h4 id="slides-navigable-slideshow"><code>slides</code> — Navigable slideshow</h4>
+<p>Arrow keys work when focused. Counter shows <code>2 / 4</code>.</p>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;slides&quot;,
+  &quot;props&quot;: {
+    &quot;images&quot;:     [&quot;images/a1.jpg&quot;, &quot;images/a2.jpg&quot;, &quot;images/a3.jpg&quot;],
+    &quot;captions&quot;:   [&quot;Caption 1&quot;, &quot;Caption 2&quot;, &quot;Caption 3&quot;],
+    &quot;controls&quot;:   &quot;bottom&quot;,
+    &quot;transition&quot;: &quot;fade&quot;,
+    &quot;autoplay&quot;:   false
+  }
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>images</code></td><td>—</td><td>Array of file paths</td></tr>
+<tr><td><code>captions</code></td><td><code>[]</code></td><td>Positionally matched</td></tr>
+<tr><td><code>controls</code></td><td><code>&quot;bottom&quot;</code></td><td><code>&quot;bottom&quot;</code> (nav below image), <code>&quot;top&quot;</code></td></tr>
+<tr><td><code>transition</code></td><td><code>&quot;fade&quot;</code></td><td><code>&quot;fade&quot;</code>, <code>&quot;none&quot;</code></td></tr>
+<tr><td><code>autoplay</code></td><td><code>false</code></td><td>Auto-advance every 3 s; stops on click</td></tr></tbody></table></div>
+<hr>
+<h4 id="pdf-embedded-viewer"><code>pdf</code> — Embedded viewer</h4>
+<pre><code class="lang-json">{ &quot;type&quot;: &quot;pdf&quot;, &quot;props&quot;: { &quot;file&quot;: &quot;../../strategy/deck.pdf&quot; } }</code></pre>
+<p><code>../</code> traversal supported — path must stay within the vault.</p>
+<hr>
+<h4 id="markdown-rendered-markdown"><code>markdown</code> — Rendered markdown</h4>
+<pre><code class="lang-json">{ &quot;type&quot;: &quot;markdown&quot;, &quot;props&quot;: { &quot;file&quot;: &quot;overview.md&quot; } }
+{ &quot;type&quot;: &quot;markdown&quot;, &quot;props&quot;: { &quot;text&quot;: &quot;**Bold** and a [link](other.md).&quot; } }</code></pre>
+<p><code>file</code> is relative to the <code>_page.json</code> folder. The <code>![alt|size](path)</code> image sizing
+syntax is supported.</p>
+<hr>
+<h4 id="cards-navigable-card-grid"><code>cards</code> — Navigable card grid</h4>
+<p>Hub pages: each card navigates to a file or folder on click.</p>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;cards&quot;,
+  &quot;props&quot;: {
+    &quot;columns&quot;: 2,
+    &quot;items&quot;: [
+      {
+        &quot;title&quot;:       &quot;Article One&quot;,
+        &quot;description&quot;: &quot;Short description.&quot;,
+        &quot;image&quot;:       &quot;article-one/images/cover.jpg&quot;,
+        &quot;link&quot;:        &quot;article-one/&quot;
+      },
+      {
+        &quot;title&quot;:       &quot;Article Two&quot;,
+        &quot;description&quot;: &quot;Short description.&quot;,
+        &quot;image&quot;:       &quot;article-two/images/cover.jpg&quot;,
+        &quot;link&quot;:        &quot;article-two/&quot;
+      }
+    ]
+  }
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>columns</code></td><td><code>2</code></td><td>Grid columns</td></tr>
+<tr><td><code>items[].title</code></td><td>—</td><td>Card heading</td></tr>
+<tr><td><code>items[].description</code></td><td>—</td><td>Body text</td></tr>
+<tr><td><code>items[].image</code></td><td>—</td><td>Cover image path</td></tr>
+<tr><td><code>items[].link</code></td><td>—</td><td>Relative path to file or folder</td></tr></tbody></table></div>
+<hr>
+<h4 id="columns-side-by-side-layout"><code>columns</code> — Side-by-side layout</h4>
+<p>Each child goes in its own column. Stacks to single column below 768px.</p>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;columns&quot;,
+  &quot;props&quot;: { &quot;ratio&quot;: &quot;1:2&quot;, &quot;gap&quot;: &quot;medium&quot;, &quot;vertical_align&quot;: &quot;top&quot; },
+  &quot;children&quot;: [
+    { &quot;type&quot;: &quot;image&quot;,    &quot;props&quot;: { &quot;file&quot;: &quot;portrait.jpg&quot;, &quot;rounded&quot;: true } },
+    { &quot;type&quot;: &quot;markdown&quot;, &quot;props&quot;: { &quot;text&quot;: &quot;**Name**\n\nDescription.&quot; } }
+  ]
+}</code></pre>
+<div class="table"><table><thead><tr><th>Prop</th><th>Default</th><th>Values</th></tr></thead><tbody><tr><td><code>ratio</code></td><td><code>&quot;1:1&quot;</code></td><td><code>&quot;1:1&quot;</code>, <code>&quot;1:2&quot;</code>, <code>&quot;2:1&quot;</code>, <code>&quot;1:3&quot;</code>, <code>&quot;3:1&quot;</code></td></tr>
+<tr><td><code>gap</code></td><td><code>&quot;medium&quot;</code></td><td><code>&quot;none&quot;</code>, <code>&quot;small&quot;</code>, <code>&quot;medium&quot;</code>, <code>&quot;large&quot;</code></td></tr>
+<tr><td><code>vertical_align</code></td><td><code>&quot;top&quot;</code></td><td><code>&quot;top&quot;</code>, <code>&quot;center&quot;</code>, <code>&quot;bottom&quot;</code></td></tr></tbody></table></div>
+<hr>
+<h3 id="16-file-path-rules">1.6 File path rules</h3>
+<p>All <code>file</code> props are relative to the folder containing <code>_page.json</code>.</p>
+<div class="table"><table><thead><tr><th><code>_page.json</code> at</th><th>Prop value</th><th>Resolves to</th></tr></thead><tbody><tr><td><code>/articles/deep-dive/</code></td><td><code>&quot;images/slide-01.jpg&quot;</code></td><td><code>/articles/deep-dive/images/slide-01.jpg</code></td></tr>
+<tr><td><code>/articles/</code></td><td><code>&quot;deep-dive/images/cover.jpg&quot;</code></td><td><code>/articles/deep-dive/images/cover.jpg</code></td></tr>
+<tr><td><code>/articles/walkthrough/</code></td><td><code>&quot;../../strategy/deck.pdf&quot;</code></td><td><code>/strategy/deck.pdf</code></td></tr></tbody></table></div>
+<ul><li>Forward slashes only</li><li><code>../</code> traversal supported, must stay within the vault</li><li>No external URLs — vault files only</li></ul>
+<h3 id="17-source-view">1.7 Source view</h3>
+<p>Every rendered page tab has an action bar with four buttons:</p>
+<div class="table"><table><thead><tr><th>Button</th><th>Action</th></tr></thead><tbody><tr><td><code>⦿ Locate</code></td><td>Highlights <code>_page.json</code> in the sidebar file tree</td></tr>
+<tr><td><code>🖨 Print</code></td><td>Clones the rendered view into a print overlay and calls <code>window.print()</code></td></tr>
+<tr><td><code>⎋ Copy JSON</code></td><td>Copies raw <code>_page.json</code> to the clipboard</td></tr>
+<tr><td><code>{ } Source</code></td><td>Toggles between rendered layout and syntax-highlighted JSON source</td></tr></tbody></table></div>
+<p>The source view always uses a light background regardless of the page theme.</p>
+<p>Clicking <code>_page.json</code> directly in the file tree, clicking the folder header, or the
+auto-open on vault load all open in <strong>rendered view</strong> by default.</p>
+<hr>
+<h3 id="18-edit-mode">1.8 Edit mode</h3>
+<p>The action bar also includes an <code>✎ Edit</code> button that opens a <strong>split-pane editor</strong>:</p>
+<ul><li><strong>Left pane</strong> — JSON editor with syntax highlighting</li><li><strong>Right pane</strong> — live rendered preview</li></ul>
+<p><strong>Auto-refresh:</strong> the preview refreshes automatically 400 ms after each keystroke (debounced), so you see results as you type without waiting for a manual refresh.</p>
+<p><strong>Status bar:</strong> shown below the editor pane. Displays <code>✓ Valid JSON</code> when the document parses correctly, or <code>✗ &lt;parse error message&gt;</code> in red when it does not. The preview only updates on valid JSON.</p>
+<p><strong>Changes are NOT saved.</strong> Edit mode has no vault write capability. If you arrive at a layout you want to keep, use <code>⎋ Copy JSON</code> to copy the final JSON to your clipboard, then paste it into your local vault file and push via sgit.</p>
+<p><strong>Intended uses:</strong></p>
+<ul><li>Experiment with component layouts and theme options live, without editing files</li><li>Paste in JSON suggested by Claude and preview it immediately before committing</li></ul>
+<hr>
+<h2 id="part-2-markdown-and-csv-authoring-rules">Part 2: Markdown and CSV Authoring Rules</h2>
+<h3 id="21-internal-links">2.1 Internal links</h3>
+<pre><code class="lang-markdown">[See the report](report.pdf)
+[Go to overview](../README.md)
+[Read the spec](docs/spec.md)</code></pre>
+<p>Opens the target file as a new tab. Resolver handles <code>../</code> paths, URL-encoding, and
+common extension fallbacks (<code>.md</code>, <code>.pdf</code>, <code>.txt</code>, <code>.html</code>).</p>
+<p><strong>Folder links:</strong> link to <code>folder/README.md</code>, not <code>folder/</code> — which file opens from a
+folder link depends on sort order and is fragile.</p>
+<h3 id="22-image-sizing-discourse-pipe-syntax">2.2 Image sizing (Discourse pipe syntax)</h3>
+<pre><code class="lang-markdown">![caption](img.png)           // max-width: 100%
+![caption|400](img.png)       // 400px fixed width
+![caption|60%](img.png)       // 60% of container
+![caption|800x600](img.png)   // 800px wide, 600px tall</code></pre>
+<p>The pipe and dimensions are inside the alt text brackets — the URL stays clean.
+Degrades gracefully in other markdown renderers (shows as <code>caption|400</code> alt text).</p>
+<p><strong>Do not use HTML</strong> — it is stripped and renders as visible escaped text.</p>
+<h3 id="23-navigation-patterns">2.3 Navigation patterns</h3>
+<p><strong>Linear sequence:</strong> put a one-line nav bar at the top of each document:</p>
+<pre><code class="lang-markdown">[← START HERE](../START%20HERE.md) · [Index](../INDEX.md) · [Next →](02-next.md)</code></pre>
+<p><strong>Deep hierarchy:</strong> breadcrumb at the top using <code>›</code> (U+203A):</p>
+<pre><code class="lang-markdown">[🏠 Index](../../INDEX.md) › [Section](../README.md) › **Current Page**</code></pre>
+<p><strong>Root hub (<code>INDEX.md</code>):</strong> title + &quot;Start here&quot; link + folder table + quick links.</p>
+<h3 id="24-auto-open-behaviour">2.4 Auto-open behaviour</h3>
+<p>The Browse view auto-opens the <strong>alphabetically first file</strong> in the vault. To control this:</p>
+<ul><li>Name your entry point <code>0-START-HERE.md</code>, <code>00-INDEX.md</code>, or <code>README.md</code></li><li>Or put a <code>_page.json</code> in the root (takes priority)</li></ul>
+<h3 id="25-supported-syntax-quick-ref">2.5 Supported syntax quick-ref</h3>
+<div class="table"><table><thead><tr><th>Feature</th><th>Supported</th></tr></thead><tbody><tr><td>Headings <code># h1</code> – <code>###### h6</code></td><td>✓</td></tr>
+<tr><td>Bold, italic, bold+italic</td><td>✓</td></tr>
+<tr><td>Strikethrough <code>~~text~~</code></td><td>✓</td></tr>
+<tr><td>Inline code <code>`code`</code></td><td>✓</td></tr>
+<tr><td>Fenced code blocks <code></code><code>`</code></td><td>✓</td></tr>
+<tr><td>Tables</td><td>✓</td></tr>
+<tr><td>Blockquotes <code>&gt;</code></td><td>✓</td></tr>
+<tr><td>Unordered + ordered lists</td><td>✓</td></tr>
+<tr><td>Images with pipe sizing</td><td>✓</td></tr>
+<tr><td>Internal + external links</td><td>✓</td></tr>
+<tr><td>HTML tags / comments</td><td>✗ (stripped / visible text)</td></tr>
+<tr><td>Nested lists</td><td>✗</td></tr>
+<tr><td>Task lists <code>- [ ]</code></td><td>✗</td></tr></tbody></table></div>
+<hr>
+<h2 id="part-3-typical-vault-content-workflow">Part 3: Typical Vault Content Workflow</h2>
+<pre><code class="lang-bash"># 1. Create or clone vault (see sgit skill)
+sgit init my-vault --existing
+#   — or —
+sgit clone passphrase:vault-id my-vault
+
+# 2. Create your content files
+# (write _page.json files and/or markdown in the vault directory)
+
+# 3. Commit and push
+cd my-vault
+sgit commit &quot;add page layouts and articles&quot;
+sgit push
+
+# 4. Share a snapshot token for viewing in the browser
+sgit share
+# → Token: word-word-1234
+# Open: https://send.sgraph.ai/en-gb/browse/#word-word-1234</code></pre>
+<hr>
+<h2 id="part-4-authoring-checklists">Part 4: Authoring Checklists</h2>
+<h3 id="pagejson-checklist"><code>_page.json</code> checklist</h3>
+<ul><li>[ ] All <code>file</code> paths are relative to the folder containing <code>_page.json</code></li><li>[ ] Every referenced image/PDF exists in the vault at the expected path</li><li>[ ] <code>../</code> paths don&#x27;t escape the vault root</li><li>[ ] Section <code>title</code> values match the <code>anchor</code> strings in <code>navigation</code></li><li>[ ] <code>navigation</code> only included when there are 3+ sections and scroll depth</li><li>[ ] <code>gallery</code>/<code>slides</code> image arrays have the same length as <code>captions</code></li><li>[ ] <code>cards</code> items have <code>link</code> values that resolve to real vault files/folders</li><li>[ ] JSON is valid (no trailing commas, all strings quoted, arrays/objects closed)</li></ul>
+<h3 id="markdown-checklist">Markdown checklist</h3>
+<ul><li>[ ] Folder links go to <code>folder/README.md</code>, not <code>folder/</code></li><li>[ ] Image paths are relative to the <code>.md</code> file&#x27;s location, not the vault root</li><li>[ ] Image sizing uses <code>![alt|width](path)</code>, not HTML <code>&lt;img&gt;</code> tags</li><li>[ ] Nav bar / breadcrumbs added to multi-page documents</li><li>[ ] Entry-point file named to sort first alphabetically (if no <code>_page.json</code>)</li></ul>
+<hr>
+<h2 id="part-5-quick-copy-templates">Part 5: Quick-copy Templates</h2>
+<h3 id="minimal-page">Minimal page</h3>
+<pre><code class="lang-json">{
+  &quot;title&quot;: &quot;Page Title&quot;,
+  &quot;theme&quot;: { &quot;mode&quot;: &quot;dark&quot;, &quot;accent&quot;: &quot;#4ecdc4&quot; },
+  &quot;navigation&quot;: [
+    { &quot;label&quot;: &quot;Intro&quot;,   &quot;anchor&quot;: &quot;intro&quot; },
+    { &quot;label&quot;: &quot;Details&quot;, &quot;anchor&quot;: &quot;details&quot; }
+  ],
+  &quot;components&quot;: [
+    {
+      &quot;type&quot;: &quot;hero&quot;,
+      &quot;props&quot;: {
+        &quot;title&quot;: &quot;Page Title&quot;, &quot;subtitle&quot;: &quot;One-line description&quot;,
+        &quot;image&quot;: &quot;images/banner.jpg&quot;, &quot;height&quot;: &quot;large&quot;, &quot;align&quot;: &quot;center&quot;
+      }
+    },
+    {
+      &quot;type&quot;: &quot;section&quot;,
+      &quot;props&quot;: { &quot;title&quot;: &quot;Intro&quot; },
+      &quot;children&quot;: [
+        { &quot;type&quot;: &quot;text&quot;, &quot;props&quot;: { &quot;content&quot;: &quot;Introduction paragraph.&quot; } },
+        { &quot;type&quot;: &quot;bullet-points&quot;, &quot;props&quot;: { &quot;items&quot;: [&quot;Point one&quot;, &quot;Point two&quot;] } }
+      ]
+    },
+    {
+      &quot;type&quot;: &quot;section&quot;,
+      &quot;props&quot;: { &quot;title&quot;: &quot;Details&quot; },
+      &quot;children&quot;: [
+        { &quot;type&quot;: &quot;image&quot;, &quot;props&quot;: { &quot;file&quot;: &quot;images/diagram.png&quot;, &quot;width&quot;: &quot;80%&quot;, &quot;shadow&quot;: true } },
+        { &quot;type&quot;: &quot;text&quot;,  &quot;props&quot;: { &quot;content&quot;: &quot;Follow-up paragraph.&quot; } }
+      ]
+    }
+  ]
+}</code></pre>
+<h3 id="hub-page-cards-subfolders">Hub page (cards → subfolders)</h3>
+<pre><code class="lang-json">{
+  &quot;title&quot;: &quot;Articles Hub&quot;,
+  &quot;theme&quot;: { &quot;mode&quot;: &quot;dark&quot; },
+  &quot;components&quot;: [
+    {
+      &quot;type&quot;: &quot;hero&quot;,
+      &quot;props&quot;: { &quot;title&quot;: &quot;Articles&quot;, &quot;subtitle&quot;: &quot;Select an article to begin&quot; }
+    },
+    {
+      &quot;type&quot;: &quot;section&quot;,
+      &quot;props&quot;: { &quot;title&quot;: &quot;Browse&quot;, &quot;layout&quot;: &quot;wide&quot; },
+      &quot;children&quot;: [
+        {
+          &quot;type&quot;: &quot;cards&quot;,
+          &quot;props&quot;: {
+            &quot;columns&quot;: 2,
+            &quot;items&quot;: [
+              { &quot;title&quot;: &quot;Article One&quot;, &quot;description&quot;: &quot;Description.&quot;, &quot;image&quot;: &quot;article-one/images/cover.jpg&quot;, &quot;link&quot;: &quot;article-one/&quot; },
+              { &quot;title&quot;: &quot;Article Two&quot;, &quot;description&quot;: &quot;Description.&quot;, &quot;image&quot;: &quot;article-two/images/cover.jpg&quot;, &quot;link&quot;: &quot;article-two/&quot; }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}</code></pre>
+<h3 id="image-heavy-article">Image-heavy article</h3>
+<pre><code class="lang-json">{
+  &quot;title&quot;: &quot;Visual Walkthrough&quot;,
+  &quot;theme&quot;: { &quot;mode&quot;: &quot;dark&quot; },
+  &quot;navigation&quot;: [
+    { &quot;label&quot;: &quot;Overview&quot;, &quot;anchor&quot;: &quot;overview&quot; },
+    { &quot;label&quot;: &quot;Gallery&quot;,  &quot;anchor&quot;: &quot;gallery&quot; },
+    { &quot;label&quot;: &quot;Slides&quot;,   &quot;anchor&quot;: &quot;slides&quot; }
+  ],
+  &quot;components&quot;: [
+    { &quot;type&quot;: &quot;hero&quot;, &quot;props&quot;: { &quot;title&quot;: &quot;Walkthrough&quot;, &quot;image&quot;: &quot;images/banner.jpg&quot;, &quot;height&quot;: &quot;large&quot; } },
+    {
+      &quot;type&quot;: &quot;section&quot;, &quot;props&quot;: { &quot;title&quot;: &quot;Overview&quot; },
+      &quot;children&quot;: [
+        { &quot;type&quot;: &quot;image&quot;,    &quot;props&quot;: { &quot;file&quot;: &quot;images/mosaic.jpg&quot;, &quot;width&quot;: &quot;100%&quot;, &quot;caption&quot;: &quot;All slides at a glance&quot; } },
+        { &quot;type&quot;: &quot;markdown&quot;, &quot;props&quot;: { &quot;file&quot;: &quot;overview.md&quot; } }
+      ]
+    },
+    {
+      &quot;type&quot;: &quot;section&quot;, &quot;props&quot;: { &quot;title&quot;: &quot;Gallery&quot;, &quot;layout&quot;: &quot;wide&quot; },
+      &quot;children&quot;: [
+        { &quot;type&quot;: &quot;gallery&quot;, &quot;props&quot;: { &quot;images&quot;: [&quot;images/s1.jpg&quot;, &quot;images/s2.jpg&quot;, &quot;images/s3.jpg&quot;, &quot;images/s4.jpg&quot;], &quot;columns&quot;: 4, &quot;aspect&quot;: &quot;16:9&quot; } }
+      ]
+    },
+    {
+      &quot;type&quot;: &quot;section&quot;, &quot;props&quot;: { &quot;title&quot;: &quot;Slides&quot; },
+      &quot;children&quot;: [
+        { &quot;type&quot;: &quot;slides&quot;, &quot;props&quot;: { &quot;images&quot;: [&quot;images/s1.jpg&quot;, &quot;images/s2.jpg&quot;, &quot;images/s3.jpg&quot;, &quot;images/s4.jpg&quot;], &quot;captions&quot;: [&quot;Caption 1&quot;, &quot;Caption 2&quot;, &quot;Caption 3&quot;, &quot;Caption 4&quot;] } }
+      ]
+    }
+  ]
+}</code></pre>
+<hr>
+<h2 id="reference">Reference</h2>
+<p>Full authoring guides (in the SGraph-AI__App__Send repo if available):</p>
+<ul><li><code>library/guides/content/v0.20.18__guide__sg-send-page-layout-authoring.md</code></li><li><code>library/guides/content/v0.20.13__guide__sg-send-browse-markdown-authoring.md</code></li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/skills/create-vault-content__SKILL.html">https://sgit.ai/skills/create-vault-content__SKILL.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/skills/create-vault-content__SKILL.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:11Z</dd><dt>sha256</dt><dd><code title="6e0688854728f7a0e4b033f16a8cd94d4351a91457f36e796a8d544e95a54ce4">6e0688854728</code></dd><dt>Frozen copy</dt><dd><a href="create-vault-content__SKILL.md">sites/sgit.ai/skills/create-vault-content__SKILL.md</a> (21,425 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

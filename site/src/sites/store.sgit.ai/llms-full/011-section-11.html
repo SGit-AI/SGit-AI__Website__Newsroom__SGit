@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Section 11 (store.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · store.sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/store.sgit.ai.html">store.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 11 of 77</p><nav class="pager"><span><a href="010-section-10.html">← Section 10</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="012-section-12.html">Section 12 →</a></span></nav><article class="source"><h2 id="the-brief-addressed-to-the-riskmandate-team">The brief, addressed to the RiskMandate team</h2>
+<p><strong>Asked for on 16 September: this side first, then the reverse.</strong></p>
+<p>You are reading the store&#x27;s half. The ask is that riskmandate.ai does the same in
+the other direction — **reads this store&#x27;s e-commerce surfaces rather than
+re-implementing a cart.**</p>
+<p>Concretely, and in the order that makes each one useful on its own:</p>
+<ol><li><strong>Publish a stable manifest for each level&#x27;s artefact</strong> — the zip, its size and
+its sha256, as JSON at a fixed address. **It already exists and it is not
+reachable as data**: on 16 September <code>paid-t1.html</code> carried fifteen entries with
+<code>bytes</code> and <code>sha256</code> inside a JavaScript <code>const DIST = /*__DIST__*/[…]</code>. Reading
+that from here means regex-ing your JavaScript out of your HTML at runtime,
+which is the fragility this ask exists to remove. The same bytes at
+<code>/abp-manifest.json</code> would close it. The store&#x27;s page after payment can then
+render your download in its own chrome instead of sending a buyer to you at the
+moment they have just paid. Today the store links to you with one sentence
+saying why; that sentence is the debt.</li><li><strong>Publish the shape catalogue as data</strong>, at a stable address with a version
+field. The store already promotes it from your HTML at build time with a content
+hash, which works and is fragile in exactly the way parsing a page for data is
+always fragile.</li><li><strong>Do not build a cart.</strong> If a reader on your side wants to buy, send them here
+with the shape already selected. One cart, one order reference, one set of
+prices — the same reason this store does not explain what a policy is.</li><li><strong>Agree the shape of what we both read</strong>, not just the address. CORS makes the
+read possible; it does not make it safe to depend on. A stable address, a stable
+shape, and a version field are three different promises and all three are needed.</li></ol>
+<p><strong>What we are not asking for.</strong> No callback, no session, no shared state and no
+account on either side. Both of these are static sites and the whole arrangement
+works because neither one needs the other to be up in order to be correct.</p>
+<p><strong>Status: open.</strong> It will be recorded here when it is answered, including if the
+answer is no, because a brief that only appears when it succeeds is a brief nobody
+should trust.</p>
+<hr>
+<p>PAGE /catalogue/  —  What is not for sale yet</p>
+<hr>
+<hr>
+<p>title: What is not for sale yet
+description: &quot;Eight further offers are specified and none of them is for this week. They are listed so that nobody proposes them as new, and so that the four that are for sale are not quietly widened to include them.&quot;
+lead: &quot;<strong>Eight further offers exist as specifications and none of them is on the offer page.</strong> They are listed here for one reason: so that nobody proposes them as new. A catalogue that only shows what is buyable today loses the work that went into deciding what is not.&quot;
+order: 7
+</p>
+<hr></article><nav class="pager"><span><a href="010-section-10.html">← Section 10</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="012-section-12.html">Section 12 →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>store.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://store.sgit.ai/llms-full.txt">https://store.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="ebd5ed7cd64c1432ed67389ff2690895a96ddc910acd82884da72dcca3d7a737">ebd5ed7cd64c</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/store.sgit.ai/llms-full.txt</a> (82,158 bytes)</dd><dt>Section</dt><dd>11 of 77: Section 11</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

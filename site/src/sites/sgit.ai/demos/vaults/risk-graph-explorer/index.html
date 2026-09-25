@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Risk Graph Explorer, a published vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#risk-graph-explorer-a-published-vault">Risk Graph Explorer, a published vault</a></li><li class="l1"><a href="#risk-graph-explorer">Risk Graph Explorer</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-is-going-on-here-step-by-step">What is going on here, step by step</a></li><li class="l3"><a href="#an-empty-register-is-a-correct-answer">An empty register is a correct answer</a></li><li class="l3"><a href="#answer-differently-and-the-graph-changes-shape">Answer differently and the graph changes shape</a></li><li class="l3"><a href="#a-vault-that-carries-its-own-publication-rules">A vault that carries its own publication rules</a></li><li class="l3"><a href="#permissions">permissions: {}</a></li><li class="l2"><a href="#extraction-as-a-pattern">Extraction as a pattern</a></li><li class="l2"><a href="#the-audit-honestly">The audit, honestly</a></li><li class="l2"><a href="#derived-facts">Derived facts</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html">live ↗</a></p><article class="source"><h1 id="risk-graph-explorer-a-published-vault">Risk Graph Explorer, a published vault</h1>
+<blockquote><p>A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all.</p></blockquote>
+<p><em>Source: <a href="index.html">https://sgit.ai/demos/vaults/risk-graph-explorer/index.html</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="../index.html">Vaults</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> / Risk Graph Explorer</p>
+<h1 id="risk-graph-explorer">Risk Graph Explorer</h1>
+<p>The graph explorer from <a href="../agentic-browser-isolation/index.html">the risk-mandate work</a><a class="ext live" href="https://sgit.ai/demos/vaults/agentic-browser-isolation/index.html" title="live page">↗</a>, refactored out into a vault of its own, and the first vault published here that was <strong>designed to be public from the start</strong>, with its own publication rules enforced by its own build.</p>
+<p><strong>Answer the questions; the register assembles.</strong> Seven views recompute as you go, including acceptance (who holds what) and what happens next (how decisions become incidents and projects). Nothing you answer leaves the page: no network call, no storage, no account. It is destined for riskmandate.ai, and the vault is how it will be served.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe</code>
+Published deliberately, and <strong>derived</strong>: the owner supplied a vault key, our intake check refused it for publication, and only this one-way derivation appears here.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p>Both surfaces open automatically below. You can also <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe"><strong>open the app in its own window ↗</strong> ↗</a>, try the presets, then change one answer and watch the register move.</p>
+<p><strong>Going deeper.</strong> This vault has more in it than one page holds. <a href="views/index.html"><strong>The seven views, explained</strong></a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/views/index.html" title="live page">↗</a> walks each view with a screenshot of the live vault and the mechanism behind it. <a href="videos/index.html"><strong>The author’s walkthroughs</strong></a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/videos/index.html" title="live page">↗</a> carries three recorded demos with full transcripts, the reasoning that the screenshots cannot show.</p>
+<h2 id="what-is-going-on-here-step-by-step">What is going on here, step by step</h2>
+<p>the argument</p>
+<h3 id="an-empty-register-is-a-correct-answer">An empty register is a correct answer</h3>
+<p>It opens at zero: <strong>0 facts, 0 risks, 0 provisions</strong>, and a prompt to answer the first question. Nothing is assumed about your estate until you say something about it.</p>
+<p>That is the claim the whole app is built to make, and its README states it plainly: <em>&quot;the technical answers can be as bad as you like, if nothing is at stake behind them, the register is short, and that is the correct answer.&quot;</em> A tool that produces the same output for a scratch service and a payments platform is a checklist, not a risk register.</p>
+<p>The explorer at zero: no answers, so no register.</p>
+<p>context decides</p>
+<h3 id="answer-differently-and-the-graph-changes-shape">Answer differently and the graph changes shape</h3>
+<p>Load the <strong>Exposed</strong> preset and the same questions produce 18 facts, 37 risks and 14 provisions, with a header that reads <em>decides about a person · in production · at stake</em>. Seven views recompute together: the estate graph, context, a role risk map, risk chains, the register, acceptance, and what happens next.</p>
+<p>Look at the graph itself, amber edges are exposure facts, green are assurance, and <strong>ghosted means nobody has said either way</strong>. Recording that absence as information, rather than as an implicit pass, is the detail that makes this a graph rather than a form.</p>
+<p>The Exposed preset: 18 facts, 37 risks, and unanswered relationships drawn as ghosts.</p>
+<p>published on purpose</p>
+<h3 id="a-vault-that-carries-its-own-publication-rules">A vault that carries its own publication rules</h3>
+<p>Most vaults here were audited by us before their key went out. This one arrived with the audit already written into it: <code>PUBLIC.md</code> states that <strong>every byte committed is already public</strong>, and its build refuses if any of three rules is broken, nothing private committed (the gate scans <em>every file</em>, not just the built artefact), no write token, and <strong>no metered capability</strong>.</p>
+<p>That third rule is the one worth borrowing, and we had not written it down: <em>&quot;a published read key in front of an LLM config is an open tab on somebody else&#x27;s budget, and a spend cap is a rate limiter on the fun, not a control.&quot;</em> It sent us back to re-check a vault we had already published, see the note below.</p>
+<p>PUBLIC.md: three rules, enforced by the vault’s own build.</p>
+<p>the floor</p>
+<h3 id="permissions">permissions: {}</h3>
+<p>An empty permissions object. Not a scoped write, not a withheld credential, <strong>nothing requested at all</strong>. The app answers questions in the page: no network call, no storage, no account, as its README says.</p>
+<p>The catalogue now spans the full range, each declared in the vault rather than configured on a server: <a href="../risk-mandate/index.html">Risk Mandate</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-mandate/index.html" title="live page">↗</a> uses an LLM without holding its key, <a href="../supplement-stack/index.html">Supplement Stack</a><a class="ext live" href="https://sgit.ai/demos/vaults/supplement-stack/index.html" title="live page">↗</a> writes to one folder, <a href="../agentic-browser-isolation/index.html">Agentic Browser Isolation</a><a class="ext live" href="https://sgit.ai/demos/vaults/agentic-browser-isolation/index.html" title="live page">↗</a> declares <code>write: []</code>, and this one asks for nothing.</p>
+<p>app.json with an empty permissions object, the floor of the scale.</p>
+<h2 id="extraction-as-a-pattern">Extraction as a pattern</h2>
+<p>This vault began as a section of a larger one. Pulling it out gave it a smaller audience surface, a shorter history, its own release cadence and, decisively, <strong>its own permission posture</strong>: the parent could plausibly want a model; this one may never have one, and says so.</p>
+<p>That is worth naming as a technique. Vault boundaries are permission boundaries, so the question <em>&quot;should this be its own vault?&quot;</em> is usually the question <em>&quot;should this have a different key, a different audience, or a different set of capabilities?&quot;</em> Here the answer was all three, and the split made the public version safe to publish in a way the parent could not have been.</p>
+<h2 id="the-audit-honestly">The audit, honestly</h2>
+<p>Clean: <strong>zero</strong> hits across every text file, no credentials, no personal data, no operational bookkeeping, and the vault&#x27;s own key absent from its content. The tidiest audit of any vault published here, which is what you would expect of one built to be public.</p>
+<p><strong>It also caused us to re-audit ourselves.</strong> Its third rule, no metered capability behind a published read key, applies to <a href="../risk-mandate/index.html">Risk Mandate</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-mandate/index.html" title="live page">↗</a>, which does carry an LLM config. So we checked rather than assumed: taking the sealed credential from that vault and attempting to open it with the read key we published, AES-GCM refuses (<code>InvalidTag</code>). The seal is under a key a read-key holder does not hold, so publishing that read key did not expose anybody&#x27;s budget. Rule satisfied there by sealing; satisfied here, more conservatively, by absence.</p>
+<p>As always: revocation is not retroactive. Anyone who fetches these objects keeps them.</p>
+<h2 id="derived-facts">Derived facts</h2>
+<p>33 files · 428 KB · 7 commits · one app entry · last updated 2026-08-10, derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a>.</p>
+<hr>
+<p><em><a href="../../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html">https://sgit.ai/demos/vaults/risk-graph-explorer/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/demos/vaults/risk-graph-explorer/index.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:04Z</dd><dt>sha256</dt><dd><code title="e8d571d83bd7d9206df92a5aa3458fd251f63e420c4d9fdb6fd4acfc86559bcd">e8d571d83bd7</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/sgit.ai/demos/vaults/risk-graph-explorer/index.md</a> (7,446 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

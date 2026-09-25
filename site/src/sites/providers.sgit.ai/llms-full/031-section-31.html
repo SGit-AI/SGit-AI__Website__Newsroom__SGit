@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Section 31 (providers.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 31 of 33</p><nav class="pager"><span><a href="030-section-30.html">← Section 30</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="032-section-32.html">Section 32 →</a></span></nav><article class="source"><h2 id="what-each-site-owes">What each site owes</h2>
+<p>The short version — <a class="ext" href="https://providers.sgit.ai/contract/">the long version is the contract ↗</a>:</p>
+<ul><li><strong>Nine sections, in order</strong>, with cost and failures given the visual weight.</li><li><strong>No claim without a state</strong>, and the states joined to the pages at build time.</li><li><strong>Credential rules per product</strong>, never per vendor.</li><li><strong>Disclosure visible without scrolling</strong>, on every page, not only on its own page.</li><li><strong>A markdown twin at every path</strong>, so an agent never has to parse HTML.</li><li><strong>Cross-links that point at pages</strong>, never at domains — a domain link is a referral rather than a composition.</li></ul>
+<hr>
+<p>PAGE /versions/  —  Release history</p>
+<hr>
+<hr>
+<p>title: Release history
+description: &quot;Every release of this site, with what changed. The version is owned by admin/build/version.txt, must appear in the release commit&#x27;s subject, and CI verifies the two agree before it tags anything.&quot;
+lead: &quot;Every release of this hub, with what changed and when. The estate&#x27;s convention: <strong>one file owns the version</strong>, the release commit&#x27;s subject repeats it, and the pipeline refuses to tag anything if the two disagree.&quot;
+order: 95
+</p>
+<hr>
+<p>&lt;div class=&quot;tablewrap&quot;&gt;&lt;table class=&quot;vers&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;What changed&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</p>
+<p>&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.1.1&lt;/td&gt;&lt;td&gt;2026-09-08&lt;/td&gt;&lt;td&gt;Both canonical domains came up hours after v0.1.0 shipped, so where a provider site serves is now measured rather than assumed: bin/sync-providers.py probes each canonical host by fetching that site&#x27;s own published index from it, records the answer as live: and canonical_resolves: in data/providers.yml, and every family link the build emits — cards, comparison rows, prose — resolves through that value via a new <code>live:</code> shortcode, so no provider URL is typed anywhere. check_family_links_live now fails in both directions: a canonical link while a domain is dead, and a stale project-path link after it comes up. The claim that both domains were unconfigured is replaced by a dated claim that both now serve, sourced from the probe rather than from a report.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;vnum&quot;&gt;v0.1.0&lt;/td&gt;&lt;td&gt;2026-09-08&lt;/td&gt;&lt;td&gt;First release. The hub of the *.providers.sgit.ai family: the four credential patterns as canonical shared content with the capability-tier axis and their intersection; a comparison matrix synced from each provider site&#x27;s own published front-matter rather than kept here; the family index; the page contract every provider site obeys, including the per-product rule that has already caught somebody; the six claim states with a roll-up of the family&#x27;s actual mix; estate-wide disclosures; and the estate pipeline — validate → tag → deploy, a secret scan, relative URLs and a licence stamp, all enforced rather than promised.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</p></article><nav class="pager"><span><a href="030-section-30.html">← Section 30</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="032-section-32.html">Section 32 →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/llms-full.txt">https://providers.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:29Z</dd><dt>sha256</dt><dd><code title="a907cbfec00f159b1ac6b6b7cf7355f048fa985ca08f357a6540857c990026a6">a907cbfec00f</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/providers.sgit.ai/llms-full.txt</a> (35,144 bytes)</dd><dt>Section</dt><dd>31 of 33: Section 31</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>graphs.sgit.ai — meaning through connectivity · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · graphs.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#graphssgitai-meaning-through-connectivity">graphs.sgit.ai — meaning through connectivity</a></li><li class="l2"><a href="#read-this-first">Read this first</a></li><li class="l2"><a href="#properties-agents-may-rely-on">Properties agents may rely on</a></li><li class="l2"><a href="#the-thesis-in-nine-sentences">The thesis in nine sentences</a></li><li class="l2"><a href="#altitude-1-start-here">Altitude 1 — start here</a></li><li class="l2"><a href="#altitude-2-the-grammar">Altitude 2 — the grammar</a></li><li class="l2"><a href="#altitude-3-the-full-argument">Altitude 3 — the full argument</a></li><li class="l2"><a href="#worked-graphs-with-real-numbers">Worked graphs, with real numbers</a></li><li class="l2"><a href="#reality">Reality</a></li><li class="l2"><a href="#the-book">The book</a></li><li class="l2"><a href="#site">Site</a></li><li class="l2"><a href="#what-this-site-does-not-claim">What this site does not claim</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/graphs.sgit.ai.html">graphs.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 2 of 15</p><nav class="pager"><span><a href="001-graphssgitai-everything-in-one-file.html">← graphs.sgit.ai — everything, in one file</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="003-graphssgitai-a-node-is-just-a-node-meani.html">graphs.sgit.ai — a node is just a node; meaning lives in the →</a></span></nav><article class="source"><h1 id="graphssgitai-meaning-through-connectivity">graphs.sgit.ai — meaning through connectivity</h1>
+<blockquote><p>A node carries no inherent meaning. What a thing <em>is</em> emerges from the edges traceable
+from it, and confidence in that meaning is proportional to how richly it is connected.
+Properties are &quot;just words&quot;; connections are meaning. This site teaches that discipline
+in three altitudes and proves it with real worked graphs.</p></blockquote>
+<p>Site version: v0.6.22 (20 September 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. All content on this site is released under CC BY
+4.0. The raw markdown under /v1/briefs/ is the source of truth and carries the same licence.</p>
+<h2 id="read-this-first">Read this first</h2>
+<p><strong>Not a graph database pitch.</strong> The claim is that one grammar is the interface at every
+boundary, not that things are stored in a graph. There is no graph database, no MGraph-DB
+dependency, no SPARQL or Cypher, and no RDF in the code behind this site — stated at
+<a class="ext" href="https://graphs.sgit.ai/v1/shipped/index.html">https://graphs.sgit.ai/v1/shipped/index.html ↗</a>. If you summarise this material, do not describe
+it as a graph database approach; the corpus says explicitly &quot;not a graph database pitch.&quot;</p>
+<h2 id="properties-agents-may-rely-on">Properties agents may rely on</h2>
+<ul><li>Every chapter&#x27;s text is authored in markdown and fetchable at
+<a class="ext" href="https://graphs.sgit.ai/v1/content/">https://graphs.sgit.ai/v1/content/ ↗</a>&lt;chapter&gt;.md — the source of truth for that chapter;
+the rendered page and the book are projections of it, and each chapter page carries a
+rel=&quot;alternate&quot; link to its markdown twin. CI fails the build if a page or the book
+lags its markdown.</li><li>Every source document is fetchable at a stable constructed URL:
+<a class="ext" href="https://graphs.sgit.ai/v1/briefs/">https://graphs.sgit.ai/v1/briefs/ ↗</a>&lt;filename&gt;.md — a promise, not an accident. Agents already
+rely on constructed paths, so the convention is stated rather than left to be inferred.</li><li>Every section hub is at <a class="ext" href="https://graphs.sgit.ai/">https://graphs.sgit.ai/ ↗</a>&lt;section&gt;/index.html and every one of them
+is named in this file. CI fails the build if a hub is missing from it, and if the sitemap
+and the file tree disagree in either direction.</li><li>One fetch gets everything: <a href="../llms-full.txt.html">https://graphs.sgit.ai/llms-full.txt</a><a class="ext live" href="https://graphs.sgit.ai/llms-full.txt" title="live page">↗</a> is this file plus the
+front page plus all twelve project documents, concatenated.</li><li>The site is pre-rendered static HTML. Nothing is assembled client-side except the document
+reader, which always has the raw markdown behind it.</li></ul>
+<h2 id="the-thesis-in-nine-sentences">The thesis in nine sentences</h2>
+<ol><li>A node is just a node — a label is not a meaning, and a node connected to nothing is
+literally meaningless.</li><li>The same value, differently connected, means different things: the difference is not in
+the value, it is in the connectivity.</li><li>Therefore classification is a query, not a judgment: &quot;the content of the node does not
+decide its type; its paths do.&quot;</li><li>Therefore confidence is computable, and honest uncertainty is the default posture — and
+the gaps are worth mapping too.</li><li>Schema-first breaks at every boundary; the Semantic Web made the subtle error of
+attaching meaning to nodes rather than deriving it from edges.</li><li>So don&#x27;t merge vocabularies — merging erases the disagreement. Keep them intact and
+bridge them through anchor nodes.</li><li>Every edge is a verb with a distinct inverse; the generic association edge is banned
+because everything relates to everything; that asymmetry is what stops the graph
+exploding.</li><li>Never render the whole graph — render the result of a query; build wide, find the few,
+then flip.</li><li>And it is fractal: **the grammar survives every zoom and the ontology does not have
+to**. Zoom into any node and it expands into a semantic graph with its own types,
+verbs and taxonomy, chosen by whoever owns that altitude, still joined by a named edge
+to the level above. One validator, one query engine, one provenance rule, because all
+three check the grammar. A system whose types and verbs are identical all the way down
+is a hierarchy, not a fractal.</li></ol>
+<h2 id="altitude-1-start-here">Altitude 1 — start here</h2>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/v1/index.html">https://graphs.sgit.ai/v1/index.html ↗</a> — the first edition&#x27;s own front page, and the source
+the book&#x27;s Introduction is projected from. Frozen at v0.3.26 with the rest of /v1/.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/start/index.html">https://graphs.sgit.ai/v1/start/index.html ↗</a> — the five-minute version. Two Python variables
+both hold 8080; one reaches a type, a library and a pinned version, the other reaches
+nothing. <strong>The difference is not in the value, it is in the connectivity.</strong> Also: five
+teams who each call something a &quot;Review&quot;, where compatibility turns out to be non-binary,
+asymmetric and purpose-relative — nobody has to agree on anything for the overlap to be
+computable. The confidence ladder runs from no edges to rich multi-hop connectivity, and
+the remedy for low confidence is enrichment (add edges), never enforcement (add rules).</li><li><a class="ext" href="https://graphs.sgit.ai/v1/why-graphs/index.html">https://graphs.sgit.ai/v1/why-graphs/index.html ↗</a> — three different things people mean by
+&quot;graph&quot;: network analysis, fast joins, and semantics. <strong>This site is only the third.</strong>
+Carries the honest positioning on GraphRAG (&quot;knowledge is traversed, not guessed&quot; — but
+traversal needs edges to exist, and where the graph is thin, similarity search wins), on
+RDF (&quot;both, at different layers&quot; — the live regulation graph exports RDF/Turtle), on
+property graphs (properties may carry data, never meaning), and on hypergraphs (no
+position; the corpus does not contain the word).</li><li><a class="ext" href="https://graphs.sgit.ai/v1/glossary/index.html">https://graphs.sgit.ai/v1/glossary/index.html ↗</a> — every technical term with a plain-English
+alternative beside it. <strong>Concept vs term</strong>: the concept is the language-independent unit
+of meaning, the term is one language&#x27;s label — never store meaning in a term. **Taxonomy
+vs ontology**: a taxonomy points upward (broader/narrower), an ontology points outward
+(what types exist and how they may connect).</li></ul>
+<h2 id="altitude-2-the-grammar">Altitude 2 — the grammar</h2>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/v1/grammar/index.html">https://graphs.sgit.ai/v1/grammar/index.html ↗</a> — five rules. **Every edge is a verb with a
+distinct, meaningfully-named inverse**, and the inverse is not the same edge walked
+backwards: <code>owned_by</code> and <code>owns</code> have different fan-out, and that asymmetry guarantees
+monotonic progress toward a peak, which is what stops the graph exploding. **The generic
+association edge is banned** because it constrains nothing and costs fan-out. If a path
+does not read as a sentence in the reader&#x27;s own language, the edges are wrong. Rich nodes
+are good — the blob is a rendering failure, not a modelling one. **Never render the whole
+graph; render the result of a query.** Mermaid is unreadable past ~50 nodes; a rendered
+graph past ~300–400.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/grammar/edge-set.html">https://graphs.sgit.ai/v1/grammar/edge-set.html ↗</a> — the concrete vocabulary, and the page to
+paste into a session. Fifteen established edges: connected_to, observed_on, backed_by,
+measured_by, grants, reaches, enables, exposes, gives_rise_to, protected_by,
+conditional_on, defeated_by, owned_by, accepted_by, underwritten_by. **Nine of the
+inverse names are proposed by this site rather than quoted from the corpus, and are
+marked as such in the table** — the corpus glossary that would settle them does not
+exist. Rules for extending the set: a new edge needs a sentence, its inverse needs a
+different sentence, both need a stated domain and range.</li></ul>
+<h2 id="altitude-3-the-full-argument">Altitude 3 — the full argument</h2>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/v1/depth/index.html">https://graphs.sgit.ai/v1/depth/index.html ↗</a> — **&quot;They ended up attaching meaning to nodes
+rather than deriving meaning from edges… This is schema-first thinking dressed in graph
+syntax.&quot;** The disagreement with the Semantic Web is with a practice, not a goal, and it
+is narrow: not with RDF as serialisation, not with shared vocabularies as reference
+points. Also: don&#x27;t merge ontologies — three layers instead (shared facts owned by
+nobody / per-party formulas / declared bridges), because **parties can disagree about
+meaning while still agreeing about facts, which is the only stable basis for working
+together.** Node type formulas: `Vulnerability := a Fact that also has an upward
+gives_rise_to path to a Risk` — judgment does not disappear, it moves out of the
+classifier&#x27;s head into a formula that is visible, versioned and arguable. The grounding
+ladder (downward grounds, upward implies) is one formula among possible others, and says
+so. Supersede never delete, so a correction can be asked what was resting on it. Weight
+by independence, not by count.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/depth/boundaries.html">https://graphs.sgit.ai/v1/depth/boundaries.html ↗</a> — <strong>fractal is a testable claim</strong>. NOTE,
+added v0.6.21: this FROZEN first-edition page states the test as &quot;a new format or a
+special case&quot;, which reads as though the schema must not change. It must. The corrected
+statement is in the live second edition at
+<a class="ext" href="https://graphs.sgit.ai/v2/books/fsg/fractal-is-a-testable-claim.html">https://graphs.sgit.ai/v2/books/fsg/fractal-is-a-testable-claim.html ↗</a> — same types and
+verbs all the way down is a hierarchy; a different grammar falsifies the claim; a new
+ontology joined by a named edge is the claim working. The frozen page is evidence of what
+was believed in August 2026 and is not corrected in place, by design. At a boundary, emit a graph rather than JSON-plus-prose: determinism,
+explainability, provenance, sovereignty and auditability are **consequences of that one
+decision, not features**. The model proposes a graph; a deterministic validator executes
+it, so untrusted input is data and never instruction and **prompt injection fails at the
+validator, structurally** — a reduction, not an elimination. Documents, skills and
+standards are projections: don&#x27;t store a consolidated legal text, hold the base plus
+amendments and compute it — which makes consolidation and per-organisation customisation
+one mechanism rather than two. Twins are where the graph stops modelling; where it cannot
+reach, emit a <strong>named air gap</strong> with an owner and a frequency.</li></ul>
+<h2 id="worked-graphs-with-real-numbers">Worked graphs, with real numbers</h2>
+<ul><li><a href="../../sgit.ai/demos/fractal-graphs/index.html">https://sgit.ai/demos/fractal-graphs/index.md</a><a class="ext live" href="https://sgit.ai/demos/fractal-graphs/index.html" title="live page">↗</a> — **the fullest worked demonstration of
+this site&#x27;s thesis, and it is not on this site.** A sibling project walks ELEVEN
+altitudes across SEVEN published vaults, from the text of the EU AI Act down to a threat
+in one line of code on one compute instance: eleven ontologies, one grammar, every rung
+modelled by its own author in its own vocabulary and joined to the next by a named edge.
+Every vault is openable with the read key printed on its page. It is also the source of
+the fractal correction this site took at v0.6.21 (carried verbatim at
+<a class="ext" href="https://graphs.sgit.ai/v2/memos/47-sibling-brief-fractal-semantic-graphs.html">https://graphs.sgit.ai/v2/memos/47-sibling-brief-fractal-semantic-graphs.html ↗</a>). The
+markdown twin is the URL above; the page with the diagrams is
+<a href="../../sgit.ai/demos/fractal-graphs/index.html">https://sgit.ai/demos/fractal-graphs/</a><a class="ext live" href="https://sgit.ai/demos/fractal-graphs/" title="live page">↗</a>.</li></ul>
+<p>Three artefacts are live and public; every other number is parsed from a design document
+and is not deployed. The two are never mixed.</p>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/v1/examples/index.html">https://graphs.sgit.ai/v1/examples/index.html ↗</a> — ten worked applications. Live:
+the EU AI Act regulation graph (<strong>1,523 nodes · 1,944 edges</strong>, 11 views, RDF/Turtle
+export, every element hash-verified to source bytes), the Risk Graph Explorer (18 facts /
+37 risks / 14 provisions, <code>permissions: {}</code>), agentic browser isolation (17 entry points,
+7 stakeholder altitudes). Summarised here: AWS IAM <code>AuthorizationClosure</code> — &quot;the agentic
+union&quot;, and <strong>for an agent the closure is the rating floor, not the nominal grant</strong>;
+browser extensions, queryable in both directions; the customisation inversion — **nothing
+is relevant until your facts attach**; the Permissions Bill of Materials, because
+permissions gate exploitability.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/examples/browser-isolation.html">https://graphs.sgit.ai/v1/examples/browser-isolation.html ↗</a> — <strong>59 nodes, 75 edges.</strong> Should
+an agent browse in the user&#x27;s own post-MFA browser or an isolated one? Answered as a
+<strong>computed closure difference a buyer can check</strong>, not an adjective. Thirteen risks, and
+three of them are risks created by the mitigation itself — the structure produces that
+honesty rather than requiring it. Escalation is a property of the edges: a risk reaches
+the board because the path leads there and nobody below accepted it.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/examples/2fa.html">https://graphs.sgit.ai/v1/examples/2fa.html ↗</a> — <strong>51 nodes, 53 edges</strong> in one machine-readable
+file that declares its own modelling principles inside the data (&quot;meaning comes from
+connectivity, not properties&quot;; &quot;facts only in phase one&quot;; &quot;every edge is directed and has
+a named inverse&quot;; &quot;every change cascades to the register&quot;). <strong>There is no deny button</strong>:
+a risk is accepted for an interval — 1h / 4h / 2d / 2w / 1m / 6m — by a named person, and
+then returns. The file is not yet mirrored on this site.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/examples/article-26-5.html">https://graphs.sgit.ai/v1/examples/article-26-5.html ↗</a> — one EU AI Act provision carried from
+a running system to a board decision and back. **Nine question nodes, five unanswered —
+and the unanswered five are the actual output of the exercise.** A 2×2 whose bottom row
+is empty, because there is no mechanism by which a risk gets to be <em>not accepted</em>. And a
+finding that is arithmetic: 30 days retained against Article 26(6)&#x27;s six-month minimum.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/maps/index.html">https://graphs.sgit.ai/v1/maps/index.html ↗</a> — a graph says these things are connected; a map
+adds where they sit. **Wardley coordinates are [visibility, evolution] — the reverse of
+the usual convention — and a transposed map renders happily and says something entirely
+different.** Mermaid Wardley: added v11.14.0, production-stable v11.15.0, hand-drawn look
+unsupported; grep for <code>wardley-beta</code>, not for the fence tag.</li></ul>
+<h2 id="reality">Reality</h2>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/v1/shipped/index.html">https://graphs.sgit.ai/v1/shipped/index.html ↗</a> — **&quot;We ship a hand-written content-addressed
+object graph in the browser. We do not use a graph database, and we say so in our own
+architecture notes.&quot;** Ships and is code-verifiable: the vault commit DAG (object IDs are
+SHA-256 of the <strong>ciphertext</strong>, not the plaintext — a skill file in the source repo states
+otherwise and is wrong), multi-parent commits, a real wave-BFS merge-base, three-way
+merge, typed <code>*.link.json</code> cross-vault edges pinnable to a commit, a read-only DAG query
+API exposed to untrusted sandboxed apps, and a live typed property graph of **71 nodes /
+141 edges**. Absent: any graph database, browser SPARQL/Cypher, RDF in code, the
+path-query language, commit signing (written, only ever null).</li><li><a class="ext" href="https://graphs.sgit.ai/v1/origins/index.html">https://graphs.sgit.ai/v1/origins/index.html ↗</a> — ten phases, February to August 2026. The
+first graph thinking was cryptographic, not semantic: **&quot;revocation is the absence of
+trust, not the presence of a revocation entry&quot;** (21 February 2026). And the routing
+failure that produced this site: the philosophy documents are referenced by four files
+and are not referenced from the entry-point file every agent reads, so an agent working
+forwards never meets them. Paths not taken are recorded too.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/network/index.html">https://graphs.sgit.ai/v1/network/index.html ↗</a> — **&quot;A public key in isolation does not give
+you anything; it is the graph it is connected to.&quot;** And the reciprocal, which is the
+most interesting claim here: the semantic web&#x27;s verification gap means **graphs need
+identities too** — an edge is an assertion by somebody. Bridges to pki.sgit.ai,
+nhi.sgit.ai, sg-sentinel.sgit.ai and sgit.ai.</li></ul>
+<h2 id="the-book">The book</h2>
+<p>The whole site is also readable as a book — Meaning Through Connectivity, an
+introduction and sixteen chapters in six parts, **generated from the site&#x27;s own
+pages** so the two cannot drift
+(CI fails the build if a source page changes without the book regenerating).</p>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/v2/vaults/index.html">https://graphs.sgit.ai/v2/vaults/index.html ↗</a> — <strong>the evidence estate, second edition</strong>:
+four published graph vaults the frozen first edition never analysed, being the rungs of
+the eleven-altitude ladder at <a href="../../sgit.ai/demos/fractal-graphs/index.html">https://sgit.ai/demos/fractal-graphs/</a><a class="ext live" href="https://sgit.ai/demos/fractal-graphs/" title="live page">↗</a> that this site had
+not looked at. Standards Atlas: GDPR (<code>4zv4bvmu</code>), Provenance is not conformance
+(<code>2wzct4k7</code>), Licence to Operate (<code>posrhzp3</code>), Scaling Threat Modeling with Semantic
+Knowledge Graphs (<code>0ict6flm</code>). <strong>READ THIS BEFORE QUOTING A NUMBER FROM THESE PAGES</strong>:
+unlike the five in /v1/vaults/, these were NOT written by opening the vaults. This
+estate cannot decrypt one. Every fact is quoted from the page sgit.ai publishes about
+that vault; all five source pages are carried whole under
+<a class="ext" href="https://graphs.sgit.ai/v2/vaults/sources/">https://graphs.sgit.ai/v2/vaults/sources/ ↗</a> with SHA-256 and fetch timestamp, and the
+build fails if a quotation is not in its carried file byte for byte. Machine surface:
+/v2/vaults/data/vaults.json (schema <code>evidence-estate-v1</code>), where every fact carries its
+quotation and the file it was checked against. Second cross-vault finding here: AIUC-1
+publishes 1,126 crosswalks as text, 62 resolve into the regulation graph&#x27;s node ids onto
+27 articles, and 8 of those 27 are amended by Regulation (EU) 2026/1744 — a fact in
+neither vault, produced by the join.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/vaults/index.html">https://graphs.sgit.ai/v1/vaults/index.html ↗</a> — in-depth analysis of the graph vaults
+published read-only on sgit.ai, one folder and several pages each. **This is the
+evidence estate, not the book**: the pages are longer than a chapter allows and each
+closes with an explicit &quot;what the book will cite from this&quot; block. Published so far:
+<strong>VoiceDebrief</strong> (92 files, 18 commits; the junction rule — two paragraphs each lifted
+into typed nodes and joined node-to-node through an intermediate layer, never
+document-to-document; and an annotation layer deliberately left empty because no
+duty-holder appears in the text) and the <strong>Regulation Graph</strong> (1,523 nodes, 1,944
+edges; the EU AI Act parsed from official Formex XML with the SHA-256 of retrieved
+bytes at the end of every provenance chain; SQLite over WebAssembly and rdflib with
+Turtle export, both client-side and ephemeral). Added in v0.3.22, the risk-related
+vaults: <strong>Risk Mandate</strong> (124 files, 98 commits, 8 entry points — a mandate written as
+a graph rather than a document), <strong>Agentic Browser Isolation</strong> (104 files, 17 entry
+points, ~70 JSON files, the same risk read at 7 stakeholder altitudes, plus the risk
+acceptance mechanism this site&#x27;s decisions page reuses) and the <strong>Risk Graph Explorer</strong>
+(33 files, <code>permissions: {}</code> — a vault that is allowed to do nothing at all). The first
+cross-vault finding is at <a class="ext" href="https://graphs.sgit.ai/v1/vaults/capability-scale.html">https://graphs.sgit.ai/v1/vaults/capability-scale.html ↗</a>: five
+permission blocks side by side make a scale with a floor (<code>permissions: {}</code>), a hard
+middle (read one folder, write one folder) and a ceiling (a model call whose key is
+sealed into the vault rather than held by the reader). Four rows come from vaults
+analysed here; the fifth is marked as quoted, and the Regulation Graph is deliberately
+absent because its permission block was never read.
+Screenshots are the vaults&#x27; own
+published figures, re-published under CC BY 4.0; counts are the vaults&#x27; derived facts,
+quoted rather than recounted. VoiceDebrief&#x27;s parts 1 to 3 run on an explicitly
+fictional corpus — carry that label if you cite it.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/reviews/index.html">https://graphs.sgit.ai/v1/reviews/index.html ↗</a> — the reviews of the book, run as a
+workflow: feedback in any form is normalised into numbered items, the agent comments
+and proposes before changing anything, agreed items land per release, and each
+review is kept as JSON at /v1/reviews/rNNN.json — a pull request with no server.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/reviews/r001.html">https://graphs.sgit.ai/v1/reviews/r001.html ↗</a> — review r001, the founder&#x27;s first reading:
+nine items including the retitle to Fractal Semantic Graphs, the lineage homage,
+the no-live-databases correction, screenshots, the vaults chapter and new case
+studies. State: commented; nothing changed yet.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/reviews/r002.html">https://graphs.sgit.ai/v1/reviews/r002.html ↗</a> — review r002, a book for humans and
+agents: the dual-audience identity, agent notes as briefings on the deviation from
+standard usage, the book as a graph with an evidence layer (the 10,000-hours story
+is currently unsourced and the register starts there), verification by agent as a
+designed use, the agent toolbox, footnotes for print. State: commented.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/reviews/r003.html">https://graphs.sgit.ai/v1/reviews/r003.html ↗</a> — review r003, the architectural turn:
+decouple the book from the website (site as research estate, book as the distilled
+best-of with provenance edges to site pages, versions and commits; the build gate
+flips from equality to provenance), a vault case-study programme before the next
+book version, and every review now opens with a machine-readable decisions
+register (top-level <code>decisions</code> in the JSON). State: commented; three decisions open.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/docs/index.html">https://graphs.sgit.ai/v1/docs/index.html ↗</a> — the sources: the twenty-one documents this
+book was built from, carried byte-for-byte from the-cyber-boardroom/SGraph-AI__App__Send
+(public, Apache-2.0) at commit b561fa6b14, with each file&#x27;s SHA-256 recorded and the
+build failing if a carried copy no longer matches its hash. 63,038 words. Each page
+gives the document an intro, a summary, a note on what is worth re-reading, a graph of
+where it lands on this site, and an in-page reader over the carried markdown at
+/v1/docs/sources/&lt;slug&gt;.md — which is the source of truth, not the rendered page.
+Three kinds of link, kept apart on purpose: the documents are <strong>carried</strong>, the concept
+links are <strong>measured</strong> (each of the concept map&#x27;s 24 concepts has a declared phrase
+list, published on the page, counted mechanically), and the site links are <strong>authored</strong>
+(which chapter, layer, vault or page rests on it, with a note saying what for).
+Influence = concepts + 2 × places + 3 × review asks resolved, computed every build;
+it measures load on this site, not quality, and the page says so. Top three:
+Thinking in Graphs (25), Every Paragraph Is A Graph (22), then Fractal Semantic Graphs
+All The Way Down and the Issues-FS Lexicon tied (20).
+Two computed properties worth knowing before quoting the set. <strong>Concentration</strong> is the
+share of a concept&#x27;s mentions sitting in its top three documents: the corpus genuinely
+distributes only two concepts (chain of custody 0.50 across 20 of 21 documents, and
+one grammar at every altitude 0.53 across 13), while everything else sits above 0.7 and
+is carried by one or two documents that the rest allude to. And a claim that broke:
+at fifteen documents, chain of custody was measured in every one; at twenty-one it is
+twenty, the exception being Compatibility Through Connectivity, one of the three
+February documents written before the provenance vocabulary hardened.
+Three documents (Thinking in Graphs, Compatibility Through Connectivity, the Issues-FS
+Lexicon) originate in owasp-sbot/Issues-FS__Docs and were imported on 11 June 2026;
+all three are byte-identical across the two public repositories, and those same three
+are the only ones with no per-file CC BY line, because the licence audit stamped the
+Send tree rather than the references imported into it.
+Machine-readable register: /v1/docs/data/docs.json.</li><li><a class="ext" href="https://graphs.sgit.ai/decisions/index.html">https://graphs.sgit.ai/decisions/index.html ↗</a> — the decisions: every question the four
+reviews raised that only the founder can answer, drawn as the peak of its own graph.
+Generated by admin/build/gen_decisions.py from the <code>decisions</code> array of each review
+file, so it cannot drift from the reviews; what is authored on top is, per open
+decision, what each answer does and <strong>what it costs</strong>. Fourteen decisions, ten open.
+The mechanism is borrowed from the Agentic Browser Isolation vault: one named owner,
+no deny button (answer, defer with a reason, or say what data would make it
+answerable), nothing moves until it is taken personally, and the reason travels with
+the answer. Answers are held in the reader&#x27;s own browser (localStorage) and copied
+back as plain text — this site has no server and collects nothing.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/altitudes/index.html">https://graphs.sgit.ai/v1/altitudes/index.html ↗</a> — the altitude ladder: this book at five
+levels, where each level is a compression of the level below it and every highlighted
+phrase descends into the units it compressed. Levels 1 to 3 are complete (135 words,
+406 words, 1,333 words); level 4 covers two chapters in 546; level 5 is the book itself.
+Every node keeps the graph (claims with an evidence state of evidenced, argued or
+unevidenced) apart from the projection (the text). **If you are asked to summarise this
+book, read the level that matches the question instead of compressing the full text
+yourself.** Every level also carries its own <code>ontology</code> (node types, plus edge types with
+verb, inverse, domain and range) and its own <code>taxonomy</code> (broader/narrower classes with
+members) — **they differ level to level, so a class name does not mean the same thing two
+levels up.** The climb produced seven findings, including one contradiction the full text
+keeps forty pages apart: /v1/altitudes/data/altitudes.json is the machine-readable ladder.
+The same data drawn as one graph is at <a class="ext" href="https://graphs.sgit.ai/v1/altitudes/graph.html">https://graphs.sgit.ai/v1/altitudes/graph.html ↗</a>, where
+the non-tree structure is the point: <code>cites</code>, 42 chapter-to-chapter references **measured
+from the book&#x27;s own markdown<strong>, and findings **reified as nodes</strong> with <code>flags</code> /
+<code>flagged_by</code> edges rather than symmetric edges, because this project&#x27;s grammar bans
+self-inverse edges. If you redraw this graph, keep that shape.
+The <strong>concept layer</strong> is at <a class="ext" href="https://graphs.sgit.ai/v1/altitudes/concepts.html">https://graphs.sgit.ai/v1/altitudes/concepts.html ↗</a> — a dictionary
+crossed with a thesaurus over the book&#x27;s 24 concepts, each with a definition, what it is
+also called, <strong>what it is near but importantly not</strong>, typed edges to other concepts (every
+verb with a distinct inverse, both written into the data), the altitude units that carry
+it, and any published artefact that demonstrates it. <code>peaks</code> names the five strongest by a
+stated formula; <code>inventory</code> reduces the book to counted facts, assertions and opinions.
+<strong>Do not add a symmetric &quot;related&quot; edge if you extend it</strong> — this project&#x27;s grammar bans
+the generic association edge, and a concept map is exactly where that temptation appears.
+The graph page also runs a <strong>path-pattern query</strong> over that graph (start filter plus up to
+three edge-and-node steps; matches read as sentences, using each edge&#x27;s inverse where the
+route walks it backwards). <strong>Read the honesty note beside it before citing this</strong>: chapter
+12 lists &quot;the path-query language&quot; under what does not exist, and that remains true of the
+corpus&#x27;s seventeen queries over the semantic graph — what runs here is a generic matcher
+over the book&#x27;s own ladder and concept graph, which is a demonstrator, not that language.
+Findings carry a <code>state</code> of open or accepted, and an accepted one records <strong>why</strong>: a
+contradiction is not automatically a defect, and some are correct in context. Five
+deterministic <code>checks</code> run every build, each stating its rule, so a tension is a
+measurement rather than an opinion.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/book/changes.html">https://graphs.sgit.ai/v1/book/changes.html ↗</a> — what changed between any two versions of
+the book, GitHub-style, in the browser. Machine-readable snapshots (one frozen JSON
+per release, extracted from the release tags) at /v1/book/changes/data/index.json.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/book/index.html">https://graphs.sgit.ai/v1/book/index.html ↗</a> — cover, about-this-book, and the table of
+contents. The reading order: the claim, the grammar, the full argument, the worked
+proof, reality, appendices.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/book/single.html">https://graphs.sgit.ai/v1/book/single.html ↗</a> — **the introduction and all sixteen
+chapters in one HTML page.**
+For an agent this is the one-fetch version of the site&#x27;s rendered prose, the way
+/llms-full.txt is the one-fetch version of the source documents.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/book/meaning-through-connectivity-screen.pdf">https://graphs.sgit.ai/v1/book/meaning-through-connectivity-screen.pdf ↗</a> — the screen
+PDF: the single page printed at US Letter in the site&#x27;s own design, made for tablet
+reading. Both PDF editions regenerate together from the same chapters on every
+release and carry the site version on their cover; the build fails if either lags.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/book/meaning-through-connectivity.pdf">https://graphs.sgit.ai/v1/book/meaning-through-connectivity.pdf ↗</a> — the print-edition
+PDF: <strong>a 6&quot;x9&quot; print interior in the standard technical-book format</strong> —
+mirrored gutter margins, folios bottom-outside, running heads, a paginated contents
+computed by the typesetter, justified and hyphenated, monochrome, no bleed, fonts
+embedded. Ready for print-on-demand (KDP), cover included: the front cover is an SVG
+at /v1/book/cover/front.svg — a true subgraph in the book&#x27;s own edge vocabulary, every
+arrow reading as its sentence, one ghosted edge for the unanswered — and the full
+print wrap (back + spine + front, spine width computed from the interior&#x27;s page
+count) is at /v1/book/cover/meaning-through-connectivity-cover.pdf. The build fails if
+the interior&#x27;s page count changes without the spine recomputing. A Kindle edition is
+deliberately deferred: a fixed-layout
+PDF is the wrong upload for Kindle — the right artefact is a reflowable EPUB.</li></ul>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/site/index.html">https://graphs.sgit.ai/site/index.html ↗</a> — **everything on this site, listed and indexed in one
+page**: the shelf (all three books with their own versions), the sequence of events across
+three eras, what every section is and which edition it belongs to, and a complete index of the
+frozen first edition generated from the file tree. This WAS the front page until v0.6.20, moved
+whole rather than trimmed; the front page at / is now a door that defines the phrase the site is
+found by and demonstrates it. If you want the estate rather than the argument, start here.</li><li><a class="ext" href="https://graphs.sgit.ai/home/data/home.json">https://graphs.sgit.ai/home/data/home.json ↗</a> — the front page&#x27;s own data, schema
+<code>home-front-v1</code>: the definition of &quot;fractal semantic graphs&quot; with the document, section and
+byte-verified quote it comes from; the worked example the page demonstrates, every sentence
+carrying the quotation it was taken from; the zoom ladder with the real per-level counts; and
+the site inventory. Generated by admin/build/gen_home.py, which fails the build if any quote
+has drifted from its source.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/index.html">https://graphs.sgit.ai/v2/index.html ↗</a> — the second edition&#x27;s front page and tree. **Everything
+about making the second edition lives under /v2/**: the dev pack, the founder&#x27;s memos (raw at
+/v2/briefs/), the review packs, and, as they arrive, the project management, the universe and
+the book&#x27;s own graph. The second edition of the first book is still unwritten; the BOOKSHELF at
+/v2/books/ now holds ALL THREE commissioned books, finished (the three entries below). The rule:
+each edition owns everything it uses; anything outside /v1/ and /v2/ is site chrome and is not
+part of any edition.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/books/fsg/index.html">https://graphs.sgit.ai/v2/books/fsg/index.html ↗</a> — **Fractal Semantic Graphs: Meaning Through
+Connectivity**, book B of the three-book commission: the argument whole, from first principles
+AND from the running system. Fifteen chapters in five parts plus front matter, a colophon and a
+reference card; 38,000 words; one 119-page PDF at /v2/books/fsg/fsg.pdf that reads start to
+finish offline with no link followed. **The markdown under /v2/books/fsg/content/ is the source
+of truth** and carries CC BY 4.0; every chapter page renders its own file client-side, so a page
+cannot describe a chapter it did not render. Machine surface: /v2/books/fsg/book.json (every
+chapter with its part, word count and the SHA-256 of its markdown). The honesty positions travel
+with it: NOT A GRAPH DATABASE PITCH; the semantic layer is designed, not shipped; proposed
+inverse edge names are marked as proposals. The chapter that separates what runs from what is
+argued is /v2/books/fsg/what-ships-what-is-argued.html, and the block written to be pasted into
+an agent session is /v2/books/fsg/reference-card.html. Book A (the universe atlas) and book C
+(the making-of) are the two entries below; all three are now written.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/books/fsg-universe/index.html">https://graphs.sgit.ai/v2/books/fsg-universe/index.html ↗</a> — **the Universe volume of
+<em>Fractal Semantic Graphs: Meaning Through Connectivity**</em>, the companion to the book above:
+read it for this estate&#x27;s CONCEPTS rather than its argument. An ATLAS: 90 concepts in 8
+regions of one graph, joined by 168 verb-named edges, drawn from 63 declared sources across
+both editions, the 21 carried documents, the 19 founder memos, the registers, the WCLM and
+two fetched sgit.ai indexes. Every entry carries a VERBATIM QUOTE with its source and
+section, and a build gate re-reads all 165 quotes out of the sources they name. **Edges
+declare how they were made**: 17 anchored in a quote the corpus states, 151 authored by the
+writing session with their reasoning carried instead — do not treat the authored ones as
+corpus positions. Two chapters carry findings rather than exposition: the peaks computed
+from the graph (with the caveat that degree measures the volume&#x27;s reading, not the corpus),
+6 contradictions in the corpus with both sides quoted, and 9 named absences, of which the
+largest is TIME, asserted everywhere and developed nowhere. Machine surface:
+/v2/books/fsg-universe/data/universe.json, in the pilot extraction&#x27;s shape (nodes with
+statements and anchors, verb-named edges, aliases, near-but-nots, contradictions, gaps).
+Print: /v2/books/fsg-universe/fsg-universe.pdf, 91 pages, self-contained. Written by an AI
+system and disclosed as such in its front matter.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/books/making-a-book/index.html">https://graphs.sgit.ai/v2/books/making-a-book/index.html ↗</a> — **Creating a Book Using Fractal
+Semantic Graphs**, book C of the three-book commission, and the only one about the MAKING
+rather than the material. The true story of how the second edition has been built, written
+for AUTHORS with an agent at hand rather than for graph specialists: the loop (voice memo,
+verbatim brief, build, release, live review, median 31 minutes between releases), briefs as
+the contract, why gates buy speed, two agents sharing one repository, nine failures with the
+cost attached, and a playbook that stands alone. Twelve chapters, three appendices and a
+colophon; 31,000 words; one 92-page PDF at /v2/books/making-a-book/making-a-book.pdf that
+reads start to finish offline. **The markdown under /v2/books/making-a-book/content/ is the
+source of truth** and carries CC BY 4.0; every chapter page renders its own file
+client-side. What makes it checkable: the 20 figures were each RE-TAKEN from the git tag
+their caption names (a worktree per tag, served and photographed), and every number was
+computed from git history rather than recalled — Appendix C carries the harness and the
+commands, Appendix B lists all 88 releases with timestamps, and Appendix A annotates one
+complete founder brief segment by segment. It covers v0.1.0 (21 August 2026) to v0.5.11 (26
+August 2026) and stops there, because that is where the repository was when it was
+commissioned. Honesty positions travel with it: NOT A GRAPH DATABASE PITCH; the six days it
+describes produced the machine for writing the second book and none of its chapters, which
+chapter 12 states as the method&#x27;s largest cost. Written by an AI agent on the repository it
+describes, disclosed in its front matter and colophon.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/universe/index.html">https://graphs.sgit.ai/v2/universe/index.html ↗</a> — layer 1 of the second edition&#x27;s universe,
+built BOTTOM UP: one local graph per carried source document. Each document keeps its own
+vocabulary: its dictionary (terms in the document&#x27;s own words, with used-but-undefined terms
+recorded as named absences), its claims each carrying how the document supports them
+(demonstrated, argued, declared), its hypotheses, objectives, worked demonstrations and
+asserted relations. **Every node is anchored to a verbatim quote at recorded byte offsets in
+the frozen source, and the build fails if any quote is not found at those bytes** — the
+sources are byte-frozen under /v1/, so anchors are stable forever and extraction cannot cite
+words that are not there. A layer 1 node means only &quot;this document says this, here&quot;; whether
+it is true is judged at layer 3, the book&#x27;s universe, which connects to these nodes rather
+than absorbing them. Machine surface: /v2/universe/data/universe.json (nodes, edges, offsets,
+hashes). Each document also ships as a printable PDF for review with nothing else open; the web page carries an interactive reader (side panel: the local graph and the rendered frozen source, highlights driven by the gate-verified byte offsets, three-way jumps between tables, graph and source).</li><li><a class="ext" href="https://graphs.sgit.ai/v2/books/index.html">https://graphs.sgit.ai/v2/books/index.html ↗</a> — the books this estate has produced, each
+versioned on its own content rather than on the site&#x27;s releases: *Fractal Semantic
+Graphs: Meaning Through Connectivity* (v0.2.0), *Creating a Book Using Fractal Semantic
+Graphs* (v0.1.0) and the Universe volume (v0.1.0, held). Markdown is the source of truth
+in every case, the web edition renders it, and one print PDF carries each book offline.
+v1.0.0 is reserved for a book&#x27;s actual final release, so a lower number states honestly
+that the book is still under review. Machine surface: /v2/books/&lt;slug&gt;/book.json — the
+version, the chapter list and the SHA-256 of every chapter markdown.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/team/index.html">https://graphs.sgit.ai/v2/team/index.html ↗</a> — the agentic team (brief 40): seven roles,
+one folder each, defined so that personas can be spun up in parallel and kept isolated.
+Each role folder holds role.md (its centre of gravity, what it owns, what it refuses,
+and how to tell when it is wrong), actions/ (one file per thing it can be asked to do,
+each naming its inputs, output and done test), and briefs/ and debriefs/ as its work
+environment. The roles are librarian, researcher, writer, editor, developer, QA and
+publisher. Every one is customised to THIS estate rather than generic: the developer is
+a developer for this bundler-less stack and this CI pipeline, the researcher researches
+a closed local corpus and refuses to answer from anywhere else. The stated purpose is
+judgement rather than throughput — agents with declared centres of gravity disagree in
+useful ways, and a decision made against disagreement is worth more than one made
+against silence. If you are an agent taking one of these roles, read that role&#x27;s
+role.md; it is the definition, and this page is only presentation.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/wclm/index.html">https://graphs.sgit.ai/v2/wclm/index.html ↗</a> — the WCLM (words content language model), an
+experiment: a deterministic transformer over the site&#x27;s own graphs. Tokens are content
+hashes (FNV-1a 64), six named layers (tokenise, resolve, attend, bind, expand, converge)
+are pure functions, every weight is a stated formula in the world file, and the query is
+&quot;what does this mean&quot; answered with provenance and blast radius instead of probability.
+Machine surface: /v2/wclm/data/world.json (the compiled world: token table, co-occurrence,
+concepts, meaning packs, the weight formulas); /v2/wclm/packs/ holds the authored meaning
+packs. Training this model is editing those graph inputs, never fitting numbers.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/wclm/operators/index.html">https://graphs.sgit.ai/v2/wclm/operators/index.html ↗</a> — the operators: each of the WCLM&#x27;s
+twelve engines as a first-class folder (/v2/wclm/operators/&lt;key&gt;/) holding the code the
+engine actually imports, its typed schema (schema.json, derived from the code), its
+official data with provenance (data.json: standard across documents, authored for review,
+or derived by another transformation), its documentation (md), its deterministic example
+vectors (examples.json, replayed as tests), and a workbench page to execute, test, debug
+and visualise input, transformation and output. Machine surface: /v2/wclm/operators/manifest.json.
+Each document lives in a STANDALONE FOLDER (/v2/universe/docs/&lt;slug&gt;/) holding a
+build-verified byte copy of the frozen source, the extraction, and crossrefs.json: the ledger
+of where the document is used across the estate, each use rated against the usage maturity
+model (/v2/universe/usage-model.json: aligned, stretched, misaligned, unrated; the rating
+judges the use, never the user). The folder is portable between repositories and browsable at
+its own index.html. The reader&#x27;s data mode shows the raw extraction JSON item by item, synced
+with the same selection as the source view. Pilot extracted: Thinking in Graphs, 57 nodes and
+8 known uses, one of them the model&#x27;s first real catch (the first edition&#x27;s fractal
+definition, rated stretched, corrected at v0.4.6). The bridge layer (cross-document edges,
+authored) and layer 3 are not started.
+<strong>Every universe document page is agent-drivable</strong>: the reader publishes its commands as a
+JavaScript API on window.__tool (the family&#x27;s Tool API Primitive) in three levels — read (the
+extraction, anchors, the frozen bytes), view (selection, preset views, node-pack sources, the
+explore stepper, layouts, highlights), author (scratch elements and session drafts; nothing
+anchored is ever written). The browser console, Playwright and LLM agents are equal consumers;
+every invocation is logged. 44 commands, including compose_node_doc (the full record of one
+node), rank_nodes, search, graph_snapshot (the canvas as a PNG — the chat attaches it so the
+model sees the layout it made), pin_nodes (arbitrary left/right stacks), get_recent_activity
+(the interaction ledger behind &quot;this/here&quot;), scroll_to_heading, step_anchor (the audit walk),
+price_next_hop, get_lexicon and get_usage_model. Spec: /v2/universe/skills/SKILL-api.md;
+console and Playwright guide: /v2/universe/skills/SKILL-browser.md. The same pages carry an on-demand CHAT PANEL
+(&quot;talk to this graph&quot;) built from the family&#x27;s published LLM components at tools.sgraph.ai:
+the OpenRouter workflow (the user&#x27;s own key, kept in the browser&#x27;s localStorage only, never
+sent to any sgraph.ai host; default model anthropic/claude-sonnet-5), clipboard screenshot
+paste, and the model&#x27;s tool calls executed against the page API at user-controlled levels.
+The chat can PERSIST TO AN SG/SEND VAULT the user holds the key to: each conversation
+becomes a folder of files (/universe-chat/&lt;doc&gt;/&lt;session&gt;/ — session.json, messages.json,
+drafts.json, trace.txt, documents/), encrypted in the browser before upload, autosaved,
+restorable, and readable by any key-holding agent — the model&#x27;s save_to_vault tool writes
+its own documents there. VOICE NOTES: a mic button records, converts to WAV in-browser,
+transcribes with the user&#x27;s key (google/gemini-3.5-flash) and sends the transcript; the WAV
+is kept under the session&#x27;s voice-notes/. INFOGRAPHICS: the model&#x27;s generate_infographic
+tool renders an image (google/gemini-3.1-flash-image-preview, image modalities) into the
+transcript and saves the PNG under images/. PERSONAS: reading angles stored in the vault at
+/personas/&lt;slug&gt;/persona.json — authorable by any key holder, five built-ins seeded — the
+active persona reshapes every answer, and the model&#x27;s save_view + record_feedback tools file
+persona-targeted views of the document and the user&#x27;s reactions beside them
+(/personas/&lt;p&gt;/views/&lt;doc&gt;/, &lt;view&gt;.feedback.json): the feedback ledger personalised
+documents grow from. Plan and contract: /v2/dev-packs/v0.4.13__universe-chat/00__plan.md.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/lexicon/index.html">https://graphs.sgit.ai/v2/lexicon/index.html ↗</a> — the book&#x27;s lexicon, held the way the book says
+vocabulary should be held: MULTIPLE LEXICONS AT DIFFERENT ALTITUDES, a well-connected root
+scope any other scope may link to, and local override without asking the centre (the corrected
+meaning of fractal semantic graphs, demonstrated on the book&#x27;s own terms). The root scope
+carries 27 terms: 24 copied from the first edition&#x27;s concept layer with a provenance block,
+3 authored at v2, and one already OVERRIDDEN with its authority recorded and the superseded
+definition kept visible (the term &quot;fractal&quot;, corrected by brief 20). One source scope per
+extracted document maps the document&#x27;s terms onto the book&#x27;s (same-concept or grounds); an
+unmapped term is published as a finding, and the build fails on a term neither mapped nor
+noted. Machine surface: /v2/lexicon/data/lexicon.json. Resolution rule: a term at a scope
+means that scope&#x27;s definition if present, else the parent&#x27;s.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/methods/index.html">https://graphs.sgit.ai/v2/methods/index.html ↗</a> — the register of graph techniques and workflows
+this project has invented or adopted while building the book: 20 entries, each with what it
+is, the release it first shipped in, the files that implement it (checked by the build for
+entries still in use), and what it demonstrates for the second edition. Part of what the book
+talks about is how it was made; the method chapter is written from this register. Superseded
+techniques stay listed with their supersession recorded. Machine surface:
+/v2/methods/data/methods.json.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/artefacts/index.html">https://graphs.sgit.ai/v2/artefacts/index.html ↗</a> — the catalogue of point-in-time artefacts,
+preserved BYTE FOR BYTE: pages and PDFs that captured a particular moment with a particular
+set of sources and thinking, pulled from the release tag that built them, every file&#x27;s
+SHA-256 recorded, and the build fails if any catalogued byte changes. First entry: the first
+review pack as built at v0.4.3, with the era&#x27;s stylesheets alongside so it still renders as
+it did. Treat an artefact as what the site said at that moment, never as current state.
+Machine surface: /v2/artefacts/data/catalog.json.</li><li><a class="ext" href="https://graphs.sgit.ai/book/index.html">https://graphs.sgit.ai/book/index.html ↗</a> — a pointer, not a shelf: this address always points at
+the <strong>current edition</strong>, which is the second. The finished first edition is at /v1/book/.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/packs/index.html">https://graphs.sgit.ai/v2/packs/index.html ↗</a> — the review packs: generated documents for
+reviewers and editors, human or agent. **One continuous HTML page each, and a PDF printed
+from the same source.** A website cannot control what a reviewer reads or in what order,
+which is what hyperlinks are for and the wrong property when a specific thing needs
+reviewing; a pack controls the sequence, reads end to end with <strong>no link followed</strong>, and
+because a PDF is not modifiable it survives as a record better than a page. **Packs are
+not the book** and say so on every cover. Each declares which of five jobs it serves
+(decide, understand the concepts, follow the narrative, see the evidence, get guidance),
+who it addresses, when it is built, and what it asks the reviewer to come back with.
+Every pack stamps the SHA-256 of each data file it drew from, and **the build fails if
+those hashes no longer match**, so a pack never describes a build other than the one it
+names. Machine-readable index: /v2/packs/packs.json. Design: /v2/briefs/21__founder-memo__review-packs.md
+If you are reviewing: read the pack and nothing else. A review that ranges across the site
+is answering a different question from the one the pack asked.</li><li><a class="ext" href="https://graphs.sgit.ai/v2/memos/index.html">https://graphs.sgit.ai/v2/memos/index.html ↗</a> — the founder&#x27;s voice memos written after the first
+edition froze, verbatim, each followed by the instructions extracted from it and what each one
+commits the work to. The block quote is the founder; everything after it is the agent&#x27;s reading
+and is marked as such. Numbering continues from the frozen brief pack at /v1/briefs/ (00 to 19)
+because the corpus is one sequence even though the editions are not.
+Brief 20 (23 August) reshapes the dev pack: it caught the pack defining answers before the
+questions were known, inverted the construction order so the **universe of concepts, claims and
+evidence is built before any altitude is decided**, corrected what <em>fractal semantic graphs</em>
+means (semantic graphs nested fractally with local override, not one grammar everywhere), and
+reversed the verdict on Wardley maps (a map is a graph that has gained position, movement and
+time). Raw markdown: /v2/briefs/20__founder-memo__the-universe-first.md</li><li><a class="ext" href="https://graphs.sgit.ai/v2/dev-pack/index.html">https://graphs.sgit.ai/v2/dev-pack/index.html ↗</a> — the dev pack for the second book, written
+23 August 2026 after two founder memos cancelled the planned refactor. **Status: PROPOSED.
+Nothing in it is implemented.** Ten markdown files under /v2/dev-packs/v0.3.27__the-second-book/,
+which are the source of truth; each page renders one client-side and cannot drift from it.
+The plan is to write the book again from the top down as a graph: five source trees at five
+altitudes, each a complete book at its altitude, each declaring what it compresses. Three
+governing rules: the graph comes before the prose at every altitude; the first edition is
+frozen at v0.3.26 and copied from, never edited; every claim the book makes about itself is
+computed on every build. The sharpest architectural decision is ADR-4: **themes are computed,
+not declared** — a theme is where at least three independent evidence paths converge, and a
+statement that fails the check is demoted or labelled an opinion rather than asserted.
+Seven phases (freeze, plumbing, spine, L1+L2, L3, L4, L5), each ending at a gate; twenty
+gates in total, seven of them new. The open questions are the founder&#x27;s and are listed in
+file 09 (question 2, where the second edition lives, was answered on 23 August: /v2/), along with what the rewrite does to each of the ten open decisions: four dissolved
+or answered, two made urgent, four untouched. Phase 0 ships as v0.4.0. Source memos:
+/v1/briefs/19__founder-memo__the-second-book.md</li><li><a class="ext" href="https://graphs.sgit.ai/v1/documents/index.html">https://graphs.sgit.ai/v1/documents/index.html ↗</a> — the twelve project documents, readable
+in-page and downloadable raw at /v1/briefs/&lt;filename&gt;. **The raw markdown is the source of
+truth; the rendered page is presentation**, and each reader page renders its own source
+file so it cannot drift. Three redactions applied before publication, all recorded at
+/v1/documents/public.html with visible markers.
+Added v0.3.26: <a class="ext" href="https://graphs.sgit.ai/v1/documents/what-the-graphs-found.html">https://graphs.sgit.ai/v1/documents/what-the-graphs-found.html ↗</a> — a
+retrospective brief over releases v0.3.12 to v0.3.25, written before the refactor.
+Its thesis: the visualisations did not produce the insights, the arithmetic behind them
+did, and the visualisation is how a person notices. So the generators are load-bearing
+and the renderers are replaceable. Records twelve findings with the mechanism that
+produced each (the twelfth found while writing it: a generator reading ambient
+state had been shipping a version diff missing eighteen releases) (including two corrections to the agent&#x27;s own earlier claims), the
+observation that every aggregate view produced findings while no per-item ego graph
+produced any, the thirteen gates that now fail the build, and the class that keeps
+recurring: a number nothing was checking, which is what every correction in the run
+turned out to be. Raw markdown:
+/v1/briefs/18__agent__what-the-graphs-found.md</li><li><a class="ext" href="https://graphs.sgit.ai/admin/index.html">https://graphs.sgit.ai/admin/index.html ↗</a> — how the site is built: static HTML on GitHub
+Pages deployed from <code>dev</code>, with <code>validate → tag → deploy</code> on every push and a nine-check
+pre-release gate. Five of the checks are specific to this site: every section hub must
+appear in this file, no page may use the banned edge as a live edge name, every page
+must close every block it opens, every chapter page must match its markdown source,
+and the book must match the pages — one chain, markdown to pages to book, and
+projections must not drift at either link.</li><li><a class="ext" href="https://graphs.sgit.ai/admin/comms.html">https://graphs.sgit.ai/admin/comms.html ↗</a> — asks and tasks, published unresolved. N1 is a
+one-line edit to a repository file, specified 11 June 2026 and still not done, and it is
+the actual cure for the problem that produced this site. N3 has been waiting since 10
+June 2026.</li><li><a class="ext" href="https://graphs.sgit.ai/admin/versions.html">https://graphs.sgit.ai/admin/versions.html ↗</a> — release history.</li><li><a class="ext" href="https://graphs.sgit.ai/admin/publishing.html">https://graphs.sgit.ai/admin/publishing.html ↗</a> — the runbook for publishing the book:
+KDP paperback step by step (our interior and wrap already match the spec), Leanpub
+with our own files, Zenodo for a per-edition DOI, and the platforms deferred until
+the EPUB exists. Platform numbers checked August 2026.</li><li><a class="ext" href="https://graphs.sgit.ai/admin/metadata.html">https://graphs.sgit.ai/admin/metadata.html ↗</a> — the book&#x27;s metadata sheet: one source
+for title, description, keywords, categories, physical spec (6&quot;x9&quot;, white paper,
+spine computed from the page count), pricing floors and rights (CC BY 4.0). Store
+listings are projections of this page.</li><li><a class="ext" href="https://graphs.sgit.ai/v1/about/participant.html">https://graphs.sgit.ai/v1/about/participant.html ↗</a> — participant disclosure, the site-wide
+licence, and <strong>four situations where this approach loses</strong>: everyone already agrees and
+always will; you need the answer enforced rather than computed; the graph would be empty;
+you want to buy it rather than build it.</li></ul>
+<h2 id="what-this-site-does-not-claim">What this site does not claim</h2>
+<p>Written fresh for the site rather than sourced from the corpus, and marked as such on the
+page: /why-graphs/ (both halves), the GraphRAG and hypergraph positioning, /glossary/, the
+air-gap section, the projections synthesis, and nine inverse edge names. Hold those to a
+lower evidential bar.</p>
+<p>Two worked examples exist and are deliberately not published: a LinkedIn network graph
+built from a real export (real personal data about third parties — a data-protection
+question, not a licensing one), and a case study naming a real third-party product (needs
+a legal read).</p>
+<hr>
+<p>== index.md — the front page</p>
+<hr></article><nav class="pager"><span><a href="001-graphssgitai-everything-in-one-file.html">← graphs.sgit.ai — everything, in one file</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="003-graphssgitai-a-node-is-just-a-node-meani.html">graphs.sgit.ai — a node is just a node; meaning lives in the →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>graphs.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://graphs.sgit.ai/llms-full.txt">https://graphs.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:18Z</dd><dt>sha256</dt><dd><code title="4c219807574230ca1c649cbdce1c341ac32bacb897e2259b54f1fbcac66f16f3">4c2198075742</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/graphs.sgit.ai/llms-full.txt</a> (253,399 bytes)</dd><dt>Section</dt><dd>2 of 15: graphs.sgit.ai — meaning through connectivity</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

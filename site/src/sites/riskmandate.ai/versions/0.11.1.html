@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>0.11.1.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="0.11.1.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/0.11.1.html">live ↗</a></p><article class="source"><h2 id="fix-vault-embeds-now-open-via-the-hosts-embed-protocol-automatically">Fix: vault embeds now open — via the host&#x27;s embed protocol, automatically</h2>
+<ul><li><strong>The bug.</strong> The embedded demos showed the vault host&#x27;s key-entry form (<code>R0 W0</code>) instead of the
+vault. The <code>/#key</code> flow saves the key to localStorage and redirects — and localStorage at the
+vault host is <strong>partitioned by top-level origin</strong> in modern browsers, so inside a cross-site
+iframe the save is lost and the app page finds no key. Diagnosed by reading the host&#x27;s own
+vault-loader source, which documents exactly this case.</li><li><strong>The fix.</strong> The embeds now use the host&#x27;s purpose-built embed mode (<code>/en-gb/app/?embed=1</code>) and
+its postMessage handshake: the vault signals <code>vault-embed-ready</code>, the page answers <code>vault-open</code>
+with the published read key targeted at the vault&#x27;s origin (never <code>*</code>), and <code>vault-ready</code> flips a
+visible status chip to <em>Live · read-only</em>. The key never appears in the iframe URL and is held in
+memory only — strictly better than the fragment flow it replaces. Open-in-its-own-tab links keep
+the fragment, which works top-level where storage is first-party.</li><li><strong>The demos open automatically with the page</strong> (no click gate), per the project lead — the vault
+assets are cached, and the deferred-loading attribute still keeps below-the-fold embeds idle
+until scrolled near. If a handshake never arrives (frame blocked, storage-hostile browser), the
+status says so after 15s and points at the tab link rather than spinning forever.</li><li>The smoke drives the actual handshake — ready → key → live — and asserts the key is never in an
+iframe URL, is targeted at the vault origin, and that signals from unknown frames are ignored.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/0.11.1.html">https://riskmandate.ai/versions/0.11.1.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/0.11.1.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:16Z</dd><dt>sha256</dt><dd><code title="c1b6dbc11ea915cb2b717492212bf83fd542f7f2dc5090ac2f2f1f246ec01437">c1b6dbc11ea9</code></dd><dt>Frozen copy</dt><dd><a href="0.11.1.md">sites/riskmandate.ai/versions/0.11.1.md</a> (1,669 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

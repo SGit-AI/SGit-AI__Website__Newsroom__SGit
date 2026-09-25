@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Building vault apps, SG/Vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#building-vault-apps-sgvault">Building vault apps, SG/Vault</a></li><li class="l1"><a href="#building-vault-apps">Building vault apps</a></li><li class="l2"><a href="#the-project-shape">The project shape</a></li><li class="l2"><a href="#the-authoring-contract">The authoring contract</a></li><li class="l2"><a href="#ship-it-with-sgit">Ship it with sgit</a></li><li class="l2"><a href="#the-reference-implementation">The reference implementation</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="vault-apps.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/vault/vault-apps.html">live ↗</a></p><article class="source"><h1 id="building-vault-apps-sgvault">Building vault apps, SG/Vault</h1>
+<blockquote><p>How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.</p></blockquote>
+<p><em>Source: <a href="vault-apps.html">https://sgit.ai/docs/vault/vault-apps.html</a><a class="ext live" href="https://sgit.ai/docs/vault/vault-apps.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">SG/Vault</a><a class="ext live" href="https://sgit.ai/docs/vault/index.html" title="live page">↗</a> / Vault apps</p>
+<p><strong>Surface:</strong> an HTML vault app, inside a vault. <a href="../surfaces.html">The other surfaces →</a><a class="ext live" href="https://sgit.ai/docs/surfaces.html" title="live page">↗</a></p>
+<h1 id="building-vault-apps">Building vault apps</h1>
+<p>A vault app is a single <code>index.html</code> (plus data and assets) that lives inside a vault and renders straight from it. The experience and the security are the same artifact: the app ships encrypted, the link-holder holds the key, and the server never sees the page you&#x27;re reading.</p>
+<h2 id="the-project-shape">The project shape</h2>
+<pre><code>my-vault/
+├── index.html          # the app — self-contained entry point
+├── app.json            # auto-launch config (below)
+├── content.json        # editable content, separate from the app
+├── assets/             # css / js, loaded through the bridge
+└── &lt;your data&gt;         # the files the app presents</code></pre>
+<p>Keep content in data files, not in HTML, so you (or an agent) can edit captions, prose, and structure without touching the app. Then the manifest (preferred location <code>.vault/app.json</code>; a legacy root <code>app.json</code> is still read):</p>
+<pre><code>{
+  &quot;entry&quot;:       &quot;index.html&quot;,
+  &quot;present&quot;:     true,        # boot into App Mode instead of the file browser
+  &quot;title&quot;:       &quot;My app&quot;,
+  &quot;permissions&quot;: { &quot;fs&quot;: { &quot;read&quot;: true } },
+  &quot;hud&quot;:         { &quot;mode&quot;: &quot;full&quot; }
+}</code></pre>
+<p>One rule with teeth: <strong>an app cannot write its own manifest</strong>: <code>.vault/**</code> and the legacy root <code>app.json</code> are a protected floor (<code>EPROTECTED</code>). The manifest <em>is</em> the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.</p>
+<h2 id="the-authoring-contract">The authoring contract</h2>
+<p>Vault pages render inside a sandboxed frame, and the browser fetches declarative resources <em>before</em> the vault bridge can install. Anything declarative pointing at a vault path will fail. The contract:</p>
+<ul><li><strong>No</strong> <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;../../vault/…&quot;&gt;</code>, <code>&lt;script src=&quot;../../vault/…&quot;&gt;</code>, or <code>&lt;img src=&quot;../../vault/…&quot;&gt;</code> against vault files, inline it, or load it from JS through the bridge (<code>sg.loadCss</code> / <code>sg.loadJs</code>, or read + inject via <code>sg.vfs.readText</code>; set <code>img.src</code> from JS).</li><li><strong>No external resources at all</strong>: no CDNs, fonts, or analytics. A vault app is self-contained by construction; inline SVG is the graphics format.</li><li><strong><code>fetch()</code> of vault paths does not work</strong>: use <code>sg.vfs.readText(path)</code> / <code>sg.vfs.read(path)</code>. Plain <code>fetch</code> is only useful as a fallback for static hosting.</li><li><strong>Plain <code>&lt;a href&gt;</code> links between vault pages work</strong>: the host intercepts clicks and routes them, so multi-page sites navigate normally (this site is the proof). Hash anchors work too; <strong>query strings don&#x27;t</strong> (<code>page.html?x=1</code> lands on the broken-link overlay), and never assign <code>location.hash</code> from JS, the sandboxed frame re-navigates.</li><li><strong>Signal readiness</strong>: post <code>{type:&#x27;sg-app-ready&#x27;}</code> to the parent when your page has rendered (in the error path too), or users stare at the host&#x27;s loading overlay. The host also watches for blank apps: ~2.5 s after load with nothing painted, it tells the user so, if you legitimately render late, paint a spinner first.</li><li><strong>Provide fallbacks</strong>: embed critical styles inline and degrade gracefully, so the page stays readable if the bridge is slow or absent.</li></ul>
+<h2 id="ship-it-with-sgit">Ship it with sgit</h2>
+<pre><code>$ sgit clone &lt;vault-key&gt; my-app     # or sgit create my-app
+# … build index.html, app.json, assets …
+$ sgit commit -m &quot;app v1&quot;
+$ sgit push                          # deployment == pushing the vault</code></pre>
+<p>There is no separate hosting step, no build server, no CDN configuration. The vault is the deployment target, the version history, and the rollback mechanism (<code>sgit history revert</code>) in one.</p>
+<h2 id="the-reference-implementation">The reference implementation</h2>
+<p>This website follows every rule on this page and carries its own build system in-vault: a page generator, a validation suite (contract scan, link check, JS parse check), and a versioned release process. Start at <a href="../../admin/index.html">admin &amp; engineering</a><a class="ext live" href="https://sgit.ai/admin/index.html" title="live page">↗</a> and read <code>admin/build/</code>, cloning this vault gives you a complete working example.</p>
+<p><a href="index.html">← SG/Vault &amp; the platform</a><a class="ext live" href="https://sgit.ai/docs/vault/index.html" title="live page">↗</a><a href="sg-bridge.html">The window.sg bridge →</a><a class="ext live" href="https://sgit.ai/docs/vault/sg-bridge.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="vault-apps.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/vault/vault-apps.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/vault/vault-apps.html">https://sgit.ai/docs/vault/vault-apps.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/vault/vault-apps.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:10Z</dd><dt>sha256</dt><dd><code title="65cb258e4d49a0ff01cd6e8e000e0418e2070f4f5ed145667c24c351f0441778">65cb258e4d49</code></dd><dt>Frozen copy</dt><dd><a href="vault-apps.md">sites/sgit.ai/docs/vault/vault-apps.md</a> (4,563 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

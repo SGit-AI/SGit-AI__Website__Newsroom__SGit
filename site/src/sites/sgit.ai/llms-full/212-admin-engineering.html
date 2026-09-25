@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Admin &amp; engineering (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#admin-engineering">Admin &amp;amp; engineering</a></li><li class="l2"><a href="#architecture">Architecture</a></li><li class="l2"><a href="#adding-a-page">Adding a page</a></li><li class="l2"><a href="#build-system">Build system</a></li><li class="l2"><a href="#validation-before-every-push">Validation before every push</a></li><li class="l2"><a href="#release-process">Release process</a></li><li class="l2"><a href="#design-contributions">Design &amp;amp; contributions</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 212 of 358</p><nav class="pager"><span><a href="211-admin-engineering-sgitai.html">← Admin &amp; engineering, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="213-release-history-sgitai.html">Release history, sgit.ai →</a></span></nav><article class="source"><h1 id="admin-engineering">Admin &amp; engineering</h1>
+<p>How this site is built, shipped, and versioned. sgit.ai is not hosted on a web server. It is a <strong>vault app</strong>: a set of HTML pages living inside an encrypted SG/Send vault, decrypted and rendered in your browser. The site about sgit is delivered by sgit.</p>
+<h2 id="architecture">Architecture</h2>
+<pre><code># published site — one folder per section; root holds only what must live there
+├── index.html · index.md                     # the front door + its markdown twin
+├── CNAME · app.json · robots.txt · sitemap.xml
+├── llms.txt · llms-full.txt                  # machine index; every page in one file
+├── why/ · try/ · security/ · skills/ · briefs/
+├── use-cases/       # patterns, each with an evidence status + agent brief
+├── case-studies/    # things that actually happened, with numbers
+├── docs/ · vault/ · deploy/
+├── assets/          # site.css, site.js, vault-docs.js, try-setup.py
+└── admin/
+    ├── content/     # page bodies — one file per page, plus pages.json
+    └── build/       # build_pages.py (the engine) + validate.js</code></pre>
+<h2 id="adding-a-page">Adding a page</h2>
+<p>Content and machinery are separate, so nothing in the generator grows as the site does. It was 2,709 lines with every page inlined, and is 648 now that bodies live in <code>admin/content/</code>. A new page is a file and a row:</p>
+<pre><code># 1. write the body — just the &lt;main&gt;, no head, no nav, no footer
+$ vim admin/content/case-studies/my-study.html
+# 2. register it: { &quot;path&quot;, &quot;section&quot;, &quot;title&quot;, &quot;desc&quot; }
+$ vim admin/content/pages.json
+# 3. build and check
+$ python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</code></pre>
+<p>The build then produces, for free: the page with nav and footer, its <code>.md</code> twin with links rewritten to markdown, its row in <code>llms.txt</code>, its section in <code>llms-full.txt</code>, its entry in <code>sitemap.xml</code>, and its canonical, Open Graph and JSON-LD tags. The validator refuses the build if the page is unreachable from anywhere, if a link or a markdown twin is missing, if it carries no structured data, or if it could render invisible without JavaScript.</p>
+<ul><li><strong>The authoring contract.</strong> Vault pages render inside a sandboxed frame, so declarative references to vault files (<code>&lt;link&gt;</code>, <code>&lt;script src&gt;</code>, <code>&lt;img src&gt;</code>) would 404 before the vault bridge installs. Every page therefore carries only a tiny critical-style block plus a ~20-line bootstrap.</li><li><strong>Shared assets over the bridge.</strong> The bootstrap waits for the <code>window.sg</code> bridge and loads <code>assets/site.css</code> / <code>assets/site.js</code> through it, trying <code>sg.loadCss</code>/<code>sg.loadJs</code> first, then <code>sg.vfs.readText</code> + inject, then plain <code>fetch</code> as a static-hosting fallback. Worst case, pages degrade to readable unstyled HTML.</li><li><strong>Multi-page navigation.</strong> Plain relative <code>&lt;a href&gt;</code> links between pages, the vault host intercepts clicks and routes them, giving normal browser-style navigation (back/forward/history come from the host chrome).</li><li><strong>Read-only by design.</strong> The app requests no write permissions in <code>app.json</code>; reads need no grant. Nothing on this site can modify the vault.</li></ul>
+<h2 id="build-system">Build system</h2>
+<p>Every page is generated from a single Python script holding one shared template (nav, footer, bootstrap, version stamp) plus per-page content. Nothing is hand-edited twice: change the template once, regenerate, and every page updates consistently, including the version badge you can see in the nav.</p>
+<h2 id="validation-before-every-push">Validation before every push</h2>
+<ul><li>Every inline script and <code>site.js</code> is parse-checked with Node.</li><li>A contract scan proves no <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code>, or <code>&lt;img src&gt;</code> references a vault path.</li><li>Every internal link is resolved against the real file tree, broken links fail the build.</li><li>A banned-words scan keeps retired concepts and legacy naming out of the content.</li></ul>
+<h2 id="release-process">Release process</h2>
+<pre><code># 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row
+# 2. regenerate + validate
+$ python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js
+# 3. ship — GitHub Pages deploys from the dev branch
+$ git add -A &amp;&amp; git commit -m &quot;site vX.Y.Z: …&quot; &amp;&amp; git push origin dev
+# 4. verify live — the release is not done until sgit.ai serves the new version
+$ curl -s https://sgit.ai/index.html | grep -o &#x27;v0\.[0-9]*\.[0-9]*&#x27; | head -1</code></pre>
+<p>All four steps are one script, <code>admin/build/release.sh</code>, which also pulls the <a href="../demos/vaults/board/index.html">board vault</a><a class="ext live" href="https://sgit.ai/demos/vaults/board/index.html" title="live page">↗</a> first so the snapshot the release renders is current, and refuses to push until the validator, including the vault-key leak tripwire, has passed. The repository is <code>SGit-AI/SGit-AI__Website</code>; until v0.2.76 the same folder was also an sgit vault pushed on every release, a pattern retired and written up in <a href="../case-studies/one-tree-two-remotes.html">one tree, two remotes</a><a class="ext live" href="https://sgit.ai/case-studies/one-tree-two-remotes.html" title="live page">↗</a>. See <a class="ext" href="https://sgit.ai/versions.md">release history ↗</a>.</p>
+<h2 id="design-contributions">Design &amp; contributions</h2>
+<p>A standing brief for Claude Code sessions proposing design improvements lives at <a class="ext" href="https://sgit.ai/brief-design-improvements.md">admin/brief-design-improvements.md ↗</a>, it carries the constraints (authoring contract, self-contained assets, validation suite, version bump) that any change must respect.</p>
+<p><a href="../index.html">← Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a><a class="ext" href="https://sgit.ai/versions.md">Release history → ↗</a></p>
+<hr></article><nav class="pager"><span><a href="211-admin-engineering-sgitai.html">← Admin &amp; engineering, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="213-release-history-sgitai.html">Release history, sgit.ai →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>212 of 358: Admin &amp; engineering</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>0.5.3 — Scenarios split into two pages · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="0.5.3.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/0.5.3.html">live ↗</a></p><article class="source"><h1 id="053-scenarios-split-into-two-pages">0.5.3 — Scenarios split into two pages</h1>
+<p>The monolithic <code>scenarios</code> page carried two distinct experiences (interactive
+cards and the LinkedIn static set) plus the shared data in one folder. They&#x27;re
+now two independent, iterable pages over <strong>one shared bank</strong> — change one
+without touching the other.</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>New shared bank.</strong> The &quot;how long&quot; data moved from the page folder to
+<code>src/data/scenarios.json</code> — a single source of truth. <code>buildScenarios()</code> in
+<code>build.js</code> reads that fixed path; any <code>scenarios: true</code> page inlines it.</li><li><strong><code>scenarios.html</code> — PoC-1, interactive.</strong> Now only the branching cards
+(<code>&lt;rm-scenarios&gt;</code>) and the session record (<code>&lt;rm-scenarios-record&gt;</code>). The
+static-export code and styles were removed from this page.</li><li><strong><code>statics.html</code> — PoC-2, the post images.</strong> New page. <code>&lt;rm-statics&gt;</code> is a
+scenario picker plus a stage that renders the selected scenario&#x27;s four 4:5
+artboards, with a <strong>Clean view</strong> toggle that drops page chrome for
+edge-to-edge screenshots. Deep-linkable via <code>#&lt;id&gt;</code> or <code>#static=&lt;id|n&gt;</code>.</li><li>Both pages are gated to <strong>live</strong> scenarios — the same tone gate — so the post
+images can&#x27;t get ahead of the vetted card copy. The two renderers share the
+bank, so the demo and the posts can never drift apart.</li></ul>
+<h2 id="housekeeping">Housekeeping</h2>
+<ul><li>Rebased onto upstream <strong>0.5.2</strong> (light header on top-level pages,
+chain-derived smoke, pricing-restore snapshot, old-structure cleanup). The
+new pages adopt the 0.5.2 light-header design tokens — one look everywhere.</li><li>Removed the orphan <code>v0/v0.5/v0.5.0/index.html</code> build output (0.5.0 is a chain
+intermediate, not a switcher target under the current manifest).</li><li>Smoke suite extended: page-list parity now includes Scenarios + Statics, with
+new groups driving one card end-to-end (refuse → deflect → reveal → interval
+→ record) and the static picker (four frames, switch scenario, still four).</li><li>Frozen version outputs re-pinned: adding two HEAD pages changes only the
+inlined <code>RM.data.pages</code> fallback line in each snapshot (verified diff).</li></ul>
+<blockquote><p>The consented survey capture (PoC-3) remains out of code — it needs the
+consent design and the Ambassador/AppSec review called for in the GRC plan.</p></blockquote></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/0.5.3.html">https://riskmandate.ai/versions/0.5.3.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/0.5.3.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:17Z</dd><dt>sha256</dt><dd><code title="ed26f41484f29b15a810109d91672fd227c691194df42908d79bd7767facc7f4">ed26f41484f2</code></dd><dt>Frozen copy</dt><dd><a href="0.5.3.md">sites/riskmandate.ai/versions/0.5.3.md</a> (2,221 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

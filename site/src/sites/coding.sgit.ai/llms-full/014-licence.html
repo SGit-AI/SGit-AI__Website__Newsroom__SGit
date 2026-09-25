@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Licence (coding.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#licence">Licence</a></li><li class="l2"><a href="#this-pack">This pack</a></li><li class="l2"><a href="#the-site-this-pack-commissions">The site this pack commissions</a></li><li class="l2"><a href="#the-code-quoted-throughout-is-apache-20">⚠️ The code quoted throughout is Apache-2.0</a></li><li class="l2"><a href="#credit-the-dependency-not-just-the-pattern">Credit the dependency, not just the pattern</a></li><li class="l2"><a href="#redaction-the-repos-are-live">Redaction — the repos are live</a></li><li class="l3"><a href="#the-one-special-case-devtoolssgraphai">The one special case: dev.tools.sgraph.ai</a></li><li class="l2"><a href="#do-not-publish">Do not publish</a></li><li class="l2"><a href="#accuracy">Accuracy</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 14 of 14</p><nav class="pager"><span><a href="013-08-gaps-open-questions-and-honest-tensio.html">← 08 — Gaps, open questions and honest tensions</a></span><a href="../llms-full.txt.html">all sections</a><span></span></nav><article class="source"><h1 id="licence">Licence</h1>
+<h2 id="this-pack">This pack</h2>
+<p>Everything in this brief pack — the nine numbered documents, <code>09__source-manifest.csv</code>, <code>conventions__machine-readable.json</code>, this file and <code>README.md</code> — is released under the <strong>Creative Commons Attribution 4.0 International licence (CC BY 4.0)</strong>.</p>
+<p>Copyright (c) 2026 Dinis Cruz
+Licensed under CC BY 4.0 — <a class="ext" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/ ↗</a></p>
+<p>Attribution: <strong>Dinis Cruz</strong>, with AI co-authorship (Claude, Anthropic).</p>
+<h2 id="the-site-this-pack-commissions">The site this pack commissions</h2>
+<p><strong>The entire content of <code>coding.sgit.ai</code></strong> is to be published under <strong>CC BY 4.0</strong>, consistent with the network. Stamp every raw markdown document; gate it with <code>licence-audit.py --check</code>.</p>
+<h2 id="the-code-quoted-throughout-is-apache-20">⚠️ The code quoted throughout is Apache-2.0</h2>
+<p>Every code example in this pack is real, extracted from repositories licensed <strong>Apache-2.0</strong>: <code>SGraph-AI__App__Send</code>, <code>SGraph-AI__Service__Playwright</code>, and all seven Issues-FS repos (<code>license = &quot;Apache 2.0&quot;</code> in every <code>pyproject.toml</code>).</p>
+<p><strong>Retain the notice where snippets are shown at length, and do not imply the code carries the site&#x27;s CC BY licence.</strong> A style-guide site quoting its own Apache-2.0 code is fine; a site that blurs the two licences on a page about licensing discipline is not.</p>
+<h2 id="credit-the-dependency-not-just-the-pattern">Credit the dependency, not just the pattern</h2>
+<p><code>Type_Safe</code>, <code>Safe_Str</code>, <code>Safe_Int</code> and the constrained-primitive pattern come from <strong><code>osbot-utils</code></strong>, Apache-2.0, under the <code>owasp-sbot</code> GitHub organisation. So do <code>osbot-aws</code>, <code>osbot-fast-api</code>, <code>memory_fs</code> and <code>mgraph-db</code>.</p>
+<p><strong>Wherever the site describes the pattern, name the library.</strong> The convention is the estate&#x27;s; the mechanism is the dependency&#x27;s, and the distinction matters on a site whose subject is attribution discipline.</p>
+<hr>
+<h2 id="redaction-the-repos-are-live">Redaction — the repos are live</h2>
+<blockquote><p><strong>⚠ Redacted for publication.</strong> This document&#x27;s own redaction list names the values it forbids. Publishing the list verbatim would publish them, so the AWS account id, the four live internal hostnames and the four named live stack FQDNs are replaced with <code>[redacted]</code> in the three bullets below. Nothing else in this document is changed, the counts are kept, and <code>dev.tools.sgraph.ai</code> is retained deliberately for the reason the document itself gives. See <a class="ext" href="https://coding.sgit.ai/documents/index.html#redaction">/documents/#redaction ↗</a>.</p></blockquote>
+<p><code>sg-compute.sgit.ai</code>&#x27;s redaction list applies in full. Strip before publishing:</p>
+<ul><li><strong>AWS account ID <code>[redacted]</code></strong> — 20+ files under <code>team/humans/dinis_cruz/claude-code-web/</code></li><li><strong>Live internal hostnames</strong> — <code>[redacted]</code> (193), <code>[redacted]</code> (128), <code>[redacted]</code> (46), <code>[redacted]</code> (36) and the rest</li><li><strong>Named live stack FQDNs</strong> — <code>[redacted]</code>, <code>[redacted]</code>, <code>[redacted]</code>, <code>[redacted]</code> (four of them)</li><li><strong>Real EC2 and AMI IDs</strong> in <code>utils/ec2_boot_bench/</code></li></ul>
+<h3 id="the-one-special-case-devtoolssgraphai">The one special case: <code>dev.tools.sgraph.ai</code></h3>
+<p>It appears <strong>inside the code examples</strong> — every component imports <code>SgComponent</code> and <code>sg-tokens.css</code> from it, and it appears 177 times in the tree.</p>
+<p><strong>Recommendation: publish it.</strong> It is a public CDN serving public component code, it is visible in any rendered page&#x27;s network tab, and a component example with the import URL redacted teaches nothing.</p>
+<p><strong>But make it a deliberate decision</strong>, and note the real concern: the <code>dev.</code> prefix means a public coding standard would be documenting a development host as the canonical contract. <code>08__</code> Q4.</p>
+<h2 id="do-not-publish">Do not publish</h2>
+<p><code>library/alchemist/materials/</code> (the whole tree) · the positioning and competitor briefs · <code>team/roles/appsec/reviews/02/21/…pki-architecture-security-revised.md</code> (classified as <em>&quot;an attack roadmap for live code&quot;</em>) · <code>team/roles/grc/reviews/02/19/</code> (names a private individual with signature blocks).</p>
+<h2 id="accuracy">Accuracy</h2>
+<p><strong>Every number in this pack was measured in this session by counting, not taken from documentation.</strong> They will drift. The site should <strong>generate its counts at build time or date them</strong> — a style guide whose examples and numbers have drifted from the code is worse than none.</p>
+<p>The same goes for the examples: <strong>every code sample must be extracted from the repo at build time, with its path and a commit reference.</strong> Do not paste.</p>
+<hr>
+<p>This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article><nav class="pager"><span><a href="013-08-gaps-open-questions-and-honest-tensio.html">← 08 — Gaps, open questions and honest tensions</a></span><a href="../llms-full.txt.html">all sections</a><span></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>14 of 14: Licence</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

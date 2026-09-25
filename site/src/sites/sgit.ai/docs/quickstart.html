@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Quickstart, sgit Docs · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#quickstart-sgit-docs">Quickstart, sgit Docs</a></li><li class="l1"><a href="#quickstart">Quickstart</a></li><li class="l2"><a href="#1-create-a-vault">1, Create a vault</a></li><li class="l2"><a href="#2-work-like-git">2, Work like git</a></li><li class="l2"><a href="#3-push">3, Push</a></li><li class="l2"><a href="#4-clone-somewhere-else">4, Clone somewhere else</a></li><li class="l2"><a href="#5-look-around">5, Look around</a></li><li class="l2"><a href="#where-next">Where next</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="quickstart.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/quickstart.html">live ↗</a></p><article class="source"><h1 id="quickstart-sgit-docs">Quickstart, sgit Docs</h1>
+<blockquote><p>From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.</p></blockquote>
+<p><em>Source: <a href="quickstart.html">https://sgit.ai/docs/quickstart.html</a><a class="ext live" href="https://sgit.ai/docs/quickstart.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="index.html">Docs</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a> / Introduction</p>
+<h1 id="quickstart">Quickstart</h1>
+<p>From zero to a synced, encrypted, versioned vault in five minutes.</p>
+<h2 id="1-create-a-vault">1, Create a vault</h2>
+<pre><code>$ pip install sgit-ai
+$ sgit create my-vault
+✓ Vault created and registered
+✓ Initial commit pushed
+
+  Vault key: &lt;24-char-passphrase&gt;:&lt;vault-id&gt;</code></pre>
+<p><strong>Save the vault key now</strong>: in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.</p>
+<p>Already have a folder full of files? <code>cd</code> into it and run <code>sgit init --existing</code> instead, the current contents become the first snapshot.</p>
+<h2 id="2-work-like-git">2, Work like git</h2>
+<pre><code>$ cd my-vault
+$ echo &quot;# Plan&quot; &gt; plan.md
+$ sgit status
+  added: plan.md
+$ sgit commit -m &quot;add the plan&quot;
+✓ Committed 1 file</code></pre>
+<p>There is no staging area, <code>sgit commit</code> snapshots the whole folder. Files like <code>.env</code> and private keys are always excluded, automatically.</p>
+<h2 id="3-push">3, Push</h2>
+<pre><code>$ sgit push
+✓ Pushed 1 commit — only ciphertext left this machine</code></pre>
+<h2 id="4-clone-somewhere-else">4, Clone somewhere else</h2>
+<pre><code># on another machine, or in an agent&#x27;s session
+$ sgit clone &lt;vault-key&gt;
+✓ Cloned and decrypted 1 file
+$ sgit pull      # pick up new commits any time</code></pre>
+<h2 id="5-look-around">5, Look around</h2>
+<pre><code>$ sgit history log --oneline     # commit history
+$ sgit history diff              # what changed
+$ sgit vault info                # identity, remote, web URL</code></pre>
+<p>The web URL printed by <code>sgit vault info</code> opens the same vault in the SG/Vault browser app, decrypted in the browser, never on the server.</p>
+<h2 id="where-next">Where next</h2>
+<ul><li><a href="sgit-for-git-users.html">sgit for git users</a><a class="ext live" href="https://sgit.ai/docs/sgit-for-git-users.html" title="live page">↗</a>, the Rosetta stone</li><li><a href="two-branch-model.html">The two-branch model</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a>, how collaboration works</li><li><a href="agents.html">Working with AI agents</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a>, give an agent a private, versioned workspace</li></ul>
+<p><a href="installation.html">← Installation</a><a class="ext live" href="https://sgit.ai/docs/installation.html" title="live page">↗</a><a href="sgit-for-git-users.html">sgit for git users →</a><a class="ext live" href="https://sgit.ai/docs/sgit-for-git-users.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="quickstart.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/quickstart.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/quickstart.html">https://sgit.ai/docs/quickstart.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/quickstart.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:09Z</dd><dt>sha256</dt><dd><code title="52610249b8e7fd0aea41f8184700069da60f33d78f793a57132de21444cd6322">52610249b8e7</code></dd><dt>Frozen copy</dt><dd><a href="quickstart.md">sites/sgit.ai/docs/quickstart.md</a> (2,332 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

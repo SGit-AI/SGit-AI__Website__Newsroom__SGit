@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.20.2.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.20.2.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.20.2.html">live ↗</a></p><article class="source"><h2 id="two-pages-were-shipping-broken-javascript">Two pages were shipping broken JavaScript</h2>
+<p>The home page and <a class="ext" href="https://riskmandate.ai/versions/insurance.html">the insurance page ↗</a> were throwing on load. The home page could
+not parse its own script at all (<code>Unexpected token &#x27;}&#x27;</code>); the insurance page ended mid-statement
+(<code>Unexpected end of input</code>). Everything that lives in that script — the menu, the mobile drawer,
+the in-page scroll buttons, the enquiry button, and on the insurance page the Index card and the
+level ladder — was dead on both.</p>
+<p><strong>How it happened.</strong> Moving the insurability component off the home page in v1.20.1 used a regular
+expression to find the end of the module, and the expression stopped one closing sequence short. The
+home page kept an orphan <code>})();</code> and the insurance page lost the one it needed. The insurance page
+has been broken since it launched in v1.20.0.</p>
+<p><strong>Why nothing caught it.</strong> The HTML still rendered, so every page looked right in a screenshot. All
+twenty-six tests passed, the four <code>npm run check</code> gates passed, and the two extra CI checks passed,
+because not one of them executed or parsed a line of the JavaScript the pages carry. The only signal
+was an error in a console nobody was reading.</p>
+<p><strong>What caught it.</strong> A browser being driven through the site by a synthetic-user study, which records
+<code>pageerror</code> on every step. It reported an error on all five journeys before a word of the study had
+been written.</p>
+<p><strong>The fix, and the test.</strong> Both scripts were rebuilt from the last version that parsed, rather than
+by balancing braces by hand. A new test parses <strong>every inline script on every page</strong> and fails the
+build if one does not; it was verified by deliberately breaking a page and watching it fail. It
+anchors to real <code>&lt;script&gt;</code> tags, because several pages carry the literal string <code>&#x27;&lt;script&gt;&#x27;</code> inside
+their own source and a naive search starts reading from the middle of it.</p>
+<p>Nothing about what any page says has changed.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.20.2.html">https://riskmandate.ai/versions/1.20.2.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.20.2.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:14Z</dd><dt>sha256</dt><dd><code title="8b01694de3ae3232322e538588f190c11fef387406643a2c553f766dc0b36141">8b01694de3ae</code></dd><dt>Frozen copy</dt><dd><a href="1.20.2.md">sites/riskmandate.ai/versions/1.20.2.md</a> (1,899 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

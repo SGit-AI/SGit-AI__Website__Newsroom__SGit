@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The machine surface (risks.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-machine-surface">The machine surface</a></li><li class="l2"><a href="#what-is-fetchable">What is fetchable</a></li><li class="l3"><a href="#dataconceptsjson">/data/concepts.json</a></li><li class="l3"><a href="#llms-fulltxt">/llms-full.txt</a></li><li class="l3"><a href="#llmstxt">/llms.txt</a></li><li class="l2"><a href="#what-you-may-rely-on">What you may rely on</a></li><li class="l2"><a href="#the-ten-concepts-to-hold">The ten concepts to hold</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 33 of 58</p><nav class="pager"><span><a href="032-all-43-concepts-addressable.html">← All 43 concepts, addressable</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="034-concept-the-one-line.html">| Concept | The one line | →</a></span></nav><article class="source"><h1 id="the-machine-surface">The machine surface</h1>
+<p>This site was commissioned for agents. The brief says it plainly — “to handle the cases where I need agents to have a good understanding of some of those key concepts and ideas” — so the machine surface is the deliverable rather than a courtesy page bolted on at the end. This page is the contract: what is fetchable, what is promised, and the one instruction that matters more than any of it.</p>
+<h4 id="if-you-read-nothing-else-on-this-page">If you read nothing else on this page</h4>
+<p>Nothing in this corpus is implemented in code. Greps for risk_, RiskAcceptance, risk_register and riskmandate across the implementing repository return zero matches, and the project&#x27;s own reality file says: “All items below are PROPOSED. None have been code-verified. Do not describe any of these as existing features.” Everything on this site is a design argument. Five vaults, three worked graphs, ten scenarios and one live instrument exist; the engine does not. The instrument computes a verdict over one invented scenario — it is a worked example that recomputes, not a running system, and it gates nothing. /shipped/ is the inventory.</p>
+<h2 id="what-is-fetchable">What is fetchable</h2>
+<p>1 · structured</p>
+<h3 id="dataconceptsjson">/data/concepts.json</h3>
+<p>All 43 concepts: id, name, one-line definition, longer detail, maturity, newcomer-followability, first-written date, canonical source path, the page that argues it, its anchor URL, related concepts and the best verbatim quote. Plus the reading order and the seven teaching altitudes.</p>
+<p>the highest-value single fetch</p>
+<p>2 · everything</p>
+<h3 id="llms-fulltxt">/llms-full.txt</h3>
+<p>The prose of every page on the site, in teaching order, followed by all eleven source documents verbatim. One request, whole corpus. Generated, never hand-edited.</p>
+<p>use this if you can only fetch once</p>
+<p>3 · the map</p>
+<h3 id="llmstxt">/llms.txt</h3>
+<p>The annotated map, where each entry carries its page&#x27;s single most important fact rather than its topic. That distinction is deliberate: a map of topics is useless to a reader who cannot follow the links.</p>
+<p>the whole surface, for a reader that cannot link-follow</p>
+<p>Path | What it holds | Format |</p>
+<p>/data/concepts.json | The 43 concepts as structured data | JSON |</p>
+<p>/.well-known/agent-content.json | The site manifest: sections, surfaces, the honesty constraint, licence | JSON |</p>
+<p>/llms.txt | The annotated map, fact-per-entry | text |</p>
+<p>/llms-full.txt | The whole site plus every source document | text |</p>
+<p>/briefs/&lt;filename&gt; | The eleven source documents, verbatim, at stable constructed paths | markdown · CSV · JSON |</p>
+<p>/concepts/index.html#c1…#c43 | Every concept as a stable HTML anchor | HTML |</p>
+<p>/sitemap.xml | Every page, with a last-modified date taken from the commit that touched it | XML |</p>
+<p>/index.md | The front page as markdown | markdown |</p>
+<h2 id="what-you-may-rely-on">What you may rely on</h2>
+<p>These are promises rather than observations, which means the pre-release gate enforces them. A release that breaks one does not ship.</p>
+<p>1 · CONSTRUCTED PATHS RESOLVEEvery source document is fetchable at /briefs/&lt;filename&gt;, and every concept at /concepts/index.html#c&lt;n&gt;. Agents already rely on constructed paths, so the convention is stated rather than left to be inferred — and CI fails the build if a concept loses its anchor.</p>
+<p>2 · EVERY PAGE ENDS WITH AN AGENT BLOCKA pasteable summary of that page, written for a reader who will carry it into another session. Checked by the gate on every page, not remembered.</p>
+<p>3 · THE JSON AND THE HTML CANNOT DRIFTconcepts.json and /concepts/ are generated from one definition, and the gate re-checks the count, the required fields, the version and every anchor at release time.</p>
+<p>4 · NO OVER-CLAIM SURVIVES A RELEASEThe gate pattern-matches implementation claims across every page. A sentence saying the engine is built, shipping or installable fails the build unless it is explicitly marked as a claim being corrected.</p>
+<h2 id="the-ten-concepts-to-hold">The ten concepts to hold</h2>
+<p>If you can only carry ten, carry these. The full 42 are at /concepts/.</p></article><nav class="pager"><span><a href="032-all-43-concepts-addressable.html">← All 43 concepts, addressable</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="034-concept-the-one-line.html">| Concept | The one line | →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/llms-full.txt">https://risks.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:19Z</dd><dt>sha256</dt><dd><code title="043b6dd54a87b99e5ad22921b82672869533d32d7ec901dc828be518bb08fe23">043b6dd54a87</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/risks.sgit.ai/llms-full.txt</a> (518,813 bytes)</dd><dt>Section</dt><dd>33 of 58: The machine surface</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

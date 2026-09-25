@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The node type formulas (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-node-type-formulas">The node type formulas</a></li><li class="l2"><a href="#the-formulas-and-what-matched-when-this-page-was-built">The formulas, and what matched when this page was built</a></li><li class="l2"><a href="#the-one-that-carries-the-argument">The one that carries the argument</a></li><li class="l2"><a href="#judgment-does-not-disappear">Judgment does not disappear</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 151 of 357</p><nav class="pager"><span><a href="150-the-node-type-formulas.html">← The node type formulas</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="152-the-three-layers.html">The three layers →</a></span></nav><article class="source"><h1 id="the-node-type-formulas">The node type formulas</h1>
+<p><strong>The content of a node does not decide its type. Its paths do.</strong> Two nodes with identical text can be different types because their edges differ, and the clearest case in this model is that the same capability is excess on one deployment and authorised on the next, with nothing about the capability changed.</p>
+<h2 id="the-formulas-and-what-matched-when-this-page-was-built">The formulas, and what matched when this page was built</h2>
+<div class="table"><table><thead><tr><th>Type</th><th>What it is</th><th>The formula</th><th>Matched</th></tr></thead><tbody><tr><td><strong>Verb</strong></td><td>The action half of a primitive, on its own.</td><td><code>[Verb] := a node that is the -verb_of-&gt; at least one [Capability]</code></td><td>10</td></tr>
+<tr><td><strong>ObjectClass</strong></td><td>What a primitive acts on.</td><td><code>[ObjectClass] := a node that is -acted_on_by-&gt; at least one [Capability]</code></td><td>9</td></tr>
+<tr><td><strong>ReachClass</strong></td><td>How far a primitive reaches.</td><td><code>[ReachClass] := a node that is -reachable_from-&gt; at least one [Capability]</code></td><td>5</td></tr>
+<tr><td><strong>Family</strong></td><td>A grouping of primitives for a reader.</td><td><code>[Family] := a node that is the -family_of-&gt; at least one [Capability]</code></td><td>9</td></tr>
+<tr><td><strong>Capability</strong></td><td>A primitive in the grammar.</td><td><code>[Capability] := a node with a -has_verb-&gt; [Verb] and an -acts_on-&gt; [ObjectClass] and a -reaches-&gt; [ReachClass]</code></td><td>23</td></tr>
+<tr><td><strong>DeploymentShape</strong></td><td>A product in a setting.</td><td><code>[DeploymentShape] := a node that -grants-&gt; at least one [Capability]</code></td><td>17</td></tr>
+<tr><td><strong>GrantedCapability</strong></td><td>A capability in a particular shape&#x27;s grant.</td><td><code>[GrantedCapability] := a [Capability] with an inbound -grants-&gt; from a [DeploymentShape], carrying a -bounded_by-&gt; [Barrier] and a -known_by-&gt; [EvidenceTier]</code></td><td>123</td></tr>
+<tr><td><strong>Barrier</strong></td><td>What stands between the agent and a capability.</td><td><code>[Barrier] := a node that -bounds-&gt; at least one [GrantedCapability]</code></td><td>4</td></tr>
+<tr><td><strong>Control</strong></td><td>A barrier that actually bounds anything.</td><td><code>[Control] := a [Barrier] that is -enforced_by-&gt; an [Enforcer] the [Grant] does not include</code></td><td>1</td></tr>
+<tr><td><strong>Mandate</strong></td><td>What a deployer authorised.</td><td><code>[Mandate] := a node that -authorises-&gt; at least one [Capability]</code></td><td>16</td></tr>
+<tr><td><strong>Excess</strong></td><td>The finding.</td><td><code>[Excess] := a [GrantedCapability] with NO -authorised_by-&gt; path to the [Mandate] in scope</code></td><td>82</td></tr>
+<tr><td><strong>UnboundedExcess</strong></td><td>The business case.</td><td><code>[UnboundedExcess] := an [Excess] whose -bounded_by-&gt; [Barrier] is not a [Control]</code></td><td>64</td></tr>
+<tr><td><strong>Shortfall</strong></td><td>Asked for and cannot.</td><td><code>[Shortfall] := a [Capability] that a [Mandate] -authorises-&gt; and no [DeploymentShape] in scope -grants-&gt;</code></td><td>2</td></tr>
+<tr><td><strong>Product</strong></td><td>A vendor&#x27;s product, which is not a shape.</td><td><code>[Product] := a node that -has_variant-&gt; at least one [DeploymentShape]</code></td><td>15</td></tr>
+<tr><td><strong>Tool</strong></td><td>What a shape reaches a capability through.</td><td><code>[Tool] := a node that a [DeploymentShape] -runs_with-&gt; and that -exposes-&gt; at least one [Capability]</code></td><td>76</td></tr>
+<tr><td><strong>Scope</strong></td><td>A vendor&#x27;s own identifier for what a consent permits.</td><td><code>[Scope] := a node that a [DeploymentShape] is -scoped_by-&gt; and that -permits-&gt; at least one [Capability]</code></td><td>9</td></tr>
+<tr><td><strong>Setting</strong></td><td>What moves a barrier.</td><td><code>[Setting] := a node that -narrows-&gt; at least one [Capability] and -moves-&gt; it to at least one [Barrier]</code></td><td>22</td></tr></tbody></table></div>
+<h2 id="the-one-that-carries-the-argument">The one that carries the argument</h2>
+<blockquote><p><strong><code>[Control] := a [Barrier] that is -enforced_by-&gt; an [Enforcer] the [Grant] does not include.</code></strong> Until v0.3.0 this was <code>is_control: true</code> on a barrier, which is a label somebody applied. It is now a path the build walks, and <strong>exactly one of the four barriers matches</strong>. The release gate fails if that stops being true, because every page on this site is written against it.</p></blockquote>
+<div class="table"><table><thead><tr><th>Barrier</th><th>Enforced by</th><th>Inside the grant</th><th>A control</th></tr></thead><tbody><tr><td><code>none</code></td><td>-</td><td>-</td><td>no</td></tr>
+<tr><td><code>expectation</code></td><td>the agent reading it</td><td>yes</td><td>no</td></tr>
+<tr><td><code>setting</code></td><td>the agent&#x27;s own account</td><td>yes</td><td>no</td></tr>
+<tr><td><code>boundary</code></td><td>something above the grant</td><td>no</td><td><strong>yes</strong></td></tr></tbody></table></div>
+<h2 id="judgment-does-not-disappear">Judgment does not disappear</h2>
+<p>That is the usual objection and it deserves a direct answer. <strong>Somebody still decided that a control must be enforced from outside the grant.</strong> What changes is where that decision lives: out of a classifier&#x27;s head and into a formula that is visible, versioned, inspectable and arguable. <strong>You can now disagree with a classification by pointing at a line</strong>, which you could not do before.</p>
+<blockquote><p><strong>A score is not a node and there is no edge to one.</strong> Not a rating, not a risk level, not a severity. Adding one would not be a modelling choice, it would be a verdict, and the same ABP is dangerous in one deployment and harmless in the next. The risk work above this holds the assets, and that is where a score can exist.</p></blockquote>
+<p><a class="ext" href="https://abp.sgit.ai/data/graph/node-types.json">The formulas as JSON ↗</a> · <a class="ext" href="https://graphs.sgit.ai/v1/depth/index.html">Why classification is a query ↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../model/graph/formulas/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/model/graph/formulas/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="150-the-node-type-formulas.html">← The node type formulas</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="152-the-three-layers.html">The three layers →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>151 of 357: The node type formulas</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

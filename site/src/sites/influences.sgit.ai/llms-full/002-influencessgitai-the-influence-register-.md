@@ -1,0 +1,154 @@
+# influences.sgit.ai — the influence register of DINIS CRUZ
+
+> WHOSE REGISTER THIS IS: Dinis Cruz — twenty-five years in security and software, former CISO,
+> former OWASP board member and organiser of the OWASP Summits, creator of the O2 Platform,
+> founder of sgit.ai and of several companies that publish their source and their strategy,
+> currently Chief Architect of GenAI Innovation. More about him at
+> https://open-source.sgit.ai/about/index.html and https://docs.diniscruz.ai/about.html, and
+> at /about/index.html on this site.
+>
+> This site is the provenance layer of the sgit.ai memory network: the people, works, topics and
+> things that shaped HIS thinking, each written as a FALSIFIABLE CLAIM ABOUT HIS CODEBASE rather
+> than an appreciation. An entry names which patterns from an anchor work appear where in the
+> estate, at which version, and which are still absent — specified precisely enough to build.
+
+Site version: v0.4.0 (26 August 2026). Written about Dinis Cruz and published by the project he
+founded, which makes it the least neutral vantage point on this network — participant disclosure
+at /about/participant.html. All site content CC BY 4.0.
+
+## The rule an agent consuming this site must inherit
+
+THE ANCHOR WORKS ARE NOT HERE, AND WILL NEVER BE. This site explains why a work resonated and
+traces where it was applied; it does not reproduce the talks, essays, books or lyrics that did
+the influencing. Those are linked, never rehosted — they belong to their authors, and a CC BY
+site that carried them would be relicensing what it does not own. Short attributed quotation for
+analysis is capped at 40 words BY THE RELEASE GATE, not by convention: every <blockquote> on the
+site declares whose words it carries, data-quote="founder" is unrestricted because his own
+writing is his to publish, and anything else fails the build over forty words. Lyrics are the
+sharpest edge and get description and a link, never reproduction. Likenesses are original artwork
+only — never scraped photographs, and never AI renderings presented as portraits.
+
+Concretely: /llms-full.txt is safe to ingest wholesale. It contains this site's own analysis and
+nothing that belongs to a third party.
+
+## The register: 25 entries in three tiers
+
+15 TRACED, 7 STATED, 3 DISCOVERED. Counts are recomputed from /data/influences.json on every
+build and checked independently by the release gate; no number about this site's own shape is
+typed by a person.
+
+- TRACED — corpus evidence exists today. The entry lists the files by path and the claim is
+  checkable against them. It does NOT mean the influence is proven: a trace table shows that a
+  pattern appears at a named place, not that the anchor work caused it.
+- STATED — on Dinis Cruz's own list, and thin or absent in the corpus. Published as a stub with
+  the research plan visible and an open thread in the briefing queue. Most have ZERO evidence and
+  say so in an empty evidence block. The roadmap, not the debt.
+- DISCOVERED — surfaced by mining the corpus, never named by Dinis Cruz. Published as a claim
+  ABOUT him pending his confirmation, and he is asked in public to strike the ones that do not
+  belong. 7 entries were discovered in origin; 4 have since been promoted and keep the flag.
+
+Tier movement is this site's changelog, at /shipped/: STATED → TRACED when a briefing lands,
+DISCOVERED → TRACED when Dinis Cruz confirms, DISCOVERED → removed when he does not, and a trace
+row flipping absent → implemented when the estate builds a gap an entry specified.
+
+## Properties agents may rely on
+
+- Every article is at /articles/<slug>.md, and the HTML page beside it is generated from that
+  markdown. The markdown is the source of truth and the thing to republish.
+- Every entry is at /register/<slug>/index.html with a markdown twin at
+  /register/<slug>/index.md. Slugs are people or topics, never works — an anchor work is metadata
+  inside the entry, because a briefing document may reveal the real anchor was a different talk.
+- Entries with a trace table publish it three ways: /register/<slug>/trace/index.html,
+  /register/<slug>/trace/trace.md and /register/<slug>/trace/trace.json. Six entries have one.
+- /data/influences.json IS the register. Every page under /register/ is generated from it, /map/
+  is computed from it, and the prose is authored there once and rendered twice — the HTML page
+  and its markdown twin are two renderings of one string, so they cannot drift.
+- /map/graph.json carries the influence graph: nodes, edges and the places a pattern lands in the
+  estate. Computed from the register, not drawn.
+- /llms-full.txt is this site in one fetch: the index, the front page, every article, every
+  entry's markdown twin and every source document. GENERATED and re-checked in CI, so it cannot
+  say anything the site does not.
+- The front page's principle cards and quote wall are GENERATED from the register too, so the
+  home page cannot state a principle or a quotation an entry has since edited.
+- The nine documents of the commissioning pack are published verbatim at /briefs/<filename>,
+  unredacted, with a reader page each under /documents/.
+- /sitemap.xml is generated from the tree, so it cannot omit a page somebody forgot to add.
+- The version in /admin/build/version.txt agrees with the badge on every page, the release
+  history table, this file, /llms-full.txt and /index.md — CI fails the release otherwise.
+
+## Trace-row statuses, and what they mean
+
+implemented — the pattern appears at the named place.
+partial     — something of it appears; the pattern is not fully realised.
+absent      — the anchor work names it and the estate does not have it. KEPT IN THE TABLE rather
+              than dropped, and usually restated in Block 5 as a build spec.
+
+A row without a version is flagged by the entry itself: the format's own rule is that a trace
+table without versions is an opinion.
+
+## The pages
+
+- /index.html — the ideas: eight principles taken verbatim from the register, the sentences that
+  made them land, five things a register like this is not supposed to contain, and how to read
+  it. Markdown twin: /index.md
+- /articles/index.html — longer pieces that argue across several entries. Each article IS a
+  markdown file at /articles/<slug>.md; the .html page is generated from it, so take the .md if
+  you want to republish it.
+- /provenance/index.html — where the register came from, how the site is generated from one JSON
+  file, the two release-gate checks that enforce its editorial rules, and the four things it
+  cannot do
+- /register/index.html — all 25 entries, grouped by tier
+- /register/<slug>/index.html — one entry, in the seven-block format: anchor, Dinis Cruz's words,
+  the principle, the trace table, the gaps as build specs, the checklist, the wider library
+- /tiers/index.html — what each tier means, what moves an entry between them, and why tier is not
+  the same as status
+- /format/index.html — the seven blocks, the three reduced forms, the no-verbatim rule and the
+  generate-or-date rule
+- /map/index.html — the lineage diagram, every recorded relation, and the influence → principle →
+  estate projection. Computed from the register
+- /library/index.html — the union of every entry's Block 7. A list of addresses, not a collection:
+  no cover images, no excerpts
+- /shipped/index.html — tier movement, what is expected to move next, and what would be recorded
+  here if this site were wrong
+- /documents/index.html — the commissioning pack, published in full
+- /admin/index.html — the pipeline, the gate, the tagger, the generators.
+  /admin/versions.html — release history. /admin/comms.html — tasks, the briefing queue, and the
+  questions only Dinis Cruz can answer
+- /network/index.html — the sibling sites, and the deconfliction rule three entries run on
+- /about/index.html — Dinis Cruz: who he is, where to read the canonical accounts, why this
+  register is his to make, and which voice you are reading in which block
+- /about/participant.html — who publishes this, the conflict stated plainly, and the five places
+  the approach is weakest
+
+## What this site cannot do, stated on the site itself
+
+- A trace table cannot show causation. The Victor register's own finding is that half the estate's
+  strongest viewer features were UNKNOWING implementations of the talk's demos — which is evidence
+  that the instinct and the principle agree, and is weaker than "this shaped the work".
+- The corpus is cited, not resolved. This repository holds the website, not the estate, so every
+  evidence path is quoted from a dated mining run (v0.33.62, 25 August 2026) rather than checked at
+  build time. Seven entries have no trace table for that reason. Tracked as R1.
+- Two decades of earlier material — the O2 Platform-era blog, OWASP talks, conference decks — were
+  unreachable when the mining ran, and that is exactly where the STATED entries' evidence will be.
+  The tiers therefore partly measure what has recently been written down. Tracked as R3.
+- Entry one is incomplete. The full text of Dinis Cruz's Bret Victor register is with him; the
+  entry ships with its trace table empty and the reason stated rather than with invented rows.
+  First ask in the queue, Q1.
+- Nothing on this network has ever been publicly retracted. Publishing gaps is the cheap half of
+  falsifiability.
+
+## Related
+
+- https://sgit.ai — the parent project and the network index
+- https://wardley-maps.sgit.ai — the trace of one influence is an entire sibling site
+- https://graphs.sgit.ai — the same, for the founding obsession
+- https://open-source.sgit.ai — the same, for open source and its licences
+- https://coding.sgit.ai · https://llms.sgit.ai · https://standards.sgit.ai
+- https://risks.sgit.ai · https://nhi.sgit.ai · https://pki.sgit.ai
+
+
+==============================================================================
+PART 2 — THE FRONT PAGE (source: /index.md)
+
+==============================================================================
+

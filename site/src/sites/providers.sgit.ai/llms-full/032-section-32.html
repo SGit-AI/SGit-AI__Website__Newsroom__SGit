@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Section 32 (providers.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 32 of 33</p><nav class="pager"><span><a href="031-section-31.html">← Section 31</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="033-section-33.html">Section 33 →</a></span></nav><article class="source"><h2 id="how-a-release-is-made-here">How a release is made here</h2>
+<p>The same three steps as every other site in this estate — <code>validate</code> → <code>tag-release</code> → <code>deploy</code>.</p>
+<p><strong>One file owns the version:</strong> <code>admin/build/version.txt</code>. The nav badge, the footer, <code>llms.txt</code> and the table above are all rendered from it, and the gate fails if any of them disagree.</p>
+<pre><code class="lang-bash">bin/bump.py &quot;what changed in this release&quot;     # --major for vR.M+1.0
+python3 build.py
+admin/build/validate.sh
+git commit -am &quot;site v0.1.1: what changed in this release&quot;</code></pre>
+<p><strong>The commit subject is load-bearing.</strong> <code>tag-release</code> reads <code>version.txt</code>, finds the commit whose <em>subject</em> carries the same version, and tags it — HEAD on a direct push, HEAD&#x27;s parent when a pull request lands as a merge.</p></article><nav class="pager"><span><a href="031-section-31.html">← Section 31</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="033-section-33.html">Section 33 →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/llms-full.txt">https://providers.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:29Z</dd><dt>sha256</dt><dd><code title="a907cbfec00f159b1ac6b6b7cf7355f048fa985ca08f357a6540857c990026a6">a907cbfec00f</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/providers.sgit.ai/llms-full.txt</a> (35,144 bytes)</dd><dt>Section</dt><dd>32 of 33: Section 32</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

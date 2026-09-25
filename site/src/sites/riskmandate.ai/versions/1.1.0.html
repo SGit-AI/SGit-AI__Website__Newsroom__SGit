@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.1.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.1.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.1.0.html">live ↗</a></p><article class="source"><h2 id="the-agent-behaviour-policy-becomes-a-page-and-lisbon-gets-a-landing-page">The Agent Behaviour Policy becomes a page, and Lisbon gets a landing page</h2>
+<p>Three new pages, and the plumbing they needed. The site had been arguing the Agent
+Behaviour Policy&#x27;s contents for months without the artefact having a name; it has one
+now, with a published model behind it.</p>
+<ul><li><strong><a class="ext" href="https://riskmandate.ai/versions/abp.html">The Agent Behaviour Policy ↗</a> is a page.</strong> The four objects and how each
+is obtained, the four barriers and the enforcer test, the confirmations-on/off pair
+where one barrier moved and not a single number did, the rule that a behaviour policy
+carries no score and where the score does live, the label/record/prescription ladder,
+and the business case a control can be sold on. Every figure links to the published
+data it came from rather than restating it.</li><li><strong><a class="ext" href="https://riskmandate.ai/versions/summit.html">Lisbon ↗</a> has a landing page</strong> for the Startup Summit on 17–18
+September: what we are showing, in order; four conversations with one ask each; press
+boilerplate at three lengths with an accurate/not-accurate table beside it; and every
+brand asset, free to take. It carries the not-affiliated notice and sends anybody
+asking about the event to the organiser.</li><li><strong>An exhibitor operations page</strong>, which is the first page on this site that is
+deliberately not published: unlisted, <code>noindex</code>, kept out of the sitemap and
+<code>llms.txt</code>, and disallowed in <code>robots.txt</code>. It holds the organiser&#x27;s booth guide and
+our own action list. <code>site/</code> is a public web root, so that makes it unadvertised
+rather than protected, and the page says so on itself.</li></ul>
+<p><strong>The page list has one home.</strong> It used to be inlined in all 24 pages with nothing
+keeping them in step — a test could see them disagree but nothing could fix it, and
+adding a page meant editing every page. <code>site/pages.json</code> is now the source and the
+inlined copy is injected from it. A page can be marked <code>unlisted</code> (no menu entry) or
+<code>private</code> (also no twin, no sitemap, no <code>llms.txt</code>, <code>noindex</code>, robots-disallowed).</p>
+<p><strong>Two defects fixed on the way, both older than this release.</strong></p>
+<ul><li><strong>The header bar overflowed its own 1100px cap by 33px</strong>, before these pages existed,
+and by 137px with them. Library, Partners, Give feedback and Brand collapse into a
+<em>More</em> group, which brings six top-level entries back inside the cap, and the mobile
+drawer&#x27;s breakpoint moves from 880px to 980px to close a band where the bar overflowed
+with no drawer to fall back on. No page scrolls sideways at any width now, which was
+not true of any release before this one.</li><li><strong>The lockup SVGs clipped their own wordmark.</strong> <code>riskmandate-lockup-light.svg</code> and
+its dark twin set the wordmark as an SVG <code>&lt;text&gt;</code> element inside a 260-unit viewBox,
+so the final letter was cut off in any font wider than the one it was drawn against —
+including whatever a printer would have used. The viewBox is 320 now, and the print
+deliverables are laid out as real type rather than as a fixed-width drawing, so there
+is nothing left to clip.</li></ul>
+<p><strong>Two new tools, neither of them a build step.</strong> <code>scripts/site/new-page.mjs</code> scaffolds a
+page with the chrome lifted from a page already in <code>site/</code>, so a new page cannot ship an
+older copy of the header, the drawer or the shared modules.
+<code>scripts/site/render-brand-exports.mjs</code> renders the brand exports at the sizes an
+exhibitor portal and a LinkedIn page actually ask for.</p>
+<p><strong>Tests: 19, from 17.</strong> Internal links now also check that a <code>#fragment</code> resolves to an
+id in the page it points at, which caught a wrong anchor before it shipped; private
+pages are asserted <code>noindex</code>, twin-less and robots-disallowed; and <code>pages.json</code> has to
+account for every page in <code>site/</code> and vice versa.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.1.0.html">https://riskmandate.ai/versions/1.1.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.1.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="32371875b399f7b5b0431eceed51878a1987ede8135c397e37ee917f973bc4c8">32371875b399</code></dd><dt>Frozen copy</dt><dd><a href="1.1.0.md">sites/riskmandate.ai/versions/1.1.0.md</a> (3,654 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

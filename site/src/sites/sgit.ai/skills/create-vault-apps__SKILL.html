@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Building HTML Apps That Live Inside an SG/Vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#building-html-apps-that-live-inside-an-sgvault">Building HTML Apps That Live Inside an SG/Vault</a></li><li class="l2"><a href="#canonical-references">Canonical references</a></li><li class="l2"><a href="#when-to-reach-for-this">When to reach for this</a></li><li class="l2"><a href="#the-non-negotiable-authoring-contract">The non-negotiable authoring contract</a></li><li class="l2"><a href="#what-the-sgapp-host-gives-you-so-apps-dont-reinvent-it">What the SG/App host gives you (so apps don&amp;#x27;t reinvent it)</a></li><li class="l3"><a href="#heads-up-fetch-of-vault-paths-is-not-patched">Heads-up: fetch() of vault paths is NOT patched</a></li><li class="l2"><a href="#the-project-shape-that-works">The project shape that works</a></li><li class="l3"><a href="#appjson-auto-launch">app.json — auto-launch</a></li><li class="l2"><a href="#the-proven-layout-ux-patterns">The proven layout &amp;amp; UX patterns</a></li><li class="l3"><a href="#for-photo-galleries-justified-rows-not-row-span-masonry">For photo galleries: justified rows, not row-span masonry</a></li><li class="l3"><a href="#for-long-form-strategy-content-scrollytelling-layout">For long-form / strategy content: scrollytelling layout</a></li><li class="l3"><a href="#eager-image-loading-always">Eager image loading (always)</a></li><li class="l3"><a href="#lightbox">Lightbox</a></li><li class="l3"><a href="#inlined-data-uri-tricks">Inlined data URI tricks</a></li><li class="l2"><a href="#the-build-and-publish-workflow">The build-and-publish workflow</a></li><li class="l2"><a href="#a-working-indexhtml-skeleton">A working index.html skeleton</a></li><li class="l2"><a href="#common-failure-modes-and-how-to-recognise-them">Common failure modes and how to recognise them</a></li><li class="l2"><a href="#the-medium-is-the-argument">The medium is the argument</a></li><li class="l2"><a href="#notes-on-what-this-skill-doesnt-cover-yet">Notes on what this skill doesn&amp;#x27;t cover yet</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="create-vault-apps__SKILL.md">raw text</a> · <a class="ext" href="https://sgit.ai/skills/create-vault-apps__SKILL.html">live ↗</a></p><article class="source"><hr>
+<p>name: vault-html-app
+description: Build a polished, self-contained HTML application that lives inside an SG/Send vault and renders from index.html — a photo gallery, strategy microsite, dashboard, report, journal, or any single-page experience. Use this whenever the user wants to create a vault app, build an HTML app for a vault, make a website inside a vault, render a page from a vault, or auto-open a vault as an app — even when they only describe the content (gallery, report, microsite, slide deck, form, presentation) without saying &quot;app&quot;. Covers the authoring contract all vault HTML must follow, the data-plus-app project shape that works, the patterns that survive both the SG/App host and the vault browser preview, the sgit commit-and-push workflow, calling an LLM from inside a vault app via sg.llm.* without ever holding an API key, and cross-references the canonical window.sg API reference (library/guides/vault-html/AUTHORING.md) and the sg-playwright screenshot guide.
+</p>
+<hr>
+<h1 id="building-html-apps-that-live-inside-an-sgvault">Building HTML Apps That Live Inside an SG/Vault</h1>
+<blockquote><p><strong>Canonical source:</strong> <code>library/skills/create-vault-apps/SKILL.md</code> in the
+<code>SGraph-AI__App__Send</code> repo. <strong>Last verified:</strong> 2026-08-03 against app-shell v0.2.3 and
+sgit-ai v0.14.27. If your copy of this skill came from anywhere else (a vault, a manual
+upload), check the repo for a newer version before trusting details.</p></blockquote>
+<p>A vault app is a single <code>index.html</code> (plus its data and assets) that lives inside an SG/Send vault and renders straight from it. When the vault opens, the app launches: full-screen, talking to the vault through a bridge, with the encrypted blob serving as both the storage and the distribution mechanism. The medium is the message — sharing the vault link <em>is</em> sharing the app.</p>
+<p>This skill captures the techniques that work, the contract you must follow, and the traps to avoid. It is written from real experience building three production apps (a photo gallery, an event report, a strategy microsite) inside the dev vault server, with one full revision cycle each — the patterns here have all been bug-fixed against actual vault behaviour, not just inferred from docs.</p>
+<h2 id="canonical-references">Canonical references</h2>
+<p>This file is the agent-facing <strong>how-to</strong> — patterns, traps, sample skeletons. For the
+<strong>authoritative platform reference</strong>, two docs are kept in lockstep with the
+<code>app-shell</code>/<code>app-hud</code> source code:</p>
+<ul><li><strong><code>library/guides/vault-html/AUTHORING.md</code></strong> — the full <code>window.sg.*</code> runtime API,
+every namespace (<code>vfs</code>, <code>fs</code>, <code>vault</code>, <code>history</code>, <code>sync</code>, <code>auth</code>, <code>ui</code>, <code>state</code>, <code>llm</code>,
+<code>loadCss</code>/<code>loadJs</code>, <code>app</code>), what the host does automatically (nav, hash anchors,
+external links, friendly 404, print, consent overlays), and the <code>app.json</code>
+<code>hud.{mode, show.*}</code> config schema for the chrome.</li><li><strong><code>library/skills/use-sg-playwright/SKILL.md</code></strong> — how to drive <code>sg-playwright</code> from a
+Claude session to screenshot a live vault app (no local Chromium required).</li></ul>
+<p><strong>Cross-check AUTHORING.md before you write any <code>sg.*</code> call from this skill.</strong> Some
+samples in this file pre-date 2026-05-30 — when in doubt, the AUTHORING.md is the
+ground truth.</p>
+<h2 id="when-to-reach-for-this">When to reach for this</h2>
+<p>Use this skill whenever the deliverable is <em>both</em> the content and the experience of viewing it, and the user wants that experience to live securely with the data. A few telltale signs:</p>
+<ul><li>The user has photos / a report / a writeup / a deck / a set of files and wants them shareable as a polished page rather than a folder of files.</li><li>The user mentions sending the result to someone external, and the data is private or sensitive — they want it encrypted, with a key in the URL.</li><li>The user references SG/Send, SG/Vault, &quot;App Mode&quot;, <code>app.json</code>, <code>_page.json</code>, the <code>app-shell</code> or <code>app-banner</code> custom elements, or the dev/prod vault domains.</li><li>The user already has a vault and wants to &quot;do more with it&quot; than just file storage.</li></ul>
+<p>If the work is just file storage, file sharing, or version control of files, this is the wrong skill — <code>sgit</code> alone is enough. Reach for this skill when an experience needs to be authored on top of the files.</p>
+<h2 id="the-non-negotiable-authoring-contract">The non-negotiable authoring contract</h2>
+<p>This is the part you cannot skip. Vault HTML runs inside an iframe loaded from a <code>blob:</code> URL, which means the browser fetches resources <em>before</em> the vault&#x27;s bridge script can install. Anything declarative against a vault-relative path will 404. The contract is therefore:</p>
+<ol><li><strong>No <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;…&quot;&gt;</code> against vault files.</strong> Inline all CSS, or use a <code>data:</code> URI, or call <code>window.sg.loadCss(path)</code> after <code>DOMContentLoaded</code>.</li><li><strong>No <code>&lt;script src=&quot;…&quot;&gt;</code> against vault files.</strong> Inline all JS, or use <code>window.sg.loadJs(path)</code>.</li></ol>
+<blockquote><p>Note on what&#x27;s verified: in all three apps this session I <strong>inlined</strong> all CSS and JS, and that is the path I can vouch for. The <code>window.sg.loadCss</code> / <code>loadJs</code> alternatives come from the vault&#x27;s AUTHORING.md guide and are the documented mechanism, but I did not exercise them — prefer inlining unless you have a reason to load lazily, and verify the <code>sg.*</code> calls if you do.</p>
+<p><strong>Verified against source (2026-08-09): <code>loadCss</code>/<code>loadJs</code> require no separate grant.</strong> Both are
+<code>_readText(path)</code> under the hood — the identical bridge call <code>sg.vfs.readText</code> makes — plus a DOM
+injection step. There is no <code>load</code> permission verb; they ride <code>fs.read</code>, which is default-allow
+today. If one of them fails, the promise rejects with <code>ENOENT</code> (bad path, or the file was written
+locally but never <code>sgit commit</code> + <code>sgit push</code>ed) or a script error — not <code>EPERM</code>. See
+AUTHORING.md §2 and <code>MIGRATING-TO-THE-PERMISSION-MODEL.md</code> for the forward-looking <code>fs.read</code>
+deny-by-default flip, which will apply to these loaders too since they share the verb.</p></blockquote>
+<ol><li><strong>No <code>&lt;img src=&quot;…&quot;&gt;</code> in markup against vault files.</strong> Set <code>img.src = &#x27;…&#x27;</code> from JS once the bridge is up. (A <code>MutationObserver</code> does intercept <code>&lt;img&gt;</code> markup in the SG/App host, but it is not guaranteed in the vault-browser preview — set <code>src</code> from JS to be safe everywhere.)</li><li><strong>No <code>&lt;iframe src&gt;</code>, no <code>&lt;source src&gt;</code>, no CSS <code>@import</code>, no ESM <code>import</code>, no <code>new Worker()</code> against vault files.</strong> These all run too early.</li><li><strong><code>fetch(&#x27;something.json&#x27;)</code> does NOT work</strong> — <code>window.fetch</code> is <strong>not</strong> patched; a vault-relative fetch resolves against the iframe&#x27;s opaque origin and 404s. Load data with <code>await sg.vfs.readText(&#x27;content.json&#x27;)</code> (or <code>.read</code> for binary). Plain <code>fetch</code> is only useful as the first hop of a fallback chain that catches the failure and uses an inlined copy (see below, and the &quot;Heads-up&quot; section).</li><li><strong><code>&lt;a href=&quot;vault-path&quot;&gt;</code> works</strong> — clicks are postMessage-intercepted by the host.</li></ol>
+<p>Two more things that follow from the contract:</p>
+<ul><li><p><strong>Always provide an inlined fallback for the data file.</strong> Anyone who saves the HTML standalone or opens it outside the vault still gets a working page. Pattern:</p>
+<pre><code class="lang-js">const FALLBACK = /*__DATA__*/{};
+async function getData(){
+  try { const r = await fetch(&#x27;content.json&#x27;,{cache:&#x27;no-store&#x27;});
+        if (r.ok) { const j = await r.json(); if (j &amp;&amp; j.sections) return j; } }
+  catch(e){}
+  return FALLBACK;
+}</code></pre>
+<p>Then inject the real JSON into <code>FALLBACK</code> at build time, replacing the <code>{}</code>. This is also what lets the page render in the vault-browser <em>preview</em> (which doesn&#x27;t always run the same code path as the SG/App host).</p></li><li><p><strong>Signal <code>sg-app-ready</code> once the page has rendered.</strong> The SG/App host shows a &quot;Loading app…&quot; overlay until it gets this message:</p>
+<pre><code class="lang-js">try { window.parent &amp;&amp; window.parent.postMessage({type:&#x27;sg-app-ready&#x27;},&#x27;*&#x27;); } catch(e){}</code></pre>
+<p>Call it at the end of your build function. Skipping this leaves users staring at a spinner.</p></li></ul>
+<h2 id="what-the-sgapp-host-gives-you-so-apps-dont-reinvent-it">What the SG/App host gives you (so apps don&#x27;t reinvent it)</h2>
+<p>The host chrome (<code>&lt;app-shell&gt;</code> + <code>&lt;app-hud&gt;</code>) does a lot of work for you. **Reach for
+these before building your own version** — apps that duplicate host capabilities tend
+to ship redundant UI that ages out of sync with the platform. As of 2026-05-30:</p>
+<div class="table"><table><thead><tr><th>Capability</th><th>Where it lives</th><th>What it means for your app</th></tr></thead><tbody><tr><td><strong>Hash anchors</strong> in vault links — <code>&lt;a href=&quot;page.html#section&quot;&gt;</code></td><td>Host click interceptor + parent scroll-to-anchor postMessage</td><td>Just write the link; the host strips the fragment for the path lookup, then scrolls the new doc to the anchor on <code>DOMContentLoaded</code>. (Used to be broken — 403&#x27;d against the static host.)</td></tr>
+<tr><td><strong>External links</strong> — <code>&lt;a href=&quot;https://example.com&quot;&gt;</code></td><td><strong>Default-deny with a one-click host confirm</strong> (updated 2026-06-15): the click posts to the host, which shows a confirm bar in the HUD and opens the link in a new tab with <code>noopener,noreferrer</code>. The app sandbox does NOT get <code>allow-popups-to-escape-sandbox</code> by default.</td><td>Don&#x27;t add <code>target=&quot;_blank&quot;</code>. For frictionless in-frame <code>window.open</code>, declare <code>&quot;externalLinks&quot;: true</code> in <code>app.json</code> <code>permissions</code> — only then does the sandbox gain the popup tokens.</td></tr>
+<tr><td><strong>Back / forward / Home / Reload / Recent pages</strong></td><td>The <code>&lt;app-hud&gt;</code> nav row above your iframe</td><td>Don&#x27;t build app-side back buttons. The HUD has a browser-style toolbar with a parent-side history stack, a recent-pages dropdown (last 15, chronological), and an editable URL bar (click → type vault-absolute path → Enter).</td></tr>
+<tr><td><strong>Friendly 404 / access-denied overlay</strong></td><td><code>_renderBrokenLinkOverlay</code> in <code>app-shell.js</code></td><td>A click on a missing or <code>.vault/**</code>-floored path lands on a host-rendered dead-end page with a ‹ back arrow. You don&#x27;t need to handle broken-link routing.</td></tr>
+<tr><td><strong>Print</strong></td><td>HUD &quot;🖨 Print&quot; button → bridge RPC → DOM snapshot with <code>blob:</code>→<code>data:</code> inlining → <code>SgPrint.printHtml</code></td><td>Hide it via <code>hud.show.print: false</code> if your app shouldn&#x27;t be printed; otherwise it just works. (Restored 2026-05-30 — was broken under null-origin srcdoc.)</td></tr>
+<tr><td><strong>Toast notifications</strong></td><td><code>sg.ui.message(text, type, opts)</code> → <code>&lt;app-hud&gt;</code> toast row</td><td>Don&#x27;t build your own notification UI. The HUD has one.</td></tr>
+<tr><td><strong>Consent prompts</strong> for grant-gated verbs (<code>sg.fs.*</code>, <code>sg.vault.*</code>)</td><td>Host HUD overlay + <code>sg.ui.requestPermission(verb, path)</code></td><td>Apps that declare permissions in <code>app.json</code> get the consent UI for free. Don&#x27;t build a homegrown &quot;are you sure?&quot; modal.</td></tr>
+<tr><td><strong>Device-local prefs</strong> — theme, panel widths, &quot;don&#x27;t show again&quot;</td><td><code>sg.state.{get,set,remove,clear,keys}</code> (NEW 2026-05-30)</td><td>Namespaced top-level-kernel <code>localStorage</code>, 64 KiB/value. Survives reload, NOT a vault write. For vault-persistent state use <code>sg.fs.write(&#x27;.app-state/...&#x27;)</code> instead.</td></tr>
+<tr><td><strong>Hide / dim the chrome</strong></td><td><code>app.json</code> <code>hud.mode: &quot;minimal&quot; | &quot;hidden&quot; | &quot;none&quot;</code> (<code>none</code> added 2026-06-11)</td><td>Declare in <code>app.json</code>; don&#x27;t try to suppress the HUD from inside the iframe (it&#x27;s not reachable from your DOM and you shouldn&#x27;t). Even <code>&quot;none&quot;</code> keeps the sovereignty rail (consent prompts, external-link confirms). See AUTHORING.md → &quot;Configuring the host chrome&quot;.</td></tr>
+<tr><td><strong>Append-only inbox</strong> — receive messages/files from other agents or vaults</td><td><code>sg.append.{configure,write,list,fetch,markProcessed,purge}</code> (renamed from <code>sg.inbox.*</code> 2026-06-15; the write verb is <code>write</code>, not <code>append</code>)</td><td>Requires an <code>append.*</code> grant in <code>app.json</code> <code>permissions</code>. See AUTHORING.md.</td></tr>
+<tr><td><strong>Static-host / read-only mode</strong></td><td><code>SGSend.staticMode</code> (<code>window.SG_STATIC === true</code>) — vault served from GitHub Pages / S3 with no backend</td><td>Reads work identically; every write rejects with <code>{code:&#x27;EREADONLY&#x27;}</code>. Check <code>sg.app.writable</code> and degrade gracefully. See <code>library/guides/vault-html/HOSTING-ON-STATIC-STORAGE.md</code>.</td></tr>
+<tr><td><strong>File downloads</strong> — save a vault file to the user&#x27;s device</td><td><code>sg.vfs.download(path, {filename?})</code> (NEW 2026-07-31) — host-fulfilled: the save happens in the host document, so the app sandbox never needs <code>allow-downloads</code></td><td>Don&#x27;t build blob-URL + programmatic-anchor downloads in-frame (Chromium silently drops them — no <code>allow-downloads</code> token). Default: one-click HUD confirm per file; <code>&quot;permissions&quot;: {&quot;downloads&quot;: true}</code> for frictionless. Direct hrefs to vault paths (<code>&lt;a href=&quot;/exports/x.pdf&quot; download&gt;</code>) can never work — vault files aren&#x27;t URLs.</td></tr>
+<tr><td><strong>In-page anchors</strong> — <code>&lt;a href=&quot;#section&quot;&gt;</code></td><td>Host interceptor scrolls in-frame (fixed 2026-07-31)</td><td>Just write the anchor. Never assign <code>location.hash</code> from JS (srcdoc frames re-navigate). Opt out of interception with <code>data-sg-native</code> or window-capture <code>preventDefault</code> if your app routes clicks itself.</td></tr>
+<tr><td><strong>Voice input</strong> — speak instead of type</td><td><code>sg.llm.listen()</code> (NEW 2026-08-03) → <code>{text,…}</code> — the HOST opens the mic (a sandboxed frame has no <code>navigator.mediaDevices</code>), shows a recording bar, transcribes with the vault key</td><td>Requires <code>&quot;llm&quot;: {&quot;listen&quot;: true}</code> — a <strong>separate grant, never implied by <code>chat</code></strong>, and consented per use by default. Audio never enters your frame. Works on iPad (records <code>m4a</code>, sent as-is); Chrome records <code>webm</code> and the host transcodes to WAV for you. Codes: <code>ENOMIC</code>, <code>EINSECURE</code>, <code>EABORT</code>, <code>EMODEL</code>. Don&#x27;t build your own recorder — a sandboxed frame cannot reach the microphone. <strong>If you render your own record button, drive the take with <code>sg.llm.listenStop()</code> / <code>sg.llm.listenCancel()</code></strong> (same grant, no consent prompt); the transcript comes back through the original <code>listen()</code> promise. <code>sg.llm.listening()</code> → <code>{recording}</code> for button state. A second <code>listen()</code> while one is running is refused with <code>EBUSY</code>. <strong>Don&#x27;t pass <code>model</code> either</strong>: transcription uses an audio-capable model (default <code>google/gemini-3.5-flash</code>), not the vault&#x27;s chat model — chat models 404 with &quot;No endpoints found that support input audio&quot;.</td></tr>
+<tr><td><strong>AI Chat beside your app</strong> — the user asks a model about this vault, by text or voice</td><td>A <code>✨ AI</code> button in the HUD opens the host&#x27;s own chat panel (NEW 2026-08-03)</td><td><strong>You get this for free and must not rebuild it.</strong> It is host chrome: it runs at the real origin, holds the vault key and the microphone directly, and your frame sees neither and cannot read the conversation. No permission needed. Hide it with <code>hud.show.llm: false</code> if a chat control would clash with your UI; force it on in <code>minimal</code> with <code>true</code> (off there by default). Use <code>sg.llm.*</code> below only when you want AI <em>inside</em> your own UI.</td></tr>
+<tr><td><strong>Sending an image to a model</strong> — a screenshot, a chart, a scan</td><td><code>sg.llm.imagePart(blob|bytes|dataURL)</code> → a content part for <code>chat()</code> (NEW 2026-08-03)</td><td>No new grant — an image is an ordinary <code>llm.chat</code> call. <strong>Use the helper, don&#x27;t encode it yourself</strong>: it chunks base64 at 8190, not 8192 (<code>8192 % 3 === 2</code> puts <code>=</code> padding mid-string and <code>atob()</code> rejects it — shipped three times in this repo). png/jpeg/webp/gif only. The host checks the model can actually READ images from the live catalogue and returns <code>EMODEL</code> naming it, rather than letting the provider answer with an error that names nothing; it also caps the payload (<code>EIMGSIZE</code>).</td></tr>
+<tr><td><strong>Calling an LLM</strong> — chat/summarise/extract, streaming</td><td><code>sg.llm.{available,models,chat,cancel,usage}</code> (NEW 2026-08-02) — the vault&#x27;s key stays in the HOST; your frame never sees it</td><td>Requires <code>&quot;llm&quot;: {&quot;chat&quot;: true}</code> in <code>app.json</code> <code>permissions</code>. <strong>Always call <code>sg.llm.available()</code> first</strong> and degrade on <code>ENOKEY</code>/<code>EPERM</code>/<code>EREADONLY</code> — unlike other namespaces this depends on runtime state (key configured? budget left?). Host clamps <code>maxTokens</code>, filters <code>models()</code> by the vault allow-list, enforces spend caps (<code>EBUDGET</code>), and raises the consent prompt. Costs are labelled <code>estimated</code> — render those with <code>~</code>. See AUTHORING.md &quot;Calling an LLM&quot;.</td></tr>
+<tr><td><strong>File preview (incl. PDFs)</strong> — quick-look overlay</td><td><code>sg.ui.preview(path)</code> (NEW 2026-07-31) — host-rendered at the real origin, so Chrome&#x27;s native PDF viewer works (it is BLOCKED inside the app sandbox — don&#x27;t build blob-iframe PDF previews in-frame)</td><td>One call, no grant, no confirm (same permission chain as <code>vfs.read</code>). Previews pdf/image/video/audio/text. For a PDF inside your own layout, bundle PDF.js to canvas — see AUTHORING.md &quot;Displaying PDFs inline&quot;.</td></tr></tbody></table></div>
+<blockquote><p><strong>Permissions are deny-by-default.</strong> All mutation namespaces (<code>sg.vfs.write</code>, <code>sg.fs.*</code>,
+<code>sg.vault.*</code>, <code>sg.append.*</code>, <code>sg.llm.*</code>) must be declared in <code>app.json</code> <code>permissions</code> or they
+throw <code>EPERM</code>; <code>.vault/**</code> is always off-limits (<code>EPROTECTED</code>). See
+<code>library/guides/vault-html/MIGRATING-TO-THE-PERMISSION-MODEL.md</code>.</p>
+<p><strong>Reads — including <code>sg.loadCss</code>/<code>sg.loadJs</code> — are the one exception, and only for now.</strong>
+<code>sg.vfs.read</code>/<code>readText</code>/<code>list</code> and both loaders share a single <code>fs.read</code> grant that is
+<strong>default-allow</strong> today (no <code>app.json</code> declaration needed). It is planned to flip to
+deny-by-default in a later phase, so scope it explicitly if you want the app to keep working
+unchanged after that flip:</p>
+<pre><code class="lang-json">{ &quot;permissions&quot;: { &quot;fs&quot;: { &quot;read&quot;: [&quot;theme.css&quot;, &quot;app-src/&quot;] } } }</code></pre>
+<p>Grant syntax is <strong>not glob</strong> — a trailing <code>/</code> means &quot;this path and everything under it&quot; (folder
+prefix), no trailing slash means an exact file. <code>&quot;app-src/**&quot;</code> is not valid; use <code>&quot;app-src/&quot;</code>.</p></blockquote>
+<h3 id="heads-up-fetch-of-vault-paths-is-not-patched">Heads-up: <code>fetch()</code> of vault paths is NOT patched</h3>
+<p>A common mistake: writing <code>fetch(&#x27;content.json&#x27;)</code> and expecting the bridge to route it.
+It doesn&#x27;t — <code>window.fetch</code> is <strong>not</strong> patched. The relative URL resolves against the
+iframe&#x27;s opaque blob origin, finds nothing, and 404s.</p>
+<p>The right call is <code>await sg.vfs.readText(&#x27;content.json&#x27;)</code> (or <code>.read</code> for binary). The
+inlined <code>FALLBACK</code> pattern below works as a <em>fallback</em> (catches the 404 and uses the
+embedded copy) but the &quot;fetch-first, fallback second&quot; sample in this skill is a
+<strong>fallback chain</strong>, not a &quot;fetch works&quot; claim. AUTHORING.md is the ground truth here.</p>
+<h2 id="the-project-shape-that-works">The project shape that works</h2>
+<p>For any non-trivial vault app, lay it out like this:</p>
+<pre><code>/                    (vault root)
+  index.html         — the app: inlined CSS + inlined JS + inlined fallback data
+  app.json           — auto-launch config (see below)
+  content.json       — editable content catalogue (or gallery.json, data.json — pick a clear name)
+  README.md          — what&#x27;s in the vault and how to edit
+  NARRATIVE.md       — long-form prose if relevant (gallery / report)
+  photos/            — for galleries: web/ thumbs/ originals/ (three sizes)
+   web/              — ~1600px max, WebP at q≈82 — used in lightbox
+   thumbs/           — ~760px max, WebP at q≈80 — used in grid
+   originals/        — full-res, renamed to slugs, preserved
+  maps/  diagrams/   — for non-photo content, the same three-size pattern still pays off
+  social/            — derived assets (collages, contact sheets, OG images)</code></pre>
+<p>Why this shape:</p>
+<ul><li><strong>Content lives in JSON, not in HTML.</strong> It lets the user (or you in a later turn) edit captions, reorder sections, rewrite prose, without touching the app. The app reads it from <code>fetch(&#x27;content.json&#x27;)</code> and falls back to the inlined copy.</li><li><strong>Three image sizes</strong> keep the gallery responsive <em>and</em> keep the page weight reasonable. Don&#x27;t try to use the originals; the page will be ~50 MB and slow.</li><li><strong>Originals are preserved, renamed to slugs.</strong> Never overwrite or delete the user&#x27;s source images. If they uploaded <code>IMG_0184.webp</code>, keep a copy in <code>photos/originals/04-opening-keynote.webp</code> so nothing is lost.</li><li><strong><code>social/</code> is separate</strong> so derived images don&#x27;t get confused with source content.</li></ul>
+<h3 id="appjson-auto-launch"><code>app.json</code> — auto-launch</h3>
+<pre><code class="lang-json">{
+  &quot;entry&quot;: &quot;index.html&quot;,
+  &quot;present&quot;: true,
+  &quot;auto_open&quot;: true,
+  &quot;title&quot;: &quot;Whatever the page is called&quot;
+}</code></pre>
+<p>With <code>present:true</code>, opening the vault boots straight into App Mode rather than the file browser. I set <code>auto_open:true</code> as well in every app this session and they did auto-launch, but I confirmed only <code>present</code> against the host source — treat <code>auto_open</code> as belt-and-braces until verified. Without <code>app.json</code> at all, the user lands on the file browser and has to click <code>index.html</code> manually.</p>
+<h2 id="the-proven-layout-ux-patterns">The proven layout &amp; UX patterns</h2>
+<p>Across the three apps I shipped, these patterns held up:</p>
+<h3 id="for-photo-galleries-justified-rows-not-row-span-masonry">For photo galleries: justified rows, not row-span masonry</h3>
+<p>I started with a CSS-grid masonry using <code>grid-auto-rows: 1px</code> and <code>grid-row: span N</code>. <strong>Don&#x27;t do this.</strong> The row span multiplies through every <code>gap</code> between tracks, so each tile ends up hundreds of pixels too tall, and <code>object-fit: cover</code> then shows a near-solid colour slice. The fix is a <strong>JS-driven justified-rows layout</strong> (Flickr/Google Photos style):</p>
+<pre><code class="lang-js">const GAP = 14;
+function targetRowHeight(){
+  const w = window.innerWidth;
+  if (w &lt;= 560) return 99999;       // one photo per row on phones
+  if (w &lt;= 980) return 240;
+  return 300;
+}
+function layoutChapter(grid, items){
+  grid.innerHTML = &#x27;&#x27;;
+  const cw = grid.clientWidth;
+  const target = targetRowHeight();
+  let row = [], aspectSum = 0;
+  const flush = (isLast)=&gt;{
+    if (!row.length) return;
+    let h = (cw - GAP*(row.length-1)) / aspectSum;
+    if (isLast) h = Math.min(h, target * 1.5);
+    h = Math.min(h, target * 1.6);
+    const rowEl = document.createElement(&#x27;div&#x27;); rowEl.className=&#x27;grid-row&#x27;;
+    row.forEach(p =&gt; rowEl.appendChild(makeFigure(p, Math.round(h*(p.w/p.h)), Math.round(h))));
+    grid.appendChild(rowEl); row = []; aspectSum = 0;
+  };
+  items.forEach(p =&gt; {
+    row.push(p); aspectSum += p.w / p.h;
+    const h = (cw - GAP*(row.length-1)) / aspectSum;
+    if (h &lt;= target) flush(false);
+  });
+  flush(true);
+}</code></pre>
+<p>This preserves true aspect ratios, reads strictly left-to-right (top-to-bottom), and re-flows on resize. The photo&#x27;s <code>w</code> and <code>h</code> come from <code>content.json</code> (capture them when you process the images).</p>
+<h3 id="for-long-form-strategy-content-scrollytelling-layout">For long-form / strategy content: scrollytelling layout</h3>
+<p>For a strategy essay, report, or microsite, use a single-column reading layout with sticky section navigation and a scroll-progress bar:</p>
+<ul><li><code>--measure: 680px</code> for prose width (any wider is unreadable).</li><li>Each section gets a <code>scroll-margin-top</code> so anchor links don&#x27;t slide under the sticky nav.</li><li>One <code>IntersectionObserver</code> highlights the active nav link; another reveals figures as they scroll into view.</li><li>Don&#x27;t lazy-load images — see &quot;Eager loading&quot; below.</li></ul>
+<h3 id="eager-image-loading-always">Eager image loading (always)</h3>
+<p>I tried lazy-loading thumbnails with an <code>IntersectionObserver</code> that set <code>img.src</code> on intersection. <strong>This caused the bug where the vault-browser preview rendered placeholder blocks</strong> while the App Mode page rendered correctly: the two run with different scroll/observer contexts. The lazy observer fires reliably in one but not the other.</p>
+<p>Fix: set <code>img.src</code> <em>eagerly</em> when each tile is built. The thumbnails are tiny (~50 KB each, ~1 MB total) so the cost is negligible, and the behaviour is now identical in both environments:</p>
+<pre><code class="lang-js">const img = document.createElement(&#x27;img&#x27;);
+img.alt = photo.title;
+img.loading = &#x27;lazy&#x27;;                       // native lazy is fine
+img.src = photo.thumb;                      // set immediately — the bridge will route it
+fig.appendChild(img);</code></pre>
+<p>The <code>IntersectionObserver</code> is still useful, but only for the fade-in reveal animation, not for setting the <code>src</code>.</p>
+<h3 id="lightbox">Lightbox</h3>
+<p>Every gallery/report wants click-to-zoom. The pattern:</p>
+<ul><li>A single fixed <code>&lt;div class=&quot;lb&quot;&gt;</code> with an <code>&lt;img&gt;</code> inside, hidden by default.</li><li>Click any thumbnail → set the lightbox img <code>src</code> to the web (~1600px) version, add <code>.open</code> class.</li><li><code>Escape</code> / click outside / close button to dismiss.</li><li>For galleries, support <code>←</code> / <code>→</code> to step through.</li></ul>
+<p>Hardcode no images in the lightbox markup — they get set from JS like everything else.</p>
+<h3 id="inlined-data-uri-tricks">Inlined data URI tricks</h3>
+<p>Two cheap wins that are safe inside the iframe:</p>
+<ul><li><strong>Faint paper grain</strong> for editorial layouts: an SVG noise filter as a <code>background-image: url(&quot;data:image/svg+xml,…&quot;)</code>. No file needed.</li><li><strong>Drawn icons</strong> (e.g. a padlock): a small <code>&lt;svg&gt;</code> inline rather than an emoji. Emojis render inconsistently across fonts on the server-side (DejaVu shows tofu); inline SVG is reliable.</li></ul>
+<h2 id="the-build-and-publish-workflow">The build-and-publish workflow</h2>
+<p>The full loop, condensed:</p>
+<ol><li><p><strong>Clone the vault</strong> with <code>sgit</code>:</p>
+<pre><code>sgit clone &lt;simple-token&gt; &lt;local-dir&gt;</code></pre>
+<p>The simple token alone is enough for read access; the keys are derived from it.</p></li><li><p><strong>Process the source files</strong>. For photos: write a small Python/Pillow script that renames originals to slugs, generates web and thumb sizes, and emits a <code>content.json</code> (or <code>gallery.json</code>) with each item&#x27;s <code>id</code>, <code>title</code>, <code>caption</code>, <code>thumb</code>, <code>web</code>, <code>original</code>, <code>w</code>, <code>h</code>, <code>chapter</code>, etc. Don&#x27;t try to do this by hand for 20 photos.</p></li><li><p><strong>Read the relevant skills first.</strong> Before writing the app, <code>view</code> <code>/mnt/skills/public/frontend-design/SKILL.md</code> (the design tokens and constraints for this environment). If the user gave you a vault to start from, also read <code>/mnt/skills/user/sgit/SKILL.md</code> and <code>/mnt/skills/user/create-vault-content/SKILL.md</code>.</p></li><li><p><strong>Build <code>index.html</code></strong> as a single self-contained file: inlined CSS, inlined JS, an <code>{}</code> placeholder for the data fallback.</p></li><li><p><strong>Inject the data.</strong> Crucially, when inlining the data as the <code>FALLBACK</code> object literal, use <code>json.dumps(obj)</code> — <em>not</em> the pretty-printed file text. Multi-line strings in JSON contain literal newlines, which are valid in <code>.json</code> but break a JS object literal. <code>json.dumps</code> produces a compact string with <code>\n</code> escape sequences. Pattern:</p>
+<pre><code class="lang-python">obj = json.load(open(&#x27;content.json&#x27;))
+compact = json.dumps(obj, ensure_ascii=False)
+assert &quot;\n&quot; not in compact, &quot;raw newline leaked&quot;
+html = open(&#x27;index.html&#x27;).read()
+new = html.replace(&#x27;const FALLBACK = /*__DATA__*/{}&#x27;,
+                   &#x27;const FALLBACK = /*__DATA__*/&#x27;+compact)
+open(&#x27;index.html&#x27;,&#x27;w&#x27;).write(new)</code></pre>
+<p>I burned a real bug on this with the Mermaid-source appendix — the multi-line code blocks made the inlined JS unparseable until I switched from raw JSON to <code>json.dumps</code>. Keep the placeholder marker (<code>/*__DATA__*/{}</code>) on a single distinctive line so the replace can be exact, not regex.</p></li><li><p><strong>Validate before pushing.</strong> Three quick checks:</p>
+<ul><li><strong>JS syntax</strong>: <code>node -e &quot;…compileFunction(scriptBody)…&quot;</code> to catch any inlining bugs.</li><li><strong>Contract</strong>: regex-scan the HTML for <code>&lt;link href|&lt;script src|&lt;img src</code> against vault paths; should be zero.</li><li><strong>Paths</strong>: walk the data and confirm every referenced file exists on disk.</li></ul></li><li><p><strong>Write <code>app.json</code></strong> to auto-launch (above), and a <code>README.md</code> describing the structure.</p></li><li><p><strong>Commit and push:</strong></p>
+<pre><code>sgit commit &quot;&lt;message&gt;&quot;
+sgit push --token &lt;access-token&gt;     # token goes after the subcommand
+sgit status                          # confirm &quot;in sync with remote&quot;</code></pre>
+<p>Both token positions work in current sgit (verified v0.14.27): <code>sgit push --token X</code> and <code>sgit --token X push</code> are equivalent (the per-command flag overrides the global one). Older versions only accepted the after-subcommand form, so prefer <code>sgit push --token X</code> for maximum compatibility.</p></li><li><p><strong>Screenshot it yourself with <code>sg-playwright</code>, then ask the user to confirm.</strong> The
+long-standing assumption that agents &quot;can&#x27;t render the page&quot; is **no longer
+universally true** — when the operator has spun up an <code>sg-playwright</code> service,
+you can drive a real Chromium over HTTP with no local install (<code>library/skills/use-sg-playwright/SKILL.md</code>
+is the operator-and-agent guide). Take a screenshot of the live vault URL, eyeball
+it, fix obvious layout / contrast / overflow issues yourself, and <strong>then</strong> hand to
+the user for a human-eyes pass on subjective quality (does the grid actually look
+good, are the captions readable, etc.). If <code>sg-playwright</code> is not available in this
+session, fall back to the older flow: ask the user to hard-refresh and screenshot
+anything that looks wrong. Static validation catches contract violations and JS
+errors but not visual quality.</p></li></ol>
+<h2 id="a-working-indexhtml-skeleton">A working <code>index.html</code> skeleton</h2>
+<p>A minimum viable vault app, with the contract followed and the patterns above wired up:</p>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
+&lt;title&gt;My Vault App&lt;/title&gt;
+&lt;style&gt;
+  /* ALL CSS inlined here — no &lt;link&gt; tags */
+  :root { --paper:#fbfaf7; --ink:#1a1b1e; --accent:#c0392b; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family: ui-serif, Georgia, serif; }
+  .hero { padding: 4rem 2rem; }
+  .grid { display:flex; flex-direction:column; gap:1rem; }
+  figure { margin:0; opacity:0; transition: opacity .8s ease; }
+  figure.in { opacity:1; }
+  figure img { width:100%; height:auto; display:block; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class=&quot;hero&quot;&gt;
+    &lt;h1 id=&quot;hTitle&quot;&gt;&lt;/h1&gt;
+    &lt;p id=&quot;hTag&quot;&gt;&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;main class=&quot;grid&quot; id=&quot;grid&quot;&gt;&lt;/main&gt;
+
+&lt;script&gt;
+const FALLBACK = /*__DATA__*/{};
+
+async function getData(){
+  try {
+    const r = await fetch(&#x27;content.json&#x27;, { cache: &#x27;no-store&#x27; });
+    if (r.ok) { const j = await r.json(); if (j &amp;&amp; j.items) return j; }
+  } catch (e) {}
+  return FALLBACK;
+}
+
+function el(tag, cls, html){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+
+function build(data){
+  document.getElementById(&#x27;hTitle&#x27;).textContent = data.title || &#x27;Untitled&#x27;;
+  document.getElementById(&#x27;hTag&#x27;).textContent   = data.tagline || &#x27;&#x27;;
+  const grid = document.getElementById(&#x27;grid&#x27;);
+  data.items.forEach(item =&gt; {
+    const fig = el(&#x27;figure&#x27;);
+    const img = el(&#x27;img&#x27;);
+    img.alt = item.title;
+    img.loading = &#x27;lazy&#x27;;
+    img.src = item.thumb;              // SET FROM JS — never in markup
+    fig.appendChild(img);
+    grid.appendChild(fig);
+  });
+  // reveal animation
+  if (&#x27;IntersectionObserver&#x27; in window){
+    const io = new IntersectionObserver((es,o) =&gt; es.forEach(e =&gt; {
+      if (e.isIntersecting) { e.target.classList.add(&#x27;in&#x27;); o.unobserve(e.target); }
+    }), { threshold: .08 });
+    document.querySelectorAll(&#x27;figure&#x27;).forEach(f =&gt; io.observe(f));
+  } else {
+    document.querySelectorAll(&#x27;figure&#x27;).forEach(f =&gt; f.classList.add(&#x27;in&#x27;));
+  }
+  // tell the SG/App host we&#x27;re done
+  try { window.parent &amp;&amp; window.parent.postMessage({ type: &#x27;sg-app-ready&#x27; }, &#x27;*&#x27;); } catch (e) {}
+}
+
+getData().then(build).catch(err =&gt; {
+  console.error(&#x27;[app] build failed&#x27;, err);
+  document.getElementById(&#x27;grid&#x27;).innerHTML = &#x27;&lt;p&gt;Could not load content.&lt;/p&gt;&#x27;;
+  try { window.parent &amp;&amp; window.parent.postMessage({ type: &#x27;sg-app-ready&#x27; }, &#x27;*&#x27;); } catch (e) {}
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2 id="common-failure-modes-and-how-to-recognise-them">Common failure modes and how to recognise them</h2>
+<div class="table"><table><thead><tr><th>What you see</th><th>What it usually is</th></tr></thead><tbody><tr><td>Grid tiles are absurdly tall (hundreds of px) showing a near-solid colour</td><td><code>grid-row: span N</code> masonry with <code>grid-auto-rows: 1px</code> and a non-zero <code>gap</code>. Switch to justified rows or column masonry.</td></tr>
+<tr><td>Vault browser preview shows placeholder blocks; App Mode shows photos</td><td>Lazy-loading via <code>IntersectionObserver</code>. Set <code>img.src</code> eagerly instead.</td></tr>
+<tr><td>App stuck on &quot;Loading app…&quot; overlay</td><td>You didn&#x27;t post <code>{type:&#x27;sg-app-ready&#x27;}</code> to the parent. Add it at the end of <code>build()</code>.</td></tr>
+<tr><td><code>Uncaught SyntaxError</code> in inlined script, often pointing to the data block</td><td>You inlined the pretty-printed JSON (with raw newlines). Use <code>json.dumps(obj)</code> to get a compact, properly-escaped string.</td></tr>
+<tr><td>&quot;Could not load content&quot; or blank page in some contexts</td><td>You only <code>fetch(&#x27;content.json&#x27;)</code> with no fallback. Always provide the inlined <code>FALLBACK</code>.</td></tr>
+<tr><td>Drop cap appears on every intro paragraph instead of just the first</td><td>Your selector is <code>.intro p::first-letter</code> rather than <code>.intro p:first-of-type::first-letter</code>.</td></tr>
+<tr><td>Emojis render as boxes in collages or stamped images</td><td>The server-side font (DejaVu) lacks the glyph. Draw the shape in SVG or skip the emoji.</td></tr>
+<tr><td><code>sgit push</code> says &quot;no access token configured&quot; even with <code>--token X</code></td><td>On older sgit versions only <code>sgit push --token X</code> worked. Current sgit (v0.14.27+) accepts both positions; <code>sgit update</code> if you hit this.</td></tr>
+<tr><td>App renders blank or unstyled after <code>sg.loadCss</code>/<code>sg.loadJs</code></td><td><strong>Usually not a permission problem</strong> — <code>fs.read</code> (which these loaders use) is default-allow today. Check the console for the actual rejection: <code>ENOENT</code> means the path is wrong or the file was written locally but never <code>sgit commit</code> + <code>sgit push</code>ed; a thrown script error means the loaded JS itself failed. Always chain <code>.catch(err =&gt; console.error(...))</code> on the load promise so the real code surfaces instead of a silent spinner.</td></tr></tbody></table></div>
+<h2 id="the-medium-is-the-argument">The medium is the argument</h2>
+<p>One small but powerful technique: when the user wants to <em>demo</em> the vault to someone, lean into the meta-point in the app&#x27;s footer. Something like:</p>
+<blockquote><p>🔒 Delivered as an encrypted SG/Vault — this page is a little HTML on top of a vault, rendered straight from it. The link-holder holds the key; SGraph never sees the contents. The experience and the security are the same artifact.</p></blockquote>
+<p>That single paragraph turns &quot;here are some photos&quot; into &quot;and by the way, here&#x27;s what SG/Send does.&quot; Use it when the recipient is a potential user, partner, or investor; tone it down when it&#x27;s a personal share.</p>
+<h2 id="notes-on-what-this-skill-doesnt-cover-yet">Notes on what this skill doesn&#x27;t cover yet</h2>
+<ul><li><strong><code>_page.json</code> layouts</strong> for content that isn&#x27;t a single-page app — the <code>create-vault-content</code> skill covers that; cross-reference rather than duplicate.</li><li><del><strong>The full <code>window.sg</code> runtime API.</strong></del> <strong>Now covered by <code>library/guides/vault-html/AUTHORING.md</code></strong> — that doc is the authoritative reference for every namespace (<code>vfs</code>, <code>fs</code>, <code>vault</code>, <code>history</code>, <code>sync</code>, <code>auth</code>, <code>ui</code>, <code>state</code>, <code>loadCss</code>/<code>loadJs</code>, <code>app</code>), with shapes, return types, and consent semantics. Don&#x27;t duplicate it here.</li><li><strong>Service-worker upgrade path.</strong> When the vault ships a service worker, the declarative restrictions in the contract lift — <code>&lt;link&gt;</code> and <code>&lt;script src&gt;</code> against vault paths will start working. Until then, the JS-only approach is what&#x27;s safe. (See <code>library/guides/vault-html/service-worker-future.md</code>.)</li><li><strong>Multi-app vaults</strong> (more than one <code>app.json</code> / multiple entries). Not yet shipped in the version I worked against.</li><li><del><strong>Screenshotting the live app for visual review.</strong></del> <strong>Now covered by <code>library/skills/use-sg-playwright/SKILL.md</code></strong> — drive a real Chromium over HTTP, no local install. Use it before falling back to &quot;ask the user to screenshot&quot;.</li></ul>
+<p>When any of those become relevant, add a reference file and link to it from here rather than expanding the body.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/skills/create-vault-apps__SKILL.html">https://sgit.ai/skills/create-vault-apps__SKILL.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/skills/create-vault-apps__SKILL.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:11Z</dd><dt>sha256</dt><dd><code title="f6ae6c8c266b1210ac79af0afdea9723f027d8f2a5d30f163ba1824b21fd4339">f6ae6c8c266b</code></dd><dt>Frozen copy</dt><dd><a href="create-vault-apps__SKILL.md">sites/sgit.ai/skills/create-vault-apps__SKILL.md</a> (34,191 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

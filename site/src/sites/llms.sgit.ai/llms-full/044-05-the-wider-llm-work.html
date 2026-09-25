@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>05 — The wider LLM work (llms.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#05-the-wider-llm-work">05 — The wider LLM work</a></li><li class="l2"><a href="#1-the-oldest-thread-and-the-most-distinctive-provenance-and-determinism">1. The oldest thread, and the most distinctive: provenance and determinism</a></li><li class="l2"><a href="#2-grounding-not-prompting">2. Grounding, not prompting</a></li><li class="l2"><a href="#3-openrouter-as-the-provider-layer">3. OpenRouter as the provider layer</a></li><li class="l2"><a href="#4-local-and-offline">4. Local and offline</a></li><li class="l2"><a href="#5-prompt-injection-and-agent-security">5. Prompt injection and agent security</a></li><li class="l2"><a href="#6-what-is-thin">6. What is thin</a></li><li class="l2"><a href="#7-the-agent-facing-documentation-convention">7. The agent-facing documentation convention</a></li><li class="l2"><a href="#8-how-to-sequence-these-pages">8. How to sequence these pages</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 44 of 49</p><nav class="pager"><span><a href="043-04-websites-vs-vaults-what-changes-when-.html">← 04 — Websites vs vaults: what changes when there is no host</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="045-06-site-architecture.html">06 — Site Architecture →</a></span></nav><article class="source"><h1 id="05-the-wider-llm-work">05 — The wider LLM work</h1>
+<p>Beyond the chat pane, the estate&#x27;s LLM material is broad and unevenly developed. This is what is there, measured, with the threads worth building pages on.</p>
+<hr>
+<h2 id="1-the-oldest-thread-and-the-most-distinctive-provenance-and-determinism">1. The oldest thread, and the most distinctive: provenance and determinism</h2>
+<p><strong>The earliest dated artefact in the entire estate</strong> is a talk: <em>Deterministic GenAI Outputs with Provenance</em>, <strong>OWASP AppSec Lisbon, 28 June 2024</strong> — 9,879 words of slides and notes, published on <code>docs.diniscruz.ai</code> under CC0.</p>
+<p>Two years later the same instinct runs through everything: <strong>431 files mention provenance, 421 mention determinism.</strong> The chat panel logs an OpenRouter generation id per call. The Regulation Graph vault carries a SHA-256 of the retrieved bytes on every node. The grounding ladder terminates a claim at a measure.</p>
+<p><strong>This is the site&#x27;s spine, and it predates the products.</strong> The position is not <em>&quot;models are unreliable, use a better one&quot;</em> — it is <em>&quot;a model output is only usable when you can say where it came from.&quot;</em> Everything else on this site is a mechanism serving that.</p>
+<hr>
+<h2 id="2-grounding-not-prompting">2. Grounding, not prompting</h2>
+<p><code>hallucin*</code> appears in only 45 files — and where it does, it is framed as a <strong>grounding</strong> problem rather than a model problem. The estate&#x27;s answer is the grounding ladder:</p>
+<pre><code>Risk          := a downward path to a Vulnerability AND an upward path toward a top risk
+Vulnerability := a Fact (grounded below) AND an upward path to a Risk
+Fact          := a downward path to Evidence
+Evidence      := a downward path to a Measure
+Measure       := an observation of the node it measures, grounded on a Twin</code></pre>
+<p>And the anti-fabrication argument that follows: <strong>a model asked to assess something will produce a plausible answer; a model asked to attach a finding to a provision hash, and to a measure, and to a twin, either finds the path or reports that it cannot.</strong></p>
+<p>⚠️ <strong>The ladder belongs to <code>risks.sgit.ai</code> and <code>standards.sgit.ai</code>.</strong> This site should state it in three lines and link out — it is the <em>reason</em> the LLM work looks the way it does, not this site&#x27;s subject. <code>07__</code> §5.</p>
+<hr>
+<h2 id="3-openrouter-as-the-provider-layer">3. OpenRouter as the provider layer</h2>
+<p><strong>442 files mention it.</strong> It is the estate&#x27;s actual model-access path, and several design consequences follow that are worth a page:</p>
+<ul><li><strong>BYOK per vault</strong> — the key is the vault owner&#x27;s, not a platform key.</li><li><strong>Model allow-lists as globs</strong> — <code>anthropic/*</code> in <code>models.allow</code>.</li><li><strong>Generation ids as the reconciliation handle</strong> — the ledger stores them, and cost is reconciled two-source (stream, then the authoritative <code>/generation</code> lookup).</li><li><strong>Capability read from the live catalogue</strong>, not a hard-coded list, <em>&quot;so a new vision model works the day it ships.&quot;</em></li><li><strong>The default-picker bug</strong> (<code>01__</code> §6) — alphabetical vendor-prefix matching silently selected the oldest model on the key.</li></ul>
+<p><strong>Nobody has written up &quot;why route through a provider aggregator&quot;</strong>, and it is a real position with real trade-offs: one key for many models, capability metadata for free, and a single point of dependency between you and every model you use.</p>
+<hr>
+<h2 id="4-local-and-offline">4. Local and offline</h2>
+<p><strong>144 files mention Ollama</strong>, and there are three concrete artefacts:</p>
+<ul><li><strong>The offline Docker chat</strong> (18 March 2026) — a chat UI plus a FastAPI proxy to a host-native Ollama, with sessions surviving container rebuilds. The stated use case is disarmingly specific: <em>&quot;Offline LLM chat during travel (flight on 19 March 2026). Must work completely disconnected from the internet once the Docker image is built and Ollama models are pulled.&quot;</em></li><li><strong>Two sg-compute specs</strong> — <code>ollama</code> (939 LOC, <code>llm-inference</code>, 120s boot, EXPERIMENTAL) and <code>local_claude</code> (1,498 LOC, <code>llm-inference</code>, 180s boot, EXPERIMENTAL), each with manifest, CLI, service, schemas and tests.</li><li><strong>A <code>docker/local-claude/</code> image</strong> — a local LLM plus Claude Code harness.</li></ul>
+<p><strong>The through-line to publish:</strong> the same <code>/api/chat</code> proxy shape works against local Ollama and against a remote tunnel, which is why the offline work was never a detour. And it connects to <code>open-source.sgit.ai</code>&#x27;s sovereignty argument — <em>&quot;you are one SLA away from losing access&quot;</em> applies to model providers more sharply than to almost anything else.</p>
+<hr>
+<h2 id="5-prompt-injection-and-agent-security">5. Prompt injection and agent security</h2>
+<p><strong>92 files.</strong> Concentrated in the agent-to-agent communication and SG/Sentinel clusters, and adjacent to a lot of security work that is this estate&#x27;s home ground.</p>
+<p>The relevant mechanism already ships in the LLM bridge: <strong><code>JS__Expression__Allowlist</code> is deny-by-default</strong>, and the corresponding rule is documented — <em>&quot;Evaluate action is allowlist-gated&quot;</em> — with a CI guard behind it. <em>&quot;No arbitrary code execution — the shell-server pattern from OSBot-Playwright is not carried forward.&quot;</em></p>
+<p><strong>The unwritten page:</strong> the chat panel attaches vault files to prompts. Those files are untrusted content. <strong>What stops a file that says &quot;ignore previous instructions&quot; from doing so?</strong> The 24,000-character budget and the <code>TRUNCATED</code> marker are honesty mechanisms, not injection defences. <code>08__</code> Q3 — and it is the most important open question on the site.</p>
+<hr>
+<h2 id="6-what-is-thin">6. What is thin</h2>
+<div class="table"><table><thead><tr><th>Topic</th><th>Files</th><th>Note</th></tr></thead><tbody><tr><td><strong>Structured output</strong></td><td>41</td><td>Underdeveloped relative to how much the estate depends on models emitting valid schemas. <code>Type_Safe</code> validates the result — but nothing documents how the <em>request</em> is shaped</td></tr>
+<tr><td><strong>Evals</strong></td><td>576 mentions of <code>eval</code>, mostly the ordinary word</td><td><strong>No eval suite, no benchmark, no regression test for prompt behaviour anywhere</strong></td></tr>
+<tr><td><strong>Cost per token</strong></td><td><strong>2</strong></td><td>Despite a full ledger being built. The data exists; nobody has analysed it</td></tr>
+<tr><td><strong>Model routing</strong></td><td><strong>1</strong></td><td>One mention. No routing logic, no fallback chain, no cost/quality tiering</td></tr>
+<tr><td><strong>Embeddings</strong></td><td>100</td><td>Mentioned; no vector store, no retrieval implementation</td></tr></tbody></table></div>
+<p><strong>Publish this table.</strong> A site about LLM work that lists what it has <em>not</em> built is more credible than one that does not, and three of these five are genuinely load-bearing gaps: <strong>evals, structured output and model routing</strong> are the difference between a working integration and an engineered one.</p>
+<hr>
+<h2 id="7-the-agent-facing-documentation-convention">7. The agent-facing documentation convention</h2>
+<p>Worth its own short page, because it is unusual and it is evidence rather than assertion.</p>
+<p>The estate writes documentation <strong>explicitly for model readers</strong>, and says so in the filename:</p>
+<pre><code>library/dependencies/osbot-utils/type_safe/v3.1.1__for_llms__type_safe__testing_guidance.md
+                                            ^^^^^^^^^</code></pre>
+<p>Together with the markdown twin at every URL, <code>/llms.txt</code> on every site, and the <code>llms-full.txt</code> single-file concatenation, that is a consistent practice: <strong>when a model is a primary reader, write it a document rather than expecting it to parse yours.</strong></p>
+<p>Cross-links to <code>coding.sgit.ai</code> <code>05__</code> §5 (the conventions chosen for agent readers) and <code>open-source.sgit.ai</code> <code>05__</code> (the argument about who reads code now).</p>
+<hr>
+<h2 id="8-how-to-sequence-these-pages">8. How to sequence these pages</h2>
+<ol><li><strong><code>/provenance/</code></strong> — the 2024 talk forward. The spine, and the oldest thing here.</li><li><strong><code>/openrouter/</code></strong> — the provider-layer position, including the default-picker bug.</li><li><strong><code>/local/</code></strong> — Ollama, the offline chat, the two specs, and the sovereignty link.</li><li><strong><code>/injection/</code></strong> — after answering <code>08__</code> Q3, not before. Do not publish a page about prompt-injection defences until the file-attachment question has an answer.</li><li><strong><code>/not-built/</code></strong> — §6&#x27;s table, on <code>/shipped/</code>.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>/briefs/06__site-architecture.md</p>
+<hr></article><nav class="pager"><span><a href="043-04-websites-vs-vaults-what-changes-when-.html">← 04 — Websites vs vaults: what changes when there is no host</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="045-06-site-architecture.html">06 — Site Architecture →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>44 of 49: 05 — The wider LLM work</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

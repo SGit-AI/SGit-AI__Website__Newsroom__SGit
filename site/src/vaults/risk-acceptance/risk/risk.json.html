@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>risk.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="risk.json">raw text</a></p><article class="source"><pre class="raw"><code>{
+  &quot;id&quot;: &quot;RISK-114&quot;,
+  &quot;start&quot;: &quot;2026-09-01&quot;,
+  &quot;title&quot;: &quot;One risk, established, accepted, escalated, funded and ended on facts&quot;,
+  &quot;lead&quot;: &quot;An invented payments company, Kestrel Ledger, lets a deployment agent run database changes in production. The risk is that the agent can change the ledger, and that some of those changes cannot be reversed. Drag the slider to follow it for six weeks: who holds it, the clock on each acceptance, the evidence and controls, and the decision record. Underneath, compare what a typical register row shows at the same moment.&quot;,
+  &quot;statement&quot;: &quot;The deployment agent can change the production ledger, and some of its changes cannot be reversed.&quot;,
+  &quot;chain&quot;: [
+    {
+      &quot;role&quot;: &quot;SRE lead&quot;,
+      &quot;person&quot;: &quot;Sam Osei&quot;
+    },
+    {
+      &quot;role&quot;: &quot;Platform owner&quot;,
+      &quot;person&quot;: &quot;Priya Das&quot;
+    },
+    {
+      &quot;role&quot;: &quot;CTO&quot;,
+      &quot;person&quot;: &quot;Tomasz Nowak&quot;
+    },
+    {
+      &quot;role&quot;: &quot;CEO&quot;,
+      &quot;person&quot;: &quot;Ana Ruiz&quot;
+    },
+    {
+      &quot;role&quot;: &quot;Board&quot;,
+      &quot;person&quot;: &quot;Kestrel Ledger board&quot;
+    }
+  ],
+  &quot;facts&quot;: [
+    {
+      &quot;id&quot;: &quot;F-5&quot;,
+      &quot;role&quot;: &quot;establishes&quot;,
+      &quot;text&quot;: &quot;The deployment agent&#x27;s database role can write to the production ledger.&quot;,
+      &quot;source&quot;: &quot;iam/roles/deploy-agent.json, as exported on 1 September&quot;
+    },
+    {
+      &quot;id&quot;: &quot;F-7&quot;,
+      &quot;role&quot;: &quot;establishes&quot;,
+      &quot;text&quot;: &quot;Some ledger migrations cannot be rolled back.&quot;,
+      &quot;source&quot;: &quot;runbooks/ledger-migrations.md, section 4&quot;
+    },
+    {
+      &quot;id&quot;: &quot;F-9&quot;,
+      &quot;role&quot;: &quot;context&quot;,
+      &quot;text&quot;: &quot;The agent&#x27;s stop has never been tested.&quot;,
+      &quot;source&quot;: &quot;the on-call runbook has no stop test recorded&quot;
+    },
+    {
+      &quot;id&quot;: &quot;F-11&quot;,
+      &quot;role&quot;: &quot;context&quot;,
+      &quot;text&quot;: &quot;On day 24 the agent applied a migration that could not be rolled back and stalled settlement.&quot;,
+      &quot;source&quot;: &quot;incident INC-2231 timeline&quot;
+    },
+    {
+      &quot;id&quot;: &quot;F-12&quot;,
+      &quot;role&quot;: &quot;context&quot;,
+      &quot;text&quot;: &quot;The agent&#x27;s stop was tested and took three minutes.&quot;,
+      &quot;source&quot;: &quot;stop-test record, day 40&quot;
+    },
+    {
+      &quot;id&quot;: &quot;F-4&quot;,
+      &quot;role&quot;: &quot;ceases&quot;,
+      &quot;text&quot;: &quot;Every production write by the agent needs an approval step.&quot;,
+      &quot;source&quot;: &quot;pipeline/approvals.yml, merged on day 41&quot;
+    },
+    {
+      &quot;id&quot;: &quot;F-3&quot;,
+      &quot;role&quot;: &quot;ceases&quot;,
+      &quot;text&quot;: &quot;The agent&#x27;s database role is read-only on the ledger.&quot;,
+      &quot;source&quot;: &quot;would be iam/roles/deploy-agent.json; not chosen&quot;
+    }
+  ],
+  &quot;controls&quot;: [
+    {
+      &quot;id&quot;: &quot;C-1&quot;,
+      &quot;name&quot;: &quot;Approval step on the agent&#x27;s production writes&quot;,
+      &quot;initial&quot;: &quot;proposed&quot;,
+      &quot;note&quot;: &quot;Ends the risk on its own, through F-4.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C-2&quot;,
+      &quot;name&quot;: &quot;A tested stop for the agent&quot;,
+      &quot;initial&quot;: &quot;missing&quot;,
+      &quot;note&quot;: &quot;Does not end the risk; limits how long a bad change can run.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C-3&quot;,
+      &quot;name&quot;: &quot;Nightly ledger backup&quot;,
+      &quot;initial&quot;: &quot;in_place&quot;,
+      &quot;note&quot;: &quot;In place, and does not help: it cannot undo a migration mid-day without losing a day&#x27;s transactions.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;C-4&quot;,
+      &quot;name&quot;: &quot;Read-only role for the agent&quot;,
+      &quot;initial&quot;: &quot;proposed&quot;,
+      &quot;note&quot;: &quot;Would end the risk through F-3, but stops the agent doing its job. Not chosen.&quot;
+    }
+  ],
+  &quot;grc_initial&quot;: {
+    &quot;Register row&quot;: &quot;R-114, change risk in automated deployment&quot;,
+    &quot;Owner&quot;: &quot;Technology&quot;,
+    &quot;Rating&quot;: &quot;Medium&quot;,
+    &quot;Status&quot;: &quot;Open&quot;,
+    &quot;Next review&quot;: &quot;Risk committee, 12 December&quot;,
+    &quot;Evidence&quot;: &quot;none attached&quot;
+  },
+  &quot;events&quot;: [
+    {
+      &quot;day&quot;: 0,
+      &quot;type&quot;: &quot;identified&quot;,
+      &quot;label&quot;: &quot;Established on two facts&quot;,
+      &quot;actor&quot;: &quot;Risk engineer&quot;,
+      &quot;holder&quot;: &quot;SRE lead&quot;,
+      &quot;facts_add&quot;: [
+        &quot;F-5&quot;,
+        &quot;F-7&quot;,
+        &quot;F-9&quot;
+      ],
+      &quot;text&quot;: &quot;The risk is written down with the facts that make it true, F-5 and F-7, each with its source, and the facts that would end it, F-4 or F-3.&quot;,
+      &quot;seq&quot;: 1,
+      &quot;prev&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;hash&quot;: &quot;2633cf6c0c96b2e6df00302112a00fbcb5a356b91f71984587e67a4cc896b50b&quot;
+    },
+    {
+      &quot;day&quot;: 0,
+      &quot;type&quot;: &quot;placed&quot;,
+      &quot;label&quot;: &quot;Placed, and the chain computed&quot;,
+      &quot;actor&quot;: &quot;Risk engineer&quot;,
+      &quot;text&quot;: &quot;Held by the SRE lead. The platform owner, CTO, CEO and board now see it arrive through the chain, without anybody reporting it up.&quot;,
+      &quot;seq&quot;: 2,
+      &quot;prev&quot;: &quot;2633cf6c0c96b2e6df00302112a00fbcb5a356b91f71984587e67a4cc896b50b&quot;,
+      &quot;hash&quot;: &quot;e17c56b92d9cc8410f45160099f5f6b16f1599f23a43e4ac0469e3af159b26ef&quot;
+    },
+    {
+      &quot;day&quot;: 1,
+      &quot;type&quot;: &quot;accepted&quot;,
+      &quot;label&quot;: &quot;Accepted for two weeks&quot;,
+      &quot;actor&quot;: &quot;Sam Osei&quot;,
+      &quot;role&quot;: &quot;SRE lead&quot;,
+      &quot;rung&quot;: &quot;1 to 2 weeks&quot;,
+      &quot;days&quot;: 14,
+      &quot;action&quot;: &quot;The platform team adds an approval step to the agent&#x27;s production writes.&quot;,
+      &quot;text&quot;: &quot;The SRE lead accepts personally, for two weeks: a funded project for a team that already exists.&quot;,
+      &quot;seq&quot;: 3,
+      &quot;prev&quot;: &quot;e17c56b92d9cc8410f45160099f5f6b16f1599f23a43e4ac0469e3af159b26ef&quot;,
+      &quot;hash&quot;: &quot;3ad29eeb23413bfa2ce63149b9d9afcbb238038b1b89729566cce5dbe13ac3d3&quot;
+    },
+    {
+      &quot;day&quot;: 15,
+      &quot;type&quot;: &quot;expired&quot;,
+      &quot;label&quot;: &quot;The acceptance expires&quot;,
+      &quot;actor&quot;: &quot;the clock&quot;,
+      &quot;text&quot;: &quot;Two weeks pass. The approval step was not built: the team was moved onto a release. The acceptance ends and does not silently continue.&quot;,
+      &quot;seq&quot;: 4,
+      &quot;prev&quot;: &quot;3ad29eeb23413bfa2ce63149b9d9afcbb238038b1b89729566cce5dbe13ac3d3&quot;,
+      &quot;hash&quot;: &quot;be49087b1958f2c1d00106ade8d0b8a2aa53a3dac11f049504be23a606a2fa11&quot;
+    },
+    {
+      &quot;day&quot;: 15,
+      &quot;type&quot;: &quot;escalated&quot;,
+      &quot;label&quot;: &quot;Escalated to the platform owner&quot;,
+      &quot;actor&quot;: &quot;the clock&quot;,
+      &quot;role&quot;: &quot;Platform owner&quot;,
+      &quot;holder&quot;: &quot;Platform owner&quot;,
+      &quot;text&quot;: &quot;Nobody renewed it, so it rolls up one level. The platform owner must accept, fund or fix.&quot;,
+      &quot;seq&quot;: 5,
+      &quot;prev&quot;: &quot;be49087b1958f2c1d00106ade8d0b8a2aa53a3dac11f049504be23a606a2fa11&quot;,
+      &quot;hash&quot;: &quot;ba0a03fae1bf909e519786f5c197d0e36d2d06c43cc18a22c277b9f50e26ae6b&quot;
+    },
+    {
+      &quot;day&quot;: 16,
+      &quot;type&quot;: &quot;funded&quot;,
+      &quot;label&quot;: &quot;Funded: a four-week project&quot;,
+      &quot;actor&quot;: &quot;Priya Das&quot;,
+      &quot;role&quot;: &quot;Platform owner&quot;,
+      &quot;controls&quot;: {
+        &quot;C-1&quot;: &quot;funded&quot;,
+        &quot;C-2&quot;: &quot;funded&quot;
+      },
+      &quot;text&quot;: &quot;Project P-38: an approval step on the agent&#x27;s production writes and a tested stop. £38,000 and four weeks, from outside the platform team&#x27;s current work.&quot;,
+      &quot;seq&quot;: 6,
+      &quot;prev&quot;: &quot;ba0a03fae1bf909e519786f5c197d0e36d2d06c43cc18a22c277b9f50e26ae6b&quot;,
+      &quot;hash&quot;: &quot;bdad18338ee8a22c0dfd8dc604b3b80841663062a77df329d396d86476570597&quot;
+    },
+    {
+      &quot;day&quot;: 16,
+      &quot;type&quot;: &quot;accepted&quot;,
+      &quot;label&quot;: &quot;Accepted for one month&quot;,
+      &quot;actor&quot;: &quot;Priya Das&quot;,
+      &quot;role&quot;: &quot;Platform owner&quot;,
+      &quot;rung&quot;: &quot;1 month&quot;,
+      &quot;days&quot;: 30,
+      &quot;action&quot;: &quot;Project P-38 delivers the approval step and a tested stop.&quot;,
+      &quot;text&quot;: &quot;The platform owner accepts for a month, the default rung: assemble and fund. The project&#x27;s length sets the interval.&quot;,
+      &quot;seq&quot;: 7,
+      &quot;prev&quot;: &quot;bdad18338ee8a22c0dfd8dc604b3b80841663062a77df329d396d86476570597&quot;,
+      &quot;hash&quot;: &quot;ad58d84b79f395b1e8278084e26bd64fda66b8347a425f4478d82262605ba23e&quot;
+    },
+    {
+      &quot;day&quot;: 24,
+      &quot;type&quot;: &quot;incident&quot;,
+      &quot;label&quot;: &quot;Incident: an irreversible migration&quot;,
+      &quot;actor&quot;: &quot;on-call&quot;,
+      &quot;facts_add&quot;: [
+        &quot;F-11&quot;
+      ],
+      &quot;grc&quot;: {
+        &quot;Status&quot;: &quot;Open (incident logged in the service desk, not linked)&quot;
+      },
+      &quot;text&quot;: &quot;INC-2231. The agent applies a migration that cannot be rolled back, and settlement stalls. The risk has materialised.&quot;,
+      &quot;seq&quot;: 8,
+      &quot;prev&quot;: &quot;ad58d84b79f395b1e8278084e26bd64fda66b8347a425f4478d82262605ba23e&quot;,
+      &quot;hash&quot;: &quot;0ffe19dc6d4791014b33d9637fa2074f5474ba97464b8cd19cd7c312f943a5f6&quot;
+    },
+    {
+      &quot;day&quot;: 24,
+      &quot;type&quot;: &quot;accepted&quot;,
+      &quot;label&quot;: &quot;Accepted for four hours&quot;,
+      &quot;actor&quot;: &quot;Priya Das&quot;,
+      &quot;role&quot;: &quot;Platform owner&quot;,
+      &quot;rung&quot;: &quot;4 hours&quot;,
+      &quot;days&quot;: 0,
+      &quot;action&quot;: &quot;Suspend the agent&#x27;s deploy job and reconcile the ledger.&quot;,
+      &quot;status&quot;: &quot;incident&quot;,
+      &quot;text&quot;: &quot;A four-hour acceptance is an incident response by definition. The agent is suspended and the ledger reconciled.&quot;,
+      &quot;seq&quot;: 9,
+      &quot;prev&quot;: &quot;0ffe19dc6d4791014b33d9637fa2074f5474ba97464b8cd19cd7c312f943a5f6&quot;,
+      &quot;hours&quot;: 4,
+      &quot;hash&quot;: &quot;5063ecd9615950bd556926340c66c7b1593b7243103053ce9918423d2c862551&quot;
+    },
+    {
+      &quot;day&quot;: 25,
+      &quot;type&quot;: &quot;accepted&quot;,
+      &quot;label&quot;: &quot;Back on the month&#x27;s acceptance&quot;,
+      &quot;actor&quot;: &quot;Priya Das&quot;,
+      &quot;role&quot;: &quot;Platform owner&quot;,
+      &quot;rung&quot;: &quot;1 month&quot;,
+      &quot;days&quot;: 21,
+      &quot;action&quot;: &quot;Project P-38 delivers, now with the incident as its evidence.&quot;,
+      &quot;text&quot;: &quot;The ledger is reconciled and the agent resumes under the funded project. The incident&#x27;s timeline becomes a fact, F-11, in the risk&#x27;s own record.&quot;,
+      &quot;seq&quot;: 10,
+      &quot;prev&quot;: &quot;5063ecd9615950bd556926340c66c7b1593b7243103053ce9918423d2c862551&quot;,
+      &quot;hash&quot;: &quot;9a47941c21acd6e13cd9c458bd21a478254d1e27ef2d64a40ade65d5545f7068&quot;
+    },
+    {
+      &quot;day&quot;: 30,
+      &quot;type&quot;: &quot;reported&quot;,
+      &quot;label&quot;: &quot;In the board pack&quot;,
+      &quot;actor&quot;: &quot;Board&quot;,
+      &quot;text&quot;: &quot;The quarterly pack shows the risk arriving at the board with its chain, its acceptance, its incident and the project that will end it. Nobody wrote a paragraph about it.&quot;,
+      &quot;seq&quot;: 11,
+      &quot;prev&quot;: &quot;9a47941c21acd6e13cd9c458bd21a478254d1e27ef2d64a40ade65d5545f7068&quot;,
+      &quot;hash&quot;: &quot;4940469fc9537af26cd5d11eb16b47945561564d0b2cfe67842c2fd3595fc824&quot;
+    },
+    {
+      &quot;day&quot;: 40,
+      &quot;type&quot;: &quot;evidence&quot;,
+      &quot;label&quot;: &quot;Stop tested&quot;,
+      &quot;actor&quot;: &quot;SRE lead&quot;,
+      &quot;facts_add&quot;: [
+        &quot;F-12&quot;
+      ],
+      &quot;facts_remove&quot;: [
+        &quot;F-9&quot;
+      ],
+      &quot;controls&quot;: {
+        &quot;C-2&quot;: &quot;in_place&quot;
+      },
+      &quot;text&quot;: &quot;The agent&#x27;s stop is tested and takes three minutes. It does not end the risk, but it shortens how long a bad change can run.&quot;,
+      &quot;seq&quot;: 12,
+      &quot;prev&quot;: &quot;4940469fc9537af26cd5d11eb16b47945561564d0b2cfe67842c2fd3595fc824&quot;,
+      &quot;hash&quot;: &quot;92043db8a91ae521c8603e12048c4c6556cdeac60601bbb770b871e68dd489d8&quot;
+    },
+    {
+      &quot;day&quot;: 41,
+      &quot;type&quot;: &quot;evidence&quot;,
+      &quot;label&quot;: &quot;Approval step merged&quot;,
+      &quot;actor&quot;: &quot;Platform team&quot;,
+      &quot;facts_add&quot;: [
+        &quot;F-4&quot;
+      ],
+      &quot;controls&quot;: {
+        &quot;C-1&quot;: &quot;in_place&quot;
+      },
+      &quot;text&quot;: &quot;Every production write by the agent now needs an approval. F-4 holds.&quot;,
+      &quot;seq&quot;: 13,
+      &quot;prev&quot;: &quot;92043db8a91ae521c8603e12048c4c6556cdeac60601bbb770b871e68dd489d8&quot;,
+      &quot;hash&quot;: &quot;2e289693bb5e0464f8b56a6dfd5e6965a7dd39cc73714f43c17502a8a09bb99f&quot;
+    },
+    {
+      &quot;day&quot;: 42,
+      &quot;type&quot;: &quot;closed&quot;,
+      &quot;label&quot;: &quot;Ceased, on facts&quot;,
+      &quot;actor&quot;: &quot;Risk engineer&quot;,
+      &quot;grc&quot;: {
+        &quot;Status&quot;: &quot;Open until the committee on 12 December&quot;
+      },
+      &quot;text&quot;: &quot;F-4 holds, which is one of the facts the risk named as ending it. It ceases, with the evidence attached. In the register, it waits for the committee.&quot;,
+      &quot;seq&quot;: 14,
+      &quot;prev&quot;: &quot;2e289693bb5e0464f8b56a6dfd5e6965a7dd39cc73714f43c17502a8a09bb99f&quot;,
+      &quot;hash&quot;: &quot;e58bf7cc494e923fec3c51ffb5b4ed63d5b3f03996904817daee08428cc4504e&quot;
+    }
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="1befefe989243b0f0a5720d57022440fd498a9148775e31a6826912d1029fde7">1befefe98924</code></dd><dt>Frozen copy</dt><dd><a href="risk.json">vaults/risk-acceptance/risk/risk.json</a> (10,354 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

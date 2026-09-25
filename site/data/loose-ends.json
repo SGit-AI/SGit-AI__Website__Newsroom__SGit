@@ -1,0 +1,303 @@
+[
+ {
+  "id": "le-001",
+  "what": "Two CLI transport bugs found while publishing the Agent as Webmaster vault (a fresh vault's first push flipped to the read-only static transport, and push, pull, fetch, status and delete ignored --transport) are described as fixed in the CLI repository. No source says whether the fixes have reached a released CLI version.",
+  "said_at": [
+   "https://sgit.ai/admin/versions.md",
+   "https://sgit.ai/demos/vaults/agent-webmaster/index.md",
+   "src:history/sgit-cli-branch-log.txt"
+  ],
+  "said_on": "2026-09-23",
+  "waiting_on": "sgit CLI team",
+  "status": "unclear",
+  "status_note": "sgit.ai's v0.6.0 note says both were \"fixed in the CLI repository with a pinning test\", and the vault page says \"Two fixes went into the CLI repository from this session\". The seed's lead, that the fix sits on a local branch not yet landed, is not stated in any source we read, and the CLI branch log in the seed holds only brief commits. No source names a CLI release that carries the fixes.",
+  "closed_by": [],
+  "desk": "Developer"
+ },
+ {
+  "id": "le-002",
+  "what": "The founder's own padel vault, where Lesson Loop's phase one is to be tried first, is not yet published.",
+  "said_at": [
+   "https://sgit.ai/demos/vaults/lesson-loop/index.md",
+   "src:vaults/lesson-loop/plan/04-what-exists-today.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "the founder",
+  "status": "open",
+  "status_note": "The vault page says \"The founder already has a padel vault of their own, not yet published, where phase one will be tried first.\" The plan's table marks \"A trial with real coaches and players\" as \"Next\". sgit.ai's list of 36 published vaults has no padel vault.",
+  "closed_by": [],
+  "desk": "Librarian"
+ },
+ {
+  "id": "le-003",
+  "what": "Every partnership page on sgit.ai is a proposal, and none records a contact made: the fourteen cloud and AI provider pages and their two hubs each say there has been no conversation yet.",
+  "said_at": [
+   "https://sgit.ai/partnerships/index.md",
+   "https://sgit.ai/partnerships/cloud-platforms.md",
+   "https://sgit.ai/partnerships/ai-providers.md",
+   "https://sgit.ai/partnerships/sovereign-ai.md",
+   "https://sgit.ai/partnerships/vault-key-management.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "sgit.ai",
+  "status": "open",
+  "status_note": "Each provider page and both hubs carry the sentence \"there has been no conversation yet\". The Sovereign AI page (23 September) says \"There has been no conversation with the fund\", and the key management call says \"there has been no conversation with any organisation named on it\". Nothing in the snapshot records a contact since.",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-004",
+  "what": "sgit.ai's vault server has been deployed on Azure and on Google Cloud by the founder, and neither deployment is documented; storage on S3-compatible stores other than Amazon S3 is untested.",
+  "said_at": [
+   "https://sgit.ai/partnerships/cloud-platforms.md",
+   "https://sgit.ai/partnerships/azure.md",
+   "https://sgit.ai/partnerships/google-cloud.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "sgit.ai",
+  "status": "open",
+  "status_note": "The hub says \"The founder has deployed it on Azure and on Google Cloud, but neither is documented yet\" and that other clouds' S3-compatible stores are \"the next step, not yet tested\". The Azure page calls it \"the clearest case of something that works and is not yet written down\". The hub's one-line summary still says \"Google Cloud planned\", which refers to the guide, while its body says the founder has deployed there.",
+  "closed_by": [],
+  "desk": "Architect"
+ },
+ {
+  "id": "le-005",
+  "what": "sgit.ai's brief asking riskmandate.ai for the risk side of every partnership page (two behaviour policies and a delta per provider) and for sgit written up as a control against GDPR has had no response from riskmandate.ai.",
+  "said_at": [
+   "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.md",
+   "https://sgit.ai/docs/briefs/index.md",
+   "src:cli-briefs/09/24/brief__riskmandate__partnership-risk-and-sgit-mapping.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "riskmandate.ai",
+  "status": "open",
+  "status_note": "riskmandate.ai's brief register lists 23 briefs with their digests, and this one is not among them. Its releases v1.34.3 to v1.34.8 on 24 September answer other asks (the interview page, the role-ownership article and its figures). The brief was written the same day, so the silence is hours old at snapshot time; the interview-page brief of the same day was answered.",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-006",
+  "what": "sgit.ai asked riskmandate.ai for an interview page: a link sent to one person, with a prompt that interviews them by voice and writes up their feedback, the first for a founder strong in UK events and marketing.",
+  "said_at": [
+   "https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.md",
+   "https://sgit.ai/docs/briefs/index.md",
+   "src:cli-briefs/09/24/brief__riskmandate__interview-page-and-voice-prompt.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "riskmandate.ai",
+  "status": "closed",
+  "status_note": "Built the same day. riskmandate.ai v1.34.2 calls interview-founder-marketing \"The first interview page\", with the brief's six parts in order and the pattern as a template; v1.34.3 put it on the live site. Two named parts remain with riskmandate.ai's lead (see the follow-up loose end). The ask is closed; sgit.ai's index does not yet say so.",
+  "closed_by": [
+   "https://riskmandate.ai/versions/1.34.2.md",
+   "https://riskmandate.ai/interview-founder-marketing.md",
+   "https://riskmandate.ai/versions/1.34.3.md"
+  ],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-007",
+  "what": "sgit.ai's briefs index is stale: it still lists as open two asks that have been answered, the interview page (built by riskmandate.ai in v1.34.2) and the CLI read-key prefix (closed by sgit.ai's own v0.3.0).",
+  "said_at": [
+   "https://sgit.ai/docs/briefs/index.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "sgit.ai",
+  "status": "open",
+  "status_note": "Both entries read \"Status: open\" in the index built at site v0.6.8. The index's own convention for an answered ask is \"acted on\" with the release that did it.",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-008",
+  "what": "The CLI did not accept the canonical prefixed read-key form that the web loader accepts: given the prefixed key it derived the wrong ref and failed, while the bare form worked.",
+  "said_at": [
+   "https://sgit.ai/docs/briefs/index.md",
+   "https://sgit.ai/compare/index.md"
+  ],
+  "said_on": "2026-08-17",
+  "waiting_on": "sgit CLI team",
+  "status": "closed",
+  "status_note": "Found on v0.14.27 and confirmed on v0.15.0 on 17 August. sgit.ai's v0.3.0 note (20 September) says re-running the comparison suite \"closed it, all six checks pass on sgit-ai v0.16.2 including prefixed clone succeeded\". The briefs index still shows the ask as open.",
+  "closed_by": [
+   "https://sgit.ai/admin/versions.md",
+   "https://sgit.ai/updates/index.md"
+  ],
+  "desk": "Developer"
+ },
+ {
+  "id": "le-009",
+  "what": "Two parts of the interview-page brief remain after the page was built: a run of the prompt in voice mode to check the summary comes back with every section, and sending the summary back into a vault through a lane that can only be written to.",
+  "said_at": [
+   "https://riskmandate.ai/versions/1.34.2.md",
+   "https://riskmandate.ai/briefs.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "riskmandate.ai",
+  "status": "open",
+  "status_note": "riskmandate.ai says its agent has no account with the chat assistant, \"so that run is the lead's\", and that sending the summary into a vault \"is marked in the brief as later\". v1.34.4 lengthened the prompt; the register records a run of the longer prompt as the lead's too.",
+  "closed_by": [],
+  "desk": "Developer"
+ },
+ {
+  "id": "le-010",
+  "what": "The price of level 1 disagrees across sites: £10 on riskmandate.ai and on store.sgit.ai's /v1/ page, £5 on store.sgit.ai's /v1/policies/ and /paying/ pages.",
+  "said_at": [
+   "https://store.sgit.ai/llms-full.txt",
+   "https://store.sgit.ai/llms.txt",
+   "https://riskmandate.ai/pricing.md",
+   "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "store.sgit.ai",
+  "status": "open",
+  "status_note": "riskmandate.ai corrected its own £5s to £10 in v1.22.0 and keeps one on purpose as a dated record. sgit.ai's partnership-risk brief noticed the disagreement but addressed it to riskmandate.ai; the pages that still say £5 are store.sgit.ai's.",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-011",
+  "what": "standards.sgit.ai says there is no GDPR graph, while sgit.ai publishes a Standards Atlas GDPR vault that models GDPR as a navigable graph.",
+  "said_at": [
+   "https://standards.sgit.ai/llms.txt",
+   "https://standards.sgit.ai/llms-full.txt",
+   "https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.md",
+   "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "standards.sgit.ai",
+  "status": "open",
+  "status_note": "standards.sgit.ai (v0.1.4, 24 August 2026) says \"There is no GDPR graph\" and \"THERE IS NO GDPR VAULT AND NO GDPR GRAPH\". sgit.ai's published-vaults list dates the GDPR vault 25 August 2026, a day later. sgit.ai's partnership-risk brief flagged it on 24 September: \"One of them needs updating\".",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-012",
+  "what": "riskmandate.ai and sgit.ai describe the same Sovereign AI R&D procurement challenge with different figures (contracts up to £10 million and challenge 3 on one; up to £5 million and challenge area four on the other), and whether to apply is undecided.",
+  "said_at": [
+   "https://riskmandate.ai/uk-support.md",
+   "https://sgit.ai/partnerships/sovereign-ai.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "riskmandate.ai",
+  "status": "open",
+  "status_note": "The two pages cite different official pages and do not link each other. On applying, riskmandate.ai says \"We have not applied yet. Whether to is the lead’s decision, and this row will say what it was.\" Its dates list shows an expression of interest by about 17 November for the 1 December batch.",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-013",
+  "what": "Seven riskmandate.ai release notes dated 23 September carry only a title and a placeholder: v1.29.3, v1.29.4, v1.29.5, v1.30.0, v1.30.1, v1.31.0 and v1.31.1.",
+  "said_at": [
+   "https://riskmandate.ai/versions/1.29.3.md",
+   "https://riskmandate.ai/versions/1.29.4.md",
+   "https://riskmandate.ai/versions/1.29.5.md",
+   "https://riskmandate.ai/versions/1.30.0.md",
+   "https://riskmandate.ai/versions/1.30.1.md",
+   "https://riskmandate.ai/versions/1.31.0.md",
+   "https://riskmandate.ai/versions/1.31.1.md",
+   "https://riskmandate.ai/versions.md"
+  ],
+  "said_on": "2026-09-23",
+  "waiting_on": "riskmandate.ai",
+  "status": "open",
+  "status_note": "Each note's body is \"TODO: what changed, and why. One bullet per change, the reason first.\" followed by an empty bullet. These are the only notes in the snapshot with that placeholder; the notes either side (v1.29.2, v1.32.0) are written out.",
+  "closed_by": [],
+  "desk": "Librarian"
+ },
+ {
+  "id": "le-014",
+  "what": "Which risk acceptance interval ladder is canonical: risks.sgit.ai's six rungs (an hour to six months, a month by default) or the bands on riskmandate.ai's \"Accepted is not acceptable\" page.",
+  "said_at": [
+   "src:vaults/risk-acceptance/plan/10-open-questions.md",
+   "src:vaults/risk-acceptance/plan/02-the-method.md",
+   "https://sgit.ai/demos/vaults/risk-acceptance/index.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "risks.sgit.ai and riskmandate.ai",
+  "status": "open",
+  "status_note": "The Risk Acceptance Office plan lists \"Which ladder?\" as its first open question and uses risks.sgit.ai's for now. Nothing on riskmandate.ai refers to the question. See the signal on two ladders.",
+  "closed_by": [],
+  "desk": "Architect"
+ },
+ {
+  "id": "le-015",
+  "what": "Seven follow-up questions on append lanes went to the SG/API team, including whether the append endpoints are live on the dev server (every probe returned 404) and whether an append token can be told apart from a read key without harm.",
+  "said_at": [
+   "src:cli-briefs/09/07/append-lanes-followup-questions__for-the-sg-api-team.md",
+   "https://sgit.ai/updates/index.md"
+  ],
+  "said_on": "2026-09-07",
+  "waiting_on": "SG/API team",
+  "status": "open",
+  "status_note": "sgit.ai's updates page says \"Seven questions went back\". No later source in the snapshot records an answer; sgit.ai's version log after 7 September does not return to them.",
+  "closed_by": [],
+  "desk": "Developer"
+ },
+ {
+  "id": "le-016",
+  "what": "The counts of old-prefix read keys on sgit.ai do not reconcile: v0.2.98 left 99 published keys across 27 pages on the legacy prefix, and v0.3.0 the same day moved 102 legacy-prefixed and 24 bare keys to the public-read prefix.",
+  "said_at": [
+   "https://sgit.ai/admin/versions.md"
+  ],
+  "said_on": "2026-09-20",
+  "waiting_on": "sgit.ai",
+  "status": "unclear",
+  "status_note": "v0.2.98: \"99 published keys across 27 pages still carry the legacy rk1 prefix\". v0.3.0: \"102 published read keys under sgit_rk1_ and 24 bare ones now carry sgit_public_read_\". Neither note explains the difference of three; it may be counting (keys against occurrences) or pages added between the releases, and the notes do not say.",
+  "closed_by": [],
+  "desk": "Librarian"
+ },
+ {
+  "id": "le-017",
+  "what": "sgit.ai's business plans page describes itself as holding two plans, Connector Twin and Agent as Webmaster, while its table lists five.",
+  "said_at": [
+   "https://sgit.ai/startups/business-plans.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "sgit.ai",
+  "status": "open",
+  "status_note": "The page's description, which is what llms.txt and link previews show, names only Connector Twin and Agent as Webmaster. The table below it adds Company X-Ray, Lesson Loop and Risk Acceptance Office, all dated 24 September.",
+  "closed_by": [],
+  "desk": "Librarian"
+ },
+ {
+  "id": "le-018",
+  "what": "newsroom.sgit.ai still presents pt.newsroom.sgit.ai as a brief and a design (\"the site does not exist yet\"), while pt.newsroom.sgit.ai is live at v0.23.13.",
+  "said_at": [
+   "https://newsroom.sgit.ai/llms-full.txt",
+   "https://pt.newsroom.sgit.ai/llms.txt"
+  ],
+  "said_on": "2026-09-13",
+  "waiting_on": "newsroom.sgit.ai",
+  "status": "open",
+  "status_note": "newsroom.sgit.ai's front page lists \"pt.newsroom.sgit.ai (a brief for the next agent)\". Its memo 14, in the same file, was written after reading pt.newsroom.sgit.ai's repository and live site on 14 September. See the signal on frozen, hashed sources.",
+  "closed_by": [],
+  "desk": "Cartographer"
+ },
+ {
+  "id": "le-019",
+  "what": "riskmandate.ai's brief register is headed \"Ten files, in the order they arrived\" and says it was \"Last reconciled 16 September 2026\", while it lists 23 briefs, several received on 24 September.",
+  "said_at": [
+   "https://riskmandate.ai/briefs.md"
+  ],
+  "said_on": "2026-09-24",
+  "waiting_on": "riskmandate.ai",
+  "status": "open",
+  "status_note": "The register's own later heading, \"Twenty-three items. None untouched, and none finished.\", has the right count. The register is how sites check whether a brief was received, so its header matters.",
+  "closed_by": [],
+  "desk": "Librarian"
+ },
+ {
+  "id": "le-020",
+  "what": "Four older cross-team asks from sgit.ai have no recorded answer: serial transfer mode for sgit under WebAssembly, a history-preserving vault rekey, first-class serialised diffs with ignore support, and the SG/Send API's CORS allow-list missing x-api-key.",
+  "said_at": [
+   "https://sgit.ai/docs/briefs/index.md",
+   "https://sgit.ai/docs/briefs/brief-serialised-diff-and-ignore.md"
+  ],
+  "said_on": "2026-08-11",
+  "waiting_on": "sgit CLI team and SG/Send API team",
+  "status": "open",
+  "status_note": "The first three are marked \"Status: open\" on the briefs index; the CORS finding has no status line and the site works around it by dropping the header client-side (sgit.ai v0.1.11, 11 August). Given that the read-key ask was closed without the index noticing, some of these may also be answered; the snapshot does not show it.",
+  "closed_by": [],
+  "desk": "Developer"
+ }
+]

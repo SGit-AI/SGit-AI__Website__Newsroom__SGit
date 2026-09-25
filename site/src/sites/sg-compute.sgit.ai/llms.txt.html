@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>sg-compute.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sg-computesgitai-sgcompute-ephemeral-environments-in-aws">sg-compute.sgit.ai — SG/Compute, ephemeral environments in AWS</a></li><li class="l2"><a href="#properties-agents-may-rely-on">Properties agents may rely on</a></li><li class="l2"><a href="#what-ships-today-shippedindexhtml">What ships today — /shipped/index.html</a></li><li class="l2"><a href="#what-it-actually-is-what-it-isindexhtml">What it actually is — /what-it-is/index.html</a></li><li class="l2"><a href="#the-spec-catalogue-specsindexhtml-generated-from-dataspecsjson">The spec catalogue — /specs/index.html, generated from /data/specs.json</a></li><li class="l2"><a href="#three-axioms-implemented">Three axioms, implemented</a></li><li class="l2"><a href="#the-argument-whyindexhtml">The argument — /why/index.html</a></li><li class="l2"><a href="#the-rough-edges-roadmapindexhtml-and-shippedindexhtmlledger">The rough edges — /roadmap/index.html and /shipped/index.html#ledger</a></li><li class="l2"><a href="#the-machine-surface-agentsindexhtml">The machine surface — /agents/index.html</a></li><li class="l2"><a href="#get-involved">Get involved</a></li><li class="l2"><a href="#measured-24-august-2026-at-repo-version-v0271">Measured, 24 August 2026, at repo version v0.2.71</a></li><li class="l2"><a href="#the-sources-documentsindexhtml">The sources — /documents/index.html</a></li><li class="l2"><a href="#full-text">Full text</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://sg-compute.sgit.ai/llms.txt">live ↗</a></p><article class="source"><h1 id="sg-computesgitai-sgcompute-ephemeral-environments-in-aws">sg-compute.sgit.ai — SG/Compute, ephemeral environments in AWS</h1>
+<blockquote><p>SG/Compute launches an isolated EC2 environment, runs the declared work, and terminates it —
+by design, every time. Sixteen ready-to-launch workload specs — browsers, encrypted vaults,
+container runtimes, LLM inference, observability — each a typed manifest away from a running
+node, with a measured ~16-second boot, a generated CLI for every spec, a rich AWS operator
+toolkit with an interactive REPL, and built-in web UIs. Open source (Apache-2.0), early
+access, looking for users and contributors — and documented under this family&#x27;s house rule:
+every number is measured from the tree, and the audit is published alongside the features.</p></blockquote>
+<p>Site version: v0.2.0 (25 August 2026). Published by the sgit project, which builds the platform
+this site documents — participant disclosure at /about/participant.html. All content CC BY 4.0; the
+platform&#x27;s own source is Apache-2.0.</p>
+<h2 id="properties-agents-may-rely-on">Properties agents may rely on</h2>
+<ul><li>Every source document is fetchable at a stable constructed URL: /briefs/&lt;filename&gt;. This is a
+promise, not an accident.</li><li>The spec catalogue is machine-readable at /data/specs.json, carrying a row per spec plus its
+own provenance (surveyed date, repo version, source). Every spec page on this site is
+GENERATED from that file, and CI fails if a page drifts from it. If you want the data rather
+than the prose, take the JSON.</li><li>Every number on this site is either generated from data or carries the date it was measured.</li><li>Editorial policy, stated once and applied everywhere: CODE WINS. Where the platform&#x27;s README,
+capabilities.json, reality document and tree disagree, the tree is right.</li><li>Two domains, deliberately distinct: sg-compute.sgit.ai (this site, documentation) and
+sg-compute.sgraph.ai (a live Route 53 zone serving per-node DNS — every launched node gets a
+stable DNS name under it). Same label, different TLD.</li></ul>
+<h2 id="what-ships-today-shippedindexhtml">What ships today — /shipped/index.html</h2>
+<ul><li>SIXTEEN REGISTERED SPECS across seven families (browser, vault, observability, runtime, llm,
+network, tool), each a working package with a typed manifest, API routes, a service, tests
+and often a UI. Nine stable, seven experimental, boot times from 15 seconds.</li><li>ONE-COMMAND NODE LAUNCH: per-node API key minted to SSM before boot (never reused), composed
+user-data, two-phase health poll, guaranteed teardown via systemd-run self-destruct plus
+InstanceInitiatedShutdownBehavior=terminate. HALT MEANS TERMINATE, NOT STOP. Default
+max_hours = 1; fractional (0.1) supported. ~16s measured EC2 boot to SSM-ready; ~50s end to
+end, click to a dedicated environment with its own DNS name.</li><li>GENERATED CLIs: the same ten verbs for every spec (list · info · create · wait · health ·
+connect · exec · delete · ami list|bake · cert) — adding a spec costs a manifest, a route
+class and a service; the CLI comes free.</li><li>A DEEP AWS COMMAND SURFACE: over 71,000 lines of operator tooling — EC2 provisioning, IAM and
+credential management, AMI bake-and-verify, fleet sentinel commands — plus an interactive
+REPL/TUI for driving environments live from the terminal.</li><li>TWO FASTAPI APPS: a browser-automation data plane (navigate/click/fill/screenshot/inspect, a
+25-verb declarative sequence language returning COMPLETED / FAILED / PARTIAL with skipped
+steps named, stateful sessions, Prometheus metrics) and an SG/Compute control plane (specs,
+nodes, pods, logs, stats) with per-spec routes discovered by convention.</li><li>WEB UIs OUT OF THE BOX: a capability-driven HTML console on every node, per-spec UIs, an
+agentic admin surface at /admin/*, live VNC desktops for headed-browser specs.</li><li>QUALITY: 4,785 tests passing in 81 seconds; digest-first multi-arch CI; 1.27 million words of
+documentation under a formal reality discipline; 2,777 commits and 245 tags in 100 days.</li></ul>
+<h2 id="what-it-actually-is-what-it-isindexhtml">What it actually is — /what-it-is/index.html</h2>
+<p>Two ephemeral layers, so nothing outlives its purpose:</p>
+<ul><li>LAYER 1, per HTTP request: a fresh Playwright subprocess and a fresh Chromium per call, torn
+down in try/finally. Zero cross-request state, with a CI guard that fails the build if any raw
+browser.new_context( appears outside the single sanctioned page factory.</li><li>LAYER 2, per node: an EC2 instance with a per-node API key minted and written to SSM before
+launch, composed user-data, EC2 tags as the registry, a two-phase health poll, and
+systemd-run --on-active paired with InstanceInitiatedShutdownBehavior=terminate.</li></ul>
+<p>Also on that page: stateful sessions (one dedicated OS thread each — a deliberate design born
+from a real greenlet bug, documented in the source); the Request__Watchdog that guarantees a
+stuck request can never wedge a node; the six isolation boundaries; and how artefacts come back.</p>
+<h2 id="the-spec-catalogue-specsindexhtml-generated-from-dataspecsjson">The spec catalogue — /specs/index.html, generated from /data/specs.json</h2>
+<p>Sixteen registered specs with typed manifests, stability ratings and measured boot times — what
+the design brief called &quot;the simulated AWS Marketplace&quot;. By family, in lines of code:
+browser 20,199 · vault 19,943 · observability 3,904 · runtime 2,757 · llm 2,437 · network 1,448 ·
+tool 773.</p>
+<p>Three generalisation mechanisms: manifest.py per spec (the registry, typed), Spec__Routes__Loader
+(convention-based route discovery), Spec__CLI__Builder (the same ten verbs generated for every
+spec). Plus PEP 621 entry-point discovery under the group sg_compute.specs — third-party specs
+can join the catalogue from their own repository, no fork required (architecturally supported,
+not yet exercised in the wild — try it and tell us).</p>
+<h2 id="three-axioms-implemented">Three axioms, implemented</h2>
+<p>Statelessness (fresh browser, context and page per request); least-privilege-by-declaration
+(the JS allowlist is deny by default, exact match — nothing is permitted by omission);
+self-description (GET /health/capabilities, built at runtime by a detector that identifies its
+own deployment target).</p>
+<h2 id="the-argument-whyindexhtml">The argument — /why/index.html</h2>
+<p>&quot;We are not competing for the generic developer-platform market (Vercel, Cloudflare Workers,
+Lambda)… We are competing for the agent-deployment market.&quot; A dedicated EC2 instance per
+workload with full control, real isolation and a stable DNS name, where 50 seconds end to end
+is a fair trade — and the measured 16-second boot beats the design&#x27;s own claimed 30–60. Plus
+the recursion idea: a control plane that runs inside the platform.</p>
+<h2 id="the-rough-edges-roadmapindexhtml-and-shippedindexhtmlledger">The rough edges — /roadmap/index.html and /shipped/index.html#ledger</h2>
+<p>Published unsoftened, because a contributor deserves a precise map. Well-scoped places to
+start: warm pools (specified with worked economics; design done, code wanted); S3 and vault
+artefact sinks (interfaces exist, inline and local-file work today); uniform create_node
+(the CLI covers all sixteen specs, the control-plane API covers three — a working pattern to
+copy); multi-node stacks; non-EC2 platforms (&#x27;local&#x27; would be the cheapest proof). Seven
+repository fixes in order of value (F1 is four characters), eight build-fresh items, eight
+open questions published unresolved.</p>
+<h2 id="the-machine-surface-agentsindexhtml">The machine surface — /agents/index.html</h2>
+<p>Two FastAPI applications; a 25-verb declarative sequence language returning COMPLETED / FAILED /
+PARTIAL with skipped steps named; GET /health/capabilities built at runtime by a detector that
+identifies its own deployment target. Auth, documented precisely: the service validates
+X-API-Key; the x-sgraph-access-token translation happens in a vault reverse proxy upstream.</p>
+<h2 id="get-involved">Get involved</h2>
+<p>The platform is Apache-2.0, the specs are extensible via entry points, and the roadmap names
+exactly what is wanted next. Comms channel at /admin/comms.html; site source at
+<a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__SG-Compute">https://github.com/SGit-AI/SGit-AI__Website__SG-Compute ↗</a>.</p>
+<h2 id="measured-24-august-2026-at-repo-version-v0271">Measured, 24 August 2026, at repo version v0.2.71</h2>
+<ul><li>3,999 Python files, 217,266 lines, 799 test files, 1,265,371 words of markdown.</li><li>4,785 tests passing in 81 seconds; 7,110 collectible; CI runs 4,793.</li><li>2,777 commits and 245 tags in 100 days (16 Apr – 24 Jul 2026).</li><li>16 registered specs (plus one unregistered), 9 stable and 7 experimental, boot 15s–600s.</li><li>EC2 boot to SSM-ready: ~16 seconds measured across 24 real runs. Full data at
+/numbers/index.html.</li></ul>
+<h2 id="the-sources-documentsindexhtml">The sources — /documents/index.html</h2>
+<p>Twelve documents, published in full, raw markdown as the source of truth at /briefs/&lt;filename&gt;.
+Two are published redacted under their own rule — they are the redaction list, so they named every
+live address the site was told to strip.</p>
+<h2 id="full-text">Full text</h2>
+<p>A single-file expansion of this site is at /llms-full.txt.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms.txt">https://sg-compute.sgit.ai/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="92811679c43cff8531dc62b805a68509e5e398d01306ccd54e6308d34f902be0">92811679c43c</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/sg-compute.sgit.ai/llms.txt</a> (8,597 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

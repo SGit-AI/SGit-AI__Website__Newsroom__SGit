@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — Explorer / Villager / Town Planner: PST as three literal agent teams (wardley-maps.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · wardley-maps.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-explorer-villager-town-planner-pst-as-three-literal-agent-teams">02 — Explorer / Villager / Town Planner: PST as three literal agent teams</a></li><li class="l2"><a href="#1-what-actually-exists-on-disk">1. What actually exists on disk</a></li><li class="l2"><a href="#2-the-operative-table">2. The operative table</a></li><li class="l2"><a href="#3-which-roles-sit-in-which-population">3. Which roles sit in which population</a></li><li class="l2"><a href="#4-the-finding-that-makes-this-page-honest">4. The finding that makes this page honest</a></li><li class="l2"><a href="#5-asserted-vs-implemented">5. Asserted vs implemented</a></li><li class="l2"><a href="#6-the-two-ideas-that-make-the-pattern-more-than-a-rename">6. The two ideas that make the pattern more than a rename</a></li><li class="l2"><a href="#7-how-to-write-the-page">7. How to write the page</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/wardley-maps.sgit.ai.html">wardley-maps.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 13 of 21</p><nav class="pager"><span><a href="012-01-concepts-index.html">← 01 — Concepts Index</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-03-job-a-everything-dinis-cruz-has-publi.html">03 — Job A: everything Dinis Cruz has published on Wardley M →</a></span></nav><article class="source"><h1 id="02-explorer-villager-town-planner-pst-as-three-literal-agent-teams">02 — Explorer / Villager / Town Planner: PST as three literal agent teams</h1>
+<p><strong>This is the page only this site can write.</strong> Simon Wardley&#x27;s Pioneers–Settlers–Town Planners model is well known as an <em>organisational</em> pattern for human teams. What exists in <code>__Send</code> is different: PST used as the <strong>architecture of an AI agent system</strong> — three separate directory trees, three session contracts, three evolution-stage mandates, and a documented handover between them.</p>
+<p>It has never been written up. Not on any site, not in <code>library/guides/</code>, not anywhere. It exists as <code>.claude/</code> configuration plus one February brief. Writing it up is the highest-value original page available.</p>
+<hr>
+<h2 id="1-what-actually-exists-on-disk">1. What actually exists on disk</h2>
+<pre><code>.claude/CLAUDE.md              .claude/explorer/CLAUDE.md      (816 words)
+                               .claude/villager/CLAUDE.md      (1,836 words)
+                               .claude/town-planner/CLAUDE.md  (942 words)
+
+team/roles/              &lt;-- THE EXPLORER TEAM  (note: no &quot;explorer/&quot; prefix)
+team/villager/roles/
+team/town-planner/roles/</code></pre>
+<p><strong>There is no <code>team/explorer/</code> directory.</strong> The Explorer team is the <em>unprefixed default</em> — <code>team/roles/</code> — confirmed by <code>.claude/CLAUDE.md</code>, which annotates <code>roles/</code> as <code># Explorer team role-based review documents</code>.</p>
+<p>That asymmetry is not an accident worth apologising for; it is a design statement worth surfacing. <strong>The Explorer is the origin state.</strong> Villager and Town Planner are named departures from it. Everything starts unprefixed and at Genesis, and acquiring a prefix is what evolution looks like in a filesystem.</p>
+<hr>
+<h2 id="2-the-operative-table">2. The operative table</h2>
+<p>From <code>.claude/CLAUDE.md</code>, verbatim — the most authoritative statement of the mapping:</p>
+<div class="table"><table><thead><tr><th>Team</th><th>Focus</th><th>Wardley Stage</th><th>Output</th></tr></thead><tbody><tr><td><strong>Explorer</strong></td><td>Discover, experiment, build first versions</td><td>Genesis → Custom-Built</td><td>Minor versions (IFD)</td></tr>
+<tr><td><strong>Villager</strong></td><td>Stabilise, harden, deploy to production</td><td>Custom-Built → Product</td><td>Major versions (IFD releases)</td></tr>
+<tr><td><strong>Town Planner</strong></td><td>Transmute technical output into investment and business value</td><td>Product → Commodity</td><td>Investor materials, business strategy</td></tr></tbody></table></div>
+<p>Preceded by: <em>&quot;As of v0.5.8, the project operates with <strong>three teams</strong> based on Wardley Maps methodology&quot;</em>.</p>
+<p>Each team&#x27;s own <code>CLAUDE.md</code> restates its stage in the second person — <em>&quot;You operate at the <strong>Genesis → Custom-Built</strong> stages of the Wardley evolution axis&quot;</em> — which is the mechanism that makes this more than a diagram. <strong>The agent is told which stage it is standing on before it does anything.</strong></p>
+<p>Note the Town Planner&#x27;s twist: its <code>CLAUDE.md</code> says <em>&quot;<strong>Product → Commodity</strong> stages… but with a twist&quot;</em>. The twist is that its output is not more commoditised <em>code</em> — it is investor materials. The Town Planner commoditises <strong>the story</strong>, not the software. That is a genuine deviation from Wardley&#x27;s model and the page should say so.</p>
+<hr>
+<h2 id="3-which-roles-sit-in-which-population">3. Which roles sit in which population</h2>
+<p>From the founding brief (14 Feb 2026), verbatim headings and rationales:</p>
+<ul><li><strong>Primarily Explorer</strong> — Architect (<em>&quot;Designing new components, experimenting with approaches&quot;</em>), Designer, Dev, Journalist, Ambassador, Advocate, Sherpa</li><li><strong>Primarily Villager</strong> — DevOps (<em>&quot;Deployment, infrastructure, performance, monitoring&quot;</em>), QA, GRC, DPO</li><li><strong>Across Both</strong> — Conductor (<em>&quot;Orchestrates both teams, manages the handover&quot;</em>), CISO, AppSec, Librarian, Historian, Cartographer (<em>&quot;Maps the system at both stages&quot;</em>)</li></ul>
+<p><strong>On-disk populations today:</strong></p>
+<div class="table"><table><thead><tr><th>Team</th><th>Directory</th><th>Count</th><th>Roles</th></tr></thead><tbody><tr><td>Explorer</td><td><code>team/roles/</code></td><td><strong>17</strong></td><td>advocate, alchemist, ambassador, appsec, architect, cartographer, conductor, designer, dev, devops, dpo, grc, historian, journalist, librarian, qa, sherpa</td></tr>
+<tr><td>Villager</td><td><code>team/villager/roles/</code></td><td><strong>17</strong></td><td>as above, minus alchemist, <strong>plus <code>translator</code></strong></td></tr>
+<tr><td>Town Planner</td><td><code>team/town-planner/roles/</code></td><td><strong>4</strong></td><td>accountant, alchemist, designer, librarian</td></tr></tbody></table></div>
+<p>Two things here are worth a paragraph each on the page.</p>
+<p><strong>The Villager-exclusive <code>translator</code>.</strong> <code>.claude/villager/CLAUDE.md</code> describes it as <em>&quot;<strong>Villager-exclusive</strong>… the first role that exists <strong>only</strong> in the Villager team&quot;</em>. This is Wardley-consistent and rather elegant: translation is a productisation activity. Nothing at Genesis needs translating, because nothing at Genesis has a second audience yet.</p>
+<p><strong>The Town Planner team was created a week after being deferred.</strong> The founding brief is explicit: <em>&quot;❌ <strong>Town Planners Team</strong> — not yet… Attempting to create the Town Planners team now would be premature. We don&#x27;t have anything at commodity stage yet.&quot;</em> It was created on 20–21 Feb 2026, with the Alchemist as its founding role — <strong>earlier than the brief&#x27;s own stated criterion, and for a business rather than a technical reason.</strong> Publish that. A documented deviation from your own plan, with the date and the reason, is exactly the kind of evidence the doctrine assessment style demands.</p>
+<blockquote><p><strong>Do not use the investor one-pager&#x27;s counts</strong> (Explorer 15 / Villager 16 / Town Planner 3). They disagree with the filesystem, and that file is on the do-not-publish list anyway.</p></blockquote>
+<hr>
+<h2 id="4-the-finding-that-makes-this-page-honest">4. The finding that makes this page honest</h2>
+<p><strong>Of 33 <code>ROLE.md</code> files in the repo, exactly two mention Wardley.</strong></p>
+<ul><li><code>team/villager/roles/cartographer/ROLE.md</code> (682 words, 6 mentions) — genuinely operationalised. Core mission: <em>&quot;Map the production topology, deployment architecture, and evolution progress — track components as they move from custom-built to product stage on the Wardley evolution axis.&quot;</em> It carries a quality gate reading <em>&quot;Every component has a Wardley evolution stage label&quot;</em> and a workflow step <em>&quot;Flag components approaching commodity stage (candidate for future Town Planners team)&quot;</em>.</li><li><code>team/town-planner/roles/accountant/ROLE.md</code> (385 words, 1 passing mention).</li></ul>
+<p><strong><code>team/roles/cartographer/ROLE.md</code> — the Explorer Cartographer, 2,057 words, the longest cartographer document in the repo — mentions Wardley zero times.</strong> Its five core principles are about ASCII art, layering and dependency graphs. Its effectiveness table counts unmapped components and undiagrammed data flows. No evolution axis, no doctrine, no gameplay.</p>
+<p>The founding brief called the Cartographer <em>&quot;central to this entire structure&quot;</em>. Its role definition is a document in which the structure does not appear. Every other Explorer <code>ROLE.md</code> — architect (1,974 w), conductor (1,803 w), librarian (1,961 w) — is likewise silent.</p>
+<p><strong>So: the teams know their stage; the roles inside them do not.</strong> The mandate lives in the session contract and never reaches the role definition. That is a real, specific, fixable defect, and naming it is what separates a pattern write-up from a brochure.</p>
+<hr>
+<h2 id="5-asserted-vs-implemented">5. Asserted vs implemented</h2>
+<div class="table"><table><thead><tr><th>Claim</th><th>Status</th></tr></thead><tbody><tr><td>Three teams exist as directories</td><td><strong>Implemented</strong></td></tr>
+<tr><td>Three distinct session contracts</td><td><strong>Implemented</strong> — 816 / 1,836 / 942 words</td></tr>
+<tr><td>Each team bound to a Wardley stage</td><td><strong>Asserted</strong> consistently in four places</td></tr>
+<tr><td>The seven separation rules (<em>&quot;Villagers do NOT add features&quot;</em>, <em>&quot;Explorers do NOT deploy to production&quot;</em>, distinct environments)</td><td><strong>Asserted</strong> in <code>.claude/CLAUDE.md</code>; environment separation was still open decision AD-1 as of 14 Feb 2026</td></tr>
+<tr><td>Individual roles know their population</td><td><strong>Not implemented</strong> — 31 of 33 silent</td></tr>
+<tr><td>The Cartographer maintains a living evolution map</td><td><strong>Partially, then abandoned.</strong> Three real maps, all 26 Feb 2026. The <code>reviews/</code> tree ends 11 Mar 2026.</td></tr>
+<tr><td>Handover briefs at <code>team/roles/explorer/handovers/</code></td><td><strong>Not implemented</strong> — the path named in <code>.claude/explorer/CLAUDE.md</code> does not exist</td></tr>
+<tr><td>Doctrine assessments, gameplay analyses</td><td><strong>Not implemented</strong></td></tr>
+<tr><td>Written up as a reusable pattern</td><td><strong>No.</strong> <code>library/guides/agentic-setup/</code> has five guides; none mentions Explorer, Villager or Town Planner.</td></tr></tbody></table></div>
+<p>The Cartographer&#x27;s own REFERENCE supplies the verdict on row 6: <em>&quot;a map that was accurate three months ago and hasn&#x27;t been updated is worse than no map.&quot;</em> It is now six months.</p>
+<hr>
+<h2 id="6-the-two-ideas-that-make-the-pattern-more-than-a-rename">6. The two ideas that make the pattern more than a rename</h2>
+<p><strong>The theft.</strong> <em>&quot;The key dynamic is what Wardley calls the <strong>&#x27;theft&#x27;</strong> — the villagers take (pinch) what the explorers have built and turn it into a product.&quot;</em> [S] — but the agentic version is new: in a human org the theft is a political event needing management. Between agent teams it is a <strong>file move plus a version bump</strong>, and it can be logged. That is a genuine advantage of doing PST with agents, and the page should claim it.</p>
+<p><strong>PST applied to artefacts, not people.</strong> This is the strongest extension in the corpus (W14, 4 Jun 2026):</p>
+<blockquote><p><em>&quot;the lifecycle of a skill is to start as massive LLM, held together with string and gum, very expensive, lots of tokens, all the way to a product, all the way to code, and it almost becomes a commodity, eventually disappearing, because maybe it is absorbed by something else.&quot;</em></p></blockquote>
+<p>with the mechanism — <em>&quot;the natural progression of a skill is to start in English and end up in code. As you refine the skill, you reduce the scope, you reduce the variability&quot;</em> — and the consequence, which is the corpus&#x27;s best line:</p>
+<blockquote><p><em>&quot;<strong>Anybody who spends a lot of money on tokens has an engineering problem. They are using explorer-type code and solutions in a commodity environment.</strong>&quot;</em></p></blockquote>
+<p>That last sentence turns a strategy framework into an <strong>operational cost diagnostic</strong>. It is the single most useful thing this site can hand a working engineer, and it is currently unpublished.</p>
+<p>Related, and worth its own section: <strong>the same skill differs by character</strong> — <em>&quot;a skill, the same skill for a town planner, is very different for an explorer, for a villager&quot;</em> — and <strong>the seniority inversion</strong> in the vibe-coding article, which assigns Villager work to <em>&quot;junior and mid-level engineers&quot;</em> and Town Planner work to <em>&quot;the most experienced engineers on the team&quot;</em>, inverting the usual assumption that the exciting new thing goes to the seniors.</p>
+<hr>
+<h2 id="7-how-to-write-the-page">7. How to write the page</h2>
+<ol><li><strong>Lead with the filesystem</strong>, not the theory. Three directory trees is a more arresting opening than a restatement of PST, and it is the part that is new.</li><li><strong>Cite Wardley properly and early</strong> — <code>blog.gardeviance.org/2015/03/on-pioneers-settlers-town-planners-and.html</code>, <strong>CC BY-SA 3.0, not 4.0</strong> (see <code>07__</code>). The corpus carries this citation in exactly one file; the site must carry it everywhere.</li><li><strong>State the rename in one sentence</strong> and never drift again: Explorer = Pioneer, Villager = Settler, Town Planner = Town Planner.</li><li><strong>Publish §4 and §5 unsoftened.</strong> A pattern write-up that admits 31 of 33 roles never got the memo is credible. One that doesn&#x27;t, isn&#x27;t.</li><li><strong>Draw the map of the pattern itself.</strong> Where do the three teams sit on an evolution axis? Where does <code>translator</code> sit? It does not exist yet and it is an obvious, cheap, original artefact.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>=== /briefs/03__job-a__dinis-published-material.md</p>
+<hr></article><nav class="pager"><span><a href="012-01-concepts-index.html">← 01 — Concepts Index</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-03-job-a-everything-dinis-cruz-has-publi.html">03 — Job A: everything Dinis Cruz has published on Wardley M →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>wardley-maps.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://wardley-maps.sgit.ai/llms-full.txt">https://wardley-maps.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:25Z</dd><dt>sha256</dt><dd><code title="f45b4e1a370ad02bcaced3ff3ce0f6a2a28933333c8dbe689e34fd48b9d78dda">f45b4e1a370a</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/wardley-maps.sgit.ai/llms-full.txt</a> (125,853 bytes)</dd><dt>Section</dt><dd>13 of 21: 02 — Explorer / Villager / Town Planner: PST as three literal agent teams</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

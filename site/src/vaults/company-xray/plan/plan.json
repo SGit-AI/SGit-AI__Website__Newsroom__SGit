@@ -1,0 +1,356 @@
+{
+ "title": "Company X-Ray: a company's own documents, read together",
+ "one_line": "A company drops its own documents into an encrypted vault. Agents run a catalogue of analyses across them, a person reviews the result, and within five working days the company gets back its questions answered, a one-page board pack, findings that each name the document and row they came from, and a Claude setup to keep asking. No connectors, no integrations, no access to anything.",
+ "problem": [
+  {
+   "name": "The documents exist. Nobody reads them together.",
+   "text": "Management accounts, a customer list, a complaints log, board minutes, the plan, the supplier list: each has an owner, and nobody sets one against another."
+  },
+  {
+   "name": "The owner has a feeling, not a picture",
+   "text": "\"Busier than ever and making less money.\" The reason is usually in the documents, a few rows apart in files that never meet."
+  },
+  {
+   "name": "A chat window is not enough",
+   "text": "Anyone can paste a spreadsheet into an assistant. What they do not get is the right questions, arithmetic that re-runs, every claim tied to its evidence, and a person who checked it."
+  },
+  {
+   "name": "Consultants are slow and dear",
+   "text": "A reading of the business by an adviser takes weeks and costs thousands. Most small companies never commission one."
+  },
+  {
+   "name": "Integrations stall the sale",
+   "text": "Connecting to a company's accounts, mail and drive means security reviews and access contracts. Dropping files into a vault means the customer decides what is seen, and the sale closes the same day."
+  }
+ ],
+ "formula": [
+  {
+   "name": "An agent platform",
+   "text": "Claude or ChatGPT, with the operator's catalogue of analyses and prompts."
+  },
+  {
+   "name": "A vault",
+   "text": "Encrypted on the device, one per customer: the documents in, the X-ray out, and the history of both."
+  },
+  {
+   "name": "Your documents",
+   "text": "What you choose to send, and nothing more. No connectors, no logins."
+  },
+  {
+   "name": "An X-ray, and a Claude setup",
+   "text": "Your questions answered, a board pack, evidence for every finding, and a project to keep asking in."
+  }
+ ],
+ "steps": [
+  {
+   "name": "Buy, and receive a key",
+   "who": "Customer",
+   "time": "Minutes",
+   "text": "A standing payment link per level. The vault key arrives separately from the instructions, never on a page."
+  },
+  {
+   "name": "Drop documents in",
+   "who": "Customer",
+   "time": "An hour",
+   "text": "Into the vault's inbox, with an intake form: why now, three questions, what was sent and what was left out."
+  },
+  {
+   "name": "Agents run the catalogue",
+   "who": "Operator's agents",
+   "time": "An hour",
+   "text": "Twelve analyses. Arithmetic written as a script first, then findings, each labelled and tied to its evidence."
+  },
+  {
+   "name": "A person reviews",
+   "who": "Reviewer",
+   "time": "90 minutes",
+   "text": "Runs the script until every figure matches, reads every inferred finding against its evidence, and commits a review note."
+  },
+  {
+   "name": "Delivered to the vault",
+   "who": "Both",
+   "time": "30-minute call",
+   "text": "Board pack, X-ray, questions, ninety days. Done is a commit in the customer's history."
+  },
+  {
+   "name": "Keep asking",
+   "who": "Customer",
+   "time": "Ten minutes to set up",
+   "text": "Project instructions and files for a Claude Project, or a ChatGPT Project. The conversation continues with the same evidence and the same rules."
+  }
+ ],
+ "catalogue": [
+  [
+   "A1",
+   "Money trend",
+   "Is the business making more or less per month, and since when?",
+   "computed"
+  ],
+  [
+   "A2",
+   "Margin by line",
+   "Which line makes the money, and which moved?",
+   "computed"
+  ],
+  [
+   "A3",
+   "Price against cost",
+   "When did prices last move, and what moved since?",
+   "computed"
+  ],
+  [
+   "A4",
+   "Concentration",
+   "How much rests on the largest customers?",
+   "computed"
+  ],
+  [
+   "A5",
+   "Dates that bind",
+   "Which contracts reach a notice or renewal date soon?",
+   "computed / inferred"
+  ],
+  [
+   "A6",
+   "Complaints and service",
+   "Is service getting better or worse, where, and for whom?",
+   "computed"
+  ],
+  [
+   "A7",
+   "Say and do",
+   "Where do the plan, the minutes and the numbers disagree?",
+   "inferred"
+  ],
+  [
+   "A8",
+   "Open actions",
+   "Which decisions are recorded and not closed?",
+   "read"
+  ],
+  [
+   "A9",
+   "One person",
+   "Which jobs rest on one person?",
+   "read"
+  ],
+  [
+   "A10",
+   "Tools and spend",
+   "What is paid for, duplicated, unowned or unused?",
+   "computed"
+  ],
+  [
+   "A11",
+   "AI and data",
+   "Where is AI used, on what information, under what rule?",
+   "inferred"
+  ],
+  [
+   "A12",
+   "What is missing",
+   "What would a board expect to see that was not sent?",
+   "read"
+  ]
+ ],
+ "levels": [
+  {
+   "n": "0",
+   "name": "The sample",
+   "price": "Free",
+   "what": "This vault: an invented company X-rayed end to end, the catalogue and the prompts.",
+   "who": "Read it",
+   "done": "You have read it."
+  },
+  {
+   "n": "1",
+   "name": "The kit",
+   "price": "£50",
+   "what": "The catalogue, the self-run prompt, the intake checklist and the Claude setup, as files.",
+   "who": "You run it",
+   "done": "The download's hash matches the published hash."
+  },
+  {
+   "n": "2",
+   "name": "Your X-ray vault",
+   "price": "£150",
+   "what": "The kit as a vault set up for your company, versioned and shareable read-only.",
+   "who": "You run it; we set it up",
+   "done": "You have opened it with your key."
+  },
+  {
+   "n": "3",
+   "name": "Standard X-ray",
+   "price": "£500",
+   "what": "We run the catalogue on your documents, a person reviews every finding, and a thirty-minute call hands it over. Five working days.",
+   "who": "Our agents; a person reviews",
+   "done": "The X-ray and the review note are committed to your vault."
+  },
+  {
+   "n": "4",
+   "name": "Tailored X-ray",
+   "price": "£1,500",
+   "what": "Two one-hour sessions, up to three analyses written for your questions, and a signed review. Seven working days.",
+   "who": "A person, with our agents",
+   "done": "Both sessions held, and the sign-off committed."
+  }
+ ],
+ "extras": [
+  {
+   "name": "Re-X-ray",
+   "price": "£350 or £900",
+   "text": "New documents in the same vault. The X-ray again, with what moved since last time."
+  },
+  {
+   "name": "Partner licence",
+   "price": "£250 a month + £100 per X-ray",
+   "text": "For accountants, fractional finance directors and advisers, under their own name, with their own review."
+  }
+ ],
+ "calc": {
+  "kits": 20,
+  "vaults": 5,
+  "standard": 11,
+  "tailored": 3,
+  "rex": 3,
+  "std_hours": 3.5,
+  "tail_hours": 9,
+  "rex_hours": 2,
+  "costs": 12000,
+  "prices": {
+   "kit": 50,
+   "vault": 150,
+   "standard": 500,
+   "tailored": 1500,
+   "rex": 350
+  },
+  "model_cost": {
+   "vault": 1,
+   "standard": 20,
+   "tailored": 40,
+   "rex": 15
+  },
+  "fees": 0.02
+ },
+ "who_adds": [
+  {
+   "who": "The customer",
+   "adds": "The documents, the context and the questions.",
+   "worth": "Most of the value. Nobody else has them."
+  },
+  {
+   "who": "The model",
+   "adds": "Reading everything, doing the arithmetic at speed, noticing where documents disagree.",
+   "worth": "Makes the price possible. Available to everybody."
+  },
+  {
+   "who": "The operator",
+   "adds": "The catalogue, the discipline of evidence and labels, the review, and the packaging.",
+   "worth": "What turns a chat into something a board can use and check."
+  }
+ ],
+ "phases": [
+  {
+   "name": "The sample",
+   "when": "Weeks 1 to 2",
+   "text": "The invented company X-rayed, published with a read key. The intake page and four payment links.",
+   "done": "recompute.py passes; the links work."
+  },
+  {
+   "name": "Three free X-rays",
+   "when": "Weeks 3 to 5",
+   "text": "Companies the founder knows. Every hour measured. The catalogue rewritten from what was found and missed.",
+   "done": "Three delivered; catalogue v2."
+  },
+  {
+   "name": "First ten paid",
+   "when": "Weeks 6 to 12",
+   "text": "Seven Standard, one Tailored, the kit on sale. Processing agreement and deletion record in place.",
+   "done": "Ten customers; review time measured."
+  },
+  {
+   "name": "Partners and packs",
+   "when": "Months 4 to 6",
+   "text": "Two partner firms on the licence. The first sector pack.",
+   "done": "Two partners running X-rays."
+  },
+  {
+   "name": "Repeat",
+   "when": "Months 6 to 12",
+   "text": "Re-X-rays as the next quarter's numbers arrive. A second reviewer.",
+   "done": "One in four customers returned."
+  }
+ ],
+ "reuse": [
+  [
+   "Four levels, £10 to £1,500",
+   "Four levels, £50 to £1,500"
+  ],
+  [
+   "Each level is the level below plus one thing",
+   "The same rule"
+  ],
+  [
+   "Free published examples with read keys",
+   "The sample X-ray in this vault"
+  ],
+  [
+   "The prompt is free on purpose",
+   "The run prompt and the catalogue are public"
+  ],
+  [
+   "Payment links at store.sgit.ai",
+   "One link per level"
+  ],
+  [
+   "Done is a commit",
+   "Each level's done-when is a commit"
+  ],
+  [
+   "Reviewer pages, with a name on the sign-off",
+   "Reviewers who sign Tailored X-rays"
+  ],
+  [
+   "Measured, documented, derived",
+   "Read, computed, inferred"
+  ],
+  [
+   "What we never ask for",
+   "No access, no credentials, no connectors"
+  ]
+ ],
+ "risks": [
+  [
+   "A wrong inferred finding",
+   "Labels on every finding; the reviewer reads each against its evidence."
+  ],
+  [
+   "Personal data in the documents",
+   "Intake checklist; the agent stops and reports it; processing agreement; deletion record."
+  ],
+  [
+   "\"I could do this in ChatGPT\"",
+   "Sell the kit, and let them. The sample shows what the review adds."
+  ],
+  [
+   "Review time grows",
+   "Measure from customer one; sector packs; test £750."
+  ],
+  [
+   "Model provider terms change",
+   "Terms stated on the intake page with the date read; re-read quarterly."
+  ],
+  [
+   "Treated as professional advice",
+   "The X-ray describes documents and says so. Indemnity insurance first."
+  ]
+ ],
+ "open_questions": [
+  "Is £500 right for the Standard level, or does the board pack justify £750?",
+  "How many documents does a typical small company have, and in what state?",
+  "Which sector gets the first pack?",
+  "Is the Claude setup still used after the first week?",
+  "Would accountants rather license it, or refer to it?",
+  "When, if ever, are connectors worth adding?"
+ ]
+}

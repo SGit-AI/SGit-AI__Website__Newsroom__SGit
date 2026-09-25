@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Step 1: what it can reach on your machine · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#step-1-what-it-can-reach-on-your-machine">Step 1: what it can reach on your machine</a></li><li class="l1"><a href="#step-1-what-it-can-reach-on-your-machine-1">Step 1: what it can reach on your machine</a></li><li class="l2"><a href="#start-with-what-is-on">Start with what is on</a></li><li class="l2"><a href="#then-what-it-has-already-done-here">Then what it has already done here</a></li><li class="l2"><a href="#then-what-it-cannot-tell-you">Then what it cannot tell you</a></li><li class="l2"><a href="#what-to-look-for-in-the-answer">What to look for in the answer</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://abp.sgit.ai/desktop/what-it-can-reach/index.md">live ↗</a></p><article class="source"><h1 id="step-1-what-it-can-reach-on-your-machine">Step 1: what it can reach on your machine</h1>
+<blockquote><p>Three prompts that make the desktop assistant list its local tools, connectors and past conversations, say which are switched on, and name what it cannot see about its own reach.</p></blockquote>
+<p>*Source: <a href="index.html">https://abp.sgit.ai/desktop/what-it-can-reach/index.html</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-it-can-reach/index.html" title="live page">↗</a> · site v0.11.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../../index.html">Home</a><a class="ext live" href="https://abp.sgit.ai/index.md" title="live page">↗</a> / <a href="../index.html">On your machine</a><a class="ext live" href="https://abp.sgit.ai/desktop/index.md" title="live page">↗</a> / Step 1</p>
+<h1 id="step-1-what-it-can-reach-on-your-machine-1">Step 1: what it can reach on your machine</h1>
+<p><strong>The application knows what is switched on and you probably do not.</strong> Settings accumulate. A local tool enabled for one task in June is enabled today. So ask, and ask for the switch on every line.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Have the agent list its local tools, its connectors, and whether it can read past conversations, and say which of those are switched on right now.</td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../what-matters/index.html">Step 2: What matters, and what does not</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-matters/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../index.html">The desktop walkthrough</a><a class="ext live" href="https://abp.sgit.ai/desktop/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<blockquote><p><strong>What you gain from this page.</strong> A list of everything the assistant can reach on the machine right now, with each line saying whether it asks you first, whether it is on, and whether the agent is reading a tool description or guessing.</p></blockquote>
+<h2 id="start-with-what-is-on">Start with what is on</h2>
+<p><strong>Prompt 1: What is switched on right now.</strong> One list, one line each, with the switch state.</p>
+<pre><code>List everything you can reach on this machine and through this application, one line
+each: local files, running commands, each connector, each external tool or server, and
+our past conversations. For each line say whether it is switched ON or OFF right now,
+whether it asks me before acting, and whether you are reading that from a tool
+description or guessing. Mark guesses INFERRED.</code></pre>
+<p>The line to look at is the one you did not expect to be on. There is nearly always one.</p>
+<h2 id="then-what-it-has-already-done-here">Then what it has already done here</h2>
+<p><strong>Prompt 2: What you have already reached.</strong> Files opened, commands run, connectors used, conversations read.</p>
+<pre><code>In our conversations on this machine, as far as you can see:
+
+  1. Which files or folders have you opened, and which have you changed?
+  2. Which commands have you run?
+  3. Which connectors or external tools have you used?
+  4. Have you read a past conversation, and which one?
+
+If you cannot see earlier sessions, say so and say what you can see. Do not summarise;
+list.</code></pre>
+<h2 id="then-what-it-cannot-tell-you">Then what it cannot tell you</h2>
+<p><strong>Prompt 3: What you cannot see about yourself.</strong> The blind spots, and where each one could be checked.</p>
+<pre><code>What can you not tell me about your own reach on this machine? For each of these say
+whether you can see it, and if not, who could and where:
+
+  - what a command you run could touch, at the top end, as my user account
+  - whether a folder you can read is mine or somebody else&#x27;s
+  - whether a file you can read holds a credential
+  - whether our past conversations contain a secret
+  - what a connector has done when I was not watching
+
+Then tell me which of these you would need me to tell you, because nothing on the
+machine says.</code></pre>
+<h2 id="what-to-look-for-in-the-answer">What to look for in the answer</h2>
+<ul><li><strong>A local tool that is on.</strong> Reading files and running commands as you are each one switch, and each reaches everything your account reaches.</li><li><strong>A connector you forgot.</strong> It attaches to the account, and it is on in every session.</li><li><strong>The past conversations line.</strong> If it can read them, and they contain a secret, the credentials row and the record row are the same row.</li><li><strong>The list of things it needs you to tell it.</strong> That is step two, and the agent has just written its own agenda for it.</li></ul>
+<blockquote><p><strong>Where the numbers on this page come from.</strong> The published profile for <code>anthropic/claude-desktop/default</code>, which is derived and not measured: <strong>0 of 11 rows were seen on an instance</strong>, and the rest were read from what a desktop application running as a user account architecturally is. Your deployment is not that one; the prompts on this page produce yours. <a href="../../examples/index.html">The rows</a><a class="ext live" href="https://abp.sgit.ai/examples/index.md" title="live page">↗</a>, <a class="ext" href="https://abp.sgit.ai/data/profiles/anthropic/claude-desktop/default.json">the profile as JSON ↗</a>.</p></blockquote>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Have the agent list its local tools, its connectors, and whether it can read past conversations, and say which of those are switched on right now.</td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../what-matters/index.html">Step 2: What matters, and what does not</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-matters/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../index.html">The desktop walkthrough</a><a class="ext live" href="https://abp.sgit.ai/desktop/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<hr>
+<p><em><a href="../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/desktop/what-it-can-reach/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/desktop/what-it-can-reach/index.md">https://abp.sgit.ai/desktop/what-it-can-reach/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:36Z</dd><dt>sha256</dt><dd><code title="1367e62df2e471d29b3371599b755cf852a48aaf970c35c4a6e2b656b0ee22ce">1367e62df2e4</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/abp.sgit.ai/desktop/what-it-can-reach/index.md</a> (4,712 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

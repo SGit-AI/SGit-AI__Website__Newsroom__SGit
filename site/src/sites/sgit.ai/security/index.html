@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Security model, sgit · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#security-model-sgit">Security model, sgit</a></li><li class="l1"><a href="#security-model">Security model</a></li><li class="l2"><a href="#what-the-server-sees-and-never-sees">What the server sees, and never sees</a></li><li class="l2"><a href="#the-crypto-stack">The crypto stack</a></li><li class="l2"><a href="#two-key-systems-and-where-each-applies">Two key systems, and where each applies</a></li><li class="l2"><a href="#key-strength">Key strength</a></li><li class="l2"><a href="#two-implementations-one-wire-format">Two implementations, one wire format</a></li><li class="l2"><a href="#secrets-safety-by-default">Secrets safety by default</a></li><li class="l2"><a href="#open-security-process">Open security process</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://sgit.ai/security/index.html">live ↗</a></p><article class="source"><h1 id="security-model-sgit">Security model, sgit</h1>
+<blockquote><p>sgit&#x27;s zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.</p></blockquote>
+<p><em>Source: <a href="index.html">https://sgit.ai/security/index.html</a><a class="ext live" href="https://sgit.ai/security/index.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<h1 id="security-model">Security model</h1>
+<p>Zero knowledge, precisely stated: every file is encrypted on your machine before upload, keys are derived locally from your vault key, and the server stores ciphertext under opaque identifiers. This page tells you exactly what that means, including what the server <em>can</em> see.</p>
+<h2 id="what-the-server-sees-and-never-sees">What the server sees, and never sees</h2>
+<div class="table"><table><thead><tr><th>The server never sees</th><th>The server does see</th></tr></thead><tbody><tr><td>File contents (encrypted client-side, AES-256-GCM)</td><td>The vault ID (an opaque random identifier)</td></tr>
+<tr><td>Filenames and folder structure</td><td>Encrypted object sizes</td></tr>
+<tr><td>Commit messages and branch names</td><td>Timing of reads and writes</td></tr>
+<tr><td>Your vault key or any derived key</td><td>Approximate activity volume (object counts)</td></tr></tbody></table></div>
+<p>We state the right-hand column deliberately. Traffic analysis of sizes and timing is a real (if narrow) channel, and pretending otherwise would be marketing, not security.</p>
+<h2 id="the-crypto-stack">The crypto stack</h2>
+<div class="table"><table><thead><tr><th>Layer</th><th>Construction</th></tr></thead><tbody><tr><td>Content encryption</td><td>AES-256-GCM, 12-byte IV, 16-byte tag, byte-compatible with the browser&#x27;s Web Crypto API</td></tr>
+<tr><td>Key derivation from the vault key</td><td>PBKDF2-HMAC-SHA256, 600,000 iterations, distinct per-vault salts for read and write keys</td></tr>
+<tr><td>Purpose-specific keys</td><td>HKDF-SHA256, per-file keys and a structure key, one-way derived from the read key</td></tr>
+<tr><td>Server-side identifiers</td><td>HMAC-SHA256-derived opaque IDs, the server addresses files it cannot name</td></tr>
+<tr><td>Object identity</td><td>Content-addressed: <code>obj-cas-imm-&lt;sha256-prefix&gt;</code> over ciphertext, enabling dedup without plaintext knowledge</td></tr></tbody></table></div>
+<p>One precision note, because precision beats marketing: the key hierarchy derives a <em>structure key</em> (one-way from the read key) designed to separate access to vault metadata from access to file contents. Today, vault objects are encrypted under the read key, activating the structure-key split across structural objects is an in-progress, reviewed design change, and this page will say so when it lands, not before.</p>
+<h2 id="two-key-systems-and-where-each-applies">Two key systems, and where each applies</h2>
+<p>Everything above describes the <strong>symmetric</strong> half, and it is the half that matters most: the vault key is symmetric, it is the root of the storage hierarchy, and every object in a vault is encrypted under a key derived one-way from it. If you only ever use sgit to sync your own files across your own machines, that is the whole system.</p>
+<p>There is a second half. Layered on top is a <strong>public-key</strong> system, for the two things a shared symmetric key cannot express: <strong>proving who wrote something</strong>, and <strong>encrypting to somebody who does not hold your vault key</strong>. It is what makes <a href="../docs/vault-messaging.html">vault-to-vault messaging</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a> possible, a sender can encrypt to your published public key and drop the result into your vault without ever being able to read it.</p>
+<div class="table"><table><thead><tr><th></th><th>Vault key (symmetric)</th><th>Keypair (asymmetric)</th></tr></thead><tbody><tr><td>What it is</td><td>One generated string: address, credential and encryption root</td><td>An encryption pair and a signing pair, generated locally</td></tr>
+<tr><td>What it protects</td><td>Every object in the vault</td><td>Individual files addressed to a recipient, and signatures over them</td></tr>
+<tr><td>Who holds it</td><td>Everyone who can open the vault</td><td>Private half: you alone. Public half: publish it freely</td></tr>
+<tr><td>Answers</td><td>“Can this person open the vault?”</td><td>“Who wrote this?” and “Can only <em>they</em> read it?”</td></tr>
+<tr><td>Where it lives on the server</td><td>Never, the server holds ciphertext only</td><td>Public keys at <code>bare/keys/key-rnd-imm-*</code>. Private keys never leave your machine</td></tr></tbody></table></div>
+<p>The constructions, read out of <code>sgit pki keygen</code> on v0.15.0 rather than recalled: <strong>RSA-OAEP 4096-bit</strong> for encryption and <strong>ECDSA P-256</strong> for signing, with a hybrid envelope, RSA-OAEP wraps a per-message AES-256-GCM content key. Private keys are passphrase-protected at rest. The full lifecycle is on <a href="../docs/pki.html">the PKI page</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a>.</p>
+<p><strong>This section is new, and its absence had a cost.</strong> Until now this page described the symmetric design and simply did not mention asymmetric cryptography, it never claimed PKI was absent, but it never said it was present either. An agent researching how to send a message between vaults read this page, concluded there was no public-key layer, and stopped looking. The capability had shipped; the sentence that would have pointed at it had not been written. Silence on a page like this one reads as denial.</p>
+<h2 id="key-strength">Key strength</h2>
+<p>Vault keys are generated, not chosen. A generated passphrase is 24 characters over a 36-symbol alphabet (about <strong>124 bits of entropy</strong> (3624 ≈ 2124), far beyond brute-force reach) before key derivation adds 600,000 rounds of PBKDF2-SHA256 on top. The key never travels to the server: it is the address, the credential, and the root of the encryption hierarchy in one string, and it stays on your machines.</p>
+<p><strong>Consequence you should want:</strong> there is no password reset. If you lose the vault key, nobody, including us, can recover the contents. Keep it in a password manager, and use <code>sgit vault backup</code> for belt-and-braces.</p>
+<h2 id="two-implementations-one-wire-format">Two implementations, one wire format</h2>
+<p>The sgit CLI and the SG/Vault browser client are independent implementations of the same encrypted wire format, kept interoperable through a versioned contract with test vectors. Every crypto operation must produce byte-for-byte identical output to the Web Crypto API given the same inputs, that requirement is enforced with mandatory test vectors, and it means a second, independent codebase continuously exercises the same format. (More on the browser side at <a class="ext" href="https://sgraph.ai">sgraph.ai ↗</a>.)</p>
+<h2 id="secrets-safety-by-default">Secrets safety by default</h2>
+<p>sgit is not a secrets manager, and it actively refuses to become an accidental one: files like <code>.env*</code>, <code>.netrc</code>, <code>.pgpass</code>, <code>.git-credentials</code> and private key files (<code>id_rsa</code>, …) are <em>always</em> excluded from commits, so a stray credential can&#x27;t get swept into a vault snapshot.</p>
+<h2 id="open-security-process">Open security process</h2>
+<ul><li>Open source under Apache-2.0, with a deliberately tiny dependency surface: two runtime dependencies.</li><li>~4,000 tests including mutation testing in CI and integration tests against a real server, no mocks.</li><li>An internal security review series (twelve findings, each individually worked through and debriefed, covering key residency, IV determinism trade-offs, logging hygiene, and more) is being prepared for publication on this page.</li><li>Found something? Report it via <a class="ext" href="https://github.com/SGit-AI/SGit-AI__CLI/issues">GitHub ↗</a>, security reports get priority.</li><li><strong>Key exposed?</strong> <a href="../case-studies/exposed-vault-key.html">The rotation runbook</a><a class="ext live" href="https://sgit.ai/case-studies/exposed-vault-key.html" title="live page">↗</a>, including a worked case study of the day this site&#x27;s own vault key leaked, and what it cost to fix.</li></ul>
+<p><strong>Honesty note:</strong> sgit is in beta (it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF) nothing exotic). Still: read <a href="../docs/limitations.html">when NOT to use sgit</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> before trusting it with anything critical.</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://sgit.ai/security/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/security/index.html">https://sgit.ai/security/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/security/index.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="0c29c45887cacf9203b8dfdbdf96a082a0a71356b80693a8858ae1a4be309a01">0c29c45887ca</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/sgit.ai/security/index.md</a> (7,330 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

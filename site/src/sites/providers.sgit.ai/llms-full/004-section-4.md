@@ -1,0 +1,5 @@
+## The two axes
+
+Everything in this family is indexed on two questions that are usually mixed together. They are orthogonal, and the intersection is [on the patterns page](/patterns/).
+
+<div class="beforeafter"><div class="ba now"><h4>The credential pattern — a property of the <em>provider</em></h4><p>Where the credential lives and what bounds it: <b>nothing</b>, <b>a spend limit</b>, <b>a clock</b>, or <b>a host the application cannot reach</b>. It is decided by what the vendor's product can mint, and no amount of care in your code changes it.</p><p><a href="/patterns/">The four patterns &rarr;</a></p></div><div class="ba then"><h4>The capability tier — a property of <em>your tool</em></h4><p>What state it keeps: <b>none</b>, <b>this device</b>, or <b>a vault</b>. It decides whether your tool works for somebody with no key, and whether it survives being downloaded and run somewhere else.</p><p><a href="/patterns/#the-second-axis-what-the-tool-keeps">The tier axis &rarr;</a></p></div></div>

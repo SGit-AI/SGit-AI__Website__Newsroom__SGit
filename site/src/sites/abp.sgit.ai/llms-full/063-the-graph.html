@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The graph (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-graph">The graph</a></li><li class="l2"><a href="#where-the-rules-landed">Where the rules landed</a></li><li class="l2"><a href="#the-sentence-test">The sentence test</a></li><li class="l2"><a href="#the-five-layers-and-the-tension-in-them">The five layers, and the tension in them</a></li><li class="l2"><a href="#the-interchange-vocabulary">The interchange vocabulary</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 63 of 357</p><nav class="pager"><span><a href="062-the-graph.html">← The graph</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="064-the-schema.html">The schema →</a></span></nav><article class="source"><h1 id="the-graph">The graph</h1>
+<p>An ABP is a graph and every document is a projection of it. The five rules that govern it are published at <a class="ext" href="https://graphs.sgit.ai/">graphs.sgit.ai ↗</a> and they govern the model rather than the styling. This page says what each one forces here.</p>
+<div class="table"><table><thead><tr><th>Rule</th><th>What it forces on this model</th></tr></thead><tbody><tr><td><strong>Every edge is a verb with a distinct inverse.</strong></td><td><code>is-granted</code> and <code>granted-to</code> are different edges with different fan out. The inverse is not the same edge walked backwards.</td></tr>
+<tr><td><strong>The generic association edge is banned.</strong></td><td>There is no <code>relates-to</code> anywhere in this model. It constrains nothing and costs fan out.</td></tr>
+<tr><td><strong>Never render the whole graph. Render the result of a query.</strong></td><td>There is no map of everything on this site. Each page answers one query: this shape&#x27;s grant, this mandate&#x27;s delta, this capability across every shape.</td></tr>
+<tr><td><strong>Rich nodes are acceptable.</strong></td><td>A capability node carries its verb, object, reach, undo class and gloss. The blob is a rendering failure, not a modelling one.</td></tr>
+<tr><td><strong>If a path does not read as a sentence in the reader&#x27;s own language, the edges are wrong.</strong></td><td>The acceptance test, below. If a path fails it, the model changes and not the renderer.</td></tr></tbody></table></div>
+<h2 id="where-the-rules-landed">Where the rules landed</h2>
+<div class="table"><table><thead><tr><th>Address</th><th>What is there</th></tr></thead><tbody><tr><td><a href="../model/lexicon/index.html">The lexicon</a><a class="ext live" href="https://abp.sgit.ai/model/lexicon/index.md" title="live page">↗</a></td><td>Every word the grammar is spelled with, as a node with its own address. <code>read.file.project</code> is three nodes and three edges.</td></tr>
+<tr><td><a href="../model/graph/edges/index.html">The edge vocabulary</a><a class="ext live" href="https://abp.sgit.ai/model/graph/edges/index.md" title="live page">↗</a></td><td>22 edges, each a verb with a distinct inverse, a stated domain and range. No generic association edge.</td></tr>
+<tr><td><a href="../model/graph/formulas/index.html">The node type formulas</a><a class="ext live" href="https://abp.sgit.ai/model/graph/formulas/index.md" title="live page">↗</a></td><td>Classification as a required path pattern, run on every build, rather than a label somebody applied.</td></tr>
+<tr><td><a href="../model/graph/layers/index.html">The three layers</a><a class="ext live" href="https://abp.sgit.ai/model/graph/layers/index.md" title="live page">↗</a></td><td>How a customer vault disagrees with this vocabulary without merging anything.</td></tr>
+<tr><td><a href="../docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.html">The nine universes</a><a class="ext live" href="https://abp.sgit.ai/docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.md" title="live page">↗</a></td><td>The map of the ABP onto Fractal Semantic Graphs: one capability row crosses nine universes, each with its own owner and ontology, joined by named edges. A brief at v0.4.0; the universes land one per release after it.</td></tr></tbody></table></div>
+<h2 id="the-sentence-test">The sentence test</h2>
+<blockquote><p>agent <code>claude-code-cli-confirmations-disabled</code> <strong>is-granted</strong> capability <code>execute.process.host</code> <strong>bounded-by</strong> barrier <code>a-rule-somebody-wrote-down</code> <strong>which-exceeds</strong> mandate <code>ship-a-feature</code> <strong>and-is</strong> undo <code>no</code></p></blockquote>
+<p>Every example page ends with that path, built from its own data, so the test is applied on every build rather than asserted once here.</p>
+<h2 id="the-five-layers-and-the-tension-in-them">The five layers, and the tension in them</h2>
+<p>A five level compression hierarchy says a class name does not mean the same thing two levels up. The variant rule says every rendering must produce the same fact set, with an empty diff. Both are true, and the resolution is precise:</p>
+<ul><li><strong>The fact set is the leaf assertions</strong>: this shape has this capability, at this barrier, with this undo class; this mandate contains these capabilities; therefore this delta. <strong>Identical in every rendering, and the diff is over these.</strong></li><li><strong>The classes are how those facts are grouped for a reader.</strong> An executive rendering groups by business consequence, an engineer&#x27;s by reach and barrier. <strong>Different at different altitudes, and that is correct rather than a defect.</strong></li></ul>
+<p><strong>So the fact diff is over leaf assertions, not over structure.</strong> The label and the leaflet on every example page are two renderings of one fact set, and keeping them that way is why both are generated from the same call.</p>
+<p><strong>Altitude is for stakeholder, depth is for detail.</strong> The layers here are altitudes.</p>
+<h2 id="the-interchange-vocabulary">The interchange vocabulary</h2>
+<p>The W3C has had a rights expression vocabulary since 2018: a policy carries permissions, prohibitions and duties, constraints cover time, purpose, count and place, the conflict strategy says <strong>prohibitions win</strong>, and a policy inherits from a parent, which is how a policy for an agent in an environment extends a policy for an agent. Use it as the interchange form through a profile that adds these capability primitives as actions.</p>
+<blockquote><p><strong>Do not claim it enforces anything, because it does not.</strong> It is a vocabulary for expressing a policy, not a thing that stands in the way. In the barrier&#x27;s terms an interchange document is a rule somebody wrote down until something above the grant compiles it and enforces it.</p></blockquote>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../model/graph/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/model/graph/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="062-the-graph.html">← The graph</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="064-the-schema.html">The schema →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>63 of 357: The graph</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

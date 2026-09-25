@@ -1,0 +1,112 @@
+# chrome-extensions.sgit.ai — guidance for building Chrome extensions
+
+> An extension that watches a live account is an evidence instrument, and it must be able
+> to prove what it did and did not see. Four guides from five weeks building a Manifest V3
+> browser extension that records a web application's own network traffic, against an
+> undocumented target that changed its entire API stack mid-project. The expensive bugs do
+> not throw — they return something reasonable-looking, and you find out weeks later when a
+> number does not match a screenshot.
+
+Site version: v0.1.0 (9 September 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. Content CC BY 4.0; code snippets CC0/MIT.
+
+## The five sentences
+
+1. Build a deliberately stupid recorder first — no parsers, no domain model, just keep the bodies.
+2. Verify every derived fact against an artefact the system itself produced.
+3. The expensive bugs do not throw.
+4. Missing is `null`, and `null` never becomes `0`, `''` or `{}`.
+5. Leave the corrections in.
+
+## The four guides — ship almost unchanged; read 01 first
+
+- [01 · The method](https://chrome-extensions.sgit.ai/method/index.html): the human/agent
+  division of labour, why "phase 0" (a deliberately stupid recorder) was the best decision
+  in the project, evidence discipline (fail closed, verify against an artefact the system
+  produced, read markup not English), corrections stay where the mistake was, and the
+  failure-mode table.
+- [02 · The extension](https://chrome-extensions.sgit.ai/architecture/index.html): MAIN vs
+  ISOLATED world and why MAIN is required, the double-injection trap, reading a body
+  without disturbing it, capture modes (engagement/wide/json/all), storage split by size,
+  the circuit breaker, the boundary that only fails once data gets big (chrome.runtime.
+  sendMessage's size limit turning `res || {}` into a corrupt `undefined.json`), build
+  provenance.
+- [03 · Reading payloads nobody documented](https://chrome-extensions.sgit.ai/payloads/index.html):
+  probing the envelope before the contents, routing on what the response says about itself,
+  deriving timestamps from identifiers and proving them three ways, reading markup over
+  English, reassembling a document-shaped (React Server Components-style) payload, failing
+  closed while still counting what you lose, and two sampling mistakes to expect.
+- [04 · Vaults, scoped to this project](https://chrome-extensions.sgit.ai/vaults/index.html):
+  the code/data vault split and why, the deriver as the one seam between them, per-entity
+  records with structural membership and field history, and a self-contained viewer that
+  never draws a missing value as zero.
+
+## Built from the guides
+
+- [The six silent failures](https://chrome-extensions.sgit.ai/silent-failures/index.html):
+  running an old build (10 days), a limit that selects against your evidence (3 weeks), a
+  boundary that fails only when data gets big, a pattern written against one example, a test
+  file nothing imports, deriving a fact from the thing it points at. Every one invisible by
+  construction — the site's most-linked page.
+- [The checklist](https://chrome-extensions.sgit.ai/checklist/index.html): the details that
+  save a reader a day each — `document_start` + MAIN world, claim the double-injection guard
+  before installing hooks, expose counters on the global, `res.clone()`, `responseText`
+  throwing on arraybuffer/blob, deny-lists over allow-lists, `unlimitedStorage`.
+- [The quality rubric](https://chrome-extensions.sgit.ai/rubric/index.html) and its
+  machine-readable twin, [rubric.json](https://chrome-extensions.sgit.ai/rubric/rubric.json):
+  34 checks across 6 sections (safe to leave running, can it prove what it saw, fails in the
+  right direction, evidence separable from interpretation, built on evidence not one
+  example, tests pin the lessons), graded yes/no/not-applicable, each traceable to an
+  incident that happened. The three efforts are graded against it, including this project's
+  own — a rubric its author's work does not pass everywhere is the only kind worth trusting.
+
+## One shipped, four specified
+
+- [The arc](https://chrome-extensions.sgit.ai/the-arc/index.html): March 2026 (a Key Vault
+  extension, planned, evidence *recalled*) → August–September (the recorder, shipped,
+  everything *measured*) → September (a secrets manager, re-specified, assumptions *read*).
+  The newest corrects the oldest: the March pack's "Chrome Sync allows ~100KB total" survives
+  as a rough approximation; the September brief read the documentation and returned
+  102,400 bytes / 512 items / 8,192 per item / 120 writes a minute, and found the platform's
+  own docs do not state the store is encrypted.
+- [The unbuilt](https://chrome-extensions.sgit.ai/unbuilt/index.html): four more designs
+  specified across six months, none shipped, each stating what it discovered —
+  [the Key Vault](https://chrome-extensions.sgit.ai/unbuilt/key-vault.html) (U1, staffing
+  AppSec by what the artefact holds),
+  [risk cards on extensions](https://chrome-extensions.sgit.ai/unbuilt/risk-cards.html)
+  (U2, the read-content closure — the counterweight this site owes),
+  [the Scribe](https://chrome-extensions.sgit.ai/unbuilt/the-scribe.html)
+  (U3, `activeTab`+`scripting` over broad host permissions; the remote-code rule is
+  narrower than it sounds),
+  [the secrets manager](https://chrome-extensions.sgit.ai/unbuilt/secrets-manager.html)
+  (U4, the sync budget as a design constraint; origin-binding downgraded by the enforcer
+  test),
+  [the manifest as a profile](https://chrome-extensions.sgit.ai/unbuilt/manifest-profile.html)
+  (U5), and
+  [the vault as extension storage](https://chrome-extensions.sgit.ai/unbuilt/vault-storage.html)
+  (U6, added at the founder's correction 8 Sep 2026 — a vault removes U4's hundred-kilobyte
+  ceiling rather than working around it; an extension is one of the most natural vault
+  clients there is).
+
+## The documents
+
+- [Readable in-page](https://chrome-extensions.sgit.ai/documents/index.html): the four
+  guides with a summary and the full markdown rendered in-page; raw markdown under
+  https://chrome-extensions.sgit.ai/sources/ is the source of truth.
+
+## Boundaries
+
+- The recorder's original target is never named — it appears as "the target" and "the API"
+  throughout, enforced in CI with a term blocklist rather than by review (06__ §1).
+- Capture data, real captures as test fixtures, the target's name/domain/endpoint paths, and
+  vault keys or tokens are never published.
+- This is an instrument for observing your own session and your own data, on an account you
+  hold. It originates no requests, transmits nothing, and captures no message content in any
+  mode. See [the boundaries and participant disclosure](https://chrome-extensions.sgit.ai/about/participant.html).
+
+## Site
+
+- [Comms: tasks, requests, decisions](https://chrome-extensions.sgit.ai/admin/comms.html)
+- [Release history](https://chrome-extensions.sgit.ai/admin/versions.html)
+- [How the site is built](https://chrome-extensions.sgit.ai/admin/index.html)
+- Related: [sgit.ai](https://sgit.ai) and its [llms.txt](https://sgit.ai/llms.txt)

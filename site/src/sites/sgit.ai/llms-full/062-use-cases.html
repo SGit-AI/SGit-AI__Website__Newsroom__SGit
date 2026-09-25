@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Use cases (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#use-cases">Use cases</a></li><li class="l2"><a href="#situations">Situations</a></li><li class="l2"><a href="#workflows">Workflows</a></li><li class="l2"><a href="#private-memory-for-ai-agents">Private memory for AI agents</a></li><li class="l2"><a href="#multi-agent-collaboration">Multi-agent collaboration</a></li><li class="l2"><a href="#human-agent-workspaces">Human ↔ agent workspaces</a></li><li class="l2"><a href="#encrypted-folders-with-history">Encrypted folders with history</a></li><li class="l2"><a href="#signed-encrypted-file-exchange">Signed &amp;amp; encrypted file exchange</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 62 of 358</p><nav class="pager"><span><a href="061-use-cases-sgit.html">← Use cases, sgit</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="063-the-serialised-pull-request-sgit-use-cas.html">The serialised pull request, sgit use cases →</a></span></nav><article class="source"><h1 id="use-cases">Use cases</h1>
+<p>Two kinds of page here. <strong>Workflows</strong> are the mechanics, what sgit does, on shipped commands. <strong>Situations</strong> are who has the problem, each with a working recipe, an honest evidence status, and a brief you can hand to an agent.</p>
+<p><strong>Reading this as an agent?</strong> Every page on this site has a <code>.md</code> twin at the same path, this one is <a href="../index.html">use-cases/index.md</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a>. Internal links inside the markdown point at markdown, so you can traverse the whole site without parsing HTML. The machine index is <a href="../llms.txt.html">llms.txt</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a>.</p>
+<h2 id="situations">Situations</h2>
+<p>Each of these is a place where the sentence &quot;this needs version control, and the store must not be able to read it&quot; is literally true. The pages are written to be usable: the setup, the commands, what is proven versus what is a pattern, and an agent brief.</p>
+<p><a class="ext" href="https://sgit.ai/serialised-pull-request.md">The lead example### The serialised pull requestAn agent proposes changes to a shared vault while holding <strong>no credential at all</strong>: clone with a public read key, commit on a private branch, emit a diff for human review. The answer to ambient agent authority, built before the guidance recommending it. ↗</a></p>
+<p><a class="ext" href="https://sgit.ai/ai-agents.md">AI agents### Agent state that isn&#x27;t the vendor&#x27;s to readDurable memory across sessions and machines, and shared memory between agents, with the store unable to read either. <strong>Evidence: this website.</strong> ↗</a></p>
+<p><a class="ext" href="https://sgit.ai/professional-services.md">Professional services### Working documents with clientsLegal, M&amp;A, audit, assessment: the deliverable and the working notes, versioned, in a store that cannot read them, and read access you can hand out without an account. ↗</a></p>
+<p><a class="ext" href="https://sgit.ai/security-teams.md">Security teams### Findings about your own weaknessesPentest output and vulnerability data need history, diffs and multi-person workflow, and are the last thing to put in a SaaS you don&#x27;t control. ↗</a></p>
+<p><a class="ext" href="https://sgit.ai/health-regulated.md">Health &amp; regulated### Data that changes what is permissibleWhen the host provably cannot read the content, the conversation stops being about the provider&#x27;s access controls. Read the caveats on that page before quoting it. ↗</a></p>
+<h2 id="workflows">Workflows</h2>
+<p>The mechanics underneath those situations. Every one runs on shipped commands, nothing aspirational.</p>
+<h2 id="private-memory-for-ai-agents">Private memory for AI agents</h2>
+<p>An agent&#x27;s context window ends; its work shouldn&#x27;t. A vault is just a folder, the agent clones it, reads and writes files normally, commits, and pushes. The next session pulls and continues where the last one stopped. Everything is encrypted before it leaves the agent&#x27;s machine, so the shared state can hold things you would never put in a third-party database: client documents, security findings, personal data.</p>
+<pre><code># session 1
+$ sgit clone &lt;vault-key&gt; workspace
+$ sgit commit -m &quot;session 1: research notes&quot; &amp;&amp; sgit push
+# session 2, days later, different machine
+$ sgit pull   # continue exactly where session 1 stopped</code></pre>
+<p><a href="../docs/agents.html">Full agent guide →</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a></p>
+<h2 id="multi-agent-collaboration">Multi-agent collaboration</h2>
+<p>Give each agent its own named branch. Every clone also gets a private clone branch whose key never leaves that agent&#x27;s session, so agents cannot trample each other&#x27;s work-in-progress. Work meets on named branches, and a human reviews the merge. Agents can inspect each other&#x27;s commits read-only with <code>sgit history show</code> and <code>sgit history diff</code>, without pulling, so looking never means merging.</p>
+<pre><code># agent A  $ sgit branch new feature-analysis … sgit push
+# agent B  $ sgit branch new feature-report   … sgit push
+# human    $ sgit pull → review → merge, with sgit resolve --show on conflicts</code></pre>
+<h2 id="human-agent-workspaces">Human ↔ agent workspaces</h2>
+<p>The same vault has two doors: you in the SG/Vault web app, the agent in the CLI. The browser client is an independent implementation of the same wire format, you browse, edit and review in a UI while the agent works the same files from the terminal. Both sides see each other&#x27;s commits; neither side&#x27;s plaintext ever touches the server. (How the browser side works: <a class="ext" href="https://sgraph.ai">sgraph.ai ↗</a>.)</p>
+<pre><code>$ sgit vault info
+  Web URL: https://vault.sgraph.ai/en-gb/#&lt;your-vault-key&gt;</code></pre>
+<h2 id="encrypted-folders-with-history">Encrypted folders with history</h2>
+<p>A shared folder where the hosting provider cannot read the contents, with commits, diffs, and rollback. Work offline, commit locally, push when ready; restore any prior version with <code>sgit history revert</code>. Vault-level <code>backup</code> and <code>restore</code> produce portable archives, and <code>sgit vault move</code> rotates keys if a key is ever exposed.</p>
+<pre><code>$ sgit init --existing        # vault-ify a folder you already have
+$ sgit commit -m &quot;baseline&quot; &amp;&amp; sgit push
+$ sgit history revert --commit obj-cas-imm-b2d70f   # roll back</code></pre>
+<h2 id="signed-encrypted-file-exchange">Signed &amp; encrypted file exchange</h2>
+<p>Alongside vault sync, sgit ships a PKI toolset: generate keypairs, exchange public keys as contact bundles, then sign, verify, encrypt and decrypt individual files for named recipients, useful when a file has to travel outside a vault but still needs integrity and confidentiality.</p>
+<pre><code>$ sgit pki keygen --label &quot;release keys&quot;
+$ sgit pki sign report.pdf --fingerprint &lt;fp&gt;
+$ sgit pki encrypt report.pdf --recipient &lt;fp&gt;</code></pre>
+<p><a href="../why/index.html">← Why this exists</a><a class="ext live" href="https://sgit.ai/why/index.html" title="live page">↗</a><a href="../docs/index.html">Documentation →</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="061-use-cases-sgit.html">← Use cases, sgit</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="063-the-serialised-pull-request-sgit-use-cas.html">The serialised pull request, sgit use cases →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>62 of 358: Use cases</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

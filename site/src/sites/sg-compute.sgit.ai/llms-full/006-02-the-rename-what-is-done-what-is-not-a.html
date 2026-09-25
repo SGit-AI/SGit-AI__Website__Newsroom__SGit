@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — The rename: what is done, what is not, and what breaks (sg-compute.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-the-rename-what-is-done-what-is-not-and-what-breaks">02 — The rename: what is done, what is not, and what breaks</a></li><li class="l2"><a href="#1-where-the-names-are-counted">1. Where the names are, counted</a></li><li class="l2"><a href="#2-the-nine-acceptance-criteria-scored">2. The nine acceptance criteria, scored</a></li><li class="l2"><a href="#3-the-guard-that-was-supposed-to-hold-the-line">3. The guard that was supposed to hold the line</a></li><li class="l2"><a href="#4-full-rename-scope-and-what-breaks">4. Full rename scope, and what breaks</a></li><li class="l2"><a href="#5-the-domain-collision-decide-it-deliberately">5. ⚠️ The domain collision — decide it deliberately</a></li><li class="l2"><a href="#6-the-naming-briefs-other-good-ideas-currently-unused">6. The naming brief&amp;#x27;s other good ideas, currently unused</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 6 of 14</p><nav class="pager"><span><a href="005-01-what-it-actually-is.html">← 01 — What it actually is</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="007-03-the-maturity-audit.html">03 — The maturity audit →</a></span></nav><article class="source"><h1 id="02-the-rename-what-is-done-what-is-not-and-what-breaks">02 — The rename: what is done, what is not, and what breaks</h1>
+<p>The lead is right that the repo needs renaming, and the 30 April 2026 naming brief already specified it in full — including nine numbered acceptance criteria. This document scores the work against that brief and lists what a rename would actually break.</p>
+<p><strong>Headline: architecturally done, textually about 40% done.</strong> The Node/Pod/Spec abstraction, the manifest system, the route loader and the CLI builder are all built and working. The package name, the PyPI name, the Docker image, the env-var prefix, the runtime <code>service_name</code> and the word &quot;stack&quot; all still say Playwright.</p>
+<hr>
+<h2 id="1-where-the-names-are-counted">1. Where the names are, counted</h2>
+<div class="table"><table><thead><tr><th>Name</th><th>Files containing</th></tr></thead><tbody><tr><td><code>sgraph_ai_service_playwright</code></td><td>5,140</td></tr>
+<tr><td><code>sg-playwright</code></td><td>5,008</td></tr>
+<tr><td><code>sg_compute</code></td><td>3,013</td></tr>
+<tr><td><code>SG/Compute</code></td><td>815</td></tr>
+<tr><td><code>sg-compute</code></td><td>557</td></tr>
+<tr><td><code>SGraph-AI__Service__Playwright</code></td><td>114</td></tr>
+<tr><td><code>sgraph-ai-service-playwright</code> (PyPI)</td><td>14</td></tr></tbody></table></div>
+<p>Runtime self-identification is still Playwright — <code>Capability__Detector.py:60</code> sets <code>service_name = &#x27;sg-playwright&#x27;</code>. Env vars are <strong>21 distinct <code>SG_PLAYWRIGHT__*</code></strong> against <strong>2 <code>SG_COMPUTE__*</code></strong>.</p>
+<hr>
+<h2 id="2-the-nine-acceptance-criteria-scored">2. The nine acceptance criteria, scored</h2>
+<p>From the 30 April brief. Verified against the tree.</p>
+<p>| # | Criterion | | Evidence |
+|---|---|:-:|---|
+| 1 | No &quot;SP&quot; / &quot;SGraph Playwright&quot; references remain | ❌ | <code>sp</code> and <code>sp-cli</code> are live <code>pyproject.toml</code> entry points; <code>sgraph_ai_service_playwright__cli</code> is 71,182 LOC |
+| 2 | CLI uses <code>sg-compute node/pod/stack</code> | 🟡 | The <code>sg-compute</code> binary exists, but only <code>sg nodes</code> is wired into <code>Cli__SG</code>. <strong><code>Cli__Compute</code> — the taxonomy-correct aggregator with pod/spec/stack — exists and is not a <code>pyproject</code> entry point</strong>, reachable only via <code>scripts/sg_compute_cli.py</code> |
+| 3 | API uses <code>/nodes /pods /stacks /specs</code> | ✅ | All four route classes exist and are mounted |
+| 4 | Frontend nav shows Nodes/Specs/Stacks/Settings | ✅ | <code>sg-compute-left-nav.html</code>: Compute · Nodes · Stacks · Specs · Settings · API |
+| 5 | Specs stored as JSON with <code>spec.json</code> | ❌→✅ | <strong>Deliberate deviation, and better than the brief asked for</strong>: typed <code>manifest.py</code> + <code>Schema__Spec__Manifest__Entry</code>. See <code>04__</code> |
+| 6 | &quot;Stack&quot; reserved for multi-node only | ❌ | Every per-spec CLI help string still says <em>&quot;Ephemeral X EC2 stacks&quot;</em> for a single instance — <strong>13 occurrences in <code>Cli__SG.py</code> alone</strong> |
+| 7 | ≥6 specs defined | ✅ | 16 registered |
+| 8 | Folder structure matches the taxonomy | 🟡 | <code>sg_compute/{core,cli,control_plane,platforms}</code> + <code>sg_compute_specs/</code> match. <code>frontend/</code> is still <code>sgraph_ai_service_playwright__api_site/</code> |
+| 9 | Old naming gone from user-facing surfaces | ❌ | <code>service_name=&#x27;sg-playwright&#x27;</code>, <code>SG_PLAYWRIGHT__*</code>, the <code>diniscruz/sg-playwright</code> image, the <code>sgraph-ai-service-playwright</code> PyPI name |</p>
+<p><strong>Score: 3 done, 2 partial, 4 not done — plus one deliberate improvement over spec.</strong></p>
+<p>Criterion 6 is the cheapest and most visible win. The brief was explicit: <em>&quot;<strong>Reserve &#x27;stack&#x27; for this. Do not use it for single nodes.</strong>&quot;</em> Thirteen help strings in one file currently violate it, and — see <code>08__</code> — there is no multi-node orchestration for the word to describe anyway.</p>
+<hr>
+<h2 id="3-the-guard-that-was-supposed-to-hold-the-line">3. The guard that was supposed to hold the line</h2>
+<p>Covered in <code>00__</code> §3 and worth restating here because it belongs to the rename story: <code>tests/ci/test_no_legacy_imports.py</code> uses <code>sgraph_ai_service_playwright[^_]</code>, which cannot match <code>sgraph_ai_service_playwright__cli</code>. <strong>Verified: guard matches 0 files; 228 real legacy imports exist across 69 files; deleting <code>[^_]</code> makes it fail as intended.</strong></p>
+<p>The dependency also runs <strong>both ways</strong> — <code>__cli</code> imports <code>sg_compute</code> 72 times — so the cycle the guard&#x27;s docstring claims was broken is not broken.</p>
+<p>There is a second tell in the same file. Its <code>_OBJECT_NONE_ALLOWLIST</code> exempts a path called <code>sg_compute_specs/playwright/core/docker/Local__Docker__SGraph_AI__Service__Playwright.py</code> — <strong>a class named after the old service, living inside the new tree.</strong> The rename has not reached the class names.</p>
+<hr>
+<h2 id="4-full-rename-scope-and-what-breaks">4. Full rename scope, and what breaks</h2>
+<div class="table"><table><thead><tr><th>Surface</th><th>Current</th><th>Breaks?</th></tr></thead><tbody><tr><td>Repo name</td><td><code>SGraph-AI__Service__Playwright</code></td><td>114 files reference it</td></tr>
+<tr><td><strong>PyPI package</strong></td><td><code>sgraph-ai-service-playwright</code></td><td><strong>Yes — published name.</strong> Needs a new package plus a deprecation shim</td></tr>
+<tr><td><strong>Docker images</strong></td><td><code>diniscruz/sg-playwright</code>, <code>-vnc</code>, <code>sg-host-control</code></td><td><strong>Yes — 124 + 19 references</strong> including CI, user-data and compose. Running EC2 nodes pull by name</td></tr>
+<tr><td>Legacy package dir</td><td><code>sgraph_ai_service_playwright__cli/</code></td><td>228 imports across 69 files</td></tr>
+<tr><td>Frontend dir</td><td><code>sgraph_ai_service_playwright__api_site/</code></td><td>Static mount paths + the <code>test_wheel_contains_ui</code> guard</td></tr>
+<tr><td><strong>Env vars</strong></td><td><code>SG_PLAYWRIGHT__*</code> (21)</td><td><strong>Baked into <code>.env</code> on every running EC2</strong> — a rename orphans live nodes</td></tr>
+<tr><td>Runtime identity</td><td><code>service_name = &#x27;sg-playwright&#x27;</code></td><td>Consumers key off <code>/health/info</code></td></tr>
+<tr><td>CLI aliases</td><td><code>sp</code>, <code>sp-cli</code></td><td>Documented as <em>&quot;legacy, kept for backward compat&quot;</em></td></tr>
+<tr><td>DNS zone</td><td><code>sg-compute.sgraph.ai</code> (128 refs)</td><td><strong>Live Route 53 zone</strong> — see §5</td></tr></tbody></table></div>
+<p><strong>One thing is already broken:</strong> <code>.github/workflows/bake-ami.yml</code> invokes a binary called <strong><code>sg-play</code> sixteen times</strong>. <code>sg-play</code> is defined nowhere — not in <code>pyproject.toml</code>, not in <code>scripts/</code>. <strong>That entire workflow is dead</strong>, which also means the AMI bake pipeline described in <code>00__</code> §4 as a maturity signal is currently not runnable as written.</p>
+<p><strong>Recommended sequencing</strong>, because a big-bang rename would orphan live infrastructure:</p>
+<ol><li><strong>Fix the guard first</strong> (<code>00__</code> §3) so the legacy dependency becomes visible and measurable.</li><li><strong>Fix <code>sg-play</code></strong> — the dead workflow is a one-line problem hiding a whole pipeline.</li><li><strong>Add aliases before removing names.</strong> Publish the new PyPI package and Docker tags alongside the old; make <code>service_name</code> configurable; accept both env-var prefixes with the old one warning.</li><li><strong>Break the <code>__cli</code> cycle</strong> — 228 imports, mostly <code>aws</code>, <code>credentials</code> and <code>tui</code>. This is the real work and it is the thing blocking a clean package boundary.</li><li><strong>Then rename the repo</strong>, last, when nothing points at the old name that is not aliased.</li></ol>
+<hr>
+<h2 id="5-the-domain-collision-decide-it-deliberately">5. ⚠️ The domain collision — decide it deliberately</h2>
+<p>The target is <strong><code>sg-compute.sgit.ai</code></strong>.</p>
+<p><strong><code>sg-compute.sgraph.ai</code> is a live Route 53 zone</strong>, used for per-node DNS as <code>&lt;stack-name&gt;.sg-compute.sgraph.ai</code>, and it appears <strong>128 times</strong> in the repo — including in code defaults and test assertions.</p>
+<p>Same label, different TLD. That is workable, and it is also the kind of thing that produces a support question every week forever. The site should either:</p>
+<ul><li><strong>claim the distinction explicitly</strong> — <code>sgit.ai</code> is documentation, <code>sgraph.ai</code> is running infrastructure — and say so on the front page and in <code>/network/</code>; or</li><li><strong>move the node DNS</strong> to <code>sgit.ai</code> too, which touches 128 references and every running node.</li></ul>
+<p>The first is much cheaper and is the recommendation. But it must be a stated decision on the site, not an accident a reader discovers.</p>
+<hr>
+<h2 id="6-the-naming-briefs-other-good-ideas-currently-unused">6. The naming brief&#x27;s other good ideas, currently unused</h2>
+<p>Three lines from the 30 April brief deserve to be on the site rather than buried in a four-month-old document:</p>
+<blockquote><p><em>&quot;An interesting property: <strong>the Ephemeral Compute control plane should be able to run inside Ephemeral Compute</strong>… This is recursion, but it is also practical.&quot;</em></p></blockquote>
+<p>That is directly supported by the serverless brief&#x27;s <em>&quot;We do not need a serverless &#x27;control plane&#x27; running 24/7. The control plane is one specific role that can spin up itself on demand, do its work, and shut down.&quot;</em> <strong>Nobody has built it, and it is the most quotable idea in the corpus.</strong></p>
+<blockquote><p><em>&quot;This is the <strong>simulated AWS Marketplace</strong>: a catalogue of pre-configured, ready-to-launch environments.&quot;</em></p></blockquote>
+<p>Sixteen specs with typed manifests, stability ratings and boot times is exactly that catalogue, and <code>/specs/</code> should be framed as one.</p>
+<blockquote><p><em>&quot;The overall product is sometimes called &#x27;ephemeral EC2,&#x27; which is too narrow: <strong>it is bigger than EC2.</strong>&quot;</em></p></blockquote>
+<p>Still true, and still not reflected in a <code>Platform</code> ABC that only has one implementation. <code>08__</code> Q3.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em>Published on sg-compute.sgit.ai under CC BY 4.0. Source: the <code>sg-compute.sgit.ai</code> brief pack v0.33.62, 24 August 2026, by Dinis Cruz via the SG/Send Librarian, with AI co-authorship (Claude, Anthropic).</em></p>
+<hr>
+<p>source: /briefs/03__maturity-audit.md</p>
+<hr></article><nav class="pager"><span><a href="005-01-what-it-actually-is.html">← 01 — What it actually is</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="007-03-the-maturity-audit.html">03 — The maturity audit →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>6 of 14: 02 — The rename: what is done, what is not, and what breaks</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

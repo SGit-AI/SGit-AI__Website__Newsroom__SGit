@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>GRC integration, an outline · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#grc-integration-an-outline">GRC integration, an outline</a></li><li class="l2"><a href="#read">Read</a></li><li class="l2"><a href="#write-back-per-material-risk">Write back, per material risk</a></li><li class="l2"><a href="#events-to-push">Events to push</a></li><li class="l2"><a href="#integration-styles">Integration styles</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="grc-integration.md">raw text</a></p><article class="source"><h1 id="grc-integration-an-outline">GRC integration, an outline</h1>
+<p>The service reads from the client&#x27;s GRC platform and writes back what the platform lacks. The platform stays the system of record for the register.</p>
+<h2 id="read">Read</h2>
+<ul><li>Register rows: id, title, owner, rating, status, review date.</li><li>Owners, and the reporting line if the platform holds it; otherwise from the HR system or a maintained org chart.</li><li>Controls and their mappings to frameworks.</li></ul>
+<h2 id="write-back-per-material-risk">Write back, per material risk</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Accepted by</td><td>The named person</td></tr>
+<tr><td>Accepted until</td><td>The interval&#x27;s end date</td></tr>
+<tr><td>Rung</td><td>The ladder rung</td></tr>
+<tr><td>Action</td><td>What happens before the interval ends</td></tr>
+<tr><td>Status note</td><td>Accepted, expired, escalated, funded, incident or ceased</td></tr>
+<tr><td>Evidence</td><td>A link to the risk&#x27;s vault, and a read key where the platform can hold secrets</td></tr></tbody></table></div>
+<h2 id="events-to-push">Events to push</h2>
+<ul><li>Expiry reached, with who it escalated to.</li><li>Funding decided, with the project reference.</li><li>Ceased on facts, with the fact that ended it.</li></ul>
+<h2 id="integration-styles">Integration styles</h2>
+<ul><li><strong>API</strong> where the platform has one.</li><li><strong>Scheduled export and import</strong> where it does not.</li><li><strong>A comment and attachment</strong> on the row as the minimum, for platforms that allow nothing else.</li></ul>
+<p>The outline is platform-neutral on purpose. The first real integration should be written with a GRC vendor as a partner, not around them.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="bed54f15d51a164cfd953a37813ca6a42a73e4c22a226ee2dd1f266bcaa14b09">bed54f15d51a</code></dd><dt>Frozen copy</dt><dd><a href="grc-integration.md">vaults/risk-acceptance/prototypes/grc-integration.md</a> (1,313 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

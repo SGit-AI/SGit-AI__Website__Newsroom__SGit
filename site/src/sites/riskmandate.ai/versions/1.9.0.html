@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.9.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.9.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.9.0.html">live ↗</a></p><article class="source"><h2 id="questions-answered-without-naming-who-asked">Questions, answered without naming who asked</h2>
+<p>An FAQ is a list of questions somebody wished they had been asked. <strong><a class="ext" href="https://riskmandate.ai/versions/questions.html">Questions ↗</a></strong>
+is the other thing: questions put to us by people outside this company, in public, reproduced as
+they were meant rather than as a prompt for a pitch. In the <em>More</em> menu.</p>
+<p><strong>The standing rule is that we never name the asker.</strong> Every question is paraphrased and dated,
+and the person who asked it is not identified — they asked in a conversation, not for a marketing
+page, and the answer is useful without the name attached. Nothing in this release names anybody.</p>
+<p><strong>And where the answer is that we do not do the thing, that is the first line.</strong> Not a caveat at
+the bottom, not a redirect to something adjacent that we do. Both answers currently on the page
+contain a <em>no</em>, and in both cases it is in a red panel near the top.</p>
+<p><strong>Q01 — what happens when one authority path is revoked and another survives?</strong> We do not model
+revocation as removing an edge. The recorded object is the <em>authorisation closure</em> — the union of
+everything reachable, not the nominal grant. So revoking one relationship while another survives
+gives the deliberately unflattering result: the nominal grant shrinks and the closure does not
+move, and that non-movement is what gets recorded. The worked example is the commit author, where
+revoking somebody&#x27;s keys changes nothing while a contents-write token can still set <code>author</code>
+through the API. The no: nothing we produce intervenes before the action commits. In that example
+the only thing that does is a branch rule requiring signed commits, server-side, at push.</p>
+<p><strong>Q02 — once everyone shares the vocabulary, what is actually enforced?</strong> The premise is right and
+is not conceded reluctantly: vocabulary stops being a differentiator the moment it is adopted,
+which is the outcome we want. The page answers all five sub-questions directly, and then runs the
+test as it was set — three stress cases where the <em>behaviour</em> diverges rather than the terms:
+revoke one authority path while another survives; change the model router on a Tuesday afternoon;
+add a policy layer. A nominal-grant model shows an improvement where closure shows none; a model
+counting the vendor refusal layer as a control holds its score where the pessimistic minimum
+drops; and additive union can only widen where intersection with terminal denial can only narrow.
+The first of those is runnable against any repository with two authority paths to the same
+capability, which is most of them.</p>
+<p><strong>Two of those answers are true about us and not yet adopted by us</strong>, and the page says so rather
+than leaving it in the Lab: this site is maintained through an agent holding a contents-write path
+to its own repository with no signed-commits rule, and the machine that publishes it has a raw
+outbound socket to arbitrary public addresses with no allow list in either egress path.</p>
+<p><strong>Still open</strong>: a convention for screenshots. Our own demos are fine; anybody else&#x27;s product runs
+into the no-probing and no-verdicts rules, so the Lab&#x27;s drawn mockups remain the pattern until
+that is decided. Recorded as owed on <a class="ext" href="https://riskmandate.ai/versions/briefs.html">the brief register ↗</a>, which now carries six
+documents and five instructions.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.9.0.html">https://riskmandate.ai/versions/1.9.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.9.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="49b9ef7bb007d12297c4dd75977c1dcacc086df29a83b9d8c3233a05a85cf94a">49b9ef7bb007</code></dd><dt>Frozen copy</dt><dd><a href="1.9.0.md">sites/riskmandate.ai/versions/1.9.0.md</a> (3,250 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

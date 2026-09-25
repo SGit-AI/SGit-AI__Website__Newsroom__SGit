@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02. The desks · sgit newsroom</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../editions/index.html">Editions</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../concepts/index.html">Concepts</a><a href="../vaults/index.html">Vaults</a><a href="../history/index.html">History</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../newsroom/index.html">The newsroom</a><a href="../about/index.html">About</a><a href="../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">The brief</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-the-desks">02. The desks</a></li><li class="l2"><a href="#the-librarian-first-every-day">The Librarian: first, every day</a></li><li class="l2"><a href="#the-journalist-the-days-story">The Journalist: the day&amp;#x27;s story</a></li><li class="l2"><a href="#the-historian-perspective">The Historian: perspective</a></li><li class="l2"><a href="#the-editor-of-record">The Editor of record</a></li><li class="l2"><a href="#guest-desks-when-there-is-something-for-them">Guest desks: when there is something for them</a></li><li class="l3"><a href="#the-cross-pollination-desk">The cross-pollination desk</a></li><li class="l2"><a href="#loose-ends-what-is-falling-through-the-cracks">Loose ends: what is falling through the cracks</a></li><li class="l2"><a href="#how-the-desks-run-together">How the desks run together</a></li></ul></details>
+<article><h1 id="02-the-desks">02. The desks</h1>
+<p>The newsroom has three standing desks, an editor, and guest desks that appear when there is something for them. The full role definitions this builds on are in <code>roles/</code>: the Send project&#x27;s (<code>roles/from-send-project/</code>) are the most complete, and sgit.ai&#x27;s own team roles (<code>roles/from-sgit.ai/</code>) show how the same roles work on a website. Adapt them; do not copy their file layouts.</p>
+<p>Each desk writes files; the site is built from the files. A desk&#x27;s output is never a chat message.</p>
+<h2 id="the-librarian-first-every-day">The Librarian: first, every day</h2>
+<p><strong>Mission.</strong> Know everything that exists across the network, and what changed since yesterday. If a page, brief, concept or vault cannot be found in thirty seconds, the Librarian has failed.</p>
+<p><strong>Inputs.</strong> Today&#x27;s snapshot (<code>sources/sites/</code>), yesterday&#x27;s manifest, the git history where available.</p>
+<p><strong>Does.</strong>
+1. Diffs today&#x27;s manifest against the last one: new files, changed files, removed files, per site. Hashes make this exact.
+2. For each change, reads the file and records: site, page, title, type (article, brief, update, business plan, partnership, vault, doc, policy, other), what changed in one line, and the concepts it touches.
+3. Maintains the <strong>index</strong>: every page on every site, by site, type, date and concept.
+4. Maintains the <strong>concepts</strong> list: the ideas that recur across sites (append lanes, read keys, risk acceptance, behaviour policy, fractal graphs, twins, ...), with every page that uses each.
+5. Maintains the <strong>vaults</strong> list: every published vault, which site publishes it, and what it holds.</p>
+<p><strong>Writes.</strong> <code>data/changes/YYYY-MM-DD.json</code>, <code>data/index.json</code>, <code>data/concepts.json</code>.</p>
+<p><strong>Done means.</strong> Every changed file of the day is in the changes file with a one-line summary written after reading it. Never summarise without reading.</p>
+<h2 id="the-journalist-the-days-story">The Journalist: the day&#x27;s story</h2>
+<p><strong>Mission.</strong> Turn the day&#x27;s changes into a narrative that connects the dots: what happened, why it matters, and how it relates to what else is going on. Capture the present.</p>
+<p><strong>Inputs.</strong> The Librarian&#x27;s changes for the day, the sources themselves.</p>
+<p><strong>Does.</strong> Writes the <strong>daily edition</strong>: a lead story (the most important thing that happened), two to five shorter stories, and a &quot;by site&quot; list of everything else. Groups related changes across sites into one story when they belong together. Quotes the sources exactly and links every claim to the page it came from.</p>
+<p><strong>Writes.</strong> <code>editions/YYYY-MM-DD.md</code>, and <code>stories/YYYY-MM-DD__slug.md</code> for anything that deserves its own page.</p>
+<p><strong>Done means.</strong> Every story cites its sources with links; nothing is claimed that a source does not say; shipped and proposed are kept apart.</p>
+<h2 id="the-historian-perspective">The Historian: perspective</h2>
+<p><strong>Mission.</strong> Look at what the Journalist and Librarian produced and say what it means over time. What was the event? What was the moment? What was the gotcha? What was the nugget that made the difference? Record the why, not just the what.</p>
+<p><strong>Inputs.</strong> The editions, the changes, the sites&#x27; own version logs (sgit.ai&#x27;s is in <code>sources/history/sgit.ai-version-log.json</code> and is unusually rich: it records what went wrong and how it was caught).</p>
+<p><strong>Does.</strong>
+1. <strong>The moment</strong>: for each week (and for any day that deserves it), a short piece on what the turning point was.
+2. <strong>Lessons learned</strong>: every correction, retraction, and &quot;how the mistake was caught&quot; in any site&#x27;s log, turned into a lesson with a link to where it happened.
+3. <strong>Decisions</strong>: when a decision is visible in the sources (a price set, a name chosen, an approach dropped), record it with its date, context, and what it superseded. Flag contradictions between sites.</p>
+<p><strong>Writes.</strong> <code>history/week-YYYY-WW.md</code>, <code>history/lessons.md</code>, <code>history/decisions.md</code>.</p>
+<p><strong>Done means.</strong> Every lesson and decision links to the source that shows it. Neutral: the Historian records, does not editorialise.</p>
+<h2 id="the-editor-of-record">The Editor of record</h2>
+<p>A human: the founder, for now. The editor reads before anything is called published, as pt.newsroom.sgit.ai does. In the first version the editor&#x27;s review is a field on each edition (<code>reviewed_by</code>, <code>reviewed_on</code>), empty until someone reviews it, and the site shows &quot;not yet reviewed&quot; plainly.</p>
+<h2 id="guest-desks-when-there-is-something-for-them">Guest desks: when there is something for them</h2>
+<p>These do not publish every day. They appear when the day&#x27;s changes give them something to say.</p>
+<ul><li><strong>Architect.</strong> Notices when two projects design the same thing differently, or when one project solved a problem another is still facing.</li><li><strong>Developer.</strong> Notices code, tools and scripts one project wrote that another could reuse.</li><li><strong>Cartographer</strong> (optional). Maintains the map of the network: which site links to which, and which should.</li></ul>
+<h3 id="the-cross-pollination-desk">The cross-pollination desk</h3>
+<p>This is the guest desks&#x27; main output, and one of the most valuable parts of the site. A <strong>signal</strong> says: <em>site A has X; site B is doing Y and does not seem to know about X.</em> Each signal has the two sources, a one-line explanation, a suggested action (usually &quot;give site B&#x27;s team this link&quot;), and a status (new, sent, acted on, dismissed).</p>
+<p><strong>Writes.</strong> <code>signals/YYYY-MM-DD__slug.md</code>.</p>
+<h2 id="loose-ends-what-is-falling-through-the-cracks">Loose ends: what is falling through the cracks</h2>
+<p>Every desk adds to one shared list. A loose end is something that was said and not done: an ask in a brief with no response, a &quot;next&quot; that never came, a page that says &quot;coming soon&quot;, a figure that disagrees between two sites, a promised follow-up. Each has where it was said, when, who it is waiting on (a role or a site, not a named person), and a status.</p>
+<p><strong>Writes.</strong> <code>loose-ends.md</code> (or <code>data/loose-ends.json</code>).</p>
+<h2 id="how-the-desks-run-together">How the desks run together</h2>
+<pre><code>fetch sources  -&gt;  Librarian (changes, index)  -&gt;  Journalist (edition, stories)
+                                                  -&gt;  Historian (moment, lessons, decisions)
+                                                  -&gt;  guest desks (signals), all desks (loose ends)
+                                                  -&gt;  Editor of record (review)  -&gt;  build  -&gt;  publish</code></pre>
+<p>The site should show this as a picture: a page called <strong>The newsroom</strong> with the desks, what each read today and what each wrote, so a visitor can watch the workflow, not only its output.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="02-the-desks.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

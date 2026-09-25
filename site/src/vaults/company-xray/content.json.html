@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>content.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/index.html">vaults</a> · <a href="content.json">raw text</a></p><article class="source"><pre class="raw"><code>{
+  &quot;xray&quot;: {
+    &quot;company&quot;: &quot;Northgate Facilities Ltd&quot;,
+    &quot;invented&quot;: true,
+    &quot;xray_date&quot;: &quot;2026-09-18&quot;,
+    &quot;level&quot;: &quot;Standard X-ray (level 3), run on the standard catalogue and reviewed by a person&quot;,
+    &quot;documents_read&quot;: 13,
+    &quot;labels&quot;: {
+      &quot;read&quot;: &quot;Stated in a document you sent. We quote it and say where.&quot;,
+      &quot;computed&quot;: &quot;Arithmetic on your data. Re-run it with tools/recompute.py; every figure is checked.&quot;,
+      &quot;inferred&quot;: &quot;Our reading of two or more documents together. Check it before acting on it.&quot;
+    },
+    &quot;answers&quot;: [
+      {
+        &quot;question&quot;: &quot;Why is profit down when revenue is up?&quot;,
+        &quot;answer&quot;: &quot;Because cleaning costs rose and cleaning prices did not. Revenue is up 3.9% a month, and net profit has halved. Almost all of the fall is cleaning labour: two National Living Wage rises have passed since the last price change in January 2025. A 4.8% rise on cleaning prices would restore last year&#x27;s cleaning margin.&quot;,
+        &quot;findings&quot;: [
+          &quot;F01&quot;,
+          &quot;F02&quot;,
+          &quot;F03&quot;
+        ]
+      },
+      {
+        &quot;question&quot;: &quot;How exposed are we to Calder Retail Group?&quot;,
+        &quot;answer&quot;: &quot;More than the plan allows, and at a sensitive moment. Calder is 31% of revenue against a target of no customer above 20%, and the six new stores would take it to 34%. Its contract appears to reach its notice date on 30 September, two weeks before the board meets, and its complaints nearly tripled after the Manchester supervisor left.&quot;,
+        &quot;findings&quot;: [
+          &quot;F04&quot;,
+          &quot;F05&quot;,
+          &quot;F07&quot;
+        ]
+      },
+      {
+        &quot;question&quot;: &quot;What should the board be looking at that it is not?&quot;,
+        &quot;answer&quot;: &quot;Six things: the notice dates on 30 September; complaints, which appear in no minutes; the price review, deferred twice; one action carried forward at three meetings; four jobs resting on one person each; and staff using personal ChatGPT accounts with customer information and no rule to cover it.&quot;,
+        &quot;findings&quot;: [
+          &quot;F05&quot;,
+          &quot;F07&quot;,
+          &quot;F03&quot;,
+          &quot;F11&quot;,
+          &quot;F10&quot;,
+          &quot;F14&quot;
+        ]
+      }
+    ],
+    &quot;findings&quot;: [
+      {
+        &quot;id&quot;: &quot;F01&quot;,
+        &quot;area&quot;: &quot;Money&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;Revenue is up 3.9% a month. Net profit has halved.&quot;,
+        &quot;detail&quot;: &quot;Last year (April 2025 to March 2026) the business averaged £343,350 of revenue and £15,717 of net profit a month, a net margin of 4.6%. From April to August 2026 it averaged £356,600 and £7,780, a net margin of 2.2%. The step is in April 2026, and it has not recovered in any month since.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/management-accounts.csv&quot;,
+            &quot;where&quot;: &quot;all rows, 2025-04 to 2026-08&quot;,
+            &quot;text&quot;: &quot;Net by month is in xray/evidence/net-by-month.csv: 4.2% to 5.5% every month to March 2026; 1.9% to 2.4% every month from April.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;At 2.2%, one bad month or one lost contract puts the business at break-even. The plan&#x27;s target is 8%.&quot;,
+        &quot;action&quot;: &quot;Take the monthly net margin to every board meeting, by service line, as the plan already says to do.&quot;,
+        &quot;owner&quot;: &quot;Finance Manager&quot;,
+        &quot;checks&quot;: {
+          &quot;revenue_per_month_FY2025_26&quot;: 343350,
+          &quot;net_per_month_FY2025_26&quot;: 15717,
+          &quot;net_margin_FY2025_26&quot;: 4.6,
+          &quot;revenue_per_month_Apr_Aug_2026&quot;: 356600,
+          &quot;net_per_month_Apr_Aug_2026&quot;: 7780,
+          &quot;net_margin_Apr_Aug_2026&quot;: 2.2,
+          &quot;revenue_growth_per_month_pct&quot;: 3.9
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F02&quot;,
+        &quot;area&quot;: &quot;Money&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;The fall is almost all cleaning labour.&quot;,
+        &quot;detail&quot;: &quot;Cleaning&#x27;s gross margin fell from 19.8% to 16.0%, because direct labour went from 74.4% to 78.2% of cleaning revenue. Reactive maintenance held at 34.0% and planned maintenance at 27.0%. Overheads rose by £2,500 a month. The lower cleaning margin cost about £41,200 in the five months to August, around £99,000 over a year.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/management-accounts.csv&quot;,
+            &quot;where&quot;: &quot;lines &#x27;Cleaning contracts&#x27;, &#x27;Reactive maintenance&#x27;, &#x27;Planned maintenance&#x27;, &#x27;Overheads&#x27;&quot;,
+            &quot;text&quot;: &quot;Margin by line and period is in xray/evidence/margin-by-line.csv.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;The problem is narrow and known: a price that has not kept up with a cost. It is not the maintenance side, and it is not overheads.&quot;,
+        &quot;action&quot;: &quot;Price review on cleaning, starting with the contracts that have no indexation clause (F03).&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;,
+        &quot;checks&quot;: {
+          &quot;gross_margin_cleaning_FY2025_26&quot;: 19.8,
+          &quot;gross_margin_cleaning_Apr_Aug_2026&quot;: 16.0,
+          &quot;cleaning_labour_ratio_FY2025_26&quot;: 74.4,
+          &quot;cleaning_labour_ratio_Apr_Aug_2026&quot;: 78.2,
+          &quot;gross_margin_reactive_Apr_Aug_2026&quot;: 34.0,
+          &quot;gross_margin_planned_Apr_Aug_2026&quot;: 27.0,
+          &quot;overheads_per_month_FY2025_26&quot;: 68000,
+          &quot;overheads_per_month_Apr_Aug_2026&quot;: 70500,
+          &quot;cleaning_margin_lost_apr_aug&quot;: 41200.0
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F03&quot;,
+        &quot;area&quot;: &quot;Money&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;Prices have not moved since January 2025. Wages have moved twice.&quot;,
+        &quot;detail&quot;: &quot;The price list is dated 1 January 2025. Since then the National Living Wage rose 6.7% in April 2025 and 4.1% in April 2026. The board noted the second rise in January and deferred the price review in April; it is not on the July agenda. Three quarters of revenue sits in contracts with no indexation clause, so those prices only move if somebody asks. A 4.8% rise on cleaning would restore last year&#x27;s cleaning margin.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/price-list.md&quot;,
+            &quot;where&quot;: &quot;line 3&quot;,
+            &quot;text&quot;: &quot;Effective 1 January 2025.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;22 January, item 2&quot;,
+            &quot;text&quot;: &quot;Price review to be considered after the increase is confirmed.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;23 April, item 2&quot;,
+            &quot;text&quot;: &quot;Carried forward; Helen wants to avoid unsettling Calder before its six new stores are confirmed.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/customers.csv&quot;,
+            &quot;where&quot;: &quot;column &#x27;indexation&#x27;&quot;,
+            &quot;text&quot;: &quot;Only Pennine Housing Trust, Wharfe Valley Schools Trust and Kirkgate Medical Partnership have indexation: 25.0% of revenue.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;public source&quot;,
+            &quot;where&quot;: &quot;https://www.gov.uk/national-minimum-wage-rates&quot;,
+            &quot;text&quot;: &quot;National Living Wage: £11.44 to £12.21 in April 2025, £12.21 to £12.71 in April 2026.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Every month without a review costs about £8,000 of margin on cleaning.&quot;,
+        &quot;action&quot;: &quot;Write the price review in October: a proposed rise per contract, the notice each contract needs, and which conversations to have first.&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;,
+        &quot;checks&quot;: {
+          &quot;cleaning_price_rise_to_restore_pct&quot;: 4.8,
+          &quot;share_revenue_without_indexation&quot;: 75.0
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F04&quot;,
+        &quot;area&quot;: &quot;Customers&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;Calder is 31% of revenue. The top three are 52%.&quot;,
+        &quot;detail&quot;: &quot;Calder Retail Group was £1,277,000 of last year&#x27;s £4,120,200. With Pennine Housing Trust and Wharfe Valley Schools Trust, the top three customers were 51.9% of revenue. The plan&#x27;s target is no customer above 20%. The six new Calder stores in the pipeline, if won, would take Calder to 34%.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/customers.csv&quot;,
+            &quot;where&quot;: &quot;column &#x27;revenue_fy2025_26&#x27;&quot;,
+            &quot;text&quot;: &quot;Calder Retail Group 1,277,000; 22 customers in total.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/strategy-2026-2028.md&quot;,
+            &quot;where&quot;: &quot;line 12&quot;,
+            &quot;text&quot;: &quot;No customer above 20% of revenue.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/sales-pipeline.csv&quot;,
+            &quot;where&quot;: &quot;&#x27;Calder Retail Group: 6 new stores&#x27;&quot;,
+            &quot;text&quot;: &quot;annual value 190,000, stage Verbal&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Winning the new stores moves the company further from its own target, and at last January&#x27;s prices.&quot;,
+        &quot;action&quot;: &quot;Decide the price for the new stores before accepting them, and report concentration quarterly as the plan says.&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;,
+        &quot;checks&quot;: {
+          &quot;share_top1&quot;: 31.0,
+          &quot;share_top3&quot;: 51.9,
+          &quot;share_calder_with_new_stores&quot;: 34.0,
+          &quot;customers&quot;: 22,
+          &quot;revenue_fy2025_26&quot;: 4120200
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F05&quot;,
+        &quot;area&quot;: &quot;Customers&quot;,
+        &quot;label&quot;: &quot;inferred&quot;,
+        &quot;title&quot;: &quot;£1.5m of contracts reach their notice date on 30 September, before the board meets.&quot;,
+        &quot;detail&quot;: &quot;Calder&#x27;s contract ends on 31 March 2027 with six months&#x27; notice, and Irwell Business Park&#x27;s ends on 31 December 2026 with three. Both give 30 September 2026 as the date by which notice must be given. Together they were £1,503,000, 36.5% of revenue. The next board meeting is on 15 October. We have not seen the contracts, so we do not know who may give notice, or whether they renew automatically. Separately, Holme Logistics&#x27; contract ended on 31 May 2026 and its renewal is still in negotiation.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/customers.csv&quot;,
+            &quot;where&quot;: &quot;rows &#x27;Calder Retail Group&#x27; and &#x27;Irwell Business Park Ltd&#x27;&quot;,
+            &quot;text&quot;: &quot;2027-03-31, 6 months; 2026-12-31, 3 months&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;16 July, items 2 and 6&quot;,
+            &quot;text&quot;: &quot;Relationship strong; renewal expected in the new year. Next meeting: 15 October 2026.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/sales-pipeline.csv&quot;,
+            &quot;where&quot;: &quot;&#x27;Holme Logistics: PPM renewal&#x27;&quot;,
+            &quot;text&quot;: &quot;stage Negotiation&quot;
+          },
+          {
+            &quot;file&quot;: &quot;xray/evidence/notice-dates.csv&quot;,
+            &quot;where&quot;: &quot;all rows&quot;,
+            &quot;text&quot;: &quot;Notice-by dates, computed from end date and notice period.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;If either customer can give notice by 30 September, the board will learn about it after the fact. The July minutes expect Calder&#x27;s renewal &#x27;in the new year&#x27;, which is after its notice date.&quot;,
+        &quot;action&quot;: &quot;This week: read both contracts, confirm what 30 September means, and call both customers.&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;,
+        &quot;checks&quot;: {
+          &quot;notice_before_board_customers&quot;: [
+            &quot;Calder Retail Group&quot;,
+            &quot;Irwell Business Park Ltd&quot;
+          ],
+          &quot;notice_before_board_revenue&quot;: 1503000,
+          &quot;notice_before_board_share&quot;: 36.5,
+          &quot;contracts_already_ended&quot;: [
+            &quot;Holme Logistics&quot;
+          ]
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F06&quot;,
+        &quot;area&quot;: &quot;Operations&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;Complaints nearly doubled after the Manchester supervisor left.&quot;,
+        &quot;detail&quot;: &quot;From September 2025 to April 2026 the business logged 3.0 complaints a month, 8 of 24 of them in Manchester, closed in 2.7 days on average. From May to August 2026 it logged 5.5 a month, 18 of 22 in Manchester, closed in 7.0 days. The Manchester area supervisor left on 12 May; recruitment was paused in June to save cost, and the Operations Director has scheduled both cities from Leeds since.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/complaints-log.csv&quot;,
+            &quot;where&quot;: &quot;all 46 rows&quot;,
+            &quot;text&quot;: &quot;By month in xray/evidence/complaints-by-month.csv.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/org-chart.csv&quot;,
+            &quot;where&quot;: &quot;&#x27;Manchester Area Supervisor&#x27;&quot;,
+            &quot;text&quot;: &quot;Vacant since 12 May 2026; Recruitment paused in June to save cost&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;16 July, item 3&quot;,
+            &quot;text&quot;: &quot;Paused in June to save cost. Tom continues to cover.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;The saving on one salary is set against the two contracts with notice dates on 30 September, both mostly serviced from Manchester.&quot;,
+        &quot;action&quot;: &quot;Restart the Manchester recruitment, or name an interim supervisor, before speaking to Calder and Irwell.&quot;,
+        &quot;owner&quot;: &quot;Operations Director&quot;,
+        &quot;checks&quot;: {
+          &quot;complaints_total&quot;: 46,
+          &quot;complaints_per_month_before&quot;: 3.0,
+          &quot;complaints_per_month_after&quot;: 5.5,
+          &quot;complaints_manchester_before&quot;: &quot;8 of 24&quot;,
+          &quot;complaints_manchester_after&quot;: &quot;18 of 22&quot;,
+          &quot;days_to_close_before&quot;: 2.7,
+          &quot;days_to_close_after&quot;: 7.0
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F07&quot;,
+        &quot;area&quot;: &quot;Customers&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;The two customers with notice dates are the two complaining most.&quot;,
+        &quot;detail&quot;: &quot;Calder accounts for 19 of the 46 complaints, 11 of them since May. Irwell Business Park accounts for 14, 7 of them since July. Complaints do not appear in any of the three sets of minutes, and in July the board recorded the Calder relationship as &#x27;strong&#x27;.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/complaints-log.csv&quot;,
+            &quot;where&quot;: &quot;column &#x27;customer&#x27;&quot;,
+            &quot;text&quot;: &quot;Calder Retail Group 19; Irwell Business Park Ltd 14&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;16 July, item 2&quot;,
+            &quot;text&quot;: &quot;Relationship strong; renewal expected in the new year.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;What the board hears about customers and what the complaints log records have drifted apart.&quot;,
+        &quot;action&quot;: &quot;Add complaints by customer to the board pack, and open the Calder and Irwell conversations with what is being done about Manchester.&quot;,
+        &quot;owner&quot;: &quot;Operations Director&quot;,
+        &quot;checks&quot;: {
+          &quot;complaints_calder&quot;: 19,
+          &quot;complaints_calder_since_may&quot;: 11,
+          &quot;complaints_irwell&quot;: 14,
+          &quot;complaints_irwell_since_july&quot;: 7
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F08&quot;,
+        &quot;area&quot;: &quot;Plan and reality&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;The plan says 40% planned maintenance. The business is moving the other way.&quot;,
+        &quot;detail&quot;: &quot;Planned maintenance was 17.8% of revenue last year and 17.0% since April. Of the sales pipeline&#x27;s value, 72.8% is cleaning and 20.9% is planned maintenance. The plan&#x27;s first step, a planned maintenance sales lead, is not on the org chart; the estimator post has been vacant since January; and one coordinator builds every planned maintenance schedule.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/strategy-2026-2028.md&quot;,
+            &quot;where&quot;: &quot;lines 11 and 18&quot;,
+            &quot;text&quot;: &quot;Planned maintenance at 40% of revenue... Hire a planned maintenance sales lead in 2026.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/sales-pipeline.csv&quot;,
+            &quot;where&quot;: &quot;column &#x27;service_line&#x27;&quot;,
+            &quot;text&quot;: &quot;Cleaning is 5 of the 10 opportunities and 72.8% of their value&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/org-chart.csv&quot;,
+            &quot;where&quot;: &quot;&#x27;Estimator&#x27;, &#x27;Planned maintenance coordinator&#x27;&quot;,
+            &quot;text&quot;: &quot;Vacant since January 2026; Only person who builds planned maintenance schedules&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Either the plan needs its first hire, or the target needs to change. At the current mix, 40% by March 2028 is out of reach.&quot;,
+        &quot;action&quot;: &quot;Put the planned maintenance hire, or a revised target, on the October agenda.&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;,
+        &quot;checks&quot;: {
+          &quot;share_planned_FY2025_26&quot;: 17.8,
+          &quot;share_planned_Apr_Aug_2026&quot;: 17.0,
+          &quot;pipeline_share_cleaning&quot;: 72.8,
+          &quot;pipeline_share_planned&quot;: 20.9
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F09&quot;,
+        &quot;area&quot;: &quot;Plan and reality&quot;,
+        &quot;label&quot;: &quot;inferred&quot;,
+        &quot;title&quot;: &quot;New cleaning work is likely being priced below the plan&#x27;s own floor.&quot;,
+        &quot;detail&quot;: &quot;The plan says to take new cleaning contracts only at a margin of 22% or more. Cleaning is running at 16.0% on the January 2025 prices. The pipeline does not record margins, but if the £952,000 of cleaning opportunities is priced from the same list, it is below the floor.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/strategy-2026-2028.md&quot;,
+            &quot;where&quot;: &quot;line 20&quot;,
+            &quot;text&quot;: &quot;Only take new cleaning contracts at a margin of 22% or more.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/price-list.md&quot;,
+            &quot;where&quot;: &quot;line 3&quot;,
+            &quot;text&quot;: &quot;Effective 1 January 2025.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Growth in cleaning at these prices adds revenue and labour faster than it adds profit.&quot;,
+        &quot;action&quot;: &quot;Add an expected margin column to the pipeline, and apply the 22% rule to the six Calder stores.&quot;,
+        &quot;owner&quot;: &quot;Business Development Manager&quot;
+      },
+      {
+        &quot;id&quot;: &quot;F10&quot;,
+        &quot;area&quot;: &quot;People&quot;,
+        &quot;label&quot;: &quot;read&quot;,
+        &quot;title&quot;: &quot;Four jobs rest on one person each.&quot;,
+        &quot;detail&quot;: &quot;The Finance Manager is the only finance employee and the sole administrator on the bank portal. The Operations Director has scheduled every cleaning rota for both cities since May. One coordinator builds every planned maintenance schedule. The Maintenance Manager has covered estimating since January.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/org-chart.csv&quot;,
+            &quot;where&quot;: &quot;&#x27;Finance Manager&#x27;, &#x27;Operations Director&#x27;, &#x27;Planned maintenance coordinator&#x27;, &#x27;Estimator&#x27;&quot;,
+            &quot;text&quot;: &quot;Only finance employee; sole administrator on the bank portal. Schedules all cleaning rotas for Leeds and Manchester since May 2026. Only person who builds planned maintenance schedules. Vacant since January 2026.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;23 April, item 5&quot;,
+            &quot;text&quot;: &quot;Ian covering quotes.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;A two-week absence in any of these roles stops payments, rotas, planned maintenance or quotes. Separately, one person able to approve payments alone is the control most insurers and auditors ask about first.&quot;,
+        &quot;action&quot;: &quot;Set up the second bank administrator now (F11), and write down who covers each of the other three.&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;
+      },
+      {
+        &quot;id&quot;: &quot;F11&quot;,
+        &quot;area&quot;: &quot;Governance&quot;,
+        &quot;label&quot;: &quot;read&quot;,
+        &quot;title&quot;: &quot;The same action has been carried forward at three meetings.&quot;,
+        &quot;detail&quot;: &quot;In January the Chair asked for a second administrator on the bank portal. It was carried forward in April and again in July. The price review was deferred in January and April and is not on the July agenda. In July, margin commentary was deferred because the management accounts were late.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;22 January item 4; 23 April item 4; 16 July item 4&quot;,
+            &quot;text&quot;: &quot;Action: Priya to arrange. Carried forward: Priya. Carried forward: Priya.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;16 July, item 1&quot;,
+            &quot;text&quot;: &quot;Margin commentary deferred to the next meeting, as the management accounts were late.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;The board is recording decisions it is not closing. A half-hour task has been open for eight months.&quot;,
+        &quot;action&quot;: &quot;Start each board meeting with the open actions, their age and their owner. Close the bank portal action before 15 October.&quot;,
+        &quot;owner&quot;: &quot;Chair&quot;
+      },
+      {
+        &quot;id&quot;: &quot;F12&quot;,
+        &quot;area&quot;: &quot;Contracts and tools&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;Two auto-renewals with nobody named as owner need notice by 1 October.&quot;,
+        &quot;detail&quot;: &quot;ServiceBook, the legacy job system, renews on 31 October with 30 days&#x27; notice, and TrackWise renews on 30 November with 60 days&#x27; notice: both need notice by 1 October, and neither has an owner. ServiceBook duplicates FieldDesk but still runs four Manchester contracts; TrackWise duplicates the tracking included in the Fleetline van leases. The Fleetline lease notice date, 2 September, has already passed. ChemPro&#x27;s is 1 November.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/supplier-contracts.csv&quot;,
+            &quot;where&quot;: &quot;rows &#x27;ServiceBook&#x27;, &#x27;TrackWise Telematics&#x27;, &#x27;Fleetline Leasing&#x27;, &#x27;ChemPro Supplies&#x27;&quot;,
+            &quot;text&quot;: &quot;renewal dates, notice days and owners&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/tools-inventory.csv&quot;,
+            &quot;where&quot;: &quot;rows &#x27;ServiceBook&#x27;, &#x27;TrackWise&#x27;, &#x27;Fleetline Connect&#x27;&quot;,
+            &quot;text&quot;: &quot;Still paid; Manchester still uses it for 4 contracts. Fleetline vans also include tracking. Included in lease; not used.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;xray/evidence/supplier-notice-dates.csv&quot;,
+            &quot;where&quot;: &quot;all rows&quot;,
+            &quot;text&quot;: &quot;Notice-by dates, computed from renewal date and notice days.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Missing 1 October commits the business to another year of both.&quot;,
+        &quot;action&quot;: &quot;Give notice on TrackWise and switch to the lease&#x27;s tracking. Give notice on ServiceBook and move the four Manchester contracts to FieldDesk before 31 October, or negotiate a monthly term.&quot;,
+        &quot;owner&quot;: &quot;Operations Director&quot;,
+        &quot;checks&quot;: {
+          &quot;auto_renewals_notice_by_1_oct_unowned&quot;: [
+            &quot;ServiceBook&quot;,
+            &quot;TrackWise Telematics&quot;
+          ],
+          &quot;auto_renewal_notice_passed&quot;: [
+            &quot;Fleetline Leasing&quot;
+          ]
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F13&quot;,
+        &quot;area&quot;: &quot;Contracts and tools&quot;,
+        &quot;label&quot;: &quot;computed&quot;,
+        &quot;title&quot;: &quot;About £18,300 a year goes on tools that duplicate others or are unused.&quot;,
+        &quot;detail&quot;: &quot;ServiceBook duplicates FieldDesk, TrackWise the lease tracking, Dropbox the OneDrive in Microsoft 365, Zoom the Teams in Microsoft 365. The old Google Workspace domain is still paid three years after the acquisition, the survey tool has sent nothing since 2024, and Mailchimp&#x27;s last campaign was March 2025. Five tools have nobody named as owner.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/tools-inventory.csv&quot;,
+            &quot;where&quot;: &quot;columns &#x27;owner&#x27;, &#x27;monthly_cost&#x27;, &#x27;status&#x27;&quot;,
+            &quot;text&quot;: &quot;22 tools, 5 with &#x27;Nobody named&#x27;&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Small next to the pricing question, but it is money, and nobody is watching it.&quot;,
+        &quot;action&quot;: &quot;Give every tool an owner, and cancel or keep each one at its next renewal.&quot;,
+        &quot;owner&quot;: &quot;Office Manager&quot;,
+        &quot;checks&quot;: {
+          &quot;tools_duplicate_or_unused_per_year&quot;: 18300,
+          &quot;tools_without_owner&quot;: 5
+        }
+      },
+      {
+        &quot;id&quot;: &quot;F14&quot;,
+        &quot;area&quot;: &quot;Governance&quot;,
+        &quot;label&quot;: &quot;inferred&quot;,
+        &quot;title&quot;: &quot;Staff use personal ChatGPT accounts for customer work, and no rule covers it.&quot;,
+        &quot;detail&quot;: &quot;Nine staff use ChatGPT on their own accounts to write quotes, emails and method statements. The company does not pay for or manage those accounts. The handbook says customer information must only be stored in company systems, and that the company holds personal data about customers&#x27; staff and residents, but it was last reviewed in March 2021 and says nothing about AI tools. In July the board noted the use as &#x27;helpful&#x27; and took no action.&quot;,
+        &quot;evidence&quot;: [
+          {
+            &quot;file&quot;: &quot;inbox/tools-inventory.csv&quot;,
+            &quot;where&quot;: &quot;row &#x27;ChatGPT (personal accounts)&#x27;&quot;,
+            &quot;text&quot;: &quot;9 users; Staff own accounts; not paid for or managed by the company&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/staff-handbook-excerpt.md&quot;,
+            &quot;where&quot;: &quot;line 3; 7.3; 8.1&quot;,
+            &quot;text&quot;: &quot;Handbook last reviewed March 2021. Customer information must only be stored in company systems. We hold personal data about staff and about customers&#x27; staff and residents.&quot;
+          },
+          {
+            &quot;file&quot;: &quot;inbox/board-minutes-2026.md&quot;,
+            &quot;where&quot;: &quot;16 July, item 5&quot;,
+            &quot;text&quot;: &quot;Noted as &#x27;helpful&#x27;. No action.&quot;
+          }
+        ],
+        &quot;so_what&quot;: &quot;Quotes and method statements carry customer names, sites and access arrangements. In personal accounts the company cannot see them, keep them or remove them when somebody leaves, and on consumer plans the account holder, not the company, chooses whether chats may be used for training.&quot;,
+        &quot;action&quot;: &quot;Keep the benefit and close the gap: a one-page rule for AI use, company accounts on business terms, and a list of what never goes into a prompt. RiskMandate.ai publishes a free twenty-minute exercise for writing down what an AI tool can reach and what you meant to allow.&quot;,
+        &quot;owner&quot;: &quot;Office Manager, with the HR Manager&quot;
+      }
+    ],
+    &quot;board_agenda&quot;: [
+      &quot;Before 30 September, an extra half-hour: the Calder and Irwell notice dates (F05), and the Manchester supervisor (F06).&quot;,
+      &quot;15 October, item 1: open actions, their age and owner. Close the bank portal action (F11).&quot;,
+      &quot;15 October, item 2: the cleaning price review, with a proposed rise per contract (F02, F03).&quot;,
+      &quot;15 October, item 3: complaints by customer, as a standing item (F07).&quot;,
+      &quot;15 October, item 4: the planned maintenance hire, or a revised 2028 target (F08).&quot;,
+      &quot;15 October, item 5: a one-page AI use rule (F14).&quot;
+    ],
+    &quot;questions_for_you&quot;: [
+      &quot;Do the Calder and Irwell contracts need notice to end, or to renew? Who may give it, and how?&quot;,
+      &quot;What margin does each Calder site make? The accounts are by service line, not by customer.&quot;,
+      &quot;Were the six new Calder stores quoted on the January 2025 prices?&quot;,
+      &quot;Why were the July management accounts late, and is that likely to recur?&quot;,
+      &quot;Does the Fleetline lease renew at the same rate, and was the September notice date a decision or a miss?&quot;,
+      &quot;Which customers&#x27; information has gone into personal ChatGPT accounts, and can it be removed?&quot;,
+      &quot;What is the cash position? No bank statements were sent, so this X-ray says nothing about cash.&quot;
+    ],
+    &quot;not_covered&quot;: [
+      &quot;Cash and banking: no statements were sent.&quot;,
+      &quot;Payroll and individual pay: removed before upload, as asked.&quot;,
+      &quot;Full contract terms: only the summary columns in customers.csv were sent.&quot;,
+      &quot;Profit by customer or by site: the accounts are by service line.&quot;,
+      &quot;Health and safety records, insurance and legal matters.&quot;
+    ],
+    &quot;next_90_days&quot;: [
+      {
+        &quot;when&quot;: &quot;By 30 September&quot;,
+        &quot;what&quot;: &quot;Read the Calder and Irwell contracts; call both customers; decide on the Manchester supervisor.&quot;,
+        &quot;owner&quot;: &quot;Managing Director and Operations Director&quot;,
+        &quot;done&quot;: &quot;Both contracts&#x27; notice terms written down, both calls held, a named Manchester supervisor.&quot;
+      },
+      {
+        &quot;when&quot;: &quot;By 1 October&quot;,
+        &quot;what&quot;: &quot;Give notice on TrackWise and ServiceBook, or negotiate monthly terms.&quot;,
+        &quot;owner&quot;: &quot;Operations Director&quot;,
+        &quot;done&quot;: &quot;Two notices sent, with the four Manchester contracts on a migration plan.&quot;
+      },
+      {
+        &quot;when&quot;: &quot;By 15 October&quot;,
+        &quot;what&quot;: &quot;Second bank administrator set up. Price review written. Board pack with complaints by customer.&quot;,
+        &quot;owner&quot;: &quot;Finance Manager and Managing Director&quot;,
+        &quot;done&quot;: &quot;Portal shows two administrators; price review paper circulated with the pack.&quot;
+      },
+      {
+        &quot;when&quot;: &quot;By 1 November&quot;,
+        &quot;what&quot;: &quot;ChemPro renewal decided. AI use rule issued, with company accounts for those who use it.&quot;,
+        &quot;owner&quot;: &quot;Operations Director and Office Manager&quot;,
+        &quot;done&quot;: &quot;Decision recorded; rule in the handbook; personal-account use stopped.&quot;
+      },
+      {
+        &quot;when&quot;: &quot;By 30 November&quot;,
+        &quot;what&quot;: &quot;Price rises notified on non-indexed contracts. Planned maintenance hire advertised, or 2028 target revised.&quot;,
+        &quot;owner&quot;: &quot;Managing Director&quot;,
+        &quot;done&quot;: &quot;Letters sent; advert live or target changed in the plan.&quot;
+      },
+      {
+        &quot;when&quot;: &quot;Mid December&quot;,
+        &quot;what&quot;: &quot;Re-X-ray with September to November data: what moved.&quot;,
+        &quot;owner&quot;: &quot;The X-ray operator&quot;,
+        &quot;done&quot;: &quot;A second X-ray in the same vault, with the differences listed.&quot;
+      }
+    ]
+  },
+  &quot;inbox&quot;: {
+    &quot;board-minutes-2026.md&quot;: &quot;# Management board minutes, 2026 (extracts)\n\n*Northgate Facilities Ltd, invented. Present at each meeting: Helen Marsh (MD), Graham Pell (Chair), Tom Ashby (Operations Director), Priya Nair (Finance Manager).*\n\n## 22 January 2026\n\n1. **Trading.** Revenue ahead of last year. Margin \&quot;slightly soft\&quot; on cleaning; Priya to look at labour costs.\n2. **National Living Wage.** The increase to £12.71 from April was noted. **Price review to be considered after the increase is confirmed.** Owner: Helen.\n3. **Calder Retail Group.** Relationship good. Calder has mentioned six new stores in the second half of the year.\n4. **Bank portal.** Graham asked that a second administrator be set up on the bank portal. **Action: Priya to arrange.**\n5. **Strategy.** Helen presented the 2026 to 2028 plan (attached separately). Agreed.\n\n## 23 April 2026\n\n1. **Trading.** Year end March 2026: revenue £4.1m. Net margin lower than planned. Cleaning margin \&quot;under pressure since April\&quot;.\n2. **Price review.** Carried forward; Helen wants to avoid unsettling Calder before its six new stores are confirmed.\n3. **Manchester.** Area supervisor has resigned, leaving 12 May. Tom to cover scheduling from Leeds while recruiting.\n4. **Bank portal.** Second administrator not yet set up. **Carried forward: Priya.**\n5. **Estimator vacancy.** Still open since January. Ian covering quotes.\n\n## 16 July 2026\n\n1. **Trading.** Revenue up on last year. Margin commentary deferred to the next meeting, as the management accounts were late.\n2. **Calder Retail Group.** Relationship strong; renewal expected in the new year. Six new stores \&quot;verbal\&quot;.\n3. **Manchester recruitment.** Paused in June to save cost. Tom continues to cover.\n4. **Bank portal.** **Carried forward: Priya.**\n5. **AI.** Sam mentioned that several of the team use ChatGPT to write quotes and method statements. Noted as \&quot;helpful\&quot;. No action.\n6. **Next meeting:** 15 October 2026.\n&quot;,
+    &quot;company-overview.md&quot;: &quot;# Northgate Facilities Ltd\n\n*Copied from the company&#x27;s website, \&quot;About us\&quot; page, August 2026. Northgate Facilities is an invented company.*\n\nNorthgate Facilities keeps buildings across Yorkshire and the North West clean, safe and working. Founded in Leeds in 2009, we now look after more than 200 sites for retailers, housing providers, schools, clinics, offices and hotels.\n\n**What we do**\n\n- **Contract cleaning**: daily, weekly and periodic cleaning, with our own trained teams.\n- **Reactive maintenance**: a 24/7 helpdesk and engineers who attend within four hours for emergencies.\n- **Planned maintenance**: statutory compliance and planned preventative maintenance (PPM) schedules, from fire doors to heating and ventilation.\n\n**Why customers choose us**\n\n- One partner for cleaning and maintenance.\n- A named supervisor for every site.\n- Real-time job reporting through our mobile platform.\n- Quality audits on every site, every month.\n\n**Our people.** Around 140 people, from our Leeds head office and our Manchester team.\n&quot;,
+    &quot;complaints-log.csv&quot;: &quot;date,customer,city,category,days_to_close\n2025-09-16,Calder Retail Group,Leeds,Staff conduct,2\n2025-09-23,Castlefield Hotels,Manchester,Staff conduct,3\n2025-09-25,Wharfe Valley Schools Trust,Leeds,Missed clean,1\n2025-10-09,Wharfe Valley Schools Trust,Leeds,Missed clean,1\n2025-10-19,Calder Retail Group,Leeds,Staff conduct,4\n2025-10-24,Irwell Business Park Ltd,Manchester,Missed clean,1\n2025-11-01,Pennine Housing Trust,Leeds,Key holding,3\n2025-11-10,Calder Retail Group,Leeds,Late attendance,4\n2025-11-20,Irwell Business Park Ltd,Manchester,Staff conduct,2\n2025-12-02,Calder Retail Group,Leeds,Missed clean,4\n2025-12-24,Kirkgate Medical Partnership,Leeds,Late attendance,2\n2025-12-28,Irwell Business Park Ltd,Manchester,Key holding,4\n2026-01-05,Wharfe Valley Schools Trust,Leeds,Key holding,3\n2026-01-06,Calder Retail Group,Leeds,Repeat fault,1\n2026-01-12,Irwell Business Park Ltd,Manchester,Late attendance,4\n2026-02-05,Calder Retail Group,Leeds,Key holding,2\n2026-02-08,Aire Street Offices LLP,Leeds,Missed clean,2\n2026-02-16,Irwell Business Park Ltd,Manchester,Quality of clean,1\n2026-03-10,Calder Retail Group,Leeds,Missed clean,3\n2026-03-18,Aire Street Offices LLP,Leeds,Missed clean,4\n2026-03-23,Irwell Business Park Ltd,Manchester,Staff conduct,2\n2026-04-13,Pennine Housing Trust,Leeds,Key holding,4\n2026-04-21,Irwell Business Park Ltd,Manchester,Missed clean,4\n2026-04-28,Calder Retail Group,Leeds,Missed clean,4\n2026-05-01,Calder Retail Group,Leeds,Missed clean,4\n2026-05-02,Calder Retail Group,Manchester,Missed clean,9\n2026-05-06,Calder Retail Group,Manchester,Missed clean,10\n2026-05-07,Calder Retail Group,Manchester,Quality of clean,4\n2026-05-20,Calder Retail Group,Manchester,Missed clean,8\n2026-06-03,Calder Retail Group,Manchester,Missed clean,3\n2026-06-04,Calder Retail Group,Manchester,Staff conduct,10\n2026-06-05,Calder Retail Group,Manchester,Quality of clean,9\n2026-06-18,Calder Retail Group,Manchester,Missed clean,5\n2026-06-20,Calder Retail Group,Leeds,Late attendance,8\n2026-06-20,Calder Retail Group,Manchester,Missed clean,8\n2026-07-01,Pennine Housing Trust,Leeds,Repeat fault,11\n2026-07-03,Irwell Business Park Ltd,Manchester,Repeat fault,7\n2026-07-15,Irwell Business Park Ltd,Manchester,Missed clean,10\n2026-07-23,Irwell Business Park Ltd,Manchester,Staff conduct,5\n2026-07-24,Irwell Business Park Ltd,Manchester,Missed clean,4\n2026-07-27,Irwell Business Park Ltd,Manchester,Late attendance,10\n2026-08-12,Irwell Business Park Ltd,Manchester,Missed clean,11\n2026-08-18,Irwell Business Park Ltd,Manchester,Staff conduct,6\n2026-08-20,Aire Street Offices LLP,Leeds,Staff conduct,6\n2026-08-23,Castlefield Hotels,Manchester,Late attendance,4\n2026-08-25,Castlefield Hotels,Manchester,Repeat fault,3\n&quot;,
+    &quot;customers.csv&quot;: &quot;customer,sector,service_lines,revenue_fy2025_26,contract_start,contract_end,notice_months,indexation,sites,cities\nCalder Retail Group,Retail,Cleaning,1277000,2022-04-01,2027-03-31,6,None,38,Leeds;Manchester\nPennine Housing Trust,Social housing,Reactive;Planned,512000,2023-10-01,2028-09-30,3,\&quot;CPI, annual\&quot;,112 blocks,Leeds;Bradford\nWharfe Valley Schools Trust,Education,Cleaning;Planned,348000,2024-09-01,2027-08-31,3,\&quot;CPI, annual\&quot;,9,Leeds\nIrwell Business Park Ltd,Property,Cleaning;Reactive,226000,2021-01-01,2026-12-31,3,None,4,Manchester\nKirkgate Medical Partnership,Healthcare,Cleaning,171000,2024-04-01,2027-03-31,3,\&quot;RPI, annual\&quot;,6,Leeds\nHolme Logistics,Logistics,Reactive;Planned,164000,2023-06-01,2026-05-31,1,None,3,Wakefield\nAire Street Offices LLP,Property,Cleaning,139000,2022-11-01,rolling,1,None,2,Leeds\nCastlefield Hotels,Hospitality,Reactive,121000,2025-02-01,2027-01-31,2,None,5,Manchester\nOtley Veterinary Group,SME,Cleaning;Reactive,114000,2024-01-01,rolling,1,None,1,Leeds\nBingley Joinery,SME,Cleaning;Reactive,111900,2024-01-01,rolling,1,None,1,Bradford\nHeadingley Sports Club,SME,Cleaning;Reactive,109700,2024-01-01,rolling,1,None,1,Leeds\nMeanwood Garden Centre,SME,Cleaning;Reactive,103300,2024-01-01,rolling,1,None,1,Leeds\nSale Physio Clinic,SME,Cleaning;Reactive,99100,2024-01-01,rolling,1,None,1,Manchester\nChapel Allerton Library Trust,SME,Cleaning,88400,2024-01-01,rolling,1,None,1,Leeds\nSalford Quays Studios,SME,Cleaning,83100,2024-01-01,rolling,1,None,1,Manchester\nIlkley Opticians,SME,Cleaning,81000,2024-01-01,rolling,1,None,1,Leeds\nNorthern Print Co,SME,Cleaning,75600,2024-01-01,rolling,1,None,1,Leeds\nBrewery Wharf Dental,SME,Cleaning,67100,2024-01-01,rolling,1,None,1,Leeds\nHorsforth Nursery,SME,Cleaning,64900,2024-01-01,rolling,1,None,1,Leeds\nHarrogate Wine Rooms,SME,Cleaning,58600,2024-01-01,rolling,1,None,1,Leeds\nRoundhay Leisure Centre,SME,Cleaning,53300,2024-01-01,rolling,1,None,1,Leeds\nStockport Tutors Ltd,SME,Cleaning,52200,2024-01-01,rolling,1,None,1,Manchester\n&quot;,
+    &quot;intake.md&quot;: &quot;# Intake: what we want to know\n\n*Filled in by Helen Marsh, Managing Director, when the documents were dropped into the vault. Northgate Facilities Ltd is invented.*\n\n**Why now.** We are busier than ever and making less money. The board meets on 15 October and I want to walk in with a clear picture, not a feeling.\n\n**Our three questions**\n\n1. Why is profit down when revenue is up?\n2. How exposed are we to Calder Retail Group?\n3. What should the board be looking at that it is not?\n\n**What we sent**\n\n| File | What it is |\n|---|---|\n| `company-overview.md` | Our website&#x27;s About page |\n| `management-accounts.csv` | Monthly management accounts, April 2025 to August 2026, by service line |\n| `customers.csv` | Customers, last year&#x27;s revenue and contract terms |\n| `complaints-log.csv` | Customer complaints, September 2025 to August 2026 |\n| `sales-pipeline.csv` | Current sales pipeline |\n| `price-list.md` | Our cleaning price list |\n| `org-chart.csv` | Roles, reporting lines and vacancies |\n| `board-minutes-2026.md` | Extracts from this year&#x27;s board minutes |\n| `strategy-2026-2028.md` | Our three-year plan |\n| `supplier-contracts.csv` | Supplier contracts and renewal dates |\n| `tools-inventory.csv` | The software we pay for, and who owns it |\n| `staff-handbook-excerpt.md` | IT, data protection and expenses sections |\n\n**What we did not send.** Payroll, bank statements, customer contracts in full, anything with individual cleaners&#x27; names. We removed those before uploading.\n\n**Who will read the X-ray.** Me, Graham (Chair), Tom and Priya.\n&quot;,
+    &quot;management-accounts.csv&quot;: &quot;month,line,revenue,direct_labour,materials,subcontract,overheads\n2025-04,Cleaning contracts,196200,145600.0,11400.0,0,0\n2025-04,Reactive maintenance,79500,35000.0,11100.0,6400.0,0\n2025-04,Planned maintenance,58400,27400.0,9300.0,5800.0,0\n2025-04,Overheads,0,0,0,0,68000\n2025-05,Cleaning contracts,195400,146600.0,11300.0,0,0\n2025-05,Reactive maintenance,74500,32800.0,10400.0,6000.0,0\n2025-05,Planned maintenance,61000,28700.0,9800.0,6100.0,0\n2025-05,Overheads,0,0,0,0,68000\n2025-06,Cleaning contracts,200900,148700.0,11700.0,0,0\n2025-06,Reactive maintenance,81300,35800.0,11400.0,6500.0,0\n2025-06,Planned maintenance,59800,28100.0,9600.0,6000.0,0\n2025-06,Overheads,0,0,0,0,68000\n2025-07,Cleaning contracts,197700,146400.0,11500.0,0,0\n2025-07,Reactive maintenance,80100,35200.0,11200.0,6400.0,0\n2025-07,Planned maintenance,61400,28900.0,9800.0,6100.0,0\n2025-07,Overheads,0,0,0,0,68000\n2025-08,Cleaning contracts,199300,148300.0,11600.0,0,0\n2025-08,Reactive maintenance,74500,32800.0,10400.0,6000.0,0\n2025-08,Planned maintenance,62500,29400.0,10000.0,6200.0,0\n2025-08,Overheads,0,0,0,0,68000\n2025-09,Cleaning contracts,203500,150600.0,11800.0,0,0\n2025-09,Reactive maintenance,86500,38100.0,12100.0,6900.0,0\n2025-09,Planned maintenance,62600,29400.0,10000.0,6300.0,0\n2025-09,Overheads,0,0,0,0,68000\n2025-10,Cleaning contracts,202300,150400.0,11700.0,0,0\n2025-10,Reactive maintenance,83300,36700.0,11700.0,6700.0,0\n2025-10,Planned maintenance,62800,29500.0,10000.0,6300.0,0\n2025-10,Overheads,0,0,0,0,68000\n2025-11,Cleaning contracts,203100,152500.0,11800.0,0,0\n2025-11,Reactive maintenance,82600,36300.0,11600.0,6600.0,0\n2025-11,Planned maintenance,61200,28800.0,9800.0,6100.0,0\n2025-11,Overheads,0,0,0,0,68000\n2025-12,Cleaning contracts,204300,151900.0,11800.0,0,0\n2025-12,Reactive maintenance,73800,32500.0,10300.0,5900.0,0\n2025-12,Planned maintenance,62600,29400.0,10000.0,6300.0,0\n2025-12,Overheads,0,0,0,0,68000\n2026-01,Cleaning contracts,206300,153700.0,12000.0,0,0\n2026-01,Reactive maintenance,79900,35200.0,11200.0,6400.0,0\n2026-01,Planned maintenance,59200,27800.0,9500.0,5900.0,0\n2026-01,Overheads,0,0,0,0,68000\n2026-02,Cleaning contracts,210900,156400.0,12200.0,0,0\n2026-02,Reactive maintenance,82400,36300.0,11500.0,6600.0,0\n2026-02,Planned maintenance,60500,28400.0,9700.0,6000.0,0\n2026-02,Overheads,0,0,0,0,68000\n2026-03,Cleaning contracts,212400,157800.0,12300.0,0,0\n2026-03,Reactive maintenance,74700,32900.0,10500.0,6000.0,0\n2026-03,Planned maintenance,62800,29500.0,10000.0,6300.0,0\n2026-03,Overheads,0,0,0,0,68000\n2026-04,Cleaning contracts,213800,166800.0,12400.0,0,0\n2026-04,Reactive maintenance,79100,34800.0,11100.0,6300.0,0\n2026-04,Planned maintenance,58800,27600.0,9400.0,5900.0,0\n2026-04,Overheads,0,0,0,0,70500\n2026-05,Cleaning contracts,214900,167100.0,12500.0,0,0\n2026-05,Reactive maintenance,82200,36200.0,11500.0,6600.0,0\n2026-05,Planned maintenance,58500,27500.0,9400.0,5800.0,0\n2026-05,Overheads,0,0,0,0,70500\n2026-06,Cleaning contracts,213400,167700.0,12400.0,0,0\n2026-06,Reactive maintenance,84100,37000.0,11800.0,6700.0,0\n2026-06,Planned maintenance,62400,29300.0,10000.0,6200.0,0\n2026-06,Overheads,0,0,0,0,70500\n2026-07,Cleaning contracts,216500,169400.0,12600.0,0,0\n2026-07,Reactive maintenance,80600,35500.0,11300.0,6400.0,0\n2026-07,Planned maintenance,62800,29500.0,10000.0,6300.0,0\n2026-07,Overheads,0,0,0,0,70500\n2026-08,Cleaning contracts,218000,170800.0,12600.0,0,0\n2026-08,Reactive maintenance,77900,34300.0,10900.0,6200.0,0\n2026-08,Planned maintenance,60000,28200.0,9600.0,6000.0,0\n2026-08,Overheads,0,0,0,0,70500\n&quot;,
+    &quot;org-chart.csv&quot;: &quot;role,name,reports_to,base,status,notes\nManaging Director,Helen Marsh,Board,Leeds,In post,Also chairs the management meeting\nNon-executive Chair,Graham Pell,Board,-,In post,Two days a month\nOperations Director,Tom Ashby,Managing Director,Leeds,In post,Schedules all cleaning rotas for Leeds and Manchester since May 2026\nFinance Manager,Priya Nair,Managing Director,Leeds,In post,Only finance employee; sole administrator on the bank portal\nHR Manager,Dawn Kemp,Managing Director,Leeds,In post,\nBusiness Development Manager,Sam Oduya,Managing Director,Leeds,In post,\nHealth and Safety Lead,Martin Rhodes,Managing Director,Leeds,In post,Part-time (three days)\nOffice Manager,Lisa Grant,Managing Director,Leeds,In post,\nMaintenance Manager,Ian Booth,Managing Director,Leeds,In post,Runs reactive and planned maintenance\nLeeds Contracts Manager,Carla Mendes,Managing Director,Leeds,In post,\nManchester Area Supervisor,-,Operations Director,Manchester,Vacant since 12 May 2026,Recruitment paused in June to save cost\nLeeds Area Supervisor (x3),-,Leeds Contracts Manager,Leeds,In post,\nCleaning operatives (about 110),-,Area supervisors,Leeds and Manchester,In post,Mostly part-time; paid at or near the National Living Wage\nMaintenance engineers (14),-,Maintenance Manager,Leeds and Manchester,In post,\nPlanned maintenance coordinator,Jo Firth,Maintenance Manager,Leeds,In post,Only person who builds planned maintenance schedules\nEstimator,-,Maintenance Manager,Leeds,Vacant since January 2026,\n&quot;,
+    &quot;price-list.md&quot;: &quot;# Price list: contract cleaning\n\n**Effective 1 January 2025.** Northgate Facilities Ltd (invented).\n\n| Service | Unit | Rate |\n|---|---|---|\n| Daily office cleaning, standard specification | per operative hour | £17.40 |\n| Daily retail cleaning, before opening | per operative hour | £18.10 |\n| School and nursery cleaning | per operative hour | £17.60 |\n| Clinical areas (non-NHS) | per operative hour | £19.20 |\n| Periodic deep clean | per operative hour | £21.50 |\n| Window cleaning, ground floor | per visit | from £45.00 |\n| Supervisor site audit | per month, per site | included |\n\nRates are reviewed annually. Contracts on these rates renew on the same rates unless the contract says otherwise.\n&quot;,
+    &quot;sales-pipeline.csv&quot;: &quot;opportunity,customer,service_line,annual_value,stage,probability\nLeeds Civic Quarter cleaning,Leeds Civic Quarter BID,Cleaning,310000,Proposal,0.4\nCalder Retail Group: 6 new stores,Calder Retail Group,Cleaning,190000,Verbal,0.6\nBradford college campus cleaning,Bradford Skills College,Cleaning,240000,Qualified,0.25\nTrafford office park cleaning,Trafford Point Ltd,Cleaning,150000,Proposal,0.3\nKirkgate Medical: 2 new surgeries,Kirkgate Medical Partnership,Cleaning,62000,Verbal,0.7\nPennine Housing: fire door PPM,Pennine Housing Trust,Planned,120000,Proposal,0.5\nHolme Logistics: PPM renewal,Holme Logistics,Planned,96000,Negotiation,0.5\nCastlefield Hotels: HVAC PPM,Castlefield Hotels,Planned,58000,Qualified,0.3\nIrwell Business Park: reactive,Irwell Business Park Ltd,Reactive,44000,Proposal,0.4\nWharfe Valley: summer works,Wharfe Valley Schools Trust,Reactive,38000,Qualified,0.35\n&quot;,
+    &quot;staff-handbook-excerpt.md&quot;: &quot;# Staff handbook (extracts)\n\n*Northgate Facilities Ltd, invented. Handbook last reviewed March 2021.*\n\n## 7. IT and acceptable use\n\n7.1 Company devices and accounts are for company business. Reasonable personal use is allowed.\n7.2 Do not install software on company devices without approval from the Office Manager.\n7.3 Customer information must only be stored in company systems (Microsoft 365, FieldDesk, ServiceBook).\n7.4 Passwords must not be shared, except through the office password manager.\n\n## 8. Data protection\n\n8.1 We hold personal data about staff and about customers&#x27; staff and residents, for example names, phone numbers and access arrangements.\n8.2 Do not send personal data to anyone outside the company without approval.\n8.3 Report any loss of data to the Office Manager the same day.\n\n## 9. Expenses\n\n9.1 Claims must be submitted within 30 days with receipts.\n9.2 Subscriptions and software must be approved in advance by the Finance Manager.\n&quot;,
+    &quot;strategy-2026-2028.md&quot;: &quot;# Northgate 2028: our plan for the next three years\n\n*Presented to the management board by Helen Marsh, 22 January 2026. Northgate Facilities Ltd is invented.*\n\n## Where we are\n\nWe are a strong cleaning business with a growing maintenance arm. Cleaning pays the bills, but it is low-margin and labour-heavy, and our customers increasingly want one partner for everything.\n\n## Where we want to be by March 2028\n\n1. **Planned maintenance at 40% of revenue**, up from under a fifth today. Planned maintenance is recurring, higher-margin and harder to switch away from.\n2. **No customer above 20% of revenue.**\n3. **Net margin of 8%.**\n4. **A second office in Manchester**, with its own supervisor team.\n\n## How we will get there\n\n- Hire a planned maintenance sales lead in 2026.\n- Offer every cleaning customer a free compliance review, to open planned maintenance conversations.\n- Only take new cleaning contracts at a margin of 22% or more.\n- Invest in one job management system for the whole business.\n\n## What we will measure\n\nRevenue mix by service line, monthly. Customer concentration, quarterly. Net margin, monthly.\n&quot;,
+    &quot;supplier-contracts.csv&quot;: &quot;supplier,what,annual_value,renewal_date,auto_renews,notice_days,owner\nFleetline Leasing,Vehicle leases (22 vans),96000,2026-12-01,Yes,90,Operations Director\nChemPro Supplies,Cleaning chemicals and consumables,58400,2026-12-01,Yes,30,Operations Director\nTrackWise Telematics,Van tracking,7200,2026-11-30,Yes,60,Nobody named\nYorkshire Workwear,Uniforms and PPE,18600,2027-02-28,No,30,HR Manager\nPennine Waste,Waste collection,9800,2027-04-30,Yes,90,Operations Director\nFieldDesk,Job management software,21600,2027-01-31,Yes,60,Operations Director\nServiceBook,Job management software (legacy),8400,2026-10-31,Yes,30,Nobody named\nNorthPay Payroll,Payroll bureau,14400,2027-03-31,No,90,Finance Manager\nAire Insurance Brokers,Insurance broking,6000,2027-06-30,No,30,Managing Director\nKirk &amp; Co Accountants,Year-end accounts and tax,16500,2027-05-31,No,60,Finance Manager\nLumen Telecom,Mobiles and office lines,11400,2027-08-31,Yes,30,Finance Manager\nSafeSite Training,Health and safety training,7800,2026-12-31,No,30,HR Manager\nManchester Access Platforms,Plant hire,12600,rolling,No,7,Operations Director\nBrightSpark Electrical,Electrical subcontractor,61000,rolling,No,30,Operations Director\n&quot;,
+    &quot;tools-inventory.csv&quot;: &quot;tool,purpose,owner,users,monthly_cost,status\nFieldDesk,Job scheduling and mobile job sheets,Operations Director,48,1800,In use\nServiceBook,Job scheduling (legacy),Nobody named,12,700,Still paid; Manchester still uses it for 4 contracts\nXero,Accounts,Finance Manager,3,65,In use\nNorthPay portal,Payroll,Finance Manager,2,0,Included in bureau fee\nMicrosoft 365 Business Standard,Mail and documents,Office Manager,31,320,In use\nTrackWise,Van tracking,Nobody named,22,600,In use; Fleetline vans also include tracking\nFleetline Connect,Van tracking (included in lease),Operations Director,22,0,Included in lease; not used\nBreatheHR,HR records and holidays,HR Manager,64,210,In use\nDocuSign,Contract signing,Managing Director,2,70,In use\nCanva,Marketing,Office Manager,2,20,In use\nMailchimp,Customer newsletter,Office Manager,1,40,Last campaign March 2025\nLinkedIn Sales Navigator,Sales,Business Development Manager,1,80,In use\nDropbox Business,Site photos,Nobody named,5,75,Duplicates OneDrive in Microsoft 365\nSafetyCulture,Site audits and checklists,Health and Safety Lead,6,120,In use\nChatGPT (personal accounts),\&quot;Writing quotes, emails, method statements\&quot;,Nobody named,9,0,Staff own accounts; not paid for or managed by the company\nZoom,Video calls,Office Manager,3,45,Duplicates Teams in Microsoft 365\nBank portal,Payments,Finance Manager,1,0,One administrator\nGoogle Workspace (old domain),Mail for an acquired business,Nobody named,4,40,Acquired in 2023; still paid\nSurvey tool,Customer satisfaction survey,Office Manager,1,25,No survey sent since 2024\nPassword manager,Shared logins,Office Manager,6,30,Only the office uses it\nWebsite hosting,Company website,Office Manager,1,35,In use\nAccess control app,Key holding at customer sites,Operations Director,14,90,In use\n&quot;
+  },
+  &quot;evidence&quot;: {
+    &quot;complaints-by-month.csv&quot;: &quot;month,complaints,manchester,calder,irwell,avg_days_to_close\n2025-09,3,1,1,0,2.0\n2025-10,3,1,1,1,2.0\n2025-11,3,1,1,1,3.0\n2025-12,3,1,1,1,3.3\n2026-01,3,1,1,1,2.7\n2026-02,3,1,1,1,1.7\n2026-03,3,1,1,1,3.0\n2026-04,3,1,1,1,4.0\n2026-05,5,4,5,0,7.0\n2026-06,6,5,6,0,7.2\n2026-07,6,5,0,5,7.8\n2026-08,5,4,0,2,6.0\n&quot;,
+    &quot;margin-by-line.csv&quot;: &quot;period,line,revenue,direct_costs,gross_margin_pct\nFY2025_26,Cleaning contracts,2432300,1950000,19.8\nFY2025_26,Reactive maintenance,953100,629400,34.0\nFY2025_26,Planned maintenance,734800,536200,27.0\nApr_Aug_2026,Cleaning contracts,1076600,904300,16.0\nApr_Aug_2026,Reactive maintenance,403900,266600,34.0\nApr_Aug_2026,Planned maintenance,302500,220700,27.0\n&quot;,
+    &quot;net-by-month.csv&quot;: &quot;month,revenue,net,net_margin_pct\n2025-04,334100,14100,4.2\n2025-05,330900,11200,3.4\n2025-06,342000,16200,4.7\n2025-07,339200,15700,4.6\n2025-08,336300,13600,4.0\n2025-09,352600,19400,5.5\n2025-10,348400,17400,5.0\n2025-11,346900,15400,4.4\n2025-12,340700,14600,4.3\n2026-01,345400,15700,4.5\n2026-02,353800,18700,5.3\n2026-03,349900,16600,4.7\n2026-04,351700,6900,2.0\n2026-05,355600,8500,2.4\n2026-06,359900,8300,2.3\n2026-07,359900,8400,2.3\n2026-08,355900,6800,1.9\n&quot;,
+    &quot;notice-dates.csv&quot;: &quot;customer,contract_end,notice_months,notice_by,revenue_fy2025_26\nHolme Logistics,2026-05-31,1,2026-04-30,164000\nCalder Retail Group,2027-03-31,6,2026-09-30,1277000\nIrwell Business Park Ltd,2026-12-31,3,2026-09-30,226000\nCastlefield Hotels,2027-01-31,2,2026-11-30,121000\nKirkgate Medical Partnership,2027-03-31,3,2026-12-31,171000\nWharfe Valley Schools Trust,2027-08-31,3,2027-05-31,348000\nPennine Housing Trust,2028-09-30,3,2028-06-30,512000\n&quot;,
+    &quot;supplier-notice-dates.csv&quot;: &quot;supplier,renews,notice_days,notice_by,annual_value,owner\nFleetline Leasing,2026-12-01,90,2026-09-02,96000,Operations Director\nTrackWise Telematics,2026-11-30,60,2026-10-01,7200,Nobody named\nServiceBook,2026-10-31,30,2026-10-01,8400,Nobody named\nChemPro Supplies,2026-12-01,30,2026-11-01,58400,Operations Director\nFieldDesk,2027-01-31,60,2026-12-02,21600,Operations Director\nPennine Waste,2027-04-30,90,2027-01-30,9800,Operations Director\nLumen Telecom,2027-08-31,30,2027-08-01,11400,Finance Manager\n&quot;
+  },
+  &quot;claude&quot;: {
+    &quot;PROJECT-INSTRUCTIONS.md&quot;: &quot;# Project instructions: Northgate X-ray\n\n*Paste everything below the line into the instructions of a new Claude Project (or a ChatGPT Project). Then upload the files listed in `UPLOAD-THESE.md`.*\n\n---\n\nYou are helping the management team of Northgate Facilities Ltd, a cleaning and building maintenance company in Leeds and Manchester, to understand and act on an X-ray of their business.\n\nThe project knowledge contains two kinds of files:\n\n1. **The company&#x27;s own documents**, from the `inbox/` folder: management accounts, customers, complaints, the sales pipeline, the price list, the org chart, board minutes, the three-year plan, supplier contracts, the software inventory and a handbook extract. `intake.md` says what they wanted to know and what they chose not to send.\n2. **The X-ray**, from the `xray/` folder: `X-RAY.md` with 14 findings (F01 to F14), `findings.json`, the board pack, the open questions, the ninety-day plan, and the derived tables in `evidence/`.\n\nHow to answer:\n\n- **Cite the file** for every fact, as the X-ray does: the file name, and the row, line or section.\n- **Keep the three labels apart.** Say whether something is *read* (stated in a document), *computed* (arithmetic on the data, and show the arithmetic) or *inferred* (a reading of several documents together, to be checked).\n- **When the documents do not say, say so.** Do not fill a gap with a guess. Add it to a list of questions for the team.\n- **Refer to findings by their number** (F05) when a question touches one, and say whether the new question changes it.\n- **Do not overrule the X-ray silently.** If you think a finding is wrong, say which one, why, and what evidence would settle it.\n- **Be brief and direct.** The readers are the Managing Director, the Chair, the Operations Director and the Finance Manager.\n\nWhen the team adds a new document to the vault, it is their newest evidence; say which findings it changes.\n&quot;,
+    &quot;TRY-ASKING.md&quot;: &quot;# Questions to start with\n\n**On the findings**\n\n1. Walk me through F02: which months, which lines, and what would have to be true for the fall to be something other than labour?\n2. Draft the price review for October. One row per cleaning customer: current indexation, notice needed, a proposed rise, and who should call them.\n3. What would F05 look like if Calder gave notice on 30 September? Show the effect on monthly net profit.\n4. Is there any evidence in the documents that the Manchester complaints started before the supervisor left?\n\n**On the board**\n\n5. Turn the board pack into a fifteen-minute talk for the Chair, with the three decisions we need.\n6. Write the open-actions list for the 15 October meeting from all three sets of minutes, with the age of each action.\n\n**On things the X-ray did not cover**\n\n7. Which of the questions in `questions-for-you.md` could the documents we already have answer, at least partly?\n8. What would you need to see to say anything about cash?\n\n**On what to do next**\n\n9. Draft a one-page AI use rule for a company this size, using the handbook&#x27;s existing sections as the style.\n10. Write the brief for a Manchester area supervisor, using the complaints log to say what the first ninety days must fix.\n11. Which three suppliers should we renegotiate first, and why?\n12. What should the Re-X-ray in December check, to show whether any of this worked?\n&quot;,
+    &quot;UPLOAD-THESE.md&quot;: &quot;# Setting up Claude to keep asking questions\n\nTen minutes, once.\n\n1. **Create a Claude Project.** In Claude, open *Projects* and create one called \&quot;Northgate X-ray\&quot;. Projects are available on every Claude plan, including free accounts, which can have up to five. Sharing a project with colleagues needs a Team or Enterprise plan; otherwise each person sets up their own.\n2. **Paste the instructions.** Copy the text below the line in `PROJECT-INSTRUCTIONS.md` into the project&#x27;s instructions.\n3. **Upload the files.** Add these to the project&#x27;s knowledge:\n   - every file in `inbox/`\n   - `xray/X-RAY.md`, `xray/findings.json`, `xray/board-pack.md`, `xray/questions-for-you.md`, `xray/next-90-days.md`\n   - every file in `xray/evidence/`\n4. **Ask your first question.** `TRY-ASKING.md` has twelve to start with.\n\n**In ChatGPT** the same steps work with a ChatGPT Project: paste the instructions into the project&#x27;s instructions and upload the same files.\n\n**If you use Claude Code or another agent that runs `sgit`,** skip the upload: clone the vault, and the agent reads the files where they are, including anything added since.\n\n**Which account.** Use a company account on business terms, not a personal one. By default Anthropic does not use inputs or outputs from its commercial products, such as Claude for Work (Team and Enterprise) and the API, to train models. On consumer plans the account holder chooses. Check the current terms on the day you set this up.\n\n**When the documents change,** upload the new versions and remove the old ones, or clone the vault again.\n&quot;
+  },
+  &quot;plan&quot;: {
+    &quot;title&quot;: &quot;Company X-Ray: a company&#x27;s own documents, read together&quot;,
+    &quot;one_line&quot;: &quot;A company drops its own documents into an encrypted vault. Agents run a catalogue of analyses across them, a person reviews the result, and within five working days the company gets back its questions answered, a one-page board pack, findings that each name the document and row they came from, and a Claude setup to keep asking. No connectors, no integrations, no access to anything.&quot;,
+    &quot;problem&quot;: [
+      {
+        &quot;name&quot;: &quot;The documents exist. Nobody reads them together.&quot;,
+        &quot;text&quot;: &quot;Management accounts, a customer list, a complaints log, board minutes, the plan, the supplier list: each has an owner, and nobody sets one against another.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;The owner has a feeling, not a picture&quot;,
+        &quot;text&quot;: &quot;\&quot;Busier than ever and making less money.\&quot; The reason is usually in the documents, a few rows apart in files that never meet.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;A chat window is not enough&quot;,
+        &quot;text&quot;: &quot;Anyone can paste a spreadsheet into an assistant. What they do not get is the right questions, arithmetic that re-runs, every claim tied to its evidence, and a person who checked it.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Consultants are slow and dear&quot;,
+        &quot;text&quot;: &quot;A reading of the business by an adviser takes weeks and costs thousands. Most small companies never commission one.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Integrations stall the sale&quot;,
+        &quot;text&quot;: &quot;Connecting to a company&#x27;s accounts, mail and drive means security reviews and access contracts. Dropping files into a vault means the customer decides what is seen, and the sale closes the same day.&quot;
+      }
+    ],
+    &quot;formula&quot;: [
+      {
+        &quot;name&quot;: &quot;An agent platform&quot;,
+        &quot;text&quot;: &quot;Claude or ChatGPT, with the operator&#x27;s catalogue of analyses and prompts.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;A vault&quot;,
+        &quot;text&quot;: &quot;Encrypted on the device, one per customer: the documents in, the X-ray out, and the history of both.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Your documents&quot;,
+        &quot;text&quot;: &quot;What you choose to send, and nothing more. No connectors, no logins.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;An X-ray, and a Claude setup&quot;,
+        &quot;text&quot;: &quot;Your questions answered, a board pack, evidence for every finding, and a project to keep asking in.&quot;
+      }
+    ],
+    &quot;steps&quot;: [
+      {
+        &quot;name&quot;: &quot;Buy, and receive a key&quot;,
+        &quot;who&quot;: &quot;Customer&quot;,
+        &quot;time&quot;: &quot;Minutes&quot;,
+        &quot;text&quot;: &quot;A standing payment link per level. The vault key arrives separately from the instructions, never on a page.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Drop documents in&quot;,
+        &quot;who&quot;: &quot;Customer&quot;,
+        &quot;time&quot;: &quot;An hour&quot;,
+        &quot;text&quot;: &quot;Into the vault&#x27;s inbox, with an intake form: why now, three questions, what was sent and what was left out.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Agents run the catalogue&quot;,
+        &quot;who&quot;: &quot;Operator&#x27;s agents&quot;,
+        &quot;time&quot;: &quot;An hour&quot;,
+        &quot;text&quot;: &quot;Twelve analyses. Arithmetic written as a script first, then findings, each labelled and tied to its evidence.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;A person reviews&quot;,
+        &quot;who&quot;: &quot;Reviewer&quot;,
+        &quot;time&quot;: &quot;90 minutes&quot;,
+        &quot;text&quot;: &quot;Runs the script until every figure matches, reads every inferred finding against its evidence, and commits a review note.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Delivered to the vault&quot;,
+        &quot;who&quot;: &quot;Both&quot;,
+        &quot;time&quot;: &quot;30-minute call&quot;,
+        &quot;text&quot;: &quot;Board pack, X-ray, questions, ninety days. Done is a commit in the customer&#x27;s history.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Keep asking&quot;,
+        &quot;who&quot;: &quot;Customer&quot;,
+        &quot;time&quot;: &quot;Ten minutes to set up&quot;,
+        &quot;text&quot;: &quot;Project instructions and files for a Claude Project, or a ChatGPT Project. The conversation continues with the same evidence and the same rules.&quot;
+      }
+    ],
+    &quot;catalogue&quot;: [
+      [
+        &quot;A1&quot;,
+        &quot;Money trend&quot;,
+        &quot;Is the business making more or less per month, and since when?&quot;,
+        &quot;computed&quot;
+      ],
+      [
+        &quot;A2&quot;,
+        &quot;Margin by line&quot;,
+        &quot;Which line makes the money, and which moved?&quot;,
+        &quot;computed&quot;
+      ],
+      [
+        &quot;A3&quot;,
+        &quot;Price against cost&quot;,
+        &quot;When did prices last move, and what moved since?&quot;,
+        &quot;computed&quot;
+      ],
+      [
+        &quot;A4&quot;,
+        &quot;Concentration&quot;,
+        &quot;How much rests on the largest customers?&quot;,
+        &quot;computed&quot;
+      ],
+      [
+        &quot;A5&quot;,
+        &quot;Dates that bind&quot;,
+        &quot;Which contracts reach a notice or renewal date soon?&quot;,
+        &quot;computed / inferred&quot;
+      ],
+      [
+        &quot;A6&quot;,
+        &quot;Complaints and service&quot;,
+        &quot;Is service getting better or worse, where, and for whom?&quot;,
+        &quot;computed&quot;
+      ],
+      [
+        &quot;A7&quot;,
+        &quot;Say and do&quot;,
+        &quot;Where do the plan, the minutes and the numbers disagree?&quot;,
+        &quot;inferred&quot;
+      ],
+      [
+        &quot;A8&quot;,
+        &quot;Open actions&quot;,
+        &quot;Which decisions are recorded and not closed?&quot;,
+        &quot;read&quot;
+      ],
+      [
+        &quot;A9&quot;,
+        &quot;One person&quot;,
+        &quot;Which jobs rest on one person?&quot;,
+        &quot;read&quot;
+      ],
+      [
+        &quot;A10&quot;,
+        &quot;Tools and spend&quot;,
+        &quot;What is paid for, duplicated, unowned or unused?&quot;,
+        &quot;computed&quot;
+      ],
+      [
+        &quot;A11&quot;,
+        &quot;AI and data&quot;,
+        &quot;Where is AI used, on what information, under what rule?&quot;,
+        &quot;inferred&quot;
+      ],
+      [
+        &quot;A12&quot;,
+        &quot;What is missing&quot;,
+        &quot;What would a board expect to see that was not sent?&quot;,
+        &quot;read&quot;
+      ]
+    ],
+    &quot;levels&quot;: [
+      {
+        &quot;n&quot;: &quot;0&quot;,
+        &quot;name&quot;: &quot;The sample&quot;,
+        &quot;price&quot;: &quot;Free&quot;,
+        &quot;what&quot;: &quot;This vault: an invented company X-rayed end to end, the catalogue and the prompts.&quot;,
+        &quot;who&quot;: &quot;Read it&quot;,
+        &quot;done&quot;: &quot;You have read it.&quot;
+      },
+      {
+        &quot;n&quot;: &quot;1&quot;,
+        &quot;name&quot;: &quot;The kit&quot;,
+        &quot;price&quot;: &quot;£50&quot;,
+        &quot;what&quot;: &quot;The catalogue, the self-run prompt, the intake checklist and the Claude setup, as files.&quot;,
+        &quot;who&quot;: &quot;You run it&quot;,
+        &quot;done&quot;: &quot;The download&#x27;s hash matches the published hash.&quot;
+      },
+      {
+        &quot;n&quot;: &quot;2&quot;,
+        &quot;name&quot;: &quot;Your X-ray vault&quot;,
+        &quot;price&quot;: &quot;£150&quot;,
+        &quot;what&quot;: &quot;The kit as a vault set up for your company, versioned and shareable read-only.&quot;,
+        &quot;who&quot;: &quot;You run it; we set it up&quot;,
+        &quot;done&quot;: &quot;You have opened it with your key.&quot;
+      },
+      {
+        &quot;n&quot;: &quot;3&quot;,
+        &quot;name&quot;: &quot;Standard X-ray&quot;,
+        &quot;price&quot;: &quot;£500&quot;,
+        &quot;what&quot;: &quot;We run the catalogue on your documents, a person reviews every finding, and a thirty-minute call hands it over. Five working days.&quot;,
+        &quot;who&quot;: &quot;Our agents; a person reviews&quot;,
+        &quot;done&quot;: &quot;The X-ray and the review note are committed to your vault.&quot;
+      },
+      {
+        &quot;n&quot;: &quot;4&quot;,
+        &quot;name&quot;: &quot;Tailored X-ray&quot;,
+        &quot;price&quot;: &quot;£1,500&quot;,
+        &quot;what&quot;: &quot;Two one-hour sessions, up to three analyses written for your questions, and a signed review. Seven working days.&quot;,
+        &quot;who&quot;: &quot;A person, with our agents&quot;,
+        &quot;done&quot;: &quot;Both sessions held, and the sign-off committed.&quot;
+      }
+    ],
+    &quot;extras&quot;: [
+      {
+        &quot;name&quot;: &quot;Re-X-ray&quot;,
+        &quot;price&quot;: &quot;£350 or £900&quot;,
+        &quot;text&quot;: &quot;New documents in the same vault. The X-ray again, with what moved since last time.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Partner licence&quot;,
+        &quot;price&quot;: &quot;£250 a month + £100 per X-ray&quot;,
+        &quot;text&quot;: &quot;For accountants, fractional finance directors and advisers, under their own name, with their own review.&quot;
+      }
+    ],
+    &quot;calc&quot;: {
+      &quot;kits&quot;: 20,
+      &quot;vaults&quot;: 5,
+      &quot;standard&quot;: 11,
+      &quot;tailored&quot;: 3,
+      &quot;rex&quot;: 3,
+      &quot;std_hours&quot;: 3.5,
+      &quot;tail_hours&quot;: 9,
+      &quot;rex_hours&quot;: 2,
+      &quot;costs&quot;: 12000,
+      &quot;prices&quot;: {
+        &quot;kit&quot;: 50,
+        &quot;vault&quot;: 150,
+        &quot;standard&quot;: 500,
+        &quot;tailored&quot;: 1500,
+        &quot;rex&quot;: 350
+      },
+      &quot;model_cost&quot;: {
+        &quot;vault&quot;: 1,
+        &quot;standard&quot;: 20,
+        &quot;tailored&quot;: 40,
+        &quot;rex&quot;: 15
+      },
+      &quot;fees&quot;: 0.02
+    },
+    &quot;who_adds&quot;: [
+      {
+        &quot;who&quot;: &quot;The customer&quot;,
+        &quot;adds&quot;: &quot;The documents, the context and the questions.&quot;,
+        &quot;worth&quot;: &quot;Most of the value. Nobody else has them.&quot;
+      },
+      {
+        &quot;who&quot;: &quot;The model&quot;,
+        &quot;adds&quot;: &quot;Reading everything, doing the arithmetic at speed, noticing where documents disagree.&quot;,
+        &quot;worth&quot;: &quot;Makes the price possible. Available to everybody.&quot;
+      },
+      {
+        &quot;who&quot;: &quot;The operator&quot;,
+        &quot;adds&quot;: &quot;The catalogue, the discipline of evidence and labels, the review, and the packaging.&quot;,
+        &quot;worth&quot;: &quot;What turns a chat into something a board can use and check.&quot;
+      }
+    ],
+    &quot;phases&quot;: [
+      {
+        &quot;name&quot;: &quot;The sample&quot;,
+        &quot;when&quot;: &quot;Weeks 1 to 2&quot;,
+        &quot;text&quot;: &quot;The invented company X-rayed, published with a read key. The intake page and four payment links.&quot;,
+        &quot;done&quot;: &quot;recompute.py passes; the links work.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Three free X-rays&quot;,
+        &quot;when&quot;: &quot;Weeks 3 to 5&quot;,
+        &quot;text&quot;: &quot;Companies the founder knows. Every hour measured. The catalogue rewritten from what was found and missed.&quot;,
+        &quot;done&quot;: &quot;Three delivered; catalogue v2.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;First ten paid&quot;,
+        &quot;when&quot;: &quot;Weeks 6 to 12&quot;,
+        &quot;text&quot;: &quot;Seven Standard, one Tailored, the kit on sale. Processing agreement and deletion record in place.&quot;,
+        &quot;done&quot;: &quot;Ten customers; review time measured.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Partners and packs&quot;,
+        &quot;when&quot;: &quot;Months 4 to 6&quot;,
+        &quot;text&quot;: &quot;Two partner firms on the licence. The first sector pack.&quot;,
+        &quot;done&quot;: &quot;Two partners running X-rays.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Repeat&quot;,
+        &quot;when&quot;: &quot;Months 6 to 12&quot;,
+        &quot;text&quot;: &quot;Re-X-rays as the next quarter&#x27;s numbers arrive. A second reviewer.&quot;,
+        &quot;done&quot;: &quot;One in four customers returned.&quot;
+      }
+    ],
+    &quot;reuse&quot;: [
+      [
+        &quot;Four levels, £10 to £1,500&quot;,
+        &quot;Four levels, £50 to £1,500&quot;
+      ],
+      [
+        &quot;Each level is the level below plus one thing&quot;,
+        &quot;The same rule&quot;
+      ],
+      [
+        &quot;Free published examples with read keys&quot;,
+        &quot;The sample X-ray in this vault&quot;
+      ],
+      [
+        &quot;The prompt is free on purpose&quot;,
+        &quot;The run prompt and the catalogue are public&quot;
+      ],
+      [
+        &quot;Payment links at store.sgit.ai&quot;,
+        &quot;One link per level&quot;
+      ],
+      [
+        &quot;Done is a commit&quot;,
+        &quot;Each level&#x27;s done-when is a commit&quot;
+      ],
+      [
+        &quot;Reviewer pages, with a name on the sign-off&quot;,
+        &quot;Reviewers who sign Tailored X-rays&quot;
+      ],
+      [
+        &quot;Measured, documented, derived&quot;,
+        &quot;Read, computed, inferred&quot;
+      ],
+      [
+        &quot;What we never ask for&quot;,
+        &quot;No access, no credentials, no connectors&quot;
+      ]
+    ],
+    &quot;risks&quot;: [
+      [
+        &quot;A wrong inferred finding&quot;,
+        &quot;Labels on every finding; the reviewer reads each against its evidence.&quot;
+      ],
+      [
+        &quot;Personal data in the documents&quot;,
+        &quot;Intake checklist; the agent stops and reports it; processing agreement; deletion record.&quot;
+      ],
+      [
+        &quot;\&quot;I could do this in ChatGPT\&quot;&quot;,
+        &quot;Sell the kit, and let them. The sample shows what the review adds.&quot;
+      ],
+      [
+        &quot;Review time grows&quot;,
+        &quot;Measure from customer one; sector packs; test £750.&quot;
+      ],
+      [
+        &quot;Model provider terms change&quot;,
+        &quot;Terms stated on the intake page with the date read; re-read quarterly.&quot;
+      ],
+      [
+        &quot;Treated as professional advice&quot;,
+        &quot;The X-ray describes documents and says so. Indemnity insurance first.&quot;
+      ]
+    ],
+    &quot;open_questions&quot;: [
+      &quot;Is £500 right for the Standard level, or does the board pack justify £750?&quot;,
+      &quot;How many documents does a typical small company have, and in what state?&quot;,
+      &quot;Which sector gets the first pack?&quot;,
+      &quot;Is the Claude setup still used after the first week?&quot;,
+      &quot;Would accountants rather license it, or refer to it?&quot;,
+      &quot;When, if ever, are connectors worth adding?&quot;
+    ]
+  }
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="307d2cc44817de60d6051eb85a63c4bbceee20b1e65ffb1b03ffd78195d0c066">307d2cc44817</code></dd><dt>Frozen copy</dt><dd><a href="content.json">vaults/company-xray/content.json</a> (66,172 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

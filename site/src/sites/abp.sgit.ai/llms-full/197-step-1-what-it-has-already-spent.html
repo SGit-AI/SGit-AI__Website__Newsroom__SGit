@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Step 1: what it has already spent (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#step-1-what-it-has-already-spent">Step 1: what it has already spent</a></li><li class="l2"><a href="#start-with-the-count">Start with the count</a></li><li class="l2"><a href="#then-ask-what-you-paid-for-and-what-it-decided">Then ask what you paid for and what it decided</a></li><li class="l2"><a href="#then-the-numbers-it-cannot-see">Then the numbers it cannot see</a></li><li class="l2"><a href="#what-to-look-for-in-the-answer">What to look for in the answer</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 197 of 357</p><nav class="pager"><span><a href="196-step-1-what-it-has-already-spent.html">← Step 1: what it has already spent</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="198-step-2-what-you-actually-paid-for.html">Step 2: what you actually paid for →</a></span></nav><article class="source"><h1 id="step-1-what-it-has-already-spent">Step 1: what it has already spent</h1>
+<p><strong>An agent can count its own files, commits, fetches and questions exactly, and it usually cannot see its own token count at all.</strong> So ask for the numbers it has, and for the honest list of the ones it does not. Three prompts, shortest first, in the session you are worried about.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Ask the agent to count what it can count in this session, and to say which numbers it cannot see at all.</td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../cost/what-you-paid-for/index.html">Step 2: What you actually paid for</a><a class="ext live" href="https://abp.sgit.ai/cost/what-you-paid-for/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../cost/index.html">The cost walkthrough</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<blockquote><p><strong>What you gain from this page.</strong> A ledger for one session, in the units you can check against the repository and the bill, with a line saying which numbers the agent is guessing and which it cannot produce.</p></blockquote>
+<h2 id="start-with-the-count">Start with the count</h2>
+<p><strong>Prompt 1: The ledger, for this session so far.</strong> Six counts. The ones it cannot produce are the point.</p>
+<pre><code>Before we go on, count what you have spent in this session so far, in six lines:
+
+  FILES      written or changed, and how many of them still exist
+  COMMITS    made, and pushes, and how many pipeline runs those will have started
+  FETCHES    web pages read, searches run, external calls made
+  SUBAGENTS  spawned, and roughly what each one did
+  QUESTIONS  you asked me, and things you handed me to read, review or approve
+  TOKENS     if you can see them; if you cannot, say so, and say who can
+
+Give the numbers, not a description. Where you are estimating rather than counting, put
+an asterisk on the line.</code></pre>
+<p>Two things usually happen. The file and commit counts are larger than either of you pictured, and the token line says it cannot see the number. Both are the point. <strong>The bill is the one cost the agent cannot report, so everything it can report is a proxy for it.</strong></p>
+<h2 id="then-ask-what-you-paid-for-and-what-it-decided">Then ask what you paid for and what it decided</h2>
+<p><strong>Prompt 2: Asked for, decided, and would not do again.</strong> Three lists over the ledger. The middle one is where the money went.</p>
+<pre><code>Take every line of that ledger and sort what is in it into three lists.
+
+  ASKED FOR   things I asked for, with the message where I asked
+  DECIDED     things you decided were needed on the way to something I asked for
+  WOULD NOT   things you would not do again if I gave you the same task now
+
+For the DECIDED list, say for each item what would have happened if you had not done it.
+For the WOULD NOT list, say what it cost, in the units of the ledger. Do not defend
+anything: if a piece of research turned out not to be needed, it goes in the third list
+even if it was reasonable at the time.</code></pre>
+<h2 id="then-the-numbers-it-cannot-see">Then the numbers it cannot see</h2>
+<p>This is the line that decides step four. A limit over a number the agent cannot see is a limit the agent cannot keep on purpose, whatever it promises.</p>
+<p><strong>Prompt 3: What you cannot count about yourself.</strong> Names each blind spot, who can see it, and where.</p>
+<pre><code>Now the numbers you cannot produce. For each of these say whether you can see it, and if
+not, who can and where they would look:
+
+  - the tokens this session has used, and what it has cost in money
+  - the wall clock time I have spent waiting on you
+  - the minutes the pipeline spent on your pushes
+  - what any subagent you spawned spent, on all of the above
+  - how long the people you handed things to spent on them
+
+Then tell me which of your own limits, if I set them, you could keep by counting and
+which you could only keep by guessing.</code></pre>
+<h2 id="what-to-look-for-in-the-answer">What to look for in the answer</h2>
+<ul><li><strong>A DECIDED list longer than the ASKED FOR list.</strong> That is normal and it is where the spend is. The question for step two is which of it you would have authorised if asked.</li><li><strong>Research nobody used.</strong> A fetch is tokens, time and one network reach. Ten of them to answer a question the repository already answered is the commonest line in the WOULD NOT list.</li><li><strong>Commits that could have been one.</strong> Each push may start a pipeline. The count is on the code host and the pipeline&#x27;s own log, so this is a line you can check today.</li><li><strong>Anything handed to a person.</strong> Every one of those is an hour on nobody&#x27;s bill.</li><li><strong>An honest token line.</strong> If it says it cannot see the number, that is the correct answer and the next three pages are built on it.</li></ul>
+<blockquote><p><strong>Nothing on this page is measured by this site.</strong> There are no runtime logs here and there will not be; the runtime is universe u11, owned by whoever holds the logs and never by this site. Every number an agent gives back is a self report, which counts as a claim rather than a measurement, and the bill is the only log.</p></blockquote>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Ask the agent to count what it can count in this session, and to say which numbers it cannot see at all.</td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../cost/what-you-paid-for/index.html">Step 2: What you actually paid for</a><a class="ext live" href="https://abp.sgit.ai/cost/what-you-paid-for/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../cost/index.html">The cost walkthrough</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../cost/what-it-spent/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/cost/what-it-spent/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="196-step-1-what-it-has-already-spent.html">← Step 1: what it has already spent</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="198-step-2-what-you-actually-paid-for.html">Step 2: what you actually paid for →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>197 of 357: Step 1: what it has already spent</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,129 @@
+{
+  "title": "Lesson Loop: capture what the coach knows at the moment they know it",
+  "one_line": "A workflow and a business for padel coaches, and for any teacher with students: at the end of every lesson the coach records a voice memo, an agent turns it into a lesson note in the player's own vault, the player adds what happens in their games, and the next coach, or the same one, starts the next lesson from a two-minute briefing instead of from memory.",
+  "problem": [
+    {
+      "name": "The best picture of the player exists for five minutes",
+      "text": "At the end of a lesson the coach has the most complete picture of the player they will ever have: what went well, what did not, what to work on next. Then the next student walks on court, and it starts to fade."
+    },
+    {
+      "name": "The player gets too much, and keeps little",
+      "text": "A lesson is an hour of instructions. \"Focus on these three things in your next game\" is hard to remember, and harder to follow up."
+    },
+    {
+      "name": "Games never reach the coach",
+      "text": "Many players play better in lessons than in games, and the games are the point. Today nothing that happens in a match travels back to the coach."
+    },
+    {
+      "name": "Every coach starts from zero",
+      "text": "A player who takes lessons from several coaches, or travels, gets several good perspectives and keeps none of them together."
+    },
+    {
+      "name": "The coach's income is one hour at a time",
+      "text": "Most coaches work inside a club that owns the booking and the pipeline and takes a large, fair share. The relationship with the player ends when the hour does."
+    }
+  ],
+  "phases": [
+    {
+      "n": "1",
+      "name": "Capture",
+      "text": "At the end of the lesson, the coach records a voice memo in Claude, ChatGPT or a transcription app. An agent turns it into a lesson note in the player's data vault. The player reads it. That is all, and it already changes both sides. Nothing else starts until this works."
+    },
+    {
+      "n": "2",
+      "name": "The player writes back",
+      "text": "The player adds match notes after games, and short clips. The coach can add clips from the lesson. The next lesson starts from a briefing that folds all of it together."
+    },
+    {
+      "n": "3",
+      "name": "Many coaches, one record",
+      "text": "The record belongs to the player, so it travels. A player who takes lessons from several coaches, or abroad, gives each a read key, and every coach sees every other coach's view."
+    },
+    {
+      "n": "4",
+      "name": "New revenue for coaches",
+      "text": "Remote video reviews, drill plans, follow-ups after matches, short content, and direct relationships with players who move or recommend them. All paid on demand."
+    }
+  ],
+  "exists": [
+    {
+      "name": "Voice capture",
+      "text": "Claude and ChatGPT apps take voice input, and transcription apps such as Otter record and transcribe. Phase one needs nothing else on the coach's side."
+    },
+    {
+      "name": "An agent to process it",
+      "text": "The same assistant turns a transcript into a structured note with the prompt in prototypes/coach-memo-prompt.md."
+    },
+    {
+      "name": "Vaults for the record",
+      "text": "sgit vaults are encrypted on the device, versioned, and opened in a browser with a key. A player's record is one vault; the key is the whole credential."
+    },
+    {
+      "name": "Write-only lanes for coaches",
+      "text": "A vault append lane lets a coach add a memo without being able to read or change anything else. Documented at sgit.ai/api/append-lanes.html."
+    },
+    {
+      "name": "Apps that call a model without a key",
+      "text": "A vault app can call a language model through the host, holding no API key, as documented on llms.sgit.ai. That is how a player's app would turn a clip or a match note into structure."
+    },
+    {
+      "name": "Records the person holds",
+      "text": "The Supplement Stack vault on sgit.ai is a health record its patient holds; Health Score adds a clinician review screen. The player-held lesson record is the same shape."
+    }
+  ],
+  "streams": [
+    {
+      "name": "Lesson notes",
+      "price": "2 credits",
+      "unit": "about 20p per lesson",
+      "text": "A voice memo turned into a lesson note and a player view. Paid by the player, or included by the club or coach in the lesson price."
+    },
+    {
+      "name": "Match notes and briefings",
+      "price": "1 to 2 credits",
+      "unit": "10p to 20p each",
+      "text": "A player's match notes structured into themes; a two-minute briefing for the next coach."
+    },
+    {
+      "name": "Clip processing",
+      "price": "10 credits",
+      "unit": "about £1 per short clip",
+      "text": "A short clip turned into stills and notes the coach can react to."
+    },
+    {
+      "name": "Remote video review",
+      "price": "£15 to £30",
+      "unit": "set by the coach",
+      "text": "The coach reviews a match clip remotely and records a memo back. The coach keeps most of it."
+    },
+    {
+      "name": "Drill plans and follow-ups",
+      "price": "£5 to £15",
+      "unit": "set by the coach",
+      "text": "A personal plan for the next fortnight, or a voice note after a big match."
+    },
+    {
+      "name": "The coach's own content",
+      "price": "£2 to £5",
+      "unit": "per item, set by the coach",
+      "text": "Short drills and explanations, bought one at a time rather than by subscription."
+    }
+  ],
+  "credit_note": "Credits are bought on demand, for example £10 for 100, and spent on processing. No subscription. Coach services are priced by the coach, with the operator taking a share. Every price is a hypothesis.",
+  "domains": [
+    "Tennis, squash and pickleball coaching",
+    "Golf lessons",
+    "Music lessons",
+    "Language tutoring",
+    "Personal training and physiotherapy exercise plans",
+    "Driving instruction",
+    "Climbing and swimming coaching",
+    "Any one-to-one teaching where the teacher knows most at the end of the session"
+  ],
+  "assumptions": [
+    "A lesson note costs under 5p of model usage: a three-minute memo, a structured note back.",
+    "A coach gives about 15 private lessons a week, 4.3 weeks a month.",
+    "The operator takes 15 per cent of coach services.",
+    "Club variants, content sales and racket recommendations are not in the calculator."
+  ]
+}

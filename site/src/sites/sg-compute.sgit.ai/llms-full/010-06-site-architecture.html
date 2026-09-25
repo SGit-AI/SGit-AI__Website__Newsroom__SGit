@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06 — Site Architecture (sg-compute.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-site-architecture">06 — Site Architecture</a></li><li class="l2"><a href="#the-house-pattern">The house pattern</a></li><li class="l2"><a href="#page-by-page">Page by page</a></li><li class="l3"><a href="#the-front-page">/ — the front page</a></li><li class="l3"><a href="#what-it-is-build-first">/what-it-is/ — build first</a></li><li class="l3"><a href="#specs-the-catalogue">/specs/ — the catalogue</a></li><li class="l3"><a href="#why-the-argument">/why/ — the argument</a></li><li class="l3"><a href="#numbers-the-measured-data">/numbers/ — the measured data</a></li><li class="l3"><a href="#rename-publish-the-migration">/rename/ — publish the migration</a></li><li class="l3"><a href="#agents-the-machine-surface">/agents/ — the machine surface</a></li><li class="l3"><a href="#shipped-non-negotiable">/shipped/ — non-negotiable</a></li><li class="l3"><a href="#network-and-admin">/network/ and /admin/</a></li><li class="l2"><a href="#what-is-generated-and-what-is-written">What is generated and what is written</a></li><li class="l2"><a href="#naming-conventions">Naming conventions</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 10 of 14</p><nav class="pager"><span><a href="009-05-the-argument-a-serverless-environment.html">← 05 — The argument: a serverless environment for agents</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="011-07-boundaries-redaction-and-the-security.html">07 — Boundaries, redaction and the security disclosure →</a></span></nav><article class="source"><h1 id="06-site-architecture">06 — Site Architecture</h1>
+<h2 id="the-house-pattern">The house pattern</h2>
+<p>Copy <strong><code>pki.sgit.ai</code></strong> — all six house markers, and its raw-plus-curated split (<code>/documents/</code> markdown as source of truth beside rendered HTML) is what this site needs, because much of its content is generated from a codebase.</p>
+<p>Add the <code>/llms-full.txt</code> pki lacks. And add one thing no sibling has, because this site&#x27;s failure mode is specific:</p>
+<blockquote><p><strong>Generate every page that describes the code, from the code, at build time.</strong></p></blockquote>
+<p>Every stale artefact in this repo — <code>capabilities.json</code> at 42 versions behind, the reality doc at 41, the README describing a package that does not exist — became stale because it was written once by hand. <strong>A documentation site for this platform that is hand-maintained will be the fifth stale source of truth within a quarter.</strong> The manifests, the route tables, the CLI verbs, the spec catalogue and the test counts are all machine-readable. Read them.</p>
+<p>Take pki&#x27;s CI pipeline as-is, and extend the key-leak check to reject the patterns in <code>07__</code> §2.</p>
+<hr>
+<h2 id="page-by-page">Page by page</h2>
+<h3 id="the-front-page"><code>/</code> — the front page</h3>
+<p>Two claims, in this order.</p>
+<p><strong>First, what it is:</strong> an ephemeral compute platform with sixteen ready-to-launch environments — not a browser service. Lead with the number that settles it: <strong>~71% of the new code is not browser code; Playwright is 1 of 16 specs.</strong></p>
+<p><strong>Second, the three axioms</strong>, rescued from the stale <code>capabilities.json</code> where they are currently buried: <strong>statelessness, least-privilege-by-declaration, self-description.</strong> They are good, and unlike the file that names them, they are actually implemented.</p>
+<p>Then one honest sentence about state: built in 100 days, mature where it counts, and here is <code>/shipped/</code>.</p>
+<h3 id="what-it-is-build-first"><code>/what-it-is/</code> — build first</h3>
+<p><code>01__</code>. <strong>The two ephemeral layers, separated on page one</strong> — per-request browser teardown and per-node EC2 teardown are different things and conflating them is the most common misreading. Include the watchdog (<code>01__</code> §3); it is the best engineering story in the repo.</p>
+<h3 id="specs-the-catalogue"><code>/specs/</code> — the catalogue</h3>
+<p><code>04__</code> and <code>specs__catalogue.json</code>. <strong>One page per spec, generated from <code>manifest.py</code>.</strong> Family view first, alphabetical second. Stability and boot time in the header. State the <code>create_node</code> gap per spec. Publish the entry-point contract as an invitation.</p>
+<p>Frame it as the 30 April brief did: <em>&quot;the simulated AWS Marketplace: a catalogue of pre-configured, ready-to-launch environments.&quot;</em></p>
+<h3 id="why-the-argument"><code>/why/</code> — the argument</h3>
+<p><code>05__</code>. <em>&quot;We are competing for the agent-deployment market.&quot;</em> The cold-start ladder against the measured benchmarks, the 50-second claim with its breakdown, the recursion idea, and the three adjacent bets.</p>
+<h3 id="numbers-the-measured-data"><code>/numbers/</code> — the measured data</h3>
+<p>The boot benchmarks <strong>with instance and AMI IDs stripped</strong>, including the seven capacity failures. The test counts. The commit history. <strong>This page is the site&#x27;s credibility, because everything on it is checkable.</strong></p>
+<h3 id="rename-publish-the-migration"><code>/rename/</code> — publish the migration</h3>
+<p><code>02__</code>. Unusual for a product site and right for this one: the repo is public, the old name is everywhere, and a reader will hit the mismatch immediately. Nine criteria scored, the full surface list, the PyPI and Docker breakage, the sequencing, and the domain decision.</p>
+<h3 id="agents-the-machine-surface"><code>/agents/</code> — the machine surface</h3>
+<p>The API surface from <code>01__</code> §4, <strong>the auth model as it actually works</strong> (including the correction to the existing skill documentation), the 25-verb sequence language, and the <code>/health/capabilities</code> self-description endpoint. Note the JS allowlist is deny-by-default — an agent cannot <code>evaluate</code> until an operator opts in.</p>
+<h3 id="shipped-non-negotiable"><code>/shipped/</code> — non-negotiable</h3>
+<p><code>00__</code> §6, unsoftened. No warm pools. No multi-node stacks. <code>create_node</code> for 3 of 16. Artefact sinks 2 of 4. One platform of four. No cost model. No throughput measurement. <code>bake-ami.yml</code> dead. And the four stale sources with the stated policy: <strong>code wins.</strong></p>
+<h3 id="network-and-admin"><code>/network/</code> and <code>/admin/</code></h3>
+<p>The seven-site map (<code>07__</code> §5), and the <code>sg-compute.sgit.ai</code> vs <code>sg-compute.sgraph.ai</code> distinction stated plainly (<code>02__</code> §5). House-pattern admin surfaces; publish the build order unresolved with <code>08__</code>&#x27;s questions and tensions visible.</p>
+<hr>
+<h2 id="what-is-generated-and-what-is-written">What is generated and what is written</h2>
+<div class="table"><table><thead><tr><th>Content</th><th>Source</th></tr></thead><tbody><tr><td>Spec pages</td><td><strong>generated</strong> from <code>manifest.py</code></td></tr>
+<tr><td>API reference</td><td><strong>generated</strong> from the FastAPI route definitions</td></tr>
+<tr><td>CLI reference</td><td><strong>generated</strong> from <code>Spec__CLI__Builder</code>&#x27;s verb set</td></tr>
+<tr><td>Test and coverage counts</td><td><strong>generated</strong> from a CI run</td></tr>
+<tr><td>Version, image tags</td><td><strong>generated</strong> from the <code>version</code> file</td></tr>
+<tr><td>The argument, the audit, the rename story</td><td><strong>written</strong> — <code>00__</code>–<code>05__</code> are the raw material</td></tr></tbody></table></div>
+<p>The rule: <strong>if a number appears on the site and also exists in the repo, the site reads it from the repo.</strong> Anything else drifts.</p>
+<hr>
+<h2 id="naming-conventions">Naming conventions</h2>
+<ul><li>The platform is <strong>SG/Compute</strong>; the repo becomes <code>sg-compute</code>; the PyPI package and Docker images follow (<code>02__</code> §4).</li><li><strong><code>Node</code></strong> = one compute instance. <strong><code>Pod</code></strong> = a container on a node. <strong><code>Spec</code></strong> = a workload definition. <strong><code>Stack</code></strong> = 2+ coordinated nodes — <strong>and per the 30 April brief, do not use &quot;stack&quot; for a single node.</strong> Thirteen CLI help strings currently do.</li><li>Spec ids stay as they are in <code>manifest.py</code> — <code>playwright</code>, <code>vault_publish</code>, <code>local_claude</code>. Do not prettify them; they are API identifiers.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em>Published on sg-compute.sgit.ai under CC BY 4.0. Source: the <code>sg-compute.sgit.ai</code> brief pack v0.33.62, 24 August 2026, by Dinis Cruz via the SG/Send Librarian, with AI co-authorship (Claude, Anthropic).</em></p>
+<hr>
+<p>source: /briefs/07__boundaries-and-security.md</p>
+<hr></article><nav class="pager"><span><a href="009-05-the-argument-a-serverless-environment.html">← 05 — The argument: a serverless environment for agents</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="011-07-boundaries-redaction-and-the-security.html">07 — Boundaries, redaction and the security disclosure →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>10 of 14: 06 — Site Architecture</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

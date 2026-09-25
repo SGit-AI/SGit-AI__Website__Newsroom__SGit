@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>verify-journal.py · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="verify-journal.py">raw text</a></p><article class="source"><pre class="raw"><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Verify the hash chain of every journal file. Exit 0 if intact, 1 at the first break.
+
+    python3 tools/verify-journal.py
+
+Each entry&#x27;s hash is SHA-256 over the entry without its own `hash` field, serialised with sorted
+keys and no whitespace; `prev` must equal the previous entry&#x27;s hash, and the first entry&#x27;s prev is
+64 zeros. The app runs the same check in the browser.
+&quot;&quot;&quot;
+import glob, hashlib, json, sys
+
+for f in sorted(glob.glob(&#x27;journal/session-*.jsonl&#x27;)):
+    prev = &#x27;0&#x27; * 64
+    for n, line in enumerate(open(f), 1):
+        e = json.loads(line)
+        canon = json.dumps({k: v for k, v in e.items() if k != &#x27;hash&#x27;}, sort_keys=True,
+                           separators=(&#x27;,&#x27;, &#x27;:&#x27;), ensure_ascii=False)
+        if e[&#x27;prev&#x27;] != prev or hashlib.sha256(canon.encode()).hexdigest() != e[&#x27;hash&#x27;]:
+            print(f&#x27;{f}: chain broken at line {n} (seq {e.get(&quot;seq&quot;)})&#x27;); sys.exit(1)
+        prev = e[&#x27;hash&#x27;]
+    print(f&#x27;{f}: {n} entries intact, head {prev[:12]}&#x27;)
+</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="ab9b41b4b8bc9b01289e50a5ff13a6ac901e28fc3a2f7cbc10614bcb725ab959">ab9b41b4b8bc</code></dd><dt>Frozen copy</dt><dd><a href="verify-journal.py">vaults/connector-twin/tools/verify-journal.py</a> (996 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

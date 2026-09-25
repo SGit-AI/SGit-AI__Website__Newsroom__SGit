@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The HTTP API (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-http-api">The HTTP API</a></li><li class="l2"><a href="#base-url">Base URL</a></li><li class="l2"><a href="#the-one-idea-worth-reading-first">The one idea worth reading first</a></li><li class="l2"><a href="#the-reference">The reference</a></li><li class="l2"><a href="#four-capabilities">Four capabilities</a></li><li class="l2"><a href="#where-to-start">Where to start</a></li><li class="l2"><a href="#open-questions-we-will-not-guess-at">Open questions we will not guess at</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 216 of 358</p><nav class="pager"><span><a href="215-the-http-api-sgitai.html">← The HTTP API, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="217-api-authentication-sgitai.html">API authentication, sgit.ai →</a></span></nav><article class="source"><h1 id="the-http-api">The HTTP API</h1>
+<p>Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface, endpoints, headers, gates, limits and the error codes you will actually hit. <strong>Two families share this host</strong>: <a class="ext" href="https://sgit.ai/vault-objects.md">vaults ↗</a>, which are versioned trees you clone and push, and <a class="ext" href="https://sgit.ai/transfers.md">transfers ↗</a>, which are single encrypted handovers.</p>
+<p><strong>Where this came from, and how far to trust it.</strong> This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at <strong>v0.33.54</strong> rather than recalled. It is <em>their</em> verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled <strong>PROPOSED</strong> and you should not build on it yet. Same rule as the rest of this site, if it is not verified, it says so.</p>
+<h2 id="base-url">Base URL</h2>
+<p><code>https://send.sgraph.ai</code> for the hosted service, or your own host if you <a href="../deploy/index.html">run it yourself</a><a class="ext live" href="https://sgit.ai/deploy/index.html" title="live page">↗</a>. All request and response bodies are JSON unless stated otherwise.</p>
+<h2 id="the-one-idea-worth-reading-first">The one idea worth reading first</h2>
+<p>The server is a <strong>capability-checked ciphertext store</strong>, and every access-control decision it makes is a hash comparison. It stores <code>SHA-256</code> of each capability key and checks <code>H(presented) == stored</code>. It never holds a raw key, and it never holds a private key at all.</p>
+<p>That is what makes the rest of the design possible: a vault ID is an address rather than an account, reads are public by default because the bytes are useless without a key, and a stranger can write to your vault without ever having a credential on the platform.</p>
+<h2 id="the-reference">The reference</h2>
+<div class="table"><table><thead><tr><th>Page</th><th>What is in it</th></tr></thead><tbody><tr><td><a class="ext" href="https://sgit.ai/authentication.md">Authentication ↗</a></td><td>The six headers, what each gates, and the hash-comparison model</td></tr>
+<tr><td><a class="ext" href="https://sgit.ai/vault-objects.md">Vault objects ↗</a></td><td>The pointer store (read, write, batch, destroy) plus the caching contract and storage layout</td></tr>
+<tr><td><a class="ext" href="https://sgit.ai/append-lanes.md">Append lanes ↗</a></td><td>The six append endpoints: the vault-to-vault message transport</td></tr>
+<tr><td><a class="ext" href="https://sgit.ai/transfers.md">Transfers ↗</a></td><td>The other family on this host: one encrypted payload, uploaded once, handed over as a single link, the SGMETA envelope, the three calls, and when to reach for this instead of a vault</td></tr>
+<tr><td><a class="ext" href="https://sgit.ai/errors.md">Errors and limits ↗</a></td><td>400, 403, 413, 507, what each actually means, and the ceilings that produce them</td></tr></tbody></table></div>
+<h2 id="four-capabilities">Four capabilities</h2>
+<p>Most of the API surface is one of four capability tiers. They are separated so that holding one tells you nothing about the others:</p>
+<div class="table"><table><thead><tr><th>Capability</th><th>Presented as</th><th>Grants</th></tr></thead><tbody><tr><td><code>append_token</code></td><td>a field in the request body</td><td>Write to one append lane. Nothing else, not even listing it</td></tr>
+<tr><td><code>enum_key</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>List, fetch and mark-processed on append lanes</td></tr>
+<tr><td><code>write_key</code></td><td><code>x-sgraph-vault-write-key</code></td><td>Write and delete objects; configure and purge lanes</td></tr>
+<tr><td>private key</td><td><em>never presented</em></td><td>Decryption, client-side only</td></tr></tbody></table></div>
+<p>The fourth row is the point of the design rather than a footnote: the server cannot decrypt anything it stores, so the strongest capability in the system is the one it never sees.</p>
+<h2 id="where-to-start">Where to start</h2>
+<ul><li>Sending an encrypted message between two vaults → <a href="../docs/vault-messaging.html">Vault messaging</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a>, which composes <a class="ext" href="https://sgit.ai/append-lanes.md">append lanes ↗</a> with <a href="../docs/pki.html">PKI</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a>.</li><li>Reading or writing files → <a class="ext" href="https://sgit.ai/vault-objects.md">Vault objects ↗</a>.</li><li>Building a vault app in the browser → the <a href="../docs/vault/sg-bridge.html">SG bridge</a><a class="ext live" href="https://sgit.ai/docs/vault/sg-bridge.html" title="live page">↗</a> wraps this API so you never write HTTP.</li><li>Using the CLI instead → <a href="../docs/quickstart.html">Quickstart</a><a class="ext live" href="https://sgit.ai/docs/quickstart.html" title="live page">↗</a>.</li></ul>
+<h2 id="open-questions-we-will-not-guess-at">Open questions we will not guess at</h2>
+<p>Three items came through the audit unresolved. They are listed rather than documented, because a confident page about an endpoint that does not exist is worse than no page:</p>
+<div class="table"><table><thead><tr><th>Item</th><th>Status</th></tr></thead><tbody><tr><td><code>GET /api/vault/zip/{vault_id}</code></td><td><strong>UNRESOLVED</strong>: registered in the route table, marked PROPOSED in the team’s reality document. Not documented either way until that is reconciled</td></tr>
+<tr><td><code>/join/*</code></td><td><strong>UNRESOLVED</strong>: the reality document lists three live endpoints, but the routes are not registered in the deployed app. Not documented</td></tr>
+<tr><td>Client-side lane addressing</td><td><strong>PROPOSED</strong>: <code>append_token = H(public key)</code> is the intended model; no shipped command emits it. See the <a href="../docs/vault-messaging.html#addressing">addressing note</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html#addressing" title="live page">↗</a> for what to do meanwhile</td></tr></tbody></table></div>
+<hr></article><nav class="pager"><span><a href="215-the-http-api-sgitai.html">← The HTTP API, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="217-api-authentication-sgitai.html">API authentication, sgit.ai →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>216 of 358: The HTTP API</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

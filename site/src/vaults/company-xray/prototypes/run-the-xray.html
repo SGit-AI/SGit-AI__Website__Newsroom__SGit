@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Run the X-ray: the operator&#x27;s agent prompt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="run-the-xray.md">raw text</a></p><article class="source"><h1 id="run-the-x-ray-the-operators-agent-prompt">Run the X-ray: the operator&#x27;s agent prompt</h1>
+<p>For Claude Code, or any agent that can run <code>sgit</code> and Python, on the operator&#x27;s machine. Replace the angle brackets. The vault key is given to the agent in the session, never written into a file.</p>
+<pre><code>You are running a Standard X-ray for &lt;company&gt;. Read spec/analysis-catalogue.md, spec/finding.md and
+spec/customer-vault.md in the X-ray plan vault first.
+
+1. Clone the customer vault. Read inbox/intake.md: their questions, what they sent, what they removed.
+2. List every file in inbox/ with one line on what it contains and its date range. If a file holds
+   personal data the intake checklist says not to send, stop and tell me which file and which columns.
+3. For each analysis A1 to A12, say whether the inbox supports it. Skip the ones it does not, and
+   record each skip for &quot;not covered&quot;.
+4. Write tools/recompute.py first: one function per computed figure, reading only inbox/. Then write
+   xray/findings.json, with every computed figure in &quot;checks&quot;. Run recompute.py until every check
+   passes. Never type a computed figure by hand.
+5. Look hardest at A7, say and do: where the minutes, the plan, the logs and the numbers disagree.
+6. Every finding names its evidence: file, and row, line or section. Label each read, computed or
+   inferred. Where the documents cannot settle a point, write a question, not a finding.
+7. Answer the customer&#x27;s own questions first, each pointing at findings.
+8. Render X-RAY.md, board-pack.md, questions-for-you.md and next-90-days.md from findings.json.
+9. Write claude/PROJECT-INSTRUCTIONS.md, UPLOAD-THESE.md and TRY-ASKING.md for this customer.
+10. Commit with the message &quot;X-ray, draft for review&quot;. Do not push until I have reviewed it.
+
+Do not search the web about the customer. Public facts, such as a wage rate or a regulation, may be
+used as context with their URL. Do not name individuals in findings unless the customer&#x27;s own
+document names them and the finding needs it.</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="3fc4fc4da63c372d4c5fa726791dfc0a77d9a1ffb3d19efa673e868054a19d1f">3fc4fc4da63c</code></dd><dt>Frozen copy</dt><dd><a href="run-the-xray.md">vaults/company-xray/prototypes/run-the-xray.md</a> (1,980 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

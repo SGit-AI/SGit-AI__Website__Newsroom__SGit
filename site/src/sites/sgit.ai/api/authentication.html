@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>API authentication · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#api-authentication-sgitai">API authentication, sgit.ai</a></li><li class="l1"><a href="#authentication">Authentication</a></li><li class="l2"><a href="#the-headers">The headers</a></li><li class="l2"><a href="#the-hash-comparison-model">The hash-comparison model</a></li><li class="l2"><a href="#why-reads-are-open-by-default">Why reads are open by default</a></li><li class="l2"><a href="#see-also">See also</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="authentication.md">raw text</a> · <a class="ext" href="https://sgit.ai/api/authentication.html">live ↗</a></p><article class="source"><h1 id="api-authentication-sgitai">API authentication, sgit.ai</h1>
+<blockquote><p>The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.</p></blockquote>
+<p><em>Source: <a href="authentication.html">https://sgit.ai/api/authentication.html</a><a class="ext live" href="https://sgit.ai/api/authentication.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">API</a><a class="ext live" href="https://sgit.ai/api/index.html" title="live page">↗</a> / Authentication</p>
+<h1 id="authentication">Authentication</h1>
+<p>Six headers exist. Which apply depends on the endpoint and on how the server is deployed. None of them is a password, and none of them is stored: the server keeps <code>SHA-256</code> hashes and compares.</p>
+<h2 id="the-headers">The headers</h2>
+<div class="table"><table><thead><tr><th>Header</th><th>What it gates</th></tr></thead><tbody><tr><td><code>x-sgraph-access-token</code></td><td>The SGraph account or deployment. In a <strong>single-key self-hosted deployment</strong> this gates <em>every</em> route, including reads</td></tr>
+<tr><td><code>x-sgraph-vault-write-key</code></td><td>Vault write capability: writes, deletes, destroy, and append <code>configure</code> / <code>purge</code></td></tr>
+<tr><td><code>x-sgraph-vault-enum-key</code></td><td>Append lane enumeration: <code>list</code>, <code>fetch</code>, <code>mark-processed</code></td></tr>
+<tr><td><code>x-vault-read-key</code></td><td>Read key, for public-vault routing</td></tr>
+<tr><td><code>x-vault-public</code></td><td>Public-vault routing flag</td></tr>
+<tr><td><code>x-sgraph-transfer-delete-auth</code></td><td><a href="transfers.html">Transfer deletion</a><a class="ext live" href="https://sgit.ai/api/transfers.html" title="live page">↗</a>, SG/Send transfers, not vaults. Carries the <em>secret</em>, never the hash, and only works if a <code>delete_auth_hash</code> was set at create time</td></tr></tbody></table></div>
+<p>One capability is <strong>not</strong> a header: <code>append_token</code> travels in the request body of <code>/append/write</code>. That is deliberate, see <a href="append-lanes.html">append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a>.</p>
+<h2 id="the-hash-comparison-model">The hash-comparison model</h2>
+<p>The server never stores a capability key. It stores <code>SHA-256(key)</code> and, on each request, hashes what you presented and compares. Two consequences worth designing around:</p>
+<ul><li><strong>A server compromise yields hashes and ciphertext</strong>, not keys and not plaintext. An attacker with the whole database still cannot read a vault.</li><li><strong>There is no recovery path.</strong> The server cannot email you your key, because it has never had it. Same property as the vault key itself, for the same reason.</li></ul>
+<h2 id="why-reads-are-open-by-default">Why reads are open by default</h2>
+<p><code>GET /api/vault/read/{vault_id}/{file_id}</code> requires no authentication on the shared host, which surprises people. It follows from the encryption model rather than being a gap in it: the bytes are AES-256-GCM ciphertext under a key the server has never seen, and the file IDs are HMAC-derived opaque identifiers that reveal no filename. Serving them to an anonymous caller discloses nothing a reader could use.</p>
+<p>It is also the property that makes a <a href="../demos/vaults/index.html">published read key</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> work at all, and what lets vault content sit behind an ordinary CDN. If that trade is wrong for your deployment, run in single-key mode, where the access token gates reads too.</p>
+<p>What an unauthenticated reader <em>can</em> learn is covered honestly on the <a href="../security/index.html#server-sees">security page</a><a class="ext live" href="https://sgit.ai/security/index.html#server-sees" title="live page">↗</a>: object sizes, timing, and approximate activity volume.</p>
+<h2 id="see-also">See also</h2>
+<ul><li><a href="errors.html">Errors</a><a class="ext live" href="https://sgit.ai/api/errors.html" title="live page">↗</a>, what a 403 means as against a 400</li><li><a href="../security/index.html">Security model</a><a class="ext live" href="https://sgit.ai/security/index.html" title="live page">↗</a>, the crypto these capabilities sit on</li></ul>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="authentication.html">HTML version</a><a class="ext live" href="https://sgit.ai/api/authentication.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/api/authentication.html">https://sgit.ai/api/authentication.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/api/authentication.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:10Z</dd><dt>sha256</dt><dd><code title="982eaab9d4495c69d066630a8cb17ad9031221263fd06679f87b071b74e4bdb5">982eaab9d449</code></dd><dt>Frozen copy</dt><dd><a href="authentication.md">sites/sgit.ai/api/authentication.md</a> (3,291 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

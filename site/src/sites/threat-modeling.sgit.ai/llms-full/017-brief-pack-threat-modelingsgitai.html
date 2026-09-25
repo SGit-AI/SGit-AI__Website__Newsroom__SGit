@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Brief pack — threat-modeling.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · threat-modeling.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#brief-pack-threat-modelingsgitai">Brief pack — threat-modeling.sgit.ai</a></li><li class="l2"><a href="#contents">Contents</a></li><li class="l2"><a href="#measured-not-estimated">Measured, not estimated</a></li><li class="l2"><a href="#the-one-blocker">The one blocker</a></li><li class="l2"><a href="#licence">Licence</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/threat-modeling.sgit.ai.html">threat-modeling.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 17 of 19</p><nav class="pager"><span><a href="016-briefsreadmemd.html">← briefs/README.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="018-briefslicensemd.html">briefs/LICENSE.md →</a></span></nav><article class="source"><h1 id="brief-pack-threat-modelingsgitai">Brief pack — <code>threat-modeling.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.63 · 7 September 2026 · CC BY 4.0</p>
+<p>The commission pack for <code>threat-modeling.sgit.ai</code>. Its thesis: <strong>a threat model is a claim about a system, and the site&#x27;s job is to show claims being checked.</strong> The estate can do this because on 16 March 2026 it wrote a threat model, and on 17 March it validated every finding against the actual code — publishing the ones that turned out to be proposals with nothing built behind them alongside the ones that were confirmed real.</p>
+<h2 id="contents">Contents</h2>
+<div class="table"><table><thead><tr><th>File</th><th>Words</th><th>What it is</th></tr></thead><tbody><tr><td><code>00__BRIEF.md</code></td><td>932</td><td>Commission, thesis, what exists, constraints, build order</td></tr>
+<tr><td><code>01__the-research.md</code></td><td>1,048</td><td>The seven white papers as one four-move argument</td></tr>
+<tr><td><code>02__the-practice.md</code></td><td>1,307</td><td>Seven real threat models; the validation pair; the method</td></tr>
+<tr><td><code>03__site-architecture.md</code></td><td>582</td><td>URLs, claim→check spine, sibling deconfliction table</td></tr>
+<tr><td><code>04__disclosure-boundaries.md</code></td><td>685</td><td>What may be published about a live product, by category</td></tr>
+<tr><td><code>05__the-vault-argument.md</code></td><td>775</td><td>Threat models as vault-native data; real-vs-argued table</td></tr>
+<tr><td><code>06__gaps-and-open-questions.md</code></td><td>495</td><td>6 gaps, 7 questions (Q1 is a launch blocker)</td></tr>
+<tr><td><code>threat-models__catalogue.json</code></td><td>—</td><td>Measured counts, 7 papers, 7 models, vault figures, sgit.ai context</td></tr>
+<tr><td><code>09__source-manifest.csv</code></td><td>—</td><td>4 tiers; all tier-0/1 paths verified on disk; counts via <code>wc -w</code></td></tr></tbody></table></div>
+<h2 id="measured-not-estimated">Measured, not estimated</h2>
+<p>269 corpus files mention threat models · 58 AppSec role documents · 7 named threat-model documents · 27 files mention STRIDE · 19 mention attack trees. The ThreatModCon vault&#x27;s figures (11 layers, 51 nodes, 179 threats, 3 critical findings) are <strong>quoted from the published vault page, not computed</strong> — gap G2 says recompute from the vault&#x27;s own JSON before publishing them as generated.</p>
+<h2 id="the-one-blocker">The one blocker</h2>
+<p><strong>Q1 — the closure pass.</strong> Every finding in the practice section dates from February–March 2026. Nothing may be published as open or closed until re-checked against current code. Publishing a fixed vulnerability as open defames the product; publishing an open one as fixed is precisely what the mandatory-disclosure paper condemns.</p>
+<h2 id="licence">Licence</h2>
+<p>Pack text, tables, schemas and analysis: CC BY 4.0 (attribute Dinis Cruz; several source papers also credit ChatGPT Deep Research). STRIDE, MITRE ATT&amp;CK, CAPEC, CWE/CVE, OWASP Top 10 and ASVS are referenced and linked, never reproduced.</p>
+<hr></article><nav class="pager"><span><a href="016-briefsreadmemd.html">← briefs/README.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="018-briefslicensemd.html">briefs/LICENSE.md →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>threat-modeling.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://threat-modeling.sgit.ai/llms-full.txt">https://threat-modeling.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:39Z</dd><dt>sha256</dt><dd><code title="e491cd40da28b4ee7dd108e2f1ee97b01d9cc71d60001ddbd104cf0853cc5640">e491cd40da28</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/threat-modeling.sgit.ai/llms-full.txt</a> (49,157 bytes)</dd><dt>Section</dt><dd>17 of 19: Brief pack — threat-modeling.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

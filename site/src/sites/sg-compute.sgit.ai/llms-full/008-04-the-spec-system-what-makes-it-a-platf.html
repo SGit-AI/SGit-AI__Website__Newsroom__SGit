@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>04 — The spec system: what makes it a platform (sg-compute.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#04-the-spec-system-what-makes-it-a-platform">04 — The spec system: what makes it a platform</a></li><li class="l2"><a href="#1-the-catalogue">1. The catalogue</a></li><li class="l2"><a href="#2-three-mechanisms-and-none-of-them-is-capabilitiesjson">2. Three mechanisms, and none of them is capabilities.json</a></li><li class="l3"><a href="#a-manifestpy-the-registry">(a) manifest.py — the registry</a></li><li class="l3"><a href="#b-spec-routes-loader-convention-based-discovery">(b) Spec__Routes__Loader — convention-based discovery</a></li><li class="l3"><a href="#c-spec-cli-builder-generated-clis">(c) Spec__CLI__Builder — generated CLIs</a></li><li class="l3"><a href="#d-entry-points-specs-outside-the-repo">(d) Entry points — specs outside the repo</a></li><li class="l3"><a href="#what-is-not-the-mechanism">⚠️ What is not the mechanism</a></li><li class="l2"><a href="#3-what-this-makes-possible-and-what-it-does-not-yet">3. What this makes possible — and what it does not yet</a></li><li class="l2"><a href="#4-why-the-family-view-matters-more-than-the-list">4. Why the family view matters more than the list</a></li><li class="l2"><a href="#5-how-to-write-specs">5. How to write /specs/</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 8 of 14</p><nav class="pager"><span><a href="007-03-the-maturity-audit.html">← 03 — The maturity audit</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="009-05-the-argument-a-serverless-environment.html">05 — The argument: a serverless environment for agents →</a></span></nav><article class="source"><h1 id="04-the-spec-system-what-makes-it-a-platform">04 — The spec system: what makes it a platform</h1>
+<p><strong>This is the page that justifies the rename.</strong> One abstraction, sixteen implementations, three generalisation mechanisms, and a documented path for specs that live outside the repo. Full data in <code>specs__catalogue.json</code>.</p>
+<hr>
+<h2 id="1-the-catalogue">1. The catalogue</h2>
+<p>Seventeen directories; <strong>sixteen registered</strong> (<code>sg_edge</code> has no <code>manifest.py</code> and is therefore invisible to the registry — see §5).</p>
+<div class="table"><table><thead><tr><th>Spec</th><th>LOC</th><th>Capability</th><th>Boot</th><th>Stability</th><th>Family</th></tr></thead><tbody><tr><td><strong>vault_publish</strong></td><td>11,682</td><td>vault-writes, subdomain-routing</td><td>45s</td><td>EXPERIMENTAL</td><td>vault</td></tr>
+<tr><td><strong>playwright</strong></td><td>10,180</td><td>browser-automation</td><td>30s</td><td><strong>STABLE</strong></td><td>browser</td></tr>
+<tr><td><em>sg_edge</em></td><td><em>9,108</em></td><td><em>— unregistered —</em></td><td>—</td><td>—</td><td>infra</td></tr>
+<tr><td><strong>vault_app</strong></td><td>8,261</td><td>vault-writes</td><td>45s</td><td>EXPERIMENTAL</td><td>vault</td></tr>
+<tr><td><strong>content_proxy</strong></td><td>4,971</td><td>mitm-proxy</td><td>600s</td><td>EXPERIMENTAL</td><td>browser</td></tr>
+<tr><td><strong>firefox</strong></td><td>1,992</td><td>mitm-proxy</td><td>90s</td><td>EXPERIMENTAL</td><td>browser</td></tr>
+<tr><td><strong>vnc</strong></td><td>1,876</td><td>mitm-proxy</td><td>120s</td><td><strong>STABLE</strong></td><td>browser</td></tr>
+<tr><td><strong>docker</strong></td><td>1,558</td><td>container-runtime</td><td>600s</td><td><strong>STABLE</strong></td><td>runtime</td></tr>
+<tr><td><strong>local_claude</strong></td><td>1,498</td><td>llm-inference</td><td>180s</td><td>EXPERIMENTAL</td><td>llm</td></tr>
+<tr><td><strong>mitmproxy</strong></td><td>1,448</td><td>mitm-proxy</td><td>15s</td><td><strong>STABLE</strong></td><td>network</td></tr>
+<tr><td><strong>elastic</strong></td><td>1,372</td><td>metrics</td><td>180s</td><td><strong>STABLE</strong></td><td>observability</td></tr>
+<tr><td><strong>prometheus</strong></td><td>1,311</td><td>metrics</td><td>120s</td><td><strong>STABLE</strong></td><td>observability</td></tr>
+<tr><td><strong>opensearch</strong></td><td>1,221</td><td>metrics</td><td>180s</td><td><strong>STABLE</strong></td><td>observability</td></tr>
+<tr><td><strong>podman</strong></td><td>1,199</td><td>container-runtime</td><td>120s</td><td><strong>STABLE</strong></td><td>runtime</td></tr>
+<tr><td><strong>neko</strong></td><td>1,180</td><td>iframe-embed</td><td>120s</td><td><strong>STABLE</strong></td><td>browser</td></tr>
+<tr><td><strong>ollama</strong></td><td>939</td><td>llm-inference</td><td>120s</td><td>EXPERIMENTAL</td><td>llm</td></tr>
+<tr><td><strong>open_design</strong></td><td>773</td><td>design-tool</td><td>480s</td><td>EXPERIMENTAL</td><td>tool</td></tr></tbody></table></div>
+<p><strong>Nine stable, seven experimental.</strong> Boot times span 15 seconds (mitmproxy) to 600 seconds (docker, content_proxy) — a 40× range, which is itself a good argument for the manifest carrying <code>boot_seconds_typical</code> as a field rather than a footnote.</p>
+<p><strong>These are not documents.</strong> Each is a working package with <code>manifest.py</code>, <code>api/routes/</code>, <code>cli/</code>, <code>service/</code>, <code>schemas/</code>, <code>tests/</code>, and often <code>ui/</code>.</p>
+<hr>
+<h2 id="2-three-mechanisms-and-none-of-them-is-capabilitiesjson">2. Three mechanisms, and none of them is <code>capabilities.json</code></h2>
+<h3 id="a-manifestpy-the-registry">(a) <code>manifest.py</code> — the registry</h3>
+<p>Every spec exposes a typed <code>MANIFEST</code> of <code>Schema__Spec__Manifest__Entry</code>:</p>
+<pre><code>spec_id · display_name · icon · version · stability · boot_seconds_typical
+capabilities · nav_group · extends · soon · create_endpoint_path</code></pre>
+<blockquote><p><em>&quot;<strong>Single source of truth.</strong> Every spec&#x27;s <code>manifest.py</code> exposes <code>MANIFEST</code>.&quot;</em></p></blockquote>
+<p>This is where the 30 April brief&#x27;s criterion 5 was <strong>deliberately improved on</strong> — it asked for specs stored as JSON with a <code>spec.json</code>; what shipped is typed Python with a schema. Better, and the site should say so rather than scoring it as a miss.</p>
+<h3 id="b-spec-routes-loader-convention-based-discovery">(b) <code>Spec__Routes__Loader</code> — convention-based discovery</h3>
+<p><code>spec_id &#x27;docker&#x27;</code> resolves to <code>sg_compute_specs.docker.api.routes.Routes__Docker__Stack</code>. No registration list, no import graph to maintain.</p>
+<p>And a design note worth publishing because it cuts both ways: <em>&quot;<strong>Specs without a route class are silently skipped.</strong>&quot;</em> Convenient during development; a silent-failure mode in production. A spec that loses its route class disappears from the API with no error.</p>
+<h3 id="c-spec-cli-builder-generated-clis">(c) <code>Spec__CLI__Builder</code> — generated CLIs</h3>
+<p><strong>Per-spec CLIs are generated, not written.</strong> The builder registers a uniform verb set for every spec:</p>
+<pre><code>list · info · create · wait · health · connect · exec · delete · ami list|bake · cert</code></pre>
+<p>Sixteen specs, one CLI surface, written once. This is the strongest single argument that the thing is a platform: <strong>adding a spec costs a manifest, a route class and a service — the CLI comes free.</strong></p>
+<h3 id="d-entry-points-specs-outside-the-repo">(d) Entry points — specs outside the repo</h3>
+<p><code>Spec__Loader</code> already supports <strong>PEP 621 entry-point discovery</strong> under the group <code>sg_compute.specs</code>, alongside the in-repo walk. The 30 April <em>&quot;Spec Standard: External Repos&quot;</em> brief specified it.</p>
+<p><strong>Third-party specs are architecturally supported and untested in the wild.</strong> That is a genuinely interesting claim and it should be published as a claim, not a feature — with an invitation to try it.</p>
+<h3 id="what-is-not-the-mechanism">⚠️ What is <em>not</em> the mechanism</h3>
+<p><code>capabilities.json</code>:</p>
+<pre><code class="lang-json">{ &quot;app&quot;: &quot;sg-playwright&quot;, &quot;version&quot;: &quot;v0.1.29&quot;,
+  &quot;axioms&quot;: [&quot;statelessness&quot;, &quot;least-privilege-by-declaration&quot;, &quot;self-description&quot;],
+  &quot;declared_narrowing&quot;: [] }</code></pre>
+<p><strong>Frozen at v0.1.29 while the repo is at v0.2.71 — 42 minor versions.</strong> It is <code>COPY</code>&#x27;d into the image and served verbatim at <code>GET /admin/capabilities</code>, and <strong>the repo&#x27;s own documentation says not to read it</strong>:</p>
+<blockquote><p><em>&quot;The UI reads <code>GET /health/capabilities</code> (the live <code>Schema__Service__Capabilities</code>, populated by <code>Capability__Detector</code>) — <strong>never</strong> the stale <code>capabilities.json</code>.&quot;</em></p></blockquote>
+<p>The live mechanism is <code>Capability__Detector</code>, which detects the deployment target from environment variables (<code>laptop | ci | claude_web | container | lambda</code>) and builds capabilities at runtime. <strong>Present that as the self-description story; mention <code>capabilities.json</code> only as a known-stale artefact, or delete it.</strong></p>
+<p>The three axioms it names — <em>statelessness, least-privilege-by-declaration, self-description</em> — are good, and they are actually implemented (<code>01__</code> §1, the JS allowlist, <code>/health/capabilities</code>). <strong>Rescue the axioms from the stale file and put them on the front page.</strong></p>
+<hr>
+<h2 id="3-what-this-makes-possible-and-what-it-does-not-yet">3. What this makes possible — and what it does not yet</h2>
+<p><strong>Possible today.</strong> Sixteen ready-to-launch environments, each with a typed manifest, a stability rating, a measured boot time, a generated CLI and auto-discovered routes. The 30 April brief&#x27;s own framing:</p>
+<blockquote><p><em>&quot;This is the <strong>simulated AWS Marketplace</strong>: a catalogue of pre-configured, ready-to-launch environments.&quot;</em></p></blockquote>
+<p>That is exactly what <code>/specs/</code> should be, and it is real.</p>
+<p><strong>Not yet, and the site must say so:</strong></p>
+<ul><li><strong><code>create_node</code> covers 3 of 16 specs.</strong> <code>EC2__Platform._service_for</code> raises <code>NotImplementedError</code> for anything but <code>docker</code>, <code>podman</code>, <code>vnc</code>. The other thirteen create nodes through their own CLI and service paths, not the control-plane API. <strong>The uniform CLI is real; the uniform API is not.</strong></li><li><strong>One platform.</strong> <code>Platform.name</code> is documented as <code>&#x27;ec2&#x27; | &#x27;k8s&#x27; | &#x27;gcp&#x27; | &#x27;local&#x27;</code>. Only EC2 exists.</li><li><strong>No multi-node stacks.</strong> <code>Routes__Compute__Stacks</code> returns a list; <code>Cli__Compute__Stack</code> is unwired.</li><li><strong><code>sg_edge</code> is unregistered</strong> — 9,108 lines, the second-largest spec directory, and invisible to the registry because it has no <code>manifest.py</code>. Either register it or move it out of <code>sg_compute_specs/</code>; leaving the largest unregistered thing inside the spec tree is confusing for anyone reading the catalogue.</li></ul>
+<hr>
+<h2 id="4-why-the-family-view-matters-more-than-the-list">4. Why the family view matters more than the list</h2>
+<p>Grouped by what they actually do:</p>
+<div class="table"><table><thead><tr><th>Family</th><th>Specs</th><th>LOC</th></tr></thead><tbody><tr><td><strong>browser</strong></td><td>playwright, content_proxy, firefox, vnc, neko</td><td>20,199</td></tr>
+<tr><td><strong>vault</strong></td><td>vault_publish, vault_app</td><td>19,943</td></tr>
+<tr><td><strong>observability</strong></td><td>elastic, prometheus, opensearch</td><td>3,904</td></tr>
+<tr><td><strong>runtime</strong></td><td>docker, podman</td><td>2,757</td></tr>
+<tr><td><strong>llm</strong></td><td>local_claude, ollama</td><td>2,437</td></tr>
+<tr><td><strong>network</strong></td><td>mitmproxy</td><td>1,448</td></tr>
+<tr><td><strong>tool</strong></td><td>open_design</td><td>773</td></tr></tbody></table></div>
+<p><strong>Vault specs are within 300 lines of browser specs.</strong> That single row is the clearest possible statement that this is not a browser service — and it points at the integration the rest of the estate wants: vault-writes as a first-class capability, already implemented twice.</p>
+<p>It also explains why the artefact-sink gap (<code>01__</code> §6) matters more than it looks. Two specs exist whose capability is literally <code>vault-writes</code>, and the generic artefact writer&#x27;s vault path raises <code>NotImplementedError</code>. <strong>The capability exists at the spec layer and not at the platform layer.</strong> That is <code>08__</code> Q4.</p>
+<hr>
+<h2 id="5-how-to-write-specs">5. How to write <code>/specs/</code></h2>
+<ol><li><strong>One page per spec</strong>, generated from <code>manifest.py</code> — the manifest already carries everything a page needs. Do not hand-write sixteen pages that will drift.</li><li><strong>Lead with the family view</strong>, not the alphabetical list.</li><li><strong>Show stability and boot time in the header</strong>, because they are what a reader is actually choosing on.</li><li><strong>State the <code>create_node</code> gap per spec</strong> — three of sixteen is a real limitation and hiding it produces support questions.</li><li><strong>Publish the entry-point contract</strong> as an invitation: here is how a spec that lives in your repo joins this catalogue.</li><li><strong>Generate the page from the tree, at build time.</strong> Every stale artefact in this repo became stale because it was written once by hand.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em>Published on sg-compute.sgit.ai under CC BY 4.0. Source: the <code>sg-compute.sgit.ai</code> brief pack v0.33.62, 24 August 2026, by Dinis Cruz via the SG/Send Librarian, with AI co-authorship (Claude, Anthropic).</em></p>
+<hr>
+<p>source: /briefs/05__the-serverless-argument.md</p>
+<hr></article><nav class="pager"><span><a href="007-03-the-maturity-audit.html">← 03 — The maturity audit</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="009-05-the-argument-a-serverless-environment.html">05 — The argument: a serverless environment for agents →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>8 of 14: 04 — The spec system: what makes it a platform</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

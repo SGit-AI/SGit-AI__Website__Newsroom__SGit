@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>nhi.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · nhi.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#nhisgitai-non-human-identity-blast-radius-and-agentic-security">nhi.sgit.ai — non-human identity, blast radius and agentic security</a></li><li class="l2"><a href="#the-research">The research</a></li><li class="l2"><a href="#the-thesis-tested">The thesis, tested</a></li><li class="l2"><a href="#hope-concepts-and-workflows">Hope — concepts and workflows</a></li><li class="l2"><a href="#the-industry-map">The industry map</a></li><li class="l2"><a href="#the-documents">The documents</a></li><li class="l2"><a href="#dev-packs">Dev packs</a></li><li class="l2"><a href="#pki-now-its-own-site-pkisgitai">PKI — now its own site: pki.sgit.ai</a></li><li class="l2"><a href="#the-collection">The collection</a></li><li class="l2"><a href="#site">Site</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/nhi.sgit.ai.html">nhi.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://nhi.sgit.ai/llms.txt">live ↗</a></p><article class="source"><h1 id="nhisgitai-non-human-identity-blast-radius-and-agentic-security">nhi.sgit.ai — non-human identity, blast radius and agentic security</h1>
+<blockquote><p>The question &quot;how do I give an identity to my agents?&quot; splits into two populations —
+agents you run and agents you rent — and the industry only answers the first. For the
+agents people actually name (hosted coding assistants, chat interfaces, API-run agents)
+there is no way to issue a scoped, short-lived, attested identity today; the honest
+current practice is to hand over a broad credential and hope. This site publishes that
+thesis with evidence, a reproducible research method, dated option assessments, and a
+curated collection of the underlying corpus.</p></blockquote>
+<p>Site version: v0.1.19 (19 August 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. All content CC BY 4.0.</p>
+<h2 id="the-research">The research</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/thesis/index.html">The thesis ↗</a>: two populations, the evidence
+(open feature request, documented over-scope, Black Hat disclosure), why it is
+falsifiable and defensible.</li><li><a class="ext" href="https://nhi.sgit.ai/method/index.html">The method ↗</a>: one concrete scenario (four
+agents, four vaults, one repository, no shared access) answered per option in the same
+columns — privileges granted is the differentiating column; &quot;works for rented agents&quot;
+and &quot;date verified&quot; are the columns that make it worth doing.</li><li><a class="ext" href="https://nhi.sgit.ai/options/index.html">Options ↗</a>: assessments, currently preliminary
+(from cited sources, not yet re-run hands-on):
+<ul><li><a class="ext" href="https://nhi.sgit.ai/options/spiffe.html">SPIFFE / SPIRE, the open standard ↗</a> —
+strongest privileges story; requires infrastructure you control; multi-year cost.</li><li><a class="ext" href="https://nhi.sgit.ai/options/broker.html">A commercial workload-identity broker ↗</a> —
+buys the engineering time back; still attests only workloads you run.</li><li><a class="ext" href="https://nhi.sgit.ai/options/do-nothing.html">Do nothing: broad credential + hope ↗</a> —
+the incumbent baseline, assessed honestly; the only option that works for rented
+agents, which is the thesis in one cell.</li></ul></li></ul>
+<h2 id="the-thesis-tested">The thesis, tested</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/research/shared-drives.html">Shared drives for agents ↗</a>: a second
+scenario fully scored (16 Aug 2026) — every available option runs on your identity so a
+rogue session reaches everything every other session can reach; the only granularity is
+segregation (a dedicated drive per agent), not scoping; nothing supports per-agent
+keys; no attribution at the agent level; curated memory destroys provenance by
+resolving conflicts on write. Source brief, verbatim with citations:
+<a class="ext" href="https://nhi.sgit.ai/briefs/v0.33.59__research-brief__shared-drives-for-agents-identity-segregation-no-per-agent-keys.md">https://nhi.sgit.ai/briefs/v0.33.59__research-brief__shared-drives-for-agents-identity-segregation-no-per-agent-keys.md ↗</a></li></ul>
+<h2 id="hope-concepts-and-workflows">Hope — concepts and workflows</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/hope/index.html">Hope is not a control ↗</a>: hope-driven development
+named; the two hopes (behaviour, discovery); the real authorization as the transitive
+closure of the grant; the expected-vs-unexpected delta; the two awareness gaps; and the
+ladder of workflows that replace hope — enumerate, map the closure, bound spend and
+time, observe independently, and issue no credential at all (the serialised pull
+request).</li></ul>
+<h2 id="the-industry-map">The industry map</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/industry/index.html">Grouped by layer ↗</a>: NHI discovery/posture/
+governance (Astrix, Entro, Oasis, Token Security, Veza, SailPoint), workload IAM
+(Aembit), secrets &amp; detection (HashiCorp Vault, CyberArk, Akeyless, GitGuardian),
+machine identity (Keyfactor, Venafi), and human-IAM platforms extending to agents
+(Microsoft Entra Agent ID, Okta). One profile page per provider, from published
+materials, dated 18 Aug 2026.</li><li><a class="ext" href="https://nhi.sgit.ai/industry/spiffe.html">SPIFFE / SPIRE explained ↗</a>: how attested
+workload identity works — SPIFFE IDs and SVIDs, the SPIRE issuance flow, federation —
+and why the mechanism is unavailable by construction for agents you rent.</li></ul>
+<h2 id="the-documents">The documents</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/documents/index.html">The original briefs, readable in-page ↗</a>:
+each with a summary, key concepts, key ideas, an infographic slot, and the full
+markdown rendered from the raw source under /briefs/. Eleven documents: the NHI site
+brief, the shared-drives research, the pki.sgit.ai brief, the serialised pull request,
+ambient authority/capability grants, the AOMM, the sandbox-escape incident analysis,
+who-can-pull-the-plug and the plug-profile probe, the catastrophic-risk board thesis,
+and the hope-driven authorization brief. Raw markdown for all of them under
+<a class="ext" href="https://nhi.sgit.ai/briefs/">https://nhi.sgit.ai/briefs/ ↗</a> — the source of truth.</li></ul>
+<h2 id="dev-packs">Dev packs</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/packs/index.html">Packs hub ↗</a>: implementation-plan packs authored
+by dev agents, captured verbatim with a reader page per document.</li><li><a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/index.html">Static publishing pack ↗</a>
+(17–19 Aug 2026, build spec; captured at SGit-AI__CLI commit a7fb3f5): a vault
+publishes to a folder — ciphertext plus a declared plaintext surface — readable by a
+browser via a loader and by <code>sgit clone</code> over plain GETs from any static host, no
+server, no auth. Six invariants (byte-identical ciphertext everywhere; the key never
+reaches a server; keyless custody via mandatory manifest.json; byte-identical loader;
+plaintext only where the key is published; publishing never changes the vault), 14 test
+cells collapsed from 240 combinations, shippable phases, and measured evidence
+including: GitHub Pages sends access-control-allow-origin:* by default, and object ids
+hash ciphertext with random IVs so a fork is unlinkable. The 18–19 Aug revision added
+three documents from maintainer review: where a published folder may live (the
+publish-into-work-tree amplification loop, refused before a byte is written), published
+API docs (openapi.json generated from the manifest; Swagger UI CDN-pinned with SRI or
+bundled), and the first-party asset origin (publish-time source yes, read-time origin
+never — a zero-knowledge product cannot operate the beacon every reader pings). The
+19 Aug revision then removed the publish target argument entirely (one fixed folder,
+.sg_vault/publish/, target-agnostic; deployment is a separate act) and added an
+EXECUTED tabletop exercise
+(<a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/tabletop-github-pages.html">https://nhi.sgit.ai/packs/static-publishing/tabletop-github-pages.html ↗</a>): the agent ran
+the maintainer&#x27;s scenario — one GitHub repo carrying the public read key, the decrypted
+files, and the encrypted vault store at once — with the real shipped CLI end to end,
+playing author/host/reader/archivist/CI-runner, simulating only the unbuilt publish
+command and GitHub&#x27;s hosting. Measured results: publish → push is a no-op (the
+amplification loop is impossible by construction); the reader&#x27;s static clone matches
+the author&#x27;s tree; keyless custody verifies content-addressed objects with zero key
+material; a public vault&#x27;s CI can republish with zero secrets from the committed
+read-key filename. Four live findings (F1–F4), including: a repo that commits the vault
+store is already statically clonable with shipped code — publish adds the browser,
+custody and key discovery, not clonability. The exercise then changed the spec it
+tested: r9 (decision 12) makes publish emit the plaintext surface ONLY — no ciphertext
+is ever copied, output is O(KB) for any vault, and the served root is composed at
+deployment (co-located, serving the repo itself with zero copies, or assembled by a
+keyless copy of bare/ into place; sgit vault serve composes virtually by routing).
+r10–r12 close a cross-session loop: a tabletop brief authored in the nhi.sgit.ai
+working session (<a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/pipelines-brief.html">https://nhi.sgit.ai/packs/static-publishing/pipelines-brief.html ↗</a>)
+pre-registered two code-inspection findings — .sg_vault/backups/ zips can carry the
+vault key itself, so the canonical repo-side .gitignore is three lines (local/,
+backups/, .sg_vault_new/), and no shipped command binds a key to a fresh git checkout
+(now phase P9, sgit vault attach) — and a SECOND executed tabletop
+(<a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/tabletop-pipelines.html">https://nhi.sgit.ai/packs/static-publishing/tabletop-pipelines.html ↗</a>) ran the full
+CI story in simulated-hosting mode: canonical gitignore proven by staging-then-excluding
+a keyed backup, zero-secret public pipeline, fork PRs skipping legibly, rollback as git
+revert (the site follows the repo timeline, not the vault&#x27;s), and new findings F5 (a
+dead host reads as an empty vault — only a 404 means absent), F6 (attach must be
+mode-exclusive and schema-exact) and F7 (mis-ordered ref restore deploys a stale site).
+The publish folder&#x27;s self-ignore is gone (r10) — it is what the Pages workflow deploys —
+and the canonical workflow lives as a committed template
+(<a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/src/templates/github-pages.yml">https://nhi.sgit.ai/packs/static-publishing/src/templates/github-pages.yml ↗</a>). Fifteen
+maintainer decisions. The pack keeps its own change-control log
+(<a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/changelog.html">https://nhi.sgit.ai/packs/static-publishing/changelog.html ↗</a>): r0–r12, newest first,
+every revision with its trigger and the decisions it moved. Raw sources under
+<a class="ext" href="https://nhi.sgit.ai/packs/static-publishing/src/">https://nhi.sgit.ai/packs/static-publishing/src/ ↗</a></li><li><a class="ext" href="https://nhi.sgit.ai/packs/hub-sgit-ai/index.html">The fractal forge pack ↗</a>
+(18 Aug 2026, design pack; captured at SGit-AI__CLI commit fbebe0c): hub.sgit.ai as a
+forge whose application layer is the
+browser — the client holds the key, the server stores ciphertext and reads nothing. A
+hub is itself a vault (cover + catalogue + loader), so hubs can list hubs and the
+network is fractal by composition, with no federation protocol. Two findings about the
+shipped CLI open the pack: the sub-vault primitive every brief builds permissions on
+does not exist, and a third access tier — the structure key, which decrypts a vault&#x27;s
+shape but not its content — is shipped, tested and unused. Also: permissions as key
+topology (four one-way-derived positions), commercialisation when you cannot read
+(&quot;we cannot sell you privacy, because you already have it&quot;), and the four stated
+absences including CI, whose model-consistent answer is a scoped key. Raw sources under
+<a class="ext" href="https://nhi.sgit.ai/packs/hub-sgit-ai/src/">https://nhi.sgit.ai/packs/hub-sgit-ai/src/ ↗</a></li></ul>
+<h2 id="pki-now-its-own-site-pkisgitai">PKI — now its own site: pki.sgit.ai</h2>
+<p>The cryptographic half of the identity gap has spun out to <a class="ext" href="https://pki.sgit.ai">https://pki.sgit.ai ↗</a> (live
+19 Aug 2026): the 2019 keyserver failure, the four registry rules, identity vs. mandate,
+and the build roadmap all live there now — see <a href="../pki.sgit.ai/llms.txt.html">https://pki.sgit.ai/llms.txt</a><a class="ext live" href="https://pki.sgit.ai/llms.txt" title="live page">↗</a>. What remains
+here:</p>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/pki/index.html">PKI bridge page ↗</a>: the NHI framing — per-agent
+keys in a registry are what would fill the shared-drives research&#x27;s three empty rows
+(no per-agent identity, no agent-level attribution, no encryption to a specific agent)
+— plus the link map to pki.sgit.ai. The old in-depth pages here forward to their
+pki.sgit.ai versions.</li><li><a class="ext" href="https://nhi.sgit.ai/documents/pki-registry.html">The scoping brief&#x27;s document page ↗</a>:
+the pki.sgit.ai strategy brief (v0.33.59, 16 Aug 2026) stays captured in this site&#x27;s
+corpus; raw markdown at
+<a class="ext" href="https://nhi.sgit.ai/briefs/v0.33.59__strategy-brief__pki-sgit-keyserver-failure-append-only-ownership-rule.md">https://nhi.sgit.ai/briefs/v0.33.59__strategy-brief__pki-sgit-keyserver-failure-append-only-ownership-rule.md ↗</a></li></ul>
+<h2 id="the-collection">The collection</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/collection/index.html">Organised by question ↗</a>: what is an agent
+allowed to do; what happens when one is compromised; how do you bound spend and time;
+who can pull the plug; could your agents reach someone else; how do you attribute an
+action. Sources link to the open corpus repository (SGraph-AI__App__Send, CC BY 4.0).</li><li><a class="ext" href="https://nhi.sgit.ai/frameworks/aomm.html">The Agentic Outbound Maturity Model ↗</a>: the
+five preconditions (capability, motive, reach, freedom, silence) and the conjunctive
+ladder (Unaware, Enumerated, Bounded, Observed, Contained, Accountable); the lethal
+trifecta corrected for the outbound case; budget and elapsed time as containment
+controls.</li><li><a class="ext" href="https://nhi.sgit.ai/infographics/index.html">Infographics ↗</a>: request list — awaiting
+LinkedIn post links from the project lead.</li></ul>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai/about/participant.html">Participant disclosure and where our approach loses ↗</a></li><li><a class="ext" href="https://nhi.sgit.ai/admin/comms.html">Comms: tasks, requests, decisions ↗</a></li><li><a class="ext" href="https://nhi.sgit.ai/admin/versions.html">Release history ↗</a></li><li><a class="ext" href="https://nhi.sgit.ai/admin/index.html">How the site is built ↗</a></li><li>Related: <a href="../sgit.ai/index.html">sgit.ai</a><a class="ext live" href="https://sgit.ai" title="live page">↗</a> and its <a href="../sgit.ai/llms.txt.html">llms.txt</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a></li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>nhi.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://nhi.sgit.ai/llms.txt">https://nhi.sgit.ai/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:30Z</dd><dt>sha256</dt><dd><code title="5c49dfc14bcbed65ca9c39c4e3a2aca58628763d8d4d522514997258d1acf6f4">5c49dfc14bcb</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/nhi.sgit.ai/llms.txt</a> (12,385 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

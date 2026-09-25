@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The window.sg bridge (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-windowsg-bridge">The window.sg bridge</a></li><li class="l2"><a href="#namespaces-at-a-glance">Namespaces at a glance</a></li><li class="l2"><a href="#the-permission-model">The permission model</a></li><li class="l2"><a href="#error-codes-worth-branching-on">Error codes worth branching on</a></li><li class="l2"><a href="#host-chrome-vs-api-two-different-things">Host chrome vs API, two different things</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 200 of 358</p><nav class="pager"><span><a href="199-the-windowsg-bridge-sgvault.html">← The window.sg bridge, SG/Vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="201-content-authoring-sgvault.html">Content authoring, SG/Vault →</a></span></nav><article class="source"><h1 id="the-windowsg-bridge">The <code>window.sg</code> bridge</h1>
+<p>Inside App Mode, the host injects a bridge object, <code>window.sg</code>, that gives your page mediated access to the vault and to host capabilities. It installs synchronously while <code>&lt;head&gt;</code> parses, so any inline script can use it. The app frame never holds the vault key: every operation goes through the host, which owns the crypto and the consent UI.</p>
+<h2 id="namespaces-at-a-glance">Namespaces at a glance</h2>
+<div class="table"><table><thead><tr><th>Namespace</th><th>What it does</th><th>Grant</th></tr></thead><tbody><tr><td><code>sg.vfs</code></td><td><code>read</code> / <code>readText</code> / <code>list</code> / <code>write</code> / host-fulfilled <code>download</code>. Writes cap at ~3 MB (<code>EFBIG</code>); reads have no cap</td><td><code>fs.read</code> / <code>fs.write</code></td></tr>
+<tr><td><code>sg.loadCss</code> / <code>sg.loadJs</code></td><td>Top-level functions (not under <code>vfs</code>): the sanctioned way to load vault CSS/JS; injects into <code>&lt;head&gt;</code></td><td>rides <code>fs.read</code>: no separate verb</td></tr>
+<tr><td><code>sg.fs</code></td><td><code>move</code> (grant needed on both paths) / <code>delete</code> / <code>mkdir</code></td><td><code>fs.*</code> + first-use consent</td></tr>
+<tr><td><code>sg.vault</code></td><td>Cross-vault lifecycle: <code>create(opts)</code> (options object, <code>label</code>, <code>seedFrom</code>, <code>returnKey</code>, <code>custody</code>, <code>link</code>), <code>getKey</code>, <code>openApp</code>, <code>list</code>, <code>unlink</code>, <code>mount</code>, <code>embed</code></td><td><code>vault.*</code>; <code>embed</code> needs none. The key is the capability</td></tr>
+<tr><td><code>sg.history</code></td><td>Read-only commit history: <code>log</code>, <code>list</code>, <code>read</code>/<code>readText</code> at a commit, works on read-only opens</td><td>no</td></tr>
+<tr><td><code>sg.sync</code></td><td><code>status</code> / <code>push</code> / <code>pull</code> / <code>refresh</code> against the named branch (<code>sg.git.*</code> survives as a deprecated alias)</td><td>writable vault</td></tr>
+<tr><td><code>sg.auth</code></td><td>The write gate, the server access token, separate from the encryption key: <code>hasKey</code>, <code>setKey</code>, <code>check</code>, <code>clear</code></td><td>no</td></tr>
+<tr><td><code>sg.ui</code></td><td>Host toasts (<code>message</code>), quick-look <code>preview</code> (incl. PDFs, in-frame PDF rendering is sandbox-blocked), <code>requestPermission</code></td><td>no</td></tr>
+<tr><td><code>sg.state</code></td><td>Device-local prefs (64 KiB/key, kernel localStorage, survives reload, not a vault write, &quot;a theme toggle shouldn&#x27;t create a commit&quot;)</td><td>no</td></tr>
+<tr><td><code>sg.llm</code></td><td><code>available</code> / <code>models</code> / <code>chat</code> (streaming, cancel, image parts) / <code>usage</code> / voice <code>listen</code>, the vault&#x27;s LLM key stays in the host; your frame never sees it</td><td><code>llm.chat</code> / <code>llm.listen</code> / …</td></tr>
+<tr><td><code>sg.append</code></td><td><strong>Append lanes, the vault-to-vault message transport.</strong><code>configure</code>, <code>write</code>, <code>list</code>, <code>fetch</code>, <code>markProcessed</code>, <code>purge</code>. A write-only channel addressed by a token, living outside the commit tree, so a stranger can send you an encrypted message without holding your vault key. Worked example: <a class="ext" href="https://sgit.ai/vault-messaging.md">sending messages between vaults ↗</a></td><td><code>append.*</code></td></tr>
+<tr><td><code>sg.on</code> / <code>sg.off</code></td><td>Host events pushed to the app (e.g. <code>append.new-messages</code> on tab focus, the kernel checks; your app does not poll)</td><td><code>host_events</code> allowlist (top-level key)</td></tr>
+<tr><td><code>sg.app</code></td><td>Read-only context: <code>writable</code>, <code>selfPath</code>, <code>vaultName</code>, <code>vaultId</code>, <code>context</code></td><td>no</td></tr></tbody></table></div>
+<h2 id="the-permission-model">The permission model</h2>
+<p>Grants live in <code>app.json</code> (preferred location: <code>.vault/app.json</code>; a legacy root <code>app.json</code> is still read). Each permission is <code>true | false | string[]</code>, and path lists are <strong>prefix-based, not glob</strong>: a trailing <code>/</code> means &quot;this folder and everything under it&quot;; no slash means an exact file. <code>&quot;data/**&quot;</code> is not valid, use <code>&quot;data/&quot;</code>.</p>
+<pre><code>{
+  &quot;entry&quot;: &quot;index.html&quot;,
+  &quot;permissions&quot;: {
+    &quot;fs&quot;:    { &quot;read&quot;: true, &quot;write&quot;: [&quot;data/&quot;], &quot;delete&quot;: [&quot;data/&quot;] },
+    &quot;vault&quot;: { &quot;create&quot;: [&quot;runs/&quot;] },
+    &quot;llm&quot;:   { &quot;chat&quot;: true },
+    &quot;externalLinks&quot;: true,
+    &quot;downloads&quot;: true
+  },
+  &quot;host_events&quot;: [&quot;append.new-messages&quot;]
+}</code></pre>
+<ul><li><strong>Mutations are deny-by-default.</strong> Writes, deletes, vault lifecycle, append and llm all throw <code>EPERM</code> without a grant. <strong>Reads are default-allow today</strong>, and are planned to flip to deny-by-default, so declare <code>fs.read</code> anyway.</li><li><strong>Two independent gates on every mutation:</strong> the server access token (is the vault writable at all?) <em>and</em> the <code>app.json</code> grant. The manifest is a hard ceiling, an app can only ever do what it declares.</li><li><strong>The floor is never grantable:</strong> <code>.vault/**</code> is invisible and untouchable (<code>EPROTECTED</code>), which is also why an app cannot edit its own manifest: the manifest <em>is</em> the grant.</li><li><strong>Consent is host chrome.</strong> Grant-gated verbs raise the host&#x27;s own confirmation, cached per (vault, app, verb); <code>permissions.consent</code> can tune (never widen) the prompting. Apps can&#x27;t fake or suppress it.</li><li><strong>LLM calls are budgeted:</strong> the host clamps <code>maxTokens</code>, filters models, enforces spend caps (<code>EBUDGET</code>), call <code>sg.llm.available()</code> before rendering any AI UI, and render costs as estimates (<code>~</code>), never as a bill. Deliberate design: there is no tool-calling loop, <em>the LLM never gets ambient authority over the vault</em>; your app decides what to do with a reply, under its own grants.</li></ul>
+<h2 id="error-codes-worth-branching-on">Error codes worth branching on</h2>
+<div class="table"><table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>EPERM</code></td><td>verb not granted in <code>app.json</code></td></tr>
+<tr><td><code>EPROTECTED</code></td><td>the floor, <code>.vault/**</code> or the manifest itself</td></tr>
+<tr><td><code>ECONSENT</code></td><td>user declined the consent prompt</td></tr>
+<tr><td><code>ENOENT</code></td><td>no such file, the usual cause when <code>loadCss</code>/<code>loadJs</code> &quot;doesn&#x27;t work&quot; (typo, or written locally but never pushed)</td></tr>
+<tr><td><code>EFBIG</code></td><td>single write over ~3 MB</td></tr>
+<tr><td><code>EREADONLY</code></td><td>static host or read-only session</td></tr>
+<tr><td><code>EBUDGET</code> · <code>ENOKEY</code> · <code>EMODEL</code> · <code>EABORT</code></td><td>llm namespace: spend cap, no key configured, model not allowed, cancelled</td></tr></tbody></table></div>
+<h2 id="host-chrome-vs-api-two-different-things">Host chrome vs API, two different things</h2>
+<p><strong>Chrome you configure but never call</strong> (via <code>app.json</code>&#x27;s <code>hud</code> block, <code>mode: full | minimal | hidden | none</code> plus per-button <code>show.*</code> flags): the nav row, Print, the ✨ AI chat panel (text and voice, entirely at the host origin, your frame never sees the conversation, the key, or the microphone), the file-activity meter, friendly 404 overlays, and the external-link confirm. <strong>API you call, with grants:</strong> <code>sg.ui.preview</code>, <code>sg.vfs.download</code>, <code>sg.llm.*</code>.</p>
+<p>And the <strong>sovereignty rail</strong>: three things an app can never suppress, whatever its <code>hud</code> config: consent prompts always render; <code>mode:&quot;hidden&quot;</code> keeps a corner exit pill; and the user can force the full HUD back on from their side, at a level app code cannot reach. The HUD config is for app <em>preferences</em>, not app <em>authority</em>.</p>
+<p><strong>Versioning note:</strong> this page is an orientation map, verified against the app-shell bridge (v0.2.x, 2026-08). The authoritative, always-current API reference ships with the app-shell source; where they disagree, the source-side reference wins.</p>
+<p><a class="ext" href="https://sgit.ai/vault-apps.md">← Building vault apps ↗</a><a class="ext" href="https://sgit.ai/content-authoring.md">Content authoring → ↗</a></p>
+<hr></article><nav class="pager"><span><a href="199-the-windowsg-bridge-sgvault.html">← The window.sg bridge, SG/Vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="201-content-authoring-sgvault.html">Content authoring, SG/Vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>200 of 358: The window.sg bridge</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

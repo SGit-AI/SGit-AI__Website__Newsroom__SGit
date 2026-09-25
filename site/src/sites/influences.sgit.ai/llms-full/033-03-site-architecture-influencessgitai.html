@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03 — Site Architecture: influences.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · influences.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-site-architecture-influencessgitai">03 — Site Architecture: influences.sgit.ai</a></li><li class="l2"><a href="#1-url-scheme">1. URL scheme</a></li><li class="l2"><a href="#2-data-model">2. Data model</a></li><li class="l2"><a href="#3-tier-movement-is-the-sites-changelog">3. Tier movement is the site&amp;#x27;s changelog</a></li><li class="l2"><a href="#4-the-comms-channel-has-a-special-role-here">4. The comms channel has a special role here</a></li><li class="l2"><a href="#5-infographics">5. Infographics</a></li><li class="l2"><a href="#6-what-this-site-does-not-do">6. What this site does NOT do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/influences.sgit.ai.html">influences.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 33 of 38</p><nav class="pager"><span><a href="032-02-the-influence-map-every-entry-with-it.html">← 02 — The Influence Map: every entry, with its evidence</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="034-04-boundaries-and-licensing-the-no-verba.html">04 — Boundaries and Licensing: the no-verbatim rule as armou →</a></span></nav><article class="source"><h1 id="03-site-architecture-influencessgitai">03 — Site Architecture: <code>influences.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.62 · 25 August 2026
+<strong>Base</strong> The house pattern (copy <code>pki.sgit.ai</code>): <code>llms.txt</code> + <code>/llms-full.txt</code>, <code>/documents/</code> raw markdown, markdown twin at every URL, <code>/admin/comms.html</code> with N1…/T1… threads, <code>/shipped/</code>, versioned everything, participant page.</p>
+<hr>
+<h2 id="1-url-scheme">1. URL scheme</h2>
+<pre><code>/                          the thesis + the three-tier map (counts generated)
+/register/&lt;slug&gt;/          one influence entry (full format, 7 blocks)
+/register/&lt;slug&gt;/trace/    the trace table alone, as data (md + json twins)
+/tiers/                    TRACED / STATED / DISCOVERED, with definitions
+/map/                      the influence graph (influences → principles → estate features)
+/format/                   the register format itself, documented (from 01__)
+/library/                  the union of all Block-7 wider libraries, one page per person/topic
+/documents/                raw markdown of everything
+/admin/comms.html          questions to the founder (see §4)</code></pre>
+<p>Slugs are people or topics, not works: <code>/register/bret-victor/</code>, <code>/register/wardley/</code>, <code>/register/semantic-web/</code>, <code>/register/flow/</code>, <code>/register/luhmann/</code>, <code>/register/neil-peart/</code>… The anchor work is metadata inside the entry, because anchors can be superseded (a briefing document may reveal the <em>real</em> anchor was a different talk).</p>
+<h2 id="2-data-model">2. Data model</h2>
+<p><code>influences__seed.json</code> (this pack) is the initial vault content. Each record: <code>slug</code>, <code>tier</code>, <code>kind</code>, <code>status</code>, <code>anchor</code>, <code>principle</code>, <code>corpus-evidence[]</code> (path + note, regenerable), <code>sibling-site</code>, <code>nests-under</code>, <code>briefing-status</code>, <code>research-plan</code>. The site is a projection of this data — same architecture as standards.sgit.ai: the register lives in a vault, the site renders it. Trace tables are per-entry JSON so <code>/map/</code> can be generated, not drawn.</p>
+<p><strong>Generated, not claimed</strong>: tier counts, corpus-evidence file counts, and the <code>/map/</code> graph are all derivable from the seed JSON + a corpus scan. Publish the scan script&#x27;s identity and date beside every number.</p>
+<h2 id="3-tier-movement-is-the-sites-changelog">3. Tier movement is the site&#x27;s changelog</h2>
+<p>The interesting events on this site are transitions: STATED → TRACED (a briefing document arrived and was integrated), DISCOVERED → TRACED (the founder confirmed), a trace row flipping absent → implemented (the estate built a gap). Each transition is a dated entry on <code>/shipped/</code>. A provenance site whose provenance changes silently would be self-refuting.</p>
+<h2 id="4-the-comms-channel-has-a-special-role-here">4. The comms channel has a special role here</h2>
+<p>On other sites <code>/admin/comms.html</code> carries build questions. Here it is also the <strong>briefing-document request queue</strong>: one thread per STATED entry (N1: Neil Peart — awaiting briefing; N2: Kevin Kelly — …), so the founder&#x27;s stated plan (<em>&quot;in time I will create a detailed briefing document about each one&quot;</em>) has a visible, addressable inbox. When a briefing lands, the thread closes and the entry&#x27;s tier moves.</p>
+<h2 id="5-infographics">5. Infographics</h2>
+<p>The founder asked for infographics of people and ideas. Two rules from <code>04__</code>: likenesses are <strong>original artwork only</strong> (never scraped photos); idea-infographics (the golden circle, the flow channel, evolution axes) are <strong>redrawn in house style with attribution</strong>, never copied. Every infographic&#x27;s source data is a markdown/JSON twin — the house rule that a picture is a projection of data, not an original.</p>
+<h2 id="6-what-this-site-does-not-do">6. What this site does NOT do</h2>
+<p>No hosting of anchor works (talks, book excerpts, essays) — links only, per <code>04__</code>. No hagiography — entries carry disagreements (the Semantic Web entry is the model). No rankings — influences are a graph, not a top-ten. And no silent scope creep into siblings: if an entry&#x27;s material grows past resonance-and-trace, the material moves to the sibling site and the entry keeps the pointer.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/04__boundaries-and-licensing.md</p>
+<hr></article><nav class="pager"><span><a href="032-02-the-influence-map-every-entry-with-it.html">← 02 — The Influence Map: every entry, with its evidence</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="034-04-boundaries-and-licensing-the-no-verba.html">04 — Boundaries and Licensing: the no-verbatim rule as armou →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>influences.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://influences.sgit.ai/llms-full.txt">https://influences.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:35Z</dd><dt>sha256</dt><dd><code title="3a7dc074c9449904f88720fb0f6e5ca3b8c95021247541153476a5fa0d59a1d4">3a7dc074c944</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/influences.sgit.ai/llms-full.txt</a> (194,740 bytes)</dd><dt>Section</dt><dd>33 of 38: 03 — Site Architecture: influences.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

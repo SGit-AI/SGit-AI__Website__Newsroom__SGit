@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+  <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .tl{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .sl{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .hl{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.1em}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .g{font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .big{font:700 26px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .box{fill:#fff;stroke:#101114;stroke-width:1.5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.2;rx:10}
+    .win{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .bar{fill:#2f6fed}
+    .bar2{fill:#1c7c43}
+    .bar3{fill:#9aa3b5}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="36" class="h">THREE THINGS SOLD THREE WAYS, AND ONE OPERATOR'S YEAR</text>
+
+  <rect class="key" x="40" y="70" width="340" height="120"/>
+  <text x="210" y="98" class="t">Setup · once</text>
+  <text x="210" y="126" class="big">£300 to £1,200</text>
+  <text x="210" y="150" class="s">for the expert's time: the call, the brief,</text>
+  <text x="210" y="166" class="s">getting it right, live in days</text>
+
+  <rect class="win" x="430" y="70" width="340" height="120"/>
+  <text x="600" y="98" class="t">Maintenance · monthly</text>
+  <text x="600" y="126" class="big">£50 / £100 / £200</text>
+  <text x="600" y="150" class="s">bronze, silver, gold: kept up, watched,</text>
+  <text x="600" y="166" class="s">tweaked, a note each month. Rent that is earned.</text>
+
+  <rect class="box" x="820" y="70" width="340" height="120"/>
+  <text x="990" y="98" class="t">On demand · per interaction</text>
+  <text x="990" y="126" class="big">£40 to £250</text>
+  <text x="990" y="150" class="s">a change, a page, a campaign; or tokens</text>
+  <text x="990" y="166" class="s">passed through and shown as what they are</text>
+
+  <text x="60" y="240" class="hl">THE COST SIDE, PER CUSTOMER PER MONTH</text>
+  <text x="60" y="268" class="sl">Hosting £0 (GitHub Pages) · Domain £0 to us (theirs) · Agent tokens £1 to £5 · Embeds £0 to £15 · The operator's agent seat, shared across every customer</text>
+  <text x="60" y="290" class="tl">The real cost is the operator's time. So the business is: how many customers can one person keep genuinely happy?</text>
+
+  <text x="60" y="340" class="hl">ONE OPERATOR, THREE SCENARIOS · MONTHLY CONTRIBUTION</text>
+  <rect class="bar3" x="60" y="372" width="252" height="34"/><text x="60" y="366" class="sl">Small · 20 customers</text><text x="330" y="395" class="tl">£3,360</text>
+  <rect class="bar" x="60" y="430" width="548" height="34"/><text x="60" y="424" class="sl">Steady · 50 customers</text><text x="626" y="453" class="tl">£7,300</text>
+  <rect class="bar2" x="60" y="488" width="859" height="34"/><text x="60" y="482" class="sl">Full · 80 customers, where the second operator starts</text><text x="937" y="511" class="tl">£11,450</text>
+  <text x="60" y="548" class="sl">Assumes an average maintenance price of £90, £600 setups at 2, 3 and 4 a month, and £70 on-demand changes at 8, 20 and 35 a month. Direct costs £200 to £600.</text>
+
+  <rect x="40" y="570" width="1120" height="50" rx="12" style="fill:#f4f6fb"/>
+  <text x="600" y="590" class="h">THE TWO NUMBERS THAT DECIDE IT</text>
+  <text x="600" y="610" class="t">Churn (the monthly note and the change log are for it), and setup hours (twelve down to four as the playbook fills in).</text>
+</svg>

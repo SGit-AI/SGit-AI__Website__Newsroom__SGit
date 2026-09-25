@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>00 — The Brief: teams.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · teams.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#00-the-brief-teamssgitai">00 — The Brief: teams.sgit.ai</a></li><li class="l2"><a href="#1-the-commission">1. The commission</a></li><li class="l2"><a href="#2-the-thesis">2. The thesis</a></li><li class="l2"><a href="#3-what-exists-measured-7-september-2026">3. What exists — measured 7 September 2026</a></li><li class="l2"><a href="#4-the-honest-constraints">4. The honest constraints</a></li><li class="l2"><a href="#5-deconfliction-skillssgitai-already-exists">5. Deconfliction: skills.sgit.ai already exists</a></li><li class="l2"><a href="#6-build-order">6. Build order</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/teams.sgit.ai.html">teams.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 23 of 33</p><nav class="pager"><span><a href="022-translator.html">← Translator</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="024-01-the-rolemd-format-measured-and-one-re.html">01 — The ROLE.md Format: measured, and one recommendation →</a></span></nav><article class="source"><h1 id="00-the-brief-teamssgitai">00 — The Brief: <code>teams.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.64 · 7 September 2026
+<strong>From</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>To</strong> the agent commissioned to build <code>teams.sgit.ai</code>
+<strong>Licence</strong> CC BY 4.0</p>
+<hr>
+<h2 id="1-the-commission">1. The commission</h2>
+<p>The key reference for setting up <strong>agentic teams with more than one role</strong>: the effective workflows and how they evolved, the <code>ROLE.md</code> and <code>SKILL.md</code> reference material, and the learnings that got written back into the role definitions after something went wrong.</p>
+<p><strong>The name, decided:</strong> <code>teams.sgit.ai</code>. The unit is the <em>team</em>, not the agent. Every site in the network is named for its unit, and this one is named for the thing the industry keeps skipping.</p>
+<p><strong>The tagline:</strong> <em>Roles are boundaries. The Conductor never does the work.</em></p>
+<hr>
+<h2 id="2-the-thesis">2. The thesis</h2>
+<blockquote><p><strong>The leverage in agentic work is division of labour, not model capability.</strong></p></blockquote>
+<p>The evidence is in the corpus and it is unusual. Most people building multi-agent systems write down what each agent <em>can</em> do. This estate writes down what each agent <strong>must not</strong> do — and it does so in a named schema field. The Conductor&#x27;s own definition lists, under <em>Not Responsible For</em>: <em>&quot;writing code, running tests, deploying infrastructure, making architecture decisions, or performing security reviews.&quot;</em> Its governing principle is stated outright:</p>
+<blockquote><p><em>&quot;Roles are boundaries. The Conductor routes work to the right role; the Conductor never does the work.&quot;</em></p></blockquote>
+<p>And the second thesis, which the corpus proves and almost nothing else in the field does:</p>
+<blockquote><p><strong>A role definition is a falsifiable claim, and it should be written as a failure condition.</strong></p></blockquote>
+<p>Six roles state their Central Claim as an <em>if-then failure</em>: <em>&quot;If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed.&quot;</em> <em>&quot;If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed.&quot;</em> <em>&quot;If any code path exists where plaintext, decryption keys, or original file names could reach the server, AppSec has failed.&quot;</em> A role written this way can be audited. A role written as a job description cannot.</p>
+<hr>
+<h2 id="3-what-exists-measured-7-september-2026">3. What exists — measured 7 September 2026</h2>
+<p><strong>39 <code>ROLE.md</code> files. 19 unique role names. Four team instantiations.</strong></p>
+<div class="table"><table><thead><tr><th>Team</th><th>Role directories</th><th>With <code>ROLE.md</code></th><th>Character</th></tr></thead><tbody><tr><td><strong>Explorer</strong> (<code>team/roles/</code>)</td><td>17</td><td>13</td><td>Builds new things</td></tr>
+<tr><td><strong>Villager</strong> (<code>team/villager/roles/</code>)</td><td>17</td><td>17</td><td>Hardens what Explorer built</td></tr>
+<tr><td><strong>Town Planner</strong> (<code>team/town-planner/roles/</code>)</td><td>4</td><td>3</td><td>Financial models, investor narrative, commodity classification</td></tr>
+<tr><td><strong>sg-playwright</strong> (<code>team/roles/</code>)</td><td>6</td><td>6</td><td>A second product, same method</td></tr></tbody></table></div>
+<p>The nineteen: accountant · advocate · alchemist · ambassador · appsec · architect · cartographer · conductor · designer · dev · devops · dpo · grc · historian · journalist · librarian · qa · sherpa · translator.</p>
+<p><strong>The finding that should be the site&#x27;s second page.</strong> Explorer / Villager / Town Planner is <strong>Wardley&#x27;s Pioneers–Settlers–Town Planners, staffed as three agent teams</strong> — the same role names carrying different mandates at different evolutionary stages. The Villager Designer&#x27;s brief is explicit: <em>&quot;The UX as delivered by Explorer is what ships. No additions, no changes… Do NOT design new UX features — send to Explorer.&quot;</em> The Villager AppSec: <em>&quot;Security architecture is frozen from Explorer. Harden what exists. If a redesign is needed, send it back.&quot;</em> The handback path is named in the role definition itself.</p>
+<p>Nobody else has published this. It is the most original thing in the corpus on this subject.</p>
+<p><strong>130 files in <code>team/comms/</code></strong> — the inter-role protocol: <code>briefs/</code>, <code>changelog/</code>, <code>plans/</code>, <code>qa/briefs/</code>, <code>qa/questions/</code>, and a <code>QA_START_HERE.md</code> landing page.</p>
+<p><strong>40 <code>SKILL.md</code> files</strong>, 7 first-party in <code>library/skills/</code> — but these belong to the sibling; see §5.</p>
+<hr>
+<h2 id="4-the-honest-constraints">4. The honest constraints</h2>
+<ul><li><strong>The format drifted, and it regressed.</strong> Of 17 Explorer role directories: 7 carry the Identity schema as a <em>table</em>, 6 as a <em>bullet list</em>, and 4 have no <code>ROLE.md</code> at all (advocate, alchemist, ambassador, sherpa). Worse, the newer table format&#x27;s Central Claims are <em>descriptive</em> (<em>&quot;The Architect owns the boundaries&quot;</em>) while the older bullet format&#x27;s are <em>falsifiable</em> (<em>&quot;…the Librarian has failed&quot;</em>). <strong>The migration lost the best property of the format.</strong> The site should say so and recommend restoring it. This is the pack&#x27;s most useful single finding.</li><li><strong>The Town Planner team is thin</strong> — 4 directories, 3 definitions, and its Librarian is missing. Publish it as a sketch, not a template.</li><li><strong>Role evolution is in git, not in the files.</strong> The learnings the founder asked for exist only as diffs. <code>05__</code> does that archaeology; the site must keep doing it.</li></ul>
+<hr>
+<h2 id="5-deconfliction-skillssgitai-already-exists">5. Deconfliction: <code>skills.sgit.ai</code> already exists</h2>
+<p>The network page lists nineteen sites — eighteen live, and <code>skills.sgit.ai</code> with subdomain and repo established but nothing published. The seam, decided:</p>
+<blockquote><p><strong>A skill is a capability. A role is a boundary. A team is a routing table.</strong></p></blockquote>
+<p><code>skills.sgit.ai</code> owns <code>SKILL.md</code> — anatomy, description-as-trigger, lifecycle, the seven first-party skills. <code>teams.sgit.ai</code> owns <code>ROLE.md</code>, the roster, the topologies, the comms protocol and the workflows. Each links to the other; neither duplicates. Where this site shows a role&#x27;s tool access, it names the skills and links out.</p>
+<hr>
+<h2 id="6-build-order">6. Build order</h2>
+<ol><li><strong><code>/role-format/</code></strong> — the <code>ROLE.md</code> schema, measured, with the failure-condition claim as the recommended form and the drift documented (<code>01__</code>).</li><li><strong><code>/roster/</code></strong> — nineteen roles, each with its claim, its boundary and its comms addresses (<code>02__</code>).</li><li><strong><code>/topologies/</code></strong> — Explorer / Villager / Town Planner, and the handback rule. Links to <code>wardley-maps.sgit.ai</code> for PST itself (<code>03__</code>).</li><li><strong><code>/comms/</code></strong> — the inbox/outbox protocol and the session-start ritual (<code>04__</code>).</li><li><strong><code>/evolution/</code></strong> — the dated learnings, as diffs (<code>05__</code>). This is the memory layer and the reason the site is not a template gallery.</li><li><strong><code>/setup/</code></strong> — the assembly guide: how to stand up a multi-role team from these files.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/01__the-role-format.md</p>
+<hr></article><nav class="pager"><span><a href="022-translator.html">← Translator</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="024-01-the-rolemd-format-measured-and-one-re.html">01 — The ROLE.md Format: measured, and one recommendation →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>teams.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://teams.sgit.ai/llms-full.txt">https://teams.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:38Z</dd><dt>sha256</dt><dd><code title="11002d6345514c0988bee2ebdc6e5d4b1e85542fe5a7dfb7483da48d739b7939">11002d634551</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/teams.sgit.ai/llms-full.txt</a> (90,666 bytes)</dd><dt>Section</dt><dd>23 of 33: 00 — The Brief: teams.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

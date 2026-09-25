@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>3. Architecture · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#3-architecture">3. Architecture</a></li><li class="l2"><a href="#1-capture">1. Capture</a></li><li class="l2"><a href="#2-append">2. Append</a></li><li class="l2"><a href="#3-chain">3. Chain</a></li><li class="l2"><a href="#4-process">4. Process</a></li><li class="l2"><a href="#5-replay-and-revert">5. Replay and revert</a></li><li class="l2"><a href="#where-the-keys-live">Where the keys live</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="03-architecture.md">raw text</a></p><article class="source"><h1 id="3-architecture">3. Architecture</h1>
+<p>Five steps. Four of them exist today; the fourth needs a decision more than it needs code.</p>
+<p><img src="../diagrams/pipeline.webp" alt="The pipeline" loading="lazy"></p>
+<h2 id="1-capture">1. Capture</h2>
+<p>For every connector call, capture three things:</p>
+<ul><li><strong>The tool call</strong> the agent made, as the connector protocol carried it. For MCP that is a JSON-RPC <code>tools/call</code> request and its result.</li><li><strong>The upstream request and response</strong> the connector exchanged with the platform: method, URL, body, status, response body. This is the part that lets the views be rebuilt, because it holds the platform&#x27;s own answer.</li><li><strong>The instruction</strong> that led to the call, when prompt capture is on: the user&#x27;s request, and the agent&#x27;s own statement of what it did.</li></ul>
+<p>Never capture the <code>Authorization</code> header, cookies, or any token. Capture is of content, not of credentials. The entry format is in <code>spec/journal-entry.md</code>.</p>
+<p>Where the capture runs is a choice with consequences; see <code>04-the-service.md</code> and <code>diagrams/capture-modes.webp</code>.</p>
+<h2 id="2-append">2. Append</h2>
+<p>Each entry is written to a vault append lane. Three properties make this the right primitive:</p>
+<ul><li><strong>Write-only and blind.</strong> The writer holds a token that lets it append and nothing else. The response is <code>{&quot;ok&quot;: true}</code> and nothing more, so a compromised capture point learns nothing about what else is in the lane.</li><li><strong>Off the hot path.</strong> An append is one small POST. It is not decrypted, indexed or processed when it arrives, so capture costs the agent almost nothing.</li><li><strong>Outside the commit tree.</strong> Appends never touch a branch and never conflict with a push, so the journal and the processed views can live in the same vault without contention.</li></ul>
+<p>Limits to design around: 5 MB per write, and up to 1,000 pending entries per token before writes are refused. Large attachments are therefore captured by hash and size with the bytes stored separately, and the processor must keep up.</p>
+<h2 id="3-chain">3. Chain</h2>
+<p>Each entry carries <code>prev</code>, the hash of the entry before it, and <code>hash</code>, its own SHA-256 over a canonical serialisation. A missing entry, an edited entry, or entries out of order all show. <code>tools/verify-journal.py</code> checks the chain offline; the app checks it in the browser.</p>
+<p>The chain proves the journal was not altered after capture. It does not prove the capture was complete. Completeness comes from the capture mode, not from the chain.</p>
+<h2 id="4-process">4. Process</h2>
+<p>A scheduled reader lists pending entries, fetches them in batches, folds them into per-connector views, commits the views to the vault, and marks the entries processed. Marking is idempotent, so a retry after a timeout is safe.</p>
+<p>The open question is the schedule. Options, with their costs, are in <code>prototypes/processor-schedule.md</code>. The short version: process on a timer for steady load, on a pending-count threshold to stay clear of the 1,000 limit, and on demand when somebody opens the replay.</p>
+<h2 id="5-replay-and-revert">5. Replay and revert</h2>
+<p>A vault app rebuilds the views from the processed journal: the inbox as the agent saw it, the calendar as the agent saw it, the timeline, a before and after for every write, and a revert plan. The app in this vault is the reference implementation, running on invented data.</p>
+<p>The revert plan is advice, not action. Executing it is a separate step, approved by a person, performed through the same capture path so the revert itself is journalled. The rules per action are in <code>spec/revert-rules.md</code>.</p>
+<h2 id="where-the-keys-live">Where the keys live</h2>
+<p>The journal holds copies of email and calendar content, so it is as sensitive as the mailbox. It is encrypted before it leaves the capture point, stored as ciphertext the host cannot read, and opened with a key the customer holds. In the Assured tier the keys never leave the customer. Key custody is the least glamorous part of the design and the one a customer&#x27;s security team will ask about first.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="631b23555badd9508fbe50dd16bc60bdfd9a32002d0b306255e0f804889d6c8f">631b23555bad</code></dd><dt>Frozen copy</dt><dd><a href="03-architecture.md">vaults/connector-twin/plan/03-architecture.md</a> (3,797 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

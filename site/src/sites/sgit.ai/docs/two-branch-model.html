@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The two-branch model, sgit Docs · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-two-branch-model-sgit-docs">The two-branch model, sgit Docs</a></li><li class="l1"><a href="#the-two-branch-model">The two-branch model</a></li><li class="l2"><a href="#clone-branches-and-named-branches">Clone branches and named branches</a></li><li class="l2"><a href="#why-it-works-this-way">Why it works this way</a></li><li class="l2"><a href="#merging-and-conflicts">Merging and conflicts</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="two-branch-model.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/two-branch-model.html">live ↗</a></p><article class="source"><h1 id="the-two-branch-model-sgit-docs">The two-branch model, sgit Docs</h1>
+<blockquote><p>sgit&#x27;s central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.</p></blockquote>
+<p><em>Source: <a href="two-branch-model.html">https://sgit.ai/docs/two-branch-model.html</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="index.html">Docs</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a> / Concepts</p>
+<h1 id="the-two-branch-model">The two-branch model</h1>
+<p>sgit&#x27;s central architectural idea: every clone works on a private branch, and sharing is an explicit act.</p>
+<h2 id="clone-branches-and-named-branches">Clone branches and named branches</h2>
+<pre><code>        agent A&#x27;s machine                    the server                    agent B&#x27;s machine
+  ┌───────────────────────┐        ┌───────────────────────────┐        ┌───────────────────────┐
+  │  clone branch (A)     │  push  │   named branch &quot;main&quot;     │  pull  │  clone branch (B)     │
+  │  key: local only ─────┼───────▶│   key: shared via vault   │◀───────┼─ key: local only      │
+  └───────────────────────┘        └───────────────────────────┘        └───────────────────────┘</code></pre>
+<ul><li><strong>Named branches</strong> (<code>main</code>, <code>feature-x</code>, …) are shared and live on the server, encrypted, like everything else.</li><li><strong>Clone branches</strong> are created per clone. Their key is stored only in <code>.sg_vault/local/</code> and is never pushed. All your commits land here first.</li><li><code>sgit push</code> re-encrypts your clone-branch commits with the named branch&#x27;s key and forwards them. <code>sgit pull</code> brings named-branch commits down and merges them into your clone branch.</li></ul>
+<p>Run <code>sgit status --explain</code> any time, it prints this model with your vault&#x27;s actual branch names filled in.</p>
+<h2 id="why-it-works-this-way">Why it works this way</h2>
+<ul><li><strong>Isolation by construction.</strong> Two machines, or two agents, on the same vault physically cannot overwrite each other&#x27;s uncommitted or unpushed work: they&#x27;re on different branches with different keys.</li><li><strong>Sharing is explicit.</strong> Nothing you commit is visible to anyone until you <code>push</code>. An agent can iterate messily in private and publish only the result.</li><li><strong>Safe concurrent pushes.</strong> Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering, pull, merge, push again.</li></ul>
+<h2 id="merging-and-conflicts">Merging and conflicts</h2>
+<p>When histories diverge, sgit runs a genuine three-way merge (common ancestor + ours + theirs) per file. Non-conflicting changes merge automatically; conflicting paths get <code>.conflict</code> files, and:</p>
+<pre><code>$ sgit resolve --show
+  notes/plan.md   CONFLICT (both changed)
+    base   │ ship in Q3
+    ours   │ ship in Q4          ← your clone branch
+    theirs │ ship in Q3, beta Q2 ← the named branch
+    verdict: genuine conflict  (not one-sided, not identical)</code></pre>
+<p>The verdict line matters in multi-writer vaults: it distinguishes genuine conflicts from one-sided or identical changes, so you (or an agent) only spend attention where a human decision is actually required. <code>sgit merge-abort</code> backs out of a merge cleanly.</p>
+<p><a href="sgit-for-git-users.html">← sgit for git users</a><a class="ext live" href="https://sgit.ai/docs/sgit-for-git-users.html" title="live page">↗</a><a href="agents.html">Working with AI agents →</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="two-branch-model.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/two-branch-model.html">https://sgit.ai/docs/two-branch-model.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/two-branch-model.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:09Z</dd><dt>sha256</dt><dd><code title="0ec0b3abc28013df14b2edd78b01335c011165a39480391c4a1f88ba31973f3c">0ec0b3abc280</code></dd><dt>Frozen copy</dt><dd><a href="two-branch-model.md">sites/sgit.ai/docs/two-branch-model.md</a> (3,568 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

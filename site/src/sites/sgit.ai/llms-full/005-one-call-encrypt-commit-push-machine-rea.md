@@ -1,0 +1,1 @@
+# one call: encrypt, commit, push, machine-readable result

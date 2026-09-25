@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06 — Site Architecture · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · wardley-maps.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-site-architecture">06 — Site Architecture</a></li><li class="l2"><a href="#the-house-pattern-to-follow">The house pattern to follow</a></li><li class="l2"><a href="#page-by-page">Page by page</a></li><li class="l3"><a href="#the-front-page">/ — the front page</a></li><li class="l3"><a href="#doctrine-build-first">/doctrine/ — build first</a></li><li class="l3"><a href="#method-the-opinionated-core">/method/ — the opinionated core</a></li><li class="l3"><a href="#patternspst-the-most-original-page">/patterns/pst/ — the most original page</a></li><li class="l3"><a href="#resources-job-b">/resources/ — Job B</a></li><li class="l3"><a href="#dinis-job-a">/dinis/ — Job A</a></li><li class="l3"><a href="#maps-the-gallery">/maps/ — the gallery</a></li><li class="l3"><a href="#agents-the-machine-surface">/agents/ — the machine surface</a></li><li class="l3"><a href="#shipped">/shipped/</a></li><li class="l3"><a href="#network">/network/</a></li><li class="l3"><a href="#admin">/admin/</a></li><li class="l2"><a href="#what-moves-what-gets-referenced-what-stays">What moves, what gets referenced, what stays</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/wardley-maps.sgit.ai.html">wardley-maps.sgit.ai</a> · <a href="06__site-architecture.md">raw text</a> · <a class="ext" href="https://wardley-maps.sgit.ai/briefs/06__site-architecture.md">live ↗</a></p><article class="source"><h1 id="06-site-architecture">06 — Site Architecture</h1>
+<h2 id="the-house-pattern-to-follow">The house pattern to follow</h2>
+<p><strong>Copy <code>pki.sgit.ai</code>.</strong> It is the most complete site in the network — the only one carrying all six house markers — and it already hosts the doctrine work this site is taking over.</p>
+<p>| Marker | sgit.ai | <strong>pki</strong> | nhi | sg-sentinel | graphs | riskmandate |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|
+| <code>/llms.txt</code> | ✓ | <strong>✓</strong> | ✓ | ✓ | ✓ | ✓ |
+| <code>/llms-full.txt</code> | ✓ | <strong>✗</strong> | ✗ | ✗ | ✓ | ✓ |
+| <code>/documents/</code> | ✗ | <strong>✓</strong> | ✓ | ✓ | ✓ | ✗ |
+| <code>/admin/comms.html</code> | ✗ | <strong>✓</strong> | ✓ | ✓ | ✓ | ✗ |
+| <code>/admin/versions.html</code> | ✓ | <strong>✓</strong> | ✓ | ✓ | ✓ | ✗ |
+| <code>/about/participant.html</code> | ✗ | <strong>✓</strong> | ✓ | ✗ | ✓ | ✗ |
+| <code>/shipped/</code> | ✗ | <strong>✓</strong> | ✗ | ✗ | ✓ | ✗ |</p>
+<p>Take pki&#x27;s build pipeline too — <code>pki.sgit.ai/admin/index.html</code> documents it: hand-written static HTML with <strong>programmatically injected chrome</strong> (nav, footers, version badges) so it cannot drift; every push to <code>dev</code> runs link checking, version consistency, canonical-URL verification and <strong>key-leak detection</strong>, then auto-tags and deploys to GitHub Pages. Take its <strong>raw-plus-curated split</strong> (<code>/documents/</code> curated, <code>/briefs/</code> raw markdown). <strong>Add the <code>/llms-full.txt</code> that pki lacks.</strong></p>
+<p>Add one thing no sibling has: <strong>a link-verification job</strong>. Given §1 of <code>04__</code>, a site about an ecosystem whose own indexes are wrong should be the one that checks. Publish the run date.</p>
+<hr>
+<h2 id="page-by-page">Page by page</h2>
+<h3 id="the-front-page"><code>/</code> — the front page</h3>
+<p>300 words, and none of them currently exist in the corpus. Open on the thesis — <strong>maps are claims, not pictures</strong> — then the three things this site has that others don&#x27;t: the doctrine assessment, the PST-as-agent-teams pattern, and 34 verified resources. Close on the quotable line: <em>&quot;Anybody who spends a lot of money on tokens has an engineering problem.&quot;</em> One rendered map above the fold — M1.</p>
+<h3 id="doctrine-build-first"><code>/doctrine/</code> — <strong>build first</strong></h3>
+<p>The 41 records from <code>pki.sgit.ai/packs/registry-mvp/doctrine.html</code>, moved wholesale. Keep everything that makes it good: the four-phase grouping, the six categories, the click-to-filter, the distribution bar, the four-level scale (<code>strong</code> Practised · <code>partial</code> Partly · <code>weak</code> Not practised · <code>na</code> No basis yet), and above all the discipline that <strong>every rating names the artefact it rests on</strong>, so <em>&quot;a reader who disagrees has the evidence in front of them.&quot;</em> Keep the self-assessment caveat too — it labels itself the weakest kind of assessment and compensates with evidence.</p>
+<p>Serve <code>doctrine.json</code> as a stable endpoint (<code>id, cat, phase, name, what, status, us, evidence</code>). <strong>There is no working doctrine assessment tool anywhere in the ecosystem right now.</strong> A public JSON schema plus a worked example is the closest thing to one, and costs nothing extra.</p>
+<p>Leave a stub on pki.sgit.ai pointing here.</p>
+<h3 id="method-the-opinionated-core"><code>/method/</code> — the opinionated core</h3>
+<p>Four pages, one per original contribution: <strong>de-commoditisation</strong>, <strong>the custom-axis verdict</strong> (with its rule — <em>relabel the axis when the thing genuinely evolves; use a maturity model when the thing merely improves</em>), <strong>you cannot map a gap / the broken middle</strong>, and <strong>maps are graphs with position</strong>. Each opens with the quote, states the claim, shows a map, and names what would falsify it.</p>
+<h3 id="patternspst-the-most-original-page"><code>/patterns/pst/</code> — the most original page</h3>
+<p><code>02__</code> in full. Lead with the filesystem, not the theory. Include §4 (31 of 33 roles never got the memo) and §5 (asserted vs implemented) unsoftened. Cite <code>blog.gardeviance.org/2015/03/…</code> — <strong>CC BY-SA 3.0</strong>.</p>
+<h3 id="resources-job-b"><code>/resources/</code> — Job B</h3>
+<p>34 pages on the template in <code>04__</code> §2, plus <code>/resources/dead/</code> for the 11 dead-or-dying entries. Three start-here routes (newcomer / security / agent) as the primary navigation, the flat A–Z as secondary. Every page carries a dated verification stamp and the pre-written attribution string.</p>
+<h3 id="dinis-job-a"><code>/dinis/</code> — Job A</h3>
+<p>The chronology from <code>03__</code>, 26 items, the 13 recordings embedded. Show the silences — 2021, 2023, and the 2026 gap where 194 unpublished files sit. Feature the 2020 <em>Team Topologies &amp; PST</em> session as the documented ancestor of <code>/patterns/pst/</code>. Mirror the fragile items and say which are mirrors.</p>
+<h3 id="maps-the-gallery"><code>/maps/</code> — the gallery</h3>
+<p>The 8 PNGs, the 13 repaired Mermaid sources, the 8 converted position tables, and this pack&#x27;s 4 SVGs. <strong>Source next to render, every time</strong> — <em>&quot;the maps live in the source and are reviewable in a diff.&quot;</em> And a page for <strong>the map that shows us badly</strong>, when it is drawn.</p>
+<h3 id="agents-the-machine-surface"><code>/agents/</code> — the machine surface</h3>
+<p>The coordinate contract with the rendering proof (<code>05__</code> §2), the parse rules and the quote-everything rule (<code>05__</code> §3), the definitions endpoint for all 33 concepts, and the <strong>epistemic guardrail</strong> from <code>04__</code> §5 — placements are contestable claims, never findings. This is the surface the commission was really about.</p>
+<h3 id="shipped"><code>/shipped/</code></h3>
+<p><code>00__</code> §5, unsoftened: 0 of 13 sources render, the evolution map died on 26 Feb 2026, no doctrine or gameplay analysis was ever produced inside <code>__Send</code>, maps-as-graphs is PROPOSED, 31 of 33 roles are silent.</p>
+<h3 id="network"><code>/network/</code></h3>
+<p>The seven-site map. And note that <strong>four siblings mention Wardley zero times</strong> and should link here:</p>
+<ul><li><strong><code>nhi.sgit.ai</code></strong> — strongest candidate. <code>graphs.sgit.ai</code> records four unrendered permissions maps including <em>&quot;Hope Driven Development&quot;</em>, but <code>nhi.sgit.ai/hope/</code> contains no maps at all. Its five-step framework — Enumerate, <strong>Map</strong>, Bound, Observe, Issue no credential — is asking for one.</li><li><strong><code>sg-sentinel.sgit.ai</code></strong> — zero mentions across 23 documents. Allowlist-vs-denylist is a natural map.</li><li><strong><code>riskmandate.ai</code></strong> — zero mentions. RAMM maturity is adjacent to doctrine.</li><li><strong><code>sgit.ai</code></strong> — has the maps, but <code>/network/</code> lists four sites and no mapping site. Needs a fifth entry.</li></ul>
+<h3 id="admin"><code>/admin/</code></h3>
+<p><code>comms.html</code> with numbered asks (N1…) and tasks (T1…), <code>versions.html</code>. Per the house pattern, publish the build order <strong>unresolved</strong>, with <code>08__</code>&#x27;s open questions and tensions visible.</p>
+<hr>
+<h2 id="what-moves-what-gets-referenced-what-stays">What moves, what gets referenced, what stays</h2>
+<div class="table"><table><thead><tr><th>Asset</th><th>Verdict</th></tr></thead><tbody><tr><td><code>pki.sgit.ai/packs/registry-mvp/doctrine.html</code> + <code>doctrine.json</code></td><td><strong>MOVE</strong> — with a stub</td></tr>
+<tr><td><code>pki.sgit.ai/packs/registry-mvp/wardley-maps.html</code> (6 maps)</td><td><strong>MOVE</strong></td></tr>
+<tr><td><code>pki.sgit.ai/packs/map-your-case/wardley-maps.html</code> (4 maps, M1–M4)</td><td><strong>MOVE</strong></td></tr>
+<tr><td><code>sgit.ai/demos/strategy-maps.html</code> (8 PNGs, vault-served)</td><td><strong>REFERENCE</strong> — it is a live demo of the vault decryption mechanism; moving it breaks the demo</td></tr>
+<tr><td><code>sgit.ai/demos/sgit-maps.html</code> (6 inline SVGs)</td><td><strong>REFERENCE</strong></td></tr>
+<tr><td><code>graphs.sgit.ai/v1/maps/index.html</code></td><td><strong>REFERENCE both ways</strong> — it is the methodology-and-inventory page, and its unrendered backlog is ready-made launch content</td></tr>
+<tr><td>Strategy Maps vault <code>ookq4mn4</code> (33 files, 830 KB)</td><td><strong>REFERENCE</strong> — read key is published; there is no doctrine content in it</td></tr>
+<tr><td><code>docs.diniscruz.ai</code> MCP article</td><td><strong>STAY</strong> — one passing clause; mirror the paragraph, link the original</td></tr></tbody></table></div>
+<p><strong>Vault key discipline:</strong> every key on the <code>sgit.ai</code> catalogue is an <code>sgit_rk1_</code> <strong>read</strong> key, published deliberately; no write keys were exposed anywhere in the survey. Keep it that way. Before linking any vault, confirm its write key is escrowed — publishing a read key for a vault whose write key is lost freezes it permanently.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>wardley-maps.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://wardley-maps.sgit.ai/briefs/06__site-architecture.md">https://wardley-maps.sgit.ai/briefs/06__site-architecture.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:27Z</dd><dt>sha256</dt><dd><code title="7b16b9e3400520da128a86feb1e2ef98a7c02ce46258bf172fb5975d257e9de3">7b16b9e34005</code></dd><dt>Frozen copy</dt><dd><a href="06__site-architecture.md">sites/wardley-maps.sgit.ai/briefs/06__site-architecture.md</a> (7,445 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

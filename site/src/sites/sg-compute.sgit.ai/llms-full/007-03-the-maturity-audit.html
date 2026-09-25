@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03 — The maturity audit (sg-compute.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-the-maturity-audit">03 — The maturity audit</a></li><li class="l2"><a href="#1-where-the-maturity-is-real">1. Where the maturity is real</a></li><li class="l3"><a href="#tests">Tests</a></li><li class="l3"><a href="#history">History</a></li><li class="l3"><a href="#cicd">CI/CD</a></li><li class="l3"><a href="#documentation">Documentation</a></li><li class="l3"><a href="#operational-hardening">Operational hardening</a></li><li class="l2"><a href="#2-where-the-claim-is-overstated-four-places">2. Where the claim is overstated — four places</a></li><li class="l3"><a href="#a-there-is-no-static-analysis-none">(a) There is no static analysis. None.</a></li><li class="l3"><a href="#b-ci-runs-674-of-the-tests">(b) CI runs 67.4% of the tests</a></li><li class="l3"><a href="#c-no-infrastructure-as-code">(c) No infrastructure-as-code</a></li><li class="l3"><a href="#d-four-sources-of-truth-are-knowingly-stale">(d) Four sources of truth are knowingly stale</a></li><li class="l2"><a href="#3-the-verdict-to-publish">3. The verdict to publish</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 7 of 14</p><nav class="pager"><span><a href="006-02-the-rename-what-is-done-what-is-not-a.html">← 02 — The rename: what is done, what is not, and what breaks</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="008-04-the-spec-system-what-makes-it-a-platf.html">04 — The spec system: what makes it a platform →</a></span></nav><article class="source"><h1 id="03-the-maturity-audit">03 — The maturity audit</h1>
+<p>The lead&#x27;s claim is that this is <em>&quot;a VERY mature ephemeral compute platform.&quot;</em> <strong>It holds</strong> — and a site that repeats it without the four qualifications below will be caught by anyone who clones the repo. Publishing the audit is what makes the claim credible.</p>
+<p>Every number here was measured in this session, not estimated.</p>
+<hr>
+<h2 id="1-where-the-maturity-is-real">1. Where the maturity is real</h2>
+<h3 id="tests">Tests</h3>
+<pre><code>pytest tests/ci tests/unit -q
+→ 4,785 passed, 4 failed, 4 skipped — 81 seconds</code></pre>
+<p><strong>4,785 tests in 81 seconds</strong> is a genuinely fast, genuinely large suite. Repo total collectible: <strong>7,110</strong> across 799 test files.</p>
+<p>The 4 failures are <strong>test-hygiene time bombs, not code defects</strong>: three IAM tests hardcode <code>last_used=&#x27;2026-05-17T00:00:00+00:00&#x27;</code>, which is now more than 90 days stale, so a <code>STALE_ROLE</code> assertion fires. The fourth needs a built wheel. <strong>These will fail for anyone who clones the repo today</strong> — worth fixing before the site invites people to.</p>
+<h3 id="history">History</h3>
+<p><strong>2,777 commits and 245 tags in 100 days.</strong> First commit 16 April 2026, last 24 July 2026.</p>
+<div class="table"><table><thead><tr><th>Author</th><th>Commits</th></tr></thead><tbody><tr><td>Claude</td><td>1,700 (61%)</td></tr>
+<tr><td>Dinis Cruz</td><td>826 (30%)</td></tr>
+<tr><td>GitHub Actions</td><td>243 (9%)</td></tr></tbody></table></div>
+<p>And the shape, which the site should publish rather than smooth over:</p>
+<div class="table"><table><thead><tr><th>Month</th><th>Commits</th></tr></thead><tbody><tr><td>Apr 2026</td><td>1,136</td></tr>
+<tr><td>May 2026</td><td>1,454</td></tr>
+<tr><td>Jun 2026</td><td>129</td></tr>
+<tr><td>Jul 2026</td><td>58</td></tr></tbody></table></div>
+<p><strong>Two-thirds of the repo landed in the first six weeks, and there has been no commit since 24 July</strong> — a month of silence as of this pack. That is not a criticism; it is what &quot;built fast, then stabilised&quot; looks like. But a site claiming an actively-developed platform against a repo whose last commit is a month old is making a claim a reader can check in one click.</p>
+<h3 id="cicd">CI/CD</h3>
+<p>Nine workflows; <code>ci-pipeline.yml</code> alone is 36,815 bytes. The pipeline is real:</p>
+<p>unit tests → increment tag → <strong>native per-arch builds</strong> (amd64 on <code>ubuntu-latest</code>, arm64 on <code>ubuntu-24.04-arm</code>) → <strong>push by digest only</strong> → integration-test the pre-tag image → <strong>only then</strong> combine digests into a manifest and push to Docker Hub. Same again for the VNC image.</p>
+<p><code>bake-ami.yml</code> is a two-phase bake: install from scratch → health and smoke checks → clean → snapshot → <strong>relaunch from the baked AMI and re-verify</strong> → tag <code>healthy</code> or <code>unhealthy</code>. That is a better AMI process than most infrastructure teams run. <strong>⚠️ It is also currently dead — see <code>02__</code> §4.</strong></p>
+<p>Versioning: <code>v0.2.71</code>, single source of truth in the repo-root <code>version</code> file, auto-incremented by <code>owasp-sbot/OSBot-GitHub-Actions</code>, read at runtime by <code>consts/version.py</code> and every <code>manifest.py</code>, and used as the image tag.</p>
+<h3 id="documentation">Documentation</h3>
+<p><strong>1,265,371 words of markdown.</strong></p>
+<div class="table"><table><thead><tr><th>Area</th><th>Files</th><th>Words</th></tr></thead><tbody><tr><td><code>team/humans/</code></td><td>219</td><td>426,410</td></tr>
+<tr><td><code>team/comms/</code></td><td>246</td><td>218,913</td></tr>
+<tr><td><code>team/roles/</code></td><td>130</td><td>158,075</td></tr>
+<tr><td><code>team/claude/</code> (debriefs)</td><td>204</td><td>156,651</td></tr>
+<tr><td><code>library/dev_packs/</code></td><td>96</td><td>144,051</td></tr>
+<tr><td><code>library/docs/</code></td><td>54</td><td>64,289</td></tr>
+<tr><td><code>library/guides/</code></td><td>22</td><td>44,547</td></tr>
+<tr><td><code>library/catalogue/</code></td><td>37</td><td>30,038</td></tr></tbody></table></div>
+<p>And the mechanism that makes it trustworthy — a formal <strong>reality-document system</strong> (<code>team/roles/librarian/reality/</code>, 72,339 words, 12 domains) with a governing rule quoted in <code>.claude/CLAUDE.md</code>:</p>
+<blockquote><p><strong><em>&quot;If the reality document doesn&#x27;t list it, it does not exist.</strong> … <strong>Briefs are aspirations, not facts.</strong>&quot;</em></p></blockquote>
+<p>That is an unusually disciplined honesty mechanism and it deserves a page of its own. <strong>It is also stale</strong> — the index header reads <code>v0.2.30 | Last updated: 2026-05-17</code> against a repo at v0.2.71, and the repo&#x27;s own dev pack flags it: <em>&quot;The reality doc and <code>capabilities.json</code> are demonstrably stale.&quot;</em></p>
+<h3 id="operational-hardening">Operational hardening</h3>
+<p>Not aspirational — each piece is traceable to a real incident:</p>
+<ul><li><strong><code>Request__Watchdog</code></strong> — daemon thread, <code>os._exit(2)</code> on a stuck request, written against a real Lambda deadlock, with the GIL reasoning in the source. See <code>01__</code> §3.</li><li><strong><code>Health__Poller</code></strong> — two-phase: EC2 <code>running</code>, then HTTP probe.</li><li><strong>Two Dockerfile build-time guards</strong> asserting the installed Playwright version equals <code>1.58.0</code> <strong>in the same interpreter as <code>CMD</code></strong>, each with a comment naming the production incident that motivated it.</li><li><strong>ACME / Let&#x27;s Encrypt automation including IP certificates</strong> via a <code>shortlived</code> profile.</li><li><strong>Prometheus <code>/metrics</code></strong>, plus an observability service with AMP remote-write and OpenSearch.</li><li><strong><code>utils/ec2_boot_bench/</code></strong> — 24 real benchmark runs, including recorded failures.</li></ul>
+<hr>
+<h2 id="2-where-the-claim-is-overstated-four-places">2. Where the claim is overstated — four places</h2>
+<h3 id="a-there-is-no-static-analysis-none">(a) There is no static analysis. None.</h3>
+<p>No <code>mypy</code>, <code>ruff</code>, <code>flake8</code>, <code>pylint</code>, <code>black</code>, <code>isort</code>, <code>setup.cfg</code> or <code>tox.ini</code> anywhere, and no such configuration in <code>pyproject.toml</code>.</p>
+<p>Type safety is enforced <strong>at runtime</strong>, via <code>Type_Safe</code> from <code>osbot-utils</code>, present in <strong>1,333 of 3,127 package files (42.6%)</strong>. That is a real and defensible architectural choice — runtime validation catches things static analysis cannot — but it is not a substitute, and 57% of files do not use it.</p>
+<p>The substitute is <code>tests/ci/</code>: four hand-written structural guards. <strong>One of them is broken</strong> (<code>02__</code> §3).</p>
+<h3 id="b-ci-runs-674-of-the-tests">(b) CI runs 67.4% of the tests</h3>
+<p>| Path | Collected | In CI? |
+|---|---:|:-:|
+| <code>tests/ci</code> | 33 | ✅ |
+| <code>tests/unit</code> | 4,760 | ✅ |
+| <code>tests/integration</code> | 24 | ❌ |
+| <code>tests/integration_live</code> | 60 | ❌ |
+| <code>tests/local</code> | 5 | ❌ |
+| <code>tests/benchmarks</code> | 3 | ❌ |
+| <code>sg_compute__tests</code> | <strong>672</strong> | ❌ |
+| <code>sg_compute_specs/**/tests</code> | <strong>1,280</strong> | ❌ |
+| <code>sgraph_ai_service_playwright__cli/**/tests</code> | 273 | ❌ |
+| <strong>Total</strong> | <strong>7,110</strong> | <strong>4,793 run</strong> |</p>
+<p><strong>2,317 tests never run in CI — including 1,952 that test the new <code>sg_compute</code> and <code>sg_compute_specs</code> trees</strong>, which is to say the parts the rename is building.</p>
+<p>And it shows. <strong>Six of the seven collection errors are in the un-CI&#x27;d suites:</strong> four genuine circular imports (<code>TAG_PURPOSE_KEY</code> in the neko, opensearch, prometheus and vnc <code>*__AWS__Client.py</code> files), one missing module (<code>sg_compute_specs.playwright.core.schemas.browser.Schema__Proxy__Auth__Basic</code>), and one stale osbot import path.</p>
+<p><strong>Adding <code>sg_compute__tests</code> and <code>sg_compute_specs/**/tests</code> to CI would surface six real breakages immediately.</strong> That is the highest-value change available in the repo.</p>
+<h3 id="c-no-infrastructure-as-code">(c) No infrastructure-as-code</h3>
+<p>No Terraform, CloudFormation, CDK or SAM templates anywhere. Provisioning is imperative Python over <code>osbot-aws</code>.</p>
+<p>Defensible for a platform whose whole point is programmatic provisioning — but it means there is no declarative description of the AWS footprint, no plan/apply, and no drift detection. Worth stating rather than leaving a reader to infer it.</p>
+<h3 id="d-four-sources-of-truth-are-knowingly-stale">(d) Four sources of truth are knowingly stale</h3>
+<div class="table"><table><thead><tr><th>Artefact</th><th>Says</th><th>Reality</th></tr></thead><tbody><tr><td><code>capabilities.json</code></td><td><code>v0.1.29</code></td><td><strong>v0.2.71 — 42 minor versions behind.</strong> <code>COPY</code>&#x27;d into the image and served at <code>/admin/capabilities</code></td></tr>
+<tr><td>Reality doc index</td><td><code>v0.2.30</code>, 17 May 2026</td><td>v0.2.71</td></tr>
+<tr><td><code>README.md</code></td><td><em>&quot;Phase 0 in progress — repo skeleton&quot;</em></td><td>217,266 LOC, 7,110 tests</td></tr>
+<tr><td><code>sg_compute/version</code></td><td><code>v0.1.162</code></td><td><strong>Read by nothing.</strong> Grep for any code reading it returns zero hits</td></tr></tbody></table></div>
+<p>The repo&#x27;s own documentation already tells you not to trust <code>capabilities.json</code>:</p>
+<blockquote><p><em>&quot;The UI reads <code>GET /health/capabilities</code> (the live <code>Schema__Service__Capabilities</code>, populated by <code>Capability__Detector</code>) — <strong>never</strong> the stale <code>capabilities.json</code>.&quot;</em></p></blockquote>
+<p><strong>The site needs one stated policy: code wins.</strong> The repo&#x27;s own dev pack already rules this way; make it explicit and apply it everywhere.</p>
+<hr>
+<h2 id="3-the-verdict-to-publish">3. The verdict to publish</h2>
+<blockquote><p><strong>Mature where it counts, thin where the repo has not looked.</strong></p>
+<p>4,785 tests passing in 81 seconds, digest-first multi-arch CI, AMI bake-and-verify, 1.27 million words of documentation with a formal reality discipline, and operational hardening written from real incidents.</p>
+<p>And: no linter, no type-checker, a third of the tests outside CI hiding six real breakages, no IaC, and four sources of truth that disagree with the code.</p></blockquote>
+<p>That paragraph, published as-is, is worth more to the site&#x27;s credibility than any feature list. It is also <strong>five days of work away from being a much better paragraph</strong> — fix the guard, add the two test suites to CI, resolve the six imports, delete <code>capabilities.json</code> or regenerate it, rewrite the README from the tree, and fix the three date-brittle IAM tests.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em>Published on sg-compute.sgit.ai under CC BY 4.0. Source: the <code>sg-compute.sgit.ai</code> brief pack v0.33.62, 24 August 2026, by Dinis Cruz via the SG/Send Librarian, with AI co-authorship (Claude, Anthropic).</em></p>
+<hr>
+<p>source: /briefs/04__the-spec-system.md</p>
+<hr></article><nav class="pager"><span><a href="006-02-the-rename-what-is-done-what-is-not-a.html">← 02 — The rename: what is done, what is not, and what breaks</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="008-04-the-spec-system-what-makes-it-a-platf.html">04 — The spec system: what makes it a platform →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>7 of 14: 03 — The maturity audit</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

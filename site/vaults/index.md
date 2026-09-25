@@ -1,0 +1,38 @@
+# Vaults
+
+- Risk Acceptance Office (odn10gfp): A business plan with one risk replayed: established on facts, accepted for an interval, escalated, funded and ended on facts
+- Lesson Loop (3s9q7zl7): A business plan for coaches: the coach's knowledge captured at the end of every lesson, in a record the player holds
+- Connector Twin (7tkvspwp): A business plan with a working replay: what an agent did through Gmail and Calendar, what it saw, and what can be undone
+- Company X-Ray (ukpqjkly): A business plan for reading a company's own documents together, with one invented company X-rayed and every finding tied to its evidence
+- Agent as Webmaster (ikrqeu5t): A complete business plan, with mock-ups and prototypes, written for somebody else to run
+- DSIT AI Risk Toolkit (0q4sfr57): Start with an AI decision and trace it back to UK DSIT guidance; an eight-slide walkthrough plays from the vault
+- Fractional CISO application pack (eaba68j5): The sibling of #29, written for an archetype instead of a company, so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not
+- Interim CISO application pack (8brojsem): A job application as a vault, three routes for three readers, four documents in four formats each, and the client named nowhere
+- Synthetic users · riskmandate.ai (o3q6zhtr): The same method as #27 pointed at a second product, and it measured rather than narrated, catching a shipped bug every existing test had passed over
+- Synthetic users (g2hei4u6): Five invented buyers walked through store.sgit.ai one screenshot at a time, 43 steps, 15 unanswered questions, 18 findings, three costing a sale
+- The sgit.ai board (pdulwi6i): The site's own task board as a vault, cards as files, five columns as an app, the source of truth the site renders from
+- Agent permission games (4evnlwrj): Two games about grants and mandates, the first vault here that phones home
+- AIUC-1 conformance layer (2wzct4k7): The AIUC-1 standard as a graph, plus a conformance layer that computes insurability
+- Licence to Operate (posrhzp3): An insurance policy for an agent, simulated: grant, mandate, and the delta nothing covers
+- VoiceDebrief pitch (FI) (95i2xqrd): A three-minute investor pitch as a presenter app, with script, timings and sources
+- Scaling Threat Modeling (0ict6flm): ThreatModCon 2025: eleven linked threat models across 51 nodes and 179 threats
+- AI vs. AI, Black Hat EU 2025 (k1izvg7e): The Black Hat EU 2025 keynote, with its PDF exports and eight research papers
+- Standards Atlas, GDPR (4zv4bvmu): GDPR as a semantic graph, with writes scoped to a feedback folder
+- RiskMandate · File security (wu365g94): An eleven-step risk-acceptance walk, running SQLite in the browser
+- Penetration Test Report (o4lrwx02): A penetration test report (fictional) with a re-test script per finding
+- SG/Payments Brief Pack (o3m0sz3q): A payments briefing pack, marked PROPOSED rather than dressed as decided
+- Content-Transformation Proxy (3c90c2bff2b1): An as-built engineering brief, shipped with its slides, diagrams and source PDFs
+- SG Commercialisation (haeu7p1e): A commercial operating model, with its customer register deliberately left empty
+- Vault App Mode (xth1xt78): Nine proofs of concept for vault app mode, with a hub that runs them
+- Private Health Score (zc6abngv): A clinical questionnaire scored by a versioned framework, with a clinician review screen
+- VoiceDebrief (k6xy9z4d): Four apps in one vault, from raw recording to structured debrief
+- Regulation Graph (73heuprz): The EU AI Act parsed from Formex into an evidence graph, article by article
+- Risk Mandate (4zf6pf2z): A working software project delivered as a vault, and it calls an LLM holding no API key
+- Risk Graph Explorer (3simlnqe): A fact-to-risk graph explorer, built to be public: its app.json requests nothing
+- Agentic Browser Isolation (0610gsp9): Should an agent browse with your logged-in sessions? A living risk graph, per stakeholder
+- Supplement Stack (r7zes477): A patient-held health record: a real regimen, label photos, totals against UK RNIs
+- Strategy Maps (ookq4mn4): The SG/Send strategy in seven Wardley maps, plus the sgit positioning analysis
+- Field Notes (4bshby5n): Six studies with generative SVG art, the smallest complete vault app
+- Deploy Docs (fyofmkvr): Living deployment documentation, updated by an sgit push with no site deploy
+- The Vault Catalogue (kc67yhgw): An index of published vaults that is itself a vault, and lists itself
+- Algarve · May 2026 (3d04e6b9ca98): A travel diary: twenty photographs in three sizes and an eight-chapter narrative

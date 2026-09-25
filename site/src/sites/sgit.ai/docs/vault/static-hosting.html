@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Static hosting on GitHub Pages, SG/Vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#static-hosting-on-github-pages-sgvault">Static hosting on GitHub Pages, SG/Vault</a></li><li class="l1"><a href="#static-hosting-github-pages-s3">Static hosting, GitHub Pages / S3</a></li><li class="l2"><a href="#why-it-works">Why it works</a></li><li class="l2"><a href="#what-works-statically-and-what-doesnt">What works statically, and what doesn&amp;#x27;t</a></li><li class="l2"><a href="#the-layout-path-mirroring-is-the-one-hard-requirement">The layout, path mirroring is the one hard requirement</a></li><li class="l2"><a href="#honest-caveats">Honest caveats</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="static-hosting.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/vault/static-hosting.html">live ↗</a></p><article class="source"><h1 id="static-hosting-on-github-pages-sgvault">Static hosting on GitHub Pages, SG/Vault</h1>
+<blockquote><p>Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.</p></blockquote>
+<p><em>Source: <a href="static-hosting.html">https://sgit.ai/docs/vault/static-hosting.html</a><a class="ext live" href="https://sgit.ai/docs/vault/static-hosting.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">SG/Vault</a><a class="ext live" href="https://sgit.ai/docs/vault/index.html" title="live page">↗</a> / Static hosting</p>
+<h1 id="static-hosting-github-pages-s3">Static hosting, GitHub Pages / S3</h1>
+<p>The same vault-app HTML runs against the live API <strong>or</strong> a 100% static file host, transparently. The app only talks to <code>window.sg</code>; static vs live is a property of the transport, not the app. Shipped, opt-in, default-off.</p>
+<h2 id="why-it-works">Why it works</h2>
+<p>Everything needed to open and browse a vault is a plain GET to a deterministic path: file IDs (commits, trees, refs, indexes) are content hashes or HMACs of the key, computed client-side, <strong>no discovery or listing call exists</strong>. So a static host that serves those exact paths just works: the browser GETs ciphertext from GitHub Pages or S3 and decrypts locally. No backend, no server, still zero-knowledge, the bytes on the CDN are ciphertext.</p>
+<pre><code>
+&lt;script&gt;
+  window.SG_STATIC   = true;                    // batch reads → GETs; writes → EREADONLY
+  window.SG_ENDPOINT = &#x27;https://my-org.github.io/my-vault&#x27;;
+&lt;/script&gt;</code></pre>
+<h2 id="what-works-statically-and-what-doesnt">What works statically, and what doesn&#x27;t</h2>
+<div class="table"><table><thead><tr><th>Call</th><th>Static?</th></tr></thead><tbody><tr><td>Open, browse, read files, history, <code>sg.vfs.read/readText/list</code></td><td>✅ plain GETs</td></tr>
+<tr><td>Large reads</td><td>✅ falls back from presigned to direct GET</td></tr>
+<tr><td>Batch reads</td><td>✅ fan out to parallel GETs, identical result shape</td></tr>
+<tr><td>Writes, deletes, <code>sg.append.*</code>, vault creation</td><td>❌ rejected cleanly with <code>EREADONLY</code></td></tr></tbody></table></div>
+<p>A static vault is a <strong>read-only snapshot</strong>: ideal for published docs, reports, dashboards and view-only shares. The app detects it via <code>sg.app.writable === false</code> and hides its editing UI; the same HTML runs writable against the live endpoint. <em>Same app, two backends.</em></p>
+<h2 id="the-layout-path-mirroring-is-the-one-hard-requirement">The layout, path mirroring is the one hard requirement</h2>
+<p>The live API serves <code>GET /api/vault/read/&lt;vaultId&gt;/&lt;filePath&gt;</code>; the static host must serve the vault&#x27;s encrypted <code>bare/</code> tree at exactly that path under your base:</p>
+<pre><code>&lt;repo root&gt;/                    → https://my-org.github.io/my-vault/
+└── api/vault/read/&lt;vaultId&gt;/
+    └── bare/
+        ├── data/      obj-cas-imm-*    # immutable — cache forever
+        ├── refs/      ref-pid-muw-*    # mutable head — no-store
+        ├── indexes/   idx-pid-muw-*
+        └── keys/      key-rnd-imm-*</code></pre>
+<p>If the repo is your vault&#x27;s own git remote (working tree + <code>bare/</code> committed per the <a href="git-and-vaults.html">side-by-side pattern</a><a class="ext live" href="https://sgit.ai/docs/vault/git-and-vaults.html" title="live page">↗</a>), the encrypted tree is already in the repo, publishing is just placing it under the right path prefix. Visitors open <code>https://…/my-vault/#&lt;key&gt;</code>: the key travels in the URL fragment (never sent to the host), the transport GETs ciphertext, the browser decrypts and renders.</p>
+<h2 id="honest-caveats">Honest caveats</h2>
+<ul><li><strong>Read-only and frozen.</strong> The static tree is a snapshot at export time; new live commits appear only when you re-export.</li><li><strong>Paths must match exactly</strong>, or reads 404. (A configurable read-path template is a proposed follow-on, not shipped.)</li><li><strong>Cross-origin setups need CORS</strong> on the static host for GETs; same-origin needs nothing.</li><li><strong>The key is the read capability.</strong> Anyone with the full URL can read the snapshot, that is the point of publishing one, but the host itself only ever holds ciphertext.</li></ul>
+<p><a href="git-and-vaults.html">← Git repos inside vaults</a><a class="ext live" href="https://sgit.ai/docs/vault/git-and-vaults.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="static-hosting.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/vault/static-hosting.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/vault/static-hosting.html">https://sgit.ai/docs/vault/static-hosting.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/vault/static-hosting.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:11Z</dd><dt>sha256</dt><dd><code title="ece481e7c2cc1b40397186603eb7848f16f1772b3b9e559fc7d102e5a37adf8b">ece481e7c2cc</code></dd><dt>Frozen copy</dt><dd><a href="static-hosting.md">sites/sgit.ai/docs/vault/static-hosting.md</a> (3,812 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

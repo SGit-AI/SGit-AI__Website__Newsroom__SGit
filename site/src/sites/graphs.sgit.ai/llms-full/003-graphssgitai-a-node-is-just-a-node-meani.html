@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>graphs.sgit.ai — a node is just a node; meaning lives in the edges · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · graphs.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#graphssgitai-a-node-is-just-a-node-meaning-lives-in-the-edges">graphs.sgit.ai — a node is just a node; meaning lives in the edges</a></li><li class="l2"><a href="#the-one-that-needs-no-background">The one that needs no background</a></li><li class="l2"><a href="#three-altitudes">Three altitudes</a></li><li class="l2"><a href="#the-story-that-makes-the-case">The story that makes the case</a></li><li class="l2"><a href="#real-numbers">Real numbers</a></li><li class="l2"><a href="#what-ships-and-what-is-argued">What ships, and what is argued</a></li><li class="l2"><a href="#why-this-site-exists">Why this site exists</a></li><li class="l2"><a href="#read-it-as-a-book">Read it as a book</a></li><li class="l2"><a href="#for-agents">For agents</a></li><li class="l2"><a href="#site">Site</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/graphs.sgit.ai.html">graphs.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 3 of 15</p><nav class="pager"><span><a href="002-graphssgitai-meaning-through-connectivit.html">← graphs.sgit.ai — meaning through connectivity</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-graphssgitai-brief-pack.html">graphs.sgit.ai — Brief Pack →</a></span></nav><article class="source"><h1 id="graphssgitai-a-node-is-just-a-node-meaning-lives-in-the-edges">graphs.sgit.ai — a node is just a node; meaning lives in the edges</h1>
+<blockquote><p>&quot;in our graph we do not use properties, because properties do not have meaning, they are
+just words; <strong>we capture meaning through connectivity.</strong>&quot;
+— Dinis Cruz, 26 June 2026</p></blockquote>
+<p><em>Source: <a class="ext" href="https://graphs.sgit.ai/index.html">https://graphs.sgit.ai/index.html ↗</a> · site v0.4.0 · markdown twin of the front page.</em></p>
+<p><strong>Not a graph database pitch.</strong> The claim is that one grammar is the interface at every
+boundary, not that we store things in a graph. There is no graph database anywhere in the
+work behind this site, and <a class="ext" href="https://graphs.sgit.ai/shipped/index.html">we say so on its own page ↗</a>.</p>
+<hr>
+<h2 id="the-one-that-needs-no-background">The one that needs no background</h2>
+<p>Two variables in a Python program. Both hold <code>8080</code>.</p>
+<div class="table"><table><thead><tr><th></th><th>Reached by tracing outward</th></tr></thead><tbody><tr><td><code>port = 8080</code></td><td><code>int</code>. That is the whole graph.</td></tr>
+<tr><td><code>port = Safe_UInt__Port(8080)</code></td><td>a type carrying a range constraint → a library → a pinned version → its tests, repository, licence, maintainer</td></tr></tbody></table></div>
+<p><strong>The difference is not in the value.</strong> The meaning is identical in the developer&#x27;s head and
+radically different in the graph — and the graph is what another system, another team, or an
+agent has to work from. <a class="ext" href="https://graphs.sgit.ai/start/index.html">The five-minute version ↗</a>.</p>
+<h2 id="three-altitudes">Three altitudes</h2>
+<div class="table"><table><thead><tr><th></th><th>Section</th><th>What you leave with</th></tr></thead><tbody><tr><td><strong>1 — the city walls</strong></td><td><a class="ext" href="https://graphs.sgit.ai/start/index.html">/start/ ↗</a></td><td>A node alone means nothing; the same value differently connected means different things; nobody has to agree for the overlap to be computable; confidence is a function of connectivity; a named absence beats a hidden one.</td></tr>
+<tr><td><strong>2 — roads and buildings</strong></td><td><a class="ext" href="https://graphs.sgit.ai/grammar/index.html">/grammar/ ↗</a></td><td>Every edge is a verb with a distinct inverse. The generic association edge is banned. Paths must read as sentences. Rich nodes are good. Never render the whole graph — render the result of a query.</td></tr>
+<tr><td><strong>3 — people and cars</strong></td><td><a class="ext" href="https://graphs.sgit.ai/depth/index.html">/depth/ ↗</a></td><td>Against schema-first; merging vocabularies erases the disagreement; classification as a computed path-pattern; the grounding ladder; supersede never delete; concepts not words. Plus <a class="ext" href="https://graphs.sgit.ai/depth/boundaries.html">a graph at every boundary ↗</a>.</td></tr></tbody></table></div>
+<p>The IA is the argument: *&quot;this is just a question of altitude, like if you see something from a
+very high altitude you just see the city walls, and as you zoom in you start to see roads and
+buildings, and eventually people and cars.&quot;*</p>
+<h2 id="the-story-that-makes-the-case">The story that makes the case</h2>
+<p>Expertise takes <strong>10,000 hours</strong> — from a 1993 violin study, where it was an <em>average</em>, not a
+threshold, and half the top group had not reached it. The original author spent his career
+correcting the popularisation, and <strong>none of the corrections ever attached to the claim</strong>: by
+then it had been carried through <strong>242 papers</strong> and more than **200,000 supporting citation
+paths** that lead back to nothing.</p>
+<p>A document cannot fix that. A graph can: mark the claim superseded from a date, then ask which
+conclusions were resting on it. <a class="ext" href="https://graphs.sgit.ai/depth/index.html#supersede">Supersede, never delete ↗</a>.</p>
+<h2 id="real-numbers">Real numbers</h2>
+<div class="table"><table><thead><tr><th>Graph</th><th>Numbers</th><th>Status</th></tr></thead><tbody><tr><td><a href="../../sgit.ai/demos/vaults/regulation-graph/index.html">EU AI Act regulation graph</a><a class="ext live" href="https://sgit.ai/demos/vaults/regulation-graph/" title="live page">↗</a></td><td><strong>1,523 nodes · 1,944 edges</strong>; 11 views; RDF/Turtle export</td><td>live vault</td></tr>
+<tr><td><a href="../../sgit.ai/demos/vaults/risk-graph-explorer/index.html">Risk Graph Explorer</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/" title="live page">↗</a></td><td>18 facts / 37 risks / 14 provisions; <code>permissions: {}</code></td><td>live vault</td></tr>
+<tr><td><a href="../../sgit.ai/demos/vaults/agentic-browser-isolation/index.html">Agentic browser isolation</a><a class="ext live" href="https://sgit.ai/demos/vaults/agentic-browser-isolation/" title="live page">↗</a></td><td>17 entry points; 5 stakeholder altitudes</td><td>live vault</td></tr>
+<tr><td><a class="ext" href="https://graphs.sgit.ai/examples/browser-isolation.html">Browser isolation risk graph ↗</a></td><td><strong>59 nodes, 75 edges</strong> — including 3 risks <em>of the mitigation</em></td><td>parsed from the brief</td></tr>
+<tr><td><a class="ext" href="https://graphs.sgit.ai/examples/2fa.html">The 2FA instance graph ↗</a></td><td><strong>51 nodes, 53 edges</strong>, one machine-readable file</td><td>parsed from the brief</td></tr>
+<tr><td>The issue tracker&#x27;s own graph</td><td><strong>71 nodes, 141 edges</strong>; 12 node types, 10 edge types</td><td>measured, live repo data</td></tr></tbody></table></div>
+<p><a class="ext" href="https://graphs.sgit.ai/examples/index.html">All worked examples ↗</a>.</p>
+<h2 id="what-ships-and-what-is-argued">What ships, and what is argued</h2>
+<p>Ships and is verifiable by reading code: a content-addressed commit DAG with multi-parent
+commits, a real wave-BFS merge-base and three-way merge; a graph of graphs via typed
+<code>*.link.json</code> edges; a read-only DAG query API exposed to untrusted sandboxed apps; a live
+typed property graph; three published vaults.</p>
+<p>Does not exist anywhere: <strong>any graph database</strong>, MGraph-DB as a dependency, browser SPARQL or
+Cypher, RDF/JSON-LD in the code, the path-query language, commit signing (written, and only
+ever <code>null</code>).</p>
+<blockquote><p>*&quot;We ship a hand-written content-addressed object graph in the browser. We do not use a graph
+database, and we say so in our own architecture notes.&quot;*</p></blockquote>
+<p><a class="ext" href="https://graphs.sgit.ai/shipped/index.html">The full separation ↗</a>.</p>
+<h2 id="why-this-site-exists">Why this site exists</h2>
+<p>The three canonical philosophy documents sit in <code>library/concepts/</code>, are referenced by four
+files, and are <strong>not referenced from the file every agent starts from</strong>. An agent reading it and
+working forwards never encounters the philosophy. That is a routing failure, not a comprehension
+failure — so the fix is an address. <a class="ext" href="https://graphs.sgit.ai/origins/index.html">Origins, and the ten-phase arc ↗</a>.</p>
+<h2 id="read-it-as-a-book">Read it as a book</h2>
+<p>The site&#x27;s content is also a book — <strong>Meaning Through Connectivity</strong>, an introduction and sixteen chapters in
+six parts, generated from the site&#x27;s own pages so the two cannot drift:</p>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/book/index.html">Chapter pages, with the table of contents beside you ↗</a></li><li><a class="ext" href="https://graphs.sgit.ai/book/single.html">The whole book in one page ↗</a></li><li><a class="ext" href="https://graphs.sgit.ai/book/meaning-through-connectivity.pdf">The print PDF ↗</a> — a 6″×9″ technical-book interior with gutters, folios and a paginated contents; print-on-demand ready — <a class="ext" href="https://graphs.sgit.ai/book/cover/front.svg">cover included ↗</a></li><li><a class="ext" href="https://graphs.sgit.ai/book/meaning-through-connectivity-screen.pdf">The screen PDF ↗</a> — the site&#x27;s own design at US Letter, made for reading on a tablet</li></ul>
+<p>Both PDFs regenerate together from the same chapters on every release and carry the site
+version on their cover — the build fails if either lags the content.</p>
+<h2 id="for-agents">For agents</h2>
+<ul><li><a href="../llms.txt.html">llms.txt</a><a class="ext live" href="https://graphs.sgit.ai/llms.txt" title="live page">↗</a> — every entry carries the page&#x27;s single most important fact, not its topic</li><li><a href="../llms-full.txt.html">llms-full.txt</a><a class="ext live" href="https://graphs.sgit.ai/llms-full.txt" title="live page">↗</a> — the whole document set in one fetch</li><li><a class="ext" href="https://graphs.sgit.ai/documents/index.html">/briefs/ ↗</a> — the raw markdown, which is the source of truth</li><li><a class="ext" href="https://graphs.sgit.ai/grammar/edge-set.html">The edge set ↗</a> — the pasteable vocabulary</li></ul>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://graphs.sgit.ai/glossary/index.html">Glossary ↗</a> — plain English alongside every technical term</li><li><a class="ext" href="https://graphs.sgit.ai/why-graphs/index.html">Why graphs at all ↗</a> — including GraphRAG and RDF positioning</li><li><a class="ext" href="https://graphs.sgit.ai/network/index.html">The network ↗</a> · <a class="ext" href="https://graphs.sgit.ai/origins/index.html">Origins ↗</a> · <a class="ext" href="https://graphs.sgit.ai/documents/index.html">The documents ↗</a></li><li><a class="ext" href="https://graphs.sgit.ai/admin/comms.html">Comms: tasks &amp; requests ↗</a> · <a class="ext" href="https://graphs.sgit.ai/admin/versions.html">Release history ↗</a> · <a class="ext" href="https://graphs.sgit.ai/admin/index.html">How this site is built ↗</a></li><li><a class="ext" href="https://graphs.sgit.ai/about/participant.html">Participant disclosure, including where our approach loses ↗</a></li></ul>
+<hr>
+<p>All content on this site is released under the Creative Commons Attribution 4.0 International
+licence (CC BY 4.0). You are free to share and adapt this material for any purpose, including
+commercially, as long as you give appropriate credit.</p>
+<hr>
+<p>== briefs/00__BRIEF.md</p>
+<hr></article><nav class="pager"><span><a href="002-graphssgitai-meaning-through-connectivit.html">← graphs.sgit.ai — meaning through connectivity</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-graphssgitai-brief-pack.html">graphs.sgit.ai — Brief Pack →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>graphs.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://graphs.sgit.ai/llms-full.txt">https://graphs.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:18Z</dd><dt>sha256</dt><dd><code title="4c219807574230ca1c649cbdce1c341ac32bacb897e2259b54f1fbcac66f16f3">4c2198075742</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/graphs.sgit.ai/llms-full.txt</a> (253,399 bytes)</dd><dt>Section</dt><dd>3 of 15: graphs.sgit.ai — a node is just a node; meaning lives in the edges</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

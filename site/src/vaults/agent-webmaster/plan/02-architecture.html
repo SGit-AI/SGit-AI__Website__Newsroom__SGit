@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>2 · The architecture · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#2-the-architecture">2 · The architecture</a></li><li class="l2"><a href="#1-the-agent">1. The agent</a></li><li class="l2"><a href="#2-the-repository">2. The repository</a></li><li class="l2"><a href="#3-the-branches">3. The branches</a></li><li class="l2"><a href="#4-the-deploy">4. The deploy</a></li><li class="l2"><a href="#what-is-not-in-the-stack-on-purpose">What is not in the stack, on purpose</a></li><li class="l2"><a href="#where-vaults-come-in">Where vaults come in</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="02-architecture.md">raw text</a></p><article class="source"><p><a href="01-the-idea.html">← The idea</a> · <a href="00-START-HERE.html">Index</a> · <a href="03-the-workflow.html">Next →</a></p>
+<h1 id="2-the-architecture">2 · The architecture</h1>
+<p><img src="../diagrams/architecture.svg" alt="The architecture" loading="lazy"></p>
+<p>The stack has four parts, and only one of them is new.</p>
+<h2 id="1-the-agent">1. The agent</h2>
+<p>A Claude or ChatGPT session with the repository connected. In Claude that is a project or a Claude Code session with the GitHub connection; in ChatGPT it is a project with the GitHub connector and code execution. Either is more than powerful enough. The agent carries a short operating document per customer, the <strong>site playbook</strong> (see <code>prototypes/webmaster-playbook.md</code>): what the site is, who the customer is, what they are allowed to change directly, what needs the operator, the brand rules, and the change log.</p>
+<p>Two sessions exist per customer, and the distinction is the product:</p>
+<div class="table"><table><thead><tr><th>Session</th><th>Who drives it</th><th>What it can do</th></tr></thead><tbody><tr><td><strong>The operator&#x27;s session</strong></td><td>The person running the business</td><td>Everything. Setup, structure, design, fixes, anything the customer asks for that is beyond the customer&#x27;s own session.</td></tr>
+<tr><td><strong>The customer&#x27;s session</strong></td><td>The customer, under the maintenance package</td><td>Content changes on the pages they own, within the playbook&#x27;s rules, pushed to the preview branch or, for small changes, straight to live.</td></tr></tbody></table></div>
+<p>The customer&#x27;s session is what makes this different from an agency. The customer can go there and make changes, in plain language, whenever they want. The operator&#x27;s session is what makes it safe.</p>
+<h2 id="2-the-repository">2. The repository</h2>
+<p>One public GitHub repository per customer. Public, deliberately: the site is public anyway, so there is nothing in the repository that is not already on the internet, and public repositories get GitHub Pages for free. The repository holds:</p>
+<pre><code>index.html            or a small static generator&#x27;s source
+pages/                one file per page
+images/               the customer&#x27;s photos, resized
+site.json             the structured content the pages are built from
+PLAYBOOK.md           the agent&#x27;s operating instructions for this site
+CHANGELOG.md          every change, in plain language, newest first
+.github/workflows/    the deploy</code></pre>
+<p>Static files only. No database, no server-side code, no plugins. If the site needs something dynamic, a booking form, a newsletter sign-up, a payment, it is done with a third-party service embedded in the page, and the credential for it lives with that service, never in the repository.</p>
+<h2 id="3-the-branches">3. The branches</h2>
+<p>Two, with an optional third:</p>
+<div class="table"><table><thead><tr><th>Branch</th><th>Deploys to</th><th>Used for</th></tr></thead><tbody><tr><td><code>main</code></td><td>the live domain</td><td>what the customer&#x27;s visitors see</td></tr>
+<tr><td><code>preview</code></td><td><code>preview.&lt;domain&gt;</code> or the GitHub Pages preview URL</td><td>changes the customer wants to look at before they go live</td></tr>
+<tr><td><code>campaign-*</code></td><td>a preview URL each</td><td>a seasonal page, a launch, an experiment, merged or deleted afterwards</td></tr></tbody></table></div>
+<p>Every change is a commit with a plain-language message. Every commit is a version. Rolling back is a revert. The customer never loses anything, and neither does the operator.</p>
+<h2 id="4-the-deploy">4. The deploy</h2>
+<p>GitHub Pages, from the repository, on every push, via GitHub Actions. Free for public repositories. HTTPS on a custom domain with a DNS record the customer owns. Nothing to run, nothing to patch, nothing to renew except the domain.</p>
+<h2 id="what-is-not-in-the-stack-on-purpose">What is not in the stack, on purpose</h2>
+<ul><li><strong>No CMS.</strong> The chat is the CMS.</li><li><strong>No hosting bill.</strong> GitHub Pages is the host.</li><li><strong>No database.</strong> The repository is the database, and git is the history.</li><li><strong>No build the customer can break.</strong> Plain HTML or a generator so simple the agent maintains it.</li><li><strong>No secrets in the repository.</strong> Anything with a credential is a third-party embed.</li></ul>
+<h2 id="where-vaults-come-in">Where vaults come in</h2>
+<p>The customer&#x27;s website does not need a vault. It is public, static and on GitHub, and that is the point of it. <strong>The business does.</strong> Every customer has a brief, a brand pack, the notes from the setup call, sometimes a document they would rather not put in a public repository. The operator holds those in a vault per customer, versioned like the site is, openable by the customer with a read key, and handed over whole if the customer ever leaves. The operator&#x27;s own playbook, pricing and templates are a vault too, and so is this plan.</p>
+<hr>
+<p><a href="01-the-idea.html">← The idea</a> · <a href="00-START-HERE.html">Index</a> · <a href="03-the-workflow.html">Next →</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="1b4df0ae0aaf5d38a6bedf05c02d3e3b6d740e7dede1a16e9281443c8ce3b405">1b4df0ae0aaf</code></dd><dt>Frozen copy</dt><dd><a href="02-architecture.md">vaults/agent-webmaster/plan/02-architecture.md</a> (4,325 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

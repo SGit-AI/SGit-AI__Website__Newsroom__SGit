@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>RiskMandate — For Agents · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#riskmandate-for-agents">RiskMandate — For Agents</a></li><li class="l1"><a href="#machine-readable-by-design">Machine-readable by design.</a></li><li class="l2"><a href="#three-artifacts-one-source-of-truth">Three artifacts, one source of truth.</a></li><li class="l2"><a href="#fetch-dont-scrape">Fetch, don&amp;#x27;t scrape.</a></li><li class="l2"><a href="#the-access-surface-is-the-point">The access surface is the point.</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="agents.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/agents.html">live ↗</a></p><article class="source"><h1 id="riskmandate-for-agents">RiskMandate — For Agents</h1>
+<p>Machine-readable access to RiskMandate&#x27;s content: llms.txt, a full-text markdown export, and a structured agent-content manifest. A product about governing agent access, publishing a clean one.</p>
+<p>Source: <a href="agents.html">https://riskmandate.ai/agents.html</a><a class="ext live" href="https://riskmandate.ai/agents.html" title="live page">↗</a></p>
+<hr>
+<h1 id="machine-readable-by-design">Machine-readable by design.</h1>
+<p>This site is JavaScript-rendered inside an isolated frame — great for humans, opaque to a crawler. So the content is also published as plain text an LLM agent can read directly: a curated index, a full-text export, and a structured manifest. A product about governing what agents may access should publish a clean, honest access surface of its own.</p>
+<h2 id="three-artifacts-one-source-of-truth">Three artifacts, one source of truth.</h2>
+<p>All three are generated from the same content at build time, so they never drift from the site. Fetch whichever fits your agent. Paths are stable and served from the domain root.</p>
+<h2 id="fetch-dont-scrape">Fetch, don&#x27;t scrape.</h2>
+<p>The rendered pages carry no crawlable content. Point your agent at the text artifacts instead.</p>
+<pre><code># 1. The index — cheap, orients the agent
+curl -s https://riskmandate.ai/llms.txt
+
+# 2. Everything, as one Markdown document
+curl -s https://riskmandate.ai/llms-full.txt
+
+# 3. Structured, for deterministic parsing
+curl -s https://riskmandate.ai/.well-known/agent-content.json | jq .</code></pre>
+<p>Content licence: the concept library is CC BY 4.0 — reuse it, attribute RiskMandate. The artifacts are regenerated on every release, so a cached copy is a point-in-time snapshot; re-fetch for the current version.</p>
+<h2 id="the-access-surface-is-the-point">The access surface is the point.</h2>
+<p>RiskMandate governs the right to act: what a system is authorised to do, granted by whom, for how long. An access surface that is explicit, scoped, and honest is exactly what we ask of every mandate on the platform. Publishing one for our own content is the smallest possible version of the thing the product does.</p>
+<p>No dark patterns, no cloaking, no serving agents different content than humans. The text artifacts say precisely what the site says.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/agents.html">https://riskmandate.ai/agents.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/agents.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:05Z</dd><dt>sha256</dt><dd><code title="7396da06123251aa4058df4082bba03ad7599fc60a36006e9cec51f225f6789c">7396da061232</code></dd><dt>Frozen copy</dt><dd><a href="agents.md">sites/riskmandate.ai/agents.md</a> (2,093 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Telemetry from a published vault, via append lanes · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · cli-briefs</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#telemetry-from-a-published-vault-via-append-lanes">Telemetry from a published vault, via append lanes</a></li><li class="l2"><a href="#1-the-documentation-that-already-exists">1. The documentation that already exists</a></li><li class="l2"><a href="#2-the-mechanism-an-append-lane">2. The mechanism: an append lane</a></li><li class="l2"><a href="#3-the-architecture-for-the-game-vault">3. The architecture for the game vault</a></li><li class="l2"><a href="#4-why-publishing-the-append-token-is-acceptable-and-where-it-stops-being">4. Why publishing the append_token is acceptable — and where it stops being</a></li><li class="l2"><a href="#5-three-things-to-verify-before-building-on-this">5. Three things to verify BEFORE building on this</a></li><li class="l2"><a href="#6-real-time-precisely">6. &amp;quot;Real time&amp;quot;, precisely</a></li><li class="l2"><a href="#7-what-you-can-and-cannot-learn">7. What you can and cannot learn</a></li><li class="l2"><a href="#8-the-prompt-to-hand-the-builder-agent">8. The prompt to hand the builder agent</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">cli-briefs</a> · <a href="vault-telemetry-via-append-lanes__brief.md">raw text</a></p><article class="source"><h1 id="telemetry-from-a-published-vault-via-append-lanes">Telemetry from a published vault, via append lanes</h1>
+<p><strong>For:</strong> the agent that will build the grants/permissions/mandates game vault
+<strong>Question it answers:</strong> how does one vault send messages (events, logs) to another vault, and
+how do we get anonymous real-time usage data out of a vault whose read key is public?</p>
+<hr>
+<h2 id="1-the-documentation-that-already-exists">1. The documentation that already exists</h2>
+<p>All of it is live on sgit.ai. Read in this order:</p>
+<div class="table"><table><thead><tr><th>Page</th><th>What it gives you</th></tr></thead><tbody><tr><td><a href="../../../sites/sgit.ai/docs/vault-messaging.html"><code>/docs/vault-messaging.html</code></a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a></td><td>The worked example: two vaults exchanging encrypted messages, end to end, with curl</td></tr>
+<tr><td><a href="../../../sites/sgit.ai/api/append-lanes.html"><code>/api/append-lanes.html</code></a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a></td><td>The six endpoints, the gates, the limits and the status codes</td></tr>
+<tr><td><a class="ext" href="https://sgit.ai/vault/sg-bridge.html"><code>/vault/sg-bridge.html</code> ↗</a></td><td><code>sg.append.*</code> from inside a vault app, and the <code>sg.on</code> event push</td></tr>
+<tr><td><a href="../../../sites/sgit.ai/docs/pki.html"><code>/docs/pki.html</code></a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a></td><td>Keypair lifecycle — <code>sgit pki keygen / export / encrypt / decrypt</code></td></tr>
+<tr><td><a class="ext" href="https://sgit.ai/vault/sub-vaults.html"><code>/vault/sub-vaults.html</code> ↗</a></td><td>The <em>other</em> cross-vault mechanism — <code>*.link.json</code>, for reading across, not writing</td></tr></tbody></table></div>
+<p>Ground truth in the docs bundle: <code>01-vault-html-app-authoring/AUTHORING.md</code>, section
+<strong>&quot;Receiving messages (<code>sg.append.*</code> + <code>sg.on</code>)&quot;</strong> (~line 788).</p>
+<p><strong>On the doctor/patient case study:</strong> what is published is
+<a href="../../../sites/sgit.ai/demos/vaults/health-score/index.html"><code>/demos/vaults/health-score/</code></a><a class="ext live" href="https://sgit.ai/demos/vaults/health-score/" title="live page">↗</a> (<code>zc6abngv</code>) — and it is
+<strong>one vault with three audiences</strong>, <code>patient/</code>, <code>doctor/</code> and <code>shared/</code>, split by <em>who is reading</em>
+rather than by copying. Sharing with the clinician is handing over a derived read key; there is no
+second vault and no message passing in it. The two-vault messaging mechanism is real and documented,
+but that vault is not its worked example.</p>
+<hr>
+<h2 id="2-the-mechanism-an-append-lane">2. The mechanism: an append lane</h2>
+<p>A write-only channel attached to a vault, addressed by a token. Four capabilities, deliberately split:</p>
+<div class="table"><table><thead><tr><th>Capability</th><th>Holder</th><th>Can</th><th>Cannot</th></tr></thead><tbody><tr><td><code>append_token</code></td><td>the sender</td><td><strong>write</strong></td><td>list, fetch, read anything</td></tr>
+<tr><td><code>enum_key</code></td><td>the vault owner</td><td>list, fetch, mark-processed</td><td>write, purge</td></tr>
+<tr><td><code>write_key</code></td><td>the vault owner</td><td>configure, purge</td><td>—</td></tr>
+<tr><td>private key</td><td>the vault owner</td><td><strong>decrypt</strong></td><td><em>never sent to the server</em></td></tr></tbody></table></div>
+<p>The server stores SHA-256 of the first three and compares hashes. It never holds a raw capability
+key and never holds a private key at all.</p>
+<p>Two properties that decide this whole design:</p>
+<ul><li><strong>The write response is blind</strong> — exactly <code>{&quot;ok&quot;: true}</code>. No file ID, no count, no metadata. A
+sender cannot learn what else is in the lane or whether theirs was the first write.</li><li><strong>No account is needed to send.</strong> <code>POST /api/vault/append/write/{vault_id}</code> requires no access
+token; the <code>append_token</code> in the body is the entire gate.</li></ul>
+<hr>
+<h2 id="3-the-architecture-for-the-game-vault">3. The architecture for the game vault</h2>
+<pre><code>   GAME VAULT (published, read key public)        TELEMETRY VAULT (private, yours)
+   ─────────────────────────────────────          ───────────────────────────────
+   holds: append_token + telemetry vault_id       holds: enum_key, write_key, private key
+          + your PUBLIC key
+
+   player clicks something
+        │  encrypt(event, your_public_key)
+        │  POST /api/vault/append/write/{telemetry_vault_id}
+        ├──────────────────────────────────────▶  gate: H(append_token) ∈ append_anchors?
+        ◀──────────────────────────────────────   {&quot;ok&quot;: true}   ← blind
+                                                        │
+                                                  you: list (free) → fetch → decrypt locally</code></pre>
+<p>Setup, once:</p>
+<pre><code class="lang-bash">sgit pki keygen --label &quot;Game telemetry&quot;
+sgit pki export sha256:&lt;fingerprint&gt; &gt; telemetry-identity.json
+
+curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
+  -H &quot;x-sgraph-vault-write-key: $WRITE_KEY&quot; -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;append_anchors&quot;:[&quot;&lt;sha256 of the append_token&gt;&quot;],
+       &quot;enum_key_hash&quot;:&quot;&lt;sha256 of your enum_key&gt;&quot;}&#x27;</code></pre>
+<p>Reading, cheaply — a metadata-only listing reads <strong>zero</strong> payloads:</p>
+<pre><code class="lang-bash">curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
+  -H &quot;x-sgraph-vault-enum-key: $ENUM_KEY&quot; -d &#x27;{&quot;include_content&quot;: false}&#x27;</code></pre>
+<hr>
+<h2 id="4-why-publishing-the-append-token-is-acceptable-and-where-it-stops-being">4. Why publishing the append_token is acceptable — and where it stops being</h2>
+<p>Every visitor holds the game vault&#x27;s read key, so **every visitor can read the <code>append_token</code> out of
+the vault.** That is not avoidable and it is not the mistake it looks like: an append token grants
+<em>write only</em>. A visitor who extracts it cannot list the lane, cannot fetch anything, cannot read
+another player&#x27;s events, and — because the write response is blind — cannot even tell whether the
+lane has anything in it.</p>
+<p>This is the one credential shape that survives being published inside a public vault. A vault key
+would not; a read key to a private vault would not. (Cf. the <code>bite-coil</code> audit: a read key decrypts
+<em>everything</em> in a vault, so anything embedded in a published vault is public.)</p>
+<p><strong>What you do not get is authenticity.</strong> Anything the browser holds, the visitor holds:</p>
+<ul><li>Events can be <strong>forged</strong>. Treat every row as an untrusted claim about what happened, never as fact.</li><li>The lane can be <strong>flooded</strong>. The cap is <strong>1000 pending files per token → 507</strong>, at which point your
+real telemetry stops arriving. This is the failure mode to design against, not the confidentiality one.</li></ul>
+<p>Mitigations: register <strong>several <code>append_anchors</code></strong> so one flooded lane does not bury the others and
+revoking one sender is removing one anchor; drain aggressively (<code>list</code> → <code>fetch</code> → <code>mark-processed</code>,
+then <code>purge</code> <code>folder:&quot;processed&quot;</code>); rotate the token by re-<code>configure</code>-ing and shipping a new vault
+release; and put a client-side rate limit in the app so honest players do not trip the cap.</p>
+<hr>
+<h2 id="5-three-things-to-verify-before-building-on-this">5. Three things to verify BEFORE building on this</h2>
+<p>Do not assume any of them. In order of how badly they break the design:</p>
+<ol><li><strong>Does <code>sg.append.write</code> work from a read-only session?</strong> Your entire audience opens the game with
+a <em>read</em> key. <code>AUTHORING.md</code> says &quot;Read-only sessions fail closed&quot;, and the static-hosting doc
+lists <code>sg.append.*</code> as rejected with <strong><code>EREADONLY</code></strong> in read-only contexts. If that applies to the
+hosted viewer, <strong>the bridge path is unavailable to your players.</strong>
+<strong>The fallback is better anyway:</strong> a direct <code>fetch()</code> POST to
+<code>/api/vault/append/write/{vault_id}</code>. That endpoint is account-less by design, needs no bridge, no
+permission grant, and no writable session. <code>AUTHORING.md</code> is explicit that <code>fetch()</code> may be used
+for absolute <code>https://</code> URLs — those leave the vault and behave like any web request.</li><li><strong>Does the vault frame&#x27;s CSP allow <code>connect-src</code> to <code>send.sgraph.ai</code>?</strong> If the host&#x27;s sandbox
+blocks the origin, neither path works and the answer is a host change, not an app change.</li><li><strong>Token format.</strong> <code>^[0-9a-f]{16,128}$</code> — <strong>hex only</strong>. A prefixed token returns <strong>400</strong>, not 403,
+because it fails input validation before reaching any gate. Do not paste a <code>sha256:</code> CLI
+fingerprint in as a token; that is the most likely way to hit it.</li></ol>
+<p>Also note the derivation gap: the intended model is <code>append_token = H(recipient public key)</code>, but
+<strong>no shipped command emits the append token</strong> — the client-side derivation is PROPOSED, not shipped.
+Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.</p>
+<hr>
+<h2 id="6-real-time-precisely">6. &quot;Real time&quot;, precisely</h2>
+<ul><li><strong>On the receiving side</strong> the kernel pushes <code>sg.on(&#x27;append.new-messages&#x27;, …)</code> on **tab focus and
+app open** — your dashboard app does not poll. Declare `&quot;host_events&quot;: [&quot;append.new-messages&quot;,
+&quot;append.error&quot;]<code>in</code>app.json`.</li><li>That means &quot;real time <em>while you are looking at it</em>&quot;, not a live stream. For anything closer, poll
+<code>list</code> with <code>include_content: false</code>; it is free and paginates with <code>after_file_id</code>, and filenames
+are <code>{epoch_ms}_{24-hex}.enc</code> so they sort chronologically.</li></ul>
+<hr>
+<h2 id="7-what-you-can-and-cannot-learn">7. What you can and cannot learn</h2>
+<p><strong>Can:</strong> that the vault was opened, which screens were reached, how far a player got, event ordering
+and timing, session-scoped journeys via a random per-session id the app mints.</p>
+<p><strong>Cannot:</strong> who. There is no identity in this system and no login. Every player is anonymous by
+construction — which is what you asked for, but it also means &quot;who opens the vault&quot; is not answerable,
+only &quot;how many opens&quot;.</p>
+<p><strong>Two disclosure points</strong>, and I would not skip either:</p>
+<ul><li>The platform&#x27;s own privacy default is that <strong>opening a vault never phones home</strong> — external embeds
+are click-to-load specifically so that it does not. A telemetry beacon breaks that expectation, so
+the vault should say so <strong>visibly, in the vault</strong>, not in a footnote. It is also the house rule on
+every published vault page: publish the work, then say exactly what it is worth and what it does.</li><li>The <strong>server sees lane activity, size and timing</strong> regardless of encryption, and it sees the
+requesting IP. &quot;The server cannot read the content&quot; is true; &quot;the traffic is invisible&quot; is not.</li></ul>
+<hr>
+<h2 id="8-the-prompt-to-hand-the-builder-agent">8. The prompt to hand the builder agent</h2>
+<blockquote><p>Build a vault app for the grants/permissions/mandates game. It will be published with a **read
+key**, so assume every visitor can read every file in it, including any credential it carries.</p>
+<p>Emit anonymous usage events to a separate telemetry vault over an <strong>append lane</strong>. Read
+<code>https://sgit.ai/docs/vault-messaging.html</code> and <code>https://sgit.ai/api/append-lanes.html</code> first.</p>
+<p>Constraints:</p>
+<ul><li>Events go to <code>POST /api/vault/append/write/{TELEMETRY_VAULT_ID}</code> with the <code>append_token</code> in the
+body. <strong>Verify first</strong> whether <code>sg.append.write</code> is available in a read-only session; if it
+returns <code>EREADONLY</code>, use a direct <code>fetch()</code> to the account-less endpoint instead.</li><li>Encrypt each payload to the telemetry vault&#x27;s public key before sending. The public key ships in
+the game vault; that is fine, public keys are publishable.</li><li>Never put a vault key, a read key to any other vault, or any other credential in this vault. The
+append token is the only credential that may appear, and only because it is write-only.</li><li>Mint a random per-session id in memory. No names, no emails, no fingerprinting, nothing that
+identifies a person. Anonymous is the design, not a setting.</li><li>Rate-limit client-side. The lane caps at 1000 pending files per token and returns 507 after that.</li><li>Fail silently and never block the game on telemetry — if the POST fails, the player must not
+notice.</li><li>Put a visible, plain-English notice in the vault saying that anonymous usage events are sent and
+what they contain. Opening a vault does not normally phone home; this one does, so say so.</li><li>Treat every received event as an untrusted claim. Anyone holding the read key can forge or flood
+the lane; the data is directional, not evidential.</li></ul>
+<p>Deliverables: the game app, the event schema, the telemetry vault&#x27;s <code>configure</code> call, and a
+dashboard app in the telemetry vault that subscribes to <code>sg.on(&#x27;append.new-messages&#x27;)</code> and renders
+the funnel.</p></blockquote>
+<hr>
+<p>*Sources: sgit.ai <code>/docs/vault-messaging.html</code>, <code>/api/append-lanes.html</code>, <code>/vault/sg-bridge.html</code>,
+<code>/vault/sub-vaults.html</code>, <code>/demos/vaults/health-score/</code>; docs bundle
+<code>01-vault-html-app-authoring/AUTHORING.md</code> and <code>02-hosting-and-git/HOSTING-ON-STATIC-STORAGE.md</code>.
+Verified against the shipped CLI: <code>sgit pki</code> has keygen/export/encrypt/decrypt/sign/verify; there is
+<strong>no</strong> append-lane command in the CLI, so the transport is HTTP or the browser bridge only.*</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>cli-briefs</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="3a042d9eaa24745511bddbe4a836194554a3d2acfb189711c438967f46957364">3a042d9eaa24</code></dd><dt>Frozen copy</dt><dd><a href="vault-telemetry-via-append-lanes__brief.md">cli-briefs/09/06/vault-telemetry-via-append-lanes__brief.md</a> (11,923 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

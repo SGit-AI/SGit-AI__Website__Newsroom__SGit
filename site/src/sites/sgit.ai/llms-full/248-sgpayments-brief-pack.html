@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>SG/Payments Brief Pack (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sgpayments-brief-pack">SG/Payments Brief Pack</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-is-in-it">What is in it</a></li><li class="l3"><a href="#a-reading-order-and-a-status-that-refuses-to-flatter-itself">A reading order, and a status that refuses to flatter itself</a></li><li class="l3"><a href="#nothing-requested-nothing-granted">Nothing requested, nothing granted</a></li><li class="l2"><a href="#notes">Notes</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 248 of 358</p><nav class="pager"><span><a href="247-sgpayments-brief-pack-a-published-vault.html">← SG/Payments Brief Pack, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="249-agent-as-webmaster-a-business-plan-publi.html">Agent as Webmaster, a business plan published as a vault →</a></span></nav><article class="source"><h1 id="sgpayments-brief-pack">SG/Payments Brief Pack</h1>
+<p>A briefing pack for a team that has not started building yet. Ten documents, a stated reading order, and a status pill that says <strong>PROPOSED</strong>, because nothing in the pack exists as code. It is the clearest example on the site of a vault used as the <strong>unit of handover</strong>: one credential moves the whole pack, its reading order and its provenance together.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8:o3m0sz3q</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8%3Ao3m0sz3q">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8:o3m0sz3q</code>
+Published deliberately, and <strong>derived</strong> one-way from a vault key that is not published and never will be.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p>Both surfaces open automatically below. You can also <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8%3Ao3m0sz3q"><strong>open the app in its own window ↗</strong> ↗</a>.</p>
+<h2 id="what-is-in-it">What is in it</h2>
+<p>the pack</p>
+<h3 id="a-reading-order-and-a-status-that-refuses-to-flatter-itself">A reading order, and a status that refuses to flatter itself</h3>
+<p>The index opens with <strong>Status: PROPOSED, nothing in this pack exists as code yet</strong>, then a numbered reading order through ten documents: overview and principles, platform grounding, a review of three human architecture briefs, target architecture, gateway spec, ledger and credentials, vault integration, build plan, open decisions, and a pattern audit.</p>
+<p>The separation that makes it useful is between <strong>01 · Platform Grounding, What Exists Today (code-verified)</strong> and everything downstream of it. One document is what the code does; the rest is what somebody proposes to build on top. The pack keeps them apart on purpose.</p>
+<p>The footer of the app states its own delivery mechanism: <em>rendered from an encrypted SG/Vault, the link-holder holds the key; the server sees only ciphertext.</em></p>
+<p>The pack index: PROPOSED status, the reading order, and the target named up front.</p>
+<p>the grant</p>
+<h3 id="nothing-requested-nothing-granted">Nothing requested, nothing granted</h3>
+<p><code>app.json</code> declares <code>&quot;permissions&quot;: {}</code>. A pack of documents needs no filesystem access, so it asks for none, the same posture as the <a class="ext" href="https://sgit.ai/risk-graph-explorer/index.md">Risk Graph Explorer ↗</a>.</p>
+<p>It is worth seeing on a document pack precisely because nothing here is dangerous. The habit is what generalises: the grant is written down, it is short enough to read, and it is visible to anyone holding the read key.</p>
+<p>The vault browser: the pack as files, and the empty permission grant.</p>
+<h2 id="notes">Notes</h2>
+<p><strong>Why this one is interesting beyond payments.</strong> The grounding document records the substrate in terms this site documents elsewhere: PBKDF2 at 600k iterations deriving independent read and write keys, ref file <em>locations</em> themselves HMAC-derived from the read key, and the server storing only <code>SHA-256(write_key)</code> while reads stay tokenless. It is an outside-in description of the same design the <a href="../api/index.html">API pages</a><a class="ext live" href="https://sgit.ai/api/index.html" title="live page">↗</a> describe from the inside.</p>
+<p><a href="../index.html">← All published vaults</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="247-sgpayments-brief-pack-a-published-vault.html">← SG/Payments Brief Pack, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="249-agent-as-webmaster-a-business-plan-publi.html">Agent as Webmaster, a business plan published as a vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>248 of 358: SG/Payments Brief Pack</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

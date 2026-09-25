@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>RiskMandate — OWASP, as a graph · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#riskmandate-owasp-as-a-graph">RiskMandate — OWASP, as a graph</a></li><li class="l1"><a href="#every-owasp-document-has-its-own-ontology-here-they-are-joined">Every OWASP document has its own ontology. Here they are joined.</a></li><li class="l2"><a href="#five-levels-one-graph">Five levels, one graph.</a></li><li class="l2"><a href="#the-genai-security-project">The GenAI Security Project</a></li><li class="l3"><a href="#owasp-top-10-for-llm-applications-2025">OWASP Top 10 for LLM Applications 2025 ↗</a></li><li class="l3"><a href="#owasp-top-10-for-llm-applications-2026">OWASP Top 10 for LLM Applications 2026 ↗</a></li><li class="l3"><a href="#owasp-top-10-for-agentic-applications-for-2026">OWASP Top 10 for Agentic Applications for 2026 ↗</a></li><li class="l3"><a href="#agentic-ai-threats-and-mitigations">Agentic AI – Threats and Mitigations ↗</a></li><li class="l3"><a href="#securing-agentic-applications-guide-10">Securing Agentic Applications Guide 1.0 ↗</a></li><li class="l3"><a href="#multi-agentic-system-threat-modeling-guide-v10">Multi-Agentic System Threat Modeling Guide v1.0 ↗</a></li><li class="l3"><a href="#state-of-agentic-ai-security-and-governance-201">State of Agentic AI Security and Governance 2.01 ↗</a></li><li class="l3"><a href="#agent-name-service-ans-v10">Agent Name Service (ANS) v1.0 ↗</a></li><li class="l3"><a href="#agent-control-standard-acs">Agent Control Standard (ACS) ↗</a></li><li class="l3"><a href="#a-practical-guide-for-secure-mcp-server-development">A Practical Guide for Secure MCP Server Development ↗</a></li><li class="l3"><a href="#cheat-sheet-securely-using-third-party-mcp-servers-10">Cheat Sheet: Securely Using Third-Party MCP Servers 1.0 ↗</a></li><li class="l3"><a href="#genai-red-teaming-guide">GenAI Red Teaming Guide ↗</a></li><li class="l3"><a href="#vendor-evaluation-criteria-for-ai-red-teaming-providers-and-tooling-v10">Vendor Evaluation Criteria for AI Red Teaming Providers and Tooling v1.0 ↗</a></li><li class="l3"><a href="#llm-applications-cybersecurity-and-governance-checklist-v11">LLM Applications Cybersecurity and Governance Checklist v1.1 ↗</a></li><li class="l3"><a href="#ai-security-solutions-landscape-for-agentic-ai-q2-2026">AI Security Solutions Landscape for Agentic AI, Q2 2026 ↗</a></li><li class="l3"><a href="#ai-security-solutions-landscape-for-llm-and-genai-apps-q2-2026">AI Security Solutions Landscape for LLM and GenAI Apps, Q2 2026 ↗</a></li><li class="l3"><a href="#solutions-landscape-for-ai-and-agentic-red-teaming-q2-2026">Solutions Landscape for AI and Agentic Red Teaming, Q2 2026 ↗</a></li><li class="l3"><a href="#genai-data-security-risks-and-mitigations-2026-v10">GenAI Data Security Risks and Mitigations 2026 v1.0 ↗</a></li><li class="l3"><a href="#genai-security-industry-framework-crosswalk">GenAI Security Industry Framework Crosswalk ↗</a></li><li class="l3"><a href="#aiuc-1-crosswalk-of-the-agentic-top-10">AIUC-1 Crosswalk of the Agentic Top 10 ↗</a></li><li class="l3"><a href="#threat-defense-compass-10">Threat Defense COMPASS 1.0 ↗</a></li><li class="l3"><a href="#genai-incident-response-guide-10">GenAI Incident Response Guide 1.0 ↗</a></li><li class="l3"><a href="#owasp-aibom-generator">OWASP AIBOM Generator ↗</a></li><li class="l3"><a href="#finbot-agentic-ai-ctf">FinBot Agentic AI CTF ↗</a></li><li class="l2"><a href="#other-owasp-ai-projects">Other OWASP AI projects</a></li><li class="l3"><a href="#owasp-ai-exchange">OWASP AI Exchange ↗</a></li><li class="l3"><a href="#owasp-ai-testing-guide">OWASP AI Testing Guide ↗</a></li><li class="l3"><a href="#owasp-ai-vulnerability-scoring-system-aivss">OWASP AI Vulnerability Scoring System (AIVSS) ↗</a></li><li class="l3"><a href="#owasp-ai-security-verification-standard-aisvs">OWASP AI Security Verification Standard (AISVS) ↗</a></li><li class="l3"><a href="#owasp-machine-learning-security-top-ten">OWASP Machine Learning Security Top Ten ↗</a></li><li class="l3"><a href="#owasp-mcp-top-10">OWASP MCP Top 10 ↗</a></li><li class="l3"><a href="#owasp-non-human-identities-top-10">OWASP Non-Human Identities Top 10 ↗</a></li><li class="l3"><a href="#owasp-agentic-skills-top-10">OWASP Agentic Skills Top 10 ↗</a></li><li class="l3"><a href="#owasp-aibom">OWASP AIBOM ↗</a></li><li class="l2"><a href="#standards-lists-and-guides-an-agent-deployment-touches">Standards, lists and guides an agent deployment touches</a></li><li class="l3"><a href="#owasp-asvs">OWASP ASVS ↗</a></li><li class="l3"><a href="#owasp-samm">OWASP SAMM ↗</a></li><li class="l3"><a href="#owasp-top-10-2025">OWASP Top 10: 2025 ↗</a></li><li class="l3"><a href="#owasp-api-security-top-10">OWASP API Security Top 10 ↗</a></li><li class="l3"><a href="#cyclonedx-ecma-424">CycloneDX (ECMA-424) ↗</a></li><li class="l3"><a href="#software-component-verification-standard">Software Component Verification Standard ↗</a></li><li class="l3"><a href="#top-10-cicd-security-risks">Top 10 CI/CD Security Risks ↗</a></li><li class="l3"><a href="#kubernetes-top-ten">Kubernetes Top Ten ↗</a></li><li class="l3"><a href="#cheat-sheet-series">Cheat Sheet Series ↗</a></li><li class="l3"><a href="#threat-modeling-project">Threat Modeling Project ↗</a></li><li class="l2"><a href="#tools">Tools</a></li><li class="l3"><a href="#threat-dragon">Threat Dragon ↗</a></li><li class="l3"><a href="#pytm">pytm ↗</a></li><li class="l3"><a href="#coraza-web-application-firewall">Coraza Web Application Firewall ↗</a></li><li class="l3"><a href="#core-rule-set-crs">Core Rule Set (CRS) ↗</a></li><li class="l3"><a href="#dependency-track">Dependency-Track ↗</a></li><li class="l3"><a href="#dependency-check">Dependency-Check ↗</a></li><li class="l3"><a href="#defectdojo">DefectDojo ↗</a></li><li class="l3"><a href="#juice-shop">Juice Shop ↗</a></li><li class="l3"><a href="#wrongsecrets">WrongSecrets ↗</a></li><li class="l2"><a href="#the-frameworks-owasp-maps-to-titles-only">The frameworks OWASP maps to, titles only.</a></li><li class="l3"><a href="#mitre-atlas">MITRE ATLAS</a></li><li class="l3"><a href="#mitre-attck">MITRE ATT&amp;amp;CK</a></li><li class="l3"><a href="#mitre-cwe">MITRE CWE</a></li><li class="l3"><a href="#nist-ai-rmf-ai-100-1">NIST AI RMF (AI 100-1)</a></li><li class="l3"><a href="#nist-ai-600-1">NIST AI 600-1</a></li><li class="l3"><a href="#csa-ai-controls-matrix">CSA AI Controls Matrix</a></li><li class="l3"><a href="#isoiec-42001">ISO/IEC 42001</a></li><li class="l3"><a href="#isoiec-27090">ISO/IEC 27090</a></li><li class="l3"><a href="#eu-ai-act">EU AI Act</a></li><li class="l3"><a href="#aiuc-1">AIUC-1</a></li><li class="l3"><a href="#google-saif">Google SAIF</a></li><li class="l3"><a href="#nist-aml-taxonomy">NIST AML taxonomy</a></li><li class="l3"><a href="#csa-maestro">CSA MAESTRO</a></li><li class="l3"><a href="#zap-left-owasp-1-august-2023">ZAP (left OWASP, 1 August 2023)</a></li><li class="l2"><a href="#the-agentic-top-10-joined-to-the-register">The Agentic Top 10, joined to the register.</a></li><li class="l2"><a href="#published-unresolved-for-the-projects-to-settle">Published unresolved, for the projects to settle.</a></li><li class="l2"><a href="#a-graph-owasp-does-not-have-yet-offered-to-owasp">A graph OWASP does not have yet, offered to OWASP.</a></li><li class="l2"><a href="#an-item-names-a-risk-a-behaviour-policy-says-whether-yours-has-it">An item names a risk. A behaviour policy says whether yours has it.</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="owasp-graph.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/owasp-graph.html">live ↗</a></p><article class="source"><h1 id="riskmandate-owasp-as-a-graph">RiskMandate — OWASP, as a graph</h1>
+<p>A semantic graph of OWASP: the foundation, its AI and agent projects, the standards and tools an agent deployment touches, the items of eleven lists by title, and the relationships OWASP states between them, joined to the risk model behind the business cases.</p>
+<p>Source: <a href="owasp-graph.html">https://riskmandate.ai/owasp-graph.html</a><a class="ext live" href="https://riskmandate.ai/owasp-graph.html" title="live page">↗</a></p>
+<hr>
+<h1 id="every-owasp-document-has-its-own-ontology-here-they-are-joined">Every OWASP document has its own ontology. Here they are joined.</h1>
+<p>OWASP is a foundation of projects, each project a set of documents or tools, each document a list of numbered items with its own vocabulary, and each of those pointing at the others and at frameworks outside. This page is that structure as one graph you can zoom through, from the foundation to a single item, with every relationship taken from OWASP’s own pages. Then it joins the graph to the risk model the rest of this section runs on.</p>
+<p><strong>Read:</strong> OWASP’s own pages, 24 September 2026. Items are titles only. Levels are the live project pages’, and disputed ones are marked.</p>
+<p><strong>The data:</strong> <a class="ext" href="https://riskmandate.ai/business-case/owasp/graph.json">graph.json ↗</a>, offered to OWASP to take, correct and keep. The bridge to our model is our reading, not OWASP’s.</p>
+<h2 id="five-levels-one-graph">Five levels, one graph.</h2>
+<p>The fractal part is that each level has the same shape as the one above it: a thing, its parts, and the edges to other things. A reader can stop at any level and still be holding something whole.</p>
+<p>OWASP itself.</p>
+<p>How this page groups the projects.</p>
+<p>Each with its level, type and date.</p>
+<p>The numbered entries of 11 lists.</p>
+<p>Stated by OWASP, including 14 frameworks outside it.</p>
+<h2 id="the-genai-security-project">The GenAI Security Project</h2>
+<p>The umbrella project for generative AI and agent security, renamed from the LLM Top 10 project on 26 March 2025, with its own initiatives and documents. The project is Flagship on its live page.</p>
+<h3 id="owasp-top-10-for-llm-applications-2025"><a class="ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/">OWASP Top 10 for LLM Applications 2025 ↗</a></h3>
+<p>Ten risk categories for applications built on large language models.</p>
+<ul><li>LLM01:2025 Prompt Injection</li><li>LLM02:2025 Sensitive Information Disclosure</li><li>LLM03:2025 Supply Chain</li><li>LLM04:2025 Data and Model Poisoning</li><li>LLM05:2025 Improper Output Handling</li><li>LLM06:2025 Excessive Agency</li><li>LLM07:2025 System Prompt Leakage</li><li>LLM08:2025 Vector and Embedding Weaknesses</li><li>LLM09:2025 Misinformation</li><li>LLM10:2025 Unbounded Consumption</li></ul>
+<h3 id="owasp-top-10-for-llm-applications-2026"><a class="ext" href="https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/">OWASP Top 10 for LLM Applications 2026 ↗</a></h3>
+<p>The edition that replaces 2025, ranked by community vote and incident data, with a different order.</p>
+<ul><li>LLM01:2026 Prompt Injection</li><li>LLM02:2026 Sensitive Information Disclosure</li><li>LLM03:2026 Excessive Agency</li><li>LLM04:2026 Supply Chain</li><li>LLM05:2026 Data and Model Poisoning</li><li>LLM06:2026 Unbounded Consumption</li><li>LLM07:2026 Misinformation</li><li>LLM08:2026 Hidden Context Exposure</li><li>LLM09:2026 Vector and Embedding Weaknesses</li><li>LLM10:2026 Improper Output Handling</li></ul>
+<h3 id="owasp-top-10-for-agentic-applications-for-2026"><a class="ext" href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/">OWASP Top 10 for Agentic Applications for 2026 ↗</a></h3>
+<p>Ten risk categories for agents that plan and act.</p>
+<ul><li>ASI01 Agent Goal Hijack</li><li>ASI02 Tool Misuse and Exploitation</li><li>ASI03 Identity and Privilege Abuse</li><li>ASI04 Agentic Supply Chain Vulnerabilities</li><li>ASI05 Unexpected Code Execution (RCE)</li><li>ASI06 Memory &amp; Context Poisoning</li><li>ASI07 Insecure Inter-Agent Communication</li><li>ASI08 Cascading Failures</li><li>ASI09 Human-Agent Trust Exploitation</li><li>ASI10 Rogue Agents</li></ul>
+<h3 id="agentic-ai-threats-and-mitigations"><a class="ext" href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/">Agentic AI – Threats and Mitigations ↗</a></h3>
+<p>The detailed agent threat taxonomy the Agentic Top 10 relies on.</p>
+<h3 id="securing-agentic-applications-guide-10"><a class="ext" href="https://genai.owasp.org/resource/securing-agentic-applications-guide-1-0/">Securing Agentic Applications Guide 1.0 ↗</a></h3>
+<p>Guidance for building and deploying agent applications.</p>
+<h3 id="multi-agentic-system-threat-modeling-guide-v10"><a class="ext" href="https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/">Multi-Agentic System Threat Modeling Guide v1.0 ↗</a></h3>
+<p>The threat taxonomy applied to systems of several agents.</p>
+<h3 id="state-of-agentic-ai-security-and-governance-201"><a class="ext" href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/">State of Agentic AI Security and Governance 2.01 ↗</a></h3>
+<p>An overview of frameworks and regulation for agents.</p>
+<h3 id="agent-name-service-ans-v10"><a class="ext" href="https://genai.owasp.org/resource/agent-name-service-ans-for-secure-al-agent-discovery-v1-0/">Agent Name Service (ANS) v1.0 ↗</a></h3>
+<p>A proposed scheme for naming and discovering agents.</p>
+<h3 id="agent-control-standard-acs"><a class="ext" href="https://genai.owasp.org/resource/agent-control-standard-acs/">Agent Control Standard (ACS) ↗</a></h3>
+<p>Standard hooks for inspecting and controlling agents at runtime, donated to the project.</p>
+<h3 id="a-practical-guide-for-secure-mcp-server-development"><a class="ext" href="https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/">A Practical Guide for Secure MCP Server Development ↗</a></h3>
+<p>Guidance for people who build MCP servers.</p>
+<h3 id="cheat-sheet-securely-using-third-party-mcp-servers-10"><a class="ext" href="https://genai.owasp.org/resource/cheatsheet-a-practical-guide-for-securely-using-third-party-mcp-servers-1-0/">Cheat Sheet: Securely Using Third-Party MCP Servers 1.0 ↗</a></h3>
+<p>Guidance for people who use MCP servers written by others.</p>
+<h3 id="genai-red-teaming-guide"><a class="ext" href="https://genai.owasp.org/resource/genai-red-teaming-guide/">GenAI Red Teaming Guide ↗</a></h3>
+<p>A method for adversarial testing of generative AI systems.</p>
+<h3 id="vendor-evaluation-criteria-for-ai-red-teaming-providers-and-tooling-v10"><a class="ext" href="https://genai.owasp.org/resource/owasp-vendor-evaluation-criteria-for-ai-red-teaming-providers-tooling-v1-0/">Vendor Evaluation Criteria for AI Red Teaming Providers and Tooling v1.0 ↗</a></h3>
+<p>Questions to ask red-teaming vendors.</p>
+<h3 id="llm-applications-cybersecurity-and-governance-checklist-v11"><a class="ext" href="https://genai.owasp.org/resource/llm-applications-cybersecurity-and-governance-checklist-english/">LLM Applications Cybersecurity and Governance Checklist v1.1 ↗</a></h3>
+<p>A checklist for leaders adopting large language models.</p>
+<h3 id="ai-security-solutions-landscape-for-agentic-ai-q2-2026"><a class="ext" href="https://genai.owasp.org/resource/ai-security-solutions-landscape-for-agentic-ai-q2-2026/">AI Security Solutions Landscape for Agentic AI, Q2 2026 ↗</a></h3>
+<p>A quarterly map of tools by lifecycle stage, for agents.</p>
+<h3 id="ai-security-solutions-landscape-for-llm-and-genai-apps-q2-2026"><a class="ext" href="https://genai.owasp.org/resource/al-security-solutions-landscape-for-llm-and-gen-al-apps-q2-2026/">AI Security Solutions Landscape for LLM and GenAI Apps, Q2 2026 ↗</a></h3>
+<p>The same map, for LLM applications.</p>
+<h3 id="solutions-landscape-for-ai-and-agentic-red-teaming-q2-2026"><a class="ext" href="https://genai.owasp.org/resource/ai-security-solutions-landscape-for-ai-and-agentic-red-teaming-q2-2026/">Solutions Landscape for AI and Agentic Red Teaming, Q2 2026 ↗</a></h3>
+<p>The same map, for red-teaming tools.</p>
+<h3 id="genai-data-security-risks-and-mitigations-2026-v10"><a class="ext" href="https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/">GenAI Data Security Risks and Mitigations 2026 v1.0 ↗</a></h3>
+<p>Data-layer risks for generative AI systems.</p>
+<h3 id="genai-security-industry-framework-crosswalk"><a class="ext" href="https://genai.owasp.org/resource/genai-security-industry-framework-crosswalk/">GenAI Security Industry Framework Crosswalk ↗</a></h3>
+<p>Maps the project&#x27;s risks to controls in outside frameworks.</p>
+<h3 id="aiuc-1-crosswalk-of-the-agentic-top-10"><a class="ext" href="https://genai.owasp.org/resource/aiuc-1-crosswalks-owasp-top-10-for-agentic-applications/">AIUC-1 Crosswalk of the Agentic Top 10 ↗</a></h3>
+<p>A two-way mapping between AIUC-1 and the Agentic Top 10.</p>
+<h3 id="threat-defense-compass-10"><a class="ext" href="https://genai.owasp.org/resource/owasp-genai-security-project-threat-defense-compass-1-0/">Threat Defense COMPASS 1.0 ↗</a></h3>
+<p>A worksheet method for prioritising AI threats.</p>
+<h3 id="genai-incident-response-guide-10"><a class="ext" href="https://genai.owasp.org/resource/genai-incident-response-guide-1-0/">GenAI Incident Response Guide 1.0 ↗</a></h3>
+<p>Incident response for generative AI systems.</p>
+<h3 id="owasp-aibom-generator"><a class="ext" href="https://genai.owasp.org/resource/owasp-aibom-generator/">OWASP AIBOM Generator ↗</a></h3>
+<p>A tool that writes AI bills of materials in CycloneDX format.</p>
+<h3 id="finbot-agentic-ai-ctf"><a class="ext" href="https://genai.owasp.org/resource/finbot-agentic-ai-capture-the-flag-ctf-application/">FinBot Agentic AI CTF ↗</a></h3>
+<p>A deliberately vulnerable agent application for training.</p>
+<h2 id="other-owasp-ai-projects">Other OWASP AI projects</h2>
+<p>AI and agent projects that sit beside the GenAI Security Project, each its own OWASP project.</p>
+<h3 id="owasp-ai-exchange"><a class="ext" href="https://owaspai.org/">OWASP AI Exchange ↗</a></h3>
+<p>Reference guidance on AI threats and controls, continuously updated.</p>
+<h3 id="owasp-ai-testing-guide"><a class="ext" href="https://github.com/OWASP/www-project-ai-testing-guide">OWASP AI Testing Guide ↗</a></h3>
+<p>A method and test cases for testing AI systems; v1, 26 November 2025.</p>
+<h3 id="owasp-ai-vulnerability-scoring-system-aivss"><a class="ext" href="https://owasp.org/projects/ai-vulnerability-scoring-system-aivss">OWASP AI Vulnerability Scoring System (AIVSS) ↗</a></h3>
+<p>A scoring method, starting with agent risks; v0.8.</p>
+<h3 id="owasp-ai-security-verification-standard-aisvs"><a class="ext" href="https://github.com/OWASP/AISVS">OWASP AI Security Verification Standard (AISVS) ↗</a></h3>
+<p>Testable security requirements for AI systems; 1.0, June 2026.</p>
+<h3 id="owasp-machine-learning-security-top-ten"><a class="ext" href="https://github.com/OWASP/www-project-machine-learning-security-top-10">OWASP Machine Learning Security Top Ten ↗</a></h3>
+<p>Ten risk categories for machine-learning systems; the 2023 list, marked in draft.</p>
+<ul><li>ML01:2023 Input Manipulation Attack</li><li>ML02:2023 Data Poisoning Attack</li><li>ML03:2023 Model Inversion Attack</li><li>ML04:2023 Membership Inference Attack</li><li>ML05:2023 Model Theft</li><li>ML06:2023 AI Supply Chain Attacks</li><li>ML07:2023 Transfer Learning Attack</li><li>ML08:2023 Model Skewing</li><li>ML09:2023 Output Integrity Attack</li><li>ML10:2023 Model Poisoning</li></ul>
+<h3 id="owasp-mcp-top-10"><a class="ext" href="https://owasp.org/projects/mcp-top-10">OWASP MCP Top 10 ↗</a></h3>
+<p>Ten risk categories for MCP systems; a 2025 beta, next release announced for October 2026.</p>
+<ul><li>MCP01:2025 Token Mismanagement &amp; Secret Exposure</li><li>MCP02:2025 Privilege Escalation via Scope Creep</li><li>MCP03:2025 Tool Poisoning</li><li>MCP04:2025 Software Supply Chain Attacks &amp; Dependency Tampering</li><li>MCP05:2025 Command Injection &amp; Execution</li><li>MCP06:2025 Intent Flow Subversion</li><li>MCP07:2025 Insufficient Authentication &amp; Authorization</li><li>MCP08:2025 Lack of Audit and Telemetry</li><li>MCP09:2025 Shadow MCP Servers</li><li>MCP10:2025 Context Injection &amp; Over-Sharing</li></ul>
+<h3 id="owasp-non-human-identities-top-10"><a class="ext" href="https://owasp.org/www-project-non-human-identities-top-10/2025/">OWASP Non-Human Identities Top 10 ↗</a></h3>
+<p>Ten risk categories for machine identities: keys, tokens, service accounts; 2025 edition.</p>
+<ul><li>NHI1:2025 Improper Offboarding</li><li>NHI2:2025 Secret Leakage</li><li>NHI3:2025 Vulnerable Third-Party NHI</li><li>NHI4:2025 Insecure Authentication</li><li>NHI5:2025 Overprivileged NHI</li><li>NHI6:2025 Insecure Cloud Deployment Configurations</li><li>NHI7:2025 Long-Lived Secrets</li><li>NHI8:2025 Environment Isolation</li><li>NHI9:2025 NHI Reuse</li><li>NHI10:2025 Human Use of NHI</li></ul>
+<h3 id="owasp-agentic-skills-top-10"><a class="ext" href="https://owasp.org/projects/agentic-skills-top-10">OWASP Agentic Skills Top 10 ↗</a></h3>
+<p>Ten risk categories for agent skills, the layer that carries out an agent&#x27;s actions; in public review.</p>
+<ul><li>AST01 Malicious Skills</li><li>AST02 Supply Chain Compromise</li><li>AST03 Over-Privileged Skills</li><li>AST04 Insecure Metadata</li><li>AST05 Untrusted External Instructions</li><li>AST06 Weak Isolation</li><li>AST07 Update Drift</li><li>AST08 Poor Scanning</li><li>AST09 No Governance</li><li>AST10 Cross-Platform Reuse</li></ul>
+<h3 id="owasp-aibom"><a class="ext" href="https://owaspaibom.org/">OWASP AIBOM ↗</a></h3>
+<p>Inventories of the parts of an AI system.</p>
+<h2 id="standards-lists-and-guides-an-agent-deployment-touches">Standards, lists and guides an agent deployment touches</h2>
+<p>OWASP work that predates agents but applies to the systems they run in and call.</p>
+<h3 id="owasp-asvs"><a class="ext" href="https://owasp.org/projects/asvs">OWASP ASVS ↗</a></h3>
+<p>Security requirements for web applications; 5.0.0, May 2025.</p>
+<h3 id="owasp-samm"><a class="ext" href="https://owaspsamm.org/">OWASP SAMM ↗</a></h3>
+<p>A maturity model for software security programmes; v2.0.</p>
+<h3 id="owasp-top-10-2025"><a class="ext" href="https://top10.owasp.org/2025">OWASP Top 10: 2025 ↗</a></h3>
+<p>Ten web application risk categories; the 2025 edition.</p>
+<ul><li>A01:2025 Broken Access Control</li><li>A02:2025 Security Misconfiguration</li><li>A03:2025 Software Supply Chain Failures</li><li>A04:2025 Cryptographic Failures</li><li>A05:2025 Injection</li><li>A06:2025 Insecure Design</li><li>A07:2025 Authentication Failures</li><li>A08:2025 Software or Data Integrity Failures</li><li>A09:2025 Security Logging and Alerting Failures</li><li>A10:2025 Mishandling of Exceptional Conditions</li></ul>
+<h3 id="owasp-api-security-top-10"><a class="ext" href="https://owasp.org/projects/api-security-project">OWASP API Security Top 10 ↗</a></h3>
+<p>Ten API risk categories; the 2023 edition.</p>
+<ul><li>API1:2023 Broken Object Level Authorization</li><li>API2:2023 Broken Authentication</li><li>API3:2023 Broken Object Property Level Authorization</li><li>API4:2023 Unrestricted Resource Consumption</li><li>API5:2023 Broken Function Level Authorization</li><li>API6:2023 Unrestricted Access to Sensitive Business Flows</li><li>API7:2023 Server Side Request Forgery</li><li>API8:2023 Security Misconfiguration</li><li>API9:2023 Improper Inventory Management</li><li>API10:2023 Unsafe Consumption of APIs</li></ul>
+<h3 id="cyclonedx-ecma-424"><a class="ext" href="https://cyclonedx.org/">CycloneDX (ECMA-424) ↗</a></h3>
+<p>A bill-of-materials standard with a machine-learning variant; specification 1.7.</p>
+<h3 id="software-component-verification-standard"><a class="ext" href="https://owasp.org/www-project-software-component-verification-standard/">Software Component Verification Standard ↗</a></h3>
+<p>Supply-chain verification controls; 1.0.</p>
+<h3 id="top-10-cicd-security-risks"><a class="ext" href="https://owasp.org/projects/top-10-cicd-security-risks">Top 10 CI/CD Security Risks ↗</a></h3>
+<p>Ten build-pipeline risk categories.</p>
+<ul><li>CICD-SEC-1 Insufficient Flow Control Mechanisms</li><li>CICD-SEC-2 Inadequate Identity and Access Management</li><li>CICD-SEC-3 Dependency Chain Abuse</li><li>CICD-SEC-4 Poisoned Pipeline Execution (PPE)</li><li>CICD-SEC-5 Insufficient PBAC (Pipeline-Based Access Controls)</li><li>CICD-SEC-6 Insufficient Credential Hygiene</li><li>CICD-SEC-7 Insecure System Configuration</li><li>CICD-SEC-8 Ungoverned Usage of 3rd Party Services</li><li>CICD-SEC-9 Improper Artifact Integrity Validation</li><li>CICD-SEC-10 Insufficient Logging and Visibility</li></ul>
+<h3 id="kubernetes-top-ten"><a class="ext" href="https://kubernetes-top10.owasp.org/">Kubernetes Top Ten ↗</a></h3>
+<p>Ten Kubernetes risk categories; the 2025 list.</p>
+<ul><li>K01 Insecure Workload Configurations</li><li>K02 Overly Permissive Authorization Configurations</li><li>K03 Secrets Management Failures</li><li>K04 Lack Of Cluster Level Policy Enforcement</li><li>K05 Missing Network Segmentation Controls</li><li>K06 Overly Exposed Kubernetes Components</li><li>K07 Misconfigured And Vulnerable Cluster Components</li><li>K08 Cluster To Cloud Lateral Movement</li><li>K09 Broken Authentication Mechanisms</li><li>K10 Inadequate Logging And Monitoring</li></ul>
+<h3 id="cheat-sheet-series"><a class="ext" href="https://cheatsheetseries.owasp.org/">Cheat Sheet Series ↗</a></h3>
+<p>Short guides, one topic each.</p>
+<h3 id="threat-modeling-project"><a class="ext" href="https://owasp.org/projects/threat-modeling-project">Threat Modeling Project ↗</a></h3>
+<p>The entry point for OWASP&#x27;s threat-modelling guidance, including agentic threat modelling.</p>
+<h2 id="tools">Tools</h2>
+<p>Software an organisation can run, several with a business case on this site.</p>
+<h3 id="threat-dragon"><a class="ext" href="https://owasp.org/www-project-threat-dragon/">Threat Dragon ↗</a></h3>
+<p>Threat models as data-flow diagrams.</p>
+<h3 id="pytm"><a class="ext" href="https://owasp.org/www-project-pytm/">pytm ↗</a></h3>
+<p>Threat models written as Python code.</p>
+<h3 id="coraza-web-application-firewall"><a class="ext" href="https://coraza.io/">Coraza Web Application Firewall ↗</a></h3>
+<p>A web application firewall engine.</p>
+<h3 id="core-rule-set-crs"><a class="ext" href="https://coreruleset.org/">Core Rule Set (CRS) ↗</a></h3>
+<p>Detection rules for web application firewalls.</p>
+<h3 id="dependency-track"><a class="ext" href="https://dependencytrack.org/">Dependency-Track ↗</a></h3>
+<p>Tracks component risk from bills of materials.</p>
+<h3 id="dependency-check"><a class="ext" href="https://owasp.org/www-project-dependency-check/">Dependency-Check ↗</a></h3>
+<p>Finds known vulnerable dependencies.</p>
+<h3 id="defectdojo"><a class="ext" href="https://owasp.org/www-project-defectdojo/">DefectDojo ↗</a></h3>
+<p>Collects and manages security findings.</p>
+<h3 id="juice-shop"><a class="ext" href="https://owasp.org/www-project-juice-shop/">Juice Shop ↗</a></h3>
+<p>A deliberately vulnerable web application for training.</p>
+<h3 id="wrongsecrets"><a class="ext" href="https://owasp.org/www-project-wrongsecrets/">WrongSecrets ↗</a></h3>
+<p>Secrets-management training exercises.</p>
+<h2 id="the-frameworks-owasp-maps-to-titles-only">The frameworks OWASP maps to, titles only.</h2>
+<h3 id="mitre-atlas">MITRE ATLAS</h3>
+<h3 id="mitre-attck">MITRE ATT&amp;CK</h3>
+<h3 id="mitre-cwe">MITRE CWE</h3>
+<h3 id="nist-ai-rmf-ai-100-1">NIST AI RMF (AI 100-1)</h3>
+<h3 id="nist-ai-600-1">NIST AI 600-1</h3>
+<h3 id="csa-ai-controls-matrix">CSA AI Controls Matrix</h3>
+<h3 id="isoiec-42001">ISO/IEC 42001</h3>
+<h3 id="isoiec-27090">ISO/IEC 27090</h3>
+<h3 id="eu-ai-act">EU AI Act</h3>
+<h3 id="aiuc-1">AIUC-1</h3>
+<h3 id="google-saif">Google SAIF</h3>
+<h3 id="nist-aml-taxonomy">NIST AML taxonomy</h3>
+<h3 id="csa-maestro">CSA MAESTRO</h3>
+<h3 id="zap-left-owasp-1-august-2023">ZAP (left OWASP, 1 August 2023)</h3>
+<h2 id="the-agentic-top-10-joined-to-the-register">The Agentic Top 10, joined to the register.</h2>
+<p>For each item, the answers in our model that bound it, the risks those answers establish, and the open-source cases on this site that change those answers. This is our reading, stated as ours. Three items touch nothing in the model; that is a finding about the model, and it says where the model has to grow.</p>
+<h2 id="published-unresolved-for-the-projects-to-settle">Published unresolved, for the projects to settle.</h2>
+<ul><li><strong>Project levels.</strong> OWASP records a project&#x27;s level in three places: the live project page, the committee&#x27;s level file and the project&#x27;s own page source. For several projects they disagree: the AI Exchange is Flagship on the live page, Incubator in the committee file and level 4 in its own source; the AI Testing Guide is Incubator on the live page and level 4 in its source; the MCP Top 10 is Production on the live page and level 2 in both others. This graph shows the live page&#x27;s level and marks the disputed ones. <a class="ext" href="https://github.com/OWASP/owasp.github.io/blob/main/_data/project_levels.json">github.com/OWASP/owasp.github.io/blob/main/_data/project_levels.json ↗</a></li><li><strong>The sixth MCP item.</strong> MCP06:2025 is titled Intent Flow Subversion in the project&#x27;s repository and Prompt Injection via Contextual Payloads on the live project page. This graph uses the repository&#x27;s title. <a class="ext" href="https://github.com/OWASP/www-project-mcp-top-10">github.com/OWASP/www-project-mcp-top-10 ↗</a> · <a class="ext" href="https://owasp.org/projects/mcp-top-10">owasp.org/projects/mcp-top-10 ↗</a></li><li><strong>The date of the 2026 LLM Top 10.</strong> 3 August in the project&#x27;s feed, 4 August on the page and the cover, and a placeholder, publication date to be set, inside the document. <a class="ext" href="https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/">genai.owasp.org/resource/owasp-genai-llm-top-10-2026/ ↗</a></li><li><strong>The ML Top 10&#x27;s status.</strong> Lab on the live site; an Incubator badge and in draft on its own page. <a class="ext" href="https://github.com/OWASP/www-project-machine-learning-security-top-10">github.com/OWASP/www-project-machine-learning-security-top-10 ↗</a></li><li><strong>What the AI Testing Guide is.</strong> It calls itself a standard; the live site lists it as an Incubator project of type Other. <a class="ext" href="https://github.com/OWASP/www-project-ai-testing-guide">github.com/OWASP/www-project-ai-testing-guide ↗</a></li></ul>
+<h2 id="a-graph-owasp-does-not-have-yet-offered-to-owasp">A graph OWASP does not have yet, offered to OWASP.</h2>
+<p>The lead is closely involved with OWASP, and the intent is to offer this graph, and in time the Agent Behaviour Policy format, to OWASP rather than keep them here. Until then the data is published so anybody can take it, and it changes with a date when a project corrects it.</p>
+<ul><li><a class="ext" href="https://owasp.org/slack/invite">OWASP Slack ↗</a></li><li><a class="ext" href="https://genai.owasp.org/contributing/">GenAI Security Project: contributing ↗</a></li><li><a class="ext" href="https://genai.owasp.org/meetings/">GenAI Security Project: meetings ↗</a></li><li><a class="ext" href="https://github.com/owasp/www-project-mcp-top-10">MCP Top 10 on GitHub ↗</a></li><li><a class="ext" href="https://github.com/OWASP/www-project-non-human-identities-top-10">NHI Top 10 on GitHub ↗</a></li><li><a class="ext" href="https://github.com/OWASP/www-project-ai-testing-guide">AI Testing Guide on GitHub ↗</a></li><li><a class="ext" href="https://owaspai.org/">AI Exchange ↗</a></li><li><a class="ext" href="https://github.com/OWASP/CheatSheetSeries">Cheat Sheet Series on GitHub ↗</a></li></ul>
+<h2 id="an-item-names-a-risk-a-behaviour-policy-says-whether-yours-has-it">An item names a risk. A behaviour policy says whether yours has it.</h2>
+<p>The Top 10s say what can go wrong with agents in general. What goes wrong with yours depends on what it can reach, which is what a behaviour policy writes down, and which projects change it, which is what the business cases compute.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/owasp-graph.html">https://riskmandate.ai/owasp-graph.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/owasp-graph.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:01Z</dd><dt>sha256</dt><dd><code title="518051246f48ad2371d42327c3c7ceb08436bf58bccd6bbd2800586e61f85bcc">518051246f48</code></dd><dt>Frozen copy</dt><dd><a href="owasp-graph.md">sites/riskmandate.ai/owasp-graph.md</a> (18,401 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

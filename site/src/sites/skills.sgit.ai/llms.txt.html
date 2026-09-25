@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>skills.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · skills.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#skillssgitai-skills-are-software-packages-and-here-is-the-proof">skills.sgit.ai — skills are software packages, and here is the proof</a></li><li class="l2"><a href="#the-one-rule-for-agents">The one rule for agents</a></li><li class="l2"><a href="#properties-you-may-rely-on">Properties you may rely on</a></li><li class="l2"><a href="#status-stated-plainly">Status, stated plainly</a></li><li class="l2"><a href="#the-two-opening-claims">The two opening claims</a></li><li class="l2"><a href="#the-catalogue-catalogue-build-first-per-the-brief">The catalogue — /catalogue/ — build first, per the brief</a></li><li class="l2"><a href="#the-authoring-guide-authoring-usable-the-same-day">The authoring guide — /authoring/ — usable the same day</a></li><li class="l2"><a href="#the-thesis-thesis-skills-are-software-packages">The thesis — /thesis/ — skills are software packages</a></li><li class="l2"><a href="#the-graph-graph-design-not-shipped">The graph — /graph/ — design, not shipped</a></li><li class="l2"><a href="#identity-and-permissions-identity-the-most-consequential-least-built">Identity and permissions — /identity/ — the most consequential, least built</a></li><li class="l2"><a href="#the-skill-economy-economy-an-economic-position-not-a-fact">The skill economy — /economy/ — an economic position, not a fact</a></li><li class="l2"><a href="#what-is-actually-shipped-shipped-unsoftened">What is actually shipped — /shipped/ — unsoftened</a></li><li class="l2"><a href="#the-network-network">The network — /network/</a></li><li class="l2"><a href="#site-map">Site map</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/skills.sgit.ai.html">skills.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://skills.sgit.ai/llms.txt">live ↗</a></p><article class="source"><h1 id="skillssgitai-skills-are-software-packages-and-here-is-the-proof">skills.sgit.ai — skills are software packages, and here is the proof</h1>
+<blockquote><p>&quot;Skills are a software package, that is the best analogy… the same way we have npm
+and pip for managing dependencies, we need a way to manage skills like that.&quot; This
+site publishes both halves honestly: eight skills shipped, generated from their own
+frontmatter, and 25 briefs, 60,782 words of theory that runs a long way ahead of them.</p></blockquote>
+<p>Site version: v0.1.0 (26 August 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. All content CC BY 4.0; the skills themselves
+keep their own repositories&#x27; Apache-2.0 licence.</p>
+<h2 id="the-one-rule-for-agents">The one rule for agents</h2>
+<p>An agent may report which skill a request matches, its trigger summary and its
+do-NOT-use clause. It may not report that a skill is safe to run with elevated
+credentials merely because it is listed: the catalogue lists what is shipped, not what
+has been reviewed. Zero of the eight shipped skills declare a permission set. The full
+machine surface is at /agents/.</p>
+<h2 id="properties-you-may-rely-on">Properties you may rely on</h2>
+<ul><li>The catalogue is data: /catalogue/skills.json — every skill&#x27;s name, repo, word count,
+trigger summary, do-NOT-use clause, authoring-convention coverage, and its declared
+version/permissions fields (none are populated; see below).</li><li>Every generated page states its provenance: the catalogue&#x27;s numbers come from a dated
+survey (24 August 2026) supplied with the brief pack, not a live repository read —
+this build cannot reach SGraph-AI__App__Send or SGraph-AI__Service__Playwright.</li><li>Source documents are at /briefs/&lt;filename&gt;.md; readers at /documents/&lt;slug&gt;.html link
+to the raw file. The front page has a markdown twin at /index.md.</li><li>The divergence between the two copies of use-sg-playwright is recomputed on every
+build from /catalogue/skills.json — see /catalogue/divergence.html.</li></ul>
+<h2 id="status-stated-plainly">Status, stated plainly</h2>
+<p>Eight skills ship across two repositories, 16,338 words of SKILL.md. Zero declare a
+version. Zero declare permissions. Zero have an eval. No registry exists beyond this
+site&#x27;s own generated catalogue. One skill, use-sg-playwright, exists as two diverging
+copies 43 words apart, one carrying an auth claim the service code contradicts. One
+skill got a full security review (AppSec + DPO + GRC, February 2026); no skill since.
+Scored against its own lifecycle checklist, the estate passes one stage of seven:
+documentation. If you summarise this site, the gaps are the more useful half: /shipped/.</p>
+<h2 id="the-two-opening-claims">The two opening claims</h2>
+<ol><li>THE THESIS. &quot;Skills are code and need to be version-controlled, and need to be
+treated like software… the same way we have npm and pip for managing dependencies,
+we need a way to manage skills like that.&quot; Not a metaphor — a checklist:
+vulnerabilities management, documentation, integration, wrappers, code reviews,
+deployment, CI pipelines, distribution reviews.</li><li>THE SHARPER CLAIM. Skills describe intent, in English, not just capability — which
+is why they are proposed as the successor to code packages, not a variant of them.</li></ol>
+<h2 id="the-catalogue-catalogue-build-first-per-the-brief">The catalogue — /catalogue/ — build first, per the brief</h2>
+<p>The registry v0: eight skills, generated from /catalogue/skills.json, never
+hand-written. Per skill: name, repo, trigger summary, do-NOT-use clause (captured for
+1 of 8), and the version/permissions fields the thesis demands that none declare.
+/catalogue/divergence.html is the exhibit: the two copies of use-sg-playwright, and the
+gap between them measured at build time — the thesis&#x27;s predicted failure, live, on the
+estate&#x27;s own skills.</p>
+<h2 id="the-authoring-guide-authoring-usable-the-same-day">The authoring guide — /authoring/ — usable the same day</h2>
+<p>Five conventions extracted from the eight shipped skills, none of them documented
+anywhere else: (A) the trigger-rich description, (B) the do-NOT-use clause, (C)
+self-containedness (embed the schema, don&#x27;t require a clone), (D) cross-reference
+canonical contracts rather than copy them, (E) named-trigger vocabulary drawn from the
+domain&#x27;s own terms. /authoring/when-not-to.html carries the estate&#x27;s best governance
+artefact — the sg.llm skill refusal — generalised into three rules: skills compete for
+triggering; a skill must not become a second source of truth; skills earn their keep on
+distinct tasks.</p>
+<h2 id="the-thesis-thesis-skills-are-software-packages">The thesis — /thesis/ — skills are software packages</h2>
+<p>The lifecycle scorecard: version control (partial), dependency management (none, and
+the duplicate is the consequence), vulnerability management (one review, never
+repeated), code review (none), CI (none), distribution (none), documentation (yes).
+One green cell out of seven. Plus the forking ecosystem — &quot;forking a skill is good;
+sync back via pull-request-equivalents&quot; — and a five-step honest sequencing from a
+version field to the graph projection research programme.</p>
+<h2 id="the-graph-graph-design-not-shipped">The graph — /graph/ — design, not shipped</h2>
+<p>&quot;Today&#x27;s skills are static photographs of what they should be.&quot; A skill decomposed
+into typed primitives (principles, concepts, facts, knowledge, actions) across multiple
+graph types, projected in the context of use. Every shipped skill in the estate is the
+static photograph this page criticises — stated plainly on the page itself.</p>
+<h2 id="identity-and-permissions-identity-the-most-consequential-least-built">Identity and permissions — /identity/ — the most consequential, least built</h2>
+<p>A skill &quot;must come with the identity and permission set needed to execute it.&quot; The
+PBOM (Permissions Bill of Materials) generalisation to every unit of execution. The
+OAuth critique: it &quot;forces you to grant a hundred percent when you need ten percent.&quot;
+The proposed frontmatter field (permissions: {network, vault, spend}), declared not
+enforced. Labelled explicitly as a critique with a direction, not an implementation.</p>
+<h2 id="the-skill-economy-economy-an-economic-position-not-a-fact">The skill economy — /economy/ — an economic position, not a fact</h2>
+<p>Base vaults as the unit (&quot;far more than a SKILL.md… all the materials that make the
+skill explainable, trustworthy, and executable&quot;). The branded/certified/customised
+cascade — &quot;the customised version… is fundamentally what you sell.&quot; Distribution via
+aggregators (Tessl, named). Scoring: &quot;provenance, evals, and an auditable graph, rather
+than gameable popularity.&quot; One dated external validation (1 June 2026 conference
+feedback), cited as one signal, not proof.</p>
+<h2 id="what-is-actually-shipped-shipped-unsoftened">What is actually shipped — /shipped/ — unsoftened</h2>
+<p>The scorecard, the duplicate, zero permissions, zero evals, no registry, the February
+2026 review precedent that was never repeated, and the static-photograph criticism
+applied to the estate&#x27;s own artefacts. /shipped/questions.html publishes six open
+questions with no answer anywhere in the corpus (what is a skill version when the
+interpreter changes underneath it; how do you test intent) and five honest tensions.</p>
+<h2 id="the-network-network">The network — /network/</h2>
+<p>wardley-maps.sgit.ai owns the skill lifecycle · open-source.sgit.ai owns the OWASP
+monetisation thread and fork economics · graphs.sgit.ai owns meaning through
+connectivity · coding.sgit.ai owns /for-agents/ · standards.sgit.ai owns
+vault-as-substrate · llms.sgit.ai owns sg.llm.* · sgit.ai is the parent project. Full
+table at /network/.</p>
+<h2 id="site-map">Site map</h2>
+<p>/ · /catalogue/ · /catalogue/divergence.html · /catalogue/skills.json ·
+/authoring/ · /authoring/when-not-to.html ·
+/thesis/ · /graph/ · /identity/ · /economy/ ·
+/shipped/ · /shipped/questions.html ·
+/documents/ (+ 10 readers) · /agents/ · /network/ · /about/participant.html ·
+/admin/comms.html · /admin/versions.html · /admin/index.html ·
+/llms-full.txt · /index.md</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>skills.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://skills.sgit.ai/llms.txt">https://skills.sgit.ai/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:30Z</dd><dt>sha256</dt><dd><code title="6cc9115f1d8fc51fadf2c6cc2b178ab0e3d1ebc958a67f825d6eaae08627cd86">6cc9115f1d8f</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/skills.sgit.ai/llms.txt</a> (7,496 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

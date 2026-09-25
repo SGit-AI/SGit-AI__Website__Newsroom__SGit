@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.2.1.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.2.1.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.2.1.html">live ↗</a></p><article class="source"><h2 id="the-version-record-turns-light-and-markdown-emphasis-stops-eating-its-own-links">The version record turns light, and markdown emphasis stops eating its own links</h2>
+<p>Three fixes, all of them visible on <a class="ext" href="https://riskmandate.ai/versions/versions.html">the version record ↗</a> and two of them
+bugs that had been shipping since v1.0.0.</p>
+<ul><li><strong>The version record is on the paper theme.</strong> It inherited the dark theme of the dev
+page it used to be, which is the wrong ground for the longest continuous prose on the
+site. Every rule on that page routes through its tokens, so the page turned over by
+changing six token values and two code-span backgrounds — nothing else moved.</li><li><strong>Emphasis now nests.</strong> A <code>strong</code> or <code>em</code> run carried a flat string, so a link or a
+code span inside <code>**bold**</code> was never parsed and the reader saw the markdown source —
+brackets, parentheses and all — on a published page. Runs carry children now and both
+the parser and the renderer recurse. Nesting is capped at four deep, which is three
+more than any release note will ever need.</li><li><strong><code>*single asterisk italics*</code> are supported.</strong> The parser handled <code>_underscores_</code> only,
+so every <code>*emphasis*</code> in the previous two releases&#x27; notes rendered as literal
+asterisks. The <code>**bold**</code> branch is still matched first, so nothing is ambiguous.</li><li><strong>And the notes&#x27; own links were pointing one directory too high.</strong> They render at
+<code>/versions.html</code>, so a <code>../</code> in a note escapes the site root. Fixed in the two notes
+that had it.</li></ul>
+<p><strong>A tool, because this was the second time.</strong> <code>scripts/site/sync-modules.mjs</code> pushes a
+change to a shared module — <code>dom</code>, <code>nav</code>, <code>menu</code>, <code>io</code>, <code>markdown</code> — into every page that
+carries a copy, from one source per module under <code>scripts/site/modules/</code>. Each page
+inlining its own copy is the price of having no build step, and the cost is that fixing
+<code>dom.js</code> means fixing it in thirty-one places. <code>--check</code> now runs as a CI gate, so a
+hand-edit applied to one page and not the rest fails the build instead of shipping.</p>
+<p><code>scripts/migrate/modules/</code> is deliberately left alone: it is the frozen record of what
+produced v1.0.0, and editing it would break the claim that re-running the migration
+reproduces that snapshot.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.2.1.html">https://riskmandate.ai/versions/1.2.1.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.2.1.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="9c2291efc203e47c3f6ea4a8bbff1d4b226c0d740526e19886a2e25ae019f960">9c2291efc203</code></dd><dt>Frozen copy</dt><dd><a href="1.2.1.md">sites/riskmandate.ai/versions/1.2.1.md</a> (2,118 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

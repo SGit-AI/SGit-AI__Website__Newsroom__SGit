@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.5.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.5.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.5.0.html">live ↗</a></p><article class="source"><h2 id="lab-04-seven-things-to-build-and-one-word-we-have-not-earned">Lab 04: seven things to build, and one word we have not earned</h2>
+<p>A build specification for the first thing anybody will ever use — a page that asks what
+you run, computes what you granted, and hands you the gap — plus a repair to a defect
+that had put a line of JavaScript at the foot of nine pages.</p>
+<ul><li><strong><a class="ext" href="https://riskmandate.ai/versions/lab-shape-collector.html">Lab 04 — seven things to build, and one word we have not earned ↗</a></strong>.
+Three tools, two vaults, two documents, each card saying what the thing is, where it
+runs, what it holds, what it must never do, and which open question blocks it. The
+collector itself; the shape-record schema; the write-only submitting vault and the
+collection vault behind it; the aggregator that is the only place a suppression rule
+can actually be enforced; the motivated-intruder assessment; and the employer
+instrument, which is a second product under different law.</li><li><strong>The arithmetic is the argument.</strong> A twenty-connector multi-select carries about 20
+bits — more entropy than a well-known browser-fingerprint study measured across a whole
+fingerprint, where 83.6% of 470,000 samples were instantaneously unique. At 500
+responses effectively every respondent is unique, so the submissions are personal data.
+The fix is to compute the full shape locally and submit only bands and categories.</li><li><strong>One correction to the brief this came from, stated on the page.</strong> Banding the
+connector question cuts it from about 20 bits to about 7, and banding every field cuts
+the nominal space from roughly 42 bits to roughly 20 — a factor of four million, and
+the largest single reduction available. It also leaves a banded submission at
+<em>approximately the entropy of that fingerprint</em>. So banding is the necessary first move
+and not the whole answer: the page says so, marks the arithmetic as ours rather than a
+citation, and shows the assumptions it rests on.</li><li><strong>The word <em>anonymous</em> is gated, in public.</strong> It may not appear in the product until the
+banding, the suppression and the written assessment all exist. Until then the honest
+word is <em>banded</em>, and the page says which of the three are specified and which are not.</li></ul>
+<p><strong>Editions can now say what separates them from the edition before.</strong> Two PDFs dated a day
+apart otherwise read as two states of an argument, and sometimes one of them is only a
+repair — as three of today&#x27;s are. <code>lab-editions.json</code> takes an optional <code>note</code> per
+edition and the edition list on each page renders it.</p>
+<p><strong>A line of script was rendering onto nine pages.</strong> The page scaffolder lifts the shared
+JS modules from a page already in <code>site/</code>, and the last of those modules ran to the end of
+the donor document — so it carried the donor&#x27;s own <code>&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code> in with it.
+Every scaffolded page therefore closed twice, and the text between the two closes is not
+ignored: the parser reparents it into <code>&lt;body&gt;</code>, which put <code>})();</code> at the foot of
+<a class="ext" href="https://riskmandate.ai/versions/abp.html">abp ↗</a>, <a class="ext" href="https://riskmandate.ai/versions/lab.html">the Lab ↗</a> and its three entries, <a class="ext" href="https://riskmandate.ai/versions/summit.html">Lisbon ↗</a>, the
+booth guide, and both <a class="ext" href="https://riskmandate.ai/versions/work.html">work ↗</a> pages. It was in the published PDFs too. Fixed at
+the source, trimmed from all nine, and a test now asserts that every page closes exactly
+once with nothing after it.</p>
+<p><strong>And editions no longer turn over for chrome changes.</strong> The renderer&#x27;s content hash
+covered the shared JS modules, so a <code>sync-modules</code> run would have minted a new edition on
+every Lab entry the same afternoon — implying four arguments had moved when none had. The
+hash now covers the markup between <code>&lt;body</code> and <code>&lt;/html&gt;</code> with the script block and the
+injected regions removed.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.5.0.html">https://riskmandate.ai/versions/1.5.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.5.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="14b1e29c9ade3acd05d1e286596a7f059d30b8d04a3ad58507af9b7f137efea5">14b1e29c9ade</code></dd><dt>Frozen copy</dt><dd><a href="1.5.0.md">sites/riskmandate.ai/versions/1.5.0.md</a> (3,602 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

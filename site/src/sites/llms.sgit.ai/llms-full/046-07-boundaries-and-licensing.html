@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>07 — Boundaries and licensing (llms.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#07-boundaries-and-licensing">07 — Boundaries and licensing</a></li><li class="l2"><a href="#1-licensing">1. Licensing</a></li><li class="l2"><a href="#2-do-not-create-a-second-source-of-truth">2. ⚠️ Do not create a second source of truth</a></li><li class="l2"><a href="#3-do-not-publish">3. Do not publish</a></li><li class="l2"><a href="#4-publish-the-security-gap-do-not-soften-it">4. Publish the security gap — do not soften it</a></li><li class="l2"><a href="#5-network-boundaries">5. Network boundaries</a></li><li class="l2"><a href="#6-house-style">6. House style</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 46 of 49</p><nav class="pager"><span><a href="045-06-site-architecture.html">← 06 — Site Architecture</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="047-08-gaps-open-questions-and-honest-tensio.html">08 — Gaps, open questions and honest tensions →</a></span></nav><article class="source"><h1 id="07-boundaries-and-licensing">07 — Boundaries and licensing</h1>
+<h2 id="1-licensing">1. Licensing</h2>
+<p><strong>This site&#x27;s content is CC BY 4.0</strong>, consistent with the network. Stamp every raw markdown document; gate with <code>licence-audit.py --check</code>.</p>
+<p><strong>The code quoted throughout is Apache-2.0</strong> — <code>SGraph-AI__App__Send</code> and the vault-html guides carry it. Retain the notice where snippets run long, and do not imply the code carries the site&#x27;s CC BY licence.</p>
+<p><strong>The samples in <code>code__chat-pane-samples.md</code></strong> are written for this pack and are CC BY 4.0. The <code>sg.llm.*</code> calls inside them are the shipped API; the surrounding UI is ours. Say so, so a reader knows which half is a contract and which half is an example.</p>
+<hr>
+<h2 id="2-do-not-create-a-second-source-of-truth">2. ⚠️ Do not create a second source of truth</h2>
+<p>The corpus already refused to do this, deliberately, and gave its reasons:</p>
+<blockquote><p><em>&quot;<strong>No — and deliberately.</strong> It belongs in the two homes that already exist: <code>AUTHORING.md</code> — the canonical <code>window.sg.*</code> contract. <strong>Adding a competing document would create a second source of truth that drifts.</strong>&quot;</em></p></blockquote>
+<p>That was about a proposed skill, and <strong>the same logic applies to this site.</strong> A hand-written API reference on <code>llms.sgit.ai</code> will drift from <code>AUTHORING.md</code> within a release.</p>
+<p><strong>The resolution:</strong> <code>AUTHORING.md</code> stays canonical; the site <strong>generates</strong> its reference from it and says so on the page. That gives a human-readable public surface without a competing contract — which is the gap the corpus&#x27;s own reasoning leaves open, since <code>AUTHORING.md</code> is an agent authoring contract that no human reader will find. <code>08__</code> Q1.</p>
+<hr>
+<h2 id="3-do-not-publish">3. Do not publish</h2>
+<ul><li><strong>Any OpenRouter key, or any vault key.</strong> Rule 13 of the estate&#x27;s code rules: <em>&quot;No vault keys in Git… If one appears in a diff, block the commit.&quot;</em> This site&#x27;s subject matter makes it the most likely place in the estate for a key to end up in a sample.</li><li><strong>The demo vault&#x27;s write key</strong>, if the demo in <code>06__</code> §4 is built. Read key only, and only after the spend caps are set.</li><li><strong><code>library/alchemist/materials/</code></strong> — the whole tree.</li><li><strong><code>team/roles/grc/reviews/02/19/</code></strong> — names a private individual with signature blocks.</li><li><strong><code>team/roles/appsec/reviews/02/21/…pki-architecture-security-revised.md</code></strong> — classified as <em>&quot;an attack roadmap for live code.&quot;</em></li><li><strong>The competitor and positioning briefs.</strong></li></ul>
+<p><strong>And a rule specific to this site:</strong> every sample must use a placeholder that is obviously a placeholder. Not a realistic-looking key. <strong>Add <code>sk-or-</code>, <code>sgit_vk1_</code> and OpenRouter key shapes to the CI key-leak check</strong> before the first sample page ships.</p>
+<hr>
+<h2 id="4-publish-the-security-gap-do-not-soften-it">4. Publish the security gap — do not soften it</h2>
+<p><code>03__</code> §5. The corpus states plainly that the CSP egress lockdown is not built and that this is <em>&quot;the gap that turns the current design from a convenience into a guarantee.&quot;</em></p>
+<p><strong>Publishing a known limitation of your own security design is the estate&#x27;s own standard</strong> — the vault catalogue publishes its own key-exposure incident; the reality-document rule is <em>&quot;briefs are aspirations, not facts.&quot;</em> A site that omitted this would be below the standard the rest of the network keeps.</p>
+<p><strong>Do not</strong> publish an exploitation path, and do not frame it as a vulnerability disclosure. It is a scope statement: <em>the bridge protects the credential you trusted us with; it does not prevent all egress.</em></p>
+<hr>
+<h2 id="5-network-boundaries">5. Network boundaries</h2>
+<div class="table"><table><thead><tr><th>Site</th><th>Owns</th><th>Boundary</th></tr></thead><tbody><tr><td><strong><code>llms.sgit.ai</code></strong></td><td>The chat pane, <code>sg.llm.*</code>, the LLM security model, provenance, providers, local models</td><td>—</td></tr>
+<tr><td><code>sgit.ai</code></td><td>The vault product, the catalogue, the demos</td><td><strong>The closest neighbour.</strong> <code>AUTHORING.md</code> and the vault UI belong there; the LLM capability <em>inside</em> them belongs here. Agree who owns the <code>/vault</code> chat-panel page — recommendation: <strong>this site owns the capability, <code>sgit.ai</code> owns the product tour</strong></td></tr>
+<tr><td><code>coding.sgit.ai</code></td><td>How code is written</td><td><strong>The samples follow its component conventions.</strong> If <code>sg-llm-chat</code> gets built (<code>04__</code> §3), that site owns the component pattern and this one owns the LLM contract</td></tr>
+<tr><td><code>risks.sgit.ai</code> · <code>standards.sgit.ai</code></td><td>Risk and instruments</td><td><strong>They own the grounding ladder.</strong> State it in three lines and link out — <code>05__</code> §2</td></tr>
+<tr><td><code>open-source.sgit.ai</code></td><td>The open-source position</td><td>Sovereignty applies sharply to model providers (<em>&quot;one SLA away from losing access&quot;</em>); the agent-era theses are shared. Two links</td></tr>
+<tr><td><code>graphs.sgit.ai</code></td><td>Graph theory</td><td>RAG-over-graphs sits on the boundary. Light link</td></tr>
+<tr><td><code>sg-compute.sgit.ai</code></td><td>The compute platform</td><td><strong>Owns the <code>ollama</code> and <code>local_claude</code> specs.</strong> This site links to them for the local-model story; that site owns the specs themselves</td></tr>
+<tr><td><code>newsroom.sgit.ai</code></td><td>The future of news</td><td>Shares training-data licensing and the fact-graph-as-training-material thread</td></tr></tbody></table></div>
+<hr>
+<h2 id="6-house-style">6. House style</h2>
+<ul><li><strong>Every sample is runnable, and tested by being a real vault app</strong> (<code>06__</code> §4).</li><li><strong>Every API claim is traceable to <code>AUTHORING.md</code></strong>, with the date the contract shipped.</li><li><strong>Estimates are rendered with <code>~</code>.</strong> The site&#x27;s own cost figures follow the rule it teaches.</li><li><strong>State the grant before the call.</strong> Default-deny is the model; the grant is the first thing a reader needs.</li><li><strong>Publish the traps.</strong> The 8190 bug shipped three times — that is documentation, not embarrassment.</li><li><strong>-ise, not -ize</strong>, and no em-dashes in the markdown deliverables.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>/briefs/08__gaps-and-open-questions.md</p>
+<hr></article><nav class="pager"><span><a href="045-06-site-architecture.html">← 06 — Site Architecture</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="047-08-gaps-open-questions-and-honest-tensio.html">08 — Gaps, open questions and honest tensions →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>46 of 49: 07 — Boundaries and licensing</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

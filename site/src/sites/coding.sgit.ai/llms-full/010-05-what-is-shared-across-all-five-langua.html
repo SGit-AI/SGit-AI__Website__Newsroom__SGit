@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>05 — What is shared across all five languages (coding.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#05-what-is-shared-across-all-five-languages">05 — What is shared across all five languages</a></li><li class="l2"><a href="#1-one-idea-per-file-and-the-filename-says-which">1. One idea per file, and the filename says which</a></li><li class="l2"><a href="#2-banners-and-the-three-characters">2. Banners, and the three characters</a></li><li class="l2"><a href="#3-alignment-and-the-argument-that-it-is-for-machines">3. ⚠️ Alignment — and the argument that it is for machines</a></li><li class="l2"><a href="#4-single-source-of-truth-enforced-by-structure">4. Single source of truth, enforced by structure</a></li><li class="l2"><a href="#5-writing-code-for-agents-the-most-original-page-available">5. Writing code for agents — the most original page available</a></li><li class="l2"><a href="#6-the-house-prose-rules-that-touch-code">6. The house prose rules that touch code</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 10 of 14</p><nav class="pager"><span><a href="009-04-bash-and-the-generated-shell-pattern.html">← 04 — Bash, and the generated-shell pattern</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="011-06-the-31-rules-and-whether-the-code-obe.html">06 — The 31 rules, and whether the code obeys them →</a></span></nav><article class="source"><h1 id="05-what-is-shared-across-all-five-languages">05 — What is shared across all five languages</h1>
+<p>The languages look different. The instincts underneath them are the same four, and naming them is what turns a set of per-language pages into a coherent house style.</p>
+<hr>
+<h2 id="1-one-idea-per-file-and-the-filename-says-which">1. One idea per file, and the filename says which</h2>
+<p><strong>Python:</strong> the filename <em>is</em> the class name. <code>Schema__Caller__IP.py</code> → <code>class Schema__Caller__IP</code>. 187 of 208 sampled files define exactly one class; 3,871 of 3,999 filenames carry the <code>__</code> separator. <code>__init__.py</code> stays empty in 299 of 302 packages, so there is no re-export layer to hide behind.</p>
+<p><strong>JavaScript:</strong> one component per directory, and the directory, the three files, the class and the custom element all carry the same name — <code>sg-compute-left-nav</code>.</p>
+<p><strong>CSS and HTML:</strong> the component&#x27;s sibling files, same basename.</p>
+<p><strong>Bash:</strong> one <code>Section__*</code> class per boot concern.</p>
+<p><strong>The rule to publish:</strong> <em>a name should let you find the file, and a file should contain one thing.</em> Everything else — the double underscores, the empty <code>__init__.py</code>, the fully-qualified imports, the triplet — follows from wanting that to be true without a search index.</p>
+<hr>
+<h2 id="2-banners-and-the-three-characters">2. Banners, and the three characters</h2>
+<p>Every file opens with a comment block naming what it is and why it exists.</p>
+<div class="table"><table><thead><tr><th>Language</th><th>Character</th><th>Form</th></tr></thead><tbody><tr><td>Python</td><td><code>═</code></td><td><code># ═══…</code> × 79, product — class — purpose</td></tr>
+<tr><td>Generated shell</td><td><code>─</code></td><td><code># ── Auto-terminate after 1h ──…</code></td></tr>
+<tr><td>JS shared modules</td><td><code>─</code></td><td><code>// ── launch-defaults.js — canonical launch constants ──…</code></td></tr>
+<tr><td>JS components</td><td>JSDoc</td><td><code>/** … @module … @version */</code></td></tr></tbody></table></div>
+<p><strong>One idea, four expressions.</strong> The Python form is documented (rule 7, with the sharp caveat that it is <em>Python files only</em> because <code>#</code> is Markdown heading syntax and a banner renders as a stack of H1s on GitHub). The other three are conventions nobody has written down.</p>
+<p><strong>Recommendation for the site:</strong> publish the shape as the rule — <em>a banner names the file, its owner and its purpose in three lines</em> — and let the comment character follow the language. Then fix the JS inconsistency (<code>02__</code> §6) so components and shared modules agree.</p>
+<hr>
+<h2 id="3-alignment-and-the-argument-that-it-is-for-machines">3. ⚠️ Alignment — and the argument that it is for machines</h2>
+<p>This is the estate&#x27;s most visible and least explained convention.</p>
+<div class="table"><table><thead><tr><th>Where</th><th>Measured</th></tr></thead><tbody><tr><td>Python schema attribute colons</td><td><strong>100% aligned</strong> — 46 of 46</td></tr>
+<tr><td>Python class attribute values</td><td>aligned</td></tr>
+<tr><td>Python trailing comments</td><td>aligned</td></tr>
+<tr><td>Python <code>from X import Y</code></td><td><strong>39% aligned</strong> — 321 of 817</td></tr>
+<tr><td>CSS property values</td><td>aligned per block</td></tr>
+<tr><td>JS object literal keys</td><td>aligned</td></tr></tbody></table></div>
+<p>The usual case for alignment is aesthetic and it is usually a bad trade: it produces noisy diffs when the longest name changes, and it is why <code>gofmt</code> and <code>black</code> refuse to do it.</p>
+<p><strong>There is a better argument available here, and the site should make it.</strong> This is a codebase where <strong>61% of commits were written by an agent</strong> and where the stated house position is that <em>&quot;someone still needs to understand what is underneath.&quot;</em> Aligned columns turn a class body into a table. A reader — human or model — scanning <code>Safe_Str__IP__Address</code> sees five attributes and five values as two columns rather than five sentences. The same is true of a schema&#x27;s field list and a CSS block&#x27;s property list.</p>
+<p><strong>That is a claim, and it is falsifiable</strong>, which is the right shape for a page here: alignment costs diff noise and buys scanability, and the estate has decided the trade is worth it. Say so, with the numbers, and note the one place it is not being kept — imports at 39%.</p>
+<p><strong>And note the discipline is per-block, not per-file.</strong> In CSS, <code>.left-nav</code> and <code>.nav-item</code> align to different columns, each set by its own longest property. The unit of alignment is the thing you read at once.</p>
+<hr>
+<h2 id="4-single-source-of-truth-enforced-by-structure">4. Single source of truth, enforced by structure</h2>
+<p>The same instinct appears in every language, each time with a mechanism rather than a convention:</p>
+<ul><li><strong><code>version</code> at the repo root</strong> — read at runtime by <code>consts/version.py</code> and every <code>manifest.py</code>, and used as the Docker tag. One file, many consumers.</li><li><strong><code>manifest.py</code> per spec</strong> — <em>&quot;Single source of truth. Every spec&#x27;s <code>manifest.py</code> exposes <code>MANIFEST</code>.&quot;</em></li><li><strong><code>launch-defaults.js</code></strong> — <code>Object.freeze</code> on every export, with a comment naming the consumers: <em>&quot;Update here only — do not duplicate locally.&quot;</em></li><li><strong><code>sg-tokens.css</code></strong> — no literal colour in any component stylesheet.</li><li><strong>The versioned CDN path</strong> — <code>/v1/v1.0/v1.0.0/</code> as directories, so a URL is an immutable identity and there is no lockfile to drift.</li><li><strong>Empty <code>__init__.py</code></strong> — no re-export layer, so there is exactly one import path to any class.</li></ul>
+<p><strong>The pattern to publish:</strong> <em>duplication is prevented by making the second copy impossible to write, not by asking people not to write it.</em></p>
+<hr>
+<h2 id="5-writing-code-for-agents-the-most-original-page-available">5. Writing code for agents — the most original page available</h2>
+<p>Several conventions only make sense once you accept that an LLM is a primary reader and writer of this code. Nobody has written this page, and it is the one that would distinguish <code>coding.sgit.ai</code> from every other style guide.</p>
+<p><strong>The evidence, gathered from across the estate:</strong></p>
+<ul><li><strong>61% of the sg-compute repo&#x27;s 2,777 commits were authored by Claude</strong>, 30% by a human. The code was largely written by a model, under these rules.</li><li><strong><code>Type_Safe</code> validates at construction.</strong> A model that produces a wrong-shaped object gets an error at the point of the mistake, not three layers away. <strong>Runtime validation is a better fit for generated code than static typing</strong>, because the feedback arrives during execution rather than during a separate check the generator may never run.</li><li><strong>Constrained primitives encode the domain in the type name.</strong> <code>Safe_Str__SSM__Path</code> tells a model what the value is without a comment, a docstring or a lookup.</li><li><strong>No docstrings, banners instead</strong> (rule 8). A banner at the top of a one-class file is a fixed, findable location for the purpose; docstrings scatter it.</li><li><strong>One class per file, filename = class name.</strong> A model can locate any symbol by path construction alone, with no index and no grep.</li><li><strong>Fully-qualified imports, no re-exports.</strong> There is exactly one import path for anything, so the model cannot invent a plausible-but-wrong one.</li><li><strong>Explicit responsibility boundaries</strong> (rules 16–19) — <em>&quot;<code>Step__Executor</code> is the ONLY class that calls <code>page.*</code>&quot;</em> — with a CI guard behind one of them. This is how you stop a generator putting a call in a reasonable-looking wrong place.</li><li><strong>The markdown twin at every URL</strong>, so <em>&quot;a traversing agent never has to parse HTML&quot;</em> — an HTML convention that exists purely for machine readers.</li><li><strong>Aligned columns</strong>, per §3.</li></ul>
+<p><strong>The thesis for the page:</strong> these are not stylistic preferences that happen to suit agents. They are <strong>a coherent design for a codebase whose main author is a model and whose main reviewer is a human</strong>, and they trade a little human convenience — no docstrings, more files, more typing — for a lot of machine predictability.</p>
+<p>That argument connects directly to <code>open-source.sgit.ai</code>&#x27;s <em>&quot;someone still needs to understand what is underneath&quot;</em> and to its unwritten agent-era theses. <strong>Cross-link them; this site has the artefact and that one has the argument.</strong></p>
+<hr>
+<h2 id="6-the-house-prose-rules-that-touch-code">6. The house prose rules that touch code</h2>
+<p>Three conventions govern the documents <em>around</em> the code and belong on the site because they apply to anything an engineer writes here:</p>
+<ul><li><strong>No em-dashes</strong> in briefs. <em>&quot;All documents are em-dash-free and released under CC BY 4.0.&quot;</em></li><li><strong>A CC BY 4.0 footer</strong> on every markdown document — ~1,100+ files carry it.</li><li><strong>Version-prefixed filenames</strong> — <code>v0.33.54__arch-brief__sg-send-&lt;slug&gt;.md</code>. Version, then type, then slug. It sorts chronologically, it says what kind of document it is before you open it, and it is the same <em>name-tells-you-what-it-is</em> instinct as <code>Schema__</code> and <code>Section__</code>.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/06__the-rules-and-compliance.md</p>
+<hr></article><nav class="pager"><span><a href="009-04-bash-and-the-generated-shell-pattern.html">← 04 — Bash, and the generated-shell pattern</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="011-06-the-31-rules-and-whether-the-code-obe.html">06 — The 31 rules, and whether the code obeys them →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>10 of 14: 05 — What is shared across all five languages</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

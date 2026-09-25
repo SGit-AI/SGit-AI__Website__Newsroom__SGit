@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Working documents with clients (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#working-documents-with-clients">Working documents with clients</a></li><li class="l2"><a href="#the-problem">The problem</a></li><li class="l2"><a href="#what-sgit-does-about-it">What sgit does about it</a></li><li class="l2"><a href="#the-recipe">The recipe</a></li><li class="l2"><a href="#evidence-status">Evidence status</a></li><li class="l2"><a href="#brief-for-an-agent">Brief for an agent</a></li><li class="l2"><a href="#related">Related</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 68 of 358</p><nav class="pager"><span><a href="067-working-documents-with-clients-sgit-use-.html">← Working documents with clients, sgit use cases</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="069-findings-about-your-own-weaknesses-sgit-.html">Findings about your own weaknesses, sgit use cases →</a></span></nav><article class="source"><h1 id="working-documents-with-clients">Working documents with clients</h1>
+<p>Legal, M&amp;A, audit, security assessment. The material that most needs versions and review is the material that least belongs readable on a third party&#x27;s disk.</p>
+<h2 id="the-problem">The problem</h2>
+<p>A engagement produces two bodies of text: the deliverable, and everything behind it, working notes, drafts, the evidence, the arguments that did not survive. Both need history: who changed what, when, and what the previous version said. Both need more than one person in them.</p>
+<p>The usual tools split badly. A shared drive gives you collaboration and no history worth the name. A private repo gives you history and hands the whole engagement to a host. Email attachments give you neither and produce six versions named <code>final_v3_JS_edits</code>.</p>
+<p>And then the engagement ends, and you need to hand the client something they can keep and verify, without giving them an account on your systems, and without them needing your tooling to read it later.</p>
+<h2 id="what-sgit-does-about-it">What sgit does about it</h2>
+<p>The working set is a vault: full history, branches, diffs, three-way merge, all client-side. The store holds ciphertext under opaque ids, so &quot;where is this hosted&quot; and &quot;who can read this&quot; stop being the same question, including for the host&#x27;s staff, a subpoena served on the host, or a breach of it.</p>
+<p>For handover, a <strong>read key</strong> is derived one way: it decrypts and cannot be turned into write access. You can give a client read access to a specific vault without giving them anything else, and without the host mediating it.</p>
+<h2 id="the-recipe">The recipe</h2>
+<p><strong>One vault per engagement.</strong> Keep the boundary at the vault, not at a folder. It is the unit of access.</p>
+<pre><code>$ sgit create acme-acquisition
+  Vault key: &lt;passphrase&gt;:&lt;vault-id&gt;   ← password manager, now. There is no reset.
+$ mkdir deliverable working evidence &amp;&amp; sgit commit -m &quot;structure&quot; &amp;&amp; sgit push</code></pre>
+<p><strong>Review as branches</strong>, so the draft in flight is never the draft on the record:</p>
+<pre><code>$ sgit branch new draft-2 &amp;&amp; sgit push
+$ sgit history diff --commit &lt;prev&gt;      # exactly what changed since the last version
+$ sgit resolve --show                     # when two reviewers touch the same file</code></pre>
+<p><strong>Hand over read-only</strong> at the end, or throughout:</p>
+<pre><code>$ sgit dev derive-keys &#x27;&lt;vault-key&gt;&#x27;    # the read key, derived one way
+# the client, with nothing but that key:
+$ sgit clone --read-key &lt;read-key&gt; &lt;vault-id&gt; engagement
+# …and a write attempt is refused, which they can verify themselves</code></pre>
+<p><strong>Archive on close.</strong> The archive is self-contained ciphertext, keep it wherever your retention policy says, including somewhere you don&#x27;t trust:</p>
+<pre><code>$ sgit vault backup --include-key       # store the key separately from the archive</code></pre>
+<h2 id="evidence-status">Evidence status</h2>
+<p>PATTERN, not yet evidenced publicly</p>
+<p>The mechanics above are all shipped commands and are exercised daily; what we do <strong>not</strong> have is a published professional-services deployment we can point you at. Treat this page as a design that fits the constraints, not as a case study.</p>
+<p>Two things to weigh before you use it on a real engagement: sgit is in <a href="../docs/limitations.html">beta</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a>, and there is no key recovery, if your firm&#x27;s key management is not already real, this trade-off will find you. If you do run this pattern, we would like to write it up: <a class="ext" href="https://github.com/SGit-AI/SGit-AI__CLI/issues">say so in the open ↗</a>.</p>
+<h2 id="brief-for-an-agent">Brief for an agent</h2>
+<p>Paste this into an agent that has the <a href="../skills/index.html">sgit skill</a><a class="ext live" href="https://sgit.ai/skills/index.html" title="live page">↗</a> installed, or point it at the markdown directly.</p>
+<pre><code># everything on this site is readable as markdown — no HTML parsing needed
+$ curl -s https://sgit.ai/use-cases/professional-services.md
+$ curl -s https://sgit.ai/llms.txt          # the index of everything</code></pre>
+<blockquote><p>Read <a href="../use-cases/professional-services.html">https://sgit.ai/use-cases/professional-services.md</a><a class="ext live" href="https://sgit.ai/use-cases/professional-services.html" title="live page">↗</a> and <a href="../docs/agents.html">https://sgit.ai/docs/agents.md</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a>. Then set up an engagement vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once, I will store it. Do not write the key to any file in the repository.</p></blockquote>
+<p>That last sentence matters. We have a <a href="../case-studies/exposed-vault-key.html">write-up of the day we got it wrong</a><a class="ext live" href="https://sgit.ai/case-studies/exposed-vault-key.html" title="live page">↗</a>.</p>
+<h2 id="related">Related</h2>
+<ul><li><a href="../docs/limitations.html">When NOT to use sgit</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a>, read this before committing a client engagement to it</li><li><a href="../docs/vault/index.html">SG/Vault</a><a class="ext live" href="https://sgit.ai/docs/vault/index.html" title="live page">↗</a>, the browser app, so a client can read without installing anything</li><li><a href="../security/index.html">Security model</a><a class="ext live" href="https://sgit.ai/security/index.html" title="live page">↗</a>, precisely what the server can and cannot see</li></ul>
+<p><a class="ext" href="https://sgit.ai/ai-agents.md">← AI agents ↗</a><a class="ext" href="https://sgit.ai/security-teams.md">Security teams → ↗</a></p>
+<hr></article><nav class="pager"><span><a href="067-working-documents-with-clients-sgit-use-.html">← Working documents with clients, sgit use cases</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="069-findings-about-your-own-weaknesses-sgit-.html">Findings about your own weaknesses, sgit use cases →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>68 of 358: Working documents with clients</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+  <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:11.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .hl{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.1em}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .box{fill:#fff;stroke:#101114;stroke-width:1.5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.2;rx:10}
+    .win{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .warn{fill:#fff7ed;stroke:#c2410c;stroke-width:1.6;rx:10}
+    .a{stroke:#2f6fed;stroke-width:2;fill:none}
+    .ag{stroke:#1c7c43;stroke-width:2;fill:none}
+    .ao{stroke:#c2410c;stroke-width:2;fill:none;stroke-dasharray:5 4}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="36" class="h">SETUP ONCE. THEN THE CHANGE LOOP, FOREVER.</text>
+
+  <text x="60" y="80" class="hl">SETUP · DAYS 0 TO 3</text>
+  <rect class="box" x="40" y="96" width="200" height="70"/>
+  <text x="140" y="122" class="t">Day 0 · The call</text>
+  <text x="140" y="142" class="s">30 to 60 min; what they want,</text>
+  <text x="140" y="156" class="s">what they hate; materials sent</text>
+  <path d="M240 131 L270 131" class="a"/><path d="M263 126 L270 131 L263 136" class="a"/>
+  <rect class="key" x="276" y="96" width="200" height="70"/>
+  <text x="376" y="122" class="t">Day 1 · The build</text>
+  <text x="376" y="142" class="s">briefs the agent; repo, pages,</text>
+  <text x="376" y="156" class="s">playbook, deploy → preview</text>
+  <path d="M476 131 L506 131" class="a"/><path d="M499 126 L506 131 L499 136" class="a"/>
+  <rect class="box" x="512" y="96" width="200" height="70"/>
+  <text x="612" y="122" class="t">Days 1 to 2 · Review</text>
+  <text x="612" y="142" class="s">looks on their phone, says</text>
+  <text x="612" y="156" class="s">what is wrong; 2 or 3 rounds</text>
+  <path d="M712 131 L742 131" class="a"/><path d="M735 126 L742 131 L735 136" class="a"/>
+  <rect class="win" x="748" y="96" width="200" height="70"/>
+  <text x="848" y="122" class="t">Days 2 to 3 · Live</text>
+  <text x="848" y="142" class="s">merge to main, point domain,</text>
+  <text x="848" y="156" class="s">HTTPS; customer session set up</text>
+  <path d="M948 131 L978 131" class="a"/><path d="M971 126 L978 131 L971 136" class="a"/>
+  <rect class="box" x="984" y="96" width="176" height="70"/>
+  <text x="1072" y="122" class="t">Handover</text>
+  <text x="1072" y="142" class="s">site, repo, vault key, and</text>
+  <text x="1072" y="156" class="s">one page on how to ask</text>
+
+  <text x="60" y="230" class="hl">THE CHANGE LOOP · EVERY TIME</text>
+  <rect class="box" x="40" y="250" width="220" height="80"/>
+  <text x="150" y="278" class="t">1 · The customer asks</text>
+  <text x="150" y="298" class="s">"We are closed Monday the 6th,</text>
+  <text x="150" y="312" class="s">can you put a notice up?"</text>
+  <path d="M260 290 L300 290" class="a"/><path d="M293 285 L300 290 L293 295" class="a"/>
+  <rect class="key" x="306" y="250" width="220" height="80"/>
+  <text x="416" y="278" class="t">2 · The agent reads the rules</text>
+  <text x="416" y="298" class="s">what is this, who owns the page,</text>
+  <text x="416" y="312" class="s">does it go live or to preview?</text>
+
+  <path d="M526 275 L600 275 L600 200 L640 200" class="ag"/><path d="M633 195 L640 200 L633 205" class="ag"/>
+  <rect class="win" x="646" y="170" width="250" height="62"/>
+  <text x="771" y="194" class="t">Content on a page they own</text>
+  <text x="771" y="212" class="g">commit → main → live in a minute</text>
+
+  <path d="M526 305 L600 305 L600 380 L640 380" class="ao"/><path d="M633 375 L640 380 L633 385" class="ao"/>
+  <rect class="warn" x="646" y="350" width="250" height="62"/>
+  <text x="771" y="374" class="t">New page, layout, form, hero</text>
+  <text x="771" y="392" class="r">commit → preview → operator notified</text>
+
+  <path d="M896 200 L940 200 L940 290 L976 290" class="ag"/><path d="M896 380 L940 380 L940 290" class="ao"/>
+  <path d="M969 285 L976 290 L969 295" class="ag"/>
+  <rect class="box" x="982" y="250" width="178" height="80"/>
+  <text x="1071" y="278" class="t">3 · Customer sees it</text>
+  <text x="1071" y="298" class="s">live, or on the preview URL;</text>
+  <text x="1071" y="312" class="s">wrong? say so, same chat</text>
+
+  <path d="M1071 330 L1071 470 L150 470 L150 330" class="a"/><path d="M145 337 L150 330 L155 337" class="a"/>
+  <text x="610" y="462" class="m">4 · one line in CHANGELOG.md, and the loop is closed</text>
+
+  <rect x="40" y="520" width="1120" height="86" rx="12" style="fill:#f4f6fb"/>
+  <text x="600" y="546" class="h">WHEN IT GOES WRONG</text>
+  <text x="600" y="570" class="t">Revert the commit. Live is restored in a minute. Fix it properly on preview. Nothing is lost, because nothing was ever overwritten.</text>
+  <text x="600" y="592" class="s">Monthly, under the package: a check, a read of the change log, a short note to the customer, and the small tweaks nobody asked for.</text>
+</svg>

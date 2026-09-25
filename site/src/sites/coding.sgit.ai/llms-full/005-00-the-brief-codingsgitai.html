@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>00 — The Brief: coding.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#00-the-brief-codingsgitai">00 — The Brief: coding.sgit.ai</a></li><li class="l2"><a href="#1-the-commission">1. The commission</a></li><li class="l2"><a href="#2-the-headline-you-already-have-a-written-style-guide-and-the-code-mostly-obeys-">2. The headline: you already have a written style guide, and the code mostly obeys it</a></li><li class="l2"><a href="#3-the-five-languages-in-one-paragraph-each">3. The five languages, in one paragraph each</a></li><li class="l2"><a href="#4-the-three-things-that-make-this-style-unusual">4. The three things that make this style unusual</a></li><li class="l2"><a href="#5-the-honesty-constraint">5. The honesty constraint</a></li><li class="l2"><a href="#6-the-numbers">6. The numbers</a></li><li class="l2"><a href="#7-build-order">7. Build order</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 5 of 14</p><nav class="pager"><span><a href="004-codingsgitai-brief-pack.html">← coding.sgit.ai — brief pack</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="006-01-python.html">01 — Python →</a></span></nav><article class="source"><h1 id="00-the-brief-codingsgitai">00 — The Brief: <code>coding.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.62 · 24 August 2026
+<strong>From</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>To</strong> the agent commissioned to build <code>coding.sgit.ai</code>
+<strong>Licence</strong> CC BY 4.0</p>
+<hr>
+<h2 id="1-the-commission">1. The commission</h2>
+<blockquote><p><em>&quot;focused on coding, which will go at <code>coding.sgit.ai</code> and I can use to capture all the coding patterns and formatting across the main languages we work on: <strong>python, javascript, html, css, bash</strong>.&quot;</em></p></blockquote>
+<p>All five are covered. Every convention in this pack was <strong>derived from the code by counting</strong>, not from documentation — and where a documented rule and the code disagree, both are reported with the numbers.</p>
+<hr>
+<h2 id="2-the-headline-you-already-have-a-written-style-guide-and-the-code-mostly-obeys-">2. The headline: you already have a written style guide, and the code mostly obeys it</h2>
+<p><code>.claude/CLAUDE.md</code> in the sg-playwright repo carries <strong>31 numbered rules</strong> across Code Patterns, Security, AWS Naming, Responsibility Boundaries, Class/File Naming and Testing. That is far more than most projects have, and it is not aspirational — measured against 992 class-defining files in the new tree:</p>
+<div class="table"><table><thead><tr><th>Rule</th><th>Compliance</th></tr></thead><tbody><tr><td><strong>7 — <code>═══</code> 80-char header on every file</strong></td><td><strong>100%</strong> (992 / 992)</td></tr>
+<tr><td><strong>8 — inline comments only, no docstrings ever</strong></td><td><strong>99.7%</strong> (3 violations)</td></tr>
+<tr><td><strong>22 — <code>__init__.py</code> stays empty</strong></td><td><strong>99%</strong> (299 / 302)</td></tr>
+<tr><td><strong>9 — no underscore prefix for private methods</strong></td><td><strong>91%</strong> (97 violations)</td></tr>
+<tr><td><strong>1 — all classes extend <code>Type_Safe</code></strong></td><td>see §4 — the raw number understates it</td></tr></tbody></table></div>
+<p><strong>The site&#x27;s job is not to invent a style guide. It is to publish the one that exists, with the measurements, and to make it enforceable.</strong></p>
+<hr>
+<h2 id="3-the-five-languages-in-one-paragraph-each">3. The five languages, in one paragraph each</h2>
+<p><strong>Python</strong> — 217,266 lines, and the most distinctive style in the estate. Double-underscore class names in families (<code>Schema__</code> 614 files, <code>Safe_Str__</code> 290, <code>Enum__</code> 185, <code>Cli__</code> 82, <code>Routes__</code> 59), <strong>one class per file, filename identical to the class name</strong>, <code>Type_Safe</code> runtime validation instead of static typing, constrained primitive types instead of boundary validation, <code>═══</code> banner headers, and <strong>column-aligned assignments</strong>. <code>01__</code>.</p>
+<p><strong>JavaScript</strong> — 50 files, and the pattern is <strong>native web components with no framework and no build step</strong>: 41 <code>customElements.define</code>, ESM imports from a <strong>versioned CDN</strong> (<code>dev.tools.sgraph.ai/components/&lt;name&gt;/v1/v1.0/v1.0.0/…</code>), a shared <code>SgComponent</code> base, and a <strong>three-file component triplet</strong> (<code>.js</code> / <code>.html</code> / <code>.css</code>). 4-space indent, single quotes, <strong>no semicolons</strong>. <code>02__</code>.</p>
+<p><strong>HTML</strong> — semantic elements, ARIA on every interactive control, <code>data-*</code> as the behaviour hook, <strong>2-space indent</strong> (deliberately different from JS and CSS), and the markdown-twin convention where every URL is also available as <code>.md</code>. <code>03__</code>.</p>
+<p><strong>CSS</strong> — <strong>the same alignment discipline as Python, applied to property values.</strong> Design tokens as custom properties served from the versioned CDN (<code>sg-tokens.css</code>), <code>:host</code> scoping, shadow DOM. <code>03__</code>.</p>
+<p><strong>Bash</strong> — and this is the surprise: <strong>there are only 5 <code>.sh</code> files in a 217,000-line repo.</strong> Shell is not written, it is <strong>generated</strong> from 15 typed <code>Section__*</code> Python classes that each render a fragment. <code>04__</code>.</p>
+<hr>
+<h2 id="4-the-three-things-that-make-this-style-unusual">4. The three things that make this style unusual</h2>
+<p><strong>(a) Runtime type safety instead of static analysis.</strong> There is <strong>no linter, no formatter and no type-checker anywhere in the estate</strong> — no mypy, ruff, flake8, black, isort or tox config. Instead, <code>Type_Safe</code> from <code>osbot-utils</code> validates at construction. Of 1,034 classes in the new tree: 506 extend <code>Type_Safe</code> directly, plus <code>Type_Safe__List</code> (44), <code>Fast_API__Routes</code> (46) and <code>Schema__Step__Base</code> (25) which are themselves descendants — and 78 <code>Safe_Str</code> + 13 <code>Safe_Int</code> + 6 <code>Safe_UInt</code> primitives, 169 <code>TestCase</code>, and 77 enums. <strong>Excluding tests and enums, essentially every class is in the <code>Type_Safe</code> lineage.</strong> The rule holds; the naive percentage does not show it.</p>
+<p><strong>(b) Constrained primitives instead of validation.</strong> Rule 2 is <em>&quot;zero raw primitives — no <code>str</code>, <code>int</code>, <code>float</code>, <code>list</code>, <code>dict</code> as attributes.&quot;</em> The estate has 27 hand-written primitive types in <code>sg_compute/primitives/</code> alone, each a regex-constrained subclass. <code>Safe_Str__IP__Address</code>, <code>Safe_Str__Node__Name</code>, <code>Safe_Int__Port</code>, <code>Safe_Str__SSM__Path</code>. <strong>The type is the validation</strong>, so a value that exists is a value that is valid, everywhere, forever.</p>
+<p><strong>(c) Alignment as a first-class convention, across languages.</strong> Schema attribute annotations are <strong>100% colon-aligned</strong> (46 of 46 multi-attribute files). CSS property values are aligned to a column. Trailing comments are aligned. This is unusual, it is deliberate, and — see <code>05__</code> §3 — there is a good argument that it is a <strong>machine-readability</strong> decision rather than an aesthetic one.</p>
+<hr>
+<h2 id="5-the-honesty-constraint">5. The honesty constraint</h2>
+<p><code>/shipped/</code> for a coding-standards site means saying what is <em>not</em> enforced:</p>
+<ul><li><strong>Nothing is enforced by tooling.</strong> No linter, no formatter, no type-checker, no pre-commit hook. The four <code>tests/ci/</code> structural guards are the entire automated enforcement surface — <strong>and one of them has never worked</strong> (<code>06__</code> §4).</li><li><strong>Import alignment is only 39% consistent</strong> (321 of 817 files with two or more <code>from X import Y</code> lines are aligned to a single column). Attribute alignment is 100%; import alignment is not.</li><li><strong>Rule 9 has 97 violations</strong> in the new tree alone, and the JavaScript uses <code>_private</code> methods as a matter of course — so the rule is either Python-only or widely ignored, and the document does not say which.</li><li><strong>The documented rules live in <code>.claude/CLAUDE.md</code></strong>, which is an agent instruction file, not a published standard. <strong>There is no human-readable style guide anywhere.</strong> That is what this site is for.</li><li><strong>No JS, CSS, HTML or Bash conventions are documented at all.</strong> All 31 rules are about Python and process. The other four languages have consistent, discoverable conventions that nobody has ever written down.</li></ul>
+<hr>
+<h2 id="6-the-numbers">6. The numbers</h2>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>Python</strong></td><td>3,999 files · 217,266 LOC · 3,871 filenames contain <code>__</code> · 1,034 classes in the new tree</td></tr>
+<tr><td><strong>Naming families</strong></td><td><code>Schema__</code> 614 · <code>Safe_Str__</code> 290 · <code>Enum__</code> 185 · <code>Cli__</code> 82 · <code>Routes__</code> 59 · <code>Safe_Int__</code> 18 · <code>Section__</code> 15 · <code>Fast_API__</code> 12</td></tr>
+<tr><td><strong>Suffix families</strong></td><td><code>__Builder</code> 97 · <code>__Helper</code> 86 · <code>__Client</code> 77 · <code>__Service</code> 46 · <code>__Mapper</code> 39 · <code>__Detector</code> 23 · <code>__Loader</code> 17 · <code>__Registry</code> 14 · <code>__Writer</code> 14</td></tr>
+<tr><td><strong>One class per file</strong></td><td><strong>187 of 208</strong> sampled (90%)</td></tr>
+<tr><td><strong>Banners</strong></td><td>3,120 of 3,999 files · <strong>100%</strong> of class-defining files in the new tree</td></tr>
+<tr><td><strong>JavaScript</strong></td><td>50 files · 41 <code>customElements.define</code> · 6 <code>attachShadow</code> · 48 <code>type=&quot;module&quot;</code> · <strong>single quotes 4,006 vs double 400</strong></td></tr>
+<tr><td><strong>CSS / HTML</strong></td><td>38 CSS · 37 HTML · design tokens from a versioned CDN</td></tr>
+<tr><td><strong>Bash</strong></td><td><strong>5 <code>.sh</code> files</strong> · <strong>15 <code>Section__*</code> shell-generating classes</strong></td></tr>
+<tr><td><strong>Enforcement</strong></td><td><strong>0 linters</strong> · 4 CI structural guards · <strong>1 of the 4 has never worked</strong></td></tr>
+<tr><td><strong>This pack</strong></td><td>9 documents · manifest of <strong>20 rows</strong>, every path verified on disk · the conventions as machine-readable JSON</td></tr></tbody></table></div>
+<hr>
+<h2 id="7-build-order">7. Build order</h2>
+<ol><li><strong><code>/python/</code></strong> — the deepest and the most distinctive. <code>01__</code>.</li><li><strong><code>/rules/</code></strong> — the 31 documented rules, with measured compliance beside each. <code>06__</code>. <strong>This is the page that makes the site useful rather than decorative</strong>, because it tells a reader which rules are real.</li><li><strong><code>/javascript/</code> and <code>/components/</code></strong> — the framework-free web-component pattern and the versioned CDN. Nobody has written this down and it is genuinely original. <code>02__</code>.</li><li><strong><code>/css/</code> and <code>/html/</code></strong> — <code>03__</code>.</li><li><strong><code>/bash/</code></strong> — the generated-shell story. <code>04__</code>.</li><li><strong><code>/for-agents/</code></strong> — <code>05__</code> §3. The conventions chosen because an LLM reads and writes this code. The most original page available.</li><li><strong><code>/enforce/</code></strong> — the linter configs that would encode the rules, per language. <code>08__</code> §1 has the list; it is a day&#x27;s work and it converts a description into a standard.</li></ol>
+<p>Publish the build order unresolved with <code>08__</code>&#x27;s open questions and tensions visible.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/01__python.md</p>
+<hr></article><nav class="pager"><span><a href="004-codingsgitai-brief-pack.html">← coding.sgit.ai — brief pack</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="006-01-python.html">01 — Python →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>5 of 14: 00 — The Brief: coding.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

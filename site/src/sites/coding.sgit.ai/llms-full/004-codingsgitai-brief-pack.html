@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>coding.sgit.ai — brief pack · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#codingsgitai-brief-pack">coding.sgit.ai — brief pack</a></li><li class="l2"><a href="#what-this-is">What this is</a></li><li class="l2"><a href="#the-headline">The headline</a></li><li class="l2"><a href="#read-in-this-order">Read in this order</a></li><li class="l2"><a href="#the-four-things-worth-knowing-before-you-write">The four things worth knowing before you write</a></li><li class="l2"><a href="#the-most-original-page-available">The most original page available</a></li><li class="l2"><a href="#house-pattern">House pattern</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 4 of 14</p><nav class="pager"><span><a href="003-codingsgitai-the-style-guide-that-measur.html">← coding.sgit.ai — the style guide that measured itself</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="005-00-the-brief-codingsgitai.html">00 — The Brief: coding.sgit.ai →</a></span></nav><article class="source"><h1 id="codingsgitai-brief-pack">coding.sgit.ai — brief pack</h1>
+<p><strong>For:</strong> the agent commissioned to build <code>coding.sgit.ai</code>
+<strong>From:</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>Version:</strong> v0.33.62 · 24 August 2026
+<strong>Licence:</strong> CC BY 4.0 — the code quoted throughout is <strong>Apache-2.0</strong>. See <code>LICENSE.md</code>.</p>
+<hr>
+<h2 id="what-this-is">What this is</h2>
+<p>The coding patterns and formatting across the five languages you work in: <strong>Python, JavaScript, HTML, CSS, Bash.</strong></p>
+<p>Every convention here was <strong>derived from the code by counting</strong>, not from documentation — and where a documented rule and the code disagree, both are reported with the numbers.</p>
+<hr>
+<h2 id="the-headline">The headline</h2>
+<p><strong>You already have a written style guide.</strong> <code>.claude/CLAUDE.md</code> carries <strong>31 numbered rules</strong> plus 4 non-negotiable testing rules. Measured against 992 class-defining files:</p>
+<div class="table"><table><thead><tr><th>Rule</th><th>Compliance</th></tr></thead><tbody><tr><td><code>═══</code> header on every file</td><td><strong>100%</strong> (992/992)</td></tr>
+<tr><td>No docstrings, ever</td><td><strong>99.7%</strong> (3 violations)</td></tr>
+<tr><td><code>__init__.py</code> stays empty</td><td><strong>99%</strong> (299/302)</td></tr>
+<tr><td>No <code>_</code> prefix on private methods</td><td><strong>91%</strong> (97 violations)</td></tr></tbody></table></div>
+<p><strong>The site&#x27;s job is not to invent a style guide — it is to publish the one that exists, with the measurements, and make it enforceable.</strong></p>
+<hr>
+<h2 id="read-in-this-order">Read in this order</h2>
+<div class="table"><table><thead><tr><th>File</th><th>Words</th><th>What it does</th></tr></thead><tbody><tr><td><strong><code>00__BRIEF.md</code></strong></td><td>1.2k</td><td><strong>Start here.</strong> The headline, the five languages in a paragraph each, what makes the style unusual, the numbers, the build order</td></tr>
+<tr><td><strong><code>01__python.md</code></strong></td><td>1.5k</td><td>The deepest language. The complete 11-line example, naming families, <code>Type_Safe</code>, constrained primitives, alignment, testing, responsibility boundaries</td></tr>
+<tr><td><strong><code>06__the-rules-and-compliance.md</code></strong></td><td>1.1k</td><td><strong>The page that makes the site useful</strong> — all 31 rules with measured compliance, and the guard that never worked</td></tr>
+<tr><td><code>02__javascript.md</code></td><td>1.2k</td><td>The framework-free component system, the three-file triplet, the versioned CDN — <strong>undocumented anywhere</strong></td></tr>
+<tr><td><code>03__html-and-css.md</code></td><td>0.9k</td><td>Alignment in CSS, design tokens, <code>data-*</code> as the behaviour hook, why shadow DOM makes BEM unnecessary</td></tr>
+<tr><td><code>04__bash-and-generated-shell.md</code></td><td>0.9k</td><td><strong>Five <code>.sh</code> files in 217k LOC</strong> — shell is generated from 15 typed <code>Section__*</code> classes</td></tr>
+<tr><td><strong><code>05__cross-cutting.md</code></strong></td><td>1.3k</td><td>What&#x27;s shared across all five, and <strong><code>/for-agents/</code></strong> — the most original page available</td></tr>
+<tr><td><code>07__site-architecture-and-boundaries.md</code></td><td>1.0k</td><td>Page by page, licensing, redaction, network boundaries</td></tr>
+<tr><td><code>08__gaps-and-open-questions.md</code></td><td>1.2k</td><td>An 8-item enforcement fix list, 7 build-fresh items, 7 open questions, 6 tensions</td></tr>
+<tr><td><code>09__source-manifest.csv</code></td><td>20 rows</td><td>Every source, tiered 0–3. <strong>Every path verified on disk</strong></td></tr>
+<tr><td><code>conventions__machine-readable.json</code></td><td>—</td><td>Every count and rule as structured data — for generating the site&#x27;s pages</td></tr>
+<tr><td><code>LICENSE.md</code></td><td>—</td><td>CC BY 4.0, the Apache-2.0 distinction, and the redaction list</td></tr></tbody></table></div>
+<hr>
+<h2 id="the-four-things-worth-knowing-before-you-write">The four things worth knowing before you write</h2>
+<p><strong>1. There is no linter, formatter or type-checker anywhere in the estate.</strong> No mypy, ruff, flake8, black, isort, tox — no config at all. Type safety is enforced <em>at runtime</em> by <code>Type_Safe</code>, which is a real and defensible choice. The four <code>tests/ci/</code> structural guards are the entire automated enforcement surface — <strong>and one of them has never worked</strong>: <code>test_no_legacy_imports.py</code> uses <code>sgraph_ai_service_playwright[^_]</code>, which cannot match the real double-underscore package. Verified: <strong>0 files matched, 228 real imports across 69 files.</strong></p>
+<p><strong>2. Four of the five languages have zero documented rules.</strong> All 31 are Python and process. JavaScript, CSS, HTML and Bash have consistent, discoverable conventions that nobody has written down — reconstructing them by counting is most of what <code>02__</code>–<code>04__</code> did.</p>
+<p><strong>3. Alignment is the estate&#x27;s most visible convention and its least explained.</strong> Schema attribute colons are <strong>100% aligned</strong>; CSS property values are aligned per block; imports are only <strong>39%</strong>. <code>05__</code> §3 makes the argument that alignment is a <em>machine-readability</em> decision in a codebase <strong>61% written by an agent</strong> — that is a claim, it is falsifiable, and it should be published as a position with the evidence attached.</p>
+<p><strong>4. Bash barely exists.</strong> Five <code>.sh</code> files in 217,266 lines. Shell is <strong>generated</strong> from 15 <code>Section__*</code> Python classes, each with a <code>TEMPLATE</code> and a <code>render()</code>. The trade — testable parameters and no quoting hell, against no <code>shellcheck</code> and no directly-runnable script — is worth arguing rather than just reporting. Both mitigations are cheap and neither exists yet.</p>
+<hr>
+<h2 id="the-most-original-page-available">The most original page available</h2>
+<p><code>/for-agents/</code> — <code>05__</code> §5. Several conventions only make sense once you accept that an LLM is a primary reader and writer:</p>
+<p>runtime validation catches a generated mistake at the point of the mistake · constrained primitives encode the domain in the type name · one class per file with filename = class name means a model can locate any symbol by path construction alone · fully-qualified imports with no re-exports means there is exactly one import path to invent · explicit single-owner responsibility rules stop a generator putting a call in a reasonable-looking wrong place · and the markdown twin exists so <em>&quot;a traversing agent never has to parse HTML.&quot;</em></p>
+<p>There is even direct evidence in the filenames: <code>library/dependencies/osbot-utils/type_safe/v3.1.1__**for_llms**__type_safe__testing_guidance.md</code>.</p>
+<p>This connects straight to <code>open-source.sgit.ai</code> — that site has the argument, this one has the artefact.</p>
+<hr>
+<h2 id="house-pattern">House pattern</h2>
+<p>Copy <code>pki.sgit.ai</code>, add the <code>/llms-full.txt</code> it lacks, and add one rule specific to this site:</p>
+<blockquote><p><strong>Every code example and every count is extracted from the repo at build time, with a path and a commit reference.</strong></p></blockquote>
+<p>A style guide whose examples have drifted from the code is worse than no style guide.</p>
+<hr>
+<p>This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/00__BRIEF.md</p>
+<hr></article><nav class="pager"><span><a href="003-codingsgitai-the-style-guide-that-measur.html">← coding.sgit.ai — the style guide that measured itself</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="005-00-the-brief-codingsgitai.html">00 — The Brief: coding.sgit.ai →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>4 of 14: coding.sgit.ai — brief pack</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

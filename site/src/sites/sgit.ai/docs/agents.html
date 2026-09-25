@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Working with AI agents, sgit Docs · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#working-with-ai-agents-sgit-docs">Working with AI agents, sgit Docs</a></li><li class="l1"><a href="#working-with-ai-agents">Working with AI agents</a></li><li class="l2"><a href="#the-session-pattern">The session pattern</a></li><li class="l2"><a href="#sgit-write-the-surgical-commit">sgit write, the surgical commit</a></li><li class="l2"><a href="#machine-readable-everything">Machine-readable everything</a></li><li class="l2"><a href="#fast-cold-starts">Fast cold starts</a></li><li class="l2"><a href="#multi-agent-collaboration">Multi-agent collaboration</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="agents.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/agents.html">live ↗</a></p><article class="source"><h1 id="working-with-ai-agents-sgit-docs">Working with AI agents, sgit Docs</h1>
+<blockquote><p>The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.</p></blockquote>
+<p><em>Source: <a href="agents.html">https://sgit.ai/docs/agents.html</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="index.html">Docs</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a> / Guides</p>
+<h1 id="working-with-ai-agents">Working with AI agents</h1>
+<p>sgit is designed to be driven by AI agents as well as humans. A vault is just a folder. The agent reads and writes files normally; sgit handles versioning, encryption, and sync. This page covers the agent-facing surface.</p>
+<h2 id="the-session-pattern">The session pattern</h2>
+<pre><code># start of session: get the workspace
+$ sgit clone &lt;vault-key&gt; workspace   # or: sgit pull, if already cloned
+# … agent works on files normally …
+# end of session: persist the state
+$ sgit commit -m &quot;session: findings and next steps&quot;
+$ sgit push</code></pre>
+<p>The next session (hours or weeks later, on any machine) runs <code>sgit pull</code> and continues. State survives the context window, encrypted end to end.</p>
+<h2 id="sgit-write-the-surgical-commit"><code>sgit write</code>, the surgical commit</h2>
+<p>When an agent needs to record one result, cloning a whole vault is waste. <code>write</code> commits a file directly to the vault HEAD in a single call: no working-directory scan, no full clone needed.</p>
+<pre><code>$ sgit write notes/finding.md --file result.md \
+    --message &quot;agent A: analysis&quot; --push --json
+{ &quot;status&quot;: &quot;pushed&quot;, &quot;path&quot;: &quot;notes/finding.md&quot;,
+  &quot;blob_id&quot;: &quot;obj-cas-imm-9c2e41ab77d0&quot; }</code></pre>
+<ul><li><code>--also vault-path:local-file</code> (repeatable) makes a multi-file write <strong>atomic</strong>: one commit, all or nothing.</li><li>Content-hash dedup: writing identical content returns <code>unchanged</code> and creates no commit.</li><li><code>--json</code> gives a machine-readable result for the calling pipeline.</li></ul>
+<h2 id="machine-readable-everything">Machine-readable everything</h2>
+<div class="table"><table><thead><tr><th>Need</th><th>Command</th></tr></thead><tbody><tr><td>Read one file, structured</td><td><code>sgit cat &lt;path&gt; --json</code> · <code>sgit cat --id &lt;blob-id&gt;</code> (zero network calls)</td></tr>
+<tr><td>List files with fetch state</td><td><code>sgit ls --json</code> / <code>--ids</code></td></tr>
+<tr><td>History for pipelines</td><td><code>sgit history log --json</code> · <code>history diff --json</code></td></tr>
+<tr><td>Health checks</td><td><code>sgit doctor --json</code></td></tr></tbody></table></div>
+<h2 id="fast-cold-starts">Fast cold starts</h2>
+<p>Agents run on time budgets. Three clone modes keep startup cheap:</p>
+<ul><li><code>sgit clone --sparse</code>, structure now, file content on demand via <code>sgit fetch &lt;path&gt;</code>.</li><li><code>sgit clone-branch</code>, full history, but only HEAD&#x27;s content.</li><li><code>sgit clone-headless</code>, credentials only: derive keys and write config, fetch nothing.</li></ul>
+<h2 id="multi-agent-collaboration">Multi-agent collaboration</h2>
+<p>Give each agent a named branch; the <a href="two-branch-model.html">two-branch model</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a> guarantees isolation of work-in-progress. Two commands make peer review safe:</p>
+<ul><li><code>sgit history show &lt;commit&gt;</code> and <code>sgit history diff</code> are <strong>read-only</strong>: they fetch missing objects on demand without merging, so an agent can inspect a peer&#x27;s commit without touching its own working copy.</li><li><code>sgit resolve --show</code> renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise, by a human or by an agent.</li></ul>
+<pre><code># agent A  $ sgit branch new feature-analysis … commit … push
+# agent B  $ sgit history show obj-cas-imm-c4e81a   # look, don&#x27;t merge
+# human    $ sgit pull → review in SG/Vault → merge</code></pre>
+<p><strong>For Claude users:</strong> a packaged sgit Skill teaches a Claude session this entire workflow (install, clone, work, commit, push) so cross-session persistent state works out of the box.</p>
+<p><a href="two-branch-model.html">← The two-branch model</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a><a href="limitations.html">When NOT to use sgit →</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="agents.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/agents.html">https://sgit.ai/docs/agents.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/agents.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:09Z</dd><dt>sha256</dt><dd><code title="4007128f5672ece9523766cb6e52439e44819272685e10377a6b06089539e2e6">4007128f5672</code></dd><dt>Frozen copy</dt><dd><a href="agents.md">sites/sgit.ai/docs/agents.md</a> (3,597 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

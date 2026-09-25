@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Sub-vaults, SG/Vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sub-vaults-sgvault">Sub-vaults, SG/Vault</a></li><li class="l1"><a href="#sub-vaults-vaults-inside-vaults">Sub-vaults: vaults inside vaults</a></li><li class="l2"><a href="#the-mechanism-is-a-convention-like-git-submodules">The mechanism is a convention, like git submodules</a></li><li class="l2"><a href="#apps-read-across-the-boundary">Apps read across the boundary</a></li><li class="l2"><a href="#extract-embed-one-primitive-three-techniques">Extract &amp;amp; embed, one primitive, three techniques</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="sub-vaults.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/vault/sub-vaults.html">live ↗</a></p><article class="source"><h1 id="sub-vaults-sgvault">Sub-vaults, SG/Vault</h1>
+<blockquote><p>Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow.</p></blockquote>
+<p><em>Source: <a href="sub-vaults.html">https://sgit.ai/docs/vault/sub-vaults.html</a><a class="ext live" href="https://sgit.ai/docs/vault/sub-vaults.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">SG/Vault</a><a class="ext live" href="https://sgit.ai/docs/vault/index.html" title="live page">↗</a> / Sub-vaults</p>
+<h1 id="sub-vaults-vaults-inside-vaults">Sub-vaults: vaults inside vaults</h1>
+<p>A vault can point at other vaults. A pointed-to vault shows up inline in the file tree, exactly like a folder, expand it and browse. A clinic&#x27;s parent vault can hold many per-patient vaults; a demos vault can gather live project vaults, <strong>without copying their contents</strong>.</p>
+<h2 id="the-mechanism-is-a-convention-like-git-submodules">The mechanism is a convention, like git submodules</h2>
+<p>Nothing is baked into the vault format. A sub-vault is a small pointer file plus UI behaviour: any file named <code>*.link.json</code> is treated as a link, and renders as an expandable folder at its own path. It really is &quot;just create some files&quot;, write the pointer, <code>sgit commit</code>, <code>sgit push</code>.</p>
+<pre><code># demos/acme.link.json → renders as folder demos/acme
+{ &quot;vault_id&quot;: &quot;75f1c88be33d&quot;, &quot;ref_id&quot;: &quot;lk-37939d3b9b1a&quot;, &quot;label&quot;: &quot;ACME PoC&quot; }</code></pre>
+<p>Two levels of setup:</p>
+<ul><li><strong>Link file only</strong>: the sub-vault appears; each device enters the child&#x27;s key once.</li><li><strong>Link file + owner record</strong>: a <code>.vault/owner/ro-links.json</code> entry stores the child&#x27;s <strong>read key only, never its write key</strong>; the child then opens silently, read-only, on any device that has the parent. This is what makes it usable for a team.</li></ul>
+<p>The same pointer convention covers <strong>external resources</strong> (a YouTube video, an image, a page), with a privacy default worth advertising: external embeds are <strong>click-to-load</strong>, showing a placeholder until the user acts, so opening a vault never phones home on its own; and external frames get no bridge and a visible &quot;cannot read this vault&quot; banner.</p>
+<h2 id="apps-read-across-the-boundary">Apps read across the boundary</h2>
+<p>To an app, an inner-vault file is just another path: <code>sg.vfs.readText(&#x27;patients/alice/score.json&#x27;)</code> auto-opens the child read-only with the stored key, no prompt fires during a read, and if no key is available the read simply fails: the zero-knowledge boundary holds. This is the workflow that lets one dashboard read across many per-user vaults without anyone seeing raw vault UI.</p>
+<h2 id="extract-embed-one-primitive-three-techniques">Extract &amp; embed, one primitive, three techniques</h2>
+<p>The reverse direction: pull a folder out into its own vault (separate lifecycle, separate sharing, separate history) and bring it back into the parent&#x27;s app. Extraction is one call from inside a vault app:</p>
+<pre><code>await sg.vault.create({
+  label: &#x27;Q3 Report&#x27;, seedFrom: &#x27;self:reports/q3&#x27;,
+  returnKey: true, custody: true, link: { path: &#x27;sub/q3-report&#x27; }
+})</code></pre>
+<p>The new vault gets a strong random passphrase; the seed copy <strong>structurally cannot carry <code>.vault/**</code></strong>, so a child can never inherit the parent&#x27;s owner secrets or tokens. Then choose how to surface it: a <strong>read-only sub-vault link</strong> (the default, and the recommended one today), a <strong>live embedded app</strong> via <code>sg.vault.embed</code> (host-managed key handshake, the key never touches the URL or storage; the frame is sandboxed to scripts only, and the host refuses escape-hatch sandbox tokens even if asked), or a <strong>cross-vault mount</strong> where the child performs operations under its own grants, your app never gains cross-vault write authority itself.</p>
+<p><strong>Honesty notes:</strong> the mount technique&#x27;s credential resolution is explicitly a trial-only stub in current code, prefer the link or embed forms for real users today. And treat an extract-and-link split as an <em>organisational</em> boundary (lifecycle, sharing, history), not a confidentiality boundary from the parent&#x27;s own readers. Sub-vault access from the sgit CLI is proposed, not shipped, today sub-vaults are a browser-side capability.</p>
+<p><a href="content-authoring.html">← Content authoring</a><a class="ext live" href="https://sgit.ai/docs/vault/content-authoring.html" title="live page">↗</a><a href="git-and-vaults.html">Git repos inside vaults →</a><a class="ext live" href="https://sgit.ai/docs/vault/git-and-vaults.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="sub-vaults.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/vault/sub-vaults.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/vault/sub-vaults.html">https://sgit.ai/docs/vault/sub-vaults.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/vault/sub-vaults.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:10Z</dd><dt>sha256</dt><dd><code title="d0723bd65984ade05cc3d6f41f62a47697ab82a3dcdee689777719024f34d4e6">d0723bd65984</code></dd><dt>Frozen copy</dt><dd><a href="sub-vaults.md">sites/sgit.ai/docs/vault/sub-vaults.md</a> (4,082 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>pki.sgit.ai, A key registry for agents, designed from a documented failure · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#pkisgitai-a-key-registry-for-agents-designed-from-a-documented-failure-sgitai">pki.sgit.ai, A key registry for agents, designed from a documented failure, sgit.ai</a></li><li class="l1"><a href="#pkisgitai">pki.sgit.ai</a></li><li class="l2"><a href="#publishing-the-design-before-the-implementation">Publishing the design before the implementation</a></li><li class="l2"><a href="#the-failure-it-is-designed-from">The failure it is designed from</a></li><li class="l2"><a href="#the-four-rules">The four rules</a></li><li class="l2"><a href="#why-it-is-relevant-here">Why it is relevant here</a></li><li class="l2"><a href="#sections">Sections</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="pki.md">raw text</a> · <a class="ext" href="https://sgit.ai/network/pki.html">live ↗</a></p><article class="source"><h1 id="pkisgitai-a-key-registry-for-agents-designed-from-a-documented-failure-sgitai">pki.sgit.ai, A key registry for agents, designed from a documented failure, sgit.ai</h1>
+<blockquote><p>Good public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order, all published before the registry exists, so the commitments are checkable against whatever eventually ships.</p></blockquote>
+<p><em>Source: <a href="pki.html">https://sgit.ai/network/pki.html</a><a class="ext live" href="https://sgit.ai/network/pki.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Network</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a> / pki.sgit.ai</p>
+<h1 id="pkisgitai">pki.sgit.ai</h1>
+<p>A key registry for agents, designed from a documented failure</p>
+<p>Screenshots captured 2026-08-19 · <code>v0.1.2</code> when captured · <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__PKI">SGit-AI__Website__PKI ↗ ↗</a></p>
+<p><a class="ext" href="https://pki.sgit.ai">Open pki.sgit.ai ↗ ↗</a></p>
+<h2 id="publishing-the-design-before-the-implementation">Publishing the design before the implementation</h2>
+<p>The premise is unusual and worth stating plainly: <strong>this site describes a registry that does not exist.</strong> That is deliberate. Publishing the rules now is cheap; claiming them afterwards is impossible. If something ships that breaks one of them, the site is the evidence.</p>
+<p>The home page. The claim is historical before it is technical.</p>
+<h2 id="the-failure-it-is-designed-from">The failure it is designed from</h2>
+<p>In 2019 the global keyserver network was flooded with garbage signatures until importing a poisoned certificate would break your installation. Its own maintainer called it <strong>unsalvageable</strong>. The cause was not a bug. It was a design goal stated at the outset.</p>
+<p>That design goal was <strong>append-only</strong>. And append-only is a pattern this project relies on in five places, which is exactly why a shrug would not do. The site&#x27;s resolution is a precise one, and it is the most useful idea on the page:</p>
+<ul><li><strong>Append-only, owner-writes</strong>: only the record&#x27;s owner may write to it. Every entry is attributable because the owner signed it; a record grows slowly, in one hand; something can be withdrawn by a signed append that supersedes it.</li><li><strong>Append-only, anyone-writes</strong>: anybody may grow anybody&#x27;s record, without limit, and garbage is indistinguishable from signal. Nothing can ever be withdrawn, by design. This destroyed the network.</li></ul>
+<p>The rule to carry forward is <strong>not</strong> &quot;append-only&quot;. It is <em>the writer owns what it writes</em>.</p>
+<h2 id="the-four-rules">The four rules</h2>
+<p>Each one turns around a specific property the 2019 attack abused:</p>
+<p>Each rule states the property it turns around, so it can be checked rather than trusted.</p>
+<ol><li><strong>Only the owner writes to their own record</strong>: turns around <em>anyone may append to anybody&#x27;s certificate</em>.</li><li><strong>Revocation is a signed append, not a deletion</strong>: signed by the key being revoked, so it is self-authenticating, the record stays append-only, and what a key said before revocation stays checkable.</li><li><strong>Records are size-bounded</strong>: one poisoned key reached about 150,000 signatures because certificates had no limit. The bound is a stated parameter, with the honest cost that it will one day reject a legitimate record.</li><li><strong>Every entry is signed</strong>, so nothing anonymous can accumulate.</li></ol>
+<p>Rule 2 is the one to notice. Deletion and append-only are usually treated as incompatible; making revocation a <em>signed statement appended by the revoked key itself</em> resolves the contradiction without weakening either property.</p>
+<p>The history, in five minutes, sourced rather than summarised from memory.</p>
+<h2 id="why-it-is-relevant-here">Why it is relevant here</h2>
+<p>sgit&#x27;s own <a href="../docs/pki.html">PKI</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a> ships keypairs today (RSA-OAEP 4096 for encryption, ECDSA P-256 for signing) and has <strong>no revocation, no directory and no web of trust</strong>, which <a href="../docs/limitations.html">the limitations page</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> says plainly. This site is the design work for what a directory would have to be before it could responsibly exist.</p>
+<p>The connection to <a href="../api/append-lanes.html">append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a> is direct: a lane is append-only and <em>owner-configured</em>, a sender writes only to a lane the owner registered for them. That is rule 1, already shipped, in a different corner of the system.</p>
+<h2 id="sections">Sections</h2>
+<ul><li><strong>The failure</strong> (2019, with sources</li><li><strong>The rules</strong>) four commitments, each tied to the property it turns around</li><li><strong>Mandate</strong>, what a registry would be for</li><li><strong>Build order</strong>, private before public, and why</li></ul>
+<p><a href="index.html">← All network sites</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="pki.html">HTML version</a><a class="ext live" href="https://sgit.ai/network/pki.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/network/pki.html">https://sgit.ai/network/pki.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/network/pki.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="a5a7722861cbeed9f31857a6bedb1183068e8a8c305fea2efc9f3b389262a812">a5a7722861cb</code></dd><dt>Frozen copy</dt><dd><a href="pki.md">sites/sgit.ai/network/pki.md</a> (4,405 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

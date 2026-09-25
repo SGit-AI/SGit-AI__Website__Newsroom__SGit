@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.7.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.7.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.7.0.html">live ↗</a></p><article class="source"><h2 id="lab-05-and-the-front-page-stops-implying-a-deadline">Lab 05, and the front page stops implying a deadline</h2>
+<p>Two briefs built. One became a Lab entry; the other changed two pages that were
+saying the wrong thing.</p>
+<ul><li><strong><a class="ext" href="https://riskmandate.ai/versions/lab-commit-author.html">Lab 05 — your agent can commit as you, and no instruction stops it ↗</a></strong>.
+The author name and address on a commit are free text. Git&#x27;s own reference says the name
+<em>&quot;has no effect on authentication&quot;</em>; the code host&#x27;s file-contents endpoint takes <code>author</code>
+and <code>committer</code> as parameters needing only contents write; and the host links the result to
+whoever owns that address, with no consent step and no notification. Exactly one thing
+prevents it — a branch rule requiring signed commits — and the feature most people reach
+for is off by default, is enabled by the person being impersonated, and produces a state
+the host itself says <em>&quot;doesn&#x27;t guarantee the consent of the author&quot;</em>.</li><li><strong>The eight-line prompt, with a third column saying what enforces each line.</strong> Four of the
+eight have a free setting behind them that a reader can turn on this afternoon; two have
+nothing behind them at all, including the one people care most about. A document that did
+not say which was which would be the thing that got them bitten. Spend is not in the prompt,
+because a model receives no running total of its own consumption and every cap the vendors
+offer is enforced by the harness.</li><li><strong>Six documented incidents, and not one was fixed by a better instruction.</strong> Every fix was
+removing a capability, narrowing a scope, correcting a token, or separating environments —
+including the case where eleven prohibitions in capitals failed to prevent a production
+database deletion and the vendor&#x27;s own remedy was architectural separation.</li><li><strong>And the honest half of the prompt claim, with numbers.</strong> Training for privileged
+instructions moves resistance to tool-borne injection from 77.6% to 87.0%. On hundreds of
+tool calls a week, 13% is a frequency rather than a control — and a 2025 paper found adaptive
+attacks defeating most published defences more than 90% of the time. So: this changes the
+odds, it does not change what is possible, and the odds are worth changing because most of
+what goes wrong is not an attack.</li></ul>
+<p><strong>Every load-bearing quotation was fetched and checked rather than relayed</strong>, which produced
+two corrections to the brief, both stated on the page. The <em>partially verified</em> state
+additionally requires the author to have <strong>enabled vigilant mode</strong> — so most impersonated
+authors will never see it, which is worse rather than better. And the claim that the
+attribution renders a profile picture and a profile link could not be found on the page
+cited, so the page claims the email-to-account matching, which is documented, and not the
+rendering, which we did not verify.</p>
+<p><strong>Lab 05 also says something about us.</strong> This site is maintained through an agent holding a
+contents-write path to its own repository — the exact shape the entry describes — and its
+branches carry no signed-commits rule. That is on the page, in a panel, rather than quietly
+fixed first. Until the setting is on, the honest status of the argument is *demonstrated but
+not adopted*.</p>
+<p><strong>The front page now says what the urgency actually is.</strong> There is no deadline and inventing
+one would break this site&#x27;s own rule against publishing a verdict. What is true is a state:
+<a href="../versions.html#grant">the exposure was created</a><a class="ext live" href="https://riskmandate.ai/versions/index.html#grant" title="live page">↗</a> when somebody clicked authorise, and it has never
+been enumerated. So the new second panel quotes three vendor pages with dates, attaches no
+adjective to any of them, and lets the reader supply the conclusion — then gives the only two
+dated answers to <em>why this year</em>, a standard exclusion effective 1 January 2026 and a regulator
+assigning responsibility on 9 March 2026, neither of which is ours.</p>
+<p><strong>And <a class="ext" href="https://riskmandate.ai/versions/pricing.html">the pricing page ↗</a> is about what is actually for sale.</strong> It was describing
+the platform&#x27;s three operating tiers and nothing else. It now leads with where the free/paid
+line falls — the library is the argument, the instance is yours — and carries the label the
+entry product has to carry on a page with a price: *a behaviour policy reduces accidents, it
+does not stop an attacker, here is what would.* The behaviour policy is <strong>not</strong> sold as a
+skill, because the portable part of that format carries six fields and the ones that would
+constrain an agent are not among them: a distributed skill can carry instructions and cannot
+carry a constraint. So the prompt is the free half and the vault is the paid one. The word for
+the narrowing cover does not appear on that page at all; in its place stands the question a
+buyer will actually be asked — <em>what did you authorise?</em></p>
+<p><strong>Spelling</strong>: British throughout, which was an open decision and is now closed. The exceptions
+are deliberate and stay: the archived briefs under <code>assets/briefs/</code> are byte-identical to what
+arrived and are never edited, and a quoted OAuth consent-screen button reads <em>Authorize</em>
+because that is what the button says. Two internal vocabulary items still use the American
+form — a <code>Program</code> severity label in the risk-scenarios data and the RAMM entity names
+<em>Authorization Closure</em> and <em>Moment of Authorization</em> — and those are left alone because they
+may be shared with another site, which is a decision rather than an oversight.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.7.0.html">https://riskmandate.ai/versions/1.7.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.7.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="95ae943596383530429953843d65fe13be28200eda3cfe015195c4146dbf6e18">95ae94359638</code></dd><dt>Frozen copy</dt><dd><a href="1.7.0.md">sites/riskmandate.ai/versions/1.7.0.md</a> (5,363 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

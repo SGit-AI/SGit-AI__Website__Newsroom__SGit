@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>chrome-extensions.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · chrome-extensions.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#chrome-extensionssgitai-guidance-for-building-chrome-extensions">chrome-extensions.sgit.ai — guidance for building Chrome extensions</a></li><li class="l2"><a href="#the-five-sentences">The five sentences</a></li><li class="l2"><a href="#the-four-guides-ship-almost-unchanged-read-01-first">The four guides — ship almost unchanged; read 01 first</a></li><li class="l2"><a href="#built-from-the-guides">Built from the guides</a></li><li class="l2"><a href="#one-shipped-four-specified">One shipped, four specified</a></li><li class="l2"><a href="#the-documents">The documents</a></li><li class="l2"><a href="#boundaries">Boundaries</a></li><li class="l2"><a href="#site">Site</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/chrome-extensions.sgit.ai.html">chrome-extensions.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://chrome-extensions.sgit.ai/llms.txt">live ↗</a></p><article class="source"><h1 id="chrome-extensionssgitai-guidance-for-building-chrome-extensions">chrome-extensions.sgit.ai — guidance for building Chrome extensions</h1>
+<blockquote><p>An extension that watches a live account is an evidence instrument, and it must be able
+to prove what it did and did not see. Four guides from five weeks building a Manifest V3
+browser extension that records a web application&#x27;s own network traffic, against an
+undocumented target that changed its entire API stack mid-project. The expensive bugs do
+not throw — they return something reasonable-looking, and you find out weeks later when a
+number does not match a screenshot.</p></blockquote>
+<p>Site version: v0.1.0 (9 September 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. Content CC BY 4.0; code snippets CC0/MIT.</p>
+<h2 id="the-five-sentences">The five sentences</h2>
+<ol><li>Build a deliberately stupid recorder first — no parsers, no domain model, just keep the bodies.</li><li>Verify every derived fact against an artefact the system itself produced.</li><li>The expensive bugs do not throw.</li><li>Missing is <code>null</code>, and <code>null</code> never becomes <code>0</code>, <code>&#x27;&#x27;</code> or <code>{}</code>.</li><li>Leave the corrections in.</li></ol>
+<h2 id="the-four-guides-ship-almost-unchanged-read-01-first">The four guides — ship almost unchanged; read 01 first</h2>
+<ul><li><a class="ext" href="https://chrome-extensions.sgit.ai/method/index.html">01 · The method ↗</a>: the human/agent
+division of labour, why &quot;phase 0&quot; (a deliberately stupid recorder) was the best decision
+in the project, evidence discipline (fail closed, verify against an artefact the system
+produced, read markup not English), corrections stay where the mistake was, and the
+failure-mode table.</li><li><a class="ext" href="https://chrome-extensions.sgit.ai/architecture/index.html">02 · The extension ↗</a>: MAIN vs
+ISOLATED world and why MAIN is required, the double-injection trap, reading a body
+without disturbing it, capture modes (engagement/wide/json/all), storage split by size,
+the circuit breaker, the boundary that only fails once data gets big (chrome.runtime.
+sendMessage&#x27;s size limit turning <code>res || {}</code> into a corrupt <code>undefined.json</code>), build
+provenance.</li><li><a class="ext" href="https://chrome-extensions.sgit.ai/payloads/index.html">03 · Reading payloads nobody documented ↗</a>:
+probing the envelope before the contents, routing on what the response says about itself,
+deriving timestamps from identifiers and proving them three ways, reading markup over
+English, reassembling a document-shaped (React Server Components-style) payload, failing
+closed while still counting what you lose, and two sampling mistakes to expect.</li><li><a class="ext" href="https://chrome-extensions.sgit.ai/vaults/index.html">04 · Vaults, scoped to this project ↗</a>:
+the code/data vault split and why, the deriver as the one seam between them, per-entity
+records with structural membership and field history, and a self-contained viewer that
+never draws a missing value as zero.</li></ul>
+<h2 id="built-from-the-guides">Built from the guides</h2>
+<ul><li><a class="ext" href="https://chrome-extensions.sgit.ai/silent-failures/index.html">The six silent failures ↗</a>:
+running an old build (10 days), a limit that selects against your evidence (3 weeks), a
+boundary that fails only when data gets big, a pattern written against one example, a test
+file nothing imports, deriving a fact from the thing it points at. Every one invisible by
+construction — the site&#x27;s most-linked page.</li><li><a class="ext" href="https://chrome-extensions.sgit.ai/checklist/index.html">The checklist ↗</a>: the details that
+save a reader a day each — <code>document_start</code> + MAIN world, claim the double-injection guard
+before installing hooks, expose counters on the global, <code>res.clone()</code>, <code>responseText</code>
+throwing on arraybuffer/blob, deny-lists over allow-lists, <code>unlimitedStorage</code>.</li><li><a class="ext" href="https://chrome-extensions.sgit.ai/rubric/index.html">The quality rubric ↗</a> and its
+machine-readable twin, <a class="ext" href="https://chrome-extensions.sgit.ai/rubric/rubric.json">rubric.json ↗</a>:
+34 checks across 6 sections (safe to leave running, can it prove what it saw, fails in the
+right direction, evidence separable from interpretation, built on evidence not one
+example, tests pin the lessons), graded yes/no/not-applicable, each traceable to an
+incident that happened. The three efforts are graded against it, including this project&#x27;s
+own — a rubric its author&#x27;s work does not pass everywhere is the only kind worth trusting.</li></ul>
+<h2 id="one-shipped-four-specified">One shipped, four specified</h2>
+<ul><li><a class="ext" href="https://chrome-extensions.sgit.ai/the-arc/index.html">The arc ↗</a>: March 2026 (a Key Vault
+extension, planned, evidence <em>recalled</em>) → August–September (the recorder, shipped,
+everything <em>measured</em>) → September (a secrets manager, re-specified, assumptions <em>read</em>).
+The newest corrects the oldest: the March pack&#x27;s &quot;Chrome Sync allows ~100KB total&quot; survives
+as a rough approximation; the September brief read the documentation and returned
+102,400 bytes / 512 items / 8,192 per item / 120 writes a minute, and found the platform&#x27;s
+own docs do not state the store is encrypted.</li><li><a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/index.html">The unbuilt ↗</a>: four more designs
+specified across six months, none shipped, each stating what it discovered —
+<a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/key-vault.html">the Key Vault ↗</a> (U1, staffing
+AppSec by what the artefact holds),
+<a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/risk-cards.html">risk cards on extensions ↗</a>
+(U2, the read-content closure — the counterweight this site owes),
+<a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/the-scribe.html">the Scribe ↗</a>
+(U3, <code>activeTab</code>+<code>scripting</code> over broad host permissions; the remote-code rule is
+narrower than it sounds),
+<a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/secrets-manager.html">the secrets manager ↗</a>
+(U4, the sync budget as a design constraint; origin-binding downgraded by the enforcer
+test),
+<a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/manifest-profile.html">the manifest as a profile ↗</a>
+(U5), and
+<a class="ext" href="https://chrome-extensions.sgit.ai/unbuilt/vault-storage.html">the vault as extension storage ↗</a>
+(U6, added at the founder&#x27;s correction 8 Sep 2026 — a vault removes U4&#x27;s hundred-kilobyte
+ceiling rather than working around it; an extension is one of the most natural vault
+clients there is).</li></ul>
+<h2 id="the-documents">The documents</h2>
+<ul><li><a class="ext" href="https://chrome-extensions.sgit.ai/documents/index.html">Readable in-page ↗</a>: the four
+guides with a summary and the full markdown rendered in-page; raw markdown under
+<a class="ext" href="https://chrome-extensions.sgit.ai/sources/">https://chrome-extensions.sgit.ai/sources/ ↗</a> is the source of truth.</li></ul>
+<h2 id="boundaries">Boundaries</h2>
+<ul><li>The recorder&#x27;s original target is never named — it appears as &quot;the target&quot; and &quot;the API&quot;
+throughout, enforced in CI with a term blocklist rather than by review (06__ §1).</li><li>Capture data, real captures as test fixtures, the target&#x27;s name/domain/endpoint paths, and
+vault keys or tokens are never published.</li><li>This is an instrument for observing your own session and your own data, on an account you
+hold. It originates no requests, transmits nothing, and captures no message content in any
+mode. See <a class="ext" href="https://chrome-extensions.sgit.ai/about/participant.html">the boundaries and participant disclosure ↗</a>.</li></ul>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://chrome-extensions.sgit.ai/admin/comms.html">Comms: tasks, requests, decisions ↗</a></li><li><a class="ext" href="https://chrome-extensions.sgit.ai/admin/versions.html">Release history ↗</a></li><li><a class="ext" href="https://chrome-extensions.sgit.ai/admin/index.html">How the site is built ↗</a></li><li>Related: <a href="../sgit.ai/index.html">sgit.ai</a><a class="ext live" href="https://sgit.ai" title="live page">↗</a> and its <a href="../sgit.ai/llms.txt.html">llms.txt</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a></li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>chrome-extensions.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://chrome-extensions.sgit.ai/llms.txt">https://chrome-extensions.sgit.ai/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="4f1897fa9b0588112f567babb5eb9698b5ab3018f2178dc4c6d66f5063683505">4f1897fa9b05</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/chrome-extensions.sgit.ai/llms.txt</a> (7,242 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

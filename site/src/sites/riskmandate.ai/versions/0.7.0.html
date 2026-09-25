@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>0.7.0 — RAMM on the homepage + the interactive pyramid · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#070-ramm-on-the-homepage-the-interactive-pyramid">0.7.0 — RAMM on the homepage + the interactive pyramid</a></li><li class="l2"><a href="#ramm-featured-on-the-homepage-new-070-snapshot">RAMM featured on the homepage (new 0.7.0 snapshot)</a></li><li class="l2"><a href="#the-interactive-five-level-pyramid">The interactive five-level pyramid</a></li><li class="l2"><a href="#infographic-loader-wired-awaiting-the-asset">Infographic loader (wired, awaiting the asset)</a></li><li class="l2"><a href="#mechanics">Mechanics</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="0.7.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/0.7.0.html">live ↗</a></p><article class="source"><h1 id="070-ramm-on-the-homepage-the-interactive-pyramid">0.7.0 — RAMM on the homepage + the interactive pyramid</h1>
+<p>RAMM stops being a page you have to find and becomes part of the homepage story,
+and its five levels stop being a static list and become a thing you can <em>drive</em>.</p>
+<h2 id="ramm-featured-on-the-homepage-new-070-snapshot">RAMM featured on the homepage (new 0.7.0 snapshot)</h2>
+<p>A RAMM band now sits on the homepage between Foundation and Pricing: the
+&quot;maturity you compute, not claim&quot; pitch, the five-level strip, and a CTA into the
+RAMM page and its live pyramid. Because the homepage is the frozen <code>latest</code>
+version page, this is a new snapshot — <code>src/v0/v0.7/v0.7.0/</code> overrides the
+homepage template (adds the band) plus a <code>ramm-band.css</code>, and inherits everything
+else (empty section nav, the dropdown) from 0.6.0. Pointing <code>latest</code> at 0.7.0
+ships it; older snapshots are untouched.</p>
+<h2 id="the-interactive-five-level-pyramid">The interactive five-level pyramid</h2>
+<p>The centerpiece. <code>&lt;rm-ramm-pyramid&gt;</code> on the RAMM page replaces the static level
+list with the actual argument made tangible: a sample <code>RiskAcceptanceDecision</code>
+node with toggleable directed edges, and a maturity level that <strong>recomputes live</strong>
+from the graph. Each level is its Node Type Formula — L2 needs <code>ownedBy</code> +
+<code>approvedBy</code>; L3 adds <code>expiresAt</code>, <code>reviewedAt</code>, <code>justifiedBy</code>; L4 adds
+<code>boundedBy</code>, <code>withinToleranceOf</code>, and a board-delegation path; L5 adds
+<code>reassessOn</code>, portfolio queries, and an appetite feedback loop. Toggle the edges
+(or use the Empty / Typical / Governed / Optimized presets) and the achieved
+level, the pyramid fill, and the per-level query verdict all update. An **Agentic
+overlay** toggle adds the Agentic RAMM&#x27;s extra edges (capability certificate,
+authorization closure, twin reassessment) to the per-level criteria. It&#x27;s pure
+in-memory domain logic over a tiny sample graph — &quot;computed, not claimed&quot; you can
+actually click.</p>
+<h2 id="infographic-loader-wired-awaiting-the-asset">Infographic loader (wired, awaiting the asset)</h2>
+<p><code>&lt;rm-ramm-figure&gt;</code> is in place on the RAMM page and loads the infographic at
+runtime through the SG bridge (<code>sg.vfs</code>), exactly like the library images — never
+inlined. It stays hidden until the asset resolves. Drop
+<code>assets/ramm/ramm-model.webp</code> into the vault and it appears; no rebuild, no page
+change. (The source PNG needs re-supplying — it didn&#x27;t carry across sessions.)</p>
+<h2 id="mechanics">Mechanics</h2>
+<ul><li>New page components auto-discovered: <code>src/pages/ramm/components/ramm-pyramid.js</code>
+and <code>ramm-figure.js</code>. No <code>build.js</code> change.</li><li>Frozen outputs re-pinned: older snapshots drift only on the inlined
+<code>RM.data.pages</code> line (unchanged here — same page set as 0.6.0), and 0.7.0 is a
+fresh pin.</li><li>Smoke: the RAMM group now drives the pyramid — Typical → Level 3, Governed →
+Level 4, Empty → Level 1 — proving the recompute, and checks the figure loader
+is wired.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/0.7.0.html">https://riskmandate.ai/versions/0.7.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/0.7.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:16Z</dd><dt>sha256</dt><dd><code title="4db7ce43e34cc4f7625cf9e3117665e9861baca5ccecc0b826a3ab9dc44af487">4db7ce43e34c</code></dd><dt>Frozen copy</dt><dd><a href="0.7.0.md">sites/riskmandate.ai/versions/0.7.0.md</a> (2,709 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>3 · The workflow · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#3-the-workflow">3 · The workflow</a></li><li class="l2"><a href="#setup-from-first-call-to-live-site">Setup: from first call to live site</a></li><li class="l2"><a href="#maintenance-the-change-loop">Maintenance: the change loop</a></li><li class="l2"><a href="#what-goes-to-the-operator">What goes to the operator</a></li><li class="l2"><a href="#monthly-under-the-maintenance-package">Monthly, under the maintenance package</a></li><li class="l2"><a href="#when-it-goes-wrong">When it goes wrong</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="03-the-workflow.md">raw text</a></p><article class="source"><p><a href="02-architecture.html">← The architecture</a> · <a href="00-START-HERE.html">Index</a> · <a href="04-what-you-sell.html">Next →</a></p>
+<h1 id="3-the-workflow">3 · The workflow</h1>
+<p><img src="../diagrams/workflow.svg" alt="The workflow" loading="lazy"></p>
+<h2 id="setup-from-first-call-to-live-site">Setup: from first call to live site</h2>
+<div class="table"><table><thead><tr><th>Day</th><th>Step</th><th>Who</th><th>What happens</th></tr></thead><tbody><tr><td>0</td><td><strong>The call</strong></td><td>operator + customer</td><td>Thirty to sixty minutes. What the business does, who the site is for, what they want it to do, what they hate about the current one. The operator takes notes into the customer&#x27;s vault.</td></tr>
+<tr><td>0</td><td><strong>The materials</strong></td><td>customer</td><td>Logo, photos, the text they already have, opening hours, contact details, the domain login. Sent by whatever the customer finds easy. The operator files them in the vault.</td></tr>
+<tr><td>1</td><td><strong>The build</strong></td><td>operator&#x27;s session</td><td>The operator briefs the agent from the notes and materials. The agent creates the repository, the pages, the images at the right sizes, the playbook, and the deploy, and pushes to <code>preview</code>. Usually one working session.</td></tr>
+<tr><td>1 to 2</td><td><strong>The review</strong></td><td>customer</td><td>The customer opens the preview URL on their phone and says what is wrong. The operator&#x27;s session fixes it. Two or three rounds is normal.</td></tr>
+<tr><td>2 to 3</td><td><strong>Go live</strong></td><td>operator</td><td>Merge to <code>main</code>, point the domain, confirm HTTPS. The customer&#x27;s session is set up with the playbook, and the customer is shown how to ask for a change.</td></tr>
+<tr><td>3</td><td><strong>The handover</strong></td><td>operator</td><td>The customer receives: the live site, the repository (theirs), the read key to their vault (brief, materials, notes, playbook), and one page explaining how to change things and what to do if something looks wrong.</td></tr></tbody></table></div>
+<h2 id="maintenance-the-change-loop">Maintenance: the change loop</h2>
+<p>This is the product working as designed, and it is short on purpose.</p>
+<ol><li><strong>The customer asks.</strong> In their own session, in their own words: <em>&quot;We are closed on Monday the 5th, can you put a notice on the home page and change the hours?&quot;</em></li><li><strong>The agent does it.</strong> It reads the playbook, edits the page, writes a plain-language commit message, and pushes. Small content changes go to <code>main</code> and are live in a minute. Anything the playbook marks as needing a look goes to <code>preview</code> and the operator is notified.</li><li><strong>The customer sees it.</strong> On the live site or on the preview URL. If it is wrong, they say so, in the same conversation, and it is fixed.</li><li><strong>It is logged.</strong> <code>CHANGELOG.md</code> gets a line. The customer can see every change ever made, and so can the operator.</li></ol>
+<h2 id="what-goes-to-the-operator">What goes to the operator</h2>
+<p>The playbook decides. A good default:</p>
+<div class="table"><table><thead><tr><th>Direct to live, from the customer&#x27;s session</th><th>To preview, operator notified</th><th>Operator only</th></tr></thead><tbody><tr><td>Text edits on existing pages</td><td>New pages or sections</td><td>Structure and navigation changes</td></tr>
+<tr><td>Opening hours, prices, contact details</td><td>Layout changes</td><td>Design and brand changes</td></tr>
+<tr><td>Swapping or adding photos</td><td>Anything touching the home page hero</td><td>Domain, DNS, deploy, third-party embeds</td></tr>
+<tr><td>A notice or announcement</td><td>Forms and embeds the customer wants added</td><td>Anything the agent flags as unsure</td></tr></tbody></table></div>
+<h2 id="monthly-under-the-maintenance-package">Monthly, under the maintenance package</h2>
+<ul><li>A check that the site is up, HTTPS is valid, links work, images load, and the preview branch is not carrying something forgotten.</li><li>A read of the change log: what the customer has been asking for, which is also the upsell signal.</li><li>A short note to the customer: what changed this month, what the operator noticed, one suggestion.</li><li>Small tweaks the operator spots, done without being asked and mentioned in the note.</li></ul>
+<p>That note is the subscription earning its keep, and it is the thing the template builders never send.</p>
+<h2 id="when-it-goes-wrong">When it goes wrong</h2>
+<p>A change breaks the layout. The customer&#x27;s session does something odd. A photo is enormous. The answer is the same every time: <strong>revert the commit</strong>, live is restored in a minute, and the operator&#x27;s session fixes the change properly on <code>preview</code>. Nothing is lost, because nothing is ever overwritten. This is the single biggest advantage over every template builder, and it comes free with the architecture.</p>
+<hr>
+<p><a href="02-architecture.html">← The architecture</a> · <a href="00-START-HERE.html">Index</a> · <a href="04-what-you-sell.html">Next →</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="9f0389dfa102e3f4acfc00b69ebc6384abc47416c9218a2b325843b032cffd69">9f0389dfa102</code></dd><dt>Frozen copy</dt><dd><a href="03-the-workflow.md">vaults/agent-webmaster/plan/03-the-workflow.md</a> (4,086 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

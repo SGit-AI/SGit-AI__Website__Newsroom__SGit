@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+    <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .gap{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;stroke-dasharray:7 5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .ab{stroke:#b4243a;stroke-width:2;fill:none;stroke-dasharray:6 5}
+    .ag{stroke:#1c7c43;stroke-width:2.2;fill:none}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .akey{stroke:#2f6fed;stroke-width:2.4;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+    .mask{fill:#fbfaf7}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="32" class="h">A TWIN OF THE CONNECTOR: CAPTURE, APPEND, PROCESS, REPLAY, REVERT</text>
+
+  <rect class="box" x="30" y="60" width="180" height="72"/>
+  <text x="120" y="90" class="t">A person</text><text x="120" y="110" class="s">gives an instruction</text>
+  <rect class="box" x="250" y="60" width="170" height="72"/>
+  <text x="335" y="90" class="t">The agent</text><text x="335" y="110" class="s">decides what to call</text>
+  <rect class="key" x="460" y="60" width="210" height="72"/>
+  <text x="565" y="90" class="t">The connector</text><text x="565" y="110" class="s">MCP tool calls, JSON</text>
+  <rect class="box" x="880" y="60" width="290" height="72"/>
+  <text x="1025" y="90" class="t">Gmail, Calendar, Drive</text><text x="1025" y="110" class="s">the real system, unchanged</text>
+  <path d="M210 96 L242 96" class="an"/><path d="M234 90 L242 96 L234 102" class="an"/>
+  <path d="M420 96 L452 96" class="an"/><path d="M444 90 L452 96 L444 102" class="an"/>
+  <path d="M670 88 L872 88" class="an"/><path d="M864 82 L872 88 L864 94" class="an"/>
+  <path d="M872 106 L678 106" class="an"/><path d="M686 100 L678 106 L686 112" class="an"/>
+  <text x="775" y="80" class="s">request</text><text x="775" y="126" class="s">response</text>
+
+  <path d="M565 132 L565 192" class="akey"/><path d="M559 184 L565 192 L571 184" class="akey"/>
+  <text x="575" y="166" class="m" style="text-anchor:start">a copy of both, never the credential</text>
+  <path d="M120 132 C120 230 300 242 452 242" class="akey" stroke-dasharray="6 5"/>
+  <path d="M444 236 L452 242 L444 248" class="akey"/>
+  <text x="290" y="280" class="m">and the instruction, if captured</text>
+
+  <rect class="key" x="460" y="200" width="210" height="84"/>
+  <text x="565" y="228" class="t">1 · Capture</text><text x="565" y="248" class="s">one entry per call</text><text x="565" y="266" class="s">hash-chained</text>
+  <rect class="good" x="710" y="200" width="230" height="84"/>
+  <text x="825" y="228" class="t">2 · Append lane</text><text x="825" y="248" class="s">write-only, blind to the sender</text><text x="825" y="266" class="s">off the hot path</text>
+  <rect class="box" x="980" y="200" width="190" height="84"/>
+  <text x="1075" y="228" class="t">3 · Process</text><text x="1075" y="248" class="s">on a schedule, later</text><text x="1075" y="266" class="s">pending to processed</text>
+  <path d="M670 242 L702 242" class="an"/><path d="M694 236 L702 242 L694 248" class="an"/>
+  <path d="M940 242 L972 242" class="an"/><path d="M964 236 L972 242 L964 248" class="an"/>
+  <path d="M1075 284 L1075 336" class="an"/><path d="M1069 328 L1075 336 L1081 328" class="an"/>
+
+  <rect class="box" x="30" y="340" width="1140" height="170" style="fill:#fff"/>
+  <text x="600" y="366" class="h">4 · THE TWIN, IN A VAULT: REBUILT FROM THE JOURNAL, NOT COPIED FROM THE MAILBOX</text>
+  <rect class="key" x="54" y="386" width="255" height="100"/>
+  <text x="181" y="418" class="t">The inbox</text><text x="181" y="438" class="s">as the agent saw it,</text><text x="181" y="456" class="s">at every step</text>
+  <rect class="key" x="329" y="386" width="255" height="100"/>
+  <text x="456" y="418" class="t">The calendar</text><text x="456" y="438" class="s">as the agent saw it,</text><text x="456" y="456" class="s">moves and deletes marked</text>
+  <rect class="key" x="604" y="386" width="255" height="100"/>
+  <text x="731" y="418" class="t">The timeline</text><text x="731" y="438" class="s">every call, in order,</text><text x="731" y="456" class="s">chain verified</text>
+  <rect class="key" x="879" y="386" width="267" height="100"/>
+  <text x="1012" y="418" class="t">Before and after</text><text x="1012" y="438" class="s">for every change the</text><text x="1012" y="456" class="s">agent made</text>
+
+  <rect class="bad" x="300" y="548" width="600" height="72"/>
+  <text x="600" y="576" class="t">5 · Revert plan, approved by a person</text>
+  <text x="600" y="596" class="s">the inverse of each change, newest first, and what cannot be undone, named</text>
+  <path d="M600 510 L600 540" class="an"/><path d="M594 532 L600 540 L606 532" class="an"/>
+  <path d="M900 584 L1188 584 L1188 96 L1178 96" class="ab"/><path d="M1186 90 L1178 96 L1186 102" class="ab"/>
+  <text x="1044" y="570" class="r">executed through the same path</text>
+</svg>

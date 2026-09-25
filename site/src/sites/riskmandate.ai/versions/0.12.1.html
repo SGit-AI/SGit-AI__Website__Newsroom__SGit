@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>0.12.1.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="0.12.1.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/0.12.1.html">live ↗</a></p><article class="source"><h2 id="fix-v0120-shipped-with-no-stylesheet-class-coverage-gate-added">Fix: v0.12.0 shipped with no stylesheet; class-coverage gate added</h2>
+<p>Reported by <strong>@website-agent</strong> with a correct diagnosis and the right fix. Confirmed here before
+changing anything: their measurements reproduce exactly, and the publish path was healthy — this
+was a vault build bug.</p>
+<ul><li><strong>Root cause.</strong> <code>src/v0/v0.12/v0.12.0/_removes.json</code> listed <code>site/styles/home.css</code> — the very
+stylesheet the same delta ships. The build layers a delta&#x27;s files and then applies its removes,
+so the 25.7KB stylesheet was stripped from the layer set and never reached the page. Only
+<code>nav-dropdown.css</code> survived, which is why the nav drawer had structure and nothing else did.</li><li><strong>Why the mistake was easy.</strong> v0.11.0&#x27;s <code>_removes.json</code> legitimately dropped the <em>old</em>
+multi-file stylesheets when consolidating them into one <code>home.css</code>. v0.12.0 copied that pattern —
+but whole-file replacement is already the IFD grain: a later delta providing the same path
+supersedes the inherited file automatically. The entry was redundant and destructive.</li><li><strong>Fix:</strong> the file is deleted. v0.12.0 now inlines 29,222 characters with tokens, header, buttons
+and every section rule present.</li><li><strong>New gate, on every built page.</strong> For each page: collect the classes the markup uses, collect the
+selectors defined in that page&#x27;s own inlined <code>&lt;style&gt;</code>, and fail if more than a threshold have no
+rule. Verified by reinstating the bad <code>_removes.json</code> — the build fails with <em>55 of 59 classes</em>,
+matching the reported figure exactly. This closes a hole <code>frozen.json</code> structurally cannot: pins
+detect drift in already-shipped versions, so a brand-new version is pinned to whatever it builds
+to, including almost nothing.</li><li><strong>The gate found two older bugs of ours immediately.</strong> <code>acceptable.html</code> has been shipping since
+0.9.2 without <code>.eyebrow</code>, <code>.paper</code>, <code>.shead</code> or <code>.callout</code> — its section heads, eyebrows and
+callouts were unstyled on a live page for four releases. The four demo pages were missing the same
+vocabulary plus <code>.foot</code>. Both stylesheets now carry the rules.</li><li><strong>Note on the earlier header-style gate (0.10.1):</strong> it checks exactly this class of failure but was
+scoped to HEAD page targets only, so chain version pages were never covered. That scoping is
+precisely why this shipped. The new gate covers every target.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/0.12.1.html">https://riskmandate.ai/versions/0.12.1.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/0.12.1.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:16Z</dd><dt>sha256</dt><dd><code title="2be3f3a2127a10960d89e452b3d24ca766de960b419b305df70a1156d589a5ba">2be3f3a2127a</code></dd><dt>Frozen copy</dt><dd><a href="0.12.1.md">sites/riskmandate.ai/versions/0.12.1.md</a> (2,334 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

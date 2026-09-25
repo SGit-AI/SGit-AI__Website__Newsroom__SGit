@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>sg-sentinel.sgit.ai, An app-coupled edge guard, Layer 1 decides, Layer 2 acts · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sg-sentinelsgitai-an-app-coupled-edge-guard-layer-1-decides-layer-2-acts-sgitai">sg-sentinel.sgit.ai, An app-coupled edge guard, Layer 1 decides, Layer 2 acts, sgit.ai</a></li><li class="l1"><a href="#sg-sentinelsgitai">sg-sentinel.sgit.ai</a></li><li class="l2"><a href="#it-says-at-the-top-of-every-page-that-it-does-not-exist">It says, at the top of every page, that it does not exist</a></li><li class="l2"><a href="#the-problem-and-the-inversion">The problem, and the inversion</a></li><li class="l2"><a href="#one-correction-that-reshaped-the-design">One correction that reshaped the design</a></li><li class="l2"><a href="#rules-are-the-engine-not-configuration-on-it">Rules are the engine, not configuration on it</a></li><li class="l2"><a href="#why-it-is-relevant-here">Why it is relevant here</a></li><li class="l2"><a href="#sections">Sections</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="sg-sentinel.md">raw text</a> · <a class="ext" href="https://sgit.ai/network/sg-sentinel.html">live ↗</a></p><article class="source"><h1 id="sg-sentinelsgitai-an-app-coupled-edge-guard-layer-1-decides-layer-2-acts-sgitai">sg-sentinel.sgit.ai, An app-coupled edge guard, Layer 1 decides, Layer 2 acts, sgit.ai</h1>
+<blockquote><p>A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like, so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.</p></blockquote>
+<p><em>Source: <a href="sg-sentinel.html">https://sgit.ai/network/sg-sentinel.html</a><a class="ext live" href="https://sgit.ai/network/sg-sentinel.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Network</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a> / sg-sentinel.sgit.ai</p>
+<h1 id="sg-sentinelsgitai">sg-sentinel.sgit.ai</h1>
+<p>An app-coupled edge guard, Layer 1 decides, Layer 2 acts</p>
+<p>Screenshots captured 2026-08-20 · <code>v0.1.1</code> when captured · <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__SG_Sentinel">SGit-AI__Website__SG_Sentinel ↗ ↗</a></p>
+<p><a class="ext" href="https://sg-sentinel.sgit.ai">Open sg-sentinel.sgit.ai ↗ ↗</a></p>
+<h2 id="it-says-at-the-top-of-every-page-that-it-does-not-exist">It says, at the top of every page, that it does not exist</h2>
+<p>This is the most unusual thing on the network and the reason to read it. A banner sits above every page:</p>
+<p><strong>Not built.</strong> SG/Sentinel is a published design from May 2026, <em>&quot;this is how I would build it&quot;</em>, not a product. No plans to build it unless somebody funds it.</p>
+<p>The status pill reads <code>NOT BUILT</code> where its siblings read <code>MVP DRAFT</code>. And the note goes further than a disclaimer usually does: the design exercise produced an agent-built prototype whose testing manual reports <strong>149 passing tests</strong>, and the site immediately bounds what that means, <em>&quot;not deployed anywhere, not in production use, not maintained, and not packaged for you to install. Every &#x27;built&#x27; or &#x27;proven&#x27; on this site refers to that prototype exercise, nothing more.&quot;</em></p>
+<p>That paragraph is the whole house style in one place: publish the work, then say precisely what it is worth.</p>
+<p>The home page, with the not-built banner above the thesis and the full status note below it.</p>
+<h2 id="the-problem-and-the-inversion">The problem, and the inversion</h2>
+<p>Edge security and logging today means renting AWS WAF plus CloudWatch and Kinesis Firehose. The site names three costs, no real-time view of your own traffic, logging priced per gigabyte for a job that is <em>&quot;write a clean record to S3&quot;</em>, and a WAF you cannot reason about, and one origin story underneath them: <em>a single client-side bug once caused runaway redirect traffic, and nothing at the edge would catch the next one before the bill did.</em></p>
+<p>The inversion is the good idea. A generic WAF is blind to the application it protects, so it <strong>denylists</strong> known-bad and passes everything else. But if you control both client and server, the edge knows the valid request space, so it can <strong>allowlist</strong>, and no invalid request reaches the origin at all.</p>
+<h2 id="one-correction-that-reshaped-the-design">One correction that reshaped the design</h2>
+<p>The architecture page opens with a governing constraint, and it is a genuinely instructive piece of engineering writing:</p>
+<p><strong>Layer 1 never acts and never writes, it only decides and signals. Layer 2 is the sole actor and the sole I/O owner.</strong></p>
+<p>The reason is physical, not stylistic: a CloudFront Function has no network and no filesystem, so it <em>cannot</em> write to S3 and must not enforce. L1&#x27;s whole job is to assign a request ID, evaluate deterministic rules, and emit a structured signal. Blocking, deflecting and logging are <strong>actions</strong>, and actions belong to the layer that can perform I/O. L1 can only <em>recommend</em> a block.</p>
+<p>The site is explicit that this corrected an earlier version of its own design in which L1 blocked inline, a category error, named as such.</p>
+<p>The layer model: one actor, one I/O owner, and both use cases flowing through a single path.</p>
+<h2 id="rules-are-the-engine-not-configuration-on-it">Rules are the engine, not configuration on it</h2>
+<p>The second inversion: <em>&quot;rules are not configuration on top of a fixed engine, rules are the engine.&quot;</em> The core is a small stable machine for executing them, and every block, allow and log action is a rule. Each is a pure function <code>(captured) → {verdict, reason, rule_id, action} | null</code>, run in order, first block wins.</p>
+<p>The MVP core is deliberately tiny, six deterministic rules, each mapped to an ATT&amp;CK technique:</p>
+<div class="table"><table><thead><tr><th>Rule</th><th>Catches</th><th>Action</th></tr></thead><tbody><tr><td><code>capture-all</code></td><td>every request; pure observation and the allow fallthrough</td><td>pass</td></tr>
+<tr><td><code>banned-ip</code></td><td>source IP in the embedded list</td><td><code>drop_403</code></td></tr>
+<tr><td><code>malformed-request</code></td><td>no method, no path, path not starting <code>/</code></td><td><code>drop_403</code></td></tr>
+<tr><td><code>path-never-valid</code></td><td><code>/etc/passwd</code>, path traversal</td><td><code>drop_403</code></td></tr>
+<tr><td><code>hidden-file-probe</code></td><td><code>/.env</code>, <code>/.git/…</code></td><td><code>deflect_404</code></td></tr>
+<tr><td><code>wp-scan-on-static</code></td><td><code>/wp-login.php</code>, <code>/xmlrpc.php</code> on a static site</td><td><code>deflect_404</code></td></tr></tbody></table></div>
+<p>Rules are data, versioned in git, carrying their own metadata. The prototype exercise ran the same engine across <strong>three targets</strong> with a parity matrix asserting identical decisions, which is what makes &quot;rules are data&quot; a testable claim rather than a slogan.</p>
+<p>The six rules of the tiny core, each with what it catches, its ATT&amp;CK mapping and its action.</p>
+<h2 id="why-it-is-relevant-here">Why it is relevant here</h2>
+<p>Two connections, and the second is the sharper one.</p>
+<p><strong>Rules as versioned data</strong> is what sgit is for. A rule set that must be auditable, diffable and attributable, but whose contents may reveal exactly what you are watching for, is a natural fit for a vault: git semantics over content the host cannot read.</p>
+<p><strong>And it is the third site here to publish a design before the thing exists.</strong> <a href="pki.html">pki.sgit.ai</a><a class="ext live" href="https://sgit.ai/network/pki.html" title="live page">↗</a> publishes four registry rules before the registry; this one publishes an entire architecture and then declines to build it. Both rest on the same wager: <em>publishing the design now is cheap, and claiming it afterwards is impossible.</em> If somebody does build this, the parity matrix and the six rules are already on the record.</p>
+<h2 id="sections">Sections</h2>
+<ul><li><strong>Architecture</strong> (the layer model, the signal spine, the three targets</li><li><strong>Rules</strong>) rules as data, the six-rule core, and where the graph goes</li><li><strong>Research</strong> (68 days of design, tabletop-tested</li><li><strong>Try it · Code · Roadmap</strong>) the prototype snapshot and what would come next</li></ul>
+<p><a href="index.html">← All network sites</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="sg-sentinel.html">HTML version</a><a class="ext live" href="https://sgit.ai/network/sg-sentinel.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/network/sg-sentinel.html">https://sgit.ai/network/sg-sentinel.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/network/sg-sentinel.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="7bc713b48d814827c2ad6b91cd743592508cd1226ae838376be7664f4a67c61c">7bc713b48d81</code></dd><dt>Frozen copy</dt><dd><a href="sg-sentinel.md">sites/sgit.ai/network/sg-sentinel.md</a> (6,197 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

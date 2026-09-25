@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>5 · The business model · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#5-the-business-model">5 · The business model</a></li><li class="l2"><a href="#the-cost-side-is-nearly-empty">The cost side is nearly empty</a></li><li class="l2"><a href="#capacity">Capacity</a></li><li class="l2"><a href="#three-scenarios-one-operator">Three scenarios, one operator</a></li><li class="l2"><a href="#the-two-things-that-decide-the-numbers">The two things that decide the numbers</a></li><li class="l2"><a href="#the-rule-from-the-operating-model">The rule from the operating model</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="05-business-model.md">raw text</a></p><article class="source"><p><a href="04-what-you-sell.html">← What you sell</a> · <a href="00-START-HERE.html">Index</a> · <a href="06-go-to-market.html">Next →</a></p>
+<h1 id="5-the-business-model">5 · The business model</h1>
+<p><img src="../diagrams/business-model.svg" alt="The money" loading="lazy"></p>
+<h2 id="the-cost-side-is-nearly-empty">The cost side is nearly empty</h2>
+<div class="table"><table><thead><tr><th>Cost</th><th>Per customer, per month</th><th>Notes</th></tr></thead><tbody><tr><td>Hosting</td><td>£0</td><td>GitHub Pages, public repository.</td></tr>
+<tr><td>Domain</td><td>£0 to the operator</td><td>The customer owns and pays for it, about £10 to £15 a year.</td></tr>
+<tr><td>Agent tokens for changes</td><td>£1 to £5</td><td>A typical content change costs pence in tokens; a busy month a few pounds. Metered, or absorbed in the package.</td></tr>
+<tr><td>The operator&#x27;s agent seat</td><td>about £20 to £200 a month, <strong>shared across all customers</strong></td><td>One Claude or ChatGPT plan supports the operator&#x27;s sessions for every customer.</td></tr>
+<tr><td>Third-party embeds</td><td>£0 to £15</td><td>Forms and bookings have free tiers; paid tiers are passed to the customer.</td></tr>
+<tr><td><strong>Operator time</strong></td><td><strong>the real cost</strong></td><td>Setup: 4 to 12 hours. Maintenance: 20 to 90 minutes a month depending on package.</td></tr></tbody></table></div>
+<p>So the gross margin on maintenance is very high, and the business is entirely about <strong>how many customers one operator can keep genuinely happy</strong>. That is the number to watch.</p>
+<h2 id="capacity">Capacity</h2>
+<p>A working assumption for one operator, full time, once the playbooks are in place:</p>
+<div class="table"><table><thead><tr><th>Activity</th><th>Hours per month</th></tr></thead><tbody><tr><td>Setups, at 3 a month averaging 8 hours</td><td>24</td></tr>
+<tr><td>Maintenance, 50 customers averaging 45 minutes</td><td>38</td></tr>
+<tr><td>On-demand changes, 20 a month at 45 minutes</td><td>15</td></tr>
+<tr><td>Sales, admin, the monthly notes</td><td>30</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>107</strong> of about 160 available</td></tr></tbody></table></div>
+<p>Fifty customers is comfortable for one person. Eighty is the ceiling before a second operator, and the second operator is the moment the playbooks prove they are playbooks.</p>
+<h2 id="three-scenarios-one-operator">Three scenarios, one operator</h2>
+<p>Average maintenance price assumed at £90 (a mix of bronze, silver and gold). Setup average £600. On-demand average £70.</p>
+<div class="table"><table><thead><tr><th></th><th>Small</th><th>Steady</th><th>Full</th></tr></thead><tbody><tr><td>Customers on maintenance</td><td>20</td><td>50</td><td>80</td></tr>
+<tr><td>Monthly recurring revenue</td><td>£1,800</td><td>£4,500</td><td>£7,200</td></tr>
+<tr><td>Setups per month</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>Setup revenue per month</td><td>£1,200</td><td>£1,800</td><td>£2,400</td></tr>
+<tr><td>On-demand changes per month</td><td>8</td><td>20</td><td>35</td></tr>
+<tr><td>On-demand revenue per month</td><td>£560</td><td>£1,400</td><td>£2,450</td></tr>
+<tr><td><strong>Revenue per month</strong></td><td><strong>£3,560</strong></td><td><strong>£7,700</strong></td><td><strong>£12,050</strong></td></tr>
+<tr><td>Direct costs per month (tokens, seats, embeds)</td><td>£200</td><td>£400</td><td>£600</td></tr>
+<tr><td><strong>Contribution per month</strong></td><td><strong>£3,360</strong></td><td><strong>£7,300</strong></td><td><strong>£11,450</strong></td></tr>
+<tr><td>Annual contribution</td><td>£40,320</td><td>£87,600</td><td>£137,400</td></tr></tbody></table></div>
+<p>The Small column is a viable one-person business from month six. The Steady column is a good one. The Full column is where the second operator starts. None of these needs outside money, and that is a feature, because the next section is about why an investor would want in anyway.</p>
+<h2 id="the-two-things-that-decide-the-numbers">The two things that decide the numbers</h2>
+<ol><li><strong>Churn.</strong> A customer who leaves after six months was worth £540 of maintenance plus their setup. One who stays three years is worth £3,240 plus the upsells. The monthly note and the visible change log are the churn tools. Track it from customer one.</li><li><strong>Setup time.</strong> The first setup takes twelve hours. The twentieth takes four, because the playbook, the templates and the agent&#x27;s instructions are reusable. Every hour off the setup is margin or a lower price, and a lower price is a bigger market.</li></ol>
+<h2 id="the-rule-from-the-operating-model">The rule from the operating model</h2>
+<p>Be profitable before you raise. This business can be profitable inside a year with one operator and no capital beyond a laptop, an agent seat and a domain for the sales site. Do that first. Then the conversation with an investor is about growth, not survival.</p>
+<hr>
+<p><a href="04-what-you-sell.html">← What you sell</a> · <a href="00-START-HERE.html">Index</a> · <a href="06-go-to-market.html">Next →</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="cdb4d6d774cb340dfc23934e7abf87af58537819c1fee570396f2dc5632c8034">cdb4d6d774cb</code></dd><dt>Frozen copy</dt><dd><a href="05-business-model.md">vaults/agent-webmaster/plan/05-business-model.md</a> (3,748 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

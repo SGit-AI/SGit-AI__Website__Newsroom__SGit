@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>A finding · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="finding.md">raw text</a></p><article class="source"><h1 id="a-finding">A finding</h1>
+<p>A finding is one statement a customer can act on, with the evidence under it. It is the unit the business sells, the reviewer checks, and the customer keeps asking about in Claude.</p>
+<pre><code class="lang-json">{
+ &quot;id&quot;: &quot;F05&quot;,
+ &quot;area&quot;: &quot;Customers&quot;,
+ &quot;label&quot;: &quot;inferred&quot;,
+ &quot;title&quot;: &quot;One sentence, the finding itself.&quot;,
+ &quot;detail&quot;: &quot;A short paragraph: the figures, the dates, the documents, and what is not known.&quot;,
+ &quot;evidence&quot;: [{&quot;file&quot;: &quot;inbox/customers.csv&quot;, &quot;where&quot;: &quot;row &#x27;Calder Retail Group&#x27;&quot;, &quot;text&quot;: &quot;the value or quote&quot;}],
+ &quot;so_what&quot;: &quot;Why it matters to this company, in one or two sentences.&quot;,
+ &quot;action&quot;: &quot;What to do, specific enough to be done.&quot;,
+ &quot;owner&quot;: &quot;A role, never a named individual chosen by us.&quot;,
+ &quot;checks&quot;: {&quot;figure_name&quot;: &quot;value&quot;}
+}</code></pre>
+<h2 id="the-three-labels">The three labels</h2>
+<div class="table"><table><thead><tr><th>Label</th><th>Means</th><th>The reader should</th></tr></thead><tbody><tr><td><strong>read</strong></td><td>Stated in a document the customer sent. Quoted, with where.</td><td>Trust it as much as they trust their own document.</td></tr>
+<tr><td><strong>computed</strong></td><td>Arithmetic on the customer&#x27;s data. Every figure in <code>checks</code> is re-run by a script and must match.</td><td>Trust the arithmetic, and question the data.</td></tr>
+<tr><td><strong>inferred</strong></td><td>A reading of two or more documents together.</td><td>Check it before acting. Most of the value is here, and so are most of the mistakes.</td></tr></tbody></table></div>
+<h2 id="rules">Rules</h2>
+<ul><li><strong>The title is the finding.</strong> A reader who reads only titles should get the X-ray.</li><li><strong>Say what is not known</strong>, inside the finding, not in a disclaimer at the end.</li><li><strong>No finding without evidence.</strong> A finding whose evidence is &quot;general experience&quot; is advice, and advice goes in the handover call, not in the X-ray.</li><li><strong>Invented, public and customer facts are never mixed without saying which is which.</strong> A public source is cited by URL.</li><li><strong>Personal data stays out of findings.</strong> Roles, not people, unless the customer&#x27;s own document names them and the name is needed.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="378dea21ea486cb22c53101359cf5de0edfb135e864fc856696220c832aaca4a">378dea21ea48</code></dd><dt>Frozen copy</dt><dd><a href="finding.md">vaults/company-xray/spec/finding.md</a> (1,847 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

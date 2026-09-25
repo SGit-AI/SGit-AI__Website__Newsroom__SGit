@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>llms.sgit.ai — brief pack · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#llmssgitai-brief-pack">llms.sgit.ai — brief pack</a></li><li class="l2"><a href="#what-this-is">What this is</a></li><li class="l2"><a href="#the-thesis">The thesis</a></li><li class="l2"><a href="#the-headline-three-chat-pane-surfaces-not-one">The headline: three chat-pane surfaces, not one</a></li><li class="l2"><a href="#read-in-this-order">Read in this order</a></li><li class="l2"><a href="#four-things-to-know-before-you-write">Four things to know before you write</a></li><li class="l2"><a href="#the-artefact-this-site-should-ship">The artefact this site should ship</a></li><li class="l2"><a href="#house-pattern">House pattern</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 39 of 49</p><nav class="pager"><span><a href="038-00-the-brief-llmssgitai.html">← 00 — The Brief: llms.sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="040-01-the-chat-pane-three-surfaces.html">01 — The chat pane: three surfaces →</a></span></nav><article class="source"><h1 id="llmssgitai-brief-pack">llms.sgit.ai — brief pack</h1>
+<p><strong>For:</strong> the agent commissioned to build <code>llms.sgit.ai</code>
+<strong>From:</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>Version:</strong> v0.33.62 · 24 August 2026
+<strong>Licence:</strong> CC BY 4.0 — see <code>LICENSE.md</code>, which carries a key-handling rule specific to this site.</p>
+<hr>
+<h2 id="what-this-is">What this is</h2>
+<p>Your LLM work, and specifically <strong>how to add an LLM chat pane to websites and vaults</strong>, with code samples.</p>
+<p>The vault half is <strong>shipped, complete, and documented in a place no human reader will find.</strong> The website half is thin. The pack says which is which rather than levelling them.</p>
+<hr>
+<h2 id="the-thesis">The thesis</h2>
+<blockquote><p><strong>Your app calls a language model without ever holding an API key.</strong></p></blockquote>
+<p>The key lives in <code>.vault/llm/config.json</code>, inside the permission floor — the app cannot read it. The host makes the call.</p>
+<p><strong>And the qualification, which belongs on the same page</strong> (<code>03__</code> §5): the bridge protects <em>the vault&#x27;s</em> key. It is <strong>not yet</strong> an egress boundary — the corpus says so itself: <em>&quot;This is the gap that turns the current design from a convenience into a guarantee.&quot;</em></p>
+<hr>
+<h2 id="the-headline-three-chat-pane-surfaces-not-one">The headline: three chat-pane surfaces, not one</h2>
+<div class="table"><table><thead><tr><th>Surface</th><th>Code</th><th>Permission</th></tr></thead><tbody><tr><td><strong>1. Vault chat panel</strong> (<code>/vault</code> → ✨ AI Chat)</td><td><strong>none</strong></td><td><strong>none</strong></td></tr>
+<tr><td><strong>2. Beside a running app</strong> (<code>/en-gb/app/</code> → ✨ AI)</td><td><strong>none</strong></td><td><strong>none</strong></td></tr>
+<tr><td><strong>3. Inside your own app</strong></td><td>yes</td><td><code>permissions.llm.chat</code></td></tr></tbody></table></div>
+<p>Surfaces 1 and 2 run on <strong>host chrome at the real origin</strong>, so they hold the vault key and the microphone directly; the sandboxed app frame sees neither. The sentence to feature:</p>
+<blockquote><p><strong><em>&quot;Every existing vault app gets this without being changed.&quot;</em></strong></p></blockquote>
+<p>It is currently buried in a debrief.</p>
+<hr>
+<h2 id="read-in-this-order">Read in this order</h2>
+<div class="table"><table><thead><tr><th>File</th><th>Words</th><th>What it does</th></tr></thead><tbody><tr><td><strong><code>00__BRIEF.md</code></strong></td><td>1.2k</td><td><strong>Start here.</strong> Three surfaces, the thesis, what is shipped, the CSP gap, the wider work, the build order</td></tr>
+<tr><td><strong><code>01__the-chat-pane.md</code></strong></td><td>1.4k</td><td><strong>The commission.</strong> The decision table, all three surfaces, the honesty mechanisms, vault setup and key tiers</td></tr>
+<tr><td><strong><code>code__chat-pane-samples.md</code></strong></td><td>1.4k</td><td><strong>Runnable samples</strong> — minimum pane, cancel, cost meter, model picker, images, voice, file grounding, and a pre-ship checklist</td></tr>
+<tr><td><code>02__the-sg-llm-api.md</code></td><td>1.3k</td><td>The full <code>sg.llm.*</code> reference, the streaming contract, 9 error codes, and the traps</td></tr>
+<tr><td><code>03__the-security-model.md</code></td><td>1.1k</td><td>The four-layer ladder, key tiers, the unfakeable recording indicator, <strong>and the gap</strong></td></tr>
+<tr><td><code>04__websites-vs-vaults.md</code></td><td>1.0k</td><td>What changes with no host. Three options, honestly compared — <strong>the thin half</strong></td></tr>
+<tr><td><code>05__the-wider-llm-work.md</code></td><td>1.2k</td><td>Provenance since 2024, OpenRouter, local models, injection, and what is <em>not</em> built</td></tr>
+<tr><td><code>06__site-architecture.md</code></td><td>0.8k</td><td>Page by page, what must be generated, and <strong>the demo vault that is the documentation</strong></td></tr>
+<tr><td><code>07__boundaries-and-licensing.md</code></td><td>0.8k</td><td>The second-source-of-truth problem, key rules, network boundaries</td></tr>
+<tr><td><code>08__gaps-and-open-questions.md</code></td><td>1.1k</td><td>8 build-fresh items, 8 open questions, 7 tensions</td></tr>
+<tr><td><code>09__source-manifest.csv</code></td><td>24 rows</td><td>Every source, tiered 0–3. <strong>Every path verified on disk</strong></td></tr></tbody></table></div>
+<hr>
+<h2 id="four-things-to-know-before-you-write">Four things to know before you write</h2>
+<p><strong>1. The best documentation is the hardest to find.</strong> The complete <code>sg.llm.*</code> contract exists <strong>only</strong> inside <code>library/guides/vault-html/AUTHORING.md</code> — a 9,487-word agent authoring document. It is genuinely excellent (the 8190 base64 explanation, the greenlet reasoning, the labelled-cost rule) and no human reader will ever open it. <strong>Extracting it is the single highest-value publishing act on this site</strong> — but generate it, don&#x27;t hand-copy: the corpus explicitly refused to create a competing reference <em>&quot;that drifts.&quot;</em></p>
+<p><strong>2. The honesty mechanisms are the best work and are published nowhere.</strong> One 24,000-char budget shared across all attached files, not one each. <code>TRUNCATED</code> written into the text <strong>the model sees</strong>, <em>&quot;so it cannot pretend to have read the whole thing.&quot;</em> Estimated costs rendered with <code>~</code> and <strong>never as a bill</strong>. Pasted images cleared after one send, because <em>&quot;an image left attached would silently re-send and re-bill on every turn.&quot;</em> Recording stated in words — <em>&quot;● Recording — your microphone is on&quot;</em> — <em>&quot;not left to an icon.&quot;</em> <strong>Publish them as decisions with reasons.</strong> That page is more persuasive than any feature tour.</p>
+<p><strong>3. The website half is a gap, not an asset.</strong> No component, no documented pattern, no code. <code>04__</code> compares three options — backend proxy, BYOK-in-browser (there&#x27;s a precedent in the Article 9 Lab), or embed the vault surface — and recommends shipping a <code>sg-llm-chat</code> web component with a pluggable transport, built to the estate&#x27;s own component conventions.</p>
+<p><strong>4. One question has no answer and it matters.</strong> The chat panel attaches vault file contents to the model&#x27;s context. Those files are untrusted. <strong>What stops one that says &quot;ignore previous instructions&quot; from doing so?</strong> The budget and the <code>TRUNCATED</code> marker are honesty mechanisms, not injection defences. <code>08__</code> Q3 — <strong>do not publish an injection page until this is answered.</strong></p>
+<hr>
+<h2 id="the-artefact-this-site-should-ship">The artefact this site should ship</h2>
+<p><strong>A vault app that is the documentation</strong> (<code>06__</code> §4). One app exercising <code>available</code>, <code>chat</code>, streaming, <code>cancel</code>, <code>usage</code>, <code>models</code>, <code>imagePart</code> and <code>listen</code> — published as both the demo and the test, so the samples are verified by existing rather than by review.</p>
+<p>⚠️ With one condition: a vault with an LLM key configured <strong>carries a credential</strong>. Either give the demo a <code>shared</code>-tier key with hard spend caps chosen deliberately for publication, or ask the visitor for their own key. <strong>Decide before publishing, not after.</strong></p>
+<hr>
+<h2 id="house-pattern">House pattern</h2>
+<p>Copy <code>pki.sgit.ai</code>, add the <code>/llms-full.txt</code> it lacks — and note the obligation this site carries that no sibling does: <strong>a site called <code>llms.sgit.ai</code> will be read by more agents than any page in the estate.</strong> Your own agent-access report&#x27;s finding, <em>&quot;it can read the map and cannot walk it&quot;</em>, is an acceptance criterion here, not a topic.</p>
+<hr>
+<p>This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>/briefs/01__the-chat-pane.md</p>
+<hr></article><nav class="pager"><span><a href="038-00-the-brief-llmssgitai.html">← 00 — The Brief: llms.sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="040-01-the-chat-pane-three-surfaces.html">01 — The chat pane: three surfaces →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>39 of 49: llms.sgit.ai — brief pack</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

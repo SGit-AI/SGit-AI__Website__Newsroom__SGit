@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The acceptance record · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="acceptance-record.md">raw text</a></p><article class="source"><h1 id="the-acceptance-record">The acceptance record</h1>
+<p>One entry per decision about a risk. This is the contract between whoever runs the loop (a person, a tool, or a GRC integration) and whoever reads the record (the holder, the board, an auditor, an insurer). <code>risk/record.jsonl</code> is an invented example, 14 entries, chain intact.</p>
+<h2 id="fields">Fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>seq</code></td><td>Position in the risk&#x27;s record, from 1.</td></tr>
+<tr><td><code>day</code></td><td>Days since the risk was established. A real record also carries an ISO 8601 timestamp.</td></tr>
+<tr><td><code>type</code></td><td><code>identified</code>, <code>placed</code>, <code>accepted</code>, <code>expired</code>, <code>escalated</code>, <code>funded</code>, <code>incident</code>, <code>evidence</code>, <code>reported</code> or <code>closed</code>.</td></tr>
+<tr><td><code>actor</code></td><td>Who did it: a named person, or &quot;the clock&quot; for expiries and escalations.</td></tr>
+<tr><td><code>role</code></td><td>The role acting, for acceptances, escalations and funding.</td></tr>
+<tr><td><code>rung</code></td><td>For acceptances: the ladder rung, such as &quot;1 month&quot;.</td></tr>
+<tr><td><code>days</code> / <code>hours</code></td><td>For acceptances: the interval.</td></tr>
+<tr><td><code>action</code></td><td>For acceptances: what will happen before the interval ends. Required.</td></tr>
+<tr><td><code>holder</code></td><td>When the holder changes: the new holder.</td></tr>
+<tr><td><code>facts_add</code> / <code>facts_remove</code></td><td>Facts that start or stop holding, by id. Each fact has a source in the risk&#x27;s facts list.</td></tr>
+<tr><td><code>controls</code></td><td>Control states that change: <code>missing</code>, <code>proposed</code>, <code>funded</code>, <code>in_place</code>.</td></tr>
+<tr><td><code>text</code></td><td>One or two sentences a board member can read.</td></tr>
+<tr><td><code>prev</code>, <code>hash</code></td><td>The chain. SHA-256 over the entry without <code>hash</code>, keys sorted, no whitespace; the first entry&#x27;s <code>prev</code> is 64 zeros.</td></tr></tbody></table></div>
+<h2 id="rules">Rules</h2>
+<ol><li><strong>No acceptance without an interval and an action.</strong></li><li><strong>No acceptance on somebody else&#x27;s behalf.</strong> <code>actor</code> must be the person holding <code>role</code>.</li><li><strong>An expiry is an entry.</strong> The clock writes it; nobody has to remember to.</li><li><strong>Silence escalates.</strong> An expiry with no acceptance, funding or fix within one working day produces an <code>escalated</code> entry to the holder&#x27;s boss.</li><li><strong>A risk closes on facts.</strong> A <code>closed</code> entry names the fact that ended it, which must be one of the risk&#x27;s &quot;ceases when&quot; facts.</li><li><strong>Nothing is deleted.</strong> Corrections are new entries that point at the one they correct.</li></ol>
+<p><code>tools/verify-record.py</code> checks the chain and exits 1 at the first break.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="1be84f47c34c62746ba2957594a12c32fb453d5037a733bdd6c500c06216256f">1be84f47c34c</code></dd><dt>Frozen copy</dt><dd><a href="acceptance-record.md">vaults/risk-acceptance/spec/acceptance-record.md</a> (2,135 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

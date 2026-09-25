@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Section 13 (providers.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · providers.sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/providers.sgit.ai.html">providers.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 13 of 33</p><nav class="pager"><span><a href="012-section-12.html">← Section 12</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-section-14.html">Section 14 →</a></span></nav><article class="source"><h2 id="5-what-is-a-build-failure-rather-than-a-review-comment">5 · What is a build failure rather than a review comment</h2>
+<p>Learned by building the first site, and each one is enforced by a check rather than remembered:</p>
+<div class="table"><table><thead><tr><th>Check</th><th>Why it exists</th></tr></thead><tbody><tr><td>The build is <strong>reproducible</strong> — the committed output matches the sources</td><td>Markdown is the source of truth; a stale build publishes prose nobody wrote</td></tr>
+<tr><td><strong>Version agreement</strong> across every page badge, the release history and both machine indexes</td><td>A blanket bump that misses a page ships two versions of one site</td></tr>
+<tr><td><strong>Internal links resolve</strong>, and every canonical URL is on the host in <code>CNAME</code></td><td>The two ways a static site quietly breaks</td></tr>
+<tr><td><strong>No root-absolute internal URL</strong></td><td>The first site shipped one and served unstyled under a project path for a day</td></tr>
+<tr><td><strong>No bare <code>&lt;https://…&gt;</code> autolink</strong></td><td>It reaches the browser as an unknown tag and the URL vanishes from the page</td></tr>
+<tr><td><strong>A key-shape scan</strong> over the whole tree, including the built output</td><td>These repositories are public; the vaults they came from were not</td></tr>
+<tr><td><strong>Every claim cited</strong>, and every state dated</td><td>The contract, enforced instead of promised</td></tr>
+<tr><td><strong>The disclosure line present</strong> on every page, and no vendor described as a collaborator it is not</td><td>A disclosure found at the bottom does the opposite of its job</td></tr></tbody></table></div></article><nav class="pager"><span><a href="012-section-12.html">← Section 12</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-section-14.html">Section 14 →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>providers.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://providers.sgit.ai/llms-full.txt">https://providers.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:29Z</dd><dt>sha256</dt><dd><code title="a907cbfec00f159b1ac6b6b7cf7355f048fa985ca08f357a6540857c990026a6">a907cbfec00f</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/providers.sgit.ai/llms-full.txt</a> (35,144 bytes)</dd><dt>Section</dt><dd>13 of 33: Section 13</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>What our games send · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · games.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#what-our-games-send">What our games send</a></li><li class="l1"><a href="#what-our-games-send-1">What our games send</a></li><li class="l2"><a href="#the-default-this-breaks-and-the-one-it-does-not">The default this breaks — and the one it does not</a></li><li class="l2"><a href="#what-is-in-an-event">What is in an event</a></li><li class="l2"><a href="#how-it-travels">How it travels</a></li><li class="l2"><a href="#what-it-proves-which-is-the-part-most-analytics-pages-never-write">What it proves — which is the part most analytics pages never write</a></li><li class="l2"><a href="#two-lanes-not-one">Two lanes, not one</a></li><li class="l2"><a href="#how-to-stop-it">How to stop it</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/games.sgit.ai.html">games.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://games.sgit.ai/telemetry/index.md">live ↗</a></p><article class="source"><h1 id="what-our-games-send">What our games send</h1>
+<blockquote><p>What Can It Do? sends anonymous usage events over two write-only append lanes; Which Agent Is It? sends nothing. What is in an event, what is deliberately absent, what it proves, and how to stop it.</p></blockquote>
+<p>*Source: <a href="index.html">https://games.sgit.ai/telemetry/index.html</a><a class="ext live" href="https://games.sgit.ai/telemetry/index.html" title="live page">↗</a> · site v0.5.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://games.sgit.ai/index.md" title="live page">↗</a> / What our games send</p>
+<h1 id="what-our-games-send-1">What our games send</h1>
+<blockquote><p><em>What Can It Do?</em> counts usage anonymously while you play — which screens people reach, which answers are common. No cookies, no analytics script, no id, nothing that identifies you, and a pause switch on every screen. <em>Which Agent Is It?</em> and the games vault&#x27;s home page send nothing (since 9 September 2026). <a href="index.html">What is sent, and why a vault doing it at all is unusual</a><a class="ext live" href="https://games.sgit.ai/telemetry/index.md" title="live page">↗</a>.</p></blockquote>
+<h2 id="the-default-this-breaks-and-the-one-it-does-not">The default this breaks — and the one it does not</h2>
+<p>Opening a vault does not normally send anything anywhere. That is the platform default and every other vault this family publishes honours it — including, since 9 September 2026 (v0.26.0), the games vault that holds <em>Which Agent Is It?</em>, which sends nothing and asks for no permissions. <em>What Can It Do?</em>, in its own vault, does send, which is why the fact is stated wherever that game appears rather than left to a privacy page nobody opens.</p>
+<p><strong>Browser signals are off.</strong> From v0.21.0 to v0.25.0 the sender could also carry three browser fingerprints and a country, region and connection type from an IP lookup, behind a <code>signals</code> switch that shipped on. The game&#x27;s own vault ships that switch <strong>off</strong> since v1.0.0 (9 September 2026); the vault&#x27;s <code>telemetry/index.html</code> and its <em>What this page knows</em> screen (inside the game since v1.2.0) say so, and the locked branch is the record of what shipped before.</p>
+<p><strong>It is worth being proportionate about the size of this.</strong> What leaves is a count of how far people got and which answers are common. There is no cookie, no analytics script, no account, no id, no fingerprint, no URL and no referrer — which is <strong>less than a default web-server access log</strong>, and considerably less than the analytics running on almost every site a reader will visit today. The reason it is disclosed at all is not that it is invasive; it is that a vault sending anything is a departure from a platform promise, and departures get stated.</p>
+<h2 id="what-is-in-an-event">What is in an event</h2>
+<div class="table"><table><thead><tr><th>Carried</th><th>Deliberately absent</th></tr></thead><tbody><tr><td>which screen you reached</td><td>your name, or any id for you</td></tr>
+<tr><td>the answers you gave, and the points</td><td>any fingerprint</td></tr>
+<tr><td>the profile you picked from the public list</td><td>the URL, and the referrer</td></tr>
+<tr><td>a 16-hex session id, minted in memory when the page opened and gone when the tab closes</td><td>your IP, as far as the payload is concerned</td></tr>
+<tr><td>a coarse form factor, a language and a host</td><td>your user-agent string and screen size</td></tr></tbody></table></div>
+<p>The <code>profile</code> field is which <strong>public</strong> profile you picked from a list of nine. It is not a description of your setup — the scoring is arithmetic over a published profile, and the schema is blunt about it: <em>&quot;Not a count of people (sessions are tabs). Not evidence.&quot;</em></p>
+<h2 id="how-it-travels">How it travels</h2>
+<p>Batched: one batch per flush, at most every 4 seconds, at most 40 flushes and 50 events per flush in a session. The payload is an <code>sgit pki</code> v2 envelope — RSA-OAEP-SHA256 wrapping AES-256-GCM — built with Web Crypto in the browser against a public key that ships in the vault. <strong>If there is no secure context there is no Web Crypto, and the sender disables itself rather than falling back to plaintext.</strong></p>
+<p>It goes to a separate private vault over an append lane. The games hold a <strong>write-only token</strong>: it cannot read, list or decrypt anything on that lane, including what it just wrote.</p>
+<h2 id="what-it-proves-which-is-the-part-most-analytics-pages-never-write">What it proves — which is the part most analytics pages never write</h2>
+<blockquote><p><strong>Nothing about anyone.</strong> Anyone holding the games&#x27; read key holds the append token too — it is published with them, because it has to be — and could forge or flood the lane. So the receiving end treats every event as a claim, not as a fact. Counts from this lane are a lower bound on activity and evidence of nothing else.</p></blockquote>
+<h2 id="two-lanes-not-one">Two lanes, not one</h2>
+<p>Anonymous counters travel on one token; <strong>feedback you deliberately write</strong> — the 👍/👎 and the form behind <em>say more</em> — travels on a second, never batched with the counters. Different retention, and the counters can be purged without losing the feedback. Nothing is sent from the feedback lane without a press.</p>
+<p>What comes back out of it is <a href="../games/ideas.html">the ideas graph</a><a class="ext live" href="https://games.sgit.ai/games/ideas.md" title="live page">↗</a>: paraphrased, keyed to the question rather than to the person, naming nobody.</p>
+<h2 id="how-to-stop-it">How to stop it</h2>
+<p>Every page in the game&#x27;s vault carries a <strong>pause switch</strong> next to the notice, and it works before the first question. <code>telemetry/index.html</code> inside that vault is the authoritative statement — it is reachable from every screen and it is more detailed than this page. This page exists so that a reader who never opens the vault still gets told.</p>
+<p>This site itself sends nothing. It is static files on GitHub Pages with no analytics and no server to receive anything — the only thing that sends is the game, in its frame, on its own lanes.</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://games.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://games.sgit.ai/telemetry/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>games.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://games.sgit.ai/telemetry/index.md">https://games.sgit.ai/telemetry/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:37Z</dd><dt>sha256</dt><dd><code title="90cf39120fccf8d61a82de6570ee2e70d78c12644550bc094c0dae72aacdc4e2">90cf39120fcc</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/games.sgit.ai/telemetry/index.md</a> (5,386 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

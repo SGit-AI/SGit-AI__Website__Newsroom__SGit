@@ -1,0 +1,128 @@
+# llms.sgit.ai — LLM chat panes, the sg.llm.* contract, and provenance since 2024
+
+> Your app calls a language model without ever holding an API key. The key lives in
+> .vault/llm/config.json, inside the permission floor: the app cannot read it, and the
+> host makes the call. That single decision, keeping the credential and the code that
+> spends it in different trust boundaries, produces everything else on this site.
+
+Site version: v0.2.0 (25 Aug 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. All content CC BY 4.0; product code quoted from
+SGraph-AI__App__Send is Apache-2.0.
+
+This file is written as a document rather than a link list, on the principle that an agent
+which reads only this file should be able to say accurately what the site holds and, more
+importantly, what it does not.
+
+## The qualification that must travel with the claim
+
+The bridge protects THE VAULT'S key. It is NOT an egress boundary. App frames are not yet
+served with a connect-src that blocks direct network access, so a malicious app could still
+call a provider itself using its own credential. The project states this plainly and this
+site quotes it rather than paraphrasing:
+
+    "The bridge protects your key; it is not yet a boundary that prevents all egress.
+     This is the gap that turns the current design from a convenience into a guarantee."
+
+If you are summarising this site, that qualification is part of the summary. The honest
+scope is "we protect the credential you trusted us with", not "nothing leaves this frame".
+
+## The three chat-pane surfaces
+
+Most people assume there is one. There are three, and they differ in who holds the key and
+who needs permission:
+
+1. THE VAULT CHAT PANEL (/vault -> AI Chat). No code, no permission. Host chrome at the
+   real origin, so it holds the vault key and the microphone directly.
+2. THE SAME PANEL BESIDE A RUNNING APP (/en-gb/app/ -> AI). No code, no permission. The
+   app is not involved: the sandboxed frame sees neither key nor microphone and cannot
+   read the conversation. "Every existing vault app gets this without being changed."
+   An app author may express a chrome preference (hud.show.llm) but not authority.
+3. AI INSIDE YOUR OWN APP. Needs code and permissions.llm.chat. This is the surface the
+   samples are for.
+
+Start at the top and stop as soon as one fits. Two of the three cost nothing to adopt.
+
+## The API, in one paragraph
+
+sg.llm.available, chat, cancel, models, usage, imagePart, listen, listenStop, listenCancel,
+listening. Grants are chat, models, usage and listen, all default-deny, and listen is never
+implied by chat. Nine error codes arrive as err.code: EPERM, ECONSENT, ENOKEY, EREADONLY,
+EBUDGET, EMODEL, EABORT, EIMGSIZE, EPROTO, plus ENOMIC, EINSECURE and EBUSY on listen().
+Three streaming guarantees: the terminal reply is authoritative, deltas carry only the
+increment, and cost is labelled {value, source, estimated}. Three rules are load-bearing:
+call available() before rendering a chat UI, treat the terminal reply as the truth, and
+branch on err.code rather than on message text.
+
+## Properties agents may rely on
+
+- Every page has a markdown twin at its own path with the extension swapped, and links
+  inside a twin point at twins, so a traversing agent never has to parse HTML. The
+  pre-release gate fails the build if a twin is missing or stale.
+- /llms-full.txt is the whole site plus its brief pack in one fetch, generated from the
+  twins so it cannot disagree with the site.
+- The brief pack this site was built from is published verbatim at /briefs/, at stable
+  constructed paths, with reader pages at /documents/.
+- The API reference at /api/index.html is GENERATED from the canonical contract
+  (library/guides/vault-html/AUTHORING.md in the-cyber-boardroom/SGraph-AI__App__Send,
+  section "Calling an LLM"), with the source hash recorded and gated. It is not a
+  hand-written second copy and must not be treated as an independent source.
+- Every release is tagged v{release}.{major}.{minor} and the version badge on every page
+  agrees with it, so a claim about this site can be pinned to a release.
+- Source: https://github.com/SGit-AI/SGit-AI__Website__LLMs, published from dev.
+
+## Status, stated plainly
+
+SHIPPED: the shared engine, vault key and policy resolution, the admin settings panel, the
+host-native chat panel on both /vault and /en-gb/app/ with multi-file attachment, request
+params, a cost ledger, voice and pasted screenshots, and the sg.llm.* bridge with
+permission, consent, budget, streaming, cancel, listen and imagePart. Also, since that
+brief: an opt-in tool layer for the vault's own chat, with groups that ship disabled.
+
+NOT BUILT: CSP egress lockdown (above). Phase 4 minted credentials, described as the
+commercially load-bearing piece. Vault-in-vault kernel parity, so an app in a nested vault
+silently has no bridge. A per-vault audio model setting. An sg-llm-chat web component for
+plain websites, which is half the commission. The demo vault that would make the samples
+tested rather than reviewed.
+
+THIN, MEASURED 24 AUG 2026: no eval suite at all (0 files) — no benchmark, no regression
+test for prompt behaviour, nothing that would catch a model swap changing an output. Model
+routing, 1 file. Cost per token, 2 files, despite a fully instrumented ledger. Structured
+output, 41. Embeddings, 100, with no vector store.
+
+## Two findings this site added
+
+1. THE INJECTION QUESTION HAS MOVED. The brief pack calls it the most important open
+   question: the chat panel attaches untrusted vault files to the model's context, and the
+   budget and TRUNCATED marker are honesty mechanisms rather than injection defences.
+   Reading the shipped source at v0.33.62 finds a mechanism the pack did not have: an
+   explicit BEGIN/END UNTRUSTED DATA fence, a system-prompt rule to treat fenced text as
+   data and report anything inside it that asks for action, tool groups that ship disabled,
+   and grants in /.vault/llm/tools.json that the tools structurally cannot reach. This site
+   publishes that as a NARROWING, not an answer: fencing is enforced by persuasion rather
+   than by structure, and nothing measures how well it holds. No page claiming injection
+   defences ships until the project lead rules.
+2. THE CONTRACT AND THE CODE DISAGREE about tool calling. AUTHORING.md says "There is no
+   tool-calling loop". True of sg.llm.chat, no longer true of the product.
+
+## The wider position
+
+Not about models. The earliest dated artefact in the estate is a talk, "Deterministic GenAI
+Outputs with Provenance", OWASP AppSec Lisbon, 28 June 2024, and the position has not moved
+since: a model output is only usable when you can say where it came from. Provenance is
+mentioned in 431 corpus files and determinism in 421. OpenRouter is the provider layer
+(442 files); Ollama and local models appear in 144, including an offline chat built to work
+disconnected on a specific flight.
+
+## The network
+
+https://sgit.ai (the parent project and the vault layer), https://coding.sgit.ai (component
+conventions), https://sg-compute.sgit.ai (the ollama and local_claude workload specs),
+https://pki.sgit.ai (agent identity and mandate), https://risks.sgit.ai and
+https://standards.sgit.ai (the grounding ladder, which this site states in three lines and
+links out to), https://graphs.sgit.ai, https://open-source.sgit.ai,
+https://sgit.ai/network/index.html.
+
+
+==============================================================================
+/index.md
+==============================================================================

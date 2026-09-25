@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>render-xray.py · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="render-xray.py">raw text</a></p><article class="source"><pre class="raw"><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Render sample/xray/findings.json into the documents the customer reads.
+
+Run from the vault root:
+
+    python3 tools/render-xray.py
+
+findings.json is the source of truth. The markdown is generated from it, so the report, the
+board pack and the app can never disagree.
+&quot;&quot;&quot;
+import json
+
+X = json.load(open(&#x27;sample/xray/findings.json&#x27;))
+F = {f[&#x27;id&#x27;]: f for f in X[&#x27;findings&#x27;]}
+DATE = &#x27;18 September 2026&#x27;
+
+
+def finding_md(f):
+    out = [f&quot;### {f[&#x27;id&#x27;]}. {f[&#x27;title&#x27;]}&quot;, &#x27;&#x27;,
+           f&quot;**{f[&#x27;area&#x27;]}** · *{f[&#x27;label&#x27;]}*: {X[&#x27;labels&#x27;][f[&#x27;label&#x27;]]}&quot;, &#x27;&#x27;,
+           f[&#x27;detail&#x27;], &#x27;&#x27;, &#x27;**Evidence**&#x27;, &#x27;&#x27;]
+    for e in f[&#x27;evidence&#x27;]:
+        out.append(f&quot;- `{e[&#x27;file&#x27;]}`, {e[&#x27;where&#x27;]}: {e[&#x27;text&#x27;]}&quot;)
+    out += [&#x27;&#x27;, f&quot;**So what.** {f[&#x27;so_what&#x27;]}&quot;, &#x27;&#x27;,
+            f&quot;**Do this.** {f[&#x27;action&#x27;]} *Suggested owner: {f[&#x27;owner&#x27;]}.*&quot;, &#x27;&#x27;]
+    return out
+
+
+def report():
+    out = [f&quot;# X-ray: {X[&#x27;company&#x27;]}&quot;, &#x27;&#x27;,
+           f&quot;*{DATE}. {X[&#x27;level&#x27;]}. {X[&#x27;documents_read&#x27;]} documents read, listed in `inbox/intake.md`. The company is invented.*&quot;, &#x27;&#x27;,
+           &#x27;## Your three questions, answered&#x27;, &#x27;&#x27;]
+    for a in X[&#x27;answers&#x27;]:
+        out += [f&quot;**{a[&#x27;question&#x27;]}**&quot;, &#x27;&#x27;, a[&#x27;answer&#x27;], &#x27;&#x27;, &#x27;See &#x27; + &#x27;, &#x27;.join(a[&#x27;findings&#x27;]) + &#x27;.&#x27;, &#x27;&#x27;]
+    out += [&#x27;## How to read this&#x27;, &#x27;&#x27;,
+            &#x27;Every finding carries one of three labels:&#x27;, &#x27;&#x27;]
+    for k, v in X[&#x27;labels&#x27;].items():
+        out.append(f&quot;- **{k}**: {v}&quot;)
+    out += [&#x27;&#x27;, &#x27;Every finding names the file and the place in it that it rests on. If a finding is wrong, the evidence line shows where to look.&#x27;, &#x27;&#x27;,
+            &#x27;## Findings&#x27;, &#x27;&#x27;]
+    for f in X[&#x27;findings&#x27;]:
+        out += finding_md(f)
+    out += [&#x27;## What this X-ray does not cover&#x27;, &#x27;&#x27;]
+    out += [f&#x27;- {n}&#x27; for n in X[&#x27;not_covered&#x27;]]
+    out += [&#x27;&#x27;, &#x27;Next: `board-pack.md` for the one-page version, `questions-for-you.md`, `next-90-days.md`, and `../claude/` to keep asking.&#x27;, &#x27;&#x27;]
+    open(&#x27;sample/xray/X-RAY.md&#x27;, &#x27;w&#x27;).write(&#x27;\n&#x27;.join(out))
+
+
+def board_pack():
+    out = [f&quot;# Board pack: {X[&#x27;company&#x27;]}&quot;, &#x27;&#x27;, f&quot;*From the X-ray of {DATE}. One page. The company is invented.*&quot;, &#x27;&#x27;,
+           &#x27;## Five things&#x27;, &#x27;&#x27;]
+    for fid in [&#x27;F01&#x27;, &#x27;F03&#x27;, &#x27;F05&#x27;, &#x27;F06&#x27;, &#x27;F11&#x27;]:
+        f = F[fid]
+        out.append(f&quot;{len([l for l in out if l[:1].isdigit()]) + 1}. **{f[&#x27;title&#x27;]}** {f[&#x27;so_what&#x27;]} *({fid}, {f[&#x27;label&#x27;]})*&quot;)
+    out += [&#x27;&#x27;, &#x27;## Proposed agenda&#x27;, &#x27;&#x27;]
+    out += [f&#x27;- {a}&#x27; for a in X[&#x27;board_agenda&#x27;]]
+    out += [&#x27;&#x27;, &#x27;## Decisions asked for&#x27;, &#x27;&#x27;,
+            &#x27;- Who calls Calder and Irwell before 30 September, and with what.&#x27;,
+            &#x27;- Whether to restart the Manchester supervisor recruitment now.&#x27;,
+            &#x27;- A date for the price review paper.&#x27;, &#x27;&#x27;]
+    open(&#x27;sample/xray/board-pack.md&#x27;, &#x27;w&#x27;).write(&#x27;\n&#x27;.join(out))
+
+
+def questions():
+    out = [&#x27;# Questions for you&#x27;, &#x27;&#x27;, &#x27;What your documents did not answer. Each one would change or firm up a finding.&#x27;, &#x27;&#x27;]
+    out += [f&#x27;{i}. {q}&#x27; for i, q in enumerate(X[&#x27;questions_for_you&#x27;], 1)]
+    out += [&#x27;&#x27;]
+    open(&#x27;sample/xray/questions-for-you.md&#x27;, &#x27;w&#x27;).write(&#x27;\n&#x27;.join(out))
+
+
+def ninety():
+    out = [&#x27;# The next ninety days&#x27;, &#x27;&#x27;, &#x27;| When | What | Owner | Done means |&#x27;, &#x27;|---|---|---|---|&#x27;]
+    out += [f&quot;| {s[&#x27;when&#x27;]} | {s[&#x27;what&#x27;]} | {s[&#x27;owner&#x27;]} | {s[&#x27;done&#x27;]} |&quot; for s in X[&#x27;next_90_days&#x27;]]
+    out += [&#x27;&#x27;]
+    open(&#x27;sample/xray/next-90-days.md&#x27;, &#x27;w&#x27;).write(&#x27;\n&#x27;.join(out))
+
+
+report(); board_pack(); questions(); ninety()
+print(f&quot;{len(X[&#x27;findings&#x27;])} findings rendered into four documents&quot;)
+</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="90f315b11f926ce8e569a60e8111f100630398deb3eabf8345b1f0c2cf9a32a8">90f315b11f92</code></dd><dt>Frozen copy</dt><dd><a href="render-xray.py">vaults/company-xray/tools/render-xray.py</a> (3,481 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

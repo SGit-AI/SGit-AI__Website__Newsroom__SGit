@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The Change-of-Control Stress Test · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · open-source.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-change-of-control-stress-test">The Change-of-Control Stress Test</a></li><li class="l3"><a href="#leg-1-copyright-structure">Leg 1 Copyright structure</a></li><li class="l3"><a href="#leg-2-trademark-holder">Leg 2 Trademark holder</a></li><li class="l3"><a href="#leg-3-schema-licence">Leg 3 Schema licence</a></li><li class="l3"><a href="#leg-4-fork-capacity">Leg 4 Fork capacity</a></li><li class="l2"><a href="#how-to-read-the-verdict">How to read the verdict</a></li><li class="l2"><a href="#why-we-do-not-publish-scores-for-named-vendors">Why we do not publish scores for named vendors</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/open-source.sgit.ai.html">open-source.sgit.ai</a> · <a href="stress-test.md">raw text</a> · <a class="ext" href="https://open-source.sgit.ai/survivability/stress-test.md">live ↗</a></p><article class="source"><p><em><a href="../index.html">open-source.sgit.ai</a><a class="ext live" href="https://open-source.sgit.ai/index.md" title="live page">↗</a> · site v0.2.2 · canonical: <a href="stress-test.html">https://open-source.sgit.ai/survivability/stress-test.html</a><a class="ext live" href="https://open-source.sgit.ai/survivability/stress-test.html" title="live page">↗</a></em></p>
+<blockquote><p>Four legs — copyright structure, trademark holder, schema licence, named fork capacity — every one answerable from public artefacts without the vendor&#x27;s cooperation. Answer them here and keep the result. A vendor that cannot answer them has answered them.</p></blockquote>
+<hr>
+<h1 id="the-change-of-control-stress-test">The Change-of-Control Stress Test</h1>
+<p>Four questions to ask about any open-source dependency you are betting on. Every one is answerable from <strong>public artefacts</strong> — a repository, a licence file, a trademark register, a foundation charter — which means you can run this without the vendor&#x27;s cooperation, without a procurement process, and without telling anyone you are doing it.</p>
+<blockquote><p>&quot;The stress test is a query, not an interview. &#x27;Show me the CLA&#x27; and &#x27;show me who holds the trademark&#x27; are answerable from public artefacts, and <strong>a vendor that cannot answer them has answered them.</strong>&quot;</p></blockquote>
+<blockquote><p><strong>This runs entirely in your browser.</strong> Nothing is sent anywhere — there is no server, no analytics on your answers, and no account. Your answers are kept in this browser&#x27;s local storage so the page remembers them if you come back, and the <strong>Copy the result</strong> button gives you a markdown summary to paste into your own notes. Clearing the form removes them.</p></blockquote>
+<p><strong>What are you assessing?</strong></p>
+<ol><li><h3 id="leg-1-copyright-structure">Leg 1 Copyright structure</h3>
+<p>Who holds copyright in the code, and could one party relicense the next release?</p>
+<p>PassesDCO / inbound=outbound, copyright distributed across contributors. No single party has standing to change the terms.</p>
+<p>FailsA single-entity CLA aggregating contributor copyright — or one company simply wrote it all.</p>
+<p>UnclearYou could not find out from public artefacts.</p>
+<p><strong>Where to look:</strong><code>CONTRIBUTING.md</code>, a <code>CLA.md</code> or CLA-bot check on pull requests, <code>Signed-off-by:</code> lines in the commit log (a DCO signal), and the copyright headers in source files. <strong>Unclear is not neutral</strong> — see the verdict note below.</p></li><li><h3 id="leg-2-trademark-holder">Leg 2 Trademark holder</h3>
+<p>Who owns the name, and what would stop them using it against a fork?</p>
+<p>PassesHeld by a neutral foundation, with charter-level restrictions on transferring it.</p>
+<p>FailsHeld by the operating company, transferable with the company.</p>
+<p>UnclearNo trademark policy published, or the holder is not stated.</p>
+<p><strong>Why it is a separate leg:</strong> a fork can take the code and cannot take the name. Losing the name means losing the search results, the documentation people have bookmarked, the package identifier, and the recognition a new user needs to find you at all. <strong>Trademark is how a fork is made expensive even when it is legally permitted.</strong></p></li><li><h3 id="leg-3-schema-licence">Leg 3 Schema licence</h3>
+<p>Are the data schemas and formats licensed separately, and openly?</p>
+<p>PassesCC0 or CC BY, licensed <em>separately</em> from the code.</p>
+<p>FailsUndeclared, or silently bundled with the code licence.</p>
+<p>UnclearYou could not establish what governs the schemas.</p>
+<p><strong>The leg everyone skips.</strong><a href="../views/sovereignty.html#step2">The schemas matter as much as the code</a><a class="ext live" href="https://open-source.sgit.ai/views/sovereignty.md#step2" title="live page">↗</a>: your data is only portable to the extent that its structure is something you may reimplement. A schema bundled with a code licence that later changes moves with it — and an undeclared schema is a dependency with no terms at all.</p></li><li><h3 id="leg-4-fork-capacity">Leg 4 Fork capacity</h3>
+<p>If the terms changed tomorrow, who would actually run the fork?</p>
+<p>PassesA <strong>named party</strong> with the headcount and the mandate to run it. You can say who.</p>
+<p>Fails&quot;The community would fork it&quot; — with no named party.</p>
+<p>UnclearThere are candidates, but none with a stated mandate.</p>
+<p><strong>The test is whether you can name them.</strong> illumos existed and OpenSolaris users had somewhere to go; OpenTofu and Valkey existed within weeks because organisations with engineers decided to fund them. A fork is not a right that gets exercised automatically — <strong>it is a payroll</strong>, and if nobody&#x27;s payroll is available, the right is theoretical.</p></li></ol>
+<p>Answer the four legs to see the verdict.</p>
+<p>Copied.</p>
+<h2 id="how-to-read-the-verdict">How to read the verdict</h2>
+<p><strong>This is not a score.</strong> Four passes does not mean &quot;safe&quot; and one fail does not mean &quot;avoid&quot; — plenty of excellent software fails legs one and two, including software you should absolutely keep using. What the four legs tell you is <strong>what kind of exposure you are carrying</strong>, so you can price it, plan for it, or decide it does not matter for this dependency.</p>
+<p>A single-holder project you use for something easily replaced is a fine risk. The same structure under something with your data in it, five years of integration around it, and no named fork capacity is a different proposition entirely — and the point of the test is that you find that out <em>before</em> the announcement rather than during it.</p>
+<blockquote><p><strong>&quot;Unclear&quot; is an answer.</strong> Every one of these legs is answerable from public artefacts. When a project&#x27;s own materials do not let you determine who holds copyright, who owns the name, or what governs the schemas, that opacity is itself the finding — and it is the finding for a project whose whole proposition is openness. <em>A vendor that cannot answer them has answered them.</em></p></blockquote>
+<h2 id="why-we-do-not-publish-scores-for-named-vendors">Why we do not publish scores for named vendors</h2>
+<p>We ship the test; you run it. Publishing a scorecard about named commercial projects would turn a diagnostic into a weapon, and it would be a weapon wielded by <a href="../about/index.html#interests">a participant in the same market</a><a class="ext live" href="https://open-source.sgit.ai/about/index.md#interests" title="live page">↗</a> — which is exactly the conflict the test is designed to let you route around. The four legs work without us.</p>
+<p>The one exception is running it on our own estate, in public. <a href="self-audit.html">That is the self-audit →</a><a class="ext live" href="https://open-source.sgit.ai/survivability/self-audit.md" title="live page">↗</a></p>
+<p><a href="index.html">← Survivability</a><a class="ext live" href="https://open-source.sgit.ai/survivability/index.md" title="live page">↗</a><a href="self-audit.html">The self-audit →</a><a class="ext live" href="https://open-source.sgit.ai/survivability/self-audit.md" title="live page">↗</a></p>
+<hr>
+<p><em>This page is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>open-source.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://open-source.sgit.ai/survivability/stress-test.md">https://open-source.sgit.ai/survivability/stress-test.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:24Z</dd><dt>sha256</dt><dd><code title="15f485bf8421f88815eaaf8d3a1fa5bc4cc0f6be40363005358285354ef24122">15f485bf8421</code></dd><dt>Frozen copy</dt><dd><a href="stress-test.md">sites/open-source.sgit.ai/survivability/stress-test.md</a> (5,928 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# `delete`
+
+The verb `delete`, and every primitive it appears in. **This page is a query, not a definition.**
+
+> **A node carries no inherent meaning.** What `delete` means here emerges from the edges traceable from it, and confidence in that meaning is proportional to how richly it is connected. It is connected to **1 of 23 primitives** here. That, and not the sentence above, is what it means. [The discipline this follows](https://graphs.sgit.ai/).
+
+
+
+## The 1 primitives with this verb
+
+| Primitive | Published gloss | Spelled out | Undo | In how many shapes |
+|---|---|---|---|---|
+| [`delete.file.host`](../../../../model/capabilities/delete.file.host/index.md) | Delete files anywhere the account can reach | [`delete`](../../../../model/lexicon/verbs/delete/index.md)`.`[`file`](../../../../model/lexicon/objects/file/index.md)`.`[`host`](../../../../model/lexicon/reaches/host/index.md) | no | 5 of 17 |
+
+## How this node connects
+
+| Edge | Reads as | To |
+|---|---|---|
+| `verb_of` | `delete` is the verb of these 1 primitives | 1 capabilities |
+| `has_verb` | the inverse, walked the other way, with different fan out | one capability at a time |
+
+[This node as JSON](../../../../data/lexicon/verbs/delete.json) · [The lexicon](../../../../model/lexicon/index.md) · [The edge vocabulary](../../../../model/graph/edges/index.md)
+
+---
+
+*[Site index for agents](../../../../llms.txt) · [HTML version](https://abp.sgit.ai/model/lexicon/verbs/delete/index.html)*
+
+
+------------------------------------------------------------------------
+
+<!-- https://abp.sgit.ai/model/lexicon/verbs/execute/index.html -->

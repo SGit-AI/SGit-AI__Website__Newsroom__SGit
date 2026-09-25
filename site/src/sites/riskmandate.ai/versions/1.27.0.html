@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.27.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.27.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.27.0.html">live ↗</a></p><article class="source"><h2 id="writing-and-a-barrier-gains-a-holder">Writing, and a barrier gains a holder</h2>
+<p>Two things, and the second is what the first is built on.</p>
+<h2 id="the-site-starts-publishing">The site starts publishing</h2>
+<p><strong><a class="ext" href="https://riskmandate.ai/versions/articles.html">Writing ↗</a></strong> is a top-level section, and the first article is
+<a class="ext" href="https://riskmandate.ai/versions/article-approval-prompts.html"><em>An approval prompt is not a human in the loop</em> ↗</a>.</p>
+<p>A connector asks <em>Claude wants to use <strong>Add labels to message</strong> from Gmail</em> and offers Deny, Always
+allow and Allow once. It does not say which label, on which message, in which thread, or whether the
+agent was asked by the person at the keyboard or by a sentence inside an email it had just read. The
+article follows that one gap: seven things the screen cannot answer, the consent screen underneath it
+that had already authorised the whole class of action before the prompt appeared, what the barrier
+vocabulary calls a bound the agent&#x27;s own account can remove in one click, and where the
+accountability ends up — with the one party in the chain given the least to decide with.</p>
+<p>Two claims are deliberately <strong>not</strong> made. That nearly every user ends up pressing <em>Always allow</em>, and
+that almost none of them know what <code>gmail.modify</code> permits, are both probably true and neither is
+measured, so both appear as open questions with how each would be settled rather than as facts. What
+is published instead is checkable: the prompt is per action, the off switch is one click, it is held
+by the account the prompt exists to protect, and nothing records that it was pressed.</p>
+<p>Five more are listed on the index as <strong>not written</strong>, each naming the behaviour policy that already
+holds its record — a queue that is visible rather than implied. Every article says which deployment
+shape it is about and links to it, so a reader can check any claim against the record it came from.
+The evidence is real: the prompt is capture 13 in that vault&#x27;s own evidence file, kept unredacted
+because the screen carries nothing to redact.</p>
+<h2 id="and-the-record-it-is-built-on-a-barrier-gains-a-holder">And the record it is built on: a barrier gains a holder</h2>
+<p>The barrier column has always said <em>what</em> stands in the way of a capability: nothing, a rule in
+prose, a setting, or a boundary enforced by something the grant does not include. It has never said
+<strong>who holds the thing in the way</strong> — and two barriers that pass the same test can be nothing alike.</p>
+<p>The worked example is on <a class="ext" href="https://riskmandate.ai/versions/abp-vault-claude-gmail-connector.html">Claude&#x27;s Gmail connector ↗</a>. Attachment
+content was filed as <em>not reachable</em>, beside permanent deletion of mail. Both are out of reach and
+they are not the same object. Permanent deletion needs the <code>https://mail.google.com/</code> scope, which
+the consent screen never asked for; widening that means a screen with *&quot;permanently delete all your
+email&quot;* on it, which somebody has to tick. Attachment content is out of reach because a client does
+not offer a tool for it — while Google&#x27;s own reference says the method *&quot;Requires one of the
+following OAuth scopes: <code>https://mail.google.com/</code>, <code>gmail.modify</code>, <code>gmail.readonly</code>&quot;*, two of which
+were consented. That block moves in a release. No screen, no new scope, nothing for anyone to click.
+Printed under one heading, the two read as equal assurance. That is what this release stops.</p>
+<p><strong><code>not_reachable</code> is gone.</strong> Every vault now carries a <strong>blocked</strong> list, and the build refuses an
+entry that does not name what blocks it. All sixteen shapes migrated; thirty-four entries, each one
+read and given its blocker.</p>
+<p><strong>Seven answers, and not one of them is a grade.</strong> Every barrier and every block may now carry:
+who holds it · what it is made of · can it move without you · would you be told · can you check it
+is still there · what would take it away · if it went, what is behind it. Six holder classes —
+you, an owner above you, a vendor against a consent you gave, a vendor as a product decision, the
+agent itself, the environment it runs in — travel with every vault in <code>data/barrier-holders.json</code>,
+pinned like the vocabulary and offered to the model site as an extension rather than invented into
+it. The seven are authored for the Gmail shape: four blocks, and the four barriers that are not
+<em>none</em>. A row whose barrier is <em>none</em> may not carry a holder, because nothing is in the way and so
+nobody holds it.</p>
+<p><strong>No adjective survives the build.</strong> A holder record that calls a control strong, weak, credible,
+robust, adequate, effective or reliable — or their negatives — fails the build, in data as in prose.
+The reason is the one that keeps a score off a behaviour policy: how much a barrier is worth depends
+on the deployment it is in. The only judgment this record makes is the delta, and the delta is
+derived rather than given.</p>
+<p>They are rendered in <code>GRANT.md</code> (two new sections, one of them the seven answers per row), in
+<code>AGENT-BEHAVIOUR-POLICY.md</code>, in the licence-to-operate conditions — where a condition now names who
+holds the thing enforcing it, because signing over a bound a supplier can withdraw is a different
+undertaking — in the reading app as a <strong>What holds</strong> view, and on every generated vault page.</p>
+<p><strong>A test boots the reading app.</strong> Two renderer bugs have shipped from that file, and neither was
+visible in a diff. The app is now booted against a real vault in a fake DOM and every view is built:
+a view that throws, renders nothing, prints <code>undefined</code>, or leaves a comma-joined table behind now
+fails the build. Two tables that had been rendering <code>|,|</code> since the consequence layer landed are
+fixed, and the cause — a builder returning an array inside an array — cannot come back.</p>
+<p><strong>And the label panel stops saying it four times.</strong> The mark beside each side effect on
+<a class="ext" href="https://riskmandate.ai/versions/agent-behaviour-policy.html">the library ↗</a> read <em>told not to — and only told</em>. Half of that was
+news; the other half was the third time the same panel had said it. The counter above reads *not
+asked for, nothing in the way*, the heading reads *side effects — not asked for, and nothing real
+stops it*, and then each line said it again. The mark now says only what the mandate said —
+<strong>refused in words</strong>, or <strong>never mentioned</strong> — and the enforcement is stated once, where it belongs,
+at the top. The summary line under the list lost the same repetition.</p>
+<p><strong>Not changed.</strong> What the credential permits, as data, is still not recorded: the blocked list names
+the blocker in prose and there is no <code>permitted.json</code> behind it yet. The audiences still signpost
+rather than organise. Both are in the brief, and neither is claimed here.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.27.0.html">https://riskmandate.ai/versions/1.27.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.27.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:12Z</dd><dt>sha256</dt><dd><code title="ba5442636ea60fb4462a992d38c74a11e70f5f4def6f79d43e0b077e3b670192">ba5442636ea6</code></dd><dt>Frozen copy</dt><dd><a href="1.27.0.md">sites/riskmandate.ai/versions/1.27.0.md</a> (6,427 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

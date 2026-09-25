@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06 — Site Architecture: teams.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · teams.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-site-architecture-teamssgitai">06 — Site Architecture: teams.sgit.ai</a></li><li class="l2"><a href="#1-url-scheme">1. URL scheme</a></li><li class="l2"><a href="#2-the-site-is-a-reference-so-ship-the-machine-readable-form">2. The site is a reference, so ship the machine-readable form</a></li><li class="l2"><a href="#3-generated-not-claimed">3. Generated, not claimed</a></li><li class="l2"><a href="#4-deconfliction">4. Deconfliction</a></li><li class="l2"><a href="#5-setup-is-the-page-people-will-actually-use">5. /setup/ is the page people will actually use</a></li><li class="l2"><a href="#6-what-this-site-does-not-do">6. What this site does NOT do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/teams.sgit.ai.html">teams.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 29 of 33</p><nav class="pager"><span><a href="028-05-evolution-and-learnings-what-the-role.html">← 05 — Evolution and Learnings: what the roles learned, as dif</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="030-07-boundaries-and-licensing.html">07 — Boundaries and Licensing →</a></span></nav><article class="source"><h1 id="06-site-architecture-teamssgitai">06 — Site Architecture: <code>teams.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.64 · 7 September 2026
+<strong>Base</strong> House pattern (copy <code>pki.sgit.ai</code>): <code>llms.txt</code> + <code>/llms-full.txt</code>, <code>/documents/</code> raw markdown, markdown twin at every URL, <code>/admin/comms.html</code>, <code>/shipped/</code>, versions, participant page.</p>
+<hr>
+<h2 id="1-url-scheme">1. URL scheme</h2>
+<pre><code>/                      Roles are boundaries. The Conductor never does the work.
+/role-format/          the ROLE.md schema, measured; the failure-condition claim
+/role-format/drift/    the two dialects and the four empty directories, honestly
+/roster/               the nineteen roles; the portable six; add-a-role triggers
+/roster/&lt;slug&gt;/        one role: claim, exclusions, comms addresses, tools
+/topologies/           Explorer / Villager / Town Planner; the handback rules
+/topologies/designer/  the same role, three ways — the fastest way to get it
+/comms/                inbox/outbox addressing; the session-start ritual
+/evolution/            dated learnings as diffs; what broke, what rule was added
+/setup/                stand up a multi-role team from these files
+/documents/            raw markdown of everything</code></pre>
+<h2 id="2-the-site-is-a-reference-so-ship-the-machine-readable-form">2. The site is a reference, so ship the machine-readable form</h2>
+<p>The primary consumer is an agent being configured. <code>teams__roster.json</code> (this pack) is the seed: every role with tier, teams present in, claim, claim-form (falsifiable / descriptive / absent), exclusions, comms addresses. The site serves it at a stable URL alongside the prose, and every <code>/roster/&lt;slug&gt;/</code> page is a projection of one record.</p>
+<p><strong>Ship the raw <code>ROLE.md</code> files too</strong>, under <code>/documents/</code>, so a reader can copy one and start. A reference site about reusable role definitions that makes you retype them has failed its own Librarian test.</p>
+<h2 id="3-generated-not-claimed">3. Generated, not claimed</h2>
+<p>Role counts, per-team coverage, format-dialect tallies, commit counts per role, and the timeline dates are all derivable from the repo. Publish the scan script&#x27;s identity and date beside every number, and regenerate on each build. <code>01__</code> and <code>02__</code> carry the 7 September 2026 figures; they will drift.</p>
+<h2 id="4-deconfliction">4. Deconfliction</h2>
+<div class="table"><table><thead><tr><th>Topic</th><th>Owner</th><th>This site&#x27;s part</th></tr></thead><tbody><tr><td><code>SKILL.md</code>, skill lifecycle, description-as-trigger</td><td><strong>skills.sgit.ai</strong></td><td>Only <em>which</em> skills a role holds, linked out</td></tr>
+<tr><td>Pioneers–Settlers–Town Planners, evolution axes</td><td><strong>wardley-maps.sgit.ai</strong></td><td>Only the staffing of PST as three agent teams</td></tr>
+<tr><td>Issues-as-files, the <code>.issues/</code> tree</td><td><strong>issues-fs.sgit.ai</strong></td><td>Only how roles address it</td></tr>
+<tr><td>Coding conventions the Dev role follows</td><td><strong>coding.sgit.ai</strong></td><td>Only that the role points there</td></tr>
+<tr><td>CI, testing, documentation as properties</td><td><strong>nfrs.sgit.ai</strong></td><td>Only the roles that own them</td></tr>
+<tr><td>Vault keys, <code>sgit</code> mechanics</td><td><strong>pki.sgit.ai</strong> / sgit.ai</td><td>Only the prohibition as it appears in a role file</td></tr>
+<tr><td>Threat modelling as a method</td><td><strong>threat-modeling.sgit.ai</strong></td><td>Only that AppSec is the role that does it</td></tr></tbody></table></div>
+<p>The rule: <strong>this site owns composition.</strong> Anything about the work itself belongs to the site that owns that work.</p>
+<h2 id="5-setup-is-the-page-people-will-actually-use">5. <code>/setup/</code> is the page people will actually use</h2>
+<p>Everything else is reference; this is the deliverable. It should answer, in order: which six roles to start with (the portable core, evidenced by sg-playwright), what each one&#x27;s exclusion list must say, where to put the comms tree, what the session-start sequence is, and when to split into Explorer/Villager. Written as a procedure, with the corpus&#x27;s own files as the worked example.</p>
+<h2 id="6-what-this-site-does-not-do">6. What this site does NOT do</h2>
+<p>No agent-framework comparison (LangGraph, CrewAI, AutoGen) — the corpus has no evidence about them and inventing it would break the network&#x27;s sourced-claims rule. No claim that these roles are optimal; they are <em>ours, measured, with the gaps shown</em>. And no synthetic role definitions: the four empty directories stay empty on the site until someone writes them, labelled as missing.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/07__boundaries-and-licensing.md</p>
+<hr></article><nav class="pager"><span><a href="028-05-evolution-and-learnings-what-the-role.html">← 05 — Evolution and Learnings: what the roles learned, as dif</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="030-07-boundaries-and-licensing.html">07 — Boundaries and Licensing →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>teams.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://teams.sgit.ai/llms-full.txt">https://teams.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:38Z</dd><dt>sha256</dt><dd><code title="11002d6345514c0988bee2ebdc6e5d4b1e85542fe5a7dfb7483da48d739b7939">11002d634551</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/teams.sgit.ai/llms-full.txt</a> (90,666 bytes)</dd><dt>Section</dt><dd>29 of 33: 06 — Site Architecture: teams.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

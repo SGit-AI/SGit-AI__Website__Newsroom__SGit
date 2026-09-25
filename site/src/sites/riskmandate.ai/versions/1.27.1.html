@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.27.1.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.27.1.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.27.1.html">live ↗</a></p><article class="source"><h2 id="an-introduction-to-the-agent-behaviour-policy">An introduction to the Agent Behaviour Policy</h2>
+<p>The <a class="ext" href="https://riskmandate.ai/versions/articles.html">Writing ↗</a> section had one article and no front door. The second one is the front
+door: <a class="ext" href="https://riskmandate.ai/versions/article-what-is-an-abp.html">*Somebody will ask what your agent can do. You need an answer they can
+check.* ↗</a></p>
+<p>It starts where the reader is rather than where the model is. Somebody senior asks what the agent
+you just connected can actually do, and there are three answers in circulation. *It drafts replies
+and summarises threads* — the product description, from a tile that also lists <code>forward</code>,
+<code>create_filter</code> and <code>mark_message_spam</code> among its tools, on the same page, read the same day. *It
+has read access to the mailbox* — the name of the credential, when the consent screen carried three
+lines and the third one sends. <em>It only does what we tell it</em> — the reassurance, which describes the
+mandate and says nothing about the grant. None of the three is a lie. They are answers to a question
+nobody asked precisely.</p>
+<p>Then the model, in the order it is produced: the mandate elicited, the grant measured, the delta
+derived, the barrier recorded. The twenty-three primitives, because if every policy invents its own
+words then no two can be read side by side. The four barriers and the one test that separates a
+control from a rule in prose. Why there is no score anywhere, including in the data.</p>
+<p><strong>The second half is one deployment worked all the way through</strong> — Claude with the Gmail connector,
+six capabilities, one wanted, four with nothing in the way, four of the six measured on an account
+the deployer runs. Six open questions listed with how each would be settled, five places where the
+two vendors&#x27; own pages contradict each other and are published unresolved, and four things it cannot
+do, each naming what withholds it. Every number on the page links to the record it came from, which
+is the article&#x27;s argument about its own claims as much as about the agent.</p>
+<p><strong>Small repairs.</strong> The rule panels on both articles were rendering their links in the browser&#x27;s
+default blue; they now use the site&#x27;s green like every other link. A <em>can not</em> became a <em>cannot</em>.</p>
+<p><strong>And the check that should have caught it.</strong> The v1.27.0 push went red on CI for a file this
+release had no business breaking: <code>paid-t1.html</code> carries every template&#x27;s zip size and sha256,
+stamped into the page, and the barrier-holder work changed every zip. The stamp was stale and
+<code>npm run check</code> did not notice, because it ran five of CI&#x27;s seven checkers and not the two that
+would have. It now runs all of them — the vault builds and the generated pages included — and the
+new checker was proven to bite by putting a wrong hash in the page and watching the run fail.</p>
+<p><strong>Not changed.</strong> The five queued articles on the index are still marked <em>not written</em>, and they are.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.27.1.html">https://riskmandate.ai/versions/1.27.1.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.27.1.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:12Z</dd><dt>sha256</dt><dd><code title="14752ef493a1e5725b43a34e0570691d08873e7c37beb31e0f630908f51560d5">14752ef493a1</code></dd><dt>Frozen copy</dt><dd><a href="1.27.1.md">sites/riskmandate.ai/versions/1.27.1.md</a> (2,813 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

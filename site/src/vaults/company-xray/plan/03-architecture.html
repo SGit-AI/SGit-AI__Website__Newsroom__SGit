@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>How it is built · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#how-it-is-built">How it is built</a></li><li class="l2"><a href="#the-pieces">The pieces</a></li><li class="l2"><a href="#where-the-documents-are-read">Where the documents are read</a></li><li class="l2"><a href="#data-protection">Data protection</a></li><li class="l2"><a href="#why-a-vault-and-not-a-shared-drive">Why a vault and not a shared drive</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="03-architecture.md">raw text</a></p><article class="source"><h1 id="how-it-is-built">How it is built</h1>
+<h2 id="the-pieces">The pieces</h2>
+<div class="table"><table><thead><tr><th>Piece</th><th>What it does</th><th>What exists today</th></tr></thead><tbody><tr><td><strong>The customer vault</strong></td><td>One per customer. Documents in <code>inbox/</code>, the X-ray in <code>xray/</code>, the Claude setup in <code>claude/</code>, the arithmetic in <code>tools/</code>. Encrypted on the device; the host holds ciphertext only.</td><td>sgit vaults, versioned and encrypted, with read-only keys for sharing.</td></tr>
+<tr><td><strong>The catalogue</strong></td><td>Twelve standard analyses, the finding format and the rules.</td><td><code>spec/analysis-catalogue.md</code> and <code>spec/finding.md</code> in this vault.</td></tr>
+<tr><td><strong>The agents</strong></td><td>Claude Code (or another agent that runs <code>sgit</code> and Python) clones the vault, runs the catalogue, writes the arithmetic as a script, and commits the X-ray.</td><td><code>prototypes/run-the-xray.md</code>, ready to paste.</td></tr>
+<tr><td><strong>The reviewer</strong></td><td>A person runs the script, reads every inferred finding against its evidence, and commits a review note.</td><td><code>prototypes/review-checklist.md</code>.</td></tr>
+<tr><td><strong>The handover</strong></td><td>Project instructions and files for a Claude Project, or a ChatGPT Project.</td><td>Claude Projects are available on every plan, including free accounts (up to five); sharing a project needs a Team or Enterprise plan.</td></tr>
+<tr><td><strong>The store</strong></td><td>Four standing payment links, one per level, and a page after payment that says what happens next.</td><td>The same pattern RiskMandate.ai uses at store.sgit.ai.</td></tr></tbody></table></div>
+<h2 id="where-the-documents-are-read">Where the documents are read</h2>
+<p>This is the question every customer should ask, and the answer has to be plain.</p>
+<ul><li><strong>At rest and in transit</strong>, the documents are encrypted in the vault. The host never sees them.</li><li><strong>During the run</strong>, the operator&#x27;s agents read them. That is the service. The model provider processes them under the operator&#x27;s account.</li><li><strong>The operator&#x27;s account must be on business terms.</strong> By default Anthropic does not use inputs or outputs from its commercial products, such as Claude for Work and the API, to train models. Check the current terms before the first customer, and state them on the intake page.</li><li><strong>After delivery</strong>, the operator deletes its working copies and records that it has done so. The customer can copy the content into a fresh vault whose key only they hold.</li></ul>
+<h2 id="data-protection">Data protection</h2>
+<p>The documents will often contain personal data, even after the intake checklist: names in minutes, roles in an org chart. Under UK and EU GDPR the operator is then a processor for the customer, and needs a processing agreement, a record of the model provider as a sub-processor, and a deletion step it can evidence. The intake checklist keeps the personal data to the minimum; it does not make it zero. Take advice before the first paid customer.</p>
+<h2 id="why-a-vault-and-not-a-shared-drive">Why a vault and not a shared drive</h2>
+<ul><li><strong>Encrypted end to end</strong>, so the storage provider is not a party to the customer&#x27;s documents.</li><li><strong>One history for the whole engagement</strong>: what was sent, when the X-ray landed, what was corrected after. &quot;Done&quot; is a commit the customer can see.</li><li><strong>Re-X-rays are diffs.</strong> Next quarter&#x27;s X-ray lands in the same vault, and the difference is the report.</li><li><strong>Read-only keys</strong> let the customer give their accountant or chair a view without giving them the ability to change anything.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="5cab9a6eba8842f0a95095d2a9647bdcc4a33960c18d71cbdfe1ece153b01b0c">5cab9a6eba88</code></dd><dt>Frozen copy</dt><dd><a href="03-architecture.md">vaults/company-xray/plan/03-architecture.md</a> (3,115 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Field Notes, a published vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#field-notes-a-published-vault">Field Notes, a published vault</a></li><li class="l1"><a href="#field-notes">Field Notes</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-this-vault-demonstrates">What this vault demonstrates</a></li><li class="l2"><a href="#what-this-shape-is-for">What this shape is for</a></li><li class="l2"><a href="#derived-facts">Derived facts</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://sgit.ai/demos/vaults/field-notes/index.html">live ↗</a></p><article class="source"><h1 id="field-notes-a-published-vault">Field Notes, a published vault</h1>
+<blockquote><p>The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key.</p></blockquote>
+<p><em>Source: <a href="index.html">https://sgit.ai/demos/vaults/field-notes/index.html</a><a class="ext live" href="https://sgit.ai/demos/vaults/field-notes/index.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="../../../index.html">Vaults</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / Field Notes</p>
+<h1 id="field-notes">Field Notes</h1>
+<p>Six small studies, a note and a generative SVG drawing each, served as a self-contained vault app.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n</code>
+Published deliberately. It grants read, and only read, a write attempt is refused by the server’s write gate (the <strong>R1 W0</strong> badge you will see in the chrome).</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<h2 id="what-this-vault-demonstrates">What this vault demonstrates</h2>
+<div class="table"><table><thead><tr><th>Feature</th><th>How this vault uses it</th></tr></thead><tbody><tr><td>Vault app (<code>app.json</code>)</td><td>one self-contained <code>index.html</code>, auto-opened; CSS and JS inlined per the authoring contract</td></tr>
+<tr><td><code>sg.vfs</code> bridge</td><td>the app reads <code>content.json</code> over the bridge at runtime: the status line in the app proves it</td></tr>
+<tr><td>Generative SVG</td><td>the six drawings are code, not images: no binary assets to fetch</td></tr>
+<tr><td>Published read key</td><td>the first vault created specifically to be published; the complete walkthrough is on <a href="../../vault-app-embed.html">the embed demo page</a><a class="ext live" href="https://sgit.ai/demos/vault-app-embed.html" title="live page">↗</a></td></tr></tbody></table></div>
+<h2 id="what-this-shape-is-for">What this shape is for</h2>
+<p>The minimum viable published vault: content plus a small app, one key, no server that can read any of it. Use this shape for anything you would put on a small static site, except the host serves only ciphertext, and unpublishing is deleting one credential from a page rather than tearing down a site.</p>
+<h2 id="derived-facts">Derived facts</h2>
+<p>4 files · 11 KB · 2 commits · app entry <code>index.html</code> · derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a>, where this vault also has an entry.</p>
+<hr>
+<p><em><a href="../../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://sgit.ai/demos/vaults/field-notes/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/demos/vaults/field-notes/index.html">https://sgit.ai/demos/vaults/field-notes/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/demos/vaults/field-notes/index.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:03Z</dd><dt>sha256</dt><dd><code title="0ebd466449a64cbdf08c667da0e7e3e0beda350abd09b669b0508d8d7724648d">0ebd466449a6</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/sgit.ai/demos/vaults/field-notes/index.md</a> (2,562 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

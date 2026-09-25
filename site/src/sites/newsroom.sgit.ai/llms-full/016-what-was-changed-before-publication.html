@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>What was changed before publication (newsroom.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · newsroom.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#what-was-changed-before-publication">What was changed before publication</a></li><li class="l2"><a href="#the-redactions">The redactions</a></li><li class="l2"><a href="#what-is-not-redacted-deliberately">What is not redacted, deliberately</a></li><li class="l2"><a href="#why-this-was-needed">Why this was needed</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/newsroom.sgit.ai.html">newsroom.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 16 of 20</p><nav class="pager"><span><a href="015-newsroomsgitai-brief-pack.html">← newsroom.sgit.ai — Brief Pack</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="017-licence.html">Licence →</a></span></nav><article class="source"><h1 id="what-was-changed-before-publication">What was changed before publication</h1>
+<p>The brief pack in this directory is published **verbatim except for the redactions
+recorded below**. This file exists because a silent redaction is the worse of the two
+options: a reader who cannot see that something was removed cannot judge what was
+removed, and on a site whose whole argument is that provenance should be walkable, an
+undisclosed edit to its own source documents would be the argument refuting itself.</p>
+<p>This is the same transparency convention the sibling <code>*.sgit.ai</code> sites use when
+republishing a source pack.</p>
+<hr>
+<h2 id="the-redactions">The redactions</h2>
+<p><strong>Nine redactions, in three files.</strong> Every one replaces an identifier with a visible
+<code>[redacted]</code> marker — the surrounding sentence, table row and manifest column are
+otherwise untouched, so what the pack <em>says</em> about each item is fully readable.</p>
+<div class="table"><table><thead><tr><th>File</th><th>What was redacted</th><th>Why</th></tr></thead><tbody><tr><td><code>03__corpus-index__send-repo.md</code></td><td>A named venture-capital firm (in a filename); an investor-facing internal hostname (in a filename); a B2B price range</td><td>Tier 3 rows. The pack lists these documents in order to say <strong>do not publish them</strong>; the identifiers inside those rows are the very thing being withheld</td></tr>
+<tr><td><code>06__boundaries-and-house-style.md</code></td><td>The same named venture-capital firm; an AWS account number; the same investor-facing hostname; the same B2B price range</td><td>This is the pack&#x27;s own redaction watch-list. It names each item in the course of forbidding its publication — which means publishing the watch-list verbatim would publish exactly what it forbids</td></tr>
+<tr><td><code>08__source-manifest.csv</code></td><td>The same firm and hostname (in two filenames and two &quot;why it matters&quot; cells); the same price range</td><td>Tier 3 manifest rows, same reason</td></tr></tbody></table></div>
+<h2 id="what-is-not-redacted-deliberately">What is <em>not</em> redacted, deliberately</h2>
+<ul><li><strong>The reasoning is intact.</strong> Every entry still says what kind of thing was withheld
+and why — a named VC and a real planned meeting, a live product&#x27;s B2B pricing and
+legal-entity to-do list, an internal investor review, infrastructure account detail.
+A reader can see the shape of what is missing and disagree with the decision.</li><li><strong>The tiering is intact.</strong> All 48 manifest rows are still present, still tiered, still
+counted. Nothing was removed from the pack; identifiers inside four rows were masked.</li><li><strong>No substantive argument was touched.</strong> The redactions are identifiers only: a
+company name, a hostname, an account number, a price range. No sentence of analysis,
+no quotation, and no source path outside those four rows was altered.</li></ul>
+<h2 id="why-this-was-needed">Why this was needed</h2>
+<p>The pack&#x27;s watch-list (<code>06</code> §2) is a list of things not to publish. Publishing the pack
+verbatim published that list, and the list names its own subjects — so the act of
+documenting the exclusion performed the disclosure. The pre-release gate now checks the
+published pack alongside every other file rather than exempting it, so this specific
+failure cannot recur silently: an unredacted identifier in <code>briefs/</code> fails the build.</p>
+<p>The unredacted pack remains the source of truth privately. What is published here is the
+redacted copy, and this file is the difference.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International
+licence (CC BY 4.0).</p>
+<hr>
+<p>== briefs/LICENSE.md</p>
+<hr></article><nav class="pager"><span><a href="015-newsroomsgitai-brief-pack.html">← newsroom.sgit.ai — Brief Pack</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="017-licence.html">Licence →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>newsroom.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://newsroom.sgit.ai/llms-full.txt">https://newsroom.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="f1e230f83f8482fa1bdc30f5357bf4c99eafe656f5c3326582f6c82b909a64f2">f1e230f83f84</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/newsroom.sgit.ai/llms-full.txt</a> (264,650 bytes)</dd><dt>Section</dt><dd>16 of 20: What was changed before publication</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

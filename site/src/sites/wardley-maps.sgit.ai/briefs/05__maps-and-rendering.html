@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>05 — Maps, rendering, and two things this session established by testing · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · wardley-maps.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#05-maps-rendering-and-two-things-this-session-established-by-testing">05 — Maps, rendering, and two things this session established by testing</a></li><li class="l2"><a href="#1-what-maps-exist-today">1. What maps exist today</a></li><li class="l2"><a href="#2-the-coordinate-contract-proven-not-asserted">2. The coordinate contract — proven, not asserted</a></li><li class="l2"><a href="#3-the-parse-rules-the-corpus-was-right-and-incomplete">3. The parse rules — the corpus was right, and incomplete</a></li><li class="l2"><a href="#4-the-render-pipeline-proven-and-it-should-be-a-script">4. The render pipeline — proven, and it should be a script</a></li><li class="l2"><a href="#5-the-13-broken-sources-day-one-fix">5. The 13 broken sources — day-one fix</a></li><li class="l2"><a href="#6-the-four-maps-this-pack-ships">6. The four maps this pack ships</a></li><li class="l2"><a href="#7-what-is-still-missing-after-this-pack">7. What is still missing after this pack</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/wardley-maps.sgit.ai.html">wardley-maps.sgit.ai</a> · <a href="05__maps-and-rendering.md">raw text</a> · <a class="ext" href="https://wardley-maps.sgit.ai/briefs/05__maps-and-rendering.md">live ↗</a></p><article class="source"><h1 id="05-maps-rendering-and-two-things-this-session-established-by-testing">05 — Maps, rendering, and two things this session established by testing</h1>
+<p>Everything here was verified by rendering, not by reading documentation. Where the corpus already knew something, that is said; where this session extended it, that is said too.</p>
+<hr>
+<h2 id="1-what-maps-exist-today">1. What maps exist today</h2>
+<div class="table"><table><thead><tr><th>Form</th><th>Count</th><th>Where</th><th>Renders?</th></tr></thead><tbody><tr><td><strong>Rendered PNGs</strong></td><td><strong>8</strong></td><td><code>…/briefs/05/24/sg-send-thread/wardley-maps/</code> — all <code>784 x 523, 8-bit/color RGB</code></td><td><strong>Yes.</strong> The only working visuals in the entire corpus.</td></tr>
+<tr><td><strong>Mermaid <code>wardley-beta</code> sources</strong></td><td><strong>13</strong></td><td>8 in <code>…wardley-maps-rendered.md</code>, 1 in <code>…setup-and-mermaid-capability.md</code>, 4 in <code>…productizing-commoditizing-permissions…md</code></td><td><strong>No — all 13 fail.</strong> See §5.</td></tr>
+<tr><td><strong>ASCII maps</strong></td><td><strong>9</strong></td><td>across the cartographer reviews, the founding brief, the primer, the air-gap brief, the skill-lifecycle brief</td><td>Yes, in monospace</td></tr>
+<tr><td><strong>Position tables as maps</strong></td><td><strong>8</strong></td><td><code>…first-pass-eight-maps-user-needs-before-after.md</code> — <code>Component / Visibility / Today / With our service</code></td><td>Unrendered, but <strong>the most analytically dense maps in the corpus</strong> and trivially convertible</td></tr>
+<tr><td><strong><code>.owm</code> files, map JSON, map SVG</strong></td><td><strong>0</strong></td><td>—</td><td>OWM interchange is specified in the Cartographer REFERENCE and never implemented</td></tr></tbody></table></div>
+<p>Plus, live on the network: <strong>8 PNGs</strong> served from the <code>sgit.ai</code> Strategy Maps vault (client-side decrypted, a <code>MutationObserver</code> rewrites vault-path image refs to blob URLs), <strong>6 inline SVGs</strong> generated client-side on <code>sgit.ai/demos/sgit-maps.html</code>, and <strong>10 Mermaid maps</strong> across two <code>pki.sgit.ai</code> packs — the estate&#x27;s first use of <code>wardley-beta</code> in published HTML.</p>
+<p><strong>This pack adds the first rendered SVG Wardley maps in the estate: <code>maps/</code>, four of them, source and output.</strong></p>
+<hr>
+<h2 id="2-the-coordinate-contract-proven-not-asserted">2. The coordinate contract — proven, not asserted</h2>
+<p><code>graphs.sgit.ai</code> warns that coordinates are <code>[visibility, evolution]</code>, not <code>[x, y]</code>, and that transposing them <em>&quot;renders without error while asserting a different claim&quot;</em>. The corpus says the same (W13, 24 May 2026). <strong>This session tested it.</strong></p>
+<p>Probe rendered with Mermaid CLI 11.14.0, plot area x∈[48,852], y∈[48,552], y growing downward:</p>
+<pre><code>anchor    &quot;A_high_vis_genesis&quot;    [0.90, 0.10]   --&gt;  drawn at x≈128, y≈95
+component &quot;B_low_vis_commodity&quot;   [0.10, 0.90]   --&gt;  drawn at x≈780, y≈494</code></pre>
+<p><code>0.90</code> put the first component <strong>near the top</strong> (high visibility) and <code>0.10</code> put it <strong>near the left</strong> (genesis). Confirmed:</p>
+<blockquote><p>**First number = visibility → the Y axis, 1 = top, visible to the user.
+Second number = evolution → the X axis, 1 = right, commodity.**</p></blockquote>
+<p>There is no error and no warning if you transpose them. The map renders, looks plausible, and says something else. <strong>This is the single highest-value fact on the <code>/agents/</code> page</strong>, and the site should state it with this evidence rather than as received wisdom.</p>
+<hr>
+<h2 id="3-the-parse-rules-the-corpus-was-right-and-incomplete">3. The parse rules — the corpus was right, and incomplete</h2>
+<p>The corpus records (W13b, 24 May 2026) that <em>&quot;component and anchor names that contain a hyphen, an ampersand, or a slash cause a parse error&quot;</em>, and recommends <em>&quot;keep component and anchor names to letters and spaces&quot;</em>.</p>
+<p>That is correct but avoidable. This session established the full rule and the fix, by bisection on Mermaid <strong>11.14.0</strong>:</p>
+<div class="table"><table><thead><tr><th>In an <strong>unquoted</strong> name</th><th>Result</th></tr></thead><tbody><tr><td>spaces (<code>Draw a map</code>)</td><td><strong>OK</strong></td></tr>
+<tr><td>underscores (<code>Real_time</code>)</td><td><strong>OK</strong></td></tr>
+<tr><td>parentheses (<code>Draw (fast)</code>)</td><td><strong>OK</strong></td></tr>
+<tr><td><strong>hyphen</strong> (<code>Real-time collab</code>)</td><td><strong>FAILS</strong></td></tr>
+<tr><td><strong>dot</strong> (<code>doctrine.wardleymaps.com</code>)</td><td><strong>FAILS</strong></td></tr>
+<tr><td><strong>slash</strong> (<code>AI/ML</code>)</td><td><strong>FAILS</strong></td></tr></tbody></table></div>
+<p><strong>The fix is quoting</strong> — <code>component &quot;Real-time collab&quot; [0.7, 0.6]</code> parses fine, and so does <code>&quot;doctrine.wardleymaps.com&quot;</code>. But there is a trap:</p>
+<blockquote><p><strong>Quoting the declaration and not the link still fails.</strong> <code>component &quot;Real-time collab&quot; …</code> followed by <code>User --&gt; Real-time collab</code> is a syntax error. <strong>Quote the name everywhere it appears</strong> — declaration, link lines, and <code>evolve</code> statements.</p></blockquote>
+<p>Failure mode: <strong>a silent &quot;Syntax error in text&quot; SVG</strong>, byte-identical in size across every broken input, with no line number. In a batch render that looks exactly like success until you open the file. <code>capture</code>-style pipelines should grep the output for <code>error-text</code> — that is what this session did, and it is what caught it.</p>
+<p><strong>Practical rule for the site: quote every anchor and component name, always.</strong> It costs two characters and removes the whole class of failure. The four maps in <code>maps/</code> do this.</p>
+<hr>
+<h2 id="4-the-render-pipeline-proven-and-it-should-be-a-script">4. The render pipeline — proven, and it should be a script</h2>
+<p>The corpus describes the recipe in prose only — <em>&quot;Mermaid CLI v11.14.0 plus the Playwright-bundled Chromium&quot;</em> — with no script, no Makefile target and no CI job. Here it is as something runnable:</p>
+<pre><code class="lang-bash"># puppeteer-config.json
+{&quot;executablePath&quot;:&quot;/opt/pw-browsers/chromium-1194/chrome-linux/chrome&quot;,
+ &quot;args&quot;:[&quot;--no-sandbox&quot;,&quot;--disable-dev-shm-usage&quot;]}
+
+for f in maps/*.mmd; do
+  npx @mermaid-js/mermaid-cli@11.14.0 \
+      -i &quot;$f&quot; -o &quot;${f%.mmd}.svg&quot; \
+      -p puppeteer-config.json -b white -w 1400 -H 900
+  grep -q &quot;error-text&quot; &quot;${f%.mmd}.svg&quot; &amp;&amp; echo &quot;FAILED: $f&quot;   # &lt;- the check that matters
+done</code></pre>
+<p>Two notes. Mermaid CLI ships its own Puppeteer and will try to download Chrome; pointing <code>executablePath</code> at an existing Chromium is what makes it work in a sandbox. And <strong>the <code>grep</code> is not optional</strong> — without it a broken map ships silently.</p>
+<p>Ship this as <code>bin/render-maps.sh</code> plus a CI job, and add a check that every <code>.mmd</code> has a current <code>.svg</code>. That closes gap 3 in <code>08__</code>.</p>
+<hr>
+<h2 id="5-the-13-broken-sources-day-one-fix">5. The 13 broken sources — day-one fix</h2>
+<p>None of the 13 Mermaid sources in the repo render, for two mundane reasons:</p>
+<ol><li><strong>Wrong code fence.</strong> Eight-plus use a bare <code></code><code>` with `wardley-beta` on the *next* line; four use `</code><code>wardley-beta</code>. Neither is recognised. GitHub and Mermaid both want <code></code><code>`mermaid</code> with <code>wardley-beta</code> as the first line <em>inside</em> the block.</li><li><strong>One unquoted <code>note</code>.</strong> In the 19 June brief: <code>note Genesis or custom built today: bespoke, manual, hope driven [0.34, 0.04]</code> — <code>note</code> requires quotes around its text.</li></ol>
+<p>Both are trivial. Fixing them turns 13 dead code blocks into 13 rendered maps and is the cheapest high-visibility win available. Do it before writing any new maps.</p>
+<p>Then convert the <strong>8 position tables</strong> from the 23 June brief — they are already <code>Component | Visibility | Today | With our service</code>, which is <code>wardley-beta</code> in all but syntax, and they carry the <strong>paired before/after</strong> structure (W28) that makes them arguments rather than diagrams: <em>&quot;The distance between the two is the case for the service.&quot;</em></p>
+<hr>
+<h2 id="6-the-four-maps-this-pack-ships">6. The four maps this pack ships</h2>
+<p>In <code>maps/</code>, each as <code>.mmd</code> source and rendered <code>.svg</code>. They are drawn about the site&#x27;s own subject matter so they can go straight onto pages.</p>
+<div class="table"><table><thead><tr><th>Map</th><th>What it claims</th><th>Page</th></tr></thead><tbody><tr><td><strong>M1 — The tool ecosystem, August 2026</strong></td><td>Authoring and versioning are product-to-commodity; <strong>collaboration, doctrine assessment and agent authoring sit at Genesis with nothing under them</strong> — the holes MapKeep and the doctrine tools left</td><td><code>/resources/</code> opener</td></tr>
+<tr><td><strong>M2 — The two absences</strong></td><td>The same point stated as loss: two user needs that had working implementations in 2025 and have none in August 2026</td><td><code>/resources/dead/</code></td></tr>
+<tr><td><strong>M3 — Maps for agents</strong></td><td>The new user need. Reading is served; <strong>writing, and especially contesting a placement, are not</strong> — &quot;evidence for placement&quot; is the least evolved node on the map</td><td><code>/agents/</code></td></tr>
+<tr><td><strong>M4 — The site as a value chain</strong></td><td>What this site is, mapped. Resource pages and doctrine at custom-built; the <code>llms.txt</code> surface as the shared component; static hosting as commodity</td><td><code>/about/</code></td></tr></tbody></table></div>
+<p><strong>They are claims, not decorations.</strong> Every placement is arguable and should be argued with — which is the whole thesis. Publish the <code>.mmd</code> next to the <code>.svg</code> so a reader can fork the argument in a pull request. That is the corpus&#x27;s own standard, from <code>pki.sgit.ai</code>: <em>&quot;the maps live in the source and are reviewable in a diff.&quot;</em></p>
+<hr>
+<h2 id="7-what-is-still-missing-after-this-pack">7. What is still missing after this pack</h2>
+<ul><li><strong>No <code>.owm</code> export.</strong> A site that wants to interoperate with the Wardley community has nothing to hand it. <code>cli-owm</code> and <code>wardleyToGo</code> both consume OWM text; a converter is small.</li><li><strong>No map diffs.</strong> <em>&quot;every significant change comes with a map diff — a before/after showing what moved&quot;</em> is specified in the Cartographer REFERENCE. There is exactly one dated pair in the corpus and no mechanism.</li><li><strong>No Claude skill for maps</strong>, despite being asked for twice.</li><li><strong>No stored map graph.</strong> The corpus&#x27;s strongest architectural claim — maps are graphs with position, so map queries are graph queries with positional filters — is listed as PROPOSED and has no implementation in any of the four repos. <strong>If the site wants to demonstrate it, it will have to build it.</strong> Say that on <code>/shipped/</code> rather than implying otherwise.</li><li><strong>No &quot;map that shows us badly.&quot;</strong> Asked for explicitly as the honesty test of the whole series: <em>&quot;Is there a map that shows us badly? Worth drawing, as the test of whether these are analysis or marketing.&quot;</em> It still does not exist. <strong>Drawing it would be the most credible single page on the site.</strong></li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>wardley-maps.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://wardley-maps.sgit.ai/briefs/05__maps-and-rendering.md">https://wardley-maps.sgit.ai/briefs/05__maps-and-rendering.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:27Z</dd><dt>sha256</dt><dd><code title="0551cd1f95d5437a3f19f07365d081c998ffebbdc093b8a8e2faea52e000dfb8">0551cd1f95d5</code></dd><dt>Frozen copy</dt><dd><a href="05__maps-and-rendering.md">sites/wardley-maps.sgit.ai/briefs/05__maps-and-rendering.md</a> (9,320 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

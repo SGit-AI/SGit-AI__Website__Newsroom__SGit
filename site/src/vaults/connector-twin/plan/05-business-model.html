@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>5. Business model · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#5-business-model">5. Business model</a></li><li class="l2"><a href="#unit-costs">Unit costs</a></li><li class="l2"><a href="#margin-per-tier">Margin per tier</a></li><li class="l2"><a href="#break-even">Break-even</a></li><li class="l2"><a href="#shape-of-the-first-two-years-as-a-scenario">Shape of the first two years, as a scenario</a></li><li class="l2"><a href="#what-moves-the-numbers">What moves the numbers</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="05-business-model.md">raw text</a></p><article class="source"><h1 id="5-business-model">5. Business model</h1>
+<p>Recurring revenue per agent, a set-up fee per customer, and paid incidents. Every number below is a hypothesis to test, with the arithmetic shown so it can be redone with better inputs.</p>
+<h2 id="unit-costs">Unit costs</h2>
+<div class="table"><table><thead><tr><th>Item</th><th>Assumption</th><th>Per agent per month</th></tr></thead><tbody><tr><td>Journal volume</td><td>About 500 connector calls a day at about 20 KB per call and response: 10 MB a day, 0.3 GB a month</td><td></td></tr>
+<tr><td>Storage</td><td>About 0.02 USD per GB per month. A year of retention is about 3.6 GB</td><td>under £0.10</td></tr>
+<tr><td>Broker, gateway and processor compute</td><td>Estimated at small scale</td><td>about £3.00</td></tr>
+<tr><td><strong>Infrastructure</strong></td><td></td><td><strong>about £3.10</strong></td></tr></tbody></table></div>
+<p>Storage is not the cost. Compute and, above all, support are. Budget support as people, not as a percentage.</p>
+<h2 id="margin-per-tier">Margin per tier</h2>
+<div class="table"><table><thead><tr><th>Tier</th><th>Price</th><th>Infrastructure</th><th>Infrastructure margin</th></tr></thead><tbody><tr><td>Journal</td><td>£15</td><td>£3.10</td><td>79%</td></tr>
+<tr><td>Twin</td><td>£40</td><td>£3.10</td><td>92%</td></tr>
+<tr><td>Assured</td><td>£90</td><td>£3.10</td><td>97%, before the evidence packs and replays, which are people-time</td></tr></tbody></table></div>
+<h2 id="break-even">Break-even</h2>
+<p>Two founders at £6,000 a month each fully loaded, plus £2,000 a month of tooling, is £14,000 a month. At the Twin price less infrastructure, £36.90 per agent, that is about <strong>380 agents</strong>: roughly 38 customers with ten agents each. Set-up fees and incident replays shorten the path; they are not counted here because they are lumpy.</p>
+<p>The calculator in the app lets every one of these inputs move.</p>
+<h2 id="shape-of-the-first-two-years-as-a-scenario">Shape of the first two years, as a scenario</h2>
+<div class="table"><table><thead><tr><th></th><th>Customers</th><th>Agents</th><th>Monthly recurring</th></tr></thead><tbody><tr><td>Month 3</td><td>5 design partners</td><td>30</td><td>£0: free while they are design partners, worth about £1,200 at list price</td></tr>
+<tr><td>Month 12</td><td>40</td><td>400</td><td>about £16,000</td></tr>
+<tr><td>Month 24</td><td>150</td><td>2,000</td><td>about £80,000</td></tr></tbody></table></div>
+<p>A scenario, not a forecast. The month-12 line is the one to test hardest: it assumes an average of ten agents per customer on the Twin tier.</p>
+<h2 id="what-moves-the-numbers">What moves the numbers</h2>
+<ul><li><strong>Agents per customer.</strong> The price is per agent, so the business grows with adoption inside each customer, not only with new logos.</li><li><strong>Tier mix.</strong> Assured customers are few and worth a lot; they are also the ones who will ask the hardest security questions.</li><li><strong>Channel.</strong> Managed service providers selling the service to their own clients change customer acquisition cost more than any price change does. See <code>06-go-to-market.md</code>.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="0bdfd47e9724287c6ea91fd7516b17be4c49fa55ed8f62763b01ea5a9824355c">0bdfd47e9724</code></dd><dt>Frozen copy</dt><dd><a href="05-business-model.md">vaults/connector-twin/plan/05-business-model.md</a> (2,330 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

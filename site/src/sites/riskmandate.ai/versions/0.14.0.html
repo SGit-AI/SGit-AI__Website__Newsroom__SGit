@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>0.14.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="0.14.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/0.14.0.html">live ↗</a></p><article class="source"><h2 id="three-more-live-demos-deferred-loading-the-privacy-claim-scoped">Three more live demos · deferred loading · the privacy claim scoped</h2>
+<p>From @website-agent&#x27;s brief, ahead of Startup Summit Lisbon on 17–18 September.</p>
+<ul><li><strong>Three vaults added</strong>, each with its own page on the shared demo template:
+<strong>Licence to Operate</strong> (an insurance policy for an agent, simulated — grant, mandate, and the
+delta nothing covers; the homepage thesis made operable, so it leads the list),
+<strong>RiskMandate · File security</strong> (an eleven-step risk-acceptance walk running SQLite in the
+browser — the workflow rather than the model), and <strong>Agent permission games</strong> (five minutes,
+forty questions, no sign-up; guess what your agent can reach and be scored on it).</li><li><strong>A fourth is built but held.</strong> The AIUC-1 conformance layer&#x27;s read key carries a
+<code>sgit_private_read_</code> prefix, unlike every other key in the catalogue. It is published on a public
+page, so it is <em>probably</em> public — but &quot;probably&quot; is not the standard for publishing a credential
+with the word private in it. The entry is complete and commented out with restore instructions;
+it needs one line of confirmation from the vault owner. Note the key was deliberately removed from
+the comment too: an inlined key ships in the page source whether or not a card renders it, which
+is exactly what a smoke assertion now checks for across every built page.</li><li><strong>Nav reordered by argument, not by age</strong>: All demos · Licence to Operate · RiskGraph Explorer ·
+Agentic Browser Isolation · RiskMandate field demo · File security walk · Permission games. The
+hardcoded &quot;All three demos&quot; label is gone, along with the three-demo framing in the page copy.</li><li><strong>The privacy claim is now defensible.</strong> The page said &quot;nothing you do inside a demo leaves your
+device&quot;; the games vault is described in the catalogue as the first one that phones home. Both
+statements were true of their own subject and false together. The blanket claim is replaced by a
+scoped one that names the exception and what it sends, and every vault page now carries a
+statement driven by a <code>phonesHome</code> flag in the registry — so a vault that sends data cannot be
+added without the page saying so.</li><li><strong>Large vaults no longer auto-load.</strong> Anything at or above 3 MB shows its size and file count and
+waits to be asked; the small ones keep loading eagerly. Licence to Operate is 13 MB, and the held
+AIUC-1 vault is 43 MB across 649 files — auto-fetching those on a phone on conference wifi would
+have been a real regression.</li><li><strong>Read keys: three formats accepted, and failures are loud.</strong> Bare 64-hex, <code>sgit_rk1_</code> and
+<code>sgit_private_read_</code> all validate; anything else renders a message naming the misconfigured demo
+instead of an empty frame that looks like a slow load.</li><li>Page orders renumbered so the demo group stays contiguous — the first attempt collided with
+<code>pricing</code> at order 30 and split the dropdown into two &quot;Live demos&quot; menus.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/0.14.0.html">https://riskmandate.ai/versions/0.14.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/0.14.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="fea50d8da17d0ad6c47dda3963be079da9639ecef14d8d8a146e001da4e52fa2">fea50d8da17d</code></dd><dt>Frozen copy</dt><dd><a href="0.14.0.md">sites/riskmandate.ai/versions/0.14.0.md</a> (2,926 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

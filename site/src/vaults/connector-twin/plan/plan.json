@@ -1,0 +1,124 @@
+{
+  "title": "Connector Twin: know what your agent did, see what it saw, undo what it changed",
+  "one_line": "A service that journals every request and response an AI agent makes through a connector such as Gmail, Google Calendar, Drive or Slack, and replays that journal into the views the agent saw, with a before and after for every change and a revert plan for each one.",
+  "question": "Do you know what your agents did?",
+  "policy": [
+    {
+      "q": "What can the agent do?",
+      "without": "The scopes you granted, if anybody wrote them down.",
+      "with": "The same scopes, plus the list of actions they allow that cannot be undone, such as a permanent delete or a sent email."
+    },
+    {
+      "q": "What did it do?",
+      "without": "The agent's own summary, and administrator audit logs that record that events changed.",
+      "with": "Every call, with the request and the response, in order, hash-chained so a missing or edited entry shows."
+    },
+    {
+      "q": "What did it see?",
+      "without": "Nothing. The inbox has moved on since.",
+      "with": "The inbox and the calendar as the agent saw them at each step, rebuilt from the responses it received."
+    },
+    {
+      "q": "Why did it do it?",
+      "without": "Nothing, unless the chat was kept.",
+      "with": "The instruction that led to each call, when prompt capture is on."
+    },
+    {
+      "q": "Can you undo it?",
+      "without": "Deletes to trash, yes, for 30 days. Edits, sent email and notifications, no. A permanent delete, only by an administrator's bulk restore within 25 days.",
+      "with": "A revert plan for every change, and a named list of what cannot be undone and why."
+    },
+    {
+      "q": "Can you show someone else?",
+      "without": "Your word, and screenshots.",
+      "with": "An evidence chain that an auditor, an insurer or a board can open with a read key."
+    }
+  ],
+  "packages": {
+    "setup": [
+      {
+        "name": "Connector review, small",
+        "price": "£750",
+        "for": "Up to 3 connectors and 5 agents",
+        "includes": "Irreversibility map of the scopes in use, capture set up in one mode, a first behaviour-policy baseline."
+      },
+      {
+        "name": "Connector review, team",
+        "price": "£2,500",
+        "for": "Up to 10 connectors and 25 agents",
+        "includes": "As above, plus retention rules, key custody set up with the customer, and a replay drill on a real session."
+      },
+      {
+        "name": "Connector review, organisation",
+        "price": "£6,000",
+        "for": "Larger estates",
+        "includes": "As above, plus the customer-cloud deployment, the broker in front of the connectors, and an incident runbook."
+      }
+    ],
+    "monthly": [
+      {
+        "name": "Journal",
+        "price": "£15",
+        "unit": "per agent per month",
+        "includes": "Capture of every request and response, encrypted retention for 90 days, search, chain verification."
+      },
+      {
+        "name": "Twin",
+        "price": "£40",
+        "unit": "per agent per month",
+        "includes": "Journal, plus the rebuilt views, before and after for every change, revert plans, and 1 year of retention."
+      },
+      {
+        "name": "Assured",
+        "price": "£90",
+        "unit": "per agent per month",
+        "includes": "Twin, plus a monthly evidence pack for the behaviour policy and the insurer, two incident replays a year, retention to 7 years, keys held by the customer."
+      }
+    ],
+    "on_demand": [
+      {
+        "name": "Incident replay",
+        "price": "£900",
+        "unit": "per incident",
+        "includes": "A day's investigation: what the agent saw, what it did, what it said it did, and what can be put back."
+      },
+      {
+        "name": "Supervised revert",
+        "price": "£450",
+        "unit": "per incident",
+        "includes": "Executing the revert plan with the customer watching, and recording the result in the journal."
+      }
+    ],
+    "minimum": "£150 per month",
+    "note": "Every price is a hypothesis to test with the first ten customers, not a measured result."
+  },
+  "modes": [
+    {
+      "name": "Broker",
+      "where": "A service between the agent and the connector holds the credentials and makes the calls.",
+      "evidence": "Strongest: nothing reaches the API without passing through it. This is the execution broker described on twins.sgit.ai.",
+      "trade": "The broker holds credentials and sees traffic in flight, so it is the highest-value target in the estate."
+    },
+    {
+      "name": "Gateway",
+      "where": "A proxy on the MCP or HTTP path records calls but the agent keeps its own credentials.",
+      "evidence": "Strong for anything routed through it; blind to any path around it.",
+      "trade": "Easier to deploy; needs the routing enforced."
+    },
+    {
+      "name": "Agent-reported",
+      "where": "The agent is told to append a copy of every request and response it sends.",
+      "evidence": "Weakest: an agent that omits an entry leaves a gap the chain cannot show. Marked as self-reported in the policy.",
+      "trade": "Available today with no infrastructure at all."
+    }
+  ],
+  "economics": {
+    "assumptions": [
+      "An active assistant agent makes about 500 connector calls a day, and a call with its response averages about 20 KB of JSON. That is about 10 MB a day, or 0.3 GB a month, per agent.",
+      "Object storage costs about 0.02 USD per GB per month. A year of retention for one agent is about 3.6 GB, well under 0.10 USD a month.",
+      "Broker and processor compute is estimated at 3 GBP per agent per month at small scale, so infrastructure is about 3.10 GBP per agent per month including storage.",
+      "Two founders at 6,000 GBP a month each fully loaded, plus 2,000 GBP a month of tooling, is a monthly burn of 14,000 GBP."
+    ],
+    "break_even": "At the Twin price of 40 GBP per agent, less about 3.10 GBP of infrastructure, break-even on that burn is about 380 agents: roughly 38 customers with ten agents each."
+  }
+}

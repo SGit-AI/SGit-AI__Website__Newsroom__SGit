@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Markdown and file viewers in a vault: what not to build (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#markdown-and-file-viewers-in-a-vault-what-not-to-build">Markdown and file viewers in a vault: what not to build</a></li><li class="l2"><a href="#the-ladder-stop-at-the-first-rung-that-works">The ladder: stop at the first rung that works</a></li><li class="l2"><a href="#pattern-one-the-markdown-viewer-you-do-not-write">Pattern one: the markdown viewer you do not write</a></li><li class="l3"><a href="#the-rules-that-actually-catch-people">The rules that actually catch people</a></li><li class="l2"><a href="#pattern-two-the-file-and-folder-viewer-and-the-raw-view">Pattern two: the file and folder viewer, and the raw view</a></li><li class="l2"><a href="#before-you-call-it-done">Before you call it done</a></li><li class="l2"><a href="#the-prompt-to-hand-the-builder-agent">The prompt to hand the builder agent</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 194 of 358</p><nav class="pager"><span><a href="193-markdown-and-file-viewers-in-a-vault-wha.html">← Markdown and file viewers in a vault: what not to build (bui</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="195-sgvault-the-vault-platform-sgitai.html">SG/Vault &amp; the vault platform, sgit.ai →</a></span></nav><article class="source"><h1 id="markdown-and-file-viewers-in-a-vault-what-not-to-build">Markdown and file viewers in a vault: what not to build</h1>
+<p>Two of the most common things an agent is asked to add to a vault, <strong>a markdown viewer</strong> and <strong>a file/folder browser with raw views</strong>, already exist in the vault platform. Most requests for them are answered by publishing files in the right shape and writing no code at all. This brief says which surface renders what, gives the ladder from zero code to a full app, and states the one contract to honour if you do build your own.</p>
+<p><strong>Read this first, and you may be finished.</strong> The browse view already renders every <code>.md</code> file in a vault, and the file tree on its left <em>is</em> the folder viewer. If an agent is about to write a markdown parser or a file explorer into a vault app, it is almost certainly solving a problem the host solved already, and the version it writes will be worse, bigger, and will not match the rest of the estate.</p>
+<h2 id="the-ladder-stop-at-the-first-rung-that-works">The ladder: stop at the first rung that works</h2>
+<div class="table"><table><thead><tr><th></th><th>You write</th><th>You get</th><th>Reach for it when</th></tr></thead><tbody><tr><td><strong>0 · Nothing</strong></td><td><code>.md</code> files</td><td>Rendered markdown, a file tree, tabbed previews, internal links that open as tabs, print</td><td>Prose: articles, reports, specs, notes, READMEs. <strong>Start here every time</strong></td></tr>
+<tr><td><strong>1 · A layout</strong></td><td><code>_page.json</code></td><td>Hero, sections, galleries, slideshows, card hubs, embedded PDFs, themes, and a <code>markdown</code> component that renders one of your <code>.md</code> files inside the layout</td><td>You want a designed page rather than a document, or a hub that navigates to folders</td></tr>
+<tr><td><strong>2 · An app</strong></td><td><code>index.html</code> + <code>app.json</code></td><td>Anything, computed views, filters, queries over your own data</td><td>Only when the answer depends on <em>computing</em> something the host cannot know</td></tr>
+<tr><td><strong>3 · A site viewer</strong></td><td>A viewer on your website</td><td>Vault content on a public web page, outside any vault host</td><td>The content must live on a normal site. See <a class="ext" href="https://sgit.ai/vault-decks-on-a-site.md">the decks brief ↗</a></td></tr></tbody></table></div>
+<p>The reference for rungs 0 and 1 is <a class="ext" href="https://sgit.ai/vault/content-authoring.md"><strong>Publishing content without code</strong> ↗</a>; for rung 2 it is <a class="ext" href="https://sgit.ai/vault/vault-apps.md">Building vault apps ↗</a> and <a class="ext" href="https://sgit.ai/vault/sg-bridge.md">the window.sg bridge ↗</a>. This page is the decision, not the syntax.</p>
+<h2 id="pattern-one-the-markdown-viewer-you-do-not-write">Pattern one: the markdown viewer you do not write</h2>
+<p>Markdown is rendered natively on <strong>three</strong> surfaces, and none of them requires code:</p>
+<ul><li><strong>Any <code>.md</code> file in the browse view</strong>: click it in the tree, it opens as a rendered tab. Nothing to register.</li><li><strong>The <code>markdown</code> component in <code>_page.json</code></strong>: <code>{&quot;type&quot;:&quot;markdown&quot;,&quot;props&quot;:{&quot;file&quot;:&quot;overview.md&quot;}}</code> drops a rendered document into a designed page, or <code>&quot;text&quot;</code> for an inline string. This is how you get prose <em>inside</em> a layout without duplicating it.</li><li><strong>A markdown file as the vault&#x27;s front door</strong>: the browse view auto-opens the alphabetically first file, so name the entry point <code>README.md</code> or <code>00-INDEX.md</code>. A root <code>_page.json</code> takes priority over both.</li></ul>
+<h3 id="the-rules-that-actually-catch-people">The rules that actually catch people</h3>
+<ul><li><strong>Raw HTML is stripped and shows as escaped text.</strong> This is the single most common failure. Write flat markdown; do not reach for a <code>div</code> when a heading will do.</li><li><strong>Size images with the pipe syntax, not HTML</strong>: <code>![caption|400](img.png)</code>, <code>|60%</code>, <code>|800x600</code>. It lives inside the alt text, so the URL stays clean and the file still renders in any other markdown tool.</li><li><strong>Link a folder through its file, not the folder</strong>: <code>folder/README.md</code>, never <code>folder/</code>. Which file a bare folder link opens depends on sort order, and that is not a contract.</li><li><strong>Nested lists and task lists are not supported.</strong> Neither is HTML. Plan the document around that rather than discovering it after a push.</li><li><strong>Image paths are relative to the <code>.md</code> file</strong>, not to the vault root.</li><li><strong>No external URLs for vault assets.</strong> Vault files only, which is what makes a published document unable to phone home, and is a feature rather than a limitation.</li></ul>
+<p>Front matter adds print control: a <code>---</code>-delimited block at the very top can set <code>page_break_before</code> and carry a literal <code>print_css</code> block, so a document prints as a document. That plus the theme options is usually the whole gap between “a markdown file” and “a deliverable somebody can hand to a client”.</p>
+<h2 id="pattern-two-the-file-and-folder-viewer-and-the-raw-view">Pattern two: the file and folder viewer, and the raw view</h2>
+<p>The browse view is already a two-pane explorer: tree on the left, tabbed preview on the right, with <code>_page.json</code> pages carrying a <code>{ } Source</code> toggle that flips the rendered layout back to its JSON. <strong>If that is enough, you are done.</strong></p>
+<p>You need your own explorer only when the vault&#x27;s files mean something the host cannot know, when a <code>.json</code> file is not just JSON but a control, a policy, a graph node, and you want to render it <em>as</em> that. <a href="../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a><a class="ext live" href="https://sgit.ai/demos/vaults/aiuc-1-conformance/index.html" title="live page">↗</a> does exactly this, and states the principle in its own source:</p>
+<blockquote><p>“A manifest generated at build time, files fetched on click, raw always available and a data view where the build understands the file. <strong>Raw is the point, a catalog that asks to be trusted has to be readable in the form it was written.</strong>”</p></blockquote>
+<p>That is the contract, and it is worth adopting whole:</p>
+<div class="table"><table><thead><tr><th>Rule</th><th>Why</th></tr></thead><tbody><tr><td><strong>Raw is always available, for every file</strong></td><td>A reader that can only show you its own interpretation is asking to be trusted. One that shows you the bytes is offering to be checked. Never let a rendered view be the only way to see a file</td></tr>
+<tr><td><strong>A reader is an addition, never a replacement</strong></td><td>Files the build understands get a view <em>as well as</em> raw. Files it does not understand still open, a file explorer that hides what it cannot parse is hiding the interesting cases</td></tr>
+<tr><td><strong>Drive the tree from a manifest built at build time</strong></td><td>Walking the vault at runtime to list files is slow and re-derives on every load what the build already knew. Generate the folder/file manifest when you build, ship it as data</td></tr>
+<tr><td><strong>Fetch a file on click, not up front</strong></td><td>A vault can be tens of megabytes. The tree costs the manifest; a file costs that file</td></tr>
+<tr><td><strong>The empty state tells the reader the deal</strong></td><td>AIUC-1&#x27;s says it in one line: <em>“Pick a file on the left. Raw is always there; files the build understands also get their own view.”</em></td></tr></tbody></table></div>
+<p>The same instinct runs through the rest of the estate: <code>_page.json</code> has <code>{ } Source</code>, every page on this website has a <code>.md</code> twin, and the deck viewer offers the printed PDF beside the rendered slides. <strong>Anything rendered should be one click from the thing it was rendered from.</strong></p>
+<h2 id="before-you-call-it-done">Before you call it done</h2>
+<ul><li>Did you actually need to build anything? If the answer is markdown in a tree, rung 0 was the answer and the app is a liability.</li><li>Open every <code>.md</code> file in the browse view and look for escaped HTML. That is stripped markup, and it means the document was authored against the wrong renderer.</li><li>Every folder link goes to a file, not a folder.</li><li>If you built an explorer: every file opens, including the ones with no reader, and raw is reachable for all of them.</li><li>Check what you published. <a href="../demos/vaults/publishing.html">The publishing method</a><a class="ext live" href="https://sgit.ai/demos/vaults/publishing.html" title="live page">↗</a> applies here as much as anywhere, read keys are publishable, vault keys never are, and a scan for sgit credential shapes will not catch an unrelated API key sitting in a vault file.</li></ul>
+<h2 id="the-prompt-to-hand-the-builder-agent">The prompt to hand the builder agent</h2>
+<pre><code>Make the documents in vault VAULT_ID readable.
+
+Read https://sgit.ai/briefs/markdown-and-file-viewers.md first, then
+https://sgit.ai/vault/content-authoring.md for the syntax.
+
+DO NOT WRITE A MARKDOWN RENDERER OR A FILE EXPLORER. Both exist in the vault
+platform already. Climb this ladder and stop at the first rung that works:
+
+0. Publish .md files. The browse view renders them and its file tree is the
+     folder viewer. Name the entry point README.md or 00-INDEX.md.
+1. Add a _page.json if you need a designed page rather than a document. Use
+     its markdown component to pull in the .md files you already wrote, so the
+     prose exists once.
+2. Only build an app if a view has to COMPUTE something the host cannot know.
+
+Markdown rules that will bite you: raw HTML is stripped and shows as escaped
+text; size images with the pipe syntax inside the alt text; link folders through
+folder/README.md and never folder/; nested lists and task lists are unsupported;
+image paths are relative to the .md file; no external URLs.
+
+If you do build a file view, raw is always available for every file, a reader is
+an addition and never a replacement, the tree is driven by a manifest generated
+at build time, and files are fetched on click.
+
+Report which rung you stopped at and why the rung below it was not enough.</code></pre>
+<p>Written from the two patterns as they are actually published across the vaults on this site. The syntax reference is <a class="ext" href="https://sgit.ai/vault/content-authoring.md">Publishing content without code ↗</a>; the sibling brief for putting vault content on a public website is <a class="ext" href="https://sgit.ai/vault-decks-on-a-site.md">Decks from a vault, on a site ↗</a>. <a href="../index.html">All briefs</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="193-markdown-and-file-viewers-in-a-vault-wha.html">← Markdown and file viewers in a vault: what not to build (bui</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="195-sgvault-the-vault-platform-sgitai.html">SG/Vault &amp; the vault platform, sgit.ai →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>194 of 358: Markdown and file viewers in a vault: what not to build</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>01 — The Register Format: how an influence entry is written (influences.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · influences.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#01-the-register-format-how-an-influence-entry-is-written">01 — The Register Format: how an influence entry is written</a></li><li class="l2"><a href="#1-where-the-format-comes-from">1. Where the format comes from</a></li><li class="l2"><a href="#2-the-template-seven-blocks">2. The template — seven blocks</a></li><li class="l3"><a href="#block-1-the-anchor">Block 1 — The anchor</a></li><li class="l3"><a href="#block-2-the-founders-words">Block 2 — The founder&amp;#x27;s words</a></li><li class="l3"><a href="#block-3-the-principle">Block 3 — The principle</a></li><li class="l3"><a href="#block-4-the-trace-table">Block 4 — The trace table</a></li><li class="l3"><a href="#block-5-the-gaps-as-build-specs">Block 5 — The gaps, as build specs</a></li><li class="l3"><a href="#block-6-the-checklist">Block 6 — The checklist</a></li><li class="l3"><a href="#block-7-the-wider-library">Block 7 — The wider library</a></li><li class="l2"><a href="#3-reduced-forms">3. Reduced forms</a></li><li class="l2"><a href="#4-entry-metadata">4. Entry metadata</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/influences.sgit.ai.html">influences.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 31 of 38</p><nav class="pager"><span><a href="030-00-the-brief-influencessgitai.html">← 00 — The Brief: influences.sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="032-02-the-influence-map-every-entry-with-it.html">02 — The Influence Map: every entry, with its evidence →</a></span></nav><article class="source"><h1 id="01-the-register-format-how-an-influence-entry-is-written">01 — The Register Format: how an influence entry is written</h1>
+<p><strong>Version</strong> v0.33.62 · 25 August 2026
+<strong>Purpose</strong> Canonise the founder&#x27;s Bret Victor register into the template every influence page follows.</p>
+<hr>
+<h2 id="1-where-the-format-comes-from">1. Where the format comes from</h2>
+<p>The founder did not ask for this site and then invent a format for it. The format existed first: he wrote an <em>&quot;immediate-connection register&quot;</em> for Bret Victor&#x27;s <em>Inventing on Principle</em> (2012) as a working document for the estate&#x27;s viewer, and then asked what a site made of such documents should be called. That ordering matters — the register format is <strong>proven in use</strong>, not designed on spec. <code>sources/register__bret-victor__inventing-on-principle.md</code> carries the anchor and structure; the founder holds the full original text and it should be shipped verbatim into <code>/register/bret-victor/</code> as entry one.</p>
+<p>What makes the register different from every &quot;books that shaped me&quot; listicle is one move: <strong>it treats influence as a falsifiable claim about the codebase.</strong> Anyone can say Victor inspired them. The register says <em>which</em> of Victor&#x27;s patterns appear <em>where</em> in the estate, at <em>which</em> version — and which are still missing, specified precisely enough to build.</p>
+<hr>
+<h2 id="2-the-template-seven-blocks">2. The template — seven blocks</h2>
+<p>Every full influence entry has these blocks, in this order:</p>
+<h3 id="block-1-the-anchor">Block 1 — The anchor</h3>
+<p>The primary work, precisely cited: title, venue, date, canonical URL (and a durable mirror where one exists — e.g. the talk on Vimeo <em>and</em> the transcript on worrydream.com). One anchor per entry; the wider bibliography goes in Block 7. For a person, the anchor is the single work that did the shaping, not the whole career. For a topic or era (&quot;graphs&quot;, &quot;OWASP Summits&quot;), the anchor is the founder&#x27;s first documented contact with it.</p>
+<h3 id="block-2-the-founders-words">Block 2 — The founder&#x27;s words</h3>
+<p>Why this resonates, in first person. This is the only site in the network where first person is the house style — <em>&quot;what resonates with me and why&quot;</em> is the genre, and paraphrasing it into corporate third person would destroy the evidence. Until the founder writes the briefing document for an entry, this block carries whatever first-person statements already exist in the corpus, cited by file and version.</p>
+<h3 id="block-3-the-principle">Block 3 — The principle</h3>
+<p>The influence distilled to one transferable sentence — the thing an agent can actually apply. Victor&#x27;s is <em>immediate connection between creator and creation</em>. Wardley&#x27;s is <em>situational awareness before strategy</em>. The test: the principle must be usable by someone who has never consumed the anchor work.</p>
+<h3 id="block-4-the-trace-table">Block 4 — The trace table</h3>
+<p>The heart of the format and the falsifiable part. Rows of: <strong>pattern from the anchor → where the estate implements it → version → status (implemented / partial / absent)</strong>. The Victor register&#x27;s own closing observation is the standard to aim for: half the viewer&#x27;s strongest features turned out to be <em>unknowing</em> implementations of the talk&#x27;s demos — <em>&quot;evidence the instinct and the principle agree; this register makes the agreement deliberate, so the next agent extends it on purpose rather than by luck.&quot;</em> Trace rows carry version numbers, so the generate-or-date rule applies: a trace table without versions is an opinion.</p>
+<h3 id="block-5-the-gaps-as-build-specs">Block 5 — The gaps, as build specs</h3>
+<p>Patterns from the anchor the estate does <em>not</em> yet implement — written precisely enough that an agent could pick one up as a work item (the Victor register specifies two: view time travel and relayout ghosts). This is what makes an influence page <em>forward-looking</em>: it is simultaneously provenance and backlog.</p>
+<h3 id="block-6-the-checklist">Block 6 — The checklist</h3>
+<p>A short list of questions an agent should ask of new work in this influence&#x27;s light (&quot;does the user see the effect of the change immediately?&quot;, &quot;is the map drawn before the strategy is argued?&quot;). The checklist is the influence made operational.</p>
+<h3 id="block-7-the-wider-library">Block 7 — The wider library</h3>
+<p>The rest of the person&#x27;s/topic&#x27;s work, linked never rehosted, each item with one line on what it adds. This is where &quot;other presentations by Bret Victor&quot; live, where Rush&#x27;s discography lives, where the rest of Kevin Kelly&#x27;s books live.</p>
+<hr>
+<h2 id="3-reduced-forms">3. Reduced forms</h2>
+<p>Not every entry earns all seven blocks on day one.</p>
+<p><strong>The link-out entry</strong> (for influences with sibling sites — Wardley, graphs, OWASP, open source): blocks 1–3 plus a <em>pointer</em> where the trace table would be: &quot;the trace of this influence is an entire site — wardley-maps.sgit.ai&quot;. Duplicating the sibling&#x27;s content would break the deconfliction rule; the influence entry owns only the <em>resonance</em>, the sibling owns the <em>material</em>.</p>
+<p><strong>The stub entry</strong> (for STATED influences awaiting the founder&#x27;s briefing document): blocks 1 and 3 as best current knowledge, an explicit <code>status: awaiting-briefing</code> marker, and the research plan — which of the founder&#x27;s past publications and talks should be mined when the briefing arrives. A stub is published, not hidden: the roadmap is content.</p>
+<p><strong>The discovered entry</strong>: same as full format, but Block 2 opens with honesty — the founder never listed this influence; the corpus surfaced it. The claim &quot;this shaped the work&quot; rests entirely on the trace table until the founder confirms or corrects it. Discovered entries are the site&#x27;s falsifiability applied to itself.</p>
+<hr>
+<h2 id="4-entry-metadata">4. Entry metadata</h2>
+<p>Every entry carries front-matter: <code>tier</code> (traced / stated / discovered), <code>kind</code> (person / work / topic / era / practice / community), <code>status</code> (full / link-out / stub), <code>anchor-url</code>, <code>corpus-evidence</code> (file paths + counts, generated), <code>sibling-site</code> (if any), and <code>briefing-status</code> (none / requested / received / integrated). <code>influences__seed.json</code> in this pack is the initial population of exactly this schema.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/02__the-influence-map.md</p>
+<hr></article><nav class="pager"><span><a href="030-00-the-brief-influencessgitai.html">← 00 — The Brief: influences.sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="032-02-the-influence-map-every-entry-with-it.html">02 — The Influence Map: every entry, with its evidence →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>influences.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://influences.sgit.ai/llms-full.txt">https://influences.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:35Z</dd><dt>sha256</dt><dd><code title="3a7dc074c9449904f88720fb0f6e5ca3b8c95021247541153476a5fa0d59a1d4">3a7dc074c944</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/influences.sgit.ai/llms-full.txt</a> (194,740 bytes)</dd><dt>Section</dt><dd>31 of 38: 01 — The Register Format: how an influence entry is written</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

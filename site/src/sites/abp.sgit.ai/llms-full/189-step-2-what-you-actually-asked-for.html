@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Step 2: what you actually asked for (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#step-2-what-you-actually-asked-for">Step 2: what you actually asked for</a></li><li class="l2"><a href="#have-it-draft-the-three-lists">Have it draft the three lists</a></li><li class="l2"><a href="#then-have-it-describe-your-mailbox-as-you-actually-use-it">Then have it describe your mailbox as you actually use it</a></li><li class="l2"><a href="#then-derive-the-gap">Then derive the gap</a></li><li class="l2"><a href="#what-the-published-shape-does-here">What the published shape does here</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 189 of 357</p><nav class="pager"><span><a href="188-step-2-what-you-actually-asked-for.html">← Step 2: what you actually asked for</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="190-step-3-write-the-behaviour-policy.html">Step 3: write the behaviour policy →</a></span></nav><article class="source"><h1 id="step-2-what-you-actually-asked-for">Step 2: what you actually asked for</h1>
+<p><strong>Writing down what you wanted from a blank page is slow and you will miss things.</strong> Correcting a draft somebody else wrote takes minutes and you will catch everything. So have the assistant draft it, then argue with the draft. The argument is the mandate.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Have it draft a mandate over its own tools, in three lists, and correct the draft. The correction is the whole exercise.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../gmail/what-it-can-do/index.html">Step 1: What it can already do</a><a class="ext live" href="https://abp.sgit.ai/gmail/what-it-can-do/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../gmail/write-the-behaviour-policy/index.html">Step 3: Write the behaviour policy</a><a class="ext live" href="https://abp.sgit.ai/gmail/write-the-behaviour-policy/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../gmail/index.html">The walkthrough</a><a class="ext live" href="https://abp.sgit.ai/gmail/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<blockquote><p><strong>What you gain from this page.</strong> Your own three lists, over the tool table from step one: what you asked for, what you would refuse, and what you have never said either way. Plus the gap between that and the grant, which is the finding almost everybody is surprised by.</p></blockquote>
+<h2 id="have-it-draft-the-three-lists">Have it draft the three lists</h2>
+<p>A mandate is elicited rather than authored. <strong>The third list is the one to watch</strong>: if it is short, the assistant has been guessing on your behalf, and the prompt says so out loud to stop it.</p>
+<p><strong>Prompt 5: Wanted, refused, unstated.</strong> Sorts every tool from step one into three lists, conservatively, and tells you when the answer looks wrong.</p>
+<pre><code>Take the table of mail tools you just produced and sort every tool into exactly three
+lists.
+
+  WANTED    things I have actually asked you to do, and where I asked for them
+  REFUSED   things you believe I would say no to if somebody asked me right now
+  UNSTATED  everything else: you can do it, and I have never said either way
+
+Rules for this. Put a tool in WANTED only if you can point at something I actually said.
+Do not infer it from the fact that the tool exists, and do not infer it from what a
+reasonable person would want. When you are unsure, put it in UNSTATED.
+
+UNSTATED should be the longest of the three lists. If it is not, you have been deciding
+on my behalf, so do it again.</code></pre>
+<p>Now correct it. Move things between the lists, out loud, and say why. <strong>The corrections are the part that is yours</strong>, and they are the reason this is a mandate rather than a summary of the product.</p>
+<h2 id="then-have-it-describe-your-mailbox-as-you-actually-use-it">Then have it describe your mailbox as you actually use it</h2>
+<p>The layer nobody writes down. Your unread count might be a task list or a backlog; a label might be a topic or a stage in a workflow. <strong>An assistant that does not know which is which can destroy a working system without breaking a single rule.</strong></p>
+<p><strong>Prompt 6: How you actually run your mail.</strong> The information architecture layer: what your labels mean, what unread means, and where a change would go unnoticed.</p>
+<pre><code>Now describe my mailbox as I appear to use it, not as the product ships it.
+
+  - Which labels do I use, and what does each one appear to mean in my system? Where a
+    label looks like a stage in a workflow rather than a topic, say so.
+  - What does unread appear to mean to me: a task list, a backlog, or nothing at all?
+  - Which conversations look like they run with the same people over months, and which
+    are one-off?
+  - Where would a change made by you be invisible to me for weeks?
+
+Then tell me the three changes you could make that would be hardest for me to notice and
+hardest to reverse. Not the largest ones. The quietest ones.</code></pre>
+<blockquote><p><strong>Marking everything as read is the example worth sitting with.</strong> It breaks no rule, needs no permission beyond the one already granted, is a single call, and for somebody whose unread set is their task list it destroys the day&#x27;s work with nothing to put it back from. It is in the briefs: <a href="../docs/briefs/v0.33.71__strategy-brief__marking-everything-read-destroys-this-user-and-breaks-nothing/index.html">marking everything read destroys this user and breaks nothing</a><a class="ext live" href="https://abp.sgit.ai/docs/briefs/v0.33.71__strategy-brief__marking-everything-read-destroys-this-user-and-breaks-nothing/index.md" title="live page">↗</a>.</p></blockquote>
+<h2 id="then-derive-the-gap">Then derive the gap</h2>
+<p><strong>The gap is derived and never authored.</strong> It is the grant minus the mandate, which is wider than the list of things you refused, because a tool you never mentioned was never authorised.</p>
+<p><strong>Prompt 7: The gap, and what stands in the way of each line.</strong> Introduces the four barriers by name, and makes the assistant count the rows where nothing real is in the way.</p>
+<pre><code>Put the two together and give me the gap, in this order.
+
+1. Everything you can reach that is NOT in my WANTED list. All of it, not just the things
+   I refused: a tool I never mentioned was never authorised.
+
+2. For each one, what stands in the way today if I do not ask for it. Use exactly these
+   four names and pick one per row:
+     NOTHING       nothing is in the way
+     EXPECTATION   a rule written down somewhere, including anything I told you in a chat
+     SETTING       a switch that is on, which somebody with my account could turn off
+     BOUNDARY      something enforced outside you, that you cannot turn off by asking
+
+3. Count the rows whose answer is not BOUNDARY, and give me that number on its own line.
+   Then tell me plainly which of the four a rule I type into a prompt lands in.</code></pre>
+<h2 id="what-the-published-shape-does-here">What the published shape does here</h2>
+<p>Against a starting mandate written to be argued with, the measured profile for this shape puts <strong>5 capabilities in the gap</strong>, of which <strong>3 were refused outright</strong> and the rest were never mentioned. <strong>4 of them have nothing in the way that counts as a control.</strong> The mandate is published beside the profile, with its author named as the site and its status as a starting point, because a mandate nobody can argue with is not a mandate.</p>
+<p><a href="../examples/index.html">The worked example, with every row</a><a class="ext live" href="https://abp.sgit.ai/examples/index.md" title="live page">↗</a> &amp;#183; <a class="ext" href="https://abp.sgit.ai/data/mandates/read-and-draft-never-send.json">The mandate as JSON ↗</a> &amp;#183; <a href="../model/index.html">Why a mandate is elicited rather than authored</a><a class="ext live" href="https://abp.sgit.ai/model/index.md" title="live page">↗</a></p>
+<blockquote><p><strong>Where the numbers on this page come from.</strong> The published profile for <code>anthropic/gmail-connector/default</code>, which this site did not measure: it was contributed by riskmandate.ai, read from the two vendors&#x27; own pages and measured in one session on 16 September 2026. <strong>4 of 6 rows were seen on the thing itself</strong> and the rest were read from documentation. The evidence tier on every row is the contributor&#x27;s and this site did not raise it. <a href="../examples/index.html">The rows</a><a class="ext live" href="https://abp.sgit.ai/examples/index.md" title="live page">↗</a>, <a class="ext" href="https://abp.sgit.ai/data/profiles/anthropic/gmail-connector/default.json">the profile as JSON ↗</a>, <a class="ext" href="https://abp.sgit.ai/data/contributed/riskmandate/manifest.json">the contributed bytes ↗</a>.</p></blockquote>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>Have it draft a mandate over its own tools, in three lists, and correct the draft. The correction is the whole exercise.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../gmail/what-it-can-do/index.html">Step 1: What it can already do</a><a class="ext live" href="https://abp.sgit.ai/gmail/what-it-can-do/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>Next</strong></td><td><a href="../gmail/write-the-behaviour-policy/index.html">Step 3: Write the behaviour policy</a><a class="ext live" href="https://abp.sgit.ai/gmail/write-the-behaviour-policy/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../gmail/index.html">The walkthrough</a><a class="ext live" href="https://abp.sgit.ai/gmail/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../gmail/what-you-asked-for/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/gmail/what-you-asked-for/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="188-step-2-what-you-actually-asked-for.html">← Step 2: what you actually asked for</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="190-step-3-write-the-behaviour-policy.html">Step 3: write the behaviour policy →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>189 of 357: Step 2: what you actually asked for</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

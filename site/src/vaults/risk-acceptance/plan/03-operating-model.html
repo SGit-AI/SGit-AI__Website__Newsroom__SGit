@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>3. The operating model · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#3-the-operating-model">3. The operating model</a></li><li class="l2"><a href="#the-loop-for-one-risk">The loop, for one risk</a></li><li class="l2"><a href="#a-vault-per-material-risk">A vault per material risk</a></li><li class="l2"><a href="#roles-in-the-company">Roles in the company</a></li><li class="l2"><a href="#the-weekly-and-quarterly-rhythm">The weekly and quarterly rhythm</a></li><li class="l2"><a href="#what-the-service-never-does">What the service never does</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="03-operating-model.md">raw text</a></p><article class="source"><h1 id="3-the-operating-model">3. The operating model</h1>
+<p>The service runs one loop, over and over, for every material risk a client carries. Everything else in the company exists to run that loop well.</p>
+<p><img src="../diagrams/acceptance-loop.webp" alt="The acceptance loop" loading="lazy"></p>
+<h2 id="the-loop-for-one-risk">The loop, for one risk</h2>
+<ol><li><strong>Establish.</strong> Find the facts that make the risk true, with their sources: a configuration, an access list, a log, an answer from the person who knows. Write down the facts that would end it. A risk with no &quot;established by&quot; fact is an opinion, and it does not enter the loop.</li><li><strong>Place.</strong> Give it a holder, and compute the chain above the holder to the board. Nothing is reported upward by hand; arrival is derived from the chain.</li><li><strong>Accept.</strong> The holder accepts it personally, for an interval chosen from the ladder, with the action that will happen before the interval ends. Nobody accepts on anybody else&#x27;s behalf.</li><li><strong>Run the clock.</strong> When the interval ends, the risk is accepted again, escalated to the holder&#x27;s boss, funded, or fixed. It never silently continues.</li><li><strong>Escalate or fund.</strong> An expired acceptance that is not renewed goes up one level, where the choice is the same: accept, fund or fix. Funding creates a project, and the project&#x27;s duration becomes the next interval.</li><li><strong>Treat incidents as short intervals.</strong> When the interval is hours or days, the organisation is not managing a risk any more; it is responding to one. The loop opens an incident, and the incident&#x27;s closure is the evidence the next acceptance needs.</li><li><strong>Close on facts.</strong> A risk ceases when the facts that end it hold, and that is recorded with their sources. It is not closed by opinion, or by the review date passing.</li></ol>
+<p>Every step writes to the risk&#x27;s own record: who decided, what, until when, on which facts. For material risks, that record lives in a vault.</p>
+<h2 id="a-vault-per-material-risk">A vault per material risk</h2>
+<p>A material risk earns a vault of its own: the facts and their sources, the controls, the decisions, the history and the acceptance record, hash-chained and encrypted, openable by each audience with its own read key. The board gets a read key, the auditor gets another, and the holder can write. <code>spec/risk-vault.md</code> sets out the layout. The replay in <code>index.html</code> is one such vault, invented.</p>
+<p>This is also what makes the register fractal. A corporate line opens into the business, operational and technical risks beneath it, each with its own holder and its own vault if it is material, and the same grammar applies at every altitude.</p>
+<h2 id="roles-in-the-company">Roles in the company</h2>
+<div class="table"><table><thead><tr><th>Role</th><th>What they do</th></tr></thead><tbody><tr><td><strong>Risk engineer</strong></td><td>Runs the loop for a portfolio of client risks: establishes facts, keeps the clocks, prepares acceptances and escalations.</td></tr>
+<tr><td><strong>Engagement lead</strong></td><td>Owns the client relationship and the board-level conversations. The person who can sit in front of an audit committee.</td></tr>
+<tr><td><strong>Integration engineer</strong></td><td>Connects the client&#x27;s GRC platform, identity system and evidence sources, and keeps the write-back working.</td></tr>
+<tr><td><strong>Method lead</strong></td><td>Owns the playbook, trains partners, and keeps the ladder and the rules consistent across clients.</td></tr></tbody></table></div>
+<h2 id="the-weekly-and-quarterly-rhythm">The weekly and quarterly rhythm</h2>
+<ul><li><strong>Weekly, per client:</strong> clocks due in the next fortnight, escalations raised, incidents open, funding decisions pending.</li><li><strong>Monthly, per client:</strong> the acceptance report for the executive team: what each person holds, until when, and what happens next.</li><li><strong>Quarterly, per client:</strong> the board pack. Every risk that arrives at the board, with its chain, its current acceptance and the evidence beneath it.</li></ul>
+<h2 id="what-the-service-never-does">What the service never does</h2>
+<ul><li>Accept a risk on the client&#x27;s behalf.</li><li>Rate a risk without the facts that establish it.</li><li>Replace the client&#x27;s GRC platform.</li><li>Hold the client&#x27;s keys.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="5d2acd82eacd9f538c524fbb0f1986c5b6ebe32c9fe44e9fec4b5514bd05ce96">5d2acd82eacd</code></dd><dt>Frozen copy</dt><dd><a href="03-operating-model.md">vaults/risk-acceptance/plan/03-operating-model.md</a> (3,724 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

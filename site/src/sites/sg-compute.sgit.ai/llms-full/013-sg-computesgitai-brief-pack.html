@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>sg-compute.sgit.ai — brief pack · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sg-computesgitai-brief-pack">sg-compute.sgit.ai — brief pack</a></li><li class="l2"><a href="#what-this-is">What this is</a></li><li class="l2"><a href="#read-in-this-order">Read in this order</a></li><li class="l2"><a href="#start-with-the-one-character-bug">Start with the one-character bug</a></li><li class="l2"><a href="#four-more-things-to-know-before-you-write">Four more things to know before you write</a></li><li class="l2"><a href="#what-shipped-has-to-say">What /shipped/ has to say</a></li><li class="l2"><a href="#house-pattern">House pattern</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 13 of 14</p><nav class="pager"><span><a href="012-08-gaps-open-questions-and-honest-tensio.html">← 08 — Gaps, open questions and honest tensions</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-licence.html">Licence →</a></span></nav><article class="source"><h1 id="sg-computesgitai-brief-pack">sg-compute.sgit.ai — brief pack</h1>
+<p><strong>For:</strong> the agent commissioned to build <code>sg-compute.sgit.ai</code>
+<strong>From:</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>Version:</strong> v0.33.62 · 24 August 2026
+<strong>Licence:</strong> CC BY 4.0 — <strong>read <code>LICENSE.md</code> before publishing anything.</strong> This pack draws on a live infrastructure repo and the redaction list is not advisory.</p>
+<hr>
+<h2 id="what-this-is">What this is</h2>
+<p>A site for <strong>SG/Compute</strong> — an ephemeral compute platform with sixteen ready-to-launch workload specs, currently living in a repo named after one of them.</p>
+<p>Both of the lead&#x27;s claims were tested against the code, and <strong>both hold</strong>:</p>
+<blockquote><p><em>&quot;a repo that needs to be renamed and refactored&quot;</em> — <strong>~71% of the new codebase is not browser code.</strong> Playwright is 1 of 16 registered specs and 17% of spec LOC.</p>
+<p><em>&quot;a VERY mature ephemeral compute platform&quot;</em> — <strong>4,785 tests passing in 81 seconds</strong>, 2,777 commits and 245 tags in 100 days, digest-first multi-arch CI, AMI bake-and-verify, and 1.27 million words of documentation with a formal reality discipline.</p></blockquote>
+<p>Every number in this pack was measured from the tree in this session. The repo was cloned in full so the history is real.</p>
+<hr>
+<h2 id="read-in-this-order">Read in this order</h2>
+<div class="table"><table><thead><tr><th>File</th><th>Words</th><th>What it does</th></tr></thead><tbody><tr><td><strong><code>00__BRIEF.md</code></strong></td><td>1.6k</td><td><strong>Start here.</strong> The rename verdict with the number that settles it, the one-character bug, what &quot;mature&quot; measures out at, the honesty constraint, the build order</td></tr>
+<tr><td><strong><code>01__what-it-is.md</code></strong></td><td>1.5k</td><td><strong>The two ephemeral layers</strong> — the thing the site must not conflate. Sessions, the watchdog, the API surface, isolation, and the auth-model correction</td></tr>
+<tr><td><code>03__maturity-audit.md</code></td><td>1.3k</td><td>Where the maturity is real, and the four places it is overstated. With the paragraph to publish</td></tr>
+<tr><td><code>02__the-rename.md</code></td><td>1.2k</td><td>Nine acceptance criteria scored, the broken guard, the full breakage list, the sequencing, the domain collision</td></tr>
+<tr><td><code>04__the-spec-system.md</code></td><td>1.3k</td><td><strong>What makes it a platform</strong> — one abstraction, sixteen implementations, three generalisation mechanisms</td></tr>
+<tr><td><code>05__the-serverless-argument.md</code></td><td>1.4k</td><td><em>&quot;We are competing for the agent-deployment market.&quot;</em> The cold-start ladder against the measured benchmarks</td></tr>
+<tr><td><code>06__site-architecture.md</code></td><td>0.8k</td><td>Page by page, and what is generated vs written</td></tr>
+<tr><td><code>07__boundaries-and-security.md</code></td><td>1.0k</td><td>The redaction list, what was checked and is clean, and how to publish the one security note</td></tr>
+<tr><td><code>08__gaps-and-open-questions.md</code></td><td>1.4k</td><td><strong>A five-day fix list</strong>, 8 build-fresh items, 8 open questions, 7 honest tensions</td></tr>
+<tr><td><code>09__source-manifest.csv</code></td><td>37 rows</td><td>Every source, tiered 0–3. <strong>Every path verified on disk.</strong> 53,132 words of briefs</td></tr>
+<tr><td><code>specs__catalogue.json</code></td><td>17 specs</td><td>The full catalogue — LOC, capability, boot time, stability, family, <code>create_node</code> support — plus the boot benchmarks and the not-implemented list</td></tr>
+<tr><td><code>LICENSE.md</code></td><td>—</td><td>CC BY 4.0, the redaction rules, and the security framing</td></tr></tbody></table></div>
+<hr>
+<h2 id="start-with-the-one-character-bug">Start with the one-character bug</h2>
+<p><code>tests/ci/test_no_legacy_imports.py</code> exists to stop the new tree importing from the legacy one. Its regex is <code>sgraph_ai_service_playwright[^_]</code> — and <code>[^_]</code> requires a <strong>non-underscore</strong> after the stem, while the real package is <code>sgraph_ai_service_playwright__cli</code>, with <strong>two</strong>.</p>
+<p>Verified independently this session by running both patterns over the tree:</p>
+<pre><code>GUARD regex  : 0 files -&gt; test PASSES (vacuously)
+REAL imports : 69 files, 228 import lines
+FIXED regex (drop [^_]): 69 files -&gt; test FAILS, as intended</code></pre>
+<p>The dependency runs <strong>both ways</strong> — <code>__cli</code> imports <code>sg_compute</code> 72 times — so the cycle the guard&#x27;s own docstring says was broken is not broken.</p>
+<p><strong>Deleting four characters turns it red.</strong> And it is the site&#x27;s best opening move: a platform site that leads with a bug it found in its own CI is trusted differently from one that leads with a feature list.</p>
+<hr>
+<h2 id="four-more-things-to-know-before-you-write">Four more things to know before you write</h2>
+<p><strong>1. The README describes a repository that does not exist.</strong> <em>&quot;Phase 0 in progress — repo skeleton, Dockerfile, CI workflow scaffolding&quot;</em> — at v0.2.71, 217,266 lines of Python and 7,110 tests. It documents a package directory that is not there. <strong>Write every word of the site from the tree, and make &quot;code wins&quot; the stated policy</strong> for all four stale sources (<code>capabilities.json</code> is 42 versions behind; the reality doc 41).</p>
+<p><strong>2. The maturity claim needs four qualifications.</strong> No static analysis of any kind — no mypy, ruff, flake8, black, tox. <strong>CI runs 67.4% of the tests</strong>, and the 2,317 outside it contain six real import-level breakages. No infrastructure-as-code. And four sources of truth that disagree with the code. All of it is about five days from being fixed — <code>08__</code> §1 has the list.</p>
+<p><strong>3. Development has been quiet for a month.</strong> 2,777 commits between 16 April and 24 July 2026 — 2,590 of them in the first six weeks, then 129 in June and 58 in July, and <strong>nothing since</strong>. Also worth publishing: <strong>1,700 of those commits are by Claude, 826 by Dinis.</strong> Both halves belong on the site; a reader can check either in one click.</p>
+<p><strong>4. <code>sg-compute.sgraph.ai</code> is a live Route 53 zone.</strong> Same label as the target site, different TLD, serving per-node DNS as <code>&lt;stack-name&gt;.sg-compute.sgraph.ai</code>, with <strong>128 references in code and tests</strong>. Recommendation: claim the distinction explicitly — <code>sgit.ai</code> is documentation, <code>sgraph.ai</code> is running infrastructure — rather than moving 128 references. But make it a stated decision on the front page, not something a reader discovers.</p>
+<hr>
+<h2 id="what-shipped-has-to-say">What <code>/shipped/</code> has to say</h2>
+<p>No warm pools (specified in a 1,729-word brief, zero code). No multi-node stacks — the taxonomy&#x27;s whole point, and <code>Cli__Compute__Stack</code> is unwired. <code>create_node</code> supports 3 of 16 specs. Artefact sinks: 2 of 4 implemented — <strong>no S3, no presigned URLs, no vault writes</strong>. One platform of four declared. No cost model — the dashboard tracker says so itself. No throughput measurement. And <code>bake-ami.yml</code> invokes a binary called <code>sg-play</code> sixteen times that is defined nowhere, so <strong>the AMI pipeline cited as a maturity signal is currently dead</strong>.</p>
+<hr>
+<h2 id="house-pattern">House pattern</h2>
+<p>Copy <code>pki.sgit.ai</code>, add the <code>/llms-full.txt</code> it lacks, and add one rule no sibling needs:</p>
+<blockquote><p><strong>Generate every page that describes the code, from the code, at build time.</strong></p></blockquote>
+<p>Every stale artefact in this repo became stale because it was written once by hand. The manifests, route tables, CLI verbs, spec catalogue and test counts are all machine-readable. Read them, or the site becomes the fifth stale source of truth within a quarter.</p>
+<p>Publish the build order unresolved, with <code>08__</code>&#x27;s open questions and tensions visible.</p>
+<hr>
+<p>This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em>Published on sg-compute.sgit.ai under CC BY 4.0. Source: the <code>sg-compute.sgit.ai</code> brief pack v0.33.62, 24 August 2026, by Dinis Cruz via the SG/Send Librarian, with AI co-authorship (Claude, Anthropic).</em></p>
+<hr>
+<p>source: /briefs/10__licence-and-redaction.md</p>
+<hr></article><nav class="pager"><span><a href="012-08-gaps-open-questions-and-honest-tensio.html">← 08 — Gaps, open questions and honest tensions</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-licence.html">Licence →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>13 of 14: sg-compute.sgit.ai — brief pack</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Git for things you cannot put on GitHub · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#git-for-things-you-cannot-put-on-github-sgitai">Git for things you cannot put on GitHub, sgit.ai</a></li><li class="l1"><a href="#git-for-things-you-cannot-put-on-github">Git for things you cannot put on GitHub</a></li><li class="l2"><a href="#the-part-that-is-easy-to-say-and-hard-to-build">The part that is easy to say and hard to build</a></li><li class="l2"><a href="#ten-seconds-of-proof">Ten seconds of proof</a></li><li class="l2"><a href="#nineteen-vaults-you-can-open-right-now">Nineteen vaults you can open right now</a></li><li class="l2"><a href="#the-part-that-surprises-people">The part that surprises people</a></li><li class="l2"><a href="#why-there-is-a-network-of-sites">Why there is a network of sites</a></li><li class="l2"><a href="#try-it">Try it</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="what-sgit-is.md">raw text</a> · <a class="ext" href="https://sgit.ai/articles/what-sgit-is.html">live ↗</a></p><article class="source"><h1 id="git-for-things-you-cannot-put-on-github-sgitai">Git for things you cannot put on GitHub, sgit.ai</h1>
+<blockquote><p>An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.</p></blockquote>
+<p><em>Source: <a href="what-sgit-is.html">https://sgit.ai/articles/what-sgit-is.html</a><a class="ext live" href="https://sgit.ai/articles/what-sgit-is.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Articles</a><a class="ext live" href="https://sgit.ai/articles/index.html" title="live page">↗</a> / Git for things you cannot put on GitHub</p>
+<h1 id="git-for-things-you-cannot-put-on-github">Git for things you cannot put on GitHub</h1>
+<p>2026-08-25 · <a href="../admin/versions.html">v0.2.42</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a> · introzero-knowledgevaultsagents</p>
+<p><strong><em>Abstract:</strong> An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.</em></p>
+<p>There is a category of file that has nowhere good to live.</p>
+<p>A risk register with real system names in it. A regulatory analysis you are still arguing about internally. The working memory of an AI agent that has been reading your codebase for a month. Client material under NDA. Anything a lawyer would want to see before it went near a third party.</p>
+<p>All of it wants exactly what git gives you, history, branches, diffs, the ability to hand somebody a link and know what they will see. And all of it is the reason people say <em>&quot;we can&#x27;t put that in GitHub.&quot;</em> So it ends up in a shared drive, an email thread, or a Notion page nobody can diff, and the version history that mattered is gone.</p>
+<p><strong>sgit is git for those files.</strong> Encrypted before they leave your machine, versioned exactly like git, stored on a server that cannot read a single byte.</p>
+<p>sgit.ai, <code>pip install sgit-ai</code>. Pure Python, two runtime dependencies, Apache-2.0.</p>
+<h2 id="the-part-that-is-easy-to-say-and-hard-to-build">The part that is easy to say and hard to build</h2>
+<p>Zero knowledge is a claim people make loosely, so here is the precise version: <strong>the server holds ciphertext and nothing else.</strong> Not your filenames, not your directory structure, not your commit messages. Encryption and decryption happen on your machine. There is no key escrow, no admin override, no support engineer who can recover it for you, and that last part is a feature with a real cost, which is worth being honest about up front.</p>
+<p>What makes it work is a single string:</p>
+<pre><code>
+&lt;24-char passphrase&gt;:&lt;vault-id&gt;
+</code></pre>
+<p>That is the <strong>vault key</strong>, and it is three things at once, the address of the vault, the authorisation to write to it, and the key that decrypts it. Lose it and the data is gone. Leak it and someone can rewrite your history.</p>
+<p>From it you can derive, one way, a <strong>read key</strong>: same vault, read-only, safe to publish. That asymmetry is the whole sharing model. Every vault linked from sgit.ai is published as a read key, and no vault key has ever been published, a rule enforced by a tripwire in the release pipeline that scans every file before either remote is touched.</p>
+<h2 id="ten-seconds-of-proof">Ten seconds of proof</h2>
+<p>The read key is the entire credential. No account, no login, no access request:</p>
+<p>A real clone of the published EU AI Act vault. 273 objects, 207 files.</p>
+<p>Now the same vault, as the machine storing it sees it:</p>
+<p>786 bytes of AES-256-GCM ciphertext. The object&#x27;s name is a SHA-256 of the encrypted bytes.</p>
+<p>That second screenshot is the argument. The object is <strong>content-addressed over its ciphertext</strong>, which means the host can deduplicate it, cache it for a year, and serve it from a CDN, while remaining unable to tell you what it is. You get the operational benefits of a normal object store without granting it the usual price of admission.</p>
+<p>Underneath, it is a real version control system rather than a sync folder: multi-parent commits, a tree per directory, deterministic refs derived by HMAC, a genuine merge-base computation across all parents, and three-way merge. Branches, diffs and history all work, on content the server cannot interpret.</p>
+<h2 id="nineteen-vaults-you-can-open-right-now">Nineteen vaults you can open right now</h2>
+<p>The best way to understand a vault is to open one. <strong>Every vault on sgit.ai is live</strong>: the screenshots are of real vaults, opened with the read keys published beside them.</p>
+<p>The published vaults. Each one carries its read key on the page.</p>
+<p>They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all nineteen from their published keys: <strong>1,389 files, no failures.</strong></p>
+<h2 id="the-part-that-surprises-people">The part that surprises people</h2>
+<p>A vault can contain an <em>application</em>, not just documents, and that application runs against the vault without ever being handed a credential.</p>
+<p><code>&quot;permissions&quot;: {}</code>, the app requests nothing, and is granted nothing.</p>
+<p>Look at <code>&quot;permissions&quot;: {}</code> in that file. The app asks for no filesystem access at all. It still renders the whole risk graph, because the host reads the vault and passes results in. The app never sees a key. <strong>Capability without credential</strong>, and it means you can run code you did not write against data you care about, with the blast radius set by a config file you can read in one screen.</p>
+<h2 id="why-there-is-a-network-of-sites">Why there is a network of sites</h2>
+<p>sgit.ai is one of <strong>nineteen</strong> sites on <code>*.sgit.ai</code>, each taking one question further than a section could. Most of the thinking behind sgit now lives out there rather than here.</p>
+<p>The network directory: start from the question you arrived with.</p>
+<p>A few of them, to give the range:</p>
+<ul><li><a href="../network/graphs.html"><strong>graphs.sgit.ai</strong></a><a class="ext live" href="https://sgit.ai/network/graphs.html" title="live page">↗</a>, <em>&quot;A node is just a node. Meaning lives in the edges.&quot;</em></li><li><a href="../network/index.html#risk-governance"><strong>risks.sgit.ai</strong></a><a class="ext live" href="https://sgit.ai/network/index.html#risk-governance" title="live page">↗</a>, <em>&quot;You cannot deny a risk. You can only say how long you accept it.&quot;</em></li><li><a href="../network/index.html#agents-ai"><strong>llms.sgit.ai</strong></a><a class="ext live" href="https://sgit.ai/network/index.html#agents-ai" title="live page">↗</a>, your app calls a language model without ever holding an API key.</li><li><a href="../network/index.html#graphs-method"><strong>issues-fs.sgit.ai</strong></a><a class="ext live" href="https://sgit.ai/network/index.html#graphs-method" title="live page">↗</a>. The issues are files, and the files are a graph.</li><li><a href="../network/index.html#business-publishing"><strong>open-source.sgit.ai</strong></a><a class="ext live" href="https://sgit.ai/network/index.html#business-publishing" title="live page">↗</a>, <em>&quot;Open source is a strategy. It is not a charity.&quot;</em></li><li><a href="../network/sg-sentinel.html"><strong>sg-sentinel.sgit.ai</strong></a><a class="ext live" href="https://sgit.ai/network/sg-sentinel.html" title="live page">↗</a>, an edge guard design that says <code>NOT BUILT</code> at the top of every page.</li></ul>
+<p>The <a href="../network/index.html">network directory</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a> starts from the question you arrived with rather than the list of domains.</p>
+<p>That last one is the house style in miniature. Each site publishes its argument <strong>before</strong> the thing exists, and states plainly what has shipped and what has not. graphs.sgit.ai devotes a page to <a class="ext" href="https://graphs.sgit.ai/about/participant.html">where its own approach loses ↗</a>. We would rather be checkable than impressive.</p>
+<h2 id="try-it">Try it</h2>
+<pre><code>
+pip install sgit-ai
+sgit clone sgit_public_read_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz
+</code></pre>
+<p>That is the EU AI Act vault, 207 files on your disk in under a minute, from a key printed on a public web page, with no account anywhere.</p>
+<p>If you would rather not install anything, <a href="../demos/vaults/index.html">every vault opens in the browser</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> from the same key.</p>
+<p><strong>Status, plainly.</strong> sgit is beta and says so on every page. The CLI is <code>pip install sgit-ai</code>, Apache-2.0, pure Python. The site you are reading is itself served from a vault, released 59 times, and each release is <a href="../admin/versions.html">logged in full</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a>, including the ones that broke something.</p>
+<p>This article is also published as a <a class="ext" href="https://www.linkedin.com/pulse/git-things-you-cannot-put-github-dinis-cruz-qwrte/">LinkedIn newsletter post ↗</a>, same argument, same screenshots, for readers who live there.</p>
+<p><em>Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0, reuse it, quote it, argue with it.</em></p>
+<p><a href="index.html">← All articles</a><a class="ext live" href="https://sgit.ai/articles/index.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="what-sgit-is.html">HTML version</a><a class="ext live" href="https://sgit.ai/articles/what-sgit-is.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/articles/what-sgit-is.html">https://sgit.ai/articles/what-sgit-is.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/articles/what-sgit-is.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:14Z</dd><dt>sha256</dt><dd><code title="bae0b030e1be8a51a92bfe72459d34e215fb4dba0bfb69743463b7d768faa458">bae0b030e1be</code></dd><dt>Frozen copy</dt><dd><a href="what-sgit-is.md">sites/sgit.ai/articles/what-sgit-is.md</a> (7,776 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

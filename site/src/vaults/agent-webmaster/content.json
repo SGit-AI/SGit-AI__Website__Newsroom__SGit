@@ -1,0 +1,140 @@
+{
+  "title": "Agent as Webmaster",
+  "subtitle": "A business plan for a company that gives small businesses a website they can actually change, by putting an AI agent in the webmaster's chair. Complete enough to run. Written for somebody else to run it.",
+  "status": "PLAN · published 23 September 2026 · numbers are starting hypotheses",
+  "author": "From a voice memo by Dinis Cruz, founder of sgit.ai. The first of a set of business plans published for others to build companies on.",
+  "onepage": [
+    ["The business", "Give small businesses a website they can change by asking. The customer talks, the agent edits, GitHub Pages publishes. Charge once to set it up, a little each month to keep it working, and per change for the work that takes an expert."],
+    ["Why now", "Claude and ChatGPT can maintain a small website end to end: pages, content, layout, images, the commit that publishes. Two years ago that was not true. Most small-business sites are still brochures because changing them needed a developer or a template tool that fights back."],
+    ["The stack", "A chat session with one public GitHub repository that deploys to GitHub Pages on every push, with a preview branch for changes the customer wants to see first. That is the whole thing, and it is how the author builds his own sites."],
+    ["The numbers", "Hosting is free, tokens are pence, the operator's agent seat is one flat fee. The cost is the operator's time, so the business is how many customers one person keeps happy. Fifty at £90 a month is £4,500 of recurring revenue before a single setup fee."],
+    ["Who runs it", "Anyone who wants a small, focused, profitable service business and is comfortable directing an agent. Not a developer. Somebody good at understanding what a customer wants and telling an agent precisely."],
+    ["Why it is public", "The technology is not the moat, and a plan only one company can follow is not a plan. Take it."]
+  ],
+  "architecture": {
+    "diagram": "diagrams/architecture.webp",
+    "parts": [
+      ["The agent", "A Claude or ChatGPT session with the repository connected and a short per-customer playbook loaded. Two sessions per customer: the operator's, which can do everything, and the customer's, which can change the content it owns within the playbook's rules."],
+      ["One public repository", "Per customer, under the customer's own account. Plain static files, a site.json for the facts that change most, PLAYBOOK.md for the agent, CHANGELOG.md for the owner. Public on purpose: the site is public anyway, and public repositories get Pages for free."],
+      ["Two branches, plus campaigns", "main is live. preview is what the customer looks at first. campaign-* branches get a URL each and are merged or deleted. Every change is a commit; rolling back is a revert."],
+      ["GitHub Pages", "Deploys on every push via Actions. Free for public repositories. HTTPS on the customer's own domain. Nothing to run, patch or renew except the domain."],
+      ["Not in the stack", "No CMS (the chat is the CMS). No hosting bill. No database (the repository is). No build the customer can break. No secrets in the repository: anything with a credential is a third-party embed."],
+      ["Where vaults come in", "The website does not need one. The business does: each customer's brief, materials, notes and playbook live in a vault the customer can open with a read key and take with them. The operator's playbook and this plan are vaults too."]
+    ]
+  },
+  "workflow": {
+    "diagram": "diagrams/workflow.webp",
+    "setup": [
+      ["Day 0", "The call and the materials", "Thirty to sixty minutes on what they do, who the site is for, what they hate about the current one. Logo, photos, text, hours, the domain login, sent however is easy."],
+      ["Day 1", "The build", "The operator briefs the agent from the notes. Repository, pages, resized images, playbook, deploy, pushed to preview. Usually one working session."],
+      ["Days 1 to 2", "The review", "The customer opens the preview on their phone and says what is wrong. Two or three rounds is normal."],
+      ["Days 2 to 3", "Go live and hand over", "Merge to main, point the domain, HTTPS. The customer's session is set up. They receive the site, the repository, the vault read key and one page on how to ask for a change."]
+    ],
+    "loop": [
+      ["The customer asks", "In their own session, in their own words."],
+      ["The agent reads the playbook", "Which page, who owns it, live or preview?"],
+      ["Content on a page they own goes live", "Commit to main, live in a minute."],
+      ["Anything structural goes to preview", "Operator notified, checked, merged."],
+      ["The customer sees it", "Wrong? Say so in the same chat."],
+      ["One line in the change log", "The owner reads it. So does the operator, monthly."]
+    ]
+  },
+  "packages": {
+    "setup": [
+      ["Starter", "£300", "Up to 4 pages. One call, one review round. Their text and photos. Live in three days."],
+      ["Standard", "£600", "Up to 8 pages. Two review rounds, light copywriting, image treatment, a contact form embed. Live in a week."],
+      ["Full", "£1,200", "Up to 15 pages or a structured site. Two calls, unlimited review for two weeks, copywriting, photo editing, booking or newsletter embed, redirects from the old site."]
+    ],
+    "maintenance": [
+      ["Bronze", "£50 / month", "Site kept up and checked monthly, small tweaks done, the customer's own agent session for content, the monthly note."],
+      ["Silver", "£100 / month", "Bronze plus up to 4 operator-handled changes a month, 48-hour turnaround, change log reviewed with a suggestion."],
+      ["Gold", "£200 / month", "Silver plus up to 12 changes, 24-hour turnaround, a quarterly refresh, priority when something breaks."]
+    ],
+    "ondemand": [
+      ["A change handled by the operator", "£40 to £80"],
+      ["A new page or section", "£80 to £150"],
+      ["A campaign or seasonal page", "£120 to £250"],
+      ["Tokens, for heavy users", "pass-through plus 50%"]
+    ],
+    "why_subscription_here": "A subscription is a discount for regular use, not rent on something the customer ignores. Here the operator does something every month: watches, tweaks, reads the change log, sends the note, stops the customer blowing up the whole thing. The customer can see the work in the commits. If a change log is empty for three months, tell them and offer bronze or nothing. That is what keeps the renewal earned, and what the UK's subscription rules will require from January 2027 anyway."
+  },
+  "model": {
+    "diagram": "diagrams/business-model.webp",
+    "costs": [
+      ["Hosting", "£0", "GitHub Pages, public repository"],
+      ["Domain", "£0 to the operator", "The customer owns and pays, £10 to £15 a year"],
+      ["Agent tokens for changes", "£1 to £5 a month", "Pence per change; a busy month a few pounds"],
+      ["The operator's agent seat", "£20 to £200 a month, shared", "One plan serves every customer's sessions"],
+      ["Third-party embeds", "£0 to £15", "Free tiers; paid tiers passed to the customer"],
+      ["Operator time", "the real cost", "Setup 4 to 12 hours; maintenance 20 to 90 minutes a month"]
+    ],
+    "defaults": {"customers": 50, "avg_maintenance": 90, "setups_per_month": 3, "avg_setup": 600, "ondemand_per_month": 20, "avg_ondemand": 70, "direct_costs": 400, "setup_hours": 8, "maint_minutes": 45, "ondemand_minutes": 45, "admin_hours": 30},
+    "scenarios": [
+      ["Small", 20, 2, 8, 200],
+      ["Steady", 50, 3, 20, 400],
+      ["Full", 80, 4, 35, 600]
+    ],
+    "two_numbers": [
+      ["Churn", "A customer who leaves at six months was worth £540 of maintenance plus setup. One who stays three years, £3,240 plus upsells. The monthly note and the visible change log are the churn tools."],
+      ["Setup time", "Twelve hours for the first, four by the twentieth, because the playbook and templates are reusable. Every hour off is margin or a lower price, and a lower price is a bigger market."]
+    ]
+  },
+  "gtm": {
+    "segments": [
+      ["Local service businesses", "Hours, prices and photos change constantly and nobody updates the site. Walk the high street and show them their own site on your phone."],
+      ["Sole practitioners and small firms", "Accountants, architects, therapists, tutors, trades. The site is their credibility and it is five years old."],
+      ["Clubs, associations, small charities", "A volunteer built it and left. One introduction reaches the committee, and the committee knows every other committee."]
+    ],
+    "pitch": "You will have a website you can change by asking. You send a message, the change happens, you see it on your phone. I set it up properly and I keep it working. You own everything.",
+    "offer": [
+      ["Rebuild their site in a day, free, on a preview URL", "From their public site and whatever they send. Two or three hours and some tokens."],
+      ["Give them the customer session for two weeks", "Let them change things. Watch the change log."],
+      ["Take it away on day fifteen", "The preview goes dark."],
+      ["See whether they miss it", "The ones who call are customers. The ones who do not were never going to pay."]
+    ],
+    "against": [
+      ["Template builders", "Rent forever for a tool you fight", "You own the site; you change it by asking; you pay for what is done"],
+      ["Agencies", "£3,000 to £15,000 and every change is a quote", "Live in days for hundreds; changes in minutes"],
+      ["A freelancer", "Good until they are busy or gone", "The repository and playbook outlive any one person, including us"],
+      ["Doing it yourself with an agent", "Possible, and we will show you how", "Most people want somebody accountable who has done it fifty times"]
+    ],
+    "channels": ["Referral: every footer says who looks after the site; every monthly note asks for one introduction; a month free each way.", "The unasked rebuild: ten a month, two convert.", "The sales site, built exactly the way a customer's is, with the mock-ups live and the prices on it.", "Partners: accountants, coaches, co-working spaces, trade associations.", "Content: publish customers' change logs, with permission, as the marketing."]
+  },
+  "execution": [
+    ["Days 1 to 10", "Build the machine on yourself", "The sales site as a real customer site. The first playbook and setup checklist. The three mock-ups as real repositories. The operator's vault. Company basics in an afternoon."],
+    ["Days 11 to 30", "Five customers, free then taken away", "Rebuild five local sites unasked. Two weeks of the customer session. Dark on day fifteen. Sign the ones who call. Time every setup."],
+    ["Days 31 to 60", "Ten customers and the monthly note", "First notes sent properly. One introduction asked of every customer. Prices published. The weekly change-log review starts. Second and third templates."],
+    ["Days 61 to 90", "Twenty customers, and the numbers", "About £1,800 recurring plus setups and on-demand: over £3,000 a month. Measure setup hours (under five), maintenance minutes (under sixty), churn (nobody who used the session). Write down what broke. Decide: hire at fifty, or stay small and profitable."]
+  ],
+  "invest": {
+    "case": [
+      ["Profitable quickly, no capital", "No capex, no hosting, no engineering team. One operator is contribution-positive from ten customers, comfortably profitable at fifty: roughly £87,000 a year of contribution for one person's time."],
+      ["Recurring revenue that is earned", "Maintenance the customer can see working, with a change log and a monthly note. It survives the subscription rules most subscription businesses are about to meet."],
+      ["Scales two ways", "Deep: one company, ten operators, five hundred sites, about £45,000 a month recurring. Wide: many independent operators on one open playbook, with the original company selling the tooling, training and vault service. Wide is why the plan is public."],
+      ["The upsell is visible", "Every change log is a list of things the customer would pay for: bookings, content, findability, accessibility, a second property."],
+      ["A clean exit", "Maintained sites with public repositories, versioned playbooks and customer vaults are a transferable asset. Nothing depends on the person who built it."]
+    ],
+    "ask_at_90": ["Setup hours per customer, trending down", "Maintenance minutes per customer per month, under an hour", "Churn among customers who used their own session", "Ten change logs, read", "A playbook that is longer and more specific than on day one"],
+    "why_author": "Because it is the operating model he uses, applied: ship something a stranger can use, give it away briefly, take it away, find out whether they miss it, be profitable before you raise, and keep the technology open because it was never the moat."
+  },
+  "risks": [
+    ["The agent breaks a site", "Branches, commits, revert. Practise the revert on customer one."],
+    ["The customer's session does something odd", "The playbook scopes it; out-of-scope goes to preview; review the change log weekly."],
+    ["GitHub Pages terms or limits", "Read them before customer one. Keep a second static host ready. The sites are plain files; moving is a copy."],
+    ["Public repositories", "Nothing secret in them, ever. Embeds hold their own credentials. Private material lives in the customer's vault."],
+    ["Token costs or provider terms change", "Two providers named for a reason. Meter usage from day one."],
+    ["Anybody can do this", "True. The moat is fifty happy customers, a playbook with the mistakes in it, and referrals. More operators make the category."],
+    ["Accessibility, privacy, cookie law", "Every template ships with the statements and a no-cookie posture. Kept current as maintenance."],
+    ["Key-person risk for the customer", "Repository theirs, playbook in it, vault by read key. The honest answer to 'what if you disappear'."]
+  ],
+  "mockups": [
+    ["Hollow Lane Bakery", "mockups/customer-bakery.html", "This week's bread, hours, a notice, a gallery. The kind of site that changes every Friday.", "linear-gradient(135deg,#e7c79c,#c98b52)"],
+    ["Marsh & Okafor, accountants", "mockups/customer-accountants.html", "Services, deadlines, the team, a quote form. Credibility, kept current.", "linear-gradient(135deg,#8fa6c9,#3f5a8a)"],
+    ["Riverside Physiotherapy", "mockups/customer-physio.html", "Treatments, booking, the team, prices from next month.", "linear-gradient(135deg,#bfe3d4,#4fa88a)"],
+    ["The sales site", "mockups/sales-site.html", "The operator's own site: the chat, how it works, the three examples, the prices published, the free rebuild.", "linear-gradient(135deg,#dbe4ff,#2f6fed)"]
+  ],
+  "docs": [
+    ["Start here", "plan/00-START-HERE.md"], ["1 · The idea", "plan/01-the-idea.md"], ["2 · The architecture", "plan/02-architecture.md"], ["3 · The workflow", "plan/03-the-workflow.md"], ["4 · What you sell", "plan/04-what-you-sell.md"], ["5 · The business model", "plan/05-business-model.md"], ["6 · Go-to-market", "plan/06-go-to-market.md"], ["7 · The first ninety days", "plan/07-execution.md"], ["8 · Why invest", "plan/08-why-invest.md"], ["9 · The risks", "plan/09-risks.md"], ["10 · Why it is open", "plan/10-open-source.md"],
+    ["The playbook template", "prototypes/webmaster-playbook.md"], ["The setup, step by step", "prototypes/github-pages-setup.md"], ["Six change requests, worked", "prototypes/change-requests.md"]
+  ]
+}

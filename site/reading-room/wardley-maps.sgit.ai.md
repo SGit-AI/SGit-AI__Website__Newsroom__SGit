@@ -1,0 +1,15 @@
+# wardley-maps.sgit.ai
+
+- [wardley-maps.sgit.ai llms-full.txt](https://wardley-maps.sgit.ai/llms-full.txt)
+- [wardley-maps.sgit.ai llms.txt](https://wardley-maps.sgit.ai/llms.txt)
+- [00 — The Brief: wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/briefs/00__BRIEF.md)
+- [wardley-maps.sgit.ai — brief pack](https://wardley-maps.sgit.ai/briefs/00__README.md)
+- [01 — Concepts Index](https://wardley-maps.sgit.ai/briefs/01__concepts-index.md)
+- [02 — Explorer / Villager / Town Planner: PST as three literal agent teams](https://wardley-maps.sgit.ai/briefs/02__pioneers-settlers-town-planners.md)
+- [03 — Job A: everything Dinis Cruz has published on Wardley Maps](https://wardley-maps.sgit.ai/briefs/03__job-a__dinis-published-material.md)
+- [04 — Job B: the industry resources, and how to build a page for each](https://wardley-maps.sgit.ai/briefs/04__job-b__industry-resources.md)
+- [05 — Maps, rendering, and two things this session established by testing](https://wardley-maps.sgit.ai/briefs/05__maps-and-rendering.md)
+- [06 — Site Architecture](https://wardley-maps.sgit.ai/briefs/06__site-architecture.md)
+- [07 — Boundaries, licensing and house style](https://wardley-maps.sgit.ai/briefs/07__boundaries-and-licensing.md)
+- [08 — Gaps, open questions and honest tensions](https://wardley-maps.sgit.ai/briefs/08__gaps-and-open-questions.md)
+- [Licence](https://wardley-maps.sgit.ai/briefs/LICENSE.md)

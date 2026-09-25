@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>00 — The Brief: nfrs.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · nfrs.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#00-the-brief-nfrssgitai">00 — The Brief: nfrs.sgit.ai</a></li><li class="l2"><a href="#1-the-commission">1. The commission</a></li><li class="l2"><a href="#2-the-name-verdict-yes-nfrssgitai">2. The name — verdict: yes, nfrs.sgit.ai</a></li><li class="l2"><a href="#3-the-shape-this-is-a-hub-site">3. The shape: this is a hub site</a></li><li class="l2"><a href="#4-the-spine-the-villagers-sentence-from-the-inside">4. The spine: the villagers sentence, from the inside</a></li><li class="l2"><a href="#5-the-numbers">5. The numbers</a></li><li class="l2"><a href="#6-build-order">6. Build order</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/nfrs.sgit.ai.html">nfrs.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 5 of 12</p><nav class="pager"><span><a href="004-nfrssgitai-brief-pack.html">← nfrs.sgit.ai — brief pack</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="006-01-the-topic-map.html">01 — The topic map →</a></span></nav><article class="source"><h1 id="00-the-brief-nfrssgitai">00 — The Brief: <code>nfrs.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.62 · 24 August 2026
+<strong>From</strong> Dinis Cruz, via the SG/Send Librarian
+<strong>To</strong> the agent commissioned to build <code>nfrs.sgit.ai</code>
+<strong>Licence</strong> CC BY 4.0</p>
+<hr>
+<h2 id="1-the-commission">1. The commission</h2>
+<blockquote><p><em>&quot;the home for lots of the NFR related topics we have covered in quite detail — for example CI pipelines, security, scalability, resilience, explainability, serverless, architecture, testing, documentation, budgets/finance, project management…&quot;</em></p></blockquote>
+<p>And the framing that matters more than the topic list:</p>
+<blockquote><p><em>&quot;the idea of these sites is to provide good briefs for agents to learn about how we work and think — <strong>these sites are a more evolved and focused version of what is usually called LLM memory</strong>.&quot;</em></p></blockquote>
+<p>That second sentence is the clearest statement of the whole <code>*.sgit.ai</code> network&#x27;s purpose made anywhere in this project, and it should not stay buried in a chat message. <code>02__</code> develops it into a page — and recommends it also land on the <code>sgit.ai</code> hub, because it explains all fourteen sites at once.</p>
+<hr>
+<h2 id="2-the-name-verdict-yes-nfrssgitai">2. The name — verdict: yes, <code>nfrs.sgit.ai</code></h2>
+<p>Three reasons it is right:</p>
+<ol><li><strong>It is your own operative term, already defined in the corpus.</strong> The villagers brief: <em>&quot;what I call the non-functional requirements, which fundamentally is <strong>the whole version control, reliability, resilience, security, backups, consistency, explainability, and documentation</strong>.&quot;</em> That sentence is this site&#x27;s table of contents, written a month before the site was conceived.</li><li><strong>It fits the network&#x27;s naming pattern</strong> — plural subject nouns: <code>risks.</code> <code>graphs.</code> <code>skills.</code> <code>twins.</code> <code>standards.</code> <code>nfrs.</code> reads as one of the family.</li><li><strong>The jargon objection does not apply here.</strong> &quot;NFR&quot; is opaque to a general reader — but the stated audience is <strong>agents and technical readers</strong>, for whom it is precise and unambiguous. The alternatives are worse: <code>quality.</code> is vague, <code>engineering.</code> overclaims, <code>operations.</code> misses half the list.</li></ol>
+<p>Two conditions: <strong>expand the acronym in the first sentence of the front page</strong>, and note that the corpus itself writes it both ways (&quot;non-functional requirements&quot; in prose, NFR in speech) — the site should use <em>NFRs</em> as the name and the full phrase on first use per page.</p>
+<hr>
+<h2 id="3-the-shape-this-is-a-hub-site">3. The shape: this is a hub site</h2>
+<p>Unlike <code>twins.</code> (a primitive) or <code>sg-compute.</code> (a platform), this site is a <strong>hub over topics that mostly already have owners</strong> in the network. The measured densities and the split:</p>
+<div class="table"><table><thead><tr><th>Topic</th><th>Files</th><th>This site&#x27;s role</th></tr></thead><tbody><tr><td><strong>Testing</strong></td><td>279</td><td><strong>OWNS</strong> — no-mocks-no-patches, deploy-via-pytest, the structural-guard pattern, 4,785-tests-in-81s</td></tr>
+<tr><td><strong>CI pipelines</strong></td><td>273</td><td><strong>OWNS</strong> — digest-first multi-arch, AMI bake-and-verify, auto-increment versioning</td></tr>
+<tr><td><strong>Documentation</strong></td><td>651</td><td><strong>OWNS</strong> — the reality-document system, briefs-are-aspirations, the markdown twin, day-indexes</td></tr>
+<tr><td><strong>IFD (the methodology)</strong></td><td>guides</td><td><strong>OWNS</strong> — Iterative Flow Development, versioned guides written explicitly <em>&quot;for LLMs&quot;</em></td></tr>
+<tr><td><strong>Budgets / finance</strong></td><td>410</td><td><strong>OWNS the discipline</strong> — pre-approve-the-ladder, profitability-first, budget-on-the-step</td></tr>
+<tr><td><strong>Project management</strong></td><td>31</td><td><strong>OWNS</strong> — the PM-is-where-the-register-becomes-work brief, the brief/debrief system itself</td></tr>
+<tr><td><strong>Resilience</strong></td><td>100</td><td><strong>OWNS the patterns</strong> — the watchdog, health poller, teardown paths (artefacts live in <code>sg-compute.</code>)</td></tr>
+<tr><td><strong>Explainability</strong></td><td>65</td><td><strong>LINKS</strong> — the grounding ladder is <code>risks.</code>/<code>standards.</code>; this site owns &quot;computed, not claimed&quot; as an engineering habit</td></tr>
+<tr><td><strong>Serverless / scalability</strong></td><td>347 / 104</td><td><strong>LINKS</strong> — <code>sg-compute.</code> owns the platform; this site owns the <em>requirement</em> framing</td></tr>
+<tr><td><strong>Security</strong></td><td>—</td><td><strong>LINKS</strong> — <code>pki.</code> <code>nhi.</code> <code>sg-sentinel.</code> own domains; this site owns the <em>NFR posture</em> (audit-before-the-key, key-leak CI gates)</td></tr>
+<tr><td><strong>Architecture</strong></td><td>—</td><td><strong>LINKS</strong> — <code>coding.</code> owns conventions; this site owns responsibility-boundaries as a requirement class</td></tr></tbody></table></div>
+<p><strong>The rule: this site owns the disciplines that have no other home, and the topic map that shows an agent where everything else lives.</strong> <code>01__</code> is that map.</p>
+<hr>
+<h2 id="4-the-spine-the-villagers-sentence-from-the-inside">4. The spine: the villagers sentence, from the inside</h2>
+<p>The network already tells the NFR story from the <em>market</em> side — <code>open-source.sgit.ai</code> owns <em>&quot;somebody has to be the villagers&quot;</em> as an economic argument. <strong>This site is the same sentence from the inside: how <em>we</em> actually do the NFRs the villagers sell.</strong></p>
+<p>That gives the site an unusual honesty obligation, because this session has already measured the estate against its own NFR list:</p>
+<div class="table"><table><thead><tr><th>NFR (his list)</th><th>The estate, measured</th></tr></thead><tbody><tr><td>Version control</td><td>✅ 2,777 commits/100 days, auto-increment tags, the <code>version</code> file convention</td></tr>
+<tr><td>Reliability / resilience</td><td>✅ watchdog, poller, bake-and-verify — <strong>and</strong> a dead workflow (<code>sg-play</code> ×16) nobody noticed</td></tr>
+<tr><td>Security</td><td>✅ key discipline, allowlists — <strong>and</strong> one disclosed key-in-history incident, handled well</td></tr>
+<tr><td>Backups</td><td>⚠️ <strong>thinnest topic in the corpus</strong> — 151 mentions, no doctrine</td></tr>
+<tr><td>Consistency</td><td>🟡 100% banner compliance beside 39% import alignment; four stale sources of truth</td></tr>
+<tr><td>Explainability</td><td>✅ reality docs, provenance — <strong>and</strong> no evals anywhere</td></tr>
+<tr><td>Documentation</td><td>✅ 1.27M words with a governing rule — <strong>and</strong> a README describing a repo that does not exist</td></tr></tbody></table></div>
+<p><strong>Publish that table.</strong> A site teaching NFRs from a corpus that visibly practises <em>and</em> visibly lapses is credible in a way no clean-room guide can be — and every lapse is already documented in a sibling pack with the evidence.</p>
+<hr>
+<h2 id="5-the-numbers">5. The numbers</h2>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>Densities</strong></td><td>documentation 651 · budget 410 · observability 393 · serverless 347 · unit test 279 · CI 273 · backup 151 · scalability 104 · resilience 100 · reliability 74 · explainability 65 · PM 31 · &quot;non-functional&quot; 26</td></tr>
+<tr><td><strong>The definition</strong></td><td>one sentence in the villagers brief, listing <strong>eight NFRs verbatim</strong></td></tr>
+<tr><td><strong>Owned disciplines</strong></td><td>testing · CI · documentation/reality · IFD · budgets · PM · resilience patterns</td></tr>
+<tr><td><strong>The methodology</strong></td><td>IFD — versioned guides (<code>v1.2.1</code>), written <em>&quot;for LLMs assisting with IFD-based development&quot;</em></td></tr>
+<tr><td><strong>This pack</strong></td><td>7 documents · manifest of 26 rows · every path verified</td></tr></tbody></table></div>
+<hr>
+<h2 id="6-build-order">6. Build order</h2>
+<ol><li><strong><code>/map/</code></strong> — the topic map (<code>01__</code>). The hub&#x27;s reason to exist: one page an agent reads to know where everything lives.</li><li><strong><code>/memory/</code></strong> — the sites-as-agent-memory thesis (<code>02__</code>). The page that explains the network.</li><li><strong><code>/testing/</code> and <code>/ci/</code></strong> — the two strongest owned disciplines, with the measured numbers.</li><li><strong><code>/documentation/</code></strong> — the reality-document system: <em>&quot;if the reality document doesn&#x27;t list it, it does not exist… briefs are aspirations, not facts.&quot;</em></li><li><strong><code>/budgets/</code> and <code>/pm/</code></strong> — pre-approve-the-ladder, profitability-first, the brief/debrief system.</li><li><strong><code>/scorecard/</code></strong> — §4&#x27;s table, unsoftened, linked to the sibling packs&#x27; evidence.</li><li><strong><code>/shipped/</code></strong> — what this site asserts vs what the estate demonstrably does.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>== briefs/v0.33.62__nfrs-brief-pack__01__the-topic-map.md</p>
+<hr></article><nav class="pager"><span><a href="004-nfrssgitai-brief-pack.html">← nfrs.sgit.ai — brief pack</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="006-01-the-topic-map.html">01 — The topic map →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>nfrs.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://nfrs.sgit.ai/llms-full.txt">https://nfrs.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:31Z</dd><dt>sha256</dt><dd><code title="fd3ac2780eaa960e2115c2f68d06aa1aef56b9483baae25b66faa8468d10672a">fd3ac2780eaa</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/nfrs.sgit.ai/llms-full.txt</a> (55,866 bytes)</dd><dt>Section</dt><dd>5 of 12: 00 — The Brief: nfrs.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

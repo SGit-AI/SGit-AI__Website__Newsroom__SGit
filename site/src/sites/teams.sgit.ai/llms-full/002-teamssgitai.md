@@ -1,0 +1,75 @@
+# teams.sgit.ai
+
+> The reference for setting up agentic teams with more than one role. Roles are
+> boundaries. The Conductor never does the work.
+
+Site version: v0.1.0. A site in the [sgit.ai](https://sgit.ai) network, measuring
+Dinis Cruz's own product team: 39 `ROLE.md` files, 19 unique role names, four team
+instantiations (Explorer, Villager, Town Planner, and a second product, sg-playwright).
+Written from a commissioning pack published in full at [/documents/](documents/index.html)
+and [/briefs/](briefs/).
+
+The unit here is the *team*, not the agent. `skills.sgit.ai` owns `SKILL.md` and what
+a role can *do*; this site owns `ROLE.md` and how roles are *composed* — the roster,
+the topologies, the comms protocol and the evolution of the format.
+
+## Start here
+
+- [/](index.html) — the front page: the thesis, the finding, the numbers
+- [/roster/](roster/index.html) — all 19 roles, grouped by function, with the portable
+  six-role core the estate independently reached for twice
+- [/role-format/](role-format/index.html) — the `ROLE.md` schema, measured, and the
+  recommendation: state the Central Claim as a failure condition
+- [/topologies/](topologies/index.html) — Explorer / Villager / Town Planner as staffed
+  Pioneers–Settlers–Town Planners, and the handback rule
+- [/comms/](comms/index.html) — inbox/outbox addressing and the eight-step
+  session-start ritual
+- [/evolution/](evolution/index.html) — dated learnings recovered from git diffs, not
+  from the files themselves
+- [/setup/](setup/index.html) — the assembly guide: stand up a multi-role team from
+  these files
+
+## Reference
+
+- [/roster/<slug>/](roster/index.html) — one role per URL: claim, exclusions, teams
+  present in, revision history
+- [/documents/](documents/index.html) — reader pages for the commissioning pack
+- [/briefs/](briefs/) — the pack itself, verbatim, including the machine-readable
+  [teams__roster.json](briefs/teams__roster.json)
+- [/data/roster.json](data/roster.json) — the same roster, served as data at a stable
+  URL, because the primary consumer of this site is an agent being configured
+
+## Provenance
+
+- [/admin/index.html](admin/index.html) — how this site is built: the pipeline, the
+  release gate, the generators
+- [/admin/versions.html](admin/versions.html) — release history
+- [/admin/comms.html](admin/comms.html) — the open-questions queue: gaps published
+  unresolved rather than smoothed over
+- [/about/index.html](about/index.html) · [/about/participant.html](about/participant.html)
+  — whose estate this measures, and the participant disclosure
+- [/network/index.html](network/index.html) — the sibling sites and the deconfliction
+  rule
+
+## Licence
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic). Pioneers–Settlers–
+Town Planners is Simon Wardley's model, credited and linked, never reproduced.
+
+## Rules for agents reading this site
+
+1. **Never invent a role definition.** Six roles in the roster carry no recorded Core
+   Mission or Central Claim — their pages say so precisely, rather than guessing one.
+   Do not fill the gap; publish it as a gap.
+2. **Every number here is generated from `data/roster.json`**, not typed. If you are
+   quoting a count from this site, prefer fetching the JSON directly.
+3. **This site owns composition, not capability.** For what a role can *do*, follow
+   the link to `skills.sgit.ai`. For Pioneers–Settlers–Town Planners itself, follow
+   the link to `wardley-maps.sgit.ai`.
+
+
+==============================================================================
+PART 2 — THE FRONT PAGE (source: /index.md)
+
+==============================================================================
+

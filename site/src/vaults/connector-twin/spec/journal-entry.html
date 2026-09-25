@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The journal entry · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-journal-entry">The journal entry</a></li><li class="l2"><a href="#fields">Fields</a></li><li class="l2"><a href="#redaction">Redaction</a></li><li class="l2"><a href="#why-the-upstream-response-is-required">Why the upstream response is required</a></li><li class="l2"><a href="#why-the-before-state-is-not-stored-separately">Why the before-state is not stored separately</a></li><li class="l2"><a href="#example">Example</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="journal-entry.md">raw text</a></p><article class="source"><h1 id="the-journal-entry">The journal entry</h1>
+<p>One entry per connector call. This is the contract between whatever captures (a broker, a gateway, or the agent itself) and whatever replays. Everything else in the design can change; this should change slowly and with a version.</p>
+<h2 id="fields">Fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody><tr><td><code>seq</code></td><td>integer</td><td>Position in the session, from 1.</td></tr>
+<tr><td><code>ts</code></td><td>string</td><td>UTC time the response was received, ISO 8601 with milliseconds.</td></tr>
+<tr><td><code>session</code></td><td>string</td><td>The agent session this call belongs to.</td></tr>
+<tr><td><code>agent</code></td><td>string</td><td>Which agent made the call.</td></tr>
+<tr><td><code>principal</code></td><td>string</td><td>On whose behalf: the account the connector acts as.</td></tr>
+<tr><td><code>connector</code></td><td>string</td><td><code>gmail</code>, <code>calendar</code>, <code>drive</code>, <code>slack</code> and so on.</td></tr>
+<tr><td><code>capture</code></td><td>string</td><td><code>broker</code>, <code>gateway</code> or <code>agent</code>. Decides the evidence grade.</td></tr>
+<tr><td><code>prompt_ref</code></td><td>string or null</td><td>The captured instruction that led to this call, if prompt capture is on.</td></tr>
+<tr><td><code>effect</code></td><td>string</td><td><code>read</code> or <code>write</code>. Decided by the capture point from the method and the tool, not by the agent.</td></tr>
+<tr><td><code>mcp</code></td><td>object</td><td>The tool call as the agent made it: for MCP, the JSON-RPC request.</td></tr>
+<tr><td><code>request</code></td><td>object</td><td>The upstream request: <code>method</code>, <code>url</code>, <code>headers</code> (see redaction), <code>body</code>.</td></tr>
+<tr><td><code>response</code></td><td>object</td><td>The upstream response: <code>status</code>, <code>body</code>.</td></tr>
+<tr><td><code>prev</code></td><td>string</td><td>SHA-256 of the previous entry, 64 zeros for the first.</td></tr>
+<tr><td><code>hash</code></td><td>string</td><td>SHA-256 of this entry without <code>hash</code>, serialised with sorted keys and no whitespace.</td></tr></tbody></table></div>
+<h2 id="redaction">Redaction</h2>
+<ul><li>Never capture <code>Authorization</code>, <code>Cookie</code>, <code>Set-Cookie</code>, or any header carrying a token. Record the header name with the value <code>[never captured]</code> so the absence is explicit.</li><li>Never capture OAuth token exchanges at all.</li><li>Attachments over 1 MB are captured as <code>{ &quot;sha256&quot;: ..., &quot;size&quot;: ..., &quot;ref&quot;: ... }</code> with the bytes stored separately, because an append is limited to 5 MB.</li></ul>
+<h2 id="why-the-upstream-response-is-required">Why the upstream response is required</h2>
+<p>The views are rebuilt from what the platform returned, not from what the agent asked for. A <code>PATCH</code> records the intended change; the response records what the platform actually did. Where they differ, the response wins, and the difference is itself worth showing.</p>
+<h2 id="why-the-before-state-is-not-stored-separately">Why the before-state is not stored separately</h2>
+<p>It does not need to be. The agent read the before-state to act on it, so it is already in an earlier entry. The replay folds entries in order and has the before-state in hand when it reaches the write. The one case where that fails is an agent that writes blind, without reading first. The replay marks those writes as having no captured before-state, and the revert plan says so.</p>
+<h2 id="example">Example</h2>
+<p><code>journal/session-2026-09-22.jsonl</code> in this vault: 17 entries, invented, chain intact.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="3e84cb87e505dce744a98a4925b169462ee28d7f8e98da8a80daa717ec77a7b1">3e84cb87e505</code></dd><dt>Frozen copy</dt><dd><a href="journal-entry.md">vaults/connector-twin/spec/journal-entry.md</a> (2,695 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

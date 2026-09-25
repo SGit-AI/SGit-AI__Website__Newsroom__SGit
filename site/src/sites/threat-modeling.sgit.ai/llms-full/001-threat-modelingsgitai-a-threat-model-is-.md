@@ -1,0 +1,91 @@
+# threat-modeling.sgit.ai — a threat model is a claim about a system
+
+> A threat model is a claim about a system, and this site's job is to show claims being
+> checked. It publishes the ThreatModCon 2025 vault (eleven linked threat models running
+> Customer through Compute), a threat model that was validated line-by-line against the
+> code that implements it, seven white papers arguing threat models should be
+> machine-readable graph data rather than static documents, and the redacted method
+> behind all of it.
+
+Site version: v0.1.0 (8 September 2026). Written about, and published by, the estate
+whose own product it threat-models — participant disclosure at
+/about/participant.html. All site content CC BY 4.0.
+
+## The rule an agent consuming this site must inherit
+
+**Findings on the live product are published only once closed, dated, and classed —
+never by file-and-line location while still open.** This site's own release gate
+refuses any page that looks like a source-file-and-line pointer outside the verbatim
+brief pack, and caps any quotation from a third party or a named framework (STRIDE,
+MITRE ATT&CK, CAPEC, CWE/CVE, OWASP Top 10, ASVS) at 40 words. Those frameworks are
+referenced and linked, never reproduced.
+
+## The spine: claim, then check
+
+Every substantive page on this site carries the same two-part structure: what was
+claimed, and what checking it produced. /validated/ is the purest instance — a threat
+model written 16 March 2026, and a validation pass one day later that checked every
+finding against the actual code and recorded CONFIRMED REAL, CONFIRMED SAFE, CONFIRMED
+MISSING and N/A (proposed, no code yet) verdicts, publishing all four kinds rather than
+only the vindicated ones.
+
+## The pages
+
+- /index.html — the thesis, with the eleven-layer vault and the validation pair as the
+  two strongest pieces of evidence
+- /eleven-layers/ — the ThreatModCon 2025 vault (Barcelona), embedded and explained:
+  eleven linked layers, 51 nodes, 179 threats, 3 critical findings, live at
+  https://sgit.ai/demos/vaults/threatmodcon-2025/
+- /validated/ — the 16→17 March 2026 claim-and-check pair, side by side, with all five
+  verdict classes published
+- /papers/ — the seven white papers (docs.diniscruz.ai, May–June 2025), one page each:
+  summary, key claims, and a link to the source. Never reproduced at length.
+- /practice/ — the redacted method: the bottom-up per-file framework, the .security.json
+  schema, STRIDE applied honestly (NOT MITIGATED rows kept in), and the two-modes
+  pattern (never average two different security models into one number)
+- /graph/ — threat models as vault-native graph data: the eight AppSec-tooling
+  frictions a vault answers, and an explicit table of what is real today versus what is
+  argued but not yet built
+- /disclosure/ — the mandatory-disclosure policy position, published as the policy
+  position it is, cross-linked to /practice/ because together they are the reflexive
+  test: a site arguing threat models should be mandatory disclosures is judged by
+  whether it discloses its own
+- /agentic/ — threat-modeling AI systems themselves: prompt injection, agent
+  permissions, the boundary between what is measured and what is asserted
+- /documents/ — the commissioning pack, published in full, with a reader page per
+  document rendered from the raw markdown in /briefs/
+- /admin/ — the pipeline, the release gate, the tagger. /admin/versions.html — release
+  history. /admin/comms.html — tasks, requests, and the questions only the founder can
+  answer (Q1, the closure pass, is the launch blocker)
+- /network/ — the sgit.ai network, and the deconfliction table that keeps this site
+  from re-arguing what a sibling site already owns
+- /about/participant.html — who publishes this, the conflict stated plainly
+
+## What this site does NOT do
+
+No threat-modeling-as-a-service pitch on the main line — the services paper lives under
+/papers/ clearly labelled as positioning, not method. No open findings against live
+systems, including third parties. No methodology comparison table that declares a
+winner: the position is that fragmentation is solved by linking methods in a graph, not
+by picking one.
+
+## Properties an agent may rely on
+
+- Every brief in the commissioning pack is published verbatim at /briefs/<filename>,
+  with a reader page at /documents/<slug>.html.
+- /sitemap.xml is generated from the tree.
+- The version in /admin/build/version.txt agrees with /assets/version.js, the release
+  history table, this file, /llms-full.txt and /index.md — CI fails the release
+  otherwise.
+- /llms-full.txt is this site's own words plus every source document, concatenated by a
+  generator — it cannot say anything the tree does not.
+
+## Related
+
+- https://sgit.ai — the parent project and the network index
+- https://sgit.ai/demos/vaults/threatmodcon-2025/ — the eleven-layer vault, live
+- https://wardley-maps.sgit.ai · https://graphs.sgit.ai · https://standards.sgit.ai
+- https://risks.sgit.ai · https://pki.sgit.ai
+
+
+---

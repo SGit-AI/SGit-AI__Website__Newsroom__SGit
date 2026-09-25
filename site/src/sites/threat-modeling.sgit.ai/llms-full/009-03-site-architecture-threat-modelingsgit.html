@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03 — Site Architecture: threat-modeling.sgit.ai · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · threat-modeling.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-site-architecture-threat-modelingsgitai">03 — Site Architecture: threat-modeling.sgit.ai</a></li><li class="l2"><a href="#1-url-scheme">1. URL scheme</a></li><li class="l2"><a href="#2-the-spine-claim-check">2. The spine: claim → check</a></li><li class="l2"><a href="#3-data-model">3. Data model</a></li><li class="l2"><a href="#4-deconfliction-with-siblings">4. Deconfliction with siblings</a></li><li class="l2"><a href="#5-the-threatmodcon-vault-is-embedded-not-copied">5. The ThreatModCon vault is embedded, not copied</a></li><li class="l2"><a href="#6-what-this-site-does-not-do">6. What this site does NOT do</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/threat-modeling.sgit.ai.html">threat-modeling.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 9 of 19</p><nav class="pager"><span><a href="008-briefs03site-architecturemd.html">← briefs/03site-architecture.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-briefs04disclosure-boundariesmd.html">briefs/04disclosure-boundaries.md →</a></span></nav><article class="source"><h1 id="03-site-architecture-threat-modelingsgitai">03 — Site Architecture: <code>threat-modeling.sgit.ai</code></h1>
+<p><strong>Version</strong> v0.33.63 · 7 September 2026
+<strong>Base</strong> House pattern (copy <code>pki.sgit.ai</code>): <code>llms.txt</code> + <code>/llms-full.txt</code>, <code>/documents/</code> raw markdown, markdown twin at every URL, <code>/admin/comms.html</code>, <code>/shipped/</code>, versions, participant page.</p>
+<hr>
+<h2 id="1-url-scheme">1. URL scheme</h2>
+<pre><code>/                        the thesis: a threat model is a claim; here are ours being checked
+/eleven-layers/          the ThreatModCon 2025 vault, embedded + explained
+/validated/              the 16→17 March claim-and-check pair, side by side
+/papers/                 the seven white papers, one page each
+/papers/&lt;slug&gt;/          summary, key claims, PDF + LinkedIn links, co-authorship note
+/practice/               the method: bottom-up file-by-file, the parallel security tree
+/practice/security-json/ the .security.json schema as a reusable artefact
+/practice/stride/        STRIDE applied with honest mitigation status
+/practice/two-modes/     the do-not-average-two-modes pattern
+/graph/                  threat models as vault-native graph data
+/disclosure/             the mandatory-disclosure position
+/agentic/                threat-modeling AI systems (prompt injection, agent permissions)
+/documents/              raw markdown of everything</code></pre>
+<h2 id="2-the-spine-claim-check">2. The spine: claim → check</h2>
+<p>Every substantive page carries the same two-part structure the corpus already uses: <strong>what we claimed</strong> and <strong>what checking it produced</strong>. <code>/validated/</code> is the purest instance; <code>/practice/stride/</code> shows it as <code>NOT MITIGATED</code> rows; <code>/eleven-layers/</code> shows it as the data-repair note. Do not build a page that makes a claim with nothing checking it.</p>
+<h2 id="3-data-model">3. Data model</h2>
+<p>Threat models are graph data, not prose — that is the whole argument, and the site must not contradict it by being a pile of markdown. Each published model gets a JSON twin: nodes (Asset, Threat, Vulnerability, Mitigation, Actor, Incident), edges (targets, mitigates, is-instance-of, crosses-trust-boundary), and per-finding status. <code>/eleven-layers/</code> already has this shape upstream — 51 nodes, 179 threats — so it is the schema&#x27;s proof rather than a new invention.</p>
+<p><strong>Generated, not claimed</strong>: node/threat/finding counts, the corpus file counts, and the validation verdict tallies all come from the data. Date every one.</p>
+<h2 id="4-deconfliction-with-siblings">4. Deconfliction with siblings</h2>
+<div class="table"><table><thead><tr><th>Topic</th><th>Owner</th><th>This site&#x27;s part</th></tr></thead><tbody><tr><td>Wardley maps as a technique</td><td><code>wardley-maps.sgit.ai</code></td><td>Only the five threat-prioritisation walkthroughs, as an application</td></tr>
+<tr><td>G³, MGraph-DB, graph theory</td><td>the graphs sibling</td><td>Only threat-model-shaped graphs; link out for the substrate</td></tr>
+<tr><td>ISO 27001, EU AI Act, GDPR</td><td><code>standards.sgit.ai</code></td><td>Only framework-overlay-as-graph-edge; standards text stays there</td></tr>
+<tr><td>Risk registers, acceptance</td><td><code>risks.sgit.ai</code></td><td>Only the <code>risk_decision</code> field as it appears in the security schema</td></tr>
+<tr><td>Vault mechanics, keys</td><td><code>pki.sgit.ai</code> / sgit.ai</td><td>Only what a threat model needs to say about them</td></tr>
+<tr><td>NFR security posture</td><td><code>nfrs.sgit.ai</code></td><td>Threat modelling is the <em>method</em>; NFR owns the <em>property</em></td></tr></tbody></table></div>
+<p>The rule that keeps this clean: <strong>this site owns the act of modelling threats.</strong> If material is about the thing being modelled rather than the modelling, it belongs to a sibling.</p>
+<h2 id="5-the-threatmodcon-vault-is-embedded-not-copied">5. The ThreatModCon vault is embedded, not copied</h2>
+<p><code>/eleven-layers/</code> embeds the live vault (the vault-app-embed pattern from sgit.ai&#x27;s own demos), with the explanation around it. Do not re-host the eleven models as site pages — the vault is the artefact, and a published vault demonstrating the platform&#x27;s own argument is worth more than a static copy.</p>
+<h2 id="6-what-this-site-does-not-do">6. What this site does NOT do</h2>
+<p>No threat-modelling-as-a-service pitch on the main line (the 9 June services paper lives under <code>/papers/</code> clearly labelled as positioning). No open findings against live systems, including third parties (<code>04__</code>). No methodology comparison table that declares a winner — the corpus&#x27;s position is that fragmentation is solved by linking methods in a graph, not by picking one.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr></article><nav class="pager"><span><a href="008-briefs03site-architecturemd.html">← briefs/03site-architecture.md</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-briefs04disclosure-boundariesmd.html">briefs/04disclosure-boundaries.md →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>threat-modeling.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://threat-modeling.sgit.ai/llms-full.txt">https://threat-modeling.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:39Z</dd><dt>sha256</dt><dd><code title="e491cd40da28b4ee7dd108e2f1ee97b01d9cc71d60001ddbd104cf0853cc5640">e491cd40da28</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/threat-modeling.sgit.ai/llms-full.txt</a> (49,157 bytes)</dd><dt>Section</dt><dd>9 of 19: 03 — Site Architecture: threat-modeling.sgit.ai</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

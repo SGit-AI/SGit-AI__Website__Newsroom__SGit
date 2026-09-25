@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Green does not mean live · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#green-does-not-mean-live-sgitai">Green does not mean live, sgit.ai</a></li><li class="l1"><a href="#green-does-not-mean-live">Green does not mean live</a></li><li class="l2"><a href="#what-the-release-actually-verified">What the release actually verified</a></li><li class="l2"><a href="#the-gap-named">The gap, named</a></li><li class="l2"><a href="#what-actually-failed">What actually failed</a></li><li class="l2"><a href="#the-fix-is-one-question-asked-at-the-end">The fix is one question, asked at the end</a></li><li class="l2"><a href="#the-rule-underneath">The rule underneath</a></li><li class="l2"><a href="#what-this-does-not-fix">What this does not fix</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="green-does-not-mean-live.md">raw text</a> · <a class="ext" href="https://sgit.ai/articles/green-does-not-mean-live.html">live ↗</a></p><article class="source"><h1 id="green-does-not-mean-live-sgitai">Green does not mean live, sgit.ai</h1>
+<blockquote><p>Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.</p></blockquote>
+<p><em>Source: <a href="green-does-not-mean-live.html">https://sgit.ai/articles/green-does-not-mean-live.html</a><a class="ext live" href="https://sgit.ai/articles/green-does-not-mean-live.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Articles</a><a class="ext live" href="https://sgit.ai/articles/index.html" title="live page">↗</a> / Green does not mean live</p>
+<h1 id="green-does-not-mean-live">Green does not mean live</h1>
+<p>2026-08-17 · <a href="../admin/versions.html">v0.2.33</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a> · cideployverification</p>
+<p><strong><em>Abstract:</strong> Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.</em></p>
+<p>Two consecutive releases of this site pushed cleanly, verified themselves against both remotes, printed <strong>&quot;both remotes in sync, done&quot;</strong>, and never reached anybody. The site served a two-release-old page for forty minutes. It was noticed by a human on a phone, who looked at the version badge and said <em>&quot;is this the latest version?&quot;</em></p>
+<p>Everything about that sentence is worth sitting with. The checks were not weak. They were <strong>checking the wrong boundary</strong>.</p>
+<h2 id="what-the-release-actually-verified">What the release actually verified</h2>
+<p>The release script does five things, and four of them are good:</p>
+<ol><li>Build the site from source.</li><li>Run the validator, structure, links, markdown twins, orphan pages, and a tripwire that scans every tracked file for a vault key.</li><li>Commit and push the encrypted vault; confirm <code>sgit status</code> reports in sync.</li><li>Commit and push the git mirror; confirm <code>HEAD == origin/dev</code>.</li></ol>
+<p>Step 4 is where the confidence came from, and it is genuinely a strong check, it compares hashes, not hopes. The problem is what it means. It means <strong>the bytes arrived at GitHub</strong>. It does not mean anybody can read them.</p>
+<h2 id="the-gap-named">The gap, named</h2>
+<p>Publishing this site has three boundaries, and we were verifying two:</p>
+<pre><code>
+  source  ──▶  git remote  ──▶  Pages deploy  ──▶  the reader
+            ↑               ↑                  ↑
+        verified        verified           NOT VERIFIED
+</code></pre>
+<p>Between the second and third arrows sits a GitHub Actions job. It has its own failure modes, it reports into a system neither remote knows about, and nothing in our release looked at it.</p>
+<h2 id="what-actually-failed">What actually failed</h2>
+<p>Not our code. Not the content. The deploy job died in <strong>&quot;Set up job&quot;</strong>: before running a single step of its own:</p>
+<pre><code>
+Download action repository &#x27;actions/configure-pages@v5&#x27;
+##[warning] Failed to download ... Error: 429 (Too Many Requests)
+##[warning] Back off 12.459 seconds before retry.
+##[warning] Failed to download ... Error: 429 (Too Many Requests)
+##[warning] Back off 26.597 seconds before retry.
+##[error]  Failed to download archive after 3 attempts.
+</code></pre>
+<p><code>codeload.github.com</code> rate-limited the download of a third-party action. The <code>validate</code> job passed. The <code>tag-release</code> job passed. The one job that puts bytes in front of readers could not fetch its own dependency.</p>
+<p>This is worth stating plainly because it is the ordinary case, not an exotic one: <strong>the most likely thing to break in a deploy is not your code.</strong> It is a piece of shared infrastructure you do not run, on a day you were not thinking about it.</p>
+<h2 id="the-fix-is-one-question-asked-at-the-end">The fix is one question, asked at the end</h2>
+<p>A release now finishes by asking the live site what version it is serving:</p>
+<pre><code>
+== 5/6 verify the deploy actually published
+   waiting for v0.2.34 to appear at https://sgit.ai/ (up to 8 min)
+   ......
+   live: sgit.ai is serving v0.2.34
+</code></pre>
+<p>It polls with a cache-buster, because the origin&#x27;s own answer is the only one that counts. If the version never appears it <strong>aborts loudly</strong>, names the Actions page, and says that a 429 on the action download is transient and needs a re-run.</p>
+<p>The cost is real: up to eight minutes of waiting on every release. We took it, because the alternative had already been demonstrated twice in one afternoon, telling somebody a fix was live when it was not, twice, in writing.</p>
+<h2 id="the-rule-underneath">The rule underneath</h2>
+<p>This site already had two rules of exactly this shape, and adding the third made the pattern obvious:</p>
+<ul><li><strong>A page nothing links to is unpublished.</strong> The build fails on an orphan page, it happened once, a brief that was written, built and pushed while nothing linked to it.</li><li><strong>A page the machine index omits is unpublished.</strong> The build fails if any page would be missing from <code>llms.txt</code>, that happened too, a whole section silently absent.</li><li><strong>A page the deploy never served is unpublished.</strong> Now the release fails on it.</li></ul>
+<p>All three are the same claim: <em>shipped</em> is a fact about the reader, not about your repository. Every one of them was learned by getting it wrong first, which is the only reason the list is short and specific rather than long and aspirational.</p>
+<h2 id="what-this-does-not-fix">What this does not fix</h2>
+<p>Being honest about the edges, since that is the house rule:</p>
+<ul><li>It detects a failed deploy; it does not repair one. A 429 still needs a human or a re-run.</li><li>It checks the home page&#x27;s version badge, not every page. A partial deploy that published some files would pass.</li><li>It adds up to eight minutes to a release, which is a real tax on small fixes.</li></ul>
+<p>All three are acceptable against the failure they replace. The first one to bite will get its own entry.</p>
+<p><em>The release script is <a class="ext" href="https://github.com/SGit-AI/SGit-AI__CLI">in the repository ↗</a>; the releases described here are <a href="../admin/versions.html">v0.2.31 to v0.2.33</a><a class="ext live" href="https://sgit.ai/admin/versions.html" title="live page">↗</a>.</em></p>
+<p><a href="index.html">← All articles</a><a class="ext live" href="https://sgit.ai/articles/index.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="green-does-not-mean-live.html">HTML version</a><a class="ext live" href="https://sgit.ai/articles/green-does-not-mean-live.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/articles/green-does-not-mean-live.html">https://sgit.ai/articles/green-does-not-mean-live.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/articles/green-does-not-mean-live.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="3a028a289b02819d3ca553f7c8fa99c397a47bfc462500cee40dcabf295564f6">3a028a289b02</code></dd><dt>Frozen copy</dt><dd><a href="green-does-not-mean-live.md">sites/sgit.ai/articles/green-does-not-mean-live.md</a> (5,793 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

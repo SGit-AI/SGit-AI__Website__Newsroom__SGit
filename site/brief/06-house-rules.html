@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06. House rules · sgit newsroom</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../editions/index.html">Editions</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../concepts/index.html">Concepts</a><a href="../vaults/index.html">Vaults</a><a href="../history/index.html">History</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../newsroom/index.html">The newsroom</a><a href="../about/index.html">About</a><a href="../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">The brief</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-house-rules">06. House rules</a></li><li class="l2"><a href="#secrets">Secrets</a></li><li class="l2"><a href="#facts">Facts</a></li><li class="l2"><a href="#people">People</a></li><li class="l2"><a href="#style">Style</a></li></ul></details>
+<article><h1 id="06-house-rules">06. House rules</h1>
+<p>These are the rules the sgit network&#x27;s sites already work under. They apply to every page the newsroom publishes.</p>
+<h2 id="secrets">Secrets</h2>
+<ul><li><strong>Never publish a vault key or any write credential.</strong> A vault key looks like <code>sgit_private_vault_...</code>; anything matching <code>sgit_private_</code>, <code>sgit_vk1_</code>, or 24 lowercase alphanumerics, a colon, then 4 to 24 more (<code>[a-z0-9]{24}:[a-z0-9]{4,24}</code>) must never appear in the site or the repo. The validator must refuse it.</li><li><strong>Read keys may be published, deliberately.</strong> A <code>sgit_public_read_&lt;hex&gt;:&lt;vault id&gt;</code> key that a source site already publishes may be quoted, because the site published it on purpose.</li><li><strong>Published examples are not secrets.</strong> Some sources quote documented example credentials, for instance sg-compute.sgit.ai&#x27;s security audit quotes AWS&#x27;s <code>AKIAIOSFODNN7EXAMPLE</code>. The validator should allow a short, named list of such examples, not weaken the pattern.</li><li><strong>Nothing from private channels.</strong> The sources are the public sites. Do not add anything that was not published.</li></ul>
+<h2 id="facts">Facts</h2>
+<ul><li><strong>Only what the sources say.</strong> Every factual sentence links to the page it came from. If a source is ambiguous, say so.</li><li><strong>Shipped and proposed are different words.</strong> Most of the network publishes designs and proposals beside things that run. Keep the distinction the source makes, and never upgrade a proposal to a product.</li><li><strong>Quote exactly.</strong> A quotation is the source&#x27;s words, character for character, or it is a paraphrase and has no quotation marks.</li><li><strong>Corrections above the mistake.</strong> When the newsroom gets something wrong, the correction is a new dated note at the top of the page, naming what was wrong and how it was caught. The old text stays, struck through or marked.</li><li><strong>Compute, don&#x27;t type.</strong> Any count on a page (pages changed, releases, vaults) is computed by the build from the data.</li></ul>
+<h2 id="people">People</h2>
+<ul><li><strong>Roles and sites, not people.</strong> Write about what a site or a desk did. The founder may be named as editor of record.</li><li><strong>They/them</strong> for anyone whose pronouns are not stated in a source.</li><li><strong>No one who appears only in a private conversation.</strong> If a source mentions a meeting, write about the idea, not the person.</li></ul>
+<h2 id="style">Style</h2>
+<ul><li>British English. Plain words. Short sentences.</li><li>No em-dashes in prose (sgit.ai removed them on 20 September 2026; see its version log).</li><li>No model names or identifiers in the site or the repo.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="06-house-rules.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

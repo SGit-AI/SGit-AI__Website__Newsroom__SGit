@@ -1,0 +1,426 @@
+{
+ "risk": {
+  "id": "RISK-114",
+  "start": "2026-09-01",
+  "title": "One risk, established, accepted, escalated, funded and ended on facts",
+  "lead": "An invented payments company, Kestrel Ledger, lets a deployment agent run database changes in production. The risk is that the agent can change the ledger, and that some of those changes cannot be reversed. Drag the slider to follow it for six weeks: who holds it, the clock on each acceptance, the evidence and controls, and the decision record. Underneath, compare what a typical register row shows at the same moment.",
+  "statement": "The deployment agent can change the production ledger, and some of its changes cannot be reversed.",
+  "chain": [
+   {
+    "role": "SRE lead",
+    "person": "Sam Osei"
+   },
+   {
+    "role": "Platform owner",
+    "person": "Priya Das"
+   },
+   {
+    "role": "CTO",
+    "person": "Tomasz Nowak"
+   },
+   {
+    "role": "CEO",
+    "person": "Ana Ruiz"
+   },
+   {
+    "role": "Board",
+    "person": "Kestrel Ledger board"
+   }
+  ],
+  "facts": [
+   {
+    "id": "F-5",
+    "role": "establishes",
+    "text": "The deployment agent's database role can write to the production ledger.",
+    "source": "iam/roles/deploy-agent.json, as exported on 1 September"
+   },
+   {
+    "id": "F-7",
+    "role": "establishes",
+    "text": "Some ledger migrations cannot be rolled back.",
+    "source": "runbooks/ledger-migrations.md, section 4"
+   },
+   {
+    "id": "F-9",
+    "role": "context",
+    "text": "The agent's stop has never been tested.",
+    "source": "the on-call runbook has no stop test recorded"
+   },
+   {
+    "id": "F-11",
+    "role": "context",
+    "text": "On day 24 the agent applied a migration that could not be rolled back and stalled settlement.",
+    "source": "incident INC-2231 timeline"
+   },
+   {
+    "id": "F-12",
+    "role": "context",
+    "text": "The agent's stop was tested and took three minutes.",
+    "source": "stop-test record, day 40"
+   },
+   {
+    "id": "F-4",
+    "role": "ceases",
+    "text": "Every production write by the agent needs an approval step.",
+    "source": "pipeline/approvals.yml, merged on day 41"
+   },
+   {
+    "id": "F-3",
+    "role": "ceases",
+    "text": "The agent's database role is read-only on the ledger.",
+    "source": "would be iam/roles/deploy-agent.json; not chosen"
+   }
+  ],
+  "controls": [
+   {
+    "id": "C-1",
+    "name": "Approval step on the agent's production writes",
+    "initial": "proposed",
+    "note": "Ends the risk on its own, through F-4."
+   },
+   {
+    "id": "C-2",
+    "name": "A tested stop for the agent",
+    "initial": "missing",
+    "note": "Does not end the risk; limits how long a bad change can run."
+   },
+   {
+    "id": "C-3",
+    "name": "Nightly ledger backup",
+    "initial": "in_place",
+    "note": "In place, and does not help: it cannot undo a migration mid-day without losing a day's transactions."
+   },
+   {
+    "id": "C-4",
+    "name": "Read-only role for the agent",
+    "initial": "proposed",
+    "note": "Would end the risk through F-3, but stops the agent doing its job. Not chosen."
+   }
+  ],
+  "grc_initial": {
+   "Register row": "R-114, change risk in automated deployment",
+   "Owner": "Technology",
+   "Rating": "Medium",
+   "Status": "Open",
+   "Next review": "Risk committee, 12 December",
+   "Evidence": "none attached"
+  },
+  "events": [
+   {
+    "day": 0,
+    "type": "identified",
+    "label": "Established on two facts",
+    "actor": "Risk engineer",
+    "holder": "SRE lead",
+    "facts_add": [
+     "F-5",
+     "F-7",
+     "F-9"
+    ],
+    "text": "The risk is written down with the facts that make it true, F-5 and F-7, each with its source, and the facts that would end it, F-4 or F-3.",
+    "seq": 1,
+    "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "2633cf6c0c96b2e6df00302112a00fbcb5a356b91f71984587e67a4cc896b50b"
+   },
+   {
+    "day": 0,
+    "type": "placed",
+    "label": "Placed, and the chain computed",
+    "actor": "Risk engineer",
+    "text": "Held by the SRE lead. The platform owner, CTO, CEO and board now see it arrive through the chain, without anybody reporting it up.",
+    "seq": 2,
+    "prev": "2633cf6c0c96b2e6df00302112a00fbcb5a356b91f71984587e67a4cc896b50b",
+    "hash": "e17c56b92d9cc8410f45160099f5f6b16f1599f23a43e4ac0469e3af159b26ef"
+   },
+   {
+    "day": 1,
+    "type": "accepted",
+    "label": "Accepted for two weeks",
+    "actor": "Sam Osei",
+    "role": "SRE lead",
+    "rung": "1 to 2 weeks",
+    "days": 14,
+    "action": "The platform team adds an approval step to the agent's production writes.",
+    "text": "The SRE lead accepts personally, for two weeks: a funded project for a team that already exists.",
+    "seq": 3,
+    "prev": "e17c56b92d9cc8410f45160099f5f6b16f1599f23a43e4ac0469e3af159b26ef",
+    "hash": "3ad29eeb23413bfa2ce63149b9d9afcbb238038b1b89729566cce5dbe13ac3d3"
+   },
+   {
+    "day": 15,
+    "type": "expired",
+    "label": "The acceptance expires",
+    "actor": "the clock",
+    "text": "Two weeks pass. The approval step was not built: the team was moved onto a release. The acceptance ends and does not silently continue.",
+    "seq": 4,
+    "prev": "3ad29eeb23413bfa2ce63149b9d9afcbb238038b1b89729566cce5dbe13ac3d3",
+    "hash": "be49087b1958f2c1d00106ade8d0b8a2aa53a3dac11f049504be23a606a2fa11"
+   },
+   {
+    "day": 15,
+    "type": "escalated",
+    "label": "Escalated to the platform owner",
+    "actor": "the clock",
+    "role": "Platform owner",
+    "holder": "Platform owner",
+    "text": "Nobody renewed it, so it rolls up one level. The platform owner must accept, fund or fix.",
+    "seq": 5,
+    "prev": "be49087b1958f2c1d00106ade8d0b8a2aa53a3dac11f049504be23a606a2fa11",
+    "hash": "ba0a03fae1bf909e519786f5c197d0e36d2d06c43cc18a22c277b9f50e26ae6b"
+   },
+   {
+    "day": 16,
+    "type": "funded",
+    "label": "Funded: a four-week project",
+    "actor": "Priya Das",
+    "role": "Platform owner",
+    "controls": {
+     "C-1": "funded",
+     "C-2": "funded"
+    },
+    "text": "Project P-38: an approval step on the agent's production writes and a tested stop. £38,000 and four weeks, from outside the platform team's current work.",
+    "seq": 6,
+    "prev": "ba0a03fae1bf909e519786f5c197d0e36d2d06c43cc18a22c277b9f50e26ae6b",
+    "hash": "bdad18338ee8a22c0dfd8dc604b3b80841663062a77df329d396d86476570597"
+   },
+   {
+    "day": 16,
+    "type": "accepted",
+    "label": "Accepted for one month",
+    "actor": "Priya Das",
+    "role": "Platform owner",
+    "rung": "1 month",
+    "days": 30,
+    "action": "Project P-38 delivers the approval step and a tested stop.",
+    "text": "The platform owner accepts for a month, the default rung: assemble and fund. The project's length sets the interval.",
+    "seq": 7,
+    "prev": "bdad18338ee8a22c0dfd8dc604b3b80841663062a77df329d396d86476570597",
+    "hash": "ad58d84b79f395b1e8278084e26bd64fda66b8347a425f4478d82262605ba23e"
+   },
+   {
+    "day": 24,
+    "type": "incident",
+    "label": "Incident: an irreversible migration",
+    "actor": "on-call",
+    "facts_add": [
+     "F-11"
+    ],
+    "grc": {
+     "Status": "Open (incident logged in the service desk, not linked)"
+    },
+    "text": "INC-2231. The agent applies a migration that cannot be rolled back, and settlement stalls. The risk has materialised.",
+    "seq": 8,
+    "prev": "ad58d84b79f395b1e8278084e26bd64fda66b8347a425f4478d82262605ba23e",
+    "hash": "0ffe19dc6d4791014b33d9637fa2074f5474ba97464b8cd19cd7c312f943a5f6"
+   },
+   {
+    "day": 24,
+    "type": "accepted",
+    "label": "Accepted for four hours",
+    "actor": "Priya Das",
+    "role": "Platform owner",
+    "rung": "4 hours",
+    "days": 0,
+    "action": "Suspend the agent's deploy job and reconcile the ledger.",
+    "status": "incident",
+    "text": "A four-hour acceptance is an incident response by definition. The agent is suspended and the ledger reconciled.",
+    "seq": 9,
+    "prev": "0ffe19dc6d4791014b33d9637fa2074f5474ba97464b8cd19cd7c312f943a5f6",
+    "hours": 4,
+    "hash": "5063ecd9615950bd556926340c66c7b1593b7243103053ce9918423d2c862551"
+   },
+   {
+    "day": 25,
+    "type": "accepted",
+    "label": "Back on the month's acceptance",
+    "actor": "Priya Das",
+    "role": "Platform owner",
+    "rung": "1 month",
+    "days": 21,
+    "action": "Project P-38 delivers, now with the incident as its evidence.",
+    "text": "The ledger is reconciled and the agent resumes under the funded project. The incident's timeline becomes a fact, F-11, in the risk's own record.",
+    "seq": 10,
+    "prev": "5063ecd9615950bd556926340c66c7b1593b7243103053ce9918423d2c862551",
+    "hash": "9a47941c21acd6e13cd9c458bd21a478254d1e27ef2d64a40ade65d5545f7068"
+   },
+   {
+    "day": 30,
+    "type": "reported",
+    "label": "In the board pack",
+    "actor": "Board",
+    "text": "The quarterly pack shows the risk arriving at the board with its chain, its acceptance, its incident and the project that will end it. Nobody wrote a paragraph about it.",
+    "seq": 11,
+    "prev": "9a47941c21acd6e13cd9c458bd21a478254d1e27ef2d64a40ade65d5545f7068",
+    "hash": "4940469fc9537af26cd5d11eb16b47945561564d0b2cfe67842c2fd3595fc824"
+   },
+   {
+    "day": 40,
+    "type": "evidence",
+    "label": "Stop tested",
+    "actor": "SRE lead",
+    "facts_add": [
+     "F-12"
+    ],
+    "facts_remove": [
+     "F-9"
+    ],
+    "controls": {
+     "C-2": "in_place"
+    },
+    "text": "The agent's stop is tested and takes three minutes. It does not end the risk, but it shortens how long a bad change can run.",
+    "seq": 12,
+    "prev": "4940469fc9537af26cd5d11eb16b47945561564d0b2cfe67842c2fd3595fc824",
+    "hash": "92043db8a91ae521c8603e12048c4c6556cdeac60601bbb770b871e68dd489d8"
+   },
+   {
+    "day": 41,
+    "type": "evidence",
+    "label": "Approval step merged",
+    "actor": "Platform team",
+    "facts_add": [
+     "F-4"
+    ],
+    "controls": {
+     "C-1": "in_place"
+    },
+    "text": "Every production write by the agent now needs an approval. F-4 holds.",
+    "seq": 13,
+    "prev": "92043db8a91ae521c8603e12048c4c6556cdeac60601bbb770b871e68dd489d8",
+    "hash": "2e289693bb5e0464f8b56a6dfd5e6965a7dd39cc73714f43c17502a8a09bb99f"
+   },
+   {
+    "day": 42,
+    "type": "closed",
+    "label": "Ceased, on facts",
+    "actor": "Risk engineer",
+    "grc": {
+     "Status": "Open until the committee on 12 December"
+    },
+    "text": "F-4 holds, which is one of the facts the risk named as ending it. It ceases, with the evidence attached. In the register, it waits for the committee.",
+    "seq": 14,
+    "prev": "2e289693bb5e0464f8b56a6dfd5e6965a7dd39cc73714f43c17502a8a09bb99f",
+    "hash": "e58bf7cc494e923fec3c51ffb5b4ed63d5b3f03996904817daee08428cc4504e"
+   }
+  ]
+ },
+ "plan": {
+  "title": "Risk Acceptance Office: running the acceptance loop, in the gaps of the GRC platform",
+  "one_line": "A company that makes sure every material risk an organisation carries is established on facts, held by a named person, accepted for a stated interval, and at the end of that interval accepted again, escalated, funded or fixed, with the evidence and the decisions kept in a vault per risk.",
+  "principles": [
+   {
+    "name": "Every risk is already accepted",
+    "text": "A risk exists the moment the exposure does. Nobody decides whether to accept it, only who accepts it and for how long. Until someone does, the organisation is carrying it unsigned."
+   },
+   {
+    "name": "There is no deny button",
+    "text": "You cannot vote a fact out of existence. A register that lets a risk be rejected lets the organisation pretend it is not carrying it."
+   },
+   {
+    "name": "Accept, fund or fix",
+    "text": "Three doors, each with a name against it. Deferral is not a decision, and silence escalates."
+   },
+   {
+    "name": "The interval is the decision",
+    "text": "Accepting for four hours means an incident. Accepting for a month means funding work. The length of the acceptance is what tells the organisation what to do next."
+   },
+   {
+    "name": "A named person, and no delegation",
+    "text": "Acceptance is by a person, not a committee or a function. Nobody accepts on anybody else's behalf."
+   },
+   {
+    "name": "Unaccepted is critical",
+    "text": "A risk nobody has accepted rests on whoever is nearest and rolls upward. Not doing something is a measurable action."
+   },
+   {
+    "name": "Every path ends at the board",
+    "text": "Every risk has a holder, every holder has a boss, and every chain ends at the board. What reaches the top is computed from the chain, not reported by hand."
+   },
+   {
+    "name": "Accepted is not acceptable",
+    "text": "Accepted is an act by a named person at a dated moment. Acceptable is a threshold: where the business is content to stop funding remediation. They are two different questions, and a register needs both answers."
+   },
+   {
+    "name": "Established by facts, ended by facts",
+    "text": "Every risk names the facts that make it true, each with a source, and the facts that would end it. It closes when those hold, not when a review date passes."
+   },
+   {
+    "name": "GRC validates, the business accepts",
+    "text": "Engineers confirm the facts, governance validates the reading, and the business owner accepts. Where those three disagree is where the findings are."
+   }
+  ],
+  "ladder_lead": "Each acceptance is for one of six intervals, and each rung names a different response. This is the ladder as published on risks.sgit.ai. RiskMandate.ai publishes a slightly different set of bands, and the plan treats reconciling them as an open question.",
+  "ladder": [
+   {
+    "rung": "1 hour",
+    "length": "an hour",
+    "means": "\"I need more data.\" Fetch it now, then decide again."
+   },
+   {
+    "rung": "4 hours",
+    "length": "hours",
+    "means": "A priority-one incident. Trigger incident response."
+   },
+   {
+    "rung": "1 to 2 days",
+    "length": "days",
+    "means": "A smaller incident."
+   },
+   {
+    "rung": "1 to 2 weeks",
+    "length": "weeks",
+    "means": "A funded project for a team that already exists."
+   },
+   {
+    "rung": "1 month",
+    "length": "a month",
+    "means": "Assemble and fund. The default rung, set deliberately just above the incident line."
+   },
+   {
+    "rung": "6 months",
+    "length": "months",
+    "means": "Do nothing and review it then. It costs nothing, and it is legitimate with a name on it."
+   }
+  ],
+  "plan_lead": "The service runs one loop for every material risk a client carries: establish it on facts, place it on the chain to the board, have its holder accept it for an interval, and act when the interval ends. It reads the client's register from their GRC platform, writes acceptances and escalations back into it, and keeps each material risk's evidence and decisions in a vault of its own.",
+  "services": [
+   {
+    "name": "Acceptance audit",
+    "price": "Free",
+    "unit": "one hour, five risks",
+    "includes": "Five risks from the client's own register: who accepted each, until when, on what evidence, and what happens when it expires."
+   },
+   {
+    "name": "Foundation engagement",
+    "price": "£18,000",
+    "unit": "once, about eight weeks",
+    "includes": "One business unit: its top twenty risks established on facts, placed on the chain to the board, the first round of acceptances, and the integration with the client's GRC platform."
+   },
+   {
+    "name": "Acceptance Office",
+    "price": "£2,500 + £60",
+    "unit": "per month, plus per material risk per month",
+    "includes": "Clocks kept, expiries acted on, escalations raised, a monthly acceptance report for the executive team, a quarterly board pack, and a vault per material risk."
+   },
+   {
+    "name": "Incident and escalation support",
+    "price": "£1,200",
+    "unit": "per day, on demand",
+    "includes": "When a short acceptance becomes an incident, running the evidence and the re-acceptance alongside the client's own response."
+   },
+   {
+    "name": "Partner licence",
+    "price": "£15,000",
+    "unit": "per year, per consultancy",
+    "includes": "The method, the playbook, the templates and training, for consultancies and auditors who deliver it on their own engagements."
+   }
+  ],
+  "price_note": "Every price is a hypothesis for a UK firm in 2026, to be tested on the first three design partners.",
+  "risks_per_consultant": 150,
+  "assumptions": [
+   "A risk engineer can run about 150 material risks at steady state, keeping clocks, raising escalations and preparing reports, and fewer in the first quarter.",
+   "A consultant's loaded cost is about £8,500 a month in the UK.",
+   "Foundation engagements and on-demand days are not in the calculator, because they are lumpy.",
+   "At the defaults, twelve clients with forty material risks each bring about £58,800 a month against about £34,000 of delivery cost."
+  ]
+ }
+}

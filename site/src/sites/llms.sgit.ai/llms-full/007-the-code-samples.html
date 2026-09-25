@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The code samples (llms.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-code-samples">The code samples</a></li><li class="l2"><a href="#0-no-code-surfaces-1-and-2">0. No code — surfaces 1 and 2</a></li><li class="l2"><a href="#1-the-minimum-viable-chat-pane">1. The minimum viable chat pane</a></li><li class="l2"><a href="#2-adding-cancel">2. Adding cancel</a></li><li class="l2"><a href="#3-a-cost-meter-that-does-not-lie">3. A cost meter that does not lie</a></li><li class="l2"><a href="#4-a-model-picker-that-cannot-be-wrong">4. A model picker that cannot be wrong</a></li><li class="l2"><a href="#5-attaching-an-image">5. Attaching an image</a></li><li class="l2"><a href="#6-voice-input">6. Voice input</a></li><li class="l2"><a href="#7-a-file-grounded-pane-following-the-host-panels-own-rules">7. A file-grounded pane, following the host panel&amp;#x27;s own rules</a></li><li class="l2"><a href="#8-the-checklist-before-you-ship">8. The checklist before you ship</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 7 of 49</p><nav class="pager"><span><a href="006-the-code-samples.html">← The code samples</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="008-the-sgllm-reference.html">The sg.llm. reference →</a></span></nav><article class="source"><h1 id="the-code-samples">The code samples</h1>
+<p>For surface 3, the only one that needs code. Before you write any of it, read <a class="ext" href="https://llms.sgit.ai/index.md#decide">the decision table ↗</a>: two of the three surfaces need none.</p>
+<p><strong>Which half is a contract and which half is an example.</strong> Every <code>sg.llm.*</code> call below is the <strong>shipped API</strong>, quoted from a contract that is <a class="ext" href="https://llms.sgit.ai/api/index.md">generated on this site from its canonical source ↗</a> and licensed Apache-2.0 with the product. The surrounding UI code is an <strong>example</strong>, written for this site and released CC BY 4.0. Copy the calls with confidence; treat the DOM around them as one way of many.</p>
+<h2 id="0-no-code-surfaces-1-and-2">0. No code — surfaces 1 and 2</h2>
+<p><strong>Grants:</strong> none</p>
+<p>The vault chat panel and the app-side panel are host chrome. The only thing an app author expresses is a chrome preference:</p>
+<pre><code>{
+ &quot;entry&quot;: &quot;index.html&quot;,
+ &quot;hud&quot;: { &quot;show&quot;: { &quot;llm&quot;: true } }
+}</code></pre>
+<p><code>false</code> hides the button if it would clash with your own UI; <code>true</code> forces it on in <code>minimal</code> mode, where it is off by default. It is a preference about chrome and not authority.</p>
+<h2 id="1-the-minimum-viable-chat-pane">1. The minimum viable chat pane</h2>
+<p><strong>Grants:</strong> llm.chat</p>
+<pre><code>{
+ &quot;entry&quot;: &quot;index.html&quot;,
+ &quot;permissions&quot;: { &quot;llm&quot;: { &quot;chat&quot;: true } }
+}</code></pre>
+<pre><code>&lt;div id=&quot;chat&quot; hidden&gt;
+ &lt;div id=&quot;log&quot; role=&quot;log&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+ &lt;form id=&quot;composer&quot;&gt;
+ &lt;input id=&quot;q&quot; type=&quot;text&quot; autocomplete=&quot;off&quot; aria-label=&quot;Message&quot;&gt;
+ &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+ &lt;/form&gt;
+&lt;/div&gt;
+&lt;div id=&quot;fallback&quot; hidden&gt;&lt;/div&gt;</code></pre>
+<pre><code>const chat = document.getElementById(&#x27;chat&#x27;)
+const fallback = document.getElementById(&#x27;fallback&#x27;)
+const log = document.getElementById(&#x27;log&#x27;)
+const composer = document.getElementById(&#x27;composer&#x27;)
+const q = document.getElementById(&#x27;q&#x27;)
+
+const messages = []
+
+// 1. ALWAYS check availability before rendering a chat UI.
+// It depends on runtime state: key configured, read-only session, budget spent.
+const a = await sg.llm.available()
+if (!a.ok) {
+ fallback.hidden = false
+ fallback.textContent = {
+ ENOKEY: &#x27;No AI key configured for this vault - Settings &gt; AI models.&#x27;,
+ EPERM: &#x27;This app was not granted AI access.&#x27;,
+ EREADONLY: &#x27;The AI key is owner-sealed and this is a read-only session.&#x27;,
+ }[a.reason] ?? `AI unavailable (${a.reason})`
+} else {
+ chat.hidden = false
+}
+
+composer.addEventListener(&#x27;submit&#x27;, async (e) =&gt; {
+ e.preventDefault()
+ const text = q.value.trim()
+ if (!text) return
+ q.value = &#x27;&#x27;
+
+ messages.push({ role: &#x27;user&#x27;, content: text })
+ append(&#x27;user&#x27;, text)
+
+ const bubble = append(&#x27;assistant&#x27;, &#x27;&#x27;)
+ try {
+ // 2. The terminal reply is authoritative. onToken is a UX affordance.
+ const res = await sg.llm.chat({ messages }, (delta, acc) =&gt; { bubble.textContent = acc })
+ bubble.textContent = res.content
+ messages.push({ role: &#x27;assistant&#x27;, content: res.content })
+ } catch (err) {
+ // 3. Branch on err.code, never on message text.
+ bubble.textContent = `[${err.code}] ${errorText(err.code)}`
+ }
+})
+
+function append(role, text) {
+ const el = document.createElement(&#x27;div&#x27;)
+ el.className = `msg ${role}`
+ el.textContent = text
+ log.append(el)
+ log.scrollTop = log.scrollHeight
+ return el
+}
+
+function errorText(code) {
+ return {
+ EBUDGET: &#x27;Spend cap reached for this session.&#x27;,
+ ECONSENT: &#x27;You declined the request.&#x27;,
+ EMODEL: &#x27;That model cannot handle this request.&#x27;,
+ EABORT: &#x27;Cancelled.&#x27;,
+ EPROTO: &#x27;The provider failed. Try again.&#x27;,
+ }[code] ?? &#x27;Something went wrong.&#x27;
+}</code></pre>
+<p><strong>Three rules are load-bearing and all three are in the comments:</strong> check <code>available()</code> before drawing, treat the terminal reply as the truth, and branch on <code>err.code</code>.</p>
+<h2 id="2-adding-cancel">2. Adding cancel</h2>
+<p><strong>Grants:</strong> llm.chat</p>
+<p>The promise carries its own request id:</p>
+<pre><code>let inFlight = null
+
+async function send(messages, bubble) {
+ const p = sg.llm.chat({ messages }, (delta, acc) =&gt; { bubble.textContent = acc })
+ inFlight = p.requestId
+ stopBtn.hidden = false
+ try {
+ return await p
+ } catch (e) {
+ if (e.code === &#x27;EABORT&#x27;) return null // partial text is already rendered
+ throw e
+ } finally {
+ inFlight = null
+ stopBtn.hidden = true
+ }
+}
+
+stopBtn.onclick = () =&gt; { if (inFlight) sg.llm.cancel(inFlight) }</code></pre>
+<h2 id="3-a-cost-meter-that-does-not-lie">3. A cost meter that does not lie</h2>
+<p><strong>Grants:</strong> llm.chat llm.usage</p>
+<pre><code>async function refreshMeter() {
+ const u = await sg.llm.usage()
+ meter.textContent =
+ `${u.calls} calls - $${u.cost.toFixed(4)} - ${u.remaining.cost ?? &#x27;∞&#x27;} left`
+}</code></pre>
+<p>And per call. <strong>The <code>~</code> is the rule, not a nicety:</strong></p>
+<pre><code>const res = await sg.llm.chat({ messages })
+costPill.textContent = res.cost.estimated
+ ? `~$${res.cost.value.toFixed(4)}` // computed from tokens x list price - NOT billed
+ : `$${res.cost.value.toFixed(4)}` // reconciled against /generation</code></pre>
+<blockquote><p><code>estimated: true</code> means it was computed from token counts times list price, not billed. Render estimates with a <code>~</code>. Never show one as a bill.</p></blockquote>
+<p><code>usage()</code> covers the <strong>whole session</strong>, including the host panel&#x27;s own calls: one bill per session, not one per surface. A meter you draw in your app is therefore the true total, which is the right default and not the obvious one.</p>
+<h2 id="4-a-model-picker-that-cannot-be-wrong">4. A model picker that cannot be wrong</h2>
+<p><strong>Grants:</strong> llm.chat llm.models</p>
+<pre><code>const models = await sg.llm.models() // already filtered by the vault&#x27;s allow-list
+picker.append(...models.map(m =&gt; {
+ const o = document.createElement(&#x27;option&#x27;)
+ o.value = m.id
+ o.textContent = m.name ?? m.id
+ return o
+}))
+
+// then pass it per call
+await sg.llm.chat({ model: picker.value, messages })</code></pre>
+<p><strong>You do not filter this list.</strong> The host returns only what the vault allows, so a picker built from it is automatically correct, including after the allow-list changes.</p>
+<h2 id="5-attaching-an-image">5. Attaching an image</h2>
+<p><strong>Grants:</strong> llm.chat an image is an ordinary chat call, not a new grant</p>
+<pre><code>dropZone.addEventListener(&#x27;paste&#x27;, async (e) =&gt; {
+ const item = [...e.clipboardData.items].find(i =&gt; i.type.startsWith(&#x27;image/&#x27;))
+ if (!item) return
+
+ const part = await sg.llm.imagePart(item.getAsFile()) // Blob | Uint8Array | ArrayBuffer | data: URL
+ const res = await sg.llm.chat({
+ messages: [...messages, { role: &#x27;user&#x27;, content: [
+ { type: &#x27;text&#x27;, text: q.value || &#x27;What is in this image?&#x27; },
+ part,
+ ] }]
+ })
+ append(&#x27;assistant&#x27;, res.content)
+})</code></pre>
+<p><strong>Use <code>imagePart()</code>. Do not encode it yourself.</strong> It runs in your frame with no host round trip, and it chunks base64 at <strong>8190, not 8192</strong>, because <code>8192 % 3 === 2</code>, so a 8192-sized chunk emits <code>=</code> padding mid-string and <code>atob()</code> rejects it. <em>&quot;This codebase has shipped that exact bug three times.&quot;</em> <a class="ext" href="https://llms.sgit.ai/api/traps.md#chunking">The arithmetic, in full ↗</a>.</p>
+<p>png, jpeg, webp and gif only. Not svg: it is a scriptable document rather than a bitmap, and no provider takes it. An <code>EMODEL</code> error will <strong>name the model</strong> that cannot see. <strong>And clear the attachment after sending</strong> — the host panel does, deliberately, because an image left attached would silently re-send and re-bill on every turn.</p>
+<h2 id="6-voice-input">6. Voice input</h2>
+<p><strong>Grants:</strong> llm.chat llm.listen listen is never implied by chat</p>
+<pre><code>{ &quot;permissions&quot;: { &quot;llm&quot;: { &quot;chat&quot;: true, &quot;listen&quot;: true } } }</code></pre>
+<pre><code>micBtn.onclick = async () =&gt; {
+ try {
+ micBtn.disabled = true
+ const { text, cost } = await sg.llm.listen() // opts: {maxMs, model, prompt}
+ q.value = text
+ q.focus()
+ } catch (e) {
+ if (e.code === &#x27;ECONSENT&#x27;) return // declined - not worth showing
+ if (e.code === &#x27;ENOMIC&#x27;) showTypeInstead()
+ else showError(e.code)
+ } finally {
+ micBtn.disabled = false
+ }
+}</code></pre>
+<p><strong>Your frame never touches audio.</strong> A sandboxed frame has no <code>navigator.mediaDevices</code> at all. The host records, shows the indicator on its own chrome, transcribes with the vault&#x27;s key, and hands you text. That is also <a class="ext" href="https://llms.sgit.ai/security/index.md#indicator">why the indicator is trustworthy ↗</a>: it is not the app&#x27;s to draw, so it is not the app&#x27;s to fake.</p>
+<h2 id="7-a-file-grounded-pane-following-the-host-panels-own-rules">7. A file-grounded pane, following the host panel&#x27;s own rules</h2>
+<p><strong>Grants:</strong> llm.chat plus whatever vfs read grant your app already has</p>
+<p>If you attach vault files to the prompt, copy the three honesty mechanisms the host panel uses. They are the difference between a demo and something you can trust:</p>
+<pre><code>const BUDGET = 24_000 // ONE budget shared across all files
+
+async function buildContext(paths) {
+ const parts = []
+ let spent = 0
+ for (const path of paths) {
+ const text = await sg.vfs.readText(path)
+ const share = Math.max(0, Math.floor(BUDGET / paths.length) - 64)
+ const clip = text.length &gt; share
+ parts.push(
+ `--- ${path}${clip ? &#x27; (TRUNCATED)&#x27; : &#x27;&#x27;} ---\n` + // the MODEL sees TRUNCATED
+ text.slice(0, share)
+ )
+ spent += share
+ }
+ return parts.join(&#x27;\n\n&#x27;)
+}</code></pre>
+<ol><li><strong>One budget shared across all files</strong>, not one each, so a second file cannot silently double the bill.</li><li><strong><code>TRUNCATED</code> goes in the text the model sees</strong>, so it cannot pretend to have read the whole file.</li><li><strong>Re-adding a file replaces its contents</strong>, so it refreshes after an edit instead of duplicating.</li></ol>
+<p><strong>These are honesty mechanisms, not injection defences, and the difference matters here.</strong> The moment you attach file contents to a prompt, you are putting untrusted text in front of the model. The shipped vault chat wraps such content in an explicit <strong>untrusted-data fence</strong> and tells the model in its system prompt to treat anything inside it as data rather than instructions. If you are building your own grounded pane, <a class="ext" href="https://llms.sgit.ai/security/index.md#injection">read what that mechanism does and does not promise ↗</a> before you rely on the budget and the marker to protect you, because they do not.</p>
+<h2 id="8-the-checklist-before-you-ship">8. The checklist before you ship</h2>
+<div class="table"><table><thead><tr><th></th><th>Check</th></tr></thead><tbody><tr><td>☐</td><td><code>available()</code> called <strong>before</strong> any chat UI is rendered</td></tr>
+<tr><td>☐</td><td>Every <code>catch</code> branches on <code>err.code</code>, never on message text</td></tr>
+<tr><td>☐</td><td>All nine error codes have user-facing text: <code>EPERM</code> <code>ECONSENT</code> <code>ENOKEY</code> <code>EREADONLY</code> <code>EBUDGET</code> <code>EMODEL</code> <code>EABORT</code> <code>EIMGSIZE</code> <code>EPROTO</code></td></tr>
+<tr><td>☐</td><td>Estimated costs rendered with <code>~</code>, never shown as a bill</td></tr>
+<tr><td>☐</td><td>Image attachments cleared after one send</td></tr>
+<tr><td>☐</td><td>File context under one shared budget, with <code>TRUNCATED</code> visible to the model</td></tr>
+<tr><td>☐</td><td>Model picker built from <code>models()</code> and not filtered locally</td></tr>
+<tr><td>☐</td><td>Only the grants you use are declared, and <code>listen</code> only if you actually record</td></tr>
+<tr><td>☐</td><td>You have checked whether <strong>surface 1 or 2 would have done the job with no code at all</strong></td></tr></tbody></table></div>
+<p><strong>These samples are read rather than run, and that is a weakness this site names.</strong> The brief&#x27;s recommendation was to ship them as a real vault app that exercises every call, published as both the demo and the test, so they are verified by existing rather than by review. That app is not built. It also cannot be published casually: <a class="ext" href="https://llms.sgit.ai/security/index.md#storing">a vault with an LLM key configured carries a credential ↗</a>, so the demo needs either hard spend caps chosen deliberately for publication or a bring-your-own-key flow. <a class="ext" href="https://llms.sgit.ai/admin/comms.md#needs">The decision is open and it belongs to the project lead ↗</a>.</p>
+<p><a class="ext" href="https://llms.sgit.ai/index.md">← Adding a chat pane ↗</a> <a class="ext" href="https://llms.sgit.ai/api/index.md">The reference → ↗</a></p>
+<hr>
+<p>/api/index.md</p>
+<hr></article><nav class="pager"><span><a href="006-the-code-samples.html">← The code samples</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="008-the-sgllm-reference.html">The sg.llm. reference →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>7 of 49: The code samples</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Keys, signatures and encrypting to someone else · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#keys-signatures-and-encrypting-to-someone-else-sgitai">Keys, signatures and encrypting to someone else, sgit.ai</a></li><li class="l1"><a href="#keys-signatures-and-encrypting-to-someone-else">Keys, signatures and encrypting to someone else</a></li><li class="l2"><a href="#what-sgit-actually-generates">What sgit actually generates</a></li><li class="l2"><a href="#the-lifecycle">The lifecycle</a></li><li class="l3"><a href="#1-generate">1 · Generate</a></li><li class="l3"><a href="#2-publish-the-public-half">2 · Publish the public half</a></li><li class="l3"><a href="#3-import-someone-elses">3 · Import someone else’s</a></li><li class="l3"><a href="#4-encrypt-to-them-and-decrypt-what-they-send-you">4 · Encrypt to them, and decrypt what they send you</a></li><li class="l3"><a href="#5-sign-and-verify">5 · Sign and verify</a></li><li class="l2"><a href="#the-envelope-on-the-wire">The envelope on the wire</a></li><li class="l2"><a href="#where-public-keys-live-in-a-vault">Where public keys live in a vault</a></li><li class="l2"><a href="#what-this-is-for">What this is for</a></li><li class="l2"><a href="#what-this-does-not-do-yet">What this does not do yet</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="pki.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/pki.html">live ↗</a></p><article class="source"><h1 id="keys-signatures-and-encrypting-to-someone-else-sgitai">Keys, signatures and encrypting to someone else, sgit.ai</h1>
+<blockquote><p>The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.</p></blockquote>
+<p><em>Source: <a href="pki.html">https://sgit.ai/docs/pki.html</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Docs</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a> / PKI</p>
+<h1 id="keys-signatures-and-encrypting-to-someone-else">Keys, signatures and encrypting to someone else</h1>
+<p>The vault key is symmetric and opens the whole vault. A keypair does the two things it cannot: prove <em>who</em> wrote something, and encrypt to somebody who holds no vault key at all. This page is the lifecycle, run end to end on the shipped CLI.</p>
+<p><strong>Everything below was executed, not recalled.</strong> Every command, every output shape and every construction on this page came from running <code>sgit pki</code> on <strong>v0.15.0</strong> in a throwaway home directory. Where the behaviour differs from what you might expect, and in two places it does, the page says so.</p>
+<h2 id="what-sgit-actually-generates">What sgit actually generates</h2>
+<p><code>sgit pki keygen</code> creates <strong>two</strong> pairs at once, and prints two fingerprints:</p>
+<div class="table"><table><thead><tr><th>Purpose</th><th>Construction</th><th>Identifier</th></tr></thead><tbody><tr><td>Encryption</td><td><strong>RSA-OAEP, 4096-bit</strong></td><td><code>fingerprint</code></td></tr>
+<tr><td>Signing</td><td><strong>ECDSA P-256</strong></td><td><code>signing_fingerprint</code></td></tr></tbody></table></div>
+<p>Encryption is <strong>hybrid</strong>, which is what makes it usable on files of any size: a fresh AES-256-GCM content key encrypts the payload, and RSA-OAEP wraps that content key. The same AES-256-GCM primitive as the rest of the vault, the keypair only changes how the content key gets to the recipient.</p>
+<p>Note for anyone integrating against a spec rather than the binary: this is <strong>RSA-OAEP and ECDSA</strong>, not X25519/Ed25519. Draft material describing an X25519 sealing layer describes a design, not what v0.15.0 ships.</p>
+<h2 id="the-lifecycle">The lifecycle</h2>
+<h3 id="1-generate">1 · Generate</h3>
+<pre><code>$ sgit pki keygen --label &quot;My Vault Identity&quot;
+Enter passphrase to protect private keys:
+
+Generating RSA-4096 encryption key... done
+
+Key pair created:
+  Label:                My Vault Identity
+  Encryption:           RSA-OAEP 4096-bit
+  Signing:              ECDSA P-256
+  Fingerprint:          sha256:a4615402a0bc23ac
+  Signing fingerprint:  sha256:69d9b4835ccf790c</code></pre>
+<p><strong>Keygen prompts for a passphrase</strong> and will not proceed without one, private keys are encrypted at rest. In a script, feed it on stdin; with no terminal at all it exits with an <code>EOFError</code> rather than silently generating an unprotected key, which is the right failure.</p>
+<p>RSA-4096 generation is not instant. Expect a pause.</p>
+<h3 id="2-publish-the-public-half">2 · Publish the public half</h3>
+<pre><code>$ sgit pki list
+  sha256:a4615402a0bc23ac  My Vault Identity  (RSA-OAEP 4096)
+
+$ sgit pki export sha256:a4615402a0bc23ac &gt; my-identity.json</code></pre>
+<p><strong>Export produces a JSON bundle, not a PEM file.</strong> It carries both public keys, both fingerprints and the label:</p>
+<pre><code>{
+  &quot;v&quot;: 1,
+  &quot;encrypt&quot;: &quot;-----BEGIN PUBLIC KEY-----\nMIICIjANBgkq…&quot;,
+  &quot;sign&quot;:    &quot;-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQ…&quot;,
+  &quot;label&quot;:   &quot;My Vault Identity&quot;,
+  &quot;fingerprint&quot;:         &quot;sha256:a4615402a0bc23ac&quot;,
+  &quot;signing_fingerprint&quot;: &quot;sha256:69d9b4835ccf790c&quot;
+}</code></pre>
+<p>The bundle contains no private material. Publish it, mail it, commit it, put it on your website.</p>
+<h3 id="3-import-someone-elses">3 · Import someone else’s</h3>
+<pre><code>$ sgit pki import their-identity.json
+Imported contact: Their Label
+  Fingerprint: sha256:…
+
+$ sgit pki contacts
+  sha256:…  Their Label</code></pre>
+<h3 id="4-encrypt-to-them-and-decrypt-what-they-send-you">4 · Encrypt to them, and decrypt what they send you</h3>
+<pre><code>$ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
+Encrypted to message.txt.enc
+
+$ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
+Enter passphrase:
+Decrypted to message.txt</code></pre>
+<p>Round trip verified. Two argument details that will bite you once each: <code>encrypt</code> takes <code>--recipient</code> (a contact’s fingerprint) and an optional <code>--fingerprint</code> for <em>your</em> signing key; <code>decrypt</code> requires <code>--fingerprint</code>. It will not guess which of your keys to try.</p>
+<h3 id="5-sign-and-verify">5 · Sign and verify</h3>
+<pre><code>$ sgit pki sign report.pdf --fingerprint sha256:69d9b4835ccf790c
+$ sgit pki verify report.pdf report.pdf.sig</code></pre>
+<p>Detached signatures, so the signed file is unchanged. Signing uses the <em>signing</em> fingerprint, which is the second one keygen printed.</p>
+<h2 id="the-envelope-on-the-wire">The envelope on the wire</h2>
+<p>An encrypted file is base64 over a small JSON object, worth knowing if you are writing an interoperable client:</p>
+<div class="table"><table><thead><tr><th>Field</th><th>Contents</th><th>Observed size</th></tr></thead><tbody><tr><td><code>v</code></td><td>Envelope version, <code>2</code> on v0.15.0</td><td>none</td></tr>
+<tr><td><code>w</code></td><td>The AES content key, wrapped with RSA-OAEP to the recipient</td><td>512 bytes (4096-bit)</td></tr>
+<tr><td><code>i</code></td><td>AES-GCM IV</td><td>12 bytes</td></tr>
+<tr><td><code>c</code></td><td>Ciphertext with its GCM tag</td><td>plaintext + 16</td></tr></tbody></table></div>
+<p>A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, so this is efficient for large payloads and heavy for tiny ones.</p>
+<h2 id="where-public-keys-live-in-a-vault">Where public keys live in a vault</h2>
+<p>Vaults carry public PKI keys as immutable objects at <code>bare/keys/key-rnd-imm-*</code>, alongside the content store at <code>bare/data/obj-cas-imm-*</code>. They are public by construction, so nothing there needs protecting, which is exactly why a lane addressed by a public key can be written to by a stranger.</p>
+<h2 id="what-this-is-for">What this is for</h2>
+<p>Signing and encrypting files is useful on its own. The larger use is <a href="vault-messaging.html"><strong>vault-to-vault messaging</strong></a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a>: your public key becomes an address a stranger can write to, and your private key is the only thing that can read what arrives. That page composes this one with <a href="../api/append-lanes.html">append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a>.</p>
+<h2 id="what-this-does-not-do-yet">What this does not do yet</h2>
+<ul><li><strong>No key revocation or rotation workflow.</strong> There is no CRL, no expiry, no <code>sgit pki revoke</code>. If a private key is compromised, you generate a new pair and redistribute the bundle out of band.</li><li><strong>No web of trust and no directory.</strong> Fingerprint verification is your problem, compare out of band, exactly as with SSH host keys.</li><li><strong>Fingerprints carry a <code>sha256:</code> prefix.</strong> That prefix is part of the CLI identifier, not part of any hash you might need elsewhere. See the <a href="vault-messaging.html#addressing">addressing note</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html#addressing" title="live page">↗</a>. It is a live source of confusion.</li><li><strong>Signing and encryption are separate keys.</strong> Passing the wrong fingerprint to the wrong verb fails; it does not fall back.</li></ul>
+<p>Honest edges belong on <a href="limitations.html">the limitations page</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> too, and these are listed there.</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="pki.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/pki.html">https://sgit.ai/docs/pki.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/pki.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:10Z</dd><dt>sha256</dt><dd><code title="3aa68e1d372c335ecbc78d55f6e967856d44c47564560aa0cf2552f5143f0d26">3aa68e1d372c</code></dd><dt>Frozen copy</dt><dd><a href="pki.md">sites/sgit.ai/docs/pki.md</a> (6,476 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

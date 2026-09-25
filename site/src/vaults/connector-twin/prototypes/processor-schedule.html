@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The processor and its schedule · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="processor-schedule.md">raw text</a></p><article class="source"><h1 id="the-processor-and-its-schedule">The processor and its schedule</h1>
+<p>The processor reads pending entries from the append lane, folds them into views, commits the views, and marks the entries processed. The mechanics are simple: list with <code>include_content: false</code>, fetch in batches of up to 100, fold, commit, mark processed. Marking is idempotent, so a retried batch is safe.</p>
+<p>The schedule is the open question.</p>
+<div class="table"><table><thead><tr><th>Trigger</th><th>For</th><th>Against</th></tr></thead><tbody><tr><td><strong>Timer</strong>, for example every 15 minutes</td><td>Predictable cost; views are never more than one interval stale</td><td>Wasteful when idle; can fall behind a burst</td></tr>
+<tr><td><strong>Pending-count threshold</strong>, for example at 500 pending</td><td>Stays clear of the 1,000-per-token limit that refuses writes</td><td>Needs something watching the count</td></tr>
+<tr><td><strong>On demand</strong>, when somebody opens the replay</td><td>No work until it is needed; the freshest view</td><td>The first open after a busy day is slow</td></tr>
+<tr><td><strong>End of session</strong></td><td>One fold per agent session, a natural unit</td><td>Long sessions leave long gaps</td></tr></tbody></table></div>
+<h2 id="a-starting-default">A starting default</h2>
+<p>A timer every 15 minutes, a threshold at 500 pending entries per lane, and an on-demand fold of whatever is pending when the replay opens. Then measure: how often each trigger fires, how long a fold takes, how stale the views were when people looked. Change the default when real usage says so.</p>
+<h2 id="one-rule-regardless-of-schedule">One rule regardless of schedule</h2>
+<p>Capture must not fail silently. In broker and gateway mode, if the lane refuses an append, the entry is held locally and the broker accepts no further write operations until the lane accepts it again. The schedule can be lazy; capture cannot.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="5365f4670ec5813006f1df5d502c6e736a8286952053f92e08a0bb357074d94a">5365f4670ec5</code></dd><dt>Frozen copy</dt><dd><a href="processor-schedule.md">vaults/connector-twin/prototypes/processor-schedule.md</a> (1,574 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

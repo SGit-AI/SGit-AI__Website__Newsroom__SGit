@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>0.8.0 — Homepage links to the interactive scenarios · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="0.8.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/0.8.0.html">live ↗</a></p><article class="source"><h1 id="080-homepage-links-to-the-interactive-scenarios">0.8.0 — Homepage links to the interactive scenarios</h1>
+<p>A small one: the homepage now points visitors at the interactive risk-acceptance
+scenarios. The CTA sits in the acceptance section — right under the
+<code>rm-window-picker</code> and the &quot;how long, who owns it, what&#x27;s funded&quot; copy — because
+the scenarios (&quot;how long would you accept it?&quot;) are exactly that mechanic made
+playable. <code>data-nav=&quot;scenarios.html&quot;</code> routes through the host to the Interactive
+page.</p>
+<p>As with the RAMM band, the homepage is the frozen <code>latest</code> version page, so this
+is a new snapshot: <code>src/v0/v0.8/v0.8.0/</code> overrides the homepage template (adds the
+CTA) and inherits everything else — empty section nav, the dropdown, the RAMM
+band — by layering. No new CSS; the link reuses <code>.btn</code> / <code>.cta-row</code>.</p>
+<p>Smoke now asserts the homepage carries both first-party CTAs (RAMM and scenarios).
+Older snapshots are untouched; frozen outputs re-pinned only where the embedded
+switcher list grows by 0.8.0.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/0.8.0.html">https://riskmandate.ai/versions/0.8.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/0.8.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:16Z</dd><dt>sha256</dt><dd><code title="f5ce8bd9363169112d112237b8fd855ac85a92346beca00685d89c6ac673b0a5">f5ce8bd93631</code></dd><dt>Frozen copy</dt><dd><a href="0.8.0.md">sites/riskmandate.ai/versions/0.8.0.md</a> (967 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

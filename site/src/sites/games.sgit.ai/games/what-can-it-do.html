@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>What Can It Do? — the scoreboard · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · games.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#what-can-it-do-the-scoreboard">What Can It Do? — the scoreboard</a></li><li class="l1"><a href="#what-can-it-do-the-scoreboard-1">What Can It Do? — the scoreboard</a></li><li class="l2"><a href="#three-marks-kept-apart-everywhere">Three marks, kept apart everywhere</a></li><li class="l2"><a href="#the-scoring-stated-before-you-play">The scoring, stated before you play</a></li><li class="l2"><a href="#the-mandate-points-are-a-second-separate-currency">The mandate points are a second, separate currency</a></li><li class="l2"><a href="#the-set-spans-both-directions">The set spans both directions</a></li><li class="l2"><a href="#what-it-does-not-prove">What it does not prove</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/games.sgit.ai.html">games.sgit.ai</a> · <a href="what-can-it-do.md">raw text</a> · <a class="ext" href="https://games.sgit.ai/games/what-can-it-do.md">live ↗</a></p><article class="source"><h1 id="what-can-it-do-the-scoreboard">What Can It Do? — the scoreboard</h1>
+<blockquote><p>The scoreboard game: 40 questions, five levels, scored with a proper scoring rule so that saying yes to everything loses. 17 of the 40 are things no agent can do.</p></blockquote>
+<p>*Source: <a href="what-can-it-do.html">https://games.sgit.ai/games/what-can-it-do.html</a><a class="ext live" href="https://games.sgit.ai/games/what-can-it-do.html" title="live page">↗</a> · site v0.5.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://games.sgit.ai/index.md" title="live page">↗</a> / <a href="index.html">Games</a><a class="ext live" href="https://games.sgit.ai/games/index.md" title="live page">↗</a> / What Can It Do?</p>
+<h1 id="what-can-it-do-the-scoreboard-1">What Can It Do? — the scoreboard</h1>
+<p>You name the agent and where you run it. The board then asks, capability by capability, two questions back to back: <strong>can it?</strong> and <strong>do you want it to?</strong> The first is scored. The second quietly assembles a mandate.</p>
+<p><a class="ext" href="https://what-can-it-do.games.sgit.ai">Play it at what-can-it-do.games.sgit.ai ↗</a> — that is the player-facing site, and the link to send to somebody who just wants to play. This page is about how it works and what it is measuring.</p>
+<p>The claims every question rests on are public and arguable: <a class="ext" href="https://what-can-it-do.games.sgit.ai/map/index.html">the map ↗</a> is 23 capabilities against 9 products, with the evidence tier and the control on every row, generated from a data pack a pull request can change. <a class="ext" href="https://what-can-it-do.games.sgit.ai/map/deltas/index.html">The mandates and their deltas ↗</a> are drawn from the same pack.</p>
+<h2 id="three-marks-kept-apart-everywhere">Three marks, kept apart everywhere</h2>
+<p>The design decision the whole game rests on is that three different things are never drawn the same way: <strong>your ink</strong> (what you said), <strong>the board&#x27;s stamp</strong> (what the profile says), and <strong>the mandate mark</strong> (what you wanted). Most assessment tools collapse the second and third — they ask what you want and then tell you whether you are compliant. Keeping them apart is what makes the delta visible.</p>
+<h2 id="the-scoring-stated-before-you-play">The scoring, stated before you play</h2>
+<div class="table"><table><thead><tr><th>You answer</th><th>Scored as</th><th>If right</th><th>If wrong</th></tr></thead><tbody><tr><td>Yes</td><td>0.75 confident</td><td>+30</td><td>−50</td></tr>
+<tr><td>No</td><td>0.25 confident</td><td>+30</td><td>−50</td></tr>
+<tr><td>Don&#x27;t know</td><td>0.5</td><td>0</td><td>0</td></tr></tbody></table></div>
+<p>Under the hood that is a proper scoring rule — squared error, shifted so that <em>not sure</em> is worth nothing: <code>points = 160 × (¼ − (p − truth)²)</code>. The property that matters is that <strong>a wrong answer costs more than a right one earns</strong>, which is the only way to stop the winning strategy being <em>say yes to everything</em>. Real grants are wider than people expect, so yes-to-everything would otherwise score well while measuring nothing. The game&#x27;s own self-test asserts it: answering <em>yes, definitely</em> to every question scores between −3,840 and −8,640 across the profiles in the set, against +3,840 for perfect knowledge.</p>
+<p>There is no forced guess. <em>Don&#x27;t know</em> is always available and always worth zero — the headline figure the game reports is calibration, not score, and a player who knows what they do not know should not be punished for saying so.</p>
+<h2 id="the-mandate-points-are-a-second-separate-currency">The mandate points are a second, separate currency</h2>
+<p>After you answer <em>can it?</em>, a <strong>but…</strong> tick appears — <em>…but it shouldn&#x27;t be able to</em> under a yes, <em>…but I&#x27;d want it to</em> under a no. Ticking it is worth ±20 mandate points, kept apart from the calibration points and reported separately: <strong>+20 for flagging a real delta, −20 for flagging one that is not there.</strong></p>
+<p>Every answer is then classed. The four delta classes are named in plain words, and the distinction inside each pair is the useful one:</p>
+<div class="table"><table><thead><tr><th>Class</th><th>Means</th></tr></thead><tbody><tr><td>excess you flagged</td><td>It can, you don&#x27;t want it to — and you knew</td></tr>
+<tr><td>excess you did not see</td><td>It can, you don&#x27;t want it to — and you also had the grant wrong</td></tr>
+<tr><td>gap you knew of</td><td>It cannot, you would want it to — and you knew</td></tr>
+<tr><td>gap you were counting on</td><td>It cannot, you thought it could, and you wanted it — something you are relying on that is not there</td></tr></tbody></table></div>
+<p>That last row is the one worth the whole game. It is the only class that describes a thing you are currently depending on which does not exist.</p>
+<h2 id="the-set-spans-both-directions">The set spans both directions</h2>
+<p><strong>17 of the 40 questions are above the ceiling</strong> — things no agent in any environment in the set can do, not even one running as an administrator with every confirmation switched off. They are there so the game measures over-crediting as well as underestimating, and the game&#x27;s self-test fails if their share leaves the 33–50% band. <a href="../method/the-ceiling.html">Why the ceiling exists, and what bounds it</a><a class="ext live" href="https://games.sgit.ai/method/the-ceiling.md" title="live page">↗</a>.</p>
+<h2 id="what-it-does-not-prove">What it does not prove</h2>
+<ul><li><strong>Anything about your grant.</strong> It measures you against a published profile — what a vendor says a product does — which is the weakest tier of evidence there is.</li><li><strong>That the levels are right.</strong> The derived ones come from a mesh snapshot that records no path at all for one capability; the above-the-ceiling ones are authored by one agent on one day, and each says so in the file.</li><li><strong>That the points mean anything.</strong> Values and cut-points are arbitrary until there is play data to fit them against.</li><li><strong>That a good score is safety.</strong> Calibration is about the player, not the environment.</li></ul>
+<blockquote><p><strong>Open them yourself.</strong> Two vaults since 9 September 2026. <em>What Can It Do?</em>: read key <code>cf04d8a9bac6…7b505f:pg87npy3</code> — <a class="ext" href="https://dev.vault.sgraph.ai/#cf04d8a9bac6185dcb71e9c6f19ae13238b6434780324b1873504f2d6f7b505f%3Apg87npy3">open it read-only in a new tab ↗</a>. The games vault, with <em>Which Agent Is It?</em> and the 9 September version of both on branch <code>release-2026-09-09</code>: <code>f94c8b1d4235…111118:4evnlwrj</code> — <a class="ext" href="https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj">open it ↗</a>; the full string is on <a href="../../sgit.ai/demos/vaults/agent-permission-games/index.html">its page at sgit.ai</a><a class="ext live" href="https://sgit.ai/demos/vaults/agent-permission-games/" title="live page">↗</a>. Both are read keys: they cannot write, which is what makes publishing them safe.</p></blockquote>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://games.sgit.ai/llms.txt" title="live page">↗</a> · <a href="what-can-it-do.html">HTML version</a><a class="ext live" href="https://games.sgit.ai/games/what-can-it-do.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>games.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://games.sgit.ai/games/what-can-it-do.md">https://games.sgit.ai/games/what-can-it-do.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:36Z</dd><dt>sha256</dt><dd><code title="e6d3167739b3fa3865f39a254863de4b672b8a57cba77cc826f123774e85bcd9">e6d3167739b3</code></dd><dt>Frozen copy</dt><dd><a href="what-can-it-do.md">sites/games.sgit.ai/games/what-can-it-do.md</a> (5,861 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

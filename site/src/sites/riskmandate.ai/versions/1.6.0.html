@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.6.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.6.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.6.0.html">live ↗</a></p><article class="source"><h2 id="the-lab-gets-a-submenu-and-every-brief-the-site-was-built-from-gets-a-register">The Lab gets a submenu, and every brief the site was built from gets a register</h2>
+<p>The four Lab entries were reachable only from the Lab index, and the documents this
+site is written from were not recorded anywhere at all. Both are now visible in the
+header.</p>
+<ul><li><strong>The Lab is a dropdown.</strong> All four entries sit under it, in reading order, with the
+current one marked. Still one top-level entry of seven — a group counts as one.</li><li><strong><a class="ext" href="https://riskmandate.ai/versions/briefs.html">The brief register ↗</a></strong> — every document we were given, archived exactly
+as it arrived with its SHA-256, what it produced, and what it asked for and has not
+got. In the <em>More</em> menu. The machine-readable version is
+<a class="ext" href="https://riskmandate.ai/versions/briefs-register.json">briefs-register.json ↗</a>.</li></ul>
+<p><strong>It exists because both failure modes have already happened.</strong> One brief arrived twice,
+byte-identical, six hours apart — and three Lab entries had already been written from the
+first copy. Without a digest to compare against, the only thing standing between that and
+a wasted afternoon is somebody&#x27;s memory of a filename. The other failure is the quiet one:
+a document arrives and is never worked at all, and nobody notices because there is no list
+saying it should have been.</p>
+<p><strong>So the register does two jobs.</strong> Nothing gets worked twice, because an identical file is
+recognisable before anybody starts reading it, and every arrival is recorded rather than
+only the first. And nothing gets quietly dropped, because the agent producing these briefs
+can fetch the JSON, hash what it sent, and name anything absent — a check somebody else can
+run against us, which is the only kind worth having.</p>
+<p><strong>Every entry carries both columns.</strong> What came out of it, and what it asked for and has not
+got. Two of the nine items are marked <em>received</em>, meaning read and archived with nothing
+built — and they stay marked that way until something is. A register that listed only
+outputs would be a press release.</p>
+<p><strong>A new CI gate keeps it honest</strong>: every document must exist at the path given and match its
+recorded digest, every file in <code>assets/briefs/</code> must appear in the register, a <em>processed</em>
+item must name something that exists, and a <em>received</em> item must name nothing. 23 tests.</p>
+<p><strong>Two header fixes came with the submenu.</strong></p>
+<ul><li><strong>The Lab caret pushed the bar past its 1100px cap</strong> between 980 and 1012px, and the
+homepage — which carries section links too — past it up to 1032px. The drawer breakpoint
+moves from 980px to 1040px, and the decoupled scenarios pilot, which hides its nav with no
+replacement, moves from 880px to 940px where it actually stops overflowing.</li><li><strong>And the header itself scrolled sideways at 360px</strong> on the pages whose call to action is
+the longer one. The brand, the burger and the button all have to fit on that line, so the
+gutter, the gap and the button tighten below 420px rather than any of them being dropped.</li></ul>
+<p>Every page is now clean at fourteen widths from 1400px down to 360px, <strong>except</strong> for three
+pre-existing content overflows that are not the header and are not fixed here:
+<code>ramm.html</code> at 900px and 980px, and <code>plug.html</code> and <code>demos.html</code> at 360px. All three are
+min-content floors in vault-era grids and each needs its own look.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.6.0.html">https://riskmandate.ai/versions/1.6.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.6.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="6fc5825be64b017dafa29d4e71f783403155bd75c5520682d8940e6e62a47dfc">6fc5825be64b</code></dd><dt>Frozen copy</dt><dd><a href="1.6.0.md">sites/riskmandate.ai/versions/1.6.0.md</a> (3,198 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

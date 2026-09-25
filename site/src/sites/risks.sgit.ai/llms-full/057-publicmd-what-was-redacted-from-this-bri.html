@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>PUBLIC.md — what was redacted from this brief pack before publication (risks.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#publicmd-what-was-redacted-from-this-brief-pack-before-publication">PUBLIC.md — what was redacted from this brief pack before publication</a></li><li class="l2"><a href="#why-anything-was-redacted-at-all">Why anything was redacted at all</a></li><li class="l2"><a href="#the-four-tier-3-rows-and-what-was-taken-out">The four Tier-3 rows, and what was taken out</a></li><li class="l2"><a href="#where-each-redaction-appears">Where each redaction appears</a></li><li class="l2"><a href="#what-is-not-redacted-and-why">What is not redacted, and why</a></li><li class="l2"><a href="#standing-offer">Standing offer</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 57 of 58</p><nav class="pager"><span><a href="056-07-gaps-open-questions-and-honest-tensio.html">← 07 — Gaps, Open Questions and Honest Tensions</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="058-licence.html">Licence →</a></span></nav><article class="source"><h1 id="publicmd-what-was-redacted-from-this-brief-pack-before-publication">PUBLIC.md — what was redacted from this brief pack before publication</h1>
+<p><strong>Applies to:</strong> the eleven source documents published under <code>/briefs/</code> on risks.sgit.ai
+<strong>Redacted:</strong> 23 August 2026, at site v0.1.0
+<strong>Convention:</strong> the same one the Regulation Graph vault adopted after an audit — *publish the
+artefact, and publish what was taken out of it*. A clean document with an unexplained gap is
+worse than a redacted one with a receipt.</p>
+<hr>
+<h2 id="why-anything-was-redacted-at-all">Why anything was redacted at all</h2>
+<p>The brief pack was written as a working document for the agent commissioned to build this site.
+It names four sources as <strong>Tier-3 — do not publish, quote or paraphrase</strong> — and, being a working
+document, it names them <em>by name</em> so the builder knows what to skip. That is correct for a
+working document and wrong for a published one: republishing the pack verbatim would publish
+exactly the four things the pack says not to publish.</p>
+<p>So the pack is published in full, with the identifying detail of those four rows removed and each
+removal recorded here. <strong>Nothing else was changed</strong> — no argument was softened, no number
+adjusted, no finding dropped. Every redaction is marked in place with
+<code>[REDACTED · Tier-3 · see PUBLIC.md]</code> or <code>[redacted]</code> inside a file path.</p>
+<p>The rule is also enforced rather than remembered: <code>admin/build/validate.js</code> pattern-matches the
+distinctive strings of all four Tier-3 rows across <strong>every file in the tree</strong>, with no exemption
+for <code>briefs/</code>, and fails the build if one reappears. A future edit cannot quietly undo this.</p>
+<hr>
+<h2 id="the-four-tier-3-rows-and-what-was-taken-out">The four Tier-3 rows, and what was taken out</h2>
+<div class="table"><table><thead><tr><th>Row</th><th>What it is</th><th>What was redacted</th></tr></thead><tbody><tr><td><strong>Vendor assessment</strong> (<code>tier 3</code>, manifest row 35)</td><td>A comparative maturity assessment scoring two named real companies at Level 1, concluding one presents more exposure on the axis it markets hardest. Rigorous, sourced, scrupulous about its own limits — and a legal and relationship exposure</td><td><strong>Both company names</strong>, and the source file path that carries them. The row itself, its word count, its tier and its <code>HOLD - LEGAL READ</code> disposition are published unchanged</td></tr>
+<tr><td><strong>Competitor map</strong> (<code>tier 3</code>, manifest row 36)</td><td>Competitor maps naming two large risk-management vendors, with dismissive characterisations of their products</td><td><strong>Both company names</strong>, the two disparaging quotes, and the file path that carries one of the names</td></tr>
+<tr><td><strong>Investment strategy</strong> (<code>tier 3</code>, manifest row 37)</td><td>Illustrative revenue, valuation and exit figures, explicitly framed at source as scenarios rather than projections</td><td><strong>The figures.</strong> The existence of the document, its word count and its internal-only disposition are published unchanged</td></tr>
+<tr><td><strong>Partnership contract draft</strong> (<code>tier 3</code>, manifest row 38)</td><td>An actual contract draft with commercial terms</td><td><strong>The commercial terms</strong>, in the prose and in the file path that spells them out</td></tr></tbody></table></div>
+<h2 id="where-each-redaction-appears">Where each redaction appears</h2>
+<div class="table"><table><thead><tr><th>File</th><th>Redactions</th><th>What</th></tr></thead><tbody><tr><td><code>08__source-manifest.csv</code></td><td>4</td><td>The four Tier-3 rows: company names, source paths and commercial figures</td></tr>
+<tr><td><code>06__boundaries-and-house-style.md</code></td><td>6</td><td>The redaction watch-list itself — company names, two quotes, four entries in the mention-count list, the investor figures, and the contract terms</td></tr>
+<tr><td><code>07__gaps-and-open-questions.md</code></td><td>1</td><td>Company names in honest tension #5</td></tr>
+<tr><td><code>04__riskmandate-refactor.md</code></td><td>1</td><td>Company names and the disparaging quote in &quot;what must not happen&quot;</td></tr>
+<tr><td><code>README.md</code></td><td>1</td><td>Company names in the Tier-3 warning</td></tr>
+<tr><td><code>LICENSE.md</code></td><td>1</td><td>Company names in the licence scope note</td></tr></tbody></table></div>
+<p><strong>Total: 14 redactions across 6 of the 11 documents.</strong> Five documents — <code>00__BRIEF.md</code>,
+<code>01__concepts-index.md</code>, <code>02__risk-acceptance.md</code>, <code>03__worked-examples-and-vaults.md</code> and
+<code>05__site-architecture.md</code> — are published byte-identical to the pack as received.</p>
+<hr>
+<h2 id="what-is-not-redacted-and-why">What is <em>not</em> redacted, and why</h2>
+<ul><li><strong>The fact that Tier-3 material exists</strong>, its word counts, its tiers and its dispositions. A
+manifest naming a do-not-publish row is the mechanism working, and hiding the row would hide the
+mechanism.</li><li><strong>Every other named organisation in the pack.</strong> AWS, MITRE, the EU institutions, and the
+organisations named in the redaction watch-list&#x27;s <em>other</em> categories are not Tier-3 and are not
+redacted — the pack&#x27;s own reasoning for treating them differently is published intact.</li><li><strong>The redaction watch-list&#x27;s reasoning.</strong> Section 2 of <code>06__boundaries-and-house-style.md</code>
+survives in full apart from the names: the analysis of <em>why</em> certain material needs a legal read,
+framing or a right of reply is the most useful part of that document and is published as written.</li></ul>
+<h2 id="standing-offer">Standing offer</h2>
+<p>If any organisation named in the un-redacted corpus believes a characterisation on this site is
+unfair, that is <a class="ext" href="https://risks.sgit.ai/admin/comms.html#n3">ask N3 on the comms board ↗</a> — a legal
+read and a right-of-reply process is a precondition of publishing any of that material, and the
+offer stands whether or not it is ever published.</p>
+<hr>
+<p>This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>== briefs/LICENSE.md — source document, verbatim</p>
+<hr></article><nav class="pager"><span><a href="056-07-gaps-open-questions-and-honest-tensio.html">← 07 — Gaps, Open Questions and Honest Tensions</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="058-licence.html">Licence →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/llms-full.txt">https://risks.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:19Z</dd><dt>sha256</dt><dd><code title="043b6dd54a87b99e5ad22921b82672869533d32d7ec901dc828be518bb08fe23">043b6dd54a87</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/risks.sgit.ai/llms-full.txt</a> (518,813 bytes)</dd><dt>Section</dt><dd>57 of 58: PUBLIC.md — what was redacted from this brief pack before publication</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

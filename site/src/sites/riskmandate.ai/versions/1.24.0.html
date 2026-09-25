@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.24.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.24.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.24.0.html">live ↗</a></p><article class="source"><h2 id="the-mvp-vault-a-reading-app-with-a-left-navigation-the-consequence-layer-and-the">The MVP vault: a reading app with a left navigation, the consequence layer, and the dual licence</h2>
+<p>The Gmail-connector vault <code>oc433z3m</code> is the first vault taken end to end, and the design template
+the rest will reuse. Three things landed together.</p>
+<p><strong>A grant is a union of capabilities; the reader needs the consequences.</strong> The build derives a new
+layer beside the grant. <code>data/assets.json</code> names what is in the deployment for the grant to act on —
+mail from other people, secrets and reset links (assumed present, and you can untick them), the
+owner&#x27;s filing, and the fact that this deployment also has Claude&#x27;s web tools on. <code>data/consequences.json</code>
+names what follows when a capability meets an asset, each one explicit and in the mailbox&#x27;s own words:
+read the secrets, read the reset links, take over an account that resets by email, forward any message,
+harvest the addresses, mass-send, attack others from the account, provoke a suspension, rearrange the
+filing, forward with a standing filter, send without a trace. The build writes <code>CONSEQUENCES.md</code> with
+the assets, the routes out counted, and every consequence with its <strong>barrier derived</strong> as the weakest
+among the capabilities it needs. It refuses a grant row that is the parent of no consequence, and a
+consequence that reads like a score. <code>data/standards/</code> carries GDPR, the EU AI Act and MITRE ATT&amp;CK as
+mini-graphs of <strong>titles and identifiers only</strong>, so a consequence links to the article or technique it
+touches without the vault reproducing a standard&#x27;s text.</p>
+<p><strong>The dual licence.</strong> A <code>licence</code> block in <code>vault.json</code> drives a new <code>LICENCE.md</code>: the published template
+is CC BY 4.0; a paid copy carries a commercial licence to the named buyer, granting full rights to use
+the material, including in client work, without attribution. The build refuses a commercial copy that
+does not name its buyer, order and level, and the footer of every derived file now names the licence.</p>
+<p><strong>The reading app, rebuilt.</strong> The renderer becomes v5 and moves to a new app vault, <code>vbhmlulo</code>, because
+this session cannot write the old one. It takes the layout of the store&#x27;s marketplace mock-up — a left
+navigation — in RiskMandate&#x27;s own paper-and-green skin. <em>Start here</em> opens with <strong>Who are you?</strong>, five
+audiences that filter the same record. The rail groups the views: the record (the ABP, Evidence, the
+gap, <strong>What follows</strong>), what you do (Customise, Use it, Build it, Authorise it), and what you hold
+(<strong>Licence</strong>, <strong>Your keys</strong>, <strong>Keep it</strong>, <strong>Download</strong>). Your keys explains the read key and the write
+key and what clone-change-commit means; Keep it shows the vault&#x27;s own commit log beside the recompute
+history; Download shows the zip with its size and sha256.</p>
+<p><strong>What is where now.</strong> <code>oc433z3m</code> is re-pushed so its live view loads v5; the catalogue points at
+<code>vbhmlulo</code>; the previous app vault <code>fl3i7lu4</code> (v4) still serves the fifteen vaults not yet re-pushed,
+which each catch up when someone re-pushes them. The site&#x27;s vault page takes the mock-up&#x27;s positioning:
+<em>Open the vault. See what you get</em>, the reading-app / files / keys / history caption, and the three
+claims — your keys, multiple formats, version history — under the two live frames.</p>
+<p><strong>Still open, and said so on the console.</strong> The research list for the Gmail grant — Google&#x27;s sending
+limits, what suspends an account, which modify tools the connector exposes — is documented from Google&#x27;s
+pages or left open, never provoked. The authored per-audience views and projections remain their own
+task. And at release time <code>oc433z3m</code>&#x27;s live host frame was still resolving the newly-pushed sub-vault
+mount to <code>vbhmlulo</code>; the vault data is verified correct server-side and the renderer is proven through a
+static preview, so this is the host indexing a brand-new mount target, as the first push was.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.24.0.html">https://riskmandate.ai/versions/1.24.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.24.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:13Z</dd><dt>sha256</dt><dd><code title="e31225269564be9afcc7af11041691ce396390322bcf12c0eb837d815308c5a4">e31225269564</code></dd><dt>Frozen copy</dt><dd><a href="1.24.0.md">sites/riskmandate.ai/versions/1.24.0.md</a> (3,828 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

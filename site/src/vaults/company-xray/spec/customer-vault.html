@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The customer vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="customer-vault.md">raw text</a></p><article class="source"><h1 id="the-customer-vault">The customer vault</h1>
+<p>One vault per customer. It starts as the drop box and ends as the delivery, so the customer&#x27;s documents, the X-ray and every later change sit in one encrypted history.</p>
+<pre><code>README.md            what is here, and where to start
+inbox/               the customer&#x27;s documents, and intake.md
+xray/                X-RAY.md, board-pack.md, questions-for-you.md, next-90-days.md,
+                     findings.json, evidence/
+claude/              PROJECT-INSTRUCTIONS.md, UPLOAD-THESE.md, TRY-ASKING.md
+tools/               recompute.py: the arithmetic, re-runnable</code></pre>
+<h2 id="the-life-of-the-vault">The life of the vault</h2>
+<div class="table"><table><thead><tr><th>Step</th><th>What happens</th><th>Who holds the key</th></tr></thead><tbody><tr><td>1. Create</td><td>The operator creates the vault with <code>inbox/intake.md</code> and the README.</td><td>Operator</td></tr>
+<tr><td>2. Hand over the key</td><td>The key goes to the customer by a separate channel from the link to the intake page. Never on a web page, never in the same email as the instructions.</td><td>Operator and customer</td></tr>
+<tr><td>3. Drop in</td><td>The customer adds documents to <code>inbox/</code> with <code>sgit</code> from a folder on their machine, or through a browser vault interface where one is available to them, and fills in <code>intake.md</code>.</td><td>Both</td></tr>
+<tr><td>4. Run</td><td>The operator&#x27;s agents clone the vault, run the catalogue, and commit <code>xray/</code>, <code>claude/</code> and <code>tools/</code>.</td><td>Both</td></tr>
+<tr><td>5. Review</td><td>A person runs <code>tools/recompute.py</code>, reads every inferred finding against its evidence, and commits the review note.</td><td>Both</td></tr>
+<tr><td>6. Deliver</td><td>The handover call. The customer&#x27;s first clone is the delivery; done is a commit in their history.</td><td>Both</td></tr>
+<tr><td>7. Leave</td><td>The operator deletes its working copies, and records that it has. The customer can copy the content into a fresh vault whose key only they hold.</td><td>Customer</td></tr>
+<tr><td>8. Re-X-ray</td><td>Months later, the customer adds new documents and shares a key again. The new X-ray lands as a new commit; the difference is a diff.</td><td>Both, for the run</td></tr></tbody></table></div>
+<h2 id="what-the-host-sees">What the host sees</h2>
+<p>The vault is encrypted on the device before anything is uploaded, so the host holds ciphertext and never a readable document. The operator&#x27;s agents do see the documents, because reading them is the service; <code>plan/03-architecture.md</code> says where that happens and on what terms.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="0db7bedb487d431eabcc0075efbb8158045985c91f29b5ac3ed9fbfceeaa315b">0db7bedb487d</code></dd><dt>Frozen copy</dt><dd><a href="customer-vault.md">vaults/company-xray/spec/customer-vault.md</a> (2,197 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

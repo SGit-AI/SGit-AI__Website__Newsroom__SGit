@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>What To Build (abp.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#what-to-build">What To Build</a></li><li class="l2"><a href="#the-argument-this-site-owns">The argument this site owns</a></li><li class="l2"><a href="#build-order">Build order</a></li><li class="l2"><a href="#the-site-map">The site map</a></li><li class="l2"><a href="#the-docs-section-which-was-asked-for-specifically">The docs section, which was asked for specifically</a></li><li class="l2"><a href="#the-examples-which-are-the-point">The examples, which are the point</a></li><li class="l2"><a href="#the-community-editable-layer">The community editable layer</a></li><li class="l2"><a href="#what-not-to-build">What not to build</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 301 of 357</p><nav class="pager"><span><a href="300-what-to-build.html">← What To Build</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="302-the-conventions.html">The Conventions →</a></span></nav><article class="source"><h1 id="what-to-build">What To Build</h1>
+<blockquote><p><strong>The source bytes.</strong> This page is generated from <a href="../docs/pack/01__WHAT-TO-BUILD/index.html"><code>docs/pack/01__WHAT-TO-BUILD.md</code></a><a class="ext live" href="https://abp.sgit.ai/docs/pack/01__WHAT-TO-BUILD.md" title="live page">↗</a>, which is served unchanged. Anything rendered on this network stays one click from the file it came from.</p></blockquote>
+<h2 id="the-argument-this-site-owns">The argument this site owns</h2>
+<p>Every site in the network is named for an argument rather than for a function, and there are twenty seven of them. <strong>The argument here is not a product name.</strong></p>
+<blockquote><p><strong>You know what you asked for. You do not know what it can do.</strong></p></blockquote>
+<p>That is the thesis line for the home page. It is the corrected version of the memo of 11 September: the mandate is already understood, implicitly or explicitly, and the grant is not. <strong>The site exists to close that gap in public, for free, and the store sells the instance of it.</strong></p>
+<h2 id="build-order">Build order</h2>
+<p>The standard prompt asks for the pipeline first, and that is right. <strong>Nothing below matters if the site does not publish.</strong></p>
+<div class="table"><table><thead><tr><th>#</th><th>Step</th><th>Done when</th></tr></thead><tbody><tr><td>1</td><td><strong>CI pipeline and auto tagging</strong>, copied from a sibling site&#x27;s repository</td><td>A push to <code>dev</code> builds, tags and publishes</td></tr>
+<tr><td>2</td><td><strong>Version surface</strong>: <code>versions/index.json</code>, a per version file, and the version visible in the chrome as a link</td><td>The chrome shows the current version and it links to that version&#x27;s own details</td></tr>
+<tr><td>3</td><td><strong><code>llms.txt</code> and <code>llms-full.txt</code></strong>, generated from the site rather than written</td><td>Every page appears in <code>llms.txt</code></td></tr>
+<tr><td>4</td><td><strong>The docs section</strong>, using the platform&#x27;s markdown rendering</td><td>Every document in this pack is readable on the site</td></tr>
+<tr><td>5</td><td><strong>The data</strong>, promoted from the game&#x27;s pack into a published schema</td><td><code>data/</code> serves the capabilities, profiles, barriers and undo classes at a stable address with cross origin access</td></tr>
+<tr><td>6</td><td><strong>The model pages</strong>: what an ABP is, the four objects, the graph</td><td>A reader can follow one capability from a product profile to a mandate to a delta to a prohibition</td></tr>
+<tr><td>7</td><td><strong>The examples</strong>: five ABPs, derived from the data</td><td>Each example states which of its rows were measured and which were derived</td></tr>
+<tr><td>8</td><td><strong>The visualisations</strong></td><td>One grant against mandate view that is not a table</td></tr></tbody></table></div>
+<h2 id="the-site-map">The site map</h2>
+<pre><code>/                        the argument, in one screen, derived from the foundation document
+/what-is-an-abp/         the foundation document, rendered, with each term linked to its node
+/model/                  the graph: capabilities, barriers, undo, the schema
+/examples/               five ABPs, one per deployment shape
+/docs/                   every reference and guidance document, rendered
+/data/                   the JSON, at stable addresses, CORS enabled
+/versions/               the version history
+/llms.txt                generated
+/llms-full.txt           generated</code></pre>
+<p><strong>Scope by domain and link across.</strong> This site says one thing properly. Where an argument belongs to a sister site, link to it rather than restating it: the graph rules to <code>graphs.sgit.ai</code>, the capability map to <code>what-can-it-do.games.sgit.ai</code>, the twin to <code>twins.sgit.ai</code>, the acceptance workflow to <code>risks.sgit.ai</code>, the style rules to <code>coding.sgit.ai</code>.</p>
+<h2 id="the-docs-section-which-was-asked-for-specifically">The docs section, which was asked for specifically</h2>
+<p><strong>Every reference and guidance document in this pack goes into <code>/docs/</code>, rendered with the markdown rendering already used across the network.</strong> Do not write a renderer. The guidance is explicit that markdown viewing, file trees and page layouts are platform provided and must not be rebuilt.</p>
+<p><strong>What goes in it:</strong></p>
+<div class="table"><table><thead><tr><th>Section</th><th>Contents</th></tr></thead><tbody><tr><td><code>/docs/briefs/</code></td><td>The foundation document first, then the three briefs, all unchanged with their own licence footers intact</td></tr>
+<tr><td><code>/docs/pack/</code></td><td>The six numbered documents of this pack</td></tr>
+<tr><td><code>/docs/model/</code></td><td>The schema and ontology documents you write, as markdown with their JSON twins</td></tr>
+<tr><td><code>/docs/inherited/</code></td><td>Pointers to the guidance you inherited, with the date read. <strong>Link, do not copy</strong>, except where a rule is quoted</td></tr></tbody></table></div>
+<p><strong>Two conventions from the guidance apply to every page in it.</strong> Every page is reachable and machine readable, with a markdown twin and an entry in <code>llms.txt</code>. And anything rendered stays one click from its source bytes, so every rendered document shows a link to the file it came from.</p>
+<p><strong>Indexes are generated from the data they index</strong>, so <code>/docs/index</code> is built from the files present rather than maintained by hand. The guidance says an index that can disagree with its source is a defect.</p>
+<h2 id="the-examples-which-are-the-point">The examples, which are the point</h2>
+<p>The memo asks for the examples first and it is right, but they should be <strong>derived rather than authored</strong>. <a href="../docs/pack/04__THE-FIRST-EXAMPLES/index.html"><code>04__THE-FIRST-EXAMPLES.md</code></a><a class="ext live" href="https://abp.sgit.ai/docs/pack/04__THE-FIRST-EXAMPLES/index.md" title="live page">↗</a> gives the five and where each one&#x27;s rows come from.</p>
+<p><strong>Each example page shows:</strong></p>
+<ol><li><strong>The label</strong>: the one line on the outside, per <a href="../docs/pack/03__THE-ABP-MODEL/index.html"><code>03__THE-ABP-MODEL.md</code></a><a class="ext live" href="https://abp.sgit.ai/docs/pack/03__THE-ABP-MODEL/index.md" title="live page">↗</a>, with excess and unbounded excess as the two headline numbers, and no score.</li><li>The named deployment shape, in the product profile&#x27;s published words.</li><li><strong>The grant</strong>, as capability primitives, each with its barrier glyph and its undo class, ordered irreversible first and saying that reversibility is a property of the action rather than a severity.</li><li><strong>The mandate</strong>, as the small set the deployer authorised.</li><li><strong>The delta</strong>, computed, never stored, shown as excess in one colour and shortfall in the other.</li><li><strong>The prohibitions</strong>, each carrying the layer it would be enforced at, and each marked as enforced or not enforced today.</li><li><strong>The provenance line</strong>: how many rows were measured, how many derived, and when.</li><li><strong>The validity statement</strong>: this describes the deployment shape as at this date; if the risk changed, the deployment changed, not this document.</li></ol>
+<p><strong>That sixth row is not optional.</strong> The published map already does it, stating that twenty one of ninety nine rows were measured and the rest derived. <strong>An example that hides that is worse than one that has few measured rows.</strong></p>
+<h2 id="the-community-editable-layer">The community editable layer</h2>
+<p><strong>The data files are the shared facts and they live in this repository so that people can propose changes.</strong> That is the four layer architecture: the site and its data are the library, and a cloned vault is the instance.</p>
+<p>Two rules come with it, from 10 September:</p>
+<p><strong>A proposal to a data file carries evidence.</strong> Every node taken from a third party site carries a source URL, a retrieval timestamp and a content hash. A proposal that changes a capability row without one is an assertion.</p>
+<p><strong>A consumer pins a version.</strong> Anything that computes from these files states which version it computed against. A clone that floats against the latest has no reproducible output.</p>
+<h2 id="what-not-to-build">What not to build</h2>
+<ul><li><strong>A markdown viewer, a file browser or a page layout engine.</strong> Platform provided.</li><li><strong>A checkout, a price or a payment link.</strong> That is the store.</li><li><strong>A new capability ontology.</strong> It exists.</li><li><strong>A general graph renderer.</strong> The graph rules say never render the whole graph, render the result of a query.</li><li><strong>An assessment of any named product.</strong> See the hard rules.</li></ul>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../docs/pack/01__WHAT-TO-BUILD/index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/docs/pack/01__WHAT-TO-BUILD/index.html" title="live page">↗</a></em></p>
+<hr></article><nav class="pager"><span><a href="300-what-to-build.html">← What To Build</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="302-the-conventions.html">The Conventions →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/llms-full.txt">https://abp.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:20Z</dd><dt>sha256</dt><dd><code title="b6e1a14ac2f481a7eb7b3bfcc86d5a1a4020b70fb11ebe1b9ed367540f5814b9">b6e1a14ac2f4</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/abp.sgit.ai/llms-full.txt</a> (1,575,222 bytes)</dd><dt>Section</dt><dd>301 of 357: What To Build</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

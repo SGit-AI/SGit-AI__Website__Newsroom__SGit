@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Supplement Stack, a published vault · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#supplement-stack-a-published-vault">Supplement Stack, a published vault</a></li><li class="l1"><a href="#supplement-stack">Supplement Stack</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-this-vault-demonstrates">What this vault demonstrates</a></li><li class="l2"><a href="#what-is-going-on-here-step-by-step">What is going on here, step by step</a></li><li class="l3"><a href="#what-was-actually-taken-not-what-was-intended">What was actually taken, not what was intended</a></li><li class="l3"><a href="#every-number-points-back-at-the-photograph-it-came-from">Every number points back at the photograph it came from</a></li><li class="l3"><a href="#the-sum-nobody-else-computes">The sum nobody else computes</a></li><li class="l3"><a href="#the-output-is-a-briefing-not-a-diagnosis">The output is a briefing, not a diagnosis</a></li><li class="l3"><a href="#the-app-may-write-to-one-folder-and-nothing-else">The app may write to one folder, and nothing else</a></li><li class="l2"><a href="#why-this-shape-matters-beyond-supplements">Why this shape matters beyond supplements</a></li><li class="l2"><a href="#the-audit-honestly">The audit, honestly</a></li><li class="l2"><a href="#derived-facts">Derived facts</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://sgit.ai/demos/vaults/supplement-stack/index.html">live ↗</a></p><article class="source"><h1 id="supplement-stack-a-published-vault">Supplement Stack, a published vault</h1>
+<blockquote><p>A patient-held health record as a vault: a real supplement regimen, label photographs every extracted value is traceable to, deterministic totals against UK RNIs and EFSA upper limits, and an adherence log the app may write to and nothing else. Shared with a professional by handing over a read key.</p></blockquote>
+<p><em>Source: <a href="index.html">https://sgit.ai/demos/vaults/supplement-stack/index.html</a><a class="ext live" href="https://sgit.ai/demos/vaults/supplement-stack/index.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="../index.html">Vaults</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> / Supplement Stack</p>
+<h1 id="supplement-stack">Supplement Stack</h1>
+<p>A patient-held health record as a vault: a real supplement regimen, a photograph of every label the numbers were read from, deterministic totals against UK reference values, and an app permitted to write to exactly one folder and nothing else.</p>
+<p><strong>The idea it is built on, in one line.</strong> Every label describes one product; <strong>nothing describes the sum</strong>. The missing artefact is the total per nutrient across everything a person is taking, so the model extracts (fuzzy, and traceable to a label photo), the code adds up (deterministic, and reproducible), and the output is a briefing for somebody qualified. <strong>Never a verdict.</strong> This is a record-keeping tool, not medical advice, and no compliance finding of any kind exists for this pattern.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477</code>
+Published deliberately. It grants read, and only read, a write attempt is refused by the server&#x27;s write gate.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p>Both surfaces open automatically below. You can also <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477"><strong>open the app in its own window ↗</strong> ↗</a>.</p>
+<h2 id="what-this-vault-demonstrates">What this vault demonstrates</h2>
+<div class="table"><table><thead><tr><th>Feature</th><th>How this vault uses it</th></tr></thead><tbody><tr><td><strong>Scoped write permission</strong></td><td><code>app.json</code> grants the app <code>read</code> over everything but <code>write</code> and <code>mkdir</code> over <code>adherence/</code><em>only</em>. The app that records what you took each day cannot touch the regimen, the label photographs or the references, least authority, declared in the vault and enforced by the host</td></tr>
+<tr><td>Source-mapped extraction</td><td>every amount in <code>regimen.json</code> carries a <code>label_image</code> pointing at the photograph it was read from, so a misread is <em>visible</em> rather than propagated, the same discipline a diff gives code</td></tr>
+<tr><td>Deterministic analysis</td><td><code>scripts/totals.py</code> sums per nutrient with its rules stated in the open: topicals contribute nothing, as-needed items sit outside daily totals, and a null amount is <strong>flagged, never guessed</strong>. The in-app JavaScript does the same arithmetic, so two implementations can be checked against each other</td></tr>
+<tr><td>Named, dated reference data</td><td>UK RNIs and EFSA upper limits, with sources and a transcription note, explicitly <em>not</em> US Daily Values, because comparing a UK intake to US references without saying so would be a quiet error</td></tr>
+<tr><td>Honest incompleteness</td><td>one product&#x27;s 27-nutrient panel is not yet captured, so the app labels the totals <strong>INCOMPLETE</strong> rather than showing a confident wrong number</td></tr>
+<tr><td>The brief ships with the vault</td><td><code>briefs/</code> carries the architecture brief the whole thing was built from, the reasoning travels with the artefact</td></tr></tbody></table></div>
+<h2 id="what-is-going-on-here-step-by-step">What is going on here, step by step</h2>
+<p>The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+<p>the daily record</p>
+<h3 id="what-was-actually-taken-not-what-was-intended">What was actually taken, not what was intended</h3>
+<p>The <strong>Today</strong> tab is a checklist of the day&#x27;s regimen, grouped by timing. Ticking an item and pressing <strong>Save today</strong> writes one small JSON file, <code>adherence/2026-08-16.json</code>, into the vault.</p>
+<p>That distinction is the point: a regimen file says what you <em>mean</em> to take; the adherence log says what you <em>did</em>. When the conversation with a professional finally happens, the second is the honest input.</p>
+<p>The Today tab: per-item, per-timing, with a Save that writes into the vault.</p>
+<p>traceable extraction</p>
+<h3 id="every-number-points-back-at-the-photograph-it-came-from">Every number points back at the photograph it came from</h3>
+<p>The <strong>Stack</strong> tab lists each product with its dose, timing, route, and the label photograph the amounts were read from. A model did that reading, which is a fuzzy step, so each value carries a <code>label_image</code> back to its source.</p>
+<p>This is the source-map discipline applied to health data: a misreading stays <em>visible</em> and checkable against the picture, instead of quietly becoming a number in a total.</p>
+<p>The Stack: products, doses and the label photograph behind each set of numbers.</p>
+<p>the missing artefact</p>
+<h3 id="the-sum-nobody-else-computes">The sum nobody else computes</h3>
+<p>This is the tab the whole vault exists for. Every label describes one product; <strong>nothing describes the sum</strong>. Here it is: total per nutrient per day, each against the UK RNI and the EFSA upper limit, with the contributing products named.</p>
+<p>Two details matter more than the numbers. The reference set is <em>named and dated</em> (UK RNI + EFSA UL, deliberately not US Daily Values, for a regimen bought in the UK). And the amber banner says the totals are <strong>incomplete</strong>, listing exactly which amounts have not been captured: <em>&quot;Nothing is guessed: a value that is not on a captured label is flagged, never estimated.&quot;</em></p>
+<p>Totals per nutrient with ×RNI and ×UL ratios, and an honest incompleteness banner.</p>
+<p>never a verdict</p>
+<h3 id="the-output-is-a-briefing-not-a-diagnosis">The output is a briefing, not a diagnosis</h3>
+<p>The <strong>Briefing</strong> tab assembles everything into something to hand to a pharmacist or GP: the stack, the totals, the overlaps, the open questions, <em>&quot;Three products target the knee, is that a sensible combination or redundant?&quot;</em>, <em>&quot;Do any of these interact with my other medication?&quot;</em></p>
+<p>The tool deliberately stops there. It does the arithmetic nobody had done and hands the result to somebody qualified. It never answers the questions itself, and the vault says so on its own About tab.</p>
+<p>The Briefing: what to take to a professional, including the questions to ask.</p>
+<p>least authority</p>
+<h3 id="the-app-may-write-to-one-folder-and-nothing-else">The app may write to one folder, and nothing else</h3>
+<p>Here is the vault&#x27;s own <code>app.json</code>, read straight out of the store. The permission block grants <code>read</code> broadly but <code>write</code> and <code>mkdir</code> over <code>adherence/</code> <em>only</em>.</p>
+<p>So the app that ticks off today&#x27;s doses cannot alter the regimen, the label photographs, or the reference values, not by policy, but because the capability was never granted. This is what permissions look like when they are a property of the vault rather than a setting on a server, and it is the healthcare-shaped version of the whole argument.</p>
+<p>app.json: read broadly, write only adherence/) least authority, declared in the vault.</p>
+<h2 id="why-this-shape-matters-beyond-supplements">Why this shape matters beyond supplements</h2>
+<p>This is the clearest <strong>patient-held record</strong> on the site. The data lives in a vault the person controls; sharing it with a professional is handing over a read key, not granting an account on someone&#x27;s platform, and not emailing a PDF that is copied forever the moment it arrives. The write key never leaves the owner, so a reader can read <em>everything</em> and change <em>nothing</em>.</p>
+<p>The division of labour is the transferable part: <strong>a model does the fuzzy work</strong> (reading amounts off a photograph), <strong>code does the exact work</strong> (adding them up), and every fuzzy step is traceable to its source so a human can check it. Any domain where an LLM reads documents and arithmetic must be right (expenses, lab results, invoices, dosing) can borrow that shape. See the <a href="../../../use-cases/health-regulated.html">healthcare use case</a><a class="ext live" href="https://sgit.ai/use-cases/health-regulated.html" title="live page">↗</a> for where this fits.</p>
+<h2 id="the-audit-honestly">The audit, honestly</h2>
+<p>Every vault is audited before its read key appears here. This one is <strong>clean on credentials</strong>: no tokens, no keys, no <code>.vault/</code> operational bookkeeping, and the scan for personal identifiers found none either (no name, address, contact details, date of birth or health-service number; the record describes its owner only as &quot;UK-based adult male&quot;).</p>
+<p>What it <em>does</em> publish is a real person&#x27;s actual supplement regimen, and the health context that can be inferred from it, a knee, sport, sleep. That is the owner&#x27;s own data, published on purpose, and it is worth stating the rule that goes with it: <strong>revocation is not retroactive</strong>. Anybody who fetches these objects keeps them. Rotating the key protects future commits and returns nothing already read. The regimen is published because a real record demonstrates the pattern in a way a fabricated one cannot, and because the alternative, a sanitised sample, is exactly the thing this vault argues against.</p>
+<h2 id="derived-facts">Derived facts</h2>
+<p>23 files · 2.3 MB · 5 commits · app entry <code>index.html</code> · twelve label photographs, derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a>.</p>
+<hr>
+<p><em><a href="../../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://sgit.ai/demos/vaults/supplement-stack/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/demos/vaults/supplement-stack/index.html">https://sgit.ai/demos/vaults/supplement-stack/index.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/demos/vaults/supplement-stack/index.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:04Z</dd><dt>sha256</dt><dd><code title="49b8e7af15b2985c641a8f8dafc402830b0612795bd1299fb8ed194ffe53805b">49b8e7af15b2</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/sgit.ai/demos/vaults/supplement-stack/index.md</a> (9,393 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

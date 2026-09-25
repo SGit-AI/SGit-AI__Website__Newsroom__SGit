@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Revert rules, Gmail and Google Calendar · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="revert-rules.md">raw text</a></p><article class="source"><h1 id="revert-rules-gmail-and-google-calendar">Revert rules, Gmail and Google Calendar</h1>
+<p>For each action in scope: what the platform keeps, what the twin can offer, and the side effects the revert plan must name. Sources are in <code>plan/02-the-facts.md</code>.</p>
+<div class="table"><table><thead><tr><th>Action</th><th>API call</th><th>What the platform keeps</th><th>Twin&#x27;s inverse</th><th>Grade</th><th>Side effects to name</th></tr></thead><tbody><tr><td>Archive</td><td><code>messages.batchModify</code> removing <code>INBOX</code></td><td>The message, unchanged but for the label</td><td><code>batchModify</code> adding <code>INBOX</code></td><td>exact</td><td>None</td></tr>
+<tr><td>Label change</td><td><code>messages.modify</code></td><td>The message</td><td><code>modify</code> with the opposite labels</td><td>exact</td><td>None</td></tr>
+<tr><td>Move to trash</td><td><code>messages.trash</code></td><td>The message, for 30 days</td><td><code>messages.untrash</code></td><td>exact, within 30 days</td><td>None</td></tr>
+<tr><td>Permanent delete</td><td><code>messages.delete</code></td><td>Nothing the user can reach. An administrator can bulk-restore a date range within 25 days</td><td><code>messages.insert</code> with the captured content, if the agent read it in full</td><td>content only</td><td>A new message id; threading may differ</td></tr>
+<tr><td>Send</td><td><code>messages.send</code></td><td>The sent message</td><td>None</td><td>none</td><td>The recipient has it</td></tr>
+<tr><td>Create draft</td><td><code>drafts.create</code></td><td>The draft</td><td><code>drafts.delete</code></td><td>exact</td><td>None</td></tr>
+<tr><td>Move or edit an event</td><td><code>events.patch</code> or <code>events.update</code></td><td>The new state only, for the user; an administrator&#x27;s audit log records some earlier values</td><td><code>events.patch</code> with the captured before-state</td><td>exact</td><td>Attendees are notified again if <code>sendUpdates</code> is set</td></tr>
+<tr><td>Respond to an invitation</td><td><code>events.patch</code> on the attendee&#x27;s <code>responseStatus</code></td><td>The new response</td><td><code>patch</code> back to the captured response</td><td>exact</td><td>The organiser is notified</td></tr>
+<tr><td>Delete an event</td><td><code>events.delete</code></td><td>Google&#x27;s help says deleted events stay in trash for 30 days; not yet tested for API deletions</td><td><code>events.insert</code> with the captured event</td><td>partial</td><td>A new event id; the cancellation already sent cannot be recalled</td></tr>
+<tr><td>Create an event</td><td><code>events.insert</code></td><td>The event</td><td><code>events.delete</code></td><td>exact</td><td>Attendees receive a cancellation</td></tr></tbody></table></div>
+<h2 id="rules-for-the-revert-plan">Rules for the revert plan</h2>
+<ol><li>Newest first. Undo in the reverse order of doing.</li><li>Name every side effect. A revert that re-notifies six people is not free.</li><li>Never execute without a person&#x27;s approval.</li><li>Execute through the same capture path, so the revert is journalled like everything else.</li><li>Where the grade is <code>none</code>, say what a person can do instead, such as a follow-up email.</li></ol></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="44f0c0d48601ab4b6b7e75f30d656d8c611c42c5a656c6f6225568aa1978321b">44f0c0d48601</code></dd><dt>Frozen copy</dt><dd><a href="revert-rules.md">vaults/connector-twin/spec/revert-rules.md</a> (2,314 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

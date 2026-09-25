@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>nfrs.sgit.ai — the non-functional requirements, from the inside · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · nfrs.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#nfrssgitai-the-non-functional-requirements-from-the-inside">nfrs.sgit.ai — the non-functional requirements, from the inside</a></li><li class="l2"><a href="#this-is-a-hub-and-it-behaves-like-one">This is a hub, and it behaves like one</a></li><li class="l2"><a href="#what-this-site-owns">What this site owns</a></li><li class="l2"><a href="#the-estate-measured-against-its-own-eight-item-list">The estate, measured against its own eight-item list</a></li><li class="l2"><a href="#why-a-website-and-not-a-memory-feature">Why a website, and not a memory feature</a></li><li class="l2"><a href="#honest-about-itself">Honest about itself</a></li><li class="l2"><a href="#for-agents">For agents</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/nfrs.sgit.ai.html">nfrs.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 3 of 12</p><nav class="pager"><span><a href="002-nfrssgitai-the-non-functional-requiremen.html">← nfrs.sgit.ai — the non-functional requirements, from the ins</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-nfrssgitai-brief-pack.html">nfrs.sgit.ai — brief pack →</a></span></nav><article class="source"><h1 id="nfrssgitai-the-non-functional-requirements-from-the-inside">nfrs.sgit.ai — the non-functional requirements, from the inside</h1>
+<blockquote><p><strong>NFRs</strong> — non-functional requirements — is this project&#x27;s own operative term for
+*&quot;the whole version control, reliability, resilience, security, backups, consistency,
+explainability, and documentation.&quot;* That sentence was written a month before this site
+was conceived, and it is the site&#x27;s table of contents.</p></blockquote>
+<p><em>Source: <a class="ext" href="https://nfrs.sgit.ai/index.html">https://nfrs.sgit.ai/index.html ↗</a> · site v0.1.2 · markdown twin of the front page.</em></p>
+<hr>
+<p>Other sites in this network sell the argument that <a href="../../open-source.sgit.ai/index.html">somebody has to be the
+villagers</a><a class="ext live" href="https://open-source.sgit.ai" title="live page">↗</a>. This one is the same sentence from the inside:
+how the NFRs actually get done here, including where they do not.</p>
+<h2 id="this-is-a-hub-and-it-behaves-like-one">This is a hub, and it behaves like one</h2>
+<div class="table"><table><thead><tr><th>The rule</th><th>What it means here</th></tr></thead><tbody><tr><td><strong>Link the measurement, never restate it</strong></td><td>When a sibling site has measured something, this site links that page. It does not re-measure and does not paraphrase the number.</td></tr>
+<tr><td><strong>Generate or date every number</strong></td><td>Every figure carries an as-of date or is generated at build time. The pre-release gate rejects a page that carries figures without one.</td></tr>
+<tr><td><strong>Every discipline page ends with its counter-evidence</strong></td><td>A page teaching a practice closes with the measured places that practice failed here.</td></tr></tbody></table></div>
+<p>The stakes are raised by <a class="ext" href="https://nfrs.sgit.ai/memory/index.html">the memory thesis ↗</a>: if these sites are memory
+an agent reads, a stale page is not an inconvenience, it is a false memory.</p>
+<h2 id="what-this-site-owns">What this site owns</h2>
+<div class="table"><table><thead><tr><th>Page</th><th>The position, in a line</th></tr></thead><tbody><tr><td><a class="ext" href="https://nfrs.sgit.ai/map/index.html">The topic map ↗</a></td><td>Every NFR topic: what it means here, where the canonical material lives, which site owns it. <strong>Read first.</strong></td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/testing/index.html">Testing ↗</a></td><td>No mocks, no patches — and the testing philosophy and the type system are one decision, not two.</td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/ci/index.html">CI pipelines ↗</a></td><td>Build once, verify before naming. Nothing gets a name until it has passed as an anonymous digest.</td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/documentation/index.html">Documentation ↗</a></td><td><em>If the reality document doesn&#x27;t list it, it does not exist. Briefs are aspirations, not facts.</em></td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/ifd/index.html">IFD ↗</a></td><td>The named methodology, published outside the estate for the first time. It protects attention, and derives its rules from that.</td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/resilience/index.html">Resilience ↗</a></td><td>Design for the failure you had. Every mechanism here traces to a named incident.</td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/budgets/index.html">Budgets ↗</a></td><td>Profitability-first, pre-approve the ladder, budget-on-the-step — with none of this estate&#x27;s own figures, anywhere.</td></tr>
+<tr><td><a class="ext" href="https://nfrs.sgit.ai/pm/index.html">Project management ↗</a></td><td>The project manager is where the register becomes work — plus how a brief becomes work here.</td></tr></tbody></table></div>
+<h2 id="the-estate-measured-against-its-own-eight-item-list">The estate, measured against its own eight-item list</h2>
+<p>*As of 24 August 2026. The full table, with each cell linked to the sibling pack that
+measured it, is on <a class="ext" href="https://nfrs.sgit.ai/scorecard/index.html">the scorecard ↗</a>.*</p>
+<div class="table"><table><thead><tr><th>NFR</th><th>The estate, measured</th></tr></thead><tbody><tr><td>Version control</td><td>✅ auto-increment tags, the <code>version</code> file convention</td></tr>
+<tr><td>Reliability / resilience</td><td>✅ watchdog, poller, bake-and-verify — <strong>and</strong> a dead workflow nobody noticed</td></tr>
+<tr><td>Security</td><td>✅ key discipline, allowlists — <strong>and</strong> one disclosed key-in-history incident</td></tr>
+<tr><td>Backups</td><td>⚠️ <strong><a class="ext" href="https://nfrs.sgit.ai/backups/index.html">no doctrine at all ↗</a></strong></td></tr>
+<tr><td>Consistency</td><td>🟡 total compliance where a script checks, partial where it does not</td></tr>
+<tr><td>Explainability</td><td>✅ reality docs, provenance — <strong>and</strong> no evals anywhere</td></tr>
+<tr><td>Documentation</td><td>✅ a governing rule and a very large corpus — <strong>and</strong> a README describing a repository that does not exist</td></tr></tbody></table></div>
+<p>Reading down the failure column produces one sentence: **what a machine enforces, holds;
+what attention enforces, drifts.** That is the transferable finding of the whole site.</p>
+<h2 id="why-a-website-and-not-a-memory-feature">Why a website, and not a memory feature</h2>
+<blockquote><p>*&quot;The idea of these sites is to provide good briefs for agents to learn about how we work
+and think — **these sites are a more evolved and focused version of what is usually
+called LLM memory**.&quot;*</p></blockquote>
+<p>Conventional memory is accumulated transcripts, retrieved by similarity, private to one
+vendor, unversioned and invisible to the person it describes. This is the same function
+built as publishing: **memory you can read, cite, version, license and hand to any agent,
+because it is a website.** <a class="ext" href="https://nfrs.sgit.ai/memory/index.html">The thesis, its evidence, and its honest
+limits ↗</a>.</p>
+<h2 id="honest-about-itself">Honest about itself</h2>
+<ul><li><a class="ext" href="https://nfrs.sgit.ai/shipped/index.html">What this site ships ↗</a> — asserted, demonstrated, or proposed-and-not-built, as a table.</li><li><a class="ext" href="https://nfrs.sgit.ai/backups/index.html">Backups ↗</a> — the one item on the list with nothing behind it, published as an absence.</li><li><a class="ext" href="https://nfrs.sgit.ai/admin/index.html">Admin &amp; engineering ↗</a> — how the site is built, and the two rules it enforces on itself in CI.</li></ul>
+<h2 id="for-agents">For agents</h2>
+<ul><li><a href="../llms.txt.html">/llms.txt</a><a class="ext live" href="https://nfrs.sgit.ai/llms.txt" title="live page">↗</a> — the annotated map, each entry carrying its page&#x27;s most important fact.</li><li><a href="../llms-full.txt.html">/llms-full.txt</a><a class="ext live" href="https://nfrs.sgit.ai/llms-full.txt" title="live page">↗</a> — the whole document set in one fetch.</li><li>Source documents at constructed URLs: <code>/briefs/v0.33.62__nfrs-brief-pack__&lt;name&gt;.md</code>.</li></ul>
+<hr>
+<p>All content CC BY 4.0. Attribution: Dinis Cruz, with AI co-authorship.
+Repository: <a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__NFRs">https://github.com/SGit-AI/SGit-AI__Website__NFRs ↗</a></p>
+<hr>
+<p>== briefs/v0.33.62__nfrs-brief-pack__README.md</p>
+<hr></article><nav class="pager"><span><a href="002-nfrssgitai-the-non-functional-requiremen.html">← nfrs.sgit.ai — the non-functional requirements, from the ins</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-nfrssgitai-brief-pack.html">nfrs.sgit.ai — brief pack →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>nfrs.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://nfrs.sgit.ai/llms-full.txt">https://nfrs.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:31Z</dd><dt>sha256</dt><dd><code title="fd3ac2780eaa960e2115c2f68d06aa1aef56b9483baae25b66faa8468d10672a">fd3ac2780eaa</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/nfrs.sgit.ai/llms-full.txt</a> (55,866 bytes)</dd><dt>Section</dt><dd>3 of 12: nfrs.sgit.ai — the non-functional requirements, from the inside</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

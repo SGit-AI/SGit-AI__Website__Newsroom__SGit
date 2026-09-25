@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>API: vault objects · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#api-vault-objects-sgitai">API: vault objects, sgit.ai</a></li><li class="l1"><a href="#vault-objects">Vault objects</a></li><li class="l2"><a href="#endpoints">Endpoints</a></li><li class="l2"><a href="#destroy-and-why-the-tombstone-matters">Destroy, and why the tombstone matters</a></li><li class="l2"><a href="#the-caching-contract">The caching contract</a></li><li class="l2"><a href="#storage-layout">Storage layout</a></li><li class="l2"><a href="#see-also">See also</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="vault-objects.md">raw text</a> · <a class="ext" href="https://sgit.ai/api/vault-objects.html">live ↗</a></p><article class="source"><h1 id="api-vault-objects-sgitai">API: vault objects, sgit.ai</h1>
+<blockquote><p>The pointer store: read, write, batch, destroy and presigned endpoints, the caching contract that separates immutable content-addressed objects from mutable refs, and the storage layout behind every vault.</p></blockquote>
+<p><em>Source: <a href="vault-objects.html">https://sgit.ai/api/vault-objects.html</a><a class="ext live" href="https://sgit.ai/api/vault-objects.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">API</a><a class="ext live" href="https://sgit.ai/api/index.html" title="live page">↗</a> / Vault objects</p>
+<h1 id="vault-objects">Vault objects</h1>
+<p>The pointer store: the ciphertext objects a vault is made of, addressed by opaque identifiers the server cannot interpret. This is what <code>sgit push</code> and <code>sgit pull</code> are doing underneath.</p>
+<h2 id="endpoints">Endpoints</h2>
+<div class="table"><table><thead><tr><th>Method</th><th>Path</th><th>Auth</th><th>Notes</th></tr></thead><tbody><tr><td>PUT</td><td><code>/api/vault/write/{vault_id}/{file_id}</code></td><td>access token + write key</td><td>Body is raw ciphertext</td></tr>
+<tr><td>GET</td><td><code>/api/vault/read/{vault_id}/{file_id}</code></td><td>none</td><td>Raw bytes. <a href="authentication.html#reads">Reads are public by default</a><a class="ext live" href="https://sgit.ai/api/authentication.html#reads" title="live page">↗</a> on the shared host</td></tr>
+<tr><td>GET</td><td><code>/api/vault/read-base64/{vault_id}/{file_id}</code></td><td>none</td><td>Base64 in JSON, MCP-safe. Around 3.75 MB ceiling</td></tr>
+<tr><td>DELETE</td><td><code>/api/vault/delete/{vault_id}/{file_id}</code></td><td>access token + write key</td><td></td></tr>
+<tr><td>POST</td><td><code>/api/vault/batch/{vault_id}</code></td><td>per operation</td><td>Mixed reads and writes, <strong>max 100</strong> per request</td></tr>
+<tr><td>POST</td><td><code>/api/vault/list/{vault_id}</code></td><td>none</td><td></td></tr>
+<tr><td>GET</td><td><code>/api/vault/health/{vault_id}</code></td><td>none</td><td></td></tr>
+<tr><td>GET</td><td><code>/api/vault/public-info/{vault_id}</code></td><td>none</td><td></td></tr>
+<tr><td>DELETE</td><td><code>/api/vault/destroy/{vault_id}</code></td><td>write key</td><td>Body <code>{vault_id, purge?}</code>. Without <code>purge</code> it writes a tombstone that blocks reuse of the ID</td></tr></tbody></table></div>
+<p>Large blobs go through presigned URLs rather than the request body: <code>POST /api/vault/presigned/initiate|complete|cancel/{vault_id}</code> and <code>GET /api/vault/presigned/read-url/{vault_id}/{file_id}</code>.</p>
+<p><code>GET /api/vault/zip/{vault_id}</code> is registered in the route table but marked PROPOSED upstream. It is deliberately <a href="index.html#unresolved">not documented</a><a class="ext live" href="https://sgit.ai/api/index.html#unresolved" title="live page">↗</a> until that is reconciled.</p>
+<h2 id="destroy-and-why-the-tombstone-matters">Destroy, and why the tombstone matters</h2>
+<p><code>destroy</code> without <code>purge:true</code> leaves a tombstone that prevents the vault ID being registered again. That is a security property, not bookkeeping: vault IDs are short and a released ID is a squattable namespace. If somebody still holds a read key pointing at that ID, a new vault claiming it would be answering reads meant for the old one. <code>purge:true</code> skips the tombstone and frees the ID, use it only when you are sure no credential survives.</p>
+<h2 id="the-caching-contract">The caching contract</h2>
+<p>Anyone writing a client needs this, and getting it wrong produces a bug that looks like corruption:</p>
+<div class="table"><table><thead><tr><th>Object</th><th>Response header</th></tr></thead><tbody><tr><td>File ID containing <code>-imm-</code>, immutable, content-addressed</td><td><code>Cache-Control: public, max-age=31536000, immutable</code></td></tr>
+<tr><td>Refs and indexes, mutable</td><td><code>Cache-Control: no-store</code></td></tr></tbody></table></div>
+<p>Immutable objects are content-addressed, so their bytes can never change and a year-long cache is safe, which is what lets a vault sit behind a CDN. Mutable refs must never be cached: a stale ref renders a previous commit’s tree from ciphertext that is itself perfectly valid, so nothing errors and the reader simply sees the wrong version of the vault.</p>
+<p><strong>Measured 21 September 2026: the immutable header is not currently being sent.</strong> A GET of an <code>obj-cas-imm-</code> object on <code>/api/vault/read/</code> returned <strong>no <code>Cache-Control</code> header at all</strong>, and the CDN reported a miss. The table above is the contract, not a description of what is served on that path today. Build as though the header may be absent: cache on the id, which is a hash of the ciphertext and therefore cannot be stale, rather than on a header you were sent. That is what the client-side caches in this estate already do, and <a href="../demos/fractal-graphs/performance.html#caching">why caching ciphertext is the easy case</a><a class="ext live" href="https://sgit.ai/demos/fractal-graphs/performance.html#caching" title="live page">↗</a>.</p>
+<h2 id="storage-layout">Storage layout</h2>
+<pre><code>bare/data/obj-cas-imm-{hex}     blobs, trees, commits — content-addressed, immutable
+bare/keys/key-rnd-imm-{hex}     PKI public keys — immutable
+bare/refs/                      branch refs — mutable
+bare/indexes/                   branch index — mutable
+bare/append/                    append lanes — managed, outside the commit DAG</code></pre>
+<p>The prefixes are load-bearing. <code>obj-cas-imm-</code> is SHA-256 over the <em>ciphertext</em>, which gives deduplication without the server knowing any plaintext, and makes the caching rule above derivable from the ID alone. Append lanes sit outside the commit DAG on purpose, a message arriving does not rewrite your history.</p>
+<p>This site is itself served from a vault, so these are the objects behind the page you are reading. The <a href="../case-studies/live-vault-docs.html">live-vault case study</a><a class="ext live" href="https://sgit.ai/case-studies/live-vault-docs.html" title="live page">↗</a> shows the fetch sequence.</p>
+<h2 id="see-also">See also</h2>
+<ul><li><a href="append-lanes.html">Append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a>, the write-only channel that does not touch the commit tree</li><li><a href="errors.html">Errors and limits</a><a class="ext live" href="https://sgit.ai/api/errors.html" title="live page">↗</a></li></ul>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="vault-objects.html">HTML version</a><a class="ext live" href="https://sgit.ai/api/vault-objects.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/api/vault-objects.html">https://sgit.ai/api/vault-objects.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/api/vault-objects.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:10Z</dd><dt>sha256</dt><dd><code title="6765db9b4aed0e8a3cdfafaa28cd10b99a49c750c9a3e3fa23762eac4bee9b51">6765db9b4aed</code></dd><dt>Frozen copy</dt><dd><a href="vault-objects.md">sites/sgit.ai/api/vault-objects.md</a> (4,963 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

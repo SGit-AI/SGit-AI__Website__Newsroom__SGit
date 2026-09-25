@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1. The idea · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#1-the-idea">1. The idea</a></li><li class="l2"><a href="#a-twin-of-the-connector-not-of-the-world">A twin of the connector, not of the world</a></li><li class="l2"><a href="#why-the-view-matters-more-than-a-copy">Why the view matters more than a copy</a></li><li class="l2"><a href="#why-it-makes-undo-possible">Why it makes undo possible</a></li><li class="l2"><a href="#what-changes-for-the-organisation">What changes for the organisation</a></li><li class="l2"><a href="#what-it-is-not">What it is not</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="01-the-idea.md">raw text</a></p><article class="source"><h1 id="1-the-idea">1. The idea</h1>
+<h2 id="a-twin-of-the-connector-not-of-the-world">A twin of the connector, not of the world</h2>
+<p>On <a class="ext" href="https://twins.sgit.ai/">twins.sgit.ai ↗</a> a digital twin is <em>an interface to reality, not a simulation of it</em>: a system with properties, behaviours, functions, inputs and outputs, valued for its connection to the real thing rather than for its fidelity. A connector twin narrows that to one place: the boundary between an agent and a system it has been allowed to act on.</p>
+<p>It holds two things:</p>
+<ol><li><strong>What the agent could do.</strong> The scopes it was granted, and the actions those scopes allow, marked by whether the platform lets them be undone.</li><li><strong>What the agent did.</strong> Every call, request and response, in order, hash-chained, and when prompt capture is on, the instruction that led to it.</li></ol>
+<p>From those two, it rebuilds a third: <strong>what the agent saw.</strong> The inbox, the calendar, the folder, as they looked to the agent at each step, reconstructed from the responses it received.</p>
+<h2 id="why-the-view-matters-more-than-a-copy">Why the view matters more than a copy</h2>
+<p>A backup copies the mailbox. A twin does not need to. It keeps only what passed through the connector, which means it scales with the agent&#x27;s activity rather than with the size of the mailbox, and it answers a different question. A backup tells you what the inbox contained. A twin tells you what the agent was looking at when it decided to act. For accountability, for an investigation, and for explaining a decision to somebody who was not there, that is the question that matters.</p>
+<p>It also means the twin holds nothing the agent did not already touch. If the agent never opened a message, the twin knows its id and nothing more. That is a privacy property worth selling, not a gap to apologise for.</p>
+<h2 id="why-it-makes-undo-possible">Why it makes undo possible</h2>
+<p>For every change the agent makes, the twin holds the state before and the state after, because the agent read the before-state to make the change and the response returned the after-state. That is enough to write the inverse call. Where the platform has an undo, the twin names it. Where it does not, the twin says so, and says what it can still put back: the content of a permanently deleted message, for instance, if the agent read it in full first.</p>
+<h2 id="what-changes-for-the-organisation">What changes for the organisation</h2>
+<p>The agent behaviour policy, the document that says what an agent may reach, what it is authorised to do and who accepts the residual risk, reads differently with a twin behind it. <em>&quot;We cannot undo it&quot;</em> stops being an unknown and becomes a list: sent emails, notifications to attendees, permanent deletes. The list is what the mandate is written against. An agent can be allowed to archive freely and required to ask before it permanently deletes, because somebody can now see which is which.</p>
+<h2 id="what-it-is-not">What it is not</h2>
+<ul><li><strong>Not a backup of the mailbox.</strong> It holds what the agent touched. A customer who needs full backup still needs a backup product.</li><li><strong>Not a platform audit log.</strong> Audit logs record that an event happened. The twin records the request, the response and the state either side of it.</li><li><strong>Not a guarantee in every capture mode.</strong> An agent reporting its own calls can leave one out. The broker mode cannot be bypassed; the agent-reported mode can, and the policy says so.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="9707c28cfddb4d39fec75ae7980d287c049f136b6cbcaa2683ee225607c9e837">9707c28cfddb</code></dd><dt>Frozen copy</dt><dd><a href="01-the-idea.md">vaults/connector-twin/plan/01-the-idea.md</a> (3,186 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

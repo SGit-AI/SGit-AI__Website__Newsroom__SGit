@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03 — The security model, and the gap in it (llms.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · llms.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-the-security-model-and-the-gap-in-it">03 — The security model, and the gap in it</a></li><li class="l2"><a href="#1-where-the-key-lives">1. Where the key lives</a></li><li class="l2"><a href="#2-the-four-layer-ladder">2. The four-layer ladder</a></li><li class="l2"><a href="#3-what-the-frame-cannot-reach">3. What the frame cannot reach</a></li><li class="l2"><a href="#4-cost-integrity">4. Cost integrity</a></li><li class="l2"><a href="#5-the-gap-publish-this-sentence">5. ⚠️ The gap — publish this sentence</a></li><li class="l2"><a href="#6-the-standing-warning-about-configured-vaults">6. The standing warning about configured vaults</a></li><li class="l2"><a href="#7-two-other-gaps-worth-naming">7. Two other gaps worth naming</a></li><li class="l2"><a href="#8-what-the-security-page-should-say">8. What the security page should say</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/llms.sgit.ai.html">llms.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 42 of 49</p><nav class="pager"><span><a href="041-02-the-sgllm-api.html">← 02 — The sg.llm. API</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="043-04-websites-vs-vaults-what-changes-when-.html">04 — Websites vs vaults: what changes when there is no host →</a></span></nav><article class="source"><h1 id="03-the-security-model-and-the-gap-in-it">03 — The security model, and the gap in it</h1>
+<p>The thesis is <em>&quot;your app calls a model without ever holding an API key.&quot;</em> This document is how that works, and — in §5 — the one place it currently stops short of a guarantee.</p>
+<hr>
+<h2 id="1-where-the-key-lives">1. Where the key lives</h2>
+<p><code>.vault/llm/config.json</code>, <strong>inside the permission floor</strong>. The app cannot read it. The host makes every call.</p>
+<blockquote><p><em>&quot;Holding the API key | <strong>Host.</strong> It is never in your frame, your bundle, or any message you receive.&quot;</em></p></blockquote>
+<p><strong>Two tiers, and the difference is cryptographic rather than a policy check:</strong></p>
+<div class="table"><table><thead><tr><th>Tier</th><th>Behaviour</th></tr></thead><tbody><tr><td><strong><code>owner</code></strong> (default)</td><td>Sealed with the vault&#x27;s <strong>write</strong> key. A read-only opener gets <code>EREADONLY</code> — <em>&quot;an owner-sealed key cannot be unsealed in a read-only session — that is cryptographic, not a policy check&quot;</em></td></tr>
+<tr><td><strong><code>shared</code></strong></td><td>Readable by anyone who can open the vault</td></tr></tbody></table></div>
+<blockquote><p><em>&quot;Prefer <code>owner</code> unless you deliberately want every opener to be able to spend.&quot;</em></p></blockquote>
+<hr>
+<h2 id="2-the-four-layer-ladder">2. The four-layer ladder</h2>
+<p>Every call passes four independent checks, and each one fails with its own code:</p>
+<div class="table"><table><thead><tr><th>Layer</th><th>Mechanism</th><th>Failure</th></tr></thead><tbody><tr><td><strong>1. Grant</strong></td><td><code>permissions.llm.*</code> in <code>app.json</code>, <strong>default-deny</strong></td><td><code>EPERM</code></td></tr>
+<tr><td><strong>2. Consent</strong></td><td>the first <code>chat()</code> raises a HUD prompt the user must accept</td><td><code>ECONSENT</code></td></tr>
+<tr><td><strong>3. Budget</strong></td><td><code>maxCostPerSession</code> / <code>maxCallsPerSession</code>, enforced <strong>before</strong> the call</td><td><code>EBUDGET</code></td></tr>
+<tr><td><strong>4. Policy</strong></td><td>model allow-list (globs); <code>maxTokens</code> <strong>clamped</strong>, not rejected</td><td><code>EMODEL</code></td></tr></tbody></table></div>
+<p><strong>Grant, consent, budget, policy.</strong> A developer decision, a user decision, a spend decision and an owner decision — four different people can each say no, and the failure tells you which one did.</p>
+<p><strong>The grants are deliberately narrow:</strong> <code>chat</code> spends money; <code>models</code> and <code>usage</code> are read-only; <strong><code>listen</code> is never implied by <code>chat</code>.</strong></p>
+<blockquote><p><em>&quot;Recording a room is a categorically different act from sending text, so an app that can talk to a model does not thereby get a microphone.&quot;</em></p></blockquote>
+<hr>
+<h2 id="3-what-the-frame-cannot-reach">3. What the frame cannot reach</h2>
+<p>The sandboxed app frame has <strong>no <code>navigator.mediaDevices</code> at all</strong>. Audio capture happens in the host — which is also why the recording indicator lives on host chrome:</p>
+<blockquote><p><em>&quot;<strong>the recording indicator is on host chrome where the user can always see it.</strong> You receive <code>{text, durationMs, bytes, format, cost}</code> and nothing else; the recording itself never crosses into your frame.&quot;</em></p></blockquote>
+<p><strong>An indicator the app cannot draw is an indicator the app cannot fake.</strong> That is the strongest security argument in the whole design and it should be stated in exactly those terms.</p>
+<p>Same principle on surfaces 1 and 2 (<code>01__</code>): the chat panel runs on host chrome at the real origin, so the app frame <em>&quot;sees neither, cannot read the conversation, and needs no <code>permissions.llm.*</code>.&quot;</em></p>
+<hr>
+<h2 id="4-cost-integrity">4. Cost integrity</h2>
+<p>Three mechanisms, and they are honesty features rather than security ones — but they belong here because they are all about not being able to mislead:</p>
+<ul><li><strong>Two-source reconciliation.</strong> <em>&quot;Host, two-source (stream <code>usage.cost</code>, then the authoritative <code>/generation</code> lookup).&quot;</em></li><li><strong>Estimates are labelled and must be rendered as estimates.</strong> <code>{value, source, estimated}</code> — <em>&quot;Render estimates with a <code>~</code>. <strong>Never show one as a bill.</strong>&quot;</em></li><li><strong>Images are counted separately</strong>, never folded into the character total, <em>&quot;so <code>sg.llm.usage()</code> and the AI Requests pane both stay honest about what the expensive calls were.&quot;</em></li></ul>
+<p>And <code>usage()</code> reports the <strong>whole session</strong> including the host panel&#x27;s own calls — <em>&quot;one bill per session, not one per surface.&quot;</em></p>
+<hr>
+<h2 id="5-the-gap-publish-this-sentence">5. ⚠️ The gap — publish this sentence</h2>
+<p>From the 2 August capability brief&#x27;s <em>Not built</em> section:</p>
+<blockquote><p><strong>CSP egress lockdown.</strong> <em>&quot;App frames are not yet served with a <code>connect-src</code> that blocks direct network access, so a malicious app could still call an LLM provider itself with its own key. <strong>The bridge protects *your</em> key; it is not yet a boundary that prevents all egress. This is the gap that turns the current design from a convenience into a guarantee.</strong>&quot;*</p></blockquote>
+<p><strong>Read precisely what that does and does not say.</strong></p>
+<ul><li>✅ The vault&#x27;s key is genuinely protected. It never enters the frame.</li><li>✅ Spend against the vault&#x27;s key is genuinely capped, consented and logged.</li><li>❌ A malicious app can still reach the network with <strong>its own</strong> credential, so the bridge is <strong>not</strong> an egress boundary.</li></ul>
+<p><strong>The honest framing for the site:</strong> the model here is <em>&quot;we protect the credential you trusted us with&quot;</em>, not <em>&quot;nothing leaves this frame.&quot;</em> Those are different claims and only the first is currently true.</p>
+<p><strong>Do not soften it, and do not bury it.</strong> A site whose front page says <em>&quot;your app never holds the key&quot;</em> must carry the qualification within one click, because the corpus states it plainly and any reader who finds the brief first will trust the site less for having omitted it.</p>
+<p>The named fix is <strong>Phase 4 minted credentials</strong> — <em>&quot;short-lived, budget-capped tokens from SG-API so the vault holds a <strong>reference</strong>, not a key.&quot;</em> Described as <em>&quot;what would make vault-sharing safe with AI configured, and… the commercially load-bearing piece.&quot;</em></p>
+<hr>
+<h2 id="6-the-standing-warning-about-configured-vaults">6. The standing warning about configured vaults</h2>
+<blockquote><p><em>&quot;<strong>Know what you are storing.</strong> With a key configured, the vault contains a credential. <strong>Sharing the vault key shares the ability to spend it.</strong> Short-lived minted credentials are planned (Phase 4) and would remove this; until then, <strong>treat such a vault as carrying a secret.</strong>&quot;</em></p></blockquote>
+<p>This connects directly to the estate&#x27;s read-key/write-key doctrine (<code>standards.sgit.ai</code> <code>03__</code>, <code>open-source.sgit.ai</code> <code>02__</code> §6): <strong>a vault with an LLM key configured is a vault whose sharing calculus has changed.</strong> Publishing a read key for such a vault is not the same act as publishing one for a plain vault, and the site should say so beside the key-tier table in <code>01__</code> §5.</p>
+<hr>
+<h2 id="7-two-other-gaps-worth-naming">7. Two other gaps worth naming</h2>
+<p><strong>ViV kernel parity.</strong> <em>&quot;<code>sg.llm.*</code> is served by the <code>/en-gb/app/</code> host. Nested vault-in-vault kernels (<code>kernel-app-handlers.js</code>) do not relay it yet.&quot;</em> So an app running inside a nested vault silently has no LLM bridge.</p>
+<p><strong>No per-vault audio model setting.</strong> The transcription model is a constant (<code>google/gemini-3.5-flash</code>). Fine as a default; not configurable when it should be, since the chat model and the audio model are necessarily different and only one of them is a setting.</p>
+<hr>
+<h2 id="8-what-the-security-page-should-say">8. What the security page should say</h2>
+<ol><li><strong>Lead with the ladder</strong> (§2) — grant, consent, budget, policy — because it explains all nine error codes in one table.</li><li><strong>Make §3&#x27;s argument explicitly</strong>: the microphone indicator is trustworthy <em>because the app cannot draw it</em>.</li><li><strong>State the CSP gap in the same breath as the thesis</strong>, not in a footnote.</li><li><strong>Put the &quot;know what you are storing&quot; warning next to the setup instructions</strong>, where the decision is actually made.</li><li><strong>Name Phase 4</strong> as the fix, and be clear it is not shipped.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>/briefs/04__websites-vs-vaults.md</p>
+<hr></article><nav class="pager"><span><a href="041-02-the-sgllm-api.html">← 02 — The sg.llm. API</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="043-04-websites-vs-vaults-what-changes-when-.html">04 — Websites vs vaults: what changes when there is no host →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>llms.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://llms.sgit.ai/llms-full.txt">https://llms.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:22Z</dd><dt>sha256</dt><dd><code title="ea68f8c43dcc23b102b8fd6321f69af20d44df3a80753e16bb35838935530082">ea68f8c43dcc</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/llms.sgit.ai/llms-full.txt</a> (225,565 bytes)</dd><dt>Section</dt><dd>42 of 49: 03 — The security model, and the gap in it</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

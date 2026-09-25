@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The register as a graph of graphs (risks.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-register-as-a-graph-of-graphs">The register as a graph of graphs</a></li><li class="l2"><a href="#it-begins-where-scanners-stop">It begins where scanners stop</a></li><li class="l2"><a href="#fractal-one-register-per-accepting-entity">Fractal: one register per accepting entity</a></li><li class="l2"><a href="#relevance-fade-and-why-it-teaches">Relevance fade, and why it teaches</a></li><li class="l2"><a href="#one-chain-not-parallel-lists">One chain, not parallel lists</a></li><li class="l2"><a href="#cascade-and-the-air-gap">Cascade, and the air gap</a></li><li class="l2"><a href="#the-register-as-a-story">The register as a story</a></li><li class="l2"><a href="#provenance">Provenance</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 17 of 58</p><nav class="pager"><span><a href="016-not-knowing-is-a-fact.html">← Not knowing is a fact</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="018-blast-radius-and-authorization-closure.html">Blast radius and authorization closure →</a></span></nav><article class="source"><h1 id="the-register-as-a-graph-of-graphs">The register as a graph of graphs</h1>
+<p>A risk register is not a spreadsheet at the top of a company. It is a hyperlinked semantic graph — one per accepting entity, all of them views of one connected structure rather than parallel lists. Its distinguishing move is where it starts: at the vulnerability, which is exactly where scanners and security products stop.</p>
+<p>“a lot of security teams and products end on the vulnerability, and what I want to show is the multiple layers involved in fixing it, but even before that, in accepting the risk, funding the solution, and finding who is going to do it.”</p>
+<h2 id="it-begins-where-scanners-stop">It begins where scanners stop</h2>
+<p>A scanner&#x27;s output is a list of vulnerabilities, and its implicit theory is that the hard part is finding them. In practice the finding is the cheap part. What follows is where the work is, and none of it is in the scanner&#x27;s output:</p>
+<p>1 · WHO CONFIRMS ITThe technical owner validates that the vulnerability is real in their domain. Factual, and either true or false. Confirmed →</p>
+<p>2 · WHO OWNS THE CONSEQUENCENot the same person. The business owner owns the risk the vulnerability gives rise to, which is usually in a different department and a different vocabulary. Technical vs business owner →</p>
+<p>3 · WHO ACCEPTS IT, AND FOR HOW LONGThe underwriting act, at the right altitude, on the interval ladder.</p>
+<p>4 · WHO FUNDS THE FIX, AND WHO DOES ITThe interval already committed the organisation to a response. This is where that commitment turns into a project with a name against it.</p>
+<h2 id="fractal-one-register-per-accepting-entity">Fractal: one register per accepting entity</h2>
+<p>Wherever there is a stakeholder who accepts risk, there is a register. For the company, for a department, for an individual role. That is not an organisational nicety — it follows directly from acceptance being a personal act: if a named person underwrites, they need a place where the things they have underwritten are listed.</p>
+<p>Most of those registers are derived rather than curated. An individual has at least two and often three: their own role-specific register in their own domain language, plus views of the registers above them. Only the role&#x27;s own register is stored; the rest are queries.</p>
+<p>Register | Stored or derived | Whose language it is in |</p>
+<p>The role&#x27;s own | Stored | The role&#x27;s — a DBA&#x27;s register says “unrestricted access to the customer table” |</p>
+<p>The department&#x27;s, seen from the role | Derived | The department&#x27;s, with the parts that trace back to this role lit up |</p>
+<p>The board&#x27;s, seen from the role | Derived | The board&#x27;s — “regulatory penalty, loss of licence, continuity failure” |</p>
+<h2 id="relevance-fade-and-why-it-teaches">Relevance fade, and why it teaches</h2>
+<p>The visualisation property that falls out of the fractal structure, and the most quietly powerful idea in this section. Centre a view on a role: that role&#x27;s register is lit in full, and the registers above it fade — except for the entries that trace back down to this role, which stay lit.</p>
+<p>“as you go up, imagine the colours can fade away for the next registers for the bits that are not relevant, so the graph starts to point which parts of the risk register above are relevant to this individual, so that he understands the picture.”</p>
+<p>A database administrator can see that their local “an agent holds unrestricted access to a customer table” is the same object as the board&#x27;s “regulatory penalty, loss of licence, continuity failure”. Seeing that once teaches more than any training course.</p>
+<p>partially argued The visualisation is described and has not been built.</p>
+<h2 id="one-chain-not-parallel-lists">One chain, not parallel lists</h2>
+<p>A late correction (2 August 2026) and a consequential one. Three altitude registers drawn side by side demonstrate a formatting capability. Drawn as one chain rooted in an existence fact, they demonstrate the entire thesis.</p>
+<p>F1: an agent has write access to productiongives_rise_toL1: the operator&#x27;s riskgives_rise_toL3: the CISO&#x27;s riskgives_rise_toL5: the board&#x27;s risk
+The CISO&#x27;s risk exists because of the operator&#x27;s risk, which exists because of a fact. Side by side, that dependency is invisible; as a chain, it is the point.</p>
+<p>“at the moment it looks like the cards, they look side by side, and it&#x27;s actually not that.”</p>
+<h2 id="cascade-and-the-air-gap">Cascade, and the air gap</h2>
+<p>Every change to any risk, fact or piece of evidence must trigger a cascade that reaches the top. The absence of a cascade has a name:</p>
+<p>“every time any risk, any fact, any evidence changes, you have to trigger a cascade that reaches the top. If you do not have that, you have an air gap, which means you do not have good data, and you cannot make good decisions.”</p>
+<p>Air gap is used in two senses, and both are useful. A missing cascade is one. A risk that exists in the business but is not connected to the register at all is the other — and it is the more dangerous, because nothing about the register indicates it is there. A twin that is not connected to reality is a third instance of the same shape.</p>
+<p>Cascade runs in both directions, which is easy to miss: a risk resolving propagates upward too, clearing it from the board&#x27;s view. A register that only ever accumulates is as misleading as one that never updates.</p>
+<p>Detecting air gaps is an acknowledged open problem. The principle is well developed and the detection mechanism is not specified — by construction it is hard, since an air gap is defined by the absence of a connection nobody recorded. The corpus states this rather than glossing it.</p>
+<h2 id="the-register-as-a-story">The register as a story</h2>
+<p>The last idea in this section, and the one furthest from being built. The register is meant to be experienced rather than read: replay its change history through timestamps, commits or a series of queries, and watch the vulnerability appear, the risks propagate, a governance risk fire and resolve, the blast radius bloom, and everything settle into the board&#x27;s consolidated view.</p>
+<p>“I want to show this story played as a narrative, almost like a football commentator, this happens and then that happens, almost like a whodunit, like investigative journalism.”</p>
+<p>The commit log is the script and the query advances the scene. partially argued — the mechanism is undecided in the source document. The nearest thing that exists is the Risk Mandate vault&#x27;s 98 commits, which is the method applied to its own build and is a change history somebody could replay.</p>
+<h2 id="provenance">Provenance</h2>
+<p>Concepts
+C9 register as a graph of graphs · C10 fractal registers · C11 relevance fade · C12 one chain not parallel lists · C16 cascade and air gaps · C42 the narrative engine</p>
+<p>Sources
+briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…graph-of-graphs…md · briefs/07/17/registers-mandate-and-intervals/v0.33.49__arch-brief__…fractal-risk-registers…md · briefs/08/02/field-demo/v0.33.55__arch-brief__…registers-are-one-chain…md</p>
+<p>First written
+26 June 2026 · 17 July 2026 · 2 August 2026</p>
+<p>Maturity
+well-developed for the register, fractal structure and cascade · partially argued for relevance fade and the narrative engine</p>
+<p>Licence
+CC BY 4.0 at source and here</p>
+<h4 id="for-an-agent">For an agent</h4>
+<p>The register (C9, C10, C11, C12, C16, C42). A risk register is a hyperlinked semantic graph, not a spreadsheet, and it begins at the vulnerability — where scanners stop — and maps confirming, owning, accepting, funding and staffing the fix. It is fractal: one register per accepting entity (company, department, role), of which only the role&#x27;s own register is stored — the rest are queries. Relevance fade: centring a view on a role lights that role&#x27;s register in full and fades the registers above it except for entries tracing back down, so a DBA can see their local exposure and the board&#x27;s “regulatory penalty” are the same object. Registers are one chain, not parallel lists — the CISO&#x27;s risk exists because of the operator&#x27;s risk, which exists because of an existence fact; drawn side by side that dependency is invisible. Cascade: any change to any risk, fact or evidence must propagate to the top, in both directions (resolution clears the board&#x27;s view too); a missing cascade, or a risk not connected to the register at all, is an air gap, and detecting air gaps is an acknowledged open problem. Not implemented in code; relevance fade and the narrative engine are not even specified.</p>
+<hr>
+<p>== /blast-radius/index.html</p>
+<hr></article><nav class="pager"><span><a href="016-not-knowing-is-a-fact.html">← Not knowing is a fact</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="018-blast-radius-and-authorization-closure.html">Blast radius and authorization closure →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/llms-full.txt">https://risks.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:19Z</dd><dt>sha256</dt><dd><code title="043b6dd54a87b99e5ad22921b82672869533d32d7ec901dc828be518bb08fe23">043b6dd54a87</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/risks.sgit.ai/llms-full.txt</a> (518,813 bytes)</dd><dt>Section</dt><dd>17 of 58: The register as a graph of graphs</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

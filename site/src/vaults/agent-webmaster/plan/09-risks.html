@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>9 · The risks · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="09-risks.md">raw text</a></p><article class="source"><p><a href="08-why-invest.html">← Why invest</a> · <a href="00-START-HERE.html">Index</a> · <a href="10-open-source.html">Next →</a></p>
+<h1 id="9-the-risks">9 · The risks</h1>
+<p>Stated plainly, with what to do about each.</p>
+<div class="table"><table><thead><tr><th>Risk</th><th>How real</th><th>What to do</th></tr></thead><tbody><tr><td><strong>The agent breaks a site</strong></td><td>Certain to happen, occasionally</td><td>This is what branches and commits are for. Small changes go live; anything structural goes to preview. Every change is a revert away from undone. Put the revert in the playbook and practise it on the first customer.</td></tr>
+<tr><td><strong>A customer&#x27;s session does something odd</strong></td><td>Likely, at scale</td><td>The playbook scopes what the customer&#x27;s session may touch. Anything outside scope goes to preview and notifies the operator. Review the change log weekly.</td></tr>
+<tr><td><strong>GitHub Pages terms or limits</strong></td><td>Real, must be checked</td><td>Pages is for static sites and has usage limits and terms about commercial use. Read them before customer one, keep sites within them, and keep a second static host (a bucket behind a CDN, Netlify, Cloudflare Pages) ready as the fallback. The sites are plain files; moving them is a copy.</td></tr>
+<tr><td><strong>Public repositories</strong></td><td>A feature, but a discipline</td><td>Nothing secret ever goes in the repository. Forms, bookings and payments are third-party embeds whose credentials live with the third party. The customer&#x27;s private material lives in their vault. Say this to every customer at setup.</td></tr>
+<tr><td><strong>Token costs rise or a provider changes terms</strong></td><td>Possible</td><td>Two providers are named for a reason. The playbook is provider-neutral. Meter usage from day one so a change in price is a line on an invoice, not a surprise.</td></tr>
+<tr><td><strong>Commoditisation: anybody can do this</strong></td><td>True, and accepted</td><td>Anybody could; most will not. The moat is fifty happy customers, a playbook with the mistakes already in it, and referrals. The plan being public makes more operators, which makes the category, which is the Wide path.</td></tr>
+<tr><td><strong>Customer expectations</strong></td><td>The usual one</td><td>Publish what each package includes. Agree changes in the chat before doing them. The monthly note manages expectations by making the work visible.</td></tr>
+<tr><td><strong>Accessibility, privacy and cookie law</strong></td><td>Real obligations on the customer&#x27;s site</td><td>Every template ships with an accessibility statement, a privacy page and a cookie posture (no cookies, ideally). Keep them current as part of maintenance. This is also an upsell, but it is a duty first.</td></tr>
+<tr><td><strong>The operator is the bottleneck</strong></td><td>Yes, by design</td><td>Time every setup and every maintenance task. Move anything repeatable into the playbook and the templates. Hire the second operator at fifty, or stay at fifty and be profitable. Both are the plan working.</td></tr>
+<tr><td><strong>Key-person risk for the customer</strong></td><td>The customer&#x27;s risk, and our answer to it</td><td>The repository is theirs, the playbook is in it, the vault is openable with their read key. If the operator vanishes, the customer has everything. Say so in the sales pitch; it is the honest answer to &quot;what if you disappear&quot;.</td></tr></tbody></table></div>
+<h2 id="what-is-not-a-risk">What is not a risk</h2>
+<ul><li><strong>Hosting cost.</strong> There is none.</li><li><strong>Building the product.</strong> The product is a process and a playbook. It exists on day one.</li><li><strong>The technology going away.</strong> Static files, git and a chat session. All of it is boring, which is the point.</li></ul>
+<hr>
+<p><a href="08-why-invest.html">← Why invest</a> · <a href="00-START-HERE.html">Index</a> · <a href="10-open-source.html">Next →</a></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="9116cb0e53fbffef6427a49bc8b3f43df290b261923f19cdc147255fcdccb1f5">9116cb0e53fb</code></dd><dt>Frozen copy</dt><dd><a href="09-risks.md">vaults/agent-webmaster/plan/09-risks.md</a> (3,299 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

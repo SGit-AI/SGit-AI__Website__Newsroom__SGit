@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Risk Acceptance Office · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/index.html">vaults</a> · <a href="README.md">raw text</a></p><article class="source"><h1 id="risk-acceptance-office">Risk Acceptance Office</h1>
+<p>A business plan for a company that runs the risk acceptance loop for organisations: every material risk established on facts, held by a named person, accepted for a stated interval, and at the end of that interval accepted again, escalated, funded or fixed. It works in the gaps of the client&#x27;s existing GRC platform rather than replacing it, and it keeps each material risk&#x27;s evidence and decisions in a vault of its own.</p>
+<p>The one-line version: <strong>every risk is already accepted; the service makes sure somebody signed for it, and until when.</strong></p>
+<p><strong>Start with <code>index.html</code></strong> (it opens automatically). It sets out the principles, replays one invented risk over eight weeks from the facts that establish it to the facts that end it, and then sets out the business. Or read the plan as documents in <code>plan/</code>, in order.</p>
+<h2 id="what-is-in-this-vault">What is in this vault</h2>
+<div class="table"><table><thead><tr><th>Path</th><th>What it is</th></tr></thead><tbody><tr><td><code>index.html</code>, <code>app.json</code>, <code>content.json</code></td><td>The principles, the replay and the plan as a single-page app. All data is inlined, so it renders anywhere the vault opens, offline included.</td></tr>
+<tr><td><code>plan/00-START-HERE.md</code></td><td>The one-page version and the reading order.</td></tr>
+<tr><td><code>plan/01</code> to <code>plan/10</code></td><td>The idea, the method, the operating model, working in the gaps of the GRC platform, services and pricing, go-to-market, the first ninety days, why invest, the risks, and what is still open.</td></tr>
+<tr><td><code>plan/plan.json</code></td><td>The principles, the ladder, the services and the assumptions the app displays.</td></tr>
+<tr><td><code>risk/</code></td><td>One invented risk as its own record: facts, controls, holders, and a hash-chained decision record. The shape of a vault per material risk.</td></tr>
+<tr><td><code>spec/</code></td><td>The acceptance record and the risk vault layout.</td></tr>
+<tr><td><code>prototypes/</code></td><td>The acceptance audit, the acceptance meeting, and the GRC integration outline.</td></tr>
+<tr><td><code>diagrams/</code></td><td>The acceptance loop and one risk from the board to the bytes.</td></tr>
+<tr><td><code>tools/build-content.py</code></td><td>Chains the record, assembles <code>content.json</code> and inlines it into the app.</td></tr>
+<tr><td><code>tools/verify-record.py</code></td><td>Checks the decision record&#x27;s hash chain offline. Exit 0 if intact.</td></tr>
+<tr><td><code>PUBLIC.md</code></td><td>The three rules this vault is published under.</td></tr></tbody></table></div>
+<h2 id="where-the-method-comes-from">Where the method comes from</h2>
+<p>The method is already published, and this plan builds on it rather than restating it: <a class="ext" href="https://risks.sgit.ai/">risks.sgit.ai ↗</a> for the model, <a href="../../sites/riskmandate.ai/index.html">RiskMandate.ai</a><a class="ext live" href="https://riskmandate.ai/" title="live page">↗</a> for acceptance and the licence to operate, <a class="ext" href="https://graphs.sgit.ai/">graphs.sgit.ai ↗</a> for fractal risk registers, and the <a href="../../sites/sgit.ai/demos/vaults/risk-graph-explorer/index.html">Risk Graph Explorer</a><a class="ext live" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html" title="live page">↗</a> vault for the chain to the board, working. Much of that model is stated as not yet built in code, and this plan says the same where it applies.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="72b5683b0ca839f4ec3d6d60da74c3134e5d104f4f2b3a9188b9c1311b5e6421">72b5683b0ca8</code></dd><dt>Frozen copy</dt><dd><a href="README.md">vaults/risk-acceptance/README.md</a> (2,708 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

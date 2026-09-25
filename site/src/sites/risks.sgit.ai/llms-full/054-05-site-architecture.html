@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>05 — Site Architecture (risks.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#05-site-architecture">05 — Site Architecture</a></li><li class="l2"><a href="#shape">Shape</a></li><li class="l2"><a href="#the-front-page">/ — the front page</a></li><li class="l2"><a href="#acceptance-build-first">/acceptance/ — build first</a></li><li class="l2"><a href="#ladder-what-agents-most-need">/ladder/ — what agents most need</a></li><li class="l2"><a href="#examples-the-proof">/examples/ — the proof</a></li><li class="l2"><a href="#the-rest">The rest</a></li><li class="l2"><a href="#agents-the-commissioned-surface">/agents/ — the commissioned surface</a></li><li class="l2"><a href="#shipped-non-negotiable">/shipped/ — non-negotiable</a></li><li class="l2"><a href="#network-the-seven-site-map">/network/ — the seven-site map</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 54 of 58</p><nav class="pager"><span><a href="053-04-the-riskmandateai-refactor.html">← 04 — The riskmandate.ai Refactor</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="055-06-boundaries-redaction-and-house-style.html">06 — Boundaries, Redaction and House Style →</a></span></nav><article class="source"><h1 id="05-site-architecture">05 — Site Architecture</h1>
+<p><strong>Status:</strong> ✅ near-as-is · ✏️ needs framing · ✍️ write fresh · 🔗 links out · 📎 provenance block · ⚠️ correction first</p>
+<p><code>briefs/</code> = <code>team/humans/dinis_cruz/briefs/</code>. Concept refs (C1…C42) are defined in <code>01__concepts-index.md</code>.</p>
+<hr>
+<h2 id="shape">Shape</h2>
+<p>Two audiences, and the second is the commissioned one: <strong>a human deciding whether this model makes sense</strong>, and <strong>an agent that needs the definitions</strong>. The IA serves the human by depth and the agent by addressability — every concept gets a stable URL and an anchor.</p>
+<pre><code>risks.sgit.ai
+├── /                    the inversion, in one screen
+├── /acceptance/         ★ underwriting · no-deny · the ladder · unaccepted=critical
+├── /acceptable/         accepted ≠ acceptable · appetite as a revealed band
+├── /ladder/             ★ the grounding ladder · node type formulas · ontologies of ontologies
+├── /register/           graph of graphs · fractal registers · relevance fade
+├── /blast-radius/       authorization closure · CIA expansion
+├── /plug/               who can stop it · five dimensions · recoverability
+├── /practice/           owners · altitude · psychology · density · meta-risks · health
+├── /ramm/               RAMM · AOMM · the plug-pull maturity model
+├── /examples/           ★ three worked graphs + four live vaults
+├── /concepts/           all 42, addressable, one anchor each
+├── /agents/             ★ the machine surface
+├── /shipped/            what is argued vs what runs
+├── /origins/            Feb 2026 GRC → the June inversion → Aug formalisation
+├── /network/            the seven-site boundary map
+├── /documents/          raw markdown, source of truth
+├── /admin/{comms,versions,index} · /about/participant.html
+└── /llms.txt + /llms-full.txt</code></pre>
+<hr>
+<h2 id="the-front-page"><code>/</code> — the front page</h2>
+<div class="table"><table><thead><tr><th>Element</th><th>Content</th><th>Status</th></tr></thead><tbody><tr><td>The inversion</td><td><em>&quot;We are not describing the risk of something happening. We are asking someone to underwrite it.&quot;</em></td><td>✅ C1</td></tr>
+<tr><td>The mechanic</td><td><strong>There is no deny button.</strong> Only how long you accept it before re-accepting</td><td>✅ C2</td></tr>
+<tr><td>The consequence</td><td>A risk nobody accepted has not gone away — it rests on whoever is nearest, and it is rated <strong>critical</strong></td><td>✅ C4</td></tr>
+<tr><td>Proof strip</td><td>59/75 · 51/53 · 1,523/1,944 · 4 live vaults · 5 altitudes · 6 intervals</td><td>✅ §6 of <code>00</code></td></tr>
+<tr><td>Honesty line</td><td><em>&quot;This is a research site. The concepts are argued, the graphs are real, four vaults are live. The engine is not built.&quot;</em></td><td>✍️</td></tr>
+<tr><td>The split</td><td>One line on what riskmandate.ai is for, and a link</td><td>✍️</td></tr></tbody></table></div>
+<hr>
+<h2 id="acceptance-build-first"><code>/acceptance/</code> — build first</h2>
+<div class="table"><table><thead><tr><th>Page</th><th>Concept</th><th>Source</th><th>Status</th></tr></thead><tbody><tr><td><code>/acceptance/underwriting/</code></td><td><strong>C1</strong> — <em>&quot;the analogy is insurance: you are underwriting the damage… The business executive is ultimately accountable for everything&quot;</em></td><td><code>briefs/06/18/agentic-permissions/v0.33.40__arch-brief__…the-risk-already-exists.md</code></td><td>✅</td></tr>
+<tr><td><code>/acceptance/no-deny/</code></td><td><strong>C2</strong> — <em>&quot;the mistake of a lot of risk registers is that they allow the risk to be denied, which can only happen when the risk has not materialised&quot;</em></td><td><code>briefs/06/23/risk-mandate-product-and-workflow/v0.33.33__dev-brief__…no-deny-time-boxed-acceptance-expiry-as-cost…md</code></td><td>✅ <strong>the most graspable page on the site</strong></td></tr>
+<tr><td><code>/acceptance/the-ladder/</code></td><td><strong>C3</strong> — the interval <em>is</em> the decision. 1h / 4h / 1d / 1w / 1m / 6m, one month default, each rung with its operational consequence</td><td><code>briefs/07/17/registers-mandate-and-intervals/v0.33.49__arch-brief__…acceptance-interval-ladder…md</code></td><td>✅ <strong>publish as a table</strong></td></tr>
+<tr><td><code>/acceptance/unaccepted-is-critical/</code></td><td><strong>C4</strong> — <em>&quot;that person right now is accountable for the business, which is very bad from a business point of view, but is also very bad for the individual&quot;</em></td><td>same, + the Article 26(5) worked example</td><td>✅</td></tr>
+<tr><td><code>/acceptance/workflow/</code></td><td><strong>C15</strong> underwriting graph · <strong>C33</strong> decision as a node · override and pre-approval</td><td><code>briefs/06/23/…v0.33.33__arch-brief__…risk-acceptance-workflow-multi-stakeholder-graph-underwriting-propagation-override-pre-approval.md</code></td><td>✏️</td></tr></tbody></table></div>
+<hr>
+<h2 id="ladder-what-agents-most-need"><code>/ladder/</code> — what agents most need</h2>
+<p>Definitional, not narrative. Every node type stated as a required path pattern, machine-readable where possible.</p>
+<div class="table"><table><thead><tr><th>Page</th><th>Concept</th><th>Source</th><th>Status</th></tr></thead><tbody><tr><td><code>/ladder/index.html</code></td><td><strong>C6</strong> Reality → Twin → Measure → Evidence → Fact → Vulnerability → Risk. Downward grounds; upward classifies. <em>&quot;A Fact becomes a Vulnerability purely because of its upward link to a Risk, so that legitimacy is conferred entirely from above.&quot;</em></td><td><code>briefs/06/28/ontology-and-definitions/v0.33.36__arch-brief__…grounding-ladder…md</code></td><td>✅ <strong>the most rigorous document in the corpus</strong></td></tr>
+<tr><td><code>/ladder/formulas/</code></td><td><strong>C7</strong> — <em>&quot;the ontology definition of a node type is its upward and downward path-pattern, not a sentence about what it contains&quot;</em></td><td><code>briefs/06/28/…v0.33.36__arch-brief__…node-type-formulas…md</code></td><td>✅</td></tr>
+<tr><td><code>/ladder/bridges/</code></td><td><strong>C8</strong> three layers — shared facts, per-party formulas, declared bridges. Plus the worked Manion/Jacobs/Roytman bridge</td><td><code>briefs/06/28/…ontologies-of-ontologies…md</code> + <code>…bridge-vulnerability-formula-system-fault-security-failure-conditions-manion-jacobs.md</code></td><td>✅ names three real researchers favourably</td></tr>
+<tr><td><code>/ladder/absence/</code></td><td><strong>C17</strong> not knowing is a fact — countable, queryable, assignable</td><td><code>briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…facts-only-no-deny-cascade-cia-blast-radius.md</code></td><td>✏️</td></tr></tbody></table></div>
+<p>🔗 <strong>Cite graphs.sgit.ai, don&#x27;t restate it.</strong> Node type formulas <em>as a mechanism</em> belong there; the grounding ladder <em>as a risk formula</em> belongs here.</p>
+<hr>
+<h2 id="examples-the-proof"><code>/examples/</code> — the proof</h2>
+<div class="table"><table><thead><tr><th>Page</th><th>Content</th><th>Status</th></tr></thead><tbody><tr><td><code>/examples/browser-isolation/</code></td><td><strong>59 nodes, 75 edges</strong>, inline JSON. 5 altitudes, 3 risks <em>of the mitigation itself</em>. Vendor system cards: prompt-injection success falling <strong>~50% → ~1%</strong> across one model generation, cited as the honest counterweight</td><td>✅</td></tr>
+<tr><td><code>/examples/2fa/</code></td><td><strong>51 nodes, 53 edges</strong>, downloadable JSON. Ontology <strong>24 node classes, 34 edge types</strong>. MITRE <strong>T1110.004</strong>. The R2 governance air gap accepted at 4h by the wrong owner, propagating GRC → CIO → CEO → Board</td><td>✅ <strong>the only downloadable graph</strong></td></tr>
+<tr><td><code>/examples/article-26-5/</code></td><td>8 facts (one unevidenced), 5 risks, 4 stakeholders, <strong>9 questions — 5 unanswered</strong>. The <strong>30 days vs 6 months</strong> arithmetic finding</td><td>✅</td></tr>
+<tr><td><code>/examples/vaults/</code></td><td>🔗 The four live vaults with read keys — see <code>03__worked-examples-and-vaults.md</code> §A</td><td>🔗 ✅</td></tr>
+<tr><td><code>/examples/scenarios/</code></td><td>The ten scenarios, hook → reveal → punchline, punchline always <em>&quot;how long?&quot;</em></td><td>✅</td></tr>
+<tr><td><code>/examples/plug-register/</code></td><td>The seven-row plug register, from <em>&quot;agent misuses the isolated session&quot;</em> to <em>&quot;unattributable transaction&quot;</em> (<strong>recoverability: zero</strong>)</td><td>✅</td></tr></tbody></table></div>
+<hr>
+<h2 id="the-rest">The rest</h2>
+<div class="table"><table><thead><tr><th>Section</th><th>Concepts</th><th>Notes</th></tr></thead><tbody><tr><td><code>/acceptable/</code></td><td><strong>C5</strong> two axes, four quadrants, Article 9(5) · <strong>C25</strong> appetite as a revealed band, the Goldilocks zone</td><td>📎 Moves off riskmandate.ai</td></tr>
+<tr><td><code>/register/</code></td><td><strong>C9</strong> graph of graphs · <strong>C10</strong> fractal registers · <strong>C11</strong> relevance fade · <strong>C12</strong> one chain not parallel lists · <strong>C16</strong> cascade and air gaps · <strong>C42</strong> the narrative engine</td><td>✅</td></tr>
+<tr><td><code>/blast-radius/</code></td><td><strong>C19</strong> authorization closure — <em>what the agent can reach, computed</em> · <strong>C18</strong> CIA expansion</td><td>✅</td></tr>
+<tr><td><code>/plug/</code></td><td><strong>C20</strong> two symmetric risks · <strong>C21</strong> four-way time intersection · <strong>C22</strong> five dimensions · <strong>C23</strong> recoverability. Detection floor <strong>12–18h</strong></td><td>📎 ⚠️ reconcile the &quot;no plug&quot; correction</td></tr>
+<tr><td><code>/practice/</code></td><td><strong>C13</strong> technical vs business owner · <strong>C14</strong> confirmed/validated/accepted · <strong>C24</strong> altitude · <strong>C26</strong> the physical act · <strong>C27</strong> the level ledger · <strong>C28</strong> density and calibration by surprise · <strong>C29</strong> residuals · <strong>C30</strong> meta-risks · <strong>C31</strong> the self-maintaining register · <strong>C32</strong> three moves · <strong>C34</strong> a question is not a risk · <strong>C35</strong> do not internalise (<strong>63–76%</strong> burnout)</td><td>✏️</td></tr>
+<tr><td><code>/ramm/</code></td><td>RAMM five levels · AOMM · the plug-pull maturity model · <strong>C37</strong> confidence bands · <strong>C38</strong> two underwritings · <strong>C39</strong> observability</td><td>📎 ⚠️ base levels underspecified</td></tr>
+<tr><td><code>/concepts/</code></td><td>All 42, one anchor each, addressable</td><td>✍️</td></tr>
+<tr><td><code>/origins/</code></td><td>Feb 2026 classical GRC (<code>team/roles/grc/</code>) → 4 June <em>&quot;the risk already exists&quot;</em> → 23 June no-deny → 28 June the ladder → 17 July intervals → 28 July accepted≠acceptable → 2 Aug end-to-end</td><td>✏️</td></tr></tbody></table></div>
+<hr>
+<h2 id="agents-the-commissioned-surface"><code>/agents/</code> — the commissioned surface</h2>
+<p>The brief says the point of this site is that <strong>agents need a good understanding of these concepts</strong>. So this is not a courtesy page.</p>
+<div class="table"><table><thead><tr><th>Element</th><th>Content</th></tr></thead><tbody><tr><td><code>/llms.txt</code></td><td>Each entry carries the concept&#x27;s <strong>single most important fact</strong>, not its topic. <em>&quot;C2 no-deny — a risk with a real vulnerability under it exists whether or not anyone acknowledges it, so there is no deny button; the only choice is how long&quot;</em></td></tr>
+<tr><td><code>/llms-full.txt</code></td><td>The whole site in one fetch. <strong>Non-negotiable here</strong> — measured on sgit.ai, agent fetch tools refuse URLs a search has not returned, so link-following fails</td></tr>
+<tr><td><code>/.well-known/agent-content.json</code></td><td>Structured manifest — copy riskmandate.ai&#x27;s pattern</td></tr>
+<tr><td><strong>The definitions endpoint</strong></td><td>The 42 concepts as JSON: name, one-line definition, canonical source, maturity, related concepts. <strong>Nothing else in the estate has this and it is the single highest-value thing this site can ship</strong></td></tr>
+<tr><td><strong>The ontology download</strong></td><td>Node types and edge types with their path formulas, plus the 2FA instance graph</td></tr>
+<tr><td>Per-page agent block</td><td>Every concept page ends with a pasteable summary an agent can carry into another session</td></tr></tbody></table></div>
+<hr>
+<h2 id="shipped-non-negotiable"><code>/shipped/</code> — non-negotiable</h2>
+<p>Nothing in the risk corpus is implemented. Greps for <code>risk_</code>, <code>RiskAcceptance</code>, <code>risk_register</code>, <code>riskmandate</code> across <code>sgraph_ai_app_send/**/*.py</code> return <strong>zero</strong>. The reality file says <em>&quot;Do not describe any of these as existing features.&quot;</em></p>
+<p>What <em>does</em> exist: riskmandate.ai as a vault-powered static site · the ten scenario documents · <strong>four live vaults with read keys</strong> · three fully worked graphs as parseable JSON.</p>
+<hr>
+<h2 id="network-the-seven-site-map"><code>/network/</code> — the seven-site map</h2>
+<p>The split is the point of this site, so state it on a page rather than leaving it implicit. Full boundaries in <code>06__boundaries-and-house-style.md</code> §1.</p>
+<div class="table"><table><thead><tr><th>Site</th><th>Boundary in one line</th></tr></thead><tbody><tr><td><strong>riskmandate.ai</strong></td><td>Commercial. <em>How do I get my risks accepted, and what does it cost?</em> Cites this site</td></tr>
+<tr><td><strong>graphs.sgit.ai</strong></td><td>Owns the graph machinery. Node type formulas as a <em>mechanism</em> are theirs; the grounding ladder as a <em>risk formula</em> is ours</td></tr>
+<tr><td><strong>nhi.sgit.ai</strong></td><td>Owns agent identity. The <code>06/04/nhi-2.0/</code> series is theirs — but its risk-management brief is <strong>risk&#x27;s origin document</strong> and should be cited here</td></tr>
+<tr><td><strong>pki.sgit.ai</strong></td><td>Owns attribution and signing. ⚠️ Currently carries <strong>mandate</strong> material that arguably belongs here — coordinate a split</td></tr>
+<tr><td><strong>sg-sentinel.sgit.ai</strong></td><td>Enforces. <strong>We measure and evidence; we never sit in-line.</strong> The corpus states this refusal explicitly</td></tr>
+<tr><td><strong>newsroom.sgit.ai</strong></td><td>Owns the evidence <em>supply</em> side. We own the <em>demand</em> side — accountability is what generates it</td></tr>
+<tr><td><strong>sgit.ai</strong></td><td>Owns vaults, publishing and the catalogue. Consume the topic-section pattern, don&#x27;t re-argue it</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>== briefs/06__boundaries-and-house-style.md — source document, verbatim</p>
+<hr></article><nav class="pager"><span><a href="053-04-the-riskmandateai-refactor.html">← 04 — The riskmandate.ai Refactor</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="055-06-boundaries-redaction-and-house-style.html">06 — Boundaries, Redaction and House Style →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/llms-full.txt">https://risks.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:19Z</dd><dt>sha256</dt><dd><code title="043b6dd54a87b99e5ad22921b82672869533d32d7ec901dc828be518bb08fe23">043b6dd54a87</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/risks.sgit.ai/llms-full.txt</a> (518,813 bytes)</dd><dt>Section</dt><dd>54 of 58: 05 — Site Architecture</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

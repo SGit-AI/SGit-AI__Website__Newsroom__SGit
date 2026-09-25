@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+  <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .tl{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .sl{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .hl{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .v{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#6a3fc1;text-anchor:middle}
+    .p{font:700 26px/1 Georgia,serif;fill:#101114;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .vio{fill:#f2edfc;stroke:#6a3fc1;stroke-width:2;rx:10}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="34" class="h">FOUR LEVELS: EACH IS THE ONE BELOW PLUS EXACTLY ONE THING</text>
+
+  <rect class="box" x="40" y="400" width="200" height="130"/>
+  <text x="140" y="428" class="hl" style="text-anchor:middle">LEVEL 0</text><text x="140" y="458" class="t">The sample</text><text x="140" y="492" class="p">Free</text><text x="140" y="516" class="s">read it</text>
+
+  <rect class="key" x="262" y="340" width="200" height="190"/>
+  <text x="362" y="368" class="hl" style="text-anchor:middle">LEVEL 1</text><text x="362" y="398" class="t">The kit</text><text x="362" y="432" class="p">£50</text><text x="362" y="458" class="s">the catalogue, prompts</text><text x="362" y="476" class="s">and Claude setup, as files</text><text x="362" y="512" class="m">you run it</text>
+
+  <rect class="key" x="484" y="280" width="200" height="250"/>
+  <text x="584" y="308" class="hl" style="text-anchor:middle">LEVEL 2</text><text x="584" y="338" class="t">Your X-ray vault</text><text x="584" y="372" class="p">£150</text><text x="584" y="398" class="s">the kit as a vault, set up</text><text x="584" y="416" class="s">for your company, versioned,</text><text x="584" y="434" class="s">shareable read-only</text><text x="584" y="512" class="m">you run it</text>
+
+  <rect class="vio" x="706" y="200" width="200" height="330"/>
+  <text x="806" y="228" class="hl" style="text-anchor:middle">LEVEL 3</text><text x="806" y="258" class="t">Standard X-ray</text><text x="806" y="292" class="p">£500</text><text x="806" y="318" class="s">we run the catalogue on</text><text x="806" y="336" class="s">your documents; a person</text><text x="806" y="354" class="s">reviews every finding;</text><text x="806" y="372" class="s">a 30-minute handover;</text><text x="806" y="390" class="s">five working days</text><text x="806" y="512" class="v">about 3.5 hours of ours</text>
+
+  <rect class="vio" x="928" y="120" width="232" height="410"/>
+  <text x="1044" y="148" class="hl" style="text-anchor:middle">LEVEL 4</text><text x="1044" y="178" class="t">Tailored X-ray</text><text x="1044" y="212" class="p">£1,500</text><text x="1044" y="238" class="s">two one-hour sessions;</text><text x="1044" y="256" class="s">up to three analyses written</text><text x="1044" y="274" class="s">for your questions;</text><text x="1044" y="292" class="s">a reviewer signs it,</text><text x="1044" y="310" class="s">with a name and a date</text><text x="1044" y="512" class="v">about 9 hours of ours</text>
+
+  <text x="250" y="330" class="s" style="font-style:italic">+ the files</text>
+  <text x="474" y="268" class="s" style="font-style:italic">+ keys and history</text>
+  <text x="696" y="188" class="s" style="font-style:italic">+ our agents and a review</text>
+  <text x="884" y="104" class="s" style="font-style:italic">+ a person in the room</text>
+
+  <path d="M262 556 L262 566 L684 566 L684 556" class="an" style="stroke:#2f6fed"/>
+  <text x="473" y="588" class="m">WITHOUT CUSTOMISATION: THE VAULT, YOU RUN IT</text>
+  <path d="M706 556 L706 566 L1160 566 L1160 556" class="an" style="stroke:#6a3fc1"/>
+  <text x="933" y="588" class="v">WITH CUSTOMISATION: WE RUN IT, A PERSON SIGNS</text>
+
+  <text x="40" y="96" class="tl">The same shape as RiskMandate.ai</text>
+  <text x="40" y="120" class="sl">An Agent Behaviour Policy sells at £10, £50, £500 and £1,500:</text>
+  <text x="40" y="138" class="sl">the pack, the vault, corrected, and two sessions and a signature.</text>
+  <text x="40" y="176" class="tl">Beside the levels</text>
+  <text x="40" y="200" class="sl">Re-X-ray: £350 or £900, when the next quarter is in.</text>
+  <text x="40" y="218" class="sl">Partner licence: £250 a month and £100 per X-ray,</text>
+  <text x="40" y="236" class="sl">for accountants and fractional finance directors.</text>
+  <text x="40" y="620" class="sl" style="font-size:11.5px">Every price is a hypothesis for the first customers to test. Euro prices are the same numbers.</text>
+</svg>

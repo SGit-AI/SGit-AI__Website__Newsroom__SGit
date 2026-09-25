@@ -1,0 +1,376 @@
+[
+  {
+    "id": "append-lanes",
+    "name": "Append lanes",
+    "definition": "A write-only channel into a vault: the writer holds a token that can only append, gets back a blind acknowledgement, and entries sit outside the commit tree until the vault owner processes them.",
+    "defined_at": "https://sgit.ai/api/append-lanes.md",
+    "terms": [
+      "append[- ]lanes?",
+      "write-only lanes?",
+      "sg\\.append"
+    ]
+  },
+  {
+    "id": "read-keys",
+    "name": "Read keys",
+    "definition": "A key derived one way from the vault key that can read a vault and never write to it; a site publishes one on purpose, with the public-read prefix, when it wants anyone to open the vault.",
+    "defined_at": "https://sgit.ai/docs/credentials.md",
+    "terms": [
+      "read[- ]keys?",
+      "sgit_public_read_"
+    ]
+  },
+  {
+    "id": "vault-key-management",
+    "name": "Vault key management",
+    "definition": "How people and agents store, share and take back vault keys, which today travel by copy and paste; sgit.ai's open call asks password managers and identity providers to solve it rather than build it alone.",
+    "defined_at": "https://sgit.ai/partnerships/vault-key-management.md",
+    "terms": [
+      "key management",
+      "vault-key-management",
+      "key manager"
+    ]
+  },
+  {
+    "id": "risk-acceptance",
+    "name": "Risk acceptance",
+    "definition": "A risk exists as soon as the exposure does, so the question is who has accepted it and until when: there is no deny button, only accept for a stated interval, fund the work, or fix it.",
+    "defined_at": "https://sgit.ai/articles/every-risk-is-already-accepted.md",
+    "terms": [
+      "risk acceptance",
+      "accepted is not acceptable",
+      "no deny button",
+      "there is no deny"
+    ]
+  },
+  {
+    "id": "acceptance-intervals",
+    "name": "Acceptance intervals",
+    "definition": "The ladder of durations a risk can be accepted for, from an hour to six months with a month as the default, where the chosen interval sets both the severity and the response.",
+    "defined_at": "https://risks.sgit.ai/llms-full.txt",
+    "terms": [
+      "interval ladder",
+      "acceptance interval",
+      "the interval is the decision"
+    ]
+  },
+  {
+    "id": "agent-behaviour-policy",
+    "name": "Agent Behaviour Policy",
+    "definition": "A written record, for one agent in one deployment, of everything it can do, what it was authorised to do, the gap between the two, and what actually stands in the way; it describes and carries no score.",
+    "defined_at": "https://riskmandate.ai/abp.md",
+    "terms": [
+      "agent behaviour polic(y|ies)",
+      "\\bABPs?\\b"
+    ]
+  },
+  {
+    "id": "grants-and-mandates",
+    "name": "Grants and mandates",
+    "definition": "The grant is what an agent can actually reach; the mandate is what someone with authority allowed it to do; the delta between them is the excess authority nobody accepted.",
+    "defined_at": "https://riskmandate.ai/grant-gap.md",
+    "terms": [
+      "grant[- ]against[- ]mandate",
+      "grant is not (the )?mandate",
+      "grant.{0,20}mandate"
+    ]
+  },
+  {
+    "id": "licence-to-operate",
+    "name": "Licence to operate",
+    "definition": "A self-issued, witnessed and dated licence in which the organisation is the authority, the behaviour policy the instrument and the agent the licensee: the step between describing an agent and insuring it.",
+    "defined_at": "https://riskmandate.ai/licence-to-operate.md",
+    "terms": [
+      "licen[cs]e to operate"
+    ]
+  },
+  {
+    "id": "insurability",
+    "name": "Insurability",
+    "definition": "The argument that agents become insurable when someone can evidence what they can reach and what contains them, which is what a behaviour policy and a licence to operate produce.",
+    "defined_at": "https://riskmandate.ai/insurance.md",
+    "terms": [
+      "insurab(le|ility)"
+    ]
+  },
+  {
+    "id": "blast-radius",
+    "name": "Blast radius",
+    "definition": "How far the harm from a grant, a risk or a control reaches: which systems, people and roles it touches, recorded beside the owner and the expiry of each mandate.",
+    "defined_at": "https://riskmandate.ai/grant-gap.md",
+    "terms": [
+      "blast radius"
+    ]
+  },
+  {
+    "id": "fractal-graphs",
+    "name": "Fractal semantic graphs",
+    "definition": "Graphs where each node can open into a graph of its own with its own ontology, joined by a shared grammar rather than a shared schema, so the same rules hold at every altitude.",
+    "defined_at": "https://sgit.ai/articles/introducing-fractal-semantic-graphs.md",
+    "terms": [
+      "fractal semantic graphs?",
+      "fractal graphs?"
+    ]
+  },
+  {
+    "id": "twins",
+    "name": "Twins",
+    "definition": "A twin here is an interface to reality rather than a simulation of it: a system with properties, behaviours and inputs and outputs, such as a connector twin that journals and replays every call an agent makes.",
+    "defined_at": "https://twins.sgit.ai/llms.txt",
+    "terms": [
+      "digital twins?",
+      "connector twins?",
+      "twin of the (interface|connector|grant)",
+      "twins\\.sgit\\.ai"
+    ]
+  },
+  {
+    "id": "business-plans",
+    "name": "Business plans",
+    "definition": "Businesses sgit.ai thinks should exist on top of sgit, each published as a vault with the plan, sourced facts, numbers marked as hypotheses and prototypes, for someone else to take and run.",
+    "defined_at": "https://sgit.ai/startups/business-plans.md",
+    "terms": [
+      "business plans? (for founders|to build)",
+      "startups/business-plans",
+      "lesson loop|company x-ray|risk acceptance office|agent as webmaster"
+    ]
+  },
+  {
+    "id": "partnerships",
+    "name": "Partnerships",
+    "definition": "Proposals for work with named organisations, written from public material only so each page can be forwarded, stating the fit, where it is partial and a first piece of work; none records a conversation yet.",
+    "defined_at": "https://sgit.ai/partnerships/index.md",
+    "terms": [
+      "partnership pages?",
+      "/partnerships/",
+      "proposed partnership",
+      "call for collaboration"
+    ]
+  },
+  {
+    "id": "briefs",
+    "name": "Briefs",
+    "definition": "Documents one team writes for another: cross-team asks that carry a status and close when answered, and build briefs written for an agent to execute, tracked in public indexes and registers.",
+    "defined_at": "https://sgit.ai/docs/briefs/index.md",
+    "terms": [
+      "cross-team (briefs?|asks?)",
+      "build brief",
+      "brief register",
+      "docs/briefs/"
+    ]
+  },
+  {
+    "id": "provenance",
+    "name": "Provenance",
+    "definition": "The visible record on each page of where its material came from: original date, link, authors including any AI co-authorship, and how it was curated.",
+    "defined_at": "https://newsroom.sgit.ai/llms.txt",
+    "terms": [
+      "provenance (block|record|chain|file)s?",
+      "dated provenance",
+      "\\bproveni[eê]ncia\\b"
+    ]
+  },
+  {
+    "id": "frozen-sources",
+    "name": "Frozen, hashed sources",
+    "definition": "Every source page fetched, frozen to a dated snapshot and hashed with SHA-256, so claims are read from the frozen copy and can be checked later.",
+    "defined_at": "https://newsroom.sgit.ai/llms-full.txt",
+    "terms": [
+      "frozen (copy|copies|snapshot|sources?|bytes|files?)",
+      "fetch(ed)?,? freeze",
+      "congelad[ao]s?"
+    ]
+  },
+  {
+    "id": "pricing",
+    "name": "Pricing ladders",
+    "definition": "Four levels where each is the level below plus exactly one thing, from a downloaded pack to a signed review, sold through standing payment links; RiskMandate's ladder is reused by other plans.",
+    "defined_at": "https://riskmandate.ai/pricing.md",
+    "terms": [
+      "pricing page",
+      "four levels",
+      "£1,500"
+    ]
+  },
+  {
+    "id": "interview-pages",
+    "name": "Interview pages",
+    "definition": "A page sent to one person that carries a prompt they paste into a chat assistant, which interviews them by voice and writes up their feedback for them to send back.",
+    "defined_at": "https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.md",
+    "terms": [
+      "interview[- ]pages?",
+      "interview-founder",
+      "voice[- ]feedback interview"
+    ]
+  },
+  {
+    "id": "telemetry",
+    "name": "Telemetry",
+    "definition": "Anonymous usage reported from a published vault back to its author through an append lane, the one credential that stays safe when published inside a public vault.",
+    "defined_at": "https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.md",
+    "terms": [
+      "telemetry"
+    ]
+  },
+  {
+    "id": "open-source",
+    "name": "Open source",
+    "definition": "Open source treated as a strategy rather than a charity: the network publishes its code under Apache-2.0 and argues that the technology was never the moat.",
+    "defined_at": "https://open-source.sgit.ai/index.md",
+    "terms": [
+      "open[- ]source (everything|first|strategy|licen[cs]es?)",
+      "apache[- ]2\\.0"
+    ]
+  },
+  {
+    "id": "eu-ai-act",
+    "name": "EU AI Act",
+    "definition": "Regulation (EU) 2024/1689, the one instrument standards.sgit.ai models, cited across the network for duties such as judging residual risk acceptable without a definition of acceptable.",
+    "defined_at": "https://standards.sgit.ai/llms.txt",
+    "terms": [
+      "EU AI Act",
+      "Regulation \\(EU\\) 2024/1689"
+    ]
+  },
+  {
+    "id": "gdpr",
+    "name": "GDPR",
+    "definition": "The EU data protection regulation, published by sgit.ai as a navigable graph vault and cited by articles in the partnership and risk work, while one sibling site still says no GDPR graph exists.",
+    "defined_at": "https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.md",
+    "terms": [
+      "\\bGDPR\\b"
+    ]
+  },
+  {
+    "id": "vault-apps",
+    "name": "Vault apps",
+    "definition": "Self-contained HTML applications that live inside a vault and open from its index.html in a sandboxed frame, reaching the host through a permissioned bridge, including model calls without holding an API key.",
+    "defined_at": "https://sgit.ai/skills/create-vault-apps__SKILL.md",
+    "terms": [
+      "vault (html )?apps?",
+      "window\\.sg\\b",
+      "sg\\.llm"
+    ]
+  },
+  {
+    "id": "lessons-learned",
+    "name": "Lessons learned",
+    "definition": "Rules recorded with the event that produced them, so each correction says what went wrong and how it was caught.",
+    "defined_at": "https://sgit.ai/lessons/index.md",
+    "terms": [
+      "lessons? learned",
+      "how (it|the mistake) was caught",
+      "the mistake that produced",
+      "what went wrong"
+    ]
+  },
+  {
+    "id": "em-dashes-and-style",
+    "name": "Em-dashes and style",
+    "definition": "The network's writing rules, most visibly the removal of the em-dash from prose on sgit.ai on 20 September 2026, rewritten by context rather than replaced, with a validator guard.",
+    "defined_at": "https://sgit.ai/updates/index.md",
+    "terms": [
+      "em[- ]dash",
+      "british english"
+    ]
+  },
+  {
+    "id": "security-audits",
+    "name": "Security audits",
+    "definition": "Checks published beside the work: every vault audited from a read-key clone before its key is published, and reviews whose findings are stated even when they did not survive checking.",
+    "defined_at": "https://sgit.ai/demos/vaults/publishing.md",
+    "terms": [
+      "security (audit|review)s?",
+      "audited from a read-key clone",
+      "audit(ed)? (every|each) vault"
+    ]
+  },
+  {
+    "id": "client-side-encryption",
+    "name": "Client-side encryption",
+    "definition": "Content is encrypted on the owner's device before it is stored, so the host holds only ciphertext and cannot read it; the zero-knowledge model behind every vault.",
+    "defined_at": "https://sgit.ai/security/index.md",
+    "terms": [
+      "encrypted on the (client|device)",
+      "client[- ]side encrypt",
+      "zero[- ]knowledge"
+    ]
+  },
+  {
+    "id": "pki",
+    "name": "PKI",
+    "definition": "Public key infrastructure for vaults and agents: keypairs from the CLI for encryption and signing, sealing messages to a recipient, and the registry rules pki.sgit.ai draws from the history of key servers.",
+    "defined_at": "https://sgit.ai/docs/pki.md",
+    "terms": [
+      "\\bPKI\\b(?![.-]sgit)",
+      "pki keygen",
+      "public key infrastructure"
+    ]
+  },
+  {
+    "id": "synthetic-users",
+    "name": "Synthetic users",
+    "definition": "Invented readers walked through a site one screenshot at a time and interviewed at the end, to find where real readers would get lost.",
+    "defined_at": "https://riskmandate.ai/synthetic-users.md",
+    "terms": [
+      "synthetic users?",
+      "invented readers"
+    ]
+  },
+  {
+    "id": "brand-assets",
+    "name": "Brand assets",
+    "definition": "The logos, marks, colour tokens and boilerplate descriptions of set lengths that a site publishes for others to reuse, such as event forms and printers.",
+    "defined_at": "https://riskmandate.ai/brand.md",
+    "terms": [
+      "brand (assets|guidelines|page)",
+      "boilerplate",
+      "\\.eps\\b"
+    ]
+  },
+  {
+    "id": "performance-and-cost",
+    "name": "Performance and cost",
+    "definition": "The measured speed and running cost of reading vaults and fractal graphs straight from object storage, with no live database and nothing running between questions.",
+    "defined_at": "https://sgit.ai/demos/fractal-graphs/performance.md",
+    "terms": [
+      "performance page",
+      "standing cost",
+      "cost base",
+      "requests and \\d+ ?KB"
+    ]
+  },
+  {
+    "id": "startups",
+    "name": "Startups",
+    "definition": "sgit.ai's operating model for founders: ship something usable, give it away briefly, take it away and see whether anybody misses it; be profitable before raising; open source everything.",
+    "defined_at": "https://sgit.ai/startups/index.md",
+    "terms": [
+      "whether (they|anybody) miss(ed)? it",
+      "startup operating",
+      "startups section",
+      "/startups/"
+    ]
+  },
+  {
+    "id": "wardley-maps",
+    "name": "Wardley maps",
+    "definition": "Maps that place each component on an evolution axis, treated across the network as arguable claims rather than pictures, with a research site of their own.",
+    "defined_at": "https://wardley-maps.sgit.ai/llms.txt",
+    "terms": [
+      "wardley[- ]map(s|ping)?\\b(?![.-]sgit)",
+      "pioneers?[-, ]+settlers?"
+    ]
+  },
+  {
+    "id": "undo-classes",
+    "name": "Undo classes",
+    "definition": "Whether an action can be reversed: undone with no loss, recoverable with effort, or not at all; recorded per capability or risk and used to order what matters first.",
+    "defined_at": "https://abp.sgit.ai/model/undo/index.md",
+    "terms": [
+      "undo[- ]class(es)?",
+      "cannot be undone",
+      "reversibility"
+    ]
+  }
+]

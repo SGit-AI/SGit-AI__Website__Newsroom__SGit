@@ -1,0 +1,645 @@
+{
+ "date": "2026-09-24",
+ "desk": "Librarian",
+ "basis": "sgit.ai version log and new-pages list; riskmandate.ai version record; cli-briefs for 09/24 (no earlier snapshot to diff)",
+ "changes": [
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.8",
+   "url": "https://sgit.ai/demos/vaults/company-xray/index.html",
+   "title": "Company X-Ray: a business plan, with one company X-rayed",
+   "type": "business plan",
+   "summary": "Publishes the Company X-Ray vault and adds it to the business plans page: a service that reads a company's own documents together, with an invented company X-rayed end to end and four levels from £50 to £1,500 on RiskMandate.ai's pricing pattern; published vaults reach thirty-six.",
+   "concepts": [
+    "business-plans",
+    "pricing",
+    "vault-apps",
+    "provenance",
+    "read-keys"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.7",
+   "url": "https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html",
+   "title": "A brief for RiskMandate: interview pages, and a ChatGPT voice prompt",
+   "type": "brief",
+   "summary": "Adds a build brief and an open cross-team ask for riskmandate.ai: a reusable interview page whose prompt runs a twenty-minute voice interview and returns a structured summary, the first for a founder strong in UK events and marketing, with a later step proposing a write-only append lane.",
+   "concepts": [
+    "briefs",
+    "interview-pages",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.6",
+   "url": "https://sgit.ai/demos/vaults/lesson-loop/index.html",
+   "title": "Lesson Loop: a business plan for coaches",
+   "type": "business plan",
+   "summary": "Publishes the thirty-fifth vault, a business plan for padel coaches and any teacher with students: an end-of-lesson voice memo becomes a note in the player's own vault, with a write-only lane per coach and pay-on-demand credits instead of a subscription.",
+   "concepts": [
+    "business-plans",
+    "append-lanes",
+    "vault-apps",
+    "vault-key-management"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.5",
+   "url": "https://sgit.ai/articles/every-risk-is-already-accepted.html",
+   "title": "Every risk is already accepted, and a company to run the loop",
+   "type": "article",
+   "summary": "Publishes a foundation article on risk acceptance (no deny button; accept, fund or fix; the interval as the decision; accepted versus acceptable under the EU AI Act's Article 9(5)) and the thirty-fourth vault, the Risk Acceptance Office business plan, which replays one invented risk over six weeks.",
+   "concepts": [
+    "risk-acceptance",
+    "eu-ai-act",
+    "fractal-graphs",
+    "twins",
+    "business-plans"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.4",
+   "url": "https://sgit.ai/partnerships/cloud-platforms.html",
+   "title": "Partnerships with the clouds and the AI providers, and a brief for RiskMandate",
+   "type": "partnership",
+   "summary": "Adds sixteen pages under /partnerships/ (a hub for the cloud platforms, a hub for the AI providers and fourteen proposed partnership pages) plus a brief asking riskmandate.ai for the risk side of every partnership and a GDPR mapping for sgit; research corrected two first drafts.",
+   "concepts": [
+    "partnerships",
+    "briefs",
+    "agent-behaviour-policy",
+    "open-source",
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.3",
+   "url": "https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html",
+   "title": "Before you give an agent a connector, give the connector a twin; business plans get their own page",
+   "type": "article",
+   "summary": "Publishes an article arguing that a journal and replay of every connector call is the minimum for deploying an agent, the thirty-third vault (Connector Twin, a working replay of an invented Gmail and Calendar session) and a new /startups/business-plans.html page.",
+   "concepts": [
+    "twins",
+    "provenance",
+    "append-lanes",
+    "business-plans",
+    "undo-classes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.6.2",
+   "url": "https://sgit.ai/partnerships/vault-key-management.html",
+   "title": "A call for collaboration on vault key management",
+   "type": "partnership",
+   "summary": "Adds an open call to password managers, identity providers and platform credential managers to hold sgit vault keys, with requirements, a share-by-name sketch, and why the word-based share token was removed in August.",
+   "concepts": [
+    "vault-key-management",
+    "partnerships",
+    "read-keys",
+    "security-audits"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/demos/vaults/company-xray/index.html",
+   "title": "Company X-Ray, a business plan with one company X-rayed, published as a vault",
+   "type": "business plan",
+   "summary": "Vault page for a service that X-rays a company's documents in five working days: an invented company, fourteen findings labelled read, computed or inferred, a script that re-runs all 46 figures, and a published read key.",
+   "concepts": [
+    "business-plans",
+    "pricing",
+    "provenance",
+    "read-keys",
+    "vault-apps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html",
+   "title": "For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it",
+   "type": "brief",
+   "summary": "Build brief, status open: a six-part interview page pattern, the first page for a founder who knows UK events and marketing, the full prompt ready to send, and a checklist that includes one end-to-end run in voice mode.",
+   "concepts": [
+    "briefs",
+    "interview-pages",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/demos/vaults/lesson-loop/index.html",
+   "title": "Lesson Loop, a business plan for coaches with one player's record, published as a vault",
+   "type": "business plan",
+   "summary": "Vault page replaying one invented player's record across four lessons with three coaches in two cities; notes that easy key handling is open and that the founder's own padel vault, where phase one will be tried, is not yet published.",
+   "concepts": [
+    "business-plans",
+    "append-lanes",
+    "vault-key-management",
+    "vault-apps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/articles/every-risk-is-already-accepted.html",
+   "title": "Every risk is already accepted. The only question is by whom, and for how long.",
+   "type": "article",
+   "summary": "Foundation article: three doors (accept for an interval, fund, fix), the risks.sgit.ai interval ladder, fractal risk registers, a vault per material risk (labelled a proposal), and twins as designs not yet built.",
+   "concepts": [
+    "risk-acceptance",
+    "eu-ai-act",
+    "fractal-graphs",
+    "twins"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/demos/vaults/risk-acceptance/index.html",
+   "title": "Risk Acceptance Office, a business plan with one risk replayed, published as a vault",
+   "type": "business plan",
+   "summary": "Vault page for a governance service priced per material risk; replays one invented risk over six weeks with a hash-chained decision record, and records four places where the published method disagrees with itself.",
+   "concepts": [
+    "risk-acceptance",
+    "business-plans",
+    "provenance",
+    "vault-apps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html",
+   "title": "For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit",
+   "type": "brief",
+   "summary": "Build brief, status open: asks riskmandate.ai for one page per partner organisation as two behaviour policies and a delta, and for sgit written up as a control against GDPR Articles 32, 25, 34(3)(a), 28 and 17; notes two inconsistencies, including a Level 1 price of £10 on one site and £5 on another.",
+   "concepts": [
+    "briefs",
+    "partnerships",
+    "agent-behaviour-policy",
+    "pricing"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/ai-providers.html",
+   "title": "Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai",
+   "type": "partnership",
+   "summary": "Hub for six proposed provider partnerships: three meeting points (agents read and write vaults, vault apps call models without a key, vaults carry agent work); states that the vault connector does not exist yet.",
+   "concepts": [
+    "partnerships",
+    "vault-apps",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/anthropic.html",
+   "title": "A proposed partnership between sgit.ai and Anthropic",
+   "type": "partnership",
+   "summary": "Proposes a vault connector in the provider's connectors directory, vault skills and a partner-network place, starting from this site already being built by agent sessions that share state through a vault.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/aws.html",
+   "title": "A proposed partnership between sgit.ai and AWS",
+   "type": "partnership",
+   "summary": "Proposes a reviewed reference architecture and a marketplace listing, building on beta CloudFormation templates and the vault service's Amazon S3 storage; notes the European Sovereign Cloud.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/azure.html",
+   "title": "A proposed partnership between sgit.ai and Microsoft Azure",
+   "type": "partnership",
+   "summary": "Says sgit runs on Azure in the founder's tests but is undocumented, and that a native Blob Storage backend is the main engineering a partnership would need.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/cloud-platforms.html",
+   "title": "sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai",
+   "type": "partnership",
+   "summary": "Hub for eight cloud pages: sgit needs mostly storage and a little compute; Docker works, AWS templates are in beta, Azure and Google Cloud deployments are not documented, and S3-compatible stores are untested.",
+   "concepts": [
+    "partnerships",
+    "open-source"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/digitalocean.html",
+   "title": "A proposed partnership between sgit.ai and DigitalOcean",
+   "type": "partnership",
+   "summary": "Proposes a one-click vault server on App Platform with Spaces storage, and help with a tested deployment.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/elevenlabs.html",
+   "title": "A proposed partnership between sgit.ai and ElevenLabs",
+   "type": "partnership",
+   "summary": "Builds on the site's published independent report and asks for per-key spend limits or short-lived text-to-speech tokens so a vault app can hold a credential safely.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/european-clouds.html",
+   "title": "A proposed partnership between sgit.ai and the European clouds",
+   "type": "partnership",
+   "summary": "Proposes one tested deployment on each of OVHcloud, Scaleway, Hetzner, IONOS and STACKIT, with sovereignty as the argument.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/google-cloud.html",
+   "title": "A proposed partnership between sgit.ai and Google Cloud",
+   "type": "partnership",
+   "summary": "Proposes finishing the Cloud Run path with native Cloud Storage support, a reviewed guide and a Marketplace listing; neither storage route is tested yet.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/google-gemini.html",
+   "title": "A proposed partnership between sgit.ai and Google Gemini",
+   "type": "partnership",
+   "summary": "Proposes a Gemini CLI extension, which can be listed self-service, and a route to the enterprise agent gallery through the Google Cloud partnership.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/ibm-cloud.html",
+   "title": "A proposed partnership between sgit.ai and IBM Cloud",
+   "type": "partnership",
+   "summary": "Proposes vaults beside IBM Sovereign Core for regulated enterprise data, with IBM Cloud Object Storage and Code Engine.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/mistral.html",
+   "title": "A proposed partnership between sgit.ai and Mistral AI",
+   "type": "partnership",
+   "summary": "Proposes a fully European stack: EU-hosted models, a vault connector for Vibe and a joint reference with a European cloud.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/netlify.html",
+   "title": "A proposed partnership between sgit.ai and Netlify",
+   "type": "partnership",
+   "summary": "Proposes a documented pattern for encrypted sites served from a static host and decrypted in the reader's browser.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/openai.html",
+   "title": "A proposed partnership between sgit.ai and OpenAI",
+   "type": "partnership",
+   "summary": "Proposes a vault connector for the plugins directory shared by ChatGPT and Codex, with read and append tools that need nothing destructive.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/openrouter.html",
+   "title": "A proposed partnership between sgit.ai and OpenRouter",
+   "type": "partnership",
+   "summary": "Proposes documenting the bounded-key pattern (a spend limit and a reset) that vault apps on this site already use to reach models.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/rackspace.html",
+   "title": "A proposed partnership between sgit.ai and Rackspace Technology",
+   "type": "partnership",
+   "summary": "Proposes Rackspace offering managed vaults across clouds, including its UK sovereign clouds.",
+   "concepts": [
+    "partnerships"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html",
+   "title": "Before you give an agent a connector, give the connector a twin",
+   "type": "article",
+   "summary": "Article: what Gmail and Calendar can and cannot undo, from Google's own pages; the twin as journal plus replay on a write-only lane; undo as a graded list; how a twin changes the agent's behaviour policy.",
+   "concepts": [
+    "twins",
+    "append-lanes",
+    "provenance",
+    "agent-behaviour-policy",
+    "undo-classes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/demos/vaults/connector-twin/index.html",
+   "title": "Connector Twin, a business plan with a working replay, published as a vault",
+   "type": "business plan",
+   "summary": "Vault page: an invented seventeen-call Gmail and Calendar session rebuilt from a hash-chained journal, before and after for every write, a graded revert plan, and per-agent pricing as hypotheses.",
+   "concepts": [
+    "twins",
+    "business-plans",
+    "provenance",
+    "vault-apps",
+    "undo-classes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/startups/business-plans.html",
+   "title": "Business plans to build on sgit, sgit.ai",
+   "type": "other",
+   "summary": "New home for the business plans, each a vault: Company X-Ray, Lesson Loop, Risk Acceptance Office, Connector Twin and Agent as Webmaster, with how to take one and an invitation to build them with partners.",
+   "concepts": [
+    "business-plans",
+    "open-source"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/partnerships/vault-key-management.html",
+   "title": "Who holds the keys? A call for collaboration on vault key management, sgit.ai",
+   "type": "partnership",
+   "summary": "Open call to key managers: browser-first release on the user's approval, key kinds kept apart, names that are addresses and never keys, scoped keys for agents; lists what exists and what does not.",
+   "concepts": [
+    "vault-key-management",
+    "read-keys",
+    "partnerships"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.8",
+   "url": "https://riskmandate.ai/versions/1.34.8.md",
+   "title": "A control leaves a green risk",
+   "type": "update",
+   "summary": "The blast-radius figure now shows red travelling up the path while anything below is unaccepted, gives every control a residual risk of its own, and adds controls that can make every path green.",
+   "concepts": [
+    "risk-acceptance",
+    "agent-behaviour-policy"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.7",
+   "url": "https://riskmandate.ai/versions/1.34.7.md",
+   "title": "The version, on every screen",
+   "type": "update",
+   "summary": "The header's version chip, hidden on most screens, now shows on laptops and appears as the first drawer entry on phones and tablets.",
+   "concepts": [
+    "provenance"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.6",
+   "url": "https://riskmandate.ai/versions/1.34.6.md",
+   "title": "Risks flow upwards",
+   "type": "update",
+   "summary": "Every live risk in the article's figure now lights the path from its holder to the board, with counts per role and a list of every risk that holds at that moment.",
+   "concepts": [
+    "risk-acceptance",
+    "fractal-graphs"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.5",
+   "url": "https://riskmandate.ai/versions/1.34.5.md",
+   "title": "The article, drawn",
+   "type": "update",
+   "summary": "Adds three figures drawn from the article's own data: a playable blast radius, the six weeks as a strip, and the ontology.",
+   "concepts": [
+    "risk-acceptance",
+    "agent-behaviour-policy"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.4",
+   "url": "https://riskmandate.ai/versions/1.34.4.md",
+   "title": "Who owns what in AI, and the ABP in the interview",
+   "type": "article",
+   "summary": "Adds an article that puts a role-ownership map under accountability that runs upwards, and extends the founder interview with six questions on the Agent Behaviour Policy, to thirty minutes and sixteen summary sections.",
+   "concepts": [
+    "risk-acceptance",
+    "interview-pages",
+    "agent-behaviour-policy"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.3",
+   "url": "https://riskmandate.ai/versions/1.34.3.md",
+   "title": "Four releases, delivered",
+   "type": "update",
+   "summary": "Fixes the CI failures that had kept v1.32.2 to v1.34.2 off the live site, so the UK support page, the two articles, the business cases, the OWASP graph and the interview page reach riskmandate.ai for the first time.",
+   "concepts": [
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.2",
+   "url": "https://riskmandate.ai/versions/1.34.2.md",
+   "title": "Twenty minutes of your advice, by voice",
+   "type": "update",
+   "summary": "Builds sgit.ai's interview-page brief (registered D19): the first interview page, unlisted and sent by link, a copy button tested against the stored prompt, two recorded corrections, and a template; the voice-mode run is left to the lead.",
+   "concepts": [
+    "interview-pages",
+    "briefs",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.1",
+   "url": "https://riskmandate.ai/versions/1.34.1.md",
+   "title": "A behaviour policy for everybody the lead talks to",
+   "type": "brief",
+   "summary": "Adds a brief and a repository pack for building a behaviour-policy vault about each organisation the lead talks to, with a leak gate proved against six planted leaks; no keys vault or real person's vault exists yet.",
+   "concepts": [
+    "agent-behaviour-policy",
+    "vault-key-management",
+    "security-audits"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.34.0",
+   "url": "https://riskmandate.ai/versions/1.34.0.md",
+   "title": "OWASP and open source first",
+   "type": "update",
+   "summary": "Adds an OWASP graph (52 projects and documents, 110 numbered items) published as data, eighteen open-source business cases and eighteen companies built on open source.",
+   "concepts": [
+    "open-source",
+    "fractal-graphs",
+    "agent-behaviour-policy"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.33.0",
+   "url": "https://riskmandate.ai/versions/1.33.0.md",
+   "title": "Business cases, by the risk they change",
+   "type": "update",
+   "summary": "Adds a business-cases section that computes the risk register for an agent deployment with and without a product, starting with RiskMandate's own case and twelve product categories.",
+   "concepts": [
+    "risk-acceptance",
+    "agent-behaviour-policy"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.32.3",
+   "url": "https://riskmandate.ai/versions/1.32.3.md",
+   "title": "Two articles: pilots that do not stay, and edits that cannot be undone",
+   "type": "article",
+   "summary": "Adds two articles: why agent pilots may not reach or stay in production, and why a Google Calendar edit, unlike a delete, documents no way for a user to restore it.",
+   "concepts": [
+    "agent-behaviour-policy",
+    "undo-classes"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.32.2",
+   "url": "https://riskmandate.ai/versions/1.32.2.md",
+   "title": "UK support, in the open",
+   "type": "update",
+   "summary": "Adds a public register of 79 UK programmes, events, schemes and networks, each read on its official page, with nothing applied for.",
+   "concepts": [
+    "grants-and-mandates",
+    "partnerships"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.32.1",
+   "url": "https://riskmandate.ai/versions/1.32.1.md",
+   "title": "The ladder has steps",
+   "type": "update",
+   "summary": "Replaces the word 'rung' with 'step' (or 'interval', 'tier', 'level') across the site, with a test that fails the build if it returns.",
+   "concepts": [
+    "em-dashes-and-style",
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.32.0",
+   "url": "https://riskmandate.ai/versions/1.32.0.md",
+   "title": "How it works, in the order it happens",
+   "type": "update",
+   "summary": "Rebuilds How it works as six steps in the order they happen, each with its status, and removes an architecture diagram that named things that do not exist.",
+   "concepts": [
+    "agent-behaviour-policy",
+    "provenance",
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "SGit-AI__CLI",
+   "kind": "new-page",
+   "url": "src:cli-briefs/09/24/brief__riskmandate__interview-page-and-voice-prompt.md",
+   "title": "For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it",
+   "type": "brief",
+   "summary": "The canonical markdown copy of the interview-page brief, status open, written 24 September 2026, with the prompt to hand the builder agent.",
+   "concepts": [
+    "briefs",
+    "interview-pages",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "SGit-AI__CLI",
+   "kind": "new-page",
+   "url": "src:cli-briefs/09/24/brief__riskmandate__partnership-risk-and-sgit-mapping.md",
+   "title": "For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit",
+   "type": "brief",
+   "summary": "The canonical markdown copy of the partnership-risk brief, status open: fourteen risk pages as two behaviour policies and a delta each, and sgit mapped as a control, including residual risks such as no revocation and no recovery.",
+   "concepts": [
+    "briefs",
+    "partnerships",
+    "agent-behaviour-policy",
+    "undo-classes"
+   ]
+  }
+ ]
+}

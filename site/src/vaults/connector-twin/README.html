@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Connector Twin · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#connector-twin">Connector Twin</a></li><li class="l2"><a href="#what-is-in-this-vault">What is in this vault</a></li><li class="l2"><a href="#how-to-edit">How to edit</a></li><li class="l2"><a href="#what-is-real-and-what-is-not">What is real and what is not</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/index.html">vaults</a> · <a href="README.md">raw text</a></p><article class="source"><h1 id="connector-twin">Connector Twin</h1>
+<p>A business plan for a service that gives every AI agent deployment a twin of its connectors: a journal of every request and response the agent makes to Gmail, Google Calendar, Drive, Slack or any other connected system, replayed into the views the agent saw, with a before and after for every change and a revert plan for each one.</p>
+<p>The sales question is one line: <strong>do you know what your agents did?</strong></p>
+<p><strong>Start with <code>index.html</code></strong> (it opens automatically). It replays one invented agent session against Gmail and Google Calendar, rebuilt from 17 journal entries, and then sets out the business. Or read the plan as documents in <code>plan/</code>, in order.</p>
+<h2 id="what-is-in-this-vault">What is in this vault</h2>
+<div class="table"><table><thead><tr><th>Path</th><th>What it is</th></tr></thead><tbody><tr><td><code>index.html</code>, <code>app.json</code>, <code>content.json</code></td><td>The replay and the plan as a single-page app. All data is inlined, so it renders anywhere the vault opens, offline included.</td></tr>
+<tr><td><code>plan/00-START-HERE.md</code></td><td>The one-page version and the reading order.</td></tr>
+<tr><td><code>plan/01</code> to <code>plan/10</code></td><td>The idea, the facts with their sources, the architecture, the service, the business model, go-to-market, the first ninety days, why invest, the risks, and what is still open.</td></tr>
+<tr><td><code>plan/plan.json</code></td><td>The packages, prices, capture modes and assumptions the app displays.</td></tr>
+<tr><td><code>spec/journal-entry.md</code></td><td>The entry format: the contract between whatever captures and whatever replays.</td></tr>
+<tr><td><code>spec/revert-rules.md</code></td><td>Every Gmail and Calendar action in scope, what the platform keeps, and the inverse the twin can offer.</td></tr>
+<tr><td><code>prototypes/</code></td><td>The agent-reported capture instruction, the broker design, and the processor schedule.</td></tr>
+<tr><td><code>journal/</code></td><td>The invented session: 17 hash-chained entries, and the captured instruction and summary.</td></tr>
+<tr><td><code>diagrams/</code></td><td>The pipeline and the three capture modes, as SVG and WebP.</td></tr>
+<tr><td><code>tools/make-demo-journal.py</code></td><td>Regenerates the journal.</td></tr>
+<tr><td><code>tools/verify-journal.py</code></td><td>Checks the hash chain offline. Exit 0 if intact.</td></tr>
+<tr><td><code>tools/build-content.py</code></td><td>Rebuilds <code>content.json</code> from <code>journal/</code> and <code>plan/plan.json</code> and inlines it into the app.</td></tr>
+<tr><td><code>PUBLIC.md</code></td><td>The three rules this vault is published under.</td></tr></tbody></table></div>
+<h2 id="how-to-edit">How to edit</h2>
+<p>Change the journal or the plan, then from the vault root:</p>
+<pre><code>python3 tools/make-demo-journal.py   # only if you changed the generator
+python3 tools/verify-journal.py
+python3 tools/build-content.py</code></pre>
+<h2 id="what-is-real-and-what-is-not">What is real and what is not</h2>
+<p>The session is invented. The behaviour it relies on is not: Gmail&#x27;s permanent delete, Undo Send being an interface feature, the 30-day trash, the administrator&#x27;s 25-day bulk restore, Google Vault not being a backup tool, and the append lanes the capture writes to are all documented, and <code>plan/02-the-facts.md</code> links each one to its source.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="1548711f401e2b512b37041b19a5cf69e9f1c6c4afa385a9d11aee9168a5b34e">1548711f401e</code></dd><dt>Frozen copy</dt><dd><a href="README.md">vaults/connector-twin/README.md</a> (2,721 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

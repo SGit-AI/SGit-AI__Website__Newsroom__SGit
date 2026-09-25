@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Brief B1 — power user and tester of Agent Behaviour Policies · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#brief-b1-power-user-and-tester-of-agent-behaviour-policies">Brief B1 — power user and tester of Agent Behaviour Policies</a></li><li class="l1"><a href="#be-the-first-power-user-of-agent-behaviour-policies">Be the first power user of Agent Behaviour Policies.</a></li><li class="l2"><a href="#the-prompt-paste-this-into-your-agent">The prompt. Paste this into your agent.</a></li><li class="l2"><a href="#ordered-by-what-you-need-first-not-by-what-we-are-proudest-of">Ordered by what you need first, not by what we are proudest of.</a></li><li class="l2"><a href="#five-steps-and-the-fourth-is-the-one-we-are-paying-for">Five steps, and the fourth is the one we are paying for.</a></li><li class="l3"><a href="#read-and-play-the-game-before-the-docs">Read, and play the game before the docs</a></li><li class="l3"><a href="#reproduce-one-of-the-five-published-examples">Reproduce one of the five published examples</a></li><li class="l3"><a href="#make-three-policies-for-things-you-actually-run">Make three policies for things you actually run</a></li><li class="l3"><a href="#instrument-it-and-publish-the-table">Instrument it, and publish the table</a></li><li class="l3"><a href="#if-there-is-time-break-it-on-purpose">If there is time: break it on purpose</a></li><li class="l2"><a href="#one-markdown-file-and-a-table-in-it">One markdown file, and a table in it.</a></li><li class="l2"><a href="#what-we-do-not-know-and-what-we-still-owe-you">What we do not know, and what we still owe you.</a></li><li class="l2"><a href="#tell-us-the-brief-is-wrong-before-you-do-it">Tell us the brief is wrong before you do it.</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="work-abp-power-user.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/work-abp-power-user.html">live ↗</a></p><article class="source"><h1 id="brief-b1-power-user-and-tester-of-agent-behaviour-policies">Brief B1 — power user and tester of Agent Behaviour Policies</h1>
+<p>The first task for a freelance collaborator: make Agent Behaviour Policies for real deployments, find where the model breaks, and time it. Opens with a prompt written to paste straight into an agent, plus the full reading list across riskmandate.ai, abp.sgit.ai and the rest of the estate.</p>
+<p>Source: <a href="work-abp-power-user.html">https://riskmandate.ai/work-abp-power-user.html</a><a class="ext live" href="https://riskmandate.ai/work-abp-power-user.html" title="live page">↗</a></p>
+<hr>
+<h1 id="be-the-first-power-user-of-agent-behaviour-policies">Be the first power user of Agent Behaviour Policies.</h1>
+<p>We have a published model, five worked examples, and a claim that the second policy of a known deployment shape should take minutes rather than days. Nobody has tested that. Your job is to make these things for real, find out where the model breaks, and time it — because that measurement is the only honest input to pricing anything, and we are five days from a conference where we intend to sell it.</p>
+<h2 id="the-prompt-paste-this-into-your-agent">The prompt. Paste this into your agent.</h2>
+<p>Written to be handed over whole. It orients your agent on what we are doing, what we are trying to sell and by when, and what the first task is. Everything after this section on this page is the detail behind it.</p>
+<pre><code>You are helping a freelance collaborator working with RiskMandate. Read this whole
+prompt, then fetch the reading list before doing anything else.
+
+WHO WE ARE. RiskMandate sells the insurability layer for AI agents. The argument:
+an agent&#x27;s grant (everything a credential technically permits) is far larger than
+its mandate (what somebody actually authorised it to do), and the gap between
+them is authority nobody scoped, time-boxed or signed for. We make that gap
+explicit, name an owner, and turn a standing grant into an acceptance with an
+expiry. We are read-only and never in the request path.
+
+WHAT WE ARE SELLING RIGHT NOW. One artefact: an Agent Behaviour Policy (ABP).
+For one agent in one deployment, it states everything it can do, what it was
+authorised to do, the delta, and what actually stands in the way of each
+capability. It describes and does not judge, so it carries no score — that rule
+is absolute and is explained in the reading list.
+
+The sales motion is draft and correct: we hand somebody a pre-computed draft
+policy for a deployment shape resembling theirs, deliberately understated, and
+they correct it. Correcting it IS stating their mandate, and the correction goes
+upward — which is the moment they realise the grant is bigger than they thought.
+It needs no access to anything of theirs, so it is legal and fast with a
+stranger. Tiers run from GBP 10 (their own answers and the delta, as a file they
+keep) to GBP 5,000-10,000 (an assessment by security professionals).
+
+THE TWO DEADLINES THAT SHAPE EVERYTHING.
+  1. Startup Summit Lisbon, 17-18 September 2026. We are exhibiting on a
+     1m x 0.4m booth. The plan is to run draft-and-correct on paper with
+     founders and investors, in about five minutes per conversation.
+  2. Selling online, through a store that already has payment rails and
+     printed codes, and a funnel that currently dead-ends before the checkout.
+
+YOUR FIRST TASK. Be the first real power user and tester of ABPs. Concretely:
+create them for deployments you actually run, work out where the model breaks,
+and instrument the whole thing — time per policy, how many rows you could
+measure versus derive, how many questions needed a human, which stage was
+slowest. We claim the second policy of a known shape takes minutes rather than
+days. Nobody has checked. Your table is the answer, and it decides whether any
+of this can be priced.
+
+SEVEN HARD RULES. These are not style preferences. Breaking any of them
+produces output we cannot use:
+  1. Never test somebody else&#x27;s system. Read vendors&#x27; published documentation.
+     Where their own pages contradict each other, publish the contradiction
+     unresolved, with both sources and the date. Do not settle it by trying it.
+  2. Never put a score on an ABP — no rating, traffic light or risk level,
+     anywhere, including in data. The same policy is dangerous in one deployment
+     and harmless in another.
+  3. Never write &quot;ADP&quot;. It is a registered mark of a major payroll processor.
+     The acronym is ABP, spelled out at first use.
+  4. Never say &quot;the policy&quot; for an ABP — in our own demo, &quot;policy&quot; is the
+     insurance instrument. Say &quot;the ABP&quot; or &quot;the behaviour policy&quot;.
+  5. No conformity language: not certified, compliant, conformant, accredited.
+     Nothing here is a compliance assessment.
+  6. No verdict about a named third party. Publish the record — facts, dates,
+     sources — never the judgement, and no adjective against anybody&#x27;s name.
+  7. Do not reproduce a standards body&#x27;s text. Titles only. The EU regulation
+     is expressly reusable; the international management standards are not.
+
+HOW TO READ OUR MATERIAL. Every page on riskmandate.ai and abp.sgit.ai has a
+markdown twin: swap .html for .md, or fetch /index.md on a directory URL. Use
+those. /llms.txt on either site is the index. Read in this order:
+
+  1. https://abp.sgit.ai/index.md            what an ABP is — the model itself
+  2. https://abp.sgit.ai/model/index.md      23 capability primitives, 4 barriers, 3 undo classes
+  3. https://abp.sgit.ai/examples/index.md   the five worked examples, derived not authored
+  4. https://riskmandate.ai/abp.md           how we present it commercially
+  5. https://riskmandate.ai/lab-connector-grants.md   the finding the first policies exist to show
+  6. https://riskmandate.ai/lab-abp-flow.md   the twelve-stage flow and the interface mockups
+  7. https://store.sgit.ai/offers/           what is actually for sale, and at what price
+  8. https://riskmandate.ai/summit.md        the Lisbon plan
+
+WHAT GOOD OUTPUT LOOKS LIKE. One markdown file. Dated. What you did, what you
+found, what you could not answer, and the instrumentation table. Include the
+things that went wrong — a brief that only produces good news has told us
+nothing. If part of this brief will not survive contact with reality, say so
+before doing it rather than after.
+
+The full brief, with the deliverable format and the open questions, is at
+https://riskmandate.ai/work-abp-power-user.md</code></pre>
+<p>The prompt is also the top of this page&#x27;s markdown twin, so an agent that fetches <a href="work-abp-power-user.html">work-abp-power-user.md</a><a class="ext live" href="https://riskmandate.ai/work-abp-power-user.html" title="live page">↗</a> gets the prompt and the detail in one go.</p>
+<h2 id="ordered-by-what-you-need-first-not-by-what-we-are-proudest-of">Ordered by what you need first, not by what we are proudest of.</h2>
+<p>Four sites, one game and one repository. Everything is public; nothing needs an account. The <code>.md</code> address is the one to hand an agent — same content, no markup.</p>
+<h2 id="five-steps-and-the-fourth-is-the-one-we-are-paying-for">Five steps, and the fourth is the one we are paying for.</h2>
+<p>Steps one to three exist to get you to step four with an informed opinion. Step five is what happens if there is time.</p>
+<h3 id="read-and-play-the-game-before-the-docs">Read, and play the game before the docs</h3>
+<p>Do the forty questions first. It takes five minutes and it gives you the intuition the documents assume. Then read the model, then how we sell it.</p>
+<ul><li>Write down, before you read the examples, how many of the 23 primitives you think your own coding agent has, and how many you asked for. Keep that number — it is the same mechanic we sell.</li><li>Then read in the order in the list above.</li></ul>
+<h3 id="reproduce-one-of-the-five-published-examples">Reproduce one of the five published examples</h3>
+<p>Take the coding-agent example — confirmations on and off — and rebuild it from the published vocabulary without copying the finished document. It is the cheapest possible test of whether the model can be used by somebody who did not write it.</p>
+<ul><li>Where did you have to guess? Where was the published data silent?</li><li>Did you get the same numbers? If not, is the example wrong or is the vocabulary ambiguous?</li><li>Time it. This is your baseline for “a policy for a shape that already exists”.</li></ul>
+<h3 id="make-three-policies-for-things-you-actually-run">Make three policies for things you actually run</h3>
+<p>Your own deployments, not hypotheticals — the whole point is that a real one surfaces problems an invented one hides. Good candidates: your coding agent, an assistant you have connected to a mailbox or a drive, and a CI job.</p>
+<ul><li><strong>Elicit your own mandate first</strong>, in writing, before you measure the grant. Notice how long that takes and how sure you are.</li><li><strong>Measure the grant from documentation</strong>, never by probing. Record the source URL and the date for every row.</li><li><strong>Mark every row measured or derived.</strong> Derived is fine and is most of it; unmarked is not.</li><li><strong>Record the barrier per capability</strong> — none, expectation, setting or boundary — and be strict: a switch your own account can flip is a setting, not a control.</li><li><strong>Try the proposed <code>material</code> property</strong> — own, organisation, third_party, mixed. Does it survive contact with a real deployment, or does it need a fifth value?</li><li>Add a validity statement and no score. If you feel the urge to add a score, note where that urge came from — that is useful data about every buyer we will meet.</li></ul>
+<h3 id="instrument-it-and-publish-the-table">Instrument it, and publish the table</h3>
+<p>This is the deliverable. The claim under test is that the second policy of a shape already in the library takes minutes rather than days. If it does not, the library is not doing its job and nothing should be priced until it does.</p>
+<ul><li>Time per policy, split by stage: eliciting the mandate, measuring the grant, computing the delta, writing it up.</li><li>Rows measured versus derived, per policy.</li><li>How many questions you could not answer without a human.</li><li>Which stage was slowest, and whether a shape library would have removed it.</li><li>First policy of a shape versus second policy of the same shape. That ratio is the finding.</li></ul>
+<h3 id="if-there-is-time-break-it-on-purpose">If there is time: break it on purpose</h3>
+<p>Find the deployment the model cannot describe. We already know of one and would like more.</p>
+<ul><li><strong>The known one:</strong> a connector that exists and is switched off is not in the grant today and is one click from being in it. Neither the barrier model nor the label has a place for that, and it is probably the most common state in any real estate.</li><li>What about an agent that can create other agents? A scheduled job that outlives the person who made it? A shared machine?</li></ul>
+<h2 id="one-markdown-file-and-a-table-in-it">One markdown file, and a table in it.</h2>
+<p>Not a deck, not a summary. The working, because the working is what we can act on. Everything below is a suggested shape rather than a form to fill in.</p>
+<div class="table"><table><thead><tr><th>Section</th><th>What goes in it</th></tr></thead><tbody><tr><td>date, and what you read</td><td>so a reader knows what your view was based on and when</td></tr>
+<tr><td>your pre-reading guess</td><td>the two numbers from step 1, and how wrong they turned out to be</td></tr>
+<tr><td>the reproduction</td><td>did you get the same numbers as the published example, and where did you guess</td></tr>
+<tr><td>the three policies</td><td>as actual ABPs, with every row marked measured or derived and sourced</td></tr>
+<tr><td>the instrumentation table</td><td><strong>the point of the exercise</strong> — times, ratios, and the first-versus-second finding</td></tr>
+<tr><td>where the model broke</td><td>anything you could not express, with the deployment that broke it</td></tr>
+<tr><td>what you could not answer</td><td>open questions, unresolved contradictions, things needing somebody else</td></tr>
+<tr><td>what you would change</td><td>about the model, the flow, the brief, or this page</td></tr></tbody></table></div>
+<p>Include what went wrong. A report that only contains good news has told us nothing.</p>
+<p>The most valuable possible outcome of this brief is “the second policy took just as long as the first, and here is why” — because that would stop us pricing something that does not work yet. Finding that out costs days. Finding it out after we have sold it costs considerably more.</p>
+<h2 id="what-we-do-not-know-and-what-we-still-owe-you">What we do not know, and what we still owe you.</h2>
+<ul><li><strong>What does mandate elicitation look like for a connector?</strong> For a coding agent the mandate is a job. For a mailbox it is closer to a relationship, and nobody has drafted those questions. If step 3 produces a usable question set, that is worth more than the table.</li><li><strong>Does <code>material</code> belong in the shared vocabulary or in each policy?</strong> It is a property of a capability <em>in a context</em>, which argues for the policy; it is identical across every policy of the same shape, which argues for the vocabulary. We lean to the vocabulary with a per-policy override and are not confident.</li><li><strong>Which of the five shapes should a stranger meet first?</strong> The work mailbox and the corporate file estate are what somebody buys; the personal mailbox and the personal drive are what somebody understands. This decides the front page.</li><li><strong>Can a vault read key be revoked?</strong> The whole “hand an underwriter a key” story depends on it and we have not checked. If you get to this before we do, tell us.</li><li><strong>Rate, hours and duration.</strong> Deliberately absent: this page is public, and those are between the two of you.</li><li><strong>Start date and when the table is wanted by.</strong> The Lisbon event is 17–18 September, which is the only fixed date on our side.</li><li><strong>Who to ask when blocked</strong>, and how fast a reply is reasonable.</li><li><strong>Whether the output is published.</strong> Our default is that it is — this whole section is public — but that is a decision to make explicitly before the work starts rather than after.</li><li><strong>Repository access</strong>, if any of the work becomes site changes rather than policies.</li></ul>
+<h2 id="tell-us-the-brief-is-wrong-before-you-do-it">Tell us the brief is wrong before you do it.</h2>
+<p>This was written by somebody who has not done the task, five days before a conference, from a model nobody has stress-tested. The most useful first message you can send is which part of it will not survive contact with reality.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/work-abp-power-user.html">https://riskmandate.ai/work-abp-power-user.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/work-abp-power-user.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:09Z</dd><dt>sha256</dt><dd><code title="892b5ec48a535a1a050c404c50193f899dad219d04a67fbe078496ad57b56678">892b5ec48a53</code></dd><dt>Frozen copy</dt><dd><a href="work-abp-power-user.md">sites/riskmandate.ai/work-abp-power-user.md</a> (13,408 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

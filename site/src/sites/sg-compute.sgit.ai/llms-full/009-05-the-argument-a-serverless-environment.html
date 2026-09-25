@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>05 — The argument: a serverless environment for agents (sg-compute.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#05-the-argument-a-serverless-environment-for-agents">05 — The argument: a serverless environment for agents</a></li><li class="l2"><a href="#1-the-positioning-in-its-own-words">1. The positioning, in its own words</a></li><li class="l2"><a href="#2-the-trade-stated-honestly">2. The trade, stated honestly</a></li><li class="l2"><a href="#3-the-cold-start-ladder">3. The cold-start ladder</a></li><li class="l2"><a href="#4-the-50-second-number-and-what-it-is-for">4. The 50-second number, and what it is for</a></li><li class="l2"><a href="#5-the-recursion-the-best-unbuilt-idea">5. The recursion — the best unbuilt idea</a></li><li class="l2"><a href="#6-cost-what-can-be-said-and-what-cannot">6. Cost — what can be said, and what cannot</a></li><li class="l2"><a href="#7-the-adjacent-bets-three-research-threads-worth-a-page-each">7. The adjacent bets — three research threads worth a page each</a></li><li class="l2"><a href="#8-the-workload-classes-to-name-on-the-front-page">8. The workload classes to name on the front page</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 9 of 14</p><nav class="pager"><span><a href="008-04-the-spec-system-what-makes-it-a-platf.html">← 04 — The spec system: what makes it a platform</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-06-site-architecture.html">06 — Site Architecture →</a></span></nav><article class="source"><h1 id="05-the-argument-a-serverless-environment-for-agents">05 — The argument: a serverless environment for agents</h1>
+<p>The strategy is well developed — <strong>23 briefs, 52,873 words measured</strong>, mostly between 30 April and 16 May 2026. This is the <code>/why/</code> section, and it is the strongest writing in the corpus.</p>
+<hr>
+<h2 id="1-the-positioning-in-its-own-words">1. The positioning, in its own words</h2>
+<blockquote><p><em>&quot;<strong>A serverless environment for agents, with the isolation, observability, and substrate control that agent workloads actually need.</strong>&quot;</em></p></blockquote>
+<p>And the market it is explicitly <em>not</em> in:</p>
+<blockquote><p><em>&quot;We are <strong>not</strong> competing for the generic developer-platform market (Vercel, Cloudflare Workers, Lambda)… <strong>We are competing for the agent-deployment market.</strong>&quot;</em></p></blockquote>
+<p>That is a sharper position than most infrastructure projects manage, and it is defensible because the workload genuinely differs — agent runs are seconds-to-minutes, need a real filesystem and a real browser, and care more about isolation and substrate control than about millisecond cold starts.</p>
+<p>The definition the whole argument rests on:</p>
+<blockquote><p><em>&quot;<strong>Serverless = no servers running when there is no traffic, with a defined cost to start serving traffic and ongoing per-invocation cost while traffic is served.</strong>&quot;</em></p></blockquote>
+<p>Note what it does <em>not</em> say: nothing about functions, nothing about managed runtimes. That definitional move is what lets an EC2 instance with a one-hour self-terminate count as serverless, and the site should make the move explicitly rather than assuming it.</p>
+<hr>
+<h2 id="2-the-trade-stated-honestly">2. The trade, stated honestly</h2>
+<blockquote><p><em>&quot;The trade-off Lambda makes is &#x27;less control, smaller startup tax, fully managed.&#x27; Our composition makes a different trade: <strong>more control, slightly longer first-call cold-start, broader workload range, and per-substrate optimisation.</strong>&quot;</em></p></blockquote>
+<blockquote><p><em>&quot;<strong>Lambda&#x27;s 100ms cold-start is impressive but irrelevant for most agentic workloads</strong> (which run for seconds or minutes anyway).&quot;</em></p></blockquote>
+<blockquote><p><em>&quot;<strong>Containers do not have this problem.</strong> A single container can serve hundreds of parallel requests trivially. The cold-start is paid <strong>once per container, not once per request</strong>.&quot; … &quot;<strong>the workhorse substrate is a container, not a function.</strong>&quot;</em></p></blockquote>
+<p><strong>⚠️ The &quot;hundreds of parallel requests&quot; claim is argued and never measured.</strong> There are no load tests anywhere in the repo. Either measure it before publishing or state it as a design expectation. <code>08__</code> Q2.</p>
+<hr>
+<h2 id="3-the-cold-start-ladder">3. The cold-start ladder</h2>
+<p>The corpus&#x27;s most useful single table:</p>
+<div class="table"><table><thead><tr><th>Substrate</th><th>Cold start</th><th>Status</th></tr></thead><tbody><tr><td>EC2 cold</td><td>30–60 s</td><td>✅ implemented</td></tr>
+<tr><td><strong>EC2 from warm pool</strong></td><td><strong>5–15 s</strong></td><td>❌ <strong>not implemented</strong></td></tr>
+<tr><td>Fargate cold</td><td>10–30 s</td><td>partial (experiment)</td></tr>
+<tr><td>Container on a running EC2</td><td>1–5 s</td><td>✅ implemented</td></tr>
+<tr><td>Cached-image restart</td><td>100–500 ms</td><td>—</td></tr>
+<tr><td>Firecracker snapshot restore</td><td>&lt; 50 ms</td><td>future</td></tr></tbody></table></div>
+<p><strong>And the measured reality beats the ladder&#x27;s own top rung.</strong> From <code>utils/ec2_boot_bench/</code> — 24 real runs, eu-west-2, 11 May 2026, time to SSM-ready:</p>
+<div class="table"><table><thead><tr><th>Instance</th><th>Purchase</th><th>Seconds</th></tr></thead><tbody><tr><td>t3.micro</td><td>on-demand</td><td><strong>16.4–16.5</strong></td></tr>
+<tr><td>c5.large</td><td>on-demand</td><td><strong>16.2–16.3</strong></td></tr>
+<tr><td>g5.xlarge</td><td>on-demand</td><td><strong>18.2–18.7</strong></td></tr>
+<tr><td>g5.xlarge</td><td>spot</td><td><strong>20.5–20.6</strong></td></tr>
+<tr><td>g5.xlarge (different AMI)</td><td>on-demand</td><td><strong>38.5–69.5</strong></td></tr></tbody></table></div>
+<p>Two things there are worth publishing. <strong>The measured EC2 cold start is ~16 seconds, not 30–60</strong> — the ladder is pessimistic against its own benchmark. And <strong>AMI choice changes boot time by 2–4×</strong>, which is a more actionable finding than the instance type.</p>
+<p>Plus <strong>7 recorded <code>InsufficientInstanceCapacity</code> failures</strong> for g5.xlarge across both AZs. <strong>Publish those.</strong> Honest evidence that spot GPU capacity is not guaranteed is worth more than a clean table, and it is exactly the kind of number nobody else publishes.</p>
+<blockquote><p>⚠️ <strong>Strip the instance IDs and AMI IDs before publishing.</strong> See <code>07__</code> §2.</p></blockquote>
+<hr>
+<h2 id="4-the-50-second-number-and-what-it-is-for">4. The 50-second number, and what it is for</h2>
+<blockquote><p><em>&quot;<strong>The 50-second end-to-end provisioning is the number that matters most.</strong> It is not as fast as Lambda (sub-second cold start), not as fast as Fargate (10–30s), but it gives a dedicated EC2 instance per-vault with full control, isolation, and a stable DNS name.&quot;</em></p></blockquote>
+<blockquote><p><em>&quot;…the &#x27;click and you have a dedicated environment&#x27; pattern (<strong>where 50s is a fair trade for the isolation</strong>).&quot;</em></p></blockquote>
+<p>That is the product claim in one sentence, and it is honest about what it is trading. Note the gap between the 16-second boot benchmark and the 50-second end-to-end figure: <strong>the difference is provisioning, DNS and health-checking, not instance start.</strong> Publishing that breakdown would be more useful than either number alone.</p>
+<hr>
+<h2 id="5-the-recursion-the-best-unbuilt-idea">5. The recursion — the best unbuilt idea</h2>
+<blockquote><p><em>&quot;<strong>We do not need a serverless &#x27;control plane&#x27; running 24/7.</strong> The control plane is one specific role that can spin up itself on demand, do its work, and shut down. <strong>The DNS layer is the always-on piece</strong> (cheap; effectively free); everything else is on-demand.&quot;</em></p></blockquote>
+<p>And from the naming brief:</p>
+<blockquote><p><em>&quot;An interesting property: <strong>the Ephemeral Compute control plane should be able to run inside Ephemeral Compute</strong>… This is recursion, but it is also practical.&quot;</em></p></blockquote>
+<p><strong>Nobody has built it.</strong> It is the most quotable idea in the corpus, it follows directly from the architecture, and a platform that can host its own control plane is a much stronger claim than one that cannot. Whether it <em>should</em> be built is <code>08__</code> Q1 — a control plane that must exist to start itself has a bootstrap problem, and the honest answer may be &quot;the DNS layer and one small always-on waker, everything else ephemeral.&quot;</p>
+<hr>
+<h2 id="6-cost-what-can-be-said-and-what-cannot">6. Cost — what can be said, and what cannot</h2>
+<p><strong>Can be said:</strong></p>
+<ul><li>Measured boot times (§3), including the failures.</li><li>Spot is used and defaulted where appropriate: <code>vault_app</code> and Fargate set <code>use_spot = True # spot by default (~70% cheaper)</code> and <code>launch_type = &#x27;FARGATE_SPOT&#x27;</code>.</li><li>Teardown defaults: <code>max_hours = 1</code> everywhere, fractional supported (<code>0.1</code> = 6 minutes), idle reconciliation at ~15 minutes.</li><li>The brief-level estimates, <strong>labelled as estimates</strong>: <em>&quot;Cost per running unit | <strong>$0.005–0.10+ per hour</strong> | Effectively free for short bursts&quot;</em>, and for warm pools <em>&quot;A pool of 3–5 t3.small instances at ~$0.02/hour each is roughly <strong>$1–3/day</strong>.&quot;</em></li></ul>
+<p><strong>Cannot be said:</strong></p>
+<ul><li><strong>Any figure from the dashboard cost tracker.</strong> Its own header: <em>&quot;placeholder cost tracker. Shows <strong>mocked</strong> cost estimate… <strong>Real cost calculation is its own brief</strong>.&quot;</em> Its <code>HOURLY_RATES</code> table is five hardcoded t3 rates. <strong>That brief does not exist in either repo.</strong></li><li><strong>Image sizes.</strong> Not recorded anywhere and not derivable without a build.</li><li><strong>Any throughput or concurrency number.</strong> None were measured.</li></ul>
+<p><strong>The honest cost page is: here is what a run costs to <em>start</em> (measured), here is what it costs to <em>hold</em> (teardown defaults), and the per-workload cost model is not built yet.</strong> That is more useful than a fabricated pricing table, and it is checkable.</p>
+<hr>
+<h2 id="7-the-adjacent-bets-three-research-threads-worth-a-page-each">7. The adjacent bets — three research threads worth a page each</h2>
+<p><strong>Nitro Enclaves</strong> (3,480 w, 15 May) — the confidential-compute tier, and it carries the best customer sentence in the whole corpus:</p>
+<blockquote><p><em>&quot;Run your security scan against your private repository. The scanner code is open source. The enclave&#x27;s attestation proves it is the exact code you can inspect. <strong>We cannot see your code, even though it ran on our infrastructure.</strong>&quot;</em></p></blockquote>
+<p>That is the SG/Send zero-knowledge argument extended to compute, and it belongs on this site because it is the thing that distinguishes it from every generic runner.</p>
+<p><strong>Firecracker</strong> (3,222 w + 2,607 w research, 15 May) — with a fact that changed the economics:</p>
+<blockquote><p><em>&quot;<strong>AWS nested-virt support on C8i/M8i/R8i (Feb 2026) collapsed Firecracker entry cost from $3+/hour to ~$0.09/hour.</strong>&quot;</em></p></blockquote>
+<p><strong>AgentCore</strong> (2,980 w, 15 May) — where SG/Compute layers on Bedrock rather than competing with it. Worth publishing as positioning, and worth re-checking, because it is fifteen months old and that market has moved.</p>
+<hr>
+<h2 id="8-the-workload-classes-to-name-on-the-front-page">8. The workload classes to name on the front page</h2>
+<p>From the serverless brief: <strong>vault apps, agents, AppSec mini-tools, demo environments, CI workloads, multi-region testing, and security scanners in Nitro Enclaves.</strong></p>
+<p>Note that the spec catalogue (<code>04__</code> §4) already covers most of these — vault specs, browser specs, LLM specs, observability specs. <strong>The workload list and the spec list are the same argument told twice, and the site should join them:</strong> each named workload class should link to the spec that serves it, and the ones with no spec are the roadmap.</p>
+<p>And the honest caveat that belongs with all of it, from the serverless brief itself:</p>
+<blockquote><p><em>&quot;<strong>The composition is not built yet, but the gap is integration, not new invention.</strong>&quot;</em></p></blockquote>
+<p>Fifteen months later that is still the right sentence, and <code>03__</code>&#x27;s audit says why: the pieces are real, and warm pools, multi-node stacks, non-EC2 platforms and the artefact sinks are the integration that has not happened.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em>Published on sg-compute.sgit.ai under CC BY 4.0. Source: the <code>sg-compute.sgit.ai</code> brief pack v0.33.62, 24 August 2026, by Dinis Cruz via the SG/Send Librarian, with AI co-authorship (Claude, Anthropic).</em></p>
+<hr>
+<p>source: /briefs/06__site-architecture.md</p>
+<hr></article><nav class="pager"><span><a href="008-04-the-spec-system-what-makes-it-a-platf.html">← 04 — The spec system: what makes it a platform</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="010-06-site-architecture.html">06 — Site Architecture →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>9 of 14: 05 — The argument: a serverless environment for agents</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

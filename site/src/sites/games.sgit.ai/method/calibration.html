@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Calibration, not knowledge · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · games.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#calibration-not-knowledge">Calibration, not knowledge</a></li><li class="l1"><a href="#score-calibration-not-knowledge">Score calibration, not knowledge</a></li><li class="l2"><a href="#the-failure-this-avoids">The failure this avoids</a></li><li class="l2"><a href="#the-rule">The rule</a></li><li class="l2"><a href="#how-we-know-it-holds">How we know it holds</a></li><li class="l2"><a href="#the-simplification-that-came-from-playing-it">The simplification that came from playing it</a></li><li class="l2"><a href="#what-would-show-this-is-wrong">What would show this is wrong</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/games.sgit.ai.html">games.sgit.ai</a> · <a href="calibration.md">raw text</a> · <a class="ext" href="https://games.sgit.ai/method/calibration.md">live ↗</a></p><article class="source"><h1 id="calibration-not-knowledge">Calibration, not knowledge</h1>
+<blockquote><p>Why the scoreboard scores how well you know what you know, with a proper scoring rule that makes saying yes to everything a losing strategy.</p></blockquote>
+<p>*Source: <a href="calibration.html">https://games.sgit.ai/method/calibration.html</a><a class="ext live" href="https://games.sgit.ai/method/calibration.html" title="live page">↗</a> · site v0.5.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://games.sgit.ai/index.md" title="live page">↗</a> / <a href="index.html">Method</a><a class="ext live" href="https://games.sgit.ai/method/index.md" title="live page">↗</a> / Calibration</p>
+<h1 id="score-calibration-not-knowledge">Score calibration, not knowledge</h1>
+<p>A quiz about agent capabilities would measure whether you have read the release notes. That is not the interesting question. The interesting question is whether the confidence you already act on is warranted.</p>
+<h2 id="the-failure-this-avoids">The failure this avoids</h2>
+<p>Score bare accuracy and the game has a dominant strategy: <strong>say yes to everything</strong>. Real grants are wider than people expect, so a blanket yes scores well — and a player who wins that way has learned nothing and demonstrated nothing. Every capability quiz that scores one point per right answer has this hole.</p>
+<h2 id="the-rule">The rule</h2>
+<pre><code>points = 160 x (1/4 - (p - truth)^2)
+
+  yes         -&gt; p = 0.75
+  don&#x27;t know  -&gt; p = 0.5
+  no          -&gt; p = 0.25
+
+  right       -&gt; +30
+  wrong       -&gt; -50
+  don&#x27;t know  -&gt;   0</code></pre>
+<p>This is the squared-error (Brier) rule, shifted so that the midpoint scores zero. Two properties follow, and both are load-bearing. It is <strong>proper</strong>: your best strategy is to report what you actually believe, because any other report lowers your expected score. And it is <strong>asymmetric in the way that matters</strong>: −50 against +30 means confident-and-wrong costs nearly twice what confident-and-right earns, so blanket confidence loses.</p>
+<h2 id="how-we-know-it-holds">How we know it holds</h2>
+<p>It is asserted, not hoped for. The game&#x27;s <code>selftest.json</code> plays <em>yes, definitely</em> to every question against every profile in the set and requires the result to land between −3,840 and −8,640, where perfect knowledge scores +3,840. If a change to the question set ever made blanket-yes profitable, the build fails.</p>
+<h2 id="the-simplification-that-came-from-playing-it">The simplification that came from playing it</h2>
+<p>The brief asked for three confidence levels plus an always-present <em>not sure</em>. The built game has three answers and no confidence row at all, and the note in the source is worth quoting as a design finding: a confidence slider <em>&quot;confused the loop more than it measured&quot;</em>. Fewer, coarser answers that people actually use beat a finer scale they answer noisily — the rule stays proper either way, and the numbers a player sees (+30, −50, 0) are ones they can hold in their head.</p>
+<h2 id="what-would-show-this-is-wrong">What would show this is wrong</h2>
+<p>Play data where calibration scores cluster near the ceiling — meaning people already know what they know, and the game is measuring nothing. Or a wide spread with no relationship to how the player actually configured their agent, meaning it is measuring a trivia score after all. Neither can be checked yet: <strong>no release has cited play data.</strong> That is exactly why the scoreboard sits at <code>scored</code> on <a href="../maturity/index.html">the ladder</a><a class="ext live" href="https://games.sgit.ai/maturity/index.md" title="live page">↗</a> and not at <code>measured</code>.</p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://games.sgit.ai/llms.txt" title="live page">↗</a> · <a href="calibration.html">HTML version</a><a class="ext live" href="https://games.sgit.ai/method/calibration.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>games.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://games.sgit.ai/method/calibration.md">https://games.sgit.ai/method/calibration.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:36Z</dd><dt>sha256</dt><dd><code title="376f314a9ec676c4be7dcd020fccb2cf8841c0cf8d0547483e711935b120b144">376f314a9ec6</code></dd><dt>Frozen copy</dt><dd><a href="calibration.md">sites/games.sgit.ai/method/calibration.md</a> (3,187 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

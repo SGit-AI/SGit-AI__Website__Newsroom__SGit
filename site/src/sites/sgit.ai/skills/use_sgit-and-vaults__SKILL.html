@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>SKILL: sgit — Zero-Knowledge Encrypted Vault Operations · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#skill-sgit-zero-knowledge-encrypted-vault-operations">SKILL: sgit — Zero-Knowledge Encrypted Vault Operations</a></li><li class="l2"><a href="#overview">Overview</a></li><li class="l2"><a href="#setup">Setup</a></li><li class="l3"><a href="#install">Install</a></li><li class="l3"><a href="#access-token">Access Token</a></li><li class="l2"><a href="#core-commands">Core Commands</a></li><li class="l3"><a href="#create-a-new-vault">Create a new vault</a></li><li class="l3"><a href="#commit-local-changes">Commit local changes</a></li><li class="l3"><a href="#check-status">Check status</a></li><li class="l3"><a href="#push-to-remote">Push to remote</a></li><li class="l3"><a href="#pull-remote-changes">Pull remote changes</a></li><li class="l3"><a href="#clone-an-existing-vault">Clone an existing vault</a></li><li class="l3"><a href="#read-only-clone-with-a-read-key-v01427">Read-only clone with a read key (v0.14.27+)</a></li><li class="l2"><a href="#branching">Branching</a></li><li class="l2"><a href="#diff-revert-stash">Diff, Revert, Stash</a></li><li class="l2"><a href="#sharing-publishing">Sharing &amp;amp; Publishing</a></li><li class="l3"><a href="#receive-a-transfer-still-works">Receive a transfer (still works)</a></li><li class="l3"><a href="#share-a-one-shot-snapshot-simple-token-disabled">Share a one-shot snapshot (Simple Token) — DISABLED</a></li><li class="l3"><a href="#publish-a-multi-layer-encrypted-archive-disabled">Publish a multi-layer encrypted archive — DISABLED</a></li><li class="l2"><a href="#vault-key-format">Vault Key Format</a></li><li class="l2"><a href="#typical-workflow-for-a-claude-session">Typical Workflow for a Claude Session</a></li><li class="l2"><a href="#agentic-patterns">Agentic Patterns</a></li><li class="l3"><a href="#read-only-consumer-agent-read-key-no-write-access">Read-only consumer agent (read key, no write access)</a></li><li class="l3"><a href="#stateless-agent-via-snapshot-token-currently-disabled">Stateless agent via snapshot token — CURRENTLY DISABLED</a></li><li class="l3"><a href="#multi-agent-collaboration">Multi-agent collaboration</a></li><li class="l2"><a href="#remote-management">Remote Management</a></li><li class="l2"><a href="#vault-key-store">Vault Key Store</a></li><li class="l2"><a href="#pki-sign-encrypt-files">PKI (Sign &amp;amp; Encrypt Files)</a></li><li class="l2"><a href="#diagnostics">Diagnostics</a></li><li class="l2"><a href="#safe-removal">Safe Removal</a></li><li class="l2"><a href="#key-facts">Key Facts</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="use_sgit-and-vaults__SKILL.md">raw text</a> · <a class="ext" href="https://sgit.ai/skills/use_sgit-and-vaults__SKILL.html">live ↗</a></p><article class="source"><hr>
+<p>name: sgit
+description: &gt;
+Use this skill whenever you need to interact with a zero-knowledge encrypted vault
+via sgit (formerly sg-send-cli). Triggers include: creating a vault, committing changes,
+pushing files to a vault, pulling changes, cloning a vault, checking vault status,
+branching, sharing snapshots via tokens, diffing, stashing, reverting, exporting,
+publishing, or any mention of sgit, SG/Send, encrypted vault, vault key, Simple Token,
+or encrypted vault sync. This skill enables persistent state and bidirectional
+communication between Claude sessions and human collaborators through a shared
+zero-knowledge encrypted object store with git-like versioning.
+</p>
+<hr>
+<h1 id="skill-sgit-zero-knowledge-encrypted-vault-operations">SKILL: sgit — Zero-Knowledge Encrypted Vault Operations</h1>
+<blockquote><p><strong>Canonical source:</strong> <code>library/skills/use_sgit-and-vaults/SKILL.md</code> in the
+<code>SGraph-AI__App__Send</code> repo (also published as <code>library/reference/sgit-skill.md</code> in the
+sgraph.ai library vault). <strong>Last verified:</strong> 2026-07-30 against sgit-ai v0.14.27. If your
+copy came from a manual upload, check for a newer version before trusting details —
+notably: <code>share send</code>/<code>share publish</code> are currently disabled.</p></blockquote>
+<h2 id="overview">Overview</h2>
+<p><code>sgit</code> is a CLI tool for creating and managing <strong>encrypted vaults</strong> — versioned, encrypted
+folders you can push to a server, share with a token, and collaborate on. The server never
+sees plaintext: everything is encrypted on your device before it leaves (AES-256-GCM).</p>
+<p>Think of it as &quot;git for encrypted files&quot; but simpler: no staging area, no index, and
+snapshot-the-whole-folder semantics.</p>
+<p>This skill enables a Claude session to read from and write to shared vaults, allowing
+persistent state and communication across isolated sessions.</p>
+<hr>
+<h2 id="setup">Setup</h2>
+<h3 id="install">Install</h3>
+<pre><code class="lang-bash">pip3 install sgit-ai --break-system-packages</code></pre>
+<h3 id="access-token">Access Token</h3>
+<p>Write operations require a token. Pass it with <code>--token</code>:</p>
+<pre><code class="lang-bash">sgit --token &lt;token&gt; &lt;command&gt;</code></pre>
+<p>The token is saved to <code>.sg_vault/token</code> after first use, so subsequent commands
+don&#x27;t need <code>--token</code> again. If you don&#x27;t have a token, ask the user.</p>
+<hr>
+<h2 id="core-commands">Core Commands</h2>
+<h3 id="create-a-new-vault">Create a new vault</h3>
+<pre><code class="lang-bash">sgit init [directory]
+sgit init --existing                    # vault-ify a folder that already has files
+sgit init --vault-key pass:id           # use a specific vault key
+sgit init --restore backup.zip          # restore from an uninit backup</code></pre>
+<ul><li>Creates <code>.sg_vault/</code>, generates a vault key and initial branches</li><li>Outputs a vault key — <strong>save it</strong>, it&#x27;s the only way to access this vault later</li><li>With <code>--existing</code>, all current files are committed as the first snapshot</li></ul>
+<h3 id="commit-local-changes">Commit local changes</h3>
+<pre><code class="lang-bash">sgit commit &quot;description of changes&quot;
+sgit commit                             # auto-generates message
+sgit commit -d /path/to/vault</code></pre>
+<ul><li>Snapshots <strong>all</strong> changed files (no staging area — like <code>git commit -a</code>)</li><li>Empty commits (no changes) are skipped</li></ul>
+<h3 id="check-status">Check status</h3>
+<pre><code class="lang-bash">sgit status
+sgit status --explain                   # longer explanation of branch model</code></pre>
+<ul><li>Shows modified, added, deleted files</li><li>Current clone branch and named branch</li><li>Whether you are ahead of remote</li><li>Next recommended command</li></ul>
+<h3 id="push-to-remote">Push to remote</h3>
+<pre><code class="lang-bash">sgit push
+sgit push --branch-only                 # push branch metadata only</code></pre>
+<ul><li>Re-encrypts objects from clone branch key → named branch key</li><li>Uploads only changed objects (delta push)</li></ul>
+<h3 id="pull-remote-changes">Pull remote changes</h3>
+<pre><code class="lang-bash">sgit pull</code></pre>
+<ul><li>Downloads new commits, decrypts, fast-forward merges into clone branch</li></ul>
+<h3 id="clone-an-existing-vault">Clone an existing vault</h3>
+<pre><code class="lang-bash">sgit clone &lt;vault-key&gt; [directory]
+# e.g. sgit clone mypassphrase:vault-abc123</code></pre>
+<ul><li>Creates a new directory, downloads named branch, decrypts, checks out HEAD</li></ul>
+<h3 id="read-only-clone-with-a-read-key-v01427">Read-only clone with a read key (v0.14.27+)</h3>
+<pre><code class="lang-bash">sgit clone --read-key &lt;64-hex&gt; &lt;vault-id&gt; [directory]
+# or the shorthand:  sgit clone &quot;&lt;64-hex&gt;:&lt;vault-id&gt;&quot;</code></pre>
+<ul><li>Decrypt-only access — you can read everything, write nothing. The right way to consume
+<strong>public vaults</strong> (e.g. the ones listed in <code>sgraph.ai/core/public-vaults.json</code>).</li><li>Read keys are published as <strong>base64url</strong> in some registries; the CLI wants <strong>hex</strong>. Convert:
+<pre><code class="lang-bash">python3 -c &quot;import base64,sys;print(base64.urlsafe_b64decode(sys.argv[1]+&#x27;=&#x27;).hex())&quot; &lt;b64url-key&gt;</code></pre></li><li>Variants: <code>sgit clone-branch</code> (thin: history + HEAD only), <code>sgit clone-headless</code>
+(credentials only, no data), <code>sgit clone-range</code> (a commit range), <code>--sparse</code>
+(structure now, file content on demand via <code>sgit fetch</code>).</li></ul>
+<hr>
+<h2 id="branching">Branching</h2>
+<p>sgit has a <strong>two-layer branch model</strong> — you always work on a local <strong>clone branch</strong>
+(private key never leaves your machine). <code>sgit push</code> forwards commits to the shared
+<strong>named branch</strong> on the server.</p>
+<pre><code class="lang-bash">sgit branches                           # list all branches
+sgit branch new &lt;name&gt;                  # create a named + clone branch pair
+sgit switch &lt;name&gt;                      # switch to a named branch (reuses or creates clone branch)</code></pre>
+<hr>
+<h2 id="diff-revert-stash">Diff, Revert, Stash</h2>
+<pre><code class="lang-bash">sgit diff                               # working copy vs HEAD
+sgit diff --remote                      # HEAD vs remote named branch
+sgit diff --commit &lt;id&gt;                 # vs a specific commit
+sgit diff --files-only                  # list changed files only
+
+sgit revert                             # revert all files to HEAD
+sgit revert notes.md                    # revert one file
+sgit revert --commit &lt;id&gt;              # revert to a specific commit
+
+sgit stash                              # save uncommitted changes
+sgit stash pop                          # restore last stash
+sgit stash list                         # show saved stashes
+sgit stash drop                         # discard last stash</code></pre>
+<hr>
+<h2 id="sharing-publishing">Sharing &amp; Publishing</h2>
+<blockquote><p><strong>Publishing a whole vault to a GitHub repo</strong> (as a backup/collaboration medium, or to serve
+its app from GitHub Pages) is a different thing from the <code>sgit share</code> commands below — it&#x27;s a
+<code>git</code>-level operation on the <code>.sg_vault/{local,bare,work}</code> layout, not an sgit subcommand. See
+<strong><code>library/guides/vault-html/PUBLISHING-SGIT-VAULT-TO-GITHUB.md</code></strong> for the <code>.gitignore</code> boundary
+that keeps <code>local/vault_key</code> out of the repo, the plaintext-working-tree-plus-encrypted-<code>bare/</code>
+pattern, and the GitHub Pages hosting follow-on.</p></blockquote>
+<blockquote><p><strong>⚠️ DISABLED in current CLI (verified against sgit-ai v0.14.27):</strong> <code>sgit share send</code> and
+<code>sgit share publish</code> are disabled <em>&quot;pending Simple Token security rework&quot;</em>. Only
+<code>sgit share receive</code> (download a transfer) still works. Until the rework ships, share
+content by giving collaborators a <strong>read-only clone</strong> (<code>--read-key</code>, above) or the full
+vault key out-of-band. The sections below describe the pre-rework behaviour and will
+return when the feature is re-enabled.</p></blockquote>
+<h3 id="receive-a-transfer-still-works">Receive a transfer (still works)</h3>
+<pre><code class="lang-bash">sgit share receive &lt;token&gt;</code></pre>
+<h3 id="share-a-one-shot-snapshot-simple-token-disabled">Share a one-shot snapshot (Simple Token) — DISABLED</h3>
+<pre><code class="lang-bash">sgit share send                         # [disabled] pending Simple Token security rework</code></pre>
+<ul><li>(When enabled) Zips vault files, encrypts with token-derived key, uploads to SG/Send;
+recipient needs only the token — works via SG/Send web UI, no sgit install.</li></ul>
+<h3 id="publish-a-multi-layer-encrypted-archive-disabled">Publish a multi-layer encrypted archive — DISABLED</h3>
+<pre><code class="lang-bash">sgit share publish                      # [disabled] pending Simple Token security rework</code></pre>
+<ul><li>(When enabled) Outer layer: Simple Token key (transport); inner layer: random key wrapped
+with the vault read-key (at-rest); recipient needs both token AND vault key.</li></ul>
+<hr>
+<h2 id="vault-key-format">Vault Key Format</h2>
+<pre><code>mypassphrase:vault-abc123
+└── passphrase ──┘ └ vault_id ┘</code></pre>
+<ul><li>The passphrase derives encryption keys via PBKDF2 (600k iterations) — the server never sees it</li><li>The vault ID identifies the vault on the server</li><li><strong>Save the vault key</strong> — without it, the vault contents are unrecoverable (no password reset)</li></ul>
+<hr>
+<h2 id="typical-workflow-for-a-claude-session">Typical Workflow for a Claude Session</h2>
+<ol><li><p><strong>Install</strong></p>
+<pre><code class="lang-bash">pip3 install sgit-ai --break-system-packages</code></pre></li><li><p><strong>Create or clone a vault</strong></p>
+<pre><code class="lang-bash"># Create new:
+sgit init my-vault
+
+# Or clone existing:
+sgit clone passphrase:vault-id</code></pre></li><li><p><strong>Read content</strong> — browse files normally with <code>cat</code>, <code>ls</code>, etc.</p></li><li><p><strong>Make changes</strong> — create/edit/delete files in the vault directory</p></li><li><p><strong>Commit and push</strong></p>
+<pre><code class="lang-bash">cd &lt;vault-dir&gt;
+sgit commit &quot;session update&quot;
+sgit push</code></pre></li><li><p><strong>Pull updates from others</strong></p>
+<pre><code class="lang-bash">sgit pull</code></pre></li><li><p><strong>Hand results back to a human</strong> — commit + push, then share the vault key (or a
+read key for read-only access) out-of-band. (<code>sgit share send</code> snapshot tokens are
+currently disabled — see &quot;Sharing &amp; Publishing&quot;.)</p></li></ol>
+<hr>
+<h2 id="agentic-patterns">Agentic Patterns</h2>
+<h3 id="read-only-consumer-agent-read-key-no-write-access">Read-only consumer agent (read key, no write access)</h3>
+<ol><li>Human (or a public registry like <code>sgraph.ai/core/public-vaults.json</code>) provides
+<code>vault_id</code> + read key</li><li>Agent runs <code>sgit clone --read-key &lt;hex&gt; &lt;vault_id&gt;</code> and reads the content</li><li>Agent can never modify the vault — safe default for reference/library vaults</li></ol>
+<h3 id="stateless-agent-via-snapshot-token-currently-disabled">Stateless agent via snapshot token — CURRENTLY DISABLED</h3>
+<p>(<code>sgit share send</code> is disabled pending the Simple Token security rework; use the
+read-only consumer pattern above instead.)</p>
+<h3 id="multi-agent-collaboration">Multi-agent collaboration</h3>
+<pre><code>Agent A (branch: feature-analysis)  →  push  →  server
+Agent B (branch: feature-report)    →  push  →  server
+Human   (branch: main)              →  pull from A and B</code></pre>
+<p>Each agent has its own clone branch — private key never leaves that session.</p>
+<hr>
+<h2 id="remote-management">Remote Management</h2>
+<pre><code class="lang-bash">sgit remote add &lt;url&gt;                   # e.g. https://dev.send.sgraph.ai
+sgit remote list
+sgit remote remove &lt;url&gt;</code></pre>
+<hr>
+<h2 id="vault-key-store">Vault Key Store</h2>
+<pre><code class="lang-bash">sgit vault add &lt;alias&gt; &lt;vault-key&gt;      # store under a name
+sgit vault list
+sgit vault show &lt;alias&gt;
+sgit vault remove &lt;alias&gt;</code></pre>
+<hr>
+<h2 id="pki-sign-encrypt-files">PKI (Sign &amp; Encrypt Files)</h2>
+<pre><code class="lang-bash">sgit pki keygen --label &quot;My Keys&quot;
+sgit pki list
+sgit pki export &lt;fingerprint&gt;
+sgit pki import &lt;file&gt;
+sgit pki sign &lt;file&gt; --fingerprint &lt;fp&gt;
+sgit pki verify &lt;file&gt; &lt;signature-file&gt;
+sgit pki encrypt &lt;file&gt; --recipient &lt;fp&gt;
+sgit pki decrypt &lt;file&gt; --fingerprint &lt;fp&gt;</code></pre>
+<hr>
+<h2 id="diagnostics">Diagnostics</h2>
+<pre><code class="lang-bash">sgit dump                               # full structural JSON dump of vault
+sgit dump --output dump.json
+sgit dump --remote
+sgit diff-state dump-a.json dump-b.json # compare two vault dumps
+sgit fsck                               # verify encrypted object integrity</code></pre>
+<hr>
+<h2 id="safe-removal">Safe Removal</h2>
+<pre><code class="lang-bash">sgit uninit</code></pre>
+<ul><li>Creates backup zip <code>.vault__foldername__TIMESTAMP.zip</code> in parent directory</li><li>Removes <code>.sg_vault/</code> — your files are untouched</li><li>Restore later with <code>sgit init --restore backup.zip</code></li></ul>
+<hr>
+<h2 id="key-facts">Key Facts</h2>
+<ul><li><strong>Zero-knowledge</strong>: the server never sees plaintext — all encryption/decryption is local (AES-256-GCM)</li><li><strong>No staging area</strong>: <code>sgit commit</code> always snapshots the whole folder</li><li><strong>Commit before push</strong>: like git, you must commit before push will upload</li><li><strong>Delta push</strong>: only changed objects are uploaded</li><li><strong>Two-layer branches</strong>: clone branch key (local only) + named branch key (shared on server)</li><li><strong>Content-addressable</strong>: object IDs are SHA-256 of plaintext; deduplication works across commits</li><li><strong>Browser interop</strong>: encryption params match Web Crypto API exactly</li><li><strong>Cross-session communication</strong>: commit + push at session end; next session pulls and continues</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/skills/use_sgit-and-vaults__SKILL.html">https://sgit.ai/skills/use_sgit-and-vaults__SKILL.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/skills/use_sgit-and-vaults__SKILL.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:11Z</dd><dt>sha256</dt><dd><code title="b558d074cd5b1be78a1ba195ee6873cd1cacd3c0a4cea1d49d8c8a8084889d6e">b558d074cd5b</code></dd><dt>Frozen copy</dt><dd><a href="use_sgit-and-vaults__SKILL.md">sites/sgit.ai/skills/use_sgit-and-vaults__SKILL.md</a> (11,341 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

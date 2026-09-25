@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03 — The Three Topologies: Pioneers, Settlers, Town Planners, staffed (teams.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · teams.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-the-three-topologies-pioneers-settlers-town-planners-staffed">03 — The Three Topologies: Pioneers, Settlers, Town Planners, staffed</a></li><li class="l2"><a href="#1-the-finding">1. The finding</a></li><li class="l2"><a href="#2-what-each-team-is-for">2. What each team is for</a></li><li class="l2"><a href="#3-why-this-solves-a-real-problem">3. Why this solves a real problem</a></li><li class="l2"><a href="#4-how-to-publish-it">4. How to publish it</a></li><li class="l2"><a href="#5-the-honest-caveats">5. The honest caveats</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/teams.sgit.ai.html">teams.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 26 of 33</p><nav class="pager"><span><a href="025-02-the-roster-nineteen-roles.html">← 02 — The Roster: nineteen roles</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="027-04-the-comms-protocol-how-roles-hand-wor.html">04 — The Comms Protocol: how roles hand work to each other →</a></span></nav><article class="source"><h1 id="03-the-three-topologies-pioneers-settlers-town-planners-staffed">03 — The Three Topologies: Pioneers, Settlers, Town Planners, staffed</h1>
+<p><strong>Version</strong> v0.33.64 · 7 September 2026
+<strong>Source</strong> <code>team/roles/</code> (Explorer), <code>team/villager/roles/</code>, <code>team/town-planner/roles/</code></p>
+<hr>
+<h2 id="1-the-finding">1. The finding</h2>
+<p>The repo contains <strong>three staffed teams using the same role names with different mandates</strong>, and the naming is Wardley&#x27;s: Explorer (pioneer), Villager (settler), Town Planner. This is Pioneers–Settlers–Town Planners implemented as agent configurations rather than drawn as a diagram.</p>
+<p>As far as this pack can determine, <strong>nobody else has published this</strong>. It should be the site&#x27;s second page and the thing it is known for.</p>
+<h2 id="2-what-each-team-is-for">2. What each team is for</h2>
+<div class="table"><table><thead><tr><th></th><th><strong>Explorer</strong></th><th><strong>Villager</strong></th><th><strong>Town Planner</strong></th></tr></thead><tbody><tr><td>Mandate</td><td>Build the new thing</td><td>Harden what exists</td><td>Industrialise and capitalise</td></tr>
+<tr><td>Roles</td><td>17 dirs / 13 defined</td><td>17 / 17</td><td>4 / 3</td></tr>
+<tr><td>Governing rule</td><td>Discover</td><td><em>&quot;Harden, do not build&quot;</em></td><td>Classify and fund</td></tr>
+<tr><td>On encountering a needed redesign</td><td>Do it</td><td><strong>Send it back to Explorer</strong></td><td>—</td></tr></tbody></table></div>
+<p>The Villager mandate is stated in the role files, not inferred:</p>
+<blockquote><p><em>&quot;The code works. Your job is to make it work reliably under production conditions.&quot;</em>
+<em>&quot;Preserve behaviour exactly — every change must produce identical outputs for identical inputs. If behaviour changes, send it back to Explorer.&quot;</em>
+<em>&quot;User experience is frozen — the UX as delivered by Explorer is what ships. No additions, no changes.&quot;</em>
+<em>&quot;Harden, do not redesign — security architecture is frozen from Explorer. Harden what exists. If a redesign is needed, send it back.&quot;</em></p></blockquote>
+<p>And the corresponding exclusions: <em>&quot;Do NOT design new UX features — send to Explorer.&quot;</em> <em>&quot;Do NOT redesign security architecture — that&#x27;s Explorer territory.&quot;</em></p>
+<p>The Town Planner team is small and commercial: the Accountant <em>&quot;provides the financial models and projections that the Alchemist wraps in investor narrative&quot;</em>, with the Cartographer supplying <em>&quot;maturity classification (Genesis/Custom/Product/Commodity) and Wardley map financial flows&quot;</em> — the evolution axis reappearing as the thing that decides which team owns a component.</p>
+<h2 id="3-why-this-solves-a-real-problem">3. Why this solves a real problem</h2>
+<p>The failure mode in multi-agent systems is not incapacity; it is <strong>an agent improving something it was asked to preserve</strong>. A capable model handed hardening work will notice a better design and implement it, and the result is a system that never stabilises because every pass rewrites the previous one.</p>
+<p>The Villager mandate is a <em>refusal</em> engineered into the role: preserve behaviour exactly, and when you see something better, <strong>hand it back rather than build it</strong>. That is a genuinely hard instruction to give a capable generalist, and writing it into the role definition — with the destination named — is what makes it stick.</p>
+<p><strong>The handback path is the mechanism.</strong> A topology without a defined return route is just a label; here, every freeze rule names where the work goes instead.</p>
+<h2 id="4-how-to-publish-it">4. How to publish it</h2>
+<p><code>/topologies/</code> should carry:</p>
+<ol><li><strong>The three mandates side by side</strong>, quoted from the role files.</li><li><strong>The same role, three ways</strong> — Designer is the best example, existing in all three teams: creating UX in Explorer, guarding frozen UX in Villager, and shaping investor-facing material in Town Planner. One page showing one role&#x27;s three definitions makes the whole idea land faster than any explanation.</li><li><strong>The handback rules</strong> as a table: what is frozen, and where it goes when it must change.</li><li><strong>The link to <code>wardley-maps.sgit.ai</code></strong> for PST itself — that sibling owns the model; this site owns only its staffing. Do not re-teach evolution axes here.</li></ol>
+<h2 id="5-the-honest-caveats">5. The honest caveats</h2>
+<ul><li><strong>Town Planner is a sketch</strong>, not a template: four directories, three definitions, its Librarian missing, and its content is investor-facing rather than operational. Publish it as an early experiment.</li><li><strong>The transition is undocumented.</strong> Nothing in the corpus states <em>when</em> a component moves from Explorer to Villager, or who decides. The Cartographer&#x27;s Genesis/Custom/Product/Commodity classification is the obvious candidate, but that connection is inferred by this pack, not stated in the files. It is the single most valuable thing the founder could write next (Q3), and until he does, the site says the trigger is undefined.</li><li><strong>Explorer/Villager may have been driven by context limits as much as by Wardley theory</strong> — running one enormous team is impractical, and splitting it is convenient. If that is the real origin, say so; a discovered-then-rationalised pattern is still a good pattern, and the honesty is worth more than the theory.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/04__the-comms-protocol.md</p>
+<hr></article><nav class="pager"><span><a href="025-02-the-roster-nineteen-roles.html">← 02 — The Roster: nineteen roles</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="027-04-the-comms-protocol-how-roles-hand-wor.html">04 — The Comms Protocol: how roles hand work to each other →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>teams.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://teams.sgit.ai/llms-full.txt">https://teams.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:38Z</dd><dt>sha256</dt><dd><code title="11002d6345514c0988bee2ebdc6e5d4b1e85542fe5a7dfb7483da48d739b7939">11002d634551</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/teams.sgit.ai/llms-full.txt</a> (90,666 bytes)</dd><dt>Section</dt><dd>26 of 33: 03 — The Three Topologies: Pioneers, Settlers, Town Planners, staffed</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

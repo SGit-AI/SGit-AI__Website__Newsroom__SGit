@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>U7: The projections · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#u7-the-projections">U7: The projections</a></li><li class="l1"><a href="#u7-the-projections-1">U7: The projections</a></li><li class="l2"><a href="#node-types">Node types</a></li><li class="l2"><a href="#verbs">Verbs</a></li><li class="l2"><a href="#what-the-map-adds-here">What the map adds here</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://abp.sgit.ai/model/universes/u7/index.md">live ↗</a></p><article class="source"><h1 id="u7-the-projections">U7: The projections</h1>
+<blockquote><p>The projections, one of the universes an ABP row crosses: owned by the renderer, and the fact diff that has to check it, with its own node types and verbs, sharing only the grammar. Status: partial.</p></blockquote>
+<p>*Source: <a href="index.html">https://abp.sgit.ai/model/universes/u7/index.html</a><a class="ext live" href="https://abp.sgit.ai/model/universes/u7/index.html" title="live page">↗</a> · site v0.11.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../../../index.html">Home</a><a class="ext live" href="https://abp.sgit.ai/index.md" title="live page">↗</a> / <a href="../../index.html">The model</a><a class="ext live" href="https://abp.sgit.ai/model/index.md" title="live page">↗</a> / <a href="../index.html">The universes</a><a class="ext live" href="https://abp.sgit.ai/model/universes/index.md" title="live page">↗</a> / The projections</p>
+<h1 id="u7-the-projections-1">U7: The projections</h1>
+<p><strong>Owner</strong> the renderer, and the fact diff that has to check it. <strong>Centre of gravity</strong> the fact set. <strong>Smallest node</strong> one rendered sentence that traces to one node. <strong>Level</strong> across. <strong>Status</strong> partial.</p>
+<blockquote><p>The label, the leaflet and the prohibitions exist and are generated from one call. AGENTS.md, SKILL.md and LICENCE-TO-OPERATE.md exist in riskmandate.ai&#x27;s vaults. Since v0.4.2 the fact set is a file per stored delta under data/facts/ and the fact diff runs in the release gate: it parses the label, the leaflet, the prohibitions and the figure back out of each example&#x27;s published twin and fails the build on a single leaf assertion that differs. Neither is a node in the graph yet, which is why the status stays partial. This is the universe where altitude in the 20 August sense lives: every projection renders the same fact set for a different reader, and the diff over leaf assertions between any two must be empty.</p></blockquote>
+<h2 id="node-types">Node types</h2>
+<p>A node type is a required pattern of paths, not a label. The ones marked yes are walked on every build and the count is what matched; the rest are the vocabulary this universe needs and does not have.</p>
+<div class="table"><table><thead><tr><th>Type</th><th>Formula</th><th>Exists today</th><th>Note</th></tr></thead><tbody><tr><td><strong>FactSet</strong></td><td><code>the leaf assertions of one [DeltaRecord]: this shape grants this capability at this barrier with this undo class; this mandate authorises these; therefore this excess. Computed, never authored</code></td><td>not yet</td><td>Exists as a file per stored delta under data/facts/ since v0.4.2, and not yet as a node.</td></tr>
+<tr><td><strong>Projection</strong></td><td><code>a node -projects-&gt; one [FactSet], -rendered_for-&gt; one [Audience], with every sentence -traces_to-&gt; a node</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>Audience</strong></td><td><code>a decision maker, an engineer, an auditor, an underwriter, an agent; the altitude axis</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>Label</strong></td><td><code>a [Projection] with nine fields and no score</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>Leaflet</strong></td><td><code>a [Projection] with every row</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>Prohibition</strong></td><td><code>a [Projection] of one [Excess] row as a sentence, carrying its barrier today and the layer a control would sit at; -compiles_to-&gt; a [CompiledRule] in U4</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>AgentFile</strong></td><td><code>a [Projection] -rendered_for-&gt; the agent itself: AGENTS.md, SKILL.md; honest on its own face that it is a rule in prose, the second barrier, and bounds nothing</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>InterchangeDocument</strong></td><td><code>a [Projection] in the W3C vocabulary through the agent profile; a rule somebody wrote down until U4 compiles it</code></td><td>not yet</td><td></td></tr>
+<tr><td><strong>FactDiff</strong></td><td><code>a node that -compares-&gt; two [Projection]s over their [FactSet]s and is empty or names the row</code></td><td>not yet</td><td>Runs as the release gate&#x27;s fifteenth check since v0.4.2, over the published twin of every example, and is not yet a node.</td></tr></tbody></table></div>
+<h2 id="verbs">Verbs</h2>
+<p>Each is a verb with a distinct inverse, a stated domain and range, and the sentence it reads as. The ones marked live are in the edge vocabulary today; the rest are proposed here, or declared by the universe&#x27;s owner elsewhere, and say so.</p>
+<div class="table"><table><thead><tr><th>Edge</th><th>Reads as</th><th>Inverse</th><th>Reads as</th><th>Domain</th><th>Range</th><th>From</th><th>Status</th></tr></thead><tbody><tr><td><code>projects</code></td><td>this rendering projects this fact set</td><td><code>projected_as</code></td><td>this fact set is projected as these renderings</td><td><code>Projection</code></td><td><code>FactSet</code></td><td>proposed here</td><td>proposed</td></tr>
+<tr><td><code>rendered_for</code></td><td>this rendering is for this reader</td><td><code>reads</code></td><td>this reader reads these renderings</td><td><code>Projection</code></td><td><code>Audience</code></td><td>proposed here</td><td>proposed</td></tr>
+<tr><td><code>traces_to</code></td><td>this sentence traces to this node</td><td><code>rendered_in</code></td><td>this node is rendered in these sentences</td><td><code>Sentence</code></td><td><code>Node</code></td><td>proposed here</td><td>proposed</td></tr>
+<tr><td><code>compares</code></td><td>this diff compares these two renderings</td><td><code>compared_by</code></td><td>these renderings are compared by this diff</td><td><code>FactDiff</code></td><td><code>Projection</code></td><td>proposed here</td><td>proposed</td></tr></tbody></table></div>
+<h2 id="what-the-map-adds-here">What the map adds here</h2>
+<p>With FactSet as a node and every Projection carrying a projects edge to it, the diff is a set comparison over one node&#x27;s edges, and the gate can run it on every build across the label, the leaflet, the prohibitions and the agent files. The multi audience promise on the store becomes printable the release this ships.</p>
+<p><a href="../u6/index.html">U6: The derivation</a><a class="ext live" href="https://abp.sgit.ai/model/universes/u6/index.md" title="live page">↗</a> · <a href="../index.html">All thirteen</a><a class="ext live" href="https://abp.sgit.ai/model/universes/index.md" title="live page">↗</a> · <a href="../u8/index.html">U8: The licence, the acceptance and the risk</a><a class="ext live" href="https://abp.sgit.ai/model/universes/u8/index.md" title="live page">↗</a> · <a class="ext" href="https://abp.sgit.ai/data/universes/u7.json">This universe as JSON ↗</a> · <a href="../../../docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.html">The brief</a><a class="ext live" href="https://abp.sgit.ai/docs/briefs/v0.4.0__dev-brief__the-abp-is-a-fractal-semantic-graph-one-row-crosses-nine-universes-and-each-keeps-its-own-ontology/index.md" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/model/universes/u7/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/model/universes/u7/index.md">https://abp.sgit.ai/model/universes/u7/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:34Z</dd><dt>sha256</dt><dd><code title="6bda82e87db5cdb75998a93a76088bad26d389560b6cf5b8b3279c7a661a06a1">6bda82e87db5</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/abp.sgit.ai/model/universes/u7/index.md</a> (5,258 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

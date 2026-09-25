@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>| Risk | What it demonstrates | (risks.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · risks.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#risk-what-it-demonstrates">| Risk | What it demonstrates |</a></li><li class="l2"><a href="#r2-the-governance-air-gap">R2: the governance air gap</a></li><li class="l2"><a href="#interval-resolution-for-r3">Interval resolution for R3</a></li><li class="l2"><a href="#data-classification-as-the-blast-radius-multiplier">Data classification as the blast-radius multiplier</a></li><li class="l2"><a href="#the-ontology-this-instance-runs-on">The ontology this instance runs on</a></li><li class="l2"><a href="#provenance">Provenance</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/risks.sgit.ai.html">risks.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 25 of 58</p><nav class="pager"><span><a href="024-the-2fa-instance-graph.html">← The 2FA instance graph</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="026-the-browser-isolation-business-case.html">The browser-isolation business case →</a></span></nav><article class="source"><h1 id="risk-what-it-demonstrates">| Risk | What it demonstrates |</h1>
+<p>R1 | Accounts compromised | The obvious one, and the only one most registers would carry |</p>
+<p>R2 | The governance air gap — the risk is accepted by the wrong owner | The canonical failure, modelled as a risk rather than corrected silently. See below |</p>
+<p>R3 | Unauthorised HR admin access | The interval resolution worked in full — see below |</p>
+<p>R4 | The risk is mis-classified until investigated | Spawned by fact F5, which lacks evidence. Not knowing is a fact, generating a risk of its own |</p>
+<p>R5 | A data incident | Distinct from R6, deliberately |</p>
+<p>R6 | A GDPR breach | Two distinct risks, not one. Different owners, different consequences, different intervals — the CFO carries the fine, the CEO the compliance failure |</p>
+<p>R7 | Salary or record tampering, or fabricated hires | The integrity branch, which produces no alert and no missing data |</p>
+<p>R8 | The weekly-backup data-loss window | Availability. Backed by E4: backup logs show weekly |</p>
+<p>R9 | The restore has never been tested | Backed by E5: no record of a tested restore — a documented zero, which is a measurement |</p>
+<h2 id="r2-the-governance-air-gap">R2: the governance air gap</h2>
+<p>The most instructive row in the graph, and the reason this example keeps being cited. IT validates that admin accounts lack a second factor — which is correct, and within IT&#x27;s competence. IT then accepts the risk, which is not.</p>
+<p>IT validating a 2FA gap is not IT accepting an HR data-breach exposure. The technical owner confirms; the business owner underwrites. →</p>
+<p>The model&#x27;s response is not to reject the acceptance but to make the misplacement a risk: R2 exists, is rated, and needs an owner. It is accepted by the Head of GRC at a four-hour interval — a P1 — and propagates GRC → CIO → CEO → Board, each accepting at four hours because that is the only option open to them.</p>
+<p>The 4h-for-everyone problem, carried as a loose end. Every altitude in that chain selects the same rung, not because four hours is right for each of them but because it is the only rung available once the one below is struck off. Either the ladder needs a per-altitude variant, or that uniformity is itself a finding about the model. The corpus does not settle it. The ladder →</p>
+<h2 id="interval-resolution-for-r3">Interval resolution for R3</h2>
+<p>What the ladder looks like when applied to a specific risk rather than described in general:</p>
+<p>Rung | Resolution | Why |</p>
+<p>4 hours | Struck off | Not technically possible in the window — no authority or budget buys it |</p>
+<p>48 hours | P1 | The shortest deliverable response |</p>
+<p>2 weeks | Incident | A lower grade of the same thing |</p>
+<p>1–2 months | A funded project | Assemble and fund |</p>
+<p>6 months | Do nothing, and say so | Costs zero. Legitimate with a name on it |</p>
+<p>Three pieces of evidence do real work in that resolution. E3 — “no evidence of compromise” — backs the absence of clear and present danger, which is what makes anything longer than four hours defensible at all. E4 establishes the backup cadence. E5 is the documented zero on tested restores.</p>
+<h2 id="data-classification-as-the-blast-radius-multiplier">Data classification as the blast-radius multiplier</h2>
+<p>The same vulnerability against two datasets is two different risks, and the graph carries the classification as a node so it can say so:</p>
+<p>Class | Contents | Effect |</p>
+<p>DC-1 | Full HR data — passports, salaries, bonuses, PIPs, performance reviews, hires, fires, dismissals | Regulatory, financial and reputational simultaneously. The reason R5 and R6 are separate |</p>
+<p>DC-2 | Anonymised timesheets | Materially smaller in every dimension. Same vulnerability, different risk |</p>
+<h2 id="the-ontology-this-instance-runs-on">The ontology this instance runs on</h2>
+<p>24 node classes and 34 edge types, including Acceptance and Interval as node classes in their own right, with edges accepted_by, has_interval, propagates_to, underwritten_by and overrides. This is where acceptance stops being a field and becomes a node — 26 June 2026, the first of four progressive formalisations.</p>
+<p>The data file is not mirrored here yet. The instance graph exists as a JSON data file in the source repository (briefs/06/26/semantic-graph-and-query-paths/v0.33.35__data__sg-send-2fa-mappings.json), it declares its own principles inline, and it carries a CC BY 4.0 line — it is the only directly downloadable graph in the corpus. Publishing it at a stable path on this site is task T5, open. This page describes it from the brief pack&#x27;s counts rather than reproducing a file it does not have; a reconstructed graph presented as the original would be worse than a missing one.</p>
+<h2 id="provenance">Provenance</h2>
+<p>Source
+briefs/06/26/risk-register-and-five-whys/v0.33.35__arch-brief__…md · briefs/06/26/semantic-graph-and-query-paths/v0.33.35__arch-brief__…2fa-use-case…md · …v0.33.35__data__sg-send-2fa-mappings.json</p>
+<p>Repository
+SGraph-AI__App__Send @ v0.33.35</p>
+<p>First written
+26 June 2026</p>
+<p>Scenario status
+The organisation and its roles are generic and invented. Role titles (IT Director, Head of GRC, CIO, CFO, CEO) carry no reference to any real person</p>
+<p>Licence
+CC BY 4.0 at source and here; the data file carries its own CC BY 4.0 line inline</p>
+<h4 id="for-an-agent">For an agent</h4>
+<p>The 2FA instance graph — the founding worked example. 51 nodes, 53 edges; ontology of 24 node classes and 34 edge types including Acceptance and Interval as node classes with edges accepted_by, has_interval, propagates_to, underwritten_by, overrides. Chain: E1 (config shows no MFA) backs the fact that admin accounts lack 2FA → V1 → ATK-1 credential stuffing, MITRE T1110.004, performed by TA-1. Nine risks R1–R9 from one vulnerability. R2 is the canonical governance air gap: the risk is accepted by the wrong owner (IT validating a 2FA gap is not IT accepting an HR data-breach exposure) — modelled as a risk in its own right, accepted by Head of GRC at 4h and propagating GRC → CIO → CEO → Board, each accepting at 4h because it is the only option open to them (an unresolved finding about the ladder). R4 is spawned by fact F5, which lacks evidence. R5 and R6 are two distinct risks (data incident vs GDPR breach), not one. R3&#x27;s interval resolution strikes 4h off as not technically possible, leaving 48h/2w/1–2m/6m. Data classification multiplies the blast radius: DC-1 full HR data vs DC-2 anonymised timesheets. The organisation and all role titles are invented.</p>
+<hr>
+<p>== /examples/browser-isolation.html</p>
+<hr></article><nav class="pager"><span><a href="024-the-2fa-instance-graph.html">← The 2FA instance graph</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="026-the-browser-isolation-business-case.html">The browser-isolation business case →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>risks.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://risks.sgit.ai/llms-full.txt">https://risks.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:19Z</dd><dt>sha256</dt><dd><code title="043b6dd54a87b99e5ad22921b82672869533d32d7ec901dc828be518bb08fe23">043b6dd54a87</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/risks.sgit.ai/llms-full.txt</a> (518,813 bytes)</dd><dt>Section</dt><dd>25 of 58: | Risk | What it demonstrates |</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

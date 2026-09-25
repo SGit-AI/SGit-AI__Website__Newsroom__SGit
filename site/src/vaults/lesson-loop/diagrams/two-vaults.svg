@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+    <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .gap{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;stroke-dasharray:7 5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .ab{stroke:#b4243a;stroke-width:2;fill:none;stroke-dasharray:6 5}
+    .ag{stroke:#1c7c43;stroke-width:2.2;fill:none}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .akey{stroke:#2f6fed;stroke-width:2.4;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+    .mask{fill:#fbfaf7}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="32" class="h">TWO VAULTS: ONE APP FOR EVERYBODY, ONE RECORD PER PLAYER</text>
+
+  <rect class="key" x="420" y="64" width="360" height="100"/>
+  <text x="600" y="94" class="t">The app vault</text><text x="600" y="116" class="s">one single-page app, shared by every player</text><text x="600" y="134" class="s">and coach; holds no player data at all</text>
+
+  <rect class="good" x="380" y="250" width="440" height="140"/>
+  <text x="600" y="282" class="t">Alex's data vault</text>
+  <text x="600" y="306" class="s">lessons, match notes, clips, briefings,</text><text x="600" y="324" class="s">and every transcript they came from;</text><text x="600" y="342" class="s">encrypted on the device, versioned</text>
+  <text x="600" y="372" class="g">the player holds the vault key</text>
+  <path d="M600 164 L600 242" class="an" stroke-dasharray="6 5"/><path d="M594 234 L600 242 L606 234" class="an"/>
+  <text x="612" y="206" class="s" style="text-anchor:start">opens the record, with the player's key</text>
+
+  <rect class="box" x="40" y="200" width="250" height="84"/><text x="165" y="228" class="t">Marta, London</text><text x="165" y="250" class="s">a read key, and a write-only</text><text x="165" y="268" class="s">lane for her own notes</text>
+  <rect class="box" x="40" y="310" width="250" height="84"/><text x="165" y="338" class="t">Diego, Lisbon</text><text x="165" y="360" class="s">the same, given by the player</text><text x="165" y="378" class="s">for one trip</text>
+  <rect class="box" x="910" y="200" width="250" height="84"/><text x="1035" y="228" class="t">Inés, London</text><text x="1035" y="250" class="s">a read key, and a lane;</text><text x="1035" y="268" class="s">first lesson already briefed</text>
+  <rect class="box" x="910" y="310" width="250" height="84"/><text x="1035" y="338" class="t">The club</text><text x="1035" y="360" class="s">nothing by default; a read key</text><text x="1035" y="378" class="s">only if the player grants one</text>
+  <path d="M290 242 L372 290" class="akey"/><path d="M290 352 L372 330" class="akey"/><path d="M910 242 L828 290" class="akey"/>
+  <path d="M362 284 L372 290 L362 294" class="akey"/><path d="M362 326 L372 330 L364 336" class="akey"/><path d="M838 284 L828 290 L838 294" class="akey"/>
+  <path d="M910 352 L828 330" class="ab"/>
+
+  <rect class="box" x="300" y="440" width="600" height="80" style="fill:#fff"/>
+  <text x="600" y="470" class="t">The host holds ciphertext, and nothing else</text>
+  <text x="600" y="494" class="s">it cannot read the record, the notes or the clips, and neither can anyone without a key</text>
+  <path d="M600 390 L600 432" class="an"/><path d="M594 424 L600 432 L606 424" class="an"/>
+
+  <text x="600" y="566" class="t">A coach can add, and cannot change, delete or see the other lanes.</text>
+  <text x="600" y="592" class="s">The record belongs to the player, so it travels from coach to coach and club to club. Key management is the one hard part.</text>
+</svg>

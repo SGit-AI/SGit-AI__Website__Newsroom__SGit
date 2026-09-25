@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>08 — Gaps and Open Questions (teams.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · teams.sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/teams.sgit.ai.html">teams.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 31 of 33</p><nav class="pager"><span><a href="030-07-boundaries-and-licensing.html">← 07 — Boundaries and Licensing</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="032-licence.html">Licence →</a></span></nav><article class="source"><h1 id="08-gaps-and-open-questions">08 — Gaps and Open Questions</h1>
+<p><strong>Version</strong> v0.33.64 · 7 September 2026
+<strong>House rule</strong> Published unresolved. Questions go to <code>/admin/comms.html</code>.</p>
+<hr>
+<h2 id="gaps">Gaps</h2>
+<p><strong>G1 — Four Explorer roles have no definition</strong>: advocate, alchemist, ambassador, sherpa. Directories exist, <code>ROLE.md</code> does not. Town Planner&#x27;s librarian is likewise missing. Publish as gaps; do not write them for the website (<code>07__</code> §5).</p>
+<p><strong>G2 — The Explorer→Villager transition trigger is undocumented.</strong> Nothing states when a component moves from build to harden, or who decides. The Cartographer&#x27;s Genesis/Custom/Product/Commodity classification is the obvious mechanism, but that link is this pack&#x27;s inference, not the corpus&#x27;s statement. It is the highest-value thing the founder could write next.</p>
+<p><strong>G3 — No <code>SKILL.md</code>-to-role mapping exists.</strong> 40 skill files and 39 role files, with no index of which roles hold which skills. Both sites need it; it is the natural shared artefact and the cleanest way to prove the capability/composition seam works.</p>
+<p><strong>G4 — The workflows are implicit.</strong> The founder asked for <em>&quot;highly effective agentic workflows&quot;</em>. What the corpus holds is 25 <code>## Core Workflows</code> sections inside role files, plus 130 comms files showing workflows in action — but no standalone workflow documents. Whether the site should extract them into first-class pages, or keep them role-scoped, is an editorial decision (Q6).</p>
+<p><strong>G5 — Effectiveness is asserted, not measured.</strong> 18 role files have a <code>## Measuring Effectiveness</code> section, but no measurements appear anywhere in the corpus. The site cannot claim these roles work; it can only show they are defined, used, and revised. Say so plainly.</p>
+<p><strong>G6 — Only three learnings were recovered.</strong> The archaeology in <code>05__</code> found three high-signal changes across seven months. There are 4,335 commits; a deeper pass over <code>team/comms/</code> and <code>.issues/</code> would likely surface more, and the changelog tree (<code>changelog/03/</code> through <code>changelog/08/</code>) is unexamined.</p>
+<p><strong>G7 — The sg-playwright team was counted, not read.</strong> Six role files in a second product, used here as evidence for the portable core. Their content has not been compared against the main team&#x27;s — which is the actual test of whether the roster is reusable.</p>
+<h2 id="open-questions-for-the-founder">Open questions for the founder</h2>
+<p><strong>Q1</strong> — Is Explorer/Villager/Town Planner deliberately Wardley PST, or did it emerge from practical context limits and get named afterwards? Both are good answers; the site should tell the true one (<code>03__</code> §5).</p>
+<p><strong>Q2</strong> — The failure-condition Central Claim (<em>&quot;…the Librarian has failed&quot;</em>) versus the newer descriptive form: agreed that the older one is better and should be restored? If so, the site can publish rewrites of the seven descriptive claims as a build item.</p>
+<p><strong>Q3</strong> — What moves a component from Explorer to Villager, and who decides? (G2 — the biggest gap.)</p>
+<p><strong>Q4</strong> — <code>translator</code> exists only in the Villager team, and <code>accountant</code> only in Town Planner. Deliberate, or accident of when they were written?</p>
+<p><strong>Q5</strong> — Should the comms protocol get an acknowledgement mechanism — a way to tell a read brief from an unread one? (<code>04__</code> §5.)</p>
+<p><strong>Q6</strong> — Workflows: extract as first-class pages, or keep them inside the role definitions where they currently live? (G4.)</p>
+<p><strong>Q7</strong> — Are there roles you <em>tried and removed</em>? A <code>status: retired</code> entry with the reason would be the most useful page on the site for anyone composing their own team — and nothing in the git history shows a deletion, so if it happened it happened before 11 February 2026.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/09__source-manifest.csv</p>
+<hr>
+<p>tier,path,words,role,notes
+0,00__BRIEF.md,952,pack,commission; thesis; measured inventory; build order
+0,01__the-role-format.md,982,pack,&quot;ROLE.md schema measured; the failure-condition claim; drift quantified&quot;
+0,02__the-roster.md,893,pack,&quot;nineteen roles; the operational core of six; growth timeline&quot;
+0,03__the-three-topologies.md,747,pack,&quot;Explorer/Villager/Town Planner as staffed PST; handback rules&quot;
+0,04__the-comms-protocol.md,560,pack,&quot;inbox/outbox addressing; the 8-step session-start ritual&quot;
+0,05__evolution-and-learnings.md,1001,pack,&quot;git archaeology; three learnings as diffs — the memory layer&quot;
+0,06__site-architecture.md,594,pack,URLs; machine-readable roster; deconfliction table
+0,07__boundaries-and-licensing.md,565,pack,&quot;publish-for-copying; the pre-publication scrub; PST attribution&quot;
+0,08__gaps-and-open-questions.md,553,pack,7 gaps / 7 comms questions
+0,teams__roster.json,,pack,&quot;19 roles generated from disk + git; claim forms; topologies; learnings&quot;
+1,SGraph-AI__App__Send/team/roles/,,evidence,&quot;Explorer team: 17 role directories, 13 with ROLE.md&quot;
+1,SGraph-AI__App__Send/team/roles/conductor/ROLE.md,1803,evidence,&quot;&#x27;Roles are boundaries. The Conductor never does the work.&#x27;; Not Responsible For list&quot;
+1,SGraph-AI__App__Send/team/roles/librarian/ROLE.md,1961,evidence,&quot;bullet-format Identity; the 30-second falsifiable claim&quot;
+1,SGraph-AI__App__Send/team/roles/qa/ROLE.md,2128,evidence,&quot;most-revised role (6 commits); the 8-step session-start sequence&quot;
+1,SGraph-AI__App__Send/team/roles/dev/ROLE.md,1929,evidence,&quot;comms write addresses; sgit tool row with its prohibition&quot;
+1,SGraph-AI__App__Send/team/roles/appsec/ROLE.md,2311,evidence,&quot;falsifiable claim on plaintext/keys reaching the server&quot;
+1,SGraph-AI__App__Send/team/roles/designer/ROLE.md,3076,evidence,&quot;widest remit; exists in all three topologies&quot;
+1,SGraph-AI__App__Send/team/villager/roles/,,evidence,&quot;Villager team: 17 directories, 17 defined — the only complete team&quot;
+1,SGraph-AI__App__Send/team/villager/roles/dev/ROLE.md,1150,evidence,&quot;&#x27;Harden, do not build&#x27;; &#x27;Preserve behaviour exactly&#x27;; send-back rule&quot;
+1,SGraph-AI__App__Send/team/town-planner/roles/,,evidence,&quot;Town Planner: 4 directories, 3 defined; librarian missing&quot;
+1,SGraph-AI__App__Send/team/town-planner/roles/accountant/ROLE.md,385,evidence,&quot;financial models the Alchemist wraps in investor narrative&quot;
+1,SGraph-AI__App__Send/team/comms/,,evidence,&quot;130 files: briefs, changelog, plans, qa/briefs, qa/questions, QA_START_HERE.md&quot;
+1,sg-playwright/team/roles/,,evidence,&quot;second product, 6 roles — the portable-core evidence&quot;
+2,SGraph-AI__App__Send git history (4335 commits),,method,&quot;role evolution recovered via git log over team/roles/*/ROLE.md; full clone, not shallow&quot;
+2,<a class="ext" href="https://sgit.ai/network/index.html,,live-source">https://sgit.ai/network/index.html,,live-source ↗</a>,&quot;fetched 2026-09-07: 19 sites, 18 live, skills.sgit.ai reserved and unpublished&quot;
+2,skills.sgit.ai (reserved sibling),,deconflict,&quot;owns SKILL.md, lifecycle, triggering; this site links out and never duplicates&quot;
+2,wardley-maps.sgit.ai (sibling pack),,deconflict,&quot;PST model itself lives there; this site owns only its staffing&quot;
+2,issues-fs.sgit.ai (sibling),,deconflict,&quot;issues-as-files argument lives there; here only how roles address it&quot;
+3,vault keys / share tokens / access tokens in any ROLE.md,,DO-NOT-PUBLISH,&quot;07__ §3: grep as a CI build step before any file ships&quot;
+3,internal hostnames / bucket names / account IDs / ARNs,,SCRUB,replace with placeholders before publication
+3,the four undefined Explorer roles and town-planner librarian,,PENDING,&quot;publish as gaps; never author replacements for the website (07__ §5)&quot;</p>
+<hr>
+<p>source: /briefs/LICENSE.md</p>
+<hr></article><nav class="pager"><span><a href="030-07-boundaries-and-licensing.html">← 07 — Boundaries and Licensing</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="032-licence.html">Licence →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>teams.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://teams.sgit.ai/llms-full.txt">https://teams.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:38Z</dd><dt>sha256</dt><dd><code title="11002d6345514c0988bee2ebdc6e5d4b1e85542fe5a7dfb7483da48d739b7939">11002d634551</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/teams.sgit.ai/llms-full.txt</a> (90,666 bytes)</dd><dt>Section</dt><dd>31 of 33: 08 — Gaps and Open Questions</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

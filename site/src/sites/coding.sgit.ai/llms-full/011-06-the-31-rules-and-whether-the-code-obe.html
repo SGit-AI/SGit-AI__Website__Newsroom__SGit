@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>06 — The 31 rules, and whether the code obeys them (coding.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#06-the-31-rules-and-whether-the-code-obeys-them">06 — The 31 rules, and whether the code obeys them</a></li><li class="l2"><a href="#1-code-patterns-rules-19">1. Code Patterns — rules 1–9</a></li><li class="l2"><a href="#2-the-other-rule-groups">2. The other rule groups</a></li><li class="l2"><a href="#3-where-the-code-and-the-docs-disagree">3. Where the code and the docs disagree</a></li><li class="l2"><a href="#4-enforcement-four-guards-and-one-has-never-worked">4. ⚠️ Enforcement — four guards, and one has never worked</a></li><li class="l2"><a href="#5-how-to-publish-the-rules">5. How to publish the rules</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 11 of 14</p><nav class="pager"><span><a href="010-05-what-is-shared-across-all-five-langua.html">← 05 — What is shared across all five languages</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="012-07-site-architecture-licensing-and-bound.html">07 — Site architecture, licensing and boundaries →</a></span></nav><article class="source"><h1 id="06-the-31-rules-and-whether-the-code-obeys-them">06 — The 31 rules, and whether the code obeys them</h1>
+<p><code>.claude/CLAUDE.md</code> in the sg-playwright repo carries <strong>31 numbered rules</strong> plus 4 non-negotiable testing rules. <strong>This is the single most valuable artefact for the site</strong>, and it has two problems: it lives in an agent instruction file rather than a published standard, and <strong>nobody has ever measured compliance.</strong></p>
+<p>This document measures it.</p>
+<hr>
+<h2 id="1-code-patterns-rules-19">1. Code Patterns — rules 1–9</h2>
+<div class="table"><table><thead><tr><th>#</th><th>Rule (abridged)</th><th>Measured</th><th>Verdict</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>All classes extend <code>Type_Safe</code> — no plain Python classes</td><td>506 direct + descendants; excluding 169 <code>TestCase</code> and 77 enums, <strong>essentially all</strong></td><td>✅ holds</td></tr>
+<tr><td><strong>2</strong></td><td>Zero raw primitives — no <code>str</code>/<code>int</code>/<code>float</code>/<code>list</code>/<code>dict</code> as attributes</td><td>27 constrained primitives in <code>sg_compute/primitives/</code> alone</td><td>✅ by design</td></tr>
+<tr><td><strong>3</strong></td><td>No <code>Literal</code>s — fixed value sets use <code>Enum__*</code></td><td><strong>185 <code>Enum__*</code> files</strong></td><td>✅</td></tr>
+<tr><td><strong>4</strong></td><td>Schemas are pure data — no methods</td><td>614 <code>Schema__*</code> files</td><td>✅ spot-checked</td></tr>
+<tr><td><strong>5</strong></td><td>Collection subclasses are pure type definitions</td><td>44 <code>Type_Safe__List</code> subclasses</td><td>✅</td></tr>
+<tr><td><strong>6</strong></td><td>Every route returns <code>.json()</code> on a Type_Safe schema — no raw dicts</td><td>46 <code>Fast_API__Routes</code> subclasses</td><td>✅ spot-checked</td></tr>
+<tr><td><strong>7</strong></td><td><code>═══</code> 80-char headers — every file, <strong>Python only</strong></td><td><strong>992 of 992</strong> class-defining files in the new tree</td><td>✅ <strong>100%</strong></td></tr>
+<tr><td><strong>8</strong></td><td>Inline comments only — <strong>no docstrings, ever</strong></td><td>3 violations in 992</td><td>✅ <strong>99.7%</strong></td></tr>
+<tr><td><strong>9</strong></td><td>No underscore prefix for private methods</td><td><strong>97 violations in 992</strong></td><td>⚠️ <strong>91%</strong> — and JS violates it universally</td></tr></tbody></table></div>
+<p><strong>Rule 9 is the one to resolve.</strong> The JavaScript uses <code>_private</code> as a matter of course (<code>_select</code>, <code>_update</code>, <code>_current</code>), so either the rule is Python-only and should say so, or it is being ignored in two languages. <code>08__</code> Q2.</p>
+<hr>
+<h2 id="2-the-other-rule-groups">2. The other rule groups</h2>
+<p><strong>Security (10–13).</strong> <em>Evaluate is allowlist-gated</em> — <code>JS__Expression__Allowlist</code> defaults to deny-all, <strong>and this one has a CI guard behind it</strong>. <em>No arbitrary code execution</em> — the shell-server pattern from OSBot-Playwright is explicitly not carried forward. <em>No AWS credentials in Git</em>, <em>no vault keys in Git</em> — with the operational instruction <em>&quot;If one appears in a diff, block the commit.&quot;</em></p>
+<p><strong>AWS naming (14–15).</strong> Both are scar tissue and both are worth publishing verbatim, because they are the kind of thing nobody knows until it costs them a day:</p>
+<blockquote><p><strong>14.</strong> <em>Security group <code>GroupName</code> must NOT start with <code>sg-</code>. AWS reserves the <code>sg-*</code> prefix for security group IDs and rejects <code>CreateSecurityGroup</code> with <code>InvalidParameterValue</code>.</em></p>
+<p><strong>15.</strong> <em>AWS Name tag — never double-prefix. When the logical name already carries the namespace (e.g. <code>elastic-quiet-fermi</code>), do not wrap it again into <code>elastic-elastic-quiet-fermi</code>.</em></p></blockquote>
+<p>Each names the helper that implements the fix. <strong>A rule that cites its own precedent is a rule people can trust.</strong></p>
+<p><strong>Responsibility boundaries (16–19).</strong> Covered in <code>01__</code> §7. Four rules, each naming exactly one owner for a capability; <strong>one of the four has a CI guard.</strong></p>
+<p><strong>Class and file naming (20–22).</strong> The <code>SGraph-AI</code> → <code>SGraph_AI</code> normalisation, one class per file, empty <code>__init__.py</code>. Rule 21 carries the useful carve-out: <em>&quot;Registries (module-level constants + helper functions, e.g. <code>STEP_SCHEMAS</code>) are the one exception — they live in a single <code>*_registry.py</code> because <strong>they are logic, not a schema</strong>.&quot;</em></p>
+<p><strong>Process (23–31).</strong> Human-only folders that agents must never write to, the good-failure/bad-failure debrief convention, session handover, branch naming <code>claude/{description}-{session-id}</code>, and <em>&quot;agents never push to <code>dev</code> directly.&quot;</em> These are agent-workflow rules rather than code style — but they belong on the site, because <strong>they are the rules that make a mostly-agent-written codebase safe to review.</strong></p>
+<hr>
+<h2 id="3-where-the-code-and-the-docs-disagree">3. Where the code and the docs disagree</h2>
+<p>Five, in order of how much they matter:</p>
+<ol><li><strong>Rule 9 vs the JavaScript.</strong> 97 Python violations, and universal <code>_private</code> in JS. <strong>Decide whether the rule is Python-only.</strong></li><li><strong>No JS, CSS, HTML or Bash rules exist at all.</strong> All 31 are Python and process. The other four languages have discoverable, consistent conventions that are entirely undocumented — which is most of what <code>01__</code>–<code>04__</code> had to reconstruct by counting.</li><li><strong>Import alignment is 39%.</strong> Not a documented rule at all, and the estate&#x27;s least consistent formatting behaviour.</li><li><strong><code>set -e</code> in 2 of 5 <code>.sh</code> files</strong>, in three different forms. No rule covers it.</li><li><strong>Semicolons in JS</strong> — <code>components/</code> says no, <code>shared/</code> says yes. No rule covers it.</li></ol>
+<hr>
+<h2 id="4-enforcement-four-guards-and-one-has-never-worked">4. ⚠️ Enforcement — four guards, and one has never worked</h2>
+<p><code>tests/ci/</code> is the <strong>entire</strong> automated enforcement surface. There is no linter, no formatter and no type-checker anywhere in the estate.</p>
+<div class="table"><table><thead><tr><th>Guard</th><th>Enforces</th><th>State</th></tr></thead><tbody><tr><td><code>test_no_object_none_annotations</code></td><td>bans <code>: object = None</code> in favour of <code>Optional[T] = None</code></td><td>✅ works, with a one-file allowlist and a stated reason</td></tr>
+<tr><td><code>test_sg_compute_ami_picker__snapshot</code></td><td>the live-fetch contract of a web component</td><td>✅</td></tr>
+<tr><td><code>test_sg_compute_spec_detail__snapshot</code></td><td>a web component&#x27;s structure</td><td>✅</td></tr>
+<tr><td><code>test_wheel_contains_ui</code></td><td>that the built wheel actually contains per-spec UI assets</td><td>✅ catches a package-data glob regression</td></tr>
+<tr><td><strong><code>test_sg_compute_does_not_import_legacy</code></strong></td><td>that the new tree never imports the legacy one</td><td>❌ <strong>has never worked</strong></td></tr></tbody></table></div>
+<p>The regex is <code>sgraph_ai_service_playwright[^_]</code> — and <code>[^_]</code> requires a <strong>non-underscore</strong> after the stem, while the real package is <code>sgraph_ai_service_playwright__cli</code>, with two. Verified this session:</p>
+<pre><code>GUARD regex  : 0 files -&gt; test PASSES (vacuously)
+REAL imports : 69 files, 228 import lines
+FIXED regex (drop [^_]): 69 files -&gt; test FAILS, as intended</code></pre>
+<p><strong>Publish this.</strong> A guard that passes because it cannot match what it guards against is the strongest possible argument for the <code>/enforce/</code> page: a rule without a working test is a suggestion, and you cannot tell the difference from the outside.</p>
+<p>Note also what the working guards have in common: <strong>each one encodes a rule that was violated at least once.</strong> The <code>object = None</code> ban, the UI-in-wheel check, the component snapshots. That is the right way to grow a guard set — from incidents, not from a checklist.</p>
+<hr>
+<h2 id="5-how-to-publish-the-rules">5. How to publish the rules</h2>
+<ol><li><strong>One page per rule group</strong>, with the rule verbatim, the measured compliance, and — where one exists — the guard that enforces it.</li><li><strong>A compliance badge per rule.</strong> ✅ enforced by a test · 🟡 documented, unenforced, high compliance · ⚠️ documented, unenforced, violated · ❌ undocumented convention. That single column is the difference between a style guide and a wish list.</li><li><strong>Add the four missing languages.</strong> <code>02__</code>–<code>04__</code> are the raw material; they are conventions in the code that have never been rules.</li><li><strong>Cite the precedent.</strong> Rules 14, 15, 21 and the <code>object = None</code> guard all name the case that motivated them. Do it for every rule where a case exists — it is what makes a rule survive contact with someone who disagrees with it.</li><li><strong>Publish the compliance numbers, including the bad ones.</strong> 91% on rule 9 and 39% on import alignment are more useful to a reader than a claim of consistency.</li></ol>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/07__site-architecture-and-boundaries.md</p>
+<hr></article><nav class="pager"><span><a href="010-05-what-is-shared-across-all-five-langua.html">← 05 — What is shared across all five languages</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="012-07-site-architecture-licensing-and-bound.html">07 — Site architecture, licensing and boundaries →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>11 of 14: 06 — The 31 rules, and whether the code obeys them</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

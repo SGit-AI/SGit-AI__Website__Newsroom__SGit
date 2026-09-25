@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>sgit for git users (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sgit-for-git-users">sgit for git users</a></li><li class="l2"><a href="#the-rosetta-stone">The Rosetta stone</a></li><li class="l2"><a href="#the-three-differences-that-matter">The three differences that matter</a></li><li class="l3"><a href="#1-no-staging-area">1. No staging area</a></li><li class="l3"><a href="#2-the-vault-key-is-url-auth-and-encryption-key-in-one">2. The vault key is URL, auth, and encryption key in one</a></li><li class="l3"><a href="#3-two-layers-of-branches">3. Two layers of branches</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 102 of 358</p><nav class="pager"><span><a href="101-sgit-for-git-users-docs.html">← sgit for git users, Docs</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="103-the-two-branch-model-sgit-docs.html">The two-branch model, sgit Docs →</a></span></nav><article class="source"><h1 id="sgit-for-git-users">sgit for git users</h1>
+<p>If you know git, you know most of sgit. Same verbs, same mental model, with three deliberate differences that exist because the payload is encrypted.</p>
+<h2 id="the-rosetta-stone">The Rosetta stone</h2>
+<div class="table"><table><thead><tr><th>git</th><th>sgit</th><th>Notes</th></tr></thead><tbody><tr><td><code>git init</code></td><td><code>sgit init</code></td><td><code>--existing</code> vault-ifies a non-empty folder</td></tr>
+<tr><td><code>git clone &lt;url&gt;</code></td><td><code>sgit clone &lt;vault-key&gt;</code></td><td>the key is URL + auth + decryption in one</td></tr>
+<tr><td><code>git status</code></td><td><code>sgit status</code></td><td><code>--explain</code> teaches the branch model</td></tr>
+<tr><td><code>git commit -am</code></td><td><code>sgit commit -m</code></td><td>always whole-folder. There is no staging area</td></tr>
+<tr><td><code>git push / pull / fetch</code></td><td><code>sgit push / pull / fetch</code></td><td>push is delta + ciphertext only</td></tr>
+<tr><td><code>git log</code></td><td><code>sgit history log</code></td><td><code>--oneline</code>, <code>--patch</code>, <code>--json</code>, ranges</td></tr>
+<tr><td><code>git diff</code></td><td><code>sgit history diff</code></td><td><code>--remote</code>, <code>--commit</code>, <code>--files-only</code></td></tr>
+<tr><td><code>git show</code></td><td><code>sgit history show</code></td><td>read-only, fetches missing objects without merging</td></tr>
+<tr><td><code>git revert / reset</code></td><td><code>sgit history revert / reset</code></td><td></td></tr>
+<tr><td><code>git stash</code></td><td><code>sgit vault stash</code></td><td><code>pop</code>, <code>list</code>, <code>drop</code></td></tr>
+<tr><td><code>git branch / checkout</code></td><td><code>sgit branch new / switch / checkout</code></td><td></td></tr>
+<tr><td><code>git merge</code> conflicts</td><td><code>sgit resolve --show</code></td><td>three-way base/ours/theirs view with a verdict per file</td></tr>
+<tr><td><code>git remote</code></td><td><code>sgit remote add / list / set-url</code></td><td></td></tr>
+<tr><td><code>git fsck</code></td><td><code>sgit check fsck</code></td><td>verifies encrypted object integrity, can repair</td></tr></tbody></table></div>
+<h2 id="the-three-differences-that-matter">The three differences that matter</h2>
+<h3 id="1-no-staging-area">1. No staging area</h3>
+<p>Every commit snapshots the whole folder. This removes git&#x27;s most confusing concept, and it fits the security model: partial staging would leak &quot;which parts changed&quot; into workflows that are supposed to be opaque. Use branches where you would have used the index.</p>
+<h3 id="2-the-vault-key-is-url-auth-and-encryption-key-in-one">2. The vault key is URL, auth, and encryption key in one</h3>
+<p><code>passphrase:vault-id</code>. There is no separate remote URL to configure, no separate credential to manage, and no password reset. Whoever holds the key holds the vault, treat it like the private key it is.</p>
+<h3 id="3-two-layers-of-branches">3. Two layers of branches</h3>
+<p>You never work directly on a shared branch. Every clone works on a private <strong>clone branch</strong> (its key never leaves your machine) and <code>push</code> forwards commits to the shared <strong>named branch</strong>. That&#x27;s why two agents on the same vault can&#x27;t corrupt each other&#x27;s work-in-progress. <a class="ext" href="https://sgit.ai/two-branch-model.md">The full story → ↗</a></p>
+<p><a class="ext" href="https://sgit.ai/quickstart.md">← Quickstart ↗</a><a class="ext" href="https://sgit.ai/two-branch-model.md">The two-branch model → ↗</a></p>
+<hr></article><nav class="pager"><span><a href="101-sgit-for-git-users-docs.html">← sgit for git users, Docs</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="103-the-two-branch-model-sgit-docs.html">The two-branch model, sgit Docs →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>102 of 358: sgit for git users</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

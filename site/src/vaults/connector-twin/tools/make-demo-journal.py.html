@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>make-demo-journal.py · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="make-demo-journal.py">raw text</a></p><article class="source"><pre class="raw"><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Generate the demo journal: one invented agent session against Gmail and Google Calendar.
+
+Run from the vault root:
+
+    python3 tools/make-demo-journal.py
+
+Writes journal/session-2026-09-22.jsonl, one entry per line, hash-chained.
+
+Everything here is invented. The people, the companies and the email addresses use the reserved
+.example domain. The request and response shapes follow the Gmail API v1 and Google Calendar API v3,
+abbreviated to the fields the replay needs. Message bodies are stored decoded (body_text) for
+readability; the real API returns them base64url-encoded in payload.body.data.
+
+Each line is what an append lane would receive for one tool call: the MCP call the agent made,
+the upstream HTTP request the connector sent, and the response it got back. The Authorization
+header is never captured. `prev` and `hash` chain the entries so a missing or edited line shows.
+&quot;&quot;&quot;
+import hashlib, json, os
+
+SESSION   = &#x27;sess-2026-09-22-a&#x27;
+AGENT     = &#x27;scheduling-assistant&#x27;
+PRINCIPAL = &#x27;maya@harbourfinch.example&#x27;
+GMAIL     = &#x27;https://gmail.googleapis.com/gmail/v1/users/me&#x27;
+CAL       = &#x27;https://www.googleapis.com/calendar/v3/calendars/primary&#x27;
+TZ        = &#x27;Europe/London&#x27;
+
+PROMPTS = [
+    {&#x27;id&#x27;: &#x27;p1&#x27;, &#x27;role&#x27;: &#x27;user&#x27;, &#x27;ts&#x27;: &#x27;2026-09-22T09:14:00.000Z&#x27;,
+     &#x27;text&#x27;: &#x27;Sort out next week for me. Move the Northwind review to Thursday morning, decline anything &#x27;
+             &#x27;that clashes with the offsite on Friday, clear out the newsletter clutter, and reply to Sam &#x27;
+             &#x27;about the proposal with a time for a call.&#x27;},
+    {&#x27;id&#x27;: &#x27;a1&#x27;, &#x27;role&#x27;: &#x27;agent&#x27;, &#x27;ts&#x27;: &#x27;2026-09-22T09:16:41.000Z&#x27;,
+     &#x27;text&#x27;: &#x27;Done. Northwind review moved to Thursday 1 October at 10:00. Declined the studio sync and &#x27;
+             &#x27;removed the supplier call, both clashed with the offsite. Archived three newsletters and &#x27;
+             &#x27;deleted an old reminder. Replied to Sam and booked a call for Wednesday at 15:00.&#x27;},
+]
+
+def h(name, value):
+    return {&#x27;name&#x27;: name, &#x27;value&#x27;: value}
+
+def msg(mid, thread, labels, frm, to, subject, date, snippet, body=None, fmt=&#x27;full&#x27;):
+    m = {&#x27;id&#x27;: mid, &#x27;threadId&#x27;: thread, &#x27;labelIds&#x27;: labels, &#x27;snippet&#x27;: snippet,
+         &#x27;payload&#x27;: {&#x27;headers&#x27;: [h(&#x27;From&#x27;, frm), h(&#x27;To&#x27;, to), h(&#x27;Subject&#x27;, subject), h(&#x27;Date&#x27;, date)]}}
+    if fmt == &#x27;full&#x27; and body is not None:
+        m[&#x27;payload&#x27;][&#x27;body_text&#x27;] = body
+    return m
+
+def ev(eid, summary, start, end, attendees, organizer, location=None, description=None):
+    e = {&#x27;id&#x27;: eid, &#x27;status&#x27;: &#x27;confirmed&#x27;, &#x27;summary&#x27;: summary,
+         &#x27;start&#x27;: {&#x27;dateTime&#x27;: start, &#x27;timeZone&#x27;: TZ}, &#x27;end&#x27;: {&#x27;dateTime&#x27;: end, &#x27;timeZone&#x27;: TZ},
+         &#x27;organizer&#x27;: {&#x27;email&#x27;: organizer, &#x27;self&#x27;: organizer == PRINCIPAL},
+         &#x27;attendees&#x27;: attendees}
+    if location:    e[&#x27;location&#x27;] = location
+    if description: e[&#x27;description&#x27;] = description
+    return e
+
+def att(email, status, self_=False):
+    a = {&#x27;email&#x27;: email, &#x27;responseStatus&#x27;: status}
+    if self_: a[&#x27;self&#x27;] = True
+    return a
+
+# ---- the mailbox as the agent will see it --------------------------------------------------
+M = {
+ &#x27;m1&#x27;: msg(&#x27;18c2a91f0e1a0001&#x27;, &#x27;t-sam&#x27;, [&#x27;INBOX&#x27;, &#x27;UNREAD&#x27;, &#x27;IMPORTANT&#x27;],
+           &#x27;Sam Reyes &lt;sam@reyesarchitects.example&gt;&#x27;, PRINCIPAL, &#x27;Proposal: studio fit-out, v2&#x27;,
+           &#x27;Mon, 21 Sep 2026 17:42:10 +0100&#x27;,
+           &#x27;Maya, attached is v2 of the fit-out proposal with the revised joinery costs...&#x27;,
+           &#x27;Maya,\n\nAttached is v2 of the fit-out proposal with the revised joinery costs. The main change &#x27;
+           &#x27;is the reception desk, which comes down by about eight per cent if we use the oak veneer.\n\n&#x27;
+           &#x27;Could we talk it through this week or early next? Any afternoon works for me.\n\nSam&#x27;),
+ &#x27;m2&#x27;: msg(&#x27;18c2a91f0e1a0002&#x27;, &#x27;t-northwind&#x27;, [&#x27;INBOX&#x27;, &#x27;CATEGORY_UPDATES&#x27;],
+           &#x27;Priya Nair &lt;priya@northwind.example&gt;&#x27;, PRINCIPAL, &#x27;Northwind quarterly review: agenda&#x27;,
+           &#x27;Mon, 21 Sep 2026 11:05:44 +0100&#x27;,
+           &#x27;Hi Maya, agenda for the quarterly review below. If Tuesday no longer suits...&#x27;,
+           &#x27;Hi Maya,\n\nAgenda for the quarterly review below. If Tuesday no longer suits, Thursday morning &#x27;
+           &#x27;works on our side too.\n\n1. Brand refresh status\n2. Q4 campaign scope\n3. Invoicing\n\nPriya&#x27;),
+ &#x27;m3&#x27;: msg(&#x27;18c2a91f0e1a0003&#x27;, &#x27;t-dw&#x27;, [&#x27;INBOX&#x27;, &#x27;CATEGORY_PROMOTIONS&#x27;],
+           &#x27;Design Weekly &lt;news@designweekly.example&gt;&#x27;, PRINCIPAL, &#x27;Design Weekly #212: the return of serif&#x27;,
+           &#x27;Sun, 20 Sep 2026 07:00:00 +0100&#x27;, &#x27;This week: the return of serif, three studios on pricing...&#x27;,
+           fmt=&#x27;metadata&#x27;),
+ &#x27;m4&#x27;: msg(&#x27;18c2a91f0e1a0004&#x27;, &#x27;t-cn&#x27;, [&#x27;INBOX&#x27;, &#x27;CATEGORY_PROMOTIONS&#x27;],
+           &#x27;Colour Notes &lt;hello@colournotes.example&gt;&#x27;, PRINCIPAL, &#x27;Colour Notes, September&#x27;,
+           &#x27;Sat, 19 Sep 2026 08:30:00 +0100&#x27;, &#x27;Autumn palettes, and a note on accessible contrast...&#x27;,
+           fmt=&#x27;metadata&#x27;),
+ &#x27;m5&#x27;: msg(&#x27;18c2a91f0e1a0005&#x27;, &#x27;t-offsite&#x27;, [&#x27;INBOX&#x27;],
+           &#x27;Harbour &amp; Finch Office &lt;office@harbourfinch.example&gt;&#x27;, &#x27;team@harbourfinch.example&#x27;,
+           &#x27;Offsite logistics: Friday 2 October&#x27;, &#x27;Fri, 18 Sep 2026 15:20:02 +0100&#x27;,
+           &#x27;All, the offsite runs 09:00 to 17:00 on Friday 2 October at the boathouse...&#x27;,
+           &#x27;All,\n\nThe offsite runs 09:00 to 17:00 on Friday 2 October at the boathouse. Please keep the &#x27;
+           &#x27;whole day clear.\n\nOffice&#x27;),
+ &#x27;m6&#x27;: msg(&#x27;18c2a91f0e1a0006&#x27;, &#x27;t-inv&#x27;, [&#x27;INBOX&#x27;],
+           &#x27;Coastline Print Accounts &lt;accounts@coastlineprint.example&gt;&#x27;, PRINCIPAL,
+           &#x27;Invoice INV-2291: payment reminder&#x27;, &#x27;Tue, 8 Sep 2026 10:12:31 +0100&#x27;,
+           &#x27;This is a reminder that invoice INV-2291 for the brochure print run is now due...&#x27;,
+           &#x27;Hello,\n\nThis is a reminder that invoice INV-2291 for the brochure print run is now due. &#x27;
+           &#x27;The amount outstanding and our bank details are on the attached invoice.\n\nIf this has &#x27;
+           &#x27;already been paid, please ignore this message.\n\nCoastline Print Accounts&#x27;),
+ &#x27;m7&#x27;: {&#x27;id&#x27;: &#x27;18c2a91f0e1a0007&#x27;, &#x27;threadId&#x27;: &#x27;t-lunch&#x27;},
+ &#x27;m8&#x27;: msg(&#x27;18c2a91f0e1a0008&#x27;, &#x27;t-cb&#x27;, [&#x27;INBOX&#x27;, &#x27;CATEGORY_UPDATES&#x27;],
+           &#x27;CloudBox &lt;noreply@cloudbox.example&gt;&#x27;, PRINCIPAL, &#x27;Your storage is almost full&#x27;,
+           &#x27;Thu, 17 Sep 2026 06:01:09 +0100&#x27;, &#x27;You have used 92% of your storage...&#x27;, fmt=&#x27;metadata&#x27;),
+}
+
+# ---- the calendar as the agent will see it -------------------------------------------------
+E = {
+ &#x27;e1&#x27;: ev(&#x27;evt0northwindq3&#x27;, &#x27;Northwind quarterly review&#x27;, &#x27;2026-09-29T14:00:00+01:00&#x27;, &#x27;2026-09-29T15:00:00+01:00&#x27;,
+          [att(PRINCIPAL, &#x27;accepted&#x27;, True), att(&#x27;priya@northwind.example&#x27;, &#x27;accepted&#x27;),
+           att(&#x27;tom@harbourfinch.example&#x27;, &#x27;accepted&#x27;)], PRINCIPAL, &#x27;Video call&#x27;),
+ &#x27;e2&#x27;: ev(&#x27;evt0studiosync&#x27;, &#x27;Weekly studio sync&#x27;, &#x27;2026-10-02T09:30:00+01:00&#x27;, &#x27;2026-10-02T10:00:00+01:00&#x27;,
+          [att(PRINCIPAL, &#x27;accepted&#x27;, True), att(&#x27;tom@harbourfinch.example&#x27;, &#x27;accepted&#x27;),
+           att(&#x27;lee@harbourfinch.example&#x27;, &#x27;accepted&#x27;)], &#x27;tom@harbourfinch.example&#x27;, &#x27;Studio&#x27;),
+ &#x27;e3&#x27;: ev(&#x27;evt0offsite&#x27;, &#x27;Team offsite&#x27;, &#x27;2026-10-02T09:00:00+01:00&#x27;, &#x27;2026-10-02T17:00:00+01:00&#x27;,
+          [att(PRINCIPAL, &#x27;accepted&#x27;, True), att(&#x27;team@harbourfinch.example&#x27;, &#x27;accepted&#x27;)],
+          &#x27;office@harbourfinch.example&#x27;, &#x27;The boathouse&#x27;),
+ &#x27;e4&#x27;: ev(&#x27;evt0coastline&#x27;, &#x27;Supplier call: Coastline Print&#x27;, &#x27;2026-10-02T16:00:00+01:00&#x27;, &#x27;2026-10-02T16:30:00+01:00&#x27;,
+          [att(PRINCIPAL, &#x27;accepted&#x27;, True), att(&#x27;accounts@coastlineprint.example&#x27;, &#x27;accepted&#x27;)], PRINCIPAL,
+          &#x27;Phone&#x27;, &#x27;Agree the reprint schedule and settle INV-2291.&#x27;),
+ &#x27;e5&#x27;: ev(&#x27;evt0dentist&#x27;, &#x27;Dentist&#x27;, &#x27;2026-09-30T08:30:00+01:00&#x27;, &#x27;2026-09-30T09:15:00+01:00&#x27;,
+          [att(PRINCIPAL, &#x27;accepted&#x27;, True)], PRINCIPAL, &#x27;High Street&#x27;),
+}
+
+def rid(n):
+    return f&#x27;req-{n:03d}&#x27;
+
+entries = []
+def add(ts, connector, effect, tool, args, method, url, body, status, resp):
+    entries.append({
+        &#x27;seq&#x27;: len(entries) + 1, &#x27;ts&#x27;: ts, &#x27;session&#x27;: SESSION, &#x27;agent&#x27;: AGENT, &#x27;principal&#x27;: PRINCIPAL,
+        &#x27;connector&#x27;: connector, &#x27;capture&#x27;: &#x27;broker&#x27;, &#x27;prompt_ref&#x27;: &#x27;p1&#x27;, &#x27;effect&#x27;: effect,
+        &#x27;mcp&#x27;: {&#x27;jsonrpc&#x27;: &#x27;2.0&#x27;, &#x27;id&#x27;: len(entries) + 1, &#x27;method&#x27;: &#x27;tools/call&#x27;,
+                &#x27;params&#x27;: {&#x27;name&#x27;: tool, &#x27;arguments&#x27;: args}},
+        &#x27;request&#x27;: {&#x27;method&#x27;: method, &#x27;url&#x27;: url, &#x27;headers&#x27;: {&#x27;authorization&#x27;: &#x27;[never captured]&#x27;},
+                    &#x27;body&#x27;: body},
+        &#x27;response&#x27;: {&#x27;status&#x27;: status, &#x27;body&#x27;: resp},
+    })
+
+import copy
+ids = [M[k][&#x27;id&#x27;] for k in [&#x27;m1&#x27;, &#x27;m2&#x27;, &#x27;m3&#x27;, &#x27;m4&#x27;, &#x27;m5&#x27;, &#x27;m6&#x27;, &#x27;m7&#x27;, &#x27;m8&#x27;]]
+
+add(&#x27;2026-09-22T09:14:03.120Z&#x27;, &#x27;gmail&#x27;, &#x27;read&#x27;, &#x27;gmail_search_messages&#x27;, {&#x27;q&#x27;: &#x27;in:inbox newer_than:14d&#x27;},
+    &#x27;GET&#x27;, f&#x27;{GMAIL}/messages?q=in%3Ainbox%20newer_than%3A14d&amp;maxResults=20&#x27;, None, 200,
+    {&#x27;messages&#x27;: [{&#x27;id&#x27;: M[k][&#x27;id&#x27;], &#x27;threadId&#x27;: M[k][&#x27;threadId&#x27;]} for k in [&#x27;m1&#x27;,&#x27;m2&#x27;,&#x27;m3&#x27;,&#x27;m4&#x27;,&#x27;m5&#x27;,&#x27;m6&#x27;,&#x27;m7&#x27;,&#x27;m8&#x27;]],
+     &#x27;resultSizeEstimate&#x27;: 8})
+for k, fmt, t in [(&#x27;m1&#x27;,&#x27;full&#x27;,&#x27;09:14:04.310&#x27;), (&#x27;m2&#x27;,&#x27;full&#x27;,&#x27;09:14:04.902&#x27;), (&#x27;m3&#x27;,&#x27;metadata&#x27;,&#x27;09:14:05.377&#x27;),
+                  (&#x27;m4&#x27;,&#x27;metadata&#x27;,&#x27;09:14:05.801&#x27;), (&#x27;m5&#x27;,&#x27;full&#x27;,&#x27;09:14:06.244&#x27;), (&#x27;m6&#x27;,&#x27;full&#x27;,&#x27;09:14:06.790&#x27;),
+                  (&#x27;m8&#x27;,&#x27;metadata&#x27;,&#x27;09:14:07.153&#x27;)]:
+    add(f&#x27;2026-09-22T{t}Z&#x27;, &#x27;gmail&#x27;, &#x27;read&#x27;, &#x27;gmail_read_message&#x27;, {&#x27;messageId&#x27;: M[k][&#x27;id&#x27;]},
+        &#x27;GET&#x27;, f&quot;{GMAIL}/messages/{M[k][&#x27;id&#x27;]}?format={fmt}&quot;, None, 200, M[k])
+
+add(&#x27;2026-09-22T09:14:09.610Z&#x27;, &#x27;calendar&#x27;, &#x27;read&#x27;, &#x27;calendar_list_events&#x27;,
+    {&#x27;timeMin&#x27;: &#x27;2026-09-28T00:00:00+01:00&#x27;, &#x27;timeMax&#x27;: &#x27;2026-10-03T00:00:00+01:00&#x27;},
+    &#x27;GET&#x27;, f&#x27;{CAL}/events?timeMin=2026-09-28T00%3A00%3A00%2B01%3A00&amp;timeMax=2026-10-03T00%3A00%3A00%2B01%3A00&amp;singleEvents=true&#x27;,
+    None, 200, {&#x27;kind&#x27;: &#x27;calendar#events&#x27;, &#x27;items&#x27;: [E[k] for k in [&#x27;e1&#x27;,&#x27;e5&#x27;,&#x27;e3&#x27;,&#x27;e2&#x27;,&#x27;e4&#x27;]]})
+
+e1_after = copy.deepcopy(E[&#x27;e1&#x27;])
+e1_after[&#x27;start&#x27;][&#x27;dateTime&#x27;] = &#x27;2026-10-01T10:00:00+01:00&#x27;
+e1_after[&#x27;end&#x27;][&#x27;dateTime&#x27;]   = &#x27;2026-10-01T11:00:00+01:00&#x27;
+add(&#x27;2026-09-22T09:15:02.018Z&#x27;, &#x27;calendar&#x27;, &#x27;write&#x27;, &#x27;calendar_update_event&#x27;,
+    {&#x27;eventId&#x27;: E[&#x27;e1&#x27;][&#x27;id&#x27;], &#x27;start&#x27;: &#x27;2026-10-01T10:00&#x27;, &#x27;end&#x27;: &#x27;2026-10-01T11:00&#x27;, &#x27;notify&#x27;: True},
+    &#x27;PATCH&#x27;, f&quot;{CAL}/events/{E[&#x27;e1&#x27;][&#x27;id&#x27;]}?sendUpdates=all&quot;,
+    {&#x27;start&#x27;: e1_after[&#x27;start&#x27;], &#x27;end&#x27;: e1_after[&#x27;end&#x27;]}, 200, e1_after)
+
+e2_after = copy.deepcopy(E[&#x27;e2&#x27;])
+e2_after[&#x27;attendees&#x27;][0][&#x27;responseStatus&#x27;] = &#x27;declined&#x27;
+add(&#x27;2026-09-22T09:15:20.455Z&#x27;, &#x27;calendar&#x27;, &#x27;write&#x27;, &#x27;calendar_respond_to_event&#x27;,
+    {&#x27;eventId&#x27;: E[&#x27;e2&#x27;][&#x27;id&#x27;], &#x27;response&#x27;: &#x27;declined&#x27;, &#x27;notify&#x27;: True},
+    &#x27;PATCH&#x27;, f&quot;{CAL}/events/{E[&#x27;e2&#x27;][&#x27;id&#x27;]}?sendUpdates=all&quot;,
+    {&#x27;attendees&#x27;: e2_after[&#x27;attendees&#x27;]}, 200, e2_after)
+
+add(&#x27;2026-09-22T09:15:31.902Z&#x27;, &#x27;calendar&#x27;, &#x27;write&#x27;, &#x27;calendar_delete_event&#x27;,
+    {&#x27;eventId&#x27;: E[&#x27;e4&#x27;][&#x27;id&#x27;], &#x27;notify&#x27;: True},
+    &#x27;DELETE&#x27;, f&quot;{CAL}/events/{E[&#x27;e4&#x27;][&#x27;id&#x27;]}?sendUpdates=all&quot;, None, 204, None)
+
+add(&#x27;2026-09-22T09:15:48.270Z&#x27;, &#x27;gmail&#x27;, &#x27;write&#x27;, &#x27;gmail_modify_labels&#x27;,
+    {&#x27;messageIds&#x27;: [M[&#x27;m3&#x27;][&#x27;id&#x27;], M[&#x27;m4&#x27;][&#x27;id&#x27;], M[&#x27;m8&#x27;][&#x27;id&#x27;]], &#x27;removeLabels&#x27;: [&#x27;INBOX&#x27;]},
+    &#x27;POST&#x27;, f&#x27;{GMAIL}/messages/batchModify&#x27;,
+    {&#x27;ids&#x27;: [M[&#x27;m3&#x27;][&#x27;id&#x27;], M[&#x27;m4&#x27;][&#x27;id&#x27;], M[&#x27;m8&#x27;][&#x27;id&#x27;]], &#x27;removeLabelIds&#x27;: [&#x27;INBOX&#x27;]}, 204, None)
+
+m3_trashed = {&#x27;id&#x27;: M[&#x27;m3&#x27;][&#x27;id&#x27;], &#x27;threadId&#x27;: M[&#x27;m3&#x27;][&#x27;threadId&#x27;], &#x27;labelIds&#x27;: [&#x27;TRASH&#x27;, &#x27;CATEGORY_PROMOTIONS&#x27;]}
+add(&#x27;2026-09-22T09:15:55.731Z&#x27;, &#x27;gmail&#x27;, &#x27;write&#x27;, &#x27;gmail_trash_message&#x27;, {&#x27;messageId&#x27;: M[&#x27;m3&#x27;][&#x27;id&#x27;]},
+    &#x27;POST&#x27;, f&quot;{GMAIL}/messages/{M[&#x27;m3&#x27;][&#x27;id&#x27;]}/trash&quot;, None, 200, m3_trashed)
+
+add(&#x27;2026-09-22T09:16:03.118Z&#x27;, &#x27;gmail&#x27;, &#x27;write&#x27;, &#x27;gmail_delete_message&#x27;, {&#x27;messageId&#x27;: M[&#x27;m6&#x27;][&#x27;id&#x27;]},
+    &#x27;DELETE&#x27;, f&quot;{GMAIL}/messages/{M[&#x27;m6&#x27;][&#x27;id&#x27;]}&quot;, None, 204, None)
+
+reply_body = (&#x27;Sam,\n\nThanks for v2. The oak veneer change makes sense. Could we talk it through on a call on &#x27;
+              &#x27;Wednesday 30 September at 15:00? I have sent an invite.\n\nMaya&#x27;)
+add(&#x27;2026-09-22T09:16:20.664Z&#x27;, &#x27;gmail&#x27;, &#x27;write&#x27;, &#x27;gmail_send_message&#x27;,
+    {&#x27;to&#x27;: &#x27;sam@reyesarchitects.example&#x27;, &#x27;subject&#x27;: &#x27;Re: Proposal: studio fit-out, v2&#x27;, &#x27;threadId&#x27;: M[&#x27;m1&#x27;][&#x27;threadId&#x27;],
+     &#x27;body&#x27;: reply_body},
+    &#x27;POST&#x27;, f&#x27;{GMAIL}/messages/send&#x27;,
+    {&#x27;threadId&#x27;: M[&#x27;m1&#x27;][&#x27;threadId&#x27;], &#x27;raw_decoded&#x27;: {&#x27;to&#x27;: &#x27;sam@reyesarchitects.example&#x27;,
+     &#x27;subject&#x27;: &#x27;Re: Proposal: studio fit-out, v2&#x27;, &#x27;body_text&#x27;: reply_body}}, 200,
+    {&#x27;id&#x27;: &#x27;18c2a91f0e1a0009&#x27;, &#x27;threadId&#x27;: M[&#x27;m1&#x27;][&#x27;threadId&#x27;], &#x27;labelIds&#x27;: [&#x27;SENT&#x27;]})
+
+new_ev = ev(&#x27;evt0samcall&#x27;, &#x27;Call with Sam Reyes: fit-out proposal&#x27;, &#x27;2026-09-30T15:00:00+01:00&#x27;, &#x27;2026-09-30T15:30:00+01:00&#x27;,
+            [att(PRINCIPAL, &#x27;accepted&#x27;, True), att(&#x27;sam@reyesarchitects.example&#x27;, &#x27;needsAction&#x27;)], PRINCIPAL, &#x27;Phone&#x27;)
+add(&#x27;2026-09-22T09:16:38.940Z&#x27;, &#x27;calendar&#x27;, &#x27;write&#x27;, &#x27;calendar_create_event&#x27;,
+    {&#x27;summary&#x27;: new_ev[&#x27;summary&#x27;], &#x27;start&#x27;: &#x27;2026-09-30T15:00&#x27;, &#x27;end&#x27;: &#x27;2026-09-30T15:30&#x27;,
+     &#x27;attendees&#x27;: [&#x27;sam@reyesarchitects.example&#x27;], &#x27;notify&#x27;: True},
+    &#x27;POST&#x27;, f&#x27;{CAL}/events?sendUpdates=all&#x27;,
+    {k: new_ev[k] for k in [&#x27;summary&#x27;, &#x27;start&#x27;, &#x27;end&#x27;, &#x27;attendees&#x27;, &#x27;location&#x27;]}, 200, new_ev)
+
+# ---- chain -----------------------------------------------------------------------------------
+prev = &#x27;0&#x27; * 64
+for e in entries:
+    e[&#x27;prev&#x27;] = prev
+    canon = json.dumps({k: v for k, v in e.items() if k != &#x27;hash&#x27;}, sort_keys=True, separators=(&#x27;,&#x27;, &#x27;:&#x27;),
+                       ensure_ascii=False)
+    e[&#x27;hash&#x27;] = hashlib.sha256(canon.encode(&#x27;utf-8&#x27;)).hexdigest()
+    prev = e[&#x27;hash&#x27;]
+
+os.makedirs(&#x27;journal&#x27;, exist_ok=True)
+with open(&#x27;journal/session-2026-09-22.jsonl&#x27;, &#x27;w&#x27;) as f:
+    for e in entries:
+        f.write(json.dumps(e, ensure_ascii=False, separators=(&#x27;,&#x27;, &#x27;:&#x27;)) + &#x27;\n&#x27;)
+with open(&#x27;journal/prompts-2026-09-22.json&#x27;, &#x27;w&#x27;) as f:
+    json.dump({&#x27;session&#x27;: SESSION, &#x27;capture&#x27;: &#x27;on&#x27;, &#x27;prompts&#x27;: PROMPTS}, f, indent=2, ensure_ascii=False)
+print(f&#x27;{len(entries)} entries, head {prev[:12]}&#x27;)
+</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="8eb19427f7bf63c01fc54f3a385ed2ab7deb0ef3f2780c27bd52bd7906150c4e">8eb19427f7bf</code></dd><dt>Frozen copy</dt><dd><a href="make-demo-journal.py">vaults/connector-twin/tools/make-demo-journal.py</a> (13,604 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

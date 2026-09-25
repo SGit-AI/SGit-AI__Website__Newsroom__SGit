@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>RiskMandate, File security (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#riskmandate-file-security">RiskMandate, File security</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-is-in-it">What is in it</a></li><li class="l3"><a href="#risk-acceptance-moved-to-the-centre">Risk acceptance, moved to the centre</a></li><li class="l3"><a href="#the-browser-is-the-database">The browser is the database</a></li><li class="l2"><a href="#notes">Notes</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 262 of 358</p><nav class="pager"><span><a href="261-riskmandate-file-security-a-published-va.html">← RiskMandate: File security, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="263-standards-atlas-gdpr-a-published-vault.html">Standards Atlas: GDPR, a published vault →</a></span></nav><article class="source"><h1 id="riskmandate-file-security">RiskMandate, File security</h1>
+<p>A worked risk decision, structured as an <strong>eleven-step walk</strong> over one shared, evolving register. Its argument is a process one: risk acceptance belongs at the <strong>centre</strong> of the flow, not rubber-stamped at the end, and when the facts change, the risks and their owners change with them.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77:wu365g94</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77%3Awu365g94">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77:wu365g94</code>
+Published deliberately, and <strong>derived</strong> one-way from a vault key that is not published and never will be.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p>Both surfaces open automatically below. You can also <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77%3Awu365g94"><strong>open the app in its own window ↗</strong> ↗</a>.</p>
+<h2 id="what-is-in-it">What is in it</h2>
+<p>the inversion</p>
+<h3 id="risk-acceptance-moved-to-the-centre">Risk acceptance, moved to the centre</h3>
+<p>The comparison is made on the page itself. Traditional: <code>Build → Ship → Run →</code> then a Sign-off, described as <em>&quot;a rubber-stamp after the fact, blind spots, low accountability, and stale by the time it&#x27;s signed.&quot;</em></p>
+<p>RiskMandate: <code>Facts → Risks → Accept &amp; own → Propagate ↻ recalibrate</code>. The dashboard tracks two competing costs at once (<strong>detect-only residual</strong> against <strong>control cost &amp; friction</strong>) so choosing a control is visibly a trade, not a free win. There is no <em>deny</em> fork: each risk is accepted, mitigated, or awaiting data, and someone owns the choice.</p>
+<p>The discipline it sets itself is <em>&quot;Grounded, not FUD, facts first.&quot;</em> Each fact walks to its evidence and its source before any decision is offered.</p>
+<p>Step 1 of the walk: the counters, the two competing costs, and risk acceptance moved to the centre.</p>
+<p>the pattern</p>
+<h3 id="the-browser-is-the-database">The browser is the database</h3>
+<p>The vault holds the issues as <strong>versioned JSON files</strong>: that is the source of truth. On load the app copies those nodes and edges into a real database running in the browser, and every read the UI performs is a query against it.</p>
+<p>The vault&#x27;s own note puts it plainly: this is the ordinary shape of a database system, a durable store plus a working engine, <em>except the durable store is a zero-knowledge, git-versioned file tree</em>. Steps 7 through 11 expose the layers directly: Data, Database, Graph DB, Graph viz, Explorer.</p>
+<p>The vault browser: issues as versioned JSON, and the grant behind the walk.</p>
+<h2 id="notes">Notes</h2>
+<p><strong>On the permission line.</strong> <code>app.json</code> requests <code>fs.read</code> and an explicitly empty <code>fs.write: []</code>, the write array is present and empty rather than absent, which states the intent instead of leaving it to be inferred.</p>
+<p><a href="../index.html">← All published vaults</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="261-riskmandate-file-security-a-published-va.html">← RiskMandate: File security, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="263-standards-atlas-gdpr-a-published-vault.html">Standards Atlas: GDPR, a published vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>262 of 358: RiskMandate, File security</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

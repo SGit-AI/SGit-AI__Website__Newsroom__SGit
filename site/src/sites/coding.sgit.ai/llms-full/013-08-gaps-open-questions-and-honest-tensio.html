@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>08 — Gaps, open questions and honest tensions (coding.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#08-gaps-open-questions-and-honest-tensions">08 — Gaps, open questions and honest tensions</a></li><li class="l2"><a href="#1-the-enforcement-gap-a-days-work-that-changes-what-the-site-can-claim">1. The enforcement gap — a day&amp;#x27;s work that changes what the site can claim</a></li><li class="l2"><a href="#2-build-fresh-items">2. Build-fresh items</a></li><li class="l2"><a href="#3-open-questions">3. Open questions</a></li><li class="l2"><a href="#4-honest-tensions">4. Honest tensions</a></li><li class="l2"><a href="#5-loose-ends-worth-an-hour-each">5. Loose ends worth an hour each</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 13 of 14</p><nav class="pager"><span><a href="012-07-site-architecture-licensing-and-bound.html">← 07 — Site architecture, licensing and boundaries</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-licence.html">Licence →</a></span></nav><article class="source"><h1 id="08-gaps-open-questions-and-honest-tensions">08 — Gaps, open questions and honest tensions</h1>
+<hr>
+<h2 id="1-the-enforcement-gap-a-days-work-that-changes-what-the-site-can-claim">1. The enforcement gap — a day&#x27;s work that changes what the site can claim</h2>
+<p>There is <strong>no linter, no formatter and no type-checker anywhere in the estate.</strong> Ordered by value:</p>
+<div class="table"><table><thead><tr><th>#</th><th>Fix</th><th>Effort</th></tr></thead><tbody><tr><td><strong>F1</strong></td><td><strong>Delete <code>[^_]</code> from <code>test_no_legacy_imports.py</code></strong> — the guard has never worked; 228 real imports across 69 files</td><td>4 characters</td></tr>
+<tr><td><strong>F2</strong></td><td><strong>A <code>ruff</code> config</strong> encoding: no docstrings, ban <code>pydantic</code> / <code>Literal</code> / direct <code>boto3</code>, empty <code>__init__.py</code></td><td>one config block</td></tr>
+<tr><td><strong>F3</strong></td><td><strong>Import alignment</strong> — the 39% number, and the only formatting rule that is measurably inconsistent</td><td>a formatter rule or a <code>tests/ci</code> check</td></tr>
+<tr><td><strong>F4</strong></td><td><strong><code>shellcheck</code> on rendered <code>Section__*</code> output</strong> — the generated shell is currently unlintable because it is never rendered outside production</td><td>a test</td></tr>
+<tr><td><strong>F5</strong></td><td><strong><code>eslint</code></strong> — 4-space, single quotes, no semicolons, plus a check that every component directory has all three of <code>.js</code>/<code>.html</code>/<code>.css</code></td><td>half a day</td></tr>
+<tr><td><strong>F6</strong></td><td><strong><code>stylelint</code></strong> — the highest-value CSS rule is <strong>no literal colours outside the token file</strong></td><td>an hour</td></tr>
+<tr><td><strong>F7</strong></td><td><strong>A banner check</strong> — present, well-formed, three content lines</td><td>~20 lines</td></tr>
+<tr><td><strong>F8</strong></td><td><strong>Filename == class name, one class per file</strong></td><td>~20 lines</td></tr></tbody></table></div>
+<p>F1 and F4 are the two that would catch real defects today. F2, F6 and F7 are close to free.</p>
+<hr>
+<h2 id="2-build-fresh-items">2. Build-fresh items</h2>
+<div class="table"><table><thead><tr><th>#</th><th>Item</th><th>Why</th></tr></thead><tbody><tr><td><strong>G1</strong></td><td><strong>Rules for JS, CSS, HTML and Bash</strong></td><td>All 31 documented rules are Python and process. The other four languages have consistent, discoverable conventions and <strong>zero written rules</strong></td></tr>
+<tr><td><strong>G2</strong></td><td><strong>A human-readable style guide</strong></td><td>The rules live in <code>.claude/CLAUDE.md</code>, an agent instruction file. There is no published standard anywhere. <strong>This is the site</strong></td></tr>
+<tr><td><strong>G3</strong></td><td><strong>The <code>/for-agents/</code> argument</strong></td><td><code>05__</code> §5. Named nowhere, and the thing that explains why the rest looks the way it does</td></tr>
+<tr><td><strong>G4</strong></td><td><strong>A worked &quot;add a new spec&quot; walkthrough</strong></td><td>The generalisation mechanisms are real (<code>manifest.py</code>, route loader, CLI builder). Nobody has written the tutorial that uses them</td></tr>
+<tr><td><strong>G5</strong></td><td><strong>A worked &quot;add a new component&quot; walkthrough</strong></td><td>Same for the JS triplet + CDN pattern</td></tr>
+<tr><td><strong>G6</strong></td><td><strong>Golden rendered shell files</strong></td><td>Commit one per <code>Section__*</code> so a reviewer sees the actual shell, not the template</td></tr>
+<tr><td><strong>G7</strong></td><td><strong>A decision record format</strong></td><td>Rules 14, 15 and 21 are scar tissue with the precedent cited inline. That is an ADR in all but name — give it a shape</td></tr></tbody></table></div>
+<hr>
+<h2 id="3-open-questions">3. Open questions</h2>
+<div class="table"><table><thead><tr><th>#</th><th>Question</th><th>Where it stands</th></tr></thead><tbody><tr><td><strong>Q1</strong></td><td><strong>Is alignment for humans or for machines?</strong> <code>05__</code> §3 makes the machine-readability argument. It is a claim, not an established fact, and it is falsifiable</td><td>The honest page says: it costs diff noise, it buys scanability, here is why we think the trade is worth it in a codebase 61% written by an agent</td></tr>
+<tr><td><strong>Q2</strong></td><td><strong>Is rule 9 (no <code>_private</code>) Python-only?</strong></td><td>97 Python violations; universal in JS. <strong>The document does not say, so in practice it is neither enforced nor retired</strong></td></tr>
+<tr><td><strong>Q3</strong></td><td><strong>Which token prefix?</strong> <code>--bg-panel</code>, <code>--sg-surface</code>, <code>--sgl-tab-h</code> — three families for one system</td><td>Pick one, or document what each means. The numbered ramps (<code>--text-1..4</code>, <code>--sg-sp-1..4</code>) are the good part and should be kept either way</td></tr>
+<tr><td><strong>Q4</strong></td><td><strong>Should a public coding standard document a <code>dev.</code> host?</strong></td><td>Every component example imports from <code>dev.tools.sgraph.ai</code>. Redacting it teaches nothing; publishing it documents a <code>dev.</code>-prefixed contract as canonical. <code>07__</code> §4</td></tr>
+<tr><td><strong>Q5</strong></td><td><strong>Does runtime type safety replace static analysis, or defer it?</strong></td><td><code>Type_Safe</code> catches shape errors at construction. It does not catch unreachable code, unused imports, shadowed names or a typo in a branch never executed. <strong>The honest answer is that it replaces one kind of checking and the other kind is simply absent</strong></td></tr>
+<tr><td><strong>Q6</strong></td><td><strong>Is &quot;no mocks, no patches&quot; affordable outside this estate?</strong></td><td>It works here — 4,785 tests in 81 seconds — because <code>Type_Safe</code> objects are cheap and there is an in-memory composition path. Whether it generalises is a real question and the site should not assume it does</td></tr>
+<tr><td><strong>Q7</strong></td><td><strong>Does the no-build-step position survive the next dependency?</strong></td><td>50 files, one level of imports, no CJS-only package yet. <code>02__</code> §5 names where it stops working</td></tr></tbody></table></div>
+<hr>
+<h2 id="4-honest-tensions">4. Honest tensions</h2>
+<ol><li><p><strong>31 written rules and zero enforcement.</strong> High compliance on most of them — 100%, 99.7%, 99% — achieved by discipline rather than tooling. That is impressive and it is fragile, and the one guard that was supposed to hold a line <strong>had never worked</strong>.</p></li><li><p><strong>A style guide for five languages that documents one.</strong> Python has 31 rules. JavaScript, CSS, HTML and Bash have consistent conventions and no rules at all — which means they are currently maintained by whoever last read the neighbouring file.</p></li><li><p><strong>Alignment is either the best or the worst convention here.</strong> No formatter in the industry will produce it, so adopting it means never adopting <code>black</code>, <code>prettier</code> or <code>gofmt</code>-style tooling. That is a real, permanent cost accepted for a benefit that has not been measured.</p></li><li><p><strong>The rules were written for agents and are published to none.</strong> <code>.claude/CLAUDE.md</code> is read by every session and by no human who has not gone looking for it.</p></li><li><p><strong>Runtime validation is a good fit for generated code and a poor substitute for a linter.</strong> Both are true, and the estate currently has the first and not the second.</p></li><li><p><strong>The most interesting page is the least verifiable.</strong> <code>/for-agents/</code> is the original contribution, and its central claim — that these conventions suit a model reader — is asserted from design intent and commit statistics, not from measurement. <strong>Publish it as a position with the evidence attached, not as a finding.</strong></p></li></ol>
+<hr>
+<h2 id="5-loose-ends-worth-an-hour-each">5. Loose ends worth an hour each</h2>
+<ul><li><strong>Confirm whether a second theme file exists.</strong> The token names suggest dark-first; this pack could not verify a light theme.</li><li><strong>Count how many components exist outside the sg-compute tree.</strong> The CDN serves <code>base</code>, <code>tokens</code>, <code>vault-client</code>, <code>vault-write</code> — is there a wider registry?</li><li><strong>Check whether <code>SgComponent</code>&#x27;s source is public.</strong> Every example imports it; if it is not readable, the pattern cannot be adopted by anyone outside.</li><li><strong>Resolve the <code>sp-cli:</code> event namespace</strong> — 23 files, legacy naming, and renaming it breaks external listeners.</li><li><strong>Decide the semicolon rule</strong> and reformat <code>shared/</code> to match <code>components/</code>.</li><li><strong>Write down the <code>set -euo pipefail</code> rule</strong> — 2 of 5 files, three different forms, no rule.</li><li><strong>Extract the four <code>tests/ci/</code> guards into a reusable module.</strong> They are the pattern the <code>/enforce/</code> page recommends, and they currently live only in one repo.</li></ul>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/09__source-manifest.csv</p>
+<hr>
+<p>tier,area,path,what,publishability,why_it_matters
+0,THE RULES,.claude/CLAUDE.md,31 numbered rules + 4 testing rules,EXTRACT,&quot;THE SINGLE MOST VALUABLE ARTEFACT. Lives in an agent instruction file, not a published standard. Compliance measured in 06__ - never measured before.&quot;
+0,python: the complete example,sg_compute/catalog/schemas/Schema__Caller__IP.py,11 lines showing 9 conventions,clean,&quot;Banner, filename=class, one class, fully-qualified aligned imports, Type_Safe, constrained primitive, aligned colon, no docstring. Quote it entire.&quot;
+0,python: the primitive pattern,sg_compute/primitives/Safe_Str__IP__Address.py,a regex-constrained string type,clean,THE TYPE IS THE VALIDATION. Five aligned class attributes and a trailing comment carrying the reasoning.
+0,python: primitives dir,sg_compute/primitives/,27 constrained types,clean,&quot;The domain vocabulary made visible: AWS__Region, Docker__Image, Instance__Type, Node__Name, Pod__Name, SSM__Path, Spec__Id, Port, Max__Hours, Exit__Code.&quot;
+0,js: the complete component,sgraph_ai_service_playwright__api_site/components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/,the .js/.html/.css triplet,REDACT CDN?,&quot;THE FRAMEWORK-FREE COMPONENT PATTERN, undocumented anywhere. SgComponent, static jsUrl = import.meta.url, onReady(), shadow DOM, versioned CDN imports. See 07__ section 4 on the dev.tools.sgraph.ai question.&quot;
+0,js: single source of truth,sgraph_ai_service_playwright__api_site/shared/launch-defaults.js,Object.freeze constants,clean,&#x27;Single source of truth... Update here only - do not duplicate locally.&#x27; The same instinct as manifest.py and the repo-root version file.
+0,bash: the generated-shell pattern,sg_compute/platforms/ec2/user_data/Section__Shutdown.py,&quot;a Section class, entire&quot;,clean,&quot;FIVE .sh FILES IN 217k LOC. Shell is generated from typed Python. The banner documents the coupling to EC2__Launch__Helper, not just the purpose.&quot;
+0,bash: the fifteen sections,sg_compute/platforms/ec2/user_data/,15 Section__* classes,clean,&quot;Composition is a list, not a template with conditionals - which is why there is no {% if gpu %} anywhere.&quot;
+0,THE BROKEN GUARD,tests/ci/test_no_legacy_imports.py,the one-character bug,PUBLISH IT,A guard that passes because it cannot match what it guards against. The strongest possible argument for the /enforce/ page. Verified: 0 vs 228.
+1,the working guards,tests/ci/,4 structural guards,clean,The entire automated enforcement surface. Note each encodes a rule that was violated at least once - the right way to grow a guard set.
+1,css: the token consumer,sgraph_ai_service_playwright__api_site/components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/sg-compute-left-nav.css,aligned property values,clean,&quot;The alignment discipline applied to CSS. Also :host first, [hidden] reset, tokens not literals, plain semantic class names.&quot;
+1,html: the fragment,sgraph_ai_service_playwright__api_site/components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/sg-compute-left-nav.html,a component fragment,clean,&quot;2-space indent, semantic elements, ARIA everywhere, data-* as the behaviour hook, unicode glyphs.&quot;
+1,the frontend tree,sgraph_ai_service_playwright__api_site/,&quot;50 js, 38 css, 37 html&quot;,REDACT,&quot;The whole component estate. 41 customElements.define, 6 attachShadow, 48 type=module.&quot;
+1,testing guidance,library/guides/v3.1.1__testing_guidance.md,the full testing rules,clean,&quot;Behind the four non-negotiables: no mocks, no patches, assert on contracts, real Chromium, deploy-via-pytest.&quot;
+1,markdown doc style,library/guides/v0.2.15__markdown_doc_style.md,the markdown convention,clean,&quot;Why the === banner is Python-only: in Markdown, # is heading syntax and a banner renders as a stack of H1s. Use YAML frontmatter instead.&quot;
+1,type_safe guidance,library/dependencies/osbot-utils/type_safe/v3.1.1__for_llms__type_safe__testing_guidance.md,Type_Safe for LLMs,clean,NOTE THE FILENAME: &#x27;for_llms&#x27;. Documentation written explicitly for a model reader - direct evidence for the /for-agents/ page.
+2,the claude-code-web tree,team/humans/dinis_cruz/claude-code-web/,operational detail,REDACT AND USE,&quot;Densest source of the AWS account ID and live hostnames. Redact-and-use, not skip.&quot;
+3,alchemist tree,library/alchemist/materials/,commercial,DO-NOT-PUBLISH,&quot;Investment figures, valuation, competitive positioning.&quot;
+3,appsec review,team/roles/appsec/reviews/02/21/v0.5.0__review__pki-architecture-security-revised.md,security review,DO-NOT-PUBLISH,Already classified: &#x27;publishing an attack roadmap for live code&#x27;.
+3,grc reviews,team/roles/grc/reviews/02/19/,risk acceptance,DO-NOT-PUBLISH,Names a private individual with signature blocks.</p>
+<hr>
+<p>source: /briefs/conventions__machine-readable.json</p>
+<hr>
+<p>{
+&quot;schema&quot;: &quot;sgraph-coding-conventions/v1&quot;,
+&quot;surveyed&quot;: &quot;2026-08-24&quot;,
+&quot;method&quot;: &quot;Derived by counting from the code, not from documentation. Every number measured this session.&quot;,
+&quot;python&quot;: {
+&quot;files&quot;: 3999,
+&quot;loc&quot;: 217266,
+&quot;filenames_with_double_underscore&quot;: 3871,
+&quot;prefix_families&quot;: {
+&quot;Schema__&quot;: 614,
+&quot;Safe_Str__&quot;: 290,
+&quot;Enum__&quot;: 185,
+&quot;Cli__&quot;: 82,
+&quot;Routes__&quot;: 59,
+&quot;Safe_Int__&quot;: 18,
+&quot;Section__&quot;: 15,
+&quot;Fast_API__&quot;: 12,
+&quot;Safe_UInt__&quot;: 7
+},
+&quot;suffix_families&quot;: {
+&quot;__Builder&quot;: 97,
+&quot;__Helper&quot;: 86,
+&quot;__Client&quot;: 77,
+&quot;__Service&quot;: 46,
+&quot;__Mapper&quot;: 39,
+&quot;__Detector&quot;: 23,
+&quot;__Loader&quot;: 17,
+&quot;__Registry&quot;: 14,
+&quot;__Writer&quot;: 14,
+&quot;__Parser&quot;: 10,
+&quot;__Runner&quot;: 9,
+&quot;__Manager&quot;: 7,
+&quot;__Factory&quot;: 4,
+&quot;__Watchdog&quot;: 2,
+&quot;__Middleware&quot;: 1,
+&quot;__Poller&quot;: 1
+},
+&quot;class_bases_new_tree&quot;: {
+&quot;total&quot;: 1034,
+&quot;Type_Safe&quot;: 506,
+&quot;TestCase&quot;: 169,
+&quot;Safe_Str&quot;: 78,
+&quot;str_Enum&quot;: 69,
+&quot;Fast_API__Routes&quot;: 46,
+&quot;Type_Safe__List&quot;: 44,
+&quot;Schema__Step__Base&quot;: 25,
+&quot;Safe_Int&quot;: 13,
+&quot;Enum&quot;: 8,
+&quot;Safe_UInt&quot;: 6
+},
+&quot;one_class_per_file&quot;: {
+&quot;sampled&quot;: 208,
+&quot;exactly_one&quot;: 187,
+&quot;pct&quot;: 90
+},
+&quot;banners&quot;: {
+&quot;repo_files_with_banner&quot;: 3120,
+&quot;class_files_in_new_tree&quot;: 992,
+&quot;starting_with_banner&quot;: 992,
+&quot;pct&quot;: 100
+},
+&quot;compliance&quot;: {
+&quot;rule_1_type_safe&quot;: &quot;essentially all, excluding 169 TestCase and 77 enums&quot;,
+&quot;rule_7_banner&quot;: &quot;992/992 = 100%&quot;,
+&quot;rule_8_no_docstrings&quot;: &quot;989/992 = 99.7%&quot;,
+&quot;rule_9_no_underscore_private&quot;: &quot;895/992 = 91% (97 violations)&quot;,
+&quot;rule_22_empty_init&quot;: &quot;299/302 = 99%&quot;
+},
+&quot;alignment&quot;: {
+&quot;schema_attribute_colons&quot;: {
+&quot;files&quot;: 46,
+&quot;aligned&quot;: 46,
+&quot;pct&quot;: 100
+},
+&quot;from_import_keyword&quot;: {
+&quot;files&quot;: 817,
+&quot;aligned&quot;: 321,
+&quot;pct&quot;: 39
+}
+},
+&quot;primitives_dir&quot;: [
+&quot;Safe_Int__Disk__GB&quot;,
+&quot;Safe_Int__Exit__Code&quot;,
+&quot;Safe_Int__Hours&quot;,
+&quot;Safe_Int__Log__Lines&quot;,
+&quot;Safe_Int__Max__Hours&quot;,
+&quot;Safe_Int__Pids&quot;,
+&quot;Safe_Int__Port&quot;,
+&quot;Safe_Int__Uptime__Seconds&quot;,
+&quot;Safe_Str__AWS__Region&quot;,
+&quot;Safe_Str__Api__Key&quot;,
+&quot;Safe_Str__Docker__Image&quot;,
+&quot;Safe_Str__IP__Address&quot;,
+&quot;Safe_Str__Image__Registry&quot;,
+&quot;Safe_Str__Image__Tag&quot;,
+&quot;Safe_Str__Instance__Type&quot;,
+&quot;Safe_Str__Log__Content&quot;,
+&quot;Safe_Str__Message&quot;,
+&quot;Safe_Str__Node__Id&quot;,
+&quot;Safe_Str__Node__Name&quot;,
+&quot;Safe_Str__Ollama__Model&quot;,
+&quot;Safe_Str__Platform__Name&quot;,
+&quot;Safe_Str__Pod__Name&quot;,
+&quot;Safe_Str__SG__Id&quot;,
+&quot;Safe_Str__SSM__Path&quot;,
+&quot;Safe_Str__Spec__Id&quot;,
+&quot;Safe_Str__Stack__Id&quot;,
+&quot;Safe_Str__Stack__Name&quot;
+]
+},
+&quot;javascript&quot;: {
+&quot;files&quot;: 50,
+&quot;custom_elements_define&quot;: 41,
+&quot;attach_shadow&quot;: 6,
+&quot;type_module_script_tags&quot;: 48,
+&quot;quotes&quot;: {
+&quot;single&quot;: 4006,
+&quot;double&quot;: 400,
+&quot;pct_single&quot;: 91
+},
+&quot;semicolons&quot;: {
+&quot;lines_with&quot;: 401,
+&quot;statement_lines_without&quot;: 531,
+&quot;note&quot;: &quot;components/ is semicolon-free; shared/ is not&quot;
+},
+&quot;indent&quot;: {
+&quot;multiple_of_4&quot;: 3791,
+&quot;other&quot;: 148
+},
+&quot;banner_files&quot;: 15,
+&quot;component_triplet&quot;: [
+&quot;.js&quot;,
+&quot;.html&quot;,
+&quot;.css&quot;
+],
+&quot;cdn&quot;: {
+&quot;host&quot;: &quot;dev.tools.sgraph.ai&quot;,
+&quot;path_scheme&quot;: &quot;/components/&lt;name&gt;/v&lt;major&gt;/v&lt;major&gt;.&lt;minor&gt;/v&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;/&lt;file&gt;&quot;,
+&quot;served&quot;: [
+&quot;sg-component.js (SgComponent base)&quot;,
+&quot;sg-tokens.css&quot;,
+&quot;sg-vault-client.js&quot;,
+&quot;sg-vault-write.js&quot;
+]
+},
+&quot;base_class_contract&quot;: {
+&quot;static jsUrl&quot;: &quot;import.meta.url \u2014 required, enables self-location&quot;,
+&quot;get resourceName()&quot;: &quot;basename of sibling .html/.css&quot;,
+&quot;get sharedCssPaths()&quot;: &quot;tokens and shared sheets&quot;,
+&quot;onReady()&quot;: &quot;lifecycle hook \u2014 NOT connectedCallback directly&quot;
+},
+&quot;event_namespace&quot;: {
+&quot;prefix&quot;: &quot;sp-cli:&quot;,
+&quot;files&quot;: 23,
+&quot;note&quot;: &quot;LEGACY NAMING \u2014 a rename surface&quot;
+}
+},
+&quot;css&quot;: {
+&quot;files&quot;: 38,
+&quot;alignment&quot;: &quot;property values aligned per block, column set by the block&#x27;s longest property&quot;,
+&quot;token_prefixes&quot;: {
+&quot;unprefixed&quot;: [
+&quot;--bg-panel&quot;,
+&quot;--border-1&quot;,
+&quot;--text-1..4&quot;,
+&quot;--text-link&quot;,
+&quot;--shadow-1..2&quot;,
+&quot;--warn&quot;,
+&quot;--warn-soft&quot;,
+&quot;--soon&quot;
+],
+&quot;sg&quot;: [
+&quot;--sg-text&quot;,
+&quot;--sg-text-muted&quot;,
+&quot;--sg-surface&quot;,
+&quot;--sg-sp-1..4&quot;,
+&quot;--sg-transition-fast&quot;
+],
+&quot;sgl&quot;: [
+&quot;--sgl-tab-h&quot;,
+&quot;--sgl-panel-h&quot;
+]
+},
+&quot;note&quot;: &quot;THREE PREFIX FAMILIES FOR ONE TOKEN SYSTEM \u2014 resolve before publishing&quot;,
+&quot;naming&quot;: &quot;plain semantic class names. NOT BEM, NOT utility classes \u2014 shadow DOM makes both unnecessary&quot;
+},
+&quot;html&quot;: {
+&quot;files&quot;: 37,
+&quot;indent&quot;: 2,
+&quot;note&quot;: &quot;deliberately different from the 4 used in JS and CSS&quot;,
+&quot;rules&quot;: [
+&quot;component markup is a fragment, no html/head/template wrapper&quot;,
+&quot;semantic elements, never div onclick&quot;,
+&quot;ARIA on every interactive element&quot;,
+&quot;data-* is the behaviour hook; classes are for styling; the two never mix&quot;,
+&quot;unicode glyphs instead of icon fonts or SVG sprites&quot;
+]
+},
+&quot;bash&quot;: {
+&quot;sh_files&quot;: 5,
+&quot;set_e_files&quot;: 2,
+&quot;set_e_forms&quot;: [
+&quot;set -euo pipefail&quot;,
+&quot;set -eu&quot;,
+&quot;set -u&quot;
+],
+&quot;generated_shell&quot;: {
+&quot;pattern&quot;: &quot;Section__*(Type_Safe) with a single render() -&gt; str and a module-level TEMPLATE&quot;,
+&quot;count&quot;: 15,
+&quot;sections&quot;: [
+&quot;Base&quot;,
+&quot;Docker&quot;,
+&quot;Sidecar&quot;,
+&quot;Nginx&quot;,
+&quot;Env__File&quot;,
+&quot;GPU_Verify&quot;,
+&quot;NVIDIA_Container_Toolkit&quot;,
+&quot;Ollama&quot;,
+&quot;VLLM&quot;,
+&quot;SGit_Venv&quot;,
+&quot;Claude_Code__Firstboot&quot;,
+&quot;Claude_Launch&quot;,
+&quot;Agent_Tools&quot;,
+&quot;Node&quot;,
+&quot;Shutdown&quot;
+],
+&quot;conventions&quot;: [
+&quot;banner names the coupling, not just the purpose&quot;,
+&quot;generated shell gets a # -- banner (box-drawing, not the Python ===)&quot;,
+&quot;computation in Python, literals in the emitted shell&quot;,
+&quot;bracketed echo breadcrumbs so boot logs are greppable&quot;,
+&quot;composition is a list of sections, never a template with conditionals&quot;
+]
+}
+},
+&quot;enforcement&quot;: {
+&quot;linters&quot;: 0,
+&quot;formatters&quot;: 0,
+&quot;type_checkers&quot;: 0,
+&quot;ci_guards&quot;: {
+&quot;total&quot;: 4,
+&quot;working&quot;: 3,
+&quot;broken&quot;: 1,
+&quot;list&quot;: [
+{
+&quot;name&quot;: &quot;test_no_object_none_annotations&quot;,
+&quot;enforces&quot;: &quot;bans &#x27;: object = None&#x27;&quot;,
+&quot;state&quot;: &quot;works&quot;
+},
+{
+&quot;name&quot;: &quot;test_sg_compute_ami_picker__snapshot&quot;,
+&quot;enforces&quot;: &quot;web component live-fetch contract&quot;,
+&quot;state&quot;: &quot;works&quot;
+},
+{
+&quot;name&quot;: &quot;test_sg_compute_spec_detail__snapshot&quot;,
+&quot;enforces&quot;: &quot;web component structure&quot;,
+&quot;state&quot;: &quot;works&quot;
+},
+{
+&quot;name&quot;: &quot;test_wheel_contains_ui&quot;,
+&quot;enforces&quot;: &quot;wheel contains per-spec UI assets&quot;,
+&quot;state&quot;: &quot;works&quot;
+},
+{
+&quot;name&quot;: &quot;test_sg_compute_does_not_import_legacy&quot;,
+&quot;enforces&quot;: &quot;no legacy imports in the new tree&quot;,
+&quot;state&quot;: &quot;BROKEN \u2014 regex sgraph_ai_service_playwright[^_] cannot match sgraph_ai_service_playwright__cli&quot;,
+&quot;measured&quot;: &quot;guard matches 0 files; 228 real imports in 69 files; deleting [^_] makes it fail as intended&quot;
+}
+]
+},
+&quot;documented_rules&quot;: {
+&quot;source&quot;: &quot;.claude/CLAUDE.md&quot;,
+&quot;count&quot;: 31,
+&quot;plus&quot;: &quot;4 non-negotiable testing rules&quot;,
+&quot;groups&quot;: [
+&quot;Code Patterns 1-9&quot;,
+&quot;Security 10-13&quot;,
+&quot;AWS Naming 14-15&quot;,
+&quot;Responsibility Boundaries 16-19&quot;,
+&quot;Class/File Naming 20-22&quot;,
+&quot;Process 23-31&quot;
+],
+&quot;coverage&quot;: &quot;ALL are Python or process. Zero rules for JS, CSS, HTML or Bash.&quot;
+}
+},
+&quot;cross_cutting&quot;: [
+&quot;one idea per file, and the filename says which&quot;,
+&quot;a banner names every file (three characters: === Python, -- shell and JS shared, JSDoc JS components)&quot;,
+&quot;alignment as a first-class convention, per block&quot;,
+&quot;single source of truth enforced by structure, not by asking&quot;,
+&quot;conventions chosen because an LLM is a primary reader and writer&quot;
+]
+}</p>
+<hr>
+<p>source: /briefs/LICENSE.md</p>
+<hr></article><nav class="pager"><span><a href="012-07-site-architecture-licensing-and-bound.html">← 07 — Site architecture, licensing and boundaries</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="014-licence.html">Licence →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>13 of 14: 08 — Gaps, open questions and honest tensions</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

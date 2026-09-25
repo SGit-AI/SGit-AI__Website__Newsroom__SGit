@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Run your own SG/Send server (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 86 of 358</p><nav class="pager"><span><a href="085-run-your-own-sgsend-server-sgitai.html">← Run your own SG/Send server (sgit.ai)</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="087-a-live-site-whose-host-cannot-read-it-sg.html">A live site whose host cannot read it, sgit.ai case study →</a></span></nav><article class="source"><h1 id="run-your-own-sgsend-server">Run your own SG/Send server</h1>
+<p>Deployment guidance for standing up your own zero-knowledge vault server, Docker, AWS, GCP, Heroku, or a static host. <strong>These pages are not part of this website.</strong> They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.</p>
+<p><strong>How this page works:</strong> the vault&#x27;s ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai, when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <strong>vault panel</strong> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. <a href="../case-studies/live-vault-docs.html"><strong>Full architecture, with diagrams →</strong></a><a class="ext live" href="https://sgit.ai/case-studies/live-vault-docs.html" title="live page">↗</a></p>
+<p>opening vault…</p>
+<p>Fetching the encrypted index…</p>
+<h3 id="vault-debug-how-this-works">Vault debug <a href="../case-studies/live-vault-docs.html">how this works →</a><a class="ext live" href="https://sgit.ai/case-studies/live-vault-docs.html" title="live page">↗</a></h3>
+<p>not open yet</p>
+<p>what you are looking at</p>
+<p>Every row above is an encrypted object pulled from the SG/Send API and decrypted locally: click one to see what it actually contains. Objects whose id contains <strong>-imm-</strong> are content-addressed and therefore immutable, so they are cached permanently; the mutable <strong>ref</strong> is the one mutable object, so it is checked at most once per freshness window (120s) rather than once per page, inside the window, reading the docs makes no requests at all, and <strong>check for new commit</strong> forces one whenever you want it.</p>
+<p>The <strong>tree</strong> objects are the reason a first visit reads more than one file: filenames are encrypted inside them, so building the navigation means reading every directory. That index is a pure function of the commit id, so it is memoised, after the first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.</p>
+<p><a href="../case-studies/live-vault-docs.html">How this page works →</a><a class="ext live" href="https://sgit.ai/case-studies/live-vault-docs.html" title="live page">↗</a> Architecture diagrams, the object model, the cache tiers, and how two Claude Code sessions publish into this vault.</p>
+<hr></article><nav class="pager"><span><a href="085-run-your-own-sgsend-server-sgitai.html">← Run your own SG/Send server (sgit.ai)</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="087-a-live-site-whose-host-cannot-read-it-sg.html">A live site whose host cannot read it, sgit.ai case study →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>86 of 358: Run your own SG/Send server</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

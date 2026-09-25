@@ -1,0 +1,97 @@
+# The reading room
+
+## New on sgit.ai since 18 September
+
+- 2026-09-24 [Company X-Ray, a business plan with one company X-rayed, published as a vault](https://sgit.ai/demos/vaults/company-xray/index.html)
+- 2026-09-24 [For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it](https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html)
+- 2026-09-24 [Lesson Loop, a business plan for coaches with one player's record, published as a vault](https://sgit.ai/demos/vaults/lesson-loop/index.html)
+- 2026-09-24 [Every risk is already accepted. The only question is by whom, and for how long.](https://sgit.ai/articles/every-risk-is-already-accepted.html)
+- 2026-09-24 [Risk Acceptance Office, a business plan with one risk replayed, published as a vault](https://sgit.ai/demos/vaults/risk-acceptance/index.html)
+- 2026-09-24 [For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit](https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html)
+- 2026-09-24 [Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai](https://sgit.ai/partnerships/ai-providers.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Anthropic](https://sgit.ai/partnerships/anthropic.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and AWS](https://sgit.ai/partnerships/aws.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Microsoft Azure](https://sgit.ai/partnerships/azure.html)
+- 2026-09-24 [sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai](https://sgit.ai/partnerships/cloud-platforms.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and DigitalOcean](https://sgit.ai/partnerships/digitalocean.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and ElevenLabs](https://sgit.ai/partnerships/elevenlabs.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and the European clouds](https://sgit.ai/partnerships/european-clouds.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Google Cloud](https://sgit.ai/partnerships/google-cloud.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Google Gemini](https://sgit.ai/partnerships/google-gemini.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and IBM Cloud](https://sgit.ai/partnerships/ibm-cloud.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Mistral AI](https://sgit.ai/partnerships/mistral.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Netlify](https://sgit.ai/partnerships/netlify.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and OpenAI](https://sgit.ai/partnerships/openai.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and OpenRouter](https://sgit.ai/partnerships/openrouter.html)
+- 2026-09-24 [A proposed partnership between sgit.ai and Rackspace Technology](https://sgit.ai/partnerships/rackspace.html)
+- 2026-09-24 [Before you give an agent a connector, give the connector a twin](https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html)
+- 2026-09-24 [Connector Twin, a business plan with a working replay, published as a vault](https://sgit.ai/demos/vaults/connector-twin/index.html)
+- 2026-09-24 [Business plans to build on sgit, sgit.ai](https://sgit.ai/startups/business-plans.html)
+- 2026-09-24 [Who holds the keys? A call for collaboration on vault key management, sgit.ai](https://sgit.ai/partnerships/vault-key-management.html)
+- 2026-09-23 [Agent as Webmaster, a business plan published as a vault](https://sgit.ai/demos/vaults/agent-webmaster/index.html)
+- 2026-09-23 [Partnerships, argued in the open, sgit.ai](https://sgit.ai/partnerships/index.html)
+- 2026-09-23 [A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI](https://sgit.ai/partnerships/sovereign-ai.html)
+- 2026-09-22 [About the author, Dinis Cruz, sgit.ai](https://sgit.ai/about/index.html)
+- 2026-09-22 [The future of news is the story vault, not the paywall](https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html)
+- 2026-09-21 [Lessons learned, the rules and the incidents behind them, sgit.ai](https://sgit.ai/lessons/index.html)
+- 2026-09-21 [Build your startup on sgit vaults, sgit.ai](https://sgit.ai/startups/index.html)
+- 2026-09-21 [For a startup, the most important question is whether they miss it](https://sgit.ai/articles/the-question-is-whether-they-miss-it.html)
+- 2026-09-21 [Take the API out of the path, and the same clone is 25 times faster](https://sgit.ai/updates/2026/09/21/v0.3.6__update__take-the-api-out-of-the-path.html)
+- 2026-09-21 [That was a cold start, not an architecture cost](https://sgit.ai/updates/2026/09/21/v0.3.5__update__that-was-a-cold-start-not-an-architecture-cost.html)
+- 2026-09-21 [The design is the performance, and the crypto is free](https://sgit.ai/updates/2026/09/21/v0.3.4__update__the-design-is-the-performance.html)
+- 2026-09-21 [One request, an append lane, and a cache full of ciphertext](https://sgit.ai/updates/2026/09/21/v0.3.3__update__one-request-append-and-ciphertext-caching.html)
+- 2026-09-21 [Performance, cost, and running everywhere, Fractal Semantic Graphs](https://sgit.ai/demos/fractal-graphs/performance.html)
+- 2026-09-21 [Graph engineering versus fractal graph, the measured answer](https://sgit.ai/updates/2026/09/21/v0.3.2__update__performance-and-cost.html)
+- 2026-09-20 [Start with an AI decision, then trace it back to the guidance: the DSIT AI Risk Toolkit vault](https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html)
+- 2026-09-20 [Vault #31 reaches the same conclusion about fractality, in its own words](https://sgit.ai/updates/2026/09/20/v0.3.1__update__dsit-ai-risk-toolkit.html)
+- 2026-09-20 [The em-dash is gone from the prose, and so is the legacy key prefix](https://sgit.ai/updates/2026/09/20/v0.3.0__update__no-more-em-dashes.html)
+- 2026-09-20 [The newest vaults were at the bottom of the table, and at the top of the machine list](https://sgit.ai/updates/2026/09/20/v0.2.99__update__vault-table-order.html)
+- 2026-09-20 [Vault credentials: what each one can do, and what its prefix declares, sgit.ai](https://sgit.ai/docs/credentials.html)
+- 2026-09-20 [We published read keys under a prefix that declares them secret, and an agent refused to open them](https://sgit.ai/updates/2026/09/20/v0.2.98__update__the-prefix-said-private.html)
+- 2026-09-20 [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](https://sgit.ai/articles/introducing-fractal-semantic-graphs.html)
+- 2026-09-20 [The article that introduces Fractal Semantic Graphs, published here with its pictures](https://sgit.ai/updates/2026/09/20/v0.2.97__update__introducing-fsg-article.html)
+- 2026-09-20 [The vault named after the concept was not on the concept's page](https://sgit.ai/updates/2026/09/20/v0.2.96__update__the-vault-named-after-the-concept.html)
+- 2026-09-19 [The jump, what the fractal property actually adds](https://sgit.ai/updates/2026/09/19/v0.2.95__update__the-jump.html)
+- 2026-09-19 [For graphs.sgit.ai: Fractal Semantic Graphs, and what to change](https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html)
+- 2026-09-19 [A brief for graphs.sgit.ai, in place of a footnote](https://sgit.ai/updates/2026/09/19/v0.2.94__update__brief-for-graphs-sgit-ai.html)
+- 2026-09-19 [Fractal means the inside is different, not the same. The definition had it backwards](https://sgit.ai/updates/2026/09/19/v0.2.89__update__fractal-means-different-not-same.html)
+- 2026-09-19 [The ladder's right column looked like links and was not, now it is](https://sgit.ai/updates/2026/09/19/v0.2.88__update__ladder-links.html)
+- 2026-09-19 [Fractal Semantic Graphs, the page now leads with the definition](https://sgit.ai/updates/2026/09/19/v0.2.87__update__fractal-semantic-graphs-defined.html)
+- 2026-09-19 [Deleting files from git history, and why they are still on GitHub afterwards, sgit.ai case study](https://sgit.ai/case-studies/purging-history.html)
+- 2026-09-19 [Deleting files from git history, the exact scenario, drawn out](https://sgit.ai/updates/2026/09/19/v0.2.86__update__deleting-files-from-history.html)
+- 2026-09-19 [Fractal Semantic Graphs, sgit.ai](https://sgit.ai/demos/fractal-graphs/index.html)
+- 2026-09-19 [How far down does the graph go? A page for the question that got three bare URLs](https://sgit.ai/updates/2026/09/19/v0.2.85__update__how-far-down-does-the-graph-go.html)
+- 2026-09-19 [The site's own vault mirror is gone, deleted, purged from history, force-pushed](https://sgit.ai/updates/2026/09/19/v0.2.84__update__the-mirror-is-gone.html)
+- 2026-09-19 [The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](https://sgit.ai/updates/2026/09/19/v0.2.83__update__llms-txt-routing.html)
+
+## Sites
+
+- abp.sgit.ai: 180 files
+- chrome-extensions.sgit.ai: 1 files
+- coding.sgit.ai: 2 files
+- games.sgit.ai: 17 files
+- graphs.sgit.ai: 2 files
+- influences.sgit.ai: 2 files
+- infographics.sgit.ai: 1 files
+- issues-fs.sgit.ai: 1 files
+- llms.sgit.ai: 2 files
+- newsroom.sgit.ai: 2 files
+- nfrs.sgit.ai: 2 files
+- nhi.sgit.ai: 1 files
+- open-source.sgit.ai: 28 files
+- pki.sgit.ai: 1 files
+- providers.sgit.ai: 2 files
+- pt.newsroom.sgit.ai: 1 files
+- riskmandate.ai: 213 files
+- risks.sgit.ai: 2 files
+- sg-compute.sgit.ai: 2 files
+- sg-sentinel.sgit.ai: 1 files
+- sgit.ai: 186 files
+- skills.sgit.ai: 2 files
+- standards.sgit.ai: 2 files
+- store.sgit.ai: 2 files
+- subscriptions.sgit.ai: 2 files
+- teams.sgit.ai: 2 files
+- threat-modeling.sgit.ai: 2 files
+- twins.sgit.ai: 2 files
+- wardley-maps.sgit.ai: 13 files

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>sg-compute.sgit.ai — ephemeral environments in AWS, one command away · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sg-compute.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sg-computesgitai-ephemeral-environments-in-aws-one-command-away">sg-compute.sgit.ai — ephemeral environments in AWS, one command away</a></li><li class="l2"><a href="#launch-work-terminate">Launch, work, terminate</a></li><li class="l2"><a href="#two-ephemeral-layers-so-nothing-outlives-its-purpose">Two ephemeral layers, so nothing outlives its purpose</a></li><li class="l2"><a href="#batteries-included">Batteries included</a></li><li class="l2"><a href="#sixteen-ready-to-launch-environments">Sixteen ready-to-launch environments</a></li><li class="l2"><a href="#three-axioms-implemented">Three axioms, implemented</a></li><li class="l2"><a href="#built-fast-tested-hard-measured-honestly">Built fast, tested hard, measured honestly</a></li><li class="l2"><a href="#the-rough-edges-are-published-and-they-are-the-way-in">The rough edges are published — and they are the way in</a></li><li class="l2"><a href="#the-argument">The argument</a></li><li class="l2"><a href="#use-it-break-it-build-on-it">Use it, break it, build on it</a></li><li class="l2"><a href="#one-thing-to-know-before-you-discover-it">One thing to know before you discover it</a></li><li class="l2"><a href="#who-is-writing-this">Who is writing this</a></li><li class="l2"><a href="#site">Site</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sg-compute.sgit.ai.html">sg-compute.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 3 of 14</p><nav class="pager"><span><a href="002-sg-computesgitai-sgcompute-ephemeral-env.html">← sg-compute.sgit.ai — SG/Compute, ephemeral environments in A</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-00-the-brief-sg-computesgitai.html">00 — The Brief: sg-compute.sgit.ai →</a></span></nav><article class="source"><h1 id="sg-computesgitai-ephemeral-environments-in-aws-one-command-away">sg-compute.sgit.ai — ephemeral environments in AWS, one command away</h1>
+<blockquote><p>SG/Compute launches an isolated EC2 environment, runs your work, and terminates it — by
+design, every time. Sixteen ready-to-launch specs — browsers, encrypted vaults, container
+runtimes, LLM inference, observability — each a typed manifest away from a running node,
+with a measured ~16-second boot, a generated CLI, and a self-destruct timer built in.
+Open source, early access, and looking for users and contributors.</p></blockquote>
+<p>*Source: <a class="ext" href="https://sg-compute.sgit.ai/index.html">https://sg-compute.sgit.ai/index.html ↗</a> · site v0.2.0 · markdown twin of the front page.
+Every number measured from the tree on 24 August 2026, at repo version v0.2.71. Code wins:
+where the README, <code>capabilities.json</code>, the reality document and the tree disagree, the tree
+is right.*</p>
+<hr>
+<h2 id="launch-work-terminate">Launch, work, terminate</h2>
+<p>One command gives you a dedicated, isolated environment: a per-node API key is minted and
+written to SSM before launch (<em>never reused</em>), the instance boots with composed user-data, a
+two-phase health poll tells you the moment it is ready, and a self-destruct timer is armed
+from the start — <strong>halt means terminate, not stop</strong>. Around 50 seconds end to end, and you
+never have to remember to clean up.</p>
+<pre><code># every spec gets the same generated CLI — sixteen specs, one surface
+sg &lt;spec&gt; list · info · create · wait · health · connect · exec · delete · ami list|bake · cert
+
+# the node terminates itself — default one hour, fractional supported
+systemd-run --on-active={seconds}s /sbin/shutdown -h now
+InstanceInitiatedShutdownBehavior=terminate   # halt means terminate</code></pre>
+<p>Adding a spec costs a manifest, a route class and a service — <strong>the CLI comes free</strong>.
+<a class="ext" href="https://sg-compute.sgit.ai/what-it-is/index.html">The full lifecycle ↗</a>.</p>
+<h2 id="two-ephemeral-layers-so-nothing-outlives-its-purpose">Two ephemeral layers, so nothing outlives its purpose</h2>
+<div class="table"><table><thead><tr><th></th><th>Layer 1 — per HTTP request</th><th>Layer 2 — per node</th></tr></thead><tbody><tr><td>What is ephemeral</td><td>A browser</td><td>An EC2 instance</td></tr>
+<tr><td>Mechanism</td><td>Fresh Playwright subprocess + fresh Chromium, torn down in <code>try/finally</code></td><td><code>systemd-run --on-active</code> + <code>InstanceInitiatedShutdownBehavior=terminate</code></td></tr>
+<tr><td>Lifetime</td><td>One request</td><td>One hour by default; <code>0.1</code> supported; <code>0</code> disables</td></tr>
+<tr><td>Guarantee</td><td>Zero cross-request state — a CI guard fails the build on any raw <code>browser.new_context(</code> outside the one sanctioned factory</td><td><strong>Halt means terminate, not stop</strong></td></tr></tbody></table></div>
+<p><a class="ext" href="https://sg-compute.sgit.ai/what-it-is/index.html">Both layers in full, with sessions, the watchdog and the isolation table ↗</a>.</p>
+<h2 id="batteries-included">Batteries included</h2>
+<ul><li><strong>Sixteen specs, one CLI surface</strong> — per-spec CLIs are generated, not written: the same ten
+verbs for every spec in the catalogue.</li><li><strong>A deep AWS command surface</strong> — over 71,000 lines of operator tooling: EC2 provisioning,
+IAM and credential management, AMI bake-and-verify, fleet sentinel commands, plus an
+<strong>interactive REPL/TUI</strong> for driving environments live from the terminal.</li><li><strong>A 25-verb sequence language</strong> — declare a step list, get back COMPLETED / FAILED /
+PARTIAL with every skipped step named and a full timings block. Plus stateful sessions,
+Prometheus metrics, and a self-describing <code>/health/capabilities</code> endpoint.</li><li><strong>Web consoles out of the box</strong> — a capability-driven HTML console on every node, per-spec
+UIs, an agentic admin surface, and live VNC desktops for the headed-browser specs.</li></ul>
+<h2 id="sixteen-ready-to-launch-environments">Sixteen ready-to-launch environments</h2>
+<div class="table"><table><thead><tr><th>Family</th><th>Specs</th><th>Lines</th></tr></thead><tbody><tr><td>browser</td><td>playwright, content_proxy, firefox, vnc, neko</td><td>20,199</td></tr>
+<tr><td>vault</td><td>vault_publish, vault_app</td><td>19,943</td></tr>
+<tr><td>observability</td><td>elastic, prometheus, opensearch</td><td>3,904</td></tr>
+<tr><td>runtime</td><td>docker, podman</td><td>2,757</td></tr>
+<tr><td>llm</td><td>local_claude, ollama</td><td>2,437</td></tr>
+<tr><td>network</td><td>mitmproxy</td><td>1,448</td></tr>
+<tr><td>tool</td><td>open_design</td><td>773</td></tr></tbody></table></div>
+<p>Nine stable, seven experimental, boot times from 15 seconds. Each spec is a working package —
+manifest, routes, service, CLI, tests, often a UI — and the catalogue is open: **third-party
+specs can join via a PEP 621 entry point**, no fork required.
+<a class="ext" href="https://sg-compute.sgit.ai/specs/index.html">The full catalogue, one page per spec, generated from the data ↗</a>.</p>
+<h2 id="three-axioms-implemented">Three axioms, implemented</h2>
+<p>Not aspirations — each one is enforced by working code: <strong>statelessness</strong> (fresh browser,
+context and page per request, torn down in <code>try/finally</code>), <strong>least-privilege-by-declaration</strong>
+(the JS allowlist is deny by default, exact match), <strong>self-description</strong>
+(<code>/health/capabilities</code>, built at runtime by a detector that identifies its own deployment
+target).</p>
+<h2 id="built-fast-tested-hard-measured-honestly">Built fast, tested hard, measured honestly</h2>
+<ul><li><strong>4,785 tests passing in 81 seconds</strong> — a large, fast, green suite across 799 files.</li><li><strong>2,777 commits and 245 tags in 100 days</strong> — 16 Apr to 24 Jul 2026.</li><li><strong>~16 seconds</strong> measured EC2 boot to SSM-ready, across 24 real runs; <strong>~50 seconds</strong> end to
+end, click to a dedicated environment with its own DNS name.</li><li><strong>1,265,371 words of documentation</strong>, with a formal reality discipline.</li><li><strong>25 verbs</strong> in the sequence language; <strong>6 isolation boundaries</strong>, each with a mechanism.</li></ul>
+<p><a class="ext" href="https://sg-compute.sgit.ai/numbers/index.html">Every measured number, with its provenance ↗</a>. And because measured means
+<em>all of it</em>, <a class="ext" href="https://sg-compute.sgit.ai/shipped/index.html">the full audit is published alongside ↗</a>.</p>
+<h2 id="the-rough-edges-are-published-and-they-are-the-way-in">The rough edges are published — and they are the way in</h2>
+<p>This is an early-access platform, and we publish exactly where it is thin. Well-scoped,
+high-value places to start contributing: <strong>warm pools</strong> (specified with worked economics —
+the design is done), <strong>S3 and vault artefact sinks</strong> (the interfaces exist; inline and
+local-file already work), <strong>uniform <code>create_node</code></strong> (the CLI covers all sixteen specs, the
+control-plane API covers three so far — a working pattern to copy), and
+<a class="ext" href="https://sg-compute.sgit.ai/roadmap/index.html">seven fixes in order of value ↗</a> — the first is literally four characters.</p>
+<h2 id="the-argument">The argument</h2>
+<blockquote><p>*&quot;We are <strong>not</strong> competing for the generic developer-platform market (Vercel, Cloudflare
+Workers, Lambda)… <strong>We are competing for the agent-deployment market.</strong>&quot;*</p></blockquote>
+<p>A dedicated EC2 instance per workload, with full control, real isolation and a stable DNS
+name, where 50 seconds is a fair trade — and the measured 16-second boot beats the design&#x27;s
+own claimed 30–60. <a class="ext" href="https://sg-compute.sgit.ai/why/index.html">The argument ↗</a>.</p>
+<h2 id="use-it-break-it-build-on-it">Use it, break it, build on it</h2>
+<p><strong>If you need ephemeral environments in AWS</strong> — for browser automation, agent workloads,
+container experiments, or LLM inference that cleans up after itself —
+<a class="ext" href="https://sg-compute.sgit.ai/specs/index.html">pick a spec ↗</a> and read <a class="ext" href="https://sg-compute.sgit.ai/agents/index.html">the machine surface ↗</a>: the whole
+platform is driven over a documented HTTP API and a generated CLI, so an agent can use it as
+easily as a person.</p>
+<p><strong>If you want to contribute</strong> — the platform is Apache-2.0, the specs are extensible from
+your own repository via entry points, and <a class="ext" href="https://sg-compute.sgit.ai/roadmap/index.html">the roadmap ↗</a> names exactly
+what is wanted next. Say hello on <a class="ext" href="https://sg-compute.sgit.ai/admin/comms.html">the comms page ↗</a> or via
+<a class="ext" href="https://github.com/SGit-AI/SGit-AI__Website__SG-Compute">GitHub ↗</a>.</p>
+<h2 id="one-thing-to-know-before-you-discover-it">One thing to know before you discover it</h2>
+<p><strong><code>sg-compute.sgit.ai</code> is this site: documentation.</strong> **<code>sg-compute.sgraph.ai</code> is a live Route 53
+zone** serving per-node DNS — every node you launch gets a stable DNS name under it. Same
+label, different TLD, stated here deliberately. <a class="ext" href="https://sg-compute.sgit.ai/network/index.html#domains">The decision in full ↗</a>.</p>
+<h2 id="who-is-writing-this">Who is writing this</h2>
+<p>Published by the sgit project, which builds the platform this site documents. Every number
+names what it was measured from, and the audit is published in full alongside the feature
+pages. <a class="ext" href="https://sg-compute.sgit.ai/about/participant.html">The participant disclosure, including where our approach loses ↗</a>.</p>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://sg-compute.sgit.ai/documents/index.html">The source documents ↗</a> — twelve, verbatim; two redacted under their own rule</li><li><a class="ext" href="https://sg-compute.sgit.ai/data/specs.json">The catalogue as JSON ↗</a></li><li><a class="ext" href="https://sg-compute.sgit.ai/admin/comms.html">Comms: tasks &amp; requests ↗</a></li><li><a class="ext" href="https://sg-compute.sgit.ai/admin/versions.html">Release history ↗</a></li><li><a class="ext" href="https://sg-compute.sgit.ai/admin/index.html">How this site is built ↗</a></li><li><a href="../llms.txt.html">llms.txt</a><a class="ext live" href="https://sg-compute.sgit.ai/llms.txt" title="live page">↗</a> · <a href="../llms-full.txt.html">llms-full.txt</a><a class="ext live" href="https://sg-compute.sgit.ai/llms-full.txt" title="live page">↗</a></li></ul>
+<p>All content CC BY 4.0. The platform&#x27;s own source is Apache-2.0.</p>
+<hr>
+<p>PART 3 — THE 11 SOURCE DOCUMENTS</p>
+<hr>
+<p>Each is also fetchable on its own at /briefs/&lt;filename&gt;.</p>
+<hr>
+<p>source: /briefs/00__brief.md</p>
+<hr></article><nav class="pager"><span><a href="002-sg-computesgitai-sgcompute-ephemeral-env.html">← sg-compute.sgit.ai — SG/Compute, ephemeral environments in A</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="004-00-the-brief-sg-computesgitai.html">00 — The Brief: sg-compute.sgit.ai →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sg-compute.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sg-compute.sgit.ai/llms-full.txt">https://sg-compute.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:26Z</dd><dt>sha256</dt><dd><code title="7545fed30784de2ac986d87b517212c3f636467e2680a7e99ce9c313d2f27a2d">7545fed30784</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sg-compute.sgit.ai/llms-full.txt</a> (113,738 bytes)</dd><dt>Section</dt><dd>3 of 14: sg-compute.sgit.ai — ephemeral environments in AWS, one command away</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

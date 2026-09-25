@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Penetration Test Report (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#penetration-test-report">Penetration Test Report</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-is-in-it">What is in it</a></li><li class="l3"><a href="#the-same-engagement-told-for-the-reader-in-front-of-it">The same engagement, told for the reader in front of it</a></li><li class="l3"><a href="#every-finding-ships-a-script-that-re-runs-it">Every finding ships a script that re-runs it</a></li><li class="l2"><a href="#notes">Notes</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 268 of 358</p><nav class="pager"><span><a href="267-penetration-test-report-a-published-vaul.html">← Penetration Test Report, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="269-ai-vs-ai-black-hat-europe-2025-a-publish.html">AI vs. AI, Black Hat Europe 2025, a published vault →</a></span></nav><article class="source"><h1 id="penetration-test-report">Penetration Test Report</h1>
+<p>A penetration test delivered as a <strong>vault</strong> rather than a PDF, and the clearest argument on this site for why that difference matters. One engagement, eight audience-specific views, evidence attached to each finding, and a runnable retest script per finding that exits <code>0</code> if it is fixed and <code>1</code> if it is not.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025:o4lrwx02</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025%3Ao4lrwx02">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025:o4lrwx02</code>
+Published deliberately, and <strong>derived</strong> one-way from a vault key that is not published and never will be.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p>Both surfaces open automatically below. You can also <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025%3Ao4lrwx02"><strong>open the app in its own window ↗</strong> ↗</a>.</p>
+<h2 id="what-is-in-it">What is in it</h2>
+<p>the reframe</p>
+<h3 id="the-same-engagement-told-for-the-reader-in-front-of-it">The same engagement, told for the reader in front of it</h3>
+<p>A pentest PDF is written once, for everybody, and therefore for nobody. This one opens on <strong>Choose your view</strong>: CEO / Executive, Decision Maker, Financial Decision Maker, Roadmap / Project, Risk Assessment Owner, AppSec Engineer, DevOps Engineer, or the full report.</p>
+<p>Each view is its own page, opening on the sections that matter to that audience in their order. The headline numbers stay constant underneath: <strong>10 findings</strong>, <strong>7 internet-reachable and unauthenticated</strong>, a modelled annual exposure against a remediation cost, so the CFO and the AppSec engineer are demonstrably reading the same engagement.</p>
+<p>The front page: the verdict, the numbers, and eight ways into one engagement.</p>
+<p>the part a PDF cannot do</p>
+<h3 id="every-finding-ships-a-script-that-re-runs-it">Every finding ships a script that re-runs it</h3>
+<p>Ten findings, and each carries a retest script: <code>nwp-01_sqli.py</code>, <code>nwp-02_jwt_none.py</code>, <code>nwp-03_idor.py</code>, <code>nwp-05_ssrf.py</code>, <code>nwp-06_xss.py</code>, and so on. Point <code>BASE_URL</code> at the environment and <code>retest_all.py</code> prints a pass/fail table.</p>
+<p>Each script asserts the <em>fix</em>, not the bug: a forged <code>alg:none</code> admin token is rejected with 401; another user&#x27;s order id returns 403 or 404 rather than 200; metadata and RFC1918 URLs are refused by the image proxy. Evidence sits beside them, the forged token itself is committed at <code>evidence/NWP-02/forged-token.txt</code>.</p>
+<p>A report that can re-test itself stops being a snapshot and becomes something you can run again in six months.</p>
+<p>The vault browser: retest scripts, evidence and exports beside the report that cites them.</p>
+<h2 id="notes">Notes</h2>
+<p><strong>Entirely fictional, and it says so first.</strong> A <code>SIMULATED DEMO</code> badge sits next to the engagement id on the front page, and the vault states it in its own text: <em>&quot;Everything here is fictional, the company (Northwind Provisions), the app…&quot;</em>. The audit confirmed it: every host is a reserved <code>.example</code> domain, every address an <code>@example.com</code>, and the only public IP is <code>169.254.169.254</code>, the cloud metadata address any SSRF finding cites. The consulting firm and its named team are invented, with no contact details attached.</p>
+<p><a href="../index.html">← All published vaults</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="267-penetration-test-report-a-published-vaul.html">← Penetration Test Report, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="269-ai-vs-ai-black-hat-europe-2025-a-publish.html">AI vs. AI, Black Hat Europe 2025, a published vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>268 of 358: Penetration Test Report</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

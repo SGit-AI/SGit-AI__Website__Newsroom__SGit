@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Risk Acceptance Office: a business plan, with one risk replayed</title>
+<!--
+  Risk Acceptance Office, the plan and the replay as a single-page app.
+  Everything shown comes from content.json, which tools/build-content.py assembles from
+  risk/*.json and plan/plan.json and inlines below as FALLBACK, so the page renders anywhere
+  the vault opens, offline included.
+  Authoring contract: no stylesheet, script or image references against vault files. No network.
+  app.json asks for no permissions.
+-->
+<style>
+  :root{--bg:#fbfaf7;--ink:#101114;--muted:#5b6170;--line:#e3e0d8;--blue:#2f6fed;--blue-soft:#eaf0ff;--green:#1c7c43;--green-soft:#eef7f0;--red:#b4243a;--red-soft:#fbeef0;--amber:#9a5b00;--amber-soft:#fff4e0;--panel:#f4f6fb}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--blue)}
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em}
+  nav.top{position:sticky;top:0;z-index:5;background:rgba(251,250,247,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  nav.top div{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
+  nav.top b{margin-right:auto;font-size:.95rem}
+  nav.top a{color:var(--ink);text-decoration:none;font-size:.85rem;padding:4px 0;border-bottom:2px solid transparent}
+  nav.top a:hover{border-color:var(--blue)}
+  main{max-width:1180px;margin:0 auto;padding:0 20px 60px}
+  .hero{padding:40px 0 8px}
+  .pill{display:inline-block;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);padding:6px 10px;border-radius:999px;margin-bottom:14px}
+  h1{font:700 2.3rem/1.12 Georgia,"Times New Roman",serif;margin:0 0 14px;max-width:920px}
+  .sub{font-size:1.12rem;color:#34363c;max-width:880px;margin:0 0 14px}
+  .by{color:var(--muted);font-size:.92rem}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+  .btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:10px 16px;border-radius:9px;font-weight:600;font-size:.95rem}
+  .btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  section{padding:34px 0 8px;scroll-margin-top:60px}
+  h2{font:700 1.55rem/1.2 Georgia,"Times New Roman",serif;margin:0 0 6px}
+  h3{font-size:1.06rem;margin:20px 0 10px}
+  .eyebrow{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#8b909c;margin:0 0 8px}
+  .lead{color:#34363c;max-width:880px;margin:0 0 16px}
+  .tablewrap{overflow-x:auto;margin:12px 0}
+  table{border-collapse:collapse;width:100%;font-size:.93rem;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:600;font-size:.84rem}
+  tr:last-child td{border-bottom:0}
+  .note{background:var(--green-soft);border-left:4px solid var(--green);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:.95rem}
+  .warn{background:var(--amber-soft);border-left:4px solid var(--amber);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:.95rem}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:12px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .card b{display:block;margin-bottom:4px}
+  .card .p{font:700 1.45rem/1 Georgia,serif;margin:4px 0}
+  .card .u{color:var(--muted);font-size:.85rem}
+  .card p{margin:8px 0 0;font-size:.92rem;color:#34363c}
+  /* replay */
+  .scrub{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0}
+  .scrub input{flex:1;min-width:180px}
+  .scrub .step{font-weight:700;min-width:170px}
+  .scrub button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
+  .status{display:inline-block;font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:7px}
+  .s-open{background:var(--red-soft);color:var(--red)} .s-accepted{background:var(--green-soft);color:var(--green)} .s-expired{background:var(--red);color:#fff}
+  .s-escalated{background:var(--amber-soft);color:var(--amber)} .s-incident{background:var(--red);color:#fff} .s-funded{background:var(--blue-soft);color:var(--blue)} .s-closed{background:var(--panel);color:var(--muted)}
+  .rp{display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);gap:14px;align-items:start}
+  .rp>div{min-width:0}
+  .tl{background:#fff;border:1px solid var(--line);border-radius:12px;max-height:640px;overflow:auto}
+  .tl button{display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:#fff;padding:9px 10px;cursor:pointer;font:inherit;font-size:.86rem}
+  .tl button:last-child{border-bottom:0}
+  .tl button.future{opacity:.38}
+  .tl button.on{background:var(--blue-soft)}
+  .tl .n{font:600 12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#8b909c}
+  .tl .t{display:block;font-weight:600}
+  .tl .s{display:block;color:var(--muted);font-size:.8rem}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;cursor:pointer;font:inherit;font-size:.86rem}
+  .tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .pane{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:320px}
+  .chain{display:flex;flex-direction:column;gap:8px}
+  .role{border:1px solid var(--line);border-radius:10px;padding:9px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center}
+  .role b{font-size:.95rem}
+  .role .who{color:var(--muted);font-size:.84rem}
+  .role .what{grid-column:1/-1;font-size:.86rem;color:#34363c}
+  .role.holds{border-color:var(--blue);background:var(--blue-soft)}
+  .role.accepted{border-color:var(--green);background:var(--green-soft)}
+  .role.escalated{border-color:var(--amber);background:var(--amber-soft)}
+  .arrow{text-align:center;color:#8b909c;font-size:.8rem;line-height:1}
+  .clock{background:var(--panel);border-radius:10px;padding:14px;margin-bottom:12px}
+  .bar{position:relative;height:18px;background:#fff;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:10px 0 6px}
+  .bar i{position:absolute;top:0;bottom:0;left:0;background:var(--green)}
+  .bar i.late{background:var(--red)}
+  .bar u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+  .fact{border-bottom:1px solid var(--line);padding:8px 0;display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:4px 10px;font-size:.9rem}
+  .fact:last-child{border-bottom:0}
+  .fact .src{grid-column:2/-1;color:var(--muted);font-size:.8rem}
+  .fact.gone{opacity:.45}
+  .fact.gone .txt{text-decoration:line-through}
+  .tag{display:inline-block;font:600 10.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;padding:4px 6px;border-radius:6px;white-space:nowrap}
+  .t-est{background:var(--red-soft);color:var(--red)} .t-ceases{background:var(--green-soft);color:var(--green)} .t-ctx{background:var(--panel);color:var(--muted)}
+  .t-in{background:var(--green-soft);color:var(--green)} .t-funded{background:var(--blue-soft);color:var(--blue)} .t-proposed{background:var(--panel);color:var(--muted)} .t-missing{background:var(--red-soft);color:var(--red)}
+  pre{background:#0f1115;color:#e6e6e6;border-radius:10px;padding:12px;overflow:auto;font-size:12px;line-height:1.45;max-height:420px;margin:8px 0;white-space:pre-wrap;word-break:break-word}
+  .gap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .gap>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:.9rem}
+  .gap>div.grc{background:#f7f7f7}
+  .gap h4{margin:0 0 8px;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:#8b909c}
+  .gap dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;margin:0}
+  .gap dt{color:var(--muted)} .gap dd{margin:0}
+  .chainline{font-size:.85rem;color:var(--muted);margin:8px 0 0}
+  .calc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .calc label{display:block;font-size:.9rem;color:var(--muted);margin:8px 0 2px}
+  .calc label output{float:right;color:var(--ink);font-weight:600}
+  .calc input[type=range]{width:100%}
+  .calc .out{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+  .calc .out div{background:var(--panel);border-radius:10px;padding:10px}
+  .calc .out b{display:block;font:700 1.3rem/1.1 Georgia,serif}
+  .calc .out span{font-size:.8rem;color:var(--muted)}
+  footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:var(--muted);font-size:.88rem}
+  @media (max-width:860px){ .rp,.gap,.calc{grid-template-columns:1fr} .tl{max-height:280px} h1{font-size:1.85rem} }
+</style>
+</head>
+<body>
+<nav class="top"><div>
+  <b>Risk Acceptance Office</b>
+  <a href="#principles">Principles</a>
+  <a href="#replay">One risk, replayed</a>
+  <a href="#ladder">The ladder</a>
+  <a href="#plan">The business</a>
+  <a href="#files">In this vault</a>
+</div></nav>
+<main>
+  <div class="hero">
+    <span class="pill">A business plan, with one risk replayed</span>
+    <h1 id="title"></h1>
+    <p class="sub" id="oneline"></p>
+    <p class="by">Published on sgit.ai for somebody else to build. The organisation, people and risk below are invented. The method is the one published on risks.sgit.ai, RiskMandate.ai and in the Risk Graph Explorer vault.</p>
+    <div class="btns"><a class="btn" href="#replay">Replay one risk</a><a class="btn alt" href="#plan">Read the business</a></div>
+  </div>
+
+  <section id="principles">
+    <p class="eyebrow">The method, in principles</p>
+    <h2>Every risk is already accepted. The question is by whom, and until when.</h2>
+    <div class="tablewrap"><table id="principlesT"><tr><th>Principle</th><th>What it means in practice</th></tr></table></div>
+  </section>
+
+  <section id="replay">
+    <p class="eyebrow">One risk, replayed</p>
+    <h2 id="rtitle"></h2>
+    <p class="lead" id="rlead"></p>
+    <div class="scrub">
+      <button id="prev" aria-label="Previous event">&larr;</button>
+      <span class="step" id="stepl"></span>
+      <span id="statusl"></span>
+      <input type="range" id="rng" min="1" value="1" aria-label="Replay up to event">
+      <button id="next" aria-label="Next event">&rarr;</button>
+    </div>
+    <div class="rp">
+      <div class="tl" id="tl" aria-label="Decision record"></div>
+      <div>
+        <div class="tabs" id="tabs">
+          <button data-t="chain" class="on">Who holds it</button>
+          <button data-t="clock">The clock</button>
+          <button data-t="evidence">Evidence</button>
+          <button data-t="controls">Controls</button>
+          <button data-t="record">The record</button>
+        </div>
+        <div class="pane" id="pane"></div>
+      </div>
+    </div>
+    <div class="gap" id="gap"></div>
+    <p class="chainline" id="chainline"></p>
+  </section>
+
+  <section id="ladder">
+    <p class="eyebrow">The interval is the decision</p>
+    <h2>The acceptance ladder</h2>
+    <p class="lead" id="ladderlead"></p>
+    <div class="tablewrap"><table id="ladderT"><tr><th>Rung</th><th>What it means</th></tr></table></div>
+  </section>
+
+  <section id="plan">
+    <p class="eyebrow">The business</p>
+    <h2>A service that runs the acceptance loop, in the gaps of the GRC platform</h2>
+    <p class="lead" id="planlead"></p>
+    <h3>What you sell</h3>
+    <div class="cards" id="services"></div>
+    <p class="by" id="pnote"></p>
+    <h3>The numbers, as a calculator</h3>
+    <div class="calc">
+      <div>
+        <label>Clients <output id="o-c"></output></label><input type="range" id="i-c" min="1" max="60" value="12">
+        <label>Material risks run per client <output id="o-r"></output></label><input type="range" id="i-r" min="5" max="150" value="40">
+        <label>Price per material risk per month <output id="o-p"></output></label><input type="range" id="i-p" min="20" max="200" step="5" value="60">
+        <label>Base retainer per client per month <output id="o-b"></output></label><input type="range" id="i-b" min="0" max="10000" step="250" value="2500">
+        <label>Consultants <output id="o-k"></output></label><input type="range" id="i-k" min="1" max="30" value="4">
+        <label>Loaded cost per consultant per month <output id="o-l"></output></label><input type="range" id="i-l" min="4000" max="15000" step="250" value="8500">
+      </div>
+      <div class="out">
+        <div><b id="r-mrr"></b><span>monthly recurring revenue</span></div>
+        <div><b id="r-arr"></b><span>annual run rate</span></div>
+        <div><b id="r-cost"></b><span>delivery cost a month</span></div>
+        <div><b id="r-margin"></b><span>gross margin</span></div>
+        <div><b id="r-load"></b><span>material risks per consultant</span></div>
+        <div><b id="r-hint"></b><span>capacity check</span></div>
+      </div>
+    </div>
+    <div class="warn"><b>Assumptions, not measurements.</b> <span id="assume"></span></div>
+  </section>
+
+  <section id="files">
+    <p class="eyebrow">In this vault</p>
+    <h2>Everything needed to start</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Path</th><th>What it is</th></tr>
+      <tr><td><code>plan/00-START-HERE.md</code> to <code>plan/10-open-questions.md</code></td><td>The plan as documents: the idea, the method, the operating model, working in the gaps of the GRC platform, services and pricing, go-to-market, the first ninety days, investors, risks, and what is still open.</td></tr>
+      <tr><td><code>risk/</code></td><td>The invented risk replayed above: its facts, controls, holders and a hash-chained decision record. The shape of "a vault per risk".</td></tr>
+      <tr><td><code>spec/</code></td><td>The acceptance record and the risk vault layout: the contract a tool or a GRC integration writes to.</td></tr>
+      <tr><td><code>prototypes/</code></td><td>The acceptance-audit script, the workshop agenda, and the GRC integration outline.</td></tr>
+      <tr><td><code>diagrams/</code></td><td>The acceptance loop and the board-to-bytes view, as SVG and WebP.</td></tr>
+      <tr><td><code>tools/</code></td><td>The content builder and the chain verifier.</td></tr>
+    </table></div>
+  </section>
+
+  <footer>Risk Acceptance Office is published on sgit.ai under the same terms as the code behind it: take it, run it, change it. The organisation, people and risk in the replay are invented, and every address uses the reserved <code>.example</code> domain. See <code>PUBLIC.md</code>.</footer>
+</main>
+
+<script>
+const FALLBACK = /*__DATA__*/{"risk":{"id":"RISK-114","start":"2026-09-01","title":"One risk, established, accepted, escalated, funded and ended on facts","lead":"An invented payments company, Kestrel Ledger, lets a deployment agent run database changes in production. The risk is that the agent can change the ledger, and that some of those changes cannot be reversed. Drag the slider to follow it for six weeks: who holds it, the clock on each acceptance, the evidence and controls, and the decision record. Underneath, compare what a typical register row shows at the same moment.","statement":"The deployment agent can change the production ledger, and some of its changes cannot be reversed.","chain":[{"role":"SRE lead","person":"Sam Osei"},{"role":"Platform owner","person":"Priya Das"},{"role":"CTO","person":"Tomasz Nowak"},{"role":"CEO","person":"Ana Ruiz"},{"role":"Board","person":"Kestrel Ledger board"}],"facts":[{"id":"F-5","role":"establishes","text":"The deployment agent's database role can write to the production ledger.","source":"iam/roles/deploy-agent.json, as exported on 1 September"},{"id":"F-7","role":"establishes","text":"Some ledger migrations cannot be rolled back.","source":"runbooks/ledger-migrations.md, section 4"},{"id":"F-9","role":"context","text":"The agent's stop has never been tested.","source":"the on-call runbook has no stop test recorded"},{"id":"F-11","role":"context","text":"On day 24 the agent applied a migration that could not be rolled back and stalled settlement.","source":"incident INC-2231 timeline"},{"id":"F-12","role":"context","text":"The agent's stop was tested and took three minutes.","source":"stop-test record, day 40"},{"id":"F-4","role":"ceases","text":"Every production write by the agent needs an approval step.","source":"pipeline/approvals.yml, merged on day 41"},{"id":"F-3","role":"ceases","text":"The agent's database role is read-only on the ledger.","source":"would be iam/roles/deploy-agent.json; not chosen"}],"controls":[{"id":"C-1","name":"Approval step on the agent's production writes","initial":"proposed","note":"Ends the risk on its own, through F-4."},{"id":"C-2","name":"A tested stop for the agent","initial":"missing","note":"Does not end the risk; limits how long a bad change can run."},{"id":"C-3","name":"Nightly ledger backup","initial":"in_place","note":"In place, and does not help: it cannot undo a migration mid-day without losing a day's transactions."},{"id":"C-4","name":"Read-only role for the agent","initial":"proposed","note":"Would end the risk through F-3, but stops the agent doing its job. Not chosen."}],"grc_initial":{"Register row":"R-114, change risk in automated deployment","Owner":"Technology","Rating":"Medium","Status":"Open","Next review":"Risk committee, 12 December","Evidence":"none attached"},"events":[{"day":0,"type":"identified","label":"Established on two facts","actor":"Risk engineer","holder":"SRE lead","facts_add":["F-5","F-7","F-9"],"text":"The risk is written down with the facts that make it true, F-5 and F-7, each with its source, and the facts that would end it, F-4 or F-3.","seq":1,"prev":"0000000000000000000000000000000000000000000000000000000000000000","hash":"2633cf6c0c96b2e6df00302112a00fbcb5a356b91f71984587e67a4cc896b50b"},{"day":0,"type":"placed","label":"Placed, and the chain computed","actor":"Risk engineer","text":"Held by the SRE lead. The platform owner, CTO, CEO and board now see it arrive through the chain, without anybody reporting it up.","seq":2,"prev":"2633cf6c0c96b2e6df00302112a00fbcb5a356b91f71984587e67a4cc896b50b","hash":"e17c56b92d9cc8410f45160099f5f6b16f1599f23a43e4ac0469e3af159b26ef"},{"day":1,"type":"accepted","label":"Accepted for two weeks","actor":"Sam Osei","role":"SRE lead","rung":"1 to 2 weeks","days":14,"action":"The platform team adds an approval step to the agent's production writes.","text":"The SRE lead accepts personally, for two weeks: a funded project for a team that already exists.","seq":3,"prev":"e17c56b92d9cc8410f45160099f5f6b16f1599f23a43e4ac0469e3af159b26ef","hash":"3ad29eeb23413bfa2ce63149b9d9afcbb238038b1b89729566cce5dbe13ac3d3"},{"day":15,"type":"expired","label":"The acceptance expires","actor":"the clock","text":"Two weeks pass. The approval step was not built: the team was moved onto a release. The acceptance ends and does not silently continue.","seq":4,"prev":"3ad29eeb23413bfa2ce63149b9d9afcbb238038b1b89729566cce5dbe13ac3d3","hash":"be49087b1958f2c1d00106ade8d0b8a2aa53a3dac11f049504be23a606a2fa11"},{"day":15,"type":"escalated","label":"Escalated to the platform owner","actor":"the clock","role":"Platform owner","holder":"Platform owner","text":"Nobody renewed it, so it rolls up one level. The platform owner must accept, fund or fix.","seq":5,"prev":"be49087b1958f2c1d00106ade8d0b8a2aa53a3dac11f049504be23a606a2fa11","hash":"ba0a03fae1bf909e519786f5c197d0e36d2d06c43cc18a22c277b9f50e26ae6b"},{"day":16,"type":"funded","label":"Funded: a four-week project","actor":"Priya Das","role":"Platform owner","controls":{"C-1":"funded","C-2":"funded"},"text":"Project P-38: an approval step on the agent's production writes and a tested stop. £38,000 and four weeks, from outside the platform team's current work.","seq":6,"prev":"ba0a03fae1bf909e519786f5c197d0e36d2d06c43cc18a22c277b9f50e26ae6b","hash":"bdad18338ee8a22c0dfd8dc604b3b80841663062a77df329d396d86476570597"},{"day":16,"type":"accepted","label":"Accepted for one month","actor":"Priya Das","role":"Platform owner","rung":"1 month","days":30,"action":"Project P-38 delivers the approval step and a tested stop.","text":"The platform owner accepts for a month, the default rung: assemble and fund. The project's length sets the interval.","seq":7,"prev":"bdad18338ee8a22c0dfd8dc604b3b80841663062a77df329d396d86476570597","hash":"ad58d84b79f395b1e8278084e26bd64fda66b8347a425f4478d82262605ba23e"},{"day":24,"type":"incident","label":"Incident: an irreversible migration","actor":"on-call","facts_add":["F-11"],"grc":{"Status":"Open (incident logged in the service desk, not linked)"},"text":"INC-2231. The agent applies a migration that cannot be rolled back, and settlement stalls. The risk has materialised.","seq":8,"prev":"ad58d84b79f395b1e8278084e26bd64fda66b8347a425f4478d82262605ba23e","hash":"0ffe19dc6d4791014b33d9637fa2074f5474ba97464b8cd19cd7c312f943a5f6"},{"day":24,"type":"accepted","label":"Accepted for four hours","actor":"Priya Das","role":"Platform owner","rung":"4 hours","days":0,"action":"Suspend the agent's deploy job and reconcile the ledger.","status":"incident","text":"A four-hour acceptance is an incident response by definition. The agent is suspended and the ledger reconciled.","seq":9,"prev":"0ffe19dc6d4791014b33d9637fa2074f5474ba97464b8cd19cd7c312f943a5f6","hours":4,"hash":"5063ecd9615950bd556926340c66c7b1593b7243103053ce9918423d2c862551"},{"day":25,"type":"accepted","label":"Back on the month's acceptance","actor":"Priya Das","role":"Platform owner","rung":"1 month","days":21,"action":"Project P-38 delivers, now with the incident as its evidence.","text":"The ledger is reconciled and the agent resumes under the funded project. The incident's timeline becomes a fact, F-11, in the risk's own record.","seq":10,"prev":"5063ecd9615950bd556926340c66c7b1593b7243103053ce9918423d2c862551","hash":"9a47941c21acd6e13cd9c458bd21a478254d1e27ef2d64a40ade65d5545f7068"},{"day":30,"type":"reported","label":"In the board pack","actor":"Board","text":"The quarterly pack shows the risk arriving at the board with its chain, its acceptance, its incident and the project that will end it. Nobody wrote a paragraph about it.","seq":11,"prev":"9a47941c21acd6e13cd9c458bd21a478254d1e27ef2d64a40ade65d5545f7068","hash":"4940469fc9537af26cd5d11eb16b47945561564d0b2cfe67842c2fd3595fc824"},{"day":40,"type":"evidence","label":"Stop tested","actor":"SRE lead","facts_add":["F-12"],"facts_remove":["F-9"],"controls":{"C-2":"in_place"},"text":"The agent's stop is tested and takes three minutes. It does not end the risk, but it shortens how long a bad change can run.","seq":12,"prev":"4940469fc9537af26cd5d11eb16b47945561564d0b2cfe67842c2fd3595fc824","hash":"92043db8a91ae521c8603e12048c4c6556cdeac60601bbb770b871e68dd489d8"},{"day":41,"type":"evidence","label":"Approval step merged","actor":"Platform team","facts_add":["F-4"],"controls":{"C-1":"in_place"},"text":"Every production write by the agent now needs an approval. F-4 holds.","seq":13,"prev":"92043db8a91ae521c8603e12048c4c6556cdeac60601bbb770b871e68dd489d8","hash":"2e289693bb5e0464f8b56a6dfd5e6965a7dd39cc73714f43c17502a8a09bb99f"},{"day":42,"type":"closed","label":"Ceased, on facts","actor":"Risk engineer","grc":{"Status":"Open until the committee on 12 December"},"text":"F-4 holds, which is one of the facts the risk named as ending it. It ceases, with the evidence attached. In the register, it waits for the committee.","seq":14,"prev":"2e289693bb5e0464f8b56a6dfd5e6965a7dd39cc73714f43c17502a8a09bb99f","hash":"e58bf7cc494e923fec3c51ffb5b4ed63d5b3f03996904817daee08428cc4504e"}]},"plan":{"title":"Risk Acceptance Office: running the acceptance loop, in the gaps of the GRC platform","one_line":"A company that makes sure every material risk an organisation carries is established on facts, held by a named person, accepted for a stated interval, and at the end of that interval accepted again, escalated, funded or fixed, with the evidence and the decisions kept in a vault per risk.","principles":[{"name":"Every risk is already accepted","text":"A risk exists the moment the exposure does. Nobody decides whether to accept it, only who accepts it and for how long. Until someone does, the organisation is carrying it unsigned."},{"name":"There is no deny button","text":"You cannot vote a fact out of existence. A register that lets a risk be rejected lets the organisation pretend it is not carrying it."},{"name":"Accept, fund or fix","text":"Three doors, each with a name against it. Deferral is not a decision, and silence escalates."},{"name":"The interval is the decision","text":"Accepting for four hours means an incident. Accepting for a month means funding work. The length of the acceptance is what tells the organisation what to do next."},{"name":"A named person, and no delegation","text":"Acceptance is by a person, not a committee or a function. Nobody accepts on anybody else's behalf."},{"name":"Unaccepted is critical","text":"A risk nobody has accepted rests on whoever is nearest and rolls upward. Not doing something is a measurable action."},{"name":"Every path ends at the board","text":"Every risk has a holder, every holder has a boss, and every chain ends at the board. What reaches the top is computed from the chain, not reported by hand."},{"name":"Accepted is not acceptable","text":"Accepted is an act by a named person at a dated moment. Acceptable is a threshold: where the business is content to stop funding remediation. They are two different questions, and a register needs both answers."},{"name":"Established by facts, ended by facts","text":"Every risk names the facts that make it true, each with a source, and the facts that would end it. It closes when those hold, not when a review date passes."},{"name":"GRC validates, the business accepts","text":"Engineers confirm the facts, governance validates the reading, and the business owner accepts. Where those three disagree is where the findings are."}],"ladder_lead":"Each acceptance is for one of six intervals, and each rung names a different response. This is the ladder as published on risks.sgit.ai. RiskMandate.ai publishes a slightly different set of bands, and the plan treats reconciling them as an open question.","ladder":[{"rung":"1 hour","length":"an hour","means":"\"I need more data.\" Fetch it now, then decide again."},{"rung":"4 hours","length":"hours","means":"A priority-one incident. Trigger incident response."},{"rung":"1 to 2 days","length":"days","means":"A smaller incident."},{"rung":"1 to 2 weeks","length":"weeks","means":"A funded project for a team that already exists."},{"rung":"1 month","length":"a month","means":"Assemble and fund. The default rung, set deliberately just above the incident line."},{"rung":"6 months","length":"months","means":"Do nothing and review it then. It costs nothing, and it is legitimate with a name on it."}],"plan_lead":"The service runs one loop for every material risk a client carries: establish it on facts, place it on the chain to the board, have its holder accept it for an interval, and act when the interval ends. It reads the client's register from their GRC platform, writes acceptances and escalations back into it, and keeps each material risk's evidence and decisions in a vault of its own.","services":[{"name":"Acceptance audit","price":"Free","unit":"one hour, five risks","includes":"Five risks from the client's own register: who accepted each, until when, on what evidence, and what happens when it expires."},{"name":"Foundation engagement","price":"£18,000","unit":"once, about eight weeks","includes":"One business unit: its top twenty risks established on facts, placed on the chain to the board, the first round of acceptances, and the integration with the client's GRC platform."},{"name":"Acceptance Office","price":"£2,500 + £60","unit":"per month, plus per material risk per month","includes":"Clocks kept, expiries acted on, escalations raised, a monthly acceptance report for the executive team, a quarterly board pack, and a vault per material risk."},{"name":"Incident and escalation support","price":"£1,200","unit":"per day, on demand","includes":"When a short acceptance becomes an incident, running the evidence and the re-acceptance alongside the client's own response."},{"name":"Partner licence","price":"£15,000","unit":"per year, per consultancy","includes":"The method, the playbook, the templates and training, for consultancies and auditors who deliver it on their own engagements."}],"price_note":"Every price is a hypothesis for a UK firm in 2026, to be tested on the first three design partners.","risks_per_consultant":150,"assumptions":["A risk engineer can run about 150 material risks at steady state, keeping clocks, raising escalations and preparing reports, and fewer in the first quarter.","A consultant's loaded cost is about £8,500 a month in the UK.","Foundation engagements and on-demand days are not in the calculator, because they are lumpy.","At the defaults, twelve clients with forty material risks each bring about £58,800 a month against about £34,000 of delivery cost."]}};
+(function () {
+  'use strict';
+  const D = FALLBACK, R = D.risk, PL = D.plan;
+  const $ = s => document.querySelector(s);
+  const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const START = new Date(R.start + 'T12:00:00Z');
+  const dateOf = d => { const x = new Date(START.getTime() + d * 864e5); return x.toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short', timeZone:'UTC'}); };
+  const E = R.events;
+
+  $('#title').textContent = PL.title; $('#oneline').textContent = PL.one_line;
+  PL.principles.forEach(p => { const tr = el('tr'); tr.innerHTML = `<td><b>${esc(p.name)}</b></td><td>${esc(p.text)}</td>`; $('#principlesT').appendChild(tr); });
+  $('#rtitle').textContent = R.title; $('#rlead').textContent = R.lead;
+  $('#ladderlead').textContent = PL.ladder_lead;
+  PL.ladder.forEach(r => { const tr = el('tr'); tr.innerHTML = `<td><b>${esc(r.rung)}</b></td><td>${esc(r.means)}</td>`; $('#ladderT').appendChild(tr); });
+
+  // ---------- fold events into state ----------
+  function fold(n) {
+    const S = {day: 0, status: 'open', holder: null, acc: null, facts: {}, controls: {}, incidents: [], projects: [], escalatedTo: null, grc: Object.assign({}, R.grc_initial)};
+    R.controls.forEach(c => S.controls[c.id] = c.initial);
+    for (let i = 0; i < n; i++) {
+      const e = E[i]; S.day = e.day;
+      (e.facts_add || []).forEach(f => S.facts[f] = true);
+      (e.facts_remove || []).forEach(f => S.facts[f] = false);
+      Object.assign(S.controls, e.controls || {});
+      if (e.holder) S.holder = e.holder;
+      if (e.type === 'accepted') { S.acc = {role: e.role, by: e.actor, rung: e.rung, from: e.day, until: e.day + e.days, hours: e.hours || 0, action: e.action}; S.status = 'accepted'; S.escalatedTo = null; }
+      if (e.type === 'expired') { S.status = 'expired'; }
+      if (e.type === 'escalated') { S.status = 'escalated'; S.escalatedTo = e.role; S.acc = null; }
+      if (e.type === 'incident') { S.status = 'incident'; S.incidents.push(e); }
+      if (e.type === 'funded') { S.status = 'funded'; S.projects.push(e); }
+      if (e.type === 'closed') { S.status = 'closed'; S.acc = null; }
+      if (e.status) S.status = e.status;
+      if (e.grc) Object.assign(S.grc, e.grc);
+    }
+    return S;
+  }
+
+  // ---------- timeline ----------
+  const tl = $('#tl'), rng = $('#rng'); rng.max = E.length;
+  let step = 1, tab = 'chain';
+  E.forEach((e, i) => {
+    const b = el('button');
+    b.innerHTML = `<span class="n">day ${e.day}</span><span><span class="t">${esc(e.label)}</span><span class="s">${esc(dateOf(e.day))} &middot; ${esc(e.actor || '')}</span></span>`;
+    b.addEventListener('click', () => { step = i + 1; render(); });
+    tl.appendChild(b);
+  });
+  rng.addEventListener('input', () => { step = +rng.value; render(); });
+  $('#prev').addEventListener('click', () => { step = Math.max(1, step - 1); render(); });
+  $('#next').addEventListener('click', () => { step = Math.min(E.length, step + 1); render(); });
+  $('#tabs').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) { tab = b.dataset.t; render(); } });
+
+  const STATUS = {open: 'open, not accepted', accepted: 'accepted', expired: 'acceptance expired', escalated: 'escalated', incident: 'incident', funded: 'funded, being fixed', closed: 'ceased'};
+
+  function chainView(S) {
+    const h = R.chain.map((r, i) => {
+      let cls = '', what = '';
+      if (S.acc && S.acc.role === r.role) { cls = 'accepted'; what = `Accepted by ${S.acc.by} ${S.acc.hours ? 'for ' + S.acc.hours + ' hours' : 'until ' + dateOf(S.acc.until)} (${S.acc.rung}). Action: ${S.acc.action}`; }
+      else if (S.escalatedTo === r.role) { cls = 'escalated'; what = 'Escalated here because the acceptance below expired. Must accept, fund or fix.'; }
+      else if (S.holder === r.role) { cls = 'holds'; what = 'Holds this risk. Its own to deal with.'; }
+      else { const hi = R.chain.findIndex(x => x.role === S.holder); what = hi >= 0 && i > hi ? 'Arrives here through the chain. Sees it without anybody reporting it.' : (hi >= 0 && i < hi ? 'Held it earlier. Its acceptance expired, so the risk moved up.' : ''); }
+      if (S.status === 'closed') { cls = ''; what = i === 0 ? 'Ceased: the facts that established it no longer hold.' : ''; }
+      return `<div class="role ${cls}"><b>${esc(r.role)}</b><span class="who">${esc(r.person)}</span>${what ? `<span class="what">${esc(what)}</span>` : ''}</div>`;
+    });
+    return '<div class="chain">' + h.reverse().join('<div class="arrow">&uarr; reports to</div>') + '</div>';
+  }
+  function clockView(S) {
+    let h = '';
+    if (S.acc) {
+      if (S.acc.hours) { h += `<div class="clock"><b>Accepted by ${esc(S.acc.by)}, ${esc(S.acc.role)}</b><br><span class="by">${esc(S.acc.rung)}, on ${esc(dateOf(S.acc.from))}</span><div class="bar"><i class="late" style="width:100%"></i></div><span class="by">An acceptance measured in hours is an incident response by definition. When the ${S.acc.hours} hours are up, the same decision comes back to the same desk.</span></div>`; }
+      else {
+      const len = S.acc.until - S.acc.from, used = Math.min(S.day - S.acc.from, len), late = S.day > S.acc.until;
+      h += `<div class="clock"><b>Accepted by ${esc(S.acc.by)}, ${esc(S.acc.role)}</b><br><span class="by">${esc(S.acc.rung)}: from ${esc(dateOf(S.acc.from))} to ${esc(dateOf(S.acc.until))}</span>
+        <div class="bar"><i class="${late ? 'late' : ''}" style="width:${Math.max(3, Math.round(100 * used / Math.max(1, len)))}%"></i></div>
+        <span class="by">Day ${S.day - S.acc.from} of ${len}. When it ends, the risk is accepted again, escalated, funded or fixed. It never silently continues.</span></div>`;
+      }
+    } else if (S.status === 'closed') h += '<div class="clock"><b>No clock: the risk has ceased.</b><br><span class="by">The facts that established it no longer hold, and the ones that end it do. That is recorded, not asserted.</span></div>';
+    else h += `<div class="clock"><b>No acceptance in force.</b><br><span class="by">Unaccepted is treated as critical and escalates on its own. Status now: ${esc(STATUS[S.status])}.</span></div>`;
+    if (S.incidents.length) h += '<h3>Incidents</h3>' + S.incidents.map(e => `<p><span class="status s-incident">incident</span> ${esc(e.text)}</p>`).join('');
+    if (S.projects.length) h += '<h3>Funded work</h3>' + S.projects.map(e => `<p><span class="status s-funded">funded</span> ${esc(e.text)}</p>`).join('');
+    return h;
+  }
+  function evidenceView(S) {
+    return `<p class="by">The risk is <b>established by</b> the red facts and <b>ceases when</b> the green ones hold. Each fact points at its source.</p>` + R.facts.map(f => {
+      const present = !!S.facts[f.id];
+      const tag = f.role === 'establishes' ? '<span class="tag t-est">establishes</span>' : f.role === 'ceases' ? '<span class="tag t-ceases">ends it</span>' : '<span class="tag t-ctx">context</span>';
+      return `<div class="fact ${present ? '' : 'gone'}"><span class="mono">${esc(f.id)}</span><span class="txt">${esc(f.text)}</span>${tag}<span class="src">${present ? 'holds' : (S.facts[f.id] === false ? 'no longer holds' : 'does not hold yet')} &middot; source: ${esc(f.source)}</span></div>`;
+    }).join('');
+  }
+  function controlsView(S) {
+    const T = {in_place: ['t-in', 'in place'], funded: ['t-funded', 'funded'], proposed: ['t-proposed', 'proposed'], missing: ['t-missing', 'missing']};
+    return R.controls.map(c => { const s = T[S.controls[c.id]] || T.missing; return `<div class="fact"><span class="mono">${esc(c.id)}</span><span>${esc(c.name)}</span><span class="tag ${s[0]}">${s[1]}</span><span class="src">${esc(c.note)}</span></div>`; }).join('');
+  }
+  function recordView() {
+    const e = E[step - 1]; const j = Object.assign({}, e); delete j.grc;
+    return `<p class="by">Entry ${step} of ${E.length} in the risk's decision record. Each entry carries the hash of the one before it.</p><pre>${esc(JSON.stringify(j, null, 2))}</pre>`;
+  }
+  function gapView(S) {
+    const g = S.grc;
+    const vault = [['Status', STATUS[S.status]], ['Held by', S.holder ? `${S.holder}, with ${R.chain.length - 1 - R.chain.findIndex(r => r.role === S.holder)} bosses above` : '—'],
+      ['Accepted', S.acc ? (S.acc.hours ? `${S.acc.by}, for ${S.acc.hours} hours` : `${S.acc.by}, until ${dateOf(S.acc.until)}`) : 'not in force'], ['Facts holding', Object.values(S.facts).filter(Boolean).length + ' of ' + R.facts.length + ', each with a source'],
+      ['Controls', Object.values(S.controls).filter(v => v === 'in_place').length + ' in place, ' + Object.values(S.controls).filter(v => v === 'funded').length + ' funded'], ['Record', step + ' hash-chained entries']];
+    const grc = Object.entries(g);
+    return `<div class="grc"><h4>What a typical register row shows today</h4><dl>${grc.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></div>
+      <div><h4>What the risk's vault holds at this step</h4><dl>${vault.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></div>`;
+  }
+  function render() {
+    const S = fold(step), e = E[step - 1];
+    rng.value = step; $('#stepl').textContent = `Day ${e.day}, ${dateOf(e.day)}`;
+    $('#statusl').innerHTML = `<span class="status s-${S.status}">${esc(STATUS[S.status])}</span>`;
+    [...tl.children].forEach((b, i) => { b.classList.toggle('future', i + 1 > step); b.classList.toggle('on', i + 1 === step); });
+    [...$('#tabs').children].forEach(b => b.classList.toggle('on', b.dataset.t === tab));
+    $('#pane').innerHTML = tab === 'chain' ? chainView(S) : tab === 'clock' ? clockView(S) : tab === 'evidence' ? evidenceView(S) : tab === 'controls' ? controlsView(S) : recordView();
+    $('#gap').innerHTML = gapView(S);
+  }
+  render();
+
+  // ---------- plan ----------
+  $('#planlead').textContent = PL.plan_lead;
+  $('#services').innerHTML = PL.services.map(c => `<div class="card"><b>${esc(c.name)}</b><div class="p">${esc(c.price)}</div><div class="u">${esc(c.unit)}</div><p>${esc(c.includes)}</p></div>`).join('');
+  $('#pnote').textContent = PL.price_note;
+  $('#assume').textContent = PL.assumptions.join(' ');
+  const gbp = n => '£' + Math.round(n).toLocaleString('en-GB');
+  function calc() {
+    const c = +$('#i-c').value, r = +$('#i-r').value, p = +$('#i-p').value, b = +$('#i-b').value, k = +$('#i-k').value, l = +$('#i-l').value;
+    $('#o-c').textContent = c; $('#o-r').textContent = r; $('#o-p').textContent = gbp(p); $('#o-b').textContent = gbp(b); $('#o-k').textContent = k; $('#o-l').textContent = gbp(l);
+    const mrr = c * (b + r * p), cost = k * l, load = Math.round(c * r / k);
+    $('#r-mrr').textContent = gbp(mrr); $('#r-arr').textContent = gbp(mrr * 12); $('#r-cost').textContent = gbp(cost);
+    $('#r-margin').textContent = mrr ? Math.round(100 * (mrr - cost) / mrr) + '%' : '—'; $('#r-load').textContent = load;
+    $('#r-hint').textContent = load > PL.risks_per_consultant ? 'hire' : 'fits';
+  }
+  ['#i-c', '#i-r', '#i-p', '#i-b', '#i-k', '#i-l'].forEach(s => $(s).addEventListener('input', calc)); calc();
+
+  // ---------- chain check ----------
+  function canon(o) { if (Array.isArray(o)) return '[' + o.map(canon).join(',') + ']'; if (o && typeof o === 'object') return '{' + Object.keys(o).sort().map(k => JSON.stringify(k) + ':' + canon(o[k])).join(',') + '}'; return JSON.stringify(o); }
+  const cl = $('#chainline');
+  if (window.crypto && crypto.subtle && window.TextEncoder) {
+    (async () => {
+      let prev = '0'.repeat(64);
+      for (const e of E) {
+        const c = Object.assign({}, e); delete c.hash;
+        const hex = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(canon(c))))].map(b => b.toString(16).padStart(2, '0')).join('');
+        if (e.prev !== prev || hex !== e.hash) { cl.textContent = `Decision record check failed at entry ${e.seq}.`; return; }
+        prev = e.hash;
+      }
+      cl.textContent = `Decision record verified in this browser: ${E.length} of ${E.length} entries, head ${prev.slice(0, 12)}.`;
+    })().catch(() => { cl.textContent = 'This browser could not run the check here; tools/verify-record.py does the same offline.'; });
+  } else cl.textContent = 'This browser could not run the check here; tools/verify-record.py does the same offline.';
+}());
+</script>
+</body>
+</html>

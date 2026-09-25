@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The broker, as a design · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-broker-as-a-design">The broker, as a design</a></li><li class="l2"><a href="#why-it-is-the-strongest-mode">Why it is the strongest mode</a></li><li class="l2"><a href="#what-it-costs">What it costs</a></li><li class="l2"><a href="#minimum-viable-broker">Minimum viable broker</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="broker.md">raw text</a></p><article class="source"><h1 id="the-broker-as-a-design">The broker, as a design</h1>
+<p>The broker is the execution broker from <a class="ext" href="https://twins.sgit.ai/broker/index.html">twins.sgit.ai ↗</a>, applied to connectors. The agent never holds a platform credential. It asks the broker to perform an operation; the broker checks the agent&#x27;s identity and mandate, performs the operation with credentials held inside its own boundary, journals the request and response, and returns the result with a receipt.</p>
+<h2 id="why-it-is-the-strongest-mode">Why it is the strongest mode</h2>
+<p>Nothing reaches the platform API except through the broker, so the journal is complete by construction. The mandate check also means the broker can refuse: a permanent delete can require a person&#x27;s approval, a send can be limited to known recipients, and the refusal is journalled too.</p>
+<h2 id="what-it-costs">What it costs</h2>
+<ul><li><strong>It concentrates credentials.</strong> The broker is the highest-value target in the estate. Keep it small, run it in the customer&#x27;s account where possible, and never let it hold more scopes than the agents behind it need.</li><li><strong>It needs an interpreter per service.</strong> To enforce a mandate, the broker has to understand what each operation does, per provider and per operation class. Gmail and Calendar first; each new connector is real work.</li><li><strong>It sees traffic in flight.</strong> What it stores is encrypted, but a hosted broker handles plaintext while it works. Say so to the customer.</li></ul>
+<h2 id="minimum-viable-broker">Minimum viable broker</h2>
+<p>An HTTP service with one endpoint per supported operation, a per-agent mandate file listing allowed operations and which need approval, OAuth tokens held in the platform&#x27;s secret store, and an append to the journal lane after every upstream response. Everything else, including receipts signed with the broker&#x27;s key, can follow.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="61c0a6ec833a1bf8e09872a0bd01c0db4ee90458ccf782087484a6f496fd1965">61c0a6ec833a</code></dd><dt>Frozen copy</dt><dd><a href="broker.md">vaults/connector-twin/prototypes/broker.md</a> (1,704 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

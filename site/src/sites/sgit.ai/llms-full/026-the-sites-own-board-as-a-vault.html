@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The site&#x27;s own board, as a vault (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-sites-own-board-as-a-vault">The site&amp;#x27;s own board, as a vault</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#why-a-vault-and-not-the-repository">Why a vault, and not the repository</a></li><li class="l2"><a href="#what-is-in-it">What is in it</a></li><li class="l3"><a href="#five-columns-from-the-files-asking-for-nothing">Five columns, from the files, asking for nothing</a></li><li class="l2"><a href="#the-card-format">The card format</a></li><li class="l2"><a href="#notes">Notes</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 26 of 358</p><nav class="pager"><span><a href="025-the-sgitai-board-a-published-vault.html">← The sgit.ai board, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="027-field-notes-a-published-vault.html">Field Notes, a published vault →</a></span></nav><article class="source"><h1 id="the-sites-own-board-as-a-vault">The site&#x27;s own board, as a vault</h1>
+<p>Two days after <a href="../team/board.html">the board</a><a class="ext live" href="https://sgit.ai/team/board.html" title="live page">↗</a> appeared as files in the site repository, it moved out into a vault of its own. Every card is a markdown file; a five-column board app renders them and asks the host for nothing; and the read key is published, because every task, bug and need on it is public. The vault is the source of truth (<strong>moving a card is <code>sgit push</code>, with no site release</strong>) and the site renders a snapshot from a clone each time it ships.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i</code>
+Published as a read key, derived from the vault key at creation. The vault key is held by the site&#x27;s release engineer and is not published.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p><a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i">Open the board in a new tab ↗ ↗</a>Five columns wide. It has more room in its own tab than in the frame below.</p>
+<h2 id="why-a-vault-and-not-the-repository">Why a vault, and not the repository</h2>
+<p>The cards started as files in the site repository, which was already the right shape, issues-fs.sgit.ai&#x27;s argument that a tracker should be files that version with the thing they track. But it tied every board change to a site release: to move a card from <em>review</em> to <em>done</em>, an agent had to build, validate, push two remotes and wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.</p>
+<p>So the files moved into a vault. Now the site is a <strong>reader</strong> of the board rather than its home: the release script pulls the vault before it builds, and the columns on <a href="../team/board.html">the board page</a><a class="ext live" href="https://sgit.ai/team/board.html" title="live page">↗</a> are a snapshot as of that release, labelled as such. Between releases, the vault is ahead of the site, and opening it shows the truth.</p>
+<h2 id="what-is-in-it">What is in it</h2>
+<p>the app</p>
+<h3 id="five-columns-from-the-files-asking-for-nothing">Five columns, from the files, asking for nothing</h3>
+<p><code>index.html</code> lists <code>issues/</code> through <code>sg.vfs</code>, parses each card&#x27;s frontmatter, and draws the columns. <code>app.json</code> declares <code>&quot;permissions&quot;: {}</code>. The app reads the vault it is in and touches nothing else. Served outside a vault host, it falls back to <code>issues/index.json</code>, which <code>tools/reindex.py</code> regenerates from the same files.</p>
+<p>Needs, the things only the author can supply, keep their own column and their own colour, so they are never discovered late.</p>
+<p>The app, rendered from the files. Moving a card is editing one line and pushing.</p>
+<h2 id="the-card-format">The card format</h2>
+<pre><code>---
+title: The ask: round size, instrument, and what it buys
+id: N1
+kind: need          # need = only the author can supply it · task = an agent can pick it up
+status: needs       # needs | backlog | doing | review | done
+role: ambassador    # the sgit.ai team role that owns it
+priority: high
+opened: 2026-09-07
+---
+What it is, and what it unblocks.</code></pre>
+<p>Ids are <code>N&lt;n&gt;</code> for needs and <code>T&lt;n&gt;</code> for tasks, never reused. A card that names a need is closed only by the author&#x27;s answer. Corrections to published claims are not cards: they are version-log entries on the site, so the record of a mistake is never tidied away.</p>
+<h2 id="notes">Notes</h2>
+<p><strong>Audited before publishing</strong>, briefly, because there is nothing to find: the vault holds card text, a README, one app and one tool. No credentials of any kind, no personal data. Every link in a card is root-relative to sgit.ai and resolves.</p>
+<p><strong>The write key is escrowed</strong> in the site&#x27;s gitignored credential tier, the same place every other published vault&#x27;s write key lives, so the board can be corrected by the release engineer and by nobody who holds only the read key.</p>
+<p><strong>The site&#x27;s clone is a mirror, not a fork.</strong> <code>admin/content/team/issues/</code> in the site repository is this vault&#x27;s working tree; its encrypted store is gitignored, its card files are tracked as the build&#x27;s input. If the two ever disagree, the vault is right.</p>
+<p><a href="../team/board.html">← The board, as the site renders it</a><a class="ext live" href="https://sgit.ai/team/board.html" title="live page">↗</a> · <a href="../index.html">All published vaults</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a></p>
+<hr></article><nav class="pager"><span><a href="025-the-sgitai-board-a-published-vault.html">← The sgit.ai board, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="027-field-notes-a-published-vault.html">Field Notes, a published vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>26 of 358: The site&#x27;s own board, as a vault</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

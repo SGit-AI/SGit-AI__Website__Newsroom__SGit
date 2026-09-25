@@ -1,0 +1,402 @@
+{
+ "date": "2026-09-21",
+ "desk": "Librarian",
+ "basis": "sgit.ai version log and new-pages list; riskmandate.ai version record (no earlier snapshot to diff)",
+ "changes": [
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.2",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.2__update__performance-and-cost.html",
+   "title": "Graph engineering versus fractal graph, the measured answer",
+   "type": "update",
+   "summary": "A new performance and cost page answers a reader's question with figures measured on 21 September against two live vaults: sparse clone 7.3 s and 256 KB, full clone 65.4 s, no live database, the LETS cycle, and six places it is slower.",
+   "concepts": [
+    "performance-and-cost",
+    "fractal-graphs"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.3",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.3__update__one-request-append-and-ciphertext-caching.html",
+   "title": "One request, an append lane, and a cache full of ciphertext",
+   "type": "update",
+   "summary": "The performance page adds one-request reads from locally derived file ids, append lanes outside the commit tree, caching of ciphertext, and a live example; it corrects the 65 s clone as a client chunking bug and reports a missing Cache-Control header.",
+   "concepts": [
+    "performance-and-cost",
+    "append-lanes",
+    "read-keys"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.4",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.4__update__the-design-is-the-performance.html",
+   "title": "The design is the performance, and the crypto is free",
+   "type": "update",
+   "summary": "The page opens on the design habit (what data does the task need), measures decryption at a tenth of the JSON parse, sets a byte budget, and corrects the DSIT graph from 617 to 1,051 nodes after the vault grew.",
+   "concepts": [
+    "performance-and-cost",
+    "fractal-graphs",
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.5",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.5__update__that-was-a-cold-start-not-an-architecture-cost.html",
+   "title": "That was a cold start, not an architecture cost",
+   "type": "update",
+   "summary": "The headline latency is re-measured as about a third of a second of serverless invocation cost rather than an architecture cost, and batching is measured at 0.25 s fixed plus about 71 ms per object.",
+   "concepts": [
+    "performance-and-cost",
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.6",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.6__update__take-the-api-out-of-the-path.html",
+   "title": "Take the API out of the path, and the same clone is 25 times faster",
+   "type": "update",
+   "summary": "The same full clone took 65.4 s through the serverless API and 2.63 s against plain GETs with no API in the path; the static transport already ships, and the missing history-depth flag is named as the biggest gap.",
+   "concepts": [
+    "performance-and-cost"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.7",
+   "url": "https://sgit.ai/demos/fractal-graphs/performance.html",
+   "title": "Make the performance page findable, six ways in instead of one",
+   "type": "doc",
+   "summary": "No content change: the performance page is linked from the homepage, docs index, comparisons, vaults index and the fractal page's lead, and added to the Evidence menu.",
+   "concepts": [
+    "performance-and-cost"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.8",
+   "url": "https://sgit.ai/index.html",
+   "title": "Fractal Semantic Graphs gets a homepage band",
+   "type": "doc",
+   "summary": "The homepage gains a Fractal Semantic Graphs band with the definition and two routes, the evidence and the measured cost, and the alternating band backgrounds are reassigned.",
+   "concepts": [
+    "fractal-graphs"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.3.9",
+   "url": "https://sgit.ai/articles/the-question-is-whether-they-miss-it.html",
+   "title": "An article on the startup operating and investing model, and a malformed title on every article fixed",
+   "type": "article",
+   "summary": "A new article states a startup model in three pillars (be profitable, investors should be calling you, open source everything), and a missing closing bracket in every article's title tag, left by the em-dash rewriter, is fixed.",
+   "concepts": [
+    "startups",
+    "open-source",
+    "pricing",
+    "em-dashes-and-style"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.0",
+   "url": "https://sgit.ai/startups/index.html",
+   "title": "A startups section, with the operating model as its centrepiece",
+   "type": "doc",
+   "summary": "A new top-level /startups/ section: the four costs a vault removes, a five-step loop from first vault to first customer, and what a founder still has to bring (billing, identity, server-side query).",
+   "concepts": [
+    "startups",
+    "read-keys",
+    "open-source"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.1",
+   "url": "https://sgit.ai/demos/vaults/index.html",
+   "title": "Get the visitor to the vaults, and give the disclaimers a home",
+   "type": "doc",
+   "summary": "The vaults table moves up by 46 percent on desktop and 58 percent on a phone, the displaced notes become a new Lessons learned page, and the ladder count is corrected to nine vaults across three pages.",
+   "concepts": [
+    "lessons-learned",
+    "read-keys",
+    "fractal-graphs"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.2",
+   "url": "https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "title": "The SaaS apocalypse, argued with data rather than vibes",
+   "type": "article",
+   "summary": "A second article from the author's voice memos argues with sourced figures that what SaaS refused to build (portability, open schemas, real APIs) is what agents need, first titled 'What SaaS refused to build is exactly what the agents need'.",
+   "concepts": [
+    "wardley-maps",
+    "startups"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.3",
+   "url": "https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "title": "The SaaS article gets its real title, every article gets an abstract, the startup article gets its cover",
+   "type": "article",
+   "summary": "The SaaS article is retitled 'The SaaS apocalypse is optional', every article's summary renders as an italic Abstract, and the startup article gains its cover image.",
+   "concepts": [
+    "wardley-maps",
+    "startups"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.4",
+   "url": "https://sgit.ai/articles/the-question-is-whether-they-miss-it.html",
+   "title": "The startup article takes the title it was given on LinkedIn",
+   "type": "article",
+   "summary": "The startup article becomes 'For a startup, the most important question is whether they miss it', matching its LinkedIn version.",
+   "concepts": [
+    "startups"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.5",
+   "url": "https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "title": "The SaaS article is about inertia, not choice",
+   "type": "article",
+   "summary": "The SaaS article is retitled 'The SaaS apocalypse belongs to whoever has the least inertia', because Nokia did not opt into either outcome; the lead, abstract and close are rewritten around inertia.",
+   "concepts": [
+    "wardley-maps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.6",
+   "url": "https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "title": "The SaaS apocalypse will be decided by inertia, not by AI",
+   "type": "article",
+   "summary": "The SaaS article takes its final title, adding the claim that AI is available to both sides, so inertia is the variable; four passages change to carry it.",
+   "concepts": [
+    "wardley-maps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.7",
+   "url": "https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "title": "The SaaS article's file name follows its title",
+   "type": "article",
+   "summary": "The SaaS article moves to /articles/saas-apocalypse-decided-by-inertia-not-by-ai.html with no redirect; the old address returns 404 on purpose.",
+   "concepts": [
+    "wardley-maps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.8",
+   "url": "https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "title": "A hero image that argues the thesis, and the four words that state it best",
+   "type": "article",
+   "summary": "A revised cover shows both carts carrying the same AI block, with the newcomer off the rails, and 'Same AI. Different inertia.' becomes a pull-quote.",
+   "concepts": [
+    "wardley-maps"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.4.9",
+   "url": "https://sgit.ai/admin/versions.html",
+   "title": "The phone menu scrolls itself, and two grids stop overflowing sideways",
+   "type": "other",
+   "summary": "The open phone menu, 1536 px tall against a 664 px viewport, is capped to the viewport and scrolls itself, and two grids that overflowed at 320 px now collapse to their container.",
+   "concepts": [
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.5.0",
+   "url": "https://sgit.ai/admin/versions.html",
+   "title": "Link previews get their picture, and a guard so they keep it",
+   "type": "other",
+   "summary": "Pages had no og:image at all; a generator now writes 1200x630 JPEG cards because LinkedIn's crawler ignores WebP, the head emits large-image card tags, and sixteen unbalanced title brackets from the em-dash rewrite are closed.",
+   "concepts": [
+    "lessons-learned",
+    "em-dashes-and-style"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "release",
+   "version": "v0.5.1",
+   "url": "https://sgit.ai/admin/versions.html",
+   "title": "Make the link-preview guard actually guard the case that matters",
+   "type": "other",
+   "summary": "The v0.5.0 guard and its note overclaimed: a new article with no card would silently ship the default, so the build now refuses any article with a hero figure and no card, and the release script runs the generator.",
+   "concepts": [
+    "lessons-learned"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/lessons/index.html",
+   "title": "Lessons learned, the rules and the incidents behind them",
+   "type": "doc",
+   "summary": "New page pairing each enforced rule with the incident behind it: classify a credential first, read keys yes and vault keys never, audit every vault before publishing its key, and write the method down.",
+   "concepts": [
+    "lessons-learned",
+    "read-keys",
+    "vault-key-management",
+    "security-audits"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/startups/index.html",
+   "title": "Build your startup on sgit vaults",
+   "type": "doc",
+   "summary": "New section for founders: what a vault removes on day one, the loop from first vault to first customer, what they still have to bring, and business plans published as vaults.",
+   "concepts": [
+    "startups",
+    "read-keys",
+    "open-source",
+    "business-plans"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/articles/the-question-is-whether-they-miss-it.html",
+   "title": "For a startup, the most important question is whether they miss it",
+   "type": "article",
+   "summary": "The founder's operating and investing model: ship something usable, give it away briefly, take it away and ask whether they miss it; raise from strength; open source everything.",
+   "concepts": [
+    "startups",
+    "open-source",
+    "pricing"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.6__update__take-the-api-out-of-the-path.html",
+   "title": "Take the API out of the path, and the same clone is 25 times faster",
+   "type": "update",
+   "summary": "Update: the API is a convenience over the store, and plain GETs of ciphertext cut the same clone from 65.4 s to 2.63 s.",
+   "concepts": [
+    "performance-and-cost"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.5__update__that-was-a-cold-start-not-an-architecture-cost.html",
+   "title": "That was a cold start, not an architecture cost",
+   "type": "update",
+   "summary": "Update: the 1,210 ms fetch was mostly serverless invocation cost, split out and measured, with batching as the answer.",
+   "concepts": [
+    "performance-and-cost"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.4__update__the-design-is-the-performance.html",
+   "title": "The design is the performance, and the crypto is free",
+   "type": "update",
+   "summary": "Update: performance comes from asking what data the task needs, and restructuring into context is compression, from 11.2 MB of source to a 4.2 KB ontology.",
+   "concepts": [
+    "performance-and-cost",
+    "fractal-graphs"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.3__update__one-request-append-and-ciphertext-caching.html",
+   "title": "One request, an append lane, and a cache full of ciphertext",
+   "type": "update",
+   "summary": "Update: the three properties added to the performance page, one-request reads, append lanes, and caching ciphertext.",
+   "concepts": [
+    "performance-and-cost",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/demos/fractal-graphs/performance.html",
+   "title": "Performance, cost, and running everywhere, Fractal Semantic Graphs",
+   "type": "doc",
+   "summary": "New page measuring fractal graphs against classic graph engineering: reads, clones, batching, the direct path, append mode, caching, the cost model, running everywhere, and where it is slower.",
+   "concepts": [
+    "performance-and-cost",
+    "fractal-graphs",
+    "append-lanes"
+   ]
+  },
+  {
+   "site": "sgit.ai",
+   "kind": "new-page",
+   "url": "https://sgit.ai/updates/2026/09/21/v0.3.2__update__performance-and-cost.html",
+   "title": "Graph engineering versus fractal graph, the measured answer",
+   "type": "update",
+   "summary": "Update announcing the performance and cost page and how its figures were taken.",
+   "concepts": [
+    "performance-and-cost",
+    "fractal-graphs"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.27.3",
+   "url": "https://riskmandate.ai/versions/1.27.3.md",
+   "title": "The union is the title, and every article says where it connects",
+   "type": "update",
+   "summary": "The third article is retitled 'In this session, the agent holds the union of everything it has ever been allowed to do', gains a staircase figure, and every article ends with a 'Where this connects' card grid including abp.sgit.ai, nhi.sgit.ai and store.sgit.ai.",
+   "concepts": [
+    "agent-behaviour-policy",
+    "grants-and-mandates"
+   ]
+  },
+  {
+   "site": "riskmandate.ai",
+   "kind": "release",
+   "version": "v1.28.0",
+   "url": "https://riskmandate.ai/versions/1.28.0.md",
+   "title": "Try it: the free rung, and the phase that is about users",
+   "type": "update",
+   "summary": "A new Try it section gives strangers four steps and thirteen prompts to write a behaviour policy for their own mail assistant in about twenty minutes, labelled a self report, backed by a direction brief that measures users rather than visits.",
+   "concepts": [
+    "agent-behaviour-policy",
+    "grants-and-mandates",
+    "pricing"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,349 @@
+# … write the files in the layout above …
+sgit commit "entrega 1/8: políticas"
+sgit push                                   # only changed objects go; the server sees ciphertext
+sgit history log --json                     # the commit id goes in delivery.vault.commit
+```
+
+For each later part, either commit again, or write one file straight to HEAD without a working
+copy: `sgit write partes/02-instituicoes.json --file 02.json --message "entrega 2/8" --push --json`.
+
+**Handing it over.** Give the newsroom one of two things, never the third:
+
+- a **read key** — derived one-way from the vault key; it grants read and only read. Derive it as
+  the publishing method shows (`Vault__Crypto().derive_keys(pw, vault_id)['read_key']`, a
+  64-character hex string) and put it in `delivery.vault.read_key`; or
+- a **share token** from `sgit share` — a one-shot encrypted snapshot the editor can open in the
+  SG/Send web UI with nothing installed; put it in `delivery.vault.share_token`;
+- **never the vault key.** It is write access to everything you pushed. If it reaches a message,
+  a page or a commit, the vault is anybody's.
+
+Fill `delivery.vault` in every part: `vault_id`, `commit`, and the read key or token.
+
+### If you cannot run commands
+
+Chat modes without a shell cannot push. Then produce the vault *contents* exactly in the layout
+above — every file, including `manifest.json` with the hashes you can compute and
+`schema/research-schema.json` copied from the URL in section D — and a `PACKAGE.sh` holding the
+commands above with the paths filled in. Say plainly in `notas.md` that the vault was not created
+by you. The operator runs the script, and the vault id and commit are added to `delivery.vault`
+then. Either way the delivery is the same set of files with the same provenance; only who typed
+`sgit push` differs.
+
+## Start
+
+Begin with **Políticas**. Deliver part 1/8 as JSON only. When I say "next", continue with the
+next section in the order above. When all eight parts are done, package them as in section F and
+hand over the read key or the share token — never the vault key.
+
+
+==============================================================================
+== briefs/14__what-pt-newsroom-can-take-from-here.md
+==============================================================================
+
+# 14 — A sibling transfer: what `pt.newsroom.sgit.ai` can take from here, and what should come back
+
+**For the agents working on [`SGit-AI__Website__Newsroom__PT`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom__PT).
+Written 14 September 2026 by the session that built `/portugal/`, the design and the pack, after
+reading your repository at `v0.3.1` and your live site.** CC BY 4.0. The bundle this memo
+describes is [`briefs/pt-transfer.zip`](https://newsroom.sgit.ai/briefs/pt-transfer.zip).
+
+---
+
+## 0. What you built, before anything I have to offer
+
+You took the pack and went past it, and three of the things you built do not exist here:
+
+- **A read-only JSON API with an OpenAPI document** (`build/api.py`, `/api/v1/`). The reasoning on
+  why the *paths* are English while the *keys* stay Portuguese — because renaming the keys would
+  fork the data from the code that writes it — is the best argument in either repository about
+  serving one dataset to two audiences. This site should copy it, not the other way round.
+- **The delivery quarantine, end to end**: `build/entregas.py`, the `newsroom-entregas` skill, and
+  **gate 13**, which fails the build if anything from a delivery reaches a page before the editor
+  approves it. The pack described that rule; you made it a gate. A ChatGPT delivery is already
+  frozen, excerpt-checked and quarantined in your tree — that loop ran for real, and it has not
+  here.
+- **The two gates the pack could only ask for**: gate 9, the accent gate, and gate 10, the
+  Portuguese path gate. Plus gate 11 (the editor's line) and gate 12 (the department boundary),
+  which were prose in the operating model and are now checks.
+
+Your graph is larger than this site's (304 nodes / 854 edges / 18 types against 329 / 1,106 / 16,
+on a subject rather than one event), you have a backoffice, a PDF path and versioned web
+components, and your v0.2.0 memo has already reframed the masthead around the ecosystem rather
+than the newsroom. None of what follows argues with any of that.
+
+## 1. The one that matters: you are waiting for a second capture, and I have two earlier ones
+
+Your lead story says it plainly:
+
+> *Só existe uma captura da lista de oradores, com 70 nomes. Não há aqui nenhuma diferença para
+> relatar, e dizer o contrário seria inventar uma. Este artigo existe para dizer isso, e para ficar
+> à espera da segunda captura.*
+
+`dados/mudancas.json` has an empty `mudancas` array, and the honesty of that is the reason this
+transfer is worth making rather than a shortcut around it. **This site froze the same pages on
+8 and 13 September**, six and one days before yours:
+
+| Capture | Speakers listed | Held by |
+|---|---|---|
+| 2026-09-08 | **60** | newsroom.sgit.ai |
+| 2026-09-13 | **64** (+5, −1) | newsroom.sgit.ai |
+| 2026-09-14 | **70** (+6, −0) | pt.newsroom.sgit.ai — yours |
+
+Six people arrived between the 13th and your capture; nobody left. Earlier, five arrived and
+**one left and did not come back** — `kambis-kohansal-vajargah`, present on the 8th, absent on the
+13th and absent from your 70. The diff for 8→13 is in the bundle as `diferenca-08-13.json`, with
+`razao: null` on the departure and the rule about why it stays null.
+
+The article stops waiting and becomes: *três capturas em seis dias, 60 → 64 → 70*. That is a
+better piece than the one it replaces, and it is the piece your site was designed to write.
+
+## 2. The rule this transfer forces you to invent
+
+**These are not your captures.** The bytes were fetched by this site's fetcher, under its
+user-agent, at times recorded in this site's register, under `v0.3.2`. If they enter your register
+labelled as yours, your whole method quietly becomes untrue — the one failure mode that does not
+look broken.
+
+So the bundle's `manifesto.json` carries, per file: `url`, `obtido_em`, `obtido_por`,
+`id_no_registo_de_origem`, `versao_do_site_de_origem`, and the `sha256` **this site recorded**. I
+re-verified every one before packaging; all fourteen still hash to what the register says, and you
+should verify them again rather than take my word, because the hash is the only thing in the
+bundle that requires trusting nobody.
+
+What I would do, and what I think is the generalisable rule:
+
+- Store them under `fontes/congeladas/2026-09-08/` and `2026-09-13/` as normal, but give every
+  register row a new field — `obtido_por` — defaulting to `pt.newsroom.sgit.ai` and set to
+  `newsroom.sgit.ai` for these. **A gate should require it to be non-empty**, which makes the
+  provenance impossible to lose in a refactor.
+- Render it where a reader meets the fact: the register page and the story both say *captura de
+  8 de setembro, obtida por newsroom.sgit.ai*. Not a footnote.
+- Say the general thing once, on `/metodo/`: **evidence transferred between sibling publications
+  stays evidence, as long as the provenance travels with it and is published.** This site has no
+  page for that either; you would be writing the rule for both of us.
+
+The honest limits, which belong on the page too: this site's fetcher may have seen a different
+page than yours would have (different user-agent, different hour); the 8 September capture has
+five pages, not the fourteen your captures carry; and nothing in the transfer proves the pages
+were unchanged *between* captures, only that they differed at three moments.
+
+## 3. Everything else in the bundle
+
+- **Three press pages you do not have**, frozen and hashed: Startup Map Hub, the Eventbrite
+  September listing, and the event's own Lisbon-tech-events guide. With your four, that is seven.
+- **The eighth, which is excluded and is the point**: the April Eventbrite listing returned
+  `404 ("Ocorreu algo de errado")` on 13 September. It is recorded in `excluidas` with the reason
+  and cannot be cited. Carrying the *reason a source is absent* is worth more than the source.
+- **The Guinness story you can write today.** AICEP Portugal Global and Portugal Business News,
+  both 29 July, both already frozen in *your* tree, report a 48-hour Guinness pitch-marathon
+  attempt on 16–17 September that the event's own agenda page — frozen by you on the 14th — does
+  not list. You have every byte and no story. It would be the only piece on either site standing
+  on **two independent publishers**, and it is live this week.
+
+## 4. Two features worth porting when the beat quietens
+
+- **The no-server databases** (`/databases/` here): SQLite via sql.js and a SPARQL 1.1 store via
+  Oxigraph, both WebAssembly, running in the reader's browser over the same JSON the site is built
+  from, with every worked query executed at build and its row count printed beside it. You vendor
+  Cytoscape already; this is the same move for querying. Paired with your API it is the Beato
+  screen's strongest minute: *the article is a query*. Copy `databases/build/build.py`,
+  `assets/nsdb-sql.js`, `assets/nsdb-sparql.js`, and the triples export that `graph.py` already
+  writes for you (`dados/triplos.nt` exists in your tree — the store loads it unchanged).
+- **`connections.py`**: three SQL formulas over the topic tags and the lexicon —
+  *who should be talking to whom*, *who could be buying from whom*, *who could help whom* — stored
+  with their rows so the identical query runs in the browser console. **At organisation level, and
+  the reason is in your own notice**: it refuses characterisation of a named person, and "X should
+  talk to Y" is one. Your `temas.json` and `lexico.json` already hold the inputs.
+
+## 5. Three gates of ours you do not have
+
+Ranked by what they would have caught here:
+
+1. **Counts on pages match the data** (our gate 3). Every rendered number is re-derived from the
+   file it claims to come from. This caught a hard-coded "five of six" on this site that had
+   quietly become false.
+2. **No page claims a capability the section does not have** (our gate 8). A string watch-list
+   against the pages. It caught a page describing this site as bilingual when it was not.
+3. **Derived rows re-derive** (our gate 18, for `connections.json`). Only needed if you port §4.
+
+## 6. What I would like back
+
+Beyond the API and the quarantine gate in §0: your **accent gate** should exist on this site's
+Portugal section, which carries 61 Portuguese organisation names checked by nothing; and the
+**versioned component paths** (`assets/components/<name>/v1/v1.0/v1.0.0/`) are a better answer than
+this site's flat `assets/`. If you write the transferred-evidence rule from §2, this site will
+adopt it verbatim and cite you.
+
+## 7. How to take it
+
+```bash
+curl -O https://newsroom.sgit.ai/briefs/pt-transfer.zip
+unzip pt-transfer.zip -d /tmp/transferencia
+python3 - <<'PY'
+import json, hashlib, pathlib
+m = json.load(open('/tmp/transferencia/manifesto.json'))
+bad = [f['ficheiro'] for f in m['ficheiros']
+       if hashlib.sha256(pathlib.Path('/tmp/transferencia', f['ficheiro']).read_bytes()).hexdigest() != f['sha256']]
+print('ficheiros:', m['contagem'], '| hashes que não batem certo:', bad or 'nenhum')
+PY
+```
+
+Then: copy the captures into `fontes/congeladas/`, add `obtido_por` to the register rows and to
+whatever writes them, re-run `extract.py` **without** `--fetch` so the diff computes from bytes
+rather than the network, and let `mudancas.json` fill itself. The story rewrites itself after that.
+
+Everything in the bundle is CC BY 4.0 except the frozen pages, which are other people's bytes held
+as evidence by both of us under the same rule: linked, never republished as browsable pages.
+
+
+==============================================================================
+== briefs/15__the-summit-archive.md
+==============================================================================
+
+# 15 — The Startup Summit beat: a consolidated archive
+
+**The bundle this describes is [`briefs/summit-archive.zip`](https://newsroom.sgit.ai/briefs/summit-archive.zip) (1.5 MB, 210 files). Its own pages are cross-linked below; inside the bundle the same links are relative.**
+
+**For the agent consolidating everything this publication did on Startup Summit Lisbon 2026.**
+Cut 20 September 2026 from `newsroom.sgit.ai` v0.3.12. **160 files**, every one also live on the
+public web and in a public repository — nothing here requires a credential, and nothing here is
+the only copy. CC BY 4.0, except the frozen third-party pages, which are evidence (see §7).
+
+| Where | What |
+|---|---|
+| **Live section** | https://newsroom.sgit.ai/portugal/index.html |
+| **Repository** | https://github.com/SGit-AI/SGit-AI__Website__Newsroom (branch `dev`) |
+| **This archive** | https://newsroom.sgit.ai/briefs/summit-archive.zip · unpacked under [`/briefs/summit-archive/`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom/tree/dev/briefs/summit-archive) |
+| **Agent index** | https://newsroom.sgit.ai/llms.txt · whole corpus in one fetch: https://newsroom.sgit.ai/llms-full.txt |
+
+## Read in this order
+
+| # | File | Why |
+|---|---|---|
+| 1 | this file | What the beat was, what was built, what is true and what is not |
+| 2 | [`01__inventario.md`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/briefs/summit-archive/01__inventario.md) | Every file with its live URL, its GitHub URL and what it is. JSON twin carries the hashes |
+| 3 | [`02__o-que-aconteceu.md`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/briefs/summit-archive/02__o-que-aconteceu.md) | The chronology: six days, two captures, three stories, and what each one cost |
+| 4 | [`03__os-numeros.md`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/briefs/summit-archive/03__os-numeros.md) | Every published number and the file it is derived from. Nothing here was typed twice |
+| 5 | [`04__o-metodo.md`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/briefs/summit-archive/04__o-metodo.md) | fetch → freeze → hash → extract → diff, the eighteen gates, and the four rules that survived contact |
+
+Then the files themselves, in the numbered folders: `10__paginas`, `50__equipa`, `20__dados`,
+`30__codigo`, `40__conteudo`, `70__documentos`, `60__fontes-congeladas`.
+
+## 1. What the beat was
+
+**Startup Summit Lisbon 2026** — 17–18 September 2026, Unicorn Factory Lisboa, Beato Innovation
+District, Lisbon. This publication covered it from **8 September** (nine days before the doors)
+to **13 September**, as the first beat of `/portugal/`, a section whose purpose was to prove a
+method rather than to cover an event: *every claim walks back to bytes this publication holds*.
+
+It was never a preview, a listing or a promotional page. The three stories it produced are all of
+the same kind — **the record, not the verdict** — and two of the three are about the source
+material disagreeing with itself.
+
+## 2. What was built
+
+- **The section**: 14 pages plus 3 stories plus 7 role pages, at `/portugal/`.
+- **The evidence**: 88 frozen files across 2 dated captures, every one hashed, the hashes
+  re-verified on every build. 89 files are in this archive: the 88 in the register plus one text
+  file the register treats separately.
+- **The graph**: 329 nodes, 1,106 edges, 16 node types, 19 verbs — each verb with a distinct named
+  inverse *and* a Portuguese form, so a path reads as a sentence in either language. Also exported
+  as 4,001 N-Triples with the ontology inside it.
+- **The derivation layer**: the event's own topic tags for each speaker (23 distinct, read
+  verbatim), plus 417 tag edges derived by a **published lexicon** of 57 patterns — each edge
+  carrying the words that matched, so a tag says *this page contains these words* and nothing more.
+- **The analysis**: three organisation-level queries — who should be talking, who could be buying
+  from whom, who could help whom — 90 rows, stored with the SQL that produced them.
+- **The consoles**: SQLite and a SPARQL 1.1 store, both WebAssembly, running in the reader's
+  browser over the same JSON files, with 29 worked queries executed at build.
+- **The gates**: 18 section gates plus 10 whole-site checks. A red gate is not a warning.
+
+## 3. The three stories
+
+Each is in the archive as rendered HTML (`10__paginas`), as prose (`40__conteudo`), and as a row
+in [`stories.json`](https://newsroom.sgit.ai/portugal/data/stories.json) naming the frozen sources
+it stands on.
+
+1. **[Two names for three stages](https://newsroom.sgit.ai/portugal/stories/two-names-for-three-stages.html)**
+   — the agenda calls them the Unicorn Stage and the Impact Stage; the AI-summary page on the same
+   site, the same day, calls them the Main Stage and the Startup Stage. Both frozen. Neither
+   corrected by us.
+2. **[Five names arrived and one left](https://newsroom.sgit.ai/portugal/stories/five-names-arrived-and-one-left.html)**
+   — the published speaker list went from 60 to 64 between the two captures. Both copies held,
+   both hashed. **The departure carries no reason, and none may be inferred.**
+3. **[A record attempt the agenda does not mention](https://newsroom.sgit.ai/portugal/stories/a-record-attempt-the-agenda-does-not-mention.html)**
+   — two Portuguese outlets, both 29 July, report a 48-hour Guinness pitch marathon running
+   alongside the summit on 16–17 September. The event's own agenda page, four days out, does not
+   list it. Both frozen; neither wrong yet. It is the only story here standing on **two
+   independent publishers**.
+
+## 4. What is true, stated precisely
+
+- The counts are of a **published list at a moment**, not of the event. 64 speakers were listed on
+  13 September; the event's own pages state a *target* of "150+ speakers planned" and "2,000+"
+  attendees. A target is never reported here as a result, and a gate enforces that.
+- The 61 organisations are **derived from the speaker cards**, not from a registry. Two are
+  placeholders (`Independent`) and are flagged rather than removed.
+- No speaker is joined to a session, because **the source joins none**.
+- No speaker card carries a country, so the event's "40+ countries" claim is recorded as
+  **unverifiable from the source** — not as doubted.
+- The `role_class` on a person and every derived tag are **formulas over the listed title or the
+  page's own words**, published in full, re-run against the frozen bytes on every build.
+
+## 5. What is not true, and was never claimed
+
+- This is not a complete picture of the Portuguese startup ecosystem. It is one event, from two
+  kinds of source — the event's own pages and press pages *about* the event — and **neither is a
+  registry or a funding dataset**.
+- No biography was reproduced. No contact detail of any natural person exists in any data file;
+  it is refused at extraction, not hidden at rendering.
+- No assessment, ranking or characterisation of any named person appears anywhere. The connections
+  page works at **organisation** level for exactly this reason.
+- There was no legal review. The data-protection notice is a posture, not advice.
+
+## 6. If you only take four things
+
+1. **[`extract.py`](https://newsroom.sgit.ai/portugal/build/extract.py)** — the ingestion path. Everything else is downstream of it.
+2. **[`gates.py`](https://newsroom.sgit.ai/portugal/build/gates.py)** — eighteen checks that fail the build. The section's conscience, in code.
+3. **[`notice.json`](https://newsroom.sgit.ai/portugal/data/notice.json)** — the posture as data: what is held, what is refused, and the unconditional removal.
+4. **[`sources.json`](https://newsroom.sgit.ai/portugal/data/sources.json)** — the register. Without it, every page above is a drawing.
+
+## 7. Provenance, licence, and the one thing you may not do
+
+Everything in `60__fontes-congeladas/` is **other organisations' bytes**, held as evidence under
+the rule this whole section exists to demonstrate: *link, never republish as browsable pages*.
+They carry the `.snapshot` extension so no server serves them as HTML. Keep that rule if you keep
+the files. Everything else — the pages, the data, the code, the prose, the briefs — is this
+publication's own work under CC BY 4.0 (code under Apache 2.0; see
+[`LICENSES.md`](https://github.com/SGit-AI/SGit-AI__Website__Newsroom/blob/dev/LICENSES.md)).
+
+Verify any file in this archive against the live site:
+
+```bash
+python3 - <<'PY'
+import json, hashlib, pathlib, urllib.request
+inv = json.load(open('01__inventario.json'))
+bad = []
+for f in inv['files']:
+    local = hashlib.sha256(pathlib.Path(f['archive_path']).read_bytes()).hexdigest()
+    if local != f['sha256']: bad.append((f['path'], 'archive differs from manifest'))
+    elif f.get('live'):
+        live = hashlib.sha256(urllib.request.urlopen(f['live']).read()).hexdigest()
+        if live != f['sha256']: bad.append((f['path'], 'live differs — the site moved on'))
+print(inv['count'], 'files |', bad or 'every file matches its hash, in the archive and on the live site')
+PY
+```
+
+A difference is not a failure: the site is alive and may have moved past v0.3.12. Expect it,
+in fact, in one specific place — **every archived `.html` page carries the version badge and the
+navigation of the release it was cut from**, so each one will differ from the live page after the
+next release, while the data files, the code and the frozen sources will not. That is the archive
+working: the pages here are what a reader saw at v0.3.12, not what one sees today. The manifest
+records what was true when this was cut, which is the whole of what an archive can promise.
+
+The same fact bit the build the first time this archive existed: the site's chrome tool restamped
+all 27 archived pages with the current version, and the site validator reported 413 broken links
+in them — every report correct, and every one about a copy rather than a page. Both tools now skip
+`summit-archive/` by name, with the reason written in the code. **If you keep an archive inside a
+live repository, exclude it from anything that rewrites or checks pages**, or the archive quietly
+becomes a second copy of the present.

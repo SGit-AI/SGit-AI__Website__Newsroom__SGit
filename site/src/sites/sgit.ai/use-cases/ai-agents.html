@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Agent state that isn&#x27;t the vendor&#x27;s to read, sgit use cases · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#agent-state-that-isnt-the-vendors-to-read-sgit-use-cases">Agent state that isn&amp;#x27;t the vendor&amp;#x27;s to read, sgit use cases</a></li><li class="l1"><a href="#agent-state-that-isnt-the-vendors-to-read">Agent state that isn&amp;#x27;t the vendor&amp;#x27;s to read</a></li><li class="l2"><a href="#the-problem">The problem</a></li><li class="l2"><a href="#what-sgit-does-about-it">What sgit does about it</a></li><li class="l2"><a href="#the-recipe">The recipe</a></li><li class="l2"><a href="#evidence-status">Evidence status</a></li><li class="l2"><a href="#brief-for-an-agent">Brief for an agent</a></li><li class="l2"><a href="#related">Related</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="ai-agents.md">raw text</a> · <a class="ext" href="https://sgit.ai/use-cases/ai-agents.html">live ↗</a></p><article class="source"><h1 id="agent-state-that-isnt-the-vendors-to-read-sgit-use-cases">Agent state that isn&#x27;t the vendor&#x27;s to read, sgit use cases</h1>
+<blockquote><p>Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).</p></blockquote>
+<p><em>Source: <a href="ai-agents.html">https://sgit.ai/use-cases/ai-agents.html</a><a class="ext live" href="https://sgit.ai/use-cases/ai-agents.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="index.html">Use cases</a><a class="ext live" href="https://sgit.ai/use-cases/index.html" title="live page">↗</a> / AI agents</p>
+<h1 id="agent-state-that-isnt-the-vendors-to-read">Agent state that isn&#x27;t the vendor&#x27;s to read</h1>
+<p>An agent&#x27;s context window ends; its work shouldn&#x27;t. Where that work goes is a storage decision that quietly becomes a disclosure decision.</p>
+<p><strong>A worked example, opened with a read key.</strong> The question this page circles, an agent acting with a human&#x27;s ambient authority because that is the only credential on offer, has a published vault devoted to it: <a href="../demos/vaults/agentic-browser-isolation/index.html">Agentic Browser Isolation</a><a class="ext live" href="https://sgit.ai/demos/vaults/agentic-browser-isolation/index.html" title="live page">↗</a>, a living risk graph asking whether an agent browses inside <em>your</em> browser with <em>your</em> logged-in sessions, or an isolated one with a scoped identity. It is vendor-neutral, it cites its evidence outward, and its mechanism is worth borrowing: every altitude has one named owner, a risk stays pending until that owner accepts it personally, and only an accepted risk escalates.</p>
+<h2 id="the-problem">The problem</h2>
+<p>Every durable-agent design needs somewhere to put state between sessions: notes, intermediate findings, drafts, the record of what was already tried. In practice that is a database, a repo, or a vendor&#x27;s memory feature, all of which the provider can read.</p>
+<p>That is fine while the state is &quot;which step am I on&quot;. It stops being fine the moment the state contains the client&#x27;s documents, the security findings, the unreleased code, the personal data. At that point the question is no longer about engineering: it is whether you are permitted to put that material there at all, and the answer often arrives from someone who does not care how good the access controls are.</p>
+<p>The second half of the problem is coordination. One agent needs durable memory; several agents need <em>shared</em> memory with isolation, a review step, and a way to look at each other&#x27;s work without merging it. That is version control, and version control&#x27;s usual answer is a host that reads everything.</p>
+<h2 id="what-sgit-does-about-it">What sgit does about it</h2>
+<p>A vault is a folder. The agent clones it, reads and writes files normally, commits, and pushes; the next session pulls and continues. Encryption happens before anything leaves the machine, so the shared state can hold what a third-party database cannot. Each clone also gets a <a href="../docs/two-branch-model.html">private branch</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a> whose key never leaves that session, so agents can work concurrently without trampling each other, and meet on a shared named branch.</p>
+<h2 id="the-recipe">The recipe</h2>
+<p><strong>One agent, many sessions.</strong> The whole pattern is two commands at the session boundaries:</p>
+<pre><code># session start — always, before anything else
+$ sgit clone &lt;vault-key&gt; workspace   # or: sgit pull
+# … the agent works normally: read, write, edit files …
+# session end — always, before the context runs out
+$ sgit commit -m &quot;session 4: drafted the migration plan&quot; &amp;&amp; sgit push</code></pre>
+<p><strong>Write a single file without a working copy</strong>: the agent-shaped command, with machine-readable output:</p>
+<pre><code>$ sgit write notes/findings.md --file ./findings.md \
+      --message &quot;add findings&quot; --push --json</code></pre>
+<p><strong>Several agents, one vault.</strong> Give each a named branch; let a human own the merge:</p>
+<pre><code># agent A  $ sgit branch new research  … sgit push
+# agent B  $ sgit branch new drafting  … sgit push
+# either agent, read-only — looking is not merging
+$ sgit history show &lt;commit&gt;
+$ sgit history diff --remote</code></pre>
+<p><strong>Big vault, small task.</strong> A sparse clone keeps the agent&#x27;s working set, and its token budget, proportionate to the job:</p>
+<pre><code>$ sgit clone &lt;vault-key&gt; workspace --sparse notes/ drafts/</code></pre>
+<h2 id="evidence-status">Evidence status</h2>
+<p>PROVEN</p>
+<p><strong>This website is the evidence.</strong> It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:</p>
+<ul><li>The <a href="../deploy/index.html">Deploy section</a><a class="ext live" href="https://sgit.ai/deploy/index.html" title="live page">↗</a> is maintained by a <em>different</em> team&#x27;s agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other&#x27;s repository.</li><li>The <a href="../docs/briefs/index.html">cross-team briefs</a><a class="ext live" href="https://sgit.ai/docs/briefs/index.html" title="live page">↗</a> and the <a href="../case-studies/exposed-vault-key.html">key-leak incident</a><a class="ext live" href="https://sgit.ai/case-studies/exposed-vault-key.html" title="live page">↗</a> were written by one agent for another team to act on, including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.</li></ul>
+<p>Honest limit: n is small, and the agents are supervised by the people who wrote the tool.</p>
+<h2 id="brief-for-an-agent">Brief for an agent</h2>
+<p>Paste this into an agent that has the <a href="../skills/index.html">sgit skill</a><a class="ext live" href="https://sgit.ai/skills/index.html" title="live page">↗</a> installed, or point it at the markdown directly.</p>
+<pre><code># everything on this site is readable as markdown — no HTML parsing needed
+$ curl -s https://sgit.ai/use-cases/ai-agents.md
+$ curl -s https://sgit.ai/llms.txt          # the index of everything</code></pre>
+<blockquote><p>Read <a href="ai-agents.html">https://sgit.ai/use-cases/ai-agents.md</a><a class="ext live" href="https://sgit.ai/use-cases/ai-agents.html" title="live page">↗</a> and <a href="../docs/agents.html">https://sgit.ai/docs/agents.md</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a>. Then set up agent state in a vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once, I will store it. Do not write the key to any file in the repository. Then write a short SESSION.md describing the clone/pull-at-start and commit/push-at-end protocol so future sessions follow it.</p></blockquote>
+<p>That last sentence matters. We have a <a href="../case-studies/exposed-vault-key.html">write-up of the day we got it wrong</a><a class="ext live" href="https://sgit.ai/case-studies/exposed-vault-key.html" title="live page">↗</a>.</p>
+<h2 id="related">Related</h2>
+<ul><li><a href="../docs/agents.html">Working with AI agents</a><a class="ext live" href="https://sgit.ai/docs/agents.html" title="live page">↗</a>, the full agent-facing surface: <code>--json</code> everywhere, the session pattern, multi-agent collaboration</li><li><a href="../docs/two-branch-model.html">The two-branch model</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a>, why every clone gets a private branch</li><li><a href="../skills/index.html">Skills</a><a class="ext live" href="https://sgit.ai/skills/index.html" title="live page">↗</a>, packaged instructions that make an agent competent at this without you explaining it</li></ul>
+<p><a href="index.html">← Use cases</a><a class="ext live" href="https://sgit.ai/use-cases/index.html" title="live page">↗</a><a href="professional-services.html">Professional services →</a><a class="ext live" href="https://sgit.ai/use-cases/professional-services.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="ai-agents.html">HTML version</a><a class="ext live" href="https://sgit.ai/use-cases/ai-agents.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/use-cases/ai-agents.html">https://sgit.ai/use-cases/ai-agents.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/use-cases/ai-agents.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:07Z</dd><dt>sha256</dt><dd><code title="48d99d705fb3ba5e369160b549dad237a8953020c3a4efd2f80270363a51a2f7">48d99d705fb3</code></dd><dt>Frozen copy</dt><dd><a href="ai-agents.md">sites/sgit.ai/use-cases/ai-agents.md</a> (6,295 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

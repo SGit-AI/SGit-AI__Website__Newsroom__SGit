@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>The Conventions · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../../index.html">Front page</a><a href="../../../../../../editions/index.html">Editions</a><a href="../../../../../../reading-room/index.html">Reading room</a><a href="../../../../../../library/index.html">Index</a><a href="../../../../../../concepts/index.html">Concepts</a><a href="../../../../../../vaults/index.html">Vaults</a><a href="../../../../../../history/index.html">History</a><a href="../../../../../../signals/index.html">Signals</a><a href="../../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../../about/index.html">About</a><a href="../../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#the-conventions">The Conventions</a></li><li class="l1"><a href="#the-conventions-1">The Conventions</a></li><li class="l2"><a href="#what-the-guidance-requires-quoted">What the guidance requires, quoted</a></li><li class="l2"><a href="#what-the-style-guide-requires">What the style guide requires</a></li><li class="l2"><a href="#what-to-copy-rather-than-invent">What to copy rather than invent</a></li><li class="l2"><a href="#publishing">Publishing</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.md">live ↗</a></p><article class="source"><h1 id="the-conventions">The Conventions</h1>
+<blockquote><p>Three sources govern how this site is built. Read all three before writing code. Where this pack and a source disagree, the source wins and you should say so.</p></blockquote>
+<p>*Source: <a href="index.html">https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.html</a><a class="ext live" href="https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.html" title="live page">↗</a> · site v0.11.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../../../index.html">Home</a><a class="ext live" href="https://abp.sgit.ai/index.md" title="live page">↗</a> / <a href="../../index.html">Docs</a><a class="ext live" href="https://abp.sgit.ai/docs/index.md" title="live page">↗</a> / <a href="../../index.html#pack">The pack</a><a class="ext live" href="https://abp.sgit.ai/docs/index.md#pack" title="live page">↗</a> / The Conventions</p>
+<h1 id="the-conventions-1">The Conventions</h1>
+<blockquote><p><strong>The source bytes.</strong> This page is generated from <a href="index.html"><code>docs/pack/02__THE-CONVENTIONS.md</code></a><a class="ext live" href="https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS.md" title="live page">↗</a>, which is served unchanged. Anything rendered on this network stays one click from the file it came from.</p></blockquote>
+<p><strong>Three sources govern how this site is built. Read all three before writing code. Where this pack and a source disagree, the source wins and you should say so.</strong></p>
+<div class="table"><table><thead><tr><th>Source</th><th>What it governs</th><th>Read</th></tr></thead><tbody><tr><td><code>sgit.ai/docs/guidance/index.html</code></td><td>Vault and site building practice</td><td>11 September 2026</td></tr>
+<tr><td><code>sgit.ai/llms.txt</code></td><td>What the platform site is and how it is organised</td><td>11 September 2026</td></tr>
+<tr><td><code>coding.sgit.ai</code></td><td>The style guide, with measured compliance</td><td>11 September 2026</td></tr></tbody></table></div>
+<h2 id="what-the-guidance-requires-quoted">What the guidance requires, quoted</h2>
+<p><strong>The one minute version, verbatim:</strong></p>
+<blockquote><p>Pick your surface first, it changes every other answer.</p></blockquote>
+<blockquote><p>Do not build what the platform already has: markdown, file trees, page layouts.</p></blockquote>
+<blockquote><p>Publish a read key, never a vault key.</p></blockquote>
+<blockquote><p>Version everything and show the version.</p></blockquote>
+<blockquote><p>Anything rendered must stay one click from the source bytes.</p></blockquote>
+<p><strong>On versioning, specifically.</strong> Show the version in the app&#x27;s chrome, small, in the top bar, always visible, <strong>not</strong> in a footer or an about box. Make it a link to that version&#x27;s own details rather than a generic changelog. Give versions a home:</p>
+<pre><code>versions/index.json      { &quot;current&quot;: &quot;v0.1.0&quot;, &quot;versions&quot;: [ newest first ] }
+versions/v0.1.0.json     { version, date, commit, vault, reconstructed,
+                           title, summary, changes[], basis[] }</code></pre>
+<p><strong>Record the commit</strong>, because a version without it cannot be verified later. <strong>Say when reconstructed</strong>, because history assembled after the fact must be labelled. And the title is a sentence, not a label: <em>settings move into the right hand column</em>, never <em>UI improvements</em>.</p>
+<p><strong>On architecture, the three properties this site must have:</strong></p>
+<blockquote><p>Every page is reachable and machine-readable, each has a <code>.md</code> twin and appears in <code>llms.txt</code>.</p></blockquote>
+<blockquote><p>Indexes are generated from the data they index, so they cannot disagree with the source.</p></blockquote>
+<blockquote><p>Scope by domain and link across: one site says one thing properly and points elsewhere.</p></blockquote>
+<p><strong>On honesty</strong>, which this site will lean on constantly: state the gap rather than papering over it, measured rather than guessed.</p>
+<p><strong>On permissions</strong>, if any part of this becomes a vault app: deny by default, declare the narrowest permission, and explain each grant. <strong>That rule is the ABP&#x27;s own argument applied to the site that describes it</strong>, and it is worth saying so on the page.</p>
+<h2 id="what-the-style-guide-requires">What the style guide requires</h2>
+<p>The style guide documents thirty one rules with measured compliance, and it is honest about its own enforcement: <strong>zero linters, formatters or type checkers enforce them, and four structural guards in the pipeline are the only automated enforcement, one of which does not work.</strong></p>
+<p><strong>Read it and follow it. Then note the two figures that bear directly on this repository.</strong></p>
+<p><strong>File banners are at one hundred per cent compliance.</strong> Every file gets one. Match the format used in the sibling repository you copy the pipeline from.</p>
+<p><strong>Documents free of em dashes are at zero per cent compliance</strong>, with the stated rule violated two hundred and forty eight times across eleven documents. <strong>This repository should be the one that does not.</strong> Every document in this pack is already free of them. Keep it that way, and consider adding it as a fifth structural guard, since it is the cheapest possible check and the estate has a measured record of failing it.</p>
+<p><strong>Other conventions to carry:</strong> one idea per file; one class per file, at ninety per cent compliance; empty package initialisers; no underscore prefixed private names; and the constrained primitive patterns where the code is Python.</p>
+<h2 id="what-to-copy-rather-than-invent">What to copy rather than invent</h2>
+<p><strong>You have access to the sibling repositories. Use them.</strong> The pipeline, the tagging, the page build and the markdown rendering all exist and are working on live sites.</p>
+<p><strong>Copy from one named sibling and say which one in the first commit message.</strong> Then verify five things rather than assuming them:</p>
+<ol><li><strong>The tag is derived from the version file</strong>, not typed by hand.</li><li><strong>The build fails when <code>llms.txt</code> does not list every page.</strong> If the sibling does not check this, add it.</li><li><strong>The custom domain survives a rebuild</strong>, meaning the <code>CNAME</code> or its equivalent is written by the build rather than committed once and forgotten.</li><li><strong>The markdown twin of every page is produced by the build</strong>, not maintained alongside it.</li><li><strong>The version in the chrome comes from <code>versions/index.json</code></strong>, so it cannot drift from the tag.</li></ol>
+<p><strong>If any of those five is absent from the sibling, that is a finding and belongs in the first version&#x27;s notes.</strong> The estate&#x27;s method is to record the gap rather than quietly fix it and move on.</p>
+<h2 id="publishing">Publishing</h2>
+<p>Classify the credential before anything becomes public. <strong>A read key may be published. A vault key may never be.</strong> If any part of this site embeds a vault, escrow the write key before publishing and publish only the read key.</p>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p><em><a href="../../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.md">https://abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:41Z</dd><dt>sha256</dt><dd><code title="81e0808a85529b93bc3fa4c1a629fcb87bae31418b2868f56e691bbe4f5feeff">81e0808a8552</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/abp.sgit.ai/docs/pack/02__THE-CONVENTIONS/index.md</a> (5,908 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.8.0.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.8.0.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.8.0.html">live ↗</a></p><article class="source"><h2 id="lab-06-the-grant-that-cannot-be-enumerated">Lab 06: the grant that cannot be enumerated</h2>
+<p>Every capability written up here so far had a grant you could tabulate — a scope with a
+published list, and a delta whose length was the finding. This one does not, and saying so
+breaks a measure this site has been building on.</p>
+<ul><li><strong><a class="ext" href="https://riskmandate.ai/versions/lab-network-reach.html">Lab 06 — every routable address is in the grant ↗</a></strong>. *Do not attack
+anyone* is the easiest line in any policy to agree, and it is the one where the grant is
+every address the process can route to, nobody granted it, and it is the residue of the
+machine having a network interface. The delta is an unbounded complement rather than a set of
+items, so the connector-counting measure from <a class="ext" href="https://riskmandate.ai/versions/lab-shape-collector.html">Lab 04 ↗</a> does not
+apply. What can be measured instead is whether a barrier exists, at which layer, and **which
+egress paths it covers**.</li><li><strong>A destination list is a property of an egress path, not of an agent.</strong> The page renders that
+as a matrix — shell subprocesses, in-process fetch, connector servers, hooks, name resolution
+— and the badge should be the minimum across it. An agent with a perfectly written domain list
+and an unsandboxed connector server earns the glyph for the connector server, because that is
+the path an attacker uses.</li><li><strong>A guardrail belongs to one deployment; the capability does not.</strong> Controls on some models,
+hosted services and interfaces are a statement about those deployments. The same capability is
+reachable through the raw interface, another provider, an open-weight model, a fine-tune, or a
+router failing over. So the two published incident reports read the other way round from the
+way a security reader reaches for them: as first-party, dated capability evidence.</li><li><strong>A barrier has a position, and some have an expiry.</strong> A vendor refusal layer sits above the
+deployer and formally passes the enforcer test, while being probabilistic, unevidenceable by
+the party relying on it, and voided by a model, provider, version or routing change that
+nobody classifies as a security change. So compute the minimum barrier twice and publish the
+pessimistic number.</li><li>**And the prohibition is worth writing anyway, for an evidential reason rather than a
+technical one.<em>* Liability in two regimes attaches to *causing an act to be done</em>, one of them
+on a recklessness standard. But a prohibition published without its enforcer establishes
+foresight without mitigation — which is a recklessness argument handed to the other side. The
+resolution is the rule this site already runs on: **never publish a prohibition without
+publishing what enforces it in the same row.**</li></ul>
+<p><strong>Seven load-bearing quotations were fetched and checked rather than relayed.</strong> Among them, a
+vendor stating plainly that “using WebFetch alone doesn&#x27;t prevent network access”, that
+“permission rules are enforced by Claude Code, not by the model”, that the strict allow list
+“has no effect” when set in a repository, and that the sandbox “shows a warning and runs
+commands without sandboxing” if it cannot start. We also read the published reference container
+firewall line by line: it is a genuine default-deny egress firewall that nonetheless permits
+name resolution to any address, secure shell to any address, a code host&#x27;s full address ranges,
+and the entire /24 around the host — which on a laptop is the office network.</p>
+<p><strong>Two departures from the brief, both stated on the page.</strong> It reports observing an agent&#x27;s two
+egress paths <em>diverge</em> in one session; in ours they did not, and the finding therefore rests on
+the vendor&#x27;s own sentences rather than on that observation. And in its place we published a
+measurement of this machine&#x27;s own egress: a raw outbound socket to an arbitrary public address,
+working name resolution, and no allow list standing in either path. A page arguing that the
+barrier is a property of the deployment should say what its own deployment does.</p>
+<p><strong>The brief register</strong> now carries six documents and four instructions, with D6 marked <em>partly</em>
+— Lab 06 exists, and the two proposals it makes to the model site are not yet on the request
+list in <a class="ext" href="https://riskmandate.ai/versions/lab-abp-requests.html">Lab 03 ↗</a>.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.8.0.html">https://riskmandate.ai/versions/1.8.0.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.8.0.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:15Z</dd><dt>sha256</dt><dd><code title="a35ab43ba5e10d4d9e7b944380c437a1e45340726818b50162bd89322a72223f">a35ab43ba5e1</code></dd><dt>Frozen copy</dt><dd><a href="1.8.0.md">sites/riskmandate.ai/versions/1.8.0.md</a> (4,201 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

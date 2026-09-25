@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>03. The site · sgit newsroom</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../index.html">Front page</a><a href="../editions/index.html">Editions</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../concepts/index.html">Concepts</a><a href="../vaults/index.html">Vaults</a><a href="../history/index.html">History</a><a href="../signals/index.html">Signals</a><a href="../loose-ends/index.html">Loose ends</a><a href="../newsroom/index.html">The newsroom</a><a href="../about/index.html">About</a><a href="../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">The brief</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#03-the-site">03. The site</a></li><li class="l2"><a href="#non-negotiable-it-works-offline">Non-negotiable: it works offline</a></li><li class="l2"><a href="#build">Build</a></li><li class="l2"><a href="#pages">Pages</a></li><li class="l2"><a href="#the-provenance-block">The provenance block</a></li><li class="l2"><a href="#look">Look</a></li><li class="l2"><a href="#data-files">Data files</a></li></ul></details>
+<article><h1 id="03-the-site">03. The site</h1>
+<h2 id="non-negotiable-it-works-offline">Non-negotiable: it works offline</h2>
+<p>The first reader will open it on a plane. So:</p>
+<ul><li><strong>Static HTML, built by a script, opened from <code>file://</code>.</strong> Double-clicking <code>site/index.html</code> must work with no server and no network.</li><li><strong>No external anything.</strong> No CDN scripts, no web fonts, no remote images, no analytics. System fonts.</li><li><strong>No <code>fetch()</code> of local files.</strong> Browsers block it on <code>file://</code>. Data a page needs is inlined into that page at build time (a <code>&lt;script type=&quot;application/json&quot;&gt;</code> block is fine).</li><li><strong>Relative links only.</strong> Every link between pages is relative, so the folder can be moved, zipped or served from any path.</li><li><strong>Search works offline.</strong> A small client-side search over an index inlined into the search page.</li><li><strong>External links are marked</strong> (↗) and open the live site; the local copy is always one click away beside them.</li></ul>
+<h2 id="build">Build</h2>
+<ul><li><code>python3 tools/build.py</code> turns <code>sources/</code>, <code>data/</code>, <code>editions/</code>, <code>stories/</code>, <code>history/</code>, <code>signals/</code> and <code>loose-ends</code> into <code>site/</code>.</li><li><strong>Standard library only.</strong> No pip installs. Write a small markdown renderer (headings, paragraphs, lists, tables, code, links, emphasis); the sources use nothing more exotic.</li><li><strong>Deterministic.</strong> The same inputs build the same bytes.</li><li><strong>A validator</strong> (<code>tools/validate.py</code>) that fails the build on: a broken relative link, an external script or stylesheet, a <code>fetch(</code> in any page, a credential-shaped string (see <code>05-house-rules.md</code>), or a page without a provenance block.</li><li>Also emit <code>site/llms.txt</code> and a <code>.md</code> twin of every page, the way every site in the network does.</li></ul>
+<h2 id="pages">Pages</h2>
+<div class="table"><table><thead><tr><th>Page</th><th>What it shows</th><th>Written by</th></tr></thead><tbody><tr><td><strong>Front page</strong></td><td>Today&#x27;s edition (the latest one), with the lead story, the counts of what changed per site, and links to the loose ends and signals.</td><td>Journalist</td></tr>
+<tr><td><strong>Editions</strong></td><td>One page per day that had changes, newest first.</td><td>Journalist</td></tr>
+<tr><td><strong>Stories</strong></td><td>Longer pieces from the editions.</td><td>Journalist</td></tr>
+<tr><td><strong>The index</strong></td><td>Every page on every site: filter by site, type, date and concept. Each row links to the local copy and the live page.</td><td>Librarian</td></tr>
+<tr><td><strong>Reading room</strong></td><td>Every source file rendered as a readable page, with its provenance block. The &quot;new since 18 September&quot; list first.</td><td>Librarian</td></tr>
+<tr><td><strong>Concepts</strong></td><td>The recurring ideas, and every page that uses each.</td><td>Librarian</td></tr>
+<tr><td><strong>Vaults</strong></td><td>Every published vault across the network, what it holds, its read key if the site publishes one.</td><td>Librarian</td></tr>
+<tr><td><strong>History</strong></td><td>The week&#x27;s moment, lessons learned, decisions and contradictions.</td><td>Historian</td></tr>
+<tr><td><strong>Signals</strong></td><td>Cross-pollination: site A has X, site B should know.</td><td>Guest desks</td></tr>
+<tr><td><strong>Loose ends</strong></td><td>What was said and not done.</td><td>All desks</td></tr>
+<tr><td><strong>The newsroom</strong></td><td>A picture of the desks and the flow between them, with what each desk read and wrote on the latest day.</td><td>Build, from the data</td></tr>
+<tr><td><strong>About and method</strong></td><td>What runs, what is design, who reviews, how sources are frozen. An &quot;honest sentence&quot; like newsroom.sgit.ai&#x27;s.</td><td>Editor</td></tr></tbody></table></div>
+<h2 id="the-provenance-block">The provenance block</h2>
+<p>Every page that states anything about a source carries, visibly: the site, the live URL, the date and time the source was fetched, its sha256 (first 12 characters are enough on screen), and which desk wrote the page. A reader must be able to walk from any claim to the frozen copy it came from.</p>
+<h2 id="look">Look</h2>
+<p>Borrow the look of sgit.ai: warm off-white background, near-black ink, one blue accent, a serif for headings, system sans for text, monospace eyebrows. Readable on a phone with a 16px gutter and no horizontal scroll. A dark mode is welcome and not required for the first version.</p>
+<h2 id="data-files">Data files</h2>
+<div class="table"><table><thead><tr><th>File</th><th>What it is</th></tr></thead><tbody><tr><td><code>sources/sites/manifest.json</code></td><td>Every fetched file: URL, local path, bytes, sha256, fetched time. Written by <code>tools/fetch_sources.py</code>.</td></tr>
+<tr><td><code>data/changes/YYYY-MM-DD.json</code></td><td>The Librarian&#x27;s changes for the day: per file, site, type, title, one-line summary, concepts.</td></tr>
+<tr><td><code>data/index.json</code></td><td>Every page in the network, with type, title, date if known, concepts.</td></tr>
+<tr><td><code>data/concepts.json</code></td><td>Concept name, one-line definition, the pages that use it.</td></tr>
+<tr><td><code>editions/YYYY-MM-DD.md</code></td><td>Front matter: <code>date</code>, <code>desk</code>, <code>sources</code> (list of URLs), <code>reviewed_by</code>, <code>reviewed_on</code>. Then the edition.</td></tr>
+<tr><td><code>stories/*.md</code>, <code>history/*.md</code>, <code>signals/*.md</code></td><td>Same front matter shape.</td></tr>
+<tr><td><code>data/loose-ends.json</code></td><td>Where said, when, what, waiting on, status.</td></tr></tbody></table></div></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="03-the-site.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

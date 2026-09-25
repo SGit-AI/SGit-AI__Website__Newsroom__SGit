@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>What is sgit, Docs · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#what-is-sgit-docs">What is sgit, Docs</a></li><li class="l1"><a href="#what-is-sgit">What is sgit</a></li><li class="l2"><a href="#how-it-works">How it works</a></li><li class="l2"><a href="#what-makes-it-different-from-git">What makes it different from git</a></li><li class="l2"><a href="#one-vault-three-doors">One vault, three doors</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="what-is-sgit.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/what-is-sgit.html">live ↗</a></p><article class="source"><h1 id="what-is-sgit-docs">What is sgit, Docs</h1>
+<blockquote><p>sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.</p></blockquote>
+<p><em>Source: <a href="what-is-sgit.html">https://sgit.ai/docs/what-is-sgit.html</a><a class="ext live" href="https://sgit.ai/docs/what-is-sgit.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="index.html">Docs</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a> / Introduction</p>
+<h1 id="what-is-sgit">What is sgit</h1>
+<p><strong>sgit is git for encrypted vaults.</strong> Clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine. The server stores ciphertext under opaque IDs, it never sees your filenames, your contents, or your commit messages.</p>
+<p>It&#x27;s like git and a password vault had a baby.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>A vault is an ordinary folder plus a <code>.sg_vault/</code> directory. When you commit, sgit snapshots the folder into a git-like object graph, commits pointing at trees pointing at content blobs, and encrypts every object client-side. When you push, only changed ciphertext travels. Object IDs are content-addressed (<code>obj-cas-imm-…</code>), so unchanged files are never re-uploaded, and the server can deduplicate data it cannot read.</p>
+<pre><code>your-folder/
+├── &lt;your files&gt;            # untouched — a vault is just a folder
+└── .sg_vault/
+    ├── bare/                # encrypted objects, refs, branch keys
+    └── local/               # your private clone-branch key — never pushed</code></pre>
+<p>The <strong>vault key</strong> (<code>passphrase:vault-id</code>) is three things in one string: the address of the vault on the server, the credential to access it, and the root of the local key-derivation hierarchy. Whoever holds it can decrypt the vault; nobody else, including the server, can. See the <a href="../security/index.html">security model</a><a class="ext live" href="https://sgit.ai/security/index.html" title="live page">↗</a> for the full derivation chain.</p>
+<h2 id="what-makes-it-different-from-git">What makes it different from git</h2>
+<ul><li><strong>Everything is encrypted client-side</strong>: content, filenames, messages, branch names.</li><li><strong>No staging area</strong>: commit snapshots the whole folder, like <code>git commit -a</code> for everything.</li><li><strong>A two-branch model</strong>: a private clone branch per machine or agent plus shared named branches, which is what makes safe multi-agent collaboration possible. <a href="two-branch-model.html">Details →</a><a class="ext live" href="https://sgit.ai/docs/two-branch-model.html" title="live page">↗</a></li></ul>
+<h2 id="one-vault-three-doors">One vault, three doors</h2>
+<ul><li><strong>sgit</strong>: this CLI. Open source, Apache-2.0, <code>pip install sgit-ai</code>.</li><li><strong>SG/Vault</strong>: the web app: browse, edit and review the same vaults in a browser, via an independent implementation of the same wire format. <a class="ext" href="https://sgraph.ai">How it works → ↗</a></li><li><strong>SG/Send</strong>: the zero-knowledge transfer API both clients speak to. <a class="ext" href="https://sgraph.ai">How it works → ↗</a></li></ul>
+<p><strong>Maturity:</strong> sgit is in beta and has been powering production workflows for a while. The vault format is versioned and <code>sgit migrate</code> handles upgrades. Read <a href="limitations.html">when NOT to use sgit</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> for the honest edges.</p>
+<p><a href="installation.html">Installation →</a><a class="ext live" href="https://sgit.ai/docs/installation.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="what-is-sgit.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/what-is-sgit.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/what-is-sgit.html">https://sgit.ai/docs/what-is-sgit.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/what-is-sgit.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:08Z</dd><dt>sha256</dt><dd><code title="42ee8b824e3ef62979f3b065b0fd1296abf4d073642f895f9bb952d0778e4294">42ee8b824e3e</code></dd><dt>Frozen copy</dt><dd><a href="what-is-sgit.md">sites/sgit.ai/docs/what-is-sgit.md</a> (2,977 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

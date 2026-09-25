@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>1.25.1.md · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · riskmandate.ai</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/riskmandate.ai.html">riskmandate.ai</a> · <a href="1.25.1.md">raw text</a> · <a class="ext" href="https://riskmandate.ai/versions/1.25.1.html">live ↗</a></p><article class="source"><h2 id="the-home-page-built-from-the-partners-own-html">The home page, built from the partner&#x27;s own HTML</h2>
+<p><a class="ext" href="https://riskmandate.ai/versions/versions.html">v1.25.0 ↗</a> rebuilt the home page from a design that arrived as a picture, which
+meant reading the picture and writing the page. The partner then sent the HTML. This release
+replaces the reconstruction with their file: their CSS, their markup, their palette, their type
+and their animations, changed only where the site requires it.</p>
+<p><strong>What their file settled.</strong> Two reservations in the last release notes are answered by the
+source. The four-item navigation is <strong>in-page anchors</strong> — *Why now · How it works · For leaders ·
+Pricing* — so it adds to the shared menu instead of replacing it, and the twenty pages v1.25.0
+worried about hiding are not hidden. It is here, as a strip under the menu, set back and labelled
+<em>on this page</em>; their own breakpoint drops it at 860px, where on a phone it cost three rows above
+the headline and repeated a call to action the hero makes one screen later. And every purchase
+action in their file goes to the store — <code>store.sgit.ai/product/?level=t1</code> to <code>t4</code> and
+<code>/policies/</code> — so the prices are displayed here and the cart is entirely theirs.</p>
+<p><strong>Their type, served from here.</strong> The design specifies Geist and Geist Mono and their file loads
+them from Google Fonts. No page on this site calls a third party and the home page is not going
+to be the first, so the latin and latin-ext subsets are committed under
+<a class="ext" href="https://riskmandate.ai/versions/assets/fonts/OFL.txt"><code>assets/fonts/</code> ↗</a> with the SIL Open Font License they ship under, and the
+<code>@font-face</code> rules point at them. 83KB for four files, fetched from fonts.gstatic.com on
+17 September 2026: Geist v5, Geist Mono v6.</p>
+<p><strong>Their CSS, scoped rather than merged.</strong> Their class names are unprefixed — <code>.btn</code>, <code>.brand</code>,
+<code>.paper</code>, <code>.section</code> — and four of them collide with the shared chrome. Every selector in their
+stylesheet is scoped under <code>.page</code>, which is the wrapper their own markup already had, so the
+two stylesheets cannot reach each other. Nothing in their design was rewritten to fit.</p>
+<p><strong>Six changes to their copy, each for a reason.</strong> <em>Fifteen</em> became <strong>sixteen</strong> in four places,
+because the Gmail-connector vault shipped after the design was drawn and the count is asserted
+against <code>vaults/index.json</code>. Every bare <em>policy</em> became <em>behaviour policy</em>, because on this site
+<em>policy</em> is also the insurance instrument and the
+<a class="ext" href="https://riskmandate.ai/versions/synthetic-users.html">synthetic-user study ↗</a> measured two readers taking it for one. The prices
+now carry where they were read from and when. The two-names note from v1.25.0 is back under the
+four objects: <code>GRANT.md</code> is the reach and <code>DELTA.md</code> is the gap. And the hero&#x27;s primary button
+lost two words so that their two-button row stays a row.</p>
+<p><strong>What the numbers are still held to.</strong> The four hero counts come from
+<code>vaults/claude-code-web/data/delta.json</code> and the shape count from <code>vaults/index.json</code>; the test
+that checks both was pointed at their markup rather than dropped. Measured after the rebuild: no
+horizontal overflow at 1280, 1080, 900, 620, 420 or 360px, Geist loading from
+<code>assets/fonts/</code>, and no page error on load.</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>riskmandate.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://riskmandate.ai/versions/1.25.1.html">https://riskmandate.ai/versions/1.25.1.html ↗</a></dd><dt>Fetched from</dt><dd>https://riskmandate.ai/versions/1.25.1.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:13Z</dd><dt>sha256</dt><dd><code title="227f2f5b0599857ee18acdfdd23dab3b6df9df212d99da43bcd061008e627aa1">227f2f5b0599</code></dd><dt>Frozen copy</dt><dd><a href="1.25.1.md">sites/riskmandate.ai/versions/1.25.1.md</a> (3,096 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+    <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .gap{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;stroke-dasharray:7 5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .ab{stroke:#b4243a;stroke-width:2;fill:none;stroke-dasharray:6 5}
+    .ag{stroke:#1c7c43;stroke-width:2.2;fill:none}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .akey{stroke:#2f6fed;stroke-width:2.4;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+    .mask{fill:#fbfaf7}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="30" class="h">ONE RISK, FROM THE BOARD TO THE BYTES, AND NO AIR GAP ANYWHERE</text>
+
+  <text x="170" y="64" class="h">WHO HOLDS IT</text>
+  <text x="600" y="64" class="h">WHAT IT IS, AT EACH ALTITUDE</text>
+  <text x="1030" y="64" class="h">WHAT PROVES IT</text>
+
+  <rect class="box" x="60" y="80" width="220" height="62"/><text x="170" y="106" class="t">The board</text><text x="170" y="126" class="s">it arrives here, always</text>
+  <rect class="box" x="60" y="172" width="220" height="62"/><text x="170" y="198" class="t">CEO, then CTO</text><text x="170" y="218" class="s">it passes through</text>
+  <rect class="box" x="60" y="264" width="220" height="62"/><text x="170" y="290" class="t">Platform owner</text><text x="170" y="310" class="s">holds it, accepts it</text>
+  <rect class="box" x="60" y="356" width="220" height="62"/><text x="170" y="382" class="t">SRE on call</text><text x="170" y="402" class="s">holds the operational part</text>
+  <path d="M170 172 L170 150" class="an"/><path d="M164 158 L170 150 L176 158" class="an"/>
+  <path d="M170 264 L170 242" class="an"/><path d="M164 250 L170 242 L176 250" class="an"/>
+  <path d="M170 356 L170 334" class="an"/><path d="M164 342 L170 334 L176 342" class="an"/>
+
+  <rect class="bad" x="400" y="80" width="400" height="62"/><text x="600" y="106" class="t">Corporate: loss of customer funds</text><text x="600" y="126" class="s">the line the board recognises</text>
+  <rect class="key" x="400" y="172" width="400" height="62"/><text x="600" y="198" class="t">Business: payments can be corrupted</text><text x="600" y="218" class="s">what the executive is accepting</text>
+  <rect class="key" x="400" y="264" width="400" height="62"/><text x="600" y="290" class="t">Operational: an agent can change production</text><text x="600" y="310" class="s">and some changes cannot be reversed</text>
+  <rect class="key" x="400" y="356" width="400" height="62"/><text x="600" y="382" class="t">Technical: the agent's role has write access</text><text x="600" y="402" class="s">to the ledger database, with no approval step</text>
+  <path d="M600 172 L600 150" class="ab"/><path d="M594 158 L600 150 L606 158" class="ab"/>
+  <path d="M600 264 L600 242" class="ab"/><path d="M594 250 L600 242 L606 250" class="ab"/>
+  <path d="M600 356 L600 334" class="ab"/><path d="M594 342 L600 334 L606 342" class="ab"/>
+  <text x="700" y="160" class="r" style="text-anchor:start">leads to</text>
+
+  <rect class="good" x="920" y="172" width="220" height="62"/><text x="1030" y="198" class="t">Controls</text><text x="1030" y="218" class="s">in place, funded, or proposed</text>
+  <rect class="good" x="920" y="264" width="220" height="62"/><text x="1030" y="290" class="t">Facts</text><text x="1030" y="310" class="s">each with its source</text>
+  <rect class="good" x="920" y="356" width="220" height="62"/><text x="1030" y="382" class="t">Evidence</text><text x="1030" y="402" class="s">a config, a log, a hash</text>
+
+  <path d="M280 111 L392 111" class="an"/><path d="M384 105 L392 111 L384 117" class="an"/><path d="M280 203 L392 203" class="an"/><path d="M384 197 L392 203 L384 209" class="an"/><path d="M280 295 L392 295" class="an"/><path d="M384 289 L392 295 L384 301" class="an"/>
+  <path d="M280 387 L392 387" class="an"/><path d="M384 381 L392 387 L384 393" class="an"/>
+  <path d="M912 203 L808 203" class="ag"/><path d="M816 197 L808 203 L816 209" class="ag"/>
+  <path d="M912 295 L808 295" class="ag"/><path d="M816 289 L808 295 L816 301" class="ag"/>
+  <path d="M912 387 L808 387" class="ag"/><path d="M816 381 L808 387 L816 393" class="ag"/>
+  <path d="M1030 356 L1030 334" class="ag"/><path d="M1030 264 L1030 242" class="ag"/>
+
+  <rect class="box" x="60" y="452" width="1080" height="122" style="fill:#fff"/>
+  <text x="600" y="480" class="h">THE SAME GRAMMAR AT EVERY ALTITUDE</text>
+  <text x="600" y="508" class="t">A risk is established by facts, and ceases when other facts hold.</text>
+  <text x="600" y="532" class="s">Every risk has a holder, every holder has a boss, and every path ends at the board. Every fact points at the evidence it came from.</text>
+  <text x="600" y="554" class="s">Zoom in and the vocabulary changes: corporate, business, operational, technical, bytes. The links, and the provenance, do not.</text>
+  <text x="600" y="610" class="s">A register row in a spreadsheet is the top box on its own. Everything under it is the air gap this model closes.</text>
+</svg>

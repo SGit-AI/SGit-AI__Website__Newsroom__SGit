@@ -1,0 +1,1 @@
+# Wardley Mapping is provided courtesy of Simon Wardley, CC BY-SA 4.0. Everything below is

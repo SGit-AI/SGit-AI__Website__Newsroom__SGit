@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>SG/Vault &amp; the vault platform (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#sgvault-the-vault-platform">SG/Vault &amp;amp; the vault platform</a></li><li class="l2"><a href="#what-sgvault-is">What SG/Vault is</a></li><li class="l2"><a href="#the-three-pieces">The three pieces</a></li><li class="l2"><a href="#vault-apps-the-app-is-the-vault">Vault apps: the app is the vault</a></li><li class="l2"><a href="#three-on-ramps">Three on-ramps</a></li><li class="l2"><a href="#in-this-section">In this section</a></li><li class="l2"><a href="#publish">Publish</a></li><li class="l2"><a href="#build">Build</a></li><li class="l2"><a href="#compose-integrate">Compose &amp;amp; integrate</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 196 of 358</p><nav class="pager"><span><a href="195-sgvault-the-vault-platform-sgitai.html">← SG/Vault &amp; the vault platform, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="197-building-vault-apps-sgvault.html">Building vault apps, SG/Vault →</a></span></nav><article class="source"><h1 id="sgvault-the-vault-platform">SG/Vault &amp; the vault platform</h1>
+<p>This section is, for now, the official documentation for the SGraph vault platform: the <strong>SG/Vault</strong> browser app, the <strong>SG/Send</strong> zero-knowledge API, and <strong>vault apps</strong>: websites and applications that live <em>inside</em> encrypted vaults. Product background lives at <a class="ext" href="https://sgraph.ai">sgraph.ai ↗</a>; the working documentation lives here.</p>
+<h2 id="what-sgvault-is">What SG/Vault is</h2>
+<p>SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an <strong>independent implementation of the same encrypted wire format</strong>, not a wrapper around the CLI, kept interoperable through a versioned contract with test vectors (see the <a href="../security/index.html#interop">security model</a><a class="ext live" href="https://sgit.ai/security/index.html#interop" title="live page">↗</a>).</p>
+<p>You open a vault by its key, carried in the URL <em>fragment</em> (the part after <code>#</code>):</p>
+<pre><code>https://vault.sgraph.ai/en-gb/#&lt;vault-key&gt;
+# the fragment never leaves the browser — it is not sent in the HTTP request,
+# so the server serves the app without ever seeing the key</code></pre>
+<p>From there you get a file browser over the decrypted vault (history, branches, editing) and, if the vault contains an app, <strong>App Mode</strong>: the vault boots straight into its own user interface.</p>
+<h2 id="the-three-pieces">The three pieces</h2>
+<div class="table"><table><thead><tr><th>Piece</th><th>What it is</th><th>Where it runs</th></tr></thead><tbody><tr><td><strong>sgit</strong></td><td>The CLI, git workflows over encrypted vaults</td><td>Your terminal, your agents&#x27; sessions</td></tr>
+<tr><td><strong>SG/Vault</strong></td><td>The browser client, browse, edit, review, App Mode</td><td>Any browser; all crypto via Web Crypto, client-side</td></tr>
+<tr><td><strong>SG/Send</strong></td><td>The transfer API, stores ciphertext under opaque IDs</td><td>The server; the only piece that never sees plaintext</td></tr></tbody></table></div>
+<h2 id="vault-apps-the-app-is-the-vault">Vault apps: the app <em>is</em> the vault</h2>
+<p>A vault can contain an <code>index.html</code> plus an <code>app.json</code>. When the vault opens, the app launches, full-screen, talking to the vault through a runtime bridge, with the encrypted blob serving as both the storage and the distribution mechanism. Sharing the vault link <em>is</em> deploying the app.</p>
+<p><strong>You are looking at one.</strong> This entire website is a vault app: generated pages, shared assets loaded through the bridge, deployed by <code>sgit push</code>. The <a href="../admin/index.html">admin section</a><a class="ext live" href="https://sgit.ai/admin/index.html" title="live page">↗</a> documents its engineering and doubles as the reference implementation.</p>
+<h2 id="three-on-ramps">Three on-ramps</h2>
+<div class="table"><table><thead><tr><th>You want to…</th><th>Use</th><th>Code needed</th></tr></thead><tbody><tr><td>Publish documents, galleries, hub pages</td><td><a class="ext" href="https://sgit.ai/content-authoring.md">Markdown + <code>_page.json</code> ↗</a> in the browse view</td><td>None</td></tr>
+<tr><td>Ship an interactive experience</td><td><a class="ext" href="https://sgit.ai/vault-apps.md">A vault app ↗</a> on the <a class="ext" href="https://sgit.ai/sg-bridge.md"><code>window.sg</code> bridge ↗</a></td><td>HTML/JS</td></tr>
+<tr><td>Automate, script, collaborate, back up</td><td>The <a href="../index.html">sgit CLI</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a>, plus <a class="ext" href="https://sgit.ai/git-and-vaults.md">git side-by-side ↗</a> and <a class="ext" href="https://sgit.ai/static-hosting.md">static hosting ↗</a></td><td>A terminal</td></tr></tbody></table></div>
+<p><a class="ext" href="https://sgit.ai/sub-vaults.md">Sub-vaults ↗</a> cut across all three: vaults pointing at other vaults, rendered inline like folders, composition without copying.</p>
+<h2 id="in-this-section">In this section</h2>
+<h2 id="publish">Publish</h2>
+<p><a class="ext" href="https://sgit.ai/content-authoring.md">Content without codeMarkdown + _page.json layouts, themes, print ↗</a> <a class="ext" href="https://sgit.ai/static-hosting.md">Static hostingGitHub Pages / S3, zero backend, still encrypted ↗</a></p>
+<h2 id="build">Build</h2>
+<p><a class="ext" href="https://sgit.ai/vault-apps.md">Building vault appsThe project shape, app.json, and the authoring contract ↗</a> <a class="ext" href="https://sgit.ai/sg-bridge.md">The window.sg bridgeThe runtime API, permissions, and the sovereignty rail ↗</a></p>
+<h2 id="compose-integrate">Compose &amp; integrate</h2>
+<p><a class="ext" href="https://sgit.ai/sub-vaults.md">Sub-vaultsVaults inside vaults, links, embeds, extract &amp; seed ↗</a> <a class="ext" href="https://sgit.ai/git-and-vaults.md">Git repos inside vaultsgit + sgit side by side; the encrypted mirror pattern ↗</a></p>
+<p><a class="ext" href="https://sgit.ai/vault-apps.md">Building vault apps → ↗</a></p>
+<hr></article><nav class="pager"><span><a href="195-sgvault-the-vault-platform-sgitai.html">← SG/Vault &amp; the vault platform, sgit.ai</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="197-building-vault-apps-sgvault.html">Building vault apps, SG/Vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>196 of 358: SG/Vault &amp; the vault platform</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

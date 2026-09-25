@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Step 4: what a clause over a count cannot do · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · abp.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#step-4-what-a-clause-over-a-count-cannot-do">Step 4: what a clause over a count cannot do</a></li><li class="l1"><a href="#step-4-what-a-clause-over-a-count-cannot-do-1">Step 4: what a clause over a count cannot do</a></li><li class="l2"><a href="#the-four-barriers-applied-to-a-number">The four barriers, applied to a number</a></li><li class="l2"><a href="#the-ledger-is-a-claim-and-the-bill-is-the-log">The ledger is a claim, and the bill is the log</a></li><li class="l2"><a href="#why-write-it-anyway">Why write it anyway</a></li><li class="l2"><a href="#where-to-go-from-here">Where to go from here</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/abp.sgit.ai.html">abp.sgit.ai</a> · <a href="index.md">raw text</a> · <a class="ext" href="https://abp.sgit.ai/cost/what-a-count-cannot-do/index.md">live ↗</a></p><article class="source"><h1 id="step-4-what-a-clause-over-a-count-cannot-do">Step 4: what a clause over a count cannot do</h1>
+<blockquote><p>A limit the agent cannot measure is an expectation twice over. Which of the four barriers a turn cap, a spend limit and a pipeline budget actually are, who can turn each one off, and what the ledger is and is not.</p></blockquote>
+<p>*Source: <a href="index.html">https://abp.sgit.ai/cost/what-a-count-cannot-do/index.html</a><a class="ext live" href="https://abp.sgit.ai/cost/what-a-count-cannot-do/index.html" title="live page">↗</a> · site v0.11.0 · this file is generated from the same content
+as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links
+below point at them.*</p>
+<hr>
+<p><a href="../../index.html">Home</a><a class="ext live" href="https://abp.sgit.ai/index.md" title="live page">↗</a> / <a href="../index.html">The cost ABP</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a> / Step 4</p>
+<h1 id="step-4-what-a-clause-over-a-count-cannot-do-1">Step 4: what a clause over a count cannot do</h1>
+<p><strong>Every clause on the last page is the second barrier kind: a rule written down.</strong> For cost it is worse than that, because some of the rules are over numbers the agent cannot see, and a limit you cannot measure is one you cannot keep on purpose. This page says which is which, and what would actually cap each one.</p>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>A limit the agent cannot measure is an expectation twice over. What a turn cap, a spend limit and a pipeline budget actually are, and who can turn each one off.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../write-the-cost-policy/index.html">Step 3: Write the cost policy</a><a class="ext live" href="https://abp.sgit.ai/cost/write-the-cost-policy/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../index.html">The cost walkthrough</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<blockquote><p><strong>What you gain from this page.</strong> An honest reading of your cost policy, line by line, by the agent it is addressed to, and the list of the things outside the conversation that would make each line hold.</p></blockquote>
+<h2 id="the-four-barriers-applied-to-a-number">The four barriers, applied to a number</h2>
+<div class="table"><table><thead><tr><th>Barrier</th><th>For a capability</th><th>For a count</th></tr></thead><tbody><tr><td>Nothing</td><td>the capability is simply reachable</td><td>nothing caps it, which is the default for files, commits, fetches and questions in nearly every deployment</td></tr>
+<tr><td>Expectation</td><td>a rule written down</td><td><strong>every clause from step three</strong>, and twice over where the agent cannot see the number it is asked to stay under</td></tr>
+<tr><td>Setting</td><td>a switch the holder&#x27;s account could change</td><td>a turn cap passed on the command line, a spend alert you set yourself, a pipeline that you can re-run by hand</td></tr>
+<tr><td>Boundary</td><td>enforced outside the thing it bounds</td><td>a spend limit an administrator locks on the account, a rate limit at the platform, a pipeline budget the repository owner set, a branch nobody can push to without review</td></tr></tbody></table></div>
+<p>Read the last two rows together. <strong>A limit you set is a setting; a limit somebody else set that you cannot remove is a boundary.</strong> The same number, in the same place, is one or the other depending on who can change it, which is the enforcer test applied to a quantity.</p>
+<p><strong>Prompt 10: Grade your own cost policy.</strong> Every clause marked with what would actually stop it, plus the ones over numbers it cannot see.</p>
+<pre><code>Take the cost rules we wrote and mark every clause with the one thing that would actually
+stop you breaking it, using exactly these names: NOTHING, EXPECTATION, SETTING, BOUNDARY.
+
+Then three lists:
+
+  1. Clauses over a number you can count yourself: files, commits, fetches, subagents,
+     questions, things handed over.
+  2. Clauses over a number you cannot see: tokens, money, pipeline minutes, other
+     people&#x27;s time. For each, say who could check it and from what.
+  3. Clauses that would survive a task written to make you break them: a request that
+     says do whatever it takes.
+
+Do not soften the second list. A rule over a number you cannot see is a rule you can only
+keep by accident.</code></pre>
+<h2 id="the-ledger-is-a-claim-and-the-bill-is-the-log">The ledger is a claim, and the bill is the log</h2>
+<p>The ledger from step three is the most useful thing in this walkthrough and it is a self report. <strong>This site counts a self report as a claim rather than a measurement</strong>: it stays a claim until something held outside the agent agrees with it. For files and commits that thing exists today, in the repository&#x27;s history. For fetches it exists if there is a proxy. For tokens it is the platform&#x27;s bill, which the agent never sees. For a person&#x27;s hour it does not exist at all.</p>
+<p>That is universe u11 in one paragraph. The runtime is where quantity lives, it is owned by whoever holds the logs, and this site has no node in it and will not. A cost ABP is the first ABP that cannot be checked from the ABP&#x27;s own side of the line.</p>
+<p><strong>Prompt 11: What would actually cap it.</strong> For every expectation, the setting or boundary that would replace it, and who would own it.</p>
+<pre><code>Last one. For each clause you marked EXPECTATION, name the specific thing that would make
+it a SETTING or a BOUNDARY, and who would own it: a turn cap in the harness, a spend limit
+an administrator locks on the account, a rate limit at the platform, a pipeline budget the
+repository owner sets, a branch that cannot be pushed to without review, a proxy that
+counts fetches, a log that somebody other than you reads.
+
+For each one say whether I could turn it off myself. If I could, it is a SETTING and say
+so. Where nothing available to me today would cap it, say that nothing available today
+would cap it, and do not offer me a rule as a substitute.</code></pre>
+<h2 id="why-write-it-anyway">Why write it anyway</h2>
+<ul><li><strong>It is the only document that names your budget.</strong> The platform knows what you spent; nothing knows what you meant to spend until you write it.</li><li><strong>It moves where responsibility lands.</strong> An agent that wrote forty files nobody asked for did something you left open. One that did it against a clause departed from an instruction.</li><li><strong>Every expectation line is the specification for a cap nobody has set.</strong> You cannot ask an administrator for a spend limit until you know the number, and step two is where the number came from.</li><li><strong>The ledger changes behaviour even as a claim.</strong> An agent that knows its ledger will be read by an accountant tends to spend as if it were counted, which is the cheapest control there is and not a control at all.</li></ul>
+<p><strong>Prompt 12: The one line for the next session.</strong> What to paste when there is no time for the rest.</p>
+<pre><code>Before you do anything in this session: read before you fetch, batch before you push,
+tell me the count before any turn that writes more than ten files, never create work for
+another person without asking me, and end every turn with a ledger of what you spent and
+what you could not count.</code></pre>
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+<p><strong><a href="../../model/universes/u11/index.html">The runtime universe</a><a class="ext live" href="https://abp.sgit.ai/model/universes/u11/index.md" title="live page">↗</a></strong>: Where quantity lives, who owns it, and why this site has no node in it.
+the model</p>
+<p><strong><a href="../../model/universes/u12/index.html">The estate of agents</a><a class="ext live" href="https://abp.sgit.ai/model/universes/u12/index.md" title="live page">↗</a></strong>: One agent&#x27;s output as another&#x27;s input, which is what the accountant is.
+the model</p>
+<p><strong><a href="../../model/barriers/index.html">The four barriers</a><a class="ext live" href="https://abp.sgit.ai/model/barriers/index.md" title="live page">↗</a></strong>: The enforcer test, and why a limit you set is not a limit.
+the model</p>
+<p><strong><a href="../../gmail/index.html">Your mailbox</a><a class="ext live" href="https://abp.sgit.ai/gmail/index.md" title="live page">↗</a></strong>: The same four steps over what an agent can do rather than how much.
+the first walkthrough</p>
+<blockquote><p><strong>Nothing on this page is measured by this site.</strong> There are no runtime logs here and there will not be; the runtime is universe u11, owned by whoever holds the logs and never by this site. Every number an agent gives back is a self report, which counts as a claim rather than a measurement, and the bill is the only log.</p></blockquote>
+<blockquote><p><strong>Nothing on this site is an assessment, an audit, a certification or a security review of any named product</strong>, and no adjective on this page attaches to one.</p></blockquote>
+<div class="table"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>The objective</strong></td><td>A limit the agent cannot measure is an expectation twice over. What a turn cap, a spend limit and a pipeline budget actually are, and who can turn each one off.</td></tr>
+<tr><td><strong>Before this</strong></td><td><a href="../write-the-cost-policy/index.html">Step 3: Write the cost policy</a><a class="ext live" href="https://abp.sgit.ai/cost/write-the-cost-policy/index.md" title="live page">↗</a></td></tr>
+<tr><td><strong>All four steps</strong></td><td><a href="../index.html">The cost walkthrough</a><a class="ext live" href="https://abp.sgit.ai/cost/index.md" title="live page">↗</a></td></tr></tbody></table></div>
+<hr>
+<p><em><a href="../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://abp.sgit.ai/llms.txt" title="live page">↗</a> · <a href="index.html">HTML version</a><a class="ext live" href="https://abp.sgit.ai/cost/what-a-count-cannot-do/index.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>abp.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://abp.sgit.ai/cost/what-a-count-cannot-do/index.md">https://abp.sgit.ai/cost/what-a-count-cannot-do/index.md ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:36Z</dd><dt>sha256</dt><dd><code title="c02704309a9d4d297ca71942443a289f173f6aff137d06a120723f07c9f21ee5">c02704309a9d</code></dd><dt>Frozen copy</dt><dd><a href="index.md">sites/abp.sgit.ai/cost/what-a-count-cannot-do/index.md</a> (7,761 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

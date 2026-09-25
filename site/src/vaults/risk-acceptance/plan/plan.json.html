@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>plan.json · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · vaults</p>
+
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">vaults</a> · <a href="plan.json">raw text</a></p><article class="source"><pre class="raw"><code>{
+  &quot;title&quot;: &quot;Risk Acceptance Office: running the acceptance loop, in the gaps of the GRC platform&quot;,
+  &quot;one_line&quot;: &quot;A company that makes sure every material risk an organisation carries is established on facts, held by a named person, accepted for a stated interval, and at the end of that interval accepted again, escalated, funded or fixed, with the evidence and the decisions kept in a vault per risk.&quot;,
+  &quot;principles&quot;: [
+    {
+      &quot;name&quot;: &quot;Every risk is already accepted&quot;,
+      &quot;text&quot;: &quot;A risk exists the moment the exposure does. Nobody decides whether to accept it, only who accepts it and for how long. Until someone does, the organisation is carrying it unsigned.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;There is no deny button&quot;,
+      &quot;text&quot;: &quot;You cannot vote a fact out of existence. A register that lets a risk be rejected lets the organisation pretend it is not carrying it.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Accept, fund or fix&quot;,
+      &quot;text&quot;: &quot;Three doors, each with a name against it. Deferral is not a decision, and silence escalates.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;The interval is the decision&quot;,
+      &quot;text&quot;: &quot;Accepting for four hours means an incident. Accepting for a month means funding work. The length of the acceptance is what tells the organisation what to do next.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;A named person, and no delegation&quot;,
+      &quot;text&quot;: &quot;Acceptance is by a person, not a committee or a function. Nobody accepts on anybody else&#x27;s behalf.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Unaccepted is critical&quot;,
+      &quot;text&quot;: &quot;A risk nobody has accepted rests on whoever is nearest and rolls upward. Not doing something is a measurable action.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Every path ends at the board&quot;,
+      &quot;text&quot;: &quot;Every risk has a holder, every holder has a boss, and every chain ends at the board. What reaches the top is computed from the chain, not reported by hand.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Accepted is not acceptable&quot;,
+      &quot;text&quot;: &quot;Accepted is an act by a named person at a dated moment. Acceptable is a threshold: where the business is content to stop funding remediation. They are two different questions, and a register needs both answers.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Established by facts, ended by facts&quot;,
+      &quot;text&quot;: &quot;Every risk names the facts that make it true, each with a source, and the facts that would end it. It closes when those hold, not when a review date passes.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;GRC validates, the business accepts&quot;,
+      &quot;text&quot;: &quot;Engineers confirm the facts, governance validates the reading, and the business owner accepts. Where those three disagree is where the findings are.&quot;
+    }
+  ],
+  &quot;ladder_lead&quot;: &quot;Each acceptance is for one of six intervals, and each rung names a different response. This is the ladder as published on risks.sgit.ai. RiskMandate.ai publishes a slightly different set of bands, and the plan treats reconciling them as an open question.&quot;,
+  &quot;ladder&quot;: [
+    {
+      &quot;rung&quot;: &quot;1 hour&quot;,
+      &quot;length&quot;: &quot;an hour&quot;,
+      &quot;means&quot;: &quot;\&quot;I need more data.\&quot; Fetch it now, then decide again.&quot;
+    },
+    {
+      &quot;rung&quot;: &quot;4 hours&quot;,
+      &quot;length&quot;: &quot;hours&quot;,
+      &quot;means&quot;: &quot;A priority-one incident. Trigger incident response.&quot;
+    },
+    {
+      &quot;rung&quot;: &quot;1 to 2 days&quot;,
+      &quot;length&quot;: &quot;days&quot;,
+      &quot;means&quot;: &quot;A smaller incident.&quot;
+    },
+    {
+      &quot;rung&quot;: &quot;1 to 2 weeks&quot;,
+      &quot;length&quot;: &quot;weeks&quot;,
+      &quot;means&quot;: &quot;A funded project for a team that already exists.&quot;
+    },
+    {
+      &quot;rung&quot;: &quot;1 month&quot;,
+      &quot;length&quot;: &quot;a month&quot;,
+      &quot;means&quot;: &quot;Assemble and fund. The default rung, set deliberately just above the incident line.&quot;
+    },
+    {
+      &quot;rung&quot;: &quot;6 months&quot;,
+      &quot;length&quot;: &quot;months&quot;,
+      &quot;means&quot;: &quot;Do nothing and review it then. It costs nothing, and it is legitimate with a name on it.&quot;
+    }
+  ],
+  &quot;plan_lead&quot;: &quot;The service runs one loop for every material risk a client carries: establish it on facts, place it on the chain to the board, have its holder accept it for an interval, and act when the interval ends. It reads the client&#x27;s register from their GRC platform, writes acceptances and escalations back into it, and keeps each material risk&#x27;s evidence and decisions in a vault of its own.&quot;,
+  &quot;services&quot;: [
+    {
+      &quot;name&quot;: &quot;Acceptance audit&quot;,
+      &quot;price&quot;: &quot;Free&quot;,
+      &quot;unit&quot;: &quot;one hour, five risks&quot;,
+      &quot;includes&quot;: &quot;Five risks from the client&#x27;s own register: who accepted each, until when, on what evidence, and what happens when it expires.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Foundation engagement&quot;,
+      &quot;price&quot;: &quot;£18,000&quot;,
+      &quot;unit&quot;: &quot;once, about eight weeks&quot;,
+      &quot;includes&quot;: &quot;One business unit: its top twenty risks established on facts, placed on the chain to the board, the first round of acceptances, and the integration with the client&#x27;s GRC platform.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Acceptance Office&quot;,
+      &quot;price&quot;: &quot;£2,500 + £60&quot;,
+      &quot;unit&quot;: &quot;per month, plus per material risk per month&quot;,
+      &quot;includes&quot;: &quot;Clocks kept, expiries acted on, escalations raised, a monthly acceptance report for the executive team, a quarterly board pack, and a vault per material risk.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Incident and escalation support&quot;,
+      &quot;price&quot;: &quot;£1,200&quot;,
+      &quot;unit&quot;: &quot;per day, on demand&quot;,
+      &quot;includes&quot;: &quot;When a short acceptance becomes an incident, running the evidence and the re-acceptance alongside the client&#x27;s own response.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Partner licence&quot;,
+      &quot;price&quot;: &quot;£15,000&quot;,
+      &quot;unit&quot;: &quot;per year, per consultancy&quot;,
+      &quot;includes&quot;: &quot;The method, the playbook, the templates and training, for consultancies and auditors who deliver it on their own engagements.&quot;
+    }
+  ],
+  &quot;price_note&quot;: &quot;Every price is a hypothesis for a UK firm in 2026, to be tested on the first three design partners.&quot;,
+  &quot;risks_per_consultant&quot;: 150,
+  &quot;assumptions&quot;: [
+    &quot;A risk engineer can run about 150 material risks at steady state, keeping clocks, raising escalations and preparing reports, and fewer in the first quarter.&quot;,
+    &quot;A consultant&#x27;s loaded cost is about £8,500 a month in the UK.&quot;,
+    &quot;Foundation engagements and on-demand days are not in the calculator, because they are lumpy.&quot;,
+    &quot;At the defaults, twelve clients with forty material risks each bring about £58,800 a month against about £34,000 of delivery cost.&quot;
+  ]
+}</code></pre></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>vaults</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="6a2584109f59c7a8c4883ae018d8f329132a0c906d644f7d4eecc78293bc3c0f">6a2584109f59</code></dd><dt>Frozen copy</dt><dd><a href="plan.json">vaults/risk-acceptance/plan/plan.json</a> (6,269 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,3 @@
+## The table
+
+{{offer-table}}

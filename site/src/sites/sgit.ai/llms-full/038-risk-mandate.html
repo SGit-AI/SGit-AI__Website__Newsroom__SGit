@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Risk Mandate (sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#risk-mandate">Risk Mandate</a></li><li class="l2"><a href="#see-it-live-here">See it live, here</a></li><li class="l2"><a href="#what-is-going-on-here-step-by-step">What is going on here, step by step</a></li><li class="l3"><a href="#a-real-application-delivered-as-a-vault">A real application, delivered as a vault</a></li><li class="l3"><a href="#it-uses-an-llm-it-never-holds-the-api-key">It uses an LLM. It never holds the API key.</a></li><li class="l3"><a href="#ninety-eight-commits-and-releases-pinned-to-them">Ninety-eight commits, and releases pinned to them</a></li><li class="l2"><a href="#what-this-vault-demonstrates">What this vault demonstrates</a></li><li class="l2"><a href="#the-audit-honestly">The audit, honestly</a></li><li class="l2"><a href="#derived-facts">Derived facts</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/sgit.ai.html">sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 38 of 358</p><nav class="pager"><span><a href="037-risk-mandate-a-published-vault.html">← Risk Mandate, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="039-agentic-browser-isolation-a-published-va.html">Agentic Browser Isolation, a published vault →</a></span></nav><article class="source"><h1 id="risk-mandate">Risk Mandate</h1>
+<p>A field demo built to be handed to a stranger on an iPad, and, underneath it, the most complete software project published here: 124 files, 98 commits, eight entry points, a test suite, build tooling and pinned releases, all inside one encrypted vault.</p>
+<p><strong>Why this one matters.</strong> It answers the question the other demos leave open: <em>can you actually build something real in a vault?</em> This is a working application with a release history, developed in the vault, delivered by the vault, and running offline once cached. It also does the thing that is hardest to do safely, <strong>it uses an LLM without ever holding the API key</strong>.</p>
+<p><strong>Open it yourself. The key is the whole credential.</strong>
+Read key: <code>sgit_public_read_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z</code>
+In the official UI: <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z">open it read-only in a new tab ↗</a> · From the CLI: <code>sgit clone sgit_public_read_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z</code>
+Published deliberately, and <strong>derived</strong>: this read key is a one-way derivation of the vault key, which stays with its owner. It grants read, and only read.</p>
+<h2 id="see-it-live-here">See it live, here</h2>
+<p>Both surfaces open automatically below. You can also <a class="ext" href="https://dev.vault.sgraph.ai/#sgit_public_read_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z"><strong>open the app in its own window ↗</strong> ↗</a>. It is more fun full size.</p>
+<h2 id="what-is-going-on-here-step-by-step">What is going on here, step by step</h2>
+<p>Three things this vault does that the others do not. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+<p>the app</p>
+<h3 id="a-real-application-delivered-as-a-vault">A real application, delivered as a vault</h3>
+<p>This is <strong>Risk Mandate</strong>, a field demo built to be handed to someone on an iPad: pick a scenario, answer eight questions, and a risk register assembles beside you, readable as an operator, a CISO or a board.</p>
+<p>It is one <code>index.html</code> with everything inlined, and it opens straight from the vault. Note the chrome: a <strong>release selector</strong> (&quot;Live (latest)&quot;), a sealed-secret badge, and <strong>Read-only</strong>: you are looking at a published build, not a preview.</p>
+<p>The line under the button is the part worth reading twice: <em>&quot;Nothing leaves this device.&quot;</em> On the stand it runs with the network off, one cached load, then flight mode all day.</p>
+<p>The app as it opens from the published read key: scenarios, presets, and a version chip.</p>
+<p>the privilege claim</p>
+<h3 id="it-uses-an-llm-it-never-holds-the-api-key">It uses an LLM. It never holds the API key.</h3>
+<p>The whole argument of this vault is in its <code>app.json</code>. It grants the app <code>llm: chat, models, usage, listen</code>, and <code>fs.write</code> over <code>field/workspace/</code> and nothing else.</p>
+<p>What is <em>not</em> granted is the credential. <code>.vault/llm/config.json</code> carries <code>keySealed: {iv, ct}</code>, the OpenRouter key encrypted under the vault key. The host decrypts it and makes the outbound call; the frame is handed a result, never a secret. Opening this vault with the published read key, that field is ciphertext we cannot decrypt, which is the point, and we checked.</p>
+<p>In the <a href="../compare/index.html">privilege vocabulary</a><a class="ext live" href="https://sgit.ai/compare/index.html" title="live page">↗</a>: the app gets <code>ops:llm-chat</code> without ever getting <code>bearer</code> of the key. That distinction is usually impossible to express, let alone enforce.</p>
+<p>app.json: LLM use granted, the key withheld, and write scoped to one folder.</p>
+<p>version control, seriously</p>
+<h3 id="ninety-eight-commits-and-releases-pinned-to-them">Ninety-eight commits, and releases pinned to them</h3>
+<p>This is not a document that happens to live in a vault. It is a software project developed in one. <strong>98 commits</strong>, a test suite, build tooling, and <code>.vault/releases.json</code> pinning named releases (<code>v0.15.5</code>, <code>v0.10.3</code>, <code>v0.7.7</code>…) to specific commit ids, which is what the release selector in the app chrome is reading.</p>
+<p>Its build script is the detail we enjoyed most: <code>tools/build.mjs</code> fails the build on any declarative external reference <em>and</em> on any credential-shaped string. They arrived at the same tripwire this site runs on its own releases, independently, for the same reason.</p>
+<p>The SGit view: 98 commits of a real project, read with a published read key.</p>
+<h2 id="what-this-vault-demonstrates">What this vault demonstrates</h2>
+<div class="table"><table><thead><tr><th>Feature</th><th>How this vault uses it</th></tr></thead><tbody><tr><td><strong>AI without the credential</strong></td><td>Sealed OpenRouter key in <code>.vault/llm/config.json</code>; the host decrypts and calls, the app frame receives results only. Read-key holders, including us, see ciphertext in that field</td></tr>
+<tr><td><strong>Scoped permissions, two kinds</strong></td><td><code>llm</code> capabilities enumerated (chat, models, usage, listen) and <code>fs.write</code> limited to <code>field/workspace/</code></td></tr>
+<tr><td>Eight entry points</td><td><code>index.html</code>, plus a board, a takeaway page, talking points, a build-history page and three proofs-of-concept, one vault, many front doors</td></tr>
+<tr><td>Pinned releases</td><td><code>.vault/releases.json</code> maps names to commit ids; the app chrome offers them as a live selector</td></tr>
+<tr><td>Offline by design</td><td>One cached load, then it runs with the network off, the demo survives conference wifi</td></tr>
+<tr><td>A build that enforces the contract</td><td><code>tools/build.mjs</code> exits non-zero on declarative external references <em>and</em> on credential-shaped strings, their own version of this site&#x27;s release tripwire</td></tr>
+<tr><td>Shareable results without a server</td><td><code>takeaway.html</code> rebuilds a saved register from the link alone</td></tr></tbody></table></div>
+<h2 id="the-audit-honestly">The audit, honestly</h2>
+<p>Audited independently before this key was published, across all 124 files. <strong>Clean:</strong> no credentials, no personal data, and the vault&#x27;s own key does not appear in its content, the failure that forced a republish in <a class="ext" href="https://sgit.ai/strategy-maps/index.md">an earlier case ↗</a>.</p>
+<p>Two findings worth publishing because they are the <em>good</em> kind. The OpenRouter credential is present but <strong>sealed</strong>: encrypted under the vault key, so a read-key holder gets ciphertext. And the one match our secret scanner produced was <code>sk-test-abcdefghijklmnop</code> in <code>tests/suites/40-llm.mjs</code>, a deliberately fake key in a test that asserts a reachable API key <em>is caught</em>. A scanner hit that turns out to be a security test is a good sign about a codebase.</p>
+<p>As always: revocation is not retroactive. Anyone who fetches these objects keeps them.</p>
+<h2 id="derived-facts">Derived facts</h2>
+<p>124 files · 1.9 MB · 98 commits · eight app entries · last updated 2026-08-06, derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../catalogue/index.html">the catalogue</a><a class="ext live" href="https://sgit.ai/catalogue/index.html" title="live page">↗</a>.</p>
+<hr></article><nav class="pager"><span><a href="037-risk-mandate-a-published-vault.html">← Risk Mandate, a published vault</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="039-agentic-browser-isolation-a-published-va.html">Agentic Browser Isolation, a published vault →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/llms-full.txt">https://sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:49:59Z</dd><dt>sha256</dt><dd><code title="5509773d8a5477e10be3b44686e6413ffb048c1bdcdcbafc75ea8f4f8b5902b2">5509773d8a54</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/sgit.ai/llms-full.txt</a> (1,877,074 bytes)</dd><dt>Section</dt><dd>38 of 358: Risk Mandate</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

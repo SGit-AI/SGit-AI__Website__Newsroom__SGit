@@ -1,0 +1,1408 @@
+# store.sgit.ai — the whole site as markdown
+site v0.3.24 · every claim's verification state is at /ledger/
+
+Produced with model assistance. Every page on this site, and every document in the dev packs area, was drafted with a large language model and reviewed by a person before publication.
+
+The gaps are deliberate and they are the point. Two of the six offers do not exist yet; the
+documents area is built and holds its own documents pending five checks that have not been
+run; and the sentence about what a provider can and cannot read is absent from this site
+because six questions about what leaks have not been answered.
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+PAGE /booking/  —  Booking a person
+==============================================================================
+
+---
+title: Booking a person
+description: "Two of the four tiers are a booking rather than a download: a person reviewing your situation, and an assessment by a team. What a booking commits, what it does not, and why a signature is a separate thing you cannot buy yet."
+lead: "**[Tier 3](/d/t3/) and [tier 4](/d/t4/) are bookings.** What is bought is a person's time, and in tier 4's case a team's. That changes what the page can promise, so this one says what a booking commits us to, what it does not, and the one thing it is often mistaken for."
+order: 6
+toc: true
+---
+
+## Only one of the four is a booking
+
+**Three of the four levels need nobody to be scheduled.** The downloaded pack, the
+working vault and the corrected vault are produced without a conversation: you pick,
+you pay, and the work happens. **Only [the £1,500 level](/d/t4/) is a booking**,
+because it is the one whose cost is somebody's time.
+
+That line — between a thing agents do and a thing a person sits down for — is the
+line between the third level and the fourth, and it is the only reason the price
+moves as far as it does. {{claim:abp-correction-by-a-person}}
+
+## What the two sessions are
+
+**Half an hour to interview your team, and half an hour to deliver.** The first
+finds out what is actually running — which agents, on what accounts, with which
+credentials, and what anybody believes they are for. The second walks through what
+came back.
+
+**Between them, the work.** The mandate is built from the interview rather than
+from a form, the delta is recomputed against it, and **a security professional
+reviews and signs off** what is delivered. {{claim:abp-sessions-by-a-person}}
+
+**Two sessions is what is sold.** More is a separate conversation, and saying so
+before you buy is cheaper than discovering it afterwards.
+
+## What a booking does not buy
+
+**A signed opinion as a formal instrument.** A security professional reviewing and
+signing off the work is **not** the company issuing a signed opinion, and **the
+wording for that still does not exist.** The two are kept apart on every page here,
+because they are one word away from each other and a buyer could reasonably assume
+the first is the second. {{claim:opinion-wording-absent}}
+
+**Not a compliance assessment, and not a mark of conformity.** Neither word
+describes this and neither appears on anything that comes out of it. The family of words
+around conformity marking is avoided outright: it raises the standard of care
+beyond ordinary negligence and buys a buyer nothing.
+
+**A named individual's professional responsibility.** The **company** issues every
+opinion, with an express non-assumption of personal responsibility on its face.
+And **the person who sells is not the person who signs** — which is why no
+individual is named on this page, on the checkout, or beside a price anywhere on
+this site.
+
+## What comes out of a booking
+
+**Triage, not raw findings.** Every finding that reaches you has been **reproduced**,
+not reviewed. Recall-optimised agents run at 0.388 precision — about three findings
+in five are wrong — and passing that list on unfiltered would be selling somebody
+their own homework. {{claim:precision-0388}}
+
+**Marked outputs.** Anything model generated says so on its face, not only in a
+footer. {{claim:transparency-article}}
+
+**A record, never a verdict.** Where the work names a third party — a vendor, a
+platform, a standards body, a competitor — what is written down is facts, dates
+and sources, with no evaluative adjective attached to anybody's name.
+
+## How to book
+
+**Buy the level, and the sessions are scheduled after.** [Your order](/cart/) takes
+you to the payment provider; the conversation follows the purchase rather than
+gating it, which is the opposite of how consulting is usually sold and is the
+reason it can be bought from a card at all.
+
+**At the event**: the code on the card, which redirects to the delivery page for
+that level and says what it covers before you commit.
+
+There is no form on this site — it does not collect anything, from anybody, ever.
+
+==============================================================================
+PAGE /boundary/  —  Who owns what, between this store and riskmandate.ai
+==============================================================================
+
+---
+title: Who owns what, between this store and riskmandate.ai
+description: "The boundary between store.sgit.ai and riskmandate.ai, written down where both sides' agents can read it: the store owns e-commerce, riskmandate.ai owns the products and the policies, and neither sends the other's visitors away. Includes the brief asking their team to do the reverse."
+lead: "**Two sites, one purchase.** This store owns the cart, the workflow, the redirections and the payments. riskmandate.ai owns the products, the policies, the information and the screenshots. Written down here rather than agreed in passing, because **a boundary nobody published is a boundary that moves**."
+order: 20
+toc: true
+---
+
+## The rule
+
+**The store owns e-commerce. riskmandate.ai owns the material.**
+
+Everything that is a cart, a workflow, a redirection or a payment happens on
+`store.sgit.ai`. Everything that is a product, a list, an Agent Behaviour Policy,
+an explanation or a screenshot belongs to `riskmandate.ai`. Every other question
+about where something lives follows from that sentence, including which side a
+file that is currently on the wrong one has to move to.
+
+| | store.sgit.ai | riskmandate.ai |
+|---|---|---|
+| **Owns** | The cart, the order reference, the discount codes, the payment rails, the page a buyer lands on after paying | The fifteen template shapes, the policies themselves, the vaults, the deeper explanation, the screenshots |
+| **Reads from the other** | The shape catalogue, promoted at build time today; their download manifest, which is [not built yet](/admin/work/one-site-one-flow/) | Nothing yet. That is what the brief below asks for |
+| **Never does** | Explain what a policy is at length. That is their page and it is better than ours would be | Run a cart, hold a price, or issue an order reference |
+
+## The reader never crosses the seam
+
+**A buyer does the whole thing here, in this site's own interface.** Until
+16 September they did not: the success address was riskmandate.ai's page for the
+level, and a buyer who had spent ten minutes on one site was dropped onto another
+one, with a different layout and a different voice, at the exact moment they had
+just paid.
+
+That was found by a synthetic buyer, logged as a confusion, and treated as a copy
+problem. It was an architecture problem, and this page is the fix written down.
+[The pages a buyer lands on](/admin/work/one-site-one-flow/) are now on this site.
+
+**Reading somebody else's data is not wearing their interface.** When this store
+renders riskmandate.ai's product data, it renders it in this store's own CSS. The
+whole point is that a reader does not notice the seam — not that they are handed
+across it politely.
+
+## What makes it possible
+
+**CORS is on, and it was verified rather than assumed.** On 16 September 2026,
+`https://riskmandate.ai/abp-vaults.html` answered `access-control-allow-origin: *`.
+So a page on this domain can read a file on that one, in the reader's browser,
+with no server on either side.
+
+**That is not yet used, and the reason is a rule rather than an oversight.** Every
+page on this site that sells anything opens no network connection at all, and a
+build check fails the release if one does. Reading a catalogue over CORS is opening
+a connection on a selling page. That rule has been narrowed twice and loosened
+never — the absolute half stayed absolute, the exception was named in the check,
+and a deliberate break was run against the new check before anything shipped. The
+same discipline applies here, and the narrowing comes **before** the first fetch.
+
+## Debt, marked as debt
+
+**The store holds product data today that belongs on the other side.** That is
+allowed for now and it is written down rather than discovered later:
+`data/abp-catalogue.json` is promoted from riskmandate.ai at build time with the
+source URL, the retrieval time and a sha256 of the page it was read from.
+{{claim:abp-catalogue-promoted}}
+
+Promotion at build time is the honest version of the wrong arrangement: it cannot
+silently drift, because the hash changes. It is still the wrong arrangement, and
+the right one is reading it at runtime from the side that owns it.
+
+## The brief, addressed to the RiskMandate team
+
+**Asked for on 16 September: this side first, then the reverse.**
+
+You are reading the store's half. The ask is that riskmandate.ai does the same in
+the other direction — **reads this store's e-commerce surfaces rather than
+re-implementing a cart.**
+
+Concretely, and in the order that makes each one useful on its own:
+
+1. **Publish a stable manifest for each level's artefact** — the zip, its size and
+   its sha256, as JSON at a fixed address. **It already exists and it is not
+   reachable as data**: on 16 September `paid-t1.html` carried fifteen entries with
+   `bytes` and `sha256` inside a JavaScript `const DIST = /*__DIST__*/[…]`. Reading
+   that from here means regex-ing your JavaScript out of your HTML at runtime,
+   which is the fragility this ask exists to remove. The same bytes at
+   `/abp-manifest.json` would close it. The store's page after payment can then
+   render your download in its own chrome instead of sending a buyer to you at the
+   moment they have just paid. Today the store links to you with one sentence
+   saying why; that sentence is the debt.
+2. **Publish the shape catalogue as data**, at a stable address with a version
+   field. The store already promotes it from your HTML at build time with a content
+   hash, which works and is fragile in exactly the way parsing a page for data is
+   always fragile.
+3. **Do not build a cart.** If a reader on your side wants to buy, send them here
+   with the shape already selected. One cart, one order reference, one set of
+   prices — the same reason this store does not explain what a policy is.
+4. **Agree the shape of what we both read**, not just the address. CORS makes the
+   read possible; it does not make it safe to depend on. A stable address, a stable
+   shape, and a version field are three different promises and all three are needed.
+
+**What we are not asking for.** No callback, no session, no shared state and no
+account on either side. Both of these are static sites and the whole arrangement
+works because neither one needs the other to be up in order to be correct.
+
+**Status: open.** It will be recorded here when it is answered, including if the
+answer is no, because a brief that only appears when it succeeds is a brief nobody
+should trust.
+
+==============================================================================
+PAGE /catalogue/  —  What is not for sale yet
+==============================================================================
+
+---
+title: What is not for sale yet
+description: "Eight further offers are specified and none of them is for this week. They are listed so that nobody proposes them as new, and so that the four that are for sale are not quietly widened to include them."
+lead: "**Eight further offers exist as specifications and none of them is on the offer page.** They are listed here for one reason: so that nobody proposes them as new. A catalogue that only shows what is buyable today loses the work that went into deciding what is not."
+order: 7
+---
+
+## The eight
+
+| | The offer | Why it is not on the offer page |
+|---|---|---|
+| **1** | **The amendment subscription** | The graph carries amendments today; a subscription to the deltas is a recurring product, and nothing recurring is being sold this week |
+| **2** | **The divergence report** | Depends on two vaults being comparable over time, which is a property the pipeline does not have yet |
+| **3** | **The rendering diff, as a verification service** | It is the same missing check that holds the multi-format add-on. Sell it as a service and you are selling the thing you have not built twice {{claim:fact-diff-absent}} |
+| **4** | **Crosswalk resolution** | Between which instruments, on whose licence terms, is a licence question before it is a product question |
+| **5** | **The write-only vault link** | A sharing primitive, not an offer. It becomes an offer when somebody is buying the workflow around it |
+| **6** | **The vault as a data room** | The closest of the eight to sellable, and the one most likely to be sold as a promise about what a provider can read. That sentence is not printable yet {{claim:cannot-read-unanswered}} |
+| **7** | **The threat-model estate** | Specified. It is an estate-wide surface rather than a single purchase |
+| **8** | **The infographic generator, with a purchase page** | The generator exists. The purchase page is the easy half; the guarantee is the hard half, and it is the same missing diff as row 3 |
+
+## And two surfaces, neither of which is this site
+
+**The merchandise page.** Ruled to be a page under the risk product, **not a
+separate site** and not a page here. November.
+
+**The marketplace listing**, as a second purchase path. Registration is four to
+eight weeks, which makes it the long pole and makes November the earliest honest
+date. {{claim:marketplace-registration}} [What that rail is and why it is separate](/paying/).
+
+## Why this page exists at all
+
+Because the alternative is that one of these eight gets proposed in three weeks as
+a fresh idea, and the reasoning that put it here has to be rebuilt from nothing.
+
+And because a store's real risk is not that it sells too little — it is that the
+four things it does sell quietly grow to cover the eight it does not. Every one of
+[the four delivery pages](/offers/) says **what does not arrive**, and this page is
+the same discipline pointed one level up.
+
+==============================================================================
+PAGE /dev-packs/  —  The dev packs
+==============================================================================
+
+---
+title: The dev packs
+description: "The area is built and the documents are held. Nineteen documents, every one of them hashed and listed, none of them published — because five checks run before anything opens, none has been run by a person, and two of them a script can already show would fail."
+lead: "**The instruction was to publish these documents on the site. The same document that gave the instruction named five checks that run first, called every one of them \"a real edit or a real hold\", and recorded that who runs them is not decided.** So this area exists, its manifest is published, and its documents are not. Two of the five checks are measurable and are measured below: **11 of the 19 documents would break a hard rule on contact with this site.**"
+order: 11
+toc: true
+wide: true
+---
+
+## What is published here today
+
+**The manifest, and nothing else.** Every document, its kind, its size and its
+sha256. That is enough for somebody holding the pack to check their copy against
+this page, and not enough to read a word of it here.
+
+That is deliberate, and it is the same discipline the pack asks of everything
+else: **checkable by a reader who does not trust the page.** A documents area that
+published its own text but not its own hashes would be arguing against the product
+it sits beside.
+
+{{pack-manifest}}
+
+## Why nothing is published yet
+
+**Publishing is not a formatting change.** The five checks below are quoted from
+the instruction itself, and each of them is a real edit or a real hold.
+
+{{pack-checks}}
+
+**Two of the five can be measured by a script, and the script has run:**
+
+- **Hard rule 1** — the word that may never appear anywhere on a site carrying prices — appears in **11 of the 19 documents**, including in the title of one of them. The rule's stated reason is that a positioning phrase is a claim but a priced checkout is an offer, and **an offer is what the regulated perimeter is about**. There is no page of this site where the word is safe, and a published document is a page.
+- **Check 5** — the open naming collision, ruled on 8 September to block any public page — appears in **4 of the 19**.
+
+**The other three need a person.** Auditing every named third party for adjectives
+is the check most likely to fail, because these were written for an internal
+reader and internal briefs are blunt — and no script reads for tone. Verifying or
+cutting every unverified claim that names a company needs the sources open.
+Re-reading the two documents with unresolved legal exposure needs somebody who is
+not only a builder.
+
+## What is not being asked for here
+
+**Not permission to soften them.** The gaps in these documents are the point. A
+document that says a pipeline does not exist, or that an application built in
+August cannot be located, is doing exactly what the method is for, and **a dev
+packs area whose uncertainty has been edited out is a marketing page wearing a lab
+coat.** Nothing in the manifest above has been rewritten and nothing will be.
+
+**What is being asked for is two rulings and three reads.** The word: does hard
+rule 1 reach a republished working document, or only original copy? The collision:
+close it, or hold the four documents that carry it. Then the three checks a person
+has to run.
+
+Until those happen, this page is what the area is.
+
+## The structure it will open into
+
+The shape is already specified and the build already follows half of it: one index,
+one folder per pack, a `pack.json` manifest with hashes, and **compiled files
+rather than one file per record** — because the published performance cliffs
+punish thousands of small objects, and a cold open of 2,375 objects was measured at
+over three minutes.
+
+```
+  /dev-packs/
+    index.html          this page — the list of packs, with date, count and state
+    pack.json           the manifest, machine-readable      ← published today
+    llms.txt            per the estate convention
+    llms-full.txt       the quotation set, the gaps, the open questions
+    /store/             this pack — held
+```
+
+**Two things are already decided and neither is a formatting question.** A
+published pack is **frozen, not maintained**: a dated document with hashes is a
+promise about a moment, and a pack that gets quietly updated breaks that promise —
+so new versions are added beside, never over. And whether packs from other days
+and other subjects follow this one is **a separate decision with a much larger
+surface**, not an extension of this instruction.
+
+## One thing this area is not sure about
+
+**Whether it belongs on this site at all.** The instruction said "the site", and
+this pack was written for this one. The reasonable alternative is that a dev packs
+area belongs on the platform domain and indexes packs for every site, with each
+pack linked from the site it concerns — which fits the convention that **every site
+in the network is named for an argument**, and a documents index is not an
+argument.
+
+It is built here, every internal link is relative, and the folder is self-contained
+**so it can be moved without rewriting it.** Same as [the host question](/offers/#the-offer-identifier-is-the-stable-part),
+and for the same reason. {{claim:domain-ruling-overruled}}
+
+==============================================================================
+PAGE /disclosures/  —  What we do not say, and why
+==============================================================================
+
+---
+title: What we do not say, and why
+description: "The words this site does not use, the sentence it does not print, the claims it does not make, and the reason for each one. Every entry has a source, and most of them have an enforcement precedent behind them."
+lead: "**A store's disclosures page is usually a list of things it is allowed to say.** This one is a list of things it is not, and why. Four of the entries are words. One is a whole sentence that a reader might reasonably expect to find on a page like this, and it is missing on purpose — because six questions have not been answered."
+order: 8
+toc: true
+---
+
+## The sentence that is not on this site
+
+**We do not tell you what we can and cannot read.**
+
+It is the sentence a reader expects from an encryption product, and it is absent
+here because it is **a factual claim about system architecture, and it is
+enforceable**. In November 2020 a regulator acted against a company for claiming
+end-to-end encryption while its servers held the keys. The settlement imposed
+**twenty years of third-party assessments**.
+
+**Six questions have to be answered before the sentence can be printed:**
+
+1. Are filenames encrypted?
+2. Is directory structure encrypted?
+3. What do object sizes reveal?
+4. What does commit timing reveal?
+5. Is there any recovery or escrow path?
+6. Is there any support access mechanism?
+
+**If anything leaks, the sentence gets a carve-out — not a softer adjective.**
+Until then it is not on this site in any form. {{claim:cannot-read-unanswered}}
+
+## The words this site does not use
+
+**This page does not print them either**, and that is not an oversight. An
+exception for the page that explains the rule is exactly how a rule stops applying:
+one section becomes one page becomes "in context". Each is described closely enough
+that anybody in the field will know which term is meant.
+
+| The term that is not used | What is used instead | Why it was rejected |
+|---|---|---|
+| **The contested encryption term** — two words, the first of them a number, widely used in storage marketing | **End-to-end encrypted** as the primary term, **client-side encryption** as the mechanical one | The company that popularised it in storage marketing retired it, a widely cited cryptographer's critique calls the usage actively harmful, and as a search term it is dominated by an unrelated meaning from cryptography |
+| **The contested recall term** — the human faculty, borrowed | **Durable** — resumes exactly where it left off, losslessly | Eight or more funded vendors contest it, two claim it as a category rather than a feature, the consumer meaning was captured by the largest model providers this year and carries a privacy connotation that fights an encryption product, and it implies **lossy summarisation of a lossless product** |
+| **The contested autonomy term** — the adjective everyone reached for in 2025 | Say what the thing actually does | The analyst forecast since June 2025 is that over forty per cent of such projects will be cancelled by end 2027, the practice of applying it loosely reached corporate governance disclosure commentary in April 2026, and the closest competitor pointedly avoids it |
+| **The absolute form of the tamper claim** | **Tamper evident, given a witness** | A rewritten hash chain verifies against itself. Tampering is detectable only when another party already holds an older hash — **the witness is a second clone**, which makes handing somebody a read key the act that makes the claim true. Append-only is stated as a policy, not a property |
+
+All four are checked mechanically on every build: **if any of them reaches a page
+of this site, the release stops.** {{claim:three-banned-words}}
+{{claim:tamper-evident-witness}}
+
+**This is a judgement and it is reversible.** The rule's own scope is copy that
+faces a customer, and a page about vocabulary is arguably not that. If naming them
+here is preferred, it is one edit in one place — on somebody's ruling, not on a
+builder's preference.
+
+## The claims this site does not make
+
+**It is not a compliance assessment.** Presenting it as one would be dishonest, and
+no page here does.
+
+**No claim of conformity to any standard is made, sought or implied**, and the
+whole family of words around conformity marking is avoided outright on this site —
+not softened, avoided. That language raises the standard of care beyond ordinary
+negligence, and it buys a reader nothing. A build check keeps it off every page.
+
+**No opinion here is personal.** The **company** issues every opinion, with an
+express non-assumption of personal responsibility on its face. A product sold on a
+named individual's judgement runs at the test for assumed personal responsibility.
+
+**The people who sell do not sign.** Selling buyers the question, suppliers the
+answer, and an opinion vouching for the suppliers is the combination two industries
+have already regulated. On this site that shows up as an absence: **no individual
+is named beside a price anywhere.**
+
+**Nothing here is derived from the international management standards.** They are
+not adapted, not translated, not resold as a derivative and **not fed to a model** —
+prohibited twice over. The same prohibition covers the payment card standard and
+the centre's controls. **The launch catalogue is the European regulation**, which
+is expressly reusable commercially including adaptation. {{claim:standards-not-adaptable}}
+{{claim:graph-nodes}}
+
+**Every derived instrument carries the unofficial banner, the attribution string
+and the not-responsible line on its face**, and no institutional logos, crests or
+original identifiers. That is licence terms, not caution.
+
+## What is disclosed, rather than withheld
+
+**Outputs are model generated.** The transparency article has applied since
+**2 August 2026** and reaches a third-country party whose output is used in the
+Union. The disclosure is on the face of each artefact, not only in a site footer,
+and it is at the top of every page here. {{claim:transparency-article}}
+
+**Findings are triaged, never raw.** Recall-optimised agents run at **0.388
+precision** — about three findings in five are wrong. Every finding that reaches a
+buyer has been **reproduced**, not reviewed. {{claim:precision-0388}}
+
+**Where a third party is named, what is published is the record and never the
+verdict** — facts, dates, sources, and no evaluative adjective attached to
+anybody's name. That rule is [why the documents area is built and still closed](/dev-packs/).
+
+**One phrase is held, and it is ours.** *Licence to operate* means a permission
+granted by an authority. A second phrase in this vocabulary means a description of
+exposure already carried. **They mean opposite things, both are in use, and the
+collision has been open since 8 September** — so the second one appears nowhere on
+this site, and a build check keeps it that way. {{claim:naming-collision-open}}
+
+==============================================================================
+PAGE /how-it-works/  —  How buying works
+==============================================================================
+
+---
+title: How buying works
+description: "Pick shapes, pick levels, and pay on the provider's own page. Your order lives in your browser, the payment provider takes your name and card, and what reaches it is an amount and an order reference carrying the codes for what you bought."
+lead: "**Three steps, and this site does not collect anything in any of them.** You build an order in your own browser, you get a reference, and you pay on the payment provider's own page — which is the only place a card number should ever be typed. **There is no form, input or field anywhere on this site**, and a build check holds that line."
+order: 3
+toc: true
+---
+
+## The three steps
+
+**1 · Pick.** Choose an application from [the catalogue](/policies/) and a level.
+Add as many as you like — different agents, different levels, more than one of the
+same thing. Your order lives in this browser and nowhere else.
+
+**2 · Get your reference.** [Your order](/cart/) carries a reference like
+`SG-K7M3QB` and an order line listing the product code for everything in it. Copy
+it. It is not an account and it is not stored anywhere but your browser.
+
+**3 · Pay.** Two rails, and you pick one. The provider takes your name, your
+contact and your card on **its own pages**. What this site hands it is the amount
+and your reference.
+
+## What a product code looks like
+
+`ABP-GML-V`
+
+- `ABP` — an Agent Behaviour Policy.
+- `GML` — the shape. Gmail, read-only scope, in this case.
+- `V` — the level. `P` is the pack, downloaded on the page you land on after paying; `V` a working vault; `C` corrected for your situation; `S` two sessions with a professional signing it.
+
+**A quantity above one is written `ABP-GML-V*2`.** The whole order line is your
+reference followed by one code per item, which is short enough to fit in a
+payment reference field and specific enough to say exactly what was bought.
+
+## Why the catalogue is not inside the payment provider
+
+**Sixty-two product codes maintained in two places is sixty-two codes that will one
+day disagree.** The catalogue lives here, in one file, checked on every build. The
+provider takes an amount and a reference. Neither side has to know about the
+other, and there is no synchronisation to get wrong.
+
+It also means **adding a product is a build**, not a build plus a console.
+
+## One rail, and what it is handed
+
+A payment link on Stripe's own pages. A second rail was planned and **came off on
+16 September for the first end-to-end store**: one that is half set up is a second
+thing to explain here and a second thing to keep true, and neither is worth it
+while the first one is not live. [The plan for it is kept](/admin/rails/sumup/)
+rather than deleted.
+
+| | What it is | What it takes from you |
+|---|---|---|
+| **Stripe** | A payment link against a named product at a stated price | Name, email and card, on Stripe's own pages |
+| **Contactless** | A card tapped on a terminal at a stand, for the amount due now | Name, contact and card, on the terminal |
+
+**The link has not been created yet.** [Your order](/cart/) says so on the button
+rather than showing something that looks live — a greyed-out button is a lie about
+which half of the work is done.
+
+## What happens after you pay
+
+**The first two levels are produced without anybody being scheduled**, so they do
+not wait on a conversation. The upper two do: the corrected level needs the details
+of your situation, and the two-session level needs a time in a calendar.
+
+**What arrives, at every level, says what it does not cover as well as what it
+does.** That is on each level's own description rather than in a paragraph
+somewhere, because a page that only says what you get is the half that gets
+somebody into trouble.
+
+## What this site never has
+
+**No account.** There is nothing to sign into and nothing that remembers you.
+
+**No form.** Not a search box, not a newsletter, not a contact field. Filtering is
+buttons, quantity is buttons, and everything a payment needs is taken by the
+payment provider. A build check refuses the release if a `form`, an `input`, a
+`textarea` or a `select` reaches any page.
+
+**No network call.** No page here opens a connection at all: no analytics, no
+cookies, no fonts from anywhere else, no catalogue fetched while you read. Every
+byte is served from this domain, and the catalogue is promoted at build time with
+the hash of what it was read from.
+
+==============================================================================
+PAGE /lab/  —  Five prototypes of one purchase
+==============================================================================
+
+---
+title: Five prototypes of one purchase
+description: "Five interfaces over the same configurator for the grant-and-mandate mapping work: an interview, a ladder, an estate board, a delta matrix and a scenario start. Each produces the same JSON brief. Nothing on any of them can be bought."
+lead: "**Nothing in this area can be bought.** These are five prototypes of a purchase flow for work that is fulfilled by people — mapping what the agents a company already runs were **granted**, what they are **expected** to do, and writing the **policies** that would close the gap. Five interfaces, one model, and **one JSON brief that every one of them produces identically**. The interface is the variable. The document is not."
+order: 4
+toc: true
+wide: true
+head_css: /assets/lab.css
+---
+
+## What is actually being sold here
+
+**Two things, and neither of them is a scan.**
+
+**A map.** Every agent surface a company runs, the credential behind it, and what
+that credential permits. Then the other half: what each one is actually authorised
+and expected to do. **The gap between the two lists is the product** — permitted,
+and nothing anybody wrote down would need it.
+
+**A policy set that would close it.** Written against the estate that was just
+described, one policy per gap, each naming the grant it constrains. Not a template
+with a company name substituted in.
+
+**A named security professional does this work.** Nothing in it runs by itself
+today, the seven-role team these prototypes describe is a specification rather
+than something staffed, and which parts of it could later be done without people
+is a decision nobody has taken. {{claim:lab-fulfilment-is-people}} So what these
+pages produce is **the brief that team starts from** — the thing a first call
+would otherwise be spent assembling.
+
+## The same question, from three sides
+
+The three buyers on this site arrive at the same map from different directions,
+and the configurator changes its frame accordingly. [Who each one is
+for](/audiences/).
+
+| | Arrives asking | What the map is drawn for |
+|---|---|---|
+| **[You are a startup](/for/startups/)** | What does our estate look like to somebody who is about to ask? | **Map it upwards.** Diligence is coming, the questions are the same every time, and the difference is whether the answers already exist in writing |
+| **[You are an investor](/for/investors/)** | What is the agent in this company actually doing, and what was it allowed to do? | **Map both sides** of a company you do not operate: the permitted half from its credentials, the expected half from its own account |
+| **[You run agents today](/for/agents/)** | What did we actually grant the things we are already running? | **Map your own estate.** The credentials were issued over months by different people, and no document says what their union permits |
+
+## The five
+
+{{lab-views}}
+
+Each one is a hypothesis about how somebody would rather describe their estate,
+and each has a column saying what is wrong with it — **five options presented with
+only their strengths is a menu, not an experiment.** Which of them becomes the
+real one, if any, is not decided. {{claim:lab-is-a-prototype}}
+
+## The model all five render
+
+Every prototype reads one file. The sections below are the questions, the weight
+column is what moves the price, and both are published here because **a page that
+asks somebody twenty questions owes them the list before they start**, and a
+weighting a reader cannot see is a price a reader cannot check.
+
+{{brief-model}}
+
+**The configurator does not compute a price.** Weighted selections add up, the
+total lands in a band, and **the band names one of the four tiers that already
+exist and its price.** Nothing here invents a number — a price is the first thing
+[the pack](/dev-packs/) says may not be invented, and a checkout that emitted
+"£347" would be inventing one with extra steps. A build check fails the release if
+a band names an offer that is not on [the offer list](/offers/).
+{{claim:lab-price-is-a-band}}
+
+**The prebaked starts are hypotheses.** Nobody has counted how common any of those
+five shapes is. Each brief records which one it started from, so the team reading
+it can tell what was assumed from what was answered — which is the only thing that
+makes starting from a guess safe rather than fast.
+{{claim:lab-scenarios-are-hypotheses}}
+
+## What a brief carries, including what it does not know
+
+The output is one JSON document. Beside the estate, the grants, the mandates and
+the deliverables, every brief carries two fields that most configurators would not
+emit:
+
+- **`excess_authority`** — the grants you ticked that no mandate on the brief would need. Computed from edges published in the model, so a reader can disagree with a specific edge rather than with a verdict.
+- **`unknowns`** — what this brief could not establish. An empty expected column. A deliverable whose thing does not exist yet. A grant that a named surface normally carries and you removed. **A brief that names its own gaps is worth more to the team reading it than one that reads as complete and is not**, and this is the same discipline [the ledger](/ledger/) applies to the rest of the site.
+
+## What happens to it
+
+**Nothing, unless you send it.** A brief is written to your browser's own local
+storage and reaches nothing else. There is **no form, input, textarea or select
+anywhere in this site's output**, and **no page that sells anything opens a network connection** —
+both are build checks rather than intentions — so exporting a brief hands the file
+to you. {{claim:lab-brief-stays-local}}
+
+**What the deliverables look like is a separate question**, and it is not answered
+here. This area is the purchasing half. Examples of what comes out the other end
+belong on their own pages and do not exist yet.
+
+==============================================================================
+PAGE /offers/  —  All six, side by side
+==============================================================================
+
+---
+title: All six, side by side
+description: "The four tiers and the two add-ons in one table: the question each answers, its price, what is true of the thing behind it today, how it is paid, and the stable offer identifier a printed code redirects to."
+lead: "**Four tiers and two add-ons.** Four prices are set, one range is deliberately wide, and the add-ons are banded rather than priced. Every number on this page comes from one file, and a build check holds each of them against the pack that set it — because these prices go onto **printed cards**, and a printed price cannot be corrected from a conference floor."
+order: 2
+toc: true
+wide: true
+---
+
+## The table
+
+{{offer-table}}
+
+## The same six, by who each one was built for
+
+**This page is the price ladder. [The other way in](/audiences/) is by who is
+climbing it** — which is the question somebody actually arrives with, and the
+reason the home page asks it first.
+
+{{offers-by-buyer}}
+
+## The six, in full
+
+{{offers}}
+
+## Why each number is that number
+
+**No price on this site is positioning, and none of them is the builder's.** The
+four were set by the project lead on 15 September 2026, replacing the four tiers
+of the 10 September pack, and the frozen table in the build gate was re-pointed at
+them in the commit that says so. **The check did not loosen; it was aimed
+somewhere else.**
+
+{{prices-why}}
+
+**The floor moved, and the arithmetic that argued against it is still here.** At
+£5 the fixed card fee alone is about four per cent of the transaction, which on
+10 September was the reason the floor was £10 rather than £5. On 15 September the
+floor was set at £5 anyway, and on 16 September it went back to £10 — this time
+because of what the level carries rather than what it costs to take the money.
+**Every step stays on the page**, because a
+store that deletes the argument it lost is a store you cannot check.
+{{claim:card-fee-floor}}
+
+**The cheapest level is a licence, not a download.** The files it sends are
+published free under CC BY, and anybody using them that way has to attribute them.
+What £10 buys is a commercial licence to you over the same material — so it can go
+into client work, into a product, or into a document that goes to a regulator,
+without carrying our name into it. That is grantable because the copyright in the
+pack is ours: everything in it was written here. **The wording is not drafted
+yet**, and the ledger says so rather than the page implying otherwise.
+{{claim:entry-level-dual-licence}}
+
+**Prices are in pounds.** Pricing in euros while settling in pounds adds about two
+per cent, and that two per cent buys nothing. {{claim:pricing-in-pounds}}
+
+## How each one is paid for
+
+**Every level is a single price, so every level can hold a standing payment link.**
+There is no band to fix and nothing to take a deposit against: that shape belonged
+to the offer line replaced on 15 September, and [the ledger keeps
+it](/ledger/) rather than pretending it was never there.
+{{claim:checkout-bands-have-no-standing-link}}
+
+**No link has been created on either rail.** Every card shows its code and its
+delivery page instead of a live button, and [your order](/cart/) names which rail
+is missing. {{claim:checkout-links-not-issued}}
+[How buying works](/how-it-works/).
+
+## The offer identifier is the stable part
+
+A printed code redirects to `/d/<id>/` and nothing else about it is load-bearing.
+Not the host, not the path above it, not a word of the copy.
+
+That is deliberate, and it is the one piece of engineering this site does purely
+because of a disagreement. **A ruling of 10 September placed a storefront under the
+risk product rather than on the platform domain.** The instruction in hand
+overrode it and named this host. The ruling stands on the record, unedited, and
+the build treats the host as moveable: every internal link here is relative, the
+host appears in no sentence of copy, and the identifiers above do not change.
+**If the site moves, it costs a DNS record and no reprinting.**
+{{claim:domain-ruling-overruled}}
+
+## What is not on this page
+
+**Eight further offers are specified and none of them is for this week.** The
+amendment subscription, the divergence report, the rendering diff as a
+verification service, crosswalk resolution, the write-only vault link, the vault
+as a data room, the threat-model estate, and the infographic generator with a
+purchase page. [They are listed here](/catalogue/) so that nobody proposes them as
+new.
+
+==============================================================================
+PAGE /paying/  —  The two rails, and why they never meet
+==============================================================================
+
+---
+title: The two rails, and why they never meet
+description: "Payment links with printed codes for everything at the event and everything below about a thousand pounds; the cloud marketplace for business buyers above it, after a conversation. They are strictly separated, the separation is a rule rather than a preference, and no link has been issued yet."
+lead: "**Both rails exist. They must never appear as a choice on one transaction.** One is a payment link with a printed code beside it. The other is a cloud marketplace, above roughly a thousand pounds, after a conversation. The reason they are kept apart is not taste — it is that the marketplace's seller terms say a seller is **not permitted to collect customer payment information at any time**."
+order: 5
+toc: true
+---
+
+## The two rails
+
+| | **Payment link, with a printed code** | **The cloud marketplace** |
+|---|---|---|
+| **For** | Everything on the price list, all four levels | Business buyers who would rather have it inside terms they already hold, after a conversation |
+| **Why** | A payment link is an online payment, so no cross-border rule applies | The buyer already holds the marketplace's legal terms |
+| **What it removes** | The card reader, and the declined tap | The master agreement, the vendor onboarding, the new purchase order |
+| **What it costs** | The provider's ordinary card fee | **0.5 per cent**, falling to zero inside a qualifying multi-product solution |
+| **State** | {{claim:card-reader-refused}} | {{claim:marketplace-registration}} |
+
+## Who takes the card, and where
+
+**One rail, and it is a payment link on Stripe's own pages.** Six products are
+priced there, three coupons exist, and the store reconciles both against its own
+data on every release. A second rail was planned and **came off on 16 September
+for the first end-to-end store** — a rail that is half set up is a second thing to
+explain here and a second thing to keep true, and neither is worth it while the
+first one is not live. The plan for it is kept rather than deleted.
+
+**Nothing on this site collects anything.** No form, no input, no select, no account,
+no cookie. The provider takes your name, your contact and your card on its own pages,
+which is the only place a card number should ever be typed. A build check holds every
+page here to that, and a second one holds every page to opening no network connection
+at all.
+
+**One page can be typed into: [the partner review](/review/).** It has reason boxes on it
+because it exists to be answered, and the rule moved by ruling in v0.1.15 to allow exactly
+that and nothing else. There is still no `<form>` on this domain — that is the element that
+submits — and still no `<input>` or `<select>`, which is where a card number would go. What
+somebody types there stays in their own browser until they copy it out.
+{{claim:review-is-the-one-typing-surface}}
+
+**What reaches the provider is the amount and your order reference.** The
+reference carries the product codes for everything you picked, so matching it
+against the name and contact the provider captured gives the whole order.
+[How that works, in three steps](/how-it-works/).
+
+### Every level is one price, so every level can hold a link
+
+The four levels are £5, £50, £500 and £1,500 — **single prices, not bands**, which
+is what a standing payment link needs. The banded tiers and the deposit that this
+page used to describe belonged to the offer line replaced on 15 September: there is
+no band left to fix and no engagement left to deposit against.
+{{claim:checkout-bands-have-no-standing-link}}
+
+**No link has been created on either rail.** [Your order](/cart/) renders the
+button as unissued and names the rail that is missing, rather than showing
+something that looks live: **a greyed-out button is a lie about which half of the
+work is done.** Pasting one line into `data/checkout.yml` turns a rail on, and the
+build holds whatever lands there to that provider's own checkout hosts over HTTPS.
+{{claim:checkout-links-not-issued}}
+
+### Why the catalogue is not inside either provider
+
+**Sixty-two product codes maintained in two places is sixty-two codes that will one
+day disagree.** The catalogue lives here, in one file, checked on every build; the
+provider takes an amount and a reference; neither side has to know about the other.
+It also means adding a product is a build rather than a build plus a console.
+
+## Why a link, and not a card reader
+
+**A United Kingdom card account cannot tap in Portugal.** The provider declines the
+transaction on detecting a different country, and says so in those words. A card
+reader bought for the event would have been a box that says no, in public, to the
+first person who tried to pay with it.
+
+**A payment link is an online payment.** No cross-border rule applies to it. The
+buyer opens their own phone, on the provider's own page, and pays. Nothing on this
+site ever sees a card number, because nothing on this site ever handles one.
+
+**So no card reader was bought**, and the four codes on the cards are four links.
+{{claim:card-reader-refused}}
+
+## Why the marketplace is a conversation and not a button
+
+**The marketplace's seller terms state that a seller is not permitted to collect
+customer payment information at any time.** {{claim:marketplace-no-customer-payment}}
+
+A checkout button beside a marketplace button, on one page, for one transaction,
+is a design that walks straight into that. So the marketplace is not a second
+payment option here. **It is a different route with a different threshold**, and
+you reach it by talking to somebody, not by clicking something.
+
+**The pitch is procurement, not discount.** A buyer who already has the
+marketplace's legal terms does not need a master agreement, a vendor onboarding
+round, or a new purchase order. That is worth more than a percentage to the person
+who has to get the purchase through, and it is the actual reason to use the rail.
+The fee is **0.5 per cent**, and falls to zero inside a qualifying multi-product
+solution. {{claim:marketplace-fee}}
+
+**Registration is the long pole: four to eight weeks.** The listing is a November
+surface. Nothing on this site depends on it. {{claim:marketplace-registration}}
+
+### One correction, carried here rather than dropped
+
+**Professional services listings do not draw down committed spend on the cloud
+provider.** Three independent sources state the exclusion.
+
+An earlier version of the marketplace argument said the opposite. That version is
+on no page of this site, and this paragraph exists so that if somebody repeats the
+old claim in a room, the correction is findable rather than remembered.
+{{claim:no-committed-spend}}
+
+## Where each code lands
+
+Four codes, one per level. **The identifiers did not change when the prices did**,
+which is the whole reason the pack said to keep them stable: a repricing costs no
+reprinting, and a card already made still lands on the right page. Each redirects
+to a delivery page that says **what arrives and what does not**:
+
+- [`t1`](/d/t1/) — £10, the pack, downloaded on the page you land on, immediately
+- [`t2`](/d/t2/) — £50, a working vault you hold the keys to
+- [`t3`](/d/t3/) — £500, corrected for your situation
+- [`t4`](/d/t4/) — £1,500, two sessions and [a professional signs it](/booking/)
+
+The cards the codes are printed on differ only in **the question on the front** and
+**the destination of the code**, which makes the fact set identical across every
+variant by construction rather than by checking.
+
+**The codes are the only part of this with a hard date.** The event is **17 and 18
+September 2026, in Lisbon**. The merchandise surface, [the eight further
+offers](/catalogue/) and the marketplace listing do not depend on it, and nothing
+on this site pretends otherwise. {{claim:event-dates}}
+
+## A discount code, and why there is nowhere to type one
+
+**A code arrives in the address, not in a field.** There is no text input anywhere
+in this site's output and the gate refuses one, so a code is handed over the way a
+printed card or a QR at a stand hands it over anyway: `store.sgit.ai/policies/?code=…`.
+The store recognises it, shows it as a chip that can be removed, and **takes it back
+out of the address bar**, because a screenshot of a checkout should not carry one.
+
+**What ships is the hash of the code and never the code.** A page that recognised a
+code by carrying it would publish it the moment it was built, so the browser hashes
+what it was handed and compares — and a build check reads every byte of the built
+site against every code and fails the release if one is found, which is the same
+rule, with the same test behind it, as *no vault key on any page*.
+
+**That is worth what it is worth and no more.** A nine-character code can be ground
+out of a hash. What actually stops a stranger paying nothing is that **a browser does
+not take money**: a recognised code changes the amount a payment link is issued
+*for*, and the rail decides what is charged. No rail exists yet.
+{{claim:discount-code-is-in-the-browser}}
+
+**It comes off the price, and the deposit is taken on what is left.** Half off the
+£500 level is £250, of which £50 is taken now and £200 on delivery; a code never
+moves the split, which belongs to the offer. **A code at a hundred per cent still
+places an order** and still lands on the page that says what happens next — which is
+the whole use of one, and how this flow gets walked end to end before a single real
+payment link exists.
+
+## What happens after the money moves
+
+**The page after paying is not on this site.** riskmandate.ai publishes one page per
+level, and since its v1.19.2 **the level-one page is the download itself** — the zip,
+its size, its sha256, and a check that hashes the file in your own browser. Their
+build stamps the size and the hash; a stale one fails their CI. Nothing is copied
+here, because two copies of a hash is one hash that will go stale.
+{{claim:post-sale-pages-exist}}
+
+**The handover carries two things and nothing else.** Your order reference, which
+their page shows back to you and puts in the subject line of every message it
+offers; and, at level one only, **the shape you bought** — the same slug this store
+uses at `/p/<slug>/`, which is why the two catalogues keep their slugs in step.
+Nothing is posted, there is no callback and no session, and their page is a static
+file that works with no parameters at all.
+
+**Twenty-four hours is the commitment at the three vault levels.** It is theirs
+rather than ours, and this store said "one working day" until v0.1.9 — a day slower
+than the page the buyer actually lands on. Two sites promising different things
+about one follow-up is the drift a shared brief exists to stop, and the number that
+stands is the one committed to in public.
+
+### What that handover still owes, in the order it blocks a sale
+
+- **Nothing carries a sale from here to the person who follows up.** A static site cannot send it; until a rail's receipt reaches them, the channel is the buyer's own first message from the page they land on. **This gates the first paid order at £50, £500 and £1,500.** {{claim:sale-notification-absent}}
+- **No receipt has ever been issued**, so whether it carries the reference, and under what name, is not known. {{claim:receipt-reference-untested}}
+- **At £500 the files come back by email.** A write-only vault to drop them into is the intended route and does not exist. {{claim:level3-return-by-email}}
+- **Who owns the follow-up mailbox past the first orders is settled on neither site.** This store names nobody and links to the page that carries the address, so a change is one change and not two. {{claim:follow-up-owner-unnamed}}
+- **How long the £500 level takes after you reply is committed to nowhere.** The follow-up is
+  24 hours; the delivery estimate is one to three days from your reply. The page says so rather
+  and labels it an estimate rather than a measurement. {{claim:t3-delivery-time-estimated}}
+- **The opinion add-on is listed here and has no page there** — theirs will be built in the same shape as the four once it is asked for. {{claim:opinion-add-on-has-no-page-there}}
+
+## What this site does with a payment
+
+Nothing. It is a static site: **no page that sells anything opens a network
+connection at all**, there is no form, no cookie, no analytics, and no card number
+ever reaches it. One page does open one, and it is not this kind of page: a
+[review](/admin/reviews/) of a vault embeds that vault, from one host, and says so
+in those words on itself.
+Paying happens on the payment provider's own pages, which is the only place a card
+number should ever be typed. A build check holds that line on every release.
+
+==============================================================================
+PAGE /v1/  —  Every agent needs a licence to operate
+==============================================================================
+
+---
+title: Every agent needs a licence to operate
+description: "Agent Behaviour Policies for the agents you already run: everything one can do, what you authorised it to do, and the gap between them. Fifteen applications, four levels — the pack at £10, a vault you hold the keys to at £50, corrected for your situation at £500, and two sessions with a security professional signing it at £1,500."
+lead: "**You know what you asked for. You do not know what it can do.** An Agent Behaviour Policy puts both on one page for one agent in one deployment: what it can do, what you authorised, and the gap between them. **Fifteen applications, four levels, £10 to £1,500.**"
+order: 1
+toc: false
+---
+
+## Who are you?
+
+{{who-are-you}}
+
+## The four things for sale
+
+{{buy-cards}}
+
+**Every level is the same document.** What changes is the form it arrives in and
+who does the correcting — and the line between the third and the fourth is the
+line between a thing agents do and a thing a person signs.
+[What is actually inside one →](/what-is-in-one/)
+
+**The first two arrive automatically. The top two are somebody's work.** That is
+the line that matters when you are choosing: the pack and the vault are produced
+the moment you pay, and the corrected mandate and the two sessions are done by a
+named security professional and signed off. The method behind all four has been
+done many times — six vaults of it are open to read right now, linked below.
+{{claim:the-work-has-been-done}} {{claim:abp-templates-exist}}
+{{claim:abp-correction-by-a-person}} {{claim:abp-sessions-by-a-person}}
+
+## Which agent do you run?
+
+**Pick the application closest to yours and the level you want it at.**
+[The whole catalogue is here](/policies/) — Claude Code on a machine and in CI,
+Claude Desktop, ChatGPT in the browser, a browser extension, GitHub Actions, a
+scheduled job, Gmail and Drive at read-only scope, the Microsoft 365 connector,
+Dropbox, n8n, and the rest. **Something not on the list starts at the third
+level**, because the first two deliver an existing template and for yours there is
+not one yet.
+
+## Six of these, open right now
+
+**This work has been done, repeatedly, and it is published.** Not a testimonial and
+not a case study — the vaults themselves, each opened by a read key published on
+its own page. Go and open one before you buy anything here.
+
+{{evidence}}
+
+## What the templates cost, and what they do not
+
+**The templates are free and public**, with published read keys, at
+riskmandate.ai. That is not a generosity and it is not a funnel: a policy nobody
+can check is a policy asking to be trusted, and the whole point of this document
+type is that it can be checked. **What is priced here is an instance** — the same
+template with the mandate corrected, your name on the licence and no public key on
+it. [The whole argument, at length →](/what-is-in-one/) {{claim:abp-catalogue-promoted}}
+
+## Paying, in three lines
+
+**You build an order in your own browser and pay on the provider's own page.** No
+account, no cookie, and **no form, input or field anywhere on this site** — a build
+check holds that line, so filtering is buttons, quantity is buttons, and your card
+is somebody else's business. What reaches the payment provider is the amount and an
+order reference carrying the codes for what you bought.
+**Neither payment link has been created yet** — [your order](/cart/) says so on the
+button rather than showing something that looks live.
+[The three steps](/how-it-works/) · [Both rails](/paying/)
+{{claim:checkout-links-not-issued}}
+
+## What this site will not tell you
+
+Nothing here is a compliance assessment, and nothing here is a mark of conformity
+to a standard. Neither describes this, and that language appears on no deliverable
+and on no page. **The company issues every opinion**, with an express
+non-assumption of personal responsibility on its face, and **the person who sells
+is never the person who signs.**
+
+Outputs are model generated and marked as such {{claim:transparency-article}}.
+Findings are triaged, never raw: recall-optimised agents run at 0.388 precision,
+which is about three findings in five wrong, so **every finding that reaches you
+has been reproduced rather than reviewed** {{claim:precision-0388}}.
+
+And one sentence that a reader might expect on a page like this **is not here on
+purpose**: we do not tell you what we can and cannot read, because six questions
+about what leaks have not been answered yet. [The disclosures page says which
+six](/disclosures/). {{claim:cannot-read-unanswered}}
+
+==============================================================================
+PAGE /v1/audiences/  —  The three buyers, and what each one buys
+==============================================================================
+
+---
+title: The three buyers, and what each one buys
+description: "Three buyers, ordered by opportunity rather than presented as three equal doors: a team running agents they already granted credentials to, an investor backing a company, and a startup about to meet diligence. Which of the six offers each one is shown, which were actually built for them, and — for one of the three — that none were."
+lead: "**Order matters here, and the page reflects it.** Three buyers, and they are not equally served by what is on this site. One has a market above it and nothing underneath. One has nothing at any price. One has two funded incumbents and a free tier already sitting under it, and is here only as a **reverse sale**. The grouping below adds no offer and no price: it is a second index over the same six, and **the third group has nothing built pointing at it at all.**"
+order: 3
+toc: true
+wide: true
+---
+
+## The routing, in one table
+
+{{offers-by-buyer}}
+
+Each row has a page of its own. The offers on it are the same records the
+[offer page](/offers/) renders — the same prices, the same states, the same
+delivery pages — sorted by whose question they were built to answer instead of by
+what they cost.
+
+## 1. You run agents today
+
+**The market anchors between eight and one hundred and fifty thousand dollars, and
+nothing sits underneath it.** {{claim:agent-market-gap}}
+
+That gap is the whole opportunity. Somebody running an agent today, who wants to
+know what they actually granted it, has a choice between a five-figure engagement
+and nothing. [Tier 1](/d/t1/) is ten pounds and answers the smaller version of the
+question; [tier 2](/d/t2/) is the version with the regulation attached.
+
+**What they are buying is the delta**: the union of what a credential permits,
+against what the holder is authorised and expected to do, and the excess authority
+between the two. **That delta is computed and never stored.** It is not a thing we
+keep about you.
+
+[Everything this buyer is shown &rarr;](/for/agents/)
+
+## 2. You are backing a company, and want somebody to look
+
+**No productised, affordable, signed investor review exists at any price
+— and every component of one is already written.** {{claim:investor-review-absent}}
+
+That is the emptiest quadrant on this page, and the one the top two tiers point
+at. [Tier 3](/d/t3/) is a person reading a situation. [Tier 4](/d/t4/) is a team.
+
+**It is also where the constraint bites hardest.** Selling buyers the question,
+selling suppliers the answer, and selling an opinion that vouches for the
+suppliers is the combination two industries have already regulated. So:
+
+- **The company issues every opinion**, with an express non-assumption of personal responsibility on its face. A product sold on a named individual's judgement runs at the test for assumed personal responsibility.
+- **The people who sell do not sign.** That constrains this site's own layout: the signature block and the checkout must not name the same person, and on this site neither names anyone at all.
+- The **signed opinion is a separate add-on with separate wording**, and that wording does not exist yet. {{claim:opinion-wording-absent}}
+
+[Everything this buyer is shown &rarr;](/for/investors/)
+
+## 3. You are a startup, and only as the reverse sale
+
+**Two funded incumbents, a free tier beneath them, and both already publish the
+answer.** Selling a founder a security posture document is selling into a
+commoditised tier. {{claim:founder-tier-commoditised}}
+
+**The unoccupied offer is the reverse one: telling a founder what diligence will
+find, before it runs.** Same components, opposite direction, and it is the only
+version of this that is not already free somewhere.
+
+**And it is not on the price list.** The startup page is assembled entirely out of
+tiers built for the other two buyers — you buy [tier 3](/d/t3/) or
+[tier 4](/d/t4/) and say which direction you want it run in. There is no seventh
+product behind that sentence, the page says so above its offers rather than below
+them, and this row is why the grouping is called an index rather than a range.
+{{claim:startup-offer-is-reverse-only}}
+
+[Everything this buyer is shown &rarr;](/for/startups/)
+
+## Why the groups are a view and not a range
+
+**Because the alternative is how an offer list grows without anybody deciding to
+grow it.** Three audiences, three pages, and within a month each page has a thing
+of its own on it that nobody priced, nobody specified, and nobody can say the
+state of.
+
+So the grouping is mechanical. `data/buyers.yml` names offer ids and nothing else;
+the build joins them to `data/offers.yml`; and the gate fails the release if a
+group names an offer that does not exist, if an offer belongs to no group, or if
+the set of groups changes. **A buyer page cannot contain a product**, in the same
+way [the eight further offers](/catalogue/) cannot quietly widen the four that are
+for sale.
+
+## What none of the three is buying
+
+**Raw findings.** Recall-optimised agents run at 0.388 precision — about three
+findings in five are wrong {{claim:precision-0388}}. A list of findings at that
+precision is not a product, it is a homework assignment with a bill attached.
+**What is sold is triage**: every finding that reaches a buyer has been reproduced
+first, not reviewed.
+
+**A verdict about a third party.** Where this estate names a competitor, a vendor,
+a standards body or a platform, it publishes the record — facts, dates, sources —
+and never the verdict, with no evaluative adjective attached to anybody's name.
+That rule holds on the pages you can read and it is [the reason the documents area
+is still closed](/dev-packs/).
+
+**A mark of conformity to a standard.** Nothing here is one, nothing here claims to
+be one, and the language of conformity marking is kept off this site entirely —
+it raises the standard of care beyond ordinary negligence for no benefit to a
+buyer.
+
+==============================================================================
+PAGE /v1/compare/  —  What each level actually gets you
+==============================================================================
+
+---
+title: What each level actually gets you
+description: "Every level side by side, including the free one: what you get, whose work it is, what you may do with it, and when it arrives. Fourteen rows, five columns, and every cell read off the offer data rather than written as copy."
+lead: "**Start with the free column.** The templates are published with read keys and anybody can take one — so what each paid step adds is only legible next to a column that does not have it. The licence row on its own explains the first step."
+order: 3
+toc: false
+wide: true
+---
+
+{{comparison}}
+
+{{brochure}}
+
+## How to read it
+
+**Every cell is read off something.** A price comes from `data/offers.yml`, a
+capability from what that level's page says it gets, a licence from a ruling. A
+row whose five cells would be a *promise* rather than a *description* is not on
+this table — what is still being specified is on [the board](/admin/work/) rather
+than in a column, because a table is the place where an unproven claim is hardest
+to notice and easiest to believe.
+
+**The free column is not a teaser.** [Fifteen template shapes are published](/policies/)
+with read keys, at riskmandate.ai. Go and open one before you buy anything here.
+That is not generosity and it is not a funnel: a policy nobody can check is a
+policy asking to be trusted, and the whole point of this document type is that it
+can be checked. {{claim:abp-templates-exist}}
+
+**The licence is the first step, and it is the one worth understanding.** What is
+published is Creative Commons Attribution, which obliges anybody using it to credit
+the source wherever it ends up — in a client report, inside a product, in a
+document that goes to a regulator. The paid levels replace that with a commercial
+licence to you over the same material. That is grantable because the copyright in
+the pack is ours: everything in it was written here. **The wording is not drafted
+yet**, and the ledger says so rather than this page implying otherwise.
+{{claim:entry-level-dual-licence}}
+
+**The line that matters most is between the second and third rows of the middle
+group.** Below it, the mandate is the starting one — written to be corrected, and
+correcting it is yours to do. At and above it, a named security professional does
+that correction against the industry, the use case and the details you send.
+{{claim:abp-correction-by-a-person}} {{claim:abp-sessions-by-a-person}}
+
+==============================================================================
+PAGE /v1/ledger/  —  Every claim on this site, with its state
+==============================================================================
+
+---
+title: Every claim on this site, with its state
+description: "One row per factual claim: what it says, the state it earned, how we know, and every page that says it. A claim cannot appear on a page here without appearing in this table first."
+lead: "**Every factual claim this site makes lives here once, with the state it earned and the date it earned it.** Pages cite a claim rather than restating it, so the same fact cannot be strong on one page and hedged on another. The rightmost column is joined at build time: it shows where each claim is actually said, and it is not editable by hand."
+order: 9
+toc: true
+wide: true
+---
+
+## The ledger
+
+{{ledger}}
+
+## What the states mean
+
+**Four of the ten states are ways of saying "not yet"**, and that proportion is the
+point rather than an embarrassment.
+
+| State | What it means |
+|---|---|
+| **exists and runs** | Built, and it runs today |
+| **measured** | Measured by our own pipeline, on a named workload and date |
+| **read, not run** | Read from a published source on this date. Never executed by us |
+| **projected** | Arithmetic, not an invoice. The workings are shown |
+| **specified, not built** | A specification. The thing it specifies does not exist |
+| **delivered by a person** | A named security professional does this work and signs it off. It is somebody's time rather than a pipeline, which is why its delivery estimate depends on a calendar |
+| **built, not located** | It was built. It has not been found since, and nothing here promises it until it is |
+| **a booking, not a download** | What is bought is a person's time, not a file |
+| **part exists** | One half runs. The half carrying the guarantee does not |
+| **does not exist yet** | It does not exist. It is listed so nobody proposes it as new |
+
+## Why a store publishes one of these
+
+Because **checkability is the thing being sold.** An offer page that cannot be
+checked is arguing against the product sitting beside it.
+
+And because the alternative is worse in a specific, predictable way: without a
+ledger, the sentence "the pipeline does not exist" survives one draft, gets softened
+to "the pipeline is in development" in the next, and is gone by the third. Here it
+is a row with a state, cited from the page that makes the claim, and **the build
+fails if a page cites a claim that is not in this table.**
+
+==============================================================================
+PAGE /v1/policies/  —  Which agent do you run?
+==============================================================================
+
+---
+title: Which agent do you run?
+description: "Fifteen Agent Behaviour Policies, one per application, at four levels: the pack downloaded at £5, a working vault you hold the keys to at £50, corrected against your situation at £500, and two sessions with a security professional signing it at £1,500."
+lead: "**Pick the application closest to yours.** Each one is an Agent Behaviour Policy: everything that agent can do, what you authorised it to do, the gap between them, and what actually stands in the way. **The templates are free and public** on riskmandate.ai, with published read keys — go and read one. **What is priced here is that template with the mandate corrected, a name on the licence and no public key**, and at the upper two levels the correction done with you rather than by you."
+order: 2
+toc: true
+wide: true
+head_css: /assets/shop.css
+---
+
+## The catalogue
+
+{{catalogue}}
+
+## The four levels
+
+Every level is the same document. **What changes is the form it arrives in and who
+does the correcting.**
+
+{{levels-table}}
+
+**Something not on the list?** An agent, a connector or a deployment nobody has
+profiled yet starts at the third level, not below it — the first two deliver an
+existing template and for yours there is not one. The grant gets measured, or read
+from the vendor's own pages and dated, before anything is built.
+[That one is here](/p/your-own/).
+
+## What the counts on a tile mean
+
+Four numbers, and **not one of them is a score.**
+
+- **It can do** — every capability the credential behind that deployment actually permits. Almost never enumerated anywhere, and reliably larger than whoever deployed it expected.
+- **You wanted** — what it is authorised and expected to do. Usually clear, whether or not anybody wrote it down.
+- **Not wanted** — the gap. Permitted, and nobody asked for it.
+- **Nothing in the way** — how many of those sit behind something that is not a control. **This is the only number a control moves**, and the gap between the last two columns is the business case for putting one in.
+
+**There is no rating here and there will not be one.** The same policy is dangerous
+in one deployment and harmless in another, and nothing about the document changed:
+risk depends on the assets, the consequences and the date. A policy cannot be
+dangerous; a deployment can.
+
+## Where the list comes from
+
+**riskmandate.ai publishes these shapes and this store promotes them.** The
+catalogue on this page carries the source URL, the time it was retrieved and a
+hash of the page it was read from, because **no page on this site that sells
+anything opens a network connection** — that is a build check rather than an intention, so the list is taken
+at build time rather than fetched while you read.
+
+A shape added upstream is on this page at the next build. One that arrives without
+a code here **stops the build** rather than rendering a tile whose buttons produce
+a product code nobody can fill.
+
+==============================================================================
+PAGE /versions/  —  Release history
+==============================================================================
+
+---
+title: Release history
+description: "Every release of this site, what changed in it, and the commit it was built from. The version is owned by one file, the release commit's subject repeats it, and the pipeline refuses to tag if the two disagree."
+lead: "**Every push to the release branch is a release**, and every release is tagged. The version is owned by `admin/build/version.txt`, moved only by `bin/bump.py`, repeated in the release commit's subject, and **CI refuses to tag if the two disagree**. The same records are served as [JSON](/versions/index.json)."
+order: 10
+toc: true
+---
+
+## Releases
+
+{{releases}}
+
+## The pipeline that gates each one
+
+Three jobs, in this order, the same order as every sibling site in this estate.
+
+**1 · validate.** `admin/build/validate.sh` — the build is reproducible against the
+committed output, the version agrees everywhere it appears, internal links
+resolve, every canonical URL is on the host in `CNAME`, the credential tripwire is
+clean, every inline script parses, and this site's own acceptance assertions hold.
+**A failure stops the release: no tag, no publish.** It runs on pull requests too,
+so branch work is gated before it ever reaches the release branch.
+
+**2 · tag-release.** The version file is read, the release commit is found by its
+subject line, and the two must agree. The tag must be the next minor — or a
+deliberate major — after the previous latest. Historical tags missing from the
+remote are backfilled, idempotently. Then the tag is pushed.
+
+**3 · deploy.** The site is rebuilt from `content/` and published. It never runs
+when validation failed, and never from a pull request.
+
+## What this site's gate checks that a sibling's does not
+
+This is the first site in the estate that carries a price, and **a page with a
+price is an offer.** So the gate carries the rules that constrain an offer, as
+machine assertions rather than as advice in a document:
+
+- **The word that may never appear on a site carrying prices** appears on no page, in no heading, in no filename, and in no built artefact.
+- **No conformity-marking language in any form**, and no claim to be a compliance assessment.
+- **The three terms ruled out on 10 September** — one for encryption, one for recall, one for autonomy — reach no page, [including the page that explains why](/disclosures/). {{claim:three-banned-words}}
+- **The sentence about what a provider can read** is absent until six questions about what leaks are answered. {{claim:cannot-read-unanswered}}
+- **The absolute form of the tamper claim** never appears, and the honest form never appears without its witness in sight. {{claim:tamper-evident-witness}}
+- **The open naming collision** reaches no page. {{claim:naming-collision-open}}
+- **Every price** matches the pack that set it, to the penny.
+- **Committed spend** is never mentioned without the negation in sight: professional services do not draw down committed spend, and the old version of that claim appears nowhere. {{claim:no-committed-spend}}
+- **The model-generated disclosure** is above the fold on every page, not in a footer. {{claim:transparency-article}}
+
+**A rule that only lives in a document gets broken by the next person who has not
+read it.** These live in `tools/check_site.py`, and each one names the rule it
+enforces.
+
+==============================================================================
+PAGE /what-is-in-one/  —  What is actually in one
+==============================================================================
+
+---
+title: What is actually in one
+description: "The four objects inside an Agent Behaviour Policy and the order they come in: the mandate, the grant, the delta and the barrier. Why there is no score on anything here and never will be. And the difference between the free template and the thing that is priced."
+lead: "**A grant on its own is an inventory, and nobody acts on an inventory.** This is what is inside the document every level of this store sells — four objects, in an order that matters — and two things the document deliberately does not have."
+order: 12
+toc: true
+---
+
+## What is actually in one
+
+Four objects, and the order they come in matters.
+
+- **The mandate** — what the agent is authorised and expected to do. **Elicited**, because you already know it.
+- **The grant** — everything it can actually do. **Measured**, from the deployment shape, the account and the credentials. It is almost never enumerated anywhere, and it is reliably larger than whoever deployed it expected.
+- **The delta** — permitted, and nobody asked for it. **Derived**, and recomputed whenever either input moves.
+- **The barrier** — what stands between the agent and each capability. Four kinds, and **only one of them is a control**: a setting the agent's own account can flip is not one, because the grant includes the ability to remove it.
+
+**A grant on its own is an inventory, and nobody acts on an inventory.** *Your agent
+can do sixteen things* is a shrug. *Your agent can do sixteen things and you
+authorised five* is a finding.
+
+## There is no score here, and there will not be one
+
+**The same policy is dangerous in one deployment and harmless in another, and
+nothing about the document changed.** The most permissive grant imaginable, running
+where there is nothing to reach, is a low risk; the same grant with a production
+database attached tomorrow is a different one. Risk is a function of the behaviour policy,
+the assets, the consequences and the date — **and the behaviour policy is the input that does
+not move.**
+
+So there is no rating on anything here, no traffic light and no risk level. **A
+policy cannot be dangerous. A deployment can.**
+
+## The free thing, and the paid thing
+
+**The templates are free and public**, with published read keys, at
+riskmandate.ai. Go and read one before you buy anything here. That is not a
+generosity and it is not a funnel: a policy nobody can check is a policy asking to
+be trusted, and the whole point of this document type is that it can be checked.
+
+**What is priced here is an instance.** The same template with the mandate
+corrected, your name on the licence and no public key on it — and at the upper two
+levels, the correction done with you rather than by you. **The paid thing is not
+access and it is not customisation. It is independence:** at every level more of
+the result is yours and less of it depends on us still being here.
+
+{{claim:abp-catalogue-promoted}}
+
+==============================================================================
+NOT INCLUDED ABOVE
+==============================================================================
+
+/admin/ and /admin/try/ are omitted from this file on purpose. They are public and
+linked from llms.txt; they are noindex, out of sitemap.xml and out of this file because
+the walkthrough prints working discount codes. Read them at their own addresses, or as
+markdown at /admin/try/index.md.

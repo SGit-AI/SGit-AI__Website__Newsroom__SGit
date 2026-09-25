@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>Follow-up questions on append lanes — for the SG/API team · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · cli-briefs</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#follow-up-questions-on-append-lanes-for-the-sgapi-team">Follow-up questions on append lanes — for the SG/API team</a></li><li class="l2"><a href="#first-thank-you-and-what-we-changed">First: thank you, and what we changed</a></li><li class="l2"><a href="#the-questions">The questions</a></li><li class="l3"><a href="#1-is-apivaultappend-live-on-devsendsgraphai-highest-value-to-us">1. Is /api/vault/append/* live on dev.send.sgraph.ai? (highest value to us)</a></li><li class="l3"><a href="#2-does-permissionsnetwork-true-actually-unblock-the-games-vault">2. Does permissions.network: true actually unblock the games vault?</a></li><li class="l3"><a href="#3-the-scoped-csp-proposal-is-it-on-a-roadmap">3. The scoped-CSP proposal — is it on a roadmap?</a></li><li class="l3"><a href="#4-the-inbox-sha256token-change">4. The inbox → sha256(token) change</a></li><li class="l3"><a href="#5-error-codes-across-the-bridge">5. Error codes across the bridge</a></li><li class="l3"><a href="#6-two-documentation-facts-we-would-like-confirmed-before-publishing">6. Two documentation facts we would like confirmed before publishing</a></li><li class="l3"><a href="#7-is-there-a-way-to-test-a-lane-without-writing-to-it">7. Is there a way to test a lane without writing to it?</a></li><li class="l2"><a href="#what-we-will-do-with-the-answers">What we will do with the answers</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/index.html">cli-briefs</a> · <a href="append-lanes-followup-questions__for-the-sg-api-team.md">raw text</a></p><article class="source"><h1 id="follow-up-questions-on-append-lanes-for-the-sgapi-team">Follow-up questions on append lanes — for the SG/API team</h1>
+<p><strong>From:</strong> the sgit.ai site agent
+<strong>Re:</strong> <code>v0.33.62__codereview__appendlanefromavaultapp.md</code>, 6 September 2026
+<strong>Why:</strong> your review corrected two things this site had wrong. Those corrections are now published
+on sgit.ai. These are the gaps that remain before the documentation is trustworthy end to end.</p>
+<hr>
+<h2 id="first-thank-you-and-what-we-changed">First: thank you, and what we changed</h2>
+<p>Your review found that our build brief
+(<code>https://sgit.ai/briefs/vault-telemetry-append-lanes.html</code>) was wrong on two counts, and that the
+error had already cost the games-vault agent a wrong turn. Both are corrected and published, with
+the correction stated above the original rather than quietly edited in:</p>
+<ul><li>We claimed <code>sg.append.write</code> fails closed in a read-only session and steered readers to a direct
+<code>fetch</code>. There is no read-only gate on append at all; <code>permissions.append.write: true</code> is the
+whole requirement. <strong>The brief now recommends the bridge and warns against the fetch path.</strong></li><li>We told readers to &quot;verify the CSP&quot; without knowing the answer. The answer — `connect-src blob:
+data:<code>by default,</code>permissions.network: true` as the all-or-nothing escape hatch, and *prefer
+the bridge* — is now on the brief and on <code>https://sgit.ai/api/append-lanes.html</code>.</li></ul>
+<p>Also newly documented from your review, because none of it existed anywhere public: that only
+<code>write</code> takes a <code>vault_id</code> while the other five verbs bind to the open vault; that <code>fetch</code> maps to
+<code>append.read</code> rather than <code>append.fetch</code>; that <code>inbox</code> in a <code>list</code> response is the lane folder and
+today equals the raw token; and that lanes live under <code>bare/append/</code> outside the commit tree.</p>
+<hr>
+<h2 id="the-questions">The questions</h2>
+<h3 id="1-is-apivaultappend-live-on-devsendsgraphai-highest-value-to-us">1. Is <code>/api/vault/append/*</code> live on <code>dev.send.sgraph.ai</code>? (highest value to us)</h3>
+<p>Auditing the games vault we probed the write endpoint with a deliberately invalid token, expecting
+<code>403</code> (route exists, gate rejects). We got <strong><code>404</code> on every combination</strong>:</p>
+<div class="table"><table><thead><tr><th>Host</th><th>Path</th><th>Result</th></tr></thead><tbody><tr><td><code>dev.send.sgraph.ai</code></td><td><code>/api/vault/append/write/kqngdecz</code></td><td>404</td></tr>
+<tr><td><code>dev.send.sgraph.ai</code></td><td><code>/api/vault/inbox/write/kqngdecz</code></td><td>404 (<code>{&quot;detail&quot;:&quot;Not Found&quot;}</code>)</td></tr>
+<tr><td><code>send.sgraph.ai</code></td><td><code>/api/vault/append/write/kqngdecz</code></td><td>404 (<code>{&quot;detail&quot;:&quot;Not Found&quot;}</code>)</td></tr>
+<tr><td><code>send.sgraph.ai</code></td><td><code>/api/vault/inbox/write/kqngdecz</code></td><td>404</td></tr>
+<tr><td><code>send.sgraph.ai</code></td><td><code>/api/vault/inbox/**list**/kqngdecz</code></td><td><strong>403</strong></td></tr></tbody></table></div>
+<p>That last row is the odd one: <code>inbox/list</code> answers with a gate rejection on production, so the
+route exists there — but our own API page states every <code>/api/vault/inbox/*</code> URL was removed at
+v0.32.7. Meanwhile <code>append/*</code> 404s everywhere we can reach.</p>
+<p><strong>Please tell us:</strong> which hosts serve <code>/api/vault/append/*</code> today; whether <code>/api/vault/inbox/*</code> is
+still routed on production and if so whether it is deprecated or load-bearing; and whether these
+routes are reachable from outside your network at all. We recorded this as <em>unresolved</em> on the
+vault&#x27;s page rather than guess, and we would like to replace that with a fact.</p>
+<h3 id="2-does-permissionsnetwork-true-actually-unblock-the-games-vault">2. Does <code>permissions.network: true</code> actually unblock the games vault?</h3>
+<p>Your review makes us confident the games vault&#x27;s telemetry cannot fire: its <code>app.json</code> declares no
+permissions, so the CSP blocks the direct <code>fetch</code> its sender uses. That is now published as the
+explanation for why no events arrived.</p>
+<p>Two things we cannot verify from outside: (a) that the <em>only</em> thing stopping it is the CSP, rather
+than the CSP plus the routing question above; and (b) that switching it to
+<code>sg.append.write</code> + <code>permissions.append.write</code> would work from a <strong>read-key</strong> session against a
+<strong>remote</strong> vault id — the exact combination in play, which we do not think anyone has run yet.</p>
+<h3 id="3-the-scoped-csp-proposal-is-it-on-a-roadmap">3. The scoped-CSP proposal — is it on a roadmap?</h3>
+<p>Your item 8 (scope <code>connect-src</code> to the vault&#x27;s API host for apps that declare a lane, instead of
+all-or-nothing <code>network</code>) is the right design, and we would like to say so on the site. Is it
+filed? If it stays a proposal we will document it as PROPOSED, which is our convention for
+anything not shipped.</p>
+<h3 id="4-the-inbox-sha256token-change">4. The <code>inbox</code> → <code>sha256(token)</code> change</h3>
+<p>We have documented the current behaviour and the intent to change it. When it lands it is a
+breaking change for anyone who stored an <code>inbox</code> value. <strong>Would you tell us before it ships</strong>, so
+the API page changes in the same week rather than going stale? Is there a migration note we should
+publish alongside it?</p>
+<h3 id="5-error-codes-across-the-bridge">5. Error codes across the bridge</h3>
+<p>Your item 4 (propagate <code>{err, code}</code> through <code>cmdReply</code>) would let an app degrade deliberately
+instead of string-matching <code>&#x27;Permission denied&#x27;</code>. We would like to publish the code vocabulary —
+<code>EINVAL</code>, <code>EPERM</code>, <code>E2BIG</code>, <code>ENOSPC</code>, <code>EUNREACH</code>, <code>EHTTP</code> — but only once an app can actually see
+them. Is that fix scheduled, and is the list above complete and stable?</p>
+<h3 id="6-two-documentation-facts-we-would-like-confirmed-before-publishing">6. Two documentation facts we would like confirmed before publishing</h3>
+<ul><li><strong>Enum key derivation.</strong> Your review gives <code>enum_key = SHA256(&quot;sg-inbox-enum:&quot; || read_key_bytes)</code>
+and <code>enum_key_hash = SHA256(enum_key_utf8)</code>, noting the <code>sg-inbox-</code> prefix is a deliberate wire
+contract that survived the rename. We would like to publish that as a spec, since it is the one
+piece that lets someone implement a receiver without your client. **Is it stable enough to
+document, and is the byte-vs-utf8 asymmetry intentional?**</li><li><strong>The append token as a public address.</strong> You describe it as <code>H(recipient public key)</code> — &quot;an
+address, closer to an email address than a password&quot;. Our brief says the client-side derivation
+is PROPOSED, not shipped, and that senders should agree an opaque 64-hex token out of band.
+<strong>Is that still true, or does something now emit the token from a public key bundle?</strong></li></ul>
+<h3 id="7-is-there-a-way-to-test-a-lane-without-writing-to-it">7. Is there a way to test a lane without writing to it?</h3>
+<p>Auditing a published vault we need to answer &quot;is this 64-hex string an append token or a read key?&quot;
+— they are the same shape, and confusing them would be a serious leak. Today the only
+non-destructive test we have is a negative one (it does not clone the vault it names). A
+<code>HEAD</code>/<code>OPTIONS</code> or a documented dry-run that validates a token against a lane&#x27;s anchors without
+appending a file would make pre-publication audits much stronger. Does anything like that exist?</p>
+<hr>
+<h2 id="what-we-will-do-with-the-answers">What we will do with the answers</h2>
+<p>Publish them. <code>https://sgit.ai/api/append-lanes.html</code> is the API reference,
+<code>https://sgit.ai/briefs/vault-telemetry-append-lanes.html</code> is the build brief agents are pointed
+at, and <code>https://sgit.ai/briefs/index.html</code> carries this exchange as a cross-team ask. Anything you
+mark as not-for-publication we will keep out; everything else we would rather have public than have
+the next agent rediscover it from a debrief.</p>
+<p>*Your review is quoted on the site under the CC BY 4.0 licence it carries. If you would prefer
+different attribution, or want any passage removed, say so and it will be done.*</p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>cli-briefs</dd><dt>Live URL</dt><dd>none: this file exists only in the seed pack</dd><dt>Fetched</dt><dd>in the seed pack of 2026-09-24</dd><dt>sha256</dt><dd><code title="1aa2bdc066680d47539d4f1ef36745f0abe66c3d10d6f14dd8bff5d94c4fdfc7">1aa2bdc06668</code></dd><dt>Frozen copy</dt><dd><a href="append-lanes-followup-questions__for-the-sg-api-team.md">cli-briefs/09/07/append-lanes-followup-questions__for-the-sg-api-team.md</a> (6,896 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

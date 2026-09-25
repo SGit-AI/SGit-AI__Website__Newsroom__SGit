@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — The Roster: nineteen roles (teams.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · teams.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-the-roster-nineteen-roles">02 — The Roster: nineteen roles</a></li><li class="l2"><a href="#the-nineteen">The nineteen</a></li><li class="l3"><a href="#build-5">Build (5)</a></li><li class="l3"><a href="#assure-4">Assure (4)</a></li><li class="l3"><a href="#remember-4">Remember (4)</a></li><li class="l3"><a href="#route-1">Route (1)</a></li><li class="l3"><a href="#represent-3">Represent (3)</a></li><li class="l3"><a href="#capitalise-2">Capitalise (2)</a></li><li class="l2"><a href="#where-each-role-exists">Where each role exists</a></li><li class="l2"><a href="#the-portability-finding">The portability finding</a></li><li class="l2"><a href="#growth-timeline-from-git">Growth timeline (from git)</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/teams.sgit.ai.html">teams.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 25 of 33</p><nav class="pager"><span><a href="024-01-the-rolemd-format-measured-and-one-re.html">← 01 — The ROLE.md Format: measured, and one recommendation</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="026-03-the-three-topologies-pioneers-settler.html">03 — The Three Topologies: Pioneers, Settlers, Town Planners →</a></span></nav><article class="source"><h1 id="02-the-roster-nineteen-roles">02 — The Roster: nineteen roles</h1>
+<p><strong>Version</strong> v0.33.64 · 7 September 2026
+<strong>Source</strong> <code>SGraph-AI__App__Send/team/</code> (Explorer, Villager, Town Planner) and <code>sg-playwright/team/roles/</code></p>
+<hr>
+<h2 id="the-nineteen">The nineteen</h2>
+<p>Grouped by what they are <em>for</em>, not alphabetically — because the grouping is itself the lesson about how to compose a team.</p>
+<h3 id="build-5">Build (5)</h3>
+<p><strong>architect</strong> · <strong>dev</strong> · <strong>devops</strong> · <strong>qa</strong> · <strong>designer</strong></p>
+<p>The conventional core. Two things are not conventional. First, the Architect&#x27;s claim is about <em>boundaries</em>, not design: <em>&quot;The Architect owns the boundaries. Every interface contract, dependency direction, and abstraction layer passes through architectural review.&quot;</em> Second, the Designer&#x27;s remit is unusually wide — <em>&quot;A well-designed API is as much a design artifact as a well-designed interface. The structure of a configuration file, the shape of a CLI command, the naming of a function, the rhythm of a test suite — these are all design.&quot;</em> That role is where the estate&#x27;s Design-with-a-capital-D influence lands operationally (the Jonathan Ive test as a mandatory UI validator).</p>
+<p>Designer is also the newest of the founding group — added <strong>16 March 2026</strong>, five weeks after the rest.</p>
+<h3 id="assure-4">Assure (4)</h3>
+<p><strong>appsec</strong> · <strong>grc</strong> · <strong>dpo</strong> · <strong>advocate</strong></p>
+<p>Security, risk, data protection, and the user&#x27;s corner. Three carry falsifiable claims; the DPO&#x27;s is the sharpest on consequence: <em>&quot;If a privacy claim is made that is not legally accurate, the DPO has failed.&quot;</em></p>
+<h3 id="remember-4">Remember (4)</h3>
+<p><strong>librarian</strong> · <strong>historian</strong> · <strong>cartographer</strong> · <strong>journalist</strong></p>
+<p><strong>This quartet is the estate&#x27;s real signature and the hardest thing for others to copy.</strong> Each owns a different failure of institutional memory:</p>
+<ul><li><strong>Librarian</strong> — findability. <em>&quot;If a piece of knowledge exists in this repo but cannot be found in under 30 seconds, the Librarian has failed.&quot;</em></li><li><strong>Historian</strong> — rationale. <em>&quot;If a decision was made but its rationale is not recorded, the Historian has failed. The team will re-litigate it…&quot;</em></li><li><strong>Cartographer</strong> — visibility. <em>&quot;If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed.&quot;</em></li><li><strong>Journalist</strong> — comprehensibility to outsiders, with a time bound: sixty seconds to understand the zero-knowledge guarantee.</li></ul>
+<p>Four roles whose entire job is that the team can still think next month. This is the same thesis as the sites-as-memory network, staffed.</p>
+<h3 id="route-1">Route (1)</h3>
+<p><strong>conductor</strong></p>
+<p>The orchestrator that does no work. Principles worth publishing verbatim: <em>&quot;Flow over heroics&quot;</em>, <em>&quot;Priority is singular&quot;</em> (every role knows its single most important task), <em>&quot;Visibility is accountability&quot;</em> (<em>&quot;if it is not tracked in <code>.issues/</code> or a review document, it does not exist&quot;</em>), <em>&quot;Roles are boundaries&quot;</em>, <em>&quot;Blockers decay fast&quot;</em> (<em>&quot;an unresolved blocker older than one session is an escalation&quot;</em>).</p>
+<h3 id="represent-3">Represent (3)</h3>
+<p><strong>ambassador</strong> · <strong>sherpa</strong> · <strong>translator</strong></p>
+<p>Outward and onboarding-facing. <code>translator</code> exists only in the Villager team — worth asking why (Q4).</p>
+<h3 id="capitalise-2">Capitalise (2)</h3>
+<p><strong>accountant</strong> · <strong>alchemist</strong></p>
+<p>Town Planner roles. The Accountant <em>&quot;provides the financial models and projections that the Alchemist wraps in investor narrative.&quot;</em> An agent role for turning numbers into a story, named <em>alchemist</em> — the honesty of that naming is a small masterpiece and should be quoted on the site.</p>
+<hr>
+<h2 id="where-each-role-exists">Where each role exists</h2>
+<div class="table"><table><thead><tr><th>Role</th><th>Explorer</th><th>Villager</th><th>Town Planner</th><th>sg-playwright</th></tr></thead><tbody><tr><td>architect · dev · devops · qa · historian · librarian</td><td>●</td><td>●</td><td>○</td><td>●</td></tr>
+<tr><td>designer</td><td>●</td><td>●</td><td>●</td><td>○</td></tr>
+<tr><td>appsec · grc · dpo · cartographer · journalist · conductor · advocate · ambassador · sherpa</td><td>●</td><td>●</td><td>○</td><td>○</td></tr>
+<tr><td>alchemist</td><td>●</td><td>○</td><td>●</td><td>○</td></tr>
+<tr><td>accountant</td><td>○</td><td>○</td><td>●</td><td>○</td></tr>
+<tr><td>translator</td><td>○</td><td>●</td><td>○</td><td>○</td></tr></tbody></table></div>
+<p>● present · ○ absent. Explorer has 17 directories but only 13 definitions (advocate, alchemist, ambassador, sherpa are empty); Town Planner has 4 directories and 3 definitions (librarian missing). The site must publish the gaps as gaps — a roster page that hides four empty roles is exactly the false memory <code>nfrs.sgit.ai</code> warns about.</p>
+<h2 id="the-portability-finding">The portability finding</h2>
+<p><strong>Six roles are defined in all three <em>operational</em> teams</strong> — architect, dev, devops, qa, historian, librarian — across Explorer, Villager and the second product, sg-playwright. (Town Planner is excluded from this test: it is a commercial team — accountant, alchemist, designer, librarian — not an operational one, and only its Librarian overlaps.)</p>
+<p>That is the reusable core, and it answers the reader&#x27;s real question (&quot;what roles do I actually need?&quot;) with evidence rather than opinion: the estate independently reached for these six when standing up a second product, which is the closest thing to a controlled experiment the corpus contains.</p>
+<p>The <code>/roster/</code> page should lead with those six as the recommended starting team, and present the other thirteen as additions with a stated trigger — <em>add a DPO when you process personal data; add a Cartographer when the dependency graph outgrows one head; add a Journalist when outsiders must understand you.</em></p>
+<h2 id="growth-timeline-from-git">Growth timeline (from git)</h2>
+<div class="table"><table><thead><tr><th>Date</th><th>Event</th></tr></thead><tbody><tr><td><strong>11 Feb 2026</strong></td><td><em>&quot;Add ROLE.md identity documents for all 10 agent roles&quot;</em> — eleven files land: appsec, architect, cartographer, conductor, dev, devops, historian, journalist, librarian, qa (+1)</td></tr>
+<tr><td><strong>12 Feb 2026</strong></td><td>advocate, grc, sherpa</td></tr>
+<tr><td><strong>13 Feb 2026</strong></td><td>ambassador, dpo — and <em>&quot;Execute full team activation for incident handling series (5 phases)&quot;</em>, the first real exercise</td></tr>
+<tr><td><strong>16 Mar 2026</strong></td><td>designer</td></tr></tbody></table></div>
+<p>Ten to nineteen in five weeks, then stable. Note the commit message says <em>ten</em> roles while eleven files landed — publish the discrepancy rather than smoothing it; a memory site that quietly corrects its own sources teaches agents to do the same.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/03__the-three-topologies.md</p>
+<hr></article><nav class="pager"><span><a href="024-01-the-rolemd-format-measured-and-one-re.html">← 01 — The ROLE.md Format: measured, and one recommendation</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="026-03-the-three-topologies-pioneers-settler.html">03 — The Three Topologies: Pioneers, Settlers, Town Planners →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>teams.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://teams.sgit.ai/llms-full.txt">https://teams.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:38Z</dd><dt>sha256</dt><dd><code title="11002d6345514c0988bee2ebdc6e5d4b1e85542fe5a7dfb7483da48d739b7939">11002d634551</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/teams.sgit.ai/llms-full.txt</a> (90,666 bytes)</dd><dt>Section</dt><dd>25 of 33: 02 — The Roster: nineteen roles</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

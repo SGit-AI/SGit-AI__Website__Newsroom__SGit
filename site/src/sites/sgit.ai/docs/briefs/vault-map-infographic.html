@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>An infographic of the published vaults, build brief · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../../index.html">Front page</a><a href="../../../../../editions/index.html">Editions</a><a href="../../../../../reading-room/index.html">Reading room</a><a href="../../../../../library/index.html">Index</a><a href="../../../../../concepts/index.html">Concepts</a><a href="../../../../../vaults/index.html">Vaults</a><a href="../../../../../history/index.html">History</a><a href="../../../../../signals/index.html">Signals</a><a href="../../../../../loose-ends/index.html">Loose ends</a><a href="../../../../../newsroom/index.html">The newsroom</a><a href="../../../../../about/index.html">About</a><a href="../../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#an-infographic-of-the-published-vaults-build-brief">An infographic of the published vaults, build brief</a></li><li class="l1"><a href="#an-infographic-of-the-published-vaults-grouped-by-use-case-and-industry">An infographic of the published vaults, grouped by use case and industry</a></li><li class="l2"><a href="#blocker-one-the-network-infographic-is-already-wrong">Blocker one: the network infographic is already wrong</a></li><li class="l2"><a href="#blocker-two-neither-requested-grouping-exists-yet">Blocker two: neither requested grouping exists yet</a></li><li class="l2"><a href="#what-the-picture-has-to-show">What the picture has to show</a></li><li class="l2"><a href="#the-accuracy-rules-because-an-image-model-will-not-follow-them-on-its-own">The accuracy rules, because an image model will not follow them on its own</a></li><li class="l2"><a href="#publishing-it-on-this-site">Publishing it on this site</a></li><li class="l2"><a href="#the-prompt-to-hand-the-agent">The prompt to hand the agent</a></li></ul></details>
+<p class="crumbs"><a href="../../../../../reading-room/index.html">Reading room</a> / <a href="../../../../../reading-room/sgit.ai.html">sgit.ai</a> · <a href="vault-map-infographic.md">raw text</a> · <a class="ext" href="https://sgit.ai/docs/briefs/vault-map-infographic.html">live ↗</a></p><article class="source"><h1 id="an-infographic-of-the-published-vaults-build-brief">An infographic of the published vaults, build brief</h1>
+<blockquote><p>A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry, starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.</p></blockquote>
+<p><em>Source: <a href="vault-map-infographic.html">https://sgit.ai/docs/briefs/vault-map-infographic.html</a><a class="ext live" href="https://sgit.ai/docs/briefs/vault-map-infographic.html" title="live page">↗</a> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a <code>.md</code> twin; internal links below point at them.</em></p>
+<hr>
+<p><a href="../../index.html">Home</a><a class="ext live" href="https://sgit.ai/index.html" title="live page">↗</a> / <a href="../index.html">Docs</a><a class="ext live" href="https://sgit.ai/docs/index.html" title="live page">↗</a> / <a href="index.html">Briefs</a><a class="ext live" href="https://sgit.ai/docs/briefs/index.html" title="live page">↗</a> / The vault map infographic</p>
+<p><strong>Surface:</strong> a published image, and the data behind it. <a href="../surfaces.html">The three code surfaces →</a><a class="ext live" href="https://sgit.ai/docs/surfaces.html" title="live page">↗</a></p>
+<h1 id="an-infographic-of-the-published-vaults-grouped-by-use-case-and-industry">An infographic of the published vaults, grouped by use case and industry</h1>
+<p>A brief for producing a companion to the network infographic: the same treatment applied to the <strong>26 published vaults</strong> rather than to the sites, grouped by <strong>what someone is trying to do</strong> and <strong>the industry they are in</strong>. It is written to be executed, and it opens with the two things that will otherwise sink it. The groupings do not exist as data yet, and an infographic is a snapshot that rots.</p>
+<p><strong>Do not start with the picture.</strong> Two blockers below are upstream of any image being generated. Fix them first and the infographic becomes a rendering job; skip them and an image model will invent the groupings, which is the one failure nobody will notice until a customer reads it back to us.</p>
+<h2 id="blocker-one-the-network-infographic-is-already-wrong">Blocker one: the network infographic is already wrong</h2>
+<p>The companion image this one is modelled on carries a footer reading <strong>“19 sites · 18 published · 1 forthcoming”</strong>, and lists <code>skills.sgit.ai</code> as <em>Forthcoming</em>. Both were true when it was generated. Today <a href="../../network/index.html">the network</a><a class="ext live" href="https://sgit.ai/network/index.html" title="live page">↗</a> lists <strong>27 sites</strong> and skills.sgit.ai has been live for some time, so a picture that is roughly a week old is now wrong in its headline number and in one of its cells.</p>
+<p>That is not an argument against making it. It is the constraint the work has to be designed around:</p>
+<ul><li><strong>Every count in the image must be computed from the data at generation time</strong> and pasted in, never estimated, never carried over from a previous version.</li><li><strong>The image carries the version and date it was generated</strong>, in the footer, in the same way <a href="../guidance/index.html#versions">every vault app carries its version</a><a class="ext live" href="https://sgit.ai/docs/guidance/index.html#versions" title="live page">↗</a>. A picture with a stamp is a snapshot; one without is a claim.</li><li><strong>The page that publishes it links to the live list beside it</strong>, so a reader who wants today&#x27;s answer has one click to it. The infographic is the overview; <a href="../../demos/vaults/index.html">the table</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> is the truth.</li><li><strong>Regenerating is a scheduled chore, not an event.</strong> Add it to the release checklist as a diff: if the vault count changed, the image is stale.</li></ul>
+<h2 id="blocker-two-neither-requested-grouping-exists-yet">Blocker two: neither requested grouping exists yet</h2>
+<p>The brief asks for <strong>use case</strong> and <strong>industry</strong>. Checked against <code>admin/content/vaults.json</code>, which is what the vaults table and <a class="ext" href="https://sgit.ai/demos/vaults/llms.txt">the catalogue ↗</a> are generated from, the fields today are:</p>
+<div class="table"><table><thead><tr><th>Field</th><th>Coverage</th><th>What it actually is</th></tr></thead><tbody><tr><td><code>category</code></td><td><strong>26 of 26</strong></td><td>The vault&#x27;s <em>shape</em>, not its use case, Application (5), Analysis (5), Record (4), Reference (4), Presentation (3), Briefing (3), Report (1), Gallery (1). Useful, and not what was asked for</td></tr>
+<tr><td><code>job</code></td><td><strong>6 of 26</strong></td><td>The closest thing to a use case that exists (“Publish a standard as data”, “Pitch an investor”, “Hand over a report”), but it was added for the homepage bands and covers under a quarter of them</td></tr>
+<tr><td><code>industry</code></td><td><strong>0 of 26</strong></td><td>Does not exist</td></tr></tbody></table></div>
+<p><strong>So the first deliverable is not an image, it is two fields.</strong> Add <code>use_case</code> and <code>industry</code> to every entry in <code>vaults.json</code>, and the infographic becomes a view over data the site already publishes, which is the rule the rest of this estate runs on: <em>indexes are generated from the data they index, because an index maintained by hand becomes a lie on a schedule.</em></p>
+<ul><li><strong>Write both fields from the vault, not from its title.</strong> Open each one, read what it does, and say what job it does for whom. The pages under <a href="../../demos/vaults/index.html">Published vaults</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a> already contain that judgement in prose. This is turning it into data.</li><li><strong>Keep the vocabularies small and closed.</strong> Six to eight use cases and six to eight industries, reused; a taxonomy where most values appear once is not a taxonomy. Write the allowed values down in the file and have the build fail on an unknown one.</li><li><strong>Be honest where a vault has no industry.</strong> Several are method demonstrations that belong to no sector. <code>&quot;industry&quot;: &quot;cross-industry&quot;</code> is a real answer; inventing “FinTech” because a vault mentions money is not.</li><li><strong>Do not delete <code>category</code>.</strong> Shape and use case are different questions and the table uses shape. Add, do not replace.</li></ul>
+<h2 id="what-the-picture-has-to-show">What the picture has to show</h2>
+<p>Match the network infographic so the two read as a pair: dark ground, one luminous shared foundation at the top, numbered columns beneath it, a footer of counts, and a horizontal band of cross-links near the bottom.</p>
+<div class="table"><table><thead><tr><th>Element</th><th>Content</th></tr></thead><tbody><tr><td><strong>The foundation</strong></td><td>What every vault shares: encrypted files, version history, and a published read key that is the whole credential. The network image put “sgit.ai vaults” here; this one can say <strong>one vault format</strong></td></tr>
+<tr><td><strong>Primary grouping, columns</strong></td><td><strong>Use case.</strong> Each column is a job somebody is trying to do, with the vaults that do it listed as cells: name plus one short line, exactly as the sites image does</td></tr>
+<tr><td><strong>Secondary grouping, a mark on each cell</strong></td><td><strong>Industry</strong>, as a small tag or colour key rather than a second set of columns. Two nested column systems in one image is unreadable; a legend is not</td></tr>
+<tr><td><strong>The band</strong></td><td>Genuine relationships between vaults, the conformance layer forking the catalogue, the Risk Graph Explorer sharing the licence-to-operate acceptance model. <strong>Carry the same disclaimer the sites image carries</strong>: illustrative links, not deployed integrations</td></tr>
+<tr><td><strong>The footer</strong></td><td>The computed counts, the site version and the date. Nothing typed by hand</td></tr></tbody></table></div>
+<h2 id="the-accuracy-rules-because-an-image-model-will-not-follow-them-on-its-own">The accuracy rules, because an image model will not follow them on its own</h2>
+<p>An image model renders text as shapes. It will misspell a domain, drop a hyphen, invent a plausible vault that does not exist, and produce a confident number that came from nowhere, and none of that throws an error.</p>
+<ol><li><strong>Generate the caption text from the data first</strong>, as a list, and treat the image as a rendering of that list. If the list and the image disagree, the image is wrong.</li><li><strong>Read every string in the output back against <code>vaults.json</code></strong>: every vault name, every count, every label. Character by character on the names.</li><li><strong>Count the cells.</strong> If the data says 26 vaults and the picture shows 24, it dropped two, and it will not tell you which.</li><li><strong>No vault appears that is not in the file.</strong> A generated name that reads plausibly is the most dangerous output this process can produce.</li><li><strong>If the model cannot render the text reliably, render the text separately.</strong> Generating the artwork and setting the labels as real text over it is a legitimate and more honest answer than fighting the model.</li></ol>
+<h2 id="publishing-it-on-this-site">Publishing it on this site</h2>
+<ul><li><strong>The validator bans <code>&lt;img src=&gt;</code>.</strong> Images here go through the <code>data-shot</code> mechanism that <code>assets/shots.js</code> fills, because a declarative image reference cannot be served when a page is rendered inside a vault. Use the existing pipeline; do not add an exception for this one.</li><li><strong>Write real alt text</strong>, and treat it as the accessible equivalent rather than a caption: an infographic whose content exists only as pixels is invisible to a search engine, to <code>llms-full.txt</code> and to any agent reading this site, which is the same gap the video pages had to state.</li><li><strong>Put the grouped list on the page in HTML too</strong>, under or beside the image. Then the picture is the overview and the text is the content, and the <code>.md</code> twin carries the substance rather than a broken reference to a picture.</li><li><strong>State how it was made.</strong> The network image was generated by an image model; say so on the page. This site&#x27;s whole method is that a reader can check the provenance of what it publishes.</li></ul>
+<h2 id="the-prompt-to-hand-the-agent">The prompt to hand the agent</h2>
+<pre><code>Produce a vault map infographic for sgit.ai, as a companion to the existing
+network infographic, grouping the published vaults by USE CASE and INDUSTRY.
+
+Read https://sgit.ai/docs/briefs/vault-map-infographic.md first. Do the two
+upstream steps before generating any image.
+
+STEP 1 — the data. admin/content/vaults.json has category on all 26 vaults, job
+on 6, and no industry field at all. Neither requested grouping exists yet. Add
+use_case and industry to every entry, written from the vault itself and not from
+its title, using a closed vocabulary of 6-8 values each, declared in the file,
+with the build failing on an unknown value. Keep category — shape and use case
+are different questions. Use &quot;cross-industry&quot; where a vault genuinely serves no
+sector; do not invent one.
+
+STEP 2 — the caption list. Generate the full text of the infographic from
+vaults.json as a plain list: every column heading, every cell, every count.
+This list is the source of truth; the image is a rendering of it.
+
+STEP 3 — the image. Match the network infographic: dark ground, one shared
+foundation at the top, numbered columns for use cases, industry as a tag or
+colour key rather than a second column system, a cross-links band carrying the
+same &quot;illustrative, not deployed integrations&quot; disclaimer, and a footer with the
+computed counts plus the site version and date.
+
+STEP 4 — check it. Read every string in the image back against vaults.json,
+character by character on the names. Count the cells against the vault count. No
+vault may appear that is not in the file. If the model cannot render text
+reliably, render the artwork and set the labels as real text over it.
+
+STEP 5 — publish it. Use the data-shot pipeline, never an img src, which the
+validator bans. Write real alt text. Put the grouped list on the page as HTML as
+well, so the markdown twin carries the substance. Say on the page that the image
+was generated by an image model.
+
+Report: the two vocabularies you chose, how many vaults landed in each value,
+and any vault whose use case or industry you could not determine from its
+contents.</code></pre>
+<p>The companion piece is the network infographic, which is what this one should look like and also what it should learn from. It is a good picture with a footer that has already gone stale. <a href="index.html">All briefs</a><a class="ext live" href="https://sgit.ai/docs/briefs/index.html" title="live page">↗</a> · <a href="../guidance/index.html">Working on a vault: start here</a><a class="ext live" href="https://sgit.ai/docs/guidance/index.html" title="live page">↗</a> · <a href="../../demos/vaults/index.html">The published vaults</a><a class="ext live" href="https://sgit.ai/demos/vaults/index.html" title="live page">↗</a></p>
+<hr>
+<p><em><a href="../../llms.txt.html">Site index for agents</a><a class="ext live" href="https://sgit.ai/llms.txt" title="live page">↗</a> · <a href="vault-map-infographic.html">HTML version</a><a class="ext live" href="https://sgit.ai/docs/briefs/vault-map-infographic.html" title="live page">↗</a></em></p></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://sgit.ai/docs/briefs/vault-map-infographic.html">https://sgit.ai/docs/briefs/vault-map-infographic.html ↗</a></dd><dt>Fetched from</dt><dd>https://sgit.ai/docs/briefs/vault-map-infographic.md</dd><dt>Fetched</dt><dd>2026-09-24T23:50:12Z</dd><dt>sha256</dt><dd><code title="5bd269dec844f012323e98d25ccf5831f97534dd7442d499b01af12776405767">5bd269dec844</code></dd><dt>Frozen copy</dt><dd><a href="vault-map-infographic.md">sites/sgit.ai/docs/briefs/vault-map-infographic.md</a> (10,930 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

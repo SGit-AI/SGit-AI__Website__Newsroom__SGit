@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>02 — JavaScript (coding.sgit.ai) · sgit newsroom</title>
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../../index.html">Front page</a><a href="../../../../editions/index.html">Editions</a><a href="../../../../reading-room/index.html">Reading room</a><a href="../../../../library/index.html">Index</a><a href="../../../../concepts/index.html">Concepts</a><a href="../../../../vaults/index.html">Vaults</a><a href="../../../../history/index.html">History</a><a href="../../../../signals/index.html">Signals</a><a href="../../../../loose-ends/index.html">Loose ends</a><a href="../../../../newsroom/index.html">The newsroom</a><a href="../../../../about/index.html">About</a><a href="../../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · coding.sgit.ai · llms-full</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#02-javascript">02 — JavaScript</a></li><li class="l2"><a href="#1-the-complete-example">1. The complete example</a></li><li class="l2"><a href="#2-the-component-system">2. The component system</a></li><li class="l3"><a href="#the-three-file-triplet">The three-file triplet</a></li><li class="l3"><a href="#the-versioned-cdn-path">The versioned CDN path</a></li><li class="l3"><a href="#the-base-class-contract">The base class contract</a></li><li class="l3"><a href="#shadow-dom">Shadow DOM</a></li><li class="l2"><a href="#3-formatting-measured">3. Formatting, measured</a></li><li class="l2"><a href="#4-events-state-and-data">4. Events, state and data</a></li><li class="l2"><a href="#5-why-no-build-step-is-the-interesting-claim">5. Why no build step is the interesting claim</a></li><li class="l2"><a href="#6-inconsistencies-to-fix-before-publishing">6. Inconsistencies to fix before publishing</a></li><li class="l2"><a href="#7-what-a-linter-config-would-encode">7. What a linter config would encode</a></li></ul></details>
+<p class="crumbs"><a href="../../../../reading-room/index.html">Reading room</a> / <a href="../../../../reading-room/coding.sgit.ai.html">coding.sgit.ai</a> / <a href="../llms-full.txt.html">llms-full.txt</a> · section 7 of 14</p><nav class="pager"><span><a href="006-01-python.html">← 01 — Python</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="008-03-html-and-css.html">03 — HTML and CSS →</a></span></nav><article class="source"><h1 id="02-javascript">02 — JavaScript</h1>
+<p>50 files, no framework, no build step, and a component system nobody has written down. <strong>This is the most original and least documented convention in the estate.</strong></p>
+<hr>
+<h2 id="1-the-complete-example">1. The complete example</h2>
+<p><code>components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/sg-compute-left-nav.js</code>, verbatim:</p>
+<pre><code class="lang-js">/**
+ * sg-compute-left-nav — vertical icon-rail navigation for the admin dashboard.
+ *
+ * Items: Compute / Storage / Settings / Diagnostics.
+ * Click fires sp-cli:nav.selected { view } on document.
+ *
+ * @module sg-compute-left-nav
+ * @version 0.1.0
+ */
+
+import { SgComponent } from &#x27;https://dev.tools.sgraph.ai/components/base/v1/v1.0/v1.0.0/sg-component.js&#x27;
+
+class SgComputeLeftNav extends SgComponent {
+
+    static jsUrl = import.meta.url
+    get resourceName()   { return &#x27;sg-compute-left-nav&#x27; }
+    get sharedCssPaths() { return [&#x27;https://dev.tools.sgraph.ai/components/tokens/v1/v1.0/v1.0.0/sg-tokens.css&#x27;] }
+
+    onReady() {
+        this._current = &#x27;compute&#x27;
+        this.shadowRoot.querySelectorAll(&#x27;.nav-item&#x27;).forEach(btn =&gt; {
+            btn.addEventListener(&#x27;click&#x27;, () =&gt; this._select(btn.dataset.view))
+        })
+        this._update()
+    }
+
+    _select(view) {
+        if (view === this._current) return
+        this._current = view
+        this._update()
+        document.dispatchEvent(new CustomEvent(&#x27;sp-cli:nav.selected&#x27;, {
+            detail:  { view },
+            bubbles: true, composed: true,
+        }))
+    }
+
+    _update() {
+        this.shadowRoot.querySelectorAll(&#x27;.nav-item&#x27;).forEach(btn =&gt; {
+            btn.classList.toggle(&#x27;selected&#x27;, btn.dataset.view === this._current)
+            btn.setAttribute(&#x27;aria-current&#x27;, btn.dataset.view === this._current ? &#x27;page&#x27; : &#x27;false&#x27;)
+        })
+    }
+}
+
+customElements.define(&#x27;sg-compute-left-nav&#x27;, SgComputeLeftNav)</code></pre>
+<hr>
+<h2 id="2-the-component-system">2. The component system</h2>
+<p><strong>Native web components. 41 <code>customElements.define</code> across 50 files. No React, no Vue, no bundler, no build step.</strong> The browser is the runtime.</p>
+<h3 id="the-three-file-triplet">The three-file triplet</h3>
+<p>Every component is exactly three files, same basename:</p>
+<pre><code>sg-compute-left-nav.js      behaviour
+sg-compute-left-nav.html    markup
+sg-compute-left-nav.css     styles</code></pre>
+<p><code>static jsUrl = import.meta.url</code> is what makes this work: the component knows its own URL, so <code>SgComponent</code> can fetch the sibling <code>.html</code> and <code>.css</code> without anything being told where they live. <strong>Self-locating components are the mechanism that removes the build step.</strong></p>
+<h3 id="the-versioned-cdn-path">The versioned CDN path</h3>
+<pre><code>https://dev.tools.sgraph.ai/components/&lt;name&gt;/v1/v1.0/v1.0.0/&lt;file&gt;.js
+                                              ^^^ ^^^^ ^^^^^^
+                                            major minor patch — as directories</code></pre>
+<p>Three nested directories, one per semver level. A consumer pins at whatever depth it wants stability: <code>/v1/</code> follows the major, <code>/v1.0/</code> follows the minor, <code>/v1.0.0/</code> is frozen. <strong>Immutable URLs, no lockfile, no <code>node_modules</code>, cacheable forever.</strong> The same scheme is used locally under <code>components/</code>.</p>
+<p>What comes from the CDN today: <code>SgComponent</code> (the base class), <code>sg-tokens.css</code> (design tokens), <code>sg-vault-client.js</code>, <code>sg-vault-write.js</code>.</p>
+<h3 id="the-base-class-contract">The base class contract</h3>
+<p><code>SgComponent</code> supplies the lifecycle; components override three things:</p>
+<div class="table"><table><thead><tr><th>Member</th><th>Purpose</th></tr></thead><tbody><tr><td><code>static jsUrl = import.meta.url</code></td><td>self-location — <strong>required</strong></td></tr>
+<tr><td><code>get resourceName()</code></td><td>the basename of the sibling <code>.html</code> / <code>.css</code></td></tr>
+<tr><td><code>get sharedCssPaths()</code></td><td>tokens and shared sheets to adopt</td></tr>
+<tr><td><code>onReady()</code></td><td>the lifecycle hook — <strong>not <code>connectedCallback</code> directly</strong></td></tr></tbody></table></div>
+<p><code>onReady()</code> rather than <code>connectedCallback</code> is the tell: the base class handles the async fetch of the sibling files and calls <code>onReady()</code> once the shadow root is populated, so a component never has to think about whether its markup has arrived.</p>
+<h3 id="shadow-dom">Shadow DOM</h3>
+<p>6 files call <code>attachShadow</code> directly; the rest inherit it from <code>SgComponent</code>, and every component addresses its own markup through <code>this.shadowRoot</code>. Styles are scoped by <code>:host</code> (see <code>03__</code>).</p>
+<hr>
+<h2 id="3-formatting-measured">3. Formatting, measured</h2>
+<div class="table"><table><thead><tr><th>Convention</th><th>Evidence</th></tr></thead><tbody><tr><td><strong>4-space indent</strong></td><td>3,791 indented lines are a multiple of 4; 148 are not</td></tr>
+<tr><td><strong>Single quotes</strong></td><td><strong>4,006 single vs 400 double</strong> — 91%</td></tr>
+<tr><td><strong>No semicolons</strong></td><td>531 statement lines without vs 401 with — the newer <code>components/</code> tree is consistently semicolon-free; the older <code>shared/</code> tree is not. See §6</td></tr>
+<tr><td><strong>Trailing commas</strong></td><td>in multi-line object and array literals, consistently</td></tr>
+<tr><td><strong>Aligned object keys</strong></td><td><code>detail:  { view },</code> — the same alignment discipline as Python and CSS</td></tr>
+<tr><td><strong><code>_</code> prefix for private</strong></td><td>universal in JS, <strong>against Python rule 9</strong>. See <code>06__</code> §3</td></tr>
+<tr><td><strong>ESM everywhere</strong></td><td>48 <code>type=&quot;module&quot;</code> script tags; no UMD, no globals</td></tr>
+<tr><td><strong>Banner comments</strong></td><td>15 of 50 files open with <code>// ── name — description ──</code></td></tr></tbody></table></div>
+<p><strong>Two banner styles exist</strong>: JSDoc blocks (<code>/** … @module … @version */</code>) on components, and <code>// ── … ──</code> box-drawing rules on shared modules. Python uses <code># ═══</code>. <strong>The estate has three banner characters for one idea</strong> — <code>05__</code> §2.</p>
+<hr>
+<h2 id="4-events-state-and-data">4. Events, state and data</h2>
+<p><strong>Events are namespaced and go through <code>document</code>:</strong></p>
+<pre><code class="lang-js">document.dispatchEvent(new CustomEvent(&#x27;sp-cli:nav.selected&#x27;, {
+    detail:  { view },
+    bubbles: true, composed: true,
+}))</code></pre>
+<p><code>bubbles: true, composed: true</code> is what lets an event escape the shadow root. <strong>The namespace is <code>sp-cli:</code> — the old CLI name — and it appears in 23 files.</strong> That is a rename surface nobody has counted; see <code>06__</code> §3.</p>
+<p><strong>State is instance fields</strong>, <code>_</code>-prefixed, set in <code>onReady()</code>. No store, no observable, no framework state layer. Cross-component state goes through the event bus and through purpose-built shared modules — <code>settings-bus.js</code>, <code>vault-bus.js</code>, <code>poll.js</code>.</p>
+<p><strong>Constants are frozen and centralised.</strong> <code>shared/launch-defaults.js</code>, verbatim:</p>
+<pre><code class="lang-js">// ── launch-defaults.js — canonical launch constants ────────────────────────── //
+// Single source of truth. Both sg-compute-compute-view and sg-compute-launch-form
+// import from here. Update here only — do not duplicate locally.
+
+export const REGIONS = Object.freeze([
+    &#x27;eu-west-2&#x27;, &#x27;us-east-1&#x27;, &#x27;ap-southeast-1&#x27;, &#x27;eu-west-1&#x27;, &#x27;us-west-2&#x27;,
+])</code></pre>
+<p><strong><code>Object.freeze</code> on every exported constant</strong>, and a comment that names the consumers and forbids local duplication. That is the same <em>single source of truth</em> instinct that drives <code>manifest.py</code> and the repo-root <code>version</code> file.</p>
+<hr>
+<h2 id="5-why-no-build-step-is-the-interesting-claim">5. Why no build step is the interesting claim</h2>
+<p>It is worth arguing on the site rather than just reporting.</p>
+<p><strong>What it costs:</strong> no TypeScript, no JSX, no tree-shaking, no minification, no dependency resolution, one network request per component file.</p>
+<p><strong>What it buys:</strong> the source that runs is the source you read — no source maps, no build cache, no <code>node_modules</code>, no bundler upgrade treadmill, and <strong>an immutable URL per version instead of a lockfile</strong>. A component is deployable by copying three files to a path. And — the point that connects to <code>05__</code> §3 — <strong>an agent reading the running page reads the actual code</strong>, with no transpilation between what it sees and what executes.</p>
+<p><strong>Where it stops working:</strong> at the point you need a dependency graph deeper than one level, or a package that only ships as CJS. Neither has happened yet in 50 files.</p>
+<hr>
+<h2 id="6-inconsistencies-to-fix-before-publishing">6. Inconsistencies to fix before publishing</h2>
+<ol><li><strong>Semicolons.</strong> <code>components/</code> is semicolon-free; <code>shared/</code> is not. <strong>Pick one</strong> — the newer tree suggests dropping them — and write the config.</li><li><strong>Two banner styles.</strong> JSDoc on components, <code>// ──</code> on shared modules. Pick one per file type and say which.</li><li><strong>The <code>sp-cli:</code> event namespace</strong> is legacy naming in 23 files. Rename with the rest (<code>sg-compute</code> pack <code>02__</code>), and note that renaming an event namespace is a breaking change for any listener outside the repo.</li><li><strong><code>_private</code> in JS vs rule 9 in Python.</strong> The rule set says no underscore prefix; the JavaScript uses it universally. <strong>State that rule 9 is Python-only</strong>, or change one of the two.</li></ol>
+<hr>
+<h2 id="7-what-a-linter-config-would-encode">7. What a linter config would encode</h2>
+<p><code>eslint</code> with: 4-space indent · single quotes · no semicolons · trailing commas in multiline · <code>object-curly-spacing</code> · a custom rule requiring <code>static jsUrl = import.meta.url</code> in any class extending <code>SgComponent</code> · a ban on bare <code>connectedCallback</code> overrides in favour of <code>onReady()</code> · and a check that every component directory contains all three of <code>.js</code> / <code>.html</code> / <code>.css</code>.</p>
+<p>The last two are the ones that would actually catch bugs.</p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p>
+<hr>
+<p>source: /briefs/03__html-and-css.md</p>
+<hr></article><nav class="pager"><span><a href="006-01-python.html">← 01 — Python</a></span><a href="../llms-full.txt.html">all sections</a><span><a href="008-03-html-and-css.html">03 — HTML and CSS →</a></span></nav>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>coding.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://coding.sgit.ai/llms-full.txt">https://coding.sgit.ai/llms-full.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:33Z</dd><dt>sha256</dt><dd><code title="1ffe7396602e0cce33725cfd6bc00399884e82e7029fdc09c654b1e54f4c63bd">1ffe7396602e</code></dd><dt>Frozen copy</dt><dd><a href="../llms-full.txt">sites/coding.sgit.ai/llms-full.txt</a> (113,833 bytes)</dd><dt>Section</dt><dd>7 of 14: 02 — JavaScript</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>

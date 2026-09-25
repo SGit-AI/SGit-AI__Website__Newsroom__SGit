@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sgit-newsroom build">
+<title>pki.sgit.ai llms.txt · sgit newsroom</title>
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../../index.html">sgit <em>newsroom</em></a>
+<span class="ver">v0.1.0 · snapshot 2026-09-24</span>
+<nav><a href="../../../index.html">Front page</a><a href="../../../editions/index.html">Editions</a><a href="../../../reading-room/index.html">Reading room</a><a href="../../../library/index.html">Index</a><a href="../../../concepts/index.html">Concepts</a><a href="../../../vaults/index.html">Vaults</a><a href="../../../history/index.html">History</a><a href="../../../signals/index.html">Signals</a><a href="../../../loose-ends/index.html">Loose ends</a><a href="../../../newsroom/index.html">The newsroom</a><a href="../../../about/index.html">About</a><a href="../../../search/index.html">Search</a></nav></header>
+<main>
+<p class="eyebrow">Reading room · pki.sgit.ai</p>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#pkisgitai-public-key-infrastructure-for-agents">pki.sgit.ai — public key infrastructure for agents</a></li><li class="l2"><a href="#properties-agents-may-rely-on">Properties agents may rely on</a></li><li class="l2"><a href="#status-stated-plainly">Status, stated plainly</a></li><li class="l2"><a href="#the-bench-mvps-and-experiments-machine-readable-benchllmstxt">The bench — MVPs and experiments (machine-readable: /bench/llms.txt)</a></li><li class="l2"><a href="#probes-the-assessment-and-the-game-built-5-september-from-the-4-september-briefs">Probes, the assessment, and the game (built 5 September from the 4 September briefs)</a></li><li class="l2"><a href="#the-simulator-simulator-table-simulatorresolutionsjson">The simulator (/simulator/ · table: /simulator/resolutions.json)</a></li><li class="l2"><a href="#the-experiments-hub-experiments">The experiments (hub: /experiments/)</a></li><li class="l2"><a href="#the-insurance-book-machine-readable-insurance-bookllmstxt">The insurance book (machine-readable: /insurance-book/llms.txt)</a></li><li class="l2"><a href="#the-book-machine-readable-bookllmstxt">The book (machine-readable: /book/llms.txt)</a></li><li class="l2"><a href="#the-registry-live-machine-readable-registryllmstxt">The registry, live (machine-readable: /registry/llms.txt)</a></li><li class="l2"><a href="#the-history">The history</a></li><li class="l2"><a href="#the-design-published-before-the-implementation">The design, published before the implementation</a></li><li class="l2"><a href="#three-questions-three-layers">Three questions, three layers</a></li><li class="l2"><a href="#the-registry-is-the-missing-half-of-a-feature-that-already-ships">The registry is the missing half of a feature that already ships</a></li><li class="l2"><a href="#why-agent-key-registries-do-not-exist-the-bootstrap-trap">Why agent key registries do not exist: the bootstrap trap</a></li><li class="l2"><a href="#two-principles-stated-exactly">Two principles, stated exactly</a></li><li class="l2"><a href="#agent-identity">Agent identity</a></li><li class="l2"><a href="#build-order-and-open-questions">Build order and open questions</a></li><li class="l2"><a href="#the-registry-mvp-pack-dev-pack-draft-1-change-control">The registry MVP pack (dev pack: draft-1 + change control)</a></li><li class="l2"><a href="#the-map-your-case-pack-dev-pack-draft-1-change-control">The Map Your Case pack (dev pack: draft-1 + change control)</a></li><li class="l2"><a href="#the-insurance-ecosystem-pack-dev-pack-draft-1-change-control-step-1-built">The Insurance Ecosystem pack (dev pack: draft-1 + change control; step 1 built)</a></li><li class="l2"><a href="#synthetic-readers-simulated-material-read-the-marker">Synthetic readers (simulated material — read the marker)</a></li><li class="l2"><a href="#sources">Sources</a></li><li class="l2"><a href="#site">Site</a></li><li class="l2"><a href="#related-sites">Related sites</a></li></ul></details>
+<p class="crumbs"><a href="../../../reading-room/index.html">Reading room</a> / <a href="../../../reading-room/pki.sgit.ai.html">pki.sgit.ai</a> · <a href="llms.txt">raw text</a> · <a class="ext" href="https://pki.sgit.ai/llms.txt">live ↗</a></p><article class="source"><h1 id="pkisgitai-public-key-infrastructure-for-agents">pki.sgit.ai — public key infrastructure for agents</h1>
+<blockquote><p>Good public key repositories existed, and were destroyed. In June 2019 the global
+keyserver network was flooded with bogus signatures until importing a poisoned
+certificate would break a working installation; one key reached roughly 150,000
+signatures, and the network&#x27;s own maintainer called it unsalvageable. The cause was a
+design goal stated at the outset — a key server could add information to a certificate
+but never delete anything — not a bug. This site publishes that history, and the
+registry rules it produces, before the registry exists.</p></blockquote>
+<p>Site version: v0.1.74 (29 August 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. All content CC BY 4.0.</p>
+<h2 id="properties-agents-may-rely-on">Properties agents may rely on</h2>
+<ul><li>Every brief and pack source on this site is fetchable at a stable constructed URL:
+/briefs/&lt;filename&gt;.md and /packs/&lt;pack&gt;/src/&lt;filename&gt;.md. This is a promise, not an
+accident (per the v0.33.61 site access report: agents already rely on constructed
+paths, so the convention is stated rather than left to be inferred).</li><li>Which third of the answer this site holds: nhi.sgit.ai states the problem (no identity
+for rented agents); THIS SITE holds the design; <a href="../sgit.ai/docs/pki.html">https://sgit.ai/docs/pki.md</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a> documents
+the shipped commands. Page-level joins: <a href="../sgit.ai/docs/vault-messaging.html">https://sgit.ai/docs/vault-messaging.md</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a> and
+<a href="../sgit.ai/docs/limitations.html">https://sgit.ai/docs/limitations.md</a><a class="ext live" href="https://sgit.ai/docs/limitations.html" title="live page">↗</a> carry the choreography and the shipped-versus-
+proposed boundary in the platform&#x27;s own words.</li></ul>
+<h2 id="status-stated-plainly">Status, stated plainly</h2>
+<p>The registry&#x27;s first MVP exists, as of v0.1.26: a static register at /registry/ —
+eleven records, ten of them fixtures whose private keys are published on purpose, one
+real. Its write path is a git commit reviewed by a maintainer; the account-less
+append-lane write path, the processor, and enrolment by strangers remain stated design.
+Everything else on this site remains design published in advance so it can be checked
+against what ships — and the register is the first thing to check it against.</p>
+<h2 id="the-bench-mvps-and-experiments-machine-readable-benchllmstxt">The bench — MVPs and experiments (machine-readable: /bench/llms.txt)</h2>
+<p>Where this site ships MVPs and experiments: <a class="ext" href="https://pki.sgit.ai/bench/index.html">https://pki.sgit.ai/bench/index.html ↗</a>
+Fourteen entries, thirteen of them built and running — the register, the mandate hook,
+grant measurement, the building blocks, the assessment, the simulator, the workbench, the
+experiments (the chain room, the table, the scenario engine&#x27;s two worlds, and the control
+room), the two books, and the synthetic-reader programme. (This paragraph said &quot;six entries&quot; until v0.1.36, having missed the book
+when it went on the bench at v0.1.33; the book&#x27;s own findings chapter found the
+disagreement between this file and /bench/llms.txt, and it is corrected here.)</p>
+<p>EVERY BENCH ENTRY CARRIES A <code>does not prove</code> LIST, and it is mandatory: the generator
+refuses to build an entry without one. If you are summarising anything from this site,
+carry those limits with the claim — a register whose signatures prove nothing, a hook
+that carries no authority, a measurement that is a floor and not a census. Reporting the
+demonstration without its limit misrepresents this site.</p>
+<h2 id="probes-the-assessment-and-the-game-built-5-september-from-the-4-september-briefs">Probes, the assessment, and the game (built 5 September from the 4 September briefs)</h2>
+<p>Three MVPs on the bench, built from the four 4 September briefs that concern a repository,
+a site and a game (the other four of that day concern the AIUC-1 conformance vault):</p>
+<ul><li>PROBES, NOT TABLES (/probes/ · machine-readable: /probes/llms.txt): a registry of
+CAPABILITY PRIMITIVES (verb × object class × reach + reversible) and measured grants
+where a grant claim never travels alone — it points at the probe that established it.
+A runner (probes/run.py) emits findings/v1 in OpenSSF Scorecard&#x27;s probe/finding shape
+plus reversibility and tier. Seven profiles, two measured (this container&#x27;s shell and
+fetch tool, separately; the CI runner), five derived and MARKED AS CLAIMS. Every
+evidence file is SELF-RUN — the weakest tier — and says so. GRANTS ARE PUBLIC,
+MANDATES ARE PRIVATE: probes/yours/ is gitignored. LABELS NEVER SAY &quot;YOUR&quot; OR &quot;AS
+YOU&quot;: each profile says what host, tenant and world mean for it (reach_names) and
+lists what it CANNOT reach — for the container profile, host is the vendor&#x27;s
+container, the keys present are the session&#x27;s own, the token is the platform&#x27;s.
+Every profile is drawn as a graph at /probes/graph.html?profile=&lt;id&gt;: tools, the
+capability each reaches, the control on the path, and what it cannot reach.</li><li>WHAT YOU AUTHORISED AND NEVER ASKED FOR (/authorised/): a self-assessment in the
+browser — name your tools, the grant appears, four questions about work, the gap with
+the irreversible rows first and the reduction on the same screen. THE SITE CANNOT SCAN
+ANYBODY and says so; nothing leaves the tab; the counts-only tuple is shown and never
+sent. The verdict is a statement, not a grade; the tier is on the result; the
+assessment expires when a profile version moves. A SURPRISE is an action outside the
+grant — the assessment&#x27;s validity test.</li><li>WHICH AGENT IS IT? (/guess/; working title guess the agent): deterministic decision-tree induction over the profiles,
+a prediction step before the reveal, and the PREDICTION GAP (never called a surprise)
+with the reduction on one screen. The tree is public (guess/tree.json) and self-tested
+at build; no model, no server, nothing sent. A hypothesis about a grant, not a measurement.
+Since v0.1.72 (brief v0.33.65): REACH IS A NODE, NOT A RUNG — a mesh of reach nodes,
+environments, obligations and questions, one file each under probes/mesh/, typed by one
+ontology and compiled with gates (probes/mesh/graph.json; walk it at /guess/graph.html).
+Questions are two classes: IDENTIFYING never counts toward the gap; MEASURING answers are
+already predictions, each with a RELIABILITY — a low-reliability answer barely moves the
+belief and fully counts toward the gap. The inspector keeps ASSERTED, INFERRED and
+POSSIBLE apart. Demo mode (/guess/index.html?demo=random); the report (/guess/report.html);
+the sources and how to correct a mapping (/guess/data.html). BUILD YOUR OWN: a prompt pack
+for an agent at /guess/prompt.md (page: /guess/prompt.html) — twelve rules that are not
+the agent&#x27;s to change, everything else is; step one is a plan for review, step two the build.</li></ul>
+<p>None of the three sees a visitor&#x27;s environment. Carry that with any summary.</p>
+<h2 id="the-simulator-simulator-table-simulatorresolutionsjson">The simulator (/simulator/ · table: /simulator/resolutions.json)</h2>
+<p>The first surface here that answers to the visitor instead of replaying this
+estate&#x27;s history: PLAY CARDS AGAINST A MEASURED TWIN and watch the board.</p>
+<p>IT DOES NOT PREDICT, IT COMPOSES. Every outcome is one of exactly three
+things and there is no fourth: (1) a real verdict from mandate.py — the
+BROWSER CANNOT RUN THE TOOL, so the whole resolution table is precomputed at
+build time and shipped at /simulator/resolutions.json with the tool&#x27;s own
+output line in each row; (2) a reading of the twin, carrying the date it was
+measured; (3) UNKNOWN, where measurement was refused — NOT &quot;no&quot;. A simulator
+that turns a hole into a denial manufactures comfort. Nothing is executed.</p>
+<ul><li>Eight cards in three suits (DOES, DECIDES, CONTROL), two worlds, and
+play / step / REWIND / reset. Rewind is a computation, not an undo stack:
+board state is a pure function of the event prefix.</li><li>THE HOOK CARD IS THE ARGUMENT IN ONE MOVE: installing the pre-push hook
+changes NO VERDICT AT ALL (dev under mandate v1 is refused before and
+after) and changes WHO REFUSES — the agent inside its own loop, or a hook
+outside it. The verdict does not move; the reliability does.</li><li>It asks what history did not: PUSH TO MAIN IS REFUSED UNDER BOTH MANDATES.</li><li>If you summarise this page, carry the limit: it composes measured facts and
+real verdicts, and cannot model an environment nobody measured.</li></ul>
+<h2 id="the-experiments-hub-experiments">The experiments (hub: /experiments/)</h2>
+<p>Game-like environments for the workflows — one experiment, one folder, one
+workflow, one visualisation, each with its own generator (or a shared engine
+driven by its own scenario.json), gates and a bench entry. Every word derived
+at build time; real and synthetic never blend.</p>
+<ul><li>THE CHAIN ROOM (/experiments/the-room/): the RiskMandate workflow walked end
+to end — eight stations, the LIBRARY/INSTANCE BOUNDARY DRAWN ON THE FLOOR,
+four verbs (LOOK, ASK, DOOR, NEVER). Left half real artefacts; right half
+SYNTHETIC AND MARKED ON EVERY SURFACE
+(fixture: /packs/grant-and-mandate/instance-fixture.synthetic.json).</li><li>THE TABLE (/experiments/the-table/): actions resolving against grants and
+mandates, as cards. Six suits — CAN (grant), MAY (mandate), IS (fact),
+SHOWS (evidence), DOES (action), DECIDES (decision) — four players INCLUDING
+THE SYSTEMS, replaying the estate&#x27;s real 26 August incident: push refused,
+mandate amended, push landing. NOTHING SYNTHETIC: every resolution is re-run
+through mandate.py at build time, every reaction byte-checked against the
+captured transcripts. Forward is the simulation; backward is the audit; they
+are the same cards.</li><li>The resolution order is the ordering rule as game mechanics: a DOES resolves
+against CAN, then MAY, and mints an IS backed by a SHOWS. Blast radius is the
+CAN cards face-up that no MAY card covers.</li><li>THE SCENARIO ENGINE (admin/build/gen_scenario.py): one engine, any world —
+each world is a scenario.json REFERENCING A MEASURED TWIN; the engine holds
+no capabilities of its own, and the deck gate forces cards == twin nodes
+exactly. Two worlds so far:
+<ul><li>PUSH TO GITHUB (/experiments/push-to-github/): the grant chain behind a
+hosted agent changing a repository — user → GitHub App → scoped token →
+container → Claude Code → Claude → repo — and THE SOFT MANDATE AS A PLACE:
+the constraint keeping this session off the wrong branch is prose in the
+agent&#x27;s context (expectation tier), shown beside the hook it could be
+(setting) and the platform enforcement it is not (boundary, still shut).</li><li>THE DEPLOY (/experiments/the-deploy/): the CI runner a permitted push
+lands in — no agent, no hook, UNRESTRICTED EGRESS, and the estate&#x27;s only
+boundary-tier grant: the workflow&#x27;s permissions: block.
+Each capability card carries a CONFIDENCE RUNG computed from its evidence
+(hypothesis 0, self-observed 1, +documented 2, independent 3 — never typed)
+and a micro-animation of the capability acting (eight kinds; depiction, not
+simulation).</li></ul></li><li>THE CONTROL ROOM (/experiments/the-control-room/): both worlds on one
+operator board — A SECOND RENDERER OVER THE SAME scenario.json FILES, zero
+new data, which is what makes the scenario files a world model rather than
+a page config. SCADA conventions (annunciator tiles, mimic diagrams,
+faceplates, a sequence-of-events log) plus a game&#x27;s transport controls.
+The lamp colour is THE TIER AND NOTHING ELSE — an unbounded capability is
+the alarm state, and refused measurement is a hatched FAULT lamp, never a
+blank. The 26 August incident replays with every verdict re-run through
+mandate.py at build; timestamps derived or absent. THE MODE CHIP IS
+COMPUTED, never typed: LIVE only if the four doors a live board depends on
+(the append lane, a real issuer key, signed facts, an independent
+measurement) are all open — they are all shut, so it reads REPLAY, and
+WHEN THE LAST ONE OPENS THE BUILD FAILS rather than let the board keep a
+claim that has stopped being true.</li><li>THE TWIN CLAIM: a library entry IS a digital twin — a measured, dated
+representation of one environment, honest about where measurement was
+refused. A simulation is running a proposed action against the twin instead
+of reality. A twin that is not re-measured is a stale delta with a nicer name.</li></ul>
+<h2 id="the-insurance-book-machine-readable-insurance-bookllmstxt">The insurance book (machine-readable: /insurance-book/llms.txt)</h2>
+<p>The Delta Is Where the Insurance Lives — rating agents without money, and the
+empty seat a policy fills. <a class="ext" href="https://pki.sgit.ai/insurance-book/index.html">https://pki.sgit.ai/insurance-book/index.html ↗</a>
+PDF: /insurance-book/the-delta-is-where-the-insurance-lives.pdf
+The second volume, by the first volume&#x27;s method: ten voice memos and a pivot
+briefing (briefs v0.33.71–81), read into doctrine at /insurance/, audited at
+v0.33.82, made one argument in seventeen chapters over five parts.</p>
+<p>IF YOU SUMMARISE IT, CARRY ITS POSITIONS (full set in /insurance-book/llms.txt):
+nothing in it is insurance — stage 1 emits a rating, transfers no risk and
+promises no payout; nothing in it is built; no external evidence exists; the
+register the rating would read is fixtures; a level is never declared, only
+derived. 76 quotations re-read from their sources on every build; every count
+computed; every figure taken at the tag its caption names.</p>
+<h2 id="the-book-machine-readable-bookllmstxt">The book (machine-readable: /book/llms.txt)</h2>
+<p>A Key Means Nothing Alone — Identity, mandate, and the exposure nobody accepted.
+<a class="ext" href="https://pki.sgit.ai/book/index.html">https://pki.sgit.ai/book/index.html ↗</a> · PDF: /book/a-key-means-nothing-alone.pdf
+Seventeen chapters in five parts plus front matter, a harness appendix, a colophon and a
+reference card written to be pasted into an agent session (/book/20-reference-card.html).
+Markdown under /book/content/ is the source of truth; each chapter page renders its own
+file, and /book/book.json carries every chapter with the SHA-256 of its markdown.</p>
+<p>IF YOU SUMMARISE THE BOOK, CARRY ITS POSITIONS: the register is built and the trustworthy
+register is not; the enforcement is real and the authority is not, and they are independent
+halves; every grant is a floor and not a census; it is a participant&#x27;s account. They are in
+/book/llms.txt so a summarising agent cannot drop them.</p>
+<ul><li>PROVENANCE IS DECLARED, NOT BLENDED. 65 passages are quoted verbatim with a located
+source and RE-READ OUT OF THAT SOURCE ON EVERY BUILD — a quote not found where it claims
+to be fails the build. 48 further claims are marked as the writing session&#x27;s own
+reasoning. DO NOT TREAT THE DRAWN CLAIMS AS THIS ESTATE&#x27;S POSITIONS.</li><li>FIGURES ARE TAKEN FROM THE VERSION THEIR CAPTION NAMES — git worktree at the tag, a port
+used once, a browser killed in a finally. Two gates: a past figure must re-derive from
+its tag; a present one must still match the live page or the build fails. The harness
+ships with the book (/book/shots/), so any figure can be re-taken rather than believed.</li><li>EVERY NUMBER IS COMPUTED, and four contradicted the commissioning brief. The repository
+won: &quot;eight releases in four days&quot; is forty hours across two UTC calendar days.</li><li>CHAPTER 15 IS FINDINGS, COMPUTED: twelve places this estate contradicts itself and seven
+it does not talk about, both sides of each quoted. Three are current artefacts breaking
+this estate&#x27;s own rules, including params.json&#x27;s signature recipe, which fails against
+every statement in the register it governs — READ /registry/llms.txt FOR THE ENCODING,
+NOT params.json (raw r||s, 64 bytes, not DER).</li><li>CHAPTER 12 is the contract with riskmandate.ai, written to be used as one.</li></ul>
+<h2 id="the-registry-live-machine-readable-registryllmstxt">The registry, live (machine-readable: /registry/llms.txt)</h2>
+<p>The first MVP of the registry this site designs, shipped as static files. Start at
+<a class="ext" href="https://pki.sgit.ai/registry/llms.txt">https://pki.sgit.ai/registry/llms.txt ↗</a> — the register&#x27;s own front door, with executed
+verification workflows for <code>sgit pki</code>, openssl and python-cryptography.</p>
+<ul><li>Every artefact is fetchable at a constructed URL: /registry/records/&lt;sha256-hex16&gt;/
+&lt;statement&gt;.json, plus roots.json, params.json, roles.json, capabilities.json,
+index.json (convenience, no authority) and views/.</li><li>TEN OF ELEVEN RECORDS ARE FIXTURES: private keys published beside public halves,
+deliberately. Signatures verify and prove nothing (pack change-control C3). Read
+body.private_key_published in the identity statement BEFORE evaluating any signature.</li><li>Four pre-defined ROLES (site-agent, processor, verifier, librarian) ship with
+published keypairs and drop-in sgit keystores: a fresh session assumes a role by
+retrieval alone (/registry/roles.json). A role is a costume, not an identity.</li><li>Six expected verification answers ship as data in
+/registry/views/expected-verifications.json — the acceptance test for any verifier.</li><li>For risk consumers: /registry/views/excess-authority.json is grant minus mandate per
+subject (change-control C1), regenerable from the records.</li><li>The record model is the pack&#x27;s C7 commit graph: statements are immutable signed
+files; ordering and history are this repository&#x27;s public git history; no seq/prev.</li><li>sgit-native by execution: fingerprints, bundles and raw r||s ECDSA P-256 signatures
+are byte-compatible with sgit-ai v0.16.0 (round-tripped both directions, 25 Aug 2026).</li></ul>
+<h2 id="the-history">The history</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/failure/index.html">Why good public key repositories don&#x27;t exist ↗</a>:
+the June 2019 certificate-flooding attack as a dated timeline; the three abused
+properties (unlimited signatures per certificate, anyone may append to anybody&#x27;s
+certificate, nothing distinguishes a legitimate signature from garbage) mapped onto
+the rules each produces; the never-delete design goal that made repair impossible; and
+what the replacement keyserver gave up (all third-party signatures, and the web of
+trust with them). Externally verifiable and cited.</li><li>The append-only resolution:
+<a class="ext" href="https://pki.sgit.ai/failure/index.html#append-only">https://pki.sgit.ai/failure/index.html#append-only ↗</a> — append-only is safe when a writer
+appends only to objects it owns, and fatal when anyone may append to somebody else&#x27;s.
+The rule to carry forward is not &quot;append-only&quot;, it is that the writer owns what it
+writes.</li></ul>
+<h2 id="the-design-published-before-the-implementation">The design, published before the implementation</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/rules/index.html">The four registry rules ↗</a>, each turning around a
+property the attack abused:
+1. Only the owner writes to their own record.
+2. Revocation is a signed append, not a deletion — signed by the key being revoked, so
+the record stays append-only and still supports withdrawal.
+3. Records are size-bounded.
+4. Every entry is signed by something you can check.</li><li>The attestation trade (<a class="ext" href="https://pki.sgit.ai/rules/index.html#attestation">https://pki.sgit.ai/rules/index.html#attestation ↗</a>): third-party
+attestations are what made the old system valuable and what made it attackable. Permit
+them and rules 1 and 3 must be enforced hard; forbid them and the registry carries no
+social trust signal at all. This is the site&#x27;s central open question, published
+unresolved.</li><li>What vaults supply (<a class="ext" href="https://pki.sgit.ai/rules/index.html#vaults">https://pki.sgit.ai/rules/index.html#vaults ↗</a>): distribution, custody
+without access, versioning. What they do not supply: the ownership rule, the size
+bound, signature checking — the registry logic, and the part that failed last time.</li></ul>
+<h2 id="three-questions-three-layers">Three questions, three layers</h2>
+<ul><li>WHO IS THIS AGENT? — identity, a registry problem. Answered here.</li><li>WHAT MAY IT DO? — mandate, a delegation problem. Answered here.</li><li>SHOULD THAT PRODUCE THIS EFFECT, NOW, HERE? — execution, a broker problem. Named here,
+not owned here: <a class="ext" href="https://pki.sgit.ai/execution/index.html">https://pki.sgit.ai/execution/index.html ↗</a></li><li>The third corner is the receipt. Recording who a key belongs to and what it was permitted
+to do leaves out the most auditable event of all: what it actually did.</li></ul>
+<h2 id="the-registry-is-the-missing-half-of-a-feature-that-already-ships">The registry is the missing half of a feature that already ships</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/shipped/index.html">What already ships ↗</a>: <code>sgit pki keygen</code> makes TWO
+pairs — RSA-OAEP 4096 for encryption and ECDSA P-256 for signing (NOT X25519/Ed25519).
+Export emits a JSON bundle of PEM blocks; encrypt --recipient &lt;fingerprint&gt;; envelope v2
+wraps an AES-256-GCM content key with RSA-OAEP. The shipped documentation states plainly:
+<strong>no revocation, no directory</strong>. Those two absences are exactly what a registry supplies,
+which makes this a bounded addition to an existing feature rather than a new product.</li><li>The capability model to reuse rather than reinvent: four tiers — append token (write only),
+enumeration key (list/fetch/mark), write key (configure/purge), private key (decrypts, never
+sent). The server stores only hashes of the first three, so a total compromise yields hashes
+rather than capabilities.</li><li>SHIPPED vs PROPOSED: the append lane, its gates, storage and limits are code-verified. The
+client sealing layer and the lane-address derivation <code>append_token = H(recipient public key)</code>
+are PROPOSED — no shipped command emits it, and today the token is agreed out of band.
+<strong>Do not code against the derivation.</strong></li></ul>
+<h2 id="why-agent-key-registries-do-not-exist-the-bootstrap-trap">Why agent key registries do not exist: the bootstrap trap</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/bootstrap/index.html">The bootstrap trap ↗</a>: generating a keypair is
+trivial; getting it recognised requires reaching a trusted authority, every route to which
+requires authentication, which requires the identity the agent lacks. That is a loop, not a
+missing feature. Seven common workarounds (operator credential, repo write access, shared bot
+token, vendor integration, cloud credential, project signing secret, bespoke enrolment server)
+each solve transport by creating a larger identity problem. Underneath: ambient authority and
+the confused deputy.</li><li>The reframing: the hardest part of agent identity is not cryptography but *authority
+choreography* — the order in which claims are established. A system can use excellent
+cryptography and still have a weak bootstrap if the first instruction is to hand over a
+platform token.</li><li>The gradient: I control this private key (free, proves possession only) → the project
+recognises this key (a policy decision, not a computation) → the project delegates this
+mandate (scoped, dated, revocable).</li><li><a class="ext" href="https://pki.sgit.ai/enrolment/index.html">Enrolment ↗</a>: the exit is a door narrow enough that
+walking through it requires nothing. Posting to an append lane needs a token in the body, no
+account and no access token, and returns a blind acknowledgement. So the path is buildable
+rather than theoretical.</li></ul>
+<h2 id="two-principles-stated-exactly">Two principles, stated exactly</h2>
+<ul><li>Encryption restricts who can read a mandate. The signature and subject binding establish who
+may exercise it.</li><li>A signature over an enrolment request proves the submitter controls the corresponding private
+key. It does not prove that the project should trust the agent. Trust is a policy decision
+made afterwards.</li></ul>
+<h2 id="agent-identity">Agent identity</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/mandate/index.html">Identity and mandate are separate statements ↗</a>:
+identity says this key belongs to this agent; a mandate says this agent may do these
+things, until this date, on whose authority. Both signed, both checkable by a third
+party, and the mandate revocable independently of the identity — materially different
+from a bearer token, whose scope is knowable only to its issuer.</li><li>The caution that travels with it: a signed mandate constrains what an agent may be
+authorised to do, not what it does within that authority. It is one control among
+several and does not replace observation or ceilings.</li><li>The limit underneath: a registry can say this key claims to be this agent. It cannot
+say this key is in the hands of that agent and nobody else — that is attestation, and
+neither keys nor vaults supply it.</li></ul>
+<h2 id="build-order-and-open-questions">Build order and open questions</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/roadmap/index.html">Build order ↗</a>: the collection, the failure
+page, the four rules, a private registry, mandate statements, and a public registry
+last. A registry with one organisation&#x27;s agents in it is testable; a global one is a
+commitment.</li><li>Six open questions published unresolved
+(<a class="ext" href="https://pki.sgit.ai/roadmap/index.html#open">https://pki.sgit.ai/roadmap/index.html#open ↗</a>), starting with whether the registry
+accepts third-party attestations at all.</li><li>Honest tensions (<a class="ext" href="https://pki.sgit.ai/roadmap/index.html#tensions">https://pki.sgit.ai/roadmap/index.html#tensions ↗</a>), including that the
+size bound will one day reject a legitimate record.</li></ul>
+<h2 id="the-registry-mvp-pack-dev-pack-draft-1-change-control">The registry MVP pack (dev pack: draft-1 + change control)</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/index.html">Leading brief ↗</a>: a buildable MVP —
+a public vault holding keys, identities, mandates and grants, open data by principle
+(a registry contains no secrets), single operator, own-agents enrolment. Public in data,
+private in authority: build-order step 4 with the covers off.</li><li><a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/architecture.html">Architecture ↗</a>: records are append-only
+hash-chained statement logs keyed by signing fingerprint; the processor is the sole
+write-key holder; the four rules run as processor checks plus a public validator —
+enforcement is verification anybody can re-run.</li><li><a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/schemas.html">Schemas ↗</a>: identity, mandate, grant,
+acceptance, revocation. A mandate lives in the ISSUER&#x27;s record (rule 1, no exceptions);
+the subject appends an acceptance. The registry never contains a live capability — grants
+record hashes of what was issued.</li><li><a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/workflows.html">Workflows ↗</a>: the first client is
+a documented page a fresh LLM session follows — verify, enrol (the bootstrap gradient as
+commands), operate-under-mandate. The three-session demo (issuer, subject, verifier
+sharing only public URLs) is the acceptance test that matters.</li><li><a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/build-order.html">Build order ↗</a>: read path before
+write path; five phases; every definition of done is a fresh-session test.</li><li>New at v0.1.5: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/diagrams.html">Diagrams ↗</a> (the
+design as eight checkable pictures), <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/change-control.html">Change control ↗</a>
+(what three v0.33.61 briefs correct in draft-1: grant redefined as what a credential
+permits, with excess authority = grant − mandate as the countable product; the 5 June
+design precedence; the fixture class with a required private_key_published flag read
+before any signature), and the <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/tabletop.html">Tabletop exercise ↗</a>
+(six injects giving the four published rules their first population).</li><li>New at v0.1.10: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/ux-mockups.html">UX mockups ↗</a>
+(the register interface as intended output, screen by screen: a badge on every edge
+carrying who can verify it, by what method, at what cost, when it was last checked and
+what the answer was; five result states, because denied, unreachable and never-checked
+are three different situations; &quot;verifiable by nobody&quot; rendered as a value rather than
+a blank; a policy page printing &quot;0 rows&quot; and &quot;detects nothing&quot; together), and
+<a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/wardley-maps.html">Wardley maps ↗</a> (six maps in
+mermaid&#x27;s wardley-beta: all the novelty sits in four schema objects; a rented agent&#x27;s
+evidence chain terminates in a component that is commodity and worthless; the two
+absences are on top of the shipped surface, not underneath it; a policy verdict cannot
+be more solid than the badge two layers below it).</li><li>New at v0.1.12: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/user-stories.html">User stories, features and workflows ↗</a>
+— the pack as deliverables. Six users (verifier, agent, issuer, processor, policy owner,
+and auditor as its own seat, because only an auditor reads the log backwards);
+twenty-four stories, each with a test that can fail and a tag naming its phase, document
+and screen; fourteen features whose status column reads &quot;everything at phase 0–1 is
+designed and nothing is built&quot;; six workflows; the mandate lifecycle as states; a
+traceability table; and a flat list of what is NOT delivered (enforcement, receipts,
+confidentiality, attestation, a graph browser, a trust score, estimates). Two findings
+came out of writing it, recorded as change-control C12: the policy workflow has no
+acceptance test in the build order, and &quot;log every processor decision&quot; conflicts with
+&quot;the acknowledgement tells the agent nothing&quot; for declined submissions.</li><li>New at v0.1.14: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/observability.html">Observability ↗</a> — the
+half that makes the declared-mandate layer defensible, and the answer to a question this site
+raised in four places and answered in none: a mandate says what an agent may be AUTHORISED to
+do, not what it does, so who is using it? The answer refuses the question. What is capturable
+is VERIFICATION, NOT USE, and the two come apart both ways — a party that uses a mandate
+without verifying generates nothing, and that party is the weakest relying process there is.
+So the product is the MISSING edges: which parties hold a mandate I issued and have never once
+checked it. The issuer holds both halves, so the join is computable. Check events are written
+by the checker into the ISSUER&#x27;S OWN LANE, never a central log — rule 1 applied to telemetry,
+which resolves the notary brief&#x27;s warning rather than contradicting it, at the deliberate cost
+of foreclosing the aggregate. And because nothing is pushed, the interval between a party&#x27;s
+checks IS its effective revocation latency, measurable before anything is ever revoked.</li><li>New at v0.1.15: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/grant-tree.html">The grant tree and control labels ↗</a>
+and <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/keys-and-signatures.html">Keys and signatures ↗</a>.
+A grant is a TREE of subgrants, so blast radius is a path through it rather than an item in a
+list — and the load-bearing part is the label on each node, above all who enforces the thing
+standing in the way. The general test needs no vendor claim: A CONTROL BOUNDS A GRANT ONLY WHEN
+IT IS ENFORCED BY SOMETHING THE GRANT DOES NOT INCLUDE, giving boundary / setting / expectation,
+and placing most of what people rely on in the middle tier that reads like a boundary and behaves
+like a setting. Plus the SHORTFALL (mandate minus grant, which hurts operations and is harder to
+detect than excess authority), prohibitions as a dated generated view over a stored allow-list,
+and the correction that COUNTING ACCEPTANCES IS THE ONE METRIC THAT INVERTS — it is maximised by
+making risks easy to accept, so declines and unstatable risks are instrumented first.
+On keys: A SECRET IS DEFINED BY EXPECTATION, NOT BY CONTENT, and the intention has to be recorded
+at issue because a deliberate publication and a leak are indistinguishable afterwards. A
+SIGNATURE&#x27;S VALUE COMES ENTIRELY FROM THE SCARCITY OF THE PRIVATE HALF, so per-object keypairs
+with published privates are declined: they leave a hash wearing a signature&#x27;s clothes, defeat
+their own stated use, and would make the fixture flag true on every row — and a flag that is
+always true is a column, not evidence. The rule adopted instead: A KEY BELONGS TO WHATEVER CAN
+KEEP A SECRET, AND EVERYTHING ELSE IS SIGNED BY SOMETHING THAT CAN.</li><li>BUILT, not specified — and rebuilt at v0.1.19 after its first walkthrough by a stranger:
+<a class="ext" href="https://pki.sgit.ai/assess/index.html">Map your own case ↗</a> — a workflow where a visitor picks
+the agents they run and the surface they run on, ticks what they meant the agent to do, and
+sees what is reachable that they never intended, with a decision per gap carrying an acceptor
+and an interval. Specified in <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/user-assessment.html">document 14 ↗</a>.
+You pick NAMED PRODUCTS (Claude Code, ChatGPT, Le Chat...) inside four surface archetypes; facts
+about your own machine PRUNE the graph; escalation is drawn as an EDGE, so you see the path that
+goes around a stated control rather than reading that one exists; the gap is a picture; and
+controls are things you tick as ALREADY TRUE, with their effect on your own gap computed rather
+than asserted. Risk acceptance is deliberately NOT here — it belongs to the risk product, and the
+v1 that had it was wrong. The library of trees is browsable at
+<a class="ext" href="https://pki.sgit.ai/assess/library.html">https://pki.sgit.ai/assess/library.html ↗</a> — every tree drawn, with its raw JSON beside it and the
+selected node highlighted in both. The graph is hand-written SVG with no charting library, because
+a CDN dependency would put a third-party request on a page whose whole argument is that you can
+open the network panel and watch nothing leave.
+Two rules shaped it. STORE THE CHOICES, NOT THE ANSWERS: a completed assessment describes which
+agents somebody runs, holding which credentials, with which containment — assembled, that is a
+serviceable plan for attacking them. So what is stored is identifiers from a public library plus
+fixed options and derived dates, implemented as strictly as it can be: THERE IS NO FREE-TEXT
+INPUT ANYWHERE ON THE PAGE. That also means the acceptor is a ROLE rather than a name, so the
+page cannot meet the pack&#x27;s own named-acceptor standard — recorded rather than hidden. And
+A STRONG THREAT WITH A WEAK ANSWER PRODUCES DENIAL: the standing meta-analysis on fear appeals
+finds defensive response and behaviour change correlate negatively, so a frightening page with
+no credible action performs worse than saying nothing. Every case therefore ends on something
+the visitor can perform, with the number of their own gaps it closes computed rather than
+asserted. The hosted case has ZERO EFFICACY BY CONSTRUCTION — the containment is the vendor&#x27;s,
+uninspectable and unattestable — so it ends on a REQUEST rather than a remedy: ask the vendor
+for an endpoint that signs an existing audit record for a named relying party.
+Browser storage here is not a placeholder: it makes the no-collection claim ARCHITECTURAL
+rather than operational, and checkable in the network panel in ten seconds.
+The library of pre-computed trees is public at <a class="ext" href="https://pki.sgit.ai/assess/library.json">https://pki.sgit.ai/assess/library.json ↗</a> — classes
+of installation rather than named products, because naming one means measuring it.</li><li>Downloadable: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/registry-mvp-briefing-pack.zip">https://pki.sgit.ai/packs/registry-mvp/registry-mvp-briefing-pack.zip ↗</a> — the fifteen
+pack sources, every supporting brief, this file, and the reference implementation, with a briefing
+for a fresh session picking it up cold. It asks for a readiness report rather than an
+implementation: read the supporting material, then the pack, then say whether you have what you
+need or list the questions that block you.</li><li>Document 15 is the first written by SOMEBODY WHO WAS NOT IN THE PACK: an outside session took the
+briefing pack cold and answered &quot;if this were implemented as specified, what would it look like?&quot;,
+returning twelve screens as real markup (<a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/mockups.html">https://pki.sgit.ai/packs/registry-mvp/mockups.html ↗</a>) and a
+debrief. Verified before adoption: all seven of document 08&#x27;s load-bearing strings appear VERBATIM,
+its C8 citation is accurate, and it loads with no framework and no third-party request. Five of its
+six findings are things the fixed-width ASCII form could not surface — COLOUR RE-COLLAPSES THE FIVE
+RESULT STATES, the badge&#x27;s wrap point can produce the exact misreading the badge exists to prevent,
+and a column of five ticks is a page-level tick that document 08 forbids. Adopted as C27-C31.</li><li>Four appendixes. A: a Working Backwards PR/FAQ — the pack from a customer inward, whose
+customer-quote slot is published EMPTY because there is no customer and inventing one is what
+this site&#x27;s participant rules forbid. B: REP-0001, the normative spec in Python PEP form, with
+RFC 2119 keywords and the sections PEP 1 makes mandatory (Security Implications, How to Teach
+This, Rejected Ideas, Open Issues) — the one place the schemas are current rather than
+superseded-with-a-note, Status Draft, Sponsor field empty because it has no champion. C: change
+C: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/doctrine.html">https://pki.sgit.ai/packs/registry-mvp/doctrine.html ↗</a> — Wardley&#x27;s FORTY DOCTRINES in six
+categories and four phases, explained for readers who know the maps and not the doctrine, with
+this project rated against every one. Of the 35 that can be rated at this size: 17 practised,
+12 partly, 6 not; five need an organisation and are marked &quot;no basis yet&quot; rather than scored.
+THE SHAPE IS THE FINDING — strong exactly where a documentation-heavy solo effort can be strong
+alone, weak on every doctrine that needs other people. Which makes &quot;nobody outside the project
+has been asked whether this is a need&quot; and &quot;REP-0001 has no sponsor&quot; the same doctrinal hole in
+two places, and makes asking five operators a PHASE I doctrine fix rather than a nice-to-have.
+Raw data: <a class="ext" href="https://pki.sgit.ai/packs/registry-mvp/doctrine/doctrine.json">https://pki.sgit.ai/packs/registry-mvp/doctrine/doctrine.json ↗</a>
+D: change control, which sits last (99__change-control.md), because it never stops
+growing: thirty-two corrections and forty-five decisions. Read it second if you are building
+from documents 00-04, so you read them with the errata in hand — draft-1&#x27;s definition of <code>grant</code>
+was superseded on the day it shipped.</li><li>Status: a design pack with ONE SHIPPED CONSUMER. The registry itself is unbuilt; the assessment
+at /assess is live and is a consumer of the model rather than a piece of the registry.
+Site-agent authored, awaiting project-lead adoption (N6 on comms).</li></ul>
+<h2 id="the-map-your-case-pack-dev-pack-draft-1-change-control">The Map Your Case pack (dev pack: draft-1 + change control)</h2>
+<p>A second dev pack, published 21 August 2026 at <a class="ext" href="https://pki.sgit.ai/packs/map-your-case/index.html">https://pki.sgit.ai/packs/map-your-case/index.html ↗</a> —
+the pack for the assessment at /assess, WRITTEN AFTER THE THING IT SPECIFIES: v1 shipped 20 August,
+was corrected by the project lead within hours, and v2 shipped the next day; the pack captures the
+thinking (documents 01-04: thirteen principles, the library, the model, the architecture) and
+specifies v3 from documents rather than memory (07-09, 11). Sources verbatim under
+<a class="ext" href="https://pki.sgit.ai/packs/map-your-case/src/">https://pki.sgit.ai/packs/map-your-case/src/ ↗</a> — thirteen documents plus a change-control appendix.</p>
+<ul><li>The one-line frame: the tool renders the delta between GRANT (what an installation can
+technically reach) and MANDATE (what its owner meant to authorise), from a public library of
+pre-computed trees, with nothing about the visitor ever leaving their browser.</li><li>Two v0.33.61 programme briefs are operationalised as first-class documents:
+LEVELS AND VARIANTS (<a class="ext" href="https://pki.sgit.ai/packs/map-your-case/levels-and-variants.html">https://pki.sgit.ai/packs/map-your-case/levels-and-variants.html ↗</a>) — levels
+vary depth, variants vary rendering, they are ORTHOGONAL so the design is a grid not a ladder;
+the variant rule is mechanically checkable (a fact-set diff across variants must be empty);
+EVERYBODY STARTS AT LEVEL ONE because expertise predicts vocabulary, not self-knowledge, and the
+advanced user (largest grant, strongest prior) is the reactance case; five scenarios ordered by
+GRANT SIZE, dictation to operations; and the three sets — MANDATED, EXERCISED BEYOND THE MANDATE,
+HELD AND NEVER USED — where the third set is the product and the concession comes first: THE GAP
+IS NOT ONLY WHERE THE DANGER IS, IT IS ALSO WHERE THE VALUE CAME FROM. The stopping rule answers
+the depth question: each level must be a complete answer, a landing rather than a stair.
+SYNTHETIC READERS (<a class="ext" href="https://pki.sgit.ai/packs/map-your-case/synthetic-readers.html">https://pki.sgit.ai/packs/map-your-case/synthetic-readers.html ↗</a>) — two agents,
+one rendering (a caller of an existing browser-automation service), one reading PIXELS AND
+NOTHING ELSE: the screenshot boundary is the instrument, not a limitation. The page under test is
+a FIXED ARTEFACT authored before the run (a page generated during the run measures the model
+agreeing with itself); the patience budget is EXOGENOUS (screens, minutes, clicks fixed in
+advance) so abandonment is a measured event; the comprehension question is fixed wording: &quot;what
+would you do now, and what did that page tell you&quot;. SYNTHETIC READERS FIND DEFECTS, NOT
+PREFERENCES — they clear the levels, humans judge the variants. The two 9 August simulation rules
+are carried verbatim: a simulated acceptance must never be confusable with a real one (the marker
+lives in the filename, the headers and beside every quote, because export is where markers die);
+and simulate the role, not the named individual — archetypes composed from several people, with
+the test: if the person it came from, or a colleague, would recognise them in it, it is a
+portrait. The part-two service is bounded by THE QUESTION IT ACCEPTS: comprehension and confusion
+yes; &quot;what would this person approve&quot; is the banned tool one prompt away.</li><li>Sharing (document 09): a share is a link whose URL FRAGMENT holds library identifiers plus the
+library version — never sent to a server, nothing personal by construction. On version mismatch
+the recipient gets today&#x27;s truth plus a notice, never the old library served as current.</li><li>Four Wardley maps (document 10) agree on one finding: the scarce components are ALL EDITORIAL,
+none mechanical — library curation, per-node dating, level-one prose, archetype property lists,
+the calibration record. The code is product-shaped; the genesis components are written, not
+programmed — which is the argument for documents-before-code in the v3 build order.</li><li>Document 12 is the first-MVP retrospective — the receipts: the &quot;cases&quot; vocabulary leak that
+looked like a UI bug, categories nobody recognised until products were named, risk acceptance
+removed (it belongs to the risk product), &quot;an hour&quot; corrected to &quot;hard — days, and it fights
+you&quot; by the person who had done it, escalation masking (tracked on the winning path only, so
+ALL of them were hidden), and the missing conversation node whose own test asserted the nonsense.</li><li>Change control: four corrections, eighteen decisions at draft-1. The registry pack records the
+same handover as its C32/decision 45: document 14 there remains the registry-side view.</li></ul>
+<h2 id="the-insurance-ecosystem-pack-dev-pack-draft-1-change-control-step-1-built">The Insurance Ecosystem pack (dev pack: draft-1 + change control; step 1 built)</h2>
+<p>Machine-readable: <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/llms.txt">https://pki.sgit.ai/packs/insurance-ecosystem/llms.txt ↗</a> (IE-D24 answers the conformance vault; IE-D25 reconciles the ladder with evidence mode).</p>
+<ul><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/index.html">Leading brief ↗</a>: the pack
+the fourth v0.33.62 brief specifies — a new agent session is told the rules, handed its
+own policy, measured while it works, and refused by something that is not itself when it
+exceeds cover, visible in a room. Written 3 September 2026 after the nine-item inventory
+that brief demands, under the economics the third v0.33.62 brief settles, and under the
+project lead&#x27;s pilot relaxation: one session holding the vault key may run any role in
+any vault; integrity deferred and detected by sgit&#x27;s append-only history.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/concepts.html">The lexicon ↗</a>: policy, unit,
+band, per-occurrence limit, pool, reserve, draw (recorded | requested; silent overflow is
+not a value), verdict (normal | drawn | refused | requested), zone (below | drawing |
+OUTSIDE = uninsured, escalates), exclusion, correlation. QUESTION NINE SETTLED
+PROVISIONALLY: <code>mandate</code> is the narrow thing, <code>grant</code> the union; August governs; June&#x27;s
+&quot;Authority Envelope&quot; is prose, never a field (IE-D9, the project lead&#x27;s to reverse).</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/vault-topology.html">Vault topology ↗</a>:
+three vaults — policies, ledger, room — with the key tier each needs; the ledger is an
+append lane in the design (a write key grants purge; an append token grants write and a
+blind acknowledgement) and a folder of files only ever added in the pilot, same schema.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/policy-object.html">The policy object ↗</a>:
+policy/v1 (rules version, issuer, policyholder, subject with the mandate pinned by sha256,
+interval with timezone, draw_mode, units each naming its METER, exclusions each with a
+REASON, reserve, rating, an unpublished rate table with an owner), event/v1 generic on
+unit, request/v1, decision/v1, and the balance DERIVED and never stored. Two worked
+policies: the git pilot (five units, in force) and tokens (four counters measured on this
+session — input_tokens 68,356 vs cache_read_input_tokens 721,095,334 — no bands).</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/decision-points.html">Decision points ↗</a>:
+thirty-three Claude Code hook events; SessionStart (briefing), PreToolUse (advisory) and
+Stop (usage) are instrumentation. THE PLATFORM FAILS OPEN WHEN A HOOK TIMES OUT, so the
+enforcement points are git&#x27;s pre-commit and pre-push, which fail CLOSED for a draw.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/parties.html">Parties ↗</a>: issuer,
+policyholder, insured, approver, maintainer, auditor — runbooks now, key topology later;
+the acceptor of every draw is the policyholder, never the session.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/workflows.html">Workflows ↗</a>: session start,
+ordinary work (silence), recorded draw, requested draw, EXHAUSTION (refuse + escalate;
+accept-as-uninsured never touches the pool), the maintainer run, a repricing event.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/interface.html">The interface ↗</a>: a room of
+five cards (policy · zone and balance · draw frequency · correlation · events and
+requests) as a read-only vault app; the briefing verbatim. Rendered live from the
+acceptance run at <a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/room/index.html">https://pki.sgit.ai/packs/insurance-ecosystem/room/index.html ↗</a></li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/build-order.html">Build order ↗</a>: eight steps,
+an acceptance test each; step 1 done; steps 2-8 are the pack&#x27;s own acceptance test —
+a session that has read only the pack builds it all and asks nobody a question.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/first-increment.html">The first increment ↗</a>:
+BUILT AND RUN 3 September — a 400 KB commit refused by git&#x27;s pre-commit (exit 1, HEAD
+unmoved, an escalation written); the eleventh commit of the day told a draw was recorded;
+a push to main refused by the mandate; a requested draw refused, decided, drawn via the
+decision; exhaustion at the fifth reading. Log: /packs/insurance-ecosystem/tests/acceptance-2026-09-03.log</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/eleven-answers.html">The eleven answers ↗</a>:
+the inventory with evidence, and the specification&#x27;s eleven questions answered.</li><li><a class="ext" href="https://pki.sgit.ai/packs/insurance-ecosystem/change-control.html">Change control ↗</a>:
+IE-D1 to IE-D15, all proposed except IE-D11 and IE-D12 (done); no corrections yet — the
+first will be a question the implementing session had to ask.</li><li>Tools, all runnable: /packs/insurance-ecosystem/tools/policy.py (check | briefing |
+request | decide | supersede | derive | validate | hook-pre-tool-use), usage.py,
+room.py; hooks/pre-commit, hooks/pre-push; policies/&lt;subject&gt;/current.json.
+THE HOOKS ARE A SETTING, NOT A BOUNDARY, and every refusal banner says so.</li></ul>
+<h2 id="synthetic-readers-simulated-material-read-the-marker">Synthetic readers (simulated material — read the marker)</h2>
+<p>Below the Map Your Case pack, and deliberately outside it, sits the instrument that TESTS the
+pages: <a class="ext" href="https://pki.sgit.ai/packs/map-your-case/readers/index.html">https://pki.sgit.ai/packs/map-your-case/readers/index.html ↗</a>
+EVERYTHING IN THE RUN RECORDS IS SIMULATED. No person said any of it. It is published because a
+method whose failures are unpublished is marketing, and because the runs that changed a design are
+the evidence that the method works.</p>
+<ul><li>The protocol: TWO AGENTS. One is a browser and nothing else — it navigates, scrolls, clicks where
+it is told, screenshots, and never passes text, structure or the page&#x27;s purpose on. The other is
+an archetype that receives PIXELS AND NOTHING ELSE and points SPATIALLY at where to go next
+(&quot;click the first box in the row of four&quot;), never naming an element by function unless it can
+read that word in the image. The boundary is the instrument: a reader that could read the source
+would understand the page better than any human could, and every finding would be optimistic.</li><li>Patience is EXOGENOUS: 6 screens, 8 clicks, 10 minutes, fixed before the run and spent by
+mechanical rule, so abandonment is a measured event rather than a story the model tells itself.</li><li>FOUR FIXED INSTRUMENTS, all fixed wording: the elevator pitch (the arrival condition), the
+expectation question asked BEFORE the first screenshot, the comprehension question asked at every
+stop (&quot;what would you do now, and what did that page tell you&quot;), and the closing question. The
+expectation-versus-closing pair is the measurement, and neither half is generated by the page.</li><li>ARRIVAL CONDITION is a run parameter, amending the 20 August brief&#x27;s rule that a reader must never
+be told what the page is for: COLD (told nothing — preserves the detection of a page whose purpose
+is not apparent) or PITCHED (the fixed pitch and nothing else — measures whether the page delivers
+the promise that brought the reader). Both are scheduled.</li><li>THREE ARCHETYPES, published as property lists rather than portraits, with sources recorded nowhere:
+the shipping founder (large grant, untested confidence), the agent-security practitioner (large
+grant, earned confidence, rejects the instrument over one inaccurate claim), the adoption executive
+(small personal grant, large by proxy, expects an argument against what they are championing).</li><li>RUN 001 IS PERFORMED AND PUBLISHED: the shipping founder, pitched, six screens, budget spent
+without abandonment. It found four defects — an inert &quot;and 5 more&quot; affordance at exactly the point
+the reader wanted more (&quot;that&#x27;s the kind of small dead end that makes me stop trusting a page&quot;),
+an entry point speaking the project&#x27;s vocabulary rather than the reader&#x27;s, the escalation sentence
+being the most interesting AND least understood claim on the page, and an example load that drops
+the reader mid-card. It also CONFIRMED two design decisions from the outside: the chokepoint
+sentence (&quot;that is one thing to change, not 9&quot;) was named as the reason the reader would act, and
+conceding the value before naming the danger defused the reactance-prone archetype.
+The pre-registered prediction for that archetype was WRONG and is published unchanged.
+Zero confabulations: every string the reader quoted was verified verbatim against the page&#x27;s DOM.</li><li>TWO RUN TYPES per archetype: type A, the blind tabletop (finds defects); type B, an informed
+analysis by an agent that HAS read the pack (turns a transcript into decisions). Kept apart and
+always in that order, because an agent that both reacts and analyses produces a reaction shaped by
+what it is about to conclude.</li><li>Findings flow ONE WAY, into the pack&#x27;s change control as MC5–MC9. The artefact is not edited while
+a run stands against it: fixes ship as a version bump and the run is re-run.</li><li>Honest limits, stated before the findings: the reader and the page share a model family; the
+pixels-only boundary is instructed rather than enforced; one reader per archetype is n = 1; and
+NO CALIBRATION RECORD EXISTS, so nothing here is known to predict what a person would do.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/documents/index.html">The documents ↗</a>: the scoping brief captured
+verbatim and readable in-page — strategy brief v0.33.59, 16 August 2026. Raw markdown
+is the source of truth:
+<a class="ext" href="https://pki.sgit.ai/briefs/v0.33.59__strategy-brief__pki-sgit-keyserver-failure-append-only-ownership-rule.md">https://pki.sgit.ai/briefs/v0.33.59__strategy-brief__pki-sgit-keyserver-failure-append-only-ownership-rule.md ↗</a></li><li><a class="ext" href="https://pki.sgit.ai/about/participant.html">Participant disclosure ↗</a>: published by the
+sgit project, which builds the vault layer this registry would be built on — including
+where that approach loses.</li></ul>
+<h2 id="site">Site</h2>
+<ul><li><a class="ext" href="https://pki.sgit.ai/admin/index.html">How this site is built ↗</a></li><li><a class="ext" href="https://pki.sgit.ai/admin/comms.html">Comms ↗</a>: the public working channel</li><li><a class="ext" href="https://pki.sgit.ai/admin/versions.html">Release history ↗</a></li></ul>
+<h2 id="related-sites">Related sites</h2>
+<ul><li><a class="ext" href="https://nhi.sgit.ai">https://nhi.sgit.ai ↗</a> — non-human identity, blast radius and agentic security. This site
+is the cryptographic half of that site&#x27;s identity gap; its PKI section was where this
+material was staged.</li><li><a href="../sgit.ai/index.html">https://sgit.ai</a><a class="ext live" href="https://sgit.ai" title="live page">↗</a> — the sgit project itself.</li></ul></article>
+<aside class="provenance"><h2>Provenance</h2><dl><dt>Site</dt><dd>pki.sgit.ai</dd><dt>Live URL</dt><dd><a class="ext" href="https://pki.sgit.ai/llms.txt">https://pki.sgit.ai/llms.txt ↗</a></dd><dt>Fetched</dt><dd>2026-09-24T23:45:36Z</dd><dt>sha256</dt><dd><code title="4cb008b4c9acd6fd318ec4073217f31f465deef306bef7055397490d3e52ec09">4cb008b4c9ac</code></dd><dt>Frozen copy</dt><dd><a href="llms.txt">sites/pki.sgit.ai/llms.txt</a> (51,761 bytes)</dd><dt>Desk</dt><dd>Librarian (reading room): rendered as fetched, not edited</dd></dl></aside>
+</main>
+<footer><p>sgit newsroom v0.1.0 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="../../../llms.txt">llms.txt</a></p></footer>
+</body>
+</html>
