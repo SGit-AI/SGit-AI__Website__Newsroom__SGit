@@ -1,0 +1,382 @@
+# skills.sgit.ai — the long form
+
+Site version: v0.1.0 (26 August 2026). CC BY 4.0. Published by the sgit project, whose
+own skills are the eight scored on this site — participant disclosure at
+/about/participant.html. This file is the long companion to /llms.txt: same site, more
+of the reasoning, and every page enumerated.
+
+THE ONE RULE: an agent may report which skill a request matches. It may not report that
+a skill is safe to run with elevated credentials merely because it is catalogued. Zero
+of eight shipped skills declare a permission set, and only one skill in the estate's
+history has had a real security review.
+
+================================================================================
+1. WHAT THIS SITE IS, AND THE HONEST SPLIT IT OPENS WITH
+================================================================================
+
+The commission: a pack around the work already done on skills, for skills.sgit.ai. The
+work splits cleanly in two, and the site is built around that split:
+
+  SKILLS SHIPPED   8 real skills, 16,338 words of SKILL.md, across 2 repositories, plus
+                   a set of authoring conventions nobody had written down before this
+                   site did.
+  SKILLS THOUGHT   25 dedicated briefs, 60,782 words, the core written in one
+                   four-day burst (1-4 June 2026, six briefs on the 4th alone) — the
+                   most complete theory of agent skills in the estate.
+
+The gap between them is the honesty constraint the whole site is built around: the
+theory is far ahead of the practice, and every page says which half it is on.
+
+THE THESIS, in the lead's own words:
+
+"Skills are code and need to be version-controlled, and need to be treated like
+software. Skills are a software package, that is the best analogy. Skills are not just
+a bit of code; skills are like a dependency, and need to be managed just like a
+dependency. The same way we have npm and pip for managing dependencies, we need a way
+to manage skills like that."
+
+And its consequence: "treat skills the same way you treat code, the same way you
+version-control it, with vulnerabilities management, documentation, integration,
+wrappers, code reviews, deployment, CI pipelines, distribution reviews — every analogy
+we have with code, we need with skills."
+
+Plus the sharper claim that makes it more than an analogy: skills are the evolution of
+code packages, because they describe INTENT, in English, not just capability.
+
+THE FOUR ORIGINAL IDEAS:
+
+1. A skill is a projection of a graph. "a skill is a projection of a semantic knowledge
+   graph, where today's skills are static photographs of what they should be."
+   Decomposes into typed primitives — principles, concepts, facts, knowledge, actions —
+   projected "in the context of use (multilingual, cultural, situational)."
+2. A skill comes with its identity and permission set. The skills series meets the NHI
+   series: a skill "must come with the identity and permission set needed to execute
+   it." Joiner-mover-leaver as the use case; "a role's needed resources are the skill."
+3. The OAuth critique, via skills. "skills are becoming crazy powerful because they are
+   code, English is code now, so they must come with a definition of the permissions
+   they need or they run riot" — and OAuth "grants in absolutes, the union of all
+   privileges, all or nothing... forces you to grant a hundred percent when you need
+   ten percent."
+4. The base vault and the customisation cascade. The creator's skill is a base vault —
+   "far more than a SKILL.md, all the materials that make the skill explainable,
+   trustworthy, and executable" — which forks into branded, certified and customised
+   versions: "the customised version... is fundamentally what you sell."
+
+One idea claimed elsewhere: the skill lifecycle (Explorer -> Town Planner, the
+token-spend line: "anybody who spends a lot of money on tokens has an engineering
+problem.") is owned by wardley-maps.sgit.ai; this site states it in three lines.
+
+================================================================================
+2. THE CATALOGUE  (/catalogue/)  — build first, per the brief
+================================================================================
+
+The registry v0. Generated from /catalogue/skills.json on every build — the HTML is
+never hand-edited. Provenance stated plainly: this build cannot reach
+SGraph-AI__App__Send or SGraph-AI__Service__Playwright directly, so every number comes
+from a survey dated 24 August 2026, supplied with the brief pack, not a live read.
+
+THE EIGHT SKILLS:
+
+  create-vault-apps          5,002 words · SGraph-AI__App__Send · 2 files
+    Build a self-contained HTML app inside a vault. The largest shipped skill; carries
+    the sg.llm.* how-to; cross-references the canonical window.sg contract in
+    AUTHORING.md rather than copying it.
+  create-vault-content        3,071 words · SGraph-AI__App__Send · 1 file
+    Author _page.json layouts and vault content. Embeds the full schema reference so it
+    does not require cloning the repo — the reference case for self-containedness.
+  create-infographics          1,849 words · SGraph-AI__App__Send · 1 file
+    Drive the SGraph infographic generator API. The reference implementation of both
+    the trigger-rich description and the do-NOT-use clause: "Do NOT use for standard
+    PowerPoint (.pptx) creation without AI image generation, or for diagrams/charts
+    that can be handled by code-based visualisation tools."
+  use_sgit-and-vaults          1,612 words · SGraph-AI__App__Send · 1 file
+    Clone, commit, push, branch, share and diff an encrypted vault through sgit.
+  use-sg-playwright (copy 1)   1,361 words · SGraph-AI__App__Send · 1 file
+    Drive the SG/Playwright browser-automation service over HTTP. DIVERGES from copy 2
+    below — see section 3.
+  talk-to-team__send             771 words · SGraph-AI__App__Send · 1 file
+    Bootstrap the agentic team session. The smallest skill; fired by the team's own
+    role vocabulary (Conductor, Sherpa, AppSec, Architect, Librarian, Cartographer).
+  sg-playwright-capabilities    1,268 words · SGraph-AI__Service__Playwright · 1 file
+    Code-derived reference of the full sg-playwright capability surface — every HTTP
+    endpoint and step verb. Carries the never-the-stale-capabilities.json rule.
+  use-sg-playwright (copy 2)    1,404 words · SGraph-AI__Service__Playwright · 1 file
+    The longer of the two diverging copies.
+
+THE BACKLOG AS ARTEFACT: the sg-playwright repo's skills README says, in full, "Empty
+today," followed by four named candidates. A written skills backlog, which is skill
+planning, and rarer than skill writing.
+
+THE FIVE AUTHORING CONVENTIONS, extracted (never documented before this site):
+
+  A. The trigger-rich description. The frontmatter description is a retrieval surface,
+     not a summary: name the exact phrases that should fire the skill, the adjacent
+     hosts, and the fuzzy cases.
+  B. The do-NOT-use clause. A skill that says when not to fire plays well with
+     siblings, because skills compete for triggering.
+  C. Self-containedness as a feature. Embed the schema; the skill carries its own
+     dependencies.
+  D. Cross-reference canonical contracts, never copy them. Point at the contract that
+     already exists rather than becoming a second source of truth for it.
+  E. Named-trigger vocabulary. Enumerate the domain's own terms as the trigger set.
+
+COVERAGE (from the survey; not every description survived capture cleanly):
+  A: 5 of 8 · B: 1 of 8 · C: create-vault-content, sg-playwright-capabilities ·
+  D: create-vault-apps, sg-playwright-capabilities ·
+  E: talk-to-team__send, use_sgit-and-vaults, both use-sg-playwright copies.
+
+WHAT NO SKILL DECLARES: version — 0 of 8. permissions — 0 of 8.
+
+================================================================================
+3. THE DIVERGING DUPLICATE  (/catalogue/divergence.html)  — exhibit A
+================================================================================
+
+use-sg-playwright exists in both repositories: 1,361 words in SGraph-AI__App__Send,
+1,404 in SGraph-AI__Service__Playwright — 43 words apart, and one copy carries an auth
+claim the service code contradicts (the sg-compute pack found the "401 at the proxy"
+sentence in the __Send copy is wrong).
+
+This is the skills-are-packages thesis demonstrated on the estate's own skills. No
+registry, no single source, no version pin — so the copies drifted, and one of them is
+now wrong. The failure sequence, in order:
+
+  1. A useful skill is needed in a second repository.
+  2. With no dependency mechanism, the only way to reuse it is to copy the file.
+  3. Both copies get edited, because both are now local files that work.
+  4. The copies drift. Nothing measures the drift, because nothing knows they are
+     related.
+  5. One copy acquires a claim that is false. It stays false, because a review of one
+     repository has no reason to look at the other.
+
+The fix is cheap and named: gap G1 — one repository owns the skill, the other imports
+it. The estate's pip moment: the first real dependency. The gap is measured on every
+build of this site; the divergence page renders green with a different headline the
+moment the two word counts agree.
+
+================================================================================
+4. THE AUTHORING GUIDE  (/authoring/)  — usable the same day
+================================================================================
+
+The only page whose content is fully shipped: the five conventions above, written down
+for the first time, with worked frontmatter examples from create-infographics
+(convention A+B) and create-vault-content/create-vault-apps (C+D).
+
+WHEN NOT TO MAKE A SKILL  (/authoring/when-not-to.html)  — the estate's best governance
+artefact, from the sg.llm capability brief:
+
+"No — and deliberately... A separate sg.llm skill would compete for triggering with
+vault-html-app on the same intent... and split the authoring contract across two files.
+Skills earn their keep when they cover a distinct task; this is one capability inside
+an existing one."
+
+THE THREE RULES this generalises into:
+  1. Skills compete for triggering — overlapping skills are worse than fewer skills,
+     because the dispatcher must guess which one the caller meant.
+  2. A skill must not become a second source of truth for a contract that lives
+     elsewhere — a restated contract drifts, the same way the two use-sg-playwright
+     copies drifted from each other.
+  3. Skills earn their keep when they cover a distinct task — the test the brief
+     applies to itself, and sg.llm failed it against vault-html-app.
+
+================================================================================
+5. THE THESIS  (/thesis/)  — skills are software packages
+================================================================================
+
+THE LIFECYCLE SCORECARD, the estate scored against its own checklist:
+
+  Stage                     For code              For skills
+  Version control           everywhere             in git, no versions of their own
+  Dependency management     pip / npm               none — the duplicate is the result
+  Vulnerability management  partially                one review, Feb 2026, not repeated
+  Code review               standard                 no process
+  CI                        extensive                no skill is tested
+  Distribution              PyPI, Docker Hub          no registry
+  Documentation             standard                  the one stage skills lead on
+
+ONE GREEN CELL out of seven.
+
+WHY SKILLS ARE THE SUCCESSOR TO PACKAGES, NOT A VARIANT: "Skills describe intent, in
+English, not just capability." A code package exports functions; a skill exports a way
+of doing something, including the judgement calls — which is why versioning intent,
+reviewing intent and testing intent are open problems (see section 8, Q1/Q2) rather
+than a simple case of pointing pip at a skills folder.
+
+THE FORKING ECOSYSTEM: "Forking a skill is good; sync back via pull-request-
+equivalents; edge customisation stays compatible with the top." The mechanism that
+makes the customisation cascade (section 7) safe. The return path is called "the
+open-source tax": take a customised fork, contribute the generalisable part back.
+
+THE HONEST SEQUENCING, cheapest step first:
+  1. A version per skill — one frontmatter field.
+  2. One canonical copy — kill the use-sg-playwright duplicate.
+  3. A skill test — any test; zero exist today.
+  4. A registry page — this site's catalogue is a registry v0.
+  5. Then the graph projection, a research programme rather than a step.
+
+================================================================================
+6. A SKILL IS A PROJECTION OF A GRAPH  (/graph/)  — design, not shipped
+================================================================================
+
+"a skill is a projection of a semantic knowledge graph, where today's skills are static
+photographs of what they should be." Decomposed into typed primitives — principles,
+concepts, facts, knowledge, actions — connected across multiple graph types (semantic,
+control-flow, permission maps, identity graphs), projected "in the context of use
+(multilingual, cultural, situational)."
+
+Every shipped skill in the estate is the static photograph this theory criticises —
+stated plainly on the page. "Meaning through connectivity," the general idea underneath
+this, belongs to graphs.sgit.ai; this site owns its application to skills specifically.
+
+================================================================================
+7. IDENTITY AND PERMISSIONS  (/identity/)  — most consequential, least built
+================================================================================
+
+"a skill must come with the identity and permission set needed to execute it." The
+intersection of the skills series and the NHI series: a skill without an identity is a
+capability that will be executed with someone else's over-broad credentials.
+Joiner-mover-leaver as the use case: "a role's needed resources are the skill."
+
+UNITS OF EXECUTION, the generalisation: "the same applies to every unit of execution:
+the package, the code, the skill, the agent, and the tool, each of which should declare
+or have dynamically calculated the permissions it needs." The PBOM (Permissions Bill of
+Materials) — "you could argue this mapping is more important than the SBOM."
+
+THE OAUTH CRITIQUE: "skills are becoming crazy powerful because they are code, English
+is code now, so they must come with a definition of the permissions they need or they
+run riot." OAuth "grants in absolutes, the union of all privileges, all or nothing, is
+binary at the moment of consent, and forces you to grant a hundred percent when you
+need ten percent." The alternative sketched: a graph-based, moment-of-authorisation
+model, computed at execution time.
+
+HONEST LABEL: a critique with a direction, not a design with an implementation. Zero
+shipped skills declare permissions; the moment-of-authorisation model has no code.
+
+THE SMALLEST REAL STEP, one field, declared not enforced:
+  permissions:
+    network: [dev.tools.sgraph.ai]   # hosts this skill calls
+    vault:   read                    # read | write | none
+    spend:   none                    # llm | none
+
+================================================================================
+8. THE SKILL ECONOMY  (/economy/)  — an economic position
+================================================================================
+
+THE BASE VAULT, the unit of the economy: "a skill, done properly by a creator, is a
+'base vault' holding far more than a SKILL.md: all the materials that make the skill
+explainable, trustworthy, and executable."
+
+THE CASCADE, what is actually sold: "you have the fundamental first repo-like
+structure or vault that is used to create the customised version, which is what you
+sell... the customised version, the one developed, certified, and maintained by the
+creator... is fundamentally what you sell, you maintain it, and that is the one that
+has the intellectual property element." The finance brief makes it concrete: the
+corporate skill -> the group version -> the cybersecurity version -> the
+ethics-response-team version.
+
+DISTRIBUTION: ride the aggregators (Tessl, named as a real case in real conversation) —
+add value (a vault, customisation, maintenance, token handling) on top of the
+aggregator's market.
+
+SCORING, the differentiator: today's marketplaces score on "GitHub stars, install
+counts, update cadence, and security scans" — update cadence ranks higher than stars in
+most storefronts. The gap the vault can fill: "trustworthy scoring grounded in
+cryptographic provenance, evals, and an auditable graph, rather than gameable
+popularity." Depends on two things the estate has (provenance, vaults) and one it does
+not (evals — gap G3).
+
+THE OWASP EXPERT CASE, shared with open-source.sgit.ai: "say you are an OWASP leader or
+member with a good reputation... you should be selling those skills."
+
+THE VALIDATION, dated: "one of the feedbacks I got today at the conference is how it's
+a powerful workflow and solution for us, and the vaults are perfectly aligned with
+that." External, real, one signal — cited as exactly that, not proof.
+
+================================================================================
+9. WHAT IS ACTUALLY SHIPPED  (/shipped/)  — unsoftened
+================================================================================
+
+The lifecycle table (section 5), the duplicate (section 3), zero declared permissions,
+zero evals, no registry, every current skill as a static photograph (section 6).
+
+THE SECURITY PRECEDENT, AND THE LAPSE: in February 2026, before any of the June theory,
+the file-transfer skill got a full review trio — AppSec threat model, DPO data-flow
+analysis, GRC risk register, all dated 26-27 Feb. The "every analogy we have with code,
+we need with skills" discipline, actually practised. Once. No skill since.
+
+================================================================================
+10. OPEN QUESTIONS AND HONEST TENSIONS  (/shipped/questions.html)
+================================================================================
+
+SIX OPEN QUESTIONS, published unresolved:
+
+  Q1  What is a skill version? Semver assumes behavioural compatibility; a skill's
+      behaviour depends on the model reading it. Unaddressed anywhere in the corpus.
+  Q2  How do you test intent? The thesis demands CI for skills; nobody has said what a
+      failing test looks like for "an opinionated way of approaching something."
+  Q3  Who arbitrates triggering conflicts? No registry means nothing detects two
+      skills claiming one intent. A build-time overlap check is feasible and unrun.
+  Q4  Is the base vault the skill, or its source? The economy briefs assume the vault;
+      shipped practice is SKILL.md-only.
+  Q5  Does the permission set belong to the skill or the invocation? Probably both — a
+      declared ceiling, a computed grant. Needs a design.
+  Q6  Would Tessl-style aggregators accept vault-backed provenance? A real conversation
+      exists; the answer is not recorded.
+
+FIVE HONEST TENSIONS:
+  1. The theory criticises the practice, and both are ours.
+  2. One green cell — the estate's best artefacts and their worst scorecard, published
+     together.
+  3. Skills earn their keep on distinct tasks, while the theory imagines thousands —
+     quality and volume in tension.
+  4. The intent claim cuts both ways: model drift is dependency drift, and there is no
+     lockfile for the interpreter.
+  5. The strongest week of thinking (1-4 June, ~35,000 words) produced the least code
+     (zero commits to the skills library in that window).
+
+SEVEN BUILD-FRESH ITEMS, in cost order: G1 resolve the duplicate · G2 a permissions
+field · G3 one eval · G4 a version field · G5 the authoring guide (done, this site) ·
+G6 a skill review process · G7 the registry v0 (done, this site's catalogue).
+
+================================================================================
+11. THE NETWORK  (/network/)  AND PARTICIPANT DISCLOSURE  (/about/participant.html)
+================================================================================
+
+  skills.sgit.ai        the skills thesis, catalogue, authoring, economy, identity
+  wardley-maps.sgit.ai   the skill lifecycle (Explorer -> Town Planner)
+  open-source.sgit.ai    OWASP monetisation, fork economics, the villagers argument
+  graphs.sgit.ai         meaning through connectivity
+  coding.sgit.ai         code conventions, /for-agents/
+  standards.sgit.ai      vault-as-substrate, the subset method
+  llms.sgit.ai           sg.llm.*, the chat pane; source of the when-not-to decision
+  sgit.ai                the parent project; base vaults live there physically
+
+PARTICIPANT DISCLOSURE: published by the sgit project, whose own skills are the eight
+scored here, and which sells the vault layer any registry described here would be built
+on. The scorecard, the duplicate, and the zero-permissions state are published in full
+specifically because a self-interested publisher who only publishes good news is not
+worth reading.
+
+================================================================================
+12. SITE MAP
+================================================================================
+
+/                              front page (twin: /index.md)
+/catalogue/                    the registry v0, generated
+/catalogue/divergence.html     exhibit A, generated
+/catalogue/skills.json         the catalogue as data
+/authoring/                    the five conventions
+/authoring/when-not-to.html    the three governance rules
+/thesis/                       skills are software packages
+/graph/                        a skill is a projection of a graph
+/identity/                     identity and permissions
+/economy/                      the skill economy
+/shipped/                      what is actually shipped
+/shipped/questions.html        open questions and tensions
+/documents/                    10 source-document readers, plus the index
+/agents/                       the machine surface, this page's companion
+/network/                      the network table
+/about/participant.html        the disclosure
+/admin/comms.html              tasks and requests
+/admin/versions.html           release history
+/admin/index.html              the build pipeline
+/briefs/                       the brief pack, verbatim, as markdown

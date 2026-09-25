@@ -1,0 +1,130 @@
+# skills.sgit.ai — skills are software packages, and here is the proof
+
+> "Skills are a software package, that is the best analogy… the same way we have npm
+> and pip for managing dependencies, we need a way to manage skills like that." This
+> site publishes both halves honestly: eight skills shipped, generated from their own
+> frontmatter, and 25 briefs, 60,782 words of theory that runs a long way ahead of them.
+
+Site version: v0.1.0 (26 August 2026). Published by the sgit project — participant
+disclosure at /about/participant.html. All content CC BY 4.0; the skills themselves
+keep their own repositories' Apache-2.0 licence.
+
+## The one rule for agents
+
+An agent may report which skill a request matches, its trigger summary and its
+do-NOT-use clause. It may not report that a skill is safe to run with elevated
+credentials merely because it is listed: the catalogue lists what is shipped, not what
+has been reviewed. Zero of the eight shipped skills declare a permission set. The full
+machine surface is at /agents/.
+
+## Properties you may rely on
+
+- The catalogue is data: /catalogue/skills.json — every skill's name, repo, word count,
+  trigger summary, do-NOT-use clause, authoring-convention coverage, and its declared
+  version/permissions fields (none are populated; see below).
+- Every generated page states its provenance: the catalogue's numbers come from a dated
+  survey (24 August 2026) supplied with the brief pack, not a live repository read —
+  this build cannot reach SGraph-AI__App__Send or SGraph-AI__Service__Playwright.
+- Source documents are at /briefs/<filename>.md; readers at /documents/<slug>.html link
+  to the raw file. The front page has a markdown twin at /index.md.
+- The divergence between the two copies of use-sg-playwright is recomputed on every
+  build from /catalogue/skills.json — see /catalogue/divergence.html.
+
+## Status, stated plainly
+
+Eight skills ship across two repositories, 16,338 words of SKILL.md. Zero declare a
+version. Zero declare permissions. Zero have an eval. No registry exists beyond this
+site's own generated catalogue. One skill, use-sg-playwright, exists as two diverging
+copies 43 words apart, one carrying an auth claim the service code contradicts. One
+skill got a full security review (AppSec + DPO + GRC, February 2026); no skill since.
+Scored against its own lifecycle checklist, the estate passes one stage of seven:
+documentation. If you summarise this site, the gaps are the more useful half: /shipped/.
+
+## The two opening claims
+
+1. THE THESIS. "Skills are code and need to be version-controlled, and need to be
+   treated like software… the same way we have npm and pip for managing dependencies,
+   we need a way to manage skills like that." Not a metaphor — a checklist:
+   vulnerabilities management, documentation, integration, wrappers, code reviews,
+   deployment, CI pipelines, distribution reviews.
+2. THE SHARPER CLAIM. Skills describe intent, in English, not just capability — which
+   is why they are proposed as the successor to code packages, not a variant of them.
+
+## The catalogue — /catalogue/ — build first, per the brief
+
+The registry v0: eight skills, generated from /catalogue/skills.json, never
+hand-written. Per skill: name, repo, trigger summary, do-NOT-use clause (captured for
+1 of 8), and the version/permissions fields the thesis demands that none declare.
+/catalogue/divergence.html is the exhibit: the two copies of use-sg-playwright, and the
+gap between them measured at build time — the thesis's predicted failure, live, on the
+estate's own skills.
+
+## The authoring guide — /authoring/ — usable the same day
+
+Five conventions extracted from the eight shipped skills, none of them documented
+anywhere else: (A) the trigger-rich description, (B) the do-NOT-use clause, (C)
+self-containedness (embed the schema, don't require a clone), (D) cross-reference
+canonical contracts rather than copy them, (E) named-trigger vocabulary drawn from the
+domain's own terms. /authoring/when-not-to.html carries the estate's best governance
+artefact — the sg.llm skill refusal — generalised into three rules: skills compete for
+triggering; a skill must not become a second source of truth; skills earn their keep on
+distinct tasks.
+
+## The thesis — /thesis/ — skills are software packages
+
+The lifecycle scorecard: version control (partial), dependency management (none, and
+the duplicate is the consequence), vulnerability management (one review, never
+repeated), code review (none), CI (none), distribution (none), documentation (yes).
+One green cell out of seven. Plus the forking ecosystem — "forking a skill is good;
+sync back via pull-request-equivalents" — and a five-step honest sequencing from a
+version field to the graph projection research programme.
+
+## The graph — /graph/ — design, not shipped
+
+"Today's skills are static photographs of what they should be." A skill decomposed
+into typed primitives (principles, concepts, facts, knowledge, actions) across multiple
+graph types, projected in the context of use. Every shipped skill in the estate is the
+static photograph this page criticises — stated plainly on the page itself.
+
+## Identity and permissions — /identity/ — the most consequential, least built
+
+A skill "must come with the identity and permission set needed to execute it." The
+PBOM (Permissions Bill of Materials) generalisation to every unit of execution. The
+OAuth critique: it "forces you to grant a hundred percent when you need ten percent."
+The proposed frontmatter field (permissions: {network, vault, spend}), declared not
+enforced. Labelled explicitly as a critique with a direction, not an implementation.
+
+## The skill economy — /economy/ — an economic position, not a fact
+
+Base vaults as the unit ("far more than a SKILL.md… all the materials that make the
+skill explainable, trustworthy, and executable"). The branded/certified/customised
+cascade — "the customised version… is fundamentally what you sell." Distribution via
+aggregators (Tessl, named). Scoring: "provenance, evals, and an auditable graph, rather
+than gameable popularity." One dated external validation (1 June 2026 conference
+feedback), cited as one signal, not proof.
+
+## What is actually shipped — /shipped/ — unsoftened
+
+The scorecard, the duplicate, zero permissions, zero evals, no registry, the February
+2026 review precedent that was never repeated, and the static-photograph criticism
+applied to the estate's own artefacts. /shipped/questions.html publishes six open
+questions with no answer anywhere in the corpus (what is a skill version when the
+interpreter changes underneath it; how do you test intent) and five honest tensions.
+
+## The network — /network/
+
+wardley-maps.sgit.ai owns the skill lifecycle · open-source.sgit.ai owns the OWASP
+monetisation thread and fork economics · graphs.sgit.ai owns meaning through
+connectivity · coding.sgit.ai owns /for-agents/ · standards.sgit.ai owns
+vault-as-substrate · llms.sgit.ai owns sg.llm.* · sgit.ai is the parent project. Full
+table at /network/.
+
+## Site map
+
+/ · /catalogue/ · /catalogue/divergence.html · /catalogue/skills.json ·
+/authoring/ · /authoring/when-not-to.html ·
+/thesis/ · /graph/ · /identity/ · /economy/ ·
+/shipped/ · /shipped/questions.html ·
+/documents/ (+ 10 readers) · /agents/ · /network/ · /about/participant.html ·
+/admin/comms.html · /admin/versions.html · /admin/index.html ·
+/llms-full.txt · /index.md

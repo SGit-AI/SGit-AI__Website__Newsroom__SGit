@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent as Webmaster: a business plan for somebody else to run</title>
+<!--
+  Agent as Webmaster, the plan as a single-page app.
+  Everything shown comes from content.json. A compact copy is inlined below as FALLBACK so the page
+  renders anywhere the vault opens, including standalone. To update: edit content.json, then run
+  python3 tools/inline-content.py from the vault root.
+  Authoring contract: no stylesheet, script or image references in markup against vault files;
+  images are set from JS once the page runs.
+-->
+<style>
+  :root{--bg:#fbfaf7;--ink:#101114;--muted:#5b6170;--line:#e3e0d8;--blue:#2f6fed;--blue-soft:#eaf0ff;--green:#1c7c43;--green-soft:#eef7f0;--red:#b4243a;--panel:#f4f6fb}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--blue)}
+  nav.top{position:sticky;top:0;z-index:5;background:rgba(251,250,247,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  nav.top div{max-width:1100px;margin:0 auto;padding:10px 20px;display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
+  nav.top b{margin-right:auto;font-size:.95rem}
+  nav.top a{color:var(--ink);text-decoration:none;font-size:.85rem;padding:4px 0;border-bottom:2px solid transparent}
+  nav.top a.on{border-color:var(--blue)}
+  main{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+  .hero{padding:44px 0 12px}
+  .pill{display:inline-block;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);padding:6px 10px;border-radius:999px;margin-bottom:14px}
+  h1{font:700 2.4rem/1.1 Georgia,"Times New Roman",serif;margin:0 0 14px;max-width:860px}
+  .sub{font-size:1.15rem;color:#34363c;max-width:820px;margin:0 0 14px}
+  .by{color:var(--muted);font-size:.92rem}
+  section{padding:34px 0 8px;scroll-margin-top:64px}
+  h2{font:700 1.55rem/1.2 Georgia,"Times New Roman",serif;margin:0 0 6px}
+  h3{font-size:1.1rem;margin:22px 0 10px}
+  .eyebrow{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#8b909c;margin:0 0 8px}
+  .lead{color:#34363c;max-width:820px;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card b{display:block;margin-bottom:6px}
+  .card p{margin:0;color:#34363c;font-size:.95rem}
+  .card ul{margin:6px 0 0;padding-left:18px;font-size:.95rem;color:#34363c}
+  figure{margin:18px 0}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff}
+  figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+  .tablewrap{overflow-x:auto;margin:12px 0}
+  table{border-collapse:collapse;width:100%;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:600;font-size:.85rem}
+  tr:last-child td{border-bottom:0}
+  td.num{white-space:nowrap;font-weight:600}
+  .note{background:var(--green-soft);border-left:4px solid var(--green);padding:14px 16px;border-radius:8px;margin:16px 0;font-size:.97rem}
+  .loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:10px;counter-reset:s}
+  .loop div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:.92rem}
+  .loop div::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:12px;margin-bottom:8px}
+  .loop b{display:block;margin-bottom:4px}
+  .loop span{color:var(--muted)}
+  .calc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .calc label{display:block;font-size:.9rem;color:var(--muted);margin:8px 0 2px}
+  .calc label output{float:right;color:var(--ink);font-weight:600}
+  .calc input[type=range]{width:100%}
+  .kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+  .kpi div{background:var(--panel);border-radius:10px;padding:12px}
+  .kpi small{display:block;color:var(--muted);font-size:.8rem}
+  .kpi b{font-size:1.35rem}
+  .kpi .warn{color:var(--red)}
+  .tl{border-left:3px solid var(--line);margin:10px 0 0 8px;padding-left:18px}
+  .tl div{position:relative;padding:0 0 18px}
+  .tl div::before{content:"";position:absolute;left:-25px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--blue)}
+  .tl small{color:var(--blue);font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}
+  .tl b{display:block;margin:4px 0}
+  .tl p{margin:0;color:#34363c;font-size:.95rem}
+  .mock{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px}
+  .mock a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;text-decoration:none;color:var(--ink)}
+  .mock .thumb{height:110px;border-radius:8px;margin-bottom:10px}
+  .mock b{display:block}
+  .mock small{color:var(--muted)}
+  .docs{columns:2;column-gap:28px;font-size:.95rem}
+  .docs a{display:block;padding:5px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);break-inside:avoid}
+  .docs a:hover{color:var(--blue)}
+  .quote{font:italic 1.15rem/1.4 Georgia,"Times New Roman",serif;border-left:4px solid var(--blue);padding:8px 16px;margin:14px 0;color:#34363c}
+  footer{border-top:1px solid var(--line);margin-top:30px;padding-top:18px;color:var(--muted);font-size:.9rem}
+  @media (max-width:760px){h1{font-size:1.85rem}.calc{grid-template-columns:1fr}.docs{columns:1}}
+</style>
+</head>
+<body>
+<nav class="top"><div><b>Agent as Webmaster</b>
+  <a href="#onepage">One page</a><a href="#architecture">Architecture</a><a href="#workflow">Workflow</a><a href="#sell">What you sell</a><a href="#model">Model</a><a href="#gtm">Go-to-market</a><a href="#execution">90 days</a><a href="#invest">Invest</a><a href="#risks">Risks</a><a href="#mockups">Mock-ups</a><a href="#docs">Documents</a>
+</div></nav>
+<main>
+  <div class="hero">
+    <span class="pill" id="status"></span>
+    <h1 id="title"></h1>
+    <p class="sub" id="subtitle"></p>
+    <p class="by" id="author"></p>
+  </div>
+
+  <section id="onepage"><p class="eyebrow">The plan in one page</p><h2>Six things to know</h2><div class="grid" id="onepage-grid"></div></section>
+
+  <section id="architecture"><p class="eyebrow">The stack</p><h2>The architecture</h2>
+    <p class="lead">Four parts, and only the first is new. It is how the author's own sites are built.</p>
+    <figure><img id="img-arch" alt="The architecture: customer and operator chat with the agent, the agent commits to one public repository per customer, GitHub Pages deploys on push."><figcaption>The whole stack. Only the first box is new.</figcaption></figure>
+    <div class="grid" id="arch-grid"></div>
+  </section>
+
+  <section id="workflow"><p class="eyebrow">How it runs</p><h2>The workflow</h2>
+    <p class="lead">Setup once, in about three days. Then the change loop, for as long as the customer has a website.</p>
+    <figure><img id="img-flow" alt="Setup over three days, then the change loop: the customer asks, the agent reads the playbook, content goes live and structure goes to preview, the customer sees it, one line in the change log."><figcaption>Setup once. Then the change loop, forever.</figcaption></figure>
+    <div class="tablewrap"><table id="setup-table"><tr><th>When</th><th>Step</th><th>What happens</th></tr></table></div>
+    <h3>The change loop</h3>
+    <div class="loop" id="loop"></div>
+  </section>
+
+  <section id="sell"><p class="eyebrow">Three things, priced three ways</p><h2>What you sell</h2>
+    <p class="lead">Setup once, for the expert's time. Maintenance monthly, for keeping it working. Bigger changes priced when they happen. Every number is a starting hypothesis for a UK operator in 2026.</p>
+    <div class="tablewrap"><table id="setup-pk"><tr><th>Setup · once</th><th>Price</th><th>What is in it</th></tr></table></div>
+    <div class="tablewrap"><table id="maint-pk"><tr><th>Maintenance · monthly</th><th>Price</th><th>What is in it</th></tr></table></div>
+    <div class="tablewrap"><table id="ondemand-pk"><tr><th>On demand</th><th>Price</th></tr></table></div>
+    <div class="note" id="why-sub"></div>
+  </section>
+
+  <section id="model"><p class="eyebrow">The money</p><h2>The business model</h2>
+    <p class="lead">The cost side is nearly empty, so the business is entirely about how many customers one operator can keep genuinely happy. Move the sliders.</p>
+    <figure><img id="img-model" alt="Three things sold three ways, the cost side per customer, and one operator's monthly contribution at 20, 50 and 80 customers."><figcaption>Three things sold three ways, and one operator's year.</figcaption></figure>
+    <div class="tablewrap"><table id="costs"><tr><th>Cost</th><th>Per customer, per month</th><th>Notes</th></tr></table></div>
+    <h3>One operator, your numbers</h3>
+    <div class="calc">
+      <div id="sliders"></div>
+      <div class="kpi" id="kpi"></div>
+    </div>
+    <div class="tablewrap"><table id="scen"><tr><th>Scenario</th><th>Customers</th><th>Setups / month</th><th>Changes / month</th><th>Revenue / month</th><th>Contribution / month</th><th>Annual</th></tr></table></div>
+    <div class="grid" id="two-numbers"></div>
+  </section>
+
+  <section id="gtm"><p class="eyebrow">Finding the first fifty</p><h2>Go-to-market</h2>
+    <div class="grid" id="segments"></div>
+    <p class="quote" id="pitch"></p>
+    <h3>The offer that converts: ship it, give it away briefly, take it away</h3>
+    <div class="loop" id="offer"></div>
+    <div class="tablewrap"><table id="against"><tr><th>Against</th><th>Their position</th><th>Ours</th></tr></table></div>
+    <div class="card" style="margin-top:12px"><b>Channels</b><ul id="channels"></ul></div>
+  </section>
+
+  <section id="execution"><p class="eyebrow">Execution</p><h2>The first ninety days</h2>
+    <p class="lead">One operator, no money raised, a laptop and an agent seat.</p>
+    <div class="tl" id="timeline"></div>
+  </section>
+
+  <section id="invest"><p class="eyebrow">For an investor</p><h2>Why invest in a business that does not need it</h2>
+    <div class="grid" id="invest-grid"></div>
+    <div class="card" style="margin-top:14px"><b>What to ask for at day ninety</b><ul id="ask90"></ul></div>
+    <p class="quote" id="why-author"></p>
+  </section>
+
+  <section id="risks"><p class="eyebrow">Stated plainly</p><h2>The risks</h2>
+    <div class="tablewrap"><table id="risk-table"><tr><th>Risk</th><th>What to do</th></tr></table></div>
+  </section>
+
+  <section id="mockups"><p class="eyebrow">What the sites look like</p><h2>Mock-ups</h2>
+    <p class="lead">Three invented customers and the operator's own sales site, each a standalone page in this vault. Every customer site carries a "changed by the webmaster" strip near the top, because a site that gets changed is the product.</p>
+    <div class="mock" id="mock-grid"></div>
+  </section>
+
+  <section id="docs"><p class="eyebrow">The plan as documents</p><h2>Read it in full</h2>
+    <p class="lead">The same plan in prose, one document per section, plus the prototypes that are enough to run the first customer.</p>
+    <div class="docs" id="doc-list"></div>
+  </section>
+
+  <footer>
+    <p><b>Delivered as an encrypted vault.</b> This page is a little HTML on top of a vault, rendered straight from it with a published read key. The plan, the mock-ups and the prototypes travel as one string, versioned, and can be taken and run by anybody. <a href="PUBLIC.md">The three rules it is published under.</a></p>
+  </footer>
+</main>
+
+<script>
+const FALLBACK = /*__DATA__*/{"title": "Agent as Webmaster", "subtitle": "A business plan for a company that gives small businesses a website they can actually change, by putting an AI agent in the webmaster's chair. Complete enough to run. Written for somebody else to run it.", "status": "PLAN · published 23 September 2026 · numbers are starting hypotheses", "author": "From a voice memo by Dinis Cruz, founder of sgit.ai. The first of a set of business plans published for others to build companies on.", "onepage": [["The business", "Give small businesses a website they can change by asking. The customer talks, the agent edits, GitHub Pages publishes. Charge once to set it up, a little each month to keep it working, and per change for the work that takes an expert."], ["Why now", "Claude and ChatGPT can maintain a small website end to end: pages, content, layout, images, the commit that publishes. Two years ago that was not true. Most small-business sites are still brochures because changing them needed a developer or a template tool that fights back."], ["The stack", "A chat session with one public GitHub repository that deploys to GitHub Pages on every push, with a preview branch for changes the customer wants to see first. That is the whole thing, and it is how the author builds his own sites."], ["The numbers", "Hosting is free, tokens are pence, the operator's agent seat is one flat fee. The cost is the operator's time, so the business is how many customers one person keeps happy. Fifty at £90 a month is £4,500 of recurring revenue before a single setup fee."], ["Who runs it", "Anyone who wants a small, focused, profitable service business and is comfortable directing an agent. Not a developer. Somebody good at understanding what a customer wants and telling an agent precisely."], ["Why it is public", "The technology is not the moat, and a plan only one company can follow is not a plan. Take it."]], "architecture": {"diagram": "diagrams/architecture.webp", "parts": [["The agent", "A Claude or ChatGPT session with the repository connected and a short per-customer playbook loaded. Two sessions per customer: the operator's, which can do everything, and the customer's, which can change the content it owns within the playbook's rules."], ["One public repository", "Per customer, under the customer's own account. Plain static files, a site.json for the facts that change most, PLAYBOOK.md for the agent, CHANGELOG.md for the owner. Public on purpose: the site is public anyway, and public repositories get Pages for free."], ["Two branches, plus campaigns", "main is live. preview is what the customer looks at first. campaign-* branches get a URL each and are merged or deleted. Every change is a commit; rolling back is a revert."], ["GitHub Pages", "Deploys on every push via Actions. Free for public repositories. HTTPS on the customer's own domain. Nothing to run, patch or renew except the domain."], ["Not in the stack", "No CMS (the chat is the CMS). No hosting bill. No database (the repository is). No build the customer can break. No secrets in the repository: anything with a credential is a third-party embed."], ["Where vaults come in", "The website does not need one. The business does: each customer's brief, materials, notes and playbook live in a vault the customer can open with a read key and take with them. The operator's playbook and this plan are vaults too."]]}, "workflow": {"diagram": "diagrams/workflow.webp", "setup": [["Day 0", "The call and the materials", "Thirty to sixty minutes on what they do, who the site is for, what they hate about the current one. Logo, photos, text, hours, the domain login, sent however is easy."], ["Day 1", "The build", "The operator briefs the agent from the notes. Repository, pages, resized images, playbook, deploy, pushed to preview. Usually one working session."], ["Days 1 to 2", "The review", "The customer opens the preview on their phone and says what is wrong. Two or three rounds is normal."], ["Days 2 to 3", "Go live and hand over", "Merge to main, point the domain, HTTPS. The customer's session is set up. They receive the site, the repository, the vault read key and one page on how to ask for a change."]], "loop": [["The customer asks", "In their own session, in their own words."], ["The agent reads the playbook", "Which page, who owns it, live or preview?"], ["Content on a page they own goes live", "Commit to main, live in a minute."], ["Anything structural goes to preview", "Operator notified, checked, merged."], ["The customer sees it", "Wrong? Say so in the same chat."], ["One line in the change log", "The owner reads it. So does the operator, monthly."]]}, "packages": {"setup": [["Starter", "£300", "Up to 4 pages. One call, one review round. Their text and photos. Live in three days."], ["Standard", "£600", "Up to 8 pages. Two review rounds, light copywriting, image treatment, a contact form embed. Live in a week."], ["Full", "£1,200", "Up to 15 pages or a structured site. Two calls, unlimited review for two weeks, copywriting, photo editing, booking or newsletter embed, redirects from the old site."]], "maintenance": [["Bronze", "£50 / month", "Site kept up and checked monthly, small tweaks done, the customer's own agent session for content, the monthly note."], ["Silver", "£100 / month", "Bronze plus up to 4 operator-handled changes a month, 48-hour turnaround, change log reviewed with a suggestion."], ["Gold", "£200 / month", "Silver plus up to 12 changes, 24-hour turnaround, a quarterly refresh, priority when something breaks."]], "ondemand": [["A change handled by the operator", "£40 to £80"], ["A new page or section", "£80 to £150"], ["A campaign or seasonal page", "£120 to £250"], ["Tokens, for heavy users", "pass-through plus 50%"]], "why_subscription_here": "A subscription is a discount for regular use, not rent on something the customer ignores. Here the operator does something every month: watches, tweaks, reads the change log, sends the note, stops the customer blowing up the whole thing. The customer can see the work in the commits. If a change log is empty for three months, tell them and offer bronze or nothing. That is what keeps the renewal earned, and what the UK's subscription rules will require from January 2027 anyway."}, "model": {"diagram": "diagrams/business-model.webp", "costs": [["Hosting", "£0", "GitHub Pages, public repository"], ["Domain", "£0 to the operator", "The customer owns and pays, £10 to £15 a year"], ["Agent tokens for changes", "£1 to £5 a month", "Pence per change; a busy month a few pounds"], ["The operator's agent seat", "£20 to £200 a month, shared", "One plan serves every customer's sessions"], ["Third-party embeds", "£0 to £15", "Free tiers; paid tiers passed to the customer"], ["Operator time", "the real cost", "Setup 4 to 12 hours; maintenance 20 to 90 minutes a month"]], "defaults": {"customers": 50, "avg_maintenance": 90, "setups_per_month": 3, "avg_setup": 600, "ondemand_per_month": 20, "avg_ondemand": 70, "direct_costs": 400, "setup_hours": 8, "maint_minutes": 45, "ondemand_minutes": 45, "admin_hours": 30}, "scenarios": [["Small", 20, 2, 8, 200], ["Steady", 50, 3, 20, 400], ["Full", 80, 4, 35, 600]], "two_numbers": [["Churn", "A customer who leaves at six months was worth £540 of maintenance plus setup. One who stays three years, £3,240 plus upsells. The monthly note and the visible change log are the churn tools."], ["Setup time", "Twelve hours for the first, four by the twentieth, because the playbook and templates are reusable. Every hour off is margin or a lower price, and a lower price is a bigger market."]]}, "gtm": {"segments": [["Local service businesses", "Hours, prices and photos change constantly and nobody updates the site. Walk the high street and show them their own site on your phone."], ["Sole practitioners and small firms", "Accountants, architects, therapists, tutors, trades. The site is their credibility and it is five years old."], ["Clubs, associations, small charities", "A volunteer built it and left. One introduction reaches the committee, and the committee knows every other committee."]], "pitch": "You will have a website you can change by asking. You send a message, the change happens, you see it on your phone. I set it up properly and I keep it working. You own everything.", "offer": [["Rebuild their site in a day, free, on a preview URL", "From their public site and whatever they send. Two or three hours and some tokens."], ["Give them the customer session for two weeks", "Let them change things. Watch the change log."], ["Take it away on day fifteen", "The preview goes dark."], ["See whether they miss it", "The ones who call are customers. The ones who do not were never going to pay."]], "against": [["Template builders", "Rent forever for a tool you fight", "You own the site; you change it by asking; you pay for what is done"], ["Agencies", "£3,000 to £15,000 and every change is a quote", "Live in days for hundreds; changes in minutes"], ["A freelancer", "Good until they are busy or gone", "The repository and playbook outlive any one person, including us"], ["Doing it yourself with an agent", "Possible, and we will show you how", "Most people want somebody accountable who has done it fifty times"]], "channels": ["Referral: every footer says who looks after the site; every monthly note asks for one introduction; a month free each way.", "The unasked rebuild: ten a month, two convert.", "The sales site, built exactly the way a customer's is, with the mock-ups live and the prices on it.", "Partners: accountants, coaches, co-working spaces, trade associations.", "Content: publish customers' change logs, with permission, as the marketing."]}, "execution": [["Days 1 to 10", "Build the machine on yourself", "The sales site as a real customer site. The first playbook and setup checklist. The three mock-ups as real repositories. The operator's vault. Company basics in an afternoon."], ["Days 11 to 30", "Five customers, free then taken away", "Rebuild five local sites unasked. Two weeks of the customer session. Dark on day fifteen. Sign the ones who call. Time every setup."], ["Days 31 to 60", "Ten customers and the monthly note", "First notes sent properly. One introduction asked of every customer. Prices published. The weekly change-log review starts. Second and third templates."], ["Days 61 to 90", "Twenty customers, and the numbers", "About £1,800 recurring plus setups and on-demand: over £3,000 a month. Measure setup hours (under five), maintenance minutes (under sixty), churn (nobody who used the session). Write down what broke. Decide: hire at fifty, or stay small and profitable."]], "invest": {"case": [["Profitable quickly, no capital", "No capex, no hosting, no engineering team. One operator is contribution-positive from ten customers, comfortably profitable at fifty: roughly £87,000 a year of contribution for one person's time."], ["Recurring revenue that is earned", "Maintenance the customer can see working, with a change log and a monthly note. It survives the subscription rules most subscription businesses are about to meet."], ["Scales two ways", "Deep: one company, ten operators, five hundred sites, about £45,000 a month recurring. Wide: many independent operators on one open playbook, with the original company selling the tooling, training and vault service. Wide is why the plan is public."], ["The upsell is visible", "Every change log is a list of things the customer would pay for: bookings, content, findability, accessibility, a second property."], ["A clean exit", "Maintained sites with public repositories, versioned playbooks and customer vaults are a transferable asset. Nothing depends on the person who built it."]], "ask_at_90": ["Setup hours per customer, trending down", "Maintenance minutes per customer per month, under an hour", "Churn among customers who used their own session", "Ten change logs, read", "A playbook that is longer and more specific than on day one"], "why_author": "Because it is the operating model he uses, applied: ship something a stranger can use, give it away briefly, take it away, find out whether they miss it, be profitable before you raise, and keep the technology open because it was never the moat."}, "risks": [["The agent breaks a site", "Branches, commits, revert. Practise the revert on customer one."], ["The customer's session does something odd", "The playbook scopes it; out-of-scope goes to preview; review the change log weekly."], ["GitHub Pages terms or limits", "Read them before customer one. Keep a second static host ready. The sites are plain files; moving is a copy."], ["Public repositories", "Nothing secret in them, ever. Embeds hold their own credentials. Private material lives in the customer's vault."], ["Token costs or provider terms change", "Two providers named for a reason. Meter usage from day one."], ["Anybody can do this", "True. The moat is fifty happy customers, a playbook with the mistakes in it, and referrals. More operators make the category."], ["Accessibility, privacy, cookie law", "Every template ships with the statements and a no-cookie posture. Kept current as maintenance."], ["Key-person risk for the customer", "Repository theirs, playbook in it, vault by read key. The honest answer to 'what if you disappear'."]], "mockups": [["Hollow Lane Bakery", "mockups/customer-bakery.html", "This week's bread, hours, a notice, a gallery. The kind of site that changes every Friday.", "linear-gradient(135deg,#e7c79c,#c98b52)"], ["Marsh & Okafor, accountants", "mockups/customer-accountants.html", "Services, deadlines, the team, a quote form. Credibility, kept current.", "linear-gradient(135deg,#8fa6c9,#3f5a8a)"], ["Riverside Physiotherapy", "mockups/customer-physio.html", "Treatments, booking, the team, prices from next month.", "linear-gradient(135deg,#bfe3d4,#4fa88a)"], ["The sales site", "mockups/sales-site.html", "The operator's own site: the chat, how it works, the three examples, the prices published, the free rebuild.", "linear-gradient(135deg,#dbe4ff,#2f6fed)"]], "docs": [["Start here", "plan/00-START-HERE.md"], ["1 · The idea", "plan/01-the-idea.md"], ["2 · The architecture", "plan/02-architecture.md"], ["3 · The workflow", "plan/03-the-workflow.md"], ["4 · What you sell", "plan/04-what-you-sell.md"], ["5 · The business model", "plan/05-business-model.md"], ["6 · Go-to-market", "plan/06-go-to-market.md"], ["7 · The first ninety days", "plan/07-execution.md"], ["8 · Why invest", "plan/08-why-invest.md"], ["9 · The risks", "plan/09-risks.md"], ["10 · Why it is open", "plan/10-open-source.md"], ["The playbook template", "prototypes/webmaster-playbook.md"], ["The setup, step by step", "prototypes/github-pages-setup.md"], ["Six change requests, worked", "prototypes/change-requests.md"]]};
+
+async function getData(){
+  try { if (window.sg && sg.vfs && sg.vfs.readText) { const t = await sg.vfs.readText('content.json'); const j = JSON.parse(t); if (j && j.title) return j; } } catch(e){}
+  try { const r = await fetch('content.json',{cache:'no-store'}); if (r.ok) { const j = await r.json(); if (j && j.title) return j; } } catch(e){}
+  return FALLBACK;
+}
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const gbp = n => '£' + Math.round(n).toLocaleString('en-GB');
+function card(b, p){ return `<div class="card"><b>${esc(b)}</b><p>${esc(p)}</p></div>`; }
+function rows(t, arr, f){ arr.forEach(r => { const tr = document.createElement('tr'); tr.innerHTML = f(r); t.appendChild(tr); }); }
+
+function build(d){
+  $('status').textContent = d.status; $('title').textContent = d.title; $('subtitle').textContent = d.subtitle; $('author').textContent = d.author;
+  $('onepage-grid').innerHTML = d.onepage.map(x => card(x[0], x[1])).join('');
+  $('img-arch').src = d.architecture.diagram;
+  $('arch-grid').innerHTML = d.architecture.parts.map(x => card(x[0], x[1])).join('');
+  $('img-flow').src = d.workflow.diagram;
+  rows($('setup-table'), d.workflow.setup, r => `<td class="num">${esc(r[0])}</td><td><b>${esc(r[1])}</b></td><td>${esc(r[2])}</td>`);
+  $('loop').innerHTML = d.workflow.loop.map(x => `<div><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join('');
+  rows($('setup-pk'), d.packages.setup, r => `<td><b>${esc(r[0])}</b></td><td class="num">${esc(r[1])}</td><td>${esc(r[2])}</td>`);
+  rows($('maint-pk'), d.packages.maintenance, r => `<td><b>${esc(r[0])}</b></td><td class="num">${esc(r[1])}</td><td>${esc(r[2])}</td>`);
+  rows($('ondemand-pk'), d.packages.ondemand, r => `<td>${esc(r[0])}</td><td class="num">${esc(r[1])}</td>`);
+  $('why-sub').innerHTML = '<b>Why a subscription is right here, when it is wrong for most software.</b> ' + esc(d.packages.why_subscription_here);
+  $('img-model').src = d.model.diagram;
+  rows($('costs'), d.model.costs, r => `<td><b>${esc(r[0])}</b></td><td class="num">${esc(r[1])}</td><td>${esc(r[2])}</td>`);
+  $('two-numbers').innerHTML = d.model.two_numbers.map(x => card(x[0], x[1])).join('');
+  buildCalc(d.model);
+  $('segments').innerHTML = d.gtm.segments.map(x => card(x[0], x[1])).join('');
+  $('pitch').textContent = '"' + d.gtm.pitch + '"';
+  $('offer').innerHTML = d.gtm.offer.map(x => `<div><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join('');
+  rows($('against'), d.gtm.against, r => `<td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td>`);
+  $('channels').innerHTML = d.gtm.channels.map(x => `<li>${esc(x)}</li>`).join('');
+  $('timeline').innerHTML = d.execution.map(x => `<div><small>${esc(x[0])}</small><b>${esc(x[1])}</b><p>${esc(x[2])}</p></div>`).join('');
+  $('invest-grid').innerHTML = d.invest.case.map(x => card(x[0], x[1])).join('');
+  $('ask90').innerHTML = d.invest.ask_at_90.map(x => `<li>${esc(x)}</li>`).join('');
+  $('why-author').textContent = 'Why the author would invest: ' + d.invest.why_author;
+  rows($('risk-table'), d.risks, r => `<td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td>`);
+  $('mock-grid').innerHTML = d.mockups.map(x => `<a href="${esc(x[1])}"><div class="thumb" style="background:${esc(x[3])}"></div><b>${esc(x[0])}</b><small>${esc(x[2])}</small></a>`).join('');
+  $('doc-list').innerHTML = d.docs.map(x => `<a href="${esc(x[1])}">${esc(x[0])}</a>`).join('');
+  navHighlight();
+  try { window.parent && window.parent.postMessage({type:'sg-app-ready'}, '*'); } catch(e){}
+}
+
+function buildCalc(m){
+  const def = m.defaults;
+  const money = new Set(['avg_maintenance','avg_setup','avg_ondemand','direct_costs']);
+  const S = [
+    ['customers','Customers on maintenance',5,150,1], ['avg_maintenance','Average maintenance price, per month',40,220,5],
+    ['setups_per_month','Setups per month',0,10,1], ['avg_setup','Average setup price',200,1500,50],
+    ['ondemand_per_month','On-demand changes per month',0,80,1], ['avg_ondemand','Average on-demand price',30,250,5],
+    ['direct_costs','Direct costs per month',0,1500,25],
+    ['setup_hours','Hours per setup',2,14,1], ['maint_minutes','Maintenance minutes per customer per month',10,120,5], ['ondemand_minutes','Minutes per on-demand change',15,120,5], ['admin_hours','Sales and admin hours per month',0,60,2]
+  ];
+  const box = $('sliders'); const v = {...def};
+  S.forEach(([k,label,min,max,step]) => {
+    const l = document.createElement('label'); l.innerHTML = `${esc(label)} <output id="o-${k}"></output>`;
+    const i = document.createElement('input'); i.type='range'; i.min=min; i.max=max; i.step=step; i.value=def[k]; i.id='i-'+k;
+    i.addEventListener('input', () => { v[k] = Number(i.value); render(); });
+    box.appendChild(l); box.appendChild(i);
+  });
+  function render(){
+    S.forEach(([k]) => { $('o-'+k).textContent = money.has(k) ? gbp(v[k]) : v[k]; });
+    const mrr = v.customers * v.avg_maintenance, setups = v.setups_per_month * v.avg_setup, od = v.ondemand_per_month * v.avg_ondemand;
+    const rev = mrr + setups + od, contrib = rev - v.direct_costs;
+    const hours = v.setups_per_month * v.setup_hours + v.customers * v.maint_minutes / 60 + v.ondemand_per_month * v.ondemand_minutes / 60 + v.admin_hours;
+    $('kpi').innerHTML = `<div><small>Monthly recurring revenue</small><b>${gbp(mrr)}</b></div><div><small>Revenue per month</small><b>${gbp(rev)}</b></div><div><small>Contribution per month</small><b>${gbp(contrib)}</b></div><div><small>Annual contribution</small><b>${gbp(contrib*12)}</b></div><div><small>Operator hours per month</small><b class="${hours>160?'warn':''}">${Math.round(hours)}</b> <small>${hours>160?'over one person: time for the second operator':'of about 160 available'}</small></div><div><small>Contribution per operator hour</small><b>${hours>0?gbp(contrib/hours):'–'}</b></div>`;
+  }
+  render();
+  const t = $('scen');
+  m.scenarios.forEach(([name,c,s,o,dc]) => {
+    const mrr = c*def.avg_maintenance, rev = mrr + s*def.avg_setup + o*def.avg_ondemand, con = rev - dc;
+    const tr = document.createElement('tr'); tr.innerHTML = `<td><b>${esc(name)}</b></td><td>${c}</td><td>${s}</td><td>${o}</td><td class="num">${gbp(rev)}</td><td class="num">${gbp(con)}</td><td class="num">${gbp(con*12)}</td>`; t.appendChild(tr);
+  });
+}
+
+function navHighlight(){
+  const links = [...document.querySelectorAll('nav.top a')]; const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }); }, {rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s => io.observe(s));
+}
+
+getData().then(build).catch(err => { console.error('[plan] build failed', err); document.querySelector('main').insertAdjacentHTML('afterbegin','<p>Could not load the plan content.</p>'); try { window.parent && window.parent.postMessage({type:'sg-app-ready'}, '*'); } catch(e){} });
+</script>
+</body>
+</html>

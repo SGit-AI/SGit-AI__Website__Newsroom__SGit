@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+    <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .gap{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;stroke-dasharray:7 5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .ab{stroke:#b4243a;stroke-width:2;fill:none;stroke-dasharray:6 5}
+    .ag{stroke:#1c7c43;stroke-width:2.2;fill:none}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .akey{stroke:#2f6fed;stroke-width:2.4;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+    .mask{fill:#fbfaf7}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="32" class="h">THREE PLACES TO CAPTURE, THREE GRADES OF EVIDENCE</text>
+  <text x="200" y="74" class="h">BROKER</text>
+  <text x="600" y="74" class="h">GATEWAY</text>
+  <text x="1000" y="74" class="h">AGENT-REPORTED</text>
+
+  <rect class="box" x="110" y="96" width="180" height="50"/><text x="200" y="126" class="t">Agent, no credential</text>
+  <rect class="key" x="70" y="196" width="250" height="70"/><text x="195" y="224" class="t">Broker</text><text x="195" y="244" class="s">holds the credential, checks</text><text x="195" y="260" class="s">the mandate, makes the call</text>
+  <rect class="box" x="110" y="318" width="180" height="50"/><text x="200" y="348" class="t">Gmail, Calendar</text>
+  <path d="M200 146 L200 188" class="an"/><path d="M194 180 L200 188 L206 180" class="an"/>
+  <path d="M200 266 L200 310" class="an"/><path d="M194 302 L200 310 L206 302" class="an"/>
+  <path d="M320 231 L330 231" class="ag"/><rect class="good" x="330" y="212" width="60" height="38"/><text x="360" y="236" class="g">lane</text>
+
+  <path d="M510 121 C440 121 440 343 510 343" class="ab"/>
+  <text x="408" y="224" class="r" style="text-anchor:start">a path</text><text x="408" y="240" class="r" style="text-anchor:start">around</text>
+  <rect class="box" x="510" y="96" width="180" height="50"/><text x="600" y="120" class="t">Agent</text><text x="600" y="138" class="s">holds its own credential</text>
+  <rect class="key" x="480" y="196" width="240" height="70"/><text x="600" y="224" class="t">Gateway</text><text x="600" y="244" class="s">copies every call and</text><text x="600" y="260" class="s">response on the path</text>
+  <rect class="box" x="510" y="318" width="180" height="50"/><text x="600" y="348" class="t">Gmail, Calendar</text>
+  <path d="M600 146 L600 188" class="an"/><path d="M594 180 L600 188 L606 180" class="an"/>
+  <path d="M600 266 L600 310" class="an"/><path d="M594 302 L600 310 L606 302" class="an"/>
+  <path d="M720 231 L730 231" class="ag"/><rect class="good" x="730" y="212" width="60" height="38"/><text x="760" y="236" class="g">lane</text>
+
+  <rect class="box" x="880" y="96" width="180" height="50"/><text x="970" y="120" class="t">Agent</text><text x="970" y="138" class="s">calls the system directly</text>
+  <rect class="box" x="880" y="318" width="180" height="50"/><text x="970" y="348" class="t">Gmail, Calendar</text>
+  <path d="M970 146 L970 310" class="an"/><path d="M964 302 L970 310 L976 302" class="an"/>
+  <path d="M1060 121 C1130 121 1140 170 1140 204" class="ag" stroke-dasharray="6 5"/><path d="M1134 196 L1140 204 L1146 196" class="ag"/>
+  <rect class="good" x="1110" y="212" width="60" height="38"/><text x="1140" y="236" class="g">lane</text>
+  <text x="1070" y="284" class="g">copies each call</text><text x="1070" y="300" class="g">itself</text>
+
+  <rect class="good" x="60" y="410" width="280" height="96"/>
+  <text x="200" y="440" class="t">Complete by construction</text>
+  <text x="200" y="462" class="s">nothing reaches the API without</text><text x="200" y="480" class="s">passing through it, and it can refuse</text>
+  <rect class="key" x="460" y="410" width="280" height="96"/>
+  <text x="600" y="440" class="t">Complete for routed traffic</text>
+  <text x="600" y="462" class="s">blind to anything that goes around it,</text><text x="600" y="480" class="s">so the routing has to be enforced</text>
+  <rect class="bad" x="860" y="410" width="280" height="96"/>
+  <text x="1000" y="440" class="t">Self-reported</text>
+  <text x="1000" y="462" class="s">an entry the agent skips leaves</text><text x="1000" y="480" class="s">no gap the chain can show</text>
+
+  <text x="200" y="546" class="r">the highest-value target</text><text x="200" y="566" class="s">it holds the credentials</text>
+  <text x="600" y="546" class="m">the usual choice</text><text x="600" y="566" class="s">once routing is enforced</text>
+  <text x="1000" y="546" class="g">available today</text><text x="1000" y="566" class="s">no infrastructure at all</text>
+  <text x="600" y="612" class="s">The mode does not change what is captured. It changes what the evidence is allowed to claim, and the policy says which one was used.</text>
+</svg>

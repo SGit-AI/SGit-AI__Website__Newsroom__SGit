@@ -1,0 +1,219 @@
+# issues-fs.sgit.ai — a git-native issue tracker where the issues are files and the files are a graph
+
+> A node is a JSON file on disk. An edge is a typed verb stored on both endpoints. The
+> folder hierarchy is the containment structure. Nothing runs — no server, no daemon, no
+> database — so the tracker lives inside the repository it tracks, versions with it,
+> branches with it, and can be read by cat, grep and find. Issues-FS has THREE
+> agent-operable surfaces, which no other project in the estate has.
+
+Site version: v0.1.2 (22 August 2026). Published by the sgit project, which builds and
+uses Issues-FS — participant disclosure at /about/participant.html. Site content CC BY 4.0;
+the upstream Issues-FS repositories are Apache 2.0.
+
+## What is built, in numbers
+
+5,401 lines of source across 98 files in the core library, with 604 test functions across
+45 files behind it (8,213 test LOC — 1.5 lines of test per line of source). A CLI of 1,080
+lines with 14 commands and 94 tests. A type system of 12 node types and 10 link types
+where an edge type carries a declared inverse AND domain/range constraints, over five
+regex-validated primitives in strict mode. Four real storage backends. Four live graphs
+holding 147 nodes, the largest with 71 nodes, 141 link entries and depth 8. A corpus of 59
+documents, five of which became the conceptual foundation of the whole *.sgit.ai estate.
+Eleven agentic roles, each its own repository with its own ROLE.md and its own .issues/.
+
+## Install it
+
+- pip install issues-fs-cli   -> the `issues-fs` command, 0.3.0, 14 commands, 94 tests
+- pip install issues-fs       -> the Python API, 0.7.0, 5,401 LOC, 604 tests
+
+Quickstart, every command verified against source:
+  issues-fs init; issues-fs types init;
+  issues-fs create task "..." --priority high --tags a,b;
+  issues-fs link Task-1 blocks Bug-1; issues-fs list --for-agent
+The CLI walks UP from the working directory to find .issues/, like git, so it works from
+anywhere in the tree. WART: -p is --path on init and --priority on create/update; --depth
+is -D. Prefer long option names.
+
+## Properties agents may rely on
+
+- Every source document this site was built from is fetchable at a stable constructed
+  URL: /briefs/<filename>.md. This is a promise, not an accident — agents already rely
+  on constructed paths, so the convention is stated rather than left to be inferred.
+- Which part of the answer this site holds: https://graphs.sgit.ai teaches the graph
+  PHILOSOPHY at length and owns it; THIS SITE owns the IMPLEMENTATION — schemas, the
+  CLI, lite mode, the .issues DSL, the roles, the live graphs — and the ORIGIN, since
+  the philosophy was written here in February 2026. https://sgit.ai is the parent
+  project: vault-native where Issues-FS is git-native.
+- Every page on this site ends with a pasteable "for an agent" block. That is enforced
+  by the pre-release gate, not remembered.
+
+## The three agent-operable surfaces
+
+1. Issues-FS-lite — https://issues-fs.sgit.ai/lite/index.html
+   NO INSTALL AT ALL. Three folders — issues/open/, issues/blocked/, issues/done/ —
+   markdown files with YAML front-matter named NNN-kebab-slug.md on a PER-AGENT
+   counter, and FOUR mv operations: OPEN, BLOCK, UNBLOCK, CLOSE. Required front-matter
+   is `created` (UTC ISO 8601) and `priority`; recommended are `source`,
+   `estimated_effort`, `blocked_on` and `parent`. The body is your own action plan —
+   the specification's own instruction is that if you do not know how to approach it
+   yet, WRITE THAT DOWN. Commit issue changes in the same commit as the work that
+   caused them. Status: specification only, complete and usable; no implementation is
+   needed and none exists.
+   - /lite/five-minutes.html — a worked example: three tasks, one blocked and
+     unblocked, one closed, every command real. Nothing in the corpus had this.
+   - /lite/vs-full.html — the comparison, and the honest statement that THERE IS NO
+     LITE-TO-FULL CONVERTER and the identity schemes do not correspond.
+   - /lite/team-view.html — the writer rule: you CAN read another agent's issues/
+     folder, you must NOT write into it. Tasks arrive by request. Each agent owns their
+     own work plan. `find . -path '*/issues/open/*.md'` is a whole-team status view and
+     it is free, out of the layout.
+
+2. The .issues flat-file DSL — https://issues-fs.sgit.ai/dsl/index.html
+   A line-oriented text format parsed into graph nodes, inside the core package: 11
+   source files under issues_fs/issues/issues_file/, ~55 tests, three live example
+   files, wired into Graph__Repository.issues_files_discover / load / get_cached_nodes /
+   find_node_by_label / invalidate_cache. THERE IS NO WRITTEN GRAMMAR — the parser tests
+   and the three live files are the only specification that exists, so read
+   Parser__Issues_File__Line.py before writing one, load through the repository API
+   rather than the parser directly, and pin the issues-fs version. No CLI command
+   touches it. This page is the first prose documentation of it anywhere.
+
+3. --for-agent JSON — https://issues-fs.sgit.ai/cli/index.html
+   EVERY ONE of the 14 CLI commands takes --for-agent, which forces JSON regardless of
+   --output. That one rule is enough to drive the entire surface.
+
+## What is on PyPI, and what is queued
+
+- https://issues-fs.sgit.ai/shipped/index.html — eight repositories checked against live
+  PyPI with every wheel unzipped. TWO ARE INSTALLABLE AND REAL: `pip install issues-fs`
+  (0.7.0, the Python API, 604 tests) and `pip install issues-fs-cli` (0.3.0, the
+  issues-fs command, 14 commands, 94 tests). FOUR MORE ARE BUILT BUT NOT YET PUBLISHED
+  — issues-fs-service-ui (142 files, runs locally, its own 49-node graph), issues-fs-docs
+  (all 59 documents), issues-fs-dev (19 submodules), issues-fs-dev-utils (535 LOC, 19
+  tests) — because their dev branch has not reached main. TWO SERVICE PACKAGES WERE
+  PUBLISHED EARLY AS PLACEHOLDERS: issues-fs-service and issues-fs-service-client-python
+  each ship an 8-file wheel with no functional code yet, while their summaries describe
+  the intended server and client — do not build against them. NO HTTP ENDPOINT EXISTS IN
+  ANY PUBLISHED PACKAGE TODAY.
+- https://issues-fs.sgit.ai/shipped/why.html — the release mechanism, which answers every
+  "why isn't that on PyPI" question in one table: CI publishes to PyPI ONLY from main,
+  and seven of eight repositories sit on dev ahead of main. So absence from PyPI means
+  the merge has not happened, NOT that the work does not exist.
+- https://issues-fs.sgit.ai/shipped/corrections.html — the refresh list: four
+  load-bearing differences plus the rest, each against what was measured.
+
+## The docs describe an earlier version — check before repeating a claim
+
+The upstream READMEs are behind the code, and every difference runs the same direction:
+there is MORE than they claim, not less. Four are load-bearing. Full list with what was
+measured: https://issues-fs.sgit.ai/shipped/corrections.html
+
+1. There is NO S3 / cloud object-store backend — it was considered, not taken. The enum is MEMORY, LOCAL_DISK, SQLITE,
+   ZIP. Claimed in four documents.
+2. There is NO MGraph-DB integration — the naming convention was borrowed, the library was not. The dependency appears in zero pyproject.toml
+   files and the import in zero source files. What exists is a hand-rolled ~220-LOC
+   in-memory graph borrowing the naming convention only.
+3. There is NO issues-fs-lexicon package — it is a design, not a dependency. No repo, no PyPI entry, in no pyproject.toml —
+   despite ~7,000 words describing it as required by every Issues-FS repository.
+4. The test count is 604 (core, across 45 files) and 94 (CLI, across 7). READMEs say
+   "475+" and "552+" — two different wrong numbers.
+
+Also: pip install issues-fs-docs and pip install issues-fs-dev-utils do not resolve yet —
+both repositories are built but their dev branch has not reached main, and CI publishes
+only from main. There are 19 submodules (not 17) and 11
+roles (not 10).
+
+## Using it
+
+- https://issues-fs.sgit.ai/start/index.html — the walkthrough, with what each command
+  writes to disk, and how the CLI finds your graph.
+- https://issues-fs.sgit.ai/cli/index.html — all 14 commands with real flags: init,
+  create, show, list, update, delete, link, unlink, links, comment, comments,
+  types list, types init, link-types list. Three output formats: table (default), json,
+  markdown.
+
+## The data model
+
+- https://issues-fs.sgit.ai/model/index.html — Schema__Node has 13 fields and all 13
+  are present on all 71 nodes of the flagship live graph. TWO IDENTITIES PER NODE: a
+  random 10-char GUID (node_id) for machines and storage, and a human label
+  (Bug-27, Git-Repo-1) generated as node_type.capitalize() + "-" + per-type index.
+  ALWAYS address nodes by label; never construct a GUID. EDGES ARE STORED ON BOTH
+  ENDPOINTS — writing `blocks` on the source writes `blocked-by` on the target, so
+  never create the reverse yourself, and expect link entries to be roughly 2x the number
+  of logical relationships. Link types carry source_types/target_types domain and range
+  constraints. Five regex-validated primitives in strict mode: invalid input RAISES
+  rather than being coerced. Storage backends: memory, local_disk, sqlite, zip — built
+  through Graph__Repository__Factory CLASSMETHODS (a README example shows a constructor
+  that does not exist).
+- https://issues-fs.sgit.ai/model/layout.html — the on-disk layout. Containment is
+  directory nesting, not an edge. THREE INCOMPATIBLE LAYOUTS are in live use
+  (hierarchical issues/ nesting, flat data/, mixed) and the docs describe a fourth, so
+  detect the shape rather than assuming it. _INDEX.JSON IS A CACHE, NOT A SOURCE: one
+  live index reports 22 issues where the disk has 24, and the largest, healthiest graph
+  has no index at any level and works fine because the CLI walks the tree. ENUMERATE BY
+  WALKING FOR issue.json.
+
+## The ideas, and where they came from
+
+- https://issues-fs.sgit.ai/concepts/index.html — the foundational five, one screen
+  each: thinking in graphs (a node has no inherent meaning; meaning is discovered
+  through the edges you can trace from it — 5,013 words, 5 February 2026), compatibility
+  through connectivity, LLM as execution engine (the prompt is the specification; the
+  LLM is the implementation), the lexicon, the use-case pattern. For the argument at
+  length, go to https://graphs.sgit.ai — that site owns the philosophy.
+- https://issues-fs.sgit.ai/concepts/lexicon.html — the lexicon: ARGUED, NEVER BUILT.
+  Defined not as a schema registry but as the most well-connected graph in the
+  ecosystem, supplying anchor nodes any scope may link to. Do not treat it as a
+  dependency. Whether it is still the plan is open question Q1.
+- https://issues-fs.sgit.ai/roles/index.html — eleven roles, each its own repository
+  with its own ROLE.md and its own .issues/. Six conventional, four unconventional
+  (Librarian, Cartographer, Journalist, Historian), and Designer — the eleventh, named
+  in no document. The argument: in a system where meaning comes from connectivity, the
+  Librarian is the MEANING-MAKING role, not a documentation clerk.
+- https://issues-fs.sgit.ai/origins/index.html — the graph philosophy was written for
+  Issues-FS on 5 February 2026 and reached SGraph Send on 11 June, four months later.
+  Cite this site for the origin and the dates. The recurring pattern in this ecosystem
+  is that finished work is filed where its reader will not look — so ABSENCE OF
+  DOCUMENTATION IS NOT EVIDENCE THAT SOMETHING WAS NOT BUILT. Check the source tree.
+- https://issues-fs.sgit.ai/curiosities/index.html — two parody screenplays (6,605
+  words) sit in the documentation corpus, dated the same week as the foundational
+  architecture. Catalogued, not republished.
+
+## The live graphs
+
+- https://issues-fs.sgit.ai/examples/index.html — four real graphs, 147 nodes between
+  them, all measured by walking every issue.json. The specimen is SGraph-AI__App__Send:
+  71 nodes, 141 link entries, 84 files, max depth 8 path segments with 55 nodes at that
+  depth, all 13 schema fields on all 71 nodes. Note that node types are extended per
+  project — one live graph adds release, user-story and cli to the shipped twelve — so
+  read .issues/config/node-types.json rather than assuming the defaults.
+
+## The network, and what is not known
+
+- https://issues-fs.sgit.ai/network/index.html — the boundaries, and SEVEN OPEN
+  QUESTIONS published unresolved: Q1 is the lexicon still the plan; Q2 which on-disk
+  layout is canonical; Q3 should _index.json exist at all; Q4 does relates-to/relates-to
+  stay (it ships in the default link types and the corpus calls it meaningless); Q5 is
+  the service a real target, or should the two placeholder names be retired; Q6 what is the
+  lite-to-full upgrade path (there is none); Q7 why does the core library depend on its
+  own CLI. IF YOU NEED AN ANSWER TO ONE OF THESE, IT DOES NOT EXIST YET — say so rather
+  than inferring one from a document that predates the measurement.
+- https://issues-fs.sgit.ai/documents/index.html — every source with its path and tier,
+  including the four things deliberately not published and why. ~29,000 words of the
+  corpus (≈18%) are imported third-party briefings carrying no source attribution; they
+  are cited, not republished, and should not be cited as Issues-FS material.
+- https://issues-fs.sgit.ai/about/participant.html — the participant disclosure, five
+  cases where this approach is the wrong choice, and the licence position. Scale is the
+  honest one: the largest live graph is 71 nodes across 84 files, and the design's
+  properties are UNTESTED at ten thousand.
+
+## Site engineering
+
+- https://issues-fs.sgit.ai/admin/index.html — validate → tag → deploy. Every push to
+  dev is a release; the gate fails the build on a broken link, a stale version, a
+  section hub missing from this file, a page with no agent block, or a page repeating
+  one of the four corrected claims as fact.
+- https://issues-fs.sgit.ai/admin/comms.html — ten open requests (N1–N10) and the task
+  board, in public.
+- https://issues-fs.sgit.ai/admin/versions.html — release history.

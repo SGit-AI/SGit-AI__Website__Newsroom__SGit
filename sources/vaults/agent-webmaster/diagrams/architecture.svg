@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+  <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#101114;stroke-width:1.6;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .win{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .old{fill:#fff;stroke:#9aa3b5;stroke-width:1.4;stroke-dasharray:5 4;rx:10}
+    .a{stroke:#2f6fed;stroke-width:2.2;fill:none}
+    .e{stroke:#9aa3b5;stroke-width:1.4;fill:none}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="36" class="h">THE WHOLE STACK. ONLY THE FIRST BOX IS NEW.</text>
+
+  <rect class="box" x="40" y="120" width="190" height="90"/>
+  <text x="135" y="152" class="t">The customer</text>
+  <text x="135" y="174" class="s">says what should change,</text>
+  <text x="135" y="190" class="s">in their own words</text>
+
+  <rect class="box" x="40" y="300" width="190" height="90"/>
+  <text x="135" y="332" class="t">The operator</text>
+  <text x="135" y="354" class="s">sets up, keeps healthy,</text>
+  <text x="135" y="370" class="s">handles the expert changes</text>
+
+  <path d="M230 165 L300 165 L300 232 L340 232" class="a"/><path d="M332 226 L340 232 L332 238" class="a"/>
+  <path d="M230 345 L300 345 L300 278 L340 278" class="a"/><path d="M332 272 L340 278 L332 284" class="a"/>
+  <text x="265" y="150" class="m">chat</text>
+  <text x="265" y="336" class="m">chat</text>
+
+  <rect class="key" x="348" y="190" width="230" height="130"/>
+  <text x="463" y="220" class="t">The agent</text>
+  <text x="463" y="242" class="s">Claude or ChatGPT, with the</text>
+  <text x="463" y="258" class="s">repository connected and</text>
+  <text x="463" y="274" class="s">the site playbook loaded</text>
+  <text x="463" y="302" class="m">two sessions, two scopes</text>
+
+  <path d="M578 255 L648 255" class="a"/><path d="M640 249 L648 255 L640 261" class="a"/>
+  <text x="613" y="240" class="m">push</text>
+
+  <rect class="box" x="656" y="160" width="230" height="190"/>
+  <text x="771" y="190" class="t">One public repository</text>
+  <text x="771" y="212" class="s">per customer, under their account</text>
+  <text x="771" y="240" class="s">pages/  images/  site.json</text>
+  <text x="771" y="256" class="s">PLAYBOOK.md  CHANGELOG.md</text>
+  <text x="771" y="284" class="m">main → live</text>
+  <text x="771" y="302" class="m">preview → preview URL</text>
+  <text x="771" y="320" class="m">campaign-* → one URL each</text>
+  <text x="771" y="372" class="s">every change a commit, every commit a version</text>
+
+  <path d="M886 255 L956 255" class="a"/><path d="M948 249 L956 255 L948 261" class="a"/>
+  <text x="921" y="240" class="m">on push</text>
+
+  <rect class="win" x="964" y="190" width="200" height="130"/>
+  <text x="1064" y="220" class="t">GitHub Pages</text>
+  <text x="1064" y="242" class="s">static files, HTTPS,</text>
+  <text x="1064" y="258" class="s">the customer's domain</text>
+  <text x="1064" y="286" class="g">hosting cost: £0</text>
+  <text x="1064" y="304" class="s">nothing to run or patch</text>
+
+  <rect class="old" x="656" y="400" width="230" height="80"/>
+  <text x="771" y="428" class="t">Third-party embeds</text>
+  <text x="771" y="450" class="s">forms, bookings, payments</text>
+  <text x="771" y="466" class="s">credentials live with the provider</text>
+  <path d="M771 400 L771 380" class="e"/>
+
+  <rect class="old" x="348" y="400" width="230" height="80"/>
+  <text x="463" y="428" class="t">The customer's vault</text>
+  <text x="463" y="450" class="s">brief, materials, notes, playbook</text>
+  <text x="463" y="466" class="s">private, versioned, theirs by read key</text>
+  <path d="M463 400 L463 320" class="e"/>
+
+  <rect x="40" y="530" width="1120" height="76" rx="12" style="fill:#f4f6fb"/>
+  <text x="600" y="556" class="h">WHAT IS DELIBERATELY NOT HERE</text>
+  <text x="600" y="580" class="t">No CMS (the chat is the CMS). No hosting bill. No database (the repository is). No build the customer can break. No secrets in the repository.</text>
+  <text x="600" y="598" class="s">Rolling back is a revert. Leaving the operator is taking the repository. The site is plain files and always was.</text>
+</svg>

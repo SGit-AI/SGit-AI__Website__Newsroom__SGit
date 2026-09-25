@@ -1,0 +1,120 @@
+{
+  "title": "Risk Acceptance Office: running the acceptance loop, in the gaps of the GRC platform",
+  "one_line": "A company that makes sure every material risk an organisation carries is established on facts, held by a named person, accepted for a stated interval, and at the end of that interval accepted again, escalated, funded or fixed, with the evidence and the decisions kept in a vault per risk.",
+  "principles": [
+    {
+      "name": "Every risk is already accepted",
+      "text": "A risk exists the moment the exposure does. Nobody decides whether to accept it, only who accepts it and for how long. Until someone does, the organisation is carrying it unsigned."
+    },
+    {
+      "name": "There is no deny button",
+      "text": "You cannot vote a fact out of existence. A register that lets a risk be rejected lets the organisation pretend it is not carrying it."
+    },
+    {
+      "name": "Accept, fund or fix",
+      "text": "Three doors, each with a name against it. Deferral is not a decision, and silence escalates."
+    },
+    {
+      "name": "The interval is the decision",
+      "text": "Accepting for four hours means an incident. Accepting for a month means funding work. The length of the acceptance is what tells the organisation what to do next."
+    },
+    {
+      "name": "A named person, and no delegation",
+      "text": "Acceptance is by a person, not a committee or a function. Nobody accepts on anybody else's behalf."
+    },
+    {
+      "name": "Unaccepted is critical",
+      "text": "A risk nobody has accepted rests on whoever is nearest and rolls upward. Not doing something is a measurable action."
+    },
+    {
+      "name": "Every path ends at the board",
+      "text": "Every risk has a holder, every holder has a boss, and every chain ends at the board. What reaches the top is computed from the chain, not reported by hand."
+    },
+    {
+      "name": "Accepted is not acceptable",
+      "text": "Accepted is an act by a named person at a dated moment. Acceptable is a threshold: where the business is content to stop funding remediation. They are two different questions, and a register needs both answers."
+    },
+    {
+      "name": "Established by facts, ended by facts",
+      "text": "Every risk names the facts that make it true, each with a source, and the facts that would end it. It closes when those hold, not when a review date passes."
+    },
+    {
+      "name": "GRC validates, the business accepts",
+      "text": "Engineers confirm the facts, governance validates the reading, and the business owner accepts. Where those three disagree is where the findings are."
+    }
+  ],
+  "ladder_lead": "Each acceptance is for one of six intervals, and each rung names a different response. This is the ladder as published on risks.sgit.ai. RiskMandate.ai publishes a slightly different set of bands, and the plan treats reconciling them as an open question.",
+  "ladder": [
+    {
+      "rung": "1 hour",
+      "length": "an hour",
+      "means": "\"I need more data.\" Fetch it now, then decide again."
+    },
+    {
+      "rung": "4 hours",
+      "length": "hours",
+      "means": "A priority-one incident. Trigger incident response."
+    },
+    {
+      "rung": "1 to 2 days",
+      "length": "days",
+      "means": "A smaller incident."
+    },
+    {
+      "rung": "1 to 2 weeks",
+      "length": "weeks",
+      "means": "A funded project for a team that already exists."
+    },
+    {
+      "rung": "1 month",
+      "length": "a month",
+      "means": "Assemble and fund. The default rung, set deliberately just above the incident line."
+    },
+    {
+      "rung": "6 months",
+      "length": "months",
+      "means": "Do nothing and review it then. It costs nothing, and it is legitimate with a name on it."
+    }
+  ],
+  "plan_lead": "The service runs one loop for every material risk a client carries: establish it on facts, place it on the chain to the board, have its holder accept it for an interval, and act when the interval ends. It reads the client's register from their GRC platform, writes acceptances and escalations back into it, and keeps each material risk's evidence and decisions in a vault of its own.",
+  "services": [
+    {
+      "name": "Acceptance audit",
+      "price": "Free",
+      "unit": "one hour, five risks",
+      "includes": "Five risks from the client's own register: who accepted each, until when, on what evidence, and what happens when it expires."
+    },
+    {
+      "name": "Foundation engagement",
+      "price": "£18,000",
+      "unit": "once, about eight weeks",
+      "includes": "One business unit: its top twenty risks established on facts, placed on the chain to the board, the first round of acceptances, and the integration with the client's GRC platform."
+    },
+    {
+      "name": "Acceptance Office",
+      "price": "£2,500 + £60",
+      "unit": "per month, plus per material risk per month",
+      "includes": "Clocks kept, expiries acted on, escalations raised, a monthly acceptance report for the executive team, a quarterly board pack, and a vault per material risk."
+    },
+    {
+      "name": "Incident and escalation support",
+      "price": "£1,200",
+      "unit": "per day, on demand",
+      "includes": "When a short acceptance becomes an incident, running the evidence and the re-acceptance alongside the client's own response."
+    },
+    {
+      "name": "Partner licence",
+      "price": "£15,000",
+      "unit": "per year, per consultancy",
+      "includes": "The method, the playbook, the templates and training, for consultancies and auditors who deliver it on their own engagements."
+    }
+  ],
+  "price_note": "Every price is a hypothesis for a UK firm in 2026, to be tested on the first three design partners.",
+  "risks_per_consultant": 150,
+  "assumptions": [
+    "A risk engineer can run about 150 material risks at steady state, keeping clocks, raising escalations and preparing reports, and fewer in the first quarter.",
+    "A consultant's loaded cost is about £8,500 a month in the UK.",
+    "Foundation engagements and on-demand days are not in the calculator, because they are lumpy.",
+    "At the defaults, twelve clients with forty material risks each bring about £58,800 a month against about £34,000 of delivery cost."
+  ]
+}

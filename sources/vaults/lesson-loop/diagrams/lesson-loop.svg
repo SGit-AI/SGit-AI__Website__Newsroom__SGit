@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+    <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .gap{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;stroke-dasharray:7 5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .ab{stroke:#b4243a;stroke-width:2;fill:none;stroke-dasharray:6 5}
+    .ag{stroke:#1c7c43;stroke-width:2.2;fill:none}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .akey{stroke:#2f6fed;stroke-width:2.4;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+    .mask{fill:#fbfaf7}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="32" class="h">THE LESSON LOOP: CAPTURE THE KNOWLEDGE AT THE MOMENT IT EXISTS</text>
+
+  <rect class="box" x="40" y="70" width="230" height="96"/><text x="155" y="100" class="t">The lesson</text><text x="155" y="122" class="s">an hour on court;</text><text x="155" y="140" class="s">any coach, any club, any city</text>
+  <rect class="key" x="330" y="70" width="250" height="96"/><text x="455" y="100" class="t">The last five minutes</text><text x="455" y="122" class="s">the coach records a voice memo:</text><text x="455" y="140" class="s">the best picture there will ever be</text>
+  <rect class="key" x="640" y="70" width="230" height="96"/><text x="755" y="100" class="t">The agent</text><text x="755" y="122" class="s">turns it into a lesson note</text><text x="755" y="140" class="s">and three points for the player</text>
+  <rect class="good" x="930" y="70" width="230" height="96"/><text x="1045" y="100" class="t">The player's vault</text><text x="1045" y="122" class="s">the record the player holds;</text><text x="1045" y="140" class="s">the transcript kept beside it</text>
+  <path d="M270 118 L322 118" class="an"/><path d="M314 112 L322 118 L314 124" class="an"/>
+  <path d="M580 118 L632 118" class="an"/><path d="M624 112 L632 118 L624 124" class="an"/>
+  <path d="M870 118 L922 118" class="an"/><path d="M914 112 L922 118 L914 124" class="an"/>
+
+  <rect class="box" x="930" y="250" width="230" height="96"/><text x="1045" y="280" class="t">The player reads</text><text x="1045" y="302" class="s">three things for the next games,</text><text x="1045" y="320" class="s">and the drills</text>
+  <path d="M1045 166 L1045 242" class="an"/><path d="M1039 234 L1045 242 L1051 234" class="an"/>
+  <rect class="bad" x="640" y="250" width="230" height="96"/><text x="755" y="280" class="t">The games</text><text x="755" y="302" class="s">where the lesson is tested;</text><text x="755" y="320" class="s">match notes and short clips</text>
+  <path d="M930 298 L878 298" class="an"/><path d="M886 292 L878 298 L886 304" class="an"/>
+  <rect class="key" x="330" y="250" width="250" height="96"/><text x="455" y="280" class="t">The briefing</text><text x="455" y="302" class="s">two minutes, before the next lesson:</text><text x="455" y="320" class="s">every coach's view, every game</text>
+  <path d="M640 298 L588 298" class="an"/><path d="M596 292 L588 298 L596 304" class="an"/>
+  <path d="M330 298 L155 298 L155 174" class="ag"/><path d="M149 182 L155 174 L161 182" class="ag"/>
+  <text x="245" y="284" class="g">next lesson starts here</text>
+
+  <text x="600" y="400" class="h">WHAT CHANGES</text>
+  <rect class="box" x="40" y="420" width="260" height="110"/><text x="170" y="450" class="t">For the player</text><text x="170" y="472" class="s">three written points instead of</text><text x="170" y="490" class="s">an hour to remember; the games</text><text x="170" y="508" class="s">finally reach the coach</text>
+  <rect class="box" x="325" y="420" width="260" height="110"/><text x="455" y="450" class="t">For the coach</text><text x="455" y="472" class="s">no first fifteen minutes of catch-up;</text><text x="455" y="490" class="s">thinks more strategically, because</text><text x="455" y="508" class="s">what they say is kept and read</text>
+  <rect class="box" x="610" y="420" width="260" height="110"/><text x="740" y="450" class="t">Across coaches</text><text x="740" y="472" class="s">every coach starts from what</text><text x="740" y="490" class="s">every other coach saw, in any</text><text x="740" y="508" class="s">club, in any country</text>
+  <rect class="good" x="895" y="420" width="265" height="110"/><text x="1027" y="450" class="t">New income</text><text x="1027" y="472" class="s">remote reviews, drill plans,</text><text x="1027" y="490" class="s">follow-ups and content,</text><text x="1027" y="508" class="s">all paid on demand</text>
+  <text x="600" y="590" class="s">Phase one is only the top row: a voice memo, an agent and a vault. Nothing else is built until that works with real coaches and players.</text>
+</svg>

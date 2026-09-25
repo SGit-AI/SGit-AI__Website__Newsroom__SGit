@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your webmaster is an agent</title>
+<style>
+  :root{--bg:#fbfaf7;--ink:#101114;--blue:#2f6fed;--line:#e3e0d8;--muted:#5b6170;--green:#1c7c43}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{max-width:1040px;margin:0 auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:700}
+  .logo span{color:var(--blue)}
+  nav a{margin-left:18px;color:var(--ink);text-decoration:none;font-size:.95rem}
+  .hero{max-width:1040px;margin:0 auto;padding:48px 20px 24px}
+  h1{font-size:2.6rem;line-height:1.08;margin:0 0 14px;max-width:760px}
+  .lead{font-size:1.15rem;color:#34363c;max-width:700px;margin:0 0 20px}
+  .btn{display:inline-block;background:var(--blue);color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:8px}
+  .chat{max-width:1040px;margin:0 auto;padding:0 20px}
+  .chat div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;font-size:.95rem;max-width:720px}
+  .msg{padding:8px 12px;border-radius:10px;margin:6px 0;display:inline-block;max-width:92%}
+  .me{background:#eaf0ff}
+  .bot{background:#f4f6fb}
+  .live{color:var(--green);font-weight:600;font-size:.85rem;margin-left:6px}
+  section{max-width:1040px;margin:0 auto;padding:36px 20px}
+  h2{font-size:1.45rem;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .steps div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .steps b{display:block;margin-bottom:6px}
+  .steps small{color:var(--muted)}
+  .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;margin-bottom:8px}
+  .ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .ex a{display:block;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink)}
+  .ex .thumb{height:120px;border-radius:8px;margin-bottom:10px}
+  .ex b{display:block}
+  .ex small{color:var(--muted)}
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .prices div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+  .prices .p{font-size:1.7rem;font-weight:700;margin:6px 0}
+  .prices .p small{font-size:.9rem;font-weight:400;color:var(--muted)}
+  .prices ul{margin:10px 0 0;padding-left:18px;color:#34363c;font-size:.95rem}
+  .prices li{margin:4px 0}
+  .prices .tag{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700}
+  .own{background:#eef7f0;border-left:4px solid var(--green);padding:14px 16px;border-radius:8px}
+  footer{border-top:1px solid var(--line);padding:22px 20px;font-size:13px;color:var(--muted)}
+  footer div{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media (max-width:720px){h1{font-size:2rem}nav a{margin-left:12px}.btn.ghost{margin:8px 0 0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Your webmaster <span>is an agent</span></div>
+  <nav><a href="#how">How it works</a><a href="#examples">Examples</a><a href="#prices">Prices</a><a href="#start">Start</a></nav>
+</header>
+<div class="hero">
+  <h1>A website you change by asking. Set up properly. Kept working. Yours.</h1>
+  <p class="lead">You send a message. The change happens. You see it on your phone a minute later. We set it up, we keep it healthy, and you own every file. No template tool to fight, no agency to wait for.</p>
+  <a class="btn" href="#start">Get a free rebuild of your site</a><a class="btn ghost" href="#prices">See the prices</a>
+</div>
+<div class="chat"><div>
+  <div class="msg me">We're closed Monday the 6th for the bank holiday, can you put that on the site and fix the hours?</div><br>
+  <div class="msg bot">Done. A notice is at the top of the home page and the contact page, and Monday 6 October now shows as closed in the hours. It removes itself on the 7th. <span class="live">Live · 41 seconds</span></div><br>
+  <div class="msg me">Perfect. And can you add the three photos I sent?</div><br>
+  <div class="msg bot">Added to the gallery, resized so the page stays fast. <span class="live">Live · 1 min 12</span></div>
+</div></div>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p class="sub">Four steps, and the fourth one is the point.</p>
+  <div class="steps">
+    <div><span class="n">1</span><b>A call</b><small>Thirty to sixty minutes. What you do, who the site is for, what you hate about the current one. Send us your logo, photos and text however is easy.</small></div>
+    <div><span class="n">2</span><b>A preview in days</b><small>You look at it on your phone and tell us what is wrong. Two or three rounds is normal. Then it goes live on your domain.</small></div>
+    <div><span class="n">3</span><b>You own it</b><small>The site is plain files in a repository under your name, with every change recorded. If you ever leave us, you take everything.</small></div>
+    <div><span class="n">4</span><b>You change it by asking</b><small>Your own chat with the webmaster agent. Hours, prices, photos, notices: live in a minute. Bigger changes go to a preview and we check them.</small></div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Sites we would build</h2>
+  <p class="sub">Three invented businesses, each with the change log showing at the top, because a site that gets changed is the product.</p>
+  <div class="ex">
+    <a href="customer-bakery.html"><div class="thumb" style="background:linear-gradient(135deg,#e7c79c,#c98b52)"></div><b>Hollow Lane Bakery</b><small>This week's bread, hours, a notice, a gallery. Changes every Friday.</small></a>
+    <a href="customer-accountants.html"><div class="thumb" style="background:linear-gradient(135deg,#8fa6c9,#3f5a8a)"></div><b>Marsh &amp; Okafor</b><small>Services, deadlines, the team, a quote form. Credibility, kept current.</small></a>
+    <a href="customer-physio.html"><div class="thumb" style="background:linear-gradient(135deg,#bfe3d4,#4fa88a)"></div><b>Riverside Physiotherapy</b><small>Treatments, booking, the team, prices from next month.</small></a>
+  </div>
+</section>
+
+<section id="prices">
+  <h2>Prices, published</h2>
+  <p class="sub">Setup once, for the expert's time. Maintenance monthly, for keeping it working. Bigger changes priced when they happen.</p>
+  <div class="prices">
+    <div><span class="tag">Setup · once</span><div class="p">£300 <small>to £1,200</small></div>Starter, Standard or Full, by the size of the site.<ul><li>Up to 4, 8 or 15 pages</li><li>Your text and photos, or copy from your notes</li><li>Live in three days to two weeks</li></ul></div>
+    <div><span class="tag">Maintenance · monthly</span><div class="p">£50 <small>/ £100 / £200</small></div>Bronze, Silver or Gold.<ul><li>Site checked and kept up every month</li><li>Your own agent chat for content changes</li><li>4 or 12 bigger changes handled for you</li><li>A note each month: what changed, what we noticed</li></ul></div>
+    <div><span class="tag">On demand</span><div class="p">£40 <small>to £250 per change</small></div>Outside a package, or with no package.<ul><li>A change, a new page, a campaign</li><li>Agreed in the chat before it is done</li><li>Heavy usage metered, shown as what it is</li></ul></div>
+  </div>
+</section>
+
+<section id="start">
+  <h2>Start with a free rebuild</h2>
+  <div class="own"><b>We rebuild your current site, free, in a day, on a preview address.</b> You get the webmaster chat for two weeks and can change anything. On day fifteen it goes dark. If you miss it, it is yours at the prices above. If you do not, you have lost nothing and neither have we.</div>
+</section>
+<footer><div><span>This is a mock-up of the operator's sales site, part of a published business plan.</span><span>Built the way every customer's site is built: plain files, public repository, GitHub Pages.</span></div></footer>
+</body>
+</html>

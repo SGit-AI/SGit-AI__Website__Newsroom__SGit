@@ -1,0 +1,413 @@
+# twins.sgit.ai — the twin primitive, long form
+
+Site version: v0.1.0 (25 August 2026). All content CC BY 4.0, attributed to Dinis Cruz with
+AI co-authorship. Code quoted here (the S3 container, the AWS configuration engine) is
+Apache-2.0 and that notice travels with it.
+
+This is the long form of /llms.txt. It carries the full quotation set the site is built
+from, page by page, so an agent can work from the primary language rather than from a
+paraphrase. Every quotation below is the project lead's own words, retained verbatim
+including punctuation. Where a passage is a design rather than a built thing, the label
+[designed] appears; [built] and [primitive] are used the same way.
+
+CONTENTS
+  1. What this site is, and is not
+  2. The definition                                   [primitive]
+  3. The doorway role                                 [primitive]
+  4. Connectedness, air gaps, and the coverage measure
+  5. The discipline of reality                        [primitive]
+  6. Structure: fractal, stacking, seam-aligned
+  7. Twins as actors                                  [designed]
+  8. Twins make risk testable                         [designed]
+  9. What is built                                    [built]
+ 10. The application map
+ 11. The execution broker                             [designed]
+ 12. The naming ruling
+ 13. The simulation layer                             [designed]
+ 14. Gaps, open questions and tensions
+ 15. Boundaries, licensing and provenance
+ 16. The release pipeline and the name-watch
+
+--------------------------------------------------------------------------------
+1. WHAT THIS SITE IS, AND IS NOT
+
+It is a reference site for a primitive. Five other sites in this network depend on the twin
+idea, and the intended shape is that each states it in three lines and links here rather
+than restating it. So this site is deliberately small: it owns the definition, the
+discipline, actors, the broker and the naming ruling, and it does not own the applications.
+
+It is not a product site, and it is not a survey of the digital-twin field. The single
+comparison it makes to the industry's usage is definitional and is made to prevent
+confusion, not to claim superiority.
+
+Honest headline, repeated everywhere on the site: one working twin, one set of half-built
+twins, two established primitives, and a large designed layer.
+
+--------------------------------------------------------------------------------
+2. THE DEFINITION                                                        [primitive]
+
+  "a digital twin is, in essence, a system that has properties, behaviours, functions,
+  and inputs and outputs, and we can define all of those."
+
+  "we can make a digital twin out of anything: an organisation, an element, a mail
+  system, an inbox, a person, a behaviour, an event, an action, external factors like
+  weather, even luck."
+
+  "the fact that in the real world they are not deterministic, or maybe random, we can
+  capture that."
+
+THE CONTRAST. The industry's digital twin is a simulation of a physical asset, valued for
+fidelity: how closely the model tracks the turbine. This twin is an interface to a real
+thing, valued for connectivity: whether the model can actually reach the turbine. The S3
+container is the cleanest illustration, because its value is not that it simulates S3 well.
+It is that boto3 cannot tell the difference.
+
+Source: the 26 June 2026 cluster, brief "twin of anything, dimensions, discipline of
+reality, simulation testing". Page: /what-is-a-twin/index.html
+
+--------------------------------------------------------------------------------
+3. THE DOORWAY ROLE                                                      [primitive]
+
+The model refuses properties:
+
+  "properties do not have meaning, they are just words; we capture meaning through
+  connectivity."
+
+Which raises the edge problem: if meaning is connectivity, where does connectivity stop?
+
+  "the power of the twin is that we always arrive at the twin, so the edges and the peaks
+  and the endpoints of the graph continue into the twin, and then ideally into reality."
+
+  "the doorway from the model to the real system."
+
+Consequences in the established primitives:
+
+  Measure := an observation of the node it measures, grounded on a Twin
+
+  "the connection from any node to a twin and onward to reality is `connected_to`."
+
+The grounding ladder and the edge grammar are owned by risks.sgit.ai and
+standards.sgit.ai. This site owns the bottom rung and what happens at it.
+
+--------------------------------------------------------------------------------
+4. CONNECTEDNESS, AIR GAPS, AND THE COVERAGE MEASURE
+
+  "whether we can continue to reality is a measurable fact, it is connected or it is
+  not."
+
+  "a place to represent an air gap that is understood and tracked: this has no API, this
+  is updated manually once a week."
+
+A tracked air gap is a first-class object rather than a blank. An unconnected twin is not a
+failure of the model; an unrecorded one is.
+
+THE JULY EXTENSION, applied to the regulation graph:
+
+  "a provision whose hooks have no twin attached is a provision that has not yet been
+  connected to anything the organisation actually has, and counting those is a direct,
+  computable statement about how much of the instrument has been genuinely mapped rather
+  than merely imported."
+
+STATE: fully specified, NEVER COMPUTED. This is gap G3 and the cheapest high-value artefact
+available to this site. Do not report a coverage number; there is none.
+
+KNOWN DEFECT: connectedness is binary, and freshness is not. A twin updated manually once a
+week is connected and, on a Friday, six days stale. See Q1 in section 14.
+
+Page: /discipline/index.html
+
+--------------------------------------------------------------------------------
+5. THE DISCIPLINE OF REALITY                                             [primitive]
+
+  "in this model, everything has to be relevant, everything has to be a fact, everything
+  has to exist, because it is based on reality. It forces the discipline: either we have
+  evidence and it exists, or we do not."
+
+  "the graph never fills with potential, out-of-context risks that become pollution."
+
+This is what separates the approach from threat modelling, and it is the most distinctive
+claim on the site. Its cost is stated rather than hidden: a discipline that admits only what
+exists cannot reason about what has not happened yet, which is much of what a security team
+is paid to do. That tension is section 14, Q3.
+
+--------------------------------------------------------------------------------
+6. STRUCTURE: FRACTAL, STACKING, SEAM-ALIGNED
+
+  "digital twins that are fractal and can go from the bottom up, little twins, digital
+  twins of digital twins, with natural abstraction layers, where in reality there are
+  handovers or movements between two different systems."
+
+The second clause is the load-bearing one: abstraction layers sit at the REAL SEAMS, so the
+model's structure is evidence about the world rather than a modelling convention.
+
+  "a twin of MFA, a twin of the solution, then the real solution, which adds abstraction
+  and isolation."
+
+  "the system only ever sees a twin ... it works in an enterprise way from the first
+  moment, and onboarding becomes describing what you have, which builds the digital twin
+  of the organisation."
+
+The last sentence is a commercial claim: the sales process and the modelling process are the
+same activity. It is attractive and unproven, resting on one working twin.
+
+--------------------------------------------------------------------------------
+7. TWINS AS ACTORS                                                        [designed]
+
+  "every action that updates the graph, including accepting a risk, is performed by a
+  twin, the acceptor is the twin acting as the CEO or the CFO, connected either to a human
+  or to an agent acting on that human's behalf, with the agent creating the actions,
+  documenting its reasoning and why it chose one option over another, and carrying a
+  persona."
+
+  "the graph is ultimately a set of changes, there is a pipeline for changes, which are
+  fundamentally graph transformations."
+
+Consequence: risk acceptance, normally the least evidenced act in governance (a signature, a
+date, a form), becomes an attributable graph transformation carrying the options considered
+and the reason one was chosen. Nothing here is built. The 2FA demo is the milestone that
+would evidence it.
+
+Page: /actors/index.html
+
+--------------------------------------------------------------------------------
+8. TWINS MAKE RISK TESTABLE                                               [designed]
+
+  "these also let us simulate, write unit tests, integration tests, simulations, plans,
+  and analysis, use static analysis and visualisations and rules, the same techniques we
+  use with software."
+
+  "start with one simple mapping and see how big it gets, because even one specific use
+  case can become massive once you capture all the elements."
+
+The second quotation is a scope warning and contains an unanswered question: when is a twin
+finished? See Q5.
+
+--------------------------------------------------------------------------------
+9. WHAT IS BUILT                                                              [built]
+
+9.1 THE S3-COMPATIBLE VAULT CONTAINER — the one working twin.
+
+  "the container is a digital twin of S3, presenting the same S3-compatible API, so that
+  code using boto3, the AWS CLI, or any S3 SDK believes it is talking to real S3, while
+  the files are served from a vault, from local disk, or from memory, chosen as a
+  swappable backend; the service's own code does not change."
+
+Why it is the right exhibit: the consuming code is unmodified, the redirection is an endpoint
+change, the AWS credential fields are reused to carry the container's auth header, and the
+same face sits over real S3, a vault or memory. It demonstrates the drop-in interface claim
+and stacking at once. Delivery surface confirmed by the sg-compute analysis:
+`Routes__Vault__Spec` and the vault specs ship, with docker packaging.
+
+9.2 THE AWS TWINS — half-built, honestly labelled.
+
+  "it grounds each AWS object as a twin, an IAM policy, an S3 bucket, an EC2 permission,
+  connected to reality the way the grounding ladder requires"
+
+  "the existing Python codebase and the digital twins already built"
+
+  "the existence of a configuration is never itself a risk. A public S3 bucket is a fact
+  and not a problem until you know what it holds."
+
+Context, not configuration. The engine produces "evidenced, typed objects"; a separate layer
+rates them. Facts from twins, judgement elsewhere.
+
+9.3 THE TWO ESTABLISHED PRIMITIVES. `Twin` as the grounding ladder's bottom rung, and
+`connected_to` as the edge grammar's reality edge. Both cited across the estate.
+
+Page: /built/index.html
+
+--------------------------------------------------------------------------------
+10. THE APPLICATION MAP
+
+Nine applications, with owners. This site owns the primitive; the applications mostly live
+elsewhere.
+
+  the grounding ladder      Measure is grounded on a Twin            risks. / standards.
+  the regulation graph      hooks with no twin = coverage measure    standards.
+  the risk register         twins as the integration layer           risks. / riskmandate
+  identity visualisation    "the digital twin built from identities" nhi.
+  the agent twin            permissions and credibility as properties  this site [designed]
+  the S3 container          the worked drop-in twin                  sg-compute ships it
+  the 2FA capstone          the bottom-up fractal demo               this site [designed]
+  world models              twins assembled into a company world     this site [designed]
+  hyperscaler abstraction   keeps the model portable across clouds   sg-compute adjacency
+
+One of the nine is built. Page: /applications/index.html
+
+--------------------------------------------------------------------------------
+11. THE EXECUTION BROKER                                                  [designed]
+
+  "the agent presents a cryptographic identity, a signed mandate, the specific action and
+  the contextual evidence that mandate requires, and the broker verifies all of it,
+  performs only the permitted operation using credentials held inside its own boundary,
+  and returns a signed receipt."
+
+  "the unit of delegation stops being credential access and becomes authorised action."
+
+THE BOUNDARY IT CLOSES. Short-lived credentials, JIT access, workload identity and gateway
+policy "all ... eventually hand the agent a credential, and from that moment the agent's
+effective authority is bounded by the target platform's permission granularity rather than
+by the business operation." A system can say this agent may hold this token for five
+minutes; it cannot say this agent may perform exactly this operation, on this resource, at
+this workflow stage, once. The broker can, because the agent does not perform the action at
+all.
+
+KEEP-VERBATIM LINES:
+
+  "encryption and authorisation must remain separate concepts, since encryption restricts
+  who may read a mandate while the signature and subject binding establish who may
+  exercise it."
+
+  "receipts create an evidence chain rather than relying on mutable platform audit logs."
+
+COST 1, THE CONCENTRATION RISK, UNRESOLVED:
+
+  "the broker becomes the highest-value target in the estate because it must hold usable
+  credentials, which inverts the catastrophic failure property the rest of the
+  architecture depends on."
+
+COST 2, INTERPRETATION NOT PROXYING:
+
+  "enforcing a constraint such as an allowed path list requires understanding the
+  operation rather than proxying it, so the broker is an interpreter per provider per
+  capability rather than a gateway."
+
+Which sets the build cost: one interpreter per service per operation class, not one clever
+proxy.
+
+PROVENANCE. The source brief was "converted from a document produced in a voice session with
+a different assistant, restructured into the corpus format." Its market-research companion
+is marked "as supplied", its external claims are unverified, and nothing from it is quoted
+on this site or in this file. This is the strongest idea in the corpus with the weakest
+provenance in it.
+
+Page: /broker/index.html
+
+--------------------------------------------------------------------------------
+12. THE NAMING RULING
+
+The August brief called the broker a "Service Twin". The corpus's own review, in the same
+document:
+
+  "the name collides, because twin already means something specific in this corpus."
+
+                      corpus twin                    "Service Twin"
+  is                  the graph's endpoint           a credential-holding broker
+  holds credentials   NO                             YES, that is its whole function
+  direction           the model reaches out          requests pass through
+  failure property    unconnected = tracked air gap  compromised = estate-wide
+
+THE RULING, four parts:
+  1. "Twin" keeps its corpus meaning. It is older, load-bearing in the ladder and the edge
+     grammar, and five sites depend on it.
+  2. The broker is presented by its function: the execution broker, or action broker.
+  3. The relationship is stated, not hidden. The broker is where an acting twin gets its
+     hands: the twin carries the persona and the reasoning, the broker carries the
+     credential and the enforcement.
+  4. The collision itself is published, because the corpus caught its own drift inside one
+     document, and that is the reality-document discipline visibly working. Same lesson as
+     the skills site's diverging-duplicate exhibit: names and copies drift unless something
+     checks them.
+
+TERMS PERMITTED ON THIS SITE: the lower-case primitive; "Digital Twin" used contrastively for
+the industry's sense; "Agent Twin" and "Org Twin" as the primitive applied, both designed;
+"Service Twin" historically only, to record where the broker came from. Anything else fails
+the release gate. Page: /naming/index.html
+
+--------------------------------------------------------------------------------
+13. THE SIMULATION LAYER                                                  [designed]
+
+  "an org chart, actions, risks taken, compromises, and clients buying, built from mini
+  agents"
+
+  "every action is version controlled and every connection is mapped by folders and files
+  without a database ... a showcase of serverless databases."
+
+  "LLMs are good at generating worlds and games"
+
+Nothing built. The tension with section 5 is real and unresolved: the discipline admits only
+what exists, and a world model exists to explore what does not. The likely reconciliation,
+unwritten: simulated states are marked as projections from real twins, never as facts, and
+can never be cited as evidence by a measure.
+
+Milestone one is the 2FA demo: organisation, HR system, people and roles as twins in
+IssueFS, built bottom-up at the real seams, with an acceptance run end to end through the
+change pipeline. Reasoning given: "develop the core pieces of technology on top of these use
+cases, which are both a good way to build the technology and a good way to explain how it
+works."
+
+Page: /simulation/index.html
+
+--------------------------------------------------------------------------------
+14. GAPS, OPEN QUESTIONS AND TENSIONS
+
+GAPS
+  G1 the naming ruling                       DONE in v0.1.0
+  G2 a second working twin                   NEEDED (the AWS IAM twin is closest)
+  G3 the coverage measure, computed once     NEEDED (highest value item on the site)
+  G4 the 2FA demo                            open
+  G5 a typed twin schema                     open
+  G6 the name-watch check                    DONE in v0.1.0
+
+QUESTIONS
+  Q1 How connected is a twin, really? Binary connectedness makes coverage computable and
+     hides staleness, latency and fidelity. Unresolved.
+  Q2 Who may update a twin's definition? Nothing states it. The broker composition suggests
+     the answer.
+  Q3 Does the discipline of reality survive simulation? Likely: projections, never facts.
+     Unwritten.
+  Q4 Is the broker's concentration risk acceptable? A real architectural fork; the corpus
+     states the cost and does not decide.
+  Q5 When is a twin done? The grounding ladder's stopping test probably applies: "the last
+     node where going deeper would neither improve observability nor change a decision."
+
+TENSIONS
+  1. One working twin, nine applications.
+  2. The discipline of reality against the simulation ambition.
+  3. "Connected or not" is the powerful claim and the oversimplified one.
+  4. The broker inverts the estate's core property, on purpose.
+  5. The best material arrived last and least verified.
+
+Page: /open-questions/index.html
+
+--------------------------------------------------------------------------------
+15. BOUNDARIES, LICENSING AND PROVENANCE
+
+LICENCE. Site content CC BY 4.0, consistent with the network, stamped on every markdown
+document and gated in CI. Quoted code is Apache-2.0.
+
+DO NOT PUBLISH, and not published here: an investor materials tree, and the internal
+governance records behind the 2FA scenario, which name a private individual. The 2FA
+SCENARIO is publishable as the corpus's own worked example; the acceptance records are not.
+The broker's market-research companion is not republished. The hyperscaler brief is quoted
+only within its twins-abstraction section.
+
+NETWORK BOUNDARIES
+  twins.          owns the primitive: definition, discipline, actors, broker, ruling
+  risks./standards. own the ladder and the regulation graph; this site owns the Twin rung
+  nhi.            owns identity-twin visualisation; links here for the primitive
+  sg-compute.     ships the S3 container; this site explains why it is a twin
+  graphs.         owns meaning-through-connectivity; this site owns the graph's edge
+  skills.         shares the naming-drift lesson
+  pki.            owns agent identity and mandate; this site owns the twin the broker acts for
+  riskmandate.ai  commercial; references, is not referenced
+
+PARTICIPANT DISCLOSURE. Published by the sgit project, which builds the graph model and the
+vault layer the primitive sits inside. Five places the approach loses are published at
+/about/participant.html.
+
+--------------------------------------------------------------------------------
+16. THE RELEASE PIPELINE AND THE NAME-WATCH
+
+Every push to `dev` is a release: validate, tag, publish. The gate (admin/build/validate.js)
+runs six checks: version agreement across pages, the release table, llms.txt, llms-full.txt
+and index.md; internal link resolution; canonical and CNAME agreement; a CC BY 4.0 stamp on
+every markdown document; the NAME-WATCH; and a key-leak tripwire.
+
+The name-watch scans the site's own prose for capitalised "<Word> Twin" constructions and
+fails the build on any term not on the allow-list, which is the set ruled on at /naming/. It
+covers this repository only; running it across the whole estate is a stated loose end. It
+exists because the collision happened once and will happen again, and it is this site's
+equivalent of the licence audit.
+
+Page: /admin/index.html

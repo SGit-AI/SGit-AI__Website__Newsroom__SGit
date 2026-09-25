@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# The seed snapshot is frozen as fetched: never ignore anything under sources/
+!sources/**

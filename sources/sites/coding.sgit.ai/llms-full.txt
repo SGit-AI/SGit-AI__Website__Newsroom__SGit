@@ -1,0 +1,1947 @@
+# coding.sgit.ai — full text
+
+Site version: v0.2.0. Every page and every source document of https://coding.sgit.ai/ in one
+file, so an agent can read the whole thing in a single fetch.
+
+GENERATED — assembled by admin/build/gen_llms_full.py from llms.txt, index.md and
+briefs/*.md, and re-checked in CI. It cannot say anything the site does not.
+
+Structure of this file:
+  PART 1  the index (llms.txt), for orientation and the stable-URL promises
+  PART 2  the front page in full (index.md)
+  PART 3  the 13 source documents this site is written from, verbatim
+
+All content CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).
+
+
+
+
+==============================================================================
+PART 1 — THE INDEX (source: /llms.txt)
+
+==============================================================================
+
+
+# coding.sgit.ai — how software actually gets written here
+
+> The sgit.ai network's site about coding style: five languages (Python, JavaScript, HTML,
+> CSS, Bash) as they are actually written across 217,266 lines. Every convention was derived
+> by COUNTING the code, not from documentation. Where a documented rule and the code
+> disagree, both are published with the numbers — including the numbers that do not flatter.
+
+Site version: v0.2.0 (25 August 2026). Published by the sgit project, which builds the tools
+and wrote the code this site measures — participant disclosure at /about/participant.html.
+All site content CC BY 4.0. The code quoted throughout is Apache-2.0 and carries its own
+notice; Type_Safe, Safe_Str and the constrained-primitive pattern come from osbot-utils,
+Apache-2.0, under the owasp-sbot GitHub organisation.
+
+## The headline
+
+31 documented rules. 0 linters, 0 formatters, 0 type-checkers anywhere in the estate. 4
+tests/ci/ structural guards are the entire automated enforcement surface, and a 5th has never
+worked: its regex is `sgraph_ai_service_playwright[^_]`, and `[^_]` cannot match the real
+package `sgraph_ai_service_playwright__cli`. 0 files matched; 228 real imports across 69 files.
+
+Measured against 992 class-defining files: banners 100%, no-docstrings 99.7%, empty
+__init__.py 99%, one-class-per-file 90%, no-underscore-private 91% (97 violations). Import
+alignment is 39% and is not a documented rule at all. And the estate's prose rule that "all
+documents are em-dash-free" is broken 248 times across the 11 documents that state it — not one
+file has zero. This site follows the practice rather than the stated rule, and says so.
+
+None of the 31 numbered rules carries a passing CI guard. The four working guards each encode an
+INCIDENT rather than a rule, so the written rule set and the tested rule set do not currently
+overlap at all.
+
+## Properties agents may rely on
+
+- Every source document is fetchable at a stable constructed URL: /briefs/<filename>. 13 of
+  them, 12,983 words, published in full.
+- /llms-full.txt is this site in one fetch: the index, the front page and every source
+  document, in the pack's own reading order. GENERATED from those sources and re-checked in
+  CI, so it cannot say anything the site does not.
+- /briefs/conventions__machine-readable.json is the SOURCE of every number on this site, not a
+  copy of them. admin/build/gen_inline.py writes each figure into each page from that file and
+  CI fails the release if one has drifted.
+- Every code example is written into its page by the same generator, from the source document
+  it was quoted in, carrying its real repository path and its own Apache-2.0 notice. A snippet
+  on this site cannot be something nobody wrote.
+- /data/rules.json is the machine-readable rule set: 31 rules plus 4 testing non-negotiables,
+  each with its measured compliance, an enforcement badge, and a flag saying whether the text
+  is quoted verbatim or paraphrased. /rules/ is generated from it.
+- /data/documents.json is the machine-readable document index. /documents/ is generated from it.
+- /sitemap.xml is generated from the tree, so it cannot omit a page somebody forgot to add.
+- The version in /admin/build/version.txt agrees with the badge on every page, the release
+  history table, this file, /llms-full.txt and /index.md — CI fails the release otherwise.
+
+## The pages
+
+- /index.html — the thesis in one page: the hook, the four decisions everything follows from,
+  the five languages, and what this site does not claim. Markdown twin: /index.md
+- /style/index.html — what is shared across all five languages. One idea per file, banners and
+  their four forms, the argument that alignment is a machine-readability decision, and single
+  source of truth enforced by structure rather than by asking.
+- /python/index.html — the deepest language. The complete eleven-line example with nine
+  conventions in it, the naming families, Type_Safe, constrained primitives, layout, testing,
+  the responsibility boundaries, and the osbot-* dependencies.
+- /javascript/index.html — native web components, no framework, no build step. The three-file
+  triplet, static jsUrl = import.meta.url, the versioned CDN path scheme, the SgComponent
+  contract, the sp-cli: legacy event namespace, and the four inconsistencies to settle.
+- /html/index.html — fragments not documents, 2-space indent, ARIA, data-* as the behaviour
+  hook, injected chrome, and the markdown twin.
+- /css/index.html — per-block value alignment, design tokens and their three competing
+  prefixes, theming, and why shadow DOM makes BEM unnecessary.
+- /bash/index.html — 5 .sh files in 217,266 lines. The Section__* generated-shell pattern, its
+  seven-part anatomy, the trade it makes, and the two cheap mitigations that do not exist.
+- /rules/index.html — all 31 rules plus the 4 testing non-negotiables, each with its measured
+  compliance and an enforcement badge, plus the 14 conventions that are consistent in the code
+  and are not rules anywhere. GENERATED from /data/rules.json.
+- /enforce/index.html — the configs, shipped as files: /enforce/ruff.toml,
+  /enforce/eslint.config.js, /enforce/stylelint.config.js, /enforce/test_house_style.py,
+  /enforce/test_rendered_shell.py, /enforce/check_components.py, /enforce/check_markup.py.
+  Plus an honest table of what ruff, eslint and stylelint genuinely cannot express and why —
+  including the correction that ruff CANNOT encode "no docstrings" (pydocstyle requires them
+  and there is no inverse rule), which the brief assumed it could.
+- /shipped/index.html — what is NOT enforced. Nothing is enforced by tooling; one guard never
+  worked; two more are claimed and unlisted; four of five languages are undocumented; the bad
+  numbers; and what this site itself cannot do.
+- /for-agents/index.html — the conventions that only make sense once an LLM is a primary reader
+  and writer. Published as a position with the evidence attached, not as a finding.
+- /open-questions/index.html — 8 open questions, 6 tensions, 7 loose ends, 7 unwritten items.
+- /documents/index.html — the 13 source documents, published in full, with a section on exactly
+  what was redacted and what was deliberately kept.
+- /admin/index.html — how this site is built: the pipeline, the gate, the tagger, the
+  generators. /admin/versions.html — the release history. /admin/comms.html — tasks and
+  requests, including R2, the build-time extraction this site does not do.
+- /network/index.html — the sibling sites and the boundaries between them.
+- /about/participant.html — who publishes this and how it is written.
+
+## What is NOT here, and should be
+
+- Build-time extraction from the repository. The commissioning brief's house rule is that every
+  count and example is extracted from the code at build time with a commit reference. This
+  repository holds the website, not the 217,266 lines it describes, so every number is written
+  in from a DATED survey (2026-08-24) instead. The counts cannot drift from the survey; they
+  can and will drift from the code. Tracked as R2 in /admin/comms.html.
+- Rules for JavaScript, CSS, HTML and Bash. All 31 documented rules are Python and process. The
+  14 conventions listed at /rules/#unwritten are candidates and none of them is a rule yet.
+- Any resolution of the 8 open questions. They are published unresolved on purpose.
+
+## Redaction
+
+Two of the 13 source documents carry the pack's own do-not-publish list, which names the values
+it forbids. In those two files only, an AWS account id, four live internal hostnames and four
+named live stack FQDNs are replaced with [redacted]; the occurrence counts are kept and each
+change is marked in place. dev.tools.sgraph.ai is deliberately NOT redacted, because it appears
+inside the code examples and a component example without its import URL teaches nothing — see
+open question Q4. Full account at /documents/index.html#redaction.
+
+## Related
+
+- https://sgit.ai — the parent project and the network index
+- https://open-source.sgit.ai — the other half of the /for-agents/ argument
+- https://sg-compute.sgit.ai — the platform; the richest source of the examples quoted here
+- https://llms.sgit.ai · https://standards.sgit.ai · https://issues-fs.sgit.ai
+- https://graphs.sgit.ai · https://wardley-maps.sgit.ai · https://risks.sgit.ai
+- https://nhi.sgit.ai · https://pki.sgit.ai
+
+
+==============================================================================
+PART 2 — THE FRONT PAGE (source: /index.md)
+
+==============================================================================
+
+
+# coding.sgit.ai — the style guide that measured itself
+
+> Five languages — Python, JavaScript, HTML, CSS, Bash — as they are actually written across
+> 217,266 lines of code. Every convention here was **derived by counting**, not from
+> documentation, and where a documented rule and the code disagree, both are published with
+> the numbers.
+
+*Source: <https://coding.sgit.ai/index.html> · site v0.2.0 · markdown twin of the front page.*
+
+---
+
+## 31 documented rules. 0 linters. 4 guards, and 1 of them never worked.
+
+This estate has a written style guide, which is more than most projects have. It lives in
+`.claude/CLAUDE.md` — an agent instruction file, not a published standard — and until the survey
+behind this site, **nobody had ever measured whether the code obeys it**.
+
+```
+# measured against 992 class-defining files
+
+rule  7  ═══ banner on every file          100%   992 / 992
+rule  8  no docstrings, ever              99.7%   3 violations
+rule 22  __init__.py stays empty             99%   299 / 302
+rule 21  one class per file                  90%   187 / 208 sampled
+rule  9  no _ prefix on private methods      91%   97 violations
+         import alignment                    39%   321 / 817   # not a rule at all
+
+# enforcement surface, entire:
+tests/ci/  4 structural guards  +  1 that has never matched anything
+```
+
+The last line is the one worth reading twice. The guard is supposed to fail the build if the new
+tree imports the legacy one; its regex requires a non-underscore character after a package stem
+that has two, so it matched nothing and passed. There are 228 real imports across 69 files.
+[A guard that passes because it cannot match what it guards against](shipped/index.html#broken-guard).
+
+## The four decisions everything else follows from
+
+These are not style preferences with a rationale bolted on afterwards. They are four choices that
+produce each other, in a codebase where **61% of commits were written by an agent** and a human
+still has to review the result.
+
+- **Runtime validation, not static analysis.** There is no type-checker anywhere in the estate.
+  `Type_Safe` from `osbot-utils` validates at construction instead, so a value that exists is a
+  value that is valid — and a generated mistake fails at the point of the mistake rather than in a
+  checking pass nobody runs. [How it works](python/index.html#type-safe).
+- **The type is the validation.** Zero raw primitives. `Safe_Str__SSM__Path`, `Safe_Int__Port`,
+  `Safe_Str__Node__Name` — 27 constrained types in one directory. Naming a type is how a domain
+  concept gets recorded. [The pattern](python/index.html#primitives).
+- **One idea per file, and the filename says which.** The filename is the class name,
+  `__init__.py` stays empty, nothing is re-exported, and there is exactly one import path to
+  anything — so a symbol is locatable by constructing a path, with no index and no grep.
+  [Across all five languages](style/index.html#one-idea).
+- **A model is a primary reader.** Runtime validation, constrained primitives, no re-exports,
+  banners instead of docstrings, single-owner responsibility boundaries and the markdown twin all
+  read as one coherent design once you accept that. The most original page here, and the least
+  verifiable. [The argument](for-agents/index.html).
+
+## The five languages
+
+One is documented. Four are not, and reconstructing them by counting is most of what the survey
+behind this site did.
+
+- **[Python](python/index.html)** — 3,999 files, 217,266 lines. Double-underscore naming families
+  (`Schema__` 614, `Safe_Str__` 290, `Enum__` 185), one class per file, `═══` banners, and
+  column-aligned assignments. Nine conventions visible in one eleven-line file.
+- **[JavaScript](javascript/index.html)** — 50 files, no framework and no build step. Native web
+  components, a three-file triplet per component, a self-locating base class, and a versioned CDN
+  path instead of a lockfile. Written down nowhere until now.
+- **[CSS](css/index.html)** — 38 files. Alignment carried into property values, every colour a
+  token, and plain semantic class names because shadow DOM removes the problem BEM exists to solve.
+- **[HTML](html/index.html)** — 37 files. Fragments rather than documents, 2-space indent, ARIA on
+  every control, and one rule worth its own line: classes are for styling, `data-*` is for
+  behaviour, and the two never mix.
+- **[Bash](bash/index.html)** — 5 `.sh` files in 217,266 lines. Shell is not written here, it is
+  generated from 15 typed Python classes that each render a fragment. A real trade, argued rather
+  than reported.
+
+## What this site does not claim
+
+**Nothing here is enforced by tooling.** Compliance of 100%, 99.7% and 99% is achieved entirely by
+discipline, which is impressive and exactly as fragile as it sounds. Four of the five languages
+have no documented rules at all. Import alignment is 39%. Two CI guards are claimed in the rule set
+and do not appear in the rule set's own table of guards. And the most interesting page here is a
+position with the evidence attached, not a finding.
+
+There is also one thing this site was commissioned to do and does not: **extract its counts from
+the repository at build time**. This repository holds the website, not the code it describes, so
+every number here is written in from a **dated survey** — 2026-08-24 — by a generator, with CI
+failing the release if a published number has drifted from it. That closes the drift-within-the-site
+problem and leaves the freshness problem open, and it is tracked as request R2.
+
+- [What is not enforced](shipped/index.html) — the bad numbers, in one place.
+- [Open questions and tensions](open-questions/index.html) — 8 questions, 6 tensions, 7 loose ends.
+- [Enforcement](enforce/index.html) — the ruff, eslint and stylelint configs, shipped as files,
+  with an honest account of the seven rules no linter can express.
+
+## Where this sits
+
+- [The source documents](documents/index.html) — all 13, 12,983 words, published in full. Two of
+  them carry the pack's own do-not-publish list, and are published with that list redacted.
+- [open-source.sgit.ai](https://open-source.sgit.ai) — the other half of the argument. That site
+  has the position; this one has the artefact.
+- [The sibling sites](network/index.html) — what each one owns and where the boundaries fall.
+- [Who publishes this](about/participant.html) — the sgit project publishes this site and wrote
+  the code it measures. Stated on the way in rather than in a footnote.
+
+---
+
+*All content CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic). The code quoted
+throughout is Apache-2.0 and carries its own notice; `Type_Safe`, `Safe_Str` and the
+constrained-primitive pattern come from `osbot-utils` under the `owasp-sbot` organisation.*
+
+
+==============================================================================
+PART 3 — THE 13 SOURCE DOCUMENTS
+
+==============================================================================
+
+
+Each is also fetchable on its own at /briefs/<filename>, in the pack's
+own reading order rather than alphabetically.
+
+
+
+==============================================================================
+source: /briefs/README.md
+
+==============================================================================
+
+
+# coding.sgit.ai — brief pack
+
+**For:** the agent commissioned to build `coding.sgit.ai`
+**From:** Dinis Cruz, via the SG/Send Librarian
+**Version:** v0.33.62 · 24 August 2026
+**Licence:** CC BY 4.0 — the code quoted throughout is **Apache-2.0**. See `LICENSE.md`.
+
+---
+
+## What this is
+
+The coding patterns and formatting across the five languages you work in: **Python, JavaScript, HTML, CSS, Bash.**
+
+Every convention here was **derived from the code by counting**, not from documentation — and where a documented rule and the code disagree, both are reported with the numbers.
+
+---
+
+## The headline
+
+**You already have a written style guide.** `.claude/CLAUDE.md` carries **31 numbered rules** plus 4 non-negotiable testing rules. Measured against 992 class-defining files:
+
+| Rule | Compliance |
+|---|---|
+| `═══` header on every file | **100%** (992/992) |
+| No docstrings, ever | **99.7%** (3 violations) |
+| `__init__.py` stays empty | **99%** (299/302) |
+| No `_` prefix on private methods | **91%** (97 violations) |
+
+**The site's job is not to invent a style guide — it is to publish the one that exists, with the measurements, and make it enforceable.**
+
+---
+
+## Read in this order
+
+| File | Words | What it does |
+|---|---:|---|
+| **`00__BRIEF.md`** | 1.2k | **Start here.** The headline, the five languages in a paragraph each, what makes the style unusual, the numbers, the build order |
+| **`01__python.md`** | 1.5k | The deepest language. The complete 11-line example, naming families, `Type_Safe`, constrained primitives, alignment, testing, responsibility boundaries |
+| **`06__the-rules-and-compliance.md`** | 1.1k | **The page that makes the site useful** — all 31 rules with measured compliance, and the guard that never worked |
+| `02__javascript.md` | 1.2k | The framework-free component system, the three-file triplet, the versioned CDN — **undocumented anywhere** |
+| `03__html-and-css.md` | 0.9k | Alignment in CSS, design tokens, `data-*` as the behaviour hook, why shadow DOM makes BEM unnecessary |
+| `04__bash-and-generated-shell.md` | 0.9k | **Five `.sh` files in 217k LOC** — shell is generated from 15 typed `Section__*` classes |
+| **`05__cross-cutting.md`** | 1.3k | What's shared across all five, and **`/for-agents/`** — the most original page available |
+| `07__site-architecture-and-boundaries.md` | 1.0k | Page by page, licensing, redaction, network boundaries |
+| `08__gaps-and-open-questions.md` | 1.2k | An 8-item enforcement fix list, 7 build-fresh items, 7 open questions, 6 tensions |
+| `09__source-manifest.csv` | 20 rows | Every source, tiered 0–3. **Every path verified on disk** |
+| `conventions__machine-readable.json` | — | Every count and rule as structured data — for generating the site's pages |
+| `LICENSE.md` | — | CC BY 4.0, the Apache-2.0 distinction, and the redaction list |
+
+---
+
+## The four things worth knowing before you write
+
+**1. There is no linter, formatter or type-checker anywhere in the estate.** No mypy, ruff, flake8, black, isort, tox — no config at all. Type safety is enforced *at runtime* by `Type_Safe`, which is a real and defensible choice. The four `tests/ci/` structural guards are the entire automated enforcement surface — **and one of them has never worked**: `test_no_legacy_imports.py` uses `sgraph_ai_service_playwright[^_]`, which cannot match the real double-underscore package. Verified: **0 files matched, 228 real imports across 69 files.**
+
+**2. Four of the five languages have zero documented rules.** All 31 are Python and process. JavaScript, CSS, HTML and Bash have consistent, discoverable conventions that nobody has written down — reconstructing them by counting is most of what `02__`–`04__` did.
+
+**3. Alignment is the estate's most visible convention and its least explained.** Schema attribute colons are **100% aligned**; CSS property values are aligned per block; imports are only **39%**. `05__` §3 makes the argument that alignment is a *machine-readability* decision in a codebase **61% written by an agent** — that is a claim, it is falsifiable, and it should be published as a position with the evidence attached.
+
+**4. Bash barely exists.** Five `.sh` files in 217,266 lines. Shell is **generated** from 15 `Section__*` Python classes, each with a `TEMPLATE` and a `render()`. The trade — testable parameters and no quoting hell, against no `shellcheck` and no directly-runnable script — is worth arguing rather than just reporting. Both mitigations are cheap and neither exists yet.
+
+---
+
+## The most original page available
+
+`/for-agents/` — `05__` §5. Several conventions only make sense once you accept that an LLM is a primary reader and writer:
+
+runtime validation catches a generated mistake at the point of the mistake · constrained primitives encode the domain in the type name · one class per file with filename = class name means a model can locate any symbol by path construction alone · fully-qualified imports with no re-exports means there is exactly one import path to invent · explicit single-owner responsibility rules stop a generator putting a call in a reasonable-looking wrong place · and the markdown twin exists so *"a traversing agent never has to parse HTML."*
+
+There is even direct evidence in the filenames: `library/dependencies/osbot-utils/type_safe/v3.1.1__**for_llms**__type_safe__testing_guidance.md`.
+
+This connects straight to `open-source.sgit.ai` — that site has the argument, this one has the artefact.
+
+---
+
+## House pattern
+
+Copy `pki.sgit.ai`, add the `/llms-full.txt` it lacks, and add one rule specific to this site:
+
+> **Every code example and every count is extracted from the repo at build time, with a path and a commit reference.**
+
+A style guide whose examples have drifted from the code is worse than no style guide.
+
+---
+
+This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/00__BRIEF.md
+
+==============================================================================
+
+
+# 00 — The Brief: `coding.sgit.ai`
+
+**Version** v0.33.62 · 24 August 2026
+**From** Dinis Cruz, via the SG/Send Librarian
+**To** the agent commissioned to build `coding.sgit.ai`
+**Licence** CC BY 4.0
+
+---
+
+## 1. The commission
+
+> *"focused on coding, which will go at `coding.sgit.ai` and I can use to capture all the coding patterns and formatting across the main languages we work on: **python, javascript, html, css, bash**."*
+
+All five are covered. Every convention in this pack was **derived from the code by counting**, not from documentation — and where a documented rule and the code disagree, both are reported with the numbers.
+
+---
+
+## 2. The headline: you already have a written style guide, and the code mostly obeys it
+
+`.claude/CLAUDE.md` in the sg-playwright repo carries **31 numbered rules** across Code Patterns, Security, AWS Naming, Responsibility Boundaries, Class/File Naming and Testing. That is far more than most projects have, and it is not aspirational — measured against 992 class-defining files in the new tree:
+
+| Rule | Compliance |
+|---|---|
+| **7 — `═══` 80-char header on every file** | **100%** (992 / 992) |
+| **8 — inline comments only, no docstrings ever** | **99.7%** (3 violations) |
+| **22 — `__init__.py` stays empty** | **99%** (299 / 302) |
+| **9 — no underscore prefix for private methods** | **91%** (97 violations) |
+| **1 — all classes extend `Type_Safe`** | see §4 — the raw number understates it |
+
+**The site's job is not to invent a style guide. It is to publish the one that exists, with the measurements, and to make it enforceable.**
+
+---
+
+## 3. The five languages, in one paragraph each
+
+**Python** — 217,266 lines, and the most distinctive style in the estate. Double-underscore class names in families (`Schema__` 614 files, `Safe_Str__` 290, `Enum__` 185, `Cli__` 82, `Routes__` 59), **one class per file, filename identical to the class name**, `Type_Safe` runtime validation instead of static typing, constrained primitive types instead of boundary validation, `═══` banner headers, and **column-aligned assignments**. `01__`.
+
+**JavaScript** — 50 files, and the pattern is **native web components with no framework and no build step**: 41 `customElements.define`, ESM imports from a **versioned CDN** (`dev.tools.sgraph.ai/components/<name>/v1/v1.0/v1.0.0/…`), a shared `SgComponent` base, and a **three-file component triplet** (`.js` / `.html` / `.css`). 4-space indent, single quotes, **no semicolons**. `02__`.
+
+**HTML** — semantic elements, ARIA on every interactive control, `data-*` as the behaviour hook, **2-space indent** (deliberately different from JS and CSS), and the markdown-twin convention where every URL is also available as `.md`. `03__`.
+
+**CSS** — **the same alignment discipline as Python, applied to property values.** Design tokens as custom properties served from the versioned CDN (`sg-tokens.css`), `:host` scoping, shadow DOM. `03__`.
+
+**Bash** — and this is the surprise: **there are only 5 `.sh` files in a 217,000-line repo.** Shell is not written, it is **generated** from 15 typed `Section__*` Python classes that each render a fragment. `04__`.
+
+---
+
+## 4. The three things that make this style unusual
+
+**(a) Runtime type safety instead of static analysis.** There is **no linter, no formatter and no type-checker anywhere in the estate** — no mypy, ruff, flake8, black, isort or tox config. Instead, `Type_Safe` from `osbot-utils` validates at construction. Of 1,034 classes in the new tree: 506 extend `Type_Safe` directly, plus `Type_Safe__List` (44), `Fast_API__Routes` (46) and `Schema__Step__Base` (25) which are themselves descendants — and 78 `Safe_Str` + 13 `Safe_Int` + 6 `Safe_UInt` primitives, 169 `TestCase`, and 77 enums. **Excluding tests and enums, essentially every class is in the `Type_Safe` lineage.** The rule holds; the naive percentage does not show it.
+
+**(b) Constrained primitives instead of validation.** Rule 2 is *"zero raw primitives — no `str`, `int`, `float`, `list`, `dict` as attributes."* The estate has 27 hand-written primitive types in `sg_compute/primitives/` alone, each a regex-constrained subclass. `Safe_Str__IP__Address`, `Safe_Str__Node__Name`, `Safe_Int__Port`, `Safe_Str__SSM__Path`. **The type is the validation**, so a value that exists is a value that is valid, everywhere, forever.
+
+**(c) Alignment as a first-class convention, across languages.** Schema attribute annotations are **100% colon-aligned** (46 of 46 multi-attribute files). CSS property values are aligned to a column. Trailing comments are aligned. This is unusual, it is deliberate, and — see `05__` §3 — there is a good argument that it is a **machine-readability** decision rather than an aesthetic one.
+
+---
+
+## 5. The honesty constraint
+
+`/shipped/` for a coding-standards site means saying what is *not* enforced:
+
+- **Nothing is enforced by tooling.** No linter, no formatter, no type-checker, no pre-commit hook. The four `tests/ci/` structural guards are the entire automated enforcement surface — **and one of them has never worked** (`06__` §4).
+- **Import alignment is only 39% consistent** (321 of 817 files with two or more `from X import Y` lines are aligned to a single column). Attribute alignment is 100%; import alignment is not.
+- **Rule 9 has 97 violations** in the new tree alone, and the JavaScript uses `_private` methods as a matter of course — so the rule is either Python-only or widely ignored, and the document does not say which.
+- **The documented rules live in `.claude/CLAUDE.md`**, which is an agent instruction file, not a published standard. **There is no human-readable style guide anywhere.** That is what this site is for.
+- **No JS, CSS, HTML or Bash conventions are documented at all.** All 31 rules are about Python and process. The other four languages have consistent, discoverable conventions that nobody has ever written down.
+
+---
+
+## 6. The numbers
+
+| | |
+|---|---|
+| **Python** | 3,999 files · 217,266 LOC · 3,871 filenames contain `__` · 1,034 classes in the new tree |
+| **Naming families** | `Schema__` 614 · `Safe_Str__` 290 · `Enum__` 185 · `Cli__` 82 · `Routes__` 59 · `Safe_Int__` 18 · `Section__` 15 · `Fast_API__` 12 |
+| **Suffix families** | `__Builder` 97 · `__Helper` 86 · `__Client` 77 · `__Service` 46 · `__Mapper` 39 · `__Detector` 23 · `__Loader` 17 · `__Registry` 14 · `__Writer` 14 |
+| **One class per file** | **187 of 208** sampled (90%) |
+| **Banners** | 3,120 of 3,999 files · **100%** of class-defining files in the new tree |
+| **JavaScript** | 50 files · 41 `customElements.define` · 6 `attachShadow` · 48 `type="module"` · **single quotes 4,006 vs double 400** |
+| **CSS / HTML** | 38 CSS · 37 HTML · design tokens from a versioned CDN |
+| **Bash** | **5 `.sh` files** · **15 `Section__*` shell-generating classes** |
+| **Enforcement** | **0 linters** · 4 CI structural guards · **1 of the 4 has never worked** |
+| **This pack** | 9 documents · manifest of **20 rows**, every path verified on disk · the conventions as machine-readable JSON |
+
+---
+
+## 7. Build order
+
+1. **`/python/`** — the deepest and the most distinctive. `01__`.
+2. **`/rules/`** — the 31 documented rules, with measured compliance beside each. `06__`. **This is the page that makes the site useful rather than decorative**, because it tells a reader which rules are real.
+3. **`/javascript/` and `/components/`** — the framework-free web-component pattern and the versioned CDN. Nobody has written this down and it is genuinely original. `02__`.
+4. **`/css/` and `/html/`** — `03__`.
+5. **`/bash/`** — the generated-shell story. `04__`.
+6. **`/for-agents/`** — `05__` §3. The conventions chosen because an LLM reads and writes this code. The most original page available.
+7. **`/enforce/`** — the linter configs that would encode the rules, per language. `08__` §1 has the list; it is a day's work and it converts a description into a standard.
+
+Publish the build order unresolved with `08__`'s open questions and tensions visible.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/01__python.md
+
+==============================================================================
+
+
+# 01 — Python
+
+217,266 lines across 3,999 files. The most distinctive style in the estate, and the one with a written rule set behind it.
+
+---
+
+## 1. The complete example — everything in eleven lines
+
+`sg_compute/catalog/schemas/Schema__Caller__IP.py`, verbatim and entire:
+
+```python
+# ═══════════════════════════════════════════════════════════════════════════════
+# SG/Compute — Schema__Caller__IP
+# Response schema for GET /catalog/caller-ip.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+from osbot_utils.type_safe.Type_Safe                                          import Type_Safe
+
+from sg_compute.primitives.Safe_Str__IP__Address                             import Safe_Str__IP__Address
+
+
+class Schema__Caller__IP(Type_Safe):
+    ip : Safe_Str__IP__Address = Safe_Str__IP__Address()
+```
+
+Nine conventions are visible in that file, and the whole style follows from them:
+
+1. **A `═══` banner header** — product name, class name, one line of purpose
+2. **The filename is the class name.** `Schema__Caller__IP.py` → `class Schema__Caller__IP`
+3. **One class per file**
+4. **Fully-qualified imports** from the per-class path — never a package re-export
+5. **`import` keywords aligned to a column**
+6. **`Type_Safe` as the base class**
+7. **A constrained primitive** (`Safe_Str__IP__Address`) rather than `str`
+8. **The annotation colon aligned**, with an instance as the default
+9. **No docstring.** The banner does that job
+
+---
+
+## 2. Naming
+
+### Prefix families — what the class *is*
+
+| Prefix | Files | Meaning |
+|---|---:|---|
+| `Schema__` | **614** | Pure data. **No methods** (rule 4) |
+| `Safe_Str__` | **290** | A regex-constrained string type |
+| `Enum__` | **185** | A fixed value set. **Never a `Literal`** (rule 3) |
+| `Cli__` | 82 | A Typer command group |
+| `Routes__` | 59 | A FastAPI route class. **No logic** (rule 19) |
+| `Safe_Int__` | 18 | A bounded integer type |
+| `Section__` | 15 | A shell fragment generator — see `04__` |
+| `Fast_API__` | 12 | An app assembly |
+
+### Suffix families — what the class *does*
+
+`__Builder` 97 · `__Helper` 86 · `__Client` 77 · `__Service` 46 · `__Mapper` 39 · `__Detector` 23 · `__Loader` 17 · `__Registry` 14 · `__Writer` 14 · `__Parser` 10 · `__Runner` 9 · `__Manager` 7 · `__Factory` 4 · `__Watchdog` 2 · `__Poller` 1
+
+### The double-underscore rule
+
+**`__` is the word separator inside a compound name; `_` separates words within one term.** `Schema__Image__Build__Request` reads as *Schema · Image · Build · Request*. `Safe_Str__IP__Address` keeps `Safe_Str` as one term. **3,871 of 3,999 filenames contain `__`.**
+
+The documented normalisation (rule 20) handles the one hard case: the spec uses names like `SGraph-AI` with a hyphen, which is not a legal Python identifier. **Class and module names use `SGraph_AI`; repo roots and test filenames may keep `SGraph-AI`.**
+
+### `__init__.py` stays empty
+
+Rule 22, and it holds at **299 of 302 (99%)**. Callers import from the fully-qualified per-class path; nothing is ever re-exported. The rule carries its own warning, learned the hard way: *"Never commit an empty `__init__.py` in a folder that shares a name with a sibling `.py` module: Python's import system prefers the package and every import under the module breaks."*
+
+---
+
+## 3. `Type_Safe` — runtime validation instead of static typing
+
+From `osbot-utils`. Rule 1: **all classes extend it — no plain Python classes.** Rule 82 of the tooling table is blunter: *"**Never use Pydantic. No Literals.**"*
+
+Of 1,034 classes in the new tree:
+
+| Base | Count |
+|---|---:|
+| `Type_Safe` | 506 |
+| `TestCase` | 169 |
+| `Safe_Str` | 78 |
+| `str, Enum` | 69 |
+| `Fast_API__Routes` *(a Type_Safe descendant)* | 46 |
+| `Type_Safe__List` | 44 |
+| `Schema__Step__Base` *(a Type_Safe descendant)* | 25 |
+| `Safe_Int` / `Safe_UInt` / `Enum` | 27 |
+
+**Excluding tests and enums, essentially every class is in the `Type_Safe` lineage.** Do not publish "48% extend Type_Safe" — it is true and it is misleading.
+
+What it buys: attributes are validated at construction, so **a value that exists is a value that is valid**. There is no separate validation layer, no schema-parse step at the boundary, and no `if not isinstance(...)` scattered through the code. It is also why the absence of a type-checker matters less here than it would elsewhere — though see `08__` §1.
+
+---
+
+## 4. Constrained primitives — the type *is* the validation
+
+Rule 2: *"zero raw primitives — no `str`, `int`, `float`, `list`, `dict` as attributes."*
+
+`sg_compute/primitives/` alone holds 27, and the pattern is uniform:
+
+```python
+# ═══════════════════════════════════════════════════════════════════════════════
+# SG/Compute — Safe_Str__IP__Address
+# IPv4 address string, e.g. "1.2.3.4". Empty = not yet assigned.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+import re
+
+from osbot_utils.type_safe.primitives.core.Safe_Str                         import Safe_Str
+from osbot_utils.type_safe.primitives.core.enums.Enum__Safe_Str__Regex_Mode import Enum__Safe_Str__Regex_Mode
+
+
+class Safe_Str__IP__Address(Safe_Str):
+    max_length        = 45                                                   # covers IPv4 + IPv6
+    regex             = re.compile(r'^[0-9a-fA-F.:]*$')
+    regex_mode        = Enum__Safe_Str__Regex_Mode.MATCH
+    strict_validation = True
+    allow_empty       = True
+```
+
+Five class attributes, all aligned, and a **trailing comment carrying the reasoning** (`# covers IPv4 + IPv6`) — which is the estate's substitute for a docstring.
+
+The domain vocabulary is visible in the file list: `Safe_Str__AWS__Region`, `Safe_Str__Docker__Image`, `Safe_Str__Instance__Type`, `Safe_Str__Node__Name`, `Safe_Str__Pod__Name`, `Safe_Str__SSM__Path`, `Safe_Str__Spec__Id`, `Safe_Int__Port`, `Safe_Int__Max__Hours`, `Safe_Int__Exit__Code`.
+
+**Naming a type is how a domain concept gets recorded.** That is the argument for the page.
+
+---
+
+## 5. Layout and formatting
+
+**Banners.** `# ═` × 79, three content lines (product — class name — purpose), `# ═` × 79. Present on **3,120 of 3,999 files**, and **100% of the 992 class-defining files in the new tree.** Rule 7 adds a caveat learned from GitHub: *"**Python files only.** In Markdown, `#` is heading syntax — a `# ═══` header block renders as a stack of H1s."*
+
+**Alignment.** Measured:
+
+- **Schema attribute colons: 100% aligned** — 46 of 46 files with two or more annotated attributes
+- **Class attribute values: aligned** — see the `Safe_Str` example
+- **Import keywords: 39% aligned** — 321 of 817 files with two or more `from X import Y` lines have every import at a single column. **This is the estate's least consistent formatting rule and the easiest to automate.**
+
+**Comments.** Rule 8: *"inline comments only — no docstrings, ever."* Compliance is **99.7%** — 3 violations in 992 files. Trailing comments carry the reasoning; the banner carries the purpose.
+
+**Private methods.** Rule 9: *"no underscore prefix for private methods."* Compliance is **91%** — 97 files in the new tree use `def _method`. Either the rule is Python-only-and-widely-ignored, or it needs revisiting. The document does not say. `08__` Q2.
+
+---
+
+## 6. Testing
+
+Rule set, verbatim, from *Testing — Non-Negotiable*:
+
+> 1. **No mocks. No patches.** Use `register_playwright_service__in_memory()` and `in_memory_stack`-style composition.
+> 2. **Assert on contracts** — schemas, status codes, persisted artefacts — not implementation details.
+> 3. **Real Chromium for integration tests.** Gate on `SG_PLAYWRIGHT__CHROMIUM_EXECUTABLE`; skip cleanly when absent.
+> 4. **Deploy-via-pytest.** Deploy tests are numbered (`test_1__create_lambda`, `test_2__invoke__health_info`, …) and run top-down.
+
+**"No mocks, no patches" is the strongest opinion in the whole rule set** and it deserves its own page. The alternative is real in-memory composition, which is only affordable because `Type_Safe` objects are cheap to build — the type system and the testing philosophy are the same decision.
+
+169 classes extend `TestCase`, so tests are class-based. And **4,785 tests run in 81 seconds**, which is the evidence that the no-mocks position is affordable rather than aspirational.
+
+---
+
+## 7. Responsibility boundaries — rules that name a single owner
+
+Rules 16–19 are unusual and worth publishing as a pattern:
+
+> 16. **`Step__Executor` is the ONLY class that calls `page.*` Playwright methods** (with a `Browser__Launcher` carve-out for process lifecycle)
+> 17. **`Artefact__Writer` is the ONLY class that writes to sinks**
+> 18. **`Request__Validator` contains ALL cross-schema validation**
+> 19. **Routes have no logic** — pure delegation to `Playwright__Service`
+
+Each names exactly one owner for a capability, and rule 16 is **enforced by a CI guard** that fails the build if any raw `browser.new_context(` appears outside `Page__Factory`. That is the model: **a boundary rule with a test behind it.** Three of the four have no such test.
+
+---
+
+## 8. What a linter config would encode
+
+Ordered by value, for `/enforce/`:
+
+1. **Import alignment** — the 61% gap, and the only formatting rule that is measurably inconsistent
+2. **No docstrings** — trivial (`ruff` D-rules inverted), currently 3 violations
+3. **Banner present and well-formed** — a custom check, ~20 lines
+4. **Filename equals class name, one class per file** — a custom check
+5. **No raw primitives as class attributes** — the highest-value rule and the hardest to express; probably a custom AST check
+6. **Ban `Pydantic`, `Literal`, direct `boto3`** — three import bans, one line each
+7. **`__init__.py` empty** — trivial
+8. **No `_` prefixed methods** — trivial, but **decide the rule first** (§5)
+
+Items 2, 6 and 7 are a single `ruff` config block. Items 1, 3, 4, 5 and 8 are a small `tests/ci/` module in the style of the four that already exist.
+
+---
+
+## 9. Dependencies — the `osbot-*` family
+
+`osbot-utils` (the source of `Type_Safe` and `Safe_Str`, 885 mentions across the corpus), `osbot-aws`, `osbot-fast-api`, `osbot-fast-api-serverless`, `memory_fs`, `mgraph-db`, `mgraph-ai-service-cache`. All Apache-2.0, all under the `owasp-sbot` GitHub organisation.
+
+Two hard rules govern their use:
+
+> **Type system** — `Type_Safe` from `osbot-utils`. **Never use Pydantic. No Literals.**
+> **AWS operations** — `osbot-aws`. **Never use boto3 directly** (narrow documented exception for the Lambda Function URL two-statement permission fix).
+
+**Note the exception is documented rather than silent.** That is a convention in itself and worth naming on the site: a banned thing with one written carve-out, rather than a banned thing with quiet violations.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/02__javascript.md
+
+==============================================================================
+
+
+# 02 — JavaScript
+
+50 files, no framework, no build step, and a component system nobody has written down. **This is the most original and least documented convention in the estate.**
+
+---
+
+## 1. The complete example
+
+`components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/sg-compute-left-nav.js`, verbatim:
+
+```js
+/**
+ * sg-compute-left-nav — vertical icon-rail navigation for the admin dashboard.
+ *
+ * Items: Compute / Storage / Settings / Diagnostics.
+ * Click fires sp-cli:nav.selected { view } on document.
+ *
+ * @module sg-compute-left-nav
+ * @version 0.1.0
+ */
+
+import { SgComponent } from 'https://dev.tools.sgraph.ai/components/base/v1/v1.0/v1.0.0/sg-component.js'
+
+class SgComputeLeftNav extends SgComponent {
+
+    static jsUrl = import.meta.url
+    get resourceName()   { return 'sg-compute-left-nav' }
+    get sharedCssPaths() { return ['https://dev.tools.sgraph.ai/components/tokens/v1/v1.0/v1.0.0/sg-tokens.css'] }
+
+    onReady() {
+        this._current = 'compute'
+        this.shadowRoot.querySelectorAll('.nav-item').forEach(btn => {
+            btn.addEventListener('click', () => this._select(btn.dataset.view))
+        })
+        this._update()
+    }
+
+    _select(view) {
+        if (view === this._current) return
+        this._current = view
+        this._update()
+        document.dispatchEvent(new CustomEvent('sp-cli:nav.selected', {
+            detail:  { view },
+            bubbles: true, composed: true,
+        }))
+    }
+
+    _update() {
+        this.shadowRoot.querySelectorAll('.nav-item').forEach(btn => {
+            btn.classList.toggle('selected', btn.dataset.view === this._current)
+            btn.setAttribute('aria-current', btn.dataset.view === this._current ? 'page' : 'false')
+        })
+    }
+}
+
+customElements.define('sg-compute-left-nav', SgComputeLeftNav)
+```
+
+---
+
+## 2. The component system
+
+**Native web components. 41 `customElements.define` across 50 files. No React, no Vue, no bundler, no build step.** The browser is the runtime.
+
+### The three-file triplet
+
+Every component is exactly three files, same basename:
+
+```
+sg-compute-left-nav.js      behaviour
+sg-compute-left-nav.html    markup
+sg-compute-left-nav.css     styles
+```
+
+`static jsUrl = import.meta.url` is what makes this work: the component knows its own URL, so `SgComponent` can fetch the sibling `.html` and `.css` without anything being told where they live. **Self-locating components are the mechanism that removes the build step.**
+
+### The versioned CDN path
+
+```
+https://dev.tools.sgraph.ai/components/<name>/v1/v1.0/v1.0.0/<file>.js
+                                              ^^^ ^^^^ ^^^^^^
+                                            major minor patch — as directories
+```
+
+Three nested directories, one per semver level. A consumer pins at whatever depth it wants stability: `/v1/` follows the major, `/v1.0/` follows the minor, `/v1.0.0/` is frozen. **Immutable URLs, no lockfile, no `node_modules`, cacheable forever.** The same scheme is used locally under `components/`.
+
+What comes from the CDN today: `SgComponent` (the base class), `sg-tokens.css` (design tokens), `sg-vault-client.js`, `sg-vault-write.js`.
+
+### The base class contract
+
+`SgComponent` supplies the lifecycle; components override three things:
+
+| Member | Purpose |
+|---|---|
+| `static jsUrl = import.meta.url` | self-location — **required** |
+| `get resourceName()` | the basename of the sibling `.html` / `.css` |
+| `get sharedCssPaths()` | tokens and shared sheets to adopt |
+| `onReady()` | the lifecycle hook — **not `connectedCallback` directly** |
+
+`onReady()` rather than `connectedCallback` is the tell: the base class handles the async fetch of the sibling files and calls `onReady()` once the shadow root is populated, so a component never has to think about whether its markup has arrived.
+
+### Shadow DOM
+
+6 files call `attachShadow` directly; the rest inherit it from `SgComponent`, and every component addresses its own markup through `this.shadowRoot`. Styles are scoped by `:host` (see `03__`).
+
+---
+
+## 3. Formatting, measured
+
+| Convention | Evidence |
+|---|---|
+| **4-space indent** | 3,791 indented lines are a multiple of 4; 148 are not |
+| **Single quotes** | **4,006 single vs 400 double** — 91% |
+| **No semicolons** | 531 statement lines without vs 401 with — the newer `components/` tree is consistently semicolon-free; the older `shared/` tree is not. See §6 |
+| **Trailing commas** | in multi-line object and array literals, consistently |
+| **Aligned object keys** | `detail:  { view },` — the same alignment discipline as Python and CSS |
+| **`_` prefix for private** | universal in JS, **against Python rule 9**. See `06__` §3 |
+| **ESM everywhere** | 48 `type="module"` script tags; no UMD, no globals |
+| **Banner comments** | 15 of 50 files open with `// ── name — description ──` |
+
+**Two banner styles exist**: JSDoc blocks (`/** … @module … @version */`) on components, and `// ── … ──` box-drawing rules on shared modules. Python uses `# ═══`. **The estate has three banner characters for one idea** — `05__` §2.
+
+---
+
+## 4. Events, state and data
+
+**Events are namespaced and go through `document`:**
+
+```js
+document.dispatchEvent(new CustomEvent('sp-cli:nav.selected', {
+    detail:  { view },
+    bubbles: true, composed: true,
+}))
+```
+
+`bubbles: true, composed: true` is what lets an event escape the shadow root. **The namespace is `sp-cli:` — the old CLI name — and it appears in 23 files.** That is a rename surface nobody has counted; see `06__` §3.
+
+**State is instance fields**, `_`-prefixed, set in `onReady()`. No store, no observable, no framework state layer. Cross-component state goes through the event bus and through purpose-built shared modules — `settings-bus.js`, `vault-bus.js`, `poll.js`.
+
+**Constants are frozen and centralised.** `shared/launch-defaults.js`, verbatim:
+
+```js
+// ── launch-defaults.js — canonical launch constants ────────────────────────── //
+// Single source of truth. Both sg-compute-compute-view and sg-compute-launch-form
+// import from here. Update here only — do not duplicate locally.
+
+export const REGIONS = Object.freeze([
+    'eu-west-2', 'us-east-1', 'ap-southeast-1', 'eu-west-1', 'us-west-2',
+])
+```
+
+**`Object.freeze` on every exported constant**, and a comment that names the consumers and forbids local duplication. That is the same *single source of truth* instinct that drives `manifest.py` and the repo-root `version` file.
+
+---
+
+## 5. Why no build step is the interesting claim
+
+It is worth arguing on the site rather than just reporting.
+
+**What it costs:** no TypeScript, no JSX, no tree-shaking, no minification, no dependency resolution, one network request per component file.
+
+**What it buys:** the source that runs is the source you read — no source maps, no build cache, no `node_modules`, no bundler upgrade treadmill, and **an immutable URL per version instead of a lockfile**. A component is deployable by copying three files to a path. And — the point that connects to `05__` §3 — **an agent reading the running page reads the actual code**, with no transpilation between what it sees and what executes.
+
+**Where it stops working:** at the point you need a dependency graph deeper than one level, or a package that only ships as CJS. Neither has happened yet in 50 files.
+
+---
+
+## 6. Inconsistencies to fix before publishing
+
+1. **Semicolons.** `components/` is semicolon-free; `shared/` is not. **Pick one** — the newer tree suggests dropping them — and write the config.
+2. **Two banner styles.** JSDoc on components, `// ──` on shared modules. Pick one per file type and say which.
+3. **The `sp-cli:` event namespace** is legacy naming in 23 files. Rename with the rest (`sg-compute` pack `02__`), and note that renaming an event namespace is a breaking change for any listener outside the repo.
+4. **`_private` in JS vs rule 9 in Python.** The rule set says no underscore prefix; the JavaScript uses it universally. **State that rule 9 is Python-only**, or change one of the two.
+
+---
+
+## 7. What a linter config would encode
+
+`eslint` with: 4-space indent · single quotes · no semicolons · trailing commas in multiline · `object-curly-spacing` · a custom rule requiring `static jsUrl = import.meta.url` in any class extending `SgComponent` · a ban on bare `connectedCallback` overrides in favour of `onReady()` · and a check that every component directory contains all three of `.js` / `.html` / `.css`.
+
+The last two are the ones that would actually catch bugs.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/03__html-and-css.md
+
+==============================================================================
+
+
+# 03 — HTML and CSS
+
+37 HTML files, 38 CSS files. Both follow from the component system in `02__`, and **CSS carries the estate's alignment discipline further than any other language.**
+
+---
+
+## 1. HTML — the component's markup half
+
+`sg-compute-left-nav.html`, verbatim:
+
+```html
+<nav class="left-nav" role="navigation" aria-label="Main navigation">
+
+  <button class="nav-item" data-view="compute" aria-label="Compute">
+    <span class="nav-icon">⬡</span>
+    <span class="nav-label">Compute</span>
+  </button>
+
+  <button class="nav-item" data-view="nodes" aria-label="Active Nodes">
+    <span class="nav-icon">▣</span>
+    <span class="nav-label">Nodes</span>
+  </button>
+```
+
+**Six conventions:**
+
+1. **A fragment, not a document.** No `<html>`, no `<head>`, no wrapper `<template>`. `SgComponent` fetches it and puts it in the shadow root.
+2. **2-space indent** — deliberately different from the 4 used in JS and CSS. The narrower indent keeps nested markup readable at the same line width.
+3. **Semantic elements.** `<nav>`, `<button>` — not `<div onclick>`. Every interactive control is a real control, so keyboard and focus work without code.
+4. **ARIA on every interactive element.** `role`, `aria-label`, and `aria-current` set dynamically from JS.
+5. **`data-*` is the behaviour hook.** `data-view="compute"` — JS reads `btn.dataset.view`. **Classes are for styling, `data-` is for behaviour, and the two never mix.** That single rule is worth its own line on the site.
+6. **Unicode glyphs instead of icon fonts or SVG sprites.** `⬡ ▣` — no asset pipeline, no icon dependency, consistent with the no-build-step position in `02__` §5.
+
+---
+
+## 2. The page-level conventions
+
+Beyond components, the estate's HTML carries two site-wide patterns worth documenting:
+
+**Programmatically injected chrome.** `pki.sgit.ai`'s build injects nav, footers and version badges at build time rather than repeating them per page — *"so it cannot drift."* Hand-written static HTML plus generated furniture. The site should document the pattern, because it is the reason the sibling sites stay consistent.
+
+**The markdown twin.** Every URL is also available with the extension swapped, and links inside the markdown point at markdown:
+
+> *"every page is available as markdown at the same path with the extension swapped, and links inside the markdown point at markdown, so **a traversing agent never has to parse HTML**."*
+
+The mechanism is non-obvious and should be published: these are static files, so the browser will not run JavaScript on them — the rendering happens in a **Lambda@Edge function**. See `05__` §3, because this is an HTML convention that exists entirely for machine readers.
+
+---
+
+## 3. CSS — alignment as a convention
+
+`sg-compute-left-nav.css`, verbatim:
+
+```css
+:host { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+[hidden] { display: none !important; }
+
+.left-nav {
+    display:        flex;
+    flex-direction: column;
+    align-items:    stretch;
+    padding:        6px 0;
+    height:         100%;
+    background:     var(--bg-panel);
+    border-right:   1px solid var(--border-1);
+    gap:            2px;
+}
+
+.nav-item {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    gap:             3px;
+    padding:         10px 0;
+    background:      transparent;
+```
+
+**Property values are aligned to a column within each rule** — exactly the discipline applied to Python attribute annotations and JS object keys. The column is set per rule by its own longest property name, so `.left-nav` and `.nav-item` align at different columns. **The unit of alignment is the block, not the file.**
+
+Other conventions visible here:
+
+- **`:host` first**, as a single line, establishing the component's own box
+- **`[hidden] { display: none !important; }`** as a standing reset — the `!important` is deliberate, because `display: flex` on `:host` would otherwise beat the attribute
+- **Flexbox for layout**, `gap` rather than margins
+- **Every colour and surface is a token** — no literal hex values in component CSS
+- **Class names are plain and semantic** — `.left-nav`, `.nav-item`, `.nav-icon`. **Not BEM, not utility classes.** Shadow DOM makes both unnecessary: the styles cannot leak, so they do not need namespacing
+
+That last point deserves a paragraph on the site. **BEM exists to solve a problem shadow DOM removes.** Naming conventions that fight the cascade are a cost you only pay if your styles are global.
+
+---
+
+## 4. Design tokens
+
+Tokens come from the versioned CDN, adopted per component:
+
+```js
+get sharedCssPaths() { return ['https://dev.tools.sgraph.ai/components/tokens/v1/v1.0/v1.0.0/sg-tokens.css'] }
+```
+
+Two naming families are in use, which is an inconsistency to resolve:
+
+| Family | Examples |
+|---|---|
+| **Unprefixed** | `--bg-panel`, `--border-1`, `--text-1` … `--text-4`, `--text-link`, `--shadow-1`, `--shadow-2`, `--warn`, `--warn-soft`, `--soon` |
+| **`--sg-` prefixed** | `--sg-text`, `--sg-text-muted`, `--sg-surface`, `--sg-sp-1` … `--sg-sp-4`, `--sg-transition-fast` |
+| **`--sgl-` prefixed** | `--sgl-tab-h`, `--sgl-panel-h` |
+
+**Three prefixes for one token system.** The numbered scales (`--text-1..4`, `--sg-sp-1..4`, `--shadow-1..2`) are a good pattern — a bounded ramp rather than arbitrary values — and the site should publish the ramps as the recommended approach. But **pick one prefix** before publishing, or document what each family means. `08__` Q3.
+
+---
+
+## 5. Theming
+
+The token indirection is what makes theming possible: components reference `var(--bg-panel)` and never a literal, so a theme is a different `sg-tokens.css`. **Verify before publishing that a dark/light switch actually exists** — the token names suggest a dark-first palette (`--bg-panel`, `--text-1..4`) and this pack could not confirm a second theme file. `08__` §4.
+
+---
+
+## 6. What a linter config would encode
+
+**CSS** (`stylelint`): 4-space indent · a custom rule requiring aligned values within a block · **no literal colours outside the token file** (highest value) · `:host` first · shorthand consistency.
+
+**HTML** (`htmlhint` or a custom check): 2-space indent · every `<button>`/interactive element has an accessible name · **no `onclick` attributes** · `data-*` present where JS reads `dataset` · component fragments contain no `<html>`/`<head>`.
+
+The two rules that would actually catch defects are **no literal colours** and **every interactive element has an accessible name**. The rest is formatting.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/04__bash-and-generated-shell.md
+
+==============================================================================
+
+
+# 04 — Bash, and the generated-shell pattern
+
+**There are five `.sh` files in a 217,000-line repository.** That is the finding. Shell is not written here — it is **generated from typed Python**, and the pattern is original enough to be the site's most interesting infrastructure page.
+
+---
+
+## 1. Where shell actually lives
+
+| Location | What |
+|---|---|
+| **`sg_compute/platforms/ec2/user_data/`** | **15 `Section__*` classes** that render shell fragments. This is where nearly all shell in the estate lives |
+| `docker/` | Dockerfiles (`host-control`, `local-claude`) and their `RUN` lines |
+| `.github/workflows/` | inline `run:` blocks |
+| `scripts/` | a handful of `.sh` and Python CLI shims |
+
+---
+
+## 2. The `Section__*` pattern
+
+`sg_compute/platforms/ec2/user_data/Section__Shutdown.py`, verbatim and entire:
+
+```python
+# ═══════════════════════════════════════════════════════════════════════════════
+# Ephemeral EC2 — Section__Shutdown
+# Schedules auto-termination via systemd-run. Paired with
+# InstanceInitiatedShutdownBehavior=terminate in EC2__Launch__Helper so that
+# halt causes termination, not stop.
+# max_hours=0 emits a no-op comment (caller omits this section instead).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+from osbot_utils.type_safe.Type_Safe import Type_Safe
+
+TEMPLATE = '''
+# ── Auto-terminate after {max_hours}h ({seconds}s) ───────────────────────────
+systemd-run --on-active={seconds}s /sbin/shutdown -h now
+echo "[ephemeral-ec2] auto-terminate timer set: {max_hours}h ({seconds}s) from now"
+'''
+
+
+class Section__Shutdown(Type_Safe):
+
+    def render(self, max_hours: float = 1.0) -> str:
+        seconds = max(1, int(round(max_hours * 3600)))
+        return TEMPLATE.format(max_hours=max_hours, seconds=seconds)
+```
+
+**The anatomy, and every part of it is a convention:**
+
+1. **A `═══` banner** carrying not just the purpose but **the coupling** — *"Paired with `InstanceInitiatedShutdownBehavior=terminate` in `EC2__Launch__Helper`."* The shell and the API call that makes it correct are documented together, in the place where forgetting one would break the other.
+2. **A module-level `TEMPLATE`** — a triple-quoted string, so the shell is readable as shell.
+3. **The generated shell gets its own banner**, using the JS box-drawing character `──` rather than Python's `═══`. **Shell inside Python is marked as a different language by its comment style.**
+4. **`Section__X(Type_Safe)` with a single `render()` method** returning `str`.
+5. **Computation in Python, not in shell.** `seconds = max(1, int(round(max_hours * 3600)))` — the arithmetic, the clamping and the rounding all happen where they can be tested. The emitted shell contains a literal.
+6. **An `echo` breadcrumb** with a bracketed prefix (`[ephemeral-ec2]`) so the boot log is greppable.
+7. **The edge case documented in the banner** — `max_hours=0` — with the caller's correct behaviour named.
+
+---
+
+## 3. The fifteen sections
+
+`Base` · `Docker` · `Sidecar` · `Nginx` · `Env__File` · `GPU_Verify` · `NVIDIA_Container_Toolkit` · `Ollama` · `VLLM` · `SGit_Venv` · `Claude_Code__Firstboot` · `Claude_Launch` · `Agent_Tools` · `Node` · `Shutdown`
+
+A node's user-data is composed by rendering the sections it needs and concatenating them. **Composition is a list, not a template with conditionals** — which is why there is no `{% if gpu %}` anywhere, and why a spec that does not need CUDA simply omits `NVIDIA_Container_Toolkit`.
+
+---
+
+## 4. Why this is better than `.sh` files, and what it costs
+
+Worth arguing on the site, because it is a real trade.
+
+**What it buys:**
+
+- **The parameters are typed and tested.** `Section__Shutdown` has unit tests; a bash script interpolated with `sed` does not.
+- **No quoting hell.** Values are substituted by `str.format` in Python, not by shell expansion inside a heredoc inside a YAML string.
+- **Composition without conditionals.** Include a section or do not.
+- **The shell is diffable as a unit.** A change to the shutdown behaviour is a change to one small file, not a hunk inside a 400-line boot script.
+- **The coupling is documented next to the code**, as the banner shows.
+
+**What it costs:**
+
+- **You cannot run it directly.** There is no `bash -n` on a template, no `shellcheck`, and no way to execute a section in isolation without rendering it first.
+- **Two languages in one file**, with `{}` meaning `str.format` in a language where `{}` also means shell brace expansion. A literal `{` in the shell must be escaped as `{{`.
+- **The rendered output is not committed**, so a reviewer reads the template and not the script.
+
+**Both mitigations are cheap and neither exists yet:** render every section in a test and pipe it through `shellcheck`; and commit a rendered golden file per section so diffs show the actual shell. `08__` §1.
+
+---
+
+## 5. Hand-written shell — where it survives
+
+Five `.sh` files, and **`set -e` discipline is inconsistent**: 2 of 5 have it, in three different forms — `set -euo pipefail`, `set -eu`, `set -u`.
+
+That is a small enough surface to fix in an hour, and the site should publish the rule it settles on. **The recommendation is `set -euo pipefail` everywhere**, since it is already the strictest form in use and the other two are strictly weaker.
+
+For `RUN` lines in Dockerfiles and `run:` blocks in workflows, the conventions visible in the repo are: one logical step per `RUN`, `&&` chaining with `\` continuations, cleanup in the same layer, and — from the Playwright Dockerfile — **build-time assertions rather than trust**, with a comment naming the production incident that motivated each.
+
+---
+
+## 6. What a linter would encode
+
+- **`shellcheck` on rendered sections** — the highest-value change in this document. Render each `Section__*` in a test and shellcheck the output.
+- **`set -euo pipefail` required** in every `.sh` file.
+- **Every generated section starts with a `# ── … ──` banner.**
+- **Every section emits at least one bracketed `echo` breadcrumb**, so boot logs stay greppable.
+- **No `{` in a `TEMPLATE` that is not a format placeholder or escaped as `{{`** — a small custom check that prevents a real and confusing class of bug.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/05__cross-cutting.md
+
+==============================================================================
+
+
+# 05 — What is shared across all five languages
+
+The languages look different. The instincts underneath them are the same four, and naming them is what turns a set of per-language pages into a coherent house style.
+
+---
+
+## 1. One idea per file, and the filename says which
+
+**Python:** the filename *is* the class name. `Schema__Caller__IP.py` → `class Schema__Caller__IP`. 187 of 208 sampled files define exactly one class; 3,871 of 3,999 filenames carry the `__` separator. `__init__.py` stays empty in 299 of 302 packages, so there is no re-export layer to hide behind.
+
+**JavaScript:** one component per directory, and the directory, the three files, the class and the custom element all carry the same name — `sg-compute-left-nav`.
+
+**CSS and HTML:** the component's sibling files, same basename.
+
+**Bash:** one `Section__*` class per boot concern.
+
+**The rule to publish:** *a name should let you find the file, and a file should contain one thing.* Everything else — the double underscores, the empty `__init__.py`, the fully-qualified imports, the triplet — follows from wanting that to be true without a search index.
+
+---
+
+## 2. Banners, and the three characters
+
+Every file opens with a comment block naming what it is and why it exists.
+
+| Language | Character | Form |
+|---|---|---|
+| Python | `═` | `# ═══…` × 79, product — class — purpose |
+| Generated shell | `─` | `# ── Auto-terminate after 1h ──…` |
+| JS shared modules | `─` | `// ── launch-defaults.js — canonical launch constants ──…` |
+| JS components | JSDoc | `/** … @module … @version */` |
+
+**One idea, four expressions.** The Python form is documented (rule 7, with the sharp caveat that it is *Python files only* because `#` is Markdown heading syntax and a banner renders as a stack of H1s on GitHub). The other three are conventions nobody has written down.
+
+**Recommendation for the site:** publish the shape as the rule — *a banner names the file, its owner and its purpose in three lines* — and let the comment character follow the language. Then fix the JS inconsistency (`02__` §6) so components and shared modules agree.
+
+---
+
+## 3. ⚠️ Alignment — and the argument that it is for machines
+
+This is the estate's most visible and least explained convention.
+
+| Where | Measured |
+|---|---|
+| Python schema attribute colons | **100% aligned** — 46 of 46 |
+| Python class attribute values | aligned |
+| Python trailing comments | aligned |
+| Python `from X import Y` | **39% aligned** — 321 of 817 |
+| CSS property values | aligned per block |
+| JS object literal keys | aligned |
+
+The usual case for alignment is aesthetic and it is usually a bad trade: it produces noisy diffs when the longest name changes, and it is why `gofmt` and `black` refuse to do it.
+
+**There is a better argument available here, and the site should make it.** This is a codebase where **61% of commits were written by an agent** and where the stated house position is that *"someone still needs to understand what is underneath."* Aligned columns turn a class body into a table. A reader — human or model — scanning `Safe_Str__IP__Address` sees five attributes and five values as two columns rather than five sentences. The same is true of a schema's field list and a CSS block's property list.
+
+**That is a claim, and it is falsifiable**, which is the right shape for a page here: alignment costs diff noise and buys scanability, and the estate has decided the trade is worth it. Say so, with the numbers, and note the one place it is not being kept — imports at 39%.
+
+**And note the discipline is per-block, not per-file.** In CSS, `.left-nav` and `.nav-item` align to different columns, each set by its own longest property. The unit of alignment is the thing you read at once.
+
+---
+
+## 4. Single source of truth, enforced by structure
+
+The same instinct appears in every language, each time with a mechanism rather than a convention:
+
+- **`version` at the repo root** — read at runtime by `consts/version.py` and every `manifest.py`, and used as the Docker tag. One file, many consumers.
+- **`manifest.py` per spec** — *"Single source of truth. Every spec's `manifest.py` exposes `MANIFEST`."*
+- **`launch-defaults.js`** — `Object.freeze` on every export, with a comment naming the consumers: *"Update here only — do not duplicate locally."*
+- **`sg-tokens.css`** — no literal colour in any component stylesheet.
+- **The versioned CDN path** — `/v1/v1.0/v1.0.0/` as directories, so a URL is an immutable identity and there is no lockfile to drift.
+- **Empty `__init__.py`** — no re-export layer, so there is exactly one import path to any class.
+
+**The pattern to publish:** *duplication is prevented by making the second copy impossible to write, not by asking people not to write it.*
+
+---
+
+## 5. Writing code for agents — the most original page available
+
+Several conventions only make sense once you accept that an LLM is a primary reader and writer of this code. Nobody has written this page, and it is the one that would distinguish `coding.sgit.ai` from every other style guide.
+
+**The evidence, gathered from across the estate:**
+
+- **61% of the sg-compute repo's 2,777 commits were authored by Claude**, 30% by a human. The code was largely written by a model, under these rules.
+- **`Type_Safe` validates at construction.** A model that produces a wrong-shaped object gets an error at the point of the mistake, not three layers away. **Runtime validation is a better fit for generated code than static typing**, because the feedback arrives during execution rather than during a separate check the generator may never run.
+- **Constrained primitives encode the domain in the type name.** `Safe_Str__SSM__Path` tells a model what the value is without a comment, a docstring or a lookup.
+- **No docstrings, banners instead** (rule 8). A banner at the top of a one-class file is a fixed, findable location for the purpose; docstrings scatter it.
+- **One class per file, filename = class name.** A model can locate any symbol by path construction alone, with no index and no grep.
+- **Fully-qualified imports, no re-exports.** There is exactly one import path for anything, so the model cannot invent a plausible-but-wrong one.
+- **Explicit responsibility boundaries** (rules 16–19) — *"`Step__Executor` is the ONLY class that calls `page.*`"* — with a CI guard behind one of them. This is how you stop a generator putting a call in a reasonable-looking wrong place.
+- **The markdown twin at every URL**, so *"a traversing agent never has to parse HTML"* — an HTML convention that exists purely for machine readers.
+- **Aligned columns**, per §3.
+
+**The thesis for the page:** these are not stylistic preferences that happen to suit agents. They are **a coherent design for a codebase whose main author is a model and whose main reviewer is a human**, and they trade a little human convenience — no docstrings, more files, more typing — for a lot of machine predictability.
+
+That argument connects directly to `open-source.sgit.ai`'s *"someone still needs to understand what is underneath"* and to its unwritten agent-era theses. **Cross-link them; this site has the artefact and that one has the argument.**
+
+---
+
+## 6. The house prose rules that touch code
+
+Three conventions govern the documents *around* the code and belong on the site because they apply to anything an engineer writes here:
+
+- **No em-dashes** in briefs. *"All documents are em-dash-free and released under CC BY 4.0."*
+- **A CC BY 4.0 footer** on every markdown document — ~1,100+ files carry it.
+- **Version-prefixed filenames** — `v0.33.54__arch-brief__sg-send-<slug>.md`. Version, then type, then slug. It sorts chronologically, it says what kind of document it is before you open it, and it is the same *name-tells-you-what-it-is* instinct as `Schema__` and `Section__`.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/06__the-rules-and-compliance.md
+
+==============================================================================
+
+
+# 06 — The 31 rules, and whether the code obeys them
+
+`.claude/CLAUDE.md` in the sg-playwright repo carries **31 numbered rules** plus 4 non-negotiable testing rules. **This is the single most valuable artefact for the site**, and it has two problems: it lives in an agent instruction file rather than a published standard, and **nobody has ever measured compliance.**
+
+This document measures it.
+
+---
+
+## 1. Code Patterns — rules 1–9
+
+| # | Rule (abridged) | Measured | Verdict |
+|---|---|---|---|
+| **1** | All classes extend `Type_Safe` — no plain Python classes | 506 direct + descendants; excluding 169 `TestCase` and 77 enums, **essentially all** | ✅ holds |
+| **2** | Zero raw primitives — no `str`/`int`/`float`/`list`/`dict` as attributes | 27 constrained primitives in `sg_compute/primitives/` alone | ✅ by design |
+| **3** | No `Literal`s — fixed value sets use `Enum__*` | **185 `Enum__*` files** | ✅ |
+| **4** | Schemas are pure data — no methods | 614 `Schema__*` files | ✅ spot-checked |
+| **5** | Collection subclasses are pure type definitions | 44 `Type_Safe__List` subclasses | ✅ |
+| **6** | Every route returns `.json()` on a Type_Safe schema — no raw dicts | 46 `Fast_API__Routes` subclasses | ✅ spot-checked |
+| **7** | `═══` 80-char headers — every file, **Python only** | **992 of 992** class-defining files in the new tree | ✅ **100%** |
+| **8** | Inline comments only — **no docstrings, ever** | 3 violations in 992 | ✅ **99.7%** |
+| **9** | No underscore prefix for private methods | **97 violations in 992** | ⚠️ **91%** — and JS violates it universally |
+
+**Rule 9 is the one to resolve.** The JavaScript uses `_private` as a matter of course (`_select`, `_update`, `_current`), so either the rule is Python-only and should say so, or it is being ignored in two languages. `08__` Q2.
+
+---
+
+## 2. The other rule groups
+
+**Security (10–13).** *Evaluate is allowlist-gated* — `JS__Expression__Allowlist` defaults to deny-all, **and this one has a CI guard behind it**. *No arbitrary code execution* — the shell-server pattern from OSBot-Playwright is explicitly not carried forward. *No AWS credentials in Git*, *no vault keys in Git* — with the operational instruction *"If one appears in a diff, block the commit."*
+
+**AWS naming (14–15).** Both are scar tissue and both are worth publishing verbatim, because they are the kind of thing nobody knows until it costs them a day:
+
+> **14.** *Security group `GroupName` must NOT start with `sg-`. AWS reserves the `sg-*` prefix for security group IDs and rejects `CreateSecurityGroup` with `InvalidParameterValue`.*
+>
+> **15.** *AWS Name tag — never double-prefix. When the logical name already carries the namespace (e.g. `elastic-quiet-fermi`), do not wrap it again into `elastic-elastic-quiet-fermi`.*
+
+Each names the helper that implements the fix. **A rule that cites its own precedent is a rule people can trust.**
+
+**Responsibility boundaries (16–19).** Covered in `01__` §7. Four rules, each naming exactly one owner for a capability; **one of the four has a CI guard.**
+
+**Class and file naming (20–22).** The `SGraph-AI` → `SGraph_AI` normalisation, one class per file, empty `__init__.py`. Rule 21 carries the useful carve-out: *"Registries (module-level constants + helper functions, e.g. `STEP_SCHEMAS`) are the one exception — they live in a single `*_registry.py` because **they are logic, not a schema**."*
+
+**Process (23–31).** Human-only folders that agents must never write to, the good-failure/bad-failure debrief convention, session handover, branch naming `claude/{description}-{session-id}`, and *"agents never push to `dev` directly."* These are agent-workflow rules rather than code style — but they belong on the site, because **they are the rules that make a mostly-agent-written codebase safe to review.**
+
+---
+
+## 3. Where the code and the docs disagree
+
+Five, in order of how much they matter:
+
+1. **Rule 9 vs the JavaScript.** 97 Python violations, and universal `_private` in JS. **Decide whether the rule is Python-only.**
+2. **No JS, CSS, HTML or Bash rules exist at all.** All 31 are Python and process. The other four languages have discoverable, consistent conventions that are entirely undocumented — which is most of what `01__`–`04__` had to reconstruct by counting.
+3. **Import alignment is 39%.** Not a documented rule at all, and the estate's least consistent formatting behaviour.
+4. **`set -e` in 2 of 5 `.sh` files**, in three different forms. No rule covers it.
+5. **Semicolons in JS** — `components/` says no, `shared/` says yes. No rule covers it.
+
+---
+
+## 4. ⚠️ Enforcement — four guards, and one has never worked
+
+`tests/ci/` is the **entire** automated enforcement surface. There is no linter, no formatter and no type-checker anywhere in the estate.
+
+| Guard | Enforces | State |
+|---|---|---|
+| `test_no_object_none_annotations` | bans `: object = None` in favour of `Optional[T] = None` | ✅ works, with a one-file allowlist and a stated reason |
+| `test_sg_compute_ami_picker__snapshot` | the live-fetch contract of a web component | ✅ |
+| `test_sg_compute_spec_detail__snapshot` | a web component's structure | ✅ |
+| `test_wheel_contains_ui` | that the built wheel actually contains per-spec UI assets | ✅ catches a package-data glob regression |
+| **`test_sg_compute_does_not_import_legacy`** | that the new tree never imports the legacy one | ❌ **has never worked** |
+
+The regex is `sgraph_ai_service_playwright[^_]` — and `[^_]` requires a **non-underscore** after the stem, while the real package is `sgraph_ai_service_playwright__cli`, with two. Verified this session:
+
+```
+GUARD regex  : 0 files -> test PASSES (vacuously)
+REAL imports : 69 files, 228 import lines
+FIXED regex (drop [^_]): 69 files -> test FAILS, as intended
+```
+
+**Publish this.** A guard that passes because it cannot match what it guards against is the strongest possible argument for the `/enforce/` page: a rule without a working test is a suggestion, and you cannot tell the difference from the outside.
+
+Note also what the working guards have in common: **each one encodes a rule that was violated at least once.** The `object = None` ban, the UI-in-wheel check, the component snapshots. That is the right way to grow a guard set — from incidents, not from a checklist.
+
+---
+
+## 5. How to publish the rules
+
+1. **One page per rule group**, with the rule verbatim, the measured compliance, and — where one exists — the guard that enforces it.
+2. **A compliance badge per rule.** ✅ enforced by a test · 🟡 documented, unenforced, high compliance · ⚠️ documented, unenforced, violated · ❌ undocumented convention. That single column is the difference between a style guide and a wish list.
+3. **Add the four missing languages.** `02__`–`04__` are the raw material; they are conventions in the code that have never been rules.
+4. **Cite the precedent.** Rules 14, 15, 21 and the `object = None` guard all name the case that motivated them. Do it for every rule where a case exists — it is what makes a rule survive contact with someone who disagrees with it.
+5. **Publish the compliance numbers, including the bad ones.** 91% on rule 9 and 39% on import alignment are more useful to a reader than a claim of consistency.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/07__site-architecture-and-boundaries.md
+
+==============================================================================
+
+
+# 07 — Site architecture, licensing and boundaries
+
+## 1. The house pattern, plus one rule specific to this site
+
+Copy `pki.sgit.ai`; add the `/llms-full.txt` it lacks. And add the rule that matters here:
+
+> **Every code example on the site is extracted from the repo at build time, with its file path and a commit reference.**
+
+A style guide whose examples have drifted from the code is worse than no style guide. The examples in `01__`–`04__` are all real files — keep them real by generating the pages, not by pasting.
+
+The same goes for every count. `Schema__` 614, `Enum__` 185, banners 992/992, rule-9 violations 97 — all of those are one `grep | wc -l` away and all of them will change. **Generate them, date them, or leave them out.**
+
+---
+
+## 2. Page by page
+
+**`/`** — the thesis in 300 words. *"Runtime type safety instead of static analysis; the type is the validation; one idea per file; and a house style designed for a codebase whose main author is a model."* Then the one-line hook: **31 documented rules, 0 linters, 4 guards, 1 of which never worked.**
+
+**`/python/`** — `01__`. Build first: it is the deepest and it has the written rules behind it.
+
+**`/rules/`** — `06__`. **The page that makes the site useful.** One page per rule group, each rule with its verbatim text, its measured compliance and its enforcement badge.
+
+**`/javascript/`** and **`/components/`** — `02__`. The framework-free component system, the three-file triplet, the versioned CDN, `SgComponent`. Nobody has written this down.
+
+**`/css/`**, **`/html/`** — `03__`. Alignment, tokens, `data-*` as the behaviour hook, and the argument that shadow DOM makes BEM unnecessary.
+
+**`/bash/`** — `04__`. Five `.sh` files, fifteen `Section__*` classes, and the trade.
+
+**`/for-agents/`** — `05__` §5. **The most original page available**, and the one that explains why the rest of the rules look the way they do.
+
+**`/enforce/`** — the linter configs, per language, from the "what a linter would encode" section at the end of each language page. Ship the configs as files, not as prose.
+
+**`/shipped/`** — `00__` §5, unsoftened: nothing is enforced by tooling, one guard never worked, four of five languages are undocumented, import alignment is 39%.
+
+**`/network/`, `/admin/`** — house pattern, build order published unresolved with `08__`'s questions visible.
+
+---
+
+## 3. Licensing
+
+**This site's content is CC BY 4.0**, consistent with the network. Stamp every raw markdown document; gate it with `licence-audit.py --check`.
+
+**The code quoted throughout is Apache-2.0** — `SGraph-AI__App__Send`, the sg-playwright repo and all seven Issues-FS repos carry it, and every `pyproject.toml` says `license = "Apache 2.0"`. Retain the notice where snippets are shown at length, and do not imply the code carries the site's CC BY licence.
+
+**The `osbot-*` and `mgraph-*` dependencies are Apache-2.0** under the `owasp-sbot` organisation. `Type_Safe` and the `Safe_Str` family come from `osbot-utils` — **credit it by name wherever the pattern is described**, because the pattern is the dependency's, not this estate's.
+
+---
+
+## 4. Do not publish
+
+> **⚠ Redacted for publication.** This document's own redaction list names the values it forbids. Publishing the list verbatim would publish them, so the AWS account id, the four live internal hostnames and the four named live stack FQDNs are replaced with `[redacted]` in the three bullets below. Nothing else in this document is changed, the counts are kept, and `dev.tools.sgraph.ai` is retained deliberately for the reason the document itself gives. See [/documents/#redaction](../documents/index.html#redaction).
+
+
+The repos this pack draws on are live, and `sg-compute.sgit.ai`'s redaction list applies in full here too:
+
+- **AWS account ID `[redacted]`** — 20+ files under `team/humans/dinis_cruz/claude-code-web/`
+- **Live internal hostnames** — `[redacted]` (193), `[redacted]` (128), `[redacted]` (46), `[redacted]` (36), `dev.tools.sgraph.ai` (177, published deliberately) and the rest
+- **Named live stack FQDNs** — `[redacted]`, `[redacted]`, `[redacted]`, `[redacted]` (four of them)
+- **Real EC2 and AMI IDs** in `utils/ec2_boot_bench/`
+
+⚠️ **`dev.tools.sgraph.ai` is a special case for this site**, because it appears *inside the code examples* — every component imports `SgComponent` and `sg-tokens.css` from it. You cannot show a real component without showing the host.
+
+**Recommendation:** publish it. It is a public CDN serving public component code, it is already in every rendered page's network tab, and a component example with the import URL redacted teaches nothing. But **make it a deliberate decision**, note that the `dev.` prefix is a durability risk for a documented public contract, and consider whether the site should be documenting a `dev.` host at all. `08__` Q4.
+
+Standard estate exclusions also apply: `library/alchemist/materials/` (the whole tree), the competitor maps, the AppSec review classified as *"an attack roadmap for live code"*, and the GRC reviews naming a private individual.
+
+---
+
+## 5. Network boundaries
+
+| Site | Owns | Boundary |
+|---|---|---|
+| **`coding.sgit.ai`** | How code is written here — the five languages, the rules, the enforcement | — |
+| `sg-compute.sgit.ai` | The platform | **The richest source of examples.** That site owns *what the code does*; this one owns *how it is written*. **The broken CI guard belongs to both** — that site tells it as a rename story, this one as an enforcement story. Cross-link, do not duplicate |
+| `open-source.sgit.ai` | The open-source position | **`/for-agents/` is the shared boundary.** That site has the argument (*"someone still needs to understand what is underneath"*, code-reading as a scarce asset); this one has the artefact. Link both ways |
+| `issues-fs.sgit.ai` | Issues-FS | Shares the `Schema__Node` / `Safe_Str__Graph_Types` primitive pattern — the same convention in a different codebase, which is good evidence it generalises |
+| `standards.sgit.ai` | Instruments | SPDX identifiers and licence compliance. Light link |
+| `graphs.sgit.ai` | Graph theory | Little overlap |
+| `sgit.ai` | The vault product | The vault HTML authoring contract is a coding standard in its own right — see the `llms.sgit.ai` pack |
+
+---
+
+## 6. House style for the site itself
+
+- **Every example is a real file, with its path.** No invented snippets.
+- **Every count is generated or dated.**
+- **Every rule carries an enforcement badge** — ✅ tested · 🟡 documented · ⚠️ violated · ❌ undocumented.
+- **Cite the precedent** where a rule has one. Rules 14, 15, 21 and the `object = None` guard all do.
+- **Publish the bad numbers.** 91%, 39%, 2-of-5, one broken guard.
+- **-ise, not -ize**, and no em-dashes in the markdown deliverables, to match the estate.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/08__gaps-and-open-questions.md
+
+==============================================================================
+
+
+# 08 — Gaps, open questions and honest tensions
+
+---
+
+## 1. The enforcement gap — a day's work that changes what the site can claim
+
+There is **no linter, no formatter and no type-checker anywhere in the estate.** Ordered by value:
+
+| # | Fix | Effort |
+|---|---|---|
+| **F1** | **Delete `[^_]` from `test_no_legacy_imports.py`** — the guard has never worked; 228 real imports across 69 files | 4 characters |
+| **F2** | **A `ruff` config** encoding: no docstrings, ban `pydantic` / `Literal` / direct `boto3`, empty `__init__.py` | one config block |
+| **F3** | **Import alignment** — the 39% number, and the only formatting rule that is measurably inconsistent | a formatter rule or a `tests/ci` check |
+| **F4** | **`shellcheck` on rendered `Section__*` output** — the generated shell is currently unlintable because it is never rendered outside production | a test |
+| **F5** | **`eslint`** — 4-space, single quotes, no semicolons, plus a check that every component directory has all three of `.js`/`.html`/`.css` | half a day |
+| **F6** | **`stylelint`** — the highest-value CSS rule is **no literal colours outside the token file** | an hour |
+| **F7** | **A banner check** — present, well-formed, three content lines | ~20 lines |
+| **F8** | **Filename == class name, one class per file** | ~20 lines |
+
+F1 and F4 are the two that would catch real defects today. F2, F6 and F7 are close to free.
+
+---
+
+## 2. Build-fresh items
+
+| # | Item | Why |
+|---|---|---|
+| **G1** | **Rules for JS, CSS, HTML and Bash** | All 31 documented rules are Python and process. The other four languages have consistent, discoverable conventions and **zero written rules** |
+| **G2** | **A human-readable style guide** | The rules live in `.claude/CLAUDE.md`, an agent instruction file. There is no published standard anywhere. **This is the site** |
+| **G3** | **The `/for-agents/` argument** | `05__` §5. Named nowhere, and the thing that explains why the rest looks the way it does |
+| **G4** | **A worked "add a new spec" walkthrough** | The generalisation mechanisms are real (`manifest.py`, route loader, CLI builder). Nobody has written the tutorial that uses them |
+| **G5** | **A worked "add a new component" walkthrough** | Same for the JS triplet + CDN pattern |
+| **G6** | **Golden rendered shell files** | Commit one per `Section__*` so a reviewer sees the actual shell, not the template |
+| **G7** | **A decision record format** | Rules 14, 15 and 21 are scar tissue with the precedent cited inline. That is an ADR in all but name — give it a shape |
+
+---
+
+## 3. Open questions
+
+| # | Question | Where it stands |
+|---|---|---|
+| **Q1** | **Is alignment for humans or for machines?** `05__` §3 makes the machine-readability argument. It is a claim, not an established fact, and it is falsifiable | The honest page says: it costs diff noise, it buys scanability, here is why we think the trade is worth it in a codebase 61% written by an agent |
+| **Q2** | **Is rule 9 (no `_private`) Python-only?** | 97 Python violations; universal in JS. **The document does not say, so in practice it is neither enforced nor retired** |
+| **Q3** | **Which token prefix?** `--bg-panel`, `--sg-surface`, `--sgl-tab-h` — three families for one system | Pick one, or document what each means. The numbered ramps (`--text-1..4`, `--sg-sp-1..4`) are the good part and should be kept either way |
+| **Q4** | **Should a public coding standard document a `dev.` host?** | Every component example imports from `dev.tools.sgraph.ai`. Redacting it teaches nothing; publishing it documents a `dev.`-prefixed contract as canonical. `07__` §4 |
+| **Q5** | **Does runtime type safety replace static analysis, or defer it?** | `Type_Safe` catches shape errors at construction. It does not catch unreachable code, unused imports, shadowed names or a typo in a branch never executed. **The honest answer is that it replaces one kind of checking and the other kind is simply absent** |
+| **Q6** | **Is "no mocks, no patches" affordable outside this estate?** | It works here — 4,785 tests in 81 seconds — because `Type_Safe` objects are cheap and there is an in-memory composition path. Whether it generalises is a real question and the site should not assume it does |
+| **Q7** | **Does the no-build-step position survive the next dependency?** | 50 files, one level of imports, no CJS-only package yet. `02__` §5 names where it stops working |
+
+---
+
+## 4. Honest tensions
+
+1. **31 written rules and zero enforcement.** High compliance on most of them — 100%, 99.7%, 99% — achieved by discipline rather than tooling. That is impressive and it is fragile, and the one guard that was supposed to hold a line **had never worked**.
+
+2. **A style guide for five languages that documents one.** Python has 31 rules. JavaScript, CSS, HTML and Bash have consistent conventions and no rules at all — which means they are currently maintained by whoever last read the neighbouring file.
+
+3. **Alignment is either the best or the worst convention here.** No formatter in the industry will produce it, so adopting it means never adopting `black`, `prettier` or `gofmt`-style tooling. That is a real, permanent cost accepted for a benefit that has not been measured.
+
+4. **The rules were written for agents and are published to none.** `.claude/CLAUDE.md` is read by every session and by no human who has not gone looking for it.
+
+5. **Runtime validation is a good fit for generated code and a poor substitute for a linter.** Both are true, and the estate currently has the first and not the second.
+
+6. **The most interesting page is the least verifiable.** `/for-agents/` is the original contribution, and its central claim — that these conventions suit a model reader — is asserted from design intent and commit statistics, not from measurement. **Publish it as a position with the evidence attached, not as a finding.**
+
+---
+
+## 5. Loose ends worth an hour each
+
+- **Confirm whether a second theme file exists.** The token names suggest dark-first; this pack could not verify a light theme.
+- **Count how many components exist outside the sg-compute tree.** The CDN serves `base`, `tokens`, `vault-client`, `vault-write` — is there a wider registry?
+- **Check whether `SgComponent`'s source is public.** Every example imports it; if it is not readable, the pattern cannot be adopted by anyone outside.
+- **Resolve the `sp-cli:` event namespace** — 23 files, legacy naming, and renaming it breaks external listeners.
+- **Decide the semicolon rule** and reformat `shared/` to match `components/`.
+- **Write down the `set -euo pipefail` rule** — 2 of 5 files, three different forms, no rule.
+- **Extract the four `tests/ci/` guards into a reusable module.** They are the pattern the `/enforce/` page recommends, and they currently live only in one repo.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+source: /briefs/09__source-manifest.csv
+
+==============================================================================
+
+
+tier,area,path,what,publishability,why_it_matters
+0,THE RULES,.claude/CLAUDE.md,31 numbered rules + 4 testing rules,EXTRACT,"THE SINGLE MOST VALUABLE ARTEFACT. Lives in an agent instruction file, not a published standard. Compliance measured in 06__ - never measured before."
+0,python: the complete example,sg_compute/catalog/schemas/Schema__Caller__IP.py,11 lines showing 9 conventions,clean,"Banner, filename=class, one class, fully-qualified aligned imports, Type_Safe, constrained primitive, aligned colon, no docstring. Quote it entire."
+0,python: the primitive pattern,sg_compute/primitives/Safe_Str__IP__Address.py,a regex-constrained string type,clean,THE TYPE IS THE VALIDATION. Five aligned class attributes and a trailing comment carrying the reasoning.
+0,python: primitives dir,sg_compute/primitives/,27 constrained types,clean,"The domain vocabulary made visible: AWS__Region, Docker__Image, Instance__Type, Node__Name, Pod__Name, SSM__Path, Spec__Id, Port, Max__Hours, Exit__Code."
+0,js: the complete component,sgraph_ai_service_playwright__api_site/components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/,the .js/.html/.css triplet,REDACT CDN?,"THE FRAMEWORK-FREE COMPONENT PATTERN, undocumented anywhere. SgComponent, static jsUrl = import.meta.url, onReady(), shadow DOM, versioned CDN imports. See 07__ section 4 on the dev.tools.sgraph.ai question."
+0,js: single source of truth,sgraph_ai_service_playwright__api_site/shared/launch-defaults.js,Object.freeze constants,clean,'Single source of truth... Update here only - do not duplicate locally.' The same instinct as manifest.py and the repo-root version file.
+0,bash: the generated-shell pattern,sg_compute/platforms/ec2/user_data/Section__Shutdown.py,"a Section class, entire",clean,"FIVE .sh FILES IN 217k LOC. Shell is generated from typed Python. The banner documents the coupling to EC2__Launch__Helper, not just the purpose."
+0,bash: the fifteen sections,sg_compute/platforms/ec2/user_data/,15 Section__* classes,clean,"Composition is a list, not a template with conditionals - which is why there is no {% if gpu %} anywhere."
+0,THE BROKEN GUARD,tests/ci/test_no_legacy_imports.py,the one-character bug,PUBLISH IT,A guard that passes because it cannot match what it guards against. The strongest possible argument for the /enforce/ page. Verified: 0 vs 228.
+1,the working guards,tests/ci/,4 structural guards,clean,The entire automated enforcement surface. Note each encodes a rule that was violated at least once - the right way to grow a guard set.
+1,css: the token consumer,sgraph_ai_service_playwright__api_site/components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/sg-compute-left-nav.css,aligned property values,clean,"The alignment discipline applied to CSS. Also :host first, [hidden] reset, tokens not literals, plain semantic class names."
+1,html: the fragment,sgraph_ai_service_playwright__api_site/components/sg-compute/sg-compute-left-nav/v0/v0.1/v0.1.0/sg-compute-left-nav.html,a component fragment,clean,"2-space indent, semantic elements, ARIA everywhere, data-* as the behaviour hook, unicode glyphs."
+1,the frontend tree,sgraph_ai_service_playwright__api_site/,"50 js, 38 css, 37 html",REDACT,"The whole component estate. 41 customElements.define, 6 attachShadow, 48 type=module."
+1,testing guidance,library/guides/v3.1.1__testing_guidance.md,the full testing rules,clean,"Behind the four non-negotiables: no mocks, no patches, assert on contracts, real Chromium, deploy-via-pytest."
+1,markdown doc style,library/guides/v0.2.15__markdown_doc_style.md,the markdown convention,clean,"Why the === banner is Python-only: in Markdown, # is heading syntax and a banner renders as a stack of H1s. Use YAML frontmatter instead."
+1,type_safe guidance,library/dependencies/osbot-utils/type_safe/v3.1.1__for_llms__type_safe__testing_guidance.md,Type_Safe for LLMs,clean,NOTE THE FILENAME: 'for_llms'. Documentation written explicitly for a model reader - direct evidence for the /for-agents/ page.
+2,the claude-code-web tree,team/humans/dinis_cruz/claude-code-web/,operational detail,REDACT AND USE,"Densest source of the AWS account ID and live hostnames. Redact-and-use, not skip."
+3,alchemist tree,library/alchemist/materials/,commercial,DO-NOT-PUBLISH,"Investment figures, valuation, competitive positioning."
+3,appsec review,team/roles/appsec/reviews/02/21/v0.5.0__review__pki-architecture-security-revised.md,security review,DO-NOT-PUBLISH,Already classified: 'publishing an attack roadmap for live code'.
+3,grc reviews,team/roles/grc/reviews/02/19/,risk acceptance,DO-NOT-PUBLISH,Names a private individual with signature blocks.
+
+
+==============================================================================
+source: /briefs/conventions__machine-readable.json
+
+==============================================================================
+
+
+{
+  "schema": "sgraph-coding-conventions/v1",
+  "surveyed": "2026-08-24",
+  "method": "Derived by counting from the code, not from documentation. Every number measured this session.",
+  "python": {
+    "files": 3999,
+    "loc": 217266,
+    "filenames_with_double_underscore": 3871,
+    "prefix_families": {
+      "Schema__": 614,
+      "Safe_Str__": 290,
+      "Enum__": 185,
+      "Cli__": 82,
+      "Routes__": 59,
+      "Safe_Int__": 18,
+      "Section__": 15,
+      "Fast_API__": 12,
+      "Safe_UInt__": 7
+    },
+    "suffix_families": {
+      "__Builder": 97,
+      "__Helper": 86,
+      "__Client": 77,
+      "__Service": 46,
+      "__Mapper": 39,
+      "__Detector": 23,
+      "__Loader": 17,
+      "__Registry": 14,
+      "__Writer": 14,
+      "__Parser": 10,
+      "__Runner": 9,
+      "__Manager": 7,
+      "__Factory": 4,
+      "__Watchdog": 2,
+      "__Middleware": 1,
+      "__Poller": 1
+    },
+    "class_bases_new_tree": {
+      "total": 1034,
+      "Type_Safe": 506,
+      "TestCase": 169,
+      "Safe_Str": 78,
+      "str_Enum": 69,
+      "Fast_API__Routes": 46,
+      "Type_Safe__List": 44,
+      "Schema__Step__Base": 25,
+      "Safe_Int": 13,
+      "Enum": 8,
+      "Safe_UInt": 6
+    },
+    "one_class_per_file": {
+      "sampled": 208,
+      "exactly_one": 187,
+      "pct": 90
+    },
+    "banners": {
+      "repo_files_with_banner": 3120,
+      "class_files_in_new_tree": 992,
+      "starting_with_banner": 992,
+      "pct": 100
+    },
+    "compliance": {
+      "rule_1_type_safe": "essentially all, excluding 169 TestCase and 77 enums",
+      "rule_7_banner": "992/992 = 100%",
+      "rule_8_no_docstrings": "989/992 = 99.7%",
+      "rule_9_no_underscore_private": "895/992 = 91% (97 violations)",
+      "rule_22_empty_init": "299/302 = 99%"
+    },
+    "alignment": {
+      "schema_attribute_colons": {
+        "files": 46,
+        "aligned": 46,
+        "pct": 100
+      },
+      "from_import_keyword": {
+        "files": 817,
+        "aligned": 321,
+        "pct": 39
+      }
+    },
+    "primitives_dir": [
+      "Safe_Int__Disk__GB",
+      "Safe_Int__Exit__Code",
+      "Safe_Int__Hours",
+      "Safe_Int__Log__Lines",
+      "Safe_Int__Max__Hours",
+      "Safe_Int__Pids",
+      "Safe_Int__Port",
+      "Safe_Int__Uptime__Seconds",
+      "Safe_Str__AWS__Region",
+      "Safe_Str__Api__Key",
+      "Safe_Str__Docker__Image",
+      "Safe_Str__IP__Address",
+      "Safe_Str__Image__Registry",
+      "Safe_Str__Image__Tag",
+      "Safe_Str__Instance__Type",
+      "Safe_Str__Log__Content",
+      "Safe_Str__Message",
+      "Safe_Str__Node__Id",
+      "Safe_Str__Node__Name",
+      "Safe_Str__Ollama__Model",
+      "Safe_Str__Platform__Name",
+      "Safe_Str__Pod__Name",
+      "Safe_Str__SG__Id",
+      "Safe_Str__SSM__Path",
+      "Safe_Str__Spec__Id",
+      "Safe_Str__Stack__Id",
+      "Safe_Str__Stack__Name"
+    ]
+  },
+  "javascript": {
+    "files": 50,
+    "custom_elements_define": 41,
+    "attach_shadow": 6,
+    "type_module_script_tags": 48,
+    "quotes": {
+      "single": 4006,
+      "double": 400,
+      "pct_single": 91
+    },
+    "semicolons": {
+      "lines_with": 401,
+      "statement_lines_without": 531,
+      "note": "components/ is semicolon-free; shared/ is not"
+    },
+    "indent": {
+      "multiple_of_4": 3791,
+      "other": 148
+    },
+    "banner_files": 15,
+    "component_triplet": [
+      ".js",
+      ".html",
+      ".css"
+    ],
+    "cdn": {
+      "host": "dev.tools.sgraph.ai",
+      "path_scheme": "/components/<name>/v<major>/v<major>.<minor>/v<major>.<minor>.<patch>/<file>",
+      "served": [
+        "sg-component.js (SgComponent base)",
+        "sg-tokens.css",
+        "sg-vault-client.js",
+        "sg-vault-write.js"
+      ]
+    },
+    "base_class_contract": {
+      "static jsUrl": "import.meta.url \u2014 required, enables self-location",
+      "get resourceName()": "basename of sibling .html/.css",
+      "get sharedCssPaths()": "tokens and shared sheets",
+      "onReady()": "lifecycle hook \u2014 NOT connectedCallback directly"
+    },
+    "event_namespace": {
+      "prefix": "sp-cli:",
+      "files": 23,
+      "note": "LEGACY NAMING \u2014 a rename surface"
+    }
+  },
+  "css": {
+    "files": 38,
+    "alignment": "property values aligned per block, column set by the block's longest property",
+    "token_prefixes": {
+      "unprefixed": [
+        "--bg-panel",
+        "--border-1",
+        "--text-1..4",
+        "--text-link",
+        "--shadow-1..2",
+        "--warn",
+        "--warn-soft",
+        "--soon"
+      ],
+      "sg": [
+        "--sg-text",
+        "--sg-text-muted",
+        "--sg-surface",
+        "--sg-sp-1..4",
+        "--sg-transition-fast"
+      ],
+      "sgl": [
+        "--sgl-tab-h",
+        "--sgl-panel-h"
+      ]
+    },
+    "note": "THREE PREFIX FAMILIES FOR ONE TOKEN SYSTEM \u2014 resolve before publishing",
+    "naming": "plain semantic class names. NOT BEM, NOT utility classes \u2014 shadow DOM makes both unnecessary"
+  },
+  "html": {
+    "files": 37,
+    "indent": 2,
+    "note": "deliberately different from the 4 used in JS and CSS",
+    "rules": [
+      "component markup is a fragment, no html/head/template wrapper",
+      "semantic elements, never div onclick",
+      "ARIA on every interactive element",
+      "data-* is the behaviour hook; classes are for styling; the two never mix",
+      "unicode glyphs instead of icon fonts or SVG sprites"
+    ]
+  },
+  "bash": {
+    "sh_files": 5,
+    "set_e_files": 2,
+    "set_e_forms": [
+      "set -euo pipefail",
+      "set -eu",
+      "set -u"
+    ],
+    "generated_shell": {
+      "pattern": "Section__*(Type_Safe) with a single render() -> str and a module-level TEMPLATE",
+      "count": 15,
+      "sections": [
+        "Base",
+        "Docker",
+        "Sidecar",
+        "Nginx",
+        "Env__File",
+        "GPU_Verify",
+        "NVIDIA_Container_Toolkit",
+        "Ollama",
+        "VLLM",
+        "SGit_Venv",
+        "Claude_Code__Firstboot",
+        "Claude_Launch",
+        "Agent_Tools",
+        "Node",
+        "Shutdown"
+      ],
+      "conventions": [
+        "banner names the coupling, not just the purpose",
+        "generated shell gets a # -- banner (box-drawing, not the Python ===)",
+        "computation in Python, literals in the emitted shell",
+        "bracketed echo breadcrumbs so boot logs are greppable",
+        "composition is a list of sections, never a template with conditionals"
+      ]
+    }
+  },
+  "enforcement": {
+    "linters": 0,
+    "formatters": 0,
+    "type_checkers": 0,
+    "ci_guards": {
+      "total": 4,
+      "working": 3,
+      "broken": 1,
+      "list": [
+        {
+          "name": "test_no_object_none_annotations",
+          "enforces": "bans ': object = None'",
+          "state": "works"
+        },
+        {
+          "name": "test_sg_compute_ami_picker__snapshot",
+          "enforces": "web component live-fetch contract",
+          "state": "works"
+        },
+        {
+          "name": "test_sg_compute_spec_detail__snapshot",
+          "enforces": "web component structure",
+          "state": "works"
+        },
+        {
+          "name": "test_wheel_contains_ui",
+          "enforces": "wheel contains per-spec UI assets",
+          "state": "works"
+        },
+        {
+          "name": "test_sg_compute_does_not_import_legacy",
+          "enforces": "no legacy imports in the new tree",
+          "state": "BROKEN \u2014 regex sgraph_ai_service_playwright[^_] cannot match sgraph_ai_service_playwright__cli",
+          "measured": "guard matches 0 files; 228 real imports in 69 files; deleting [^_] makes it fail as intended"
+        }
+      ]
+    },
+    "documented_rules": {
+      "source": ".claude/CLAUDE.md",
+      "count": 31,
+      "plus": "4 non-negotiable testing rules",
+      "groups": [
+        "Code Patterns 1-9",
+        "Security 10-13",
+        "AWS Naming 14-15",
+        "Responsibility Boundaries 16-19",
+        "Class/File Naming 20-22",
+        "Process 23-31"
+      ],
+      "coverage": "ALL are Python or process. Zero rules for JS, CSS, HTML or Bash."
+    }
+  },
+  "cross_cutting": [
+    "one idea per file, and the filename says which",
+    "a banner names every file (three characters: === Python, -- shell and JS shared, JSDoc JS components)",
+    "alignment as a first-class convention, per block",
+    "single source of truth enforced by structure, not by asking",
+    "conventions chosen because an LLM is a primary reader and writer"
+  ]
+}
+
+
+==============================================================================
+source: /briefs/LICENSE.md
+
+==============================================================================
+
+
+# Licence
+
+## This pack
+
+Everything in this brief pack — the nine numbered documents, `09__source-manifest.csv`, `conventions__machine-readable.json`, this file and `README.md` — is released under the **Creative Commons Attribution 4.0 International licence (CC BY 4.0)**.
+
+    Copyright (c) 2026 Dinis Cruz
+    Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+
+Attribution: **Dinis Cruz**, with AI co-authorship (Claude, Anthropic).
+
+## The site this pack commissions
+
+**The entire content of `coding.sgit.ai`** is to be published under **CC BY 4.0**, consistent with the network. Stamp every raw markdown document; gate it with `licence-audit.py --check`.
+
+## ⚠️ The code quoted throughout is Apache-2.0
+
+Every code example in this pack is real, extracted from repositories licensed **Apache-2.0**: `SGraph-AI__App__Send`, `SGraph-AI__Service__Playwright`, and all seven Issues-FS repos (`license = "Apache 2.0"` in every `pyproject.toml`).
+
+**Retain the notice where snippets are shown at length, and do not imply the code carries the site's CC BY licence.** A style-guide site quoting its own Apache-2.0 code is fine; a site that blurs the two licences on a page about licensing discipline is not.
+
+## Credit the dependency, not just the pattern
+
+`Type_Safe`, `Safe_Str`, `Safe_Int` and the constrained-primitive pattern come from **`osbot-utils`**, Apache-2.0, under the `owasp-sbot` GitHub organisation. So do `osbot-aws`, `osbot-fast-api`, `memory_fs` and `mgraph-db`.
+
+**Wherever the site describes the pattern, name the library.** The convention is the estate's; the mechanism is the dependency's, and the distinction matters on a site whose subject is attribution discipline.
+
+---
+
+## Redaction — the repos are live
+
+> **⚠ Redacted for publication.** This document's own redaction list names the values it forbids. Publishing the list verbatim would publish them, so the AWS account id, the four live internal hostnames and the four named live stack FQDNs are replaced with `[redacted]` in the three bullets below. Nothing else in this document is changed, the counts are kept, and `dev.tools.sgraph.ai` is retained deliberately for the reason the document itself gives. See [/documents/#redaction](../documents/index.html#redaction).
+
+
+`sg-compute.sgit.ai`'s redaction list applies in full. Strip before publishing:
+
+- **AWS account ID `[redacted]`** — 20+ files under `team/humans/dinis_cruz/claude-code-web/`
+- **Live internal hostnames** — `[redacted]` (193), `[redacted]` (128), `[redacted]` (46), `[redacted]` (36) and the rest
+- **Named live stack FQDNs** — `[redacted]`, `[redacted]`, `[redacted]`, `[redacted]` (four of them)
+- **Real EC2 and AMI IDs** in `utils/ec2_boot_bench/`
+
+### The one special case: `dev.tools.sgraph.ai`
+
+It appears **inside the code examples** — every component imports `SgComponent` and `sg-tokens.css` from it, and it appears 177 times in the tree.
+
+**Recommendation: publish it.** It is a public CDN serving public component code, it is visible in any rendered page's network tab, and a component example with the import URL redacted teaches nothing.
+
+**But make it a deliberate decision**, and note the real concern: the `dev.` prefix means a public coding standard would be documenting a development host as the canonical contract. `08__` Q4.
+
+## Do not publish
+
+`library/alchemist/materials/` (the whole tree) · the positioning and competitor briefs · `team/roles/appsec/reviews/02/21/…pki-architecture-security-revised.md` (classified as *"an attack roadmap for live code"*) · `team/roles/grc/reviews/02/19/` (names a private individual with signature blocks).
+
+## Accuracy
+
+**Every number in this pack was measured in this session by counting, not taken from documentation.** They will drift. The site should **generate its counts at build time or date them** — a style guide whose examples and numbers have drifted from the code is worse than none.
+
+The same goes for the examples: **every code sample must be extracted from the repo at build time, with its path and a commit reference.** Do not paste.
+
+---
+
+This file is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).

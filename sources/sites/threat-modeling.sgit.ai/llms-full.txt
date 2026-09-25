@@ -1,0 +1,651 @@
+# threat-modeling.sgit.ai — a threat model is a claim about a system
+
+> A threat model is a claim about a system, and this site's job is to show claims being
+> checked. It publishes the ThreatModCon 2025 vault (eleven linked threat models running
+> Customer through Compute), a threat model that was validated line-by-line against the
+> code that implements it, seven white papers arguing threat models should be
+> machine-readable graph data rather than static documents, and the redacted method
+> behind all of it.
+
+Site version: v0.1.0 (8 September 2026). Written about, and published by, the estate
+whose own product it threat-models — participant disclosure at
+/about/participant.html. All site content CC BY 4.0.
+
+## The rule an agent consuming this site must inherit
+
+**Findings on the live product are published only once closed, dated, and classed —
+never by file-and-line location while still open.** This site's own release gate
+refuses any page that looks like a source-file-and-line pointer outside the verbatim
+brief pack, and caps any quotation from a third party or a named framework (STRIDE,
+MITRE ATT&CK, CAPEC, CWE/CVE, OWASP Top 10, ASVS) at 40 words. Those frameworks are
+referenced and linked, never reproduced.
+
+## The spine: claim, then check
+
+Every substantive page on this site carries the same two-part structure: what was
+claimed, and what checking it produced. /validated/ is the purest instance — a threat
+model written 16 March 2026, and a validation pass one day later that checked every
+finding against the actual code and recorded CONFIRMED REAL, CONFIRMED SAFE, CONFIRMED
+MISSING and N/A (proposed, no code yet) verdicts, publishing all four kinds rather than
+only the vindicated ones.
+
+## The pages
+
+- /index.html — the thesis, with the eleven-layer vault and the validation pair as the
+  two strongest pieces of evidence
+- /eleven-layers/ — the ThreatModCon 2025 vault (Barcelona), embedded and explained:
+  eleven linked layers, 51 nodes, 179 threats, 3 critical findings, live at
+  https://sgit.ai/demos/vaults/threatmodcon-2025/
+- /validated/ — the 16→17 March 2026 claim-and-check pair, side by side, with all five
+  verdict classes published
+- /papers/ — the seven white papers (docs.diniscruz.ai, May–June 2025), one page each:
+  summary, key claims, and a link to the source. Never reproduced at length.
+- /practice/ — the redacted method: the bottom-up per-file framework, the .security.json
+  schema, STRIDE applied honestly (NOT MITIGATED rows kept in), and the two-modes
+  pattern (never average two different security models into one number)
+- /graph/ — threat models as vault-native graph data: the eight AppSec-tooling
+  frictions a vault answers, and an explicit table of what is real today versus what is
+  argued but not yet built
+- /disclosure/ — the mandatory-disclosure policy position, published as the policy
+  position it is, cross-linked to /practice/ because together they are the reflexive
+  test: a site arguing threat models should be mandatory disclosures is judged by
+  whether it discloses its own
+- /agentic/ — threat-modeling AI systems themselves: prompt injection, agent
+  permissions, the boundary between what is measured and what is asserted
+- /documents/ — the commissioning pack, published in full, with a reader page per
+  document rendered from the raw markdown in /briefs/
+- /admin/ — the pipeline, the release gate, the tagger. /admin/versions.html — release
+  history. /admin/comms.html — tasks, requests, and the questions only the founder can
+  answer (Q1, the closure pass, is the launch blocker)
+- /network/ — the sgit.ai network, and the deconfliction table that keeps this site
+  from re-arguing what a sibling site already owns
+- /about/participant.html — who publishes this, the conflict stated plainly
+
+## What this site does NOT do
+
+No threat-modeling-as-a-service pitch on the main line — the services paper lives under
+/papers/ clearly labelled as positioning, not method. No open findings against live
+systems, including third parties. No methodology comparison table that declares a
+winner: the position is that fragmentation is solved by linking methods in a graph, not
+by picking one.
+
+## Properties an agent may rely on
+
+- Every brief in the commissioning pack is published verbatim at /briefs/<filename>,
+  with a reader page at /documents/<slug>.html.
+- /sitemap.xml is generated from the tree.
+- The version in /admin/build/version.txt agrees with /assets/version.js, the release
+  history table, this file, /llms-full.txt and /index.md — CI fails the release
+  otherwise.
+- /llms-full.txt is this site's own words plus every source document, concatenated by a
+  generator — it cannot say anything the tree does not.
+
+## Related
+
+- https://sgit.ai — the parent project and the network index
+- https://sgit.ai/demos/vaults/threatmodcon-2025/ — the eleven-layer vault, live
+- https://wardley-maps.sgit.ai · https://graphs.sgit.ai · https://standards.sgit.ai
+- https://risks.sgit.ai · https://pki.sgit.ai
+
+
+---
+
+# briefs/00__BRIEF.md
+
+# 00 — The Brief: `threat-modeling.sgit.ai`
+
+**Version** v0.33.63 · 7 September 2026
+**From** Dinis Cruz, via the SG/Send Librarian
+**To** the agent commissioned to build `threat-modeling.sgit.ai`
+**Licence** CC BY 4.0
+
+---
+
+## 1. The commission
+
+A site for the threat-modeling work: the published research (six white papers on docs.diniscruz.ai), the **practice** (seven real threat models written against a live codebase, one of them validated line-by-line against the code afterwards), and the platform argument (threat models as vault-native graph data rather than documents). The corpus is substantial — 269 files mention threat models; 58 AppSec review documents exist; a ThreatModCon 2025 vault is already published at `sgit.ai/demos/vaults/threatmodcon-2025/`.
+
+**The name**: `threat-modeling.sgit.ai`. American spelling, because the discipline's own literature, its conference (ThreatModCon), and the founder's published article titles all use it — even though his prose sometimes writes *modelling*. Pick one, redirect the other; `threat-modelling.sgit.ai` should 301 here.
+
+---
+
+## 2. The thesis
+
+> **A threat model is a claim about a system, and the site's job is to show claims being checked.**
+
+This is what the estate has that the discipline mostly does not. The industry's own diagnosis, in the founder's words, is that threat modeling is *"a fairly subjective process"* producing *"static documents"* that are *"siloed"*, *"fragmented"*, and *"context-poor"* — the five failure modes named in the 2025 research. The answer this site publishes is not another methodology. It is two moves:
+
+1. **Make the model machine-readable** — a semantic knowledge graph, not a Word document, so that overlaying STRIDE, MITRE ATT&CK and OWASP Top 10 on one system becomes a query rather than a workshop.
+2. **Make the model falsifiable** — and then actually falsify it. On 16 March 2026 the AppSec role wrote a threat model of the Simple Token flow; on 17 March a validation pass checked every finding against the backend code and marked each one **CONFIRMED REAL / CONFIRMED SAFE / CONFIRMED MISSING / N/A (proposed, no code yet)**. Two claims were confirmed real, one was confirmed already mitigated, two were confirmed missing, and two were marked as proposals with no code behind them yet.
+
+That second move is the site's differentiator. Everyone publishes threat models. Almost nobody publishes the audit that says which parts of their threat model turned out to be wrong.
+
+---
+
+## 3. What already exists (all verified on disk or live)
+
+**Published research — six white papers, all 2025, all on docs.diniscruz.ai:**
+
+| Date | Paper | The claim it makes |
+|---|---|---|
+| 29 May | Advancing Threat Modeling with Semantic Knowledge Graphs | The foundational one: threats/assets/mitigations/incidents as nodes; multi-ontology overlay; MGraph-DB as the memory-first store |
+| 29 May | Threat Models as Mandatory Disclosures | The boldest: security's *"market for lemons"*; threat model publication as regulation, like financial statements and ingredient labels |
+| 30 May | Graphs of Graphs of Graphs (G³) in Threat Modeling | Multi-view/multi-graph architecture; organic file-based evolution; ontologies as semantic layers |
+| 30 May | Using Threat Modeling and Semantic Graphs to Secure the Digital Supply Chain | Supply chain as the hardest case |
+| 30 May | Scaling Supply Chain Security using Threat Modeling, Semantic Knowledge Graphs and Maps | Adds the Wardley-map layer |
+| 9 June | Supercharging AppSec Threat Modeling Services with GenAI and Semantic Graphs | The services/consulting argument; multi-stakeholder deliverables |
+| 2 June | Linking Threat Models with Semantic Business Graphs | Technical findings ↔ business impact |
+
+**The ThreatModCon 2025 vault (Barcelona) — already live**, and the single best artefact the site has: **eleven linked threat models** running Customer → Business → Application → Component → Package → Class → Method → Source Code → Environment → Runtime → Compute; **51 nodes, 179 threats, 3 critical findings**. Its own framing is the line the site should lead with: *"One model answers what could go wrong here. Eleven linked models answer what does this line of code put at risk."* It also carries the multi-persona demo (one SQL injection in a payment gateway, reframed for Board / CISO / CTO / Developer) and five Wardley walkthroughs moving from *"everything is critical"* to risk-based prioritisation.
+
+**Seven real threat models in `team/roles/appsec/`**, written against SG/Send itself — see `02__`. They include a full STRIDE analysis with per-threat mitigation status, data flow diagrams, trust boundaries, attack surfaces, zero-knowledge verification, and a 37-entry risk register.
+
+---
+
+## 4. The honest constraints
+
+- **Most of the practice material is a security review of the founder's own live product.** It names unmitigated vulnerabilities by number. `04__` sets the disclosure rule: publish the *method* and the *resolved* findings; hold anything still open. This is the site's hardest editorial problem and it must be solved before launch, not after.
+- **The research is co-authored with AI** (several papers credit *"ChatGPT Deep Research"*). Keep that attribution visible — it is part of how the work was done.
+- **The graph tooling is real but young**: MGraph-DB exists, the ThreatModCon vault is live, but the "continuous threat modeling" pipeline described in the papers is a vision with partial implementation. Mark the boundary on every page.
+
+---
+
+## 5. Build order
+
+1. **`/eleven-layers/`** — the ThreatModCon vault, embedded and explained. The strongest thing here; lead with it.
+2. **`/validated/`** — the 16→17 March threat-model-then-check-it pair, side by side. The site's signature.
+3. **`/papers/`** — the six white papers, each with a one-screen summary and the PDF/LinkedIn links.
+4. **`/practice/`** — the redacted method: STRIDE tables, the `.security.json` per-file schema, the two-modes pattern.
+5. **`/graph/`** — threat models as vault-native data; the schema; the AppSec-tooling argument.
+6. **`/disclosure/`** — the mandatory-disclosure thesis, published as the policy position it is.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/01__the-research.md
+
+# 01 — The Research: six white papers, one argument
+
+**Version** v0.33.63 · 7 September 2026
+**Source** `docs.diniscruz.ai/docs/2025/05/` and `/06/` — all seven documents verified on disk.
+
+---
+
+## The argument, in order
+
+The papers were written in a burst — five of the seven inside four days at the end of May 2025 — and they build on each other. Read as a sequence they make one argument in four moves.
+
+### Move 1 — The diagnosis (Advancing Threat Modeling with Semantic Knowledge Graphs, 29 May)
+
+Five named failure modes, each stated as a problem any replacement must solve:
+
+| Failure mode | The paper's charge |
+|---|---|
+| **Subjectivity and inconsistency** | *"Different people might identify different threats for the same system, and even the same person might produce varying results on different days."* There is no single source of truth and no way to verify completeness. |
+| **Siloed knowledge** | Models live in prose and diagrams that are not machine-readable. *"There is no common knowledge base — each model is an island."* |
+| **Lack of scalability** | Manual modelling cannot cover *"dozens of microservices and deployments per day."* Threat modelling *"lags behind development, instead of being a continuous guardrail."* |
+| **Fragmented methodologies** | STRIDE, PASTA, LINDDUN, attack trees, kill chains — each a perspective, none linkable, producing *"process saturation"* and analysis paralysis. |
+| **Static and context-poor models** | Snapshots that never absorb new threat intelligence, incident data, compliance requirements or crown-jewel designation — leading to mis-prioritisation, *"treating all threats as equal."* |
+
+The paper's own summary of the ambition it inherits: threat modelling is an attempt to make *"a fairly subjective process more objective, repeatable & consistent."*
+
+### Move 2 — The mechanism (same paper, plus G³, 30 May)
+
+Represent the model as a semantic knowledge graph: *Asset*, *Threat*, *Vulnerability*, *Mitigation/Control*, *Actor*, *Incident* as node types, with defined relationships (*Threat* targets *Asset*; *Mitigation* mitigates *Threat*; *Incident* is-instance-of *Threat*). Three consequences the papers claim, each of which the site should present as a testable claim rather than a benefit:
+
+1. **Multi-framework overlay becomes a query.** STRIDE, MITRE ATT&CK and OWASP Top 10 can sit on the same system model simultaneously — *"something not feasible with traditional static models."*
+2. **Analysis becomes traversal.** *"All trust boundaries without an encryption control"* is a graph query, not a document review.
+3. **Context becomes an edge.** A new CVE affecting a modelled component links to it and *"instantly flags a relevant threat"*; peer-industry incidents attach to the scenarios they instantiate; ISO 27001 controls and OWASP ASVS requirements become another layer.
+
+The G³ paper (*Graphs of Graphs of Graphs in Threat Modeling*) supplies the architecture: multi-view/multi-graph, organic file-based evolution of threat graphs, and ontologies/taxonomies/standards linked in as semantic layers rather than baked into one schema. Its structure — introduction, G³ and semantic knowledge modelling, multi-view architecture, file-based organic evolution, ontology linking, a supply-chain case study, then benefits (personalisation, traceability, automation) — is the closest thing the corpus has to a reference architecture for this site's `/graph/` section.
+
+**The determinism caveat is in the source and must survive to the site.** The papers are explicit that letting an LLM *"fill in relationships freely"* is a prototype behaviour, and that *"moving to an explicit schema is crucial for reliability"* — LLM output must be structured data matching the schema, not free-form text.
+
+### Move 3 — The scaling case (supply chain ×2, 30 May)
+
+Two papers take the hardest domain. *Using Threat Modeling and Semantic Graphs to Secure the Digital Supply Chain* and *Scaling Supply Chain Security using Threat Modeling, Semantic Knowledge Graphs and Maps* share a spine — mandatory disclosure, semantic graphs as foundation, then **maps** as the visualisation layer, whole-supply-chain modelling, G³ for interoperability, framework integration via graph links, and continuous automated risk monitoring. The second adds the Wardley-map dimension, which is where this site touches `wardley-maps.sgit.ai` (see the deconfliction note in `03__`).
+
+### Move 4 — The policy position (Threat Models as Mandatory Disclosures, 29 May)
+
+The boldest paper, and the one that should be published as a standalone position rather than buried in a research index. Its claim:
+
+> Digital products suffer a *"classic 'market for lemons' scenario in cybersecurity"* — vendors know far more about their product's security than buyers do, so *"inferior security offerings thrive and outcompete higher-quality ones."*
+
+The proposed correction: make threat-model publication a **regulatory requirement**, the way financial statements and food ingredient labels are mandated. A published threat model becomes *"a reliable signal of security quality"* and *"concrete evidence of the threats a company has considered and mitigated, substantiating security claims that today are often vague or unverified."* The paper carries historical parallels, a maturity roadmap, stakeholder impacts, technical enablers and practical steps.
+
+**Note the reflexivity, and make it the site's spine.** A site arguing that threat models should be mandatory disclosures is judged by whether it discloses its own. It does — that is what `02__` is. The `/disclosure/` page and the `/practice/` page must link to each other explicitly, because together they are an argument the reader can check.
+
+### The seventh paper — Linking Threat Models with Semantic Business Graphs (2 June)
+
+The bridge between technical findings and business impact. It is the theoretical basis for the ThreatModCon vault's multi-persona demo (one SQL injection, four audiences) and for the eleven-layer traversal from Compute up to Customer. Pair them on the site: the paper is the theory, the vault is the working proof.
+
+### The services paper — Supercharging AppSec Threat Modeling Services with GenAI and Semantic Graphs (9 June)
+
+The commercial framing: GenAI as *"force multiplier"*, semantic graphs as *"a living context layer"*, AI-assisted code understanding, personalised multi-stakeholder deliverables, upskilling AppSec teams, new service offerings, an implementation roadmap. This one belongs on the site but flagged as **positioning, not method** — it is the pitch deck of the set, and mixing it with the research weakens both.
+
+---
+
+## Attribution
+
+Several of these papers credit **"Dinis Cruz and ChatGPT Deep Research"** as co-authors in their front matter. Keep it. The estate's whole position is that AI-assisted work should be legible as such; hiding the co-authorship on the research about making security legible would be self-defeating. Each paper on the site carries its own PDF link, its LinkedIn post reference, and its original tags.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/02__the-practice.md
+
+# 02 — The Practice: seven threat models, and one that was checked
+
+**Version** v0.33.63 · 7 September 2026
+**Source** `SGraph-AI__App__Send/team/roles/appsec/` (58 documents) and `team/humans/dinis_cruz/briefs/`
+
+---
+
+## Why this section is the site
+
+The research in `01__` argues that threat modelling should be objective, repeatable and continuously checked. This section is the evidence that the founder's own estate does it — on a live product, naming its own unmitigated weaknesses. **Publish the method in full; apply the disclosure rule in `04__` to the findings.**
+
+---
+
+## The seven
+
+| # | Document | Date | What it is |
+|---|---|---|---|
+| 1 | `v0.2.15__threat-model__sgraph-send.md` | 12 Feb 2026 | The flagship: full STRIDE, DFDs, trust boundaries, attack surfaces, ZK verification, 37-entry risk register |
+| 2 | `v0.6.30__brief__per-file-security-review-and-threat-modelling.md` | 25 Feb 2026 | The method: bottom-up, file-by-file, parallel security tree |
+| 3 | `v0.7.1__appsec__threat-model-sg-send-skill-workflow.md` | 26 Feb 2026 | Two-modes analysis of an agentic workflow; T-001…T-006; risk matrix; prioritised recommendations |
+| 4 | `v0.8.4__threat-model__token-consumption-flow.md` | 1 Mar 2026 | Token flow |
+| 5 | `v0.10.19__threat-model__office-document-viewers-and-print.md` | 3 Mar 2026 | Document-viewer attack surface |
+| 6 | `v0.16.11__appsec-review__simple-token-threat-model.md` | 16 Mar 2026 | The claim |
+| 7 | `v0.16.14__appsec-review__simple-token-threat-model-validation.md` | 17 Mar 2026 | **The check** |
+
+---
+
+## Exhibit A — the validation pair (6 → 7)
+
+**This is the site's signature page.** One day apart: a threat model, then a pass that validated every finding *"against the actual backend code"*, grounded in a stated code version and reality document. Its summary table has four verdicts, and the honesty of the "N/A" row is the point — two findings were proposals with no code behind them yet, and the validation says so rather than quietly claiming them:
+
+| Verdict | Meaning | Count |
+|---|---|---|
+| **CONFIRMED REAL** | The threat model was right; the weakness is in the code, with file and line numbers | 2 |
+| **CONFIRMED SAFE** | The threat model said "already mitigated" and the code agrees | 1 |
+| **CONFIRMED MISSING** | A control the model said doesn't exist — confirmed absent | 2 |
+| **CONFIRMED CORRECT** | A design the model called correct — confirmed correct in implementation | 1 |
+| **N/A — proposed, no code yet** | The model proposed something; nothing is built; no credit claimed | 2 |
+
+The confirmed-real findings were located precisely (three route methods, by line number) and the reasoning is a general principle worth publishing on its own: a parameter that bypasses the estate's `Safe_Str__Id` type validation is a finding *even though* downstream lookup validates the value, because **input sanitisation belongs at the route entry point**. That is a rule an agent can apply elsewhere — which is exactly what this site network is for.
+
+**How to publish it**: two columns, claim beside verdict, with the "N/A" rows kept in. A validation table that showed only vindicated predictions would be marketing. The value is in the mixed result.
+
+---
+
+## Exhibit B — the eleven layers (the ThreatModCon vault, already live)
+
+`sgit.ai/demos/vaults/threatmodcon-2025/` — presented at ThreatModCon 2025, Barcelona. **51 nodes, 179 threats, 3 critical findings** across eleven readable layers:
+
+```
+Customer → Business → Application → Component → Package → Class
+        → Method → Source Code → Environment → Runtime → Compute
+```
+
+Its own framing is the best sentence in the corpus on why linked models matter:
+
+> *"One model answers what could go wrong here. Eleven linked models answer what does this line of code put at risk."*
+
+Two demonstrations ride on top of it. **Multi-persona reframing**: one SQL injection in a payment gateway, told four ways for Board, CISO, CTO and Developer — the practical form of the *Linking Threat Models with Semantic Business Graphs* paper. **Five Wardley walkthroughs**: the progression from *"everything is critical"* to risk-based prioritisation.
+
+The vault also carries an engineering story worth telling on `/eleven-layers/`: it was adapted for **offline vault operation** — d3, three.js and tween.js inlined at pinned versions, data read through `sg.vfs.readText()` on vault-relative paths, with network fallback that reports failure rather than hiding it. And a data-integrity note that models the discipline the whole network runs on: two upstream JSON files had formatting errors, and both were repaired *"using only bracket adjustments and repositioning — no field edits or invented content."*
+
+---
+
+## Exhibit C — the method (2), publishable in full
+
+The per-file framework, from a brief that opens with unusual candour about why it was commissioned: the team had shipped fast, *"some access tokens have already been leaked in posts (not yet abused, but only because usage is low and assets aren't high-value yet). This won't stay true as the platform grows."* The goal stated is not remediation but coverage — *"to make informed, risk-based decisions about what to address and when."*
+
+**The approach is bottom-up, and the reasoning is fractal**: `File → Method → Class → Module → Path/Journey → Endpoint → Full Attack Surface`. Against every source file sits a `.security.json` in a parallel tree, with a schema the site can publish as a reusable artefact: `attack_surface` (endpoints, auth, input validation, rate limiting), `vulnerabilities` (id, severity, attack vector, impact, status, mitigation, and — the interesting field — **`risk_decision`**, which records an explicit accept-for-now with its reasoning), `secrets_exposure`, `dependencies` (including `trust_boundary_crossings`), and `redundant_code`.
+
+That `risk_decision` field is the schema-level expression of the estate's whole posture: a finding is not binary, and the decision to defer is itself data with an owner and a rationale.
+
+---
+
+## Exhibit D — STRIDE, applied honestly (1)
+
+The flagship threat model runs all six STRIDE categories as tables of *threat × likelihood × impact × mitigation status* — and the status column is populated with `NOT MITIGATED` as often as `MITIGATED`, each cross-referenced to a numbered vulnerability. It reaches a conclusion most vendor threat models never print: for the server-breach case the impact is recorded as **None**, mitigated *by design* through the zero-knowledge architecture, and Section 6 is a dedicated zero-knowledge verification rather than an assertion.
+
+It also has a **Section 9: Assumptions and Open Questions** — the house rule (publish tensions unresolved) appearing in security work eight months before this pack.
+
+---
+
+## Exhibit E — the two-modes pattern (3)
+
+The agentic-workflow threat model contains a transferable idea the site should extract as its own page. The document's most important section is a refusal to average two things together:
+
+> *"The two modes look similar from the outside (both produce a download link) but have radically different security properties."*
+
+Mode A (symmetric, key in the URL fragment): *"The key IS in the URL. Anyone who has the full URL can decrypt. Security = secrecy of the URL."* Mode B (PKI): *"The key is NOT in the URL… Security = possession of the recipient's private key."*
+
+Its risk matrix scores eight threats across both modes with likelihood, impact and **residual risk after mitigations** — and the recommendations are prioritised P0–P3 **with an owner named for each** (DevOps, Dev, Designer, DPO, Sherpa). Two of them are notable for a threat model to produce: *"Publish the honest entity list in user documentation"* (a transparency action, owned by the DPO) and *"Document Anthropic log retention policy in DPO register"* (a supply-chain-of-AI action). The threat scenarios include **prompt injection via file content**, scored Medium likelihood / High impact for agentic use — this pack's clearest evidence that the estate threat-models AI systems, not just web ones.
+
+---
+
+## What the practice teaches that the papers cannot
+
+The research says threat models should be living, checkable artefacts. The practice shows what that costs and what it produces: a model written in a day, a validation that partly contradicts it the next, findings that stay open with a recorded risk decision, and named owners for each recommendation. **The site should publish the mixed results, not the wins.** That is both the more useful memory for an agent and the only honest way to hold the mandatory-disclosure position in `01__`.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/03__site-architecture.md
+
+# 03 — Site Architecture: `threat-modeling.sgit.ai`
+
+**Version** v0.33.63 · 7 September 2026
+**Base** House pattern (copy `pki.sgit.ai`): `llms.txt` + `/llms-full.txt`, `/documents/` raw markdown, markdown twin at every URL, `/admin/comms.html`, `/shipped/`, versions, participant page.
+
+---
+
+## 1. URL scheme
+
+```
+/                        the thesis: a threat model is a claim; here are ours being checked
+/eleven-layers/          the ThreatModCon 2025 vault, embedded + explained
+/validated/              the 16→17 March claim-and-check pair, side by side
+/papers/                 the seven white papers, one page each
+/papers/<slug>/          summary, key claims, PDF + LinkedIn links, co-authorship note
+/practice/               the method: bottom-up file-by-file, the parallel security tree
+/practice/security-json/ the .security.json schema as a reusable artefact
+/practice/stride/        STRIDE applied with honest mitigation status
+/practice/two-modes/     the do-not-average-two-modes pattern
+/graph/                  threat models as vault-native graph data
+/disclosure/             the mandatory-disclosure position
+/agentic/                threat-modeling AI systems (prompt injection, agent permissions)
+/documents/              raw markdown of everything
+```
+
+## 2. The spine: claim → check
+
+Every substantive page carries the same two-part structure the corpus already uses: **what we claimed** and **what checking it produced**. `/validated/` is the purest instance; `/practice/stride/` shows it as `NOT MITIGATED` rows; `/eleven-layers/` shows it as the data-repair note. Do not build a page that makes a claim with nothing checking it.
+
+## 3. Data model
+
+Threat models are graph data, not prose — that is the whole argument, and the site must not contradict it by being a pile of markdown. Each published model gets a JSON twin: nodes (Asset, Threat, Vulnerability, Mitigation, Actor, Incident), edges (targets, mitigates, is-instance-of, crosses-trust-boundary), and per-finding status. `/eleven-layers/` already has this shape upstream — 51 nodes, 179 threats — so it is the schema's proof rather than a new invention.
+
+**Generated, not claimed**: node/threat/finding counts, the corpus file counts, and the validation verdict tallies all come from the data. Date every one.
+
+## 4. Deconfliction with siblings
+
+| Topic | Owner | This site's part |
+|---|---|---|
+| Wardley maps as a technique | `wardley-maps.sgit.ai` | Only the five threat-prioritisation walkthroughs, as an application |
+| G³, MGraph-DB, graph theory | the graphs sibling | Only threat-model-shaped graphs; link out for the substrate |
+| ISO 27001, EU AI Act, GDPR | `standards.sgit.ai` | Only framework-overlay-as-graph-edge; standards text stays there |
+| Risk registers, acceptance | `risks.sgit.ai` | Only the `risk_decision` field as it appears in the security schema |
+| Vault mechanics, keys | `pki.sgit.ai` / sgit.ai | Only what a threat model needs to say about them |
+| NFR security posture | `nfrs.sgit.ai` | Threat modelling is the *method*; NFR owns the *property* |
+
+The rule that keeps this clean: **this site owns the act of modelling threats.** If material is about the thing being modelled rather than the modelling, it belongs to a sibling.
+
+## 5. The ThreatModCon vault is embedded, not copied
+
+`/eleven-layers/` embeds the live vault (the vault-app-embed pattern from sgit.ai's own demos), with the explanation around it. Do not re-host the eleven models as site pages — the vault is the artefact, and a published vault demonstrating the platform's own argument is worth more than a static copy.
+
+## 6. What this site does NOT do
+
+No threat-modelling-as-a-service pitch on the main line (the 9 June services paper lives under `/papers/` clearly labelled as positioning). No open findings against live systems, including third parties (`04__`). No methodology comparison table that declares a winner — the corpus's position is that fragmentation is solved by linking methods in a graph, not by picking one.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/04__disclosure-boundaries.md
+
+# 04 — Disclosure Boundaries: publishing security work about a live product
+
+**Version** v0.33.63 · 7 September 2026
+
+---
+
+## 1. The problem, stated plainly
+
+This site's best material is a security review of the founder's own running platform. It names vulnerabilities by number, locates two of them by file and line, and records several as `NOT MITIGATED` and two controls as `CONFIRMED MISSING`. The source brief itself notes that *"some access tokens have already been leaked in posts."*
+
+Publishing all of that as-is would be a live exploitation guide for SG/Send. Publishing none of it would gut the site and quietly abandon the mandatory-disclosure position in `01__`. Neither is acceptable, so the boundary has to be drawn precisely.
+
+## 2. The rule
+
+**Publish the method always. Publish findings only once they are closed, or once they are harmless by design.**
+
+| Category | Publish? | Reasoning |
+|---|---|---|
+| The method — bottom-up file-by-file, the parallel security tree, the `.security.json` schema, the STRIDE table format, the two-modes pattern, the validation format | **Yes, in full** | Methods are the transferable asset and expose nothing |
+| Findings that are **fixed**, with the fix and its version | **Yes** | This is the disclosure the papers argue for; the version proves closure |
+| Findings **mitigated by design** (e.g. server breach → impact None under zero-knowledge) | **Yes** | Publishing an architecture's strength is not exposure — but only where the ZK verification section backs it |
+| Findings **still open** on a live system | **No** — hold | Publish the *count* and the *class*, dated, not the location |
+| **File-and-line locations** of any unfixed finding | **Never** | The validation report's precision is its value internally and its danger externally |
+| Third-party findings (Anthropic log retention, n8n logging, any vendor) | **No** | Not the estate's to disclose; describe the *question* asked, not the answer found |
+| The leaked-token history | **Yes, as history** | Already public (`sgit.ai/case-studies/exposed-vault-key.md` tells this class of story); the honest post-mortem is an asset — provided the tokens are dead |
+
+**The dating rule does the heavy lifting.** A finding published as *"open as of 17 March 2026"* and later shown as *"closed in v0.x.y"* is exactly the mandatory-disclosure model working. A finding published as open with no date and no closure is an unmaintained invitation.
+
+## 3. Redaction is a versioned act, not a deletion
+
+When a source document is published in redacted form, the site says so on the page: which categories were held, and why. A silently trimmed threat model is a false memory of the kind `nfrs.sgit.ai` warns about. Every redacted page carries: *"N findings held under the disclosure rule as of <date>; classes: <list>."* The count is generated.
+
+## 4. Before launch: a closure pass
+
+The findings in the corpus are from February and March 2026; this pack is dated September 2026. **Nothing may be published as "open" without re-checking it against current code first.** Two failure modes to avoid, in both directions: publishing a fixed vulnerability as open (defames the product), and publishing a still-open one as fixed (defrauds the reader, and is the exact behaviour the mandatory-disclosure paper condemns). This is comms question Q1.
+
+## 5. Licensing
+
+Site text, schemas, tables and analysis: CC BY 4.0. The white papers are the founder's own and carry their existing co-authorship attribution (several credit *"ChatGPT Deep Research"*). **STRIDE, MITRE ATT&CK, CAPEC, CWE/CVE, OWASP Top 10 and ASVS**: reference by name and link; do not reproduce their content. STRIDE is a Microsoft-originated taxonomy — the six category names are usable as terms of art, but the site publishes *its own* tables under those headings, never a copied framework text. This is the same link-never-rehost boundary as `influences.sgit.ai`.
+
+## 6. Vulnerability disclosure for the site itself
+
+A site publishing threat models must be reachable by anyone who finds a flaw in it. Ship `/.well-known/security.txt` and a disclosure policy page from day one. A threat-modeling site without a disclosure channel would be the discipline's own joke.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/05__the-vault-argument.md
+
+# 05 — The Vault Argument: threat models as data with a home
+
+**Version** v0.33.63 · 7 September 2026
+**Source** `v0.27.45__strategy-brief__appsec-mini-tools-on-top-of-vaults.md` (16 May 2026) and the live vault platform at sgit.ai
+
+---
+
+## 1. The reframe
+
+The AppSec mini-tools brief contains the sharpest commercial sentence in the corpus about this domain, and it deliberately refuses the obvious pitch:
+
+> *"The platform's pitch to an AppSec team is not 'we have better threat modelling than X'; it is 'we have a clean home for all your security artifacts, with tools that work directly on top of them.'"*
+
+The underlying insight, from the founder's voice memo as recorded in the brief: **every AppSec tool has a data-sharing problem; vaults solve it once for all of them.** An AppSec engineer juggles 8–15 tools, each with its own data home. The tool choice is usually fine. The data home is the friction.
+
+## 2. The eight frictions, and the vault answer
+
+The brief tabulates these directly; they map one-to-one onto a threat model's lifecycle:
+
+| The question | The vault answer |
+|---|---|
+| Where does the threat model live? | In a vault — versioned, owned, exportable |
+| How do I share it with auditors? | Read-only vault link, time-limited |
+| How do I bring in new data? | Vault content appends; tools read from the vault |
+| How do I run offline / air-gapped? | Vault collections are portable; tools run on local SG/Compute |
+| How do I correlate findings across tools? | All tools write the same vault structure; findings cross-reference |
+| How do I version-control security artifacts? | The vault commit history *is* the version control |
+| How do I prove what was reviewed when? | Vault commits are cryptographically signed; auditors verify |
+| How do I share without losing control? | Vault sharing with revocation |
+
+Note how many of these are the *mandatory-disclosure* paper's requirements arriving as product features: a signed, dated, revocable, auditor-verifiable artefact is precisely the "reliable signal" that paper says the market lacks. `/graph/` and `/disclosure/` should link to each other for that reason.
+
+## 3. The artefact schema
+
+The brief specifies what a threat-modelling vault holds: *system descriptions, threat lists (STRIDE-categorised), attack trees, DREAD scores, mitigations, Gherkin test cases, evidence.* Two of those deserve the site's attention:
+
+- **Gherkin test cases** — a mitigation expressed as an executable scenario is a threat model that CI can check. This is the strongest available answer to the "static document" failure mode in `01__`, and it is the site's best build spec.
+- **Evidence** — the artefact that turns a claim into a disclosure.
+
+## 4. The tool pattern
+
+The productisation template named in the brief: **find a strong open-source tool → host it on our infrastructure → give it our UI and vault integration → contribute back.** The first target is **StrideGPT** (`mrwadams/stride-gpt`) — actively developed, LLM-integrated, supporting STRIDE plus the **OWASP LLM Top 10** and MAESTRO-inspired pattern detection, with two intended modes: pure client-side for air-gapped use, and ephemeral-compute-backed for teams.
+
+**Publish the pattern, and honour the last step.** "Contribute back" is a commitment the site makes visible; `open-source.sgit.ai` holds the founder's position on exactly this, so `/graph/` links there rather than re-arguing it.
+
+The brief lists eight further mini-tools on the same substrate (SBOM analysis, dependency scanning, secrets detection, OWASP Top 10 assessment, compliance evidence, policy management, pentest artefacts, vulnerability disclosure management). Only the threat-modelling one belongs on this site; the rest are a pointer.
+
+## 5. What is real today vs. what is argued
+
+The `/graph/` page must draw this line explicitly, because the gap between the 2025 papers' vision and today's implementation is the site's main honesty risk.
+
+| Real, now | Argued, not built |
+|---|---|
+| The ThreatModCon vault: 11 linked models, 51 nodes, 179 threats, live and offline-capable | The continuous pipeline that keeps models current as code changes |
+| Vault primitives: versioning, signing, revocable read-only sharing, sub-vaults, append lanes | Automated CVE-to-component linking that *"instantly flags"* a new threat |
+| MGraph-DB as a memory-first graph store | The multi-ontology overlay (STRIDE × ATT&CK × OWASP) running as a live query over a production model |
+| Seven written threat models, one validated against code | Gherkin-executable mitigations checked in CI |
+| StrideGPT identified as the first integration target | The integration itself |
+
+An agent reading this site should be able to tell, for any capability, whether it can use it today or is being told a direction. The site's own thesis about falsifiable claims requires nothing less.
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/06__gaps-and-open-questions.md
+
+# 06 — Gaps and Open Questions
+
+**Version** v0.33.63 · 7 September 2026
+**House rule** Published unresolved. Questions go to `/admin/comms.html`.
+
+---
+
+## Gaps
+
+**G1 — The findings are six months stale.** Everything in `02__` dates from February–March 2026. Their current status is unknown to this pack. No finding may be published with an open/closed status until re-checked against current code (`04__` §4).
+
+**G2 — The eleven-layer models were read through the published vault page, not the vault data.** The counts (51 nodes, 179 threats, 3 critical findings) and the layer list come from `sgit.ai/demos/vaults/threatmodcon-2025/index.md`. Before publishing them as generated figures, read them from the vault's own JSON — otherwise they are quoted, not computed, which is the exact distinction this network insists on.
+
+**G3 — The ThreatModCon talk itself is not in this pack.** Slides, recording (if any), and the abstract are not on disk here. `/eleven-layers/` should carry them; the founder or the conference has them.
+
+**G4 — No pre-2025 threat modelling material was mined.** The founder has two decades of AppSec work — OWASP-era talks, the O2 Platform, earlier writing — almost certainly including threat modelling material that predates this corpus. Same gap as the influences pack's G3, and the same fix: his own archives.
+
+**G5 — Three threat models were catalogued but not read in depth** (token-consumption-flow, office-document-viewers-and-print, and the 16 March Simple Token model itself — read only through its validation). They are listed with dates and titles; their content needs a pass before their pages are written.
+
+**G6 — Nothing here measures whether the method worked.** The estate can show it threat-models and validates. It cannot yet show that doing so prevented an incident. That is the honest limit of the evidence, and the site should say so rather than implying causation.
+
+## Open questions for the founder
+
+**Q1** — *The closure pass* (`04__` §4): which February–March findings are fixed, which are still open? This gates the whole `/practice/` section. It is the one blocker.
+
+**Q2** — Spelling: confirm `threat-modeling.sgit.ai` with the `-modelling` variant redirecting. (Recommendation: yes — the discipline, ThreatModCon, and your own article titles all use the American spelling, even where your prose does not.)
+
+**Q3** — The ThreatModCon 2025 talk: do you have slides/recording/abstract to publish alongside the vault?
+
+**Q4** — The services paper (9 June): keep it on the site labelled as positioning, or hold it back until there is a service to point at? (Recommendation: keep, clearly labelled — it is part of the thinking.)
+
+**Q5** — StrideGPT: has any contact been made with mrwadams, or is the integration still purely a stated intention? The site should not imply a partnership that doesn't exist.
+
+**Q6** — Is there a `security.txt` / disclosure policy for the sgit.ai network yet? If not, this site's launch is the natural moment (`04__` §6).
+
+**Q7** — The mandatory-disclosure position is a policy proposal, like the subscriptions site's legislative model. Should the two be cross-linked as a single "our regulatory positions" thread across the network?
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+---
+
+# briefs/README.md
+
+# Brief pack — `threat-modeling.sgit.ai`
+
+**Version** v0.33.63 · 7 September 2026 · CC BY 4.0
+
+The commission pack for `threat-modeling.sgit.ai`. Its thesis: **a threat model is a claim about a system, and the site's job is to show claims being checked.** The estate can do this because on 16 March 2026 it wrote a threat model, and on 17 March it validated every finding against the actual code — publishing the ones that turned out to be proposals with nothing built behind them alongside the ones that were confirmed real.
+
+## Contents
+
+| File | Words | What it is |
+|---|---|---|
+| `00__BRIEF.md` | 932 | Commission, thesis, what exists, constraints, build order |
+| `01__the-research.md` | 1,048 | The seven white papers as one four-move argument |
+| `02__the-practice.md` | 1,307 | Seven real threat models; the validation pair; the method |
+| `03__site-architecture.md` | 582 | URLs, claim→check spine, sibling deconfliction table |
+| `04__disclosure-boundaries.md` | 685 | What may be published about a live product, by category |
+| `05__the-vault-argument.md` | 775 | Threat models as vault-native data; real-vs-argued table |
+| `06__gaps-and-open-questions.md` | 495 | 6 gaps, 7 questions (Q1 is a launch blocker) |
+| `threat-models__catalogue.json` | — | Measured counts, 7 papers, 7 models, vault figures, sgit.ai context |
+| `09__source-manifest.csv` | — | 4 tiers; all tier-0/1 paths verified on disk; counts via `wc -w` |
+
+## Measured, not estimated
+
+269 corpus files mention threat models · 58 AppSec role documents · 7 named threat-model documents · 27 files mention STRIDE · 19 mention attack trees. The ThreatModCon vault's figures (11 layers, 51 nodes, 179 threats, 3 critical findings) are **quoted from the published vault page, not computed** — gap G2 says recompute from the vault's own JSON before publishing them as generated.
+
+## The one blocker
+
+**Q1 — the closure pass.** Every finding in the practice section dates from February–March 2026. Nothing may be published as open or closed until re-checked against current code. Publishing a fixed vulnerability as open defames the product; publishing an open one as fixed is precisely what the mandatory-disclosure paper condemns.
+
+## Licence
+
+Pack text, tables, schemas and analysis: CC BY 4.0 (attribute Dinis Cruz; several source papers also credit ChatGPT Deep Research). STRIDE, MITRE ATT&CK, CAPEC, CWE/CVE, OWASP Top 10 and ASVS are referenced and linked, never reproduced.
+
+
+---
+
+# briefs/LICENSE.md
+
+# Licence
+
+## This pack
+
+Everything in this brief pack — the seven numbered documents, `threat-models__catalogue.json`, `09__source-manifest.csv`, this file and `README.md` — is released under the **Creative Commons Attribution 4.0 International licence (CC BY 4.0)**.
+
+    Copyright (c) 2026 Dinis Cruz
+    Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+
+Attribution: **Dinis Cruz**, with AI co-authorship (Claude, Anthropic). Several of the source white papers carry their own co-authorship credit to **ChatGPT Deep Research** — preserve it wherever those papers are summarised or linked.
+
+## The site this pack commissions
+
+The site's own text, threat-model tables, schemas, graph data and analysis are CC BY 4.0.
+
+## What CC BY does not cover
+
+**Third-party frameworks.** STRIDE (Microsoft-originated), MITRE ATT&CK and CAPEC, CWE/CVE, OWASP Top 10 and ASVS, DREAD, MAESTRO: reference by name, link to the source, publish the estate's *own* tables under those headings. Do not reproduce framework text. Category names used as terms of art are fine; a copied framework is not.
+
+**Third-party tools.** StrideGPT (`mrwadams/stride-gpt`) is another author's open-source project under its own licence. The site describes an intention to integrate and contribute back — it must not imply a partnership or endorsement that does not exist (comms Q5).
+
+## The rules that outrank the licence
+
+Copyright is not this site's main exposure; **disclosure is**. Two rules are build requirements, not editorial preferences:
+
+1. **Never publish file-and-line locations of unfixed findings on a live system**, and never publish any finding's open/closed status without a date and a re-check against current code (`04__` §2, §4).
+2. **Third-party findings are not the estate's to disclose.** Publish the question that was asked of a vendor, never the answer that was found.
+
+A redacted page states that it is redacted, how many findings were held, and in which classes. A silently trimmed threat model is a false memory.

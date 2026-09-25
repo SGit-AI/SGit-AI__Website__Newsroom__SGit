@@ -1,0 +1,71 @@
+# open-source.sgit.ai
+
+> Open source as a strategy rather than a charity: the position, the practice,
+> and a history checked against its sources. Part of the sgit.ai network.
+
+Site version: v0.2.2
+Canonical host: https://open-source.sgit.ai/
+Author: Dinis Cruz — https://www.linkedin.com/in/diniscruz — founder of The Cyber
+Boardroom, MyFeeds.ai and the sgit.ai network; former OWASP Board member.
+All content CC BY 4.0 unless noted. Code under the repository licence.
+
+## How to read this site as an agent
+
+Every page has a markdown twin at the same path with the extension swapped:
+https://open-source.sgit.ai/views/index.html is also https://open-source.sgit.ai/views/index.md — and the
+links inside the markdown point at markdown, so you never have to parse HTML and
+never leave the markdown surface once you arrive.
+
+If your fetcher cannot follow links at all, take https://open-source.sgit.ai/llms-full.txt:
+it is every page on this site concatenated into a single file.
+
+## The thesis, stated so you do not have to fetch anything
+
+"the power of open source is not for the community, it is not because it is nice
+for others, and it is not to give back."
+
+"open source is not free, somebody is always paying for it. What you get from open
+source is freedom, that is different... We play the game of empowering the user and
+being the reputable source of trust. We are selling trust."
+
+The site's best original claim: survivability is not a property of the licence file,
+it is a property of the copyright and trademark structure. Every catalogued
+relicensing between 2018 and 2024 followed the same legal pattern — a single
+corporate copyright holder, having aggregated contributor copyright via a CLA,
+exercised the right to change terms going forward. Distributed-copyright projects
+could not be moved the same way, because no single party had standing.
+
+## Pages
+
+- [open-source.sgit.ai — open source is a strategy, not a charity](https://open-source.sgit.ai/index.md): Open source as a strategy rather than a charity — by Dinis Cruz, founder of the sgit.ai network, MyFeeds.ai and The Cyber Boardroom, and former OWASP Board member. Guidance for founders on owning the code or opening it; the position with its counter-cases; the licences actually in force; and a history checked against its sources, including six corrections to the story most sites tell.
+- [Owning the code, or opening it — guidance for founders](https://open-source.sgit.ai/founders/index.md): Field notes from a strategy session with a solo founder: what copying your code would actually cost an incumbent, four instincts and their counter-arguments, the explorer–villager–town-planner frame, eight steps in order, what to settle before you publish, and what a week of building in the open looks like when it is counted.
+- [The position — open source is a strategy, not a charity](https://open-source.sgit.ai/views/index.md): Technology is not the moat; lock-in relocates to quality, certification and maintainability; lock-in degrades your own architecture; and open source frees you to cannibalise your own code. The full position, each argument with its counter-case attached.
+- [Sovereignty requires open source — and the schemas matter as much as the code](https://open-source.sgit.ai/views/sovereignty.md): A four-step argument: open source is the only structure under which independence is possible; the data schemas matter as much as the code; without ownership you are one SLA away from losing access; and company nationality is not sovereignty, because acquisitions move it.
+- [Open core, or packaging? — the position, and the test that settles it](https://open-source.sgit.ai/views/open-core.md): 18 June: there should be nothing proprietary. 17 July: customers only have a subset of the code that exists in the main repo. Five weeks apart, and the July document names the tension itself. Here is the one-question test that settles which one it actually is.
+- [Somebody has to be the villagers — maintenance as a market](https://open-source.sgit.ai/views/villagers.md): Maintaining the non-functional requirements — version control, reliability, resilience, security, backups, consistency, explainability, documentation — as a market, and the ability to read and repair code somebody else wrote as an appreciating scarce asset. Published with both of its own counter-arguments.
+- [Survivability is not a property of the licence file](https://open-source.sgit.ai/survivability/index.md): Every catalogued relicensing between 2018 and 2024 followed the same legal pattern: a single corporate copyright holder, having aggregated contributor copyright via a CLA, exercised the right to change terms going forward. Distributed-copyright projects could not be moved the same way.
+- [The Change-of-Control Stress Test](https://open-source.sgit.ai/survivability/stress-test.md): Four legs — copyright structure, trademark holder, schema licence, named fork capacity — every one answerable from public artefacts without the vendor's cooperation. Answer them here and keep the result. A vendor that cannot answer them has answered them.
+- [The self-audit — the stress test, run on our own estate](https://open-source.sgit.ai/survivability/self-audit.md): The Change-of-Control Stress Test run against the sgit estate itself, with the same four legs and the same evidence rules: the result on each leg, what changing it would actually take, and which changes are planned.
+- [Six corrections — what the standard history of open source gets wrong](https://open-source.sgit.ai/history/index.md): Unix circulated because it was illegal to sell it. BSD lost to litigation risk, not its licence. Netscape's release was a six-year near-failure. Christine Peterson coined open source. Eyeballs are not a security property. And two of the four relicensings reversed.
+- [The timeline, 1955 → 2026](https://open-source.sgit.ai/history/timeline.md): A sourced timeline of open source from the 1956 AT&T consent decree to the relicensing wave and its partial reversals — placed behind the corrections rather than in front of them, because the corrections are the part worth reading first.
+- [Six success stories — chosen for what each one proves](https://open-source.sgit.ai/history/stories.md): Linux, Let's Encrypt, SQLite, PostgreSQL, cURL and Blender — six, not fourteen, each chosen because it carries an argument made elsewhere on this site. Plus Kubernetes and VS Code, which complicate the picture honestly.
+- [The numbers — and the ones this site refuses to publish](https://open-source.sgit.ai/history/numbers.md): The $8.8 trillion figure and what it actually measures, the 70–90% claim that is really a presence figure, and the statistics the research could not source — listed as unverified rather than published as established.
+- [Two licences, three layers](https://open-source.sgit.ai/practice/index.md): Apache-2.0 on the code, CC BY 4.0 on around 1,100 working documents and on the published essays — decided 6 September 2026, after the published-articles repository was found to carry CC0. The licensing in force across the estate, what each licence is for, and the reasoning behind the CC BY choice.
+- [Why Apache-2.0 rather than MIT](https://open-source.sgit.ai/practice/apache-vs-mit.md): The patent grant, defensive termination, the NOTICE file, and the explicit contribution clause — the four things Apache-2.0 does that MIT does not, the honest costs of each, and when MIT is the better choice.
+- [Publish the source next to the render](https://open-source.sgit.ai/practice/publish-the-source.md): Every page available as markdown at the same path with the extension swapped, and the links inside the markdown pointing at markdown — the practice, how it was actually built with edge functions, and how this site implements it.
+- [Agents and open source — the economics changed, and not in maintainers' favour](https://open-source.sgit.ai/agents/index.md): Code-reading as the appreciating scarce asset, two dated positions on the junior pipeline both published, and four theses that follow from the author's writing and are next to be written — including licence compliance at machine speed.
+- [Funding — three proposals, compared for the first time, and a position](https://open-source.sgit.ai/funding/index.md): Market forces and supply-chain labelling, a maintainer platform, and sovereignty bounties that fund the exit rather than the supply. None was costed, none piloted, and none compared against the others — until here.
+- [cURL — thirty billion installations, seven volunteers, and a bounty that closed](https://open-source.sgit.ai/funding/curl.md): On 31 January 2026 curl closed its bug bounty because roughly 20% of 2025 submissions were AI-generated slop against roughly 5% genuine. An externality nobody was paying for destroyed a funding mechanism, with a date and a named casualty.
+- [OWASP and the summits](https://open-source.sgit.ai/owasp/index.md): Four summits from 2008 Algarve to 2017 Woburn's 173 sessions, the working-session format and no spectators only participants — written from the public record, with the first-person account planned and its questions published.
+- [What's next — the build order and the open questions](https://open-source.sgit.ai/roadmap/index.md): What is built, what is next in order, and the open questions — seven still open, one decided — including whether the customer subset is open core, which funding model to back, and what the estate will change after its own stress test.
+- [The documents — the source briefs, published verbatim](https://open-source.sgit.ai/documents/index.md): The commissioning brief pack this site was built from, published whole and unedited: nine briefs, an 18,000-word history research document, and a 55-row source manifest. The raw markdown is the source of truth.
+- [About the author — Dinis Cruz](https://open-source.sgit.ai/about/index.md): Dinis Cruz — founder of The Cyber Boardroom, MyFeeds.ai, RiskMandate.ai, VoiceDebrief.ai and the sgit.ai network (commercialised through sgraph.ai); former OWASP Board member and organiser of the OWASP Summits; creator of the O2 Platform. This site is the open-source strategy those companies run on, written from the experience of running it — with the author's interests declared.
+- [Admin & engineering — how this site is built](https://open-source.sgit.ai/admin/index.md): The build tooling, the CI pipeline (validate → auto-tag → deploy), the release process, and the markdown-twin generator that makes the site traversable by agents. Published, because a site arguing you should publish the source should publish its own.
+- [Comms — tasks and requests](https://open-source.sgit.ai/admin/comms.md): The open board: the items only the author can supply, and the tasks the site is carrying. Numbered, dated, and published rather than held privately.
+- [Release history · open-source.sgit.ai](https://open-source.sgit.ai/admin/versions.md): Site release history. Every push to dev is a release, validated then auto-tagged by CI against the version in admin/build/version.txt and the release commit's subject.
+
+## Source documents
+
+The briefs this site was built from are published verbatim under briefs/, and are
+the source of truth for anything the pages summarise. The commissioning brief pack
+is briefs/00__brief.md through briefs/09__source-manifest.csv.

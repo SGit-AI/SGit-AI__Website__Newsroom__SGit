@@ -1,0 +1,527 @@
+{
+ "company": "Northgate Facilities Ltd",
+ "invented": true,
+ "xray_date": "2026-09-18",
+ "level": "Standard X-ray (level 3), run on the standard catalogue and reviewed by a person",
+ "documents_read": 13,
+ "labels": {
+  "read": "Stated in a document you sent. We quote it and say where.",
+  "computed": "Arithmetic on your data. Re-run it with tools/recompute.py; every figure is checked.",
+  "inferred": "Our reading of two or more documents together. Check it before acting on it."
+ },
+ "answers": [
+  {
+   "question": "Why is profit down when revenue is up?",
+   "answer": "Because cleaning costs rose and cleaning prices did not. Revenue is up 3.9% a month, and net profit has halved. Almost all of the fall is cleaning labour: two National Living Wage rises have passed since the last price change in January 2025. A 4.8% rise on cleaning prices would restore last year's cleaning margin.",
+   "findings": [
+    "F01",
+    "F02",
+    "F03"
+   ]
+  },
+  {
+   "question": "How exposed are we to Calder Retail Group?",
+   "answer": "More than the plan allows, and at a sensitive moment. Calder is 31% of revenue against a target of no customer above 20%, and the six new stores would take it to 34%. Its contract appears to reach its notice date on 30 September, two weeks before the board meets, and its complaints nearly tripled after the Manchester supervisor left.",
+   "findings": [
+    "F04",
+    "F05",
+    "F07"
+   ]
+  },
+  {
+   "question": "What should the board be looking at that it is not?",
+   "answer": "Six things: the notice dates on 30 September; complaints, which appear in no minutes; the price review, deferred twice; one action carried forward at three meetings; four jobs resting on one person each; and staff using personal ChatGPT accounts with customer information and no rule to cover it.",
+   "findings": [
+    "F05",
+    "F07",
+    "F03",
+    "F11",
+    "F10",
+    "F14"
+   ]
+  }
+ ],
+ "findings": [
+  {
+   "id": "F01",
+   "area": "Money",
+   "label": "computed",
+   "title": "Revenue is up 3.9% a month. Net profit has halved.",
+   "detail": "Last year (April 2025 to March 2026) the business averaged £343,350 of revenue and £15,717 of net profit a month, a net margin of 4.6%. From April to August 2026 it averaged £356,600 and £7,780, a net margin of 2.2%. The step is in April 2026, and it has not recovered in any month since.",
+   "evidence": [
+    {
+     "file": "inbox/management-accounts.csv",
+     "where": "all rows, 2025-04 to 2026-08",
+     "text": "Net by month is in xray/evidence/net-by-month.csv: 4.2% to 5.5% every month to March 2026; 1.9% to 2.4% every month from April."
+    }
+   ],
+   "so_what": "At 2.2%, one bad month or one lost contract puts the business at break-even. The plan's target is 8%.",
+   "action": "Take the monthly net margin to every board meeting, by service line, as the plan already says to do.",
+   "owner": "Finance Manager",
+   "checks": {
+    "revenue_per_month_FY2025_26": 343350,
+    "net_per_month_FY2025_26": 15717,
+    "net_margin_FY2025_26": 4.6,
+    "revenue_per_month_Apr_Aug_2026": 356600,
+    "net_per_month_Apr_Aug_2026": 7780,
+    "net_margin_Apr_Aug_2026": 2.2,
+    "revenue_growth_per_month_pct": 3.9
+   }
+  },
+  {
+   "id": "F02",
+   "area": "Money",
+   "label": "computed",
+   "title": "The fall is almost all cleaning labour.",
+   "detail": "Cleaning's gross margin fell from 19.8% to 16.0%, because direct labour went from 74.4% to 78.2% of cleaning revenue. Reactive maintenance held at 34.0% and planned maintenance at 27.0%. Overheads rose by £2,500 a month. The lower cleaning margin cost about £41,200 in the five months to August, around £99,000 over a year.",
+   "evidence": [
+    {
+     "file": "inbox/management-accounts.csv",
+     "where": "lines 'Cleaning contracts', 'Reactive maintenance', 'Planned maintenance', 'Overheads'",
+     "text": "Margin by line and period is in xray/evidence/margin-by-line.csv."
+    }
+   ],
+   "so_what": "The problem is narrow and known: a price that has not kept up with a cost. It is not the maintenance side, and it is not overheads.",
+   "action": "Price review on cleaning, starting with the contracts that have no indexation clause (F03).",
+   "owner": "Managing Director",
+   "checks": {
+    "gross_margin_cleaning_FY2025_26": 19.8,
+    "gross_margin_cleaning_Apr_Aug_2026": 16.0,
+    "cleaning_labour_ratio_FY2025_26": 74.4,
+    "cleaning_labour_ratio_Apr_Aug_2026": 78.2,
+    "gross_margin_reactive_Apr_Aug_2026": 34.0,
+    "gross_margin_planned_Apr_Aug_2026": 27.0,
+    "overheads_per_month_FY2025_26": 68000,
+    "overheads_per_month_Apr_Aug_2026": 70500,
+    "cleaning_margin_lost_apr_aug": 41200.0
+   }
+  },
+  {
+   "id": "F03",
+   "area": "Money",
+   "label": "computed",
+   "title": "Prices have not moved since January 2025. Wages have moved twice.",
+   "detail": "The price list is dated 1 January 2025. Since then the National Living Wage rose 6.7% in April 2025 and 4.1% in April 2026. The board noted the second rise in January and deferred the price review in April; it is not on the July agenda. Three quarters of revenue sits in contracts with no indexation clause, so those prices only move if somebody asks. A 4.8% rise on cleaning would restore last year's cleaning margin.",
+   "evidence": [
+    {
+     "file": "inbox/price-list.md",
+     "where": "line 3",
+     "text": "Effective 1 January 2025."
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "22 January, item 2",
+     "text": "Price review to be considered after the increase is confirmed."
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "23 April, item 2",
+     "text": "Carried forward; Helen wants to avoid unsettling Calder before its six new stores are confirmed."
+    },
+    {
+     "file": "inbox/customers.csv",
+     "where": "column 'indexation'",
+     "text": "Only Pennine Housing Trust, Wharfe Valley Schools Trust and Kirkgate Medical Partnership have indexation: 25.0% of revenue."
+    },
+    {
+     "file": "public source",
+     "where": "https://www.gov.uk/national-minimum-wage-rates",
+     "text": "National Living Wage: £11.44 to £12.21 in April 2025, £12.21 to £12.71 in April 2026."
+    }
+   ],
+   "so_what": "Every month without a review costs about £8,000 of margin on cleaning.",
+   "action": "Write the price review in October: a proposed rise per contract, the notice each contract needs, and which conversations to have first.",
+   "owner": "Managing Director",
+   "checks": {
+    "cleaning_price_rise_to_restore_pct": 4.8,
+    "share_revenue_without_indexation": 75.0
+   }
+  },
+  {
+   "id": "F04",
+   "area": "Customers",
+   "label": "computed",
+   "title": "Calder is 31% of revenue. The top three are 52%.",
+   "detail": "Calder Retail Group was £1,277,000 of last year's £4,120,200. With Pennine Housing Trust and Wharfe Valley Schools Trust, the top three customers were 51.9% of revenue. The plan's target is no customer above 20%. The six new Calder stores in the pipeline, if won, would take Calder to 34%.",
+   "evidence": [
+    {
+     "file": "inbox/customers.csv",
+     "where": "column 'revenue_fy2025_26'",
+     "text": "Calder Retail Group 1,277,000; 22 customers in total."
+    },
+    {
+     "file": "inbox/strategy-2026-2028.md",
+     "where": "line 12",
+     "text": "No customer above 20% of revenue."
+    },
+    {
+     "file": "inbox/sales-pipeline.csv",
+     "where": "'Calder Retail Group: 6 new stores'",
+     "text": "annual value 190,000, stage Verbal"
+    }
+   ],
+   "so_what": "Winning the new stores moves the company further from its own target, and at last January's prices.",
+   "action": "Decide the price for the new stores before accepting them, and report concentration quarterly as the plan says.",
+   "owner": "Managing Director",
+   "checks": {
+    "share_top1": 31.0,
+    "share_top3": 51.9,
+    "share_calder_with_new_stores": 34.0,
+    "customers": 22,
+    "revenue_fy2025_26": 4120200
+   }
+  },
+  {
+   "id": "F05",
+   "area": "Customers",
+   "label": "inferred",
+   "title": "£1.5m of contracts reach their notice date on 30 September, before the board meets.",
+   "detail": "Calder's contract ends on 31 March 2027 with six months' notice, and Irwell Business Park's ends on 31 December 2026 with three. Both give 30 September 2026 as the date by which notice must be given. Together they were £1,503,000, 36.5% of revenue. The next board meeting is on 15 October. We have not seen the contracts, so we do not know who may give notice, or whether they renew automatically. Separately, Holme Logistics' contract ended on 31 May 2026 and its renewal is still in negotiation.",
+   "evidence": [
+    {
+     "file": "inbox/customers.csv",
+     "where": "rows 'Calder Retail Group' and 'Irwell Business Park Ltd'",
+     "text": "2027-03-31, 6 months; 2026-12-31, 3 months"
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "16 July, items 2 and 6",
+     "text": "Relationship strong; renewal expected in the new year. Next meeting: 15 October 2026."
+    },
+    {
+     "file": "inbox/sales-pipeline.csv",
+     "where": "'Holme Logistics: PPM renewal'",
+     "text": "stage Negotiation"
+    },
+    {
+     "file": "xray/evidence/notice-dates.csv",
+     "where": "all rows",
+     "text": "Notice-by dates, computed from end date and notice period."
+    }
+   ],
+   "so_what": "If either customer can give notice by 30 September, the board will learn about it after the fact. The July minutes expect Calder's renewal 'in the new year', which is after its notice date.",
+   "action": "This week: read both contracts, confirm what 30 September means, and call both customers.",
+   "owner": "Managing Director",
+   "checks": {
+    "notice_before_board_customers": [
+     "Calder Retail Group",
+     "Irwell Business Park Ltd"
+    ],
+    "notice_before_board_revenue": 1503000,
+    "notice_before_board_share": 36.5,
+    "contracts_already_ended": [
+     "Holme Logistics"
+    ]
+   }
+  },
+  {
+   "id": "F06",
+   "area": "Operations",
+   "label": "computed",
+   "title": "Complaints nearly doubled after the Manchester supervisor left.",
+   "detail": "From September 2025 to April 2026 the business logged 3.0 complaints a month, 8 of 24 of them in Manchester, closed in 2.7 days on average. From May to August 2026 it logged 5.5 a month, 18 of 22 in Manchester, closed in 7.0 days. The Manchester area supervisor left on 12 May; recruitment was paused in June to save cost, and the Operations Director has scheduled both cities from Leeds since.",
+   "evidence": [
+    {
+     "file": "inbox/complaints-log.csv",
+     "where": "all 46 rows",
+     "text": "By month in xray/evidence/complaints-by-month.csv."
+    },
+    {
+     "file": "inbox/org-chart.csv",
+     "where": "'Manchester Area Supervisor'",
+     "text": "Vacant since 12 May 2026; Recruitment paused in June to save cost"
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "16 July, item 3",
+     "text": "Paused in June to save cost. Tom continues to cover."
+    }
+   ],
+   "so_what": "The saving on one salary is set against the two contracts with notice dates on 30 September, both mostly serviced from Manchester.",
+   "action": "Restart the Manchester recruitment, or name an interim supervisor, before speaking to Calder and Irwell.",
+   "owner": "Operations Director",
+   "checks": {
+    "complaints_total": 46,
+    "complaints_per_month_before": 3.0,
+    "complaints_per_month_after": 5.5,
+    "complaints_manchester_before": "8 of 24",
+    "complaints_manchester_after": "18 of 22",
+    "days_to_close_before": 2.7,
+    "days_to_close_after": 7.0
+   }
+  },
+  {
+   "id": "F07",
+   "area": "Customers",
+   "label": "computed",
+   "title": "The two customers with notice dates are the two complaining most.",
+   "detail": "Calder accounts for 19 of the 46 complaints, 11 of them since May. Irwell Business Park accounts for 14, 7 of them since July. Complaints do not appear in any of the three sets of minutes, and in July the board recorded the Calder relationship as 'strong'.",
+   "evidence": [
+    {
+     "file": "inbox/complaints-log.csv",
+     "where": "column 'customer'",
+     "text": "Calder Retail Group 19; Irwell Business Park Ltd 14"
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "16 July, item 2",
+     "text": "Relationship strong; renewal expected in the new year."
+    }
+   ],
+   "so_what": "What the board hears about customers and what the complaints log records have drifted apart.",
+   "action": "Add complaints by customer to the board pack, and open the Calder and Irwell conversations with what is being done about Manchester.",
+   "owner": "Operations Director",
+   "checks": {
+    "complaints_calder": 19,
+    "complaints_calder_since_may": 11,
+    "complaints_irwell": 14,
+    "complaints_irwell_since_july": 7
+   }
+  },
+  {
+   "id": "F08",
+   "area": "Plan and reality",
+   "label": "computed",
+   "title": "The plan says 40% planned maintenance. The business is moving the other way.",
+   "detail": "Planned maintenance was 17.8% of revenue last year and 17.0% since April. Of the sales pipeline's value, 72.8% is cleaning and 20.9% is planned maintenance. The plan's first step, a planned maintenance sales lead, is not on the org chart; the estimator post has been vacant since January; and one coordinator builds every planned maintenance schedule.",
+   "evidence": [
+    {
+     "file": "inbox/strategy-2026-2028.md",
+     "where": "lines 11 and 18",
+     "text": "Planned maintenance at 40% of revenue... Hire a planned maintenance sales lead in 2026."
+    },
+    {
+     "file": "inbox/sales-pipeline.csv",
+     "where": "column 'service_line'",
+     "text": "Cleaning is 5 of the 10 opportunities and 72.8% of their value"
+    },
+    {
+     "file": "inbox/org-chart.csv",
+     "where": "'Estimator', 'Planned maintenance coordinator'",
+     "text": "Vacant since January 2026; Only person who builds planned maintenance schedules"
+    }
+   ],
+   "so_what": "Either the plan needs its first hire, or the target needs to change. At the current mix, 40% by March 2028 is out of reach.",
+   "action": "Put the planned maintenance hire, or a revised target, on the October agenda.",
+   "owner": "Managing Director",
+   "checks": {
+    "share_planned_FY2025_26": 17.8,
+    "share_planned_Apr_Aug_2026": 17.0,
+    "pipeline_share_cleaning": 72.8,
+    "pipeline_share_planned": 20.9
+   }
+  },
+  {
+   "id": "F09",
+   "area": "Plan and reality",
+   "label": "inferred",
+   "title": "New cleaning work is likely being priced below the plan's own floor.",
+   "detail": "The plan says to take new cleaning contracts only at a margin of 22% or more. Cleaning is running at 16.0% on the January 2025 prices. The pipeline does not record margins, but if the £952,000 of cleaning opportunities is priced from the same list, it is below the floor.",
+   "evidence": [
+    {
+     "file": "inbox/strategy-2026-2028.md",
+     "where": "line 20",
+     "text": "Only take new cleaning contracts at a margin of 22% or more."
+    },
+    {
+     "file": "inbox/price-list.md",
+     "where": "line 3",
+     "text": "Effective 1 January 2025."
+    }
+   ],
+   "so_what": "Growth in cleaning at these prices adds revenue and labour faster than it adds profit.",
+   "action": "Add an expected margin column to the pipeline, and apply the 22% rule to the six Calder stores.",
+   "owner": "Business Development Manager"
+  },
+  {
+   "id": "F10",
+   "area": "People",
+   "label": "read",
+   "title": "Four jobs rest on one person each.",
+   "detail": "The Finance Manager is the only finance employee and the sole administrator on the bank portal. The Operations Director has scheduled every cleaning rota for both cities since May. One coordinator builds every planned maintenance schedule. The Maintenance Manager has covered estimating since January.",
+   "evidence": [
+    {
+     "file": "inbox/org-chart.csv",
+     "where": "'Finance Manager', 'Operations Director', 'Planned maintenance coordinator', 'Estimator'",
+     "text": "Only finance employee; sole administrator on the bank portal. Schedules all cleaning rotas for Leeds and Manchester since May 2026. Only person who builds planned maintenance schedules. Vacant since January 2026."
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "23 April, item 5",
+     "text": "Ian covering quotes."
+    }
+   ],
+   "so_what": "A two-week absence in any of these roles stops payments, rotas, planned maintenance or quotes. Separately, one person able to approve payments alone is the control most insurers and auditors ask about first.",
+   "action": "Set up the second bank administrator now (F11), and write down who covers each of the other three.",
+   "owner": "Managing Director"
+  },
+  {
+   "id": "F11",
+   "area": "Governance",
+   "label": "read",
+   "title": "The same action has been carried forward at three meetings.",
+   "detail": "In January the Chair asked for a second administrator on the bank portal. It was carried forward in April and again in July. The price review was deferred in January and April and is not on the July agenda. In July, margin commentary was deferred because the management accounts were late.",
+   "evidence": [
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "22 January item 4; 23 April item 4; 16 July item 4",
+     "text": "Action: Priya to arrange. Carried forward: Priya. Carried forward: Priya."
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "16 July, item 1",
+     "text": "Margin commentary deferred to the next meeting, as the management accounts were late."
+    }
+   ],
+   "so_what": "The board is recording decisions it is not closing. A half-hour task has been open for eight months.",
+   "action": "Start each board meeting with the open actions, their age and their owner. Close the bank portal action before 15 October.",
+   "owner": "Chair"
+  },
+  {
+   "id": "F12",
+   "area": "Contracts and tools",
+   "label": "computed",
+   "title": "Two auto-renewals with nobody named as owner need notice by 1 October.",
+   "detail": "ServiceBook, the legacy job system, renews on 31 October with 30 days' notice, and TrackWise renews on 30 November with 60 days' notice: both need notice by 1 October, and neither has an owner. ServiceBook duplicates FieldDesk but still runs four Manchester contracts; TrackWise duplicates the tracking included in the Fleetline van leases. The Fleetline lease notice date, 2 September, has already passed. ChemPro's is 1 November.",
+   "evidence": [
+    {
+     "file": "inbox/supplier-contracts.csv",
+     "where": "rows 'ServiceBook', 'TrackWise Telematics', 'Fleetline Leasing', 'ChemPro Supplies'",
+     "text": "renewal dates, notice days and owners"
+    },
+    {
+     "file": "inbox/tools-inventory.csv",
+     "where": "rows 'ServiceBook', 'TrackWise', 'Fleetline Connect'",
+     "text": "Still paid; Manchester still uses it for 4 contracts. Fleetline vans also include tracking. Included in lease; not used."
+    },
+    {
+     "file": "xray/evidence/supplier-notice-dates.csv",
+     "where": "all rows",
+     "text": "Notice-by dates, computed from renewal date and notice days."
+    }
+   ],
+   "so_what": "Missing 1 October commits the business to another year of both.",
+   "action": "Give notice on TrackWise and switch to the lease's tracking. Give notice on ServiceBook and move the four Manchester contracts to FieldDesk before 31 October, or negotiate a monthly term.",
+   "owner": "Operations Director",
+   "checks": {
+    "auto_renewals_notice_by_1_oct_unowned": [
+     "ServiceBook",
+     "TrackWise Telematics"
+    ],
+    "auto_renewal_notice_passed": [
+     "Fleetline Leasing"
+    ]
+   }
+  },
+  {
+   "id": "F13",
+   "area": "Contracts and tools",
+   "label": "computed",
+   "title": "About £18,300 a year goes on tools that duplicate others or are unused.",
+   "detail": "ServiceBook duplicates FieldDesk, TrackWise the lease tracking, Dropbox the OneDrive in Microsoft 365, Zoom the Teams in Microsoft 365. The old Google Workspace domain is still paid three years after the acquisition, the survey tool has sent nothing since 2024, and Mailchimp's last campaign was March 2025. Five tools have nobody named as owner.",
+   "evidence": [
+    {
+     "file": "inbox/tools-inventory.csv",
+     "where": "columns 'owner', 'monthly_cost', 'status'",
+     "text": "22 tools, 5 with 'Nobody named'"
+    }
+   ],
+   "so_what": "Small next to the pricing question, but it is money, and nobody is watching it.",
+   "action": "Give every tool an owner, and cancel or keep each one at its next renewal.",
+   "owner": "Office Manager",
+   "checks": {
+    "tools_duplicate_or_unused_per_year": 18300,
+    "tools_without_owner": 5
+   }
+  },
+  {
+   "id": "F14",
+   "area": "Governance",
+   "label": "inferred",
+   "title": "Staff use personal ChatGPT accounts for customer work, and no rule covers it.",
+   "detail": "Nine staff use ChatGPT on their own accounts to write quotes, emails and method statements. The company does not pay for or manage those accounts. The handbook says customer information must only be stored in company systems, and that the company holds personal data about customers' staff and residents, but it was last reviewed in March 2021 and says nothing about AI tools. In July the board noted the use as 'helpful' and took no action.",
+   "evidence": [
+    {
+     "file": "inbox/tools-inventory.csv",
+     "where": "row 'ChatGPT (personal accounts)'",
+     "text": "9 users; Staff own accounts; not paid for or managed by the company"
+    },
+    {
+     "file": "inbox/staff-handbook-excerpt.md",
+     "where": "line 3; 7.3; 8.1",
+     "text": "Handbook last reviewed March 2021. Customer information must only be stored in company systems. We hold personal data about staff and about customers' staff and residents."
+    },
+    {
+     "file": "inbox/board-minutes-2026.md",
+     "where": "16 July, item 5",
+     "text": "Noted as 'helpful'. No action."
+    }
+   ],
+   "so_what": "Quotes and method statements carry customer names, sites and access arrangements. In personal accounts the company cannot see them, keep them or remove them when somebody leaves, and on consumer plans the account holder, not the company, chooses whether chats may be used for training.",
+   "action": "Keep the benefit and close the gap: a one-page rule for AI use, company accounts on business terms, and a list of what never goes into a prompt. RiskMandate.ai publishes a free twenty-minute exercise for writing down what an AI tool can reach and what you meant to allow.",
+   "owner": "Office Manager, with the HR Manager"
+  }
+ ],
+ "board_agenda": [
+  "Before 30 September, an extra half-hour: the Calder and Irwell notice dates (F05), and the Manchester supervisor (F06).",
+  "15 October, item 1: open actions, their age and owner. Close the bank portal action (F11).",
+  "15 October, item 2: the cleaning price review, with a proposed rise per contract (F02, F03).",
+  "15 October, item 3: complaints by customer, as a standing item (F07).",
+  "15 October, item 4: the planned maintenance hire, or a revised 2028 target (F08).",
+  "15 October, item 5: a one-page AI use rule (F14)."
+ ],
+ "questions_for_you": [
+  "Do the Calder and Irwell contracts need notice to end, or to renew? Who may give it, and how?",
+  "What margin does each Calder site make? The accounts are by service line, not by customer.",
+  "Were the six new Calder stores quoted on the January 2025 prices?",
+  "Why were the July management accounts late, and is that likely to recur?",
+  "Does the Fleetline lease renew at the same rate, and was the September notice date a decision or a miss?",
+  "Which customers' information has gone into personal ChatGPT accounts, and can it be removed?",
+  "What is the cash position? No bank statements were sent, so this X-ray says nothing about cash."
+ ],
+ "not_covered": [
+  "Cash and banking: no statements were sent.",
+  "Payroll and individual pay: removed before upload, as asked.",
+  "Full contract terms: only the summary columns in customers.csv were sent.",
+  "Profit by customer or by site: the accounts are by service line.",
+  "Health and safety records, insurance and legal matters."
+ ],
+ "next_90_days": [
+  {
+   "when": "By 30 September",
+   "what": "Read the Calder and Irwell contracts; call both customers; decide on the Manchester supervisor.",
+   "owner": "Managing Director and Operations Director",
+   "done": "Both contracts' notice terms written down, both calls held, a named Manchester supervisor."
+  },
+  {
+   "when": "By 1 October",
+   "what": "Give notice on TrackWise and ServiceBook, or negotiate monthly terms.",
+   "owner": "Operations Director",
+   "done": "Two notices sent, with the four Manchester contracts on a migration plan."
+  },
+  {
+   "when": "By 15 October",
+   "what": "Second bank administrator set up. Price review written. Board pack with complaints by customer.",
+   "owner": "Finance Manager and Managing Director",
+   "done": "Portal shows two administrators; price review paper circulated with the pack."
+  },
+  {
+   "when": "By 1 November",
+   "what": "ChemPro renewal decided. AI use rule issued, with company accounts for those who use it.",
+   "owner": "Operations Director and Office Manager",
+   "done": "Decision recorded; rule in the handbook; personal-account use stopped."
+  },
+  {
+   "when": "By 30 November",
+   "what": "Price rises notified on non-indexed contracts. Planned maintenance hire advertised, or 2028 target revised.",
+   "owner": "Managing Director",
+   "done": "Letters sent; advert live or target changed in the plan."
+  },
+  {
+   "when": "Mid December",
+   "what": "Re-X-ray with September to November data: what moved.",
+   "owner": "The X-ray operator",
+   "done": "A second X-ray in the same vault, with the differences listed."
+  }
+ ]
+}

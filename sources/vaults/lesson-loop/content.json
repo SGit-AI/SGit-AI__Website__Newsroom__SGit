@@ -1,0 +1,382 @@
+{
+ "player": {
+  "player": {
+   "name": "Alex Moreno",
+   "level": "Intermediate, plays three times a week",
+   "home_club": "Riverside Padel Club, London (invented)",
+   "credits_bought": 100,
+   "credit_price": "£10 for 100 credits"
+  },
+  "coaches": {
+   "marta": {
+    "name": "Marta Ruiz",
+    "where": "Riverside Padel Club, London"
+   },
+   "diego": {
+    "name": "Diego Álvarez",
+    "where": "a club in Lisbon, while Alex travelled"
+   },
+   "ines": {
+    "name": "Inés Costa",
+    "where": "a second club in London"
+   }
+  },
+  "themes": {
+   "bandeja": "Bandeja depth",
+   "defence": "Defensive position",
+   "split": "Split step",
+   "comms": "Calling the ball",
+   "lob": "Lob depth",
+   "transition": "Transition after a lob",
+   "volley": "Volleys at the net"
+  },
+  "entries": [
+   {
+    "id": "L1",
+    "date": "2026-09-02",
+    "type": "lesson",
+    "by": "marta",
+    "title": "Lesson 1 with Marta",
+    "credits": 2,
+    "memo": "Okay, notes for Alex. Good session. The volleys are the strength, fast hands, good reflexes at the net. The bandeja is the problem: when the ball gets behind his shoulder he still hits it and it goes long, we counted six long in the last drill. He changes the grip late. On defence he stands right against the back glass, so every ball off the wall jams him. Next games: bandeja cross-court and deep, not for winners, one step off the back wall, and a split step every time the other side hits. Next time we do wall exits and bandeja under pressure.",
+    "note": {
+     "worked_on": [
+      "Bandeja from the back of the service box",
+      "Volleys at the net"
+     ],
+     "observed": [
+      "Bandeja goes long when the ball is behind the shoulder: six long in the last drill",
+      "Grip change is late",
+      "Volleys are the strength: fast hands at the net",
+      "Stands against the back glass on defence, so balls off the wall jam him"
+     ],
+     "focus": [
+      "Bandeja cross-court and deep. It is a holding shot, not a winner.",
+      "On defence, start one step further from the back glass.",
+      "Split step every time the opponents hit."
+     ],
+     "drills": [
+      "20 bandejas cross-court to a target near the side glass",
+      "Back-wall exits with a feed, 3 sets of 10"
+     ],
+     "next": "Back-wall exits, and the bandeja under pressure."
+    },
+    "themes": {
+     "bandeja": "working on",
+     "defence": "new",
+     "split": "new",
+     "volley": "strength"
+    }
+   },
+   {
+    "id": "M1",
+    "date": "2026-09-05",
+    "type": "match",
+    "by": "player",
+    "title": "Match: lost 4-6, 3-6",
+    "credits": 1,
+    "text": "Doubles at the club. Lost 4-6, 3-6. The bandeja went long at least six times again, mostly in the second set when I was tired. Forgot the split step completely in the second set. My partner said I never called the lobs, so we both went for two and both left one.",
+    "themes": {
+     "bandeja": "still long in games",
+     "split": "forgotten when tired",
+     "comms": "new: partner feedback"
+    }
+   },
+   {
+    "id": "V1",
+    "date": "2026-09-06",
+    "type": "video",
+    "by": "player",
+    "title": "Clip: two points from Saturday",
+    "credits": 10,
+    "text": "A 40-second clip of two points from the match, uploaded for Marta.",
+    "stills": [
+     "Point 1, 0:07: bandeja contact well behind the head; shoulders already facing the net",
+     "Point 2, 0:31: stands against the back glass; the ball off the wall jams the backhand"
+    ],
+    "themes": {
+     "bandeja": "contact point behind the head",
+     "defence": "seen on video: against the glass"
+    }
+   },
+   {
+    "id": "L2",
+    "date": "2026-09-09",
+    "type": "lesson",
+    "by": "marta",
+    "title": "Lesson 2 with Marta",
+    "credits": 2,
+    "memo": "Watched Alex's clip before the lesson, really useful. The bandeja problem is footwork, not the arm: he turns sideways too late so the contact is behind him. We fixed it by turning as soon as he sees the lob. Wall exits much better, he is off the glass now. His partner's point about calling is right, I want that in the notes. Focus: turn sideways early, call mine or yours on every lob, and keep the split step.",
+    "note": {
+     "worked_on": [
+      "Footwork for the bandeja",
+      "Back-wall exits"
+     ],
+     "observed": [
+      "The clip showed the cause: turning sideways too late puts the contact behind the head",
+      "With an early turn, most bandejas landed deep",
+      "Wall exits much better: he now starts off the glass"
+     ],
+     "focus": [
+      "Turn sideways as soon as you see the lob.",
+      "Call \"mine\" or \"yours\" on every lob.",
+      "Keep the split step, especially in the second set."
+     ],
+     "drills": [
+      "Shadow the early turn: 3 sets of 15 without a ball",
+      "Lob-and-call with a partner, 10 minutes"
+     ],
+     "next": "Lob defence when pushed back."
+    },
+    "themes": {
+     "bandeja": "improving with an early turn",
+     "defence": "much better",
+     "comms": "working on",
+     "split": "working on"
+    }
+   },
+   {
+    "id": "M2",
+    "date": "2026-09-13",
+    "type": "match",
+    "by": "player",
+    "title": "Match: won 6-4, 7-5",
+    "credits": 1,
+    "text": "Won 6-4, 7-5. The early turn works, the bandeja stayed deep most of the time. Called most lobs. When they pushed us back my lobs were short and they smashed them. Played much better at the net.",
+    "themes": {
+     "bandeja": "deep in a match",
+     "comms": "mostly calling",
+     "lob": "new: short under pressure"
+    }
+   },
+   {
+    "id": "B1",
+    "date": "2026-09-16",
+    "type": "briefing",
+    "by": "agent",
+    "for": "diego",
+    "title": "Briefing for Diego, before Lisbon",
+    "credits": 2,
+    "text": "Two lessons with Marta in London, two matches since. Strength: volleys at the net. Fixed in lessons and now holding in matches: bandeja depth, after an early sideways turn. Working on: calling the ball, split step when tired. New from the last match: lobs are short when pushed back, and opponents smash them. Alex reports playing better in lessons than in games. Suggested focus: lob depth from defence."
+   },
+   {
+    "id": "L3",
+    "date": "2026-09-17",
+    "type": "lesson",
+    "by": "diego",
+    "title": "Lesson 3 with Diego, in Lisbon",
+    "credits": 2,
+    "memo": "Read the briefing, that saved us the first fifteen minutes. The lob is short because he lobs with his arm, not his legs, so under pressure there is nothing behind it. We worked on low, deep lobs from the back wall using the legs. Another thing Marta may not have seen: after a good lob he waits at the back instead of going to the net with his partner. He also uses the víbora on balls that are too low, I would keep it for high balls on the forehand side.",
+    "note": {
+     "worked_on": [
+      "Lobs from the back wall, with the legs",
+      "Going to the net together after a lob"
+     ],
+     "observed": [
+      "The lob is short because it comes from the arm; with the legs it reaches the back third",
+      "After a good lob he stays back instead of taking the net with his partner",
+      "Uses the víbora on balls that are too low"
+     ],
+     "focus": [
+      "Lob with your legs, finish tall.",
+      "After a good lob, go to the net with your partner.",
+      "Keep the víbora for high balls on the forehand side."
+     ],
+     "drills": [
+      "Lob from a feed off the back wall, 4 sets of 8",
+      "Lob then move to the net together, 10 minutes"
+     ],
+     "next": "The transition to the net after a lob."
+    },
+    "themes": {
+     "lob": "working on: legs, not arm",
+     "transition": "new: stays back after a good lob"
+    }
+   },
+   {
+    "id": "M3",
+    "date": "2026-09-20",
+    "type": "match",
+    "by": "player",
+    "title": "Social game in Lisbon",
+    "credits": 1,
+    "text": "Social game with locals. Lobs deeper, the legs thing works. Still stayed back after lobbing a few times, my partner went up alone twice.",
+    "themes": {
+     "lob": "deeper",
+     "transition": "still staying back"
+    }
+   },
+   {
+    "id": "L4",
+    "date": "2026-09-23",
+    "type": "lesson",
+    "by": "ines",
+    "title": "Lesson 4 with Inés, back in London",
+    "credits": 2,
+    "memo": "First lesson with Alex. The briefing was great, I knew exactly where he was with three coaches' notes in two minutes. Confirmed the lob is better. We worked on the transition, moving up together after the lob. One more thing: his racket is heavy for how he swings, he could try a lighter, rounder one. I have no stake in which one, I only suggested he demo a couple.",
+    "note": {
+     "worked_on": [
+      "Moving to the net together after a lob"
+     ],
+     "observed": [
+      "Lob depth confirmed, from the legs",
+      "Transition: moves up late, but together when prompted",
+      "The racket looks heavy for his swing"
+     ],
+     "focus": [
+      "After the lob, count one and move up with your partner.",
+      "Try demo rackets: lighter, rounder shape."
+     ],
+     "drills": [
+      "Lob, move, volley: 3 sets of 10 points"
+     ],
+     "next": "Back with Marta: full points, pressure on the bandeja and the lob together."
+    },
+    "themes": {
+     "lob": "better, confirmed",
+     "transition": "working on"
+    },
+    "disclosure": "The coach states she has no commercial interest in the racket suggestion."
+   },
+   {
+    "id": "B2",
+    "date": "2026-09-24",
+    "type": "briefing",
+    "by": "agent",
+    "for": "marta",
+    "title": "Briefing for Marta, next lesson",
+    "credits": 2,
+    "text": "Since your two lessons: one lesson with Diego in Lisbon and one with Inés in London, two more games. Bandeja: holding deep in matches after your early-turn fix. New since you: lobs were short because they came from the arm; Diego fixed it with the legs and Inés confirmed it. Open: going to the net together after a lob, worked on by Diego and Inés, still inconsistent in games. Diego suggests keeping the víbora for high forehand balls. Inés suggested a lighter racket and declared no interest. Suggested plan: full points that combine the bandeja and the lob under pressure."
+   }
+  ]
+ },
+ "plan": {
+  "title": "Lesson Loop: capture what the coach knows at the moment they know it",
+  "one_line": "A workflow and a business for padel coaches, and for any teacher with students: at the end of every lesson the coach records a voice memo, an agent turns it into a lesson note in the player's own vault, the player adds what happens in their games, and the next coach, or the same one, starts the next lesson from a two-minute briefing instead of from memory.",
+  "problem": [
+   {
+    "name": "The best picture of the player exists for five minutes",
+    "text": "At the end of a lesson the coach has the most complete picture of the player they will ever have: what went well, what did not, what to work on next. Then the next student walks on court, and it starts to fade."
+   },
+   {
+    "name": "The player gets too much, and keeps little",
+    "text": "A lesson is an hour of instructions. \"Focus on these three things in your next game\" is hard to remember, and harder to follow up."
+   },
+   {
+    "name": "Games never reach the coach",
+    "text": "Many players play better in lessons than in games, and the games are the point. Today nothing that happens in a match travels back to the coach."
+   },
+   {
+    "name": "Every coach starts from zero",
+    "text": "A player who takes lessons from several coaches, or travels, gets several good perspectives and keeps none of them together."
+   },
+   {
+    "name": "The coach's income is one hour at a time",
+    "text": "Most coaches work inside a club that owns the booking and the pipeline and takes a large, fair share. The relationship with the player ends when the hour does."
+   }
+  ],
+  "phases": [
+   {
+    "n": "1",
+    "name": "Capture",
+    "text": "At the end of the lesson, the coach records a voice memo in Claude, ChatGPT or a transcription app. An agent turns it into a lesson note in the player's data vault. The player reads it. That is all, and it already changes both sides. Nothing else starts until this works."
+   },
+   {
+    "n": "2",
+    "name": "The player writes back",
+    "text": "The player adds match notes after games, and short clips. The coach can add clips from the lesson. The next lesson starts from a briefing that folds all of it together."
+   },
+   {
+    "n": "3",
+    "name": "Many coaches, one record",
+    "text": "The record belongs to the player, so it travels. A player who takes lessons from several coaches, or abroad, gives each a read key, and every coach sees every other coach's view."
+   },
+   {
+    "n": "4",
+    "name": "New revenue for coaches",
+    "text": "Remote video reviews, drill plans, follow-ups after matches, short content, and direct relationships with players who move or recommend them. All paid on demand."
+   }
+  ],
+  "exists": [
+   {
+    "name": "Voice capture",
+    "text": "Claude and ChatGPT apps take voice input, and transcription apps such as Otter record and transcribe. Phase one needs nothing else on the coach's side."
+   },
+   {
+    "name": "An agent to process it",
+    "text": "The same assistant turns a transcript into a structured note with the prompt in prototypes/coach-memo-prompt.md."
+   },
+   {
+    "name": "Vaults for the record",
+    "text": "sgit vaults are encrypted on the device, versioned, and opened in a browser with a key. A player's record is one vault; the key is the whole credential."
+   },
+   {
+    "name": "Write-only lanes for coaches",
+    "text": "A vault append lane lets a coach add a memo without being able to read or change anything else. Documented at sgit.ai/api/append-lanes.html."
+   },
+   {
+    "name": "Apps that call a model without a key",
+    "text": "A vault app can call a language model through the host, holding no API key, as documented on llms.sgit.ai. That is how a player's app would turn a clip or a match note into structure."
+   },
+   {
+    "name": "Records the person holds",
+    "text": "The Supplement Stack vault on sgit.ai is a health record its patient holds; Health Score adds a clinician review screen. The player-held lesson record is the same shape."
+   }
+  ],
+  "streams": [
+   {
+    "name": "Lesson notes",
+    "price": "2 credits",
+    "unit": "about 20p per lesson",
+    "text": "A voice memo turned into a lesson note and a player view. Paid by the player, or included by the club or coach in the lesson price."
+   },
+   {
+    "name": "Match notes and briefings",
+    "price": "1 to 2 credits",
+    "unit": "10p to 20p each",
+    "text": "A player's match notes structured into themes; a two-minute briefing for the next coach."
+   },
+   {
+    "name": "Clip processing",
+    "price": "10 credits",
+    "unit": "about £1 per short clip",
+    "text": "A short clip turned into stills and notes the coach can react to."
+   },
+   {
+    "name": "Remote video review",
+    "price": "£15 to £30",
+    "unit": "set by the coach",
+    "text": "The coach reviews a match clip remotely and records a memo back. The coach keeps most of it."
+   },
+   {
+    "name": "Drill plans and follow-ups",
+    "price": "£5 to £15",
+    "unit": "set by the coach",
+    "text": "A personal plan for the next fortnight, or a voice note after a big match."
+   },
+   {
+    "name": "The coach's own content",
+    "price": "£2 to £5",
+    "unit": "per item, set by the coach",
+    "text": "Short drills and explanations, bought one at a time rather than by subscription."
+   }
+  ],
+  "credit_note": "Credits are bought on demand, for example £10 for 100, and spent on processing. No subscription. Coach services are priced by the coach, with the operator taking a share. Every price is a hypothesis.",
+  "domains": [
+   "Tennis, squash and pickleball coaching",
+   "Golf lessons",
+   "Music lessons",
+   "Language tutoring",
+   "Personal training and physiotherapy exercise plans",
+   "Driving instruction",
+   "Climbing and swimming coaching",
+   "Any one-to-one teaching where the teacher knows most at the end of the session"
+  ],
+  "assumptions": [
+   "A lesson note costs under 5p of model usage: a three-minute memo, a structured note back.",
+   "A coach gives about 15 private lessons a week, 4.3 weeks a month.",
+   "The operator takes 15 per cent of coach services.",
+   "Club variants, content sales and racket recommendations are not in the calculator."
+  ]
+ }
+}

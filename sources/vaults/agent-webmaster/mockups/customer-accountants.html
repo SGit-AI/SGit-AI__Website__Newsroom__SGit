@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marsh &amp; Okafor, Chartered Accountants</title>
+<style>
+  :root{--bg:#f6f8fb;--ink:#14213d;--navy:#1f3b73;--line:#d9e0ea;--muted:#5b6778}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{background:#fff;border-bottom:1px solid var(--line)}
+  header div{max-width:1040px;margin:0 auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:700;letter-spacing:.02em}
+  .logo small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+  nav a{margin-left:18px;color:var(--ink);text-decoration:none;font-size:.95rem}
+  .changed{background:#eef3fa}
+  .changed div{max-width:1040px;margin:0 auto;padding:9px 20px;display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+  .changed b{color:var(--navy);letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+  .hero{max-width:1040px;margin:0 auto;padding:52px 20px 30px}
+  h1{font-size:2.3rem;line-height:1.15;margin:0 0 12px;max-width:720px}
+  .lead{font-size:1.1rem;color:#33415c;max-width:680px;margin:0 0 20px}
+  .btn{display:inline-block;background:var(--navy);color:#fff;padding:11px 18px;border-radius:6px;text-decoration:none;font-weight:600}
+  section{max-width:1040px;margin:0 auto;padding:30px 20px}
+  h2{font-size:1.35rem;margin:0 0 14px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .cards div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .cards b{display:block;margin-bottom:6px}
+  .cards p{margin:0;color:var(--muted);font-size:.95rem}
+  .deadlines{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 16px}
+  .deadlines table{width:100%;border-collapse:collapse}
+  .deadlines td{padding:10px 0;border-bottom:1px solid var(--line)}
+  .deadlines tr:last-child td{border-bottom:0}
+  .deadlines td:first-child{font-weight:600;white-space:nowrap;width:130px}
+  .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .team div{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+  .face{width:64px;height:64px;border-radius:50%;flex:none;background:linear-gradient(140deg,#8fa6c9,#3f5a8a)}
+  .team b{display:block}
+  .team small{color:var(--muted)}
+  .form{background:#fff;border:1px dashed #9fb0c9;border-radius:10px;padding:18px;color:var(--muted)}
+  .form span{display:block;height:36px;border:1px solid var(--line);border-radius:6px;margin:8px 0;background:#fafbfd}
+  footer{border-top:1px solid var(--line);padding:22px 20px;font-size:13px;color:var(--muted)}
+  footer div{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media (max-width:720px){h1{font-size:1.8rem}nav a{margin-left:12px}}
+</style>
+</head>
+<body>
+<header><div>
+  <div class="logo">Marsh &amp; Okafor<small>Chartered Accountants · Leeds</small></div>
+  <nav><a href="#services">Services</a><a href="#deadlines">Deadlines</a><a href="#team">Team</a><a href="#contact">Contact</a></nav>
+</div></header>
+<div class="changed"><div>
+  <b>Changed by the webmaster</b>
+  <span>Mon 22 Sep · January deadlines updated</span>
+  <span>Thu 11 Sep · New partner added to the team</span>
+  <span>Tue 2 Sep · Making Tax Digital note added to services</span>
+</div></div>
+<div class="hero">
+  <h1>Two partners, one fixed monthly fee, and your accounts done before you ask.</h1>
+  <p class="lead">We look after about 180 small businesses and sole traders. You get a named partner, a fixed price, and a reminder before every deadline, not an invoice after it.</p>
+  <a class="btn" href="#contact">Ask for a fixed quote</a>
+</div>
+
+<section id="services">
+  <h2>What we do</h2>
+  <div class="cards">
+    <div><b>Year-end accounts and tax</b><p>Limited companies and sole traders. Filed early, explained in plain English.</p></div>
+    <div><b>Bookkeeping and VAT</b><p>Monthly or quarterly. Making Tax Digital compliant from the first return; we set up the software with you.</p></div>
+    <div><b>Payroll</b><p>From one employee to fifty. Pensions and auto-enrolment included.</p></div>
+    <div><b>Starting out</b><p>Company formation, the first-year plan, and the conversation about whether to incorporate at all.</p></div>
+  </div>
+</section>
+
+<section id="deadlines">
+  <h2>Deadlines we are watching for you</h2>
+  <div class="deadlines"><table>
+    <tr><td>7 Oct</td><td>VAT return and payment for the quarter to 31 August</td></tr>
+    <tr><td>19 Oct</td><td>PAYE and CIS for September</td></tr>
+    <tr><td>31 Oct</td><td>Paper self-assessment returns (we file online, so this one is not yours)</td></tr>
+    <tr><td>31 Jan</td><td>Online self-assessment and first payment on account. Send us your records by 30 November and it is done in December.</td></tr>
+  </table></div>
+</section>
+
+<section id="team">
+  <h2>The partners</h2>
+  <div class="team">
+    <div><div class="face"></div><div><b>Helen Marsh FCA</b><small>Founded the firm in 2011. Owner-managed businesses, property, and the difficult conversations about cash.</small></div></div>
+    <div><div class="face"></div><div><b>Tunde Okafor ACA</b><small>Joined as partner in September 2026. Digital bookkeeping, VAT, and businesses that sell online.</small></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Ask for a fixed quote</h2>
+  <div class="form">Contact form placeholder. On the live site this is a third-party form embed, connected by the webmaster, with the credential held by the provider under the firm's own account.<span></span><span></span><span style="height:80px"></span></div>
+</section>
+<footer><div><span>Marsh &amp; Okafor is an invented firm, drawn for a mock-up.</span><span>Site looked after by an agent webmaster · every change is in the log</span></div></footer>
+</body>
+</html>

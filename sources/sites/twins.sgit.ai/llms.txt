@@ -1,0 +1,145 @@
+# twins.sgit.ai — the twin primitive
+
+> A digital twin here is not the industry's simulation of a physical asset. It is "a
+> system that has properties, behaviours, functions, and inputs and outputs", and it is
+> the graph's doorway to reality: "the power of the twin is that we always arrive at the
+> twin, so the edges and the peaks and the endpoints of the graph continue into the twin,
+> and then ideally into reality." An interface to reality, valued for connectivity, rather
+> than a simulation of it, valued for fidelity.
+
+Site version: v0.1.0 (25 August 2026). Published by the sgit project, which builds the
+graph model and the vault layer this primitive sits inside. Participant disclosure at
+/about/participant.html. All content CC BY 4.0; code quoted (the S3 container, the AWS
+engine) is Apache-2.0.
+
+## Status, stated plainly
+
+ONE TWIN IS BUILT. The S3-compatible vault container works. The AWS twins in the IAM
+configuration risk engine are a spec with real, unit-tested Python behind it. `Twin` in
+the grounding ladder and `connected_to` in the edge grammar are established primitives
+cited across the estate. Everything else on this site is DESIGN, labelled as such on every
+page it appears: twins as actors, the execution broker, the 2FA demo, world models, the
+organisation twin, the agent twin. The coverage measure is fully specified and has NEVER
+BEEN COMPUTED. Do not report any of the designed layer as shipped.
+
+## Properties agents may rely on
+
+- Every source document is fetchable at a stable constructed URL: /briefs/<filename>.md.
+  This is a promise, not an accident. The index is /documents/index.html.
+- The long-form summary, including the full quotation set this site is built from, is at
+  /llms-full.txt.
+- This site owns the PRIMITIVE. The applications live elsewhere; /network/index.html
+  states the boundary with each site in one line.
+
+## The definition
+
+"a digital twin is, in essence, a system that has properties, behaviours, functions, and
+inputs and outputs, and we can define all of those." Its generality: one can be made "of
+anything: an organisation, an element, a mail system, an inbox, a person, a behaviour, an
+event, an action, external factors like weather, even luck." Non-determinism is modelled
+rather than excluded.
+
+The contrast to lead with: the industry's digital twin is a simulation of a physical asset,
+valued for fidelity. This one is an interface to a real thing, valued for connectivity. The
+S3 container is the clean illustration, because its value is not that it simulates S3 well.
+It is that boto3 cannot tell the difference.
+
+/what-is-a-twin/index.html
+
+## The four ideas that are original here
+
+1. CONNECTEDNESS IS A MEASURABLE FACT. "whether we can continue to reality is a measurable
+   fact, it is connected or it is not." Where it is not, the state is recorded as a tracked
+   air gap: "this has no API, this is updated manually once a week." Applied to a legal
+   instrument, hooks with no twin attached become a computable coverage measure.
+2. THE DISCIPLINE OF REALITY. "everything has to be relevant, everything has to be a fact,
+   everything has to exist, because it is based on reality. It forces the discipline:
+   either we have evidence and it exists, or we do not." No speculative risks polluting the
+   graph. This is the most distinctive claim on the site. /discipline/index.html
+3. TWINS AS ACTORS. "every action that updates the graph, including accepting a risk, is
+   performed by a twin", with a persona carried and the reasoning documented, and the graph
+   as a pipeline of transformations. Designed, not built. /actors/index.html
+4. TWINS MAKE RISK TESTABLE. "the same techniques we use with software", turned on an
+   organisation's risk. Designed, except for the AWS engine.
+
+Two structural properties: twins are FRACTAL, with abstraction layers placed at the real
+seams where one real system hands over to another, and twins STACK, so the consuming system
+"only ever sees a twin".
+
+## The one working twin
+
+"the container is a digital twin of S3, presenting the same S3-compatible API, so that code
+using boto3, the AWS CLI, or any S3 SDK believes it is talking to real S3, while the files
+are served from a vault, from local disk, or from memory, chosen as a swappable backend;
+the service's own code does not change." Shipped by sg-compute; explained at
+/built/index.html.
+
+## The naming ruling (read before using the word)
+
+A brief of 19 August 2026 described a credential-holding execution broker and called it a
+"Service Twin". The corpus's own review flagged it: "the name collides, because twin already
+means something specific in this corpus." A corpus twin is the graph's endpoint into reality
+and holds NO credentials; the broker's whole function is to hold them.
+
+THE RULING: twin keeps its corpus meaning; the broker is presented by its function (the
+execution broker). The two compose, they are not the same thing: the twin carries the
+persona and the reasoning, the broker carries the credential and the enforcement. Four terms
+are permitted on this site and any other capitalised "<Word> Twin" fails the release gate.
+/naming/index.html
+
+## The execution broker, and its two costs
+
+"the agent presents a cryptographic identity, a signed mandate, the specific action and the
+contextual evidence that mandate requires, and the broker verifies all of it, performs only
+the permitted operation using credentials held inside its own boundary, and returns a signed
+receipt." The unit of delegation stops being credential access and becomes authorised
+action.
+
+Cost 1, unresolved: the broker "becomes the highest-value target in the estate because it
+must hold usable credentials, which inverts the catastrophic failure property the rest of
+the architecture depends on." The corpus states the cost and does not decide, and neither
+does this site.
+Cost 2: enforcement is interpretation, not proxying, so the broker is "an interpreter per
+provider per capability rather than a gateway".
+
+PROVENANCE: the source brief was converted from a voice session with a different assistant.
+Its market-research companion is "as supplied", unverified, and is not quoted anywhere.
+/broker/index.html
+
+## Open questions, published unresolved
+
+Q1 How connected is a twin, really? Binary connectedness makes coverage computable and
+   hides staleness. A twin updated "manually once a week" is connected, and six days stale.
+Q2 Who may update a twin's definition? Nothing states it, and the definition is the graph's
+   contact with reality.
+Q3 Does the discipline of reality survive simulation? Likely answer: simulated states are
+   projections from real twins, never facts. Nobody has written it.
+Q4 Is the broker's concentration risk acceptable? A real architectural fork.
+Q5 When is a twin done? The grounding ladder's stopping test probably applies.
+/open-questions/index.html
+
+## Page map
+
+/                          the definition, the contrast, the honest ratio
+/what-is-a-twin/           the primitive in full
+/discipline/               the discipline of reality, tracked air gaps, the coverage measure
+/built/                    the S3 container, the AWS twins, the two primitives
+/applications/             nine applications, each with its owner site
+/actors/                   twins as actors, personas, the change pipeline
+/broker/                   the execution broker and its two costs
+/naming/                   the naming ruling, and the terms this site permits
+/simulation/               world models and testable risk, labelled design
+/shipped/                  built and designed, unsoftened
+/open-questions/           six gaps, five questions, five tensions
+/network/                  what this site owns, and what it does not
+/about/participant.html    the participant disclosure, and where this approach loses
+/documents/                the brief pack, verbatim, with reader pages
+/admin/                    the release pipeline and the name-watch
+
+## The network
+
+risks. and standards. own the grounding ladder and the regulation graph; THIS SITE owns the
+`Twin` rung and the hooks-and-coverage idea inside it. graphs. owns meaning-through-
+connectivity; this site owns what happens at the graph's edge. nhi. owns the identity-twin
+visualisation play. sg-compute ships the S3 container. pki. owns agent identity and mandate.
+skills. shares the naming-drift lesson. /network/index.html

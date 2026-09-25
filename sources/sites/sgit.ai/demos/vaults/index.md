@@ -1,0 +1,103 @@
+# Published vaults, sgit.ai
+
+> Thirty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+
+---
+
+[Home](../../index.md) / Vaults
+
+# Published vaults
+
+Open any of these in your browser right now. Every read key here was published on purpose, and a read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault itself running live inside it.
+
+**Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
+
+**36 published vaults**: 10 briefing, 7 analysis, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+
+| # | Vault | What it is | Category | Files | Size | Published |
+|---|---|---|---|---|---|---|
+
+| 36 | [Company X-Ray](company-xray/index.md)`ukpqjkly` | A business plan for reading a company's own documents together, with one invented company X-rayed and every finding tied to its evidence | Briefing | 60 | 710 KB | 2026-09-24 |
+
+| 35 | [Lesson Loop](lesson-loop/index.md)`3s9q7zl7` | A business plan for coaches: the coach's knowledge captured at the end of every lesson, in a record the player holds | Briefing | 27 | 407 KB | 2026-09-24 |
+
+| 34 | [Risk Acceptance Office](risk-acceptance/index.md)`odn10gfp` | A business plan with one risk replayed: established on facts, accepted for an interval, escalated, funded and ended on facts | Briefing | 32 | 673 KB | 2026-09-24 |
+
+| 33 | [Connector Twin](connector-twin/index.md)`7tkvspwp` | A business plan with a working replay: what an agent did through Gmail and Calendar, what it saw, and what can be undone | Briefing | 31 | 515 KB | 2026-09-24 |
+
+| 32 | [Agent as Webmaster](agent-webmaster/index.md)`ikrqeu5t` | A complete business plan, with mock-ups and prototypes, written for somebody else to run | Briefing | 32 | 666 KB | 2026-09-23 |
+
+| 31 | [DSIT AI Risk Toolkit](dsit-ai-risk-toolkit/index.md)`0q4sfr57` | Start with an AI decision and trace it back to UK DSIT guidance; an eight-slide walkthrough plays from the vault | Reference | 155 | 12.1 MB | 2026-09-20 |
+
+| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company, so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
+
+| 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault, three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
+
+| 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product, and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
+
+| 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time, 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
+
+| 26 | [The sgit.ai board](board/index.md)`pdulwi6i` | The site's own task board as a vault, cards as files, five columns as an app, the source of truth the site renders from | Record | 21 | 40 KB | 2026-09-07 |
+
+| 25 | [Agent permission games](agent-permission-games/index.md)`4evnlwrj` | Two games about grants and mandates, the first vault here that phones home | Application | 68 | 2.6 MB | 2026-09-06 |
+
+| 24 | [AIUC-1 conformance layer](aiuc-1-conformance/index.md)`2wzct4k7` | The AIUC-1 standard as a graph, plus a conformance layer that computes insurability | Reference | 649 | 43 MB | 2026-09-05 |
+
+| 23 | [Licence to Operate](licence-to-operate/index.md)`posrhzp3` | An insurance policy for an agent, simulated: grant, mandate, and the delta nothing covers | Analysis | 121 | 13 MB | 2026-09-04 |
+
+| 22 | [VoiceDebrief pitch (FI)](voicedebrief-pitch/index.md)`95i2xqrd` | A three-minute investor pitch as a presenter app, with script, timings and sources | Presentation | 48 | 17 MB | 2026-09-02 |
+
+| 21 | [Scaling Threat Modeling](threatmodcon-2025/index.md)`0ict6flm` | ThreatModCon 2025: eleven linked threat models across 51 nodes and 179 threats | Presentation | 53 | 4.1 MB | 2026-08-27 |
+
+| 20 | [AI vs. AI, Black Hat EU 2025](blackhat-eu-2025/index.md)`k1izvg7e` | The Black Hat EU 2025 keynote, with its PDF exports and eight research papers | Presentation | 87 | 20 MB | 2026-08-27 |
+
+| 19 | [Standards Atlas, GDPR](standards-atlas-gdpr/index.md)`4zv4bvmu` | GDPR as a semantic graph, with writes scoped to a feedback folder | Reference | 116 | 6.3 MB | 2026-08-25 |
+
+| 18 | [RiskMandate · File security](riskmandate-file-security/index.md)`wu365g94` | An eleven-step risk-acceptance walk, running SQLite in the browser | Analysis | 71 | 2.7 MB | 2026-08-25 |
+
+| 17 | [Penetration Test Report](pentest-report/index.md)`o4lrwx02` | A penetration test report (fictional) with a re-test script per finding | Report | 93 | 6.4 MB | 2026-08-25 |
+
+| 16 | [SG/Payments Brief Pack](payments-brief-pack/index.md)`o3m0sz3q` | A payments briefing pack, marked PROPOSED rather than dressed as decided | Briefing | 18 | 224 KB | 2026-08-25 |
+
+| 15 | [Content-Transformation Proxy](content-transformation-proxy/index.md)`3c90c2bff2b1` | An as-built engineering brief, shipped with its slides, diagrams and source PDFs | Briefing | 140 | 63 MB | 2026-08-25 |
+
+| 14 | [SG Commercialisation](commercialisation/index.md)`haeu7p1e` | A commercial operating model, with its customer register deliberately left empty | Briefing | 78 | 536 KB | 2026-08-25 |
+
+| 13 | [Vault App Mode](vault-app-pocs/index.md)`xth1xt78` | Nine proofs of concept for vault app mode, with a hub that runs them | Reference | 57 | 251 KB | 2026-08-23 |
+
+| 12 | [Private Health Score](health-score/index.md)`zc6abngv` | A clinical questionnaire scored by a versioned framework, with a clinician review screen | Application | 35 | 1.2 MB | 2026-08-23 |
+
+| 11 | [VoiceDebrief](voice-debrief/index.md)`k6xy9z4d` | Four apps in one vault, from raw recording to structured debrief | Analysis | 92 | 1.2 MB | 2026-08-22 |
+
+| 10 | [Regulation Graph](regulation-graph/index.md)`73heuprz` | The EU AI Act parsed from Formex into an evidence graph, article by article | Reference | 207 | 14.9 MB | 2026-08-20 |
+
+| 9 | [Risk Mandate](risk-mandate/index.md)`4zf6pf2z` | A working software project delivered as a vault, and it calls an LLM holding no API key | Application | 124 | 1.9 MB | 2026-08-17 |
+
+| 8 | [Risk Graph Explorer](risk-graph-explorer/index.md)`3simlnqe` | A fact-to-risk graph explorer, built to be public: its app.json requests nothing | Application | 33 | 428 KB | 2026-08-17 |
+
+| 7 | [Agentic Browser Isolation](agentic-browser-isolation/index.md)`0610gsp9` | Should an agent browse with your logged-in sessions? A living risk graph, per stakeholder | Analysis | 104 | 2.4 MB | 2026-08-17 |
+
+| 6 | [Supplement Stack](supplement-stack/index.md)`r7zes477` | A patient-held health record: a real regimen, label photos, totals against UK RNIs | Record | 23 | 2.3 MB | 2026-08-16 |
+
+| 5 | [Strategy Maps](strategy-maps/index.md)`ookq4mn4` | The SG/Send strategy in seven Wardley maps, plus the sgit positioning analysis | Analysis | 33 | 830 KB | 2026-08-16 |
+
+| 4 | [Field Notes](field-notes/index.md)`4bshby5n` | Six studies with generative SVG art, the smallest complete vault app | Application | 4 | 11 KB | 2026-08-16 |
+
+| 3 | [Deploy Docs](deploy-docs/index.md)`fyofmkvr` | Living deployment documentation, updated by an sgit push with no site deploy | Record | 17 | 25 KB | 2026-08-16 |
+
+| 2 | [The Vault Catalogue](catalogue/index.md)`kc67yhgw` | An index of published vaults that is itself a vault, and lists itself | Record | 9 | 11 KB | 2026-08-16 |
+
+| 1 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
+
+Publishing one of your own? [**The method is written down**](publishing.md): the seven steps behind every row above, the tools that do each one, and the mistakes that produced each rule. The rules themselves, with the incident behind each, are on [**Lessons learned**](../../lessons/index.md), including why a read key may be published and a vault key never may.
+
+This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) (an index of vaults that is itself a vault, updated by an sgit push with no site deploy) carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The original worked example of creating, auditing and embedding one is on [the embed demo page](../vault-app-embed.md).
+
+Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt), every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
+
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://sgit.ai/demos/vaults/index.html)*

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+    <style>
+    .bg{fill:#fbfaf7}
+    .t{font:600 14.5px/1 system-ui,-apple-system,Segoe UI,sans-serif;fill:#101114;text-anchor:middle}
+    .s{font:12.5px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;fill:#5b6170;text-anchor:middle}
+    .h{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.12em;text-anchor:middle}
+    .m{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+    .r{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#b4243a;text-anchor:middle}
+    .g{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1c7c43;text-anchor:middle}
+    .box{fill:#fff;stroke:#c9ccd3;stroke-width:1.4;rx:10}
+    .bad{fill:#fff;stroke:#b4243a;stroke-width:1.6;stroke-dasharray:5 4;rx:10}
+    .good{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;rx:10}
+    .gap{fill:#eef7f0;stroke:#1c7c43;stroke-width:2;stroke-dasharray:7 5;rx:10}
+    .key{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2.4;rx:10}
+    .ab{stroke:#b4243a;stroke-width:2;fill:none;stroke-dasharray:6 5}
+    .ag{stroke:#1c7c43;stroke-width:2.2;fill:none}
+    .an{stroke:#6b7080;stroke-width:1.8;fill:none}
+    .akey{stroke:#2f6fed;stroke-width:2.4;fill:none}
+    .life{stroke:#c9ccd3;stroke-width:1.4;stroke-dasharray:4 5}
+    .mask{fill:#fbfaf7}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <text x="600" y="30" class="h">THE ACCEPTANCE LOOP: EVERY RISK, EVERY INTERVAL, EVERY EXPIRY</text>
+
+  <rect class="good" x="40" y="70" width="220" height="92"/><text x="150" y="100" class="t">1 · Establish</text><text x="150" y="122" class="s">the facts that make it true,</text><text x="150" y="140" class="s">and the facts that would end it</text>
+  <rect class="box" x="330" y="70" width="220" height="92"/><text x="440" y="100" class="t">2 · Place</text><text x="440" y="122" class="s">a holder, and the chain</text><text x="440" y="140" class="s">above them to the board</text>
+  <rect class="key" x="620" y="70" width="240" height="92"/><text x="740" y="100" class="t">3 · Accept</text><text x="740" y="122" class="s">by a named person,</text><text x="740" y="140" class="s">for an interval, with an action</text>
+  <rect class="box" x="930" y="70" width="230" height="92"/><text x="1045" y="100" class="t">4 · Run the clock</text><text x="1045" y="122" class="s">the interval ends;</text><text x="1045" y="140" class="s">nothing silently continues</text>
+  <path d="M260 116 L322 116" class="an"/><path d="M314 110 L322 116 L314 122" class="an"/>
+  <path d="M550 116 L612 116" class="an"/><path d="M604 110 L612 116 L604 122" class="an"/>
+  <path d="M860 116 L922 116" class="an"/><path d="M914 110 L922 116 L914 122" class="an"/>
+
+  <text x="1030" y="196" class="h" style="text-anchor:end">AT EXPIRY: THREE DOORS, OR SILENCE</text>
+  <path d="M1045 162 L1045 212" class="an"/>
+  <rect class="key" x="660" y="230" width="220" height="80"/><text x="770" y="260" class="t">Accept again</text><text x="770" y="282" class="s">same desk, fresh interval,</text><text x="770" y="298" class="s">new evidence attached</text>
+  <rect class="key" x="935" y="230" width="220" height="80"/><text x="1045" y="260" class="t">Fund</text><text x="1045" y="282" class="s">a project, whose length</text><text x="1045" y="298" class="s">becomes the next interval</text>
+  <rect class="good" x="935" y="340" width="220" height="80"/><text x="1045" y="370" class="t">Fix</text><text x="1045" y="392" class="s">the facts that end it hold;</text><text x="1045" y="408" class="s">it ceases, on evidence</text>
+  <rect class="bad" x="660" y="340" width="220" height="80"/><text x="770" y="370" class="t">Silence</text><text x="770" y="392" class="s">is not a door: it escalates</text><text x="770" y="408" class="s">to the holder's boss</text>
+  <path d="M1045 212 L770 212 L770 222" class="an"/><path d="M764 216 L770 224 L776 216" class="an"/>
+  <path d="M1045 212 L1045 222" class="an"/><path d="M1039 216 L1045 224 L1051 216" class="an"/>
+  <path d="M1045 310 L1045 332" class="an"/><path d="M1039 324 L1045 332 L1051 324" class="an"/>
+  <path d="M770 212 L630 212 L630 362 L650 362" class="ab"/><path d="M642 356 L650 362 L642 368" class="ab"/>
+  <path d="M660 404 C470 404 440 250 440 170" class="ab"/><path d="M434 178 L440 170 L446 178" class="ab"/>
+  <text x="470" y="330" class="r" style="text-anchor:end">one level up, same choice</text>
+
+  <text x="300" y="400" class="h">THE INTERVAL IS THE DECISION</text>
+  <rect class="bad" x="40" y="420" width="180" height="62"/><text x="130" y="446" class="t">1 hour, 4 hours</text><text x="130" y="466" class="s">fetch data; incident</text>
+  <rect class="bad" x="230" y="420" width="140" height="62"/><text x="300" y="446" class="t">1 to 2 days</text><text x="300" y="466" class="s">a smaller incident</text>
+  <rect class="key" x="380" y="420" width="180" height="62"/><text x="470" y="446" class="t">1 to 2 weeks</text><text x="470" y="466" class="s">an existing team's project</text>
+  <rect class="key" x="40" y="496" width="250" height="62"/><text x="165" y="522" class="t">1 month, the default</text><text x="165" y="542" class="s">assemble and fund</text>
+  <rect class="box" x="310" y="496" width="250" height="62"/><text x="435" y="522" class="t">6 months</text><text x="435" y="542" class="s">do nothing, review then, named</text>
+
+  <rect class="box" x="660" y="460" width="495" height="100" style="fill:#fff"/>
+  <text x="907" y="488" class="t">Every step writes to the risk's own record</text>
+  <text x="907" y="510" class="s">who decided, what, until when, on which facts;</text>
+  <text x="907" y="528" class="s">hash-chained, and kept in a vault per material risk,</text>
+  <text x="907" y="546" class="s">with a read key per audience</text>
+  <text x="600" y="610" class="s">The ladder as published on risks.sgit.ai. Unaccepted is treated as critical: a risk nobody signed for rolls upward on its own.</text>
+</svg>
