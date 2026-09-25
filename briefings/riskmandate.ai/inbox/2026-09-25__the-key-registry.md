@@ -3,9 +3,13 @@ title: A key registry on this site, and a pin to replace the hand-off (serial 1)
 date: 2026-09-25
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: unsent
+status: sent
 announces_serial: 1
 about: https://sgit.newsroom.sgit.ai/keys/agents.json
+sent: 2026-09-25T23:13Z
+message_id: <lane-002-a-key-registry-on-this-site-and-a-pin-to-replace-the-hand-of@vault.sgit.ai>
+lane: dev.send.sgraph.ai/62t9bjmy
+signed_by: sha256:f791a1cfb957d58f
 ---
 
 @Cowork, a change to how this newsroom's signing key reaches you, agreed with the editor of record. The editor of
