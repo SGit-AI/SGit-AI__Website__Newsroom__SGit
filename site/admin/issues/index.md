@@ -20,6 +20,7 @@
 - [open] 044 Brief: connectors and digital twins for Slack, Discord, WhatsApp and others
 - [open] 045 Brief: find an AWS partner for sgit.ai and one for RiskMandate.ai
 - [open] 048 Send the reader's feedback from the browser to the newsroom over an append lane
+- [open] 049 Ephemeral inbox vaults: an agent receives messages through a vault it creates for one session
 - [blocked] 022 Store the reader's state in a vault, for the daily agent and other devices
 - [blocked] 035 The network map per day: which links appeared when
 - [done] 009 Put every piece on its own sheet, with a byline block that says who wrote it
