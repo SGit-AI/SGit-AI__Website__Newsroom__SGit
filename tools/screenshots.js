@@ -36,8 +36,9 @@ const fileFor = (u) => { const x = new URL(u); let p = x.pathname.replace(/\/$/,
     let r = await p.goto(u, { waitUntil: 'commit', timeout: 15000 });
     if (r && r.status() === 404 && urls.get(u) !== u) r = await p.goto(urls.get(u), { waitUntil: 'commit', timeout: 15000 });   // the site serves only the .md
     if (!r || r.status() >= 400) throw new Error('HTTP ' + (r && r.status()));
-    await p.waitForLoadState('domcontentloaded', { timeout: 8000 }).catch(() => {});
-    await p.waitForTimeout(500);
+    await p.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});   // sgit.ai fetches and injects its css after load
+    await p.waitForTimeout(400);
+    await p.waitForFunction(() => getComputedStyle(document.body).opacity === '1', null, { timeout: 2500 }).catch(() => {});   // sgit.ai fades its body in
     fs.mkdirSync(path.dirname(file), { recursive: true });
     await p.screenshot({ path: file, type: 'jpeg', quality: 60, clip: { x: 0, y: 0, width: 1200, height: 750 } });
   };

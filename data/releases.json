@@ -128,6 +128,19 @@
    "commit": "",
    "title": "signals that say what they report, the newsroom reads itself (with the first semantic twin), briefing cards, the Cartographer's helpers, this newsroom's releases in the reading room",
    "notes": []
+  },
+  {
+   "version": "v0.1.12",
+   "date": "2026-09-25",
+   "time": "14:03",
+   "commit": "",
+   "title": "screenshots of the pages the desks cite, under every piece's byline",
+   "notes": [
+    "assets/shots/: screenshots of the live pages the desks cite (tools/screenshots.js, Playwright, jpeg 1200x750), with assets/shots/manifest.json recording the capture time and any page that failed.",
+    "Every desk piece shows a strip of the pages it cites under its byline, linking to the local copy (principle 9: show the page).",
+    "tools/screenshots.js saves the manifest after every page and logs one line per page, so an interrupted run keeps what it took.",
+    "Issue 015 (screenshots of the pages a piece is about) moved to done."
+   ]
   }
  ]
 }

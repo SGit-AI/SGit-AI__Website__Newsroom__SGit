@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T13:40:00Z build.desk: Screenshots of the pages the desks cite (issue 015): make tools/screenshots.js survive the network and the target sites, capture the set, ship it under every piece's byline.
 - 2026-09-25T13:20:00Z editor.human: Register: the Build desk owns assets/ (screenshots the build copies) and data/releases.json (appended by tools/release.sh).
 - 2026-09-25T13:10:00Z build.desk: Fourth batch of the flight notes: briefing cards and the semantic twin (renderer and validator), the Cartographer's helpers, screenshots of cited pages, this newsroom's releases as part of what it reports.
 - 2026-09-25T13:05:00Z editor.desk: After the Architect's signal review: the pt.newsroom briefing carries the fix's line numbers itself instead of pointing at the shortened signal.

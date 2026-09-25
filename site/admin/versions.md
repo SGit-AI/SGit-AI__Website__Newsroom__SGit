@@ -12,3 +12,4 @@
 - v0.1.9 (2026-09-25): the principles (no rungs, findings visible), lessons markable one by one, a clickable and sortable network, a badge on every source page
 - v0.1.10 (2026-09-25): a side pane on every page (peek a link beside the page, notes, a chat with tools over the site), briefing pages per target site, the first relayed message
 - v0.1.11 (2026-09-25): signals that say what they report, the newsroom reads itself (with the first semantic twin), briefing cards, the Cartographer's helpers, this newsroom's releases in the reading room
+- v0.1.12 (2026-09-25): screenshots of the pages the desks cite, under every piece's byline

@@ -8,7 +8,6 @@
 - [open] 006 Epic: the back office runs on issues, with provenance
 - [open] 007 Epic: an industry news feed in, slide decks and PDFs out
 - [open] 008 Epic: briefs for agent@riskmandate.ai
-- [open] 015 Screenshots of the pages a piece is about
 - [open] 016 Standing briefing cards in the same place on every piece
 - [open] 020 A wallet drained by actions (as pt.newsroom.sgit.ai)
 - [open] 021 Render pages from a graph of pieces, merged with the reader's state
@@ -28,6 +27,7 @@
 - [done] 012 Side panels: peek a link, feedback, chat, maps, resizable
 - [done] 013 Use the width: content column plus panes
 - [done] 014 Source pages: what is the newsroom, what is the target site
+- [done] 015 Screenshots of the pages a piece is about
 - [done] 017 Marking a piece read hides it from the front page and the sections
 - [done] 018 Two views: the editor's and the reader's
 - [done] 019 A history of every action, with undo and redo
