@@ -88,7 +88,29 @@ def main():
                        'read_key': key, 'seed': seed})
     vaults.sort(key=lambda v: (v['published'] or '', v['slug']), reverse=True)
 
+    # the network: which site links to which, counted from the links in every snapshotted file
+    sites = sorted({m['site'] for m in manifest.values()})
+    def in_net(host):
+        return host in sites or host.endswith('.sgit.ai') or host in ('sgit.ai', 'riskmandate.ai')
+    counts, pages = {}, {}
+    for url, m in manifest.items():
+        text = open(os.path.join(SRC, m['file']), encoding='utf-8', errors='replace').read()
+        for host in set(re.findall(r'https?://([a-z0-9.-]+\.[a-z]{2,})', text.lower())):
+            base = '.'.join(host.split('.')[-3:]) if host.endswith('.sgit.ai') and host.count('.') > 2 and host.split('.')[-3] in (
+                'providers', 'newsroom') else host
+            if host != m['site'] and in_net(host):
+                key = (m['site'], host)
+                counts[key] = counts.get(key, 0) + 1
+    network = {'about': 'Site-to-site links in the snapshot: for each pair, the number of files on the first site that link to the second. '
+                        'Computed by tools/librarian.py from sources/sites/; the Cartographer maps it.',
+               'sites': [{'site': st, 'files': sum(1 for m in manifest.values() if m['site'] == st),
+                          'bytes': sum(m['bytes'] for m in manifest.values() if m['site'] == st)} for st in sites],
+               'links': [{'from': a, 'to': b, 'files': n} for (a, b), n in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))]}
+
     os.makedirs(os.path.join(ROOT, 'data'), exist_ok=True)
+    with open(os.path.join(ROOT, 'data', 'network.json'), 'w', encoding='utf-8') as f:
+        json.dump(network, f, indent=1, ensure_ascii=False)
+        f.write('\n')
     with open(os.path.join(ROOT, 'data', 'index.json'), 'w', encoding='utf-8') as f:
         json.dump(index, f, indent=1, ensure_ascii=False)
         f.write('\n')
@@ -100,6 +122,7 @@ def main():
         by_type[e['type']] = by_type.get(e['type'], 0) + 1
     print(f'index: {len(index)} pages, {len({e["site"] for e in index})} sites, '
           f'{sum(1 for e in index if e["date"])} dated; by type {dict(sorted(by_type.items()))}')
+    print(f'network: {len(network["sites"])} sites, {len(network["links"])} site-to-site links')
     print(f'vaults: {len(vaults)}, {sum(1 for v in vaults if v["read_key"])} with a read key published on their page')
 
 

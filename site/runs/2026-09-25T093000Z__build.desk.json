@@ -1,0 +1,20 @@
+{
+  "when": "2026-09-25T09:30:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Newsroom workflow infrastructure: bundled Mermaid, maps, the magazine front page, News, the admin back office, sections-driven navigation.",
+  "folders_changed": [
+    "tools/",
+    "AUTHORING.md",
+    ".claude/",
+    "agents/",
+    "CLAUDE.md"
+  ],
+  "did": [
+    "tools/vendor/mermaid.min.js (Mermaid 12.0.0, MIT) and assets/diagrams.js: diagrams render offline; tested wardley-beta, flowchart, timeline, mindmap from file://.",
+    "tools/build.py: maps/ as a desk folder; maps/network.html computed from data/network.json; front page composed from data/frontpage.json; news/index.html; admin/ (desks, review queue, front page, notes, prompts, inbox); navigation from data/sections.json.",
+    "AUTHORING.md: standfirst and section, maps and the Mermaid rules, frontpage.json. The newsroom-run skill now runs the Cartographer every day and the Editor last."
+  ],
+  "gates": true,
+  "note": "Made by one session at the editor of record's instruction (25 September 2026); recorded per desk so each change sits under the mandate that owns it."
+}

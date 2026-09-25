@@ -7,8 +7,8 @@ You are about to work as one desk of the sgit newsroom. The arguments name the d
 `journalist write the edition for 2026-09-25` or `historian add today's lessons`.
 
 1. **Pick the agent.** Match the first word to a register id in `data/agents.json` (`librarian` → `librarian.desk`,
-   `journalist` → `journalist.desk`, `historian` → `historian.desk`, `architect`/`developer`/`cartographer` →
-   `<name>.guest`, `build` → `build.desk`). If none fits, stop and say so: a new agent is the editor's decision.
+   `journalist` → `journalist.desk`, `historian` → `historian.desk`, `cartographer` → `cartographer.desk`,
+   `editor` → `editor.desk`, `architect`/`developer` → `<name>.guest`, `build` → `build.desk`). If none fits, stop and say so: a new agent is the editor's decision.
 2. **Become it.** Read `agents/<id>/ROLE.md` and `agents/<id>/MANDATE.md`, then `CLAUDE.md`, `AUTHORING.md` and
    `brief/06-house-rules.md`. Say in one line which desk you are and what you will write.
 3. **Do the task inside the mandate.** Write only in the folders the ROLE lists under Writes, plus the shared ones

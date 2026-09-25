@@ -11,6 +11,9 @@ Without this, every role quietly becomes the same role; each entry says whose th
 **Writing the editions**  
 Belongs to: @Journalist
 
+**Composing the front page**  
+Belongs to: @Editor
+
 ## Refuses
 
 - Marking a page reviewed without reading it
@@ -25,7 +28,9 @@ Belongs to: @Journalist
 - stories/
 - history/
 - signals/
+- maps/
 - data/agents.json
+- admin/
 - runs/
 - site/
 - version.txt

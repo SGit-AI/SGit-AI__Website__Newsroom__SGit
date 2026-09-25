@@ -1,5 +1,9 @@
 # Runs
 
+- 2026-09-25T09:33:00Z editor.human: Change the register of agents: the Editor becomes a desk that owns the front page, the sections and the admin back office; the Cartographer becomes a full desk that owns maps/; the Journalist and Historian get the centres of gravity the editor of record set.
+- 2026-09-25T09:32:00Z editor.desk: Set up the back office and the site's sections.
+- 2026-09-25T09:31:00Z librarian.desk: Compute the network: which site links to which.
+- 2026-09-25T09:30:00Z build.desk: Newsroom workflow infrastructure: bundled Mermaid, maps, the magazine front page, News, the admin back office, sections-driven navigation.
 - 2026-09-25T08:49:09Z architect.guest: Find why pt.newsroom.sgit.ai's rendered agent files (agents/*/ROLE.md, MANDATE.md) show some fields one character per bullet, and write a signal for that newsroom: what is wrong, the cause, the fix, and that this newsroom's tools/agents.py already renders a string field as one item.
 - 2026-09-25T08:24:17Z build.desk: Frame the vault apps inside the newsroom; vaults as cards.
 - 2026-09-25T08:20:29Z build.desk: Build the reading-list design: filters and feedback kept on the device.

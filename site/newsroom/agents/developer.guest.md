@@ -40,7 +40,7 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 
 ## Works with
 
-- @Architect and @Cartographer
+- the other guest desk, and @Cartographer
 
 The mandate, what this role refuses and whose work it is not: [MANDATE.md](MANDATE.md).
 

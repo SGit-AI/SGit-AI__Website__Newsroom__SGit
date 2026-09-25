@@ -1,0 +1,927 @@
+{
+ "about": "Site-to-site links in the snapshot: for each pair, the number of files on the first site that link to the second. Computed by tools/librarian.py from sources/sites/; the Cartographer maps it.",
+ "sites": [
+  {
+   "site": "abp.sgit.ai",
+   "files": 315,
+   "bytes": 3793099
+  },
+  {
+   "site": "chrome-extensions.sgit.ai",
+   "files": 3,
+   "bytes": 18269
+  },
+  {
+   "site": "coding.sgit.ai",
+   "files": 3,
+   "bytes": 129124
+  },
+  {
+   "site": "elevenlabs.providers.sgit.ai",
+   "files": 30,
+   "bytes": 198849
+  },
+  {
+   "site": "games.sgit.ai",
+   "files": 17,
+   "bytes": 74333
+  },
+  {
+   "site": "graphs.sgit.ai",
+   "files": 6,
+   "bytes": 355092
+  },
+  {
+   "site": "influences.sgit.ai",
+   "files": 29,
+   "bytes": 336171
+  },
+  {
+   "site": "infographics.sgit.ai",
+   "files": 3,
+   "bytes": 7321
+  },
+  {
+   "site": "issues-fs.sgit.ai",
+   "files": 2,
+   "bytes": 21442
+  },
+  {
+   "site": "llms.sgit.ai",
+   "files": 45,
+   "bytes": 471978
+  },
+  {
+   "site": "newsroom.sgit.ai",
+   "files": 8,
+   "bytes": 331881
+  },
+  {
+   "site": "nfrs.sgit.ai",
+   "files": 3,
+   "bytes": 70447
+  },
+  {
+   "site": "nhi.sgit.ai",
+   "files": 4,
+   "bytes": 60321
+  },
+  {
+   "site": "open-source.sgit.ai",
+   "files": 40,
+   "bytes": 721564
+  },
+  {
+   "site": "pki.sgit.ai",
+   "files": 7,
+   "bytes": 149662
+  },
+  {
+   "site": "providers.sgit.ai",
+   "files": 11,
+   "bytes": 72281
+  },
+  {
+   "site": "pt.newsroom.sgit.ai",
+   "files": 23,
+   "bytes": 1009810
+  },
+  {
+   "site": "riskmandate.ai",
+   "files": 324,
+   "bytes": 2304323
+  },
+  {
+   "site": "risks.sgit.ai",
+   "files": 5,
+   "bytes": 612331
+  },
+  {
+   "site": "sg-compute.sgit.ai",
+   "files": 4,
+   "bytes": 143343
+  },
+  {
+   "site": "sg-sentinel.sgit.ai",
+   "files": 2,
+   "bytes": 10875
+  },
+  {
+   "site": "sgit.ai",
+   "files": 194,
+   "bytes": 4052310
+  },
+  {
+   "site": "skills.sgit.ai",
+   "files": 3,
+   "bytes": 33945
+  },
+  {
+   "site": "standards.sgit.ai",
+   "files": 3,
+   "bytes": 55903
+  },
+  {
+   "site": "store.sgit.ai",
+   "files": 95,
+   "bytes": 687656
+  },
+  {
+   "site": "subscriptions.sgit.ai",
+   "files": 3,
+   "bytes": 76237
+  },
+  {
+   "site": "teams.sgit.ai",
+   "files": 24,
+   "bytes": 155657
+  },
+  {
+   "site": "threat-modeling.sgit.ai",
+   "files": 3,
+   "bytes": 57941
+  },
+  {
+   "site": "twins.sgit.ai",
+   "files": 3,
+   "bytes": 35425
+  },
+  {
+   "site": "ungovr.providers.sgit.ai",
+   "files": 27,
+   "bytes": 192790
+  },
+  {
+   "site": "wardley-maps.sgit.ai",
+   "files": 18,
+   "bytes": 403800
+  },
+  {
+   "site": "what-can-it-do.games.sgit.ai",
+   "files": 61,
+   "bytes": 313553
+  }
+ ],
+ "links": [
+  {
+   "from": "abp.sgit.ai",
+   "to": "what-can-it-do.games.sgit.ai",
+   "files": 101
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 51
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "sgit.ai",
+   "files": 16
+  },
+  {
+   "from": "sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 16
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "abp.sgit.ai",
+   "files": 15
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "store.sgit.ai",
+   "files": 15
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 14
+  },
+  {
+   "from": "sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 14
+  },
+  {
+   "from": "sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 9
+  },
+  {
+   "from": "store.sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 9
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 8
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 8
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "what-can-it-do.games.sgit.ai",
+   "files": 8
+  },
+  {
+   "from": "store.sgit.ai",
+   "to": "sgit.ai",
+   "files": 7
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "sgit.ai",
+   "files": 6
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "what-can-it-do.games.sgit.ai",
+   "files": 6
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 5
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 5
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "nhi.sgit.ai",
+   "files": 5
+  },
+  {
+   "from": "sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 5
+  },
+  {
+   "from": "sgit.ai",
+   "to": "subscriptions.sgit.ai",
+   "files": 5
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "coding.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "twins.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "coding.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "sg-compute.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 4
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "wardley-maps.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "abp.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "coding.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "elevenlabs.providers.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "llms.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "newsroom.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "nfrs.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "providers.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "sg-compute.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "twins.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "sgit.ai",
+   "to": "wardley-maps.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "ungovr.providers.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "wardley-maps.sgit.ai",
+   "to": "sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "what-can-it-do.games.sgit.ai",
+   "to": "games.sgit.ai",
+   "files": 4
+  },
+  {
+   "from": "what-can-it-do.games.sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 4
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 3
+  },
+  {
+   "from": "graphs.sgit.ai",
+   "to": "sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "coding.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "wardley-maps.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "open-source.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "risks.sgit.ai",
+   "to": "riskmandate.ai",
+   "files": 3
+  },
+  {
+   "from": "sgit.ai",
+   "to": "issues-fs.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "sgit.ai",
+   "to": "pt.newsroom.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "sgit.ai",
+   "to": "sg-sentinel.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "sgit.ai",
+   "to": "skills.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "subscriptions.sgit.ai",
+   "to": "nfrs.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "subscriptions.sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "subscriptions.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "subscriptions.sgit.ai",
+   "to": "sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "subscriptions.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "threat-modeling.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "threat-modeling.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "threat-modeling.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "threat-modeling.sgit.ai",
+   "to": "sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "threat-modeling.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "threat-modeling.sgit.ai",
+   "to": "wardley-maps.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "wardley-maps.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 3
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "games.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "abp.sgit.ai",
+   "to": "store.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "issues-fs.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "llms.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "sg-compute.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "coding.sgit.ai",
+   "to": "wardley-maps.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "llms.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "influences.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "issues-fs.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "newsroom.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "llms.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "coding.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "llms.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "sg-compute.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "sg-sentinel.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "skills.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "twins.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "nfrs.sgit.ai",
+   "to": "wardley-maps.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "games.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "open-source.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "risks.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sg-sentinel.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sg-sentinel.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "chrome-extensions.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "games.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "influences.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "infographics.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "store.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "teams.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "threat-modeling.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "ungovr.providers.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "sgit.ai",
+   "to": "what-can-it-do.games.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "store.sgit.ai",
+   "to": "open-source.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "teams.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "ungovr.providers.sgit.ai",
+   "to": "providers.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "ungovr.providers.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "wardley-maps.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "what-can-it-do.games.sgit.ai",
+   "to": "sgit.ai",
+   "files": 2
+  },
+  {
+   "from": "chrome-extensions.sgit.ai",
+   "to": "sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "llms.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "games.sgit.ai",
+   "to": "risks.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "infographics.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "issues-fs.sgit.ai",
+   "to": "sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "newsroom.sgit.ai",
+   "to": "graphs.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "newsroom.sgit.ai",
+   "to": "sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "nhi.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "nhi.sgit.ai",
+   "to": "sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "pki.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "pki.sgit.ai",
+   "to": "sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "pt.newsroom.sgit.ai",
+   "to": "teams.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "riskmandate.ai",
+   "to": "risks.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "ungovr.providers.sgit.ai",
+   "to": "elevenlabs.providers.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "ungovr.providers.sgit.ai",
+   "to": "standards.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "wardley-maps.sgit.ai",
+   "to": "nhi.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "wardley-maps.sgit.ai",
+   "to": "sg-sentinel.sgit.ai",
+   "files": 1
+  },
+  {
+   "from": "what-can-it-do.games.sgit.ai",
+   "to": "pki.sgit.ai",
+   "files": 1
+  }
+ ]
+}

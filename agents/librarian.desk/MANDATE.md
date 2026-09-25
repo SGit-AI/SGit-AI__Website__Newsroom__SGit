@@ -34,6 +34,7 @@ Belongs to: the guest desks
 - data/index.json
 - data/concepts.json
 - data/vaults.json
+- data/network.json
 - runs/
 - site/
 - version.txt

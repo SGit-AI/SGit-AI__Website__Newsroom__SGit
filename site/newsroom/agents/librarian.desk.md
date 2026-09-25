@@ -31,6 +31,7 @@ A role that says what it does can only be admired; a role that says when it is f
 - data/index.json
 - data/concepts.json
 - data/vaults.json
+- data/network.json
 
 Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.json`. Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), and rebuilds and releases the site.
 
@@ -40,6 +41,7 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 - data/index.json (tools/librarian.py)
 - data/concepts.json
 - data/vaults.json (tools/librarian.py)
+- data/network.json (tools/librarian.py): site-to-site links
 
 ## How a run goes
 
@@ -92,6 +94,7 @@ Belongs to: the guest desks
 - data/index.json
 - data/concepts.json
 - data/vaults.json
+- data/network.json
 - runs/
 - site/
 - version.txt

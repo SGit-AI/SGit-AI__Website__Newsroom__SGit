@@ -34,6 +34,7 @@ A role that says what it does can only be admired; a role that says when it is f
 - README.md
 - AUTHORING.md
 - CLAUDE.md
+- data/network.json
 
 Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.json`. Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), and rebuilds and releases the site.
 
@@ -91,6 +92,7 @@ Belongs to: @Editor: a new agent is an editorial decision
 - README.md
 - AUTHORING.md
 - CLAUDE.md
+- data/network.json
 - runs/
 - site/
 - version.txt

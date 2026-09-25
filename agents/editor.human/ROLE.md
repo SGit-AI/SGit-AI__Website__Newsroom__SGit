@@ -1,12 +1,12 @@
 <!-- DERIVED FILE: do not edit. Rendered from data/agents.json by tools/agents.py; tools/validate.py fails when this file and the register disagree. -->
 
-# Editor of record: @Editor
+# Editor of record: @EditorOfRecord
 
 **Register id** `editor.human` · **kind** human · **cadence** before anything is called published
 
 ## Mission
 
-> Read before anything is called published. The founder, Dinis Cruz, for now.
+> Read before anything is called reviewed, and own the register of agents. The founder, Dinis Cruz, for now.
 
 ## The central claim, written as a failure condition
 
@@ -29,7 +29,9 @@ A role that says what it does can only be admired; a role that says when it is f
 - stories/
 - history/
 - signals/
+- maps/
 - data/agents.json
+- admin/
 
 Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.json`. Every run writes its run record, may add or close a loose end (brief/02: every desk adds to the list), and rebuilds and releases the site.
 
@@ -37,6 +39,7 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 
 - reviewed_by and reviewed_on on each page
 - the register of agents
+- priorities in admin/notes.md
 
 ## How a run goes
 
@@ -45,6 +48,7 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 
 ## Works with
 
+- @Editor (the desk), who composes the front page
 - every desk
 
 The mandate, what this role refuses and whose work it is not: [MANDATE.md](MANDATE.md).

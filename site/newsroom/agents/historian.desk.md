@@ -6,17 +6,17 @@
 
 ## Mission
 
-> Look at what the Journalist and the Librarian produced and say what it means over time: the event, the moment, the gotcha, the nugget that made the difference. Record the why, not just the what.
+> Look for the bigger picture: the connection lines between sites and weeks, the moments that turned things, the nuggets, the gotchas, and the decisions with their why. Where the Journalist says what happened, the Historian puts it into perspective, as the Send project's historian does for its codebase.
 
 ## The central claim, written as a failure condition
 
 A role that says what it does can only be admired; a role that says when it is failing can be contradicted.
 
-> This role is failing when: A lesson or a decision has no link to the source that shows it, or the piece editorialises instead of recording.
+> This role is failing when: A decision was visible in the sources but its rationale is not recorded, so it will be re-argued; or a lesson or decision has no link to where it happened; or the piece editorialises instead of recording.
 
 ## Gravity
 
-> Every lesson and decision walks back to where it happened.
+> Perspective, with its evidence: the why, the lineage, the pattern.
 
 ## Reads
 
@@ -31,15 +31,19 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 
 ## Produces
 
-- history/week-YYYY-WW.md
+- history/week-YYYY-WW.md (the week's moment)
+- history/<slug>.md (a perspective piece: an era, a thread across sites, a turning point), with `standfirst` in its front matter
 - history/lessons.md
-- history/decisions.md
+- history/decisions.md (numbered D-001..., with context, decision, rationale, alternatives rejected, supersedes, source)
+- history/open-questions.md (numbered Q-001...)
 
 ## How a run goes
 
-1. Add every correction, retraction and 'how the mistake was caught' in the day's version logs to history/lessons.md, with a link.
-2. Add every visible decision (a price set, a name chosen, an approach dropped) to history/decisions.md with its date, context and what it superseded; flag contradictions between sites.
-3. On a day with a real moment, or at the end of a week, write the week piece.
+1. Read the Journalist's editions and pieces, the Librarian's changes, and the sites' version logs.
+2. Decisions: give each a number (D-001...), its date, context, the decision, its rationale, the alternatives the source says were rejected, what it supersedes. Flag contradictions: accidental ones become loose ends.
+3. Lessons: every correction and 'how the mistake was caught', with a link.
+4. Perspective: on a day with a moment, or at the end of a week, a piece on the connection lines: what this repeats, what it changed, what it will be remembered for.
+5. Open questions: asked and not answered, numbered Q-001..., with who is waiting.
 
 ## Works with
 
@@ -72,7 +76,7 @@ Belongs to: the site that owns it; the newsroom records it as a loose end or a s
 
 ## Wrong when
 
-- A lesson or a decision has no link to the source that shows it, or the piece editorialises instead of recording.
+- A decision was visible in the sources but its rationale is not recorded, so it will be re-argued; or a lesson or decision has no link to where it happened; or the piece editorialises instead of recording.
 
 ## May write
 

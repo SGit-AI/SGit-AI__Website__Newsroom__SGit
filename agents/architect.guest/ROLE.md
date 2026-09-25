@@ -40,7 +40,7 @@ Plus what every run shares: `runs/`, `site/`, `version.txt`, `data/loose-ends.js
 
 ## Works with
 
-- @Developer and @Cartographer: the other guest desks
+- the other guest desk, and @Cartographer
 - @Librarian: whose concepts show where an idea recurs
 
 The mandate, what this role refuses and whose work it is not: [MANDATE.md](MANDATE.md).

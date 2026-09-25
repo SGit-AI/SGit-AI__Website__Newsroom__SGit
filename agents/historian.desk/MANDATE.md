@@ -22,7 +22,7 @@ Belongs to: the site that owns it; the newsroom records it as a loose end or a s
 
 ## Wrong when
 
-- A lesson or a decision has no link to the source that shows it, or the piece editorialises instead of recording.
+- A decision was visible in the sources but its rationale is not recorded, so it will be re-argued; or a lesson or decision has no link to where it happened; or the piece editorialises instead of recording.
 
 ## May write
 

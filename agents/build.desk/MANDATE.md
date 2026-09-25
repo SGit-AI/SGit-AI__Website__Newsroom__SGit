@@ -34,6 +34,7 @@ Belongs to: @Editor: a new agent is an editorial decision
 - README.md
 - AUTHORING.md
 - CLAUDE.md
+- data/network.json
 - runs/
 - site/
 - version.txt

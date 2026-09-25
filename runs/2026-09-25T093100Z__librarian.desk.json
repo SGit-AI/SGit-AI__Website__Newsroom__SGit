@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T09:31:00Z",
+  "agent": "librarian.desk",
+  "kind": "desk",
+  "task": "Compute the network: which site links to which.",
+  "folders_changed": [
+    "data/network.json",
+    "data/index.json",
+    "data/vaults.json"
+  ],
+  "did": [
+    "tools/librarian.py writes data/network.json: 32 sites, 152 site-to-site links counted from every snapshotted file."
+  ],
+  "gates": true,
+  "note": "Made by one session at the editor of record's instruction (25 September 2026); recorded per desk so each change sits under the mandate that owns it."
+}

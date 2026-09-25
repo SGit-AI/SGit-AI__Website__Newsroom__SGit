@@ -17,11 +17,15 @@ One pass of the daily run in `brief/05-daily-run.md`. Each step is done AS a des
 3. **Journalist** (`journalist.desk`). `editions/<today>.md` from the changes file, `reviewed_by` empty; stories
    where one deserves the room.
 4. **Historian** (`historian.desk`). Lessons and decisions from today's version logs; a piece if there was a moment.
-5. **Guest desks** (`architect.guest`, `developer.guest`, `cartographer.guest`). Today's changes against the whole
-   index; a signal only when both sides are cited. One run record per desk that wrote something.
-6. **Loose ends** (whichever desk found them). Add new ones; close ones today's changes resolved, citing the change.
-7. **Build, gate, release.** `python3 tools/build.py && python3 tools/validate.py`. Green: bump `version.txt` to the
+5. **Cartographer** (`cartographer.desk`). Update the maps today's changes touch (a new site or vault, a new link, a
+   component that evolved); the network map redraws itself from `data/network.json`. Open every map you changed.
+6. **Guest desks** (`architect.guest`, `developer.guest`). Today's changes against the whole index; a signal only when
+   both sides are cited. One run record per desk that wrote something.
+7. **Loose ends** (whichever desk found them). Add new ones; close ones today's changes resolved, citing the change.
+8. **Editor** (`editor.desk`), last. Compose `data/frontpage.json` (lead, top, sections, briefs) from what the desks
+   wrote; file any feedback in `admin/inbox/` to the desk it concerns; update `admin/notes.md`.
+9. **Build, gate, release.** `python3 tools/build.py && python3 tools/validate.py`. Green: bump `version.txt` to the
    next patch above `origin/dev`, rebuild, commit `site vX.Y.Z: <today>, N changes, M stories`, push to `dev`.
-   Never push red. Never force-push.
-8. **Report** to the editor: what changed, what each desk wrote, what waits for review (every page with
+   Never push red. Never force-push. Then write the report as `admin/inbox/<today>__run-report.md`.
+10. **Report** to the editor: what changed, what each desk wrote, what waits for review (every page with
    `reviewed_by` empty), what is blocked.

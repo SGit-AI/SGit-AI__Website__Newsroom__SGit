@@ -1,0 +1,14 @@
+{
+  "when": "2026-09-25T09:33:00Z",
+  "agent": "editor.human",
+  "kind": "desk",
+  "task": "Change the register of agents: the Editor becomes a desk that owns the front page, the sections and the admin back office; the Cartographer becomes a full desk that owns maps/; the Journalist and Historian get the centres of gravity the editor of record set.",
+  "folders_changed": [
+    "data/agents.json"
+  ],
+  "did": [
+    "9 agents: editor.desk (new), librarian.desk, journalist.desk, historian.desk, cartographer.desk (was a guest desk), architect.guest, developer.guest, build.desk, editor.human."
+  ],
+  "gates": true,
+  "note": "Made by one session at the editor of record's instruction (25 September 2026); recorded per desk so each change sits under the mandate that owns it."
+}

@@ -1,0 +1,53 @@
+{
+ "about": "The site's main sections, in navigation order. Owned by the Editor desk (data/agents.json: editor.desk).",
+ "sections": [
+  {
+   "title": "Front page",
+   "href": "index.html"
+  },
+  {
+   "title": "News",
+   "href": "news/index.html"
+  },
+  {
+   "title": "Perspective",
+   "href": "history/index.html"
+  },
+  {
+   "title": "Maps",
+   "href": "maps/index.html"
+  },
+  {
+   "title": "Reading room",
+   "href": "reading-room/index.html"
+  },
+  {
+   "title": "Index",
+   "href": "library/index.html"
+  },
+  {
+   "title": "Signals",
+   "href": "signals/index.html"
+  },
+  {
+   "title": "Loose ends",
+   "href": "loose-ends/index.html"
+  },
+  {
+   "title": "Vaults",
+   "href": "vaults/index.html"
+  },
+  {
+   "title": "The newsroom",
+   "href": "newsroom/index.html"
+  },
+  {
+   "title": "Admin",
+   "href": "admin/index.html"
+  },
+  {
+   "title": "Search",
+   "href": "search/index.html"
+  }
+ ]
+}

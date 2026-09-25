@@ -11,11 +11,17 @@ Without this, every role quietly becomes the same role; each entry says whose th
 **Finding what changed**  
 Belongs to: @Librarian
 
-**Lessons and decisions over time**  
+**What it means over time: moments, connection lines, lessons**  
 Belongs to: @Historian
 
-**Marking an edition reviewed**  
+**Maps and graphs**  
+Belongs to: @Cartographer
+
+**What leads the front page**  
 Belongs to: @Editor
+
+**Marking a piece reviewed**  
+Belongs to: the editor of record
 
 ## Refuses
 
@@ -26,7 +32,7 @@ Belongs to: @Editor
 
 ## Wrong when
 
-- A sentence in an edition states something no cited source says, or a proposal reads as a product.
+- A reader cannot tell, in a minute, what happened and where it is; or a sentence states something no cited source says; or a proposal reads as a product.
 
 ## May write
 

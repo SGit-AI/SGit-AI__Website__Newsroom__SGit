@@ -190,6 +190,10 @@ class Catalogue:
 
 
 # ======================================================================== page frame
+DEFAULT_SECTIONS = [('index.html', 'Front page'), ('news/index.html', 'News'), ('history/index.html', 'Perspective'),
+                    ('maps/index.html', 'Maps'), ('reading-room/index.html', 'Reading room'), ('library/index.html', 'Index'),
+                    ('signals/index.html', 'Signals'), ('loose-ends/index.html', 'Loose ends'), ('vaults/index.html', 'Vaults'),
+                    ('newsroom/index.html', 'The newsroom'), ('admin/index.html', 'Admin'), ('search/index.html', 'Search')]
 NAV = [('index.html', 'Front page'), ('editions/index.html', 'Editions'), ('reading-room/index.html', 'Reading room'),
        ('library/index.html', 'Index'), ('concepts/index.html', 'Concepts'), ('vaults/index.html', 'Vaults'),
        ('history/index.html', 'History'), ('signals/index.html', 'Signals'), ('loose-ends/index.html', 'Loose ends'),
@@ -207,7 +211,11 @@ class Site:
         self.stories = []
         self.signals = []
         self.history = []
+        self.maps = []
         self.changes = {}
+        secs = load_json('data/sections.json', None)
+        self.nav = [(x['href'], x['title']) for x in secs['sections']] if secs else DEFAULT_SECTIONS
+        self.network = load_json('data/network.json', {'sites': [], 'links': []})
         self.concepts = load_json('data/concepts.json', [])
         self.loose = load_json('data/loose-ends.json', [])
         self.index = load_json('data/index.json', [])
@@ -224,7 +232,9 @@ class Site:
 
     def page(self, path, title, body, provenance, md=None, eyebrow='', search_text=None, kind='page', site=None,
              toc=None, wide=False):
-        nav = ''.join(f'<a href="{rel(path, p)}"{" class=on" if p == path else ""}>{esc(t)}</a>' for p, t in NAV)
+        here = path.split('/')[0]
+        nav = ''.join(f'<a href="{rel(path, p)}"{" class=on" if p == path or (p != "index.html" and p.split("/")[0] == here) else ""}>'
+                      f'{esc(t)}</a>' for p, t in self.nav)
         css = rel(path, 'assets/style.css')
         twin = None
         if md is not None:
@@ -235,6 +245,8 @@ class Site:
             items = ''.join(f'<li class="l{lv}"><a href="#{hid}">{esc(t)}</a></li>' for lv, t, hid in toc if lv <= 3)
             toc_html = f'<details class="toc"><summary>On this page</summary><ul>{items}</ul></details>'
         twin_link = f' · <a href="{rel(path, twin)}">.md twin</a>' if twin else ''
+        diagram_js = (f'<script src="{rel(path, "assets/mermaid.min.js")}"></script>\n<script src="{rel(path, "assets/diagrams.js")}"></script>\n'
+                      if 'class="mermaid"' in body else '')
         doc = f'''<!doctype html>
 <html lang="en-GB" data-version="{esc(VERSION)}">
 <head>
@@ -257,7 +269,7 @@ class Site:
 </main>
 <footer><p>sgit newsroom {esc(VERSION)} · a static site built from a frozen, hashed snapshot of the sgit network · works offline{twin_link} · <a href="{rel(path, 'llms.txt')}">llms.txt</a></p></footer>
 <script src="{rel(path, 'assets/feedback.js')}"></script>
-</body>
+{diagram_js}</body>
 </html>
 '''
         self.write(path, doc)
@@ -820,7 +832,7 @@ class Site:
 
     def load_desks(self):
         for folder, bucket in (('editions', self.editions), ('stories', self.stories), ('signals', self.signals),
-                               ('history', self.history)):
+                               ('history', self.history), ('maps', self.maps)):
             d = rp(folder)
             if not os.path.isdir(d):
                 continue
@@ -875,36 +887,284 @@ class Site:
                   self.prov_desk(P, 'Journalist', sources=None),
                   md='# Stories\n\n' + '\n'.join(f'- {m.get("title", s)}' for s, m, _, _ in self.stories) + '\n', eyebrow='Journalist')
 
+    # ================================================================== the editor's front page, news, maps, admin
+    SECTION_OF = {'editions': 'edition', 'stories': 'news', 'history': 'perspective', 'maps': 'maps', 'signals': 'signal'}
+
+    @staticmethod
+    def first_paragraph(body):
+        for block in re.split(r'\n\s*\n', body):
+            b = block.strip()
+            if not b or b[0] in '#-|>`*<!' or re.match(r'^\d+\.', b):
+                continue
+            b = re.sub(r'!?\[([^\]]*)\]\([^)]*\)', r'\1', b)
+            b = re.sub(r'[*_`]', '', re.sub(r'\s+', ' ', b))
+            return b if len(b) <= 280 else b[:277].rsplit(' ', 1)[0] + '...'
+        return ''
+
+    def buckets(self):
+        return {'stories': self.stories, 'editions': self.editions, 'history': self.history, 'maps': self.maps,
+                'signals': self.signals}
+
+    def card_data(self, folder, slug, meta, body):
+        return dict(ref=f'{folder}/{slug}', path=f'{folder}/{slug}.html', title=meta.get('title', slug),
+                    standfirst=meta.get('standfirst') or self.first_paragraph(body), date=meta.get('date', ''),
+                    desk=meta.get('desk', ''), section=meta.get('section') or self.SECTION_OF[folder],
+                    reviewed=bool(meta.get('reviewed_by')))
+
+    def network_card(self):
+        return dict(ref='maps/network', path='maps/network.html', title='The network, as its own links draw it',
+                    standfirst=f'{len(self.network["sites"])} sites and {len(self.network["links"])} site-to-site links, counted from '
+                               f'every file in the snapshot and drawn fresh on every build.',
+                    date=SNAPSHOT_TAKEN, desk='Cartographer (computed)', section='maps', reviewed=False)
+
+    def all_cards(self, folder=None):
+        out = []
+        for f, bucket in self.buckets().items():
+            if folder and f != folder:
+                continue
+            out += [self.card_data(f, s, m, b) for s, m, b, _ in bucket]
+        if folder in (None, 'maps'):
+            out.append(self.network_card())
+        return sorted(out, key=lambda c: (c['date'], c['ref']), reverse=True)
+
+    def ref_item(self, ref, where='data/frontpage.json'):
+        ref = ref.strip().strip('/')
+        ref = ref[3:] if ref.startswith('nr:') else ref
+        ref = ref[:-5] if ref.endswith('.html') else ref[:-3] if ref.endswith('.md') else ref
+        if ref == 'maps/network':
+            return self.network_card()
+        folder, _, slug = ref.partition('/')
+        for s, m, b, _ in self.buckets().get(folder, []):
+            if s == slug:
+                return self.card_data(folder, s, m, b)
+        self.unresolved.append((where, ref))
+        return None
+
+    def card(self, P, c, size='m'):
+        if not c:
+            return ''
+        review = '' if c['reviewed'] else ' · <span class="unrev">not yet reviewed</span>'
+        dek = f'<p class="dek">{esc(c["standfirst"])}</p>' if c['standfirst'] and size != 's' else ''
+        return (f'<article class="card card-{size}"><p class="kicker">{esc(c["section"])} · {esc(c["date"])}</p>'
+                f'<h3><a href="{esc(rel(P, c["path"]))}">{esc(c["title"])}</a></h3>{dek}'
+                f'<p class="by">{esc(c["desk"])}{review}</p></article>')
+
     def build_front(self):
         P = 'index.html'
-        eds = sorted(self.editions, key=lambda e: e[0], reverse=True)
+        fp = load_json('data/frontpage.json', {})
+        cards = self.all_cards()
+        used = set()
+
+        def pick(ref):
+            c = self.ref_item(ref)
+            if c:
+                used.add(c['ref'])
+            return c
+        lead = pick(fp['lead']) if fp.get('lead') else next((c for c in cards if c['ref'].startswith(('stories/', 'editions/'))), None)
+        if lead:
+            used.add(lead['ref'])
+        top = [pick(r) for r in fp.get('top', [])] or [c for c in cards if c['ref'] not in used][:4]
+        used.update(c['ref'] for c in top if c)
+        sections_cfg = fp.get('sections') or [
+            {'title': 'News', 'from': 'stories', 'limit': 6, 'more': 'news/index.html'},
+            {'title': 'Perspective', 'from': 'history', 'limit': 4, 'more': 'history/index.html'},
+            {'title': 'Maps', 'from': 'maps', 'limit': 4, 'more': 'maps/index.html'},
+            {'title': 'Editions', 'from': 'editions', 'limit': 5, 'more': 'editions/index.html'},
+            {'title': 'Signals', 'from': 'signals', 'limit': 4, 'more': 'signals/index.html'}]
+        sec_html = []
+        for sc in sections_cfg:
+            items = [pick(r) for r in sc['items']] if sc.get('items') else \
+                [c for c in self.all_cards(sc.get('from')) if c['ref'] not in used][:sc.get('limit', 4)]
+            items = [c for c in items if c]
+            if not items:
+                continue
+            more = f' <a class="more" href="{rel(P, sc["more"])}">all →</a>' if sc.get('more') else ''
+            sec_html.append(f'<section class="fp-sec"><h2>{esc(sc["title"])}{more}</h2>'
+                            f'<div class="cards">{"".join(self.card(P, c) for c in items)}</div></section>')
+        _, _, target = self.resolver(P)
+        briefs = []
+        for br in fp.get('briefs', []):
+            link = ''
+            if br.get('link'):
+                kind, where, _ = target(br['link'] if br['link'].startswith(('http', 'src:', 'nr:')) else 'nr:' + br['link'])
+                link = f' <a href="{esc(rel(P, where) if kind == "local" else where)}">→</a>'
+            briefs.append(f'<li>{esc(br["text"])}{link}</li>')
+        last = {}
+        for r in self.runs:
+            last.setdefault(r.get('agent'), r)
+        names = {a['id']: a['name'] for a in self.agents}
+        desks = ''.join(f'<li><a href="{rel(P, "newsroom/agents/" + a + ".html")}">{esc(names.get(a, a))}</a> '
+                        f'<span class="muted small">{esc(r.get("when", "")[:16].replace("T", " "))}</span></li>'
+                        for a, r in sorted(last.items(), key=lambda kv: kv[1].get('when', ''), reverse=True)[:6])
+        recent = self.reading_list()[:6]
+        reading = ''.join(f'<li><a href="{rel(P, it["s"].link)}">{esc(it["title"])}</a> <span class="muted small">{esc(it["site"])}</span></li>'
+                          for it in recent)
         open_le = sum(1 for x in self.loose if x.get('status') == 'open')
-        side = (f'<aside class="side"><h3>At a glance</h3><ul>'
-                f'<li><a href="{rel(P, "reading-room/index.html")}">Reading room</a>: {sum(1 for s in self.cat.sources.values() if s.site)} files from {len(self.cat.sites())} sites</li>'
-                f'<li><a href="{rel(P, "loose-ends/index.html")}">Loose ends</a>: {open_le} open of {len(self.loose)}</li>'
-                f'<li><a href="{rel(P, "signals/index.html")}">Signals</a>: {len(self.signals)}</li>'
-                f'<li><a href="{rel(P, "editions/index.html")}">Editions</a>: {len(eds)}</li>'
-                f'<li><a href="{rel(P, "history/index.html")}">History</a>: {len(self.history)} pieces</li>'
-                f'<li><a href="{rel(P, "library/index.html")}">Index</a>: {len(self.index)} pages</li></ul>'
-                f'<p class="muted">Snapshot of {SNAPSHOT_TAKEN}. Built to be read offline.</p></aside>')
-        if eds:
-            slug, meta, body, raw = eds[0]
-            html_body, heads = self.md(body, P)
-            rb = meta.get('reviewed_by')
-            banner = '' if rb else '<p class="unreviewed-banner">Not yet reviewed by the editor of record.</p>'
-            main = (f'<p class="eyebrow">Latest edition · {esc(slug)} · <a href="{rel(P, f"editions/{slug}.html")}">permalink</a></p>'
-                    f'{banner}<h1>{esc(meta.get("title", ""))}</h1>{self.counts_table(P, slug)}<article>{html_body}</article>')
-            prov = self.prov_desk(P, meta.get('desk', 'Journalist'), slug, sources=meta.get('sources') or [],
-                                  reviewed=(rb, meta.get('reviewed_on', '')))
-            md = raw
-        else:
-            main = (f'<h1>The sgit newsroom</h1><p class="lede">The newsroom whose beat is the sgit network. The first editions '
-                    f'are being written. Meanwhile, the <a href="{rel(P, "reading-room/index.html")}">reading room</a> has every '
-                    f'file of the snapshot, readable offline.</p>')
-            prov = self.prov_desk(P, 'Editor', sources=None)
-            md = '# The sgit newsroom\n'
-        self.page(P, 'The sgit newsroom', f'<div class="front">{side}<div class="lead">{main}</div></div>', prov, md=md,
-                  eyebrow='sgit.newsroom.sgit.ai', kind='newsroom')
+        new_sig = sum(1 for s in self.signals if s[1].get('status', 'new') == 'new')
+        edition_date = fp.get('date') or (max(self.changes) if self.changes else SNAPSHOT_TAKEN)
+        import datetime
+        long_date = datetime.date.fromisoformat(edition_date).strftime('%A %d %B %Y').replace(' 0', ' ')
+        lead_html = ''
+        if lead:
+            review = '' if lead['reviewed'] else '<span class="unrev">not yet reviewed</span>'
+            lead_html = (f'<article class="lead-story"><p class="kicker">{esc(lead["section"])} · {esc(lead["date"])}</p>'
+                         f'<h2><a href="{esc(rel(P, lead["path"]))}">{esc(lead["title"])}</a></h2>'
+                         f'<p class="dek">{esc(lead["standfirst"])}</p><p class="by">{esc(lead["desk"])} {review}</p></article>')
+        top_html = ''.join(self.card(P, c, 's' if i else 'm') for i, c in enumerate(t for t in top if t))
+        rail = (f'<aside class="fp-rail">'
+                + (f'<section><h3>In brief</h3><ul class="briefs">{"".join(briefs)}</ul></section>' if briefs else '')
+                + f'<section><h3>New in the reading room</h3><ul class="plain">{reading}</ul>'
+                f'<a class="more" href="{rel(P, "reading-room/index.html")}">all {len(self.reading_list())} since 18 September →</a></section>'
+                f'<section><h3>Open</h3><ul class="plain"><li><a href="{rel(P, "loose-ends/index.html")}">{open_le} loose ends</a> waiting on someone</li>'
+                f'<li><a href="{rel(P, "signals/index.html")}">{new_sig} new signals</a> between projects</li>'
+                f'<li><a href="{rel(P, "admin/index.html")}">{sum(1 for c in cards if not c["reviewed"] and c["ref"] != "maps/network")} pieces</a> waiting for the editor of record</li></ul></section>'
+                f'<section><h3>The desks, latest runs</h3><ul class="plain">{desks}</ul>'
+                f'<a class="more" href="{rel(P, "newsroom/index.html")}">the newsroom →</a></section></aside>')
+        body = (f'<header class="masthead"><h1>The sgit newsroom</h1><p class="dateline">{esc(long_date)} · '
+                f'the network, read every day · snapshot {SNAPSHOT_TAKEN}</p></header>'
+                f'<div class="fp-top">{lead_html}<div class="fp-tops">{top_html}</div></div>'
+                f'<div class="fp-body"><div class="fp-main">{"".join(sec_html)}</div>{rail}</div>')
+        md = f'# The sgit newsroom\n\n{long_date}\n\n' + (f'## {lead["title"]}\n\n{lead["standfirst"]}\n\n' if lead else '') + '\n'.join(
+            f'- [{c["title"]}]({c["path"][:-5]}.md)' for c in top if c) + '\n'
+        self.page(P, 'The sgit newsroom', body,
+                  self.prov_desk(P, 'Editor', edition_date, sources=None,
+                                 extra=[('Composed from', f'<a href="{rel(P, "data/frontpage.json")}">data/frontpage.json</a> '
+                                                          f'(the Editor\'s choices; the rest is filled from the newest pieces)')]),
+                  md=md, eyebrow='', kind='newsroom', wide=True)
+        self.write('data/frontpage.json', json.dumps(fp, indent=1, ensure_ascii=False))
+
+    def build_news(self):
+        P = 'news/index.html'
+        cards = self.all_cards('stories') + self.all_cards('editions')
+        order = ['news', 'feature', 'explainer', 'back-catalogue', 'edition']
+        groups = {}
+        for c in cards:
+            groups.setdefault(c['section'], []).append(c)
+        parts = []
+        for sec in sorted(groups, key=lambda k: (order.index(k) if k in order else 99, k)):
+            parts.append(f'<section class="fp-sec"><h2>{esc(sec.replace("-", " ").capitalize())}</h2>'
+                         f'<div class="cards">{"".join(self.card(P, c) for c in sorted(groups[sec], key=lambda c: c["date"], reverse=True))}</div></section>')
+        body = (f'<h1>News</h1><p class="lede">What the network made, told plainly: {len(self.stories)} pieces and {len(self.editions)} daily '
+                f'editions, by the Journalist. Fact based; the Historian puts it into perspective.</p>' + ''.join(parts))
+        self.page(P, 'News', body, self.prov_desk(P, 'Journalist', sources=None), wide=True, eyebrow='Journalist',
+                  md='# News\n\n' + '\n'.join(f'- [{c["title"]}]({c["path"][:-5]}.md)' for c in cards) + '\n')
+
+    def build_maps(self):
+        for slug, meta, body, raw in self.maps:
+            self.build_desk_page(f'maps/{slug}.html', meta, body, raw, f'Maps · {esc(meta.get("desk", "Cartographer"))}')
+        # the computed map: the network as its own links draw it
+        P = 'maps/network.html'
+        links = self.network['links']
+        strong = links[:30]                       # the strongest thirty; the table below has every site
+        nid = lambda site: 'n_' + re.sub(r'[^a-z0-9]', '_', site)
+        nodes = sorted({l['from'] for l in strong} | {l['to'] for l in strong})
+        lines = ['flowchart LR'] + [f'  {nid(n)}["{n}"]' for n in nodes] + [f'  {nid(l["from"])} -->|{l["files"]}| {nid(l["to"])}' for l in strong]
+        lines += ['  classDef hub fill:#e8eefc,stroke:#1f4fd1,color:#1b1a17',
+                  '  class ' + ','.join(nid(n) for n in nodes if n in ('sgit.ai', 'riskmandate.ai', 'abp.sgit.ai')) + ' hub']
+        inbound = {}
+        for l in links:
+            inbound[l['to']] = inbound.get(l['to'], 0) + l['files']
+        outbound = {}
+        for l in links:
+            outbound[l['from']] = outbound.get(l['from'], 0) + l['files']
+        rows = ''.join(f'<tr><td>{esc(x["site"])}</td><td class="num">{x["files"]}</td><td class="num">{outbound.get(x["site"], 0)}</td>'
+                       f'<td class="num">{inbound.get(x["site"], 0)}</td></tr>'
+                       for x in sorted(self.network['sites'], key=lambda x: -(inbound.get(x['site'], 0) + outbound.get(x['site'], 0))))
+        md_src = '```mermaid\n' + '\n'.join(lines) + '\n```\n'
+        html_body, _ = self.md(md_src, P)
+        body = (f'<p class="crumbs"><a href="{rel(P, "maps/index.html")}">Maps</a> / the network</p>'
+                f'<h1>The network, as its own links draw it</h1><p class="lede">Every arrow is a count: how many files on one site link to '
+                f'another, in the snapshot of {SNAPSHOT_TAKEN}. The {len(strong)} strongest of {len(links)} links are drawn (each from '
+                f'{strong[-1]["files"] if strong else 0} files or more); the table has every site. Computed by <code>tools/librarian.py</code> into '
+                f'<a href="{rel(P, "data/network.json")}">data/network.json</a>; redrawn on every build.</p>{html_body}'
+                f'<div class="table"><table><thead><tr><th>Site</th><th>Files</th><th>Links out (files)</th><th>Links in (files)</th></tr></thead>'
+                f'<tbody>{rows}</tbody></table></div>')
+        self.page(P, 'The network, as its own links draw it', body,
+                  self.prov_desk(P, 'Cartographer (computed by the build)', SNAPSHOT_TAKEN, sources=['src:sites/manifest.json']),
+                  md='# The network\n\n' + md_src, eyebrow='Maps', wide=True)
+        self.write('data/network.json', json.dumps(self.network, indent=1, ensure_ascii=False))
+        P = 'maps/index.html'
+        cards = self.all_cards('maps')
+        body = (f'<h1>Maps</h1><p class="lede">The Cartographer\'s maps: Wardley maps of the value chains, the network as its links draw '
+                f'it, graphs of the ideas that recur, timelines. Every map renders here with the network off.</p>'
+                f'<div class="cards">{"".join(self.card(P, c) for c in cards)}</div>')
+        self.page(P, 'Maps', body, self.prov_desk(P, 'Cartographer', sources=None), eyebrow='Cartographer', wide=True,
+                  md='# Maps\n\n' + '\n'.join(f'- [{c["title"]}]({c["path"][:-5]}.md)' for c in cards) + '\n')
+
+    def build_admin(self):
+        """The back office: what each desk did, what waits for review, the front page's configuration, the editor's notes and
+        the desks' standing prompts. Public like the rest of the site: nothing secret belongs here."""
+        P = 'admin/index.html'
+        notes = read(rp('admin/notes.md')) if os.path.exists(rp('admin/notes.md')) else ''
+        prompts = sorted(n for n in os.listdir(rp('admin/prompts'))) if os.path.isdir(rp('admin/prompts')) else []
+        inbox = sorted((n for n in os.listdir(rp('admin/inbox')) if n != 'README.md'), reverse=True) if os.path.isdir(rp('admin/inbox')) else []
+        last, count = {}, {}
+        for r in self.runs:
+            last.setdefault(r.get('agent'), r)
+            count[r.get('agent')] = count.get(r.get('agent'), 0) + 1
+        desk_rows = ''.join(
+            f'<tr><td><a href="{rel(P, "newsroom/agents/" + a["id"] + ".html")}"><strong>{esc(a["name"])}</strong></a><br>'
+            f'<code class="small">{esc(a["id"])}</code></td><td>{esc(a["cadence"])}</td>'
+            f'<td class="nowrap">{esc(last[a["id"]]["when"][:16].replace("T", " ")) if a["id"] in last else "no run yet"}'
+            f'<br><span class="small muted">{count.get(a["id"], 0)} runs</span></td>'
+            f'<td class="small">{esc(last[a["id"]].get("task", "")) if a["id"] in last else ""}</td>'
+            f'<td>{"<a href=" + chr(34) + rel(P, "admin/prompts.html") + "#" + a["id"].replace(".", "") + chr(34) + ">prompt</a>" if a["id"] + ".md" in prompts else ""}</td></tr>'
+            for a in self.agents)
+        queue = [c for c in self.all_cards() if not c['reviewed'] and c['ref'] != 'maps/network']
+        queue_html = ''.join(f'<li><a href="{rel(P, c["path"])}">{esc(c["title"])}</a> <span class="muted small">{esc(c["section"])} · '
+                             f'{esc(c["date"])} · {esc(c["desk"])}</span></li>' for c in queue)
+        fp = load_json('data/frontpage.json', {})
+        fp_html = (f'<ul><li><strong>Lead:</strong> {esc(fp.get("lead", "(none: the newest piece leads)"))}</li>'
+                   f'<li><strong>Top:</strong> {esc(", ".join(fp.get("top", [])) or "(the next newest)")}</li>'
+                   f'<li><strong>Sections:</strong> {esc(", ".join(x["title"] for x in fp.get("sections", [])) or "(the default order)")}</li>'
+                   f'<li><strong>Briefs:</strong> {len(fp.get("briefs", []))}</li></ul>')
+        notes_html, _ = self.md(notes, P) if notes else ('<p class="muted">No notes yet: admin/notes.md.</p>', [])
+        inbox_html = ''.join(f'<li><a href="{rel(P, "admin/inbox/" + n[:-3] + ".html")}">{esc(n)}</a></li>' for n in inbox if n.endswith('.md'))
+        body = (f'<h1>Admin: the back office</h1><p class="lede">Where the newsroom is operated: what each desk did and when, what waits for '
+                f'the editor of record, how the front page is composed, the editor\'s notes and each desk\'s standing prompt. Public like the '
+                f'rest of the site: nothing secret belongs here.</p>'
+                f'<p class="jump"><a href="#desks">Desks</a> · <a href="#queue">Review queue ({len(queue)})</a> · <a href="#front">Front page</a> · '
+                f'<a href="#notes">Editor\'s notes</a> · <a href="{rel(P, "admin/prompts.html")}">Prompts ({len(prompts)})</a> · '
+                f'<a href="#inbox">Inbox ({len(inbox)})</a> · <a href="#run">How to run</a> · <a href="{rel(P, "newsroom/runs.html")}">All runs ({len(self.runs)})</a></p>'
+                f'<h2 id="desks">Desks</h2><div class="table"><table><thead><tr><th>Desk</th><th>Cadence</th><th>Last run</th><th>Last task</th>'
+                f'<th>Prompt</th></tr></thead><tbody>{desk_rows}</tbody></table></div>'
+                f'<h2 id="queue">Waiting for the editor of record ({len(queue)})</h2><p>Every piece whose <code>reviewed_by</code> is empty. '
+                f'Reviewing is a human\'s signature: fill <code>reviewed_by</code> and <code>reviewed_on</code> in its front matter.</p>'
+                f'<ul class="list">{queue_html or "<li>Nothing waiting.</li>"}</ul>'
+                f'<h2 id="front">The front page</h2><p>Composed by the Editor desk in <a href="{rel(P, "data/frontpage.json")}">data/frontpage.json</a>; '
+                f'the navigation from <a href="{rel(P, "data/sections.json")}">data/sections.json</a>.</p>{fp_html}'
+                f'<h2 id="notes">Editor\'s notes</h2><article class="source">{notes_html}</article>'
+                f'<h2 id="inbox">Inbox</h2><p>Feedback copied from the reading room ("Copy for Claude") and run reports go in '
+                f'<code>admin/inbox/YYYY-MM-DD__what.md</code>; the Editor reads them on the next run.</p>'
+                f'<ul class="list">{inbox_html or "<li>Empty.</li>"}</ul>'
+                f'<h2 id="run">How to run the newsroom</h2><pre>/newsroom-run                       # the whole day, desk by desk (a Claude Code session)\n'
+                f'/desk journalist &lt;task&gt;             # one task as one desk: librarian, journalist, historian, cartographer, editor...\n'
+                f'python3 tools/build.py &amp;&amp; python3 tools/validate.py\n'
+                f'./run-local.sh [--offline|--serve]  # read it locally</pre>')
+        self.page(P, 'Admin', body, self.prov_desk(P, 'Editor', sources=None,
+                                                   extra=[('Files', 'admin/notes.md, admin/prompts/, admin/inbox/, data/frontpage.json, data/sections.json')]),
+                  eyebrow='Back office', wide=True, md='# Admin\n\n' + notes)
+        # the standing prompts, one page
+        P = 'admin/prompts.html'
+        parts, toc = [], []
+        for n in prompts:
+            if not n.endswith('.md'):
+                continue
+            text = read(rp('admin/prompts/' + n))
+            h, _ = self.md(text, P)
+            aid = n[:-3].replace('.', '')
+            parts.append(f'<section id="{aid}"><h2>{esc(n[:-3])}</h2><article class="source">{h}</article></section>')
+            toc.append(f'<a href="#{aid}">{esc(n[:-3])}</a>')
+        self.page(P, 'Standing prompts', f'<p class="crumbs"><a href="{rel(P, P.replace("prompts", "index"))}">Admin</a> / prompts</p>'
+                  f'<h1>Standing prompts</h1><p class="lede">What each desk is asked to do on every run: the prompt a session gives the desk '
+                  f'after reading its role. Kept by the Editor in <code>admin/prompts/</code>.</p><p class="jump">{" · ".join(toc)}</p>' + ''.join(parts),
+                  self.prov_desk(P, 'Editor', sources=None), eyebrow='Back office',
+                  md='\n\n'.join(read(rp('admin/prompts/' + n)) for n in prompts if n.endswith('.md')))
+        for n in inbox:
+            if n.endswith('.md'):
+                meta, body, raw = self.desk_file('admin/inbox', n)
+                self.build_desk_page(f'admin/inbox/{n[:-3]}.html', meta or {'title': n}, body, raw, 'Back office · inbox')
+        self.write('data/sections.json', json.dumps(load_json('data/sections.json', {}), indent=1, ensure_ascii=False))
 
     # ------------------------------------------------------------------ library (index, concepts, vaults, changes)
     def concept_pages(self):
@@ -1314,7 +1574,7 @@ class Site:
                  '> A newsroom whose beat is the sgit network: an index of what exists, daily editions of what changed, a historian\'s '
                  'perspective, cross-pollination signals and loose ends. Built from a frozen, hashed snapshot; works offline.', '',
                  f'Version {VERSION}. Snapshot {SNAPSHOT_TAKEN}. Every page has a .md twin beside it.', '', '## Newsroom', '']
-        for p, t in NAV:
+        for p, t in self.nav:
             lines.append(f'- [{t}](https://{DOMAIN}/{p[:-5] + ".md" if p.endswith(".html") else p})')
         lines += ['', '## Editions', '']
         for s, m, _, _ in sorted(self.editions, reverse=True):
@@ -1333,6 +1593,8 @@ class Site:
     def build_assets(self):
         self.write('assets/style.css', read(os.path.join(ROOT, 'tools', 'style.css')))
         self.write('assets/feedback.js', read(os.path.join(ROOT, 'tools', 'feedback.js')))
+        self.write('assets/mermaid.min.js', open(os.path.join(ROOT, 'tools', 'vendor', 'mermaid.min.js'), 'rb').read(), binary=True)
+        self.write('assets/diagrams.js', DIAGRAMS_JS)
         self.write('CNAME', DOMAIN + '\n')
         self.write('.nojekyll', '')
 
@@ -1351,6 +1613,9 @@ class Site:
         self.build_signals()
         self.build_loose_ends()
         self.build_agents()
+        self.build_maps()
+        self.build_news()
+        self.build_admin()
         self.build_newsroom()
         self.build_about()
         self.build_front()
@@ -1359,13 +1624,23 @@ class Site:
         pages = sum(1 for p in self.written if p.endswith('.html'))
         print(f'built site/ {VERSION}: {len(self.written)} files, {pages} html pages, {len(self.cat.sources)} sources, '
               f'{len(self.editions)} editions, {len(self.stories)} stories, {len(self.history)} history, {len(self.signals)} signals, '
-              f'{len(self.loose)} loose ends, {len(self.concepts)} concepts, {len(self.index)} indexed pages')
+              f'{len(self.loose)} loose ends, {len(self.maps)} maps, {len(self.concepts)} concepts, {len(self.index)} indexed pages')
         if self.unresolved:
             print(f'{len(self.unresolved)} links in the desks\' files could not be resolved:')
             for page, href in self.unresolved:
                 print(f'  {page}: {href}')
             sys.exit(1)
 
+
+DIAGRAMS_JS = '''/* Renders the Cartographer's maps with the bundled Mermaid: no network, strict security (no HTML or
+   scripts from diagram text), and a theme that follows the reader's light or dark setting. */
+(function () {
+  if (!window.mermaid) return;
+  var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({ startOnLoad: true, securityLevel: 'strict', theme: dark ? 'dark' : 'neutral',
+                       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' });
+})();
+'''
 
 FILTER_JS = '''<script>
 (function(){var q=document.getElementById('q'),fs=document.getElementById('fs'),ft=document.getElementById('ft'),

@@ -1,0 +1,16 @@
+{
+  "when": "2026-09-25T09:32:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Set up the back office and the site's sections.",
+  "folders_changed": [
+    "data/sections.json",
+    "admin/"
+  ],
+  "did": [
+    "data/sections.json: 12 sections in navigation order (News, Perspective, Maps, Reading room, ...).",
+    "admin/inbox/README.md: where feedback and run reports go."
+  ],
+  "gates": true,
+  "note": "Made by one session at the editor of record's instruction (25 September 2026); recorded per desk so each change sits under the mandate that owns it."
+}
