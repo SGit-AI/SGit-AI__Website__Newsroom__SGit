@@ -219,3 +219,7 @@ __marimo__/
 
 # The seed snapshot is frozen as fetched: never ignore anything under sources/
 !sources/**
+# Nothing under the snapshot copies, the screenshots or the built site is a build artefact (a source path named build/ is content)
+!assets/shots/**
+!site/src/**
+!site/assets/**

@@ -14,7 +14,8 @@
   "did": [
     "tools/screenshots.js: manifest saved after every page (an interrupted run keeps what it took); browser context recycled every 10 pages and third-party requests blocked (one long-lived browser wore the proxy's tunnels out after ~40 pages); one retry on a fresh context; .md fallback when a site serves no .html twin (riskmandate.ai/versions/*: 43 pages); waits for networkidle (sgit.ai fetches and injects its css after load; a 500ms wait caught 68 blank or unstyled frames).",
     "assets/shots/: 191 of 191 cited pages captured as jpeg 1200x750 (about 16 MB), assets/shots/manifest.json with the capture time per page.",
-    "Issue 015 moved to done."
+    "Issue 015 moved to done.",
+    ".gitignore: the stock 'build/' pattern hid two shots under a cited github.com/.../build/ path and site/src/sites/games.sgit.ai/build/ from git, so CI's build differed from the committed site (v0.1.12 red); assets/shots/**, site/src/** and site/assets/** un-ignored."
   ],
   "gates": true
 }

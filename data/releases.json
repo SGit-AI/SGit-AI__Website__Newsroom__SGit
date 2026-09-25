@@ -141,6 +141,16 @@
     "tools/screenshots.js saves the manifest after every page and logs one line per page, so an interrupted run keeps what it took.",
     "Issue 015 (screenshots of the pages a piece is about) moved to done."
    ]
+  },
+  {
+   "version": "v0.1.13",
+   "date": "2026-09-25",
+   "time": "14:07",
+   "commit": "",
+   "title": "the shots and snapshot folders named build/ are content, not build artefacts (CI fix)",
+   "notes": [
+    ".gitignore: un-ignore assets/shots/**, site/src/** and site/assets/**: the stock build/ pattern hid two screenshots and one snapshot folder from git, so CI built a different page than the committed one."
+   ]
   }
  ]
 }
