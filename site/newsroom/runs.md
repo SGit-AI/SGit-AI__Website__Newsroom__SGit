@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-25T16:00:00Z editor.desk: Brief the editor of record on why the session could not clone the collaboration vault, and what would allow it.
 - 2026-09-25T15:25:00Z editor.human: The editor of record's message of 25 September: the vault exists and this newsroom is in it as newsroom.sgit.
 - 2026-09-25T15:20:00Z build.desk: The first check-in as one command, so the join can run on a machine allowed to hold the key.
 - 2026-09-25T15:15:00Z editor.desk: The relay vault is the editor of record's existing collaboration vault, not a new one: describe it as it is, with its peers and its two rules.

@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-25T16:00:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Brief the editor of record on why the session could not clone the collaboration vault, and what would allow it.",
+  "folders_changed": [
+    "admin/"
+  ],
+  "did": [
+    "admin/inbox/2026-09-25__why-the-vault-clone-was-refused.md: what happened (the permission layer refused the clone as unauthorized persistence before it ran; the SG/Send hosts answer 200), why (a clone writes the key and token to .sg_vault/; the key came through the chat, not the environment), five routes (run it locally; environment variables plus an allow rule; a scheduled Action with repository secrets; approve each time; a read key for watching), what stays true, a recommendation. 1 file, no credential in it."
+  ],
+  "gates": true
+}

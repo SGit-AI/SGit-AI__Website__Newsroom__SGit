@@ -186,6 +186,16 @@
     "tools/relay.py join: the first check-in as one command (folders, brief.md, notes.md, the welcome delivered, a reply to its sender, a hello to the other peers, one commit, push). Dry-run tested; the join itself runs where the key may be held.",
     "Issue 024 unblocked; issue 046 is now this newsroom's join."
    ]
+  },
+  {
+   "version": "v0.1.17",
+   "date": "2026-09-25",
+   "time": "17:59",
+   "commit": "",
+   "title": "a briefing: why the vault clone was refused and how to allow it",
+   "notes": [
+    "admin/inbox: why the session could not clone the collaboration vault (refused as unauthorized persistence; the network was fine) and five routes to allow it, with a recommendation."
+   ]
   }
  ]
 }
