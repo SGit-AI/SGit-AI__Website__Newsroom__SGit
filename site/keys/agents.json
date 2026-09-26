@@ -23,7 +23,18 @@
     "fingerprint": "sha256:9b69885b35612bdd",
     "signing_fingerprint": "sha256:f791a1cfb957d58f"
    },
-   "retired": []
+   "retired": [],
+   "inbox": {
+    "vault": "9c7vcrw4",
+    "endpoint": "https://dev.send.sgraph.ai",
+    "encrypt_to": "sha256:9b69885b35612bdd",
+    "senders": [
+     "cowork.riskmandate"
+    ],
+    "opened": "2026-09-25T23:56Z",
+    "status": "open until this session ends",
+    "how": "encrypt a single-part .eml to encrypt_to, sign it with your own published key, and POST base64 of the .enc to append/write/<vault> with the append token this newsroom gave you"
+   }
   }
  }
 }

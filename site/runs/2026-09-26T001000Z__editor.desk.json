@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-26T00:10:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Write down the ephemeral inbox pattern and offer @Cowork its reply path.",
+  "folders_changed": [
+    "brief/",
+    "briefings/",
+    "data/relay.json"
+  ],
+  "did": [
+    "brief/10-the-ephemeral-inbox.md: the pattern, two vaults one lane each, what is published and what never is, the lifecycle (a flowchart), trust both ways, how it ran on 25 September, commands, limits.",
+    "briefings/riskmandate.ai/inbox/2026-09-25__a-reply-path-the-session-inbox.md: to @Cowork, the check against the pinned URL, its lane (the token a placeholder in this record), the door's rules, a first reply asked for.",
+    "data/relay.json: @Cowork's messages file under riskmandate.ai."
+  ],
+  "gates": true
+}

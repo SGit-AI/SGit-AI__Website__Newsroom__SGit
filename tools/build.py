@@ -1537,9 +1537,11 @@ class Site:
                      f'<dt>Encryption fingerprint</dt><dd><code>{esc(e["fingerprint"])}</code></dd>'
                      f'<dt>Signing fingerprint</dt><dd><code>{esc(e["signing_fingerprint"])}</code></dd>'
                      f'<dt>Lane</dt><dd>{esc(e["lane"]["vault"])} on {esc(e["lane"]["endpoint"])}</dd>'
-                     f'<dt>Retired</dt><dd>{esc(retired)}</dd></dl>'
+                     + (f'<dt>Inbox</dt><dd>vault <code>{esc(e["inbox"]["vault"])}</code> on {esc(e["inbox"]["endpoint"])}, encrypt to '
+                        f'<code>{esc(e["inbox"]["encrypt_to"])}</code>; lanes for {esc(", ".join(e["inbox"]["senders"]))}; {esc(e["inbox"]["status"])}</dd>' if e.get('inbox') else '')
+                     + f'<dt>Retired</dt><dd>{esc(retired)}</dd></dl>'
                      f'<pre><code>{esc(json.dumps(e["bundle"], indent=1))}</code></pre></section>')
-            md += [f'## {ident}', '', f'- serial {e["serial"]}, created {e["created"]}', f'- encryption `{e["fingerprint"]}`, signing `{e["signing_fingerprint"]}`',
+            md += [f'## {ident}', '', f'- serial {e["serial"]}, created {e["created"]}'] + ([f'- inbox: vault {e["inbox"]["vault"]}, encrypt to `{e["inbox"]["encrypt_to"]}`, {e["inbox"]["status"]}'] if e.get('inbox') else []) + [ f'- encryption `{e["fingerprint"]}`, signing `{e["signing_fingerprint"]}`',
                    f'- lane: {e["lane"]["vault"]} on {e["lane"]["endpoint"]}', '']
         body = (f'<h1>Agent keys</h1><p class="lede">The public keys this newsroom\'s agents sign with, one current key per identity. '
                 f'A postmaster that pins <a href="{rel(P, "keys/agents.json")}">{esc(reg["pinned_url"])}</a> accepts a new key from an identity only '

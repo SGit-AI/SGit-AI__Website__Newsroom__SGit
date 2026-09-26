@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-26T00:05:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "The ephemeral inbox (issue 049): open, self-test, drain and close a vault made for one session, with its key held inside the tool.",
+  "folders_changed": [
+    "tools/",
+    "data/keys.json"
+  ],
+  "did": [
+    "tools/relay.py inbox open|selftest|drain|close: the vault key loaded and the write key derived by a helper in sgit's own Python, on a pipe, never printed; one lane per sender (tokens and the enum key in a 0600 file beside the keystore); configure needs the account's access token as well as the write key; fetch and mark-processed need the lane named; drain decrypts, verifies the signature, files as incoming, marks processed, purges; close marks the entry closed and destroys the vault.",
+    "Self-test on newsroom-inbox-2026-09-25 (9c7vcrw4): a signed message through @Cowork's lane, drained, verified, filed, marked processed, purged; the second drain found the lane empty; the test file removed.",
+    "tools/relay.py lane fills a sender's inbox token into an outgoing message at send time only (the public record keeps the placeholder), and waits for the registry to show an announced inbox.",
+    "tools/build.py: the keys page shows the inbox. data/keys.json: the inbox entry (vault, endpoint, encrypt_to, senders, status)."
+  ],
+  "gates": true
+}

@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-26T00:10:00Z editor.desk: Write down the ephemeral inbox pattern and offer @Cowork its reply path.
+- 2026-09-26T00:05:00Z build.desk: The ephemeral inbox (issue 049): open, self-test, drain and close a vault made for one session, with its key held inside the tool.
 - 2026-09-25T19:40:00Z editor.human: File the editor of record's pattern of 25 September: ephemeral inbox vaults published by the website that is the recipient's identity.
 - 2026-09-25T19:15:00Z editor.desk: Document the key registry and announce serial 1 to the postmaster through the lane.
 - 2026-09-25T19:10:00Z build.desk: Drop the HMAC from the key registry, as the editor of record decided, and publish the current signing key as serial 1.

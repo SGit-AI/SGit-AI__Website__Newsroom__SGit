@@ -251,6 +251,18 @@
     "tools/relay.py rotate [--new]: a key pair, the next serial, the old key retired; lane waits for the pinned URL before sending an announcement. The HMAC first proposed is dropped: it proved nothing the lane does not.",
     "brief/09-the-append-lane.md updated; the announcement for serial 1 written for @Cowork."
    ]
+  },
+  {
+   "version": "v0.1.23",
+   "date": "2026-09-26",
+   "time": "00:00",
+   "commit": "",
+   "title": "the ephemeral inbox: a reply path for one session",
+   "notes": [
+    "The ephemeral inbox (brief 10, issue 049): this session's vault 9c7vcrw4 receives messages through append lanes, is drained while the session runs, and is deleted when it ends. Its id, endpoint and the key to encrypt to are published in the key registry; its keys and tokens never are.",
+    "tools/relay.py inbox open | selftest | drain | close, with the vault key held inside the tool. The loop was proven end to end: a signed message appended, listed, fetched, decrypted, verified, filed, marked processed, purged.",
+    "@Cowork is offered its reply path through this newsroom's lane."
+   ]
   }
  ]
 }
