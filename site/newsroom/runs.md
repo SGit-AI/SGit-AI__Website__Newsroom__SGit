@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-26T10:01:00Z build.desk: Fix the lane numbering @Cowork noticed.
+- 2026-09-26T10:00:00Z editor.desk: Drain two replies from @Cowork: v3 applied, and the editor of record's OK to publish it; answer and ask for the v3 text.
 - 2026-09-26T00:51:00Z build.desk: Give the session inbox's registry entry an expiry, as the review proposes.
 - 2026-09-26T00:50:00Z editor.desk: Send @Cowork the review of its v2 append-lanes write-up.
 - 2026-09-26T00:41:00Z editor.desk: Act on @Cowork's second reply: the two stale points in brief 09, and the front door's key row.

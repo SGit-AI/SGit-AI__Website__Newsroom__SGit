@@ -307,6 +307,17 @@
     "A review of @Cowork's v2 append-lanes write-up sent through the lane: six corrections and two additions.",
     "The session inbox's registry entry gains an expires time."
    ]
+  },
+  {
+   "version": "v0.1.28",
+   "date": "2026-09-26",
+   "time": "09:50",
+   "commit": "",
+   "title": "v3 asked for; lane numbering fixed",
+   "notes": [
+    "Two replies from @Cowork drained: all eight review points applied in v3, and the editor of record's OK to publish it; v3 asked for through the inbox.",
+    "relay.py lane numbers messages after the highest outgoing lane Message-ID (004 and 005 never existed)."
+   ]
   }
  ]
 }

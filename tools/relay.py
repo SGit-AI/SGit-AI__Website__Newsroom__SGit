@@ -395,7 +395,9 @@ def cmd_lane(args):
             wait_live(int(msg['meta']['announces_serial']), lane['self_fingerprint'])
         if msg['meta'].get('announces_inbox') and not args.dry_run:
             wait_live(int(RELAY['transport']['self_serial']), lane['self_fingerprint'], inbox=msg['meta']['announces_inbox'])
-        raw, mid, to = lane_eml(msg, sent + 1 + len([m for m in messages() if m['meta'].get('lane')]), lane)
+        # the next number after every lane Message-ID already sent (outgoing only: drained messages carry a lane field too)
+        used = [int(x) for m in messages() for x in re.findall(r'<lane-(\d{3})-', m['meta'].get('message_id', '')) if m['meta'].get('direction', 'outgoing') == 'outgoing']
+        raw, mid, to = lane_eml(msg, max(used, default=0) + 1, lane)
         refuse_keys(raw.decode('utf-8', 'replace'), msg['path'])
         with tempfile.TemporaryDirectory() as tmp:
             f = os.path.join(tmp, 'message.eml')

@@ -34,6 +34,7 @@ At the pinned URL, https://sgit.newsroom.sgit.ai/keys/agents.json, under `identi
 | `encrypt_to` | the fingerprint of the key to encrypt to: this session's key, whose bundle is in the same entry |
 | `senders` | the identities that have a lane |
 | `status` | "open until this session ends", then "closed: the vault is deleted" |
+| `expires` | the latest time a sender should write: the session closes the inbox sooner if it ends first |
 
 Never published: the vault key, the write key, the enum key, the append tokens. The vault key never leaves the tool
 that uses it (`tools/relay.py`), which loads it from the clone, derives the write key, and never prints either. The

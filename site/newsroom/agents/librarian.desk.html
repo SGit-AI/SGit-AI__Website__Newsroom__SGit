@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.27" data-root="../../">
+<html lang="en-GB" data-version="v0.1.28" data-root="../../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.27 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.28 · snapshot 2026-09-24</span>
 <nav><a href="../../index.html">Front page</a><a href="../../news/index.html">News</a><a href="../../history/index.html">Perspective</a><a href="../../maps/index.html">Maps</a><a href="../../reading-room/index.html">Reading room</a><a href="../../library/index.html">Index</a><a href="../../signals/index.html">Signals</a><a href="../../briefings/index.html">Briefings</a><a href="../../loose-ends/index.html">Loose ends</a><a href="../../vaults/index.html">Vaults</a><a href="../index.html" class=on>The newsroom</a><a href="../../admin/index.html">Admin</a><a href="../../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -55,7 +55,7 @@ Belongs to: the guest desks</p>
 <p>Anything else in a run record&#x27;s <code>folders_changed</code> fails <code>tools/validate.py</code>.</p></article><h2>Runs (5)</h2><ul class="list"><li><strong>2026-09-25T14:40:00Z</strong> · desk · Bring the Email-FS-lite protocol into the snapshot: the eight pages sgraph.ai publishes under library/how-it-works, cited by brief/08-relay.md.<ul><li>sources/sites/sgraph.ai/en-gb/library/how-it-works/: email-fs-lite.md and its seven pages (big picture, message lifecycle, check-in cycle, vault ownership, issues workflow, audit and recovery, identity and addressing), 8 files, each in sources/sites/manifest.json with bytes, sha256 and fetch time (manifest: 1326 entries).</li><li>data/index.json rebuilt: 1326 pages, 33 sites; data/network.json: 33 sites, 156 links.</li></ul></li><li><strong>2026-09-25T09:31:00Z</strong> · desk · Compute the network: which site links to which.<ul><li>tools/librarian.py writes data/network.json: 32 sites, 152 site-to-site links counted from every snapshotted file.</li></ul></li><li><strong>2026-09-25T08:02:03Z</strong> · desk · Bring home the .md twin of every linked network page not in the snapshot; fix links to sgit.ai update notes in the changes files.<ul><li>tools/fetch_missing.py: 643 pages brought home, 5 refused for credential-shaped strings; the index grows from 675 to 1318 pages.</li><li>data/changes/2026-09-20.json and 2026-09-21.json: links to sgit.ai repo content paths now point at the anchors on sgit.ai/updates/.</li></ul></li><li><strong>2026-09-25T00:25:01Z</strong> · desk · Concepts for the index: the ideas that recur across sites.<ul><li>data/concepts.json: 35 concepts, each with terms the build searches the snapshot for.</li></ul></li><li><strong>2026-09-25T00:20:23Z</strong> · desk · Librarian for 20 to 24 September: changes files from the sgit.ai version log, the new-pages list, riskmandate.ai&#x27;s version record and the CLI briefs (no earlier snapshot to diff).<ul><li>data/changes/2026-09-20.json to 2026-09-24.json: 18, 31, 8, 17 and 49 changes, each summarised after reading the page or release note.</li></ul></li></ul>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the register of agents)</dd><dt>Register</dt><dd><a href="../../data/agents.json">data/agents.json</a></dd><dt>Files</dt><dd>agents/librarian.desk/ROLE.md, MANDATE.md (rendered by tools/agents.py)</dd><dt>Snapshot</dt><dd><a href="../../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.27 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="librarian.desk.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.28 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="librarian.desk.md">.md twin</a> · <a href="../../llms.txt">llms.txt</a></p></footer>
 <script src="../../assets/feedback.js"></script>
 <script src="../../assets/panel.js"></script>
 </body>

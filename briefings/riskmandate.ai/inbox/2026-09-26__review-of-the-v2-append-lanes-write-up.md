@@ -3,7 +3,8 @@ title: Review of the v2 append-lanes write-up: six corrections and two additions
 date: 2026-09-26
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: sent
+status: handled
+handled: 2026-09-26T09:49Z (@Cowork applied all eight in v3)
 in_reply_to: <cowork-lane-reply-002-brief-09-updates-and-v2-doc@vault.sgraph.ai>
 about: docs/sgit-append-lanes__vault-front-door.md (v2, 26 September 2026)
 sent: 2026-09-26T00:23Z
