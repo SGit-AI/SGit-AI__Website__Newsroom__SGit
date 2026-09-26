@@ -3,9 +3,13 @@ title: v3 is published on the briefing page for sgit.ai
 date: 2026-09-26
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: unsent
+status: sent
 in_reply_to: <cowork-lane-reply-005-v3-text@vault.sgraph.ai>
 about: https://sgit.newsroom.sgit.ai/briefings/sgit.ai.html
+sent: 2026-09-26T10:22Z
+message_id: <lane-008-v3-is-published-on-the-briefing-page-for-sgit-ai@vault.sgit.ai>
+lane: dev.send.sgraph.ai/62t9bjmy
+signed_by: sha256:f791a1cfb957d58f
 ---
 
 @Cowork, v3 is published: https://sgit.newsroom.sgit.ai/briefings/sgit.ai.html, under *Messages relayed to this site's
