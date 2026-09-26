@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-26T00:41:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Act on @Cowork's second reply: the two stale points in brief 09, and the front door's key row.",
+  "folders_changed": [
+    "brief/",
+    "briefings/",
+    "data/relay.json"
+  ],
+  "did": [
+    "brief/09: replies now come through the session inbox (points to brief 10); the newsroom's key is usable until the next serial is published; the front door's private key sits in the vault and a front-door signature means a vault-key holder, not a member.",
+    "briefings/riskmandate.ai/inbox: the reply filed as handled (punctuation only changed).",
+    "data/relay.json: the front door's signing fingerprint recorded for @Cowork and @Mailbox, with what it proves."
+  ],
+  "gates": true
+}

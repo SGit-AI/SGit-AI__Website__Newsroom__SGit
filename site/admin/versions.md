@@ -26,3 +26,4 @@
 - v0.1.23 (2026-09-26): the ephemeral inbox: a reply path for one session
 - v0.1.24 (2026-09-26): the loop is closed: a signed reply through the session inbox
 - v0.1.25 (2026-09-26): brief 10 brought up to date with the workflow and its learnings
+- v0.1.26 (2026-09-26): signers verified by fingerprint; brief 09 corrected

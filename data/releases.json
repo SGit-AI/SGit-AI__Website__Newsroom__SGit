@@ -285,6 +285,17 @@
    "notes": [
     "brief/10-the-ephemeral-inbox.md: each new session in order, what the server actually wants (seven calls, learned by running them), the envelope details, and a limit on token copies."
    ]
+  },
+  {
+   "version": "v0.1.26",
+   "date": "2026-09-26",
+   "time": "00:18",
+   "commit": "",
+   "title": "signers verified by fingerprint; brief 09 corrected",
+   "notes": [
+    "@Cowork's second reply drained and acted on: brief 09 no longer says replies need the editor of record, the session key is usable until the next serial is published, and a front-door signature is described for what it proves.",
+    "relay.py inbox drain verifies the signer by fingerprint against the keys known for the lane, not by sgit's label; tested with a validly signed message from the wrong key, filed as NOT verified."
+   ]
   }
  ]
 }

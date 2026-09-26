@@ -661,7 +661,13 @@ def cmd_inbox(args):
                     print(f'  {fid}: could not decrypt ({(r.stderr or r.stdout).strip()[:120]}); left pending'); continue
                 eml = BytesParser(policy=policy.default).parse(open(out, 'rb'))
             sig = re.search(r'Signature verified \(signer: (.*)\)\s*$', r.stdout, re.M)
-            signer = sig.group(1) if sig else None
+            # sgit names the signer by label, and labels repeat; the envelope's f is the signing fingerprint, and it must be
+            # the one this lane's sender is known by (data/relay.json peers.<name>.signing_fingerprints)
+            f_env = json.loads(base64.b64decode(enc)).get('f')
+            allowed = next((p.get('signing_fingerprints', []) for p in RELAY['peers'].values() if p['name'] == dict(ids).get(fid)), [])
+            signer = f'{sig.group(1)}, {f_env}' if sig and f_env in allowed else None
+            if sig and f_env not in allowed:
+                print(f'  {fid}: signed by {f_env}, which is not a key known for this lane: filed as NOT verified')
             body = eml.get_body(preferencelist=('plain',))
             text = body.get_content() if body else ''
             refuse_keys(text, fid)

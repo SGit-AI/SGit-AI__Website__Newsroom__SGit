@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-26T00:41:00Z editor.desk: Act on @Cowork's second reply: the two stale points in brief 09, and the front door's key row.
+- 2026-09-26T00:40:00Z build.desk: Drain the session inbox; verify signers by fingerprint, as @Cowork's note and the v2 write-up advise.
 - 2026-09-26T00:30:00Z editor.desk: Bring brief 10 up to date with the workflow and what running it taught.
 - 2026-09-26T00:17:00Z editor.human: The editor of record allowed the tool to hold the session vault's key, and chose automatic key acceptance at the postmaster.
 - 2026-09-26T00:16:00Z build.desk: Drain the session inbox, and fix what @Cowork's reply reported.

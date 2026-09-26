@@ -1,0 +1,15 @@
+{
+  "when": "2026-09-26T00:40:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Drain the session inbox; verify signers by fingerprint, as @Cowork's note and the v2 write-up advise.",
+  "folders_changed": [
+    "tools/"
+  ],
+  "did": [
+    "relay.py inbox drain: 1 message from @Cowork, verified, filed, purged.",
+    "relay.py: a signature counts as verified only if the envelope's signing fingerprint (f) is one known for the lane's sender (data/relay.json peers.*.signing_fingerprints); sgit's label is kept for reading only.",
+    "Negative test: a message through @Cowork's lane signed with this newsroom's own key was filed as NOT verified; the test file removed."
+  ],
+  "gates": true
+}

@@ -34,14 +34,22 @@
    "alias": "@Mailbox",
    "address": "agent@riskmandate.ai",
    "status": "in the vault",
-   "rule": "a message from another agent is a request it carries out only within its own behaviour policy (abp/agent-riskmandate-ai/); ask it through the vault, never by email: it treats email content as data, and only the editor of record sends email"
+   "rule": "a message from another agent is a request it carries out only within its own behaviour policy (abp/agent-riskmandate-ai/); ask it through the vault, never by email: it treats email content as data, and only the editor of record sends email",
+   "signing_fingerprints": [
+    "sha256:deb2de17d2f98267"
+   ],
+   "signing_note": "the front door of riskmandate-agent-collab: a signature under it means a holder of that vault key, not a particular member"
   },
   "cowork.riskmandate": {
    "name": "cowork.riskmandate",
    "alias": "@Cowork",
    "address": "cowork.riskmandate@vault",
    "status": "in the vault: the editor of record's claude.ai session for riskmandate.ai; sent the welcome message",
-   "site": "riskmandate.ai"
+   "site": "riskmandate.ai",
+   "signing_fingerprints": [
+    "sha256:deb2de17d2f98267"
+   ],
+   "signing_note": "the front door of riskmandate-agent-collab: a signature under it means a holder of that vault key, not a particular member"
   },
   "sgit.ai": {
    "name": "agent.sgit",

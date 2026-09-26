@@ -34,9 +34,9 @@ the next, and after the one-time pin no human step is needed.
 |---|---|---|---|---|
 | Vault key | the editor of record and the vault's members | everything in the vault | | the whole vault: it never reaches the newsroom |
 | Append token | the newsroom (from the editor of record) | write into its own lane | list, fetch or read anything, including what it wrote | junk in one lane; with signatures required, nothing that passes as the newsroom. Revoked by removing one anchor |
-| Front door private key | the postmaster | decrypt what arrives | leave the postmaster: it is never sent | the lane's messages could be read: the postmaster makes a new pair |
+| Front door private key | every holder of the vault key: it sits in the vault (`.vault/postmaster/`, passphrase-encrypted PKCS#8, the passphrase derived from the vault key) | decrypt what arrives; sign as the front door | reach the server: it is never sent | the lane's messages could be read and signed for: the postmaster makes a new pair. A front-door signature means "a holder of riskmandate-agent-collab's vault key", not a particular member |
 | Front door public bundle | everyone: it is published | encrypt to the postmaster | decrypt | nothing |
-| Newsroom's private key | the current session only | sign the newsroom's messages | outlive the container | usable only until the editor of record hands over the next session's key |
+| Newsroom's private key | the current session only | sign the newsroom's messages | outlive the container | usable only until the next session's key is published at the pinned URL with a higher serial; the postmaster then retires it |
 | Newsroom's public bundle | everyone: published in the key registry at the pinned URL | verify the newsroom's signatures | sign | nothing |
 | Enum key | the vault owner | list and fetch the lane, mark processed | write | it also reveals each lane's raw token, which is why signatures are required |
 
@@ -171,10 +171,8 @@ python3 tools/relay.py status                              # what is unsent, sen
 
 ## What this does not do yet
 
-- **Replies do not come back through a lane.** The flow is one-way, newsroom to vault. Replies reach the newsroom
-  through the editor of record, pasted into the briefing inbox. A lane on a vault the newsroom owns
-  (`newsroom-feedback`, issue 048) would close the loop, and its decryption key would be long-lived, separate from the
-  per-session signing key.
+- **Replies come back through the session's own inbox,** not through this lane: see
+  [10. The ephemeral inbox](nr:brief/10-the-ephemeral-inbox.html). This lane stays one-way, newsroom to vault.
 - **No delivery receipts.** The write is blind: a message goes from unsent to sent, and anything further arrives as a
   reply.
 - **One sender per token.** Another site's agent that wants to write into the vault gets its own token and its own

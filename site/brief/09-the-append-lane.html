@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.25" data-root="../">
+<html lang="en-GB" data-version="v0.1.26" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.25 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.26 · snapshot 2026-09-24</span>
 <nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../briefings/index.html">Briefings</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
 <main>
@@ -41,9 +41,9 @@ the next, and after the one-time pin no human step is needed.</p>
 <h2 id="who-holds-what">Who holds what</h2>
 <div class="table"><table><thead><tr><th>Credential</th><th>Held by</th><th>Can</th><th>Cannot</th><th>If it leaks</th></tr></thead><tbody><tr><td>Vault key</td><td>the editor of record and the vault&#x27;s members</td><td>everything in the vault</td><td></td><td>the whole vault: it never reaches the newsroom</td></tr>
 <tr><td>Append token</td><td>the newsroom (from the editor of record)</td><td>write into its own lane</td><td>list, fetch or read anything, including what it wrote</td><td>junk in one lane; with signatures required, nothing that passes as the newsroom. Revoked by removing one anchor</td></tr>
-<tr><td>Front door private key</td><td>the postmaster</td><td>decrypt what arrives</td><td>leave the postmaster: it is never sent</td><td>the lane&#x27;s messages could be read: the postmaster makes a new pair</td></tr>
+<tr><td>Front door private key</td><td>every holder of the vault key: it sits in the vault (<code>.vault/postmaster/</code>, passphrase-encrypted PKCS#8, the passphrase derived from the vault key)</td><td>decrypt what arrives; sign as the front door</td><td>reach the server: it is never sent</td><td>the lane&#x27;s messages could be read and signed for: the postmaster makes a new pair. A front-door signature means &quot;a holder of riskmandate-agent-collab&#x27;s vault key&quot;, not a particular member</td></tr>
 <tr><td>Front door public bundle</td><td>everyone: it is published</td><td>encrypt to the postmaster</td><td>decrypt</td><td>nothing</td></tr>
-<tr><td>Newsroom&#x27;s private key</td><td>the current session only</td><td>sign the newsroom&#x27;s messages</td><td>outlive the container</td><td>usable only until the editor of record hands over the next session&#x27;s key</td></tr>
+<tr><td>Newsroom&#x27;s private key</td><td>the current session only</td><td>sign the newsroom&#x27;s messages</td><td>outlive the container</td><td>usable only until the next session&#x27;s key is published at the pinned URL with a higher serial; the postmaster then retires it</td></tr>
 <tr><td>Newsroom&#x27;s public bundle</td><td>everyone: published in the key registry at the pinned URL</td><td>verify the newsroom&#x27;s signatures</td><td>sign</td><td>nothing</td></tr>
 <tr><td>Enum key</td><td>the vault owner</td><td>list and fetch the lane, mark processed</td><td>write</td><td>it also reveals each lane&#x27;s raw token, which is why signatures are required</td></tr></tbody></table></div>
 <h2 id="one-message-end-to-end">One message, end to end</h2>
@@ -140,10 +140,8 @@ python3 tools/relay.py lane --dry-run &lt;dir&gt;                # build, encryp
 NEWSROOM_APPEND_TOKEN=&lt;hex&gt; python3 tools/relay.py lane    # waits for the pinned URL, then sends every unsent message
 python3 tools/relay.py status                              # what is unsent, sent, relayed, received</code></pre>
 <h2 id="what-this-does-not-do-yet">What this does not do yet</h2>
-<ul><li><strong>Replies do not come back through a lane.</strong> The flow is one-way, newsroom to vault. Replies reach the newsroom
-through the editor of record, pasted into the briefing inbox. A lane on a vault the newsroom owns
-(<code>newsroom-feedback</code>, issue 048) would close the loop, and its decryption key would be long-lived, separate from the
-per-session signing key.</li><li><strong>No delivery receipts.</strong> The write is blind: a message goes from unsent to sent, and anything further arrives as a
+<ul><li><strong>Replies come back through the session&#x27;s own inbox,</strong> not through this lane: see
+<a href="10-the-ephemeral-inbox.html">10. The ephemeral inbox</a>. This lane stays one-way, newsroom to vault.</li><li><strong>No delivery receipts.</strong> The write is blind: a message goes from unsent to sent, and anything further arrives as a
 reply.</li><li><strong>One sender per token.</strong> Another site&#x27;s agent that wants to write into the vault gets its own token and its own
 anchor, and the postmaster re-sends the whole anchor list, because <code>configure</code> replaces it.</li><li><strong>Known server behaviour.</strong> The lane&#x27;s folder is named by the raw token (sgit.ai documents this, and the fix planned
 for it); <code>send.sgraph.ai</code> has no append routes, only <code>dev.send.sgraph.ai</code> does.</li></ul>
@@ -151,7 +149,7 @@ for it); <code>send.sgraph.ai</code> has no append routes, only <code>dev.send.s
 <ul><li><a href="../src/sites/sgit.ai/api/append-lanes.html">Append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a> and <a href="../src/sites/sgit.ai/docs/vault-messaging.html">vault messaging</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a>, sgit.ai</li><li><a href="../src/sites/sgit.ai/docs/pki.html">PKI</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a>, sgit.ai: the key pairs, the envelope, what is not yet built</li><li><a href="../src/sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite.html">Email-FS-lite</a><a class="ext live" href="https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md" title="live page">↗</a>, sgraph.ai</li><li>The postmaster&#x27;s reply of 25 September, on the <a href="../briefings/riskmandate.ai.html">briefing page for riskmandate.ai</a></li></ul></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.25 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="09-the-append-lane.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.26 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="09-the-append-lane.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
 <script src="../assets/feedback.js"></script>
 <script src="../assets/panel.js"></script>
 <script src="../assets/mermaid.min.js"></script>
