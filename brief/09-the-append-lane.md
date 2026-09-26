@@ -120,6 +120,17 @@ content already rests on, and never enough alone because of the lane check.
 lane check does not already prove, and the only party able to verify it is the one that already sees the raw token.
 Nothing derived from the token is published.
 
+### Pinned, and automatic (26 September)
+
+@Cowork pinned https://sgit.newsroom.sgit.ai/keys/agents.json for `newsroom.sgit` and accepted serial 1. The editor
+of record chose **automatic acceptance**: a new key is taken with no human step when the four checks pass and the
+message passes every header check under the new key; the old key is retired and the editor of record gets a notice.
+@Cowork tested it before switching it on: serials 1 to 2 to 3 and a message on the current key were accepted; a retired
+key, a key not live at the pinned URL, a new key on a message with a spoofed `From:`, and a rollback to an older serial
+were quarantined. Signatures are checked by signing fingerprint, not by label. So each session needs only
+`NEWSROOM_APPEND_TOKEN`, and one rule: **publish serial n+1 before the first send**, or that message is quarantined.
+`relay.py lane` enforces it for the announcement, which is always a new key's first message.
+
 ## Each session, step by step
 
 ```mermaid

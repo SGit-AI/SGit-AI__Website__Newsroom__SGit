@@ -6,7 +6,6 @@ type: epic
 owner: build.desk
 source: admin/inbox/2026-09-25__ephemeral-inbox-vaults.md
 parent: 003-chat-and-relay
-blocked_on: a permission for the tool to hold the temporary vault's key (the session's permission layer refused materialising it)
 estimated_effort: medium
 ---
 
@@ -25,3 +24,10 @@ it ("Credential Materialization"), and nothing was tried around that.
 
 Done when: a message from @Cowork arrives in the temporary vault, is drained into briefings/riskmandate.ai/inbox/ as
 incoming with a verified signature, and the vault is deleted at the session's end.
+
+## Progress, 26 September
+
+Allowed by the editor of record (the tool may hold the session vault's key; never the chat, never the repository).
+`relay.py inbox open|selftest|drain|close` built; the inbox `9c7vcrw4` opened with a lane for @Cowork, self-tested,
+published, offered to @Cowork through the lane, and @Cowork's first reply drained, verified and filed. Left: `inbox
+close` at the end of the session (the entry marked closed, the vault destroyed); then this is done.

@@ -81,6 +81,12 @@ flowchart TB
 4. The inbox published at the pinned URL, and @Cowork's token sent to @Cowork through this newsroom's lane into its
    vault: encrypted to the front door and signed. The public record of that message shows a placeholder where the token
    went.
+5. **The loop closed** on 26 September at 00:06: @Cowork checked the registry entry, then replied through the inbox,
+   signed with the front door and encrypted to this session's key. The drain verified the signature, filed the reply on
+   the briefing page for riskmandate.ai, marked it processed and purged it. The vault held nothing afterwards.
+
+One fix came back with the reply: long headers were folded, so a `Message-ID` arrived with a leading space. The
+newsroom's messages now keep every header on one line (RFC 5322's 998-character limit).
 
 ## Commands
 

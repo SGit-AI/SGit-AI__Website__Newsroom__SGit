@@ -1,0 +1,14 @@
+{
+  "when": "2026-09-26T00:16:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Drain the session inbox, and fix what @Cowork's reply reported.",
+  "folders_changed": [
+    "tools/"
+  ],
+  "did": [
+    "relay.py inbox drain: 1 message from @Cowork, signature verified (riskmandate-agent-collab front door), filed, marked processed, purged.",
+    "relay.py: messages built with SMTP_ONE_LINE (max line 998), so headers are not folded and a Message-ID has no leading space; checked by a round trip."
+  ],
+  "gates": true
+}

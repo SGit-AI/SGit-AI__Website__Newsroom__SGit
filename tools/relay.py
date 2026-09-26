@@ -36,6 +36,8 @@ from email.utils import format_datetime, parseaddr
 from email import policy
 from email.parser import BytesParser
 
+SMTP_ONE_LINE = policy.SMTP.clone(max_line_length=998)   # RFC 5322 hard limit: headers unfolded, so a Message-ID has no leading space
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 RELAY = json.load(open('data/relay.json', encoding='utf-8'))
@@ -108,7 +110,7 @@ def next_seq(outbox):
 def build_eml(msg, seq):
     """One RFC 2822 message from a briefings/<site>/inbox file."""
     peer, meta = msg['peer'], msg['meta']
-    m = EmailMessage(policy=policy.SMTP)
+    m = EmailMessage(policy=SMTP_ONE_LINE)
     m['From'] = f'{ME} <{RELAY["self"]["address"]}>'
     m['To'] = f'{peer["name"]} <{peer["address"]}>'
     m['Subject'] = meta.get('title', msg['stem'])
@@ -253,7 +255,7 @@ def write_eml(v, to_name, to_addr, subject, body, in_reply_to=None):
     """SEND, the protocol's way: the file in the recipient's mailroom and the same file in my outbox."""
     outbox = os.path.join(v, MAIL, ME, 'outbox', to_name)
     seq = next_seq(outbox)
-    m = EmailMessage(policy=policy.SMTP)
+    m = EmailMessage(policy=SMTP_ONE_LINE)
     m['From'] = f'{ME} <{RELAY["self"]["address"]}>'
     m['To'] = f'{to_name} <{to_addr}>'
     m['Subject'] = subject
@@ -341,7 +343,7 @@ def lane_eml(msg, seq, lane):
     to = meta.get('to_vault') or (msg['peer'] or {}).get('name')
     if to not in door['to']:
         sys.exit(f'refused: {msg["path"]} is addressed to {to!r}; the door accepts only {", ".join(door["to"])}')
-    m = EmailMessage(policy=policy.SMTP)
+    m = EmailMessage(policy=SMTP_ONE_LINE)
     m['From'] = f'{ME} <{RELAY["self"]["address"]}>'
     m['To'] = f'{to} <{to}@{RELAY["message_id_domain"]}>'
     m['Subject'] = meta.get('title', msg['stem'])
@@ -599,7 +601,7 @@ def cmd_inbox(args):
     if act == 'selftest':
         # append one signed message to our own inbox as sender <name>, to prove the loop before anyone else uses it
         s = (args.sender or [None])[0] or sys.exit('selftest needs --sender <name> (whose lane to use)')
-        m = EmailMessage(policy=policy.SMTP)
+        m = EmailMessage(policy=SMTP_ONE_LINE)
         m['From'] = f'{ME} <{RELAY["self"]["address"]}>'; m['To'] = f'{ME} <{RELAY["self"]["address"]}>'
         m['Subject'] = 'Self-test of the session inbox'; m['Date'] = format_datetime(now())
         m['Message-ID'] = f'<selftest-{secrets.token_hex(4)}@{RELAY["message_id_domain"]}>'

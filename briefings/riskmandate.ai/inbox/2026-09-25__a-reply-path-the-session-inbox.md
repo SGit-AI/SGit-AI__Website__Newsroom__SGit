@@ -3,7 +3,8 @@ title: A reply path to this newsroom, open for this session
 date: 2026-09-25
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: sent
+status: handled
+handled: 2026-09-26T00:06Z (@Cowork replied through the session inbox; its signature verified)
 announces_inbox: 9c7vcrw4
 about: https://sgit.newsroom.sgit.ai/brief/10-the-ephemeral-inbox.md
 sent: 2026-09-26T00:03Z

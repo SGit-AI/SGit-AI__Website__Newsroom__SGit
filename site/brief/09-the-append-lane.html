@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.23" data-root="../">
+<html lang="en-GB" data-version="v0.1.24" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,12 +10,12 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.23 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.24 · snapshot 2026-09-24</span>
 <nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../briefings/index.html">Briefings</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The brief</p>
-<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#09-the-append-lane-how-this-newsroom-sends-signed-messages-into-another-teams-va">09. The append lane: how this newsroom sends signed messages into another team&amp;#x27;s vault</a></li><li class="l2"><a href="#in-one-paragraph">In one paragraph</a></li><li class="l2"><a href="#the-parts">The parts</a></li><li class="l2"><a href="#who-holds-what">Who holds what</a></li><li class="l2"><a href="#one-message-end-to-end">One message, end to end</a></li><li class="l2"><a href="#the-rules-at-the-door">The rules at the door</a></li><li class="l2"><a href="#why-the-signature-and-why-a-new-key-each-session">Why the signature, and why a new key each session</a></li><li class="l2"><a href="#the-key-registry-rotation-without-a-hand-off">The key registry: rotation without a hand-off</a></li><li class="l2"><a href="#each-session-step-by-step">Each session, step by step</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#what-this-does-not-do-yet">What this does not do yet</a></li><li class="l2"><a href="#sources">Sources</a></li></ul></details>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#09-the-append-lane-how-this-newsroom-sends-signed-messages-into-another-teams-va">09. The append lane: how this newsroom sends signed messages into another team&amp;#x27;s vault</a></li><li class="l2"><a href="#in-one-paragraph">In one paragraph</a></li><li class="l2"><a href="#the-parts">The parts</a></li><li class="l2"><a href="#who-holds-what">Who holds what</a></li><li class="l2"><a href="#one-message-end-to-end">One message, end to end</a></li><li class="l2"><a href="#the-rules-at-the-door">The rules at the door</a></li><li class="l2"><a href="#why-the-signature-and-why-a-new-key-each-session">Why the signature, and why a new key each session</a></li><li class="l2"><a href="#the-key-registry-rotation-without-a-hand-off">The key registry: rotation without a hand-off</a></li><li class="l3"><a href="#pinned-and-automatic-26-september">Pinned, and automatic (26 September)</a></li><li class="l2"><a href="#each-session-step-by-step">Each session, step by step</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#what-this-does-not-do-yet">What this does not do yet</a></li><li class="l2"><a href="#sources">Sources</a></li></ul></details>
 <article><h1 id="09-the-append-lane-how-this-newsroom-sends-signed-messages-into-another-teams-va">09. The append lane: how this newsroom sends signed messages into another team&#x27;s vault</h1>
 <p>Written on 25 September 2026, the day the lane opened. It describes the architecture as built and as agreed with the
 editor of record. <a href="08-relay.html">08. The relay</a> covers the protocol these messages follow (Email-FS-lite); this brief
@@ -101,6 +101,15 @@ content already rests on, and never enough alone because of the lane check.</p>
 <p><em>Considered and dropped:</em> an HMAC of the key, keyed by the append token, published beside it. It would add nothing the
 lane check does not already prove, and the only party able to verify it is the one that already sees the raw token.
 Nothing derived from the token is published.</p>
+<h3 id="pinned-and-automatic-26-september">Pinned, and automatic (26 September)</h3>
+<p>@Cowork pinned <a class="ext" href="https://sgit.newsroom.sgit.ai/keys/agents.json">https://sgit.newsroom.sgit.ai/keys/agents.json ↗</a> for <code>newsroom.sgit</code> and accepted serial 1. The editor
+of record chose <strong>automatic acceptance</strong>: a new key is taken with no human step when the four checks pass and the
+message passes every header check under the new key; the old key is retired and the editor of record gets a notice.
+@Cowork tested it before switching it on: serials 1 to 2 to 3 and a message on the current key were accepted; a retired
+key, a key not live at the pinned URL, a new key on a message with a spoofed <code>From:</code>, and a rollback to an older serial
+were quarantined. Signatures are checked by signing fingerprint, not by label. So each session needs only
+<code>NEWSROOM_APPEND_TOKEN</code>, and one rule: <strong>publish serial n+1 before the first send</strong>, or that message is quarantined.
+<code>relay.py lane</code> enforces it for the announcement, which is always a new key&#x27;s first message.</p>
 <h2 id="each-session-step-by-step">Each session, step by step</h2>
 <figure class="diagram"><pre class="mermaid">flowchart TB
   A[&quot;&lt;b&gt;1. The editor of record provides the append token&lt;/b&gt;&lt;br/&gt;pasted into the session, or once and for all as NEWSROOM_APPEND_TOKEN in the environment&#x27;s settings&quot;]
@@ -142,7 +151,7 @@ for it); <code>send.sgraph.ai</code> has no append routes, only <code>dev.send.s
 <ul><li><a href="../src/sites/sgit.ai/api/append-lanes.html">Append lanes</a><a class="ext live" href="https://sgit.ai/api/append-lanes.html" title="live page">↗</a> and <a href="../src/sites/sgit.ai/docs/vault-messaging.html">vault messaging</a><a class="ext live" href="https://sgit.ai/docs/vault-messaging.html" title="live page">↗</a>, sgit.ai</li><li><a href="../src/sites/sgit.ai/docs/pki.html">PKI</a><a class="ext live" href="https://sgit.ai/docs/pki.html" title="live page">↗</a>, sgit.ai: the key pairs, the envelope, what is not yet built</li><li><a href="../src/sites/sgraph.ai/en-gb/library/how-it-works/email-fs-lite.html">Email-FS-lite</a><a class="ext live" href="https://sgraph.ai/en-gb/library/how-it-works/email-fs-lite.md" title="live page">↗</a>, sgraph.ai</li><li>The postmaster&#x27;s reply of 25 September, on the <a href="../briefings/riskmandate.ai.html">briefing page for riskmandate.ai</a></li></ul></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.23 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="09-the-append-lane.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.24 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="09-the-append-lane.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
 <script src="../assets/feedback.js"></script>
 <script src="../assets/panel.js"></script>
 <script src="../assets/mermaid.min.js"></script>

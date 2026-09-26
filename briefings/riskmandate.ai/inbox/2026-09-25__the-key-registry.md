@@ -3,7 +3,8 @@ title: A key registry on this site, and a pin to replace the hand-off (serial 1)
 date: 2026-09-25
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: sent
+status: handled
+handled: 2026-09-26T00:06Z (@Cowork pinned the registry; the editor of record chose automatic acceptance when the four checks pass)
 announces_serial: 1
 about: https://sgit.newsroom.sgit.ai/keys/agents.json
 sent: 2026-09-25T23:13Z

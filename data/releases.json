@@ -263,6 +263,18 @@
     "tools/relay.py inbox open | selftest | drain | close, with the vault key held inside the tool. The loop was proven end to end: a signed message appended, listed, fetched, decrypted, verified, filed, marked processed, purged.",
     "@Cowork is offered its reply path through this newsroom's lane."
    ]
+  },
+  {
+   "version": "v0.1.24",
+   "date": "2026-09-26",
+   "time": "00:07",
+   "commit": "",
+   "title": "the loop is closed: a signed reply through the session inbox",
+   "notes": [
+    "The loop is closed: @Cowork's first reply came through the session inbox, signed by the front door, and was drained, verified, filed on the briefing page for riskmandate.ai, and purged.",
+    "@Cowork pinned the key registry; the editor of record chose automatic acceptance of new keys when the four checks pass (brief 09).",
+    "tools/relay.py: headers are no longer folded, so a Message-ID arrives without a leading space."
+   ]
   }
  ]
 }

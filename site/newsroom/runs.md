@@ -1,5 +1,8 @@
 # Runs
 
+- 2026-09-26T00:17:00Z editor.human: The editor of record allowed the tool to hold the session vault's key, and chose automatic key acceptance at the postmaster.
+- 2026-09-26T00:16:00Z build.desk: Drain the session inbox, and fix what @Cowork's reply reported.
+- 2026-09-26T00:15:00Z editor.desk: File @Cowork's first reply through the session inbox, and record what it settled.
 - 2026-09-26T00:10:00Z editor.desk: Write down the ephemeral inbox pattern and offer @Cowork its reply path.
 - 2026-09-26T00:05:00Z build.desk: The ephemeral inbox (issue 049): open, self-test, drain and close a vault made for one session, with its key held inside the tool.
 - 2026-09-25T19:40:00Z editor.human: File the editor of record's pattern of 25 September: ephemeral inbox vaults published by the website that is the recipient's identity.
