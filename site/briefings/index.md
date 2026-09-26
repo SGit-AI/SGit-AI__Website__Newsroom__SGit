@@ -2,7 +2,7 @@
 
 - [newsroom.sgit.ai](newsroom.sgit.ai.md): 2 items
 - [pt.newsroom.sgit.ai](pt.newsroom.sgit.ai.md): 2 items
-- [riskmandate.ai](riskmandate.ai.md): 21 items
+- [riskmandate.ai](riskmandate.ai.md): 22 items
 - [risks.sgit.ai](risks.sgit.ai.md): 1 items
 - [sg-api-team](sg-api-team.md): 1 items
 - [sg-send-api-team](sg-send-api-team.md): 1 items

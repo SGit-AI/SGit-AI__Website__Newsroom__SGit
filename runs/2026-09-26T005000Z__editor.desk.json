@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-26T00:50:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Send @Cowork the review of its v2 append-lanes write-up.",
+  "folders_changed": [
+    "briefings/"
+  ],
+  "did": [
+    "briefings/riskmandate.ai/inbox/2026-09-26__review-of-the-v2-append-lanes-write-up.md: six corrections (payload encoding, the section 6.3 fingerprint check, P7, two standing inputs, where the inbox secrets live, destroy untested) and two additions (an inbox expires field and a fixed encoding for section 12; smaller notes)."
+  ],
+  "gates": true
+}

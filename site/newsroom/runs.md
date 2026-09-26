@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-26T00:51:00Z build.desk: Give the session inbox's registry entry an expiry, as the review proposes.
+- 2026-09-26T00:50:00Z editor.desk: Send @Cowork the review of its v2 append-lanes write-up.
 - 2026-09-26T00:41:00Z editor.desk: Act on @Cowork's second reply: the two stale points in brief 09, and the front door's key row.
 - 2026-09-26T00:40:00Z build.desk: Drain the session inbox; verify signers by fingerprint, as @Cowork's note and the v2 write-up advise.
 - 2026-09-26T00:30:00Z editor.desk: Bring brief 10 up to date with the workflow and what running it taught.

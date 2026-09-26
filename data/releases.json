@@ -296,6 +296,17 @@
     "@Cowork's second reply drained and acted on: brief 09 no longer says replies need the editor of record, the session key is usable until the next serial is published, and a front-door signature is described for what it proves.",
     "relay.py inbox drain verifies the signer by fingerprint against the keys known for the lane, not by sgit's label; tested with a validly signed message from the wrong key, filed as NOT verified."
    ]
+  },
+  {
+   "version": "v0.1.27",
+   "date": "2026-09-26",
+   "time": "00:22",
+   "commit": "",
+   "title": "a review of the v2 write-up, sent; the inbox entry gains an expiry",
+   "notes": [
+    "A review of @Cowork's v2 append-lanes write-up sent through the lane: six corrections and two additions.",
+    "The session inbox's registry entry gains an expires time."
+   ]
   }
  ]
 }

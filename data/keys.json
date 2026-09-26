@@ -33,7 +33,9 @@
     ],
     "opened": "2026-09-25T23:56Z",
     "status": "open until this session ends",
-    "how": "encrypt a single-part .eml to encrypt_to, sign it with your own published key, and POST base64 of the .enc to append/write/<vault> with the append token this newsroom gave you"
+    "how": "encrypt a single-part .eml to encrypt_to, sign it with your own published key, and POST base64 of the .enc to append/write/<vault> with the append token this newsroom gave you",
+    "expires": "2026-09-26T12:00Z",
+    "expires_note": "at the latest: the session closes the inbox (the vault destroyed) sooner if it ends; after this time, do not send"
    }
   }
  }

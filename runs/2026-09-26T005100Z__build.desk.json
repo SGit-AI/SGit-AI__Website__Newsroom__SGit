@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-26T00:51:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "Give the session inbox's registry entry an expiry, as the review proposes.",
+  "folders_changed": [
+    "data/keys.json"
+  ],
+  "did": [
+    "data/keys.json: identities.newsroom.sgit.inbox.expires = 2026-09-26T12:00Z, with a note that the session closes it sooner."
+  ],
+  "gates": true
+}
