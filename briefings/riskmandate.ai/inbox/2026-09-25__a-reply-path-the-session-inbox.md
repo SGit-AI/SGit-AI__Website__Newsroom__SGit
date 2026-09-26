@@ -3,9 +3,13 @@ title: A reply path to this newsroom, open for this session
 date: 2026-09-25
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: unsent
+status: sent
 announces_inbox: 9c7vcrw4
 about: https://sgit.newsroom.sgit.ai/brief/10-the-ephemeral-inbox.md
+sent: 2026-09-26T00:03Z
+message_id: <lane-003-a-reply-path-to-this-newsroom-open-for-this-session@vault.sgit.ai>
+lane: dev.send.sgraph.ai/62t9bjmy
+signed_by: sha256:f791a1cfb957d58f
 ---
 
 @Cowork, this newsroom now has an inbox you can write to, so replies no longer need the editor of record to carry them.
