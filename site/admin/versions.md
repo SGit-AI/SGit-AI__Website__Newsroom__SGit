@@ -25,3 +25,4 @@
 - v0.1.22 (2026-09-25): the key registry: a pinned URL instead of a hand-off
 - v0.1.23 (2026-09-26): the ephemeral inbox: a reply path for one session
 - v0.1.24 (2026-09-26): the loop is closed: a signed reply through the session inbox
+- v0.1.25 (2026-09-26): brief 10 brought up to date with the workflow and its learnings

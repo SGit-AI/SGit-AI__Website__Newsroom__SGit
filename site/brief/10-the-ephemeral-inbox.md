@@ -68,7 +68,7 @@ flowchart TB
 - **The lane names the sender too**, since the lane's folder is the sender's token, and the drain records which lane a
   message came through. Two independent signals: they must agree.
 
-## How it ran on 25 September
+## How it ran on 25 and 26 September
 
 1. `newsroom-inbox-2026-09-25` created on dev.send.sgraph.ai with the editor of record's access token. Its key was never
    shown, in the session or anywhere else.
@@ -88,6 +88,47 @@ flowchart TB
 One fix came back with the reply: long headers were folded, so a `Message-ID` arrived with a leading space. The
 newsroom's messages now keep every header on one line (RFC 5322's 998-character limit).
 
+## Each new session
+
+The container, the vault and every secret end with the session; the repository and the registry carry over. A new
+session reopens both directions in this order:
+
+1. **A new key pair, published first.** `relay.py rotate --new`, then a release: the registry serves serial n+1 before
+   anything is sent, because the postmaster quarantines a message signed by a key it has not yet accepted (brief 09,
+   "Pinned, and automatic").
+2. **A new inbox.** `sgit create`, then `relay.py inbox open --vault <clone> --sender <name>` for each sender, then a
+   release: the registry's `inbox` entry now names the new vault and encrypts to the new key.
+3. **One message announces both.** A message file with `announces_serial: n+1` and `announces_inbox: <vault id>` in its
+   front matter, and `{{INBOX_TOKEN:<sender>}}` in its body where the sender's token goes. `relay.py lane` waits until
+   the pinned URL serves that serial and that inbox, fills the token in at send time (the public record keeps the
+   placeholder), encrypts, signs with the new key, and sends.
+4. **Drain while the session runs; close at the end.**
+
+The only input from the editor of record is `NEWSROOM_APPEND_TOKEN`, and the account token to create the vault.
+
+## What the server actually wants
+
+Learned by running it, beyond what sgit.ai's pages say on 25 September:
+
+| Call | Needs |
+|---|---|
+| `configure/{vault}` | the write key **and** the account's access token (`x-sgraph-access-token`); a 401 "Access token required" otherwise. It replaces the whole anchor list |
+| `write/{vault}` | only `{"append_token", "payload"}`; `payload` must be base64 (a 400 "Invalid base64 payload" otherwise). The answer is exactly `{"ok": true}` |
+| `list/{vault}` | the enum key; `{"include_content": false}` returns `entries` of `{inbox, file_id, received}`, where `inbox` is the lane's folder: the sender's raw token |
+| `fetch/{vault}` | the enum key and **the lane named**: `{"inbox": <token>, "file_ids": [...]}`; `file_ids` alone is a 400 "Missing inbox or file_ids" |
+| `mark-processed/{vault}` | the same shape as `fetch` |
+| `purge/{vault}` | the write key, with `{"inbox", "folder": "processed"}`; the tool also sends the access token, and was not tried without it |
+| `destroy/{vault}` | `DELETE` with the write key and the access token, as sgit's own client sends it; not yet run (the inbox is still open) |
+
+And three things about the envelope:
+
+- **Payload encoding.** Senders post the base64 of the `.enc` file, which is itself base64 text, so the payload is
+  encoded twice; the drain accepts either.
+- **sgit encrypts only to contacts.** A sender first runs `sgit pki import` on the recipient's bundle (the one in the
+  registry). The self-test imports this newsroom's own bundle for the same reason.
+- **Headers on one line.** Python's default SMTP policy folds long headers, and a folded `Message-ID` arrives with a
+  leading space. The newsroom builds messages with a 998-character line limit, RFC 5322's hard limit.
+
 ## Commands
 
 ```bash
@@ -104,5 +145,7 @@ python3 tools/relay.py inbox close                                  # the entry 
 - A vault can hold a lane for several senders, each with its own token; `configure` replaces the whole anchor list, so
   `inbox open` always sends every sender's anchor.
 - The server sees that a lane received something, when, and how big. It cannot read it.
+- A copy of each sender's token outlives the session in the sender's own records: @Cowork noted that the token arrived
+  inside an encrypted message now kept in its vault. It opens nothing once the inbox's vault is destroyed.
 - The vault is only as ephemeral as the session that closes it. A session that ends without `inbox close` leaves an
   empty, drained vault behind; its entry still says "open", and the next session's entry replaces it.

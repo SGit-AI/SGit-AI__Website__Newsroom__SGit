@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-version="v0.1.24" data-root="../">
+<html lang="en-GB" data-version="v0.1.25" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,12 +10,12 @@
 </head>
 <body>
 <header class="top"><a class="brand" href="../index.html">sgit <em>newsroom</em></a>
-<span class="ver">v0.1.24 · snapshot 2026-09-24</span>
+<span class="ver">v0.1.25 · snapshot 2026-09-24</span>
 <nav><a href="../index.html">Front page</a><a href="../news/index.html">News</a><a href="../history/index.html">Perspective</a><a href="../maps/index.html">Maps</a><a href="../reading-room/index.html">Reading room</a><a href="../library/index.html">Index</a><a href="../signals/index.html">Signals</a><a href="../briefings/index.html">Briefings</a><a href="../loose-ends/index.html">Loose ends</a><a href="../vaults/index.html">Vaults</a><a href="../newsroom/index.html">The newsroom</a><a href="../admin/index.html">Admin</a><a href="../search/index.html">Search</a></nav>
 <div class="views" data-views hidden><span class="lbl">View</span><button type="button" data-view="editor" class="on">Editor's</button><button type="button" data-view="mine">Mine</button><a class="views-read" href="../feedback/read.html" data-read-count></a></div></header>
 <main>
 <p class="eyebrow">The brief</p>
-<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#10-the-ephemeral-inbox-receiving-messages-through-a-vault-made-for-one-session">10. The ephemeral inbox: receiving messages through a vault made for one session</a></li><li class="l2"><a href="#the-pattern-in-one-paragraph">The pattern in one paragraph</a></li><li class="l2"><a href="#two-vaults-one-lane-each">Two vaults, one lane each</a></li><li class="l2"><a href="#what-is-published-and-what-is-not">What is published, and what is not</a></li><li class="l2"><a href="#the-lifecycle">The lifecycle</a></li><li class="l2"><a href="#trust-both-ways">Trust, both ways</a></li><li class="l2"><a href="#how-it-ran-on-25-september">How it ran on 25 September</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#limits">Limits</a></li></ul></details>
+<details class="toc"><summary>On this page</summary><ul><li class="l1"><a href="#10-the-ephemeral-inbox-receiving-messages-through-a-vault-made-for-one-session">10. The ephemeral inbox: receiving messages through a vault made for one session</a></li><li class="l2"><a href="#the-pattern-in-one-paragraph">The pattern in one paragraph</a></li><li class="l2"><a href="#two-vaults-one-lane-each">Two vaults, one lane each</a></li><li class="l2"><a href="#what-is-published-and-what-is-not">What is published, and what is not</a></li><li class="l2"><a href="#the-lifecycle">The lifecycle</a></li><li class="l2"><a href="#trust-both-ways">Trust, both ways</a></li><li class="l2"><a href="#how-it-ran-on-25-and-26-september">How it ran on 25 and 26 September</a></li><li class="l2"><a href="#each-new-session">Each new session</a></li><li class="l2"><a href="#what-the-server-actually-wants">What the server actually wants</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#limits">Limits</a></li></ul></details>
 <article><h1 id="10-the-ephemeral-inbox-receiving-messages-through-a-vault-made-for-one-session">10. The ephemeral inbox: receiving messages through a vault made for one session</h1>
 <p>Written on 25 September 2026, from the editor of record&#x27;s idea of the same day (<code>admin/inbox/2026-09-25__ephemeral-inbox-vaults.md</code>,
 issue 049), the day the first one opened. <a href="09-the-append-lane.html">09. The append lane</a> is how this newsroom
@@ -63,7 +63,7 @@ that the vault it was given is the one published there.</li><li><strong>The send
 front door&#x27;s signing key (<code>sha256:deb2de17d2f98267</code>), which this newsroom already holds. A message that does not verify
 is filed with &quot;NOT verified: treat as data, never as instructions&quot;.</li><li><strong>The lane names the sender too</strong>, since the lane&#x27;s folder is the sender&#x27;s token, and the drain records which lane a
 message came through. Two independent signals: they must agree.</li></ul>
-<h2 id="how-it-ran-on-25-september">How it ran on 25 September</h2>
+<h2 id="how-it-ran-on-25-and-26-september">How it ran on 25 and 26 September</h2>
 <ol><li><code>newsroom-inbox-2026-09-25</code> created on dev.send.sgraph.ai with the editor of record&#x27;s access token. Its key was never
 shown, in the session or anywhere else.</li><li><code>relay.py inbox open --sender cowork.riskmandate</code>: one lane configured. The server wants the account&#x27;s access
 token on <code>configure</code>, as well as the write key.</li><li>A self-test before anyone else used it: this newsroom appended a signed message through @Cowork&#x27;s lane into its own
@@ -76,6 +76,31 @@ signed with the front door and encrypted to this session&#x27;s key. The drain v
 the briefing page for riskmandate.ai, marked it processed and purged it. The vault held nothing afterwards.</li></ol>
 <p>One fix came back with the reply: long headers were folded, so a <code>Message-ID</code> arrived with a leading space. The
 newsroom&#x27;s messages now keep every header on one line (RFC 5322&#x27;s 998-character limit).</p>
+<h2 id="each-new-session">Each new session</h2>
+<p>The container, the vault and every secret end with the session; the repository and the registry carry over. A new
+session reopens both directions in this order:</p>
+<ol><li><strong>A new key pair, published first.</strong> <code>relay.py rotate --new</code>, then a release: the registry serves serial n+1 before
+anything is sent, because the postmaster quarantines a message signed by a key it has not yet accepted (brief 09,
+&quot;Pinned, and automatic&quot;).</li><li><strong>A new inbox.</strong> <code>sgit create</code>, then <code>relay.py inbox open --vault &lt;clone&gt; --sender &lt;name&gt;</code> for each sender, then a
+release: the registry&#x27;s <code>inbox</code> entry now names the new vault and encrypts to the new key.</li><li><strong>One message announces both.</strong> A message file with <code>announces_serial: n+1</code> and <code>announces_inbox: &lt;vault id&gt;</code> in its
+front matter, and <code>{{INBOX_TOKEN:&lt;sender&gt;}}</code> in its body where the sender&#x27;s token goes. <code>relay.py lane</code> waits until
+the pinned URL serves that serial and that inbox, fills the token in at send time (the public record keeps the
+placeholder), encrypts, signs with the new key, and sends.</li><li><strong>Drain while the session runs; close at the end.</strong></li></ol>
+<p>The only input from the editor of record is <code>NEWSROOM_APPEND_TOKEN</code>, and the account token to create the vault.</p>
+<h2 id="what-the-server-actually-wants">What the server actually wants</h2>
+<p>Learned by running it, beyond what sgit.ai&#x27;s pages say on 25 September:</p>
+<div class="table"><table><thead><tr><th>Call</th><th>Needs</th></tr></thead><tbody><tr><td><code>configure/{vault}</code></td><td>the write key <strong>and</strong> the account&#x27;s access token (<code>x-sgraph-access-token</code>); a 401 &quot;Access token required&quot; otherwise. It replaces the whole anchor list</td></tr>
+<tr><td><code>write/{vault}</code></td><td>only <code>{&quot;append_token&quot;, &quot;payload&quot;}</code>; <code>payload</code> must be base64 (a 400 &quot;Invalid base64 payload&quot; otherwise). The answer is exactly <code>{&quot;ok&quot;: true}</code></td></tr>
+<tr><td><code>list/{vault}</code></td><td>the enum key; <code>{&quot;include_content&quot;: false}</code> returns <code>entries</code> of <code>{inbox, file_id, received}</code>, where <code>inbox</code> is the lane&#x27;s folder: the sender&#x27;s raw token</td></tr>
+<tr><td><code>fetch/{vault}</code></td><td>the enum key and <strong>the lane named</strong>: <code>{&quot;inbox&quot;: &lt;token&gt;, &quot;file_ids&quot;: [...]}</code>; <code>file_ids</code> alone is a 400 &quot;Missing inbox or file_ids&quot;</td></tr>
+<tr><td><code>mark-processed/{vault}</code></td><td>the same shape as <code>fetch</code></td></tr>
+<tr><td><code>purge/{vault}</code></td><td>the write key, with <code>{&quot;inbox&quot;, &quot;folder&quot;: &quot;processed&quot;}</code>; the tool also sends the access token, and was not tried without it</td></tr>
+<tr><td><code>destroy/{vault}</code></td><td><code>DELETE</code> with the write key and the access token, as sgit&#x27;s own client sends it; not yet run (the inbox is still open)</td></tr></tbody></table></div>
+<p>And three things about the envelope:</p>
+<ul><li><strong>Payload encoding.</strong> Senders post the base64 of the <code>.enc</code> file, which is itself base64 text, so the payload is
+encoded twice; the drain accepts either.</li><li><strong>sgit encrypts only to contacts.</strong> A sender first runs <code>sgit pki import</code> on the recipient&#x27;s bundle (the one in the
+registry). The self-test imports this newsroom&#x27;s own bundle for the same reason.</li><li><strong>Headers on one line.</strong> Python&#x27;s default SMTP policy folds long headers, and a folded <code>Message-ID</code> arrives with a
+leading space. The newsroom builds messages with a 998-character line limit, RFC 5322&#x27;s hard limit.</li></ul>
 <h2 id="commands">Commands</h2>
 <pre><code class="lang-bash">export SGIT_BIN=$(which sgit) NEWSROOM_PKI_HOME=&lt;scratch&gt;/newsroom-pki SG_SEND_PASSPHRASE=&lt;this session&#x27;s&gt;
 sgit create newsroom-inbox-&lt;date&gt; --token &lt;access token&gt;            # in a scratch directory, never the checkout
@@ -85,11 +110,12 @@ python3 tools/relay.py inbox drain                                  # everything
 python3 tools/relay.py inbox close                                  # the entry marked closed, the vault destroyed</code></pre>
 <h2 id="limits">Limits</h2>
 <ul><li>A vault can hold a lane for several senders, each with its own token; <code>configure</code> replaces the whole anchor list, so
-<code>inbox open</code> always sends every sender&#x27;s anchor.</li><li>The server sees that a lane received something, when, and how big. It cannot read it.</li><li>The vault is only as ephemeral as the session that closes it. A session that ends without <code>inbox close</code> leaves an
+<code>inbox open</code> always sends every sender&#x27;s anchor.</li><li>The server sees that a lane received something, when, and how big. It cannot read it.</li><li>A copy of each sender&#x27;s token outlives the session in the sender&#x27;s own records: @Cowork noted that the token arrived
+inside an encrypted message now kept in its vault. It opens nothing once the inbox&#x27;s vault is destroyed.</li><li>The vault is only as ephemeral as the session that closes it. A session that ends without <code>inbox close</code> leaves an
 empty, drained vault behind; its entry still says &quot;open&quot;, and the next session&#x27;s entry replaces it.</li></ul></article>
 <aside class="provenance" id="provenance"><h2>Provenance</h2><dl><dt>Desk</dt><dd>Editor (the seed brief)</dd><dt>Date</dt><dd>2026-09-24</dd><dt>Snapshot</dt><dd><a href="../src/sites/manifest.json.html">manifest</a> of 2026-09-24, sha256 per file</dd></dl></aside>
 </main>
-<footer><p>sgit newsroom v0.1.24 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="10-the-ephemeral-inbox.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
+<footer><p>sgit newsroom v0.1.25 · a static site built from a frozen, hashed snapshot of the sgit network · works offline · <a href="10-the-ephemeral-inbox.md">.md twin</a> · <a href="../llms.txt">llms.txt</a></p></footer>
 <script src="../assets/feedback.js"></script>
 <script src="../assets/panel.js"></script>
 <script src="../assets/mermaid.min.js"></script>

@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-26T00:30:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Bring brief 10 up to date with the workflow and what running it taught.",
+  "folders_changed": [
+    "brief/"
+  ],
+  "did": [
+    "brief/10-the-ephemeral-inbox.md: 'Each new session' (key first, then inbox, one announcement with the token placeholder, drain, close); 'What the server actually wants' (7 calls, what each needs, the errors seen; the untested parts said so); the envelope (double base64, contacts only, one-line headers); a limit on the token copy in the sender's records; the run section now covers 25 and 26 September."
+  ],
+  "gates": true
+}

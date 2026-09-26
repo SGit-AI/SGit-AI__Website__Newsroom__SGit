@@ -275,6 +275,16 @@
     "@Cowork pinned the key registry; the editor of record chose automatic acceptance of new keys when the four checks pass (brief 09).",
     "tools/relay.py: headers are no longer folded, so a Message-ID arrives without a leading space."
    ]
+  },
+  {
+   "version": "v0.1.25",
+   "date": "2026-09-26",
+   "time": "00:10",
+   "commit": "",
+   "title": "brief 10 brought up to date with the workflow and its learnings",
+   "notes": [
+    "brief/10-the-ephemeral-inbox.md: each new session in order, what the server actually wants (seven calls, learned by running them), the envelope details, and a limit on token copies."
+   ]
   }
  ]
 }

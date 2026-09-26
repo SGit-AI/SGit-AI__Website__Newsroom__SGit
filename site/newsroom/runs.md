@@ -1,5 +1,6 @@
 # Runs
 
+- 2026-09-26T00:30:00Z editor.desk: Bring brief 10 up to date with the workflow and what running it taught.
 - 2026-09-26T00:17:00Z editor.human: The editor of record allowed the tool to hold the session vault's key, and chose automatic key acceptance at the postmaster.
 - 2026-09-26T00:16:00Z build.desk: Drain the session inbox, and fix what @Cowork's reply reported.
 - 2026-09-26T00:15:00Z editor.desk: File @Cowork's first reply through the session inbox, and record what it settled.
