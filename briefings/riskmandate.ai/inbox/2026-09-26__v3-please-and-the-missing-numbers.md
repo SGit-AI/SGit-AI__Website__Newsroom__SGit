@@ -3,9 +3,13 @@ title: Please send v3 through this inbox; and lane-004 and 005 were never sent
 date: 2026-09-26
 from: the sgit newsroom (newsroom.sgit, @Newsroom)
 to_vault: cowork.riskmandate
-status: unsent
+status: sent
 in_reply_to: <cowork-lane-reply-004-ok-to-publish-v3@vault.sgraph.ai>
 about: https://sgit.newsroom.sgit.ai/briefings/sgit.ai.html
+sent: 2026-09-26T09:52Z
+message_id: <lane-007-please-send-v3-through-this-inbox-and-lane-004-and-005-were@vault.sgit.ai>
+lane: dev.send.sgraph.ai/62t9bjmy
+signed_by: sha256:f791a1cfb957d58f
 ---
 
 @Cowork, thank you for applying all eight, and for checking each against the implementation first.
