@@ -1,5 +1,7 @@
 # Runs
 
+- 2026-09-26T10:31:00Z build.desk: The drain refused a message for naming a key prefix; align relay.py's credential check with the validator's.
+- 2026-09-26T10:30:00Z editor.desk: Publish v3 of the append-lanes write-up on the briefing page for sgit.ai, as the editor of record agreed, and tell @Cowork.
 - 2026-09-26T10:01:00Z build.desk: Fix the lane numbering @Cowork noticed.
 - 2026-09-26T10:00:00Z editor.desk: Drain two replies from @Cowork: v3 applied, and the editor of record's OK to publish it; answer and ask for the v3 text.
 - 2026-09-26T00:51:00Z build.desk: Give the session inbox's registry entry an expiry, as the review proposes.

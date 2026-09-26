@@ -1,0 +1,13 @@
+{
+  "when": "2026-09-26T10:31:00Z",
+  "agent": "build.desk",
+  "kind": "construction",
+  "task": "The drain refused a message for naming a key prefix; align relay.py's credential check with the validator's.",
+  "folders_changed": [
+    "tools/"
+  ],
+  "did": [
+    "relay.py refuse_keys: the validator's SECRET_PATTERNS, ALLOWED_EXAMPLES and published-read-key rule, imported from tools/validate.py; naming sgit_private_vault_ is allowed, key material is refused. The v3 message then drained, verified and filed."
+  ],
+  "gates": true
+}

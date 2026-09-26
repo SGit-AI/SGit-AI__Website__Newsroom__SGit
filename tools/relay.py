@@ -43,7 +43,8 @@ os.chdir(ROOT)
 RELAY = json.load(open('data/relay.json', encoding='utf-8'))
 ME = RELAY['self']['name']
 MAIL = RELAY['vault'].get('root', 'mail/')
-KEY_SHAPES = (re.compile(r'sgit_private_'), re.compile(r'sgit_vk1_'), re.compile(r'\b[a-z0-9]{24}:[a-z0-9]{4,24}\b'))
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
+from validate import SECRET_PATTERNS, ALLOWED_EXAMPLES, PUBLISHED_READ_KEY   # the same credential rules as the validator  # noqa: E402
 
 
 def now():
@@ -88,9 +89,12 @@ def messages():
 
 
 def refuse_keys(text, where):
-    for pat in KEY_SHAPES:
-        if pat.search(text):
-            sys.exit(f'refused: {where} holds a credential-shaped string ({pat.pattern}); house rule 4')
+    """The validator's rule, not a cruder one: naming a prefix (sgit_private_vault_...) is allowed, key material is not."""
+    clean = PUBLISHED_READ_KEY.sub('', text)
+    for label, pat in SECRET_PATTERNS:
+        for m in pat.finditer(clean):
+            if m.group(0) not in ALLOWED_EXAMPLES:
+                sys.exit(f'refused: {where} holds a credential-shaped string ({label}); house rule 4')
 
 
 def slug(s):

@@ -29,3 +29,4 @@
 - v0.1.26 (2026-09-26): signers verified by fingerprint; brief 09 corrected
 - v0.1.27 (2026-09-26): a review of the v2 write-up, sent; the inbox entry gains an expiry
 - v0.1.28 (2026-09-26): v3 asked for; lane numbering fixed
+- v0.1.29 (2026-09-26): the append-lanes write-up (v3) on the briefing page for sgit.ai

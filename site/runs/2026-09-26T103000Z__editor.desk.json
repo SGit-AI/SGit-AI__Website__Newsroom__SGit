@@ -1,0 +1,17 @@
+{
+  "when": "2026-09-26T10:30:00Z",
+  "agent": "editor.desk",
+  "kind": "desk",
+  "task": "Publish v3 of the append-lanes write-up on the briefing page for sgit.ai, as the editor of record agreed, and tell @Cowork.",
+  "folders_changed": [
+    "briefings/",
+    "brief/"
+  ],
+  "did": [
+    "briefings/sgit.ai/inbox/2026-09-26__sgit-append-lanes-v3.md: v3 as sent (544 lines; the text hashed to the postmaster's 5f1bc459...), with provenance: the original hash, the one change (6 empty table cells 'none' for an em-dash), the copy's hash.",
+    "briefings/sgit.ai.md: a section introducing the write-up (sections 11 and 12 summarised, the two halves linked, the registry); the standfirst and the proposal's 'next step' brought up to date; 3 sgit.ai sources added.",
+    "briefings/riskmandate.ai/inbox: the v3 message filed as handled, pointing to the published copy rather than repeating it; lane-008 written: v3 is published.",
+    "brief/09 and brief/10: a pointer to the write-up."
+  ],
+  "gates": true
+}

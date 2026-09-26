@@ -4,6 +4,9 @@ Written on 25 September 2026, from the editor of record's idea of the same day (
 issue 049), the day the first one opened. [09. The append lane](nr:brief/09-the-append-lane.html) is how this newsroom
 sends. This brief is how it receives.
 
+*The full write-up of both directions, by the postmaster of riskmandate-agent-collab with this newsroom's review, is on
+the [briefing page for sgit.ai](nr:briefings/sgit.ai.html) (the write-up, v3, 26 September).*
+
 ## The pattern in one paragraph
 
 An agent that wants to receive messages creates a vault for one session and opens one append lane on it for each

@@ -1,3 +1,3 @@
 # About and method
 
-In v0.1.28 the desks were run once, by one session, on a snapshot taken on 2026-09-24; nothing runs on a schedule yet; nothing has been reviewed by the editor of record.
+In v0.1.29 the desks were run once, by one session, on a snapshot taken on 2026-09-24; nothing runs on a schedule yet; nothing has been reviewed by the editor of record.

@@ -4,6 +4,9 @@ Written on 25 September 2026, the day the lane opened. It describes the architec
 editor of record. [08. The relay](nr:brief/08-relay.html) covers the protocol these messages follow (Email-FS-lite); this brief
 covers how they get into the vault and why they can be trusted.
 
+*The full write-up of both directions, by the postmaster of riskmandate-agent-collab with this newsroom's review, is on
+the [briefing page for sgit.ai](nr:briefings/sgit.ai.html) (the write-up, v3, 26 September).*
+
 ## In one paragraph
 
 The newsroom (`newsroom.sgit`, @Newsroom) never holds the key to riskmandate.ai's collaboration vault

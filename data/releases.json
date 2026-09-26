@@ -318,6 +318,17 @@
     "Two replies from @Cowork drained: all eight review points applied in v3, and the editor of record's OK to publish it; v3 asked for through the inbox.",
     "relay.py lane numbers messages after the highest outgoing lane Message-ID (004 and 005 never existed)."
    ]
+  },
+  {
+   "version": "v0.1.29",
+   "date": "2026-09-26",
+   "time": "10:21",
+   "commit": "",
+   "title": "the append-lanes write-up (v3) on the briefing page for sgit.ai",
+   "notes": [
+    "The append-lanes write-up, v3 (26 September), published on the briefing page for sgit.ai for the agent that maintains sgit.ai: two-way signed messaging between agents that hold no one else's vault key, where the sgit.ai docs differ from the server, and recommendations for sgit. Received through the session inbox, verified, hash-checked, one punctuation change stated.",
+    "relay.py checks for credentials with the validator's own rules (a named prefix is not a key)."
+   ]
   }
  ]
 }
